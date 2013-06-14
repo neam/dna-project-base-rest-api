@@ -37,7 +37,7 @@
 					"type" => "danger",
 					"icon" => "icon-remove icon-white",
 					"htmlOptions" => array(
-						"submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => Yii::app()->request->getParam("returnUrl")),
+						"submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
 						"confirm" => Yii::t("crud", "Do you want to delete this item?"))
 				    )
 				);
@@ -58,7 +58,7 @@
 					"type" => "danger",
 					"icon" => "icon-remove icon-white",
 					"htmlOptions" => array(
-						"submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => Yii::app()->request->getParam("returnUrl")),
+						"submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
 						"confirm" => Yii::t("crud", "Do you want to delete this item?"))
 				    )
 				);
@@ -78,7 +78,7 @@
 			<?php
 			$this->widget('bootstrap.widgets.TbButtonGroup', array(
 				'buttons' => array(
-					array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'vizView - VizView', 'url' => array('vizView/admin')), array('label' => 'teachersGuide - TeachersGuide', 'url' => array('teachersGuide/admin')), array('label' => 'exercise - Exercise', 'url' => array('exercise/admin')), array('label' => 'presentation - Presentation', 'url' => array('presentation/admin')), array('label' => 'dataChunk - DataChunk', 'url' => array('dataChunk/admin')), array('label' => 'videoFile - VideoFile', 'url' => array('videoFile/admin')), array('label' => 'page - Page', 'url' => array('page/admin')),
+					array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'header - Header', 'url' => array('header/admin')), array('label' => 'p3Widget - P3Widget', 'url' => array('p3Widget/admin')), array('label' => 'dataChunk - DataChunk', 'url' => array('dataChunk/admin')), array('label' => 'exercise - Exercise', 'url' => array('exercise/admin')), array('label' => 'presentation - Presentation', 'url' => array('presentation/admin')), array('label' => 'teachersGuide - TeachersGuide', 'url' => array('teachersGuide/admin')), array('label' => 'videoFile - VideoFile', 'url' => array('videoFile/admin')), array('label' => 'vizView - VizView', 'url' => array('vizView/admin')), array('label' => 'page - Page', 'url' => array('page/admin')),
 						)
 					),
 				),

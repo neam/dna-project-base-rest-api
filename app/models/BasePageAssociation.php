@@ -16,14 +16,18 @@
  * @property string $exercise_id
  * @property string $presentation_id
  * @property string $data_chunk_id
+ * @property string $header_id
+ * @property integer $p3_widget_id
  *
  * Relations of table "page_association" available as properties of the model:
- * @property VizView $vizView
- * @property TeachersGuide $teachersGuide
+ * @property Header $header
+ * @property P3Widget $p3Widget
+ * @property DataChunk $dataChunk
  * @property Exercise $exercise
  * @property Presentation $presentation
- * @property DataChunk $dataChunk
+ * @property TeachersGuide $teachersGuide
  * @property VideoFile $videoFile
+ * @property VizView $vizView
  * @property Page $page
  */
 abstract class BasePageAssociation extends CActiveRecord{
@@ -42,12 +46,12 @@ abstract class BasePageAssociation extends CActiveRecord{
 		return array_merge(
 		    parent::rules(), array(
 			array('page_id', 'required'),
-			array('ordinal, title, created, modified, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('ordinal', 'numerical', 'integerOnly'=>true),
-			array('page_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id', 'length', 'max'=>20),
+			array('ordinal, title, created, modified, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, header_id, p3_widget_id', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('ordinal, p3_widget_id', 'numerical', 'integerOnly'=>true),
+			array('page_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, header_id', 'length', 'max'=>20),
 			array('title', 'length', 'max'=>255),
 			array('created, modified', 'safe'),
-			array('id, page_id, ordinal, title, created, modified, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id', 'safe', 'on'=>'search'),
+			array('id, page_id, ordinal, title, created, modified, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, header_id, p3_widget_id', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -66,12 +70,14 @@ abstract class BasePageAssociation extends CActiveRecord{
 	public function relations()
 	{
 		return array(
-			'vizView' => array(self::BELONGS_TO, 'VizView', 'viz_view_id'),
-			'teachersGuide' => array(self::BELONGS_TO, 'TeachersGuide', 'teachers_guide_id'),
+			'header' => array(self::BELONGS_TO, 'Header', 'header_id'),
+			'p3Widget' => array(self::BELONGS_TO, 'P3Widget', 'p3_widget_id'),
+			'dataChunk' => array(self::BELONGS_TO, 'DataChunk', 'data_chunk_id'),
 			'exercise' => array(self::BELONGS_TO, 'Exercise', 'exercise_id'),
 			'presentation' => array(self::BELONGS_TO, 'Presentation', 'presentation_id'),
-			'dataChunk' => array(self::BELONGS_TO, 'DataChunk', 'data_chunk_id'),
+			'teachersGuide' => array(self::BELONGS_TO, 'TeachersGuide', 'teachers_guide_id'),
 			'videoFile' => array(self::BELONGS_TO, 'VideoFile', 'video_file_id'),
+			'vizView' => array(self::BELONGS_TO, 'VizView', 'viz_view_id'),
 			'page' => array(self::BELONGS_TO, 'Page', 'page_id'),
 		);
 	}
@@ -91,6 +97,8 @@ abstract class BasePageAssociation extends CActiveRecord{
 			'exercise_id' => Yii::t('crud', 'Exercise'),
 			'presentation_id' => Yii::t('crud', 'Presentation'),
 			'data_chunk_id' => Yii::t('crud', 'Data Chunk'),
+			'header_id' => Yii::t('crud', 'Header'),
+			'p3_widget_id' => Yii::t('crud', 'P3 Widget'),
 		);
 	}
 
@@ -111,6 +119,8 @@ abstract class BasePageAssociation extends CActiveRecord{
 		$criteria->compare('t.exercise_id', $this->exercise_id);
 		$criteria->compare('t.presentation_id', $this->presentation_id);
 		$criteria->compare('t.data_chunk_id', $this->data_chunk_id);
+		$criteria->compare('t.header_id', $this->header_id);
+		$criteria->compare('t.p3_widget_id', $this->p3_widget_id);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

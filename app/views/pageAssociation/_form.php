@@ -83,12 +83,12 @@
 
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<label for="vizView"><?php echo Yii::t('crud', 'VizView'); ?></label>
+					<label for="header"><?php echo Yii::t('crud', 'Header'); ?></label>
 					<?php
 					$this->widget(
 					    'Relation', array(
 						'model' => $model,
-						'relation' => 'vizView',
+						'relation' => 'header',
 						'fields' => 'title',
 						'allowEmpty' => true,
 						'style' => 'dropdownlist',
@@ -102,12 +102,31 @@
 
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<label for="teachersGuide"><?php echo Yii::t('crud', 'TeachersGuide'); ?></label>
+					<label for="p3Widget"><?php echo Yii::t('crud', 'P3Widget'); ?></label>
 					<?php
 					$this->widget(
 					    'Relation', array(
 						'model' => $model,
-						'relation' => 'teachersGuide',
+						'relation' => 'p3Widget',
+						'fields' => 'sessionParam',
+						'allowEmpty' => true,
+						'style' => 'dropdownlist',
+						'htmlOptions' => array(
+							'checkAll' => 'all'),
+					    )
+					)
+					?>
+				</div>
+			</div>
+
+			<div class="row-fluid input-block-level-container">
+				<div class="span12">
+					<label for="dataChunk"><?php echo Yii::t('crud', 'DataChunk'); ?></label>
+					<?php
+					$this->widget(
+					    'Relation', array(
+						'model' => $model,
+						'relation' => 'dataChunk',
 						'fields' => 'title',
 						'allowEmpty' => true,
 						'style' => 'dropdownlist',
@@ -159,12 +178,12 @@
 
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<label for="dataChunk"><?php echo Yii::t('crud', 'DataChunk'); ?></label>
+					<label for="teachersGuide"><?php echo Yii::t('crud', 'TeachersGuide'); ?></label>
 					<?php
 					$this->widget(
 					    'Relation', array(
 						'model' => $model,
-						'relation' => 'dataChunk',
+						'relation' => 'teachersGuide',
 						'fields' => 'title',
 						'allowEmpty' => true,
 						'style' => 'dropdownlist',
@@ -184,6 +203,25 @@
 					    'Relation', array(
 						'model' => $model,
 						'relation' => 'videoFile',
+						'fields' => 'title',
+						'allowEmpty' => true,
+						'style' => 'dropdownlist',
+						'htmlOptions' => array(
+							'checkAll' => 'all'),
+					    )
+					)
+					?>
+				</div>
+			</div>
+
+			<div class="row-fluid input-block-level-container">
+				<div class="span12">
+					<label for="vizView"><?php echo Yii::t('crud', 'VizView'); ?></label>
+					<?php
+					$this->widget(
+					    'Relation', array(
+						'model' => $model,
+						'relation' => 'vizView',
 						'fields' => 'title',
 						'allowEmpty' => true,
 						'style' => 'dropdownlist',

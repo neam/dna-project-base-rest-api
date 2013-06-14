@@ -1,5 +1,5 @@
 <?php
-$this->breadcrumbs[] = 'Page Associations';
+$this->breadcrumbs[] = Yii::t('crud', 'Page Associations');
 
 
 Yii::app()->clientScript->registerScript('search', "
@@ -72,6 +72,16 @@ $this->widget('TbGridView', array(
 		  'name'=>'data_chunk_id',
 		  'value'=>'CHtml::value($data,\'dataChunk.title\')',
 		  'filter'=>CHtml::listData(DataChunk::model()->findAll(), 'id', 'title'),
+		  ),
+		  array(
+		  'name'=>'header_id',
+		  'value'=>'CHtml::value($data,\'header.title\')',
+		  'filter'=>CHtml::listData(Header::model()->findAll(), 'id', 'title'),
+		  ),
+		  array(
+		  'name'=>'p3_widget_id',
+		  'value'=>'CHtml::value($data,\'p3Widget.alias\')',
+		  'filter'=>CHtml::listData(P3Widget::model()->findAll(), 'id', 'alias'),
 		  ),
 		 */
 		array(
