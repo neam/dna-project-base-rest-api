@@ -12,3 +12,9 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # otherwise forward it to index.php
 RewriteRule . index.php
+
+<IfModule mod_php5.c>
+
+  php_value upload_max_filesize "200M"
+
+</IfModule>
