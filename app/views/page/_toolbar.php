@@ -16,7 +16,7 @@
 					"url" => array("create")
 				));
 				break;
-			case "view":
+			case "details":
 				$this->widget("bootstrap.widgets.TbButton", array(
 					"label" => Yii::t("crud", "Manage"),
 					"icon" => "icon-list-alt",
@@ -49,9 +49,9 @@
 					"url" => array("admin")
 				));
 				$this->widget("bootstrap.widgets.TbButton", array(
-					"label" => Yii::t("crud", "View"),
+					"label" => Yii::t("crud", "Cancel"),
 					"icon" => "icon-eye-open",
-					"url" => array("view", "id" => $model->{$model->tableSchema->primaryKey})
+					"url" => array("details", "id" => $model->{$model->tableSchema->primaryKey})
 				));
 				$this->widget("bootstrap.widgets.TbButton", array(
 					"label" => Yii::t("crud", "Delete"),
@@ -62,6 +62,12 @@
 						"confirm" => Yii::t("crud", "Do you want to delete this item?"))
 				    )
 				);
+				echo '</div><div class="btn-group">';
+				$this->widget("bootstrap.widgets.TbButton", array(
+					"label" => Yii::t("crud", "User View"),
+					"icon" => "icon-eye-open",
+					"url" => array("view", "id" => $model->{$model->tableSchema->primaryKey})
+				));
 				break;
 		}
 		?>    </div>
