@@ -37,7 +37,10 @@
     </div>
     <hr>
     <footer>
-        Powered by <a href="http://phundament.com">Phundament</a>
+        <?php
+        include(Yii::getPathOfAlias('i18n.en').DIRECTORY_SEPARATOR."html".DIRECTORY_SEPARATOR."copyright_en.html");
+        ?>
+        <!--Powered by <a href="http://phundament.com">Phundament</a>-->
     </footer>
 </div>
 <!-- /container -->
