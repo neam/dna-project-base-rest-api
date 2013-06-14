@@ -24,6 +24,13 @@ Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
 $gscmsConfig = array(
 	'name' => 'Gapminder School CMS',
 	'components' => array(
+		'urlManager' => array(
+			'urlFormat' => 'path',
+			'showScriptName' => false,
+			'rules' => array(
+				'/' => 'site/index',
+			),
+		),
 		'db' => array(
 			'connectionString' => 'mysql:host=' . YII_DB_HOST . (defined('YII_DB_PORT') ? ';port=' . YII_DB_PORT : '') . ';dbname=' . YII_DB_NAME,
 			'emulatePrepare' => true,
