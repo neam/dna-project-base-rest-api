@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('SlideShowFile', dirname(__FILE__));
-Yii::import('SlideShowFile.*');
+Yii::setPathOfAlias('SlideshowFile', dirname(__FILE__));
+Yii::import('SlideshowFile.*');
 
-class SlideShowFile extends BaseSlideShowFile
+class SlideshowFile extends BaseSlideshowFile
 {
 	// Add your model-specific methods here. This file will not be overriden by gtc except you force it.
 	public static function model($className=__CLASS__)

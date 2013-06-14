@@ -8,10 +8,10 @@
  * @property string $title
  * @property string $created
  * @property string $modified
- * @property string $slide_show_file_id
+ * @property string $slideshow_file_id
  *
  * Relations of table "exercise" available as properties of the model:
- * @property SlideShowFile $slideShowFile
+ * @property SlideshowFile $slideshowFile
  * @property PageAssociation[] $pageAssociations
  */
 abstract class BaseExercise extends CActiveRecord{
@@ -29,11 +29,11 @@ abstract class BaseExercise extends CActiveRecord{
 	{
 		return array_merge(
 		    parent::rules(), array(
-			array('title, created, modified, slide_show_file_id', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('title, created, modified, slideshow_file_id', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('title', 'length', 'max'=>255),
-			array('slide_show_file_id', 'length', 'max'=>20),
+			array('slideshow_file_id', 'length', 'max'=>20),
 			array('created, modified', 'safe'),
-			array('id, title, created, modified, slide_show_file_id', 'safe', 'on'=>'search'),
+			array('id, title, created, modified, slideshow_file_id', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -52,7 +52,7 @@ abstract class BaseExercise extends CActiveRecord{
 	public function relations()
 	{
 		return array(
-			'slideShowFile' => array(self::BELONGS_TO, 'SlideShowFile', 'slide_show_file_id'),
+			'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
 			'pageAssociations' => array(self::HAS_MANY, 'PageAssociation', 'exercise_id'),
 		);
 	}
@@ -64,7 +64,7 @@ abstract class BaseExercise extends CActiveRecord{
 			'title' => Yii::t('crud', 'Title'),
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
-			'slide_show_file_id' => Yii::t('crud', 'Slide Show File'),
+			'slideshow_file_id' => Yii::t('crud', 'Slideshow File'),
 		);
 	}
 
@@ -77,7 +77,7 @@ abstract class BaseExercise extends CActiveRecord{
 		$criteria->compare('t.title', $this->title, true);
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);
-		$criteria->compare('t.slide_show_file_id', $this->slide_show_file_id);
+		$criteria->compare('t.slideshow_file_id', $this->slideshow_file_id);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

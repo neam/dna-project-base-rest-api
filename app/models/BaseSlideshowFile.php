@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model base class for the table "slide_show_file".
+ * This is the model base class for the table "slideshow_file".
  *
- * Columns in table "slide_show_file" available as properties of the model:
+ * Columns in table "slideshow_file" available as properties of the model:
  * @property string $id
  * @property string $title
  * @property string $created
@@ -11,13 +11,13 @@
  * @property integer $original_file_id
  * @property integer $processed_file_id
  *
- * Relations of table "slide_show_file" available as properties of the model:
+ * Relations of table "slideshow_file" available as properties of the model:
  * @property Exercise[] $exercises
  * @property Presentation[] $presentations
  * @property P3Media $originalFile
  * @property P3Media $processedFile
  */
-abstract class BaseSlideShowFile extends CActiveRecord{
+abstract class BaseSlideshowFile extends CActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -25,7 +25,7 @@ abstract class BaseSlideShowFile extends CActiveRecord{
 
 	public function tableName()
 	{
-		return 'slide_show_file';
+		return 'slideshow_file';
 	}
 
 	public function rules()
@@ -55,8 +55,8 @@ abstract class BaseSlideShowFile extends CActiveRecord{
 	public function relations()
 	{
 		return array(
-			'exercises' => array(self::HAS_MANY, 'Exercise', 'slide_show_file_id'),
-			'presentations' => array(self::HAS_MANY, 'Presentation', 'slide_show_file_id'),
+			'exercises' => array(self::HAS_MANY, 'Exercise', 'slideshow_file_id'),
+			'presentations' => array(self::HAS_MANY, 'Presentation', 'slideshow_file_id'),
 			'originalFile' => array(self::BELONGS_TO, 'P3Media', 'original_file_id'),
 			'processedFile' => array(self::BELONGS_TO, 'P3Media', 'processed_file_id'),
 		);
