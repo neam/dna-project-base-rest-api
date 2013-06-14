@@ -7,6 +7,7 @@
  */
 class ContactForm extends CFormModel
 {
+
 	public $name;
 	public $email;
 	public $subject;
@@ -24,7 +25,7 @@ class ContactForm extends CFormModel
 			// email has to be a valid email address
 			array('email', 'email'),
 			// verifyCode needs to be entered correctly
-			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
+			array('verifyCode', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements()),
 		);
 	}
 
@@ -33,14 +34,15 @@ class ContactForm extends CFormModel
 	 * If not declared here, an attribute would have a label that is
 	 * the same as its name with the first letter in upper case.
 	 */
-    public function attributeLabels()
-    {
-        return array(
-            'verifyCode' => Yii::t('app', 'Verification Code'),
-            'name'       => Yii::t('app', 'Name'),
-            'email'      => Yii::t('app', 'Email'),
-            'subject'    => Yii::t('app', 'Subject'),
-            'body'       => Yii::t('app', 'Body'),
-        );
-    }
+	public function attributeLabels()
+	{
+		return array(
+			'verifyCode' => Yii::t('app', 'Verification Code'),
+			'name' => Yii::t('app', 'Name'),
+			'email' => Yii::t('app', 'Email'),
+			'subject' => Yii::t('app', 'Subject'),
+			'body' => Yii::t('app', 'Body'),
+		);
+	}
+
 }
