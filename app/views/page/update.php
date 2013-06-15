@@ -35,16 +35,20 @@ $this->widget('EditableDetailView', array(
 			if (is_array($model->pageAssociations))
 			{
 
-				echo CHtml::openTag('ul');
+				//echo CHtml::openTag('ul');
 				foreach ($model->pageAssociations as $relatedModel)
 				{
 
-					echo '<li>';
+					echo '<h3>';
 					echo CHtml::link($relatedModel->title, array('pageAssociation/view', 'id' => $relatedModel->id), array('class' => ''));
+					echo '</h3>';
 
-					echo '</li>';
+					$this->widget('EditableDetailView', array(
+						'data' => $relatedModel,
+						'url' => $this->createUrl($relatedModel->tableName().'/editableSaver'),
+					));
 				}
-				echo CHtml::closeTag('ul');
+				//echo CHtml::closeTag('ul');
 			}
 			?></div>
 	</div> <!-- row -->
