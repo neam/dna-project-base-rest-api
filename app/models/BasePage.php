@@ -12,7 +12,7 @@
  * Relations of table "page" available as properties of the model:
  * @property PageAssociation[] $pageAssociations
  */
-abstract class BasePage extends CActiveRecord{
+abstract class BasePage extends ActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
