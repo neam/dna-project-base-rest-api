@@ -30,6 +30,14 @@ class Page extends BasePage
 		));
 	}
 
+	public function relations()
+	{
+		return array_merge(
+		    parent::relations(), array(
+			'pageAssociations' => array(self::HAS_MANY, 'PageAssociation', 'page_id', 'order' => 'ordinal ASC'),
+		));
+	}
+
 	public function rules()
 	{
 		return array_merge(
