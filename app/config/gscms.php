@@ -46,6 +46,16 @@ $gscmsConfig = array(
 			'enableParamLogging' => true, // Log SQL parameters
 		//'schemaCachingDuration'=>3600*24,
 		),
+		'langHandler' => array(
+			'languages' => array(
+				'en_us',
+				'es_es',
+				'fa_ir',
+				'hi_in',
+				'pt_pt',
+				'sv_se',
+			)
+		),
 	)
 );
 
