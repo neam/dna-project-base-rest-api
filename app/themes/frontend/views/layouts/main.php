@@ -39,7 +39,7 @@
     <hr>
     <footer>
         <?php
-        include(Yii::getPathOfAlias('i18n.en').DIRECTORY_SEPARATOR."html".DIRECTORY_SEPARATOR."copyright_en.html");
+        include(Yii::getPathOfAlias('i18n.en-US').DIRECTORY_SEPARATOR."general".DIRECTORY_SEPARATOR."html".DIRECTORY_SEPARATOR."copyright_en.html");
         ?>
         <!--Powered by <a href="http://phundament.com">Phundament</a>-->
     </footer>
