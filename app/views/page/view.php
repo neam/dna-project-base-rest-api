@@ -1,39 +1,30 @@
 <?php
-$this->breadcrumbs['Pages'] = array('index');
+$this->breadcrumbs[Yii::t('crud', 'Pages')] = array('admin');
 $this->breadcrumbs[] = $model->id;
-
-if (!$this->menu)
-	$this->menu = array(
-		array('label' => Yii::t('app', 'Update'), 'url' => array('update', 'id' => $model->id)),
-		array('label' => Yii::t('app', 'Delete'), 'url' => '#', 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')),
-		array('label' => Yii::t('app', 'Create'), 'url' => array('create')),
-		array('label' => Yii::t('app', 'Manage'), 'url' => array('admin')),
-		array('label' => Yii::t('app', 'List'), 'url' => array('index')),
-	);
 ?>
-
-<h1><?php echo Yii::t('app', 'View'); ?> Page <?php echo $model->id; ?></h1>
-
-<div class="view">
-
-	<b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::encode($model->title); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
-	<?php echo CHtml::encode($model->created); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
-	<?php echo CHtml::encode($model->modified); ?>
-	<br />
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<h1>
+	<?php echo Yii::t('crud', 'Page') ?> <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small></h1>
 
 
-</div>
+
+<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
+<?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
+<?php echo CHtml::encode($model->title); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
+<?php echo CHtml::encode($model->created); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
+<?php echo CHtml::encode($model->modified); ?>
+<br />
+
 
 <h2><?php echo CHtml::link(Yii::t('app', 'PageAssociations'), array('pageAssociation/admin')); ?></h2>
 <ul>
@@ -52,3 +43,19 @@ if (!$this->menu)
 	    Yii::t('app', 'Create'), array('pageAssociation/create', 'PageAssociation' => array('page_id' => $model->{$model->tableSchema->primaryKey}))
 	);
 	?></p>
+<h2>
+	<?php echo Yii::t('crud', 'Data') ?></h2>
+
+<p>
+	<?php
+	$this->widget('TbDetailView', array(
+		'data' => $model,
+		'attributes' => array(
+			'id',
+			'title',
+			'created',
+			'modified',
+		),
+	));
+	?></p>
+

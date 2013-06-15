@@ -75,51 +75,18 @@
 	</div>
 
 
-	<?php echo Yii::t('crud', 'Relations') ?></h2>
+	<div class="form-actions">
 
-<div class='well'>
-	<div class='row'>
-		<div class='span3'><?php
-			$this->widget('bootstrap.widgets.TbButtonGroup', array(
-				'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-				'buttons' => array(
-					array('label' => 'pageAssociations', 'icon' => 'icon-list-alt', 'url' => array('pageAssociation/admin')),
-					array('icon' => 'icon-plus', 'url' => array('pageAssociation/create', 'PageAssociation' => array('page_id' => $model->{$model->tableSchema->primaryKey}))),
-				),
-			));
-			?></div><div class='span8'>
-			<?php
-			echo '<span class=label>CHasManyRelation</span>';
-			if (is_array($model->pageAssociations))
-			{
+		<?php
+		echo CHtml::Button(Yii::t('crud', 'Cancel'), array(
+			'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('page/admin'),
+			'class' => 'btn'
+		));
+		echo ' ' . CHtml::submitButton(Yii::t('crud', 'Save'), array(
+			'class' => 'btn btn-primary'
+		));
+		?>
+	</div>
 
-				echo CHtml::openTag('ul');
-				foreach ($model->pageAssociations as $relatedModel)
-				{
-
-					echo '<li>';
-					echo CHtml::link($relatedModel->title, array('pageAssociation/view', 'id' => $relatedModel->id), array('class' => ''));
-
-					echo '</li>';
-				}
-				echo CHtml::closeTag('ul');
-			}
-			?></div>
-	</div> <!-- row -->
-</div> <!-- well -->
-
-<div class="form-actions">
-
-	<?php
-	echo CHtml::Button(Yii::t('crud', 'Cancel'), array(
-		'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('page/admin'),
-		'class' => 'btn'
-	));
-	echo ' ' . CHtml::submitButton(Yii::t('crud', 'Save'), array(
-		'class' => 'btn btn-primary'
-	));
-	?>
-</div>
-
-<?php $this->endWidget() ?>
+	<?php $this->endWidget() ?>
 </div> <!-- form -->

@@ -18,7 +18,7 @@ class PageController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions' => array('create', 'editableSaver', 'update', 'delete', 'admin', 'view', 'details', 'index'),
+				'actions' => array('create', 'editableSaver', 'update', 'delete', 'admin', 'index', 'view'),
 				'roles' => array('Page.*'),
 			),
 			array('deny',
@@ -54,12 +54,6 @@ class PageController extends Controller
 	{
 		$model = $this->loadModel($id);
 		$this->render('view', array('model' => $model,));
-	}
-
-	public function actionDetails($id)
-	{
-		$model = $this->loadModel($id);
-		$this->render('details', array('model' => $model,));
 	}
 
 	public function actionCreate()
