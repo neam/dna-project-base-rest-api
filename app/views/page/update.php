@@ -123,9 +123,9 @@ $this->widget('TbGridView', array(
 ?>
 
 <h2>
-	<?php echo Yii::t('crud', 'Update Form') ?></h2>
+<?php echo Yii::t('crud', 'Update Form') ?></h2>
 
-<?php
-$this->renderPartial('_form', array(
-	'model' => $model));
-?>
+	<?php
+	$this->renderPartial('_form', array(
+		'model' => $model));
+	?>
