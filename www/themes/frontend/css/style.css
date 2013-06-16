@@ -305,3 +305,9 @@
     padding-bottom: 20px;
   }
 }
+
+/* Hide edit-markup until shown */
+
+.admin-container.hide {
+	display: none;
+}
