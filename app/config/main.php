@@ -14,7 +14,7 @@ $mainConfig = array(
     'basePath' => $applicationDirectory,
     'name' => 'Phundament',
     'theme' => 'frontend', // theme is copied from extensions/phundament/p3bootstrap
-    'language' => 'en', // default language, see also components.langHandler
+    'language' => 'en_us', // default language, see also components.langHandler
     'preload' => array(
         'log',
         'langHandler',
