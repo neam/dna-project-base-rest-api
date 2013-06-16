@@ -6,7 +6,6 @@
     <meta name="description" content="<?php echo (P3Page::getActivePage())?P3Page::getActivePage()->t('description'):'' ?>">
     <meta name="keywords" content="<?php echo (P3Page::getActivePage())?P3Page::getActivePage()->t('keywords'):'' ?>">
     <meta name="author" content="">
-    <base href="<?php echo Yii::app()->theme->baseUrl; ?>/">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
