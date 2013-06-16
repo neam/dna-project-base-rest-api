@@ -1,66 +1,91 @@
 <?php
-$this->breadcrumbs[Yii::t('crud', 'Chapters')] = array('admin');
-$this->breadcrumbs[] = $model->id;
+//$this->breadcrumbs[Yii::t('crud', 'Chapters')] = array('index');
+$this->breadcrumbs[] = $model->title;
+
+// Deps for smooth scroll
+$cs = Yii::app()->getClientScript();
+$cs->registerCoreScript('jquery');
+$smootScrollJs = Yii::app()->assetManager->publish(Yii::getPathOfAlias('vendor.kswedberg.jquery-smooth-scroll') . '/jquery.smooth-scroll.js');
+$cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
-<h1>
-	<?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small></h1>
 
+<script>
+	$(function() {
 
+		// smooth scroll
+		$('a').smoothScroll({
+			afterScroll: function(e) {
+				// Necessary to do manually
+				window.location.hash = e.scrollTarget;
+			}
+		});
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
-<?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-<br />
+		// side bar affix (disabled since G3 gs does not sport affix behavior)
+		/*
+		 var $window = $(window)
+		 setTimeout(function() {
+		 $('.bs-docs-sidenav').affix({
+		 offset: {
+		 top: function() {
+		 return $window.width() <= 980 ? 290 : 210
+		 }
+		 , bottom: 270
+		 }
+		 })
+		 }, 100);
+		 */
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
-<?php echo CHtml::encode($model->title); ?>
-<br />
+	});
+</script>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug')); ?>:</b>
-<?php echo CHtml::encode($model->slug); ?>
-<br />
+<div class="row">
+	<div class="span3 bs-docs-sidebar">
+		<?php if (is_array($model->sections)): ?>
+			<ul class="nav nav-list bs-docs-sidenav affix">
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
-<?php echo CHtml::encode($model->created); ?>
-<br />
+				<?php
+				foreach ($model->sections as $i => $foreignobj)
+				{
+					echo CHtml::openTag('li', array('class' => $i == 0 ? 'active' : null));
+					echo CHtml::link('<i class="icon-chevron-right"></i> ' . $foreignobj->menu_label, '#' . $foreignobj->slug);
+					echo CHtml::closeTag('li');
+				}
+				?>
+			</ul>
+			<?php
+		else:
+			echo 'No associations';
+		endif;
+		?>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
-<?php echo CHtml::encode($model->modified); ?>
-<br />
+	</div>
+	<div class="span9">
 
+		<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+		<!--<h1><?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small></h1>-->
 
-<h2><?php echo CHtml::link(Yii::t('app', 'Sections'), array('section/admin')); ?></h2>
-<ul>
-	<?php
-	if (is_array($model->sections))
-		foreach ($model->sections as $foreignobj)
-		{
+		<?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
 
-			echo '<li>';
-			echo CHtml::link($foreignobj->title, array('section/view', 'id' => $foreignobj->id));
+		<?php if (is_array($model->sections)): ?>
+			<?php foreach ($model->sections as $foreignobj): ?>
 
-			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('section/update', 'id' => $foreignobj->id), array('class' => 'edit'));
-		}
-	?></ul><p><?php
-	echo CHtml::link(
-	    Yii::t('app', 'Create'), array('section/create', 'Section' => array('chapter_id' => $model->{$model->tableSchema->primaryKey}))
-	);
-	?></p>
-<h2>
-	<?php echo Yii::t('crud', 'Data') ?></h2>
+				<section id="<?= $foreignobj->slug ?>">
 
-<p>
-	<?php
-	$this->widget('TbDetailView', array(
-		'data' => $model,
-		'attributes' => array(
-			'id',
-			'title',
-			'slug',
-			'created',
-			'modified',
-		),
-	));
-	?></p>
+					<div class="page-header">
+						<h1><?= $foreignobj->title ?></h1>
+					</div>
 
+					Actual contents TODO i18n
+
+				</section>
+
+			<?php endforeach; ?>
+
+			<?php
+		else:
+			echo 'Chapter contains no sections';
+		endif;
+		?>
+
+	</div>
+</div>
