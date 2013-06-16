@@ -40,7 +40,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
 <div class="row">
 	<div class="span3 bs-docs-sidebar">
-		<?php if (is_array($model->sections)): ?>
+		<?php if (!empty($model->sections)): ?>
 			<ul class="nav nav-list bs-docs-sidenav affix">
 
 				<?php
@@ -54,7 +54,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 			</ul>
 			<?php
 		else:
-			echo 'No associations';
+			echo Yii::t('app', 'Chapter contains no sections');
 		endif;
 		?>
 
@@ -66,7 +66,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
 		<?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
 
-		<?php if (is_array($model->sections)): ?>
+		<?php if (!empty($model->sections)): ?>
 			<?php foreach ($model->sections as $foreignobj): ?>
 
 				<section id="<?= $foreignobj->slug ?>">
@@ -83,7 +83,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
 			<?php
 		else:
-			echo 'Chapter contains no sections';
+			echo Yii::t('app', 'Chapter contains no sections');
 		endif;
 		?>
 
