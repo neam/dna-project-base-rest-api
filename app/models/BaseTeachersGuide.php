@@ -12,7 +12,7 @@
  * Relations of table "teachers_guide" available as properties of the model:
  * @property PageAssociation[] $pageAssociations
  */
-abstract class BaseTeachersGuide extends CActiveRecord{
+abstract class BaseTeachersGuide extends ActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);

@@ -6,6 +6,7 @@
  * Columns in table "header" available as properties of the model:
  * @property string $id
  * @property string $title
+ * @property string $slug
  * @property string $menu_title
  * @property string $created
  * @property string $modified
@@ -13,7 +14,7 @@
  * Relations of table "header" available as properties of the model:
  * @property PageAssociation[] $pageAssociations
  */
-abstract class BaseHeader extends CActiveRecord{
+abstract class BaseHeader extends ActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -28,10 +29,10 @@ abstract class BaseHeader extends CActiveRecord{
 	{
 		return array_merge(
 		    parent::rules(), array(
-			array('title, menu_title, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('title, menu_title', 'length', 'max'=>255),
+			array('title, slug, menu_title, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('title, slug, menu_title', 'length', 'max'=>255),
 			array('created, modified', 'safe'),
-			array('id, title, menu_title, created, modified', 'safe', 'on'=>'search'),
+			array('id, title, slug, menu_title, created, modified', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -59,6 +60,7 @@ abstract class BaseHeader extends CActiveRecord{
 		return array(
 			'id' => Yii::t('crud', 'ID'),
 			'title' => Yii::t('crud', 'Title'),
+			'slug' => Yii::t('crud', 'Slug'),
 			'menu_title' => Yii::t('crud', 'Menu Title'),
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
@@ -72,6 +74,7 @@ abstract class BaseHeader extends CActiveRecord{
 
 		$criteria->compare('t.id', $this->id, true);
 		$criteria->compare('t.title', $this->title, true);
+		$criteria->compare('t.slug', $this->slug, true);
 		$criteria->compare('t.menu_title', $this->menu_title, true);
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);

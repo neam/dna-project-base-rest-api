@@ -6,6 +6,7 @@
  * Columns in table "page" available as properties of the model:
  * @property string $id
  * @property string $title
+ * @property string $slug
  * @property string $created
  * @property string $modified
  *
@@ -27,10 +28,10 @@ abstract class BasePage extends ActiveRecord{
 	{
 		return array_merge(
 		    parent::rules(), array(
-			array('title, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('title', 'length', 'max'=>255),
+			array('title, slug, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('title, slug', 'length', 'max'=>255),
 			array('created, modified', 'safe'),
-			array('id, title, created, modified', 'safe', 'on'=>'search'),
+			array('id, title, slug, created, modified', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -58,6 +59,7 @@ abstract class BasePage extends ActiveRecord{
 		return array(
 			'id' => Yii::t('crud', 'ID'),
 			'title' => Yii::t('crud', 'Title'),
+			'slug' => Yii::t('crud', 'Slug'),
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
 		);
@@ -70,6 +72,7 @@ abstract class BasePage extends ActiveRecord{
 
 		$criteria->compare('t.id', $this->id, true);
 		$criteria->compare('t.title', $this->title, true);
+		$criteria->compare('t.slug', $this->slug, true);
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);
 

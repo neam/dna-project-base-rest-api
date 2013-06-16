@@ -9,14 +9,14 @@
  * @property string $created
  * @property string $modified
  * @property string $data_source_id
- * @property string $spreadsheet_file_id
+ * @property string $slideshow_file_id
  *
  * Relations of table "data_chunk" available as properties of the model:
+ * @property SlideshowFile $slideshowFile
  * @property DataSource $dataSource
- * @property SpreadsheetFile $spreadsheetFile
  * @property PageAssociation[] $pageAssociations
  */
-abstract class BaseDataChunk extends CActiveRecord{
+abstract class BaseDataChunk extends ActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -31,11 +31,11 @@ abstract class BaseDataChunk extends CActiveRecord{
 	{
 		return array_merge(
 		    parent::rules(), array(
-			array('title, created, modified, data_source_id, spreadsheet_file_id', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('title, created, modified, data_source_id, slideshow_file_id', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('title', 'length', 'max'=>255),
-			array('data_source_id, spreadsheet_file_id', 'length', 'max'=>20),
+			array('data_source_id, slideshow_file_id', 'length', 'max'=>20),
 			array('created, modified', 'safe'),
-			array('id, title, created, modified, data_source_id, spreadsheet_file_id', 'safe', 'on'=>'search'),
+			array('id, title, created, modified, data_source_id, slideshow_file_id', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -54,8 +54,8 @@ abstract class BaseDataChunk extends CActiveRecord{
 	public function relations()
 	{
 		return array(
+			'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
 			'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
-			'spreadsheetFile' => array(self::BELONGS_TO, 'SpreadsheetFile', 'spreadsheet_file_id'),
 			'pageAssociations' => array(self::HAS_MANY, 'PageAssociation', 'data_chunk_id'),
 		);
 	}
@@ -68,7 +68,7 @@ abstract class BaseDataChunk extends CActiveRecord{
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
 			'data_source_id' => Yii::t('crud', 'Data Source'),
-			'spreadsheet_file_id' => Yii::t('crud', 'Spreadsheet File'),
+			'slideshow_file_id' => Yii::t('crud', 'Slideshow File'),
 		);
 	}
 
@@ -82,7 +82,7 @@ abstract class BaseDataChunk extends CActiveRecord{
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);
 		$criteria->compare('t.data_source_id', $this->data_source_id);
-		$criteria->compare('t.spreadsheet_file_id', $this->spreadsheet_file_id);
+		$criteria->compare('t.slideshow_file_id', $this->slideshow_file_id);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

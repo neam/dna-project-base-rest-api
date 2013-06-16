@@ -9,16 +9,15 @@
  * @property string $created
  * @property string $modified
  * @property string $data_source_id
- * @property integer $original_file_id
- * @property integer $processed_file_id
+ * @property integer $original_media_id
+ * @property integer $processed_media_id
  *
  * Relations of table "spreadsheet_file" available as properties of the model:
- * @property DataChunk[] $dataChunks
+ * @property P3Media $originalMedia
+ * @property P3Media $processedMedia
  * @property DataSource $dataSource
- * @property P3Media $originalFile
- * @property P3Media $processedFile
  */
-abstract class BaseSpreadsheetFile extends CActiveRecord{
+abstract class BaseSpreadsheetFile extends ActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -33,12 +32,13 @@ abstract class BaseSpreadsheetFile extends CActiveRecord{
 	{
 		return array_merge(
 		    parent::rules(), array(
-			array('title, created, modified, data_source_id, original_file_id, processed_file_id', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('original_file_id, processed_file_id', 'numerical', 'integerOnly'=>true),
+			array('original_media_id, processed_media_id', 'required'),
+			array('title, created, modified, data_source_id', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('original_media_id, processed_media_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('data_source_id', 'length', 'max'=>20),
 			array('created, modified', 'safe'),
-			array('id, title, created, modified, data_source_id, original_file_id, processed_file_id', 'safe', 'on'=>'search'),
+			array('id, title, created, modified, data_source_id, original_media_id, processed_media_id', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -57,10 +57,9 @@ abstract class BaseSpreadsheetFile extends CActiveRecord{
 	public function relations()
 	{
 		return array(
-			'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'spreadsheet_file_id'),
+			'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
+			'processedMedia' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id'),
 			'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
-			'originalFile' => array(self::BELONGS_TO, 'P3Media', 'original_file_id'),
-			'processedFile' => array(self::BELONGS_TO, 'P3Media', 'processed_file_id'),
 		);
 	}
 
@@ -72,8 +71,8 @@ abstract class BaseSpreadsheetFile extends CActiveRecord{
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
 			'data_source_id' => Yii::t('crud', 'Data Source'),
-			'original_file_id' => Yii::t('crud', 'Original File'),
-			'processed_file_id' => Yii::t('crud', 'Processed File'),
+			'original_media_id' => Yii::t('crud', 'Original Media'),
+			'processed_media_id' => Yii::t('crud', 'Processed Media'),
 		);
 	}
 
@@ -87,8 +86,8 @@ abstract class BaseSpreadsheetFile extends CActiveRecord{
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);
 		$criteria->compare('t.data_source_id', $this->data_source_id);
-		$criteria->compare('t.original_file_id', $this->original_file_id);
-		$criteria->compare('t.processed_file_id', $this->processed_file_id);
+		$criteria->compare('t.original_media_id', $this->original_media_id);
+		$criteria->compare('t.processed_media_id', $this->processed_media_id);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

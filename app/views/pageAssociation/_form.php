@@ -39,21 +39,6 @@
 
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<?php echo $form->labelEx($model, 'title'); ?>
-					<?php echo $form->textField($model, 'title', array('size' => 60, 'maxlength' => 255)); ?>
-					<?php echo $form->error($model, 'title'); ?>
-					<?php
-					if ('help.title' != $help = Yii::t('crud', 'help.title'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
-
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
 					<?php echo $form->labelEx($model, 'created'); ?>
 					<?php echo $form->textField($model, 'created'); ?>
 					<?php echo $form->error($model, 'created'); ?>
@@ -77,44 +62,6 @@
 					{
 						echo "<span class='help-block'>{$help}</span>";
 					}
-					?>
-				</div>
-			</div>
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="header"><?php echo Yii::t('crud', 'Header'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'header',
-						'fields' => 'title',
-						'allowEmpty' => true,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
-					?>
-				</div>
-			</div>
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="p3Widget"><?php echo Yii::t('crud', 'P3Widget'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'p3Widget',
-						'fields' => 'sessionParam',
-						'allowEmpty' => true,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
 					?>
 				</div>
 			</div>
@@ -223,6 +170,44 @@
 						'model' => $model,
 						'relation' => 'vizView',
 						'fields' => 'title',
+						'allowEmpty' => true,
+						'style' => 'dropdownlist',
+						'htmlOptions' => array(
+							'checkAll' => 'all'),
+					    )
+					)
+					?>
+				</div>
+			</div>
+
+			<div class="row-fluid input-block-level-container">
+				<div class="span12">
+					<label for="header"><?php echo Yii::t('crud', 'Header'); ?></label>
+					<?php
+					$this->widget(
+					    'Relation', array(
+						'model' => $model,
+						'relation' => 'header',
+						'fields' => 'title',
+						'allowEmpty' => true,
+						'style' => 'dropdownlist',
+						'htmlOptions' => array(
+							'checkAll' => 'all'),
+					    )
+					)
+					?>
+				</div>
+			</div>
+
+			<div class="row-fluid input-block-level-container">
+				<div class="span12">
+					<label for="p3Widget"><?php echo Yii::t('crud', 'P3Widget'); ?></label>
+					<?php
+					$this->widget(
+					    'Relation', array(
+						'model' => $model,
+						'relation' => 'p3Widget',
+						'fields' => 'sessionParam',
 						'allowEmpty' => true,
 						'style' => 'dropdownlist',
 						'htmlOptions' => array(

@@ -8,16 +8,13 @@
  * @property string $title
  * @property string $created
  * @property string $modified
- * @property integer $original_file_id
- * @property integer $processed_file_id
  *
  * Relations of table "slideshow_file" available as properties of the model:
+ * @property DataChunk[] $dataChunks
  * @property Exercise[] $exercises
  * @property Presentation[] $presentations
- * @property P3Media $originalFile
- * @property P3Media $processedFile
  */
-abstract class BaseSlideshowFile extends CActiveRecord{
+abstract class BaseSlideshowFile extends ActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -32,11 +29,10 @@ abstract class BaseSlideshowFile extends CActiveRecord{
 	{
 		return array_merge(
 		    parent::rules(), array(
-			array('title, created, modified, original_file_id, processed_file_id', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('original_file_id, processed_file_id', 'numerical', 'integerOnly'=>true),
+			array('title, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('title', 'length', 'max'=>255),
 			array('created, modified', 'safe'),
-			array('id, title, created, modified, original_file_id, processed_file_id', 'safe', 'on'=>'search'),
+			array('id, title, created, modified', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -55,10 +51,9 @@ abstract class BaseSlideshowFile extends CActiveRecord{
 	public function relations()
 	{
 		return array(
+			'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'slideshow_file_id'),
 			'exercises' => array(self::HAS_MANY, 'Exercise', 'slideshow_file_id'),
 			'presentations' => array(self::HAS_MANY, 'Presentation', 'slideshow_file_id'),
-			'originalFile' => array(self::BELONGS_TO, 'P3Media', 'original_file_id'),
-			'processedFile' => array(self::BELONGS_TO, 'P3Media', 'processed_file_id'),
 		);
 	}
 
@@ -69,8 +64,6 @@ abstract class BaseSlideshowFile extends CActiveRecord{
 			'title' => Yii::t('crud', 'Title'),
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
-			'original_file_id' => Yii::t('crud', 'Original File'),
-			'processed_file_id' => Yii::t('crud', 'Processed File'),
 		);
 	}
 
@@ -83,8 +76,6 @@ abstract class BaseSlideshowFile extends CActiveRecord{
 		$criteria->compare('t.title', $this->title, true);
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);
-		$criteria->compare('t.original_file_id', $this->original_file_id);
-		$criteria->compare('t.processed_file_id', $this->processed_file_id);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

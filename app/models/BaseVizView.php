@@ -12,7 +12,7 @@
  * Relations of table "viz_view" available as properties of the model:
  * @property PageAssociation[] $pageAssociations
  */
-abstract class BaseVizView extends CActiveRecord{
+abstract class BaseVizView extends ActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);

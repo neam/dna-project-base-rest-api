@@ -13,7 +13,7 @@
  * @property DataChunk[] $dataChunks
  * @property SpreadsheetFile[] $spreadsheetFiles
  */
-abstract class BaseDataSource extends CActiveRecord{
+abstract class BaseDataSource extends ActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);

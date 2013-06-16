@@ -14,7 +14,7 @@
  * @property PageAssociation[] $pageAssociations
  * @property SlideshowFile $slideshowFile
  */
-abstract class BasePresentation extends CActiveRecord{
+abstract class BasePresentation extends ActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);

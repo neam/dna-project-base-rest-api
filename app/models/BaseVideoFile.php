@@ -6,17 +6,18 @@
  * Columns in table "video_file" available as properties of the model:
  * @property string $id
  * @property string $title
+ * @property string $type
  * @property string $created
  * @property string $modified
- * @property integer $original_file_id
- * @property integer $processed_file_id
+ * @property integer $original_media_id
+ * @property integer $processed_media_id
  *
  * Relations of table "video_file" available as properties of the model:
  * @property PageAssociation[] $pageAssociations
- * @property P3Media $originalFile
- * @property P3Media $processedFile
+ * @property P3Media $originalMedia
+ * @property P3Media $processedMedia
  */
-abstract class BaseVideoFile extends CActiveRecord{
+abstract class BaseVideoFile extends ActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -31,11 +32,12 @@ abstract class BaseVideoFile extends CActiveRecord{
 	{
 		return array_merge(
 		    parent::rules(), array(
-			array('title, created, modified, original_file_id, processed_file_id', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('original_file_id, processed_file_id', 'numerical', 'integerOnly'=>true),
+			array('title, type, created, modified, original_media_id, processed_media_id', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('original_media_id, processed_media_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
+			array('type', 'length', 'max'=>12),
 			array('created, modified', 'safe'),
-			array('id, title, created, modified, original_file_id, processed_file_id', 'safe', 'on'=>'search'),
+			array('id, title, type, created, modified, original_media_id, processed_media_id', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -55,8 +57,8 @@ abstract class BaseVideoFile extends CActiveRecord{
 	{
 		return array(
 			'pageAssociations' => array(self::HAS_MANY, 'PageAssociation', 'video_file_id'),
-			'originalFile' => array(self::BELONGS_TO, 'P3Media', 'original_file_id'),
-			'processedFile' => array(self::BELONGS_TO, 'P3Media', 'processed_file_id'),
+			'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
+			'processedMedia' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id'),
 		);
 	}
 
@@ -65,10 +67,11 @@ abstract class BaseVideoFile extends CActiveRecord{
 		return array(
 			'id' => Yii::t('crud', 'ID'),
 			'title' => Yii::t('crud', 'Title'),
+			'type' => Yii::t('crud', 'Type'),
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
-			'original_file_id' => Yii::t('crud', 'Original File'),
-			'processed_file_id' => Yii::t('crud', 'Processed File'),
+			'original_media_id' => Yii::t('crud', 'Original Media'),
+			'processed_media_id' => Yii::t('crud', 'Processed Media'),
 		);
 	}
 
@@ -79,10 +82,11 @@ abstract class BaseVideoFile extends CActiveRecord{
 
 		$criteria->compare('t.id', $this->id, true);
 		$criteria->compare('t.title', $this->title, true);
+		$criteria->compare('t.type', $this->type, true);
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);
-		$criteria->compare('t.original_file_id', $this->original_file_id);
-		$criteria->compare('t.processed_file_id', $this->processed_file_id);
+		$criteria->compare('t.original_media_id', $this->original_media_id);
+		$criteria->compare('t.processed_media_id', $this->processed_media_id);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

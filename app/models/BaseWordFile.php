@@ -8,14 +8,14 @@
  * @property string $title
  * @property string $created
  * @property string $modified
- * @property integer $original_file_id
- * @property integer $processed_file_id
+ * @property integer $original_media_id
+ * @property integer $processed_media_id
  *
  * Relations of table "word_file" available as properties of the model:
- * @property P3Media $originalFile
- * @property P3Media $processedFile
+ * @property P3Media $originalMedia
+ * @property P3Media $processedMedia
  */
-abstract class BaseWordFile extends CActiveRecord{
+abstract class BaseWordFile extends ActiveRecord{
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -30,11 +30,11 @@ abstract class BaseWordFile extends CActiveRecord{
 	{
 		return array_merge(
 		    parent::rules(), array(
-			array('title, created, modified, original_file_id, processed_file_id', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('original_file_id, processed_file_id', 'numerical', 'integerOnly'=>true),
+			array('title, created, modified, original_media_id, processed_media_id', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('original_media_id, processed_media_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('created, modified', 'safe'),
-			array('id, title, created, modified, original_file_id, processed_file_id', 'safe', 'on'=>'search'),
+			array('id, title, created, modified, original_media_id, processed_media_id', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -53,8 +53,8 @@ abstract class BaseWordFile extends CActiveRecord{
 	public function relations()
 	{
 		return array(
-			'originalFile' => array(self::BELONGS_TO, 'P3Media', 'original_file_id'),
-			'processedFile' => array(self::BELONGS_TO, 'P3Media', 'processed_file_id'),
+			'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
+			'processedMedia' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id'),
 		);
 	}
 
@@ -65,8 +65,8 @@ abstract class BaseWordFile extends CActiveRecord{
 			'title' => Yii::t('crud', 'Title'),
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
-			'original_file_id' => Yii::t('crud', 'Original File'),
-			'processed_file_id' => Yii::t('crud', 'Processed File'),
+			'original_media_id' => Yii::t('crud', 'Original Media'),
+			'processed_media_id' => Yii::t('crud', 'Processed Media'),
 		);
 	}
 
@@ -79,8 +79,8 @@ abstract class BaseWordFile extends CActiveRecord{
 		$criteria->compare('t.title', $this->title, true);
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);
-		$criteria->compare('t.original_file_id', $this->original_file_id);
-		$criteria->compare('t.processed_file_id', $this->processed_file_id);
+		$criteria->compare('t.original_media_id', $this->original_media_id);
+		$criteria->compare('t.processed_media_id', $this->processed_media_id);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
