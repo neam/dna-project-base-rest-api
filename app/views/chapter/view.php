@@ -51,47 +51,47 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 				<?php
 				foreach ($model->sections as $i => $foreignobj)
 				{
-				echo CHtml::openTag('li', array('class' => $i == 0 ? 'active' : null));
-				echo CHtml::link('<i class="icon-chevron-right"></i> ' . $foreignobj->menu_label, '#' . $foreignobj->slug);
-				echo CHtml::closeTag('li');
-			}
-			?>
-		</ul>
-		<?php
-	else:
-		echo Yii::t('app', 'Chapter contains no sections');
-	endif;
-	?>
+					echo CHtml::openTag('li', array('class' => $i == 0 ? 'active' : null));
+					echo CHtml::link('<i class="icon-chevron-right"></i> ' . $foreignobj->menu_label, '#' . $foreignobj->slug);
+					echo CHtml::closeTag('li');
+				}
+				?>
+			</ul>
+			<?php
+		else:
+			echo Yii::t('app', 'Chapter contains no sections');
+		endif;
+		?>
 
 	</div>
 	<div class="span9">
 
-	<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+		<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 		<!--<h1><?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small></h1>-->
 
 		<div class="admin-container hide">
-		<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+			<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 		</div>
 
-	<?php if (!empty($model->sections)): ?>
-		<?php foreach ($model->sections as $foreignobj): ?>
+		<?php if (!empty($model->sections)): ?>
+			<?php foreach ($model->sections as $foreignobj): ?>
 
-			<section id="<?= $foreignobj->slug ?>">
+				<section id="<?= $foreignobj->slug ?>">
 
-				<div class="page-header">
-					<h1><?= $foreignobj->title ?></h1>
-				</div>
+					<div class="page-header">
+						<h1><?= $foreignobj->title ?></h1>
+					</div>
 
-				Actual contents TODO i18n
+					Actual contents TODO i18n
 
-			</section>
+				</section>
 
-		<?php endforeach; ?>
+			<?php endforeach; ?>
 
-		<?php
+			<?php
 		else:
-	echo Yii::t('app', 'Chapter contains no sections' );
-		    endif;
+			echo Yii::t('app', 'Chapter contains no sections');
+		endif;
 		?>
 
 	</div>
