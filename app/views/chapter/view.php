@@ -35,6 +35,11 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 		 }, 100);
 		 */
 
+		$('#P3WidgetContainerShowControls')
+			.click(function() {
+			$('.admin-container').toggleClass('hide show', 0);
+		});
+
 	});
 </script>
 
@@ -64,7 +69,9 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 	<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 		<!--<h1><?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small></h1>-->
 
-		<?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
+		<div class="admin-container hide">
+		<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+		</div>
 
 	<?php if (!empty($model->sections)): ?>
 		<?php foreach ($model->sections as $foreignobj): ?>
