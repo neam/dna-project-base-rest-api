@@ -19,36 +19,103 @@ $this->widget('EditableDetailView', array(
 ?>
 
 
-<div class='well'>
-	<div class='row'>
-		<div class='span3'><?php
-			$this->widget('bootstrap.widgets.TbButtonGroup', array(
-				'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-				'buttons' => array(
-					array('label' => 'sectionContents', 'icon' => 'icon-list-alt', 'url' => array('sectionContent/admin')),
-					array('icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('section_id' => $model->{$model->tableSchema->primaryKey}))),
-				),
-			));
-			?></div><div class='span8'>
-			<?php
-			echo '<span class=label>CHasManyRelation</span>';
-			if (is_array($model->sectionContents))
-			{
 
-				echo CHtml::openTag('ul');
-				foreach ($model->sectionContents as $relatedModel)
-				{
+<h2>
+	<?php echo Yii::t('crud', 'Section Contents'); ?> </h2>
 
-					echo '<li>';
-					echo CHtml::link($relatedModel->modified, array('sectionContent/view', 'id' => $relatedModel->id), array('class' => ''));
+<div class="btn-group">
+	<?php
+	$this->widget('bootstrap.widgets.TbButtonGroup', array(
+		'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+		'buttons' => array(
+			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'section_id' => $model->id), array('class' => ''))
+		),
+	));
+	?></div>
 
-					echo '</li>';
-				}
-				echo CHtml::closeTag('ul');
-			}
-			?></div>
-	</div> <!-- row -->
-</div> <!-- well -->
+<?php
+$relatedSearchModel = $model->getRelatedSearchModel('sectionContents');
+$this->widget('TbGridView', array(
+	'id' => 'sectionContent-grid',
+	'dataProvider' => $relatedSearchModel->search(),
+	'filter' => $relatedSearchModel,
+	'pager' => array(
+		'class' => 'TbPager',
+		'displayFirstAndLast' => true,
+	),
+	'columns' => array(
+		'id',
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'ordinal',
+			'editable' => array(
+				'url' => $this->createUrl('sectionContent/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'created',
+			'editable' => array(
+				'url' => $this->createUrl('sectionContent/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'modified',
+			'editable' => array(
+				'url' => $this->createUrl('sectionContent/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		array(
+			'name' => 'p3_page_id',
+			'value' => 'CHtml::value($data,\'p3Page.layout\')',
+			'filter' => CHtml::listData(P3Page::model()->findAll(), 'id', 'layout'),
+		),
+		array(
+			'name' => 'viz_view_id',
+			'value' => 'CHtml::value($data,\'vizView.title\')',
+			'filter' => CHtml::listData(VizView::model()->findAll(), 'id', 'title'),
+		),
+		array(
+			'name' => 'video_file_id',
+			'value' => 'CHtml::value($data,\'videoFile.title\')',
+			'filter' => CHtml::listData(VideoFile::model()->findAll(), 'id', 'title'),
+		),
+		array(
+			'name' => 'teachers_guide_id',
+			'value' => 'CHtml::value($data,\'teachersGuide.title\')',
+			'filter' => CHtml::listData(TeachersGuide::model()->findAll(), 'id', 'title'),
+		),
+		/*
+		  array(
+		  'name'=>'exercise_id',
+		  'value'=>'CHtml::value($data,\'exercise.title\')',
+		  'filter'=>CHtml::listData(Exercise::model()->findAll(), 'id', 'title'),
+		  ),
+		  array(
+		  'name'=>'presentation_id',
+		  'value'=>'CHtml::value($data,\'presentation.title\')',
+		  'filter'=>CHtml::listData(Presentation::model()->findAll(), 'id', 'title'),
+		  ),
+		  array(
+		  'name'=>'data_chunk_id',
+		  'value'=>'CHtml::value($data,\'dataChunk.title\')',
+		  'filter'=>CHtml::listData(DataChunk::model()->findAll(), 'id', 'title'),
+		  ),
+		 */
+		array(
+			'class' => 'TbButtonColumn',
+			'viewButtonUrl' => "Yii::app()->controller->createUrl('sectionContent/view', array('id' => \$data->id))",
+			'updateButtonUrl' => "Yii::app()->controller->createUrl('sectionContent/update', array('id' => \$data->id))",
+			'deleteButtonUrl' => "Yii::app()->controller->createUrl('sectionContent/delete', array('id' => \$data->id))",
+		),
+	),
+));
+?>
+
 
 <h2>
 	<?php echo Yii::t('crud', 'Update Form') ?></h2>
