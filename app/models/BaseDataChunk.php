@@ -12,9 +12,8 @@
  * @property string $slideshow_file_id
  *
  * Relations of table "data_chunk" available as properties of the model:
- * @property SlideshowFile $slideshowFile
  * @property DataSource $dataSource
- * @property PageAssociation[] $pageAssociations
+ * @property SlideshowFile $slideshowFile
  */
 abstract class BaseDataChunk extends ActiveRecord{
 	public static function model($className=__CLASS__)
@@ -54,9 +53,8 @@ abstract class BaseDataChunk extends ActiveRecord{
 	public function relations()
 	{
 		return array(
-			'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
 			'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
-			'pageAssociations' => array(self::HAS_MANY, 'PageAssociation', 'data_chunk_id'),
+			'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
 		);
 	}
 

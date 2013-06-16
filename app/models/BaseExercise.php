@@ -12,7 +12,6 @@
  *
  * Relations of table "exercise" available as properties of the model:
  * @property SlideshowFile $slideshowFile
- * @property PageAssociation[] $pageAssociations
  */
 abstract class BaseExercise extends ActiveRecord{
 	public static function model($className=__CLASS__)
@@ -53,7 +52,6 @@ abstract class BaseExercise extends ActiveRecord{
 	{
 		return array(
 			'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
-			'pageAssociations' => array(self::HAS_MANY, 'PageAssociation', 'exercise_id'),
 		);
 	}
 

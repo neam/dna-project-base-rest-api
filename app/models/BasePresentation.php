@@ -11,7 +11,6 @@
  * @property string $slideshow_file_id
  *
  * Relations of table "presentation" available as properties of the model:
- * @property PageAssociation[] $pageAssociations
  * @property SlideshowFile $slideshowFile
  */
 abstract class BasePresentation extends ActiveRecord{
@@ -52,7 +51,6 @@ abstract class BasePresentation extends ActiveRecord{
 	public function relations()
 	{
 		return array(
-			'pageAssociations' => array(self::HAS_MANY, 'PageAssociation', 'presentation_id'),
 			'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
 		);
 	}
