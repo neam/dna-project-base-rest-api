@@ -14,6 +14,7 @@
  * Relations of table "data_chunk" available as properties of the model:
  * @property DataSource $dataSource
  * @property SlideshowFile $slideshowFile
+ * @property SectionContent[] $sectionContents
  */
 abstract class BaseDataChunk extends ActiveRecord{
 	public static function model($className=__CLASS__)
@@ -55,6 +56,7 @@ abstract class BaseDataChunk extends ActiveRecord{
 		return array(
 			'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
 			'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
+			'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'data_chunk_id'),
 		);
 	}
 

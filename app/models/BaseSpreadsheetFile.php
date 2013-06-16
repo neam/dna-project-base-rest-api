@@ -13,9 +13,9 @@
  * @property integer $processed_media_id
  *
  * Relations of table "spreadsheet_file" available as properties of the model:
+ * @property DataSource $dataSource
  * @property P3Media $originalMedia
  * @property P3Media $processedMedia
- * @property DataSource $dataSource
  */
 abstract class BaseSpreadsheetFile extends ActiveRecord{
 	public static function model($className=__CLASS__)
@@ -32,8 +32,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord{
 	{
 		return array_merge(
 		    parent::rules(), array(
-			array('original_media_id, processed_media_id', 'required'),
-			array('title, created, modified, data_source_id', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('title, created, modified, data_source_id, original_media_id, processed_media_id', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('original_media_id, processed_media_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('data_source_id', 'length', 'max'=>20),
@@ -57,9 +56,9 @@ abstract class BaseSpreadsheetFile extends ActiveRecord{
 	public function relations()
 	{
 		return array(
+			'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
 			'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
 			'processedMedia' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id'),
-			'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
 		);
 	}
 

@@ -9,7 +9,8 @@
  * @property string $created
  * @property string $modified
  *
- * There are no model relations.
+ * Relations of table "viz_view" available as properties of the model:
+ * @property SectionContent[] $sectionContents
  */
 abstract class BaseVizView extends ActiveRecord{
 	public static function model($className=__CLASS__)
@@ -48,6 +49,7 @@ abstract class BaseVizView extends ActiveRecord{
 	public function relations()
 	{
 		return array(
+			'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'viz_view_id'),
 		);
 	}
 

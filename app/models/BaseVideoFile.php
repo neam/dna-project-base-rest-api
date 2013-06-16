@@ -13,6 +13,7 @@
  * @property integer $processed_media_id
  *
  * Relations of table "video_file" available as properties of the model:
+ * @property SectionContent[] $sectionContents
  * @property P3Media $originalMedia
  * @property P3Media $processedMedia
  */
@@ -55,6 +56,7 @@ abstract class BaseVideoFile extends ActiveRecord{
 	public function relations()
 	{
 		return array(
+			'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'video_file_id'),
 			'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
 			'processedMedia' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id'),
 		);

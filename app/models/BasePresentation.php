@@ -12,6 +12,7 @@
  *
  * Relations of table "presentation" available as properties of the model:
  * @property SlideshowFile $slideshowFile
+ * @property SectionContent[] $sectionContents
  */
 abstract class BasePresentation extends ActiveRecord{
 	public static function model($className=__CLASS__)
@@ -52,6 +53,7 @@ abstract class BasePresentation extends ActiveRecord{
 	{
 		return array(
 			'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
+			'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'presentation_id'),
 		);
 	}
 

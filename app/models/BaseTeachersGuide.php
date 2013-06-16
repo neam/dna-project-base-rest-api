@@ -9,7 +9,8 @@
  * @property string $created
  * @property string $modified
  *
- * There are no model relations.
+ * Relations of table "teachers_guide" available as properties of the model:
+ * @property SectionContent[] $sectionContents
  */
 abstract class BaseTeachersGuide extends ActiveRecord{
 	public static function model($className=__CLASS__)
@@ -48,6 +49,7 @@ abstract class BaseTeachersGuide extends ActiveRecord{
 	public function relations()
 	{
 		return array(
+			'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'teachers_guide_id'),
 		);
 	}
 

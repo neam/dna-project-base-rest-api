@@ -8,11 +8,15 @@
  * @property string $title
  * @property string $created
  * @property string $modified
+ * @property integer $original_media_id
+ * @property integer $processed_media_id
  *
  * Relations of table "slideshow_file" available as properties of the model:
  * @property DataChunk[] $dataChunks
  * @property Exercise[] $exercises
  * @property Presentation[] $presentations
+ * @property P3Media $originalMedia
+ * @property P3Media $processedMedia
  */
 abstract class BaseSlideshowFile extends ActiveRecord{
 	public static function model($className=__CLASS__)
@@ -29,10 +33,11 @@ abstract class BaseSlideshowFile extends ActiveRecord{
 	{
 		return array_merge(
 		    parent::rules(), array(
-			array('title, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('title, created, modified, original_media_id, processed_media_id', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('original_media_id, processed_media_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('created, modified', 'safe'),
-			array('id, title, created, modified', 'safe', 'on'=>'search'),
+			array('id, title, created, modified, original_media_id, processed_media_id', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -54,6 +59,8 @@ abstract class BaseSlideshowFile extends ActiveRecord{
 			'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'slideshow_file_id'),
 			'exercises' => array(self::HAS_MANY, 'Exercise', 'slideshow_file_id'),
 			'presentations' => array(self::HAS_MANY, 'Presentation', 'slideshow_file_id'),
+			'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
+			'processedMedia' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id'),
 		);
 	}
 
@@ -64,6 +71,8 @@ abstract class BaseSlideshowFile extends ActiveRecord{
 			'title' => Yii::t('crud', 'Title'),
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
+			'original_media_id' => Yii::t('crud', 'Original Media'),
+			'processed_media_id' => Yii::t('crud', 'Processed Media'),
 		);
 	}
 
@@ -76,6 +85,8 @@ abstract class BaseSlideshowFile extends ActiveRecord{
 		$criteria->compare('t.title', $this->title, true);
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);
+		$criteria->compare('t.original_media_id', $this->original_media_id);
+		$criteria->compare('t.processed_media_id', $this->processed_media_id);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

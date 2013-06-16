@@ -5,12 +5,13 @@
  *
  * Columns in table "section" available as properties of the model:
  * @property string $id
+ * @property string $chapter_id
  * @property string $title
  * @property string $slug
+ * @property integer $ordinal
  * @property string $menu_label
  * @property string $created
  * @property string $modified
- * @property string $chapter_id
  *
  * Relations of table "section" available as properties of the model:
  * @property Chapter $chapter
@@ -32,11 +33,12 @@ abstract class BaseSection extends ActiveRecord{
 		return array_merge(
 		    parent::rules(), array(
 			array('chapter_id', 'required'),
-			array('title, slug, menu_label, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('title, slug, menu_label', 'length', 'max'=>255),
+			array('title, slug, ordinal, menu_label, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('ordinal', 'numerical', 'integerOnly'=>true),
 			array('chapter_id', 'length', 'max'=>20),
+			array('title, slug, menu_label', 'length', 'max'=>255),
 			array('created, modified', 'safe'),
-			array('id, title, slug, menu_label, created, modified, chapter_id', 'safe', 'on'=>'search'),
+			array('id, chapter_id, title, slug, ordinal, menu_label, created, modified', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -64,12 +66,13 @@ abstract class BaseSection extends ActiveRecord{
 	{
 		return array(
 			'id' => Yii::t('crud', 'ID'),
+			'chapter_id' => Yii::t('crud', 'Chapter'),
 			'title' => Yii::t('crud', 'Title'),
 			'slug' => Yii::t('crud', 'Slug'),
+			'ordinal' => Yii::t('crud', 'Ordinal'),
 			'menu_label' => Yii::t('crud', 'Menu Label'),
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
-			'chapter_id' => Yii::t('crud', 'Chapter'),
 		);
 	}
 
@@ -79,12 +82,13 @@ abstract class BaseSection extends ActiveRecord{
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('t.id', $this->id, true);
+		$criteria->compare('t.chapter_id', $this->chapter_id);
 		$criteria->compare('t.title', $this->title, true);
 		$criteria->compare('t.slug', $this->slug, true);
+		$criteria->compare('t.ordinal', $this->ordinal);
 		$criteria->compare('t.menu_label', $this->menu_label, true);
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);
-		$criteria->compare('t.chapter_id', $this->chapter_id);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
