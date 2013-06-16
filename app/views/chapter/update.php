@@ -18,37 +18,78 @@ $this->widget('EditableDetailView', array(
 ));
 ?>
 
+<h2>
+	<?php echo Yii::t('crud', 'Sections') ?>
+</h2>
 
-<div class='well'>
-	<div class='row'>
-		<div class='span3'><?php
-			$this->widget('bootstrap.widgets.TbButtonGroup', array(
-				'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-				'buttons' => array(
-					array('label' => 'sections', 'icon' => 'icon-list-alt', 'url' => array('section/admin')),
-					array('icon' => 'icon-plus', 'url' => array('section/create', 'Section' => array('chapter_id' => $model->{$model->tableSchema->primaryKey}))),
-				),
-			));
-			?></div><div class='span8'>
-			<?php
-			echo '<span class=label>CHasManyRelation</span>';
-			if (is_array($model->sections))
-			{
+<div class="btn-group">
+	<?php
+	$this->widget('bootstrap.widgets.TbButtonGroup', array(
+		'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+		'buttons' => array(
+			array('label' => Yii::t("crud", "Create"), 'icon' => 'icon-plus', 'url' => array('pageAssociation/create', 'PageAssociation' => array('page_id' => $model->{$model->tableSchema->primaryKey}))),
+		),
+	));
+	?>
+</div>
 
-				echo CHtml::openTag('ul');
-				foreach ($model->sections as $relatedModel)
-				{
-
-					echo '<li>';
-					echo CHtml::link($relatedModel->title, array('section/view', 'id' => $relatedModel->id), array('class' => ''));
-
-					echo '</li>';
-				}
-				echo CHtml::closeTag('ul');
-			}
-			?></div>
-	</div> <!-- row -->
-</div> <!-- well -->
+<?php
+$relatedSearchModel = $model->getRelatedSearchModel('sections');
+$this->widget('TbGridView', array(
+	'id' => 'section-grid',
+	'dataProvider' => $relatedSearchModel->search(),
+	'filter' => $relatedSearchModel,
+	'pager' => array(
+		'class' => 'TbPager',
+		'displayFirstAndLast' => true,
+	),
+	'columns' => array(
+		'id',
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'title',
+			'editable' => array(
+				'url' => $this->createUrl('section/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'slug',
+			'editable' => array(
+				'url' => $this->createUrl('section/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'ordinal',
+			'editable' => array(
+				'url' => $this->createUrl('section/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'menu_label',
+			'editable' => array(
+				'url' => $this->createUrl('section/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		/*
+		  'created',
+		  'modified',
+		 */
+		array(
+			'class' => 'TbButtonColumn',
+			'viewButtonUrl' => "Yii::app()->controller->createUrl('section/view', array('id' => \$data->id))",
+			'updateButtonUrl' => "Yii::app()->controller->createUrl('section/update', array('id' => \$data->id))",
+			'deleteButtonUrl' => "Yii::app()->controller->createUrl('section/delete', array('id' => \$data->id))",
+		),
+	),
+));
+?>
 
 <h2>
 	<?php echo Yii::t('crud', 'Update Form') ?></h2>
