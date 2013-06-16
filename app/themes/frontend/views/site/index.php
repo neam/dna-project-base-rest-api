@@ -4,26 +4,10 @@
 	No chapters in progress
 <?php else: ?>
 	<ul>
-		<?php foreach ($chaptersInProgress as $page): ?>
+		<?php foreach ($chaptersInProgress as $chapter): ?>
 
 			<li>
-				<?php echo CHtml::link($page->title, array('page/view', 'id' => $page->id), array('class' => '')); ?>
-			</li>
-
-		<?php endforeach; ?>
-	</ul>
-<?php endif; ?>
-
-<h2>Country pages:</h2>
-
-<?php if (empty($countryPages)): ?>
-	No country pages
-<?php else: ?>
-	<ul>
-		<?php foreach ($countryPages as $page): ?>
-
-			<li>
-				<?php echo CHtml::link($page->title, array('page/view', 'id' => $page->id), array('class' => '')); ?>
+				<?php echo CHtml::link($chapter->title, array('chapter/view', 'id' => $chapter->id), array('class' => '')); ?>
 			</li>
 
 		<?php endforeach; ?>

@@ -28,10 +28,9 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$chaptersInProgress = Page::model()->findAll();
-		$countryPages = array();
+		$chaptersInProgress = Chapter::model()->findAll();
 
-		$this->render('index', compact("chaptersInProgress", "countryPages"));
+		$this->render('index', compact("chaptersInProgress"));
 	}
 
 	/**
