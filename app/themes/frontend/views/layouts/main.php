@@ -24,10 +24,11 @@
     else {
         $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/p3.css');
     }
+    $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/style.css');
     ?>
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
 
 <?php $this->renderFile(Yii::getPathOfAlias('application.themes.frontend.views.layouts') . DIRECTORY_SEPARATOR . '_menu.php') ?>
 

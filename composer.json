@@ -24,7 +24,19 @@
         {
             "type":"composer",
             "url":"http://packages.phundament.com"
-        }
+        },
+		{
+			"type": "package",
+			"package": {
+				"name": "kswedberg/jquery-smooth-scroll",
+				"version": "1.4.10",
+				"source": {
+						"url": "https://github.com/kswedberg/jquery-smooth-scroll.git",
+					"type": "git",
+				"reference": "1.4.10"
+				}
+			}
+		}
     ],
     "minimum-stability":"dev",
     "require":{
@@ -45,6 +57,7 @@
         "yiiext/fancybox-widget":"0.*",
         "yiiext/lipsum-widget":"0.*",
         "yiiext/migrate-command":"0.7.*",
+		"kswedberg/jquery-smooth-scroll":"1.4.10",
         "waalzer/app-demo-data": "dev-master"
     },
     "require-dev":{

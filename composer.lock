@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d54cf3069e2d3bacbad01a8b5fd9ce76",
+    "hash": "f171df2ef04a21b917c47036014071e1",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -79,6 +79,16 @@
             "description": "Yii extension which adds Chosen JavaScript plugin.",
             "homepage": "https://github.com/ifdattic/EChosen",
             "time": "2013-04-11 00:01:58"
+        },
+        {
+            "name": "kswedberg/jquery-smooth-scroll",
+            "version": "1.4.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kswedberg/jquery-smooth-scroll.git",
+                "reference": "1.4.10"
+            },
+            "type": "library"
         },
         {
             "name": "malyshev/yii-debug-toolbar",
@@ -433,7 +443,6 @@
                     "models/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -451,6 +460,10 @@
                 "p3media",
                 "widget"
             ],
+            "support": {
+                "source": "https://github.com/schmunk42/p3widgets/tree/0.11.7",
+                "issues": "https://github.com/schmunk42/p3widgets/issues"
+            },
             "time": "2013-05-23 12:46:50"
         },
         {
@@ -852,7 +865,6 @@
         "crisu83/yii-rights": 20,
         "malyshev/yii-debug-toolbar": 20,
         "mishamx/yii-user": 20,
-        "vitalets/x-editable-yii": 20,
         "waalzer/app-demo-data": 20,
         "phundament/lessii": 20,
         "ifdattic/echosen": 20
