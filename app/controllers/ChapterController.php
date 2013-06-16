@@ -18,7 +18,11 @@ class ChapterController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions' => array('create', 'editableSaver', 'update', 'delete', 'admin', 'index', 'view'),
+				'actions' => array('view'),
+				'users' => array('*'),
+			),
+			array('allow',
+				'actions' => array('create', 'editableSaver', 'update', 'delete', 'admin', 'index'),
 				'roles' => array('Chapter.*'),
 			),
 			array('deny',
