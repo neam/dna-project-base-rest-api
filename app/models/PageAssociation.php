@@ -7,6 +7,8 @@ Yii::import('PageAssociation.*');
 class PageAssociation extends BasePageAssociation
 {
 
+	public $label;
+
 	// Add your model-specific methods here. This file will not be overriden by gtc except you force it.
 	public static function model($className = __CLASS__)
 	{
@@ -20,7 +22,12 @@ class PageAssociation extends BasePageAssociation
 
 	public function get_label()
 	{
-		return (string) $this->page_id;
+		if (!is_null($this->header_id))
+		{
+			return $this->header->title;
+		}
+
+		return (string) "Empty Association #".$this->ordinal;
 	}
 
 	public function behaviors()

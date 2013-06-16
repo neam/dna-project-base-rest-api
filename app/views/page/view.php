@@ -40,28 +40,77 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
 <div class="row">
 	<div class="span3 bs-docs-sidebar">
-		<ul class="nav nav-list bs-docs-sidenav affix">
-			<li class="active"><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdowns</a></li>
-			<li><a href="#buttonGroups"><i class="icon-chevron-right"></i> Button groups</a></li>
-			<li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> Button dropdowns</a></li>
-			<li><a href="#navs"><i class="icon-chevron-right"></i> Navs</a></li>
-			<li><a href="#breadcrumbs"><i class="icon-chevron-right"></i> Breadcrumbs</a></li>
-			<li><a href="#pagination"><i class="icon-chevron-right"></i> Pagination</a></li>
-			<li><a href="#labels-badges"><i class="icon-chevron-right"></i> Labels and badges</a></li>
-			<li><a href="#typography"><i class="icon-chevron-right"></i> Typography</a></li>
-			<li><a href="#thumbnails"><i class="icon-chevron-right"></i> Thumbnails</a></li>
-			<li><a href="#alerts"><i class="icon-chevron-right"></i> Alerts</a></li>
-			<li><a href="#progress"><i class="icon-chevron-right"></i> Progress bars</a></li>
-			<li class=""><a href="#media"><i class="icon-chevron-right"></i> Media object</a></li>
-			<li class=""><a href="#misc"><i class="icon-chevron-right"></i> Misc</a></li>
-		</ul>
+		<?php if (is_array($model->pageAssociations)): ?>
+			<ul class="nav nav-list bs-docs-sidenav affix">
+
+				<?php
+				foreach ($model->pageAssociations as $i => $foreignobj)
+				{
+					if (is_null($foreignobj->header_id))
+					{
+						continue;
+					}
+					echo CHtml::openTag('li', array('class' => $i == 0 ? 'active' : null));
+					echo CHtml::link('<i class="icon-chevron-right"></i> ' . $foreignobj->get_label(), '#foo');
+					echo CHtml::closeTag('li');
+				}
+				?>
+			</ul>
+			<?php
+		else:
+			echo 'No associations';
+		endif;
+		?>
+
 	</div>
 	<div class="span9">
 
-
 		<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 		<h1>
-			<?php echo Yii::t('crud', 'Page') ?> <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small></h1>
+			<?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small><!--<?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small>--></h1>
+
+		<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+
+
+
+		<h2><?php echo CHtml::link(Yii::t('app', 'PageAssociations'), array('pageAssociation/admin')); ?></h2>
+		<?php
+		if (is_array($model->pageAssociations)):
+			CHtml::openTag('ul');
+			foreach ($model->pageAssociations as $foreignobj)
+			{
+				echo '<li>';
+				echo CHtml::link($foreignobj->get_label(), array('pageAssociation/view', 'id' => $foreignobj->id));
+
+				echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('pageAssociation/update', 'id' => $foreignobj->id), array('class' => 'edit'));
+			}
+			CHtml::closeTag('ul');
+		else:
+			echo 'No associations';
+		endif;
+		?>
+
+		<p><?php
+			echo CHtml::link(
+			    Yii::t('app', 'Create'), array('pageAssociation/create', 'PageAssociation' => array('page_id' => $model->{$model->tableSchema->primaryKey}))
+			);
+			?></p>
+		<h2>
+			<?php echo Yii::t('crud', 'Data') ?></h2>
+
+		<p>
+			<?php
+			$this->widget('TbDetailView', array(
+				'data' => $model,
+				'attributes' => array(
+					'id',
+					'title',
+					'created',
+					'modified',
+				),
+			));
+			?></p>
+
 
 		<!-- Dropdowns
 		================================================== -->
@@ -1680,56 +1729,4 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
       </div>
     </div>
 
-
-
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
-<?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
-<?php echo CHtml::encode($model->title); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
-<?php echo CHtml::encode($model->created); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
-<?php echo CHtml::encode($model->modified); ?>
-<br />
-
-
-<h2><?php echo CHtml::link(Yii::t('app', 'PageAssociations'), array('pageAssociation/admin')); ?></h2>
-<ul>
-	<?php
-	if (is_array($model->pageAssociations))
-		foreach ($model->pageAssociations as $foreignobj)
-		{
-
-			echo '<li>';
-			echo CHtml::link($foreignobj->title, array('pageAssociation/view', 'id' => $foreignobj->id));
-
-			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('pageAssociation/update', 'id' => $foreignobj->id), array('class' => 'edit'));
-		}
-	?></ul><p><?php
-	echo CHtml::link(
-	    Yii::t('app', 'Create'), array('pageAssociation/create', 'PageAssociation' => array('page_id' => $model->{$model->tableSchema->primaryKey}))
-	);
-	?></p>
-<h2>
-	<?php echo Yii::t('crud', 'Data') ?></h2>
-
-<p>
-	<?php
-	$this->widget('TbDetailView', array(
-		'data' => $model,
-		'attributes' => array(
-			'id',
-			'title',
-			'created',
-			'modified',
-		),
-	));
-	?></p>
 

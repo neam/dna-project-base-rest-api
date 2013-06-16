@@ -45,6 +45,13 @@ $this->widget('TbGridView', array(
 	'columns' => array(
 		'id',
 		array(
+			'name' => 'label',
+			'type' => 'raw',
+			'value' => function($data) {
+				return CHtml::link($data->get_label(), array('pageAssociation/update', 'id' => $data->id));
+			},
+		),
+		array(
 			'class' => 'editable.EditableColumn',
 			'name' => 'ordinal',
 			'editable' => array(
@@ -52,30 +59,22 @@ $this->widget('TbGridView', array(
 				'placement' => 'right',
 			)
 		),
-		array(
-			'class' => 'editable.EditableColumn',
-			'name' => 'title',
-			'editable' => array(
-				'url' => $this->createUrl('pageAssociation/editableSaver'),
-				'placement' => 'right',
-			)
-		),
-		'created',
-		'modified',
-		array(
-			'class' => 'editable.EditableColumn',
-			'name' => 'viz_view_id',
-			'editable' => array(
-				'url' => $this->createUrl('pageAssociation/editableSaver'),
-				'placement' => 'right',
-			)
-		),
-		array(
-			'name' => 'viz_view_id',
-			'value' => 'CHtml::value($data,\'vizView.title\')',
-			'filter' => CHtml::listData(VizView::model()->findAll(), 'id', 'title'),
-		),
 		/*
+		  'created',
+		  'modified',
+		  array(
+		  'class' => 'editable.EditableColumn',
+		  'name' => 'viz_view_id',
+		  'editable' => array(
+		  'url' => $this->createUrl('pageAssociation/editableSaver'),
+		  'placement' => 'right',
+		  )
+		  ),
+		  array(
+		  'name' => 'viz_view_id',
+		  'value' => 'CHtml::value($data,\'vizView.title\')',
+		  'filter' => CHtml::listData(VizView::model()->findAll(), 'id', 'title'),
+		  ),
 		  array(
 		  'name'=>'video_file_id',
 		  'value'=>'CHtml::value($data,\'videoFile.title\')',
