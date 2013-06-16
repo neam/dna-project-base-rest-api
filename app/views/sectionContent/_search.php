@@ -14,7 +14,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'section_id'); ?>
-		<?php echo $form->dropDownList($model, 'section_id', CHtml::listData(Section::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'section_id', CHtml::listData(Section::model()->findAll(), 'id', 'chapter_id'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
@@ -33,38 +33,38 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model, 'p3_page_id'); ?>
+		<?php echo $form->dropDownList($model, 'p3_page_id', CHtml::listData(P3Page::model()->findAll(), 'id', 'layout'), array('prompt' => 'all')); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model, 'viz_view_id'); ?>
-		<?php echo $form->textField($model, 'viz_view_id', array('size' => 20, 'maxlength' => 20)); ?>
+		<?php echo $form->dropDownList($model, 'viz_view_id', CHtml::listData(VizView::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'video_file_id'); ?>
-		<?php echo $form->textField($model, 'video_file_id', array('size' => 20, 'maxlength' => 20)); ?>
+		<?php echo $form->dropDownList($model, 'video_file_id', CHtml::listData(VideoFile::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'teachers_guide_id'); ?>
-		<?php echo $form->textField($model, 'teachers_guide_id', array('size' => 20, 'maxlength' => 20)); ?>
+		<?php echo $form->dropDownList($model, 'teachers_guide_id', CHtml::listData(TeachersGuide::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'exercise_id'); ?>
-		<?php echo $form->textField($model, 'exercise_id', array('size' => 20, 'maxlength' => 20)); ?>
+		<?php echo $form->dropDownList($model, 'exercise_id', CHtml::listData(Exercise::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'presentation_id'); ?>
-		<?php echo $form->textField($model, 'presentation_id', array('size' => 20, 'maxlength' => 20)); ?>
+		<?php echo $form->dropDownList($model, 'presentation_id', CHtml::listData(Presentation::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'data_chunk_id'); ?>
-		<?php echo $form->textField($model, 'data_chunk_id', array('size' => 20, 'maxlength' => 20)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'p3_widget_id'); ?>
-		<?php echo $form->textField($model, 'p3_widget_id'); ?>
+		<?php echo $form->dropDownList($model, 'data_chunk_id', CHtml::listData(DataChunk::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
 	</div>
 
         <div class="row buttons">

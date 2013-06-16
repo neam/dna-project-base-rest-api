@@ -13,12 +13,20 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('chapter_id')); ?>:</b>
+<?php echo CHtml::encode($model->chapter_id); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
 <?php echo CHtml::encode($model->title); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug')); ?>:</b>
 <?php echo CHtml::encode($model->slug); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('ordinal')); ?>:</b>
+<?php echo CHtml::encode($model->ordinal); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('menu_label')); ?>:</b>
@@ -29,14 +37,12 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->created); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
-<?php echo CHtml::encode($model->modified); ?>
-<br />
+<?php /*
+  <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
+  <?php echo CHtml::encode($model->modified); ?>
+  <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('chapter_id')); ?>:</b>
-<?php echo CHtml::encode($model->chapter_id); ?>
-<br />
-
+ */ ?>
 
 <h2><?php echo CHtml::link(Yii::t('app', 'SectionContents'), array('sectionContent/admin')); ?></h2>
 <ul>
@@ -46,7 +52,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->p3_widget_id, array('sectionContent/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->modified, array('sectionContent/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('sectionContent/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}
@@ -64,16 +70,17 @@ $this->breadcrumbs[] = $model->id;
 		'data' => $model,
 		'attributes' => array(
 			'id',
-			'title',
-			'slug',
-			'menu_label',
-			'created',
-			'modified',
 			array(
 				'name' => 'chapter_id',
 				'value' => ($model->chapter !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->chapter->title, array('chapter/view', 'id' => $model->chapter->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
+			'title',
+			'slug',
+			'ordinal',
+			'menu_label',
+			'created',
+			'modified',
 		),
 	));
 	?></p>

@@ -33,16 +33,19 @@ $this->widget('TbGridView', array(
 	),
 	'columns' => array(
 		'id',
-		'title',
-		'slug',
-		'menu_label',
-		'created',
-		'modified',
 		array(
 			'name' => 'chapter_id',
 			'value' => 'CHtml::value($data,\'chapter.title\')',
 			'filter' => CHtml::listData(Chapter::model()->findAll(), 'id', 'title'),
 		),
+		'title',
+		'slug',
+		'ordinal',
+		'menu_label',
+		'created',
+		/*
+		  'modified',
+		 */
 		array(
 			'class' => 'TbButtonColumn',
 			'viewButtonUrl' => "Yii::app()->controller->createUrl('view', array('id' => \$data->id))",

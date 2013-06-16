@@ -13,6 +13,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model, 'chapter_id'); ?>
+		<?php echo $form->dropDownList($model, 'chapter_id', CHtml::listData(Chapter::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model, 'title'); ?>
 		<?php echo $form->textField($model, 'title', array('size' => 60, 'maxlength' => 255)); ?>
 	</div>
@@ -20,6 +25,11 @@
 	<div class="row">
 		<?php echo $form->label($model, 'slug'); ?>
 		<?php echo $form->textField($model, 'slug', array('size' => 60, 'maxlength' => 255)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'ordinal'); ?>
+		<?php echo $form->textField($model, 'ordinal'); ?>
 	</div>
 
 	<div class="row">
@@ -35,11 +45,6 @@
 	<div class="row">
 		<?php echo $form->label($model, 'modified'); ?>
 		<?php echo $form->textField($model, 'modified'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'chapter_id'); ?>
-		<?php echo $form->dropDownList($model, 'chapter_id', CHtml::listData(Chapter::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
 	</div>
 
         <div class="row buttons">

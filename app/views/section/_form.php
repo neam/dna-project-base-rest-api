@@ -54,6 +54,21 @@
 
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
+					<?php echo $form->labelEx($model, 'ordinal'); ?>
+					<?php echo $form->textField($model, 'ordinal'); ?>
+					<?php echo $form->error($model, 'ordinal'); ?>
+					<?php
+					if ('help.ordinal' != $help = Yii::t('crud', 'help.ordinal'))
+					{
+						echo "<span class='help-block'>{$help}</span>";
+					}
+					?>
+				</div>
+			</div>
+
+
+			<div class="row-fluid input-block-level-container">
+				<div class="span12">
 					<?php echo $form->labelEx($model, 'menu_label'); ?>
 					<?php echo $form->textField($model, 'menu_label', array('size' => 60, 'maxlength' => 255)); ?>
 					<?php echo $form->error($model, 'menu_label'); ?>

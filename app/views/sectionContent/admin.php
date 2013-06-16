@@ -35,20 +35,48 @@ $this->widget('TbGridView', array(
 		'id',
 		array(
 			'name' => 'section_id',
-			'value' => 'CHtml::value($data,\'section.title\')',
-			'filter' => CHtml::listData(Section::model()->findAll(), 'id', 'title'),
+			'value' => 'CHtml::value($data,\'section.chapter_id\')',
+			'filter' => CHtml::listData(Section::model()->findAll(), 'id', 'chapter_id'),
 		),
 		'ordinal',
 		'created',
 		'modified',
-		'viz_view_id',
-		'video_file_id',
+		array(
+			'name' => 'p3_page_id',
+			'value' => 'CHtml::value($data,\'p3Page.layout\')',
+			'filter' => CHtml::listData(P3Page::model()->findAll(), 'id', 'layout'),
+		),
+		array(
+			'name' => 'viz_view_id',
+			'value' => 'CHtml::value($data,\'vizView.title\')',
+			'filter' => CHtml::listData(VizView::model()->findAll(), 'id', 'title'),
+		),
 		/*
-		  'teachers_guide_id',
-		  'exercise_id',
-		  'presentation_id',
-		  'data_chunk_id',
-		  'p3_widget_id',
+		  array(
+		  'name'=>'video_file_id',
+		  'value'=>'CHtml::value($data,\'videoFile.title\')',
+		  'filter'=>CHtml::listData(VideoFile::model()->findAll(), 'id', 'title'),
+		  ),
+		  array(
+		  'name'=>'teachers_guide_id',
+		  'value'=>'CHtml::value($data,\'teachersGuide.title\')',
+		  'filter'=>CHtml::listData(TeachersGuide::model()->findAll(), 'id', 'title'),
+		  ),
+		  array(
+		  'name'=>'exercise_id',
+		  'value'=>'CHtml::value($data,\'exercise.title\')',
+		  'filter'=>CHtml::listData(Exercise::model()->findAll(), 'id', 'title'),
+		  ),
+		  array(
+		  'name'=>'presentation_id',
+		  'value'=>'CHtml::value($data,\'presentation.title\')',
+		  'filter'=>CHtml::listData(Presentation::model()->findAll(), 'id', 'title'),
+		  ),
+		  array(
+		  'name'=>'data_chunk_id',
+		  'value'=>'CHtml::value($data,\'dataChunk.title\')',
+		  'filter'=>CHtml::listData(DataChunk::model()->findAll(), 'id', 'title'),
+		  ),
 		 */
 		array(
 			'class' => 'TbButtonColumn',

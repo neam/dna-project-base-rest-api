@@ -40,7 +40,7 @@ $this->widget('EditableDetailView', array(
 				{
 
 					echo '<li>';
-					echo CHtml::link($relatedModel->p3_widget_id, array('sectionContent/view', 'id' => $relatedModel->id), array('class' => ''));
+					echo CHtml::link($relatedModel->modified, array('sectionContent/view', 'id' => $relatedModel->id), array('class' => ''));
 
 					echo '</li>';
 				}

@@ -66,107 +66,135 @@
 				</div>
 			</div>
 
-
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<?php echo $form->labelEx($model, 'viz_view_id'); ?>
-					<?php echo $form->textField($model, 'viz_view_id', array('size' => 20, 'maxlength' => 20)); ?>
-					<?php echo $form->error($model, 'viz_view_id'); ?>
+					<label for="p3Page"><?php echo Yii::t('crud', 'P3Page'); ?></label>
 					<?php
-					if ('help.viz_view_id' != $help = Yii::t('crud', 'help.viz_view_id'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
+					$this->widget(
+					    'Relation', array(
+						'model' => $model,
+						'relation' => 'p3Page',
+						'fields' => 'nameId',
+						'allowEmpty' => true,
+						'style' => 'dropdownlist',
+						'htmlOptions' => array(
+							'checkAll' => 'all'),
+					    )
+					)
 					?>
 				</div>
 			</div>
 
-
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<?php echo $form->labelEx($model, 'video_file_id'); ?>
-					<?php echo $form->textField($model, 'video_file_id', array('size' => 20, 'maxlength' => 20)); ?>
-					<?php echo $form->error($model, 'video_file_id'); ?>
+					<label for="vizView"><?php echo Yii::t('crud', 'VizView'); ?></label>
 					<?php
-					if ('help.video_file_id' != $help = Yii::t('crud', 'help.video_file_id'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
+					$this->widget(
+					    'Relation', array(
+						'model' => $model,
+						'relation' => 'vizView',
+						'fields' => 'title',
+						'allowEmpty' => true,
+						'style' => 'dropdownlist',
+						'htmlOptions' => array(
+							'checkAll' => 'all'),
+					    )
+					)
 					?>
 				</div>
 			</div>
 
-
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<?php echo $form->labelEx($model, 'teachers_guide_id'); ?>
-					<?php echo $form->textField($model, 'teachers_guide_id', array('size' => 20, 'maxlength' => 20)); ?>
-					<?php echo $form->error($model, 'teachers_guide_id'); ?>
+					<label for="videoFile"><?php echo Yii::t('crud', 'VideoFile'); ?></label>
 					<?php
-					if ('help.teachers_guide_id' != $help = Yii::t('crud', 'help.teachers_guide_id'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
+					$this->widget(
+					    'Relation', array(
+						'model' => $model,
+						'relation' => 'videoFile',
+						'fields' => 'title',
+						'allowEmpty' => true,
+						'style' => 'dropdownlist',
+						'htmlOptions' => array(
+							'checkAll' => 'all'),
+					    )
+					)
 					?>
 				</div>
 			</div>
 
-
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<?php echo $form->labelEx($model, 'exercise_id'); ?>
-					<?php echo $form->textField($model, 'exercise_id', array('size' => 20, 'maxlength' => 20)); ?>
-					<?php echo $form->error($model, 'exercise_id'); ?>
+					<label for="teachersGuide"><?php echo Yii::t('crud', 'TeachersGuide'); ?></label>
 					<?php
-					if ('help.exercise_id' != $help = Yii::t('crud', 'help.exercise_id'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
+					$this->widget(
+					    'Relation', array(
+						'model' => $model,
+						'relation' => 'teachersGuide',
+						'fields' => 'title',
+						'allowEmpty' => true,
+						'style' => 'dropdownlist',
+						'htmlOptions' => array(
+							'checkAll' => 'all'),
+					    )
+					)
 					?>
 				</div>
 			</div>
 
-
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<?php echo $form->labelEx($model, 'presentation_id'); ?>
-					<?php echo $form->textField($model, 'presentation_id', array('size' => 20, 'maxlength' => 20)); ?>
-					<?php echo $form->error($model, 'presentation_id'); ?>
+					<label for="exercise"><?php echo Yii::t('crud', 'Exercise'); ?></label>
 					<?php
-					if ('help.presentation_id' != $help = Yii::t('crud', 'help.presentation_id'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
+					$this->widget(
+					    'Relation', array(
+						'model' => $model,
+						'relation' => 'exercise',
+						'fields' => 'title',
+						'allowEmpty' => true,
+						'style' => 'dropdownlist',
+						'htmlOptions' => array(
+							'checkAll' => 'all'),
+					    )
+					)
 					?>
 				</div>
 			</div>
 
-
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<?php echo $form->labelEx($model, 'data_chunk_id'); ?>
-					<?php echo $form->textField($model, 'data_chunk_id', array('size' => 20, 'maxlength' => 20)); ?>
-					<?php echo $form->error($model, 'data_chunk_id'); ?>
+					<label for="presentation"><?php echo Yii::t('crud', 'Presentation'); ?></label>
 					<?php
-					if ('help.data_chunk_id' != $help = Yii::t('crud', 'help.data_chunk_id'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
+					$this->widget(
+					    'Relation', array(
+						'model' => $model,
+						'relation' => 'presentation',
+						'fields' => 'title',
+						'allowEmpty' => true,
+						'style' => 'dropdownlist',
+						'htmlOptions' => array(
+							'checkAll' => 'all'),
+					    )
+					)
 					?>
 				</div>
 			</div>
 
-
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<?php echo $form->labelEx($model, 'p3_widget_id'); ?>
-					<?php echo $form->textField($model, 'p3_widget_id'); ?>
-					<?php echo $form->error($model, 'p3_widget_id'); ?>
+					<label for="dataChunk"><?php echo Yii::t('crud', 'DataChunk'); ?></label>
 					<?php
-					if ('help.p3_widget_id' != $help = Yii::t('crud', 'help.p3_widget_id'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
+					$this->widget(
+					    'Relation', array(
+						'model' => $model,
+						'relation' => 'dataChunk',
+						'fields' => 'title',
+						'allowEmpty' => true,
+						'style' => 'dropdownlist',
+						'htmlOptions' => array(
+							'checkAll' => 'all'),
+					    )
+					)
 					?>
 				</div>
 			</div>
