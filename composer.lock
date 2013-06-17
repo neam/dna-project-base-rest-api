@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f171df2ef04a21b917c47036014071e1",
+    "hash": "3df4c5bccf9c818a8bd309e8568d1d64",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -60,6 +60,17 @@
             "description": "Rights is a module for the Yii PHP framework. This module utilizes Yii's built-in Database Authorization Manager (CDbAuthManager) to provide a web interface for advanced access control within Yii-applications.",
             "homepage": "http://www.yiiframework.com/extension/rights",
             "time": "2011-10-12 09:05:52"
+        },
+        {
+            "name": "firstrow/stranslateablebehavior",
+            "version": "@dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/motin/STranslateableBehavior.git",
+                "reference": "b156cd3b182e2d18b90653f4e4f00b5f2c9df659"
+            },
+            "type": "library",
+            "time": "2012-09-14 10:59:44"
         },
         {
             "name": "ifdattic/echosen",
@@ -865,6 +876,7 @@
         "crisu83/yii-rights": 20,
         "malyshev/yii-debug-toolbar": 20,
         "mishamx/yii-user": 20,
+        "firstrow/stranslateablebehavior": 20,
         "waalzer/app-demo-data": 20,
         "phundament/lessii": 20,
         "ifdattic/echosen": 20
