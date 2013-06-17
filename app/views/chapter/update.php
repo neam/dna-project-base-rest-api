@@ -95,6 +95,7 @@ $this->widget('TbGridView', array(
 		),
 		array(
 			'class' => 'TbButtonColumn',
+			'viewButtonIcon' => 'foo',
 			'viewButtonUrl' => "Yii::app()->controller->createUrl('section/view', array('id' => \$data->id))",
 			'updateButtonUrl' => "Yii::app()->controller->createUrl('section/update', array('id' => \$data->id))",
 			'deleteButtonUrl' => "Yii::app()->controller->createUrl('section/delete', array('id' => \$data->id))",
