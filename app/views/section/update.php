@@ -38,7 +38,7 @@ $relatedSearchModel = $model->getRelatedSearchModel('sectionContents');
 $this->widget('TbGridView', array(
 	'id' => 'sectionContent-grid',
 	'dataProvider' => $relatedSearchModel->search(),
-	'filter' => $relatedSearchModel,
+	'filter' => count($model->sectionContents) > 1 ? $relatedSearchModel : null,
 	'pager' => array(
 		'class' => 'TbPager',
 		'displayFirstAndLast' => true,
