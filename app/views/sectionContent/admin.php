@@ -42,9 +42,9 @@ $this->widget('TbGridView', array(
 		'created',
 		'modified',
 		array(
-			'name' => 'p3_page_id',
-			'value' => 'CHtml::value($data,\'p3Page.layout\')',
-			'filter' => CHtml::listData(P3Page::model()->findAll(), 'id', 'layout'),
+			'name' => 'html_chunk_id',
+			'value' => 'CHtml::value($data,\'htmlChunk.markup\')',
+			'filter' => CHtml::listData(HtmlChunk::model()->findAll(), 'id', 'markup'),
 		),
 		array(
 			'name' => 'viz_view_id',

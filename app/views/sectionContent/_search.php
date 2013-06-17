@@ -33,8 +33,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'p3_page_id'); ?>
-		<?php echo $form->dropDownList($model, 'p3_page_id', CHtml::listData(P3Page::model()->findAll(), 'id', 'layout'), array('prompt' => 'all')); ?>
+		<?php echo $form->label($model, 'html_chunk_id'); ?>
+		<?php echo $form->dropDownList($model, 'html_chunk_id', CHtml::listData(HtmlChunk::model()->findAll(), 'id', 'markup'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">

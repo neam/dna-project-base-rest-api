@@ -68,14 +68,14 @@
 
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<label for="p3Page"><?php echo Yii::t('crud', 'P3Page'); ?></label>
+					<label for="section"><?php echo Yii::t('crud', 'Section'); ?></label>
 					<?php
 					$this->widget(
 					    'Relation', array(
 						'model' => $model,
-						'relation' => 'p3Page',
-						'fields' => 'nameId',
-						'allowEmpty' => true,
+						'relation' => 'section',
+						'fields' => 'title',
+						'allowEmpty' => false,
 						'style' => 'dropdownlist',
 						'htmlOptions' => array(
 							'checkAll' => 'all'),
@@ -201,14 +201,14 @@
 
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<label for="section"><?php echo Yii::t('crud', 'Section'); ?></label>
+					<label for="htmlChunk"><?php echo Yii::t('crud', 'HtmlChunk'); ?></label>
 					<?php
 					$this->widget(
 					    'Relation', array(
 						'model' => $model,
-						'relation' => 'section',
-						'fields' => 'title',
-						'allowEmpty' => false,
+						'relation' => 'htmlChunk',
+						'fields' => 'modified',
+						'allowEmpty' => true,
 						'style' => 'dropdownlist',
 						'htmlOptions' => array(
 							'checkAll' => 'all'),

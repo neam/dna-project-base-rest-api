@@ -29,8 +29,8 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->modified); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('p3_page_id')); ?>:</b>
-<?php echo CHtml::encode($model->p3_page_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('html_chunk_id')); ?>:</b>
+<?php echo CHtml::encode($model->html_chunk_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('viz_view_id')); ?>:</b>
@@ -79,8 +79,8 @@ $this->breadcrumbs[] = $model->id;
 			'created',
 			'modified',
 			array(
-				'name' => 'p3_page_id',
-				'value' => ($model->p3Page !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->p3Page->nameId, array('p3Page/view', 'id' => $model->p3Page->id), array('class' => 'btn')) : 'n/a',
+				'name' => 'html_chunk_id',
+				'value' => ($model->htmlChunk !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->htmlChunk->modified, array('htmlChunk/view', 'id' => $model->htmlChunk->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
 			array(
