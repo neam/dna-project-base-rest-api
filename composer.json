@@ -72,6 +72,7 @@
 		"kswedberg/jquery-smooth-scroll":"1.4.10",
 		"firstrow/stranslateablebehavior":"@dev",
         "clevertech/YiiBooster": "dev-master",
+        "2amigos/yiiwheels": "@dev",
         "waalzer/app-demo-data": "dev-master"
     },
     "require-dev":{
