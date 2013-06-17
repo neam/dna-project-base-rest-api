@@ -71,6 +71,7 @@
         "yiiext/migrate-command":"0.7.*",
 		"kswedberg/jquery-smooth-scroll":"1.4.10",
 		"firstrow/stranslateablebehavior":"@dev",
+        "clevertech/YiiBooster": "dev-master",
         "waalzer/app-demo-data": "dev-master"
     },
     "require-dev":{
