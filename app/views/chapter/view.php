@@ -69,7 +69,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 		<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 		<!--<h1><?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small></h1>-->
 
-		<div class="admin-container hide">
+		<div class="admin-container show">
 			<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 		</div>
 
