@@ -1,38 +1,18 @@
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id' => $data->id)); ?>
-	<br />
+	<?php if (!empty($data->sectionContents)): ?>
+		<?php foreach ($data->sectionContents as $foreignobj): ?>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('chapter_id')); ?>:</b>
-	<?php echo CHtml::encode($data->chapter_id); ?>
-	<br />
+			<?php
+			$this->renderPartial('/sectionContent/_view', array("data" => $foreignobj));
+			?>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::encode($data->title); ?>
-	<br />
+		<?php endforeach; ?>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('slug')); ?>:</b>
-	<?php echo CHtml::encode($data->slug); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ordinal')); ?>:</b>
-	<?php echo CHtml::encode($data->ordinal); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('menu_label')); ?>:</b>
-	<?php echo CHtml::encode($data->menu_label); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
-	<?php echo CHtml::encode($data->created); ?>
-	<br />
-
-	<?php /*
-	  <b><?php echo CHtml::encode($data->getAttributeLabel('modified')); ?>:</b>
-	  <?php echo CHtml::encode($data->modified); ?>
-	  <br />
-
-	 */ ?>
+		<?php
+	else:
+		echo Yii::t('app', 'Section contains no sectionContents');
+	endif;
+	?>
 
 </div>

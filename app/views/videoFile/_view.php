@@ -1,32 +1,13 @@
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id' => $data->id)); ?>
-	<br />
+	<?php if (!is_null($data->processed_media_id)): ?>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::encode($data->title); ?>
-	<br />
+		TODO: Actually include mediaelement
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
-	<?php echo CHtml::encode($data->type); ?>
-	<br />
+	<?php else: ?>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
-	<?php echo CHtml::encode($data->created); ?>
-	<br />
+		No processed media file available
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('modified')); ?>:</b>
-	<?php echo CHtml::encode($data->modified); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('original_media_id')); ?>:</b>
-	<?php echo CHtml::encode($data->original_media_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('processed_media_id')); ?>:</b>
-	<?php echo CHtml::encode($data->processed_media_id); ?>
-	<br />
-
+	<?php endif; ?>
 
 </div>

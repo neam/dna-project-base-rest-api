@@ -82,7 +82,9 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 						<h1><?= $foreignobj->title ?></h1>
 					</div>
 
-					Actual contents TODO i18n
+					<?php
+					$this->renderPartial('/section/_view', array("data" => $foreignobj));
+					?>
 
 				</section>
 
