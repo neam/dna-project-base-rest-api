@@ -28,7 +28,7 @@ $this->widget('EditableDetailView', array(
 	$this->widget('bootstrap.widgets.TbButtonGroup', array(
 		'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
 		'buttons' => array(
-			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'viz_view_id' => $model->id), array('class' => ''))
+			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('viz_view_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
 		),
 	));
 	?></div>
@@ -38,7 +38,7 @@ $relatedSearchModel = $model->getRelatedSearchModel('sectionContents');
 $this->widget('TbGridView', array(
 	'id' => 'sectionContent-grid',
 	'dataProvider' => $relatedSearchModel->search(),
-	'filter' => $relatedSearchModel,
+	'filter' => count($model->sectionContents) > 1 ? $relatedSearchModel : null,
 	'pager' => array(
 		'class' => 'TbPager',
 		'displayFirstAndLast' => true,
@@ -75,9 +75,9 @@ $this->widget('TbGridView', array(
 			)
 		),
 		array(
-			'name' => 'p3_page_id',
-			'value' => 'CHtml::value($data,\'p3Page.layout\')',
-			'filter' => CHtml::listData(P3Page::model()->findAll(), 'id', 'layout'),
+			'name' => 'html_chunk_id',
+			'value' => 'CHtml::value($data,\'htmlChunk.markup\')',
+			'filter' => CHtml::listData(HtmlChunk::model()->findAll(), 'id', 'markup'),
 		),
 		array(
 			'name' => 'video_file_id',

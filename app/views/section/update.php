@@ -28,7 +28,7 @@ $this->widget('EditableDetailView', array(
 	$this->widget('bootstrap.widgets.TbButtonGroup', array(
 		'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
 		'buttons' => array(
-			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'section_id' => $model->id), array('class' => ''))
+			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('section_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
 		),
 	));
 	?></div>

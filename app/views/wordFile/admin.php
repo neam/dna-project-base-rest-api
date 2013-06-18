@@ -1,5 +1,5 @@
 <?php
-$this->breadcrumbs[] = Yii::t('crud', 'Video Files');
+$this->breadcrumbs[] = Yii::t('crud', 'Word Files');
 
 
 Yii::app()->clientScript->registerScript('search', "
@@ -8,7 +8,7 @@ $('.search-form').toggle();
 return false;
 });
 $('.search-form form').submit(function(){
-$.fn.yiiGridView.update('video-file-grid', {
+$.fn.yiiGridView.update('word-file-grid', {
 data: $(this).serialize()
 });
 return false;
@@ -18,13 +18,13 @@ return false;
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-	<?php echo Yii::t('crud', 'Video Files'); ?> <small><?php echo Yii::t('crud', 'Manage'); ?></small>
+	<?php echo Yii::t('crud', 'Word Files'); ?> <small><?php echo Yii::t('crud', 'Manage'); ?></small>
 </h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <?php
 $this->widget('TbGridView', array(
-	'id' => 'video-file-grid',
+	'id' => 'word-file-grid',
 	'dataProvider' => $model->search(),
 	'filter' => $model,
 	'pager' => array(

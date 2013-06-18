@@ -28,7 +28,7 @@ $this->widget('EditableDetailView', array(
 	$this->widget('bootstrap.widgets.TbButtonGroup', array(
 		'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
 		'buttons' => array(
-			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('dataChunk/create', 'data_source_id' => $model->id), array('class' => ''))
+			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('dataChunk/create', 'DataChunk' => array('data_source_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
 		),
 	));
 	?></div>
@@ -38,7 +38,7 @@ $relatedSearchModel = $model->getRelatedSearchModel('dataChunks');
 $this->widget('TbGridView', array(
 	'id' => 'dataChunk-grid',
 	'dataProvider' => $relatedSearchModel->search(),
-	'filter' => $relatedSearchModel,
+	'filter' => count($model->dataChunks) > 1 ? $relatedSearchModel : null,
 	'pager' => array(
 		'class' => 'TbPager',
 		'displayFirstAndLast' => true,
@@ -93,7 +93,7 @@ $this->widget('TbGridView', array(
 	$this->widget('bootstrap.widgets.TbButtonGroup', array(
 		'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
 		'buttons' => array(
-			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('spreadsheetFile/create', 'data_source_id' => $model->id), array('class' => ''))
+			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('spreadsheetFile/create', 'SpreadsheetFile' => array('data_source_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
 		),
 	));
 	?></div>
@@ -103,7 +103,7 @@ $relatedSearchModel = $model->getRelatedSearchModel('spreadsheetFiles');
 $this->widget('TbGridView', array(
 	'id' => 'spreadsheetFile-grid',
 	'dataProvider' => $relatedSearchModel->search(),
-	'filter' => $relatedSearchModel,
+	'filter' => count($model->spreadsheetFiles) > 1 ? $relatedSearchModel : null,
 	'pager' => array(
 		'class' => 'TbPager',
 		'displayFirstAndLast' => true,

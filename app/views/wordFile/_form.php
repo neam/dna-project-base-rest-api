@@ -10,7 +10,7 @@
 	?>
 	<?php
 	$form = $this->beginWidget('CActiveForm', array(
-		'id' => 'video-file-form',
+		'id' => 'word-file-form',
 		'enableAjaxValidation' => true,
 		'enableClientValidation' => true,
 	));
@@ -117,7 +117,7 @@
 
 		<?php
 		echo CHtml::Button(Yii::t('crud', 'Cancel'), array(
-			'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('videofile/admin'),
+			'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('wordfile/admin'),
 			'class' => 'btn'
 		));
 		echo ' ' . CHtml::submitButton(Yii::t('crud', 'Save'), array(

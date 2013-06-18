@@ -28,7 +28,7 @@ $this->widget('EditableDetailView', array(
 	$this->widget('bootstrap.widgets.TbButtonGroup', array(
 		'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
 		'buttons' => array(
-			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('dataChunk/create', 'slideshow_file_id' => $model->id), array('class' => ''))
+			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('dataChunk/create', 'DataChunk' => array('slideshow_file_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
 		),
 	));
 	?></div>
@@ -38,7 +38,7 @@ $relatedSearchModel = $model->getRelatedSearchModel('dataChunks');
 $this->widget('TbGridView', array(
 	'id' => 'dataChunk-grid',
 	'dataProvider' => $relatedSearchModel->search(),
-	'filter' => $relatedSearchModel,
+	'filter' => count($model->dataChunks) > 1 ? $relatedSearchModel : null,
 	'pager' => array(
 		'class' => 'TbPager',
 		'displayFirstAndLast' => true,
@@ -93,7 +93,7 @@ $this->widget('TbGridView', array(
 	$this->widget('bootstrap.widgets.TbButtonGroup', array(
 		'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
 		'buttons' => array(
-			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'slideshow_file_id' => $model->id), array('class' => ''))
+			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('slideshow_file_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
 		),
 	));
 	?></div>
@@ -103,7 +103,7 @@ $relatedSearchModel = $model->getRelatedSearchModel('exercises');
 $this->widget('TbGridView', array(
 	'id' => 'exercise-grid',
 	'dataProvider' => $relatedSearchModel->search(),
-	'filter' => $relatedSearchModel,
+	'filter' => count($model->exercises) > 1 ? $relatedSearchModel : null,
 	'pager' => array(
 		'class' => 'TbPager',
 		'displayFirstAndLast' => true,
@@ -153,7 +153,7 @@ $this->widget('TbGridView', array(
 	$this->widget('bootstrap.widgets.TbButtonGroup', array(
 		'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
 		'buttons' => array(
-			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('presentation/create', 'slideshow_file_id' => $model->id), array('class' => ''))
+			array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('presentation/create', 'Presentation' => array('slideshow_file_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
 		),
 	));
 	?></div>
@@ -163,7 +163,7 @@ $relatedSearchModel = $model->getRelatedSearchModel('presentations');
 $this->widget('TbGridView', array(
 	'id' => 'presentation-grid',
 	'dataProvider' => $relatedSearchModel->search(),
-	'filter' => $relatedSearchModel,
+	'filter' => count($model->presentations) > 1 ? $relatedSearchModel : null,
 	'pager' => array(
 		'class' => 'TbPager',
 		'displayFirstAndLast' => true,
