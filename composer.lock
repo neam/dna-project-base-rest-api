@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d403632bb17969dbf70354bb789d84a7",
+    "hash": "352cd10937aafac78e9e0d35a558f838",
     "packages": [
         {
             "name": "2amigos/yiistrap",
