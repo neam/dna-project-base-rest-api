@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "352cd10937aafac78e9e0d35a558f838",
+    "hash": "16809de3b7f3ed1675e49e0782722c4a",
     "packages": [
         {
             "name": "2amigos/yiistrap",
@@ -87,18 +87,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anggiaj/ESelect2.git",
-                "reference": "31411a81217a6e70d6d9af85a6f85a40edb8bf7f"
+                "reference": "2d3d524d4bdc6e4edd49f98c550d47dd90dfe344"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/anggiaj/ESelect2/archive/31411a81217a6e70d6d9af85a6f85a40edb8bf7f.zip",
+                "url": "https://github.com/anggiaj/ESelect2/archive/2d3d524d4bdc6e4edd49f98c550d47dd90dfe344.zip",
                 "reference": null,
                 "shasum": null
             },
             "type": "yii-extension",
             "description": "ESelect2 is a widget extension for Yii framework. This extension is a wrapper for Select2 Jquery plugin (https://github.com/ivaynberg/select2). ",
             "homepage": "https://github.com/anggiaj/ESelect2",
-            "time": "2013-02-18 09:49:36"
+            "time": "2013-05-20 13:36:03"
         },
         {
             "name": "clevertech/YiiBooster",
@@ -296,7 +296,7 @@
         },
         {
             "name": "phundament/p3admin",
-            "version": "0.12.3",
+            "version": "dev-yiibooster",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3admin.git",
@@ -343,16 +343,16 @@
         },
         {
             "name": "phundament/p3bootstrap",
-            "version": "0.14.2",
+            "version": "dev-yiibooster",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3bootstrap.git",
-                "reference": "0.14.2"
+                "reference": "473e55b14efb6ca628598222599f15d92c456362"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3bootstrap/zipball/0.14.2",
-                "reference": "0.14.2",
+                "url": "https://api.github.com/repos/schmunk42/p3bootstrap/zipball/473e55b14efb6ca628598222599f15d92c456362",
+                "reference": "473e55b14efb6ca628598222599f15d92c456362",
                 "shasum": ""
             },
             "require": {
@@ -385,7 +385,7 @@
                 "theme",
                 "yii"
             ],
-            "time": "2013-05-21 07:47:24"
+            "time": "2013-05-23 12:27:55"
         },
         {
             "name": "phundament/p3extensions",
@@ -393,12 +393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3extensions.git",
-                "reference": "0.12.0"
+                "reference": "317e9a585f7e4325c1fb7030376c07d05410bbb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3extensions/zipball/0.12.0",
-                "reference": "0.12.0",
+                "url": "https://api.github.com/repos/schmunk42/p3extensions/zipball/317e9a585f7e4325c1fb7030376c07d05410bbb7",
+                "reference": "317e9a585f7e4325c1fb7030376c07d05410bbb7",
                 "shasum": ""
             },
             "require": {
@@ -424,23 +424,23 @@
                 "phundament"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3extensions/tree/0.12.0",
+                "source": "https://github.com/schmunk42/p3extensions/tree/master",
                 "issues": "https://github.com/schmunk42/p3extensions/issues"
             },
-            "time": "2013-05-12 20:22:38"
+            "time": "2013-06-11 15:55:36"
         },
         {
             "name": "phundament/p3media",
-            "version": "0.11.10",
+            "version": "dev-yiibooster",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3media.git",
-                "reference": "0.11.10"
+                "reference": "92164e846c96557f43219be039b101f853971722"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3media/zipball/0.11.10",
-                "reference": "0.11.10",
+                "url": "https://api.github.com/repos/schmunk42/p3media/zipball/92164e846c96557f43219be039b101f853971722",
+                "reference": "92164e846c96557f43219be039b101f853971722",
                 "shasum": ""
             },
             "require": {
@@ -472,23 +472,23 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3media/tree/0.11.10",
+                "source": "https://github.com/schmunk42/p3media/tree/master",
                 "issues": "https://github.com/schmunk42/p3media/issues"
             },
-            "time": "2013-05-07 10:19:22"
+            "time": "2013-05-31 09:07:45"
         },
         {
             "name": "phundament/p3pages",
-            "version": "0.11.7",
+            "version": "dev-yiibooster",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3pages.git",
-                "reference": "0.11.7"
+                "reference": "0.11.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/0.11.7",
-                "reference": "0.11.7",
+                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/0.11.9",
+                "reference": "0.11.9",
                 "shasum": ""
             },
             "require": {
@@ -517,23 +517,23 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3pages/tree/master",
+                "source": "https://github.com/schmunk42/p3pages/tree/0.11.9",
                 "issues": "https://github.com/schmunk42/p3pages/issues"
             },
-            "time": "2013-05-21 16:44:23"
+            "time": "2013-05-28 19:03:57"
         },
         {
             "name": "phundament/p3widgets",
-            "version": "0.11.7",
+            "version": "dev-yiibooster",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3widgets.git",
-                "reference": "0.11.7"
+                "reference": "d9bd3b84032e3df56bc9166af750e09c65bf2c3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3widgets/zipball/0.11.7",
-                "reference": "0.11.7",
+                "url": "https://api.github.com/repos/schmunk42/p3widgets/zipball/d9bd3b84032e3df56bc9166af750e09c65bf2c3e",
+                "reference": "d9bd3b84032e3df56bc9166af750e09c65bf2c3e",
                 "shasum": ""
             },
             "require": {
@@ -567,10 +567,10 @@
                 "widget"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3widgets/tree/0.11.7",
+                "source": "https://github.com/schmunk42/p3widgets/tree/master",
                 "issues": "https://github.com/schmunk42/p3widgets/issues"
             },
-            "time": "2013-05-23 12:46:50"
+            "time": "2013-06-04 11:54:57"
         },
         {
             "name": "schmunk42/multi-theme",
@@ -964,7 +964,36 @@
         }
     ],
     "aliases": [
-
+        {
+            "alias": "0.12.x-dev",
+            "alias_normalized": "0.12.9999999.9999999-dev",
+            "version": "dev-yiibooster",
+            "package": "phundament/p3admin"
+        },
+        {
+            "alias": "0.11.x-dev",
+            "alias_normalized": "0.11.9999999.9999999-dev",
+            "version": "dev-yiibooster",
+            "package": "phundament/p3widgets"
+        },
+        {
+            "alias": "0.11.x-dev",
+            "alias_normalized": "0.11.9999999.9999999-dev",
+            "version": "dev-yiibooster",
+            "package": "phundament/p3pages"
+        },
+        {
+            "alias": "0.11.x-dev",
+            "alias_normalized": "0.11.9999999.9999999-dev",
+            "version": "dev-yiibooster",
+            "package": "phundament/p3media"
+        },
+        {
+            "alias": "0.14.x-dev",
+            "alias_normalized": "0.14.9999999.9999999-dev",
+            "version": "dev-yiibooster",
+            "package": "phundament/p3bootstrap"
+        }
     ],
     "minimum-stability": "dev",
     "stability-flags": {
@@ -972,6 +1001,11 @@
         "malyshev/yii-debug-toolbar": 20,
         "mishamx/yii-user": 20,
         "firstrow/stranslateablebehavior": 20,
+        "phundament/p3admin": 20,
+        "phundament/p3widgets": 20,
+        "phundament/p3pages": 20,
+        "phundament/p3media": 20,
+        "phundament/p3bootstrap": 20,
         "clevertech/yiibooster": 20,
         "2amigos/yiiwheels": 20,
         "waalzer/app-demo-data": 20,
