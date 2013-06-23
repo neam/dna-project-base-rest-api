@@ -3,103 +3,8 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "16809de3b7f3ed1675e49e0782722c4a",
+    "hash": "91b4622c51e9c587bcde67a3b090c881",
     "packages": [
-        {
-            "name": "2amigos/yiistrap",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/2amigos/yiistrap.git",
-                "reference": "c87f8050f8d4b181c440f78eb5e0cf795e5fa9b3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/2amigos/yiistrap/zipball/c87f8050f8d4b181c440f78eb5e0cf795e5fa9b3",
-                "reference": "c87f8050f8d4b181c440f78eb5e0cf795e5fa9b3",
-                "shasum": ""
-            },
-            "type": "yii-extension",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Christoffer Niska",
-                    "email": "christoffer.niska@gmail.com",
-                    "homepage": "http://www.cniska.net/"
-                },
-                {
-                    "name": "Antonio Ramirez",
-                    "email": "ramirez.cobos@gmail.com",
-                    "homepage": "http://www.ramirezcobos.com/"
-                }
-            ],
-            "description": "Twitter Bootstrap for the Yii PHP framework. Own maintained version.",
-            "keywords": [
-                "bootstrap",
-                "yii"
-            ],
-            "time": "2013-05-14 17:49:15"
-        },
-        {
-            "name": "2amigos/yiiwheels",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/2amigos/yiiwheels.git",
-                "reference": "d03bec6e021580c54748c81fab4ea38178bfc1d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/2amigos/yiiwheels/zipball/d03bec6e021580c54748c81fab4ea38178bfc1d4",
-                "reference": "d03bec6e021580c54748c81fab4ea38178bfc1d4",
-                "shasum": ""
-            },
-            "require": {
-                "2amigos/yiistrap": "dev-master"
-            },
-            "type": "yii-extension",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Antonio Ramirez",
-                    "email": "ramirez.cobos@gmail.com",
-                    "homepage": "http://www.ramirezcobos.com/"
-                }
-            ],
-            "description": "Extension library for Yiistrap, Yii Twitter's Bootstrap.",
-            "keywords": [
-                "bootstrap"
-            ],
-            "support": {
-                "source": "https://github.com/2amigos/yiiwheels/tree/master",
-                "issues": "https://github.com/2amigos/yiiwheels/issues"
-            },
-            "time": "2013-06-03 17:29:18"
-        },
-        {
-            "name": "anggiaj/eselect2",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/anggiaj/ESelect2.git",
-                "reference": "2d3d524d4bdc6e4edd49f98c550d47dd90dfe344"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/anggiaj/ESelect2/archive/2d3d524d4bdc6e4edd49f98c550d47dd90dfe344.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "yii-extension",
-            "description": "ESelect2 is a widget extension for Yii framework. This extension is a wrapper for Select2 Jquery plugin (https://github.com/ivaynberg/select2). ",
-            "homepage": "https://github.com/anggiaj/ESelect2",
-            "time": "2013-05-20 13:36:03"
-        },
         {
             "name": "clevertech/YiiBooster",
             "version": "dev-master",
@@ -118,24 +23,6 @@
             "description": "YiiBooster",
             "homepage": "https://github.com/clevertech/YiiBooster",
             "time": "2013-05-21 06:13:13"
-        },
-        {
-            "name": "crisu83/yii-bootstrap",
-            "version": "1.2.0",
-            "source": {
-                "type": "hg",
-                "url": "https://bitbucket.org/Crisu83/yii-bootstrap",
-                "reference": "524486d5ecedd42d8a0d5e3e8756a16ca4e2b3e3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/Crisu83/yii-bootstrap/get/524486d5ec.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "yii-extension",
-            "description": "Bootstrap is an extension for the Yii PHP framework that provides a wide range of server-side widgets that allow you to easily use Twitter's Bootstrap together with Yii.",
-            "homepage": "http://www.cniska.net/yii-bootstrap"
         },
         {
             "name": "crisu83/yii-rights",
@@ -236,23 +123,22 @@
         },
         {
             "name": "phundament/gii-template-collection",
-            "version": "0.8.10",
+            "version": "dev-yiibooster",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/gii-template-collection.git",
-                "reference": "0.8.10"
+                "reference": "c7f9faba45199c0956feed818d1721cf6fe3b1a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/gii-template-collection/zipball/0.8.10",
-                "reference": "0.8.10",
+                "url": "https://api.github.com/repos/schmunk42/gii-template-collection/zipball/c7f9faba45199c0956feed818d1721cf6fe3b1a8",
+                "reference": "c7f9faba45199c0956feed818d1721cf6fe3b1a8",
                 "shasum": ""
             },
             "require": {
-                "crisu83/yii-bootstrap": "1.*",
+                "clevertech/yiibooster": "1.*",
                 "ifdattic/echosen": "@dev",
-                "php": ">=5.3.0",
-                "vitalets/yii-bootstrap-editable": "@dev"
+                "php": ">=5.3.0"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -266,14 +152,14 @@
                     "homepage": "http://www.usrbin.de"
                 }
             ],
-            "description": "Gii Template Collection",
+            "description": "Gii Template Collection, Model and CRUD templates with Boostrap UI",
             "homepage": "http://phundament.com/",
             "keywords": [
                 "autoload",
                 "dependency",
                 "package"
             ],
-            "time": "2013-05-15 19:55:17"
+            "time": "2013-06-19 22:12:26"
         },
         {
             "name": "phundament/jquery-file-upload",
@@ -300,16 +186,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3admin.git",
-                "reference": "0.12.3"
+                "reference": "31a96166cab28ca74df6020c0d492df40268ee67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3admin/zipball/0.12.3",
-                "reference": "0.12.3",
+                "url": "https://api.github.com/repos/schmunk42/p3admin/zipball/31a96166cab28ca74df6020c0d492df40268ee67",
+                "reference": "31a96166cab28ca74df6020c0d492df40268ee67",
                 "shasum": ""
             },
             "require": {
-                "crisu83/yii-bootstrap": ">=1.0,<3.0",
+                "clevertech/yiibooster": "1.*",
                 "php": ">=5.3.0",
                 "phundament/p3extensions": ">=0.7",
                 "phundament/p3widgets": "*",
@@ -336,10 +222,10 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3admin/tree/0.12.3",
+                "source": "https://github.com/schmunk42/p3admin/tree/yiibooster",
                 "issues": "https://github.com/schmunk42/p3admin/issues"
             },
-            "time": "2013-05-20 21:08:58"
+            "time": "2013-06-19 21:10:49"
         },
         {
             "name": "phundament/p3bootstrap",
@@ -347,19 +233,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3bootstrap.git",
-                "reference": "473e55b14efb6ca628598222599f15d92c456362"
+                "reference": "57cf5538e95540e9037174a1a8f2c51b41498029"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3bootstrap/zipball/473e55b14efb6ca628598222599f15d92c456362",
-                "reference": "473e55b14efb6ca628598222599f15d92c456362",
+                "url": "https://api.github.com/repos/schmunk42/p3bootstrap/zipball/57cf5538e95540e9037174a1a8f2c51b41498029",
+                "reference": "57cf5538e95540e9037174a1a8f2c51b41498029",
                 "shasum": ""
             },
             "require": {
-                "crisu83/yii-bootstrap": "1.*",
+                "clevertech/yiibooster": "1.*",
                 "php": ">=5.3.0",
-                "phundament/p3extensions": ">=0.7",
                 "phundament/p3pages": ">=0.11",
+                "phundament/p3widgets": ">=0.11",
                 "yiisoft/yii": "1.1.*"
             },
             "suggest": {
@@ -367,7 +253,6 @@
                 "twitter/bootstrap": "Source files for LESS customization"
             },
             "type": "yii-theme",
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -385,7 +270,11 @@
                 "theme",
                 "yii"
             ],
-            "time": "2013-05-23 12:27:55"
+            "support": {
+                "source": "https://github.com/schmunk42/p3bootstrap/tree/yiibooster",
+                "issues": "https://github.com/schmunk42/p3bootstrap/issues"
+            },
+            "time": "2013-06-19 21:08:36"
         },
         {
             "name": "phundament/p3extensions",
@@ -435,20 +324,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3media.git",
-                "reference": "92164e846c96557f43219be039b101f853971722"
+                "reference": "95a0e8d0562b38e3c16301e72263033b0549f1fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3media/zipball/92164e846c96557f43219be039b101f853971722",
-                "reference": "92164e846c96557f43219be039b101f853971722",
+                "url": "https://api.github.com/repos/schmunk42/p3media/zipball/95a0e8d0562b38e3c16301e72263033b0549f1fa",
+                "reference": "95a0e8d0562b38e3c16301e72263033b0549f1fa",
                 "shasum": ""
             },
             "require": {
-                "anggiaj/eselect2": "@dev",
-                "crisu83/yii-bootstrap": ">=1.0,<3.0",
+                "clevertech/yiibooster": "1.*",
                 "php": ">=5.3.0",
                 "phundament/p3extensions": ">=0.7",
-                "vitalets/yii-bootstrap-editable": "@dev",
                 "yiisoft/yii": "1.1.*"
             },
             "type": "yii-extension",
@@ -472,10 +359,10 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3media/tree/master",
+                "source": "https://github.com/schmunk42/p3media/tree/yiibooster",
                 "issues": "https://github.com/schmunk42/p3media/issues"
             },
-            "time": "2013-05-31 09:07:45"
+            "time": "2013-06-19 21:03:34"
         },
         {
             "name": "phundament/p3pages",
@@ -483,16 +370,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3pages.git",
-                "reference": "0.11.9"
+                "reference": "b552f92608d858ffcbd11e757c9fc382fb2d4232"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/0.11.9",
-                "reference": "0.11.9",
+                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/b552f92608d858ffcbd11e757c9fc382fb2d4232",
+                "reference": "b552f92608d858ffcbd11e757c9fc382fb2d4232",
                 "shasum": ""
             },
             "require": {
-                "crisu83/yii-bootstrap": ">=1.0,<3.0",
+                "clevertech/yiibooster": "1.*",
                 "php": ">=5.3.0",
                 "phundament/p3extensions": ">=0.7",
                 "yiisoft/yii": "1.1.*"
@@ -517,10 +404,10 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3pages/tree/0.11.9",
+                "source": "https://github.com/schmunk42/p3pages/tree/yiibooster",
                 "issues": "https://github.com/schmunk42/p3pages/issues"
             },
-            "time": "2013-05-28 19:03:57"
+            "time": "2013-06-19 20:59:36"
         },
         {
             "name": "phundament/p3widgets",
@@ -528,16 +415,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3widgets.git",
-                "reference": "d9bd3b84032e3df56bc9166af750e09c65bf2c3e"
+                "reference": "c08fae88c518994e23ae4b615b5e692a710d8df1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3widgets/zipball/d9bd3b84032e3df56bc9166af750e09c65bf2c3e",
-                "reference": "d9bd3b84032e3df56bc9166af750e09c65bf2c3e",
+                "url": "https://api.github.com/repos/schmunk42/p3widgets/zipball/c08fae88c518994e23ae4b615b5e692a710d8df1",
+                "reference": "c08fae88c518994e23ae4b615b5e692a710d8df1",
                 "shasum": ""
             },
             "require": {
-                "crisu83/yii-bootstrap": ">=1.0,<3.0",
+                "clevertech/yiibooster": "1.*",
                 "php": ">=5.3.0",
                 "phundament/p3extensions": ">=0.8.1",
                 "yiisoft/yii": "1.1.*"
@@ -567,10 +454,10 @@
                 "widget"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3widgets/tree/master",
+                "source": "https://github.com/schmunk42/p3widgets/tree/yiibooster",
                 "issues": "https://github.com/schmunk42/p3widgets/issues"
             },
-            "time": "2013-06-04 11:54:57"
+            "time": "2013-06-19 20:58:33"
         },
         {
             "name": "schmunk42/multi-theme",
@@ -669,25 +556,6 @@
             "type": "yii-extension",
             "description": "Yii extension for creating editable elements",
             "homepage": "https://github.com/vitalets/x-editable-yii"
-        },
-        {
-            "name": "vitalets/yii-bootstrap-editable",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vitalets/yii-bootstrap-editable.git",
-                "reference": "24f8fbaa111f53a3325fc02351add4e20bcba6be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/vitalets/yii-bootstrap-editable/archive/24f8fbaa111f53a3325fc02351add4e20bcba6be.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "yii-extension",
-            "description": "Yii extension for Bootstrap-editable plugin",
-            "homepage": "https://github.com/vitalets/yii-bootstrap-editable",
-            "time": "2013-03-14 06:44:35"
         },
         {
             "name": "waalzer/app-demo-data",
@@ -965,34 +833,46 @@
     ],
     "aliases": [
         {
-            "alias": "0.12.x-dev",
-            "alias_normalized": "0.12.9999999.9999999-dev",
+            "alias": "0.13.x-dev",
+            "alias_normalized": "0.13.9999999.9999999-dev",
             "version": "dev-yiibooster",
             "package": "phundament/p3admin"
         },
         {
-            "alias": "0.11.x-dev",
-            "alias_normalized": "0.11.9999999.9999999-dev",
+            "alias": "0.12.x-dev",
+            "alias_normalized": "0.12.9999999.9999999-dev",
             "version": "dev-yiibooster",
             "package": "phundament/p3widgets"
         },
         {
-            "alias": "0.11.x-dev",
-            "alias_normalized": "0.11.9999999.9999999-dev",
+            "alias": "0.12.x-dev",
+            "alias_normalized": "0.12.9999999.9999999-dev",
             "version": "dev-yiibooster",
             "package": "phundament/p3pages"
         },
         {
-            "alias": "0.11.x-dev",
-            "alias_normalized": "0.11.9999999.9999999-dev",
+            "alias": "0.12.x-dev",
+            "alias_normalized": "0.12.9999999.9999999-dev",
             "version": "dev-yiibooster",
             "package": "phundament/p3media"
         },
         {
-            "alias": "0.14.x-dev",
-            "alias_normalized": "0.14.9999999.9999999-dev",
+            "alias": "0.15.x-dev",
+            "alias_normalized": "0.15.9999999.9999999-dev",
             "version": "dev-yiibooster",
             "package": "phundament/p3bootstrap"
+        },
+        {
+            "alias": "0.9.x-dev",
+            "alias_normalized": "0.9.9999999.9999999-dev",
+            "version": "dev-yiibooster",
+            "package": "phundament/gii-template-collection"
+        },
+        {
+            "alias": "1.0.x-dev",
+            "alias_normalized": "1.0.9999999.9999999-dev",
+            "version": "9999999-dev",
+            "package": "clevertech/yiibooster"
         }
     ],
     "minimum-stability": "dev",
@@ -1006,6 +886,7 @@
         "phundament/p3pages": 20,
         "phundament/p3media": 20,
         "phundament/p3bootstrap": 20,
+        "phundament/gii-template-collection": 20,
         "clevertech/yiibooster": 20,
         "2amigos/yiiwheels": 20,
         "waalzer/app-demo-data": 20,

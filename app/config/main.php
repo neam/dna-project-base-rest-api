@@ -25,7 +25,7 @@ $mainConfig = array(
         'root' => $applicationDirectory.'/..',
         'webroot' => $applicationDirectory.'/../www',
         'vendor' => $applicationDirectory.'/../vendor',
-        'bootstrap' => 'vendor.clevertech.YiiBooster.src',
+        'bootstrap' => 'vendor.clevertech.yiibooster.src',
 
         // p3widgets
         'jsonEditorView' => 'vendor.phundament.p3extensions.widgets.jsonEditorView',
@@ -61,6 +61,7 @@ $mainConfig = array(
         'vendor.crisu83.yii-rights.components.*', // RWebUser
         'vendor.crisu83.yii-bootstrap.widgets.*', // Bootstrap UI
         'vendor.yiiext.fancybox-widget.*', // Fancybox Widget
+        'vendor.clevertech.yiibooster.src.widgets.*', //
         'editable.*', // Include X-Editable for Yii classes
     ),
     'modules' => array(
@@ -211,8 +212,8 @@ $mainConfig = array(
             'defaultRoles' => array('Authenticated', 'Guest'), // see correspoing business rules, note: superusers always get checkAcess == true
         ),
         'bootstrap' => array(
-            'class' => 'vendor.clevertech.YiiBooster.src.components.Bootstrap',
-            'coreCss' => true, // whether to register the Bootstrap core CSS (bootstrap.min.css), defaults to true
+            'class' => 'vendor.clevertech.yiibooster.src.components.Bootstrap',
+            'coreCss' => false, // whether to register the Bootstrap core CSS (bootstrap.min.css), defaults to true
             'responsiveCss' => false, // whether to register the Bootstrap responsive CSS (bootstrap-responsive.min.css), default to false
             'plugins' => array(
                 // Optionally you can configure the "global" plugins (button, popover, tooltip and transition)
