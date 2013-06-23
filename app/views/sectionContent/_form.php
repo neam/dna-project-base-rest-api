@@ -9,10 +9,11 @@
 	);
 	?>
 	<?php
-	$form = $this->beginWidget('CActiveForm', array(
+	$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		'id' => 'section-content-form',
 		'enableAjaxValidation' => true,
 		'enableClientValidation' => true,
+		'type' => 'horizontal',
 	));
 
 	echo $form->errorSummary($model);
@@ -21,203 +22,111 @@
 		<div class="span8"> <!-- main inputs -->
 
 
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<?php echo $form->labelEx($model, 'ordinal'); ?>
+			<?php
+			echo $form->relationRow($model, 'section_id', array(
+				'model' => $model,
+				'relation' => 'section',
+				'fields' => 'title',
+				'allowEmpty' => false,
+				'style' => 'dropdownlist',
+				'htmlOptions' => array(
+					'checkAll' => 'all',
+				),
+			    ), array('class' => 'span5'));
+			?>
 
-					<?php echo $form->textField($model, 'ordinal'); ?>
-					<?php echo $form->error($model, 'ordinal'); ?>
-					<?php
-					if ('help.ordinal' != $help = Yii::t('crud', 'help.ordinal'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
+			<?php echo $form->textFieldRow($model, 'ordinal', array('class' => 'span5')); ?>
 
+			<?php
+			echo $form->relationRow($model, 'html_chunk_id', array(
+				'model' => $model,
+				'relation' => 'htmlChunk',
+				'fields' => 'modified',
+				'allowEmpty' => true,
+				'style' => 'dropdownlist',
+				'htmlOptions' => array(
+					'checkAll' => 'all',
+				),
+			    ), array('class' => 'span5'));
+			?>
 
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<?php echo $form->labelEx($model, 'created'); ?>
-					<?php echo $form->textField($model, 'created'); ?>
-					<?php echo $form->error($model, 'created'); ?>
-					<?php
-					if ('help.created' != $help = Yii::t('crud', 'help.created'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
+			<?php
+			echo $form->relationRow($model, 'viz_view_id', array(
+				'model' => $model,
+				'relation' => 'vizView',
+				'fields' => 'title',
+				'allowEmpty' => true,
+				'style' => 'dropdownlist',
+				'htmlOptions' => array(
+					'checkAll' => 'all',
+				),
+			    ), array('class' => 'span5'));
+			?>
 
+			<?php
+			echo $form->relationRow($model, 'video_file_id', array(
+				'model' => $model,
+				'relation' => 'videoFile',
+				'fields' => 'title',
+				'allowEmpty' => true,
+				'style' => 'dropdownlist',
+				'htmlOptions' => array(
+					'checkAll' => 'all',
+				),
+			    ), array('class' => 'span5'));
+			?>
 
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<?php echo $form->labelEx($model, 'modified'); ?>
-					<?php echo $form->textField($model, 'modified'); ?>
-					<?php echo $form->error($model, 'modified'); ?>
-					<?php
-					if ('help.modified' != $help = Yii::t('crud', 'help.modified'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
+			<?php
+			echo $form->relationRow($model, 'teachers_guide_id', array(
+				'model' => $model,
+				'relation' => 'teachersGuide',
+				'fields' => 'title',
+				'allowEmpty' => true,
+				'style' => 'dropdownlist',
+				'htmlOptions' => array(
+					'checkAll' => 'all',
+				),
+			    ), array('class' => 'span5'));
+			?>
 
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="section"><?php echo Yii::t('crud', 'Section'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'section',
-						'fields' => 'title',
-						'allowEmpty' => false,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
-					?>
-				</div>
-			</div>
+			<?php
+			echo $form->relationRow($model, 'exercise_id', array(
+				'model' => $model,
+				'relation' => 'exercise',
+				'fields' => 'title',
+				'allowEmpty' => true,
+				'style' => 'dropdownlist',
+				'htmlOptions' => array(
+					'checkAll' => 'all',
+				),
+			    ), array('class' => 'span5'));
+			?>
 
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="vizView"><?php echo Yii::t('crud', 'VizView'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'vizView',
-						'fields' => 'title',
-						'allowEmpty' => true,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
-					?>
-				</div>
-			</div>
+			<?php
+			echo $form->relationRow($model, 'presentation_id', array(
+				'model' => $model,
+				'relation' => 'presentation',
+				'fields' => 'title',
+				'allowEmpty' => true,
+				'style' => 'dropdownlist',
+				'htmlOptions' => array(
+					'checkAll' => 'all',
+				),
+			    ), array('class' => 'span5'));
+			?>
 
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="videoFile"><?php echo Yii::t('crud', 'VideoFile'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'videoFile',
-						'fields' => 'title',
-						'allowEmpty' => true,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
-					?>
-				</div>
-			</div>
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="teachersGuide"><?php echo Yii::t('crud', 'TeachersGuide'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'teachersGuide',
-						'fields' => 'title',
-						'allowEmpty' => true,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
-					?>
-				</div>
-			</div>
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="exercise"><?php echo Yii::t('crud', 'Exercise'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'exercise',
-						'fields' => 'title',
-						'allowEmpty' => true,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
-					?>
-				</div>
-			</div>
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="presentation"><?php echo Yii::t('crud', 'Presentation'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'presentation',
-						'fields' => 'title',
-						'allowEmpty' => true,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
-					?>
-				</div>
-			</div>
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="dataChunk"><?php echo Yii::t('crud', 'DataChunk'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'dataChunk',
-						'fields' => 'title',
-						'allowEmpty' => true,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
-					?>
-				</div>
-			</div>
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="htmlChunk"><?php echo Yii::t('crud', 'HtmlChunk'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'htmlChunk',
-						'fields' => 'modified',
-						'allowEmpty' => true,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
-					?>
-				</div>
-			</div>
-
+			<?php
+			echo $form->relationRow($model, 'data_chunk_id', array(
+				'model' => $model,
+				'relation' => 'dataChunk',
+				'fields' => 'title',
+				'allowEmpty' => true,
+				'style' => 'dropdownlist',
+				'htmlOptions' => array(
+					'checkAll' => 'all',
+				),
+			    ), array('class' => 'span5'));
+			?>
 		</div> <!-- main inputs -->
 
 

@@ -9,6 +9,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'id'); ?>
+
 		<?php echo $form->textField($model, 'id', array('size' => 20, 'maxlength' => 20)); ?>
 	</div>
 
@@ -19,12 +20,42 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'created'); ?>
-		<?php echo $form->textField($model, 'created'); ?>
+		<?php
+		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'created',
+			'language' => substr(Yii::app()->language, 0, strpos(Yii::app()->language, '_')),
+			'htmlOptions' => array('size' => 10),
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd hh:ii:ss',
+			),
+		    )
+		);
+		;
+		?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'modified'); ?>
-		<?php echo $form->textField($model, 'modified'); ?>
+		<?php
+		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'modified',
+			'language' => substr(Yii::app()->language, 0, strpos(Yii::app()->language, '_')),
+			'htmlOptions' => array('size' => 10),
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd hh:ii:ss',
+			),
+		    )
+		);
+		;
+		?>
 	</div>
 
 	<div class="row">
