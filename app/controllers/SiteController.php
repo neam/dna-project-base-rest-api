@@ -34,6 +34,15 @@ class SiteController extends Controller
 	}
 
 	/**
+	 * Gii script console
+	 */
+	public function actionGiiscript()
+	{
+		Yii::app()->theme = 'backend';
+		$this->render('giiscript');
+	}
+
+	/**
 	 * This is the action to handle external exceptions.
 	 */
 	public function actionError()
