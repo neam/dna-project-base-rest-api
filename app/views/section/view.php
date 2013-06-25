@@ -52,7 +52,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->modified, array('sectionContent/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->ordinal, array('sectionContent/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('sectionContent/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}

@@ -80,7 +80,7 @@ $this->breadcrumbs[] = $model->id;
 			'modified',
 			array(
 				'name' => 'html_chunk_id',
-				'value' => ($model->htmlChunk !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->htmlChunk->modified, array('htmlChunk/view', 'id' => $model->htmlChunk->id), array('class' => 'btn')) : 'n/a',
+				'value' => ($model->htmlChunk !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->htmlChunk->markup, array('htmlChunk/view', 'id' => $model->htmlChunk->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
 			array(

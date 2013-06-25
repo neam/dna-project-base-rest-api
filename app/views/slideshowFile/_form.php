@@ -4,115 +4,22 @@
 	</p>
 
 
+
 	<?php
-	$this->widget('echosen.EChosen', array('target' => 'select')
-	);
-	?>
-	<?php
-	$form = $this->beginWidget('CActiveForm', array(
+	$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		'id' => 'slideshow-file-form',
 		'enableAjaxValidation' => true,
 		'enableClientValidation' => true,
+		'type' => 'horizontal',
 	));
 
 	echo $form->errorSummary($model);
+
+	$this->renderPartial('_elements', array(
+		'model' => $model,
+		'form' => $form,
+	));
 	?>
-	<div class="row">
-		<div class="span8"> <!-- main inputs -->
-
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<?php echo $form->labelEx($model, 'title'); ?>
-
-					<?php echo $form->textField($model, 'title', array('size' => 60, 'maxlength' => 255)); ?>
-					<?php echo $form->error($model, 'title'); ?>
-					<?php
-					if ('help.title' != $help = Yii::t('crud', 'help.title'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
-
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<?php echo $form->labelEx($model, 'created'); ?>
-					<?php echo $form->textField($model, 'created'); ?>
-					<?php echo $form->error($model, 'created'); ?>
-					<?php
-					if ('help.created' != $help = Yii::t('crud', 'help.created'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
-
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<?php echo $form->labelEx($model, 'modified'); ?>
-					<?php echo $form->textField($model, 'modified'); ?>
-					<?php echo $form->error($model, 'modified'); ?>
-					<?php
-					if ('help.modified' != $help = Yii::t('crud', 'help.modified'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="originalMedia"><?php echo Yii::t('crud', 'OriginalMedia'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'originalMedia',
-						'fields' => 'title',
-						'allowEmpty' => true,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
-					?>
-				</div>
-			</div>
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<label for="processedMedia"><?php echo Yii::t('crud', 'ProcessedMedia'); ?></label>
-					<?php
-					$this->widget(
-					    'Relation', array(
-						'model' => $model,
-						'relation' => 'processedMedia',
-						'fields' => 'title',
-						'allowEmpty' => true,
-						'style' => 'dropdownlist',
-						'htmlOptions' => array(
-							'checkAll' => 'all'),
-					    )
-					)
-					?>
-				</div>
-			</div>
-
-		</div> <!-- main inputs -->
-
-
-		<div class="span4"> <!-- sub inputs -->
-
-		</div> <!-- sub inputs -->
-	</div>
-
-
 	<div class="form-actions">
 
 		<?php
@@ -128,3 +35,6 @@
 
 	<?php $this->endWidget() ?>
 </div> <!-- form -->
+
+<?php if (isset($this->clips['modal_forms'])): ?>    <!-- Modal create-forms referenced to from elements create buttons -->
+	<?php echo $this->clips['modal_forms']; ?><?php endif; ?>

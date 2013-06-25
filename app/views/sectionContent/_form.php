@@ -4,13 +4,7 @@
 	</p>
 
 
-	<?php
-	/*
-	  $this->widget('echosen.EChosen', array('target' => 'select')
-	  );
-	 *
-	 */
-	?>
+
 	<?php
 	$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		'id' => 'section-content-form',
@@ -20,140 +14,12 @@
 	));
 
 	echo $form->errorSummary($model);
+
+	$this->renderPartial('_elements', array(
+		'model' => $model,
+		'form' => $form,
+	));
 	?>
-	<div class="row">
-		<div class="span8"> <!-- main inputs -->
-
-
-			<?php
-			echo $form->relationRow($model, 'section_id', array(
-				'model' => $model,
-				'relation' => 'section',
-				'fields' => 'title',
-				'allowEmpty' => false,
-				'style' => 'dropdownlist',
-				'htmlOptions' => array(
-					'checkAll' => 'all',
-				),
-			    ), array('class' => 'span5'));
-			?>
-
-			<?php echo $form->textFieldRow($model, 'ordinal', array('class' => 'span5')); ?>
-
-			<?php
-			echo $form->relationRow($model, 'html_chunk_id', array(
-				'model' => $model,
-				'relation' => 'htmlChunk',
-				'fields' => 'modified',
-				'allowEmpty' => true,
-				'style' => 'dropdownlist',
-				'htmlOptions' => array(
-					'checkAll' => 'all',
-				),
-			    ), array('class' => 'span5'));
-			?>
-
-			<?php
-			echo $form->relationRow($model, 'viz_view_id', array(
-				'model' => $model,
-				'relation' => 'vizView',
-				'fields' => 'title',
-				'allowEmpty' => true,
-				'style' => 'dropdownlist',
-				'htmlOptions' => array(
-					'checkAll' => 'all',
-				),
-			));
-			?>
-
-			<div class="control-group">
-				<div class="controls">
-					<?php
-					echo $this->widget('bootstrap.widgets.TbButton', array(
-						'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Viz View'))),
-						'icon' => 'icon-plus',
-						'htmlOptions' => array(
-							'data-toggle' => 'modal',
-							'data-target' => '#viz-view-form-modal',
-						),
-					    ), true);
-					?>
-				</div>
-			</div>
-
-			<?php
-			echo $form->relationRow($model, 'video_file_id', array(
-				'model' => $model,
-				'relation' => 'videoFile',
-				'fields' => 'title',
-				'allowEmpty' => true,
-				'style' => 'dropdownlist',
-				'htmlOptions' => array(
-					'checkAll' => 'all',
-				),
-			    ), array('class' => 'span5'));
-			?>
-
-			<?php
-			echo $form->relationRow($model, 'teachers_guide_id', array(
-				'model' => $model,
-				'relation' => 'teachersGuide',
-				'fields' => 'title',
-				'allowEmpty' => true,
-				'style' => 'dropdownlist',
-				'htmlOptions' => array(
-					'checkAll' => 'all',
-				),
-			    ), array('class' => 'span5'));
-			?>
-
-			<?php
-			echo $form->relationRow($model, 'exercise_id', array(
-				'model' => $model,
-				'relation' => 'exercise',
-				'fields' => 'title',
-				'allowEmpty' => true,
-				'style' => 'dropdownlist',
-				'htmlOptions' => array(
-					'checkAll' => 'all',
-				),
-			    ), array('class' => 'span5'));
-			?>
-
-			<?php
-			echo $form->relationRow($model, 'presentation_id', array(
-				'model' => $model,
-				'relation' => 'presentation',
-				'fields' => 'title',
-				'allowEmpty' => true,
-				'style' => 'dropdownlist',
-				'htmlOptions' => array(
-					'checkAll' => 'all',
-				),
-			    ), array('class' => 'span5'));
-			?>
-
-			<?php
-			echo $form->relationRow($model, 'data_chunk_id', array(
-				'model' => $model,
-				'relation' => 'dataChunk',
-				'fields' => 'title',
-				'allowEmpty' => true,
-				'style' => 'dropdownlist',
-				'htmlOptions' => array(
-					'checkAll' => 'all',
-				),
-			    ), array('class' => 'span5'));
-			?>
-		</div> <!-- main inputs -->
-
-
-		<div class="span4"> <!-- sub inputs -->
-
-		</div> <!-- sub inputs -->
-	</div>
-
-
 	<div class="form-actions">
 
 		<?php
@@ -170,10 +36,5 @@
 	<?php $this->endWidget() ?>
 </div> <!-- form -->
 
-<!-- Modal create-forms referenced to from above -->
-<?php
-$this->renderPartial('/vizView/_modal_form', array(
-	'inputSelector' => '#SectionContent_viz_view_id',
-	'model' => new VizView,
-	'field' => 'title',
-));
+<?php if (isset($this->clips['modal_forms'])): ?>    <!-- Modal create-forms referenced to from elements create buttons -->
+	<?php echo $this->clips['modal_forms']; ?><?php endif; ?>

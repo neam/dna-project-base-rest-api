@@ -4,10 +4,7 @@
 	</p>
 
 
-	<?php
-	$this->widget('echosen.EChosen', array('target' => 'select')
-	);
-	?>
+
 	<?php
 	$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		'id' => 'viz-view-form',
@@ -38,3 +35,6 @@
 
 	<?php $this->endWidget() ?>
 </div> <!-- form -->
+
+<?php if (isset($this->clips['modal_forms'])): ?>    <!-- Modal create-forms referenced to from elements create buttons -->
+	<?php echo $this->clips['modal_forms']; ?><?php endif; ?>
