@@ -5,8 +5,11 @@
 
 
 	<?php
-	$this->widget('echosen.EChosen', array('target' => 'select')
-	);
+	/*
+	  $this->widget('echosen.EChosen', array('target' => 'select')
+	  );
+	 *
+	 */
 	?>
 	<?php
 	$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -60,8 +63,26 @@
 				'htmlOptions' => array(
 					'checkAll' => 'all',
 				),
-			    ), array('class' => 'span5'));
+			    ), array(
+				'append' => $this->widget('bootstrap.widgets.TbButton', array(
+					'label' => 'Create',
+					'icon' => 'icon-plus',
+					'htmlOptions' => array(
+						'data-toggle' => 'modal',
+						'data-target' => '#viz-view-form-modal',
+					),
+				    ), true),
+				'appendOptions' => array(
+					'class' => 'remove-class-add-on',
+				),
+			));
 			?>
+
+			<script>
+				$(function() {
+					$('.remove-class-add-on').removeClass('add-on');
+				});
+			</script>
 
 			<?php
 			echo $form->relationRow($model, 'video_file_id', array(
@@ -151,3 +172,9 @@
 
 	<?php $this->endWidget() ?>
 </div> <!-- form -->
+
+<?php
+$this->renderPartial('/vizView/_modal_create', array(
+	'inputSelector' => '#' . get_class($model) . '_viz_view_id',
+	'field' => 'title',
+));

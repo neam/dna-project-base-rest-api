@@ -18,7 +18,7 @@ class VizViewController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions' => array('create', 'editableSaver', 'update', 'delete', 'admin', 'index', 'view'),
+				'actions' => array('create', 'editableSaver', 'editableCreator', 'update', 'delete', 'admin', 'index', 'view'),
 				'roles' => array('VizView.*'),
 			),
 			array('deny',
@@ -125,6 +125,28 @@ class VizViewController extends Controller
 		Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
 		$es = new EditableSaver('VizView');  // classname of model to be updated
 		$es->update();
+	}
+
+	public function actionEditableCreator()
+	{
+		if (isset($_POST['VizView']))
+		{
+			$model = new VizView;
+			$model->attributes = $_POST['VizView'];
+			if ($model->save())
+			{
+				echo CJSON::encode($model->getAttributes());
+			} else
+			{
+				$errors = array_map(function($v) {
+					    return join(', ', $v);
+				    }, $model->getErrors());
+				echo CJSON::encode(array('errors' => $errors));
+			}
+		} else
+		{
+			throw new CHttpException(400, 'Invalid request');
+		}
 	}
 
 	public function actionDelete($id)
