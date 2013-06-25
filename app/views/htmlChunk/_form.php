@@ -9,10 +9,11 @@
 	);
 	?>
 	<?php
-	$form = $this->beginWidget('CActiveForm', array(
+	$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		'id' => 'html-chunk-form',
 		'enableAjaxValidation' => true,
 		'enableClientValidation' => true,
+		'type' => 'horizontal',
 	));
 
 	echo $form->errorSummary($model);
@@ -23,19 +24,22 @@
 
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
-					<?php echo $form->labelEx($model, 'markup'); ?>
-
-					<?php echo $form->textArea($model, 'markup', array('rows' => 6, 'cols' => 50)); ?>
-					<?php echo $form->error($model, 'markup'); ?>
-					<?php
-					if ('help.markup' != $help = Yii::t('crud', 'help.markup'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
 				</div>
 			</div>
 
+			<?php //echo $form->textAreaRow($model, 'markup', array('class' => 'span8', 'rows' => 5)); ?>
+			<?php //echo $form->redactorRow($model, 'markup', array('class' => 'span4', 'rows' => 5)); ?>
+			<?php
+			echo $form->html5EditorRow($model, 'markup', array('class' => 'span4', 'rows' => 5, 'height' => '200', 'options' => array(
+					'locale' => 'en',
+					'link' => true,
+					'image' => false,
+					'color' => false,
+					'html' => true,
+			)));
+			?>
+			<?php //echo $form->ckEditorRow($model, 'markup', array('options' => array('fullpage' => 'js:true', 'width' => '640', 'resize_maxWidth' => '640', 'resize_minWidth' => '320')));  ?>
+			<?php //echo $form->markdownEditorRow($model, 'markup', array('height' => '200px'));  ?>
 
 			<div class="row-fluid input-block-level-container">
 				<div class="span12">
