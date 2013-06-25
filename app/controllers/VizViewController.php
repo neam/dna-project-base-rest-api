@@ -18,7 +18,16 @@ class VizViewController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions' => array('create', 'editableSaver', 'editableCreator', 'update', 'delete', 'admin', 'index', 'view'),
+				'actions' => array(
+					'index',
+					'view',
+					'create',
+					'update',
+					'editableSaver',
+					'editableCreator',
+					'admin',
+					'delete',
+				),
 				'roles' => array('VizView.*'),
 			),
 			array('deny',
@@ -208,6 +217,23 @@ class VizViewController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+
+	/**
+	 * appendClip() begins recording for concatenation to the end of a clip,
+	 * if the clip already exists. If the clip does not already exists, this
+	 * method begins recording a new clip of the given name.
+	 *
+	 * @param object $controller View's controller
+	 * @param string $targetClip Name of clip to which to append clipboard
+	 */
+	public function appendClip($targetClip)
+	{
+		$currentClip = '';
+		if (isset($this->clips[$targetClip]))
+			$currentClip = $this->clips[$targetClip];
+		$this->beginClip($targetClip);
+		echo $currentClip;
 	}
 
 }

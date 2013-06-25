@@ -18,11 +18,21 @@ class ChapterController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions' => array('view'),
+				'actions' => array(
+					'view',
+				),
 				'users' => array('*'),
 			),
 			array('allow',
-				'actions' => array('create', 'editableSaver', 'update', 'delete', 'admin', 'index'),
+				'actions' => array(
+					'index',
+					'create',
+					'update',
+					'editableSaver',
+					'editableCreator',
+					'admin',
+					'delete',
+				),
 				'roles' => array('Chapter.*'),
 			),
 			array('deny',
@@ -131,6 +141,28 @@ class ChapterController extends Controller
 		$es->update();
 	}
 
+	public function actionEditableCreator()
+	{
+		if (isset($_POST['Chapter']))
+		{
+			$model = new Chapter;
+			$model->attributes = $_POST['Chapter'];
+			if ($model->save())
+			{
+				echo CJSON::encode($model->getAttributes());
+			} else
+			{
+				$errors = array_map(function($v) {
+					    return join(', ', $v);
+				    }, $model->getErrors());
+				echo CJSON::encode(array('errors' => $errors));
+			}
+		} else
+		{
+			throw new CHttpException(400, 'Invalid request');
+		}
+	}
+
 	public function actionDelete($id)
 	{
 		if (Yii::app()->request->isPostRequest)
@@ -190,6 +222,23 @@ class ChapterController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+
+	/**
+	 * appendClip() begins recording for concatenation to the end of a clip,
+	 * if the clip already exists. If the clip does not already exists, this
+	 * method begins recording a new clip of the given name.
+	 *
+	 * @param object $controller View's controller
+	 * @param string $targetClip Name of clip to which to append clipboard
+	 */
+	public function appendClip($targetClip)
+	{
+		$currentClip = '';
+		if (isset($this->clips[$targetClip]))
+			$currentClip = $this->clips[$targetClip];
+		$this->beginClip($targetClip);
+		echo $currentClip;
 	}
 
 }
