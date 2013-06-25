@@ -1,5 +1,9 @@
 <div class="view">
 
+	<?php if (!is_null($data->html_chunk_id)): ?>
+		<?php $this->renderPartial('/htmlChunk/_view', array('data' => $data->htmlChunk)); ?>
+	<?php endif; ?>
+
 	<?php if (!is_null($data->viz_view_id)): ?>
 		<?php $this->renderPartial('/vizView/_view', array('data' => $data->vizView)); ?>
 	<?php endif; ?>

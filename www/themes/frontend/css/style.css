@@ -311,3 +311,23 @@
 .admin-container.hide {
 	display: none;
 }
+
+/* Wider higher for html chunk */
+
+#html-chunk-form-modal.modal-body
+{
+/*	max-height:80%;*/
+}
+#html-chunk-form-modal.modal
+{
+/*	height:80%;*/
+	width:70%;
+	margin-left: -35%;
+}
+@media (max-width: 768px) {
+	#html-chunk-form-modal.modal
+	{
+		width:90%;
+        margin-left: 2%;
+	}
+}
