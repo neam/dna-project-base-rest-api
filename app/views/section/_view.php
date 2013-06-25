@@ -11,7 +11,11 @@
 
 		<?php
 	else:
-		echo Yii::t('app', 'Section contains no sectionContents');
+		?>
+		<div class="alert">
+			<?php echo Yii::t('app', 'Section contains no sectionContents'); ?>
+		</div>
+	<?php
 	endif;
 	?>
 

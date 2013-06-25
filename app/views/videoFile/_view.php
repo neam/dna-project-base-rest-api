@@ -6,7 +6,9 @@
 
 	<?php else: ?>
 
-		No processed media file available
+		<div class="alert">
+			<?php echo Yii::t('app', 'No processed media file available'); ?>
+		</div>
 
 	<?php endif; ?>
 

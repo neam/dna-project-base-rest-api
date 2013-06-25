@@ -15,7 +15,9 @@
 	<?php elseif (!is_null($data->data_chunk_id)): ?>
 		<?php $this->renderPartial('/dataChunk/_view', array('data' => $data->dataChunk)); ?>
 	<?php else: ?>
-		<?php echo Yii::t('app', 'Section content has no linked content'); ?>
+		<div class="alert">
+			<?php echo Yii::t('app', 'Section content has no linked content'); ?>
+		</div>
 	<?php endif; ?>
 
 </div>
