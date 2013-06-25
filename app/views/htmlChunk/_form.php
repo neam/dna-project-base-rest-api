@@ -21,14 +21,6 @@
 	<div class="row">
 		<div class="span8"> <!-- main inputs -->
 
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-				</div>
-			</div>
-
-			<?php //echo $form->textAreaRow($model, 'markup', array('class' => 'span8', 'rows' => 5)); ?>
-			<?php //echo $form->redactorRow($model, 'markup', array('class' => 'span4', 'rows' => 5)); ?>
 			<?php
 			echo $form->html5EditorRow($model, 'markup', array('class' => 'span4', 'rows' => 5, 'height' => '200', 'options' => array(
 					'locale' => 'en',
@@ -38,37 +30,6 @@
 					'html' => true,
 			)));
 			?>
-			<?php //echo $form->ckEditorRow($model, 'markup', array('options' => array('fullpage' => 'js:true', 'width' => '640', 'resize_maxWidth' => '640', 'resize_minWidth' => '320')));  ?>
-			<?php //echo $form->markdownEditorRow($model, 'markup', array('height' => '200px'));  ?>
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<?php echo $form->labelEx($model, 'created'); ?>
-					<?php echo $form->textField($model, 'created'); ?>
-					<?php echo $form->error($model, 'created'); ?>
-					<?php
-					if ('help.created' != $help = Yii::t('crud', 'help.created'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
-
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<?php echo $form->labelEx($model, 'modified'); ?>
-					<?php echo $form->textField($model, 'modified'); ?>
-					<?php echo $form->error($model, 'modified'); ?>
-					<?php
-					if ('help.modified' != $help = Yii::t('crud', 'help.modified'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
 
 		</div> <!-- main inputs -->
 
