@@ -9,10 +9,11 @@
 	);
 	?>
 	<?php
-	$form = $this->beginWidget('CActiveForm', array(
+	$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		'id' => 'viz-view-form',
 		'enableAjaxValidation' => true,
 		'enableClientValidation' => true,
+		'type' => 'horizontal',
 	));
 
 	echo $form->errorSummary($model);
@@ -21,51 +22,11 @@
 		<div class="span8"> <!-- main inputs -->
 
 
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<?php echo $form->labelEx($model, 'title'); ?>
+			<?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
 
-					<?php echo $form->textField($model, 'title', array('size' => 60, 'maxlength' => 255)); ?>
-					<?php echo $form->error($model, 'title'); ?>
-					<?php
-					if ('help.title' != $help = Yii::t('crud', 'help.title'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
+			<?php echo $form->textFieldRow($model, 'created', array()); ?>
 
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<?php echo $form->labelEx($model, 'created'); ?>
-					<?php echo $form->textField($model, 'created'); ?>
-					<?php echo $form->error($model, 'created'); ?>
-					<?php
-					if ('help.created' != $help = Yii::t('crud', 'help.created'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
-
-
-			<div class="row-fluid input-block-level-container">
-				<div class="span12">
-					<?php echo $form->labelEx($model, 'modified'); ?>
-					<?php echo $form->textField($model, 'modified'); ?>
-					<?php echo $form->error($model, 'modified'); ?>
-					<?php
-					if ('help.modified' != $help = Yii::t('crud', 'help.modified'))
-					{
-						echo "<span class='help-block'>{$help}</span>";
-					}
-					?>
-				</div>
-			</div>
-
+			<?php echo $form->textFieldRow($model, 'modified', array()); ?>
 		</div> <!-- main inputs -->
 
 
