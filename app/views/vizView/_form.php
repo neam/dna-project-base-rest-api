@@ -17,15 +17,12 @@
 	));
 
 	echo $form->errorSummary($model);
-	?>
 
-	<?php
 	$this->renderPartial('_elements', array(
 		'model' => $model,
 		'form' => $form,
 	));
 	?>
-
 	<div class="form-actions">
 
 		<?php
@@ -40,5 +37,4 @@
 	</div>
 
 	<?php $this->endWidget() ?>
-
 </div> <!-- form -->

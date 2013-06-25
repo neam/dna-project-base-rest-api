@@ -1,4 +1,8 @@
 <?php
+/* @var $this VizViewController */
+/* @var $inputSelector jQuery selector to the select-input of the parent form */
+/* @var $field The field of the newly added object to be used as the key/label of the parent form select-input */
+
 $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'viz-view-form-modal'));
 
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -11,7 +15,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal">×</button>
-	<h3><?php echo Yii::t('crud', 'Create {model}', array('{model}'=>Yii::t('crud', 'Viz View'))); ?></h3>
+	<h3><?php echo Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Viz View'))); ?></h3>
 </div>
 <div class="modal-body">
 
