@@ -19,4 +19,8 @@
 	endif;
 	?>
 
+	<div class="admin-container show">
+		<?php echo CHtml::link('<i class="icon-edit"></i> Update Section', array('section/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+	</div>
+
 </div>

@@ -11,5 +11,8 @@
 		</div>
 
 	<?php endif; ?>
+	<div class="admin-container show">
+		<?php echo CHtml::link('<i class="icon-edit"></i> Update Video File', array('videoFile/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+	</div>
 
 </div>

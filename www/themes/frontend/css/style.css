@@ -312,6 +312,11 @@
 	display: none;
 }
 
+/* Make sure admin container is visually connected with it's contents */
+.admin-container {
+	margin-bottom: 2em;
+}
+
 /* Wider higher for html chunk */
 
 #html-chunk-form-modal.modal-body

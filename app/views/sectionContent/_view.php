@@ -19,5 +19,8 @@
 			<?php echo Yii::t('app', 'Section content has no linked content'); ?>
 		</div>
 	<?php endif; ?>
+	<div class="admin-container show">
+		<?php echo CHtml::link('<i class="icon-edit"></i> Update Section Content', array('sectionContent/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+	</div>
 
 </div>
