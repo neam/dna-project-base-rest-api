@@ -17,7 +17,7 @@
 				scrollLeft: 0
 			});
 			$gii("html,body").animate({
-				scrollTop: 1000,
+				scrollTop: 1800,
 				scrollLeft: 200
 			});
 		}, 1000);
@@ -28,6 +28,20 @@
 		$gii('input[name="generate"]').click();
 	}
 
+	function previewAll() {
+		$('#model option').each(function(i, el) {
+
+			setTimeout(function() {
+
+				$(el).attr('selected', 'selected');
+				$('#s1').click();
+
+			}, i * 5000);
+
+		});
+
+	}
+
 	$(function() {
 		$('#gii')[0].contentWindow.onload = function() {
 			init$gii();
@@ -35,6 +49,7 @@
 
 		$('#s1').click(s1);
 		$('#s2').click(s2);
+		$('#previewAll').click(previewAll);
 		$('#reconnect').click(init$gii);
 
 	});
@@ -74,6 +89,9 @@ echo CHtml::dropDownList('model', null, array(
 <p>
 	<a href="#" id="s1" class="btn">Preview</a>
 	<a href="#" id="s2" class="btn">Generate</a>
+</p>
+<p>
+	<a href="#" id="previewAll" class="btn">Preview All</a>
 	<a href="#" id="reconnect" class="btn">Reconnect to frame</a>
 </p>
 
