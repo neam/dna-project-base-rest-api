@@ -8,14 +8,26 @@ $this->breadcrumbs[] = Yii::t('crud', 'Update');
 	<?php echo Yii::t('crud', 'Html Chunk') ?> <small><?php echo Yii::t('crud', 'Update') ?> #<?php echo $model->id ?></small></h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<h2>
-	<?php echo Yii::t('crud', 'Editable Detail View') ?></h2>
+<?php
+$this->renderPartial('_form', array(
+	'model' => $model));
+?>
 
 <?php
-$this->widget('EditableDetailView', array(
-	'data' => $model,
-	'url' => $this->createUrl('editableSaver'),
-));
+/*
+  Code example to include an editable detail view:
+
+  <h2>
+  <?php echo Yii::t('crud','Editable Detail View')?></h2>
+
+  <?php
+  $this->widget('EditableDetailView', array(
+  'data' => $model,
+  'url' => $this->createUrl('editableSaver'),
+  ));
+  ?>
+
+ */
 ?>
 
 
@@ -116,11 +128,3 @@ $this->widget('TbGridView', array(
 ));
 ?>
 
-
-<h2>
-	<?php echo Yii::t('crud', 'Update Form') ?></h2>
-
-<?php
-$this->renderPartial('_form', array(
-	'model' => $model));
-?>
