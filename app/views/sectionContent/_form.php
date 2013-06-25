@@ -63,26 +63,23 @@
 				'htmlOptions' => array(
 					'checkAll' => 'all',
 				),
-			    ), array(
-				'append' => $this->widget('bootstrap.widgets.TbButton', array(
-					'label' => 'Create',
-					'icon' => 'icon-plus',
-					'htmlOptions' => array(
-						'data-toggle' => 'modal',
-						'data-target' => '#viz-view-form-modal',
-					),
-				    ), true),
-				'appendOptions' => array(
-					'class' => 'remove-class-add-on',
-				),
 			));
 			?>
 
-			<script>
-				$(function() {
-					$('.remove-class-add-on').removeClass('add-on');
-				});
-			</script>
+			<div class="control-group">
+				<div class="controls">
+					<?php
+					echo $this->widget('bootstrap.widgets.TbButton', array(
+						'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Viz View'))),
+						'icon' => 'icon-plus',
+						'htmlOptions' => array(
+							'data-toggle' => 'modal',
+							'data-target' => '#viz-view-form-modal',
+						),
+					    ), true);
+					?>
+				</div>
+			</div>
 
 			<?php
 			echo $form->relationRow($model, 'video_file_id', array(
@@ -173,6 +170,7 @@
 	<?php $this->endWidget() ?>
 </div> <!-- form -->
 
+<!-- Modal create-forms referenced to from above -->
 <?php
 $this->renderPartial('/vizView/_modal_form', array(
 	'inputSelector' => '#SectionContent_viz_view_id',
