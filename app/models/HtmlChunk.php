@@ -6,6 +6,11 @@ Yii::import('HtmlChunk.*');
 
 class HtmlChunk extends BaseHtmlChunk
 {
+
+	public $markup_en;
+	public $markup_de;
+	public $markup_foo;
+
 	// Add your model-specific methods here. This file will not be overriden by gtc except you force it.
 	public static function model($className=__CLASS__)
 	{

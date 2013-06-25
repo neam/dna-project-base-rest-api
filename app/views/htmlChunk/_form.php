@@ -22,13 +22,21 @@
 		<div class="span8"> <!-- main inputs -->
 
 			<?php
-			echo $form->html5EditorRow($model, 'markup', array('class' => 'span4', 'rows' => 5, 'height' => '200', 'options' => array(
+			$editorOptions = array('class' => 'span4', 'rows' => 5, 'options' => array(
 					'locale' => 'en',
 					'link' => true,
 					'image' => false,
 					'color' => false,
 					'html' => true,
-			)));
+			));
+
+			$this->widget('bootstrap.widgets.TbTabs', array(
+				'tabs' => array(
+					array('label' => 'en', 'content' => $form->html5EditorRow($model, 'markup_en', $editorOptions), 'active' => true),
+					array('label' => 'de', 'content' => $form->html5EditorRow($model, 'markup_de', $editorOptions)),
+					array('label' => 'foo', 'content' => $form->html5EditorRow($model, 'markup_foo', $editorOptions)),
+				),
+			));
 			?>
 
 		</div> <!-- main inputs -->
