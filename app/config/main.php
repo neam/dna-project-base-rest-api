@@ -213,7 +213,7 @@ $mainConfig = array(
         ),
         'bootstrap' => array(
             'class' => 'vendor.clevertech.yiibooster.src.components.Bootstrap',
-            'coreCss' => false, // whether to register the Bootstrap core CSS (bootstrap.min.css), defaults to true
+            'coreCss' => true, // whether to register the Bootstrap core CSS (bootstrap.min.css), defaults to true
             'responsiveCss' => false, // whether to register the Bootstrap responsive CSS (bootstrap-responsive.min.css), default to false
             'plugins' => array(
                 // Optionally you can configure the "global" plugins (button, popover, tooltip and transition)
