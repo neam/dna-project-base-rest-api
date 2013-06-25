@@ -1,14 +1,18 @@
 <div class="row">
-	<div class="span8"> <!-- main inputs -->
+	<div class="span12"> <!-- main inputs -->
 
 		<?php
-		$editorOptions = array('rows' => 5, 'options' => array(
+		$editorOptions = array(
+			'rows' => 5,
+			'options' => array(
 				'locale' => 'en',
 				'link' => true,
 				'image' => false,
 				'color' => false,
 				'html' => true,
-		));
+			),
+			'width' => '98%', // necessary to workaround left border not showing
+		);
 
 		$this->widget('bootstrap.widgets.TbTabs', array(
 			'tabs' => array(
@@ -22,9 +26,5 @@
 
 	</div> <!-- main inputs -->
 
-
-	<div class="span4"> <!-- sub inputs -->
-
-	</div> <!-- sub inputs -->
 </div>
 

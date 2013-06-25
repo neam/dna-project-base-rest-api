@@ -10,7 +10,7 @@
 		'id' => 'html-chunk-form',
 		'enableAjaxValidation' => true,
 		'enableClientValidation' => true,
-		'type' => 'horizontal',
+		'type' => 'vertical',
 	));
 
 	echo $form->errorSummary($model);
