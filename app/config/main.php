@@ -56,6 +56,7 @@ $mainConfig = array(
         'vendor.phundament.p3extensions.widgets.*', // shared classes
         'vendor.phundament.p3extensions.helpers.*', // shared classes - P3StringHelper
         'vendor.phundament.p3pages.models.*', // Meta description and keywords (P3Media)
+        'vendor.phundament.p3media.models.*',
         // manual autoloading for components from packages, which do not support composer autoloading
         'vendor.mishamx.yii-user.models.*', // User Model
         'vendor.crisu83.yii-rights.components.*', // RWebUser
