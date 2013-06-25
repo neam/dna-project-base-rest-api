@@ -18,23 +18,13 @@
 
 	echo $form->errorSummary($model);
 	?>
-	<div class="row">
-		<div class="span8"> <!-- main inputs -->
 
-
-			<?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
-
-			<?php echo $form->textFieldRow($model, 'created', array()); ?>
-
-			<?php echo $form->textFieldRow($model, 'modified', array()); ?>
-		</div> <!-- main inputs -->
-
-
-		<div class="span4"> <!-- sub inputs -->
-
-		</div> <!-- sub inputs -->
-	</div>
-
+	<?php
+	$this->renderPartial('_elements', array(
+		'model' => $model,
+		'form' => $form,
+	));
+	?>
 
 	<div class="form-actions">
 
@@ -50,4 +40,5 @@
 	</div>
 
 	<?php $this->endWidget() ?>
+
 </div> <!-- form -->

@@ -174,7 +174,8 @@
 </div> <!-- form -->
 
 <?php
-$this->renderPartial('/vizView/_modal_create', array(
-	'inputSelector' => '#' . get_class($model) . '_viz_view_id',
+$this->renderPartial('/vizView/_modal_form', array(
+	'inputSelector' => '#SectionContent_viz_view_id',
+	'model' => new VizView,
 	'field' => 'title',
 ));

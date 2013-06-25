@@ -1,6 +1,4 @@
 <?php
-$model = new VizView();
-
 $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'viz-view-form-modal'));
 
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -18,19 +16,11 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 <div class="modal-body">
 
 	<?php
-	echo $form->errorSummary($model);
+	$this->renderPartial('/vizView/_elements', array(
+		'model' => $model,
+		'form' => $form,
+	));
 	?>
-	<div class="row">
-		<div class="span8"> <!-- main inputs -->
-
-			<?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
-
-		</div> <!-- main inputs -->
-
-		<div class="span4"> <!-- sub inputs -->
-
-		</div> <!-- sub inputs -->
-	</div>
 
 </div>
 <div class="modal-footer">
@@ -41,7 +31,6 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		'type' => 'post',
 		'success' => 'function(data, config) {
 				//$("#loader").show();
-				console.log("success", data, config);
 				if (data && data.id) {
 					$("#' . $form->id . '").trigger("reset");
 					$("#viz-view-form-modal").modal("hide");
@@ -71,6 +60,6 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 </div>
 
-<?php $this->endWidget(); // form ?>
 <?php
-$this->endWidget(); // modal ?>
+$this->endWidget(); // form
+$this->endWidget(); // modal
