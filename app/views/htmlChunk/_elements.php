@@ -5,7 +5,7 @@
 		$editorOptions = array(
 			'rows' => 5,
 			'options' => array(
-				'locale' => 'en',
+				//'locale' => 'en',
 				'link' => true,
 				'image' => false,
 				'color' => false,
