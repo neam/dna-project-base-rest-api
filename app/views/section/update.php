@@ -101,23 +101,21 @@ $this->widget('TbGridView', array(
 			'value' => 'CHtml::value($data,\'teachersGuide.title\')',
 			'filter' => CHtml::listData(TeachersGuide::model()->findAll(), 'id', 'title'),
 		),
-		/*
-		  array(
-		  'name'=>'exercise_id',
-		  'value'=>'CHtml::value($data,\'exercise.title\')',
-		  'filter'=>CHtml::listData(Exercise::model()->findAll(), 'id', 'title'),
-		  ),
-		  array(
-		  'name'=>'presentation_id',
-		  'value'=>'CHtml::value($data,\'presentation.title\')',
-		  'filter'=>CHtml::listData(Presentation::model()->findAll(), 'id', 'title'),
-		  ),
-		  array(
-		  'name'=>'data_chunk_id',
-		  'value'=>'CHtml::value($data,\'dataChunk.title\')',
-		  'filter'=>CHtml::listData(DataChunk::model()->findAll(), 'id', 'title'),
-		  ),
-		 */
+		array(
+			'name' => 'exercise_id',
+			'value' => 'CHtml::value($data,\'exercise.title\')',
+			'filter' => CHtml::listData(Exercise::model()->findAll(), 'id', 'title'),
+		),
+		array(
+			'name' => 'presentation_id',
+			'value' => 'CHtml::value($data,\'presentation.title\')',
+			'filter' => CHtml::listData(Presentation::model()->findAll(), 'id', 'title'),
+		),
+		array(
+			'name' => 'data_chunk_id',
+			'value' => 'CHtml::value($data,\'dataChunk.title\')',
+			'filter' => CHtml::listData(DataChunk::model()->findAll(), 'id', 'title'),
+		),
 		array(
 			'class' => 'TbButtonColumn',
 			'viewButtonIcon' => 'foo',
