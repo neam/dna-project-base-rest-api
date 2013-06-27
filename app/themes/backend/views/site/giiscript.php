@@ -72,6 +72,7 @@ echo CHtml::dropDownList('model', null, array(
 	'Chapter' => 'Chapter',
 	'DataChunk' => 'DataChunk',
 	'DataSource' => 'DataSource',
+	'DownloadLink' => 'DownloadLink',
 	'Exercise' => 'Exercise',
 	'HtmlChunk' => 'HtmlChunk',
 	'Presentation' => 'Presentation',

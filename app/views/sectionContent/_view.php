@@ -23,7 +23,7 @@
 	<?php endif; ?>
 	<?php if (Yii::app()->user->checkAccess('SectionContent.*')): ?>
 		<div class="admin-container show">
-			<?php echo CHtml::link('<i class="icon-edit"></i> Update Section Content', array('sectionContent/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+			<?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('crud', 'Update {model}', array('{model}' => Yii::t('crud', 'Section Content'))), array('sectionContent/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
 		</div>
 	<?php endif; ?>
 
