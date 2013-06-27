@@ -28,7 +28,7 @@
     ?>
 </head>
 
-<body data-spy="scroll" data-target=".bs-docs-sidebar">
+<body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="57">
 
 <?php $this->renderFile(Yii::getPathOfAlias('application.themes.frontend.views.layouts') . DIRECTORY_SEPARATOR . '_menu.php') ?>
 

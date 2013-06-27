@@ -13,10 +13,25 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 	$(function() {
 
 		// smooth scroll
-		$('a').smoothScroll({
+
+		$('.bs-docs-sidebar li a').click(function(event) {
+			event.preventDefault();
+		});
+
+		// http://stackoverflow.com/questions/645202/can-i-update-window-location-hash-without-having-the-web-page-scroll
+		function changeHashWithoutScrolling(hash) {
+			var id = hash.replace(/^.*#/, ''),
+				elem = document.getElementById(id);
+			elem.id = id + '-tmp';
+			window.location.hash = hash;
+			elem.id = id;
+		}
+
+		$('.bs-docs-sidebar li a').smoothScroll({
+			offset: -57,
 			afterScroll: function(e) {
 				// Necessary to do manually
-				window.location.hash = e.scrollTarget;
+				changeHashWithoutScrolling(e.scrollTarget);
 			}
 		});
 
