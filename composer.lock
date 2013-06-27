@@ -3,26 +3,18 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "91b4622c51e9c587bcde67a3b090c881",
+    "hash": "7e14ef6065851e6ffff99b4fc5a7b4bf",
     "packages": [
         {
-            "name": "clevertech/YiiBooster",
+            "name": "clevertech/yiibooster",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/clevertech/YiiBooster.git",
-                "reference": "af636b20fffb7198285c753ba35fe7fa8aae029c"
+                "url": "https://github.com/motin/YiiBooster.git",
+                "reference": "b04e6ad4d0cfe9c301d855b540385729130d2568"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/clevertech/YiiBooster/archive/af636b20fffb7198285c753ba35fe7fa8aae029c.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "yii-extension",
-            "description": "YiiBooster",
-            "homepage": "https://github.com/clevertech/YiiBooster",
-            "time": "2013-05-21 06:13:13"
+            "type": "library",
+            "time": "2013-06-27 07:21:48"
         },
         {
             "name": "crisu83/yii-rights",
@@ -880,15 +872,14 @@
         "crisu83/yii-rights": 20,
         "malyshev/yii-debug-toolbar": 20,
         "mishamx/yii-user": 20,
-        "firstrow/stranslateablebehavior": 20,
         "phundament/p3admin": 20,
         "phundament/p3widgets": 20,
         "phundament/p3pages": 20,
         "phundament/p3media": 20,
         "phundament/p3bootstrap": 20,
         "phundament/gii-template-collection": 20,
+        "firstrow/stranslateablebehavior": 20,
         "clevertech/yiibooster": 20,
-        "2amigos/yiiwheels": 20,
         "waalzer/app-demo-data": 20,
         "phundament/lessii": 20,
         "ifdattic/echosen": 20

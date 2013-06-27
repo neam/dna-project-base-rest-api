@@ -22,10 +22,6 @@
     },
     "repositories":[
         {
-            "type":"composer",
-            "url":"http://packages.phundament.com"
-        },
-        {
             "type": "package",
             "package": {
                 "name": "kswedberg/jquery-smooth-scroll",
@@ -40,6 +36,18 @@
         {
             "type": "package",
             "package": {
+                "name": "clevertech/yiibooster",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/motin/YiiBooster.git",
+                    "type": "git",
+                    "reference": "b04e6ad4d0cfe9c301d855b540385729130d2568"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
                 "name": "firstrow/stranslateablebehavior",
                 "version": "@dev",
                 "source": {
@@ -48,6 +56,10 @@
                 "reference": "b156cd3b182e2d18b90653f4e4f00b5f2c9df659"
                 }
             }
+        },
+        {
+            "type":"composer",
+            "url":"http://packages.phundament.com"
         }
     ],
     "minimum-stability":"dev",
