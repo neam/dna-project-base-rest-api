@@ -69,9 +69,11 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 		<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 		<!--<h1><?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small></h1>-->
 
-		<div class="admin-container show">
-			<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-		</div>
+		<?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>
+			<div class="admin-container show">
+				<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+			</div>
+		<?php endif; ?>
 
 		<?php if (!empty($model->sections)): ?>
 			<?php foreach ($model->sections as $foreignobj): ?>

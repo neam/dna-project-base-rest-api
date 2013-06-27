@@ -1,7 +1,9 @@
 <h2>Chapters in progress:</h2>
-<div class="admin-container show">
-	<?php $this->renderPartial("/chapter/_toolbar", array("model" => new Chapter)); ?>
-</div>
+<?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>
+	<div class="admin-container show">
+		<?php $this->renderPartial("/chapter/_toolbar", array("model" => new Chapter)); ?>
+	</div>
+<?php endif; ?>
 
 <?php if (empty($chaptersInProgress)): ?>
 	No chapters in progress

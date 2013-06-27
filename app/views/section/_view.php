@@ -19,8 +19,10 @@
 	endif;
 	?>
 
-	<div class="admin-container show">
-		<?php echo CHtml::link('<i class="icon-edit"></i> Update Section', array('section/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
-	</div>
+	<?php if (Yii::app()->user->checkAccess('Section.*')): ?>
+		<div class="admin-container show">
+			<?php echo CHtml::link('<i class="icon-edit"></i> Update Section', array('section/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+		</div>
+	<?php endif; ?>
 
 </div>
