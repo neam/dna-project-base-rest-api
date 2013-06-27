@@ -15,6 +15,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'section-content-section_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -23,12 +27,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#section-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/section/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SectionContent_section_id',
+			'model' => new Section,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php echo $form->textFieldRow($model, 'ordinal'); ?>
@@ -46,6 +62,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'section-content-html_chunk_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -54,12 +74,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#html-chunk-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/htmlChunk/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SectionContent_html_chunk_id',
+			'model' => new HtmlChunk,
+			'pk' => 'id',
+			'field' => 'markup',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php
@@ -75,6 +107,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'section-content-viz_view_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -83,12 +119,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#viz-view-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/vizView/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SectionContent_viz_view_id',
+			'model' => new VizView,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php
@@ -104,6 +152,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'section-content-video_file_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -112,12 +164,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#video-file-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/videoFile/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SectionContent_video_file_id',
+			'model' => new VideoFile,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php
@@ -133,6 +197,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'section-content-teachers_guide_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -141,12 +209,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#teachers-guide-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/teachersGuide/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SectionContent_teachers_guide_id',
+			'model' => new TeachersGuide,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php
@@ -162,6 +242,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'section-content-exercise_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -170,12 +254,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#exercise-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/exercise/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SectionContent_exercise_id',
+			'model' => new Exercise,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php
@@ -191,6 +287,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'section-content-presentation_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -199,12 +299,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#presentation-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/presentation/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SectionContent_presentation_id',
+			'model' => new Presentation,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php
@@ -220,6 +332,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'section-content-data_chunk_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -228,12 +344,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#data-chunk-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/dataChunk/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SectionContent_data_chunk_id',
+			'model' => new DataChunk,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 	</div> <!-- main inputs -->
 
@@ -242,84 +370,3 @@
 
 	</div> <!-- sub inputs -->
 </div>
-
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/section/_modal_form', array(
-	'inputSelector' => '#SectionContent_section_id',
-	'model' => new Section,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/vizView/_modal_form', array(
-	'inputSelector' => '#SectionContent_viz_view_id',
-	'model' => new VizView,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/videoFile/_modal_form', array(
-	'inputSelector' => '#SectionContent_video_file_id',
-	'model' => new VideoFile,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/teachersGuide/_modal_form', array(
-	'inputSelector' => '#SectionContent_teachers_guide_id',
-	'model' => new TeachersGuide,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/exercise/_modal_form', array(
-	'inputSelector' => '#SectionContent_exercise_id',
-	'model' => new Exercise,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/presentation/_modal_form', array(
-	'inputSelector' => '#SectionContent_presentation_id',
-	'model' => new Presentation,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/dataChunk/_modal_form', array(
-	'inputSelector' => '#SectionContent_data_chunk_id',
-	'model' => new DataChunk,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/htmlChunk/_modal_form', array(
-	'inputSelector' => '#SectionContent_html_chunk_id',
-	'model' => new HtmlChunk,
-	'pk' => 'id',
-	'field' => 'markup',
-));
-$this->endClip();
-?>

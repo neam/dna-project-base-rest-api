@@ -17,6 +17,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'presentation-slideshow_file_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -25,12 +29,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#slideshow-file-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/slideshowFile/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#Presentation_slideshow_file_id',
+			'model' => new SlideshowFile,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 	</div> <!-- main inputs -->
 
@@ -39,14 +55,3 @@
 
 	</div> <!-- sub inputs -->
 </div>
-
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/slideshowFile/_modal_form', array(
-	'inputSelector' => '#Presentation_slideshow_file_id',
-	'model' => new SlideshowFile,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>

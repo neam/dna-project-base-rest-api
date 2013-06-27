@@ -17,6 +17,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'slideshow-file-original_media_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -25,12 +29,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#p3-media-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/p3Media/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SlideshowFile_original_media_id',
+			'model' => new P3Media,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php
@@ -46,6 +62,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'slideshow-file-processed_media_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -54,12 +74,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#p3-media-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/p3Media/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SlideshowFile_processed_media_id',
+			'model' => new P3Media,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 	</div> <!-- main inputs -->
 
@@ -68,24 +100,3 @@
 
 	</div> <!-- sub inputs -->
 </div>
-
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/p3Media/_modal_form', array(
-	'inputSelector' => '#SlideshowFile_original_media_id',
-	'model' => new P3Media,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/p3Media/_modal_form', array(
-	'inputSelector' => '#SlideshowFile_processed_media_id',
-	'model' => new P3Media,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>

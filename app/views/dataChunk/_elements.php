@@ -17,6 +17,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'data-chunk-data_source_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -25,12 +29,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#data-source-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/dataSource/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#DataChunk_data_source_id',
+			'model' => new DataSource,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php
@@ -46,6 +62,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'data-chunk-slideshow_file_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -54,12 +74,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#slideshow-file-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/slideshowFile/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#DataChunk_slideshow_file_id',
+			'model' => new SlideshowFile,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 	</div> <!-- main inputs -->
 
@@ -68,24 +100,3 @@
 
 	</div> <!-- sub inputs -->
 </div>
-
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/dataSource/_modal_form', array(
-	'inputSelector' => '#DataChunk_data_source_id',
-	'model' => new DataSource,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/slideshowFile/_modal_form', array(
-	'inputSelector' => '#DataChunk_slideshow_file_id',
-	'model' => new SlideshowFile,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>

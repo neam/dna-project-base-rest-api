@@ -36,5 +36,13 @@
 	<?php $this->endWidget() ?>
 </div> <!-- form -->
 
-<?php if (isset($this->clips['modal_forms'])): ?>    <!-- Modal create-forms referenced to from elements create buttons -->
-	<?php echo $this->clips['modal_forms']; ?><?php endif; ?>
+<!-- Modal create-forms referenced to from create buttons (if any) -->
+<?php
+foreach (array_reverse($this->clips, true) as $key => $clip)
+{ // Reverse order for recursive modals to render properly
+	if (strpos($key, "modal:") === 0)
+	{
+		echo $clip;
+	}
+}
+?>

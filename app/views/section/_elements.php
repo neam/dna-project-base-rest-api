@@ -15,6 +15,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'section-chapter_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -23,12 +27,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#chapter-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/chapter/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#Section_chapter_id',
+			'model' => new Chapter,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
@@ -45,14 +61,3 @@
 
 	</div> <!-- sub inputs -->
 </div>
-
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/chapter/_modal_form', array(
-	'inputSelector' => '#Section_chapter_id',
-	'model' => new Chapter,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>

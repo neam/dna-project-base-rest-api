@@ -17,6 +17,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'spreadsheet-file-data_source_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -25,12 +29,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#data-source-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/dataSource/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SpreadsheetFile_data_source_id',
+			'model' => new DataSource,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php
@@ -46,6 +62,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'spreadsheet-file-original_media_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -54,12 +74,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#p3-media-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/p3Media/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SpreadsheetFile_original_media_id',
+			'model' => new P3Media,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 
 		<?php
@@ -75,6 +107,10 @@
 		));
 		?>
 
+		<?php
+		$formId = 'spreadsheet-file-processed_media_id-' . \uniqid() . '-form';
+		?>
+
 		<div class="control-group">
                         <div class="controls">
 				<?php
@@ -83,12 +119,24 @@
 					'icon' => 'icon-plus',
 					'htmlOptions' => array(
 						'data-toggle' => 'modal',
-						'data-target' => '#p3-media-form-modal',
+						'data-target' => '#' . $formId . '-modal',
 					),
 				    ), true);
 				?>
                         </div>
 		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/p3Media/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SpreadsheetFile_processed_media_id',
+			'model' => new P3Media,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
 
 	</div> <!-- main inputs -->
 
@@ -97,34 +145,3 @@
 
 	</div> <!-- sub inputs -->
 </div>
-
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/dataSource/_modal_form', array(
-	'inputSelector' => '#SpreadsheetFile_data_source_id',
-	'model' => new DataSource,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/p3Media/_modal_form', array(
-	'inputSelector' => '#SpreadsheetFile_original_media_id',
-	'model' => new P3Media,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
-<?php
-$this->appendClip('modal_forms');
-$this->renderPartial('/p3Media/_modal_form', array(
-	'inputSelector' => '#SpreadsheetFile_processed_media_id',
-	'model' => new P3Media,
-	'pk' => 'id',
-	'field' => 'title',
-));
-$this->endClip();
-?>
