@@ -77,6 +77,11 @@ $this->widget('TbGridView', array(
 		  'value'=>'CHtml::value($data,\'dataChunk.title\')',
 		  'filter'=>CHtml::listData(DataChunk::model()->findAll(), 'id', 'title'),
 		  ),
+		  array(
+		  'name'=>'download_link_id',
+		  'value'=>'CHtml::value($data,\'downloadLink.title\')',
+		  'filter'=>CHtml::listData(DownloadLink::model()->findAll(), 'id', 'title'),
+		  ),
 		 */
 		array(
 			'class' => 'TbButtonColumn',

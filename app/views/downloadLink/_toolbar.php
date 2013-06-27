@@ -78,7 +78,7 @@
 			<?php
 			$this->widget('bootstrap.widgets.TbButtonGroup', array(
 				'buttons' => array(
-					array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'section - Section', 'url' => array('section/admin')), array('label' => 'vizView - VizView', 'url' => array('vizView/admin')), array('label' => 'videoFile - VideoFile', 'url' => array('videoFile/admin')), array('label' => 'teachersGuide - TeachersGuide', 'url' => array('teachersGuide/admin')), array('label' => 'exercise - Exercise', 'url' => array('exercise/admin')), array('label' => 'presentation - Presentation', 'url' => array('presentation/admin')), array('label' => 'downloadLink - DownloadLink', 'url' => array('downloadLink/admin')), array('label' => 'dataChunk - DataChunk', 'url' => array('dataChunk/admin')), array('label' => 'htmlChunk - HtmlChunk', 'url' => array('htmlChunk/admin')),
+					array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'p3Media - P3Media', 'url' => array('p3Media/admin')), array('label' => 'sectionContents - SectionContent', 'url' => array('sectionContent/admin')),
 						)
 					),
 				),

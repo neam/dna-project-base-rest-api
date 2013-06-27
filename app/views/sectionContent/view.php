@@ -58,6 +58,10 @@ $this->breadcrumbs[] = $model->id;
   <?php echo CHtml::encode($model->data_chunk_id); ?>
   <br />
 
+  <b><?php echo CHtml::encode($model->getAttributeLabel('download_link_id')); ?>:</b>
+  <?php echo CHtml::encode($model->download_link_id); ?>
+  <br />
+
  */ ?>
 
 
@@ -111,6 +115,11 @@ $this->breadcrumbs[] = $model->id;
 			array(
 				'name' => 'data_chunk_id',
 				'value' => ($model->dataChunk !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->dataChunk->title, array('dataChunk/view', 'id' => $model->dataChunk->id), array('class' => 'btn')) : 'n/a',
+				'type' => 'html',
+			),
+			array(
+				'name' => 'download_link_id',
+				'value' => ($model->downloadLink !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->downloadLink->title, array('downloadLink/view', 'id' => $model->downloadLink->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
 		),

@@ -363,6 +363,51 @@
 		$this->endClip();
 		?>
 
+
+		<?php
+		echo $form->relationRow($model, 'download_link_id', array(
+			'model' => $model,
+			'relation' => 'downloadLink',
+			'fields' => 'title',
+			'allowEmpty' => true,
+			'style' => 'dropdownlist',
+			'htmlOptions' => array(
+				'checkAll' => 'all',
+			),
+		));
+		?>
+
+		<?php
+		$formId = 'section-content-download_link_id-' . \uniqid() . '-form';
+		?>
+
+		<div class="control-group">
+                        <div class="controls">
+				<?php
+				echo $this->widget('bootstrap.widgets.TbButton', array(
+					'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Download Link'))),
+					'icon' => 'icon-plus',
+					'htmlOptions' => array(
+						'data-toggle' => 'modal',
+						'data-target' => '#' . $formId . '-modal',
+					),
+				    ), true);
+				?>
+                        </div>
+		</div>
+
+		<?php
+		$this->beginClip('modal:' . $formId . '-modal');
+		$this->renderPartial('/downloadLink/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SectionContent_download_link_id',
+			'model' => new DownloadLink,
+			'pk' => 'id',
+			'field' => 'title',
+		));
+		$this->endClip();
+		?>
+
 	</div> <!-- main inputs -->
 
 

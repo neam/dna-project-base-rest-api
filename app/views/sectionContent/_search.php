@@ -68,6 +68,11 @@
 		<?php echo $form->dropDownList($model, 'data_chunk_id', CHtml::listData(DataChunk::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model, 'download_link_id'); ?>
+		<?php echo $form->dropDownList($model, 'download_link_id', CHtml::listData(DownloadLink::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+	</div>
+
         <div class="row buttons">
 		<?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>
 	</div>

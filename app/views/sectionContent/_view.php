@@ -14,6 +14,8 @@
 		<?php $this->renderPartial('/presentation/_view', array('data' => $data->presentation)); ?>
 	<?php elseif (!is_null($data->data_chunk_id)): ?>
 		<?php $this->renderPartial('/dataChunk/_view', array('data' => $data->dataChunk)); ?>
+	<?php elseif (!is_null($data->download_link_id)): ?>
+		<?php $this->renderPartial('/downloadLink/_view', array('data' => $data->downloadLink)); ?>
 	<?php else: ?>
 		<div class="alert">
 			<?php echo Yii::t('app', 'Section content has no linked content'); ?>
