@@ -20,8 +20,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 </div>
 <div class="modal-body">
 
-	TODO SHOW UPLOAD FORM
-
+<iframe src="<?php echo Yii::app()->request->baseUrl; ?>/p3media/import/uploadPopup" width="100%" height="300" style="border: 0;"></iframe>
+	
 </div>
 <div class="modal-footer">
 	<a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">Cancel</a>
