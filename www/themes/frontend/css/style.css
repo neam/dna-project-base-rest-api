@@ -317,20 +317,20 @@
 	margin-bottom: 2em;
 }
 
-/* Wider higher for html chunk */
+/* Wider higher for modals */
 
-#html-chunk-form-modal.modal-body
+.modal-body
 {
 /*	max-height:80%;*/
 }
-#html-chunk-form-modal.modal
+.modal
 {
 /*	height:80%;*/
 	width:70%;
 	margin-left: -35%;
 }
 @media (max-width: 768px) {
-	#html-chunk-form-modal.modal
+	.modal
 	{
 		width:90%;
         margin-left: 2%;
