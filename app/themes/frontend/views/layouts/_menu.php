@@ -32,6 +32,8 @@ $this->widget(
                          'items' => array(
                              array('label' => Yii::t('app', 'Choose Language')),
                              array('label' => 'English',
+                                   'url'   => array_merge(array(''), $_GET, array('lang' => 'en'))),
+                             array('label' => 'English US',
                                    'url'   => array_merge(array(''), $_GET, array('lang' => 'en_us'))),
                              array('label' => 'Hindi',
                                    'url'   => array_merge(array(''), $_GET, array('lang' => 'hi_in'))),
@@ -43,6 +45,8 @@ $this->widget(
                                    'url'   => array_merge(array(''), $_GET, array('lang' => 'pt_pt'))),
                              array('label' => 'Castellano/Español',
                                    'url'   => array_merge(array(''), $_GET, array('lang' => 'es_es'))),
+                             array('label' => 'Deutsch',
+                                   'url'   => array_merge(array(''), $_GET, array('lang' => 'de'))),
                          ),
                      )
                  )

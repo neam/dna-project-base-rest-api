@@ -7,10 +7,14 @@
 $vendorPackageRelPath = "";
 //$vendorPackageRelPath = "../vendor/phundament/p3pages";
 
+// include main config
+$mainConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'main.php';
+$mainConfig = require($mainConfigFile);
+
 return array(
     'sourcePath'  => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $vendorPackageRelPath,
     'messagePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $vendorPackageRelPath . DIRECTORY_SEPARATOR . 'messages',
-    'languages'   => array('en', 'de'),
+    'languages'   => $mainConfig['components']['langHandler']['languages'],
     'fileTypes'   => array('php'),
     'overwrite'   => true,
     'exclude'     => array(

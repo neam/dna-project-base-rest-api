@@ -48,12 +48,24 @@ $gscmsConfig = array(
 		),
 		'langHandler' => array(
 			'languages' => array(
-				'en_us',
-				'es_es',
-				'fa_ir',
-				'hi_in',
-				'pt_pt',
-				'sv_se',
+				'en',
+				'es',
+				'fa',
+				'hi',
+				'pt',
+				'sv',
+				'de',
+			)
+		),
+		'messages' => array(
+			'class' => 'P3PhpMessageSource',
+			'mappings' => array(
+				'en_us' => 'en',
+				'es_es' => 'es',
+				'fa_ir' => 'fa',
+				'hi_in' => 'hi',
+				'pt_pt' => 'pt',
+				'sv_se' => 'sv',
 			)
 		),
 	)
