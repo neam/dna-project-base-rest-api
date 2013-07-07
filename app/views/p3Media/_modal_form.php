@@ -14,50 +14,32 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     ));
 ?>
 
+<script>
+
+	$(function() {
+
+		$('#<?php echo $formId; ?>-upload-iframe').on('done', function(event, p3_media_id) {
+
+			 $("#<?php echo $formId; ?>-modal").modal("hide");
+			 $("<?php echo $inputSelector; ?>")
+			 .append($("<option>", { value : p3_media_id, selected: "selected" }).text('<?php echo Yii::t('crud', 'Uploaded file'); ?>'));
+		});
+
+	});
+
+</script>
+
 <div class="modal-header">
 	<button type="button" class="close" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">×</button>
-	<h3><?php echo Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Viz View'))); ?></h3>
+	<h3><?php echo Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'File'))); ?></h3>
 </div>
 <div class="modal-body">
 
-<iframe src="<?php echo Yii::app()->request->baseUrl; ?>/p3media/import/uploadPopup" width="100%" height="300" style="border: 0;"></iframe>
-	
+	<iframe id="<?php echo $formId; ?>-upload-iframe" src="<?php echo Yii::app()->request->baseUrl; ?>/p3media/import/uploadPopup?parent_form=<?php echo $formId; ?>" width="100%" height="300" style="border: 0;"></iframe>
+
 </div>
 <div class="modal-footer">
-	<a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">Cancel</a>
-	<?php
-	echo CHtml::ajaxSubmitButton('Save', CHtml::normalizeUrl(array('foo/editableCreator', 'render' => true)), array(
-		'dataType' => 'json',
-		'type' => 'post',
-		'success' => 'function(data, config) {
-				//$("#loader").show();
-				if (data && data.' . $pk . ') {
-					$("#' . $form->id . '").trigger("reset");
-					$("#' . $formId . '-modal").modal("hide");
-					$("' . $inputSelector . '")
-						.append($("<option>", { value : data.' . $pk . ', selected: "selected" }).text(data.' . $field . '));
-				} else {
-					config.error.call(this, data && data.errors ? data.errors : "Unknown error");
-				}
-			}',
-		'error' => 'function(errors) {
-				//$("#loader").show();
-				var msg = "";
-				if (errors && errors.responseText) {
-					msg = errors.responseText;
-				} else {
-					$.each(errors, function(k, v) {
-						msg += v + "<br>";
-					});
-				}
-				alert(msg);
-			}',
-		'beforeSend' => 'function() {
-				//$("#loader").show();
-			}',
-	    ), array('class' => 'btn btn-primary'));
-	?>
-
+	<a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">Close</a>
 </div>
 
 <?php

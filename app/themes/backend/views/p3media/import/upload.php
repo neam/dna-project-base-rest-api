@@ -1,5 +1,6 @@
 <?php
-if ($this->layout !== "//layouts/popup") {
+if (!isset($_GET['parent_form']))
+{
 	$this->renderPartial('vendor.phundament.p3media.views.import.upload');
 	return;
 }
@@ -38,6 +39,21 @@ if ($this->layout !== "//layouts/popup") {
 		padding-bottom: 60px;
 	}
 </style>
+
+<script>
+
+	$(function() {
+
+		// Signal to parent window when a new p3 media object has been created
+		$('#fileupload').bind('fileuploaddone', function(event, data) {
+
+			parent.window.$('#<?php echo $_GET['parent_form']; ?>-upload-iframe').trigger('done', data.result[0].p3_media_id);
+
+		});
+
+	});
+
+</script>
 
 <?php
 $this->widget('jquery-file-upload-widget.EFileUpload');
