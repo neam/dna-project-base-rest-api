@@ -13,12 +13,15 @@ $migrateCommand = (getenv('PHUNDAMENT_TEST')?null:array('yiic', 'migrate', '--in
 $mainConfig = require('main.php');
 
 return array(
-    'aliases'    => array(
+    'aliases' => array_merge($mainConfig['aliases'], array(
         'vendor'  => dirname(__FILE__) . '/../../vendor',
         'webroot' => dirname(__FILE__) . '/../../www',
-    ),
+    )),
     'basePath'   => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name'       => 'Phundament Console Application',
+    'import' => array_merge($mainConfig['import'], array(
+        'application.commands.components.*',
+    )),
     'components' => CMap::mergeArray(
         $mainConfig['components'],
         array()
