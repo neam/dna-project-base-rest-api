@@ -47,7 +47,7 @@ return array (
   'Modified' => '',
   'Ordinal' => '',
   'Original Media' => '',
-  'P3 Media' => '',
+  'P3 Media' => 'File (Upload)',
   'Presentation' => '',
   'Presentations' => '',
   'Processed Media' => '',
