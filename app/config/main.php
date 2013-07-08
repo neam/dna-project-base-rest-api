@@ -270,7 +270,7 @@ $mainConfig = array(
         ),
         'langHandler' => array(
             'class' => 'vendor.phundament.p3extensions.components.P3LangHandler',
-            'languages' => array('en', 'de') // available languages 'ru', 'fr'
+            //'languages' => array('en', 'de') // available languages 'ru', 'fr'
         ),
         'log' => array(
             'class' => 'CLogRouter',
