@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7e14ef6065851e6ffff99b4fc5a7b4bf",
+    "hash": "fb558f9ad629b448cd3a125741f0286a",
     "packages": [
         {
             "name": "clevertech/yiibooster",
@@ -112,6 +112,54 @@
             "description": "Yii PHP Framework extension for registration and management users accounts.",
             "homepage": "https://github.com/phundament/yii-user",
             "time": "2013-04-08 21:52:47"
+        },
+        {
+            "name": "neam/yii-i18n-columns",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-i18n-columns.git",
+                "reference": "ac47a52923120b9cdef1d5513c82e490ce635787"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/ac47a52923120b9cdef1d5513c82e490ce635787",
+                "reference": "ac47a52923120b9cdef1d5513c82e490ce635787",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "yii-extension",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                },
+                {
+                    "name": "Andrej Bubis",
+                    "email": "firstrow@gmail.com"
+                }
+            ],
+            "description": "Transparent attribute translation for ActiveRecords, without requiring lookup tables for translated field contents.",
+            "homepage": "https://github.com/neam/yii-i18n-columns",
+            "keywords": [
+                "i18n",
+                "translation",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/neam/yii-i18n-columns/tree/master",
+                "issues": "https://github.com/neam/yii-i18n-columns/issues"
+            },
+            "time": "2013-07-08 18:55:06"
         },
         {
             "name": "phundament/gii-template-collection",
@@ -879,6 +927,7 @@
         "phundament/p3bootstrap": 20,
         "phundament/gii-template-collection": 20,
         "firstrow/stranslateablebehavior": 20,
+        "neam/yii-i18n-columns": 20,
         "clevertech/yiibooster": 20,
         "waalzer/app-demo-data": 20,
         "phundament/lessii": 20,
