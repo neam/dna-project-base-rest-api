@@ -100,9 +100,11 @@ abstract class BaseSectionContent extends ActiveRecord{
 	}
 
 
-	public function search()
+	public function search($criteria = null)
 	{
-		$criteria=new CDbCriteria;
+        if (is_null($criteria)) {
+    		$criteria=new CDbCriteria;
+        }
 
 		$criteria->compare('t.id', $this->id, true);
 		$criteria->compare('t.section_id', $this->section_id);
