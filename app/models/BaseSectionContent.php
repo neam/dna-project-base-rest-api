@@ -19,15 +19,15 @@
  * @property string $download_link_id
  *
  * Relations of table "section_content" available as properties of the model:
- * @property Section $section
- * @property VizView $vizView
- * @property VideoFile $videoFile
- * @property TeachersGuide $teachersGuide
- * @property Exercise $exercise
- * @property Presentation $presentation
- * @property DownloadLink $downloadLink
  * @property DataChunk $dataChunk
+ * @property DownloadLink $downloadLink
+ * @property Exercise $exercise
  * @property HtmlChunk $htmlChunk
+ * @property Presentation $presentation
+ * @property Section $section
+ * @property TeachersGuide $teachersGuide
+ * @property VideoFile $videoFile
+ * @property VizView $vizView
  */
 abstract class BaseSectionContent extends ActiveRecord{
 	public static function model($className=__CLASS__)
@@ -68,15 +68,15 @@ abstract class BaseSectionContent extends ActiveRecord{
 	public function relations()
 	{
 		return array(
-			'section' => array(self::BELONGS_TO, 'Section', 'section_id'),
-			'vizView' => array(self::BELONGS_TO, 'VizView', 'viz_view_id'),
-			'videoFile' => array(self::BELONGS_TO, 'VideoFile', 'video_file_id'),
-			'teachersGuide' => array(self::BELONGS_TO, 'TeachersGuide', 'teachers_guide_id'),
-			'exercise' => array(self::BELONGS_TO, 'Exercise', 'exercise_id'),
-			'presentation' => array(self::BELONGS_TO, 'Presentation', 'presentation_id'),
-			'downloadLink' => array(self::BELONGS_TO, 'DownloadLink', 'download_link_id'),
 			'dataChunk' => array(self::BELONGS_TO, 'DataChunk', 'data_chunk_id'),
+			'downloadLink' => array(self::BELONGS_TO, 'DownloadLink', 'download_link_id'),
+			'exercise' => array(self::BELONGS_TO, 'Exercise', 'exercise_id'),
 			'htmlChunk' => array(self::BELONGS_TO, 'HtmlChunk', 'html_chunk_id'),
+			'presentation' => array(self::BELONGS_TO, 'Presentation', 'presentation_id'),
+			'section' => array(self::BELONGS_TO, 'Section', 'section_id'),
+			'teachersGuide' => array(self::BELONGS_TO, 'TeachersGuide', 'teachers_guide_id'),
+			'videoFile' => array(self::BELONGS_TO, 'VideoFile', 'video_file_id'),
+			'vizView' => array(self::BELONGS_TO, 'VizView', 'viz_view_id'),
 		);
 	}
 
