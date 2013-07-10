@@ -1,8 +1,9 @@
 /vendor/
-/app/config/local.php
+/app/config/*-local.php
 /app/tests/codeception/_log
 
 nbproject
 .DS_Store
 .idea
 *.swp
+.vagrant
