@@ -63,6 +63,7 @@ $mainConfig = array(
         'vendor.crisu83.yii-bootstrap.widgets.*', // Bootstrap UI
         'vendor.yiiext.fancybox-widget.*', // Fancybox Widget
         'vendor.clevertech.yiibooster.src.widgets.*', //
+        'vendor.anggiaj.eselect2.*',
         'editable.*', // Include X-Editable for Yii classes
     ),
     'modules' => array(

@@ -77,6 +77,7 @@
         "neam/yii-i18n-columns":"@dev",
         "clevertech/yiibooster": "dev-master as 1.1.0",
         "vitalets/x-editable-yii": "1.2.0",
+		"anggiaj/eselect2": "dev-master",
         "waalzer/app-demo-data": "dev-master"
     },
     "require-dev":{

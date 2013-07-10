@@ -51,6 +51,10 @@
 		$this->endClip();
 		?>
 
+		<?php
+		$input = $this->widget('P3MediaSelect', array('model' => $model, 'attribute' => 'processed_media_id'), true);
+		echo $form->customRow($model, 'processed_media_id', $input);
+		?>
 
 		<?php
 		$input = $this->widget(

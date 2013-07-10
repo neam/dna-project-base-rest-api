@@ -6,6 +6,25 @@
     "hash": "41ee5b331550fe0c3bb8d4b85d8e2de2",
     "packages": [
         {
+            "name": "anggiaj/eselect2",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anggiaj/ESelect2.git",
+                "reference": "2d3d524d4bdc6e4edd49f98c550d47dd90dfe344"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/anggiaj/ESelect2/archive/2d3d524d4bdc6e4edd49f98c550d47dd90dfe344.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "yii-extension",
+            "description": "ESelect2 is a widget extension for Yii framework. This extension is a wrapper for Select2 Jquery plugin (https://github.com/ivaynberg/select2). ",
+            "homepage": "https://github.com/anggiaj/ESelect2",
+            "time": "2013-05-20 13:36:03"
+        },
+        {
             "name": "clevertech/yiibooster",
             "version": "dev-master",
             "source": {
@@ -870,6 +889,7 @@
         "firstrow/stranslateablebehavior": 20,
         "neam/yii-i18n-columns": 20,
         "clevertech/yiibooster": 20,
+        "anggiaj/eselect2": 20,
         "waalzer/app-demo-data": 20,
         "phundament/lessii": 20
     },
