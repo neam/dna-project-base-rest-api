@@ -41,13 +41,13 @@
 
 		<?php
 		$this->beginClip('modal:' . $formId . '-modal');
-			$this->renderPartial('/p3Media/_modal_form', array(
-				'formId' => $formId,
-				'inputSelector' => '#SlideshowFile_original_media_id',
-				'model' => new P3Media,
-				'pk' => 'id',
-				'field' => 'title',
-			));
+		$this->renderPartial('/p3Media/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SlideshowFile_original_media_id',
+			'model' => new P3Media,
+			'pk' => 'id',
+			'field' => 'title',
+		));
 		$this->endClip();
 		?>
 
@@ -93,13 +93,13 @@
 
 		<?php
 		$this->beginClip('modal:' . $formId . '-modal');
-			$this->renderPartial('/p3Media/_modal_form', array(
-				'formId' => $formId,
-				'inputSelector' => '#SlideshowFile_processed_media_id',
-				'model' => new P3Media,
-				'pk' => 'id',
-				'field' => 'title',
-			));
+		$this->renderPartial('/p3Media/_modal_form', array(
+			'formId' => $formId,
+			'inputSelector' => '#SlideshowFile_processed_media_id',
+			'model' => new P3Media,
+			'pk' => 'id',
+			'field' => 'title',
+		));
 		$this->endClip();
 		?>
 
