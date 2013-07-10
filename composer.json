@@ -41,7 +41,7 @@
                 "source": {
                     "url": "https://github.com/motin/YiiBooster.git",
                     "type": "git",
-                    "reference": "b04e6ad4d0cfe9c301d855b540385729130d2568"
+                    "reference": "ed6453edd0dc92b5044ee923d71c9e0742b8723f"
                 }
             }
         },
@@ -75,7 +75,7 @@
         "kswedberg/jquery-smooth-scroll":"1.4.10",
         "firstrow/stranslateablebehavior":"@dev",
         "neam/yii-i18n-columns":"@dev",
-        "clevertech/yiibooster": "1.0.*",
+        "clevertech/yiibooster": "dev-master as 1.1.0",
         "vitalets/x-editable-yii": "1.2.0",
         "waalzer/app-demo-data": "dev-master"
     },

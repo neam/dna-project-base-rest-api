@@ -3,25 +3,18 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "48aa00a8e8847526c6a89f4194d69230",
+    "hash": "41ee5b331550fe0c3bb8d4b85d8e2de2",
     "packages": [
         {
             "name": "clevertech/yiibooster",
-            "version": "1.0.7",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/clevertech/YiiBooster.git",
-                "reference": "f82a5a4ee2173504ef8e6f94b0419e6f10067aad"
+                "url": "https://github.com/motin/YiiBooster.git",
+                "reference": "ed6453edd0dc92b5044ee923d71c9e0742b8723f"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/clevertech/YiiBooster/archive/f82a5a4ee2173504ef8e6f94b0419e6f10067aad.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "yii-extension",
-            "description": "YiiBooster",
-            "homepage": "https://github.com/clevertech/YiiBooster"
+            "type": "library",
+            "time": "2013-07-10 14:09:03"
         },
         {
             "name": "crisu83/yii-rights",
@@ -862,7 +855,12 @@
         }
     ],
     "aliases": [
-
+        {
+            "alias": "1.1.0",
+            "alias_normalized": "1.1.0.0",
+            "version": "9999999-dev",
+            "package": "clevertech/yiibooster"
+        }
     ],
     "minimum-stability": "dev",
     "stability-flags": {
@@ -871,6 +869,7 @@
         "mishamx/yii-user": 20,
         "firstrow/stranslateablebehavior": 20,
         "neam/yii-i18n-columns": 20,
+        "clevertech/yiibooster": 20,
         "waalzer/app-demo-data": 20,
         "phundament/lessii": 20
     },
