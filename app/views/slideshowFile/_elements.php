@@ -5,7 +5,8 @@
 		<?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
 
 		<?php
-		echo $form->relationRow($model, 'original_media_id', array(
+		$input = $this->widget(
+		    'vendor.phundament.gii-template-collection.components.Relation', array(
 			'model' => $model,
 			'relation' => 'originalMedia',
 			'fields' => 'title',
@@ -14,7 +15,9 @@
 			'htmlOptions' => array(
 				'checkAll' => 'all',
 			),
-		));
+		    ), true
+		);
+		echo $form->customRow($model, 'original_media_id', $input);
 		?>
 
 		<?php
@@ -38,19 +41,20 @@
 
 		<?php
 		$this->beginClip('modal:' . $formId . '-modal');
-		$this->renderPartial('/p3Media/_modal_form', array(
-			'formId' => $formId,
-			'inputSelector' => '#SlideshowFile_original_media_id',
-			'model' => new P3Media,
-			'pk' => 'id',
-			'field' => 'title',
-		));
+			$this->renderPartial('/p3Media/_modal_form', array(
+				'formId' => $formId,
+				'inputSelector' => '#SlideshowFile_original_media_id',
+				'model' => new P3Media,
+				'pk' => 'id',
+				'field' => 'title',
+			));
 		$this->endClip();
 		?>
 
 
 		<?php
-		echo $form->relationRow($model, 'processed_media_id', array(
+		$input = $this->widget(
+		    'vendor.phundament.gii-template-collection.components.Relation', array(
 			'model' => $model,
 			'relation' => 'processedMedia',
 			'fields' => 'title',
@@ -59,7 +63,9 @@
 			'htmlOptions' => array(
 				'checkAll' => 'all',
 			),
-		));
+		    ), true
+		);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -83,13 +89,13 @@
 
 		<?php
 		$this->beginClip('modal:' . $formId . '-modal');
-		$this->renderPartial('/p3Media/_modal_form', array(
-			'formId' => $formId,
-			'inputSelector' => '#SlideshowFile_processed_media_id',
-			'model' => new P3Media,
-			'pk' => 'id',
-			'field' => 'title',
-		));
+			$this->renderPartial('/p3Media/_modal_form', array(
+				'formId' => $formId,
+				'inputSelector' => '#SlideshowFile_processed_media_id',
+				'model' => new P3Media,
+				'pk' => 'id',
+				'field' => 'title',
+			));
 		$this->endClip();
 		?>
 
