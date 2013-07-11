@@ -16,8 +16,20 @@ class ActiveRecord extends CActiveRecord
 
 		// List of model attributes to translate
 		$translateMap = array(
-			'Section' => array('slug', 'title'),
 			'Chapter' => array('slug', 'title'),
+			'DataChunk' => array('title'),
+			'DataSource' => array('title'),
+			'DownloadLink' => array('title'),
+			'Exercise' => array('title'),
+			'HtmlChunk' => array('markup'),
+			'Presentation' => array('title'),
+			'Section' => array('slug', 'title', 'menu_label'),
+			'SlideshowFile' => array('title'/* , 'processed_media_id' */),
+			'SpreadsheetFile' => array('title'/* , 'processed_media_id' */),
+			'TeachersGuide' => array('title'),
+			'VideoFile' => array('title'/* , 'processed_media_id' */),
+			'VizView' => array('title'),
+			'WordFile' => array('title'/* , 'processed_media_id' */),
 		);
 
 		if (isset($translateMap[get_class($this)]))
