@@ -336,3 +336,8 @@
         margin-left: 2%;
 	}
 }
+
+/* Breadcrumb margin fix */
+.container .breadcrumb {
+	margin-top: 10px!important;
+}
