@@ -9,6 +9,7 @@
 		init$gii();
 		var model = $('select[name="model"]').val();
 		$gii('#FullCrudCode_model').val(model).keyup();
+		$gii('#FullCrudCode_textEditor').val('html5Editor');
 		$gii('input[name="preview"]').click();
 		setTimeout(function() {
 			init$gii();
