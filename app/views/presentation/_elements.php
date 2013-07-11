@@ -16,7 +16,7 @@
 				'checkAll' => 'all'),
 		    )
 		    , true);
-		echo $form->customRow($model, 'processed_media_id', $input);
+		echo $form->customRow($model, 'slideshow_file_id', $input);
 		?>
 
 		<?php

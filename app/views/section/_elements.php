@@ -14,7 +14,7 @@
 				'checkAll' => 'all'),
 		    )
 		    , true);
-		echo $form->customRow($model, 'processed_media_id', $input);
+		echo $form->customRow($model, 'chapter_id', $input);
 		?>
 
 		<?php

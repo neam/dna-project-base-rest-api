@@ -14,7 +14,7 @@
 				'checkAll' => 'all'),
 		    )
 		    , true);
-		echo $form->customRow($model, 'processed_media_id', $input);
+		echo $form->customRow($model, 'section_id', $input);
 		?>
 
 		<?php
@@ -63,7 +63,7 @@
 				'checkAll' => 'all'),
 		    )
 		    , true);
-		echo $form->customRow($model, 'processed_media_id', $input);
+		echo $form->customRow($model, 'html_chunk_id', $input);
 		?>
 
 		<?php
@@ -110,7 +110,7 @@
 				'checkAll' => 'all'),
 		    )
 		    , true);
-		echo $form->customRow($model, 'processed_media_id', $input);
+		echo $form->customRow($model, 'viz_view_id', $input);
 		?>
 
 		<?php
@@ -157,7 +157,7 @@
 				'checkAll' => 'all'),
 		    )
 		    , true);
-		echo $form->customRow($model, 'processed_media_id', $input);
+		echo $form->customRow($model, 'video_file_id', $input);
 		?>
 
 		<?php
@@ -204,7 +204,7 @@
 				'checkAll' => 'all'),
 		    )
 		    , true);
-		echo $form->customRow($model, 'processed_media_id', $input);
+		echo $form->customRow($model, 'teachers_guide_id', $input);
 		?>
 
 		<?php
@@ -251,7 +251,7 @@
 				'checkAll' => 'all'),
 		    )
 		    , true);
-		echo $form->customRow($model, 'processed_media_id', $input);
+		echo $form->customRow($model, 'exercise_id', $input);
 		?>
 
 		<?php
@@ -298,7 +298,7 @@
 				'checkAll' => 'all'),
 		    )
 		    , true);
-		echo $form->customRow($model, 'processed_media_id', $input);
+		echo $form->customRow($model, 'presentation_id', $input);
 		?>
 
 		<?php
@@ -345,7 +345,7 @@
 				'checkAll' => 'all'),
 		    )
 		    , true);
-		echo $form->customRow($model, 'processed_media_id', $input);
+		echo $form->customRow($model, 'data_chunk_id', $input);
 		?>
 
 		<?php
@@ -392,7 +392,7 @@
 				'checkAll' => 'all'),
 		    )
 		    , true);
-		echo $form->customRow($model, 'processed_media_id', $input);
+		echo $form->customRow($model, 'download_link_id', $input);
 		?>
 
 		<?php
