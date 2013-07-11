@@ -33,19 +33,27 @@ $this->widget('TbGridView', array(
 	),
 	'columns' => array(
 		'id',
-		'title',
+		'title_en',
 		'created',
 		'modified',
 		array(
 			'name' => 'data_source_id',
-			'value' => 'CHtml::value($data,\'dataSource.title\')',
-			'filter' => CHtml::listData(DataSource::model()->findAll(), 'id', 'title'),
+			'value' => 'CHtml::value($data,\'dataSource.title_en\')',
+			'filter' => CHtml::listData(DataSource::model()->findAll(), 'id', 'title_en'),
 		),
 		array(
 			'name' => 'slideshow_file_id',
-			'value' => 'CHtml::value($data,\'slideshowFile.title\')',
-			'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'title'),
+			'value' => 'CHtml::value($data,\'slideshowFile.title_en\')',
+			'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'title_en'),
 		),
+		'title_es',
+		/*
+		  'title_fa',
+		  'title_hi',
+		  'title_pt',
+		  'title_sv',
+		  'title_de',
+		 */
 		array(
 			'class' => 'TbButtonColumn',
 			'viewButtonUrl' => "Yii::app()->controller->createUrl('view', array('id' => \$data->id))",

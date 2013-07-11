@@ -33,7 +33,7 @@ $this->widget('TbGridView', array(
 	),
 	'columns' => array(
 		'id',
-		'title',
+		'title_en',
 		'created',
 		'modified',
 		array(
@@ -41,6 +41,14 @@ $this->widget('TbGridView', array(
 			'value' => 'CHtml::value($data,\'p3Media.title\')',
 			'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'title'),
 		),
+		'title_es',
+		'title_fa',
+		/*
+		  'title_hi',
+		  'title_pt',
+		  'title_sv',
+		  'title_de',
+		 */
 		array(
 			'class' => 'TbButtonColumn',
 			'viewButtonUrl' => "Yii::app()->controller->createUrl('view', array('id' => \$data->id))",

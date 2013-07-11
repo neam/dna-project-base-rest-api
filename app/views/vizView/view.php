@@ -52,9 +52,15 @@ $this->breadcrumbs[] = $model->id;
 		'data' => $model,
 		'attributes' => array(
 			'id',
-			'title',
+			'title_en',
 			'created',
 			'modified',
+			'title_es',
+			'title_fa',
+			'title_hi',
+			'title_pt',
+			'title_sv',
+			'title_de',
 		),
 	));
 	?></p>

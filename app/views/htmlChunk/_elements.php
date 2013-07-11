@@ -1,30 +1,73 @@
 <div class="row">
-	<div class="span12"> <!-- main inputs -->
+	<div class="span8"> <!-- main inputs -->
+
 
 		<?php
-		$editorOptions = array(
-			'rows' => 5,
-			'options' => array(
-				//'locale' => 'en',
+		echo $form->html5EditorRow($model, 'markup_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
 				'link' => true,
 				'image' => false,
 				'color' => false,
 				'html' => true,
-			),
-			'width' => '98%', // necessary to workaround left border not showing
-		);
-
-		$this->widget('bootstrap.widgets.TbTabs', array(
-			'tabs' => array(
-				array('label' => 'en', 'content' => $form->html5EditorRow($model, 'markup', $editorOptions), 'active' => true),
-				array('label' => 'de', 'content' => $form->html5EditorRow($model, 'markup_de', $editorOptions)),
-				array('label' => 'foo', 'content' => $form->html5EditorRow($model, 'markup_foo', $editorOptions)),
-			),
-		));
+		)));
 		?>
 
+		<?php
+		echo $form->html5EditorRow($model, 'markup_es', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
+				'link' => true,
+				'image' => false,
+				'color' => false,
+				'html' => true,
+		)));
+		?>
 
+		<?php
+		echo $form->html5EditorRow($model, 'markup_fa', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
+				'link' => true,
+				'image' => false,
+				'color' => false,
+				'html' => true,
+		)));
+		?>
+
+		<?php
+		echo $form->html5EditorRow($model, 'markup_hi', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
+				'link' => true,
+				'image' => false,
+				'color' => false,
+				'html' => true,
+		)));
+		?>
+
+		<?php
+		echo $form->html5EditorRow($model, 'markup_pt', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
+				'link' => true,
+				'image' => false,
+				'color' => false,
+				'html' => true,
+		)));
+		?>
+
+		<?php
+		echo $form->html5EditorRow($model, 'markup_sv', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
+				'link' => true,
+				'image' => false,
+				'color' => false,
+				'html' => true,
+		)));
+		?>
+
+		<?php
+		echo $form->html5EditorRow($model, 'markup_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
+				'link' => true,
+				'image' => false,
+				'color' => false,
+				'html' => true,
+		)));
+		?>
 	</div> <!-- main inputs -->
 
-</div>
 
+	<div class="span4"> <!-- sub inputs -->
+
+	</div> <!-- sub inputs -->
+</div>

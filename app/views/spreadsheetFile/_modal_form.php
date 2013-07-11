@@ -4,7 +4,7 @@
 /* @var $pk The primary key field added object */
 /* @var $field The field of the newly added object to be used as the key/label of the parent form select-input */
 
-$this->beginWidget('bootstrap.widgets.TbModal', array('id' => $formId . "-modal"));
+$this->beginWidget('bootstrap.widgets.TbModal', array('id' => $formId . "-modal", 'htmlOptions' => array('data-focus-on' => "input:first")));
 
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id' => $formId,

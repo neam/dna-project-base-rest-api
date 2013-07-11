@@ -56,14 +56,20 @@ $this->breadcrumbs[] = $model->id;
 		'data' => $model,
 		'attributes' => array(
 			'id',
-			'title',
+			'title_en',
 			'created',
 			'modified',
 			array(
 				'name' => 'slideshow_file_id',
-				'value' => ($model->slideshowFile !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->slideshowFile->title, array('slideshowFile/view', 'id' => $model->slideshowFile->id), array('class' => 'btn')) : 'n/a',
+				'value' => ($model->slideshowFile !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->slideshowFile->title_en, array('slideshowFile/view', 'id' => $model->slideshowFile->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
+			'title_es',
+			'title_fa',
+			'title_hi',
+			'title_pt',
+			'title_sv',
+			'title_de',
 		),
 	));
 	?></p>

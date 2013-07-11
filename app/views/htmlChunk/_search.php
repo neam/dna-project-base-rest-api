@@ -14,8 +14,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'markup'); ?>
-		<?php echo $form->textArea($model, 'markup', array('rows' => 6, 'cols' => 50)); ?>
+		<?php echo $form->label($model, 'markup_en'); ?>
+		<?php echo $form->textArea($model, 'markup_en', array('rows' => 6, 'cols' => 50)); ?>
 	</div>
 
 	<div class="row">
@@ -26,6 +26,36 @@
 	<div class="row">
 		<?php echo $form->label($model, 'modified'); ?>
 		<?php echo $form->textField($model, 'modified'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'markup_es'); ?>
+		<?php echo $form->textArea($model, 'markup_es', array('rows' => 6, 'cols' => 50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'markup_fa'); ?>
+		<?php echo $form->textArea($model, 'markup_fa', array('rows' => 6, 'cols' => 50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'markup_hi'); ?>
+		<?php echo $form->textArea($model, 'markup_hi', array('rows' => 6, 'cols' => 50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'markup_pt'); ?>
+		<?php echo $form->textArea($model, 'markup_pt', array('rows' => 6, 'cols' => 50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'markup_sv'); ?>
+		<?php echo $form->textArea($model, 'markup_sv', array('rows' => 6, 'cols' => 50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'markup_de'); ?>
+		<?php echo $form->textArea($model, 'markup_de', array('rows' => 6, 'cols' => 50)); ?>
 	</div>
 
         <div class="row buttons">

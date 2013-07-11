@@ -56,7 +56,7 @@ $this->breadcrumbs[] = $model->id;
 		'data' => $model,
 		'attributes' => array(
 			'id',
-			'title',
+			'title_en',
 			'created',
 			'modified',
 			array(
@@ -64,6 +64,12 @@ $this->breadcrumbs[] = $model->id;
 				'value' => ($model->p3Media !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->p3Media->title, array('p3Media/view', 'id' => $model->p3Media->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
+			'title_es',
+			'title_fa',
+			'title_hi',
+			'title_pt',
+			'title_sv',
+			'title_de',
 		),
 	));
 	?></p>

@@ -59,7 +59,7 @@ $this->widget('TbGridView', array(
 		'id',
 		array(
 			'class' => 'editable.EditableColumn',
-			'name' => 'title',
+			'name' => 'title_en',
 			'editable' => array(
 				'url' => $this->createUrl('dataChunk/editableSaver'),
 				'placement' => 'right',
@@ -83,9 +83,59 @@ $this->widget('TbGridView', array(
 		),
 		array(
 			'name' => 'slideshow_file_id',
-			'value' => 'CHtml::value($data,\'slideshowFile.title\')',
-			'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'title'),
+			'value' => 'CHtml::value($data,\'slideshowFile.title_en\')',
+			'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'title_en'),
 		),
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'title_es',
+			'editable' => array(
+				'url' => $this->createUrl('dataChunk/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'title_fa',
+			'editable' => array(
+				'url' => $this->createUrl('dataChunk/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'title_hi',
+			'editable' => array(
+				'url' => $this->createUrl('dataChunk/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		/*
+		  array(
+		  'class' => 'editable.EditableColumn',
+		  'name' => 'title_pt',
+		  'editable' => array(
+		  'url' => $this->createUrl('dataChunk/editableSaver'),
+		  'placement' => 'right',
+		  )
+		  ),
+		  array(
+		  'class' => 'editable.EditableColumn',
+		  'name' => 'title_sv',
+		  'editable' => array(
+		  'url' => $this->createUrl('dataChunk/editableSaver'),
+		  'placement' => 'right',
+		  )
+		  ),
+		  array(
+		  'class' => 'editable.EditableColumn',
+		  'name' => 'title_de',
+		  'editable' => array(
+		  'url' => $this->createUrl('dataChunk/editableSaver'),
+		  'placement' => 'right',
+		  )
+		  ),
+		 */
 		array(
 			'class' => 'TbButtonColumn',
 			'viewButtonUrl' => "Yii::app()->controller->createUrl('dataChunk/view', array('id' => \$data->id))",
@@ -124,7 +174,7 @@ $this->widget('TbGridView', array(
 		'id',
 		array(
 			'class' => 'editable.EditableColumn',
-			'name' => 'title',
+			'name' => 'title_en',
 			'editable' => array(
 				'url' => $this->createUrl('spreadsheetFile/editableSaver'),
 				'placement' => 'right',
@@ -156,6 +206,56 @@ $this->widget('TbGridView', array(
 			'value' => 'CHtml::value($data,\'processedMedia.title\')',
 			'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'title'),
 		),
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'title_es',
+			'editable' => array(
+				'url' => $this->createUrl('spreadsheetFile/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		array(
+			'class' => 'editable.EditableColumn',
+			'name' => 'title_fa',
+			'editable' => array(
+				'url' => $this->createUrl('spreadsheetFile/editableSaver'),
+				'placement' => 'right',
+			)
+		),
+		/*
+		  array(
+		  'class' => 'editable.EditableColumn',
+		  'name' => 'title_hi',
+		  'editable' => array(
+		  'url' => $this->createUrl('spreadsheetFile/editableSaver'),
+		  'placement' => 'right',
+		  )
+		  ),
+		  array(
+		  'class' => 'editable.EditableColumn',
+		  'name' => 'title_pt',
+		  'editable' => array(
+		  'url' => $this->createUrl('spreadsheetFile/editableSaver'),
+		  'placement' => 'right',
+		  )
+		  ),
+		  array(
+		  'class' => 'editable.EditableColumn',
+		  'name' => 'title_sv',
+		  'editable' => array(
+		  'url' => $this->createUrl('spreadsheetFile/editableSaver'),
+		  'placement' => 'right',
+		  )
+		  ),
+		  array(
+		  'class' => 'editable.EditableColumn',
+		  'name' => 'title_de',
+		  'editable' => array(
+		  'url' => $this->createUrl('spreadsheetFile/editableSaver'),
+		  'placement' => 'right',
+		  )
+		  ),
+		 */
 		array(
 			'class' => 'TbButtonColumn',
 			'viewButtonUrl' => "Yii::app()->controller->createUrl('spreadsheetFile/view', array('id' => \$data->id))",

@@ -2,19 +2,21 @@
 	<div class="span8"> <!-- main inputs -->
 
 
-		<?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
+		<?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
 		<?php
-		echo $form->relationRow($model, 'data_source_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'dataSource',
-			'fields' => 'title',
+			'fields' => 'title_en',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -43,23 +45,25 @@
 			'inputSelector' => '#DataChunk_data_source_id',
 			'model' => new DataSource,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'title_en',
 		));
 		$this->endClip();
 		?>
 
 
 		<?php
-		echo $form->relationRow($model, 'slideshow_file_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'slideshowFile',
-			'fields' => 'title',
+			'fields' => 'title_en',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -88,11 +92,23 @@
 			'inputSelector' => '#DataChunk_slideshow_file_id',
 			'model' => new SlideshowFile,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'title_en',
 		));
 		$this->endClip();
 		?>
 
+
+		<?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
+
+		<?php echo $form->textFieldRow($model, 'title_fa', array('maxlength' => 255)); ?>
+
+		<?php echo $form->textFieldRow($model, 'title_hi', array('maxlength' => 255)); ?>
+
+		<?php echo $form->textFieldRow($model, 'title_pt', array('maxlength' => 255)); ?>
+
+		<?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
+
+		<?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
 	</div> <!-- main inputs -->
 
 

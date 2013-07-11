@@ -3,16 +3,18 @@
 
 
 		<?php
-		echo $form->relationRow($model, 'section_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'section',
-			'fields' => 'title',
+			'fields' => 'title_en',
 			'allowEmpty' => false,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -41,7 +43,7 @@
 			'inputSelector' => '#SectionContent_section_id',
 			'model' => new Section,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'title_en',
 		));
 		$this->endClip();
 		?>
@@ -50,16 +52,18 @@
 		<?php echo $form->textFieldRow($model, 'ordinal'); ?>
 
 		<?php
-		echo $form->relationRow($model, 'html_chunk_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'htmlChunk',
-			'fields' => 'markup',
+			'fields' => 'markup_en',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -88,23 +92,25 @@
 			'inputSelector' => '#SectionContent_html_chunk_id',
 			'model' => new HtmlChunk,
 			'pk' => 'id',
-			'field' => 'markup',
+			'field' => 'markup_en',
 		));
 		$this->endClip();
 		?>
 
 
 		<?php
-		echo $form->relationRow($model, 'viz_view_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'vizView',
-			'fields' => 'title',
+			'fields' => 'title_en',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -133,23 +139,25 @@
 			'inputSelector' => '#SectionContent_viz_view_id',
 			'model' => new VizView,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'title_en',
 		));
 		$this->endClip();
 		?>
 
 
 		<?php
-		echo $form->relationRow($model, 'video_file_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'videoFile',
-			'fields' => 'title',
+			'fields' => 'title_en',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -178,23 +186,25 @@
 			'inputSelector' => '#SectionContent_video_file_id',
 			'model' => new VideoFile,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'title_en',
 		));
 		$this->endClip();
 		?>
 
 
 		<?php
-		echo $form->relationRow($model, 'teachers_guide_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'teachersGuide',
-			'fields' => 'title',
+			'fields' => 'title_en',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -223,23 +233,25 @@
 			'inputSelector' => '#SectionContent_teachers_guide_id',
 			'model' => new TeachersGuide,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'title_en',
 		));
 		$this->endClip();
 		?>
 
 
 		<?php
-		echo $form->relationRow($model, 'exercise_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'exercise',
-			'fields' => 'title',
+			'fields' => 'title_en',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -268,23 +280,25 @@
 			'inputSelector' => '#SectionContent_exercise_id',
 			'model' => new Exercise,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'title_en',
 		));
 		$this->endClip();
 		?>
 
 
 		<?php
-		echo $form->relationRow($model, 'presentation_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'presentation',
-			'fields' => 'title',
+			'fields' => 'title_en',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -313,23 +327,25 @@
 			'inputSelector' => '#SectionContent_presentation_id',
 			'model' => new Presentation,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'title_en',
 		));
 		$this->endClip();
 		?>
 
 
 		<?php
-		echo $form->relationRow($model, 'data_chunk_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'dataChunk',
-			'fields' => 'title',
+			'fields' => 'title_en',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -358,23 +374,25 @@
 			'inputSelector' => '#SectionContent_data_chunk_id',
 			'model' => new DataChunk,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'title_en',
 		));
 		$this->endClip();
 		?>
 
 
 		<?php
-		echo $form->relationRow($model, 'download_link_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'downloadLink',
-			'fields' => 'title',
+			'fields' => 'title_en',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -403,7 +421,7 @@
 			'inputSelector' => '#SectionContent_download_link_id',
 			'model' => new DownloadLink,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'title_en',
 		));
 		$this->endClip();
 		?>

@@ -35,42 +35,42 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'html_chunk_id'); ?>
-		<?php echo $form->dropDownList($model, 'html_chunk_id', CHtml::listData(HtmlChunk::model()->findAll(), 'id', 'markup'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'html_chunk_id', CHtml::listData(HtmlChunk::model()->findAll(), 'id', 'markup_en'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'viz_view_id'); ?>
-		<?php echo $form->dropDownList($model, 'viz_view_id', CHtml::listData(VizView::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'viz_view_id', CHtml::listData(VizView::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'video_file_id'); ?>
-		<?php echo $form->dropDownList($model, 'video_file_id', CHtml::listData(VideoFile::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'video_file_id', CHtml::listData(VideoFile::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'teachers_guide_id'); ?>
-		<?php echo $form->dropDownList($model, 'teachers_guide_id', CHtml::listData(TeachersGuide::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'teachers_guide_id', CHtml::listData(TeachersGuide::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'exercise_id'); ?>
-		<?php echo $form->dropDownList($model, 'exercise_id', CHtml::listData(Exercise::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'exercise_id', CHtml::listData(Exercise::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'presentation_id'); ?>
-		<?php echo $form->dropDownList($model, 'presentation_id', CHtml::listData(Presentation::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'presentation_id', CHtml::listData(Presentation::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'data_chunk_id'); ?>
-		<?php echo $form->dropDownList($model, 'data_chunk_id', CHtml::listData(DataChunk::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'data_chunk_id', CHtml::listData(DataChunk::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'download_link_id'); ?>
-		<?php echo $form->dropDownList($model, 'download_link_id', CHtml::listData(DownloadLink::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'download_link_id', CHtml::listData(DownloadLink::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all')); ?>
 	</div>
 
         <div class="row buttons">

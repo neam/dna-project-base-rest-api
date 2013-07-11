@@ -2,19 +2,21 @@
 	<div class="span8"> <!-- main inputs -->
 
 
-		<?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
+		<?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
 		<?php
-		echo $form->relationRow($model, 'original_media_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'originalMedia',
 			'fields' => 'title',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -50,16 +52,18 @@
 
 
 		<?php
-		echo $form->relationRow($model, 'processed_media_id', array(
+		$input = $this->widget(
+		    'Relation', array(
 			'model' => $model,
 			'relation' => 'processedMedia',
 			'fields' => 'title',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
-				'checkAll' => 'all',
-			),
-		));
+				'checkAll' => 'all'),
+		    )
+		    , true);
+		echo $form->customRow($model, 'processed_media_id', $input);
 		?>
 
 		<?php
@@ -93,6 +97,18 @@
 		$this->endClip();
 		?>
 
+
+		<?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
+
+		<?php echo $form->textFieldRow($model, 'title_fa', array('maxlength' => 255)); ?>
+
+		<?php echo $form->textFieldRow($model, 'title_hi', array('maxlength' => 255)); ?>
+
+		<?php echo $form->textFieldRow($model, 'title_pt', array('maxlength' => 255)); ?>
+
+		<?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
+
+		<?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
 	</div> <!-- main inputs -->
 
 

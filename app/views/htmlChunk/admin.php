@@ -33,9 +33,15 @@ $this->widget('TbGridView', array(
 	),
 	'columns' => array(
 		'id',
-#		'markup',
+#		'markup_en',
 		'created',
 		'modified',
+#		'markup_es',
+#		'markup_fa',
+#		'markup_hi',
+#		'markup_pt',
+#		'markup_sv',
+#		'markup_de',
 		array(
 			'class' => 'TbButtonColumn',
 			'viewButtonUrl' => "Yii::app()->controller->createUrl('view', array('id' => \$data->id))",

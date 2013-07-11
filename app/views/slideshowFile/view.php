@@ -42,7 +42,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->title, array('dataChunk/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->title_en, array('dataChunk/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('dataChunk/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}
@@ -58,7 +58,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->title, array('exercise/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->title_en, array('exercise/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('exercise/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}
@@ -74,7 +74,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->title, array('presentation/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->title_en, array('presentation/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('presentation/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}
@@ -92,7 +92,7 @@ $this->breadcrumbs[] = $model->id;
 		'data' => $model,
 		'attributes' => array(
 			'id',
-			'title',
+			'title_en',
 			'created',
 			'modified',
 			array(
@@ -105,6 +105,12 @@ $this->breadcrumbs[] = $model->id;
 				'value' => ($model->processedMedia !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->processedMedia->title, array('p3Media/view', 'id' => $model->processedMedia->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
+			'title_es',
+			'title_fa',
+			'title_hi',
+			'title_pt',
+			'title_sv',
+			'title_de',
 		),
 	));
 	?></p>
