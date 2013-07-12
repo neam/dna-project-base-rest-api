@@ -19,6 +19,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model, 'embed_template'); ?>
+		<?php echo $form->textArea($model, 'embed_template', array('rows' => 6, 'cols' => 50)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model, 'created'); ?>
 		<?php echo $form->textField($model, 'created'); ?>
 	</div>

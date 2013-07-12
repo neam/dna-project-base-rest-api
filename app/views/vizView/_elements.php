@@ -4,6 +4,8 @@
 
 		<?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
+		<?php echo $form->textAreaRow($model, 'embed_template', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
 		<?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
 
 		<?php echo $form->textFieldRow($model, 'title_fa', array('maxlength' => 255)); ?>

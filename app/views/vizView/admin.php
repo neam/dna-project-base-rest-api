@@ -34,6 +34,7 @@ $this->widget('TbGridView', array(
 	'columns' => array(
 		'id',
 		'title_en',
+#		'embed_template',
 		'created',
 		'modified',
 		'title_es',
