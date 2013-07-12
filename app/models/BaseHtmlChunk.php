@@ -5,9 +5,15 @@
  *
  * Columns in table "html_chunk" available as properties of the model:
  * @property string $id
- * @property string $markup
+ * @property string $markup_en
  * @property string $created
  * @property string $modified
+ * @property string $markup_es
+ * @property string $markup_fa
+ * @property string $markup_hi
+ * @property string $markup_pt
+ * @property string $markup_sv
+ * @property string $markup_de
  *
  * Relations of table "html_chunk" available as properties of the model:
  * @property SectionContent[] $sectionContents
@@ -27,9 +33,9 @@ abstract class BaseHtmlChunk extends ActiveRecord{
 	{
 		return array_merge(
 		    parent::rules(), array(
-			array('markup, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('markup, created, modified', 'safe'),
-			array('id, markup, created, modified', 'safe', 'on'=>'search'),
+			array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de', 'safe'),
+			array('id, markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -56,9 +62,15 @@ abstract class BaseHtmlChunk extends ActiveRecord{
 	{
 		return array(
 			'id' => Yii::t('crud', 'ID'),
-			'markup' => Yii::t('crud', 'Markup'),
+			'markup_en' => Yii::t('crud', 'Markup En'),
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
+			'markup_es' => Yii::t('crud', 'Markup Es'),
+			'markup_fa' => Yii::t('crud', 'Markup Fa'),
+			'markup_hi' => Yii::t('crud', 'Markup Hi'),
+			'markup_pt' => Yii::t('crud', 'Markup Pt'),
+			'markup_sv' => Yii::t('crud', 'Markup Sv'),
+			'markup_de' => Yii::t('crud', 'Markup De'),
 		);
 	}
 
@@ -70,9 +82,15 @@ abstract class BaseHtmlChunk extends ActiveRecord{
         }
 
 		$criteria->compare('t.id', $this->id, true);
-		$criteria->compare('t.markup', $this->markup, true);
+		$criteria->compare('t.markup_en', $this->markup_en, true);
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);
+		$criteria->compare('t.markup_es', $this->markup_es, true);
+		$criteria->compare('t.markup_fa', $this->markup_fa, true);
+		$criteria->compare('t.markup_hi', $this->markup_hi, true);
+		$criteria->compare('t.markup_pt', $this->markup_pt, true);
+		$criteria->compare('t.markup_sv', $this->markup_sv, true);
+		$criteria->compare('t.markup_de', $this->markup_de, true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

@@ -9,7 +9,7 @@
  * @property string $title_en
  * @property string $slug_en
  * @property integer $ordinal
- * @property string $menu_label
+ * @property string $menu_label_en
  * @property string $created
  * @property string $modified
  * @property string $slug_es
@@ -24,6 +24,12 @@
  * @property string $title_sv
  * @property string $slug_de
  * @property string $title_de
+ * @property string $menu_label_es
+ * @property string $menu_label_fa
+ * @property string $menu_label_hi
+ * @property string $menu_label_pt
+ * @property string $menu_label_sv
+ * @property string $menu_label_de
  *
  * Relations of table "section" available as properties of the model:
  * @property Chapter $chapter
@@ -45,12 +51,12 @@ abstract class BaseSection extends ActiveRecord{
 		return array_merge(
 		    parent::rules(), array(
 			array('chapter_id', 'required'),
-			array('title_en, slug_en, ordinal, menu_label, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('title_en, slug_en, ordinal, menu_label_en, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_de', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('ordinal', 'numerical', 'integerOnly'=>true),
 			array('chapter_id', 'length', 'max'=>20),
-			array('title_en, slug_en, menu_label, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de', 'length', 'max'=>255),
+			array('title_en, slug_en, menu_label_en, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_de', 'length', 'max'=>255),
 			array('created, modified', 'safe'),
-			array('id, chapter_id, title_en, slug_en, ordinal, menu_label, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de', 'safe', 'on'=>'search'),
+			array('id, chapter_id, title_en, slug_en, ordinal, menu_label_en, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_de', 'safe', 'on'=>'search'),
 		    )
 		);
 	}
@@ -82,7 +88,7 @@ abstract class BaseSection extends ActiveRecord{
 			'title_en' => Yii::t('crud', 'Title En'),
 			'slug_en' => Yii::t('crud', 'Slug En'),
 			'ordinal' => Yii::t('crud', 'Ordinal'),
-			'menu_label' => Yii::t('crud', 'Menu Label'),
+			'menu_label_en' => Yii::t('crud', 'Menu Label En'),
 			'created' => Yii::t('crud', 'Created'),
 			'modified' => Yii::t('crud', 'Modified'),
 			'slug_es' => Yii::t('crud', 'Slug Es'),
@@ -97,6 +103,12 @@ abstract class BaseSection extends ActiveRecord{
 			'title_sv' => Yii::t('crud', 'Title Sv'),
 			'slug_de' => Yii::t('crud', 'Slug De'),
 			'title_de' => Yii::t('crud', 'Title De'),
+			'menu_label_es' => Yii::t('crud', 'Menu Label Es'),
+			'menu_label_fa' => Yii::t('crud', 'Menu Label Fa'),
+			'menu_label_hi' => Yii::t('crud', 'Menu Label Hi'),
+			'menu_label_pt' => Yii::t('crud', 'Menu Label Pt'),
+			'menu_label_sv' => Yii::t('crud', 'Menu Label Sv'),
+			'menu_label_de' => Yii::t('crud', 'Menu Label De'),
 		);
 	}
 
@@ -112,7 +124,7 @@ abstract class BaseSection extends ActiveRecord{
 		$criteria->compare('t.title_en', $this->title_en, true);
 		$criteria->compare('t.slug_en', $this->slug_en, true);
 		$criteria->compare('t.ordinal', $this->ordinal);
-		$criteria->compare('t.menu_label', $this->menu_label, true);
+		$criteria->compare('t.menu_label_en', $this->menu_label_en, true);
 		$criteria->compare('t.created', $this->created, true);
 		$criteria->compare('t.modified', $this->modified, true);
 		$criteria->compare('t.slug_es', $this->slug_es, true);
@@ -127,6 +139,12 @@ abstract class BaseSection extends ActiveRecord{
 		$criteria->compare('t.title_sv', $this->title_sv, true);
 		$criteria->compare('t.slug_de', $this->slug_de, true);
 		$criteria->compare('t.title_de', $this->title_de, true);
+		$criteria->compare('t.menu_label_es', $this->menu_label_es, true);
+		$criteria->compare('t.menu_label_fa', $this->menu_label_fa, true);
+		$criteria->compare('t.menu_label_hi', $this->menu_label_hi, true);
+		$criteria->compare('t.menu_label_pt', $this->menu_label_pt, true);
+		$criteria->compare('t.menu_label_sv', $this->menu_label_sv, true);
+		$criteria->compare('t.menu_label_de', $this->menu_label_de, true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
