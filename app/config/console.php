@@ -95,6 +95,12 @@ $consoleConfig = array(
         'i18n-columns'    => array(
             'class' => 'i18n-columns.commands.I18nColumnsCommand',
         ),
+        // composer callback
+        'backend-theme' => array(
+            'class'           => 'vendor.phundament.backend-theme.commands.PhBackendThemeCommand',
+            'themePath'       => 'application.themes',
+            'themeName'       => 'backend2',
+        ),
     ),
     'params'     => array(
         'composer.callbacks' => array(
@@ -106,6 +112,7 @@ $consoleConfig = array(
                                                              'git',
                                                              '--interactive=0'),
             'phundament/p3bootstrap-install'        => array('yiic', 'p3bootstrap'),
+            'phundament/backend-theme-install'      => array('yiic', 'backend-theme'),
             'phundament/p3media-install'            => array('yiic', 'p3media'),
             'crisu83/yii-less-install'              => array('yiic', 'less-setup'),
         ),

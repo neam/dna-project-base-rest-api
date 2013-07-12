@@ -12,8 +12,8 @@ $baseUrl = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SERVER['SCRIPT_
 
 $mainConfig = array(
     'basePath' => $applicationDirectory,
-    'name' => 'Phundament',
-    'theme' => 'frontend', // theme is copied from extensions/phundament/p3bootstrap
+    'name' => 'Company Inc.',
+    'theme' => 'frontend', // theme is copied from vendor/phundament/p3bootstrap
     'language' => 'en_us', // default language, see also components.langHandler
     'preload' => array(
         'log',
@@ -26,22 +26,17 @@ $mainConfig = array(
         'webroot' => $applicationDirectory.'/../www',
         'vendor' => $applicationDirectory.'/../vendor',
         'bootstrap' => 'vendor.clevertech.yiibooster.src',
-
+        'editable' => 'vendor.vitalets.x-editable-yii',
         // p3widgets
         'jsonEditorView' => 'vendor.phundament.p3extensions.widgets.jsonEditorView',
         'ckeditor' => 'vendor.phundament.p3extensions.widgets.ckeditor',
         // p3media
         'jquery-file-upload' => 'vendor.phundament.jquery-file-upload',
         'jquery-file-upload-widget' => 'vendor.phundament.p3extensions.widgets.jquery-file-upload',
-
         // fixing 'hardcoded aliases' from extension (note: you have to use the full path)
         'application.modules.user.views.asset' => 'vendor.mishamx.yii-user.views.asset',
         'application.modules.user.components' => 'vendor.mishamx.yii-user.components',
         'gii-template-collection' => 'vendor.phundament.gii-template-collection',
-        'echosen' => 'vendor.ifdattic.echosen',
-        'echosen.EChosen' => 'vendor.ifdattic.echosen.EChosen',
-        'ext.EChosen' => 'vendor.ifdattic.echosen',
-        'editable' => 'vendor.vitalets.x-editable-yii',
     ),
     // autoloading model and component classes
     'import' => array(
@@ -294,15 +289,15 @@ $mainConfig = array(
             'baseUrl' => $baseUrl.'/themes',
             'rules' => array(
                 '^p3pages/default/page' => 'frontend',
-                '^p3(.*)' => 'backend',
+                '^p3(.*)' => 'backend2',
                 '^user/default/index' => 'frontend',
                 '^user/login/(.*)' => 'frontend',
                 '^user/profile/(.*)' => 'frontend',
                 '^user/registration/(.*)' => 'frontend',
                 '^user/recovery/(.*)' => 'frontend',
                 '^user/activation/(.*)' => 'frontend',
-                '^user/(.*)' => 'backend',
-                '^rights/(.*)' => 'backend',
+                '^user/(.*)' => 'backend2',
+                '^rights/(.*)' => 'backend2',
             )
         ),
         'urlManager' => array(
@@ -315,7 +310,7 @@ $mainConfig = array(
                 '<lang:[a-z]{2}(_[a-z]{2})?>/site/login' => 'user/login',
                 'site/login' => 'user/login',
                 // convenience rules
-                'admin' => 'p3admin',
+                'phundament' => 'p3admin/default/index',
                 '<lang:[a-z]{2}(_[a-z]{2})?>/pages/<view:\w+>' => 'site/page',
                 // p3pages - SEO
                 '<lang:[a-z]{2}(_[a-z]{2})?>/<pageName:[a-zA-Z0-9-._]*>-<pageId:\d+>.html' => 'p3pages/default/page',
@@ -349,7 +344,6 @@ $mainConfig = array(
         // this is used in contact page
         'adminEmail' => 'webmaster@example.com',
         // global Phundament 3 parameters
-        'p3.backendTheme' => 'backend', // defaults to 'backend'
         'p3.fallbackLanguage' => 'en', // defaults to 'en'
         'ext.ckeditor.options' => array(
             'type' => 'fckeditor',
