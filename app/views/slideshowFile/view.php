@@ -4,7 +4,7 @@ $this->breadcrumbs[] = $model->id;
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-	<?php echo Yii::t('crud', 'Slideshow File') ?> <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small></h1>
+    <?php echo Yii::t('crud', 'Slideshow File') ?> <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small></h1>
 
 
 
@@ -36,82 +36,79 @@ $this->breadcrumbs[] = $model->id;
 
 <h2><?php echo CHtml::link(Yii::t('app', 'DataChunks'), array('dataChunk/admin')); ?></h2>
 <ul>
-	<?php
-	if (is_array($model->dataChunks))
-		foreach ($model->dataChunks as $foreignobj)
-		{
+    <?php
+    if (is_array($model->dataChunks))
+        foreach ($model->dataChunks as $foreignobj) {
 
-			echo '<li>';
-			echo CHtml::link($foreignobj->itemLabel, array('dataChunk/view', 'id' => $foreignobj->id));
+            echo '<li>';
+            echo CHtml::link($foreignobj->itemLabel, array('dataChunk/view', 'id' => $foreignobj->id));
 
-			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('dataChunk/update', 'id' => $foreignobj->id), array('class' => 'edit'));
-		}
-	?></ul><p><?php
-	echo CHtml::link(
-	    Yii::t('app', 'Create'), array('dataChunk/create', 'DataChunk' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
-	);
-	?></p><h2><?php echo CHtml::link(Yii::t('app', 'Exercises'), array('exercise/admin')); ?></h2>
+            echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('dataChunk/update', 'id' => $foreignobj->id), array('class' => 'edit'));
+        }
+    ?></ul><p><?php
+    echo CHtml::link(
+        Yii::t('app', 'Create'), array('dataChunk/create', 'DataChunk' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
+    );
+    ?></p><h2><?php echo CHtml::link(Yii::t('app', 'Exercises'), array('exercise/admin')); ?></h2>
 <ul>
-	<?php
-	if (is_array($model->exercises))
-		foreach ($model->exercises as $foreignobj)
-		{
+    <?php
+    if (is_array($model->exercises))
+        foreach ($model->exercises as $foreignobj) {
 
-			echo '<li>';
-			echo CHtml::link($foreignobj->itemLabel, array('exercise/view', 'id' => $foreignobj->id));
+            echo '<li>';
+            echo CHtml::link($foreignobj->itemLabel, array('exercise/view', 'id' => $foreignobj->id));
 
-			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('exercise/update', 'id' => $foreignobj->id), array('class' => 'edit'));
-		}
-	?></ul><p><?php
-	echo CHtml::link(
-	    Yii::t('app', 'Create'), array('exercise/create', 'Exercise' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
-	);
-	?></p><h2><?php echo CHtml::link(Yii::t('app', 'Presentations'), array('presentation/admin')); ?></h2>
+            echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('exercise/update', 'id' => $foreignobj->id), array('class' => 'edit'));
+        }
+    ?></ul><p><?php
+    echo CHtml::link(
+        Yii::t('app', 'Create'), array('exercise/create', 'Exercise' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
+    );
+    ?></p><h2><?php echo CHtml::link(Yii::t('app', 'Presentations'), array('presentation/admin')); ?></h2>
 <ul>
-	<?php
-	if (is_array($model->presentations))
-		foreach ($model->presentations as $foreignobj)
-		{
+        <?php
+        if (is_array($model->presentations))
+            foreach ($model->presentations as $foreignobj) {
 
-			echo '<li>';
-			echo CHtml::link($foreignobj->itemLabel, array('presentation/view', 'id' => $foreignobj->id));
+                echo '<li>';
+                echo CHtml::link($foreignobj->itemLabel, array('presentation/view', 'id' => $foreignobj->id));
 
-			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('presentation/update', 'id' => $foreignobj->id), array('class' => 'edit'));
-		}
-	?></ul><p><?php
-	echo CHtml::link(
-	    Yii::t('app', 'Create'), array('presentation/create', 'Presentation' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
-	);
-	?></p>
+                echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('presentation/update', 'id' => $foreignobj->id), array('class' => 'edit'));
+            }
+        ?></ul><p><?php
+    echo CHtml::link(
+        Yii::t('app', 'Create'), array('presentation/create', 'Presentation' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
+    );
+    ?></p>
 <h2>
-	<?php echo Yii::t('crud', 'Data') ?></h2>
+    <?php echo Yii::t('crud', 'Data') ?></h2>
 
 <p>
-	<?php
-	$this->widget('TbDetailView', array(
-		'data' => $model,
-		'attributes' => array(
-			'id',
-			'title_en',
-			'created',
-			'modified',
-			array(
-				'name' => 'original_media_id',
-				'value' => ($model->originalMedia !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->originalMedia->itemLabel, array('p3Media/view', 'id' => $model->originalMedia->id), array('class' => 'btn')) : 'n/a',
-				'type' => 'html',
-			),
-			array(
-				'name' => 'processed_media_id',
-				'value' => ($model->processedMedia !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->processedMedia->itemLabel, array('p3Media/view', 'id' => $model->processedMedia->id), array('class' => 'btn')) : 'n/a',
-				'type' => 'html',
-			),
-			'title_es',
-			'title_fa',
-			'title_hi',
-			'title_pt',
-			'title_sv',
-			'title_de',
-		),
-	));
-	?></p>
+    <?php
+    $this->widget('TbDetailView', array(
+        'data' => $model,
+        'attributes' => array(
+            'id',
+            'title_en',
+            'created',
+            'modified',
+            array(
+                'name' => 'original_media_id',
+                'value' => ($model->originalMedia !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->originalMedia->itemLabel, array('p3Media/view', 'id' => $model->originalMedia->id), array('class' => 'btn')) : 'n/a',
+                'type' => 'html',
+            ),
+            array(
+                'name' => 'processed_media_id',
+                'value' => ($model->processedMedia !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->processedMedia->itemLabel, array('p3Media/view', 'id' => $model->processedMedia->id), array('class' => 'btn')) : 'n/a',
+                'type' => 'html',
+            ),
+            'title_es',
+            'title_fa',
+            'title_hi',
+            'title_pt',
+            'title_sv',
+            'title_de',
+        ),
+    ));
+    ?></p>
 
