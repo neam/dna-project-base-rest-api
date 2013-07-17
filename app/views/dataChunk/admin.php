@@ -38,13 +38,13 @@ $this->widget('TbGridView', array(
 		'modified',
 		array(
 			'name' => 'data_source_id',
-			'value' => 'CHtml::value($data,\'dataSource.title_en\')',
-			'filter' => CHtml::listData(DataSource::model()->findAll(), 'id', 'title_en'),
+			'value' => 'CHtml::value($data,\'dataSource.itemLabel\')',
+			'filter' => CHtml::listData(DataSource::model()->findAll(), 'id', 'itemLabel'),
 		),
 		array(
 			'name' => 'slideshow_file_id',
-			'value' => 'CHtml::value($data,\'slideshowFile.title_en\')',
-			'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'title_en'),
+			'value' => 'CHtml::value($data,\'slideshowFile.itemLabel\')',
+			'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'itemLabel'),
 		),
 		'title_es',
 		/*

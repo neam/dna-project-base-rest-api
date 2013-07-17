@@ -30,12 +30,14 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'original_media_id'); ?>
-		<?php echo $form->dropDownList($model, 'original_media_id', CHtml::listData(P3Media::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'original_media_id', CHtml::listData(P3Media::model()->findAll(), 'id', 'title'), array('prompt' => 'all'));
+		?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'processed_media_id'); ?>
-		<?php echo $form->dropDownList($model, 'processed_media_id', CHtml::listData(P3Media::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'processed_media_id', CHtml::listData(P3Media::model()->findAll(), 'id', 'title'), array('prompt' => 'all'));
+		?>
 	</div>
 
 	<div class="row">

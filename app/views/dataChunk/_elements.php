@@ -9,7 +9,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'dataSource',
-			'fields' => 'title_en',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -45,7 +45,7 @@
 			'inputSelector' => '#DataChunk_data_source_id',
 			'model' => new DataSource,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -56,7 +56,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'slideshowFile',
-			'fields' => 'title_en',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -92,7 +92,7 @@
 			'inputSelector' => '#DataChunk_slideshow_file_id',
 			'model' => new SlideshowFile,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>

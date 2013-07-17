@@ -76,7 +76,7 @@ $this->breadcrumbs[] = $model->id;
 			'id',
 			array(
 				'name' => 'section_id',
-				'value' => ($model->section !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->section->title_en, array('section/view', 'id' => $model->section->id), array('class' => 'btn')) : 'n/a',
+				'value' => ($model->section !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->section->itemLabel, array('section/view', 'id' => $model->section->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
 			'ordinal',

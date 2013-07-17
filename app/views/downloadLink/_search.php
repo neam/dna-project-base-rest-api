@@ -30,7 +30,8 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'p3_media_id'); ?>
-		<?php echo $form->dropDownList($model, 'p3_media_id', CHtml::listData(P3Media::model()->findAll(), 'id', 'title'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'p3_media_id', CHtml::listData(P3Media::model()->findAll(), 'id', 'title'), array('prompt' => 'all'));
+		?>
 	</div>
 
 	<div class="row">

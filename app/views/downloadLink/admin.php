@@ -38,8 +38,8 @@ $this->widget('TbGridView', array(
 		'modified',
 		array(
 			'name' => 'p3_media_id',
-			'value' => 'CHtml::value($data,\'p3Media.title\')',
-			'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'title'),
+			'value' => 'CHtml::value($data,\'p3Media.itemLabel\')',
+			'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
 		),
 		'title_es',
 		'title_fa',

@@ -35,8 +35,8 @@ $this->widget('TbGridView', array(
 		'id',
 		array(
 			'name' => 'chapter_id',
-			'value' => 'CHtml::value($data,\'chapter.title_en\')',
-			'filter' => CHtml::listData(Chapter::model()->findAll(), 'id', 'title_en'),
+			'value' => 'CHtml::value($data,\'chapter.itemLabel\')',
+			'filter' => CHtml::listData(Chapter::model()->findAll(), 'id', 'itemLabel'),
 		),
 		'title_en',
 		'slug_en',

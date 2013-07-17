@@ -38,8 +38,8 @@ $this->widget('TbGridView', array(
 		'modified',
 		array(
 			'name' => 'slideshow_file_id',
-			'value' => 'CHtml::value($data,\'slideshowFile.title_en\')',
-			'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'title_en'),
+			'value' => 'CHtml::value($data,\'slideshowFile.itemLabel\')',
+			'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'itemLabel'),
 		),
 		'title_es',
 		'title_fa',

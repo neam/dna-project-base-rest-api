@@ -15,7 +15,8 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'chapter_id'); ?>
-		<?php echo $form->dropDownList($model, 'chapter_id', CHtml::listData(Chapter::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'chapter_id', CHtml::listData(Chapter::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all'));
+		?>
 	</div>
 
 	<div class="row">

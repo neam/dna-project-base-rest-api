@@ -7,8 +7,8 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'chapter',
-			'fields' => 'title_en',
-			'allowEmpty' => false,
+			'fields' => 'itemLabel',
+			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
 				'checkAll' => 'all'),
@@ -43,7 +43,7 @@
 			'inputSelector' => '#Section_chapter_id',
 			'model' => new Chapter,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>

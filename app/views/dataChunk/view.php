@@ -42,7 +42,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->ordinal, array('sectionContent/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->itemLabel, array('sectionContent/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('sectionContent/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}
@@ -65,12 +65,12 @@ $this->breadcrumbs[] = $model->id;
 			'modified',
 			array(
 				'name' => 'data_source_id',
-				'value' => ($model->dataSource !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->dataSource->title_en, array('dataSource/view', 'id' => $model->dataSource->id), array('class' => 'btn')) : 'n/a',
+				'value' => ($model->dataSource !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->dataSource->itemLabel, array('dataSource/view', 'id' => $model->dataSource->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
 			array(
 				'name' => 'slideshow_file_id',
-				'value' => ($model->slideshowFile !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->slideshowFile->title_en, array('slideshowFile/view', 'id' => $model->slideshowFile->id), array('class' => 'btn')) : 'n/a',
+				'value' => ($model->slideshowFile !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->slideshowFile->itemLabel, array('slideshowFile/view', 'id' => $model->slideshowFile->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
 			'title_es',

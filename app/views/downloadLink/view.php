@@ -38,7 +38,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->ordinal, array('sectionContent/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->itemLabel, array('sectionContent/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('sectionContent/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}
@@ -61,7 +61,7 @@ $this->breadcrumbs[] = $model->id;
 			'modified',
 			array(
 				'name' => 'p3_media_id',
-				'value' => ($model->p3Media !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->p3Media->title, array('p3Media/view', 'id' => $model->p3Media->id), array('class' => 'btn')) : 'n/a',
+				'value' => ($model->p3Media !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->p3Media->itemLabel, array('p3Media/view', 'id' => $model->p3Media->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
 			'title_es',

@@ -38,7 +38,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->ordinal, array('sectionContent/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->itemLabel, array('sectionContent/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('sectionContent/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}
@@ -61,7 +61,7 @@ $this->breadcrumbs[] = $model->id;
 			'modified',
 			array(
 				'name' => 'slideshow_file_id',
-				'value' => ($model->slideshowFile !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->slideshowFile->title_en, array('slideshowFile/view', 'id' => $model->slideshowFile->id), array('class' => 'btn')) : 'n/a',
+				'value' => ($model->slideshowFile !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->slideshowFile->itemLabel, array('slideshowFile/view', 'id' => $model->slideshowFile->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
 			'title_es',

@@ -42,7 +42,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->title_en, array('dataChunk/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->itemLabel, array('dataChunk/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('dataChunk/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}
@@ -58,7 +58,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->title_en, array('exercise/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->itemLabel, array('exercise/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('exercise/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}
@@ -74,7 +74,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->title_en, array('presentation/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->itemLabel, array('presentation/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('presentation/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}
@@ -97,12 +97,12 @@ $this->breadcrumbs[] = $model->id;
 			'modified',
 			array(
 				'name' => 'original_media_id',
-				'value' => ($model->originalMedia !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->originalMedia->title, array('p3Media/view', 'id' => $model->originalMedia->id), array('class' => 'btn')) : 'n/a',
+				'value' => ($model->originalMedia !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->originalMedia->itemLabel, array('p3Media/view', 'id' => $model->originalMedia->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
 			array(
 				'name' => 'processed_media_id',
-				'value' => ($model->processedMedia !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->processedMedia->title, array('p3Media/view', 'id' => $model->processedMedia->id), array('class' => 'btn')) : 'n/a',
+				'value' => ($model->processedMedia !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->processedMedia->itemLabel, array('p3Media/view', 'id' => $model->processedMedia->id), array('class' => 'btn')) : 'n/a',
 				'type' => 'html',
 			),
 			'title_es',

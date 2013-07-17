@@ -9,7 +9,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'originalMedia',
-			'fields' => 'title',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -45,7 +45,7 @@
 			'inputSelector' => '#VideoFile_original_media_id',
 			'model' => new P3Media,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -56,7 +56,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'processedMedia',
-			'fields' => 'title',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -92,7 +92,7 @@
 			'inputSelector' => '#VideoFile_processed_media_id',
 			'model' => new P3Media,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>

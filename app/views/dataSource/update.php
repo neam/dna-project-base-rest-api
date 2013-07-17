@@ -83,8 +83,8 @@ $this->widget('TbGridView', array(
 		),
 		array(
 			'name' => 'slideshow_file_id',
-			'value' => 'CHtml::value($data,\'slideshowFile.title_en\')',
-			'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'title_en'),
+			'value' => 'CHtml::value($data,\'slideshowFile.itemLabel\')',
+			'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'itemLabel'),
 		),
 		array(
 			'class' => 'editable.EditableColumn',
@@ -198,13 +198,13 @@ $this->widget('TbGridView', array(
 		),
 		array(
 			'name' => 'original_media_id',
-			'value' => 'CHtml::value($data,\'originalMedia.title\')',
-			'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'title'),
+			'value' => 'CHtml::value($data,\'originalMedia.itemLabel\')',
+			'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
 		),
 		array(
 			'name' => 'processed_media_id',
-			'value' => 'CHtml::value($data,\'processedMedia.title\')',
-			'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'title'),
+			'value' => 'CHtml::value($data,\'processedMedia.itemLabel\')',
+			'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
 		),
 		array(
 			'class' => 'editable.EditableColumn',

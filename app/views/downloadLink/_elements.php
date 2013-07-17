@@ -9,7 +9,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'p3Media',
-			'fields' => 'title',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -45,7 +45,7 @@
 			'inputSelector' => '#DownloadLink_p3_media_id',
 			'model' => new P3Media,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>

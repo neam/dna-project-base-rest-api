@@ -30,12 +30,14 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'data_source_id'); ?>
-		<?php echo $form->dropDownList($model, 'data_source_id', CHtml::listData(DataSource::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'data_source_id', CHtml::listData(DataSource::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all'));
+		?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'slideshow_file_id'); ?>
-		<?php echo $form->dropDownList($model, 'slideshow_file_id', CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all')); ?>
+		<?php echo $form->dropDownList($model, 'slideshow_file_id', CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'title_en'), array('prompt' => 'all'));
+		?>
 	</div>
 
 	<div class="row">

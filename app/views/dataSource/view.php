@@ -34,7 +34,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->title_en, array('dataChunk/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->itemLabel, array('dataChunk/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('dataChunk/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}
@@ -50,7 +50,7 @@ $this->breadcrumbs[] = $model->id;
 		{
 
 			echo '<li>';
-			echo CHtml::link($foreignobj->title_en, array('spreadsheetFile/view', 'id' => $foreignobj->id));
+			echo CHtml::link($foreignobj->itemLabel, array('spreadsheetFile/view', 'id' => $foreignobj->id));
 
 			echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('spreadsheetFile/update', 'id' => $foreignobj->id), array('class' => 'edit'));
 		}

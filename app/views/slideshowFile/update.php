@@ -83,8 +83,8 @@ $this->widget('TbGridView', array(
 		),
 		array(
 			'name' => 'data_source_id',
-			'value' => 'CHtml::value($data,\'dataSource.title_en\')',
-			'filter' => CHtml::listData(DataSource::model()->findAll(), 'id', 'title_en'),
+			'value' => 'CHtml::value($data,\'dataSource.itemLabel\')',
+			'filter' => CHtml::listData(DataSource::model()->findAll(), 'id', 'itemLabel'),
 		),
 		array(
 			'class' => 'editable.EditableColumn',

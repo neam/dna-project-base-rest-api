@@ -7,8 +7,8 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'section',
-			'fields' => 'title_en',
-			'allowEmpty' => false,
+			'fields' => 'itemLabel',
+			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
 				'checkAll' => 'all'),
@@ -43,7 +43,7 @@
 			'inputSelector' => '#SectionContent_section_id',
 			'model' => new Section,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -56,7 +56,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'htmlChunk',
-			'fields' => 'markup_en',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -92,7 +92,7 @@
 			'inputSelector' => '#SectionContent_html_chunk_id',
 			'model' => new HtmlChunk,
 			'pk' => 'id',
-			'field' => 'markup_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -103,7 +103,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'vizView',
-			'fields' => 'title_en',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -139,7 +139,7 @@
 			'inputSelector' => '#SectionContent_viz_view_id',
 			'model' => new VizView,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -150,7 +150,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'videoFile',
-			'fields' => 'title_en',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -186,7 +186,7 @@
 			'inputSelector' => '#SectionContent_video_file_id',
 			'model' => new VideoFile,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -197,7 +197,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'teachersGuide',
-			'fields' => 'title_en',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -233,7 +233,7 @@
 			'inputSelector' => '#SectionContent_teachers_guide_id',
 			'model' => new TeachersGuide,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -244,7 +244,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'exercise',
-			'fields' => 'title_en',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -280,7 +280,7 @@
 			'inputSelector' => '#SectionContent_exercise_id',
 			'model' => new Exercise,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -291,7 +291,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'presentation',
-			'fields' => 'title_en',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -327,7 +327,7 @@
 			'inputSelector' => '#SectionContent_presentation_id',
 			'model' => new Presentation,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -338,7 +338,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'dataChunk',
-			'fields' => 'title_en',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -374,7 +374,7 @@
 			'inputSelector' => '#SectionContent_data_chunk_id',
 			'model' => new DataChunk,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -385,7 +385,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'downloadLink',
-			'fields' => 'title_en',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -421,7 +421,7 @@
 			'inputSelector' => '#SectionContent_download_link_id',
 			'model' => new DownloadLink,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>

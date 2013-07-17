@@ -9,7 +9,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'dataSource',
-			'fields' => 'title_en',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -45,7 +45,7 @@
 			'inputSelector' => '#SpreadsheetFile_data_source_id',
 			'model' => new DataSource,
 			'pk' => 'id',
-			'field' => 'title_en',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -56,7 +56,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'originalMedia',
-			'fields' => 'title',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -92,7 +92,7 @@
 			'inputSelector' => '#SpreadsheetFile_original_media_id',
 			'model' => new P3Media,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
@@ -103,7 +103,7 @@
 		    'Relation', array(
 			'model' => $model,
 			'relation' => 'processedMedia',
-			'fields' => 'title',
+			'fields' => 'itemLabel',
 			'allowEmpty' => true,
 			'style' => 'dropdownlist',
 			'htmlOptions' => array(
@@ -139,7 +139,7 @@
 			'inputSelector' => '#SpreadsheetFile_processed_media_id',
 			'model' => new P3Media,
 			'pk' => 'id',
-			'field' => 'title',
+			'field' => 'itemLabel',
 		));
 		$this->endClip();
 		?>
