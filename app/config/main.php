@@ -7,6 +7,9 @@
  * See also config.php, for composer installation and update "hooks"
  */
 
+// also includes environment config file, eg. 'development' or 'production', we merge the files (if available!) at the botton
+$localConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'gscms.php';
+
 $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
 $baseUrl = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SERVER['SCRIPT_NAME']) == '\\') ? '': dirname($_SERVER['SCRIPT_NAME']);
 
@@ -62,6 +65,9 @@ $mainConfig = array(
         'editable.*', // Include X-Editable for Yii classes
     ),
     'modules' => array(
+        'ckeditorConfigurator' => array(
+            'class' => 'vendor.schmunk42.ckeditor-configurator.CkeditorConfiguratorModule',
+        ),
         // uncomment the following to enable the Gii tool
         'gii' => array(
             'class' => 'system.gii.GiiModule',
@@ -290,6 +296,7 @@ $mainConfig = array(
             'rules' => array(
                 '^p3pages/default/page' => 'frontend',
                 '^p3(.*)' => 'backend2',
+                '^ckeditorConfigurator/(.*)' => 'backend2',
                 '^user/default/index' => 'frontend',
                 '^user/login/(.*)' => 'frontend',
                 '^user/profile/(.*)' => 'frontend',
@@ -344,7 +351,8 @@ $mainConfig = array(
         // this is used in contact page
         'adminEmail' => 'webmaster@example.com',
         // global Phundament 3 parameters
-        'p3.fallbackLanguage' => 'en', // defaults to 'en'
+        'P3Page.fallbackLanguage' => 'en', // defaults to 'en'
+        'P3Widget.fallbackLanguage' => 'en', // defaults to 'en'
         'ext.ckeditor.options' => array(
             'type' => 'fckeditor',
             'height' => 400,
@@ -393,8 +401,6 @@ $mainConfig = array(
 );
 
 
-// also includes environment config file, eg. 'development' or 'production'
-$localConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'gscms.php';
 if (is_file($localConfigFile)) {
     return CMap::mergeArray($mainConfig, require($localConfigFile));
 } else {

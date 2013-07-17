@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3cc45fef5c6ea3101af1855ed930802f",
+    "hash": "577185abed64665536a724bbec82a908",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -316,16 +316,16 @@
         },
         {
             "name": "phundament/p3bootstrap",
-            "version": "0.17.1",
+            "version": "0.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3bootstrap.git",
-                "reference": "0.17.1"
+                "reference": "0.18.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3bootstrap/zipball/0.17.1",
-                "reference": "0.17.1",
+                "url": "https://api.github.com/repos/schmunk42/p3bootstrap/zipball/0.18.0",
+                "reference": "0.18.0",
                 "shasum": ""
             },
             "require": {
@@ -359,10 +359,10 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3bootstrap/tree/0.17.1",
+                "source": "https://github.com/schmunk42/p3bootstrap/tree/0.18.0",
                 "issues": "https://github.com/schmunk42/p3bootstrap/issues"
             },
-            "time": "2013-07-11 20:51:54"
+            "time": "2013-07-12 17:45:53"
         },
         {
             "name": "phundament/p3extensions",
@@ -370,12 +370,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3extensions.git",
-                "reference": "317e9a585f7e4325c1fb7030376c07d05410bbb7"
+                "reference": "0.14.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3extensions/zipball/317e9a585f7e4325c1fb7030376c07d05410bbb7",
-                "reference": "317e9a585f7e4325c1fb7030376c07d05410bbb7",
+                "url": "https://api.github.com/repos/schmunk42/p3extensions/zipball/0.14.0",
+                "reference": "0.14.0",
                 "shasum": ""
             },
             "require": {
@@ -401,10 +401,10 @@
                 "phundament"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3extensions/tree/master",
+                "source": "https://github.com/schmunk42/p3extensions/tree/0.14.0",
                 "issues": "https://github.com/schmunk42/p3extensions/issues"
             },
-            "time": "2013-06-11 15:55:36"
+            "time": "2013-07-11 20:49:44"
         },
         {
             "name": "phundament/p3media",
@@ -548,6 +548,46 @@
             "time": "2013-07-11 22:22:04"
         },
         {
+            "name": "schmunk42/ckeditor-configurator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/yii-ckeditor-configurator.git",
+                "reference": "f1defedb658eb7dbf41c8d8b7481450e9e6e2ecd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/yii-ckeditor-configurator/zipball/f1defedb658eb7dbf41c8d8b7481450e9e6e2ecd",
+                "reference": "f1defedb658eb7dbf41c8d8b7481450e9e6e2ecd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "yiisoft/yii": "1.1.*"
+            },
+            "suggest": {
+                "ckeditor": "Any ckeditor extension"
+            },
+            "type": "yii-extension",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "homepage": "https://github.com/schmunk42/yii-ckeditor-configurator",
+            "keywords": [
+                "CKEditor",
+                "yii"
+            ],
+            "time": "2013-07-16 14:29:51"
+        },
+        {
             "name": "schmunk42/multi-theme",
             "version": "0.1.1",
             "source": {
@@ -626,6 +666,44 @@
                 "issues": "https://github.com/schmunk42/web-user-behavior/issues"
             },
             "time": "2013-03-10 23:22:14"
+        },
+        {
+            "name": "schmunk42/yii-sakila-crud",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/yii-sakila-crud.git",
+                "reference": "a1721ed4390e690bdf7263f3cb200b7ca874a287"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/yii-sakila-crud/zipball/a1721ed4390e690bdf7263f3cb200b7ca874a287",
+                "reference": "a1721ed4390e690bdf7263f3cb200b7ca874a287",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "description": "Yii Framework test-module with gtc slim templates on saklia MySQL demo database",
+            "homepage": "http://phundament.com/",
+            "keywords": [
+                "crud",
+                "gii-template-collection",
+                "yii"
+            ],
+            "time": "2013-07-13 10:41:32"
         },
         {
             "name": "vitalets/x-editable-yii",
@@ -803,61 +881,6 @@
             "homepage": "https://github.com/Crisu83/yii-less"
         },
         {
-            "name": "pdepend/pdepend",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "85b3d7f2d2c6105a76daea0f5a0aee7c7a140b25"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/85b3d7f2d2c6105a76daea0f5a0aee7c7a140b25",
-                "reference": "85b3d7f2d2c6105a76daea0f5a0aee7c7a140b25",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.3"
-            },
-            "bin": [
-                "src/bin/pdepend"
-            ],
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "Official version of pdepend to be handled with Composer",
-            "time": "2013-01-25 15:09:33"
-        },
-        {
-            "name": "phpmd/phpmd",
-            "version": "1.4.1",
-            "source": {
-                "type": "git",
-                "url": "git://github.com/phpmd/phpmd.git",
-                "reference": "1.4.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/phpmd/phpmd/archive/1.4.1.zip",
-                "reference": "1.4.1",
-                "shasum": ""
-            },
-            "require": {
-                "pdepend/pdepend": "*",
-                "php": ">=5.3.0"
-            },
-            "bin": [
-                "src/bin/phpmd"
-            ],
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                "../../pdepend/pdepend/src/main/php",
-                "src/main/php"
-            ],
-            "description": "Official version of PHPMD handled with Composer.",
-            "time": "2012-12-14 12:25:09"
-        },
-        {
             "name": "phundament/lessii",
             "version": "dev-master",
             "source": {
@@ -947,6 +970,24 @@
             "time": "2013-04-24 15:22:11"
         },
         {
+            "name": "thomaspark/bootswatch",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomaspark/bootswatch.git",
+                "reference": "a9aab510f11515c7dec294e7b24e838ff583e15a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thomaspark/bootswatch/archive/a9aab510f11515c7dec294e7b24e838ff583e15a.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library",
+            "description": "Themes for Twitter Bootstrap",
+            "homepage": "https://github.com/thomaspark/bootswatch"
+        },
+        {
             "name": "twitter/bootstrap",
             "version": "v2.3.2",
             "source": {
@@ -993,6 +1034,8 @@
         "clevertech/yiibooster": 20,
         "anggiaj/eselect2": 20,
         "waalzer/app-demo-data": 20,
+        "schmunk42/yii-sakila-crud": 20,
+        "schmunk42/ckeditor-configurator": 20,
         "phundament/lessii": 20
     },
     "platform": {
