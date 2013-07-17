@@ -40,6 +40,11 @@ abstract class BaseHtmlChunk extends ActiveRecord{
 		);
 	}
 
+	public function getItemLabel() {
+		return (string) $this->markup_en;
+
+	}
+
 	public function behaviors()
 	{
 		return array_merge(

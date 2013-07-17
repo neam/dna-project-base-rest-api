@@ -45,6 +45,11 @@ abstract class BaseWordFile extends ActiveRecord{
 		);
 	}
 
+	public function getItemLabel() {
+		return (string) $this->title_en;
+
+	}
+
 	public function behaviors()
 	{
 		return array_merge(

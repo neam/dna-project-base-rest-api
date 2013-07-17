@@ -61,6 +61,11 @@ abstract class BaseSection extends ActiveRecord{
 		);
 	}
 
+	public function getItemLabel() {
+		return (string) $this->chapter_id;
+
+	}
+
 	public function behaviors()
 	{
 		return array_merge(

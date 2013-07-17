@@ -18,9 +18,9 @@ class WordFile extends BaseWordFile
 		return parent::init();
 	}
 
-	public function get_label()
+	public function getItemLabel()
 	{
-		return (string) $this->title;
+		return parent::getItemLabel();
 	}
 
 	public function behaviors()

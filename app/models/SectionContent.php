@@ -7,8 +7,6 @@ Yii::import('SectionContent.*');
 class SectionContent extends BaseSectionContent
 {
 
-	public $label;
-
 	// Add your model-specific methods here. This file will not be overriden by gtc except you force it.
 	public static function model($className = __CLASS__)
 	{
@@ -20,13 +18,8 @@ class SectionContent extends BaseSectionContent
 		return parent::init();
 	}
 
-	public function get_label()
+	public function getItemLabel()
 	{
-		if (!is_null($this->header_id))
-		{
-			return $this->header->title;
-		}
-
 		return (string) "Empty Association #" . $this->ordinal;
 	}
 
