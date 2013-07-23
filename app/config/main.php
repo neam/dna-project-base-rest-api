@@ -324,8 +324,8 @@ $mainConfig = array(
                 // p3media - SEO
                 '<lang:[a-z]{2}(_[a-z]{2})?>/img/<preset:[a-zA-Z0-9-._]+>/<title:.+>_<id:\d+><extension:.[a-zA-Z0-9]{1,}+>' => 'p3media/file/image', // p3media images, TESTING: disable in case of problems
                 // Yii
-                '<controller:\w+>/<id:\d+>' => '<controller>/view',
-                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 // general language and route handling
                 '<lang:[a-z]{2}(_[a-z]{2})?>' => '',
                 '<lang:[a-z]{2}(_[a-z]{2})?>/<_c>' => '<_c>',
