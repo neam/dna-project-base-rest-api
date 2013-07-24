@@ -1,0 +1,14 @@
+{
+    "name": "gapminder-school-cms",
+    "version": "0.0.0",
+    "main": "www/themes/frontend/css/style.css",
+    "ignore": [
+        ".jshintrc",
+        "**/*.txt"
+    ],
+    "dependencies": {
+        "mediaelement": "2.12.0"
+    },
+    "devDependencies": {
+    }
+}
