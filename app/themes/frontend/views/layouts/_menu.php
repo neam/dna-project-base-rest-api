@@ -43,6 +43,8 @@ $this->widget(
                                    'url'   => array_merge(array(''), $_GET, array('lang' => 'pt_pt'))),
                              array('label' => 'Castellano/Español',
                                    'url'   => array_merge(array(''), $_GET, array('lang' => 'es_es'))),
+                             array('label' => 'Chinese',
+                                   'url'   => array_merge(array(''), $_GET, array('lang' => 'cn'))),
                              array('label' => 'Deutsch',
                                    'url'   => array_merge(array(''), $_GET, array('lang' => 'de'))),
                          ),

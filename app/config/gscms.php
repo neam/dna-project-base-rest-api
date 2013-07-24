@@ -62,7 +62,8 @@ $gscmsConfig = array(
 				'hi',
 				'pt',
 				'sv',
-				'de',
+                'cn',
+                'de',
 			)
 		),
 		'messages' => array(
