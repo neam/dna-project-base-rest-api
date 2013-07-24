@@ -17,11 +17,15 @@ class ChapterController extends Controller
     public function accessRules()
     {
         return array(
-            array(
-                'allow',
+            array('allow',
+                'actions' => array(
+                    'view',
+                ),
+                'users' => array('*'),
+            ),
+            array('allow',
                 'actions' => array(
                     'index',
-                    'view',
                     'create',
                     'update',
                     'editableSaver',
