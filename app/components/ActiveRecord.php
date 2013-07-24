@@ -27,7 +27,7 @@ class ActiveRecord extends CActiveRecord
 			'SlideshowFile' => array('title','processed_media_id'),
 			'SpreadsheetFile' => array('title','processed_media_id'),
 			'TeachersGuide' => array('title'),
-			'VideoFile' => array('title','processed_media_id'),
+			'VideoFile' => array('title','subtitles','processed_media_id'),
 			'VizView' => array('title'),
 			'WordFile' => array('title','processed_media_id'),
 		);
