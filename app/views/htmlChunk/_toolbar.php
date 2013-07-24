@@ -33,12 +33,12 @@
                     "url" => array("create")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Delete"),
-                    "type" => "danger",
-                    "icon" => "icon-remove icon-white",
-                    "htmlOptions" => array(
-                        "submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
-                        "confirm" => Yii::t("crud", "Do you want to delete this item?"))
+                        "label" => Yii::t("crud", "Delete"),
+                        "type" => "danger",
+                        "icon" => "icon-remove icon-white",
+                        "htmlOptions" => array(
+                            "submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
+                            "confirm" => Yii::t("crud", "Do you want to delete this item?"))
                     )
                 );
                 break;
@@ -54,32 +54,33 @@
                     "url" => array("view", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Delete"),
-                    "type" => "danger",
-                    "icon" => "icon-remove icon-white",
-                    "htmlOptions" => array(
-                        "submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
-                        "confirm" => Yii::t("crud", "Do you want to delete this item?"))
+                        "label" => Yii::t("crud", "Delete"),
+                        "type" => "danger",
+                        "icon" => "icon-remove icon-white",
+                        "htmlOptions" => array(
+                            "submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
+                            "confirm" => Yii::t("crud", "Do you want to delete this item?"))
                     )
                 );
                 break;
         }
         ?>    </div>
-    <?php if ($this->action->id == 'admin'): ?>    <div class="btn-group">
-        <?php
-        $this->widget("bootstrap.widgets.TbButton", array(
-            "label" => Yii::t("crud", "Search"),
-            "icon" => "icon-search",
-            "htmlOptions" => array("class" => "search-button")
-        ));
-        ?>    </div>
+    <?php if ($this->action->id == 'admin'): ?>
+        <div class="btn-group">
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("crud", "Search"),
+                "icon" => "icon-search",
+                "htmlOptions" => array("class" => "search-button")
+            ));
+            ?>    </div>
 
         <div class="btn-group">
             <?php
             $this->widget('bootstrap.widgets.TbButtonGroup', array(
                 'buttons' => array(
                     array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'sectionContents - SectionContent', 'url' => array('sectionContent/admin')),
-                        )
+                    )
                     ),
                 ),
             ));
@@ -88,11 +89,12 @@
 
     <?php endif; ?></div>
 
-<?php if ($this->action->id == 'admin'): ?><div class="search-form" style="display:none">
-        <?php
-        $this->renderPartial('_search', array(
-            'model' => $model,
-        ));
-        ?>
+<?php if ($this->action->id == 'admin'): ?>
+    <div class="search-form" style="display:none">
+    <?php
+    $this->renderPartial('_search', array(
+        'model' => $model,
+    ));
+    ?>
     </div>
 <?php endif; ?>

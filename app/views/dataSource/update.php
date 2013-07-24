@@ -5,7 +5,9 @@ $this->breadcrumbs[] = Yii::t('crud', 'Update');
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-    <?php echo Yii::t('crud', 'Data Source') ?> <small><?php echo Yii::t('crud', 'Update') ?> #<?php echo $model->id ?></small></h1>
+    <?php echo Yii::t('crud', 'Data Source') ?>
+    <small><?php echo Yii::t('crud', 'Update') ?> #<?php echo $model->id ?></small>
+</h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <?php

@@ -10,18 +10,18 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 ?>
 
 <script>
-    $(function() {
+    $(function () {
 
         // smooth scroll
 
-        $('.bs-docs-sidebar li a').click(function(event) {
+        $('.bs-docs-sidebar li a').click(function (event) {
             event.preventDefault();
         });
 
         // http://stackoverflow.com/questions/645202/can-i-update-window-location-hash-without-having-the-web-page-scroll
         function changeHashWithoutScrolling(hash) {
             var id = hash.replace(/^.*#/, ''),
-                    elem = document.getElementById(id);
+                elem = document.getElementById(id);
             elem.id = id + '-tmp';
             window.location.hash = hash;
             elem.id = id;
@@ -29,7 +29,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
         $('.bs-docs-sidebar li a').smoothScroll({
             offset: -57,
-            afterScroll: function(e) {
+            afterScroll: function (e) {
                 // Necessary to do manually
                 changeHashWithoutScrolling(e.scrollTarget);
             }
@@ -51,9 +51,9 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
          */
 
         $('#P3WidgetContainerShowControls')
-                .click(function() {
-            $('.admin-container').toggleClass('hide show', 0);
-        });
+            .click(function () {
+                $('.admin-container').toggleClass('hide show', 0);
+            });
 
     });
 </script>
@@ -71,8 +71,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                 }
                 ?>
             </ul>
-            <?php
-        else:
+        <?php else:
             echo Yii::t('app', 'Chapter contains no sections');
         endif;
         ?>
@@ -106,8 +105,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
             <?php endforeach; ?>
 
-            <?php
-        else:
+        <?php else:
             ?>
             <div class="alert">
                 <?php echo Yii::t('app', 'Chapter contains no sections'); ?>

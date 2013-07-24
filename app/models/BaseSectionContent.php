@@ -46,12 +46,12 @@ abstract class BaseSectionContent extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-            array('section_id', 'required'),
-            array('ordinal, created, modified, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id', 'default', 'setOnEmpty' => true, 'value' => null),
-            array('ordinal', 'numerical', 'integerOnly' => true),
-            array('section_id, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id', 'length', 'max' => 20),
-            array('created, modified', 'safe'),
-            array('id, section_id, ordinal, created, modified, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id', 'safe', 'on' => 'search'),
+                array('section_id', 'required'),
+                array('ordinal, created, modified, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('ordinal', 'numerical', 'integerOnly' => true),
+                array('section_id, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id', 'length', 'max' => 20),
+                array('created, modified', 'safe'),
+                array('id, section_id, ordinal, created, modified, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -65,9 +65,9 @@ abstract class BaseSectionContent extends ActiveRecord
     {
         return array_merge(
             parent::behaviors(), array(
-            'savedRelated' => array(
-                'class' => 'gii-template-collection.components.CSaveRelationsBehavior'
-            )
+                'savedRelated' => array(
+                    'class' => 'gii-template-collection.components.CSaveRelationsBehavior'
+                )
             )
         );
     }
@@ -139,22 +139,24 @@ abstract class BaseSectionContent extends ActiveRecord
      * $relatedSearchModel = $model->getRelatedSearchModel('relationName');
      *
      * Then, when invoking CGridView:
-     * 	...
-     * 		'dataProvider' => $relatedSearchModel->search(),
-     * 		'filter' => $relatedSearchModel,
-     * 	...
+     *    ...
+     *        'dataProvider' => $relatedSearchModel->search(),
+     *        'filter' => $relatedSearchModel,
+     *    ...
      * @returns CActiveRecord
      */
     public function getRelatedSearchModel($name)
     {
 
         $md = $this->getMetaData();
-        if (!isset($md->relations[$name]))
+        if (!isset($md->relations[$name])) {
             throw new CDbException(Yii::t('yii', '{class} does not have relation "{name}".', array('{class}' => get_class($this), '{name}' => $name)));
+        }
 
         $relation = $md->relations[$name];
-        if (!($relation instanceof CHasManyRelation))
+        if (!($relation instanceof CHasManyRelation)) {
             throw new CException("Currently works with HAS_MANY relations only");
+        }
 
         $className = $relation->className;
         $related = new $className('search');

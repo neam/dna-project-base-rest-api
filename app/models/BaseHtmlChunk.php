@@ -35,9 +35,9 @@ abstract class BaseHtmlChunk extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-            array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de', 'default', 'setOnEmpty' => true, 'value' => null),
-            array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de', 'safe'),
-            array('id, markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de', 'safe', 'on' => 'search'),
+                array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de', 'safe'),
+                array('id, markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -51,9 +51,9 @@ abstract class BaseHtmlChunk extends ActiveRecord
     {
         return array_merge(
             parent::behaviors(), array(
-            'savedRelated' => array(
-                'class' => 'gii-template-collection.components.CSaveRelationsBehavior'
-            )
+                'savedRelated' => array(
+                    'class' => 'gii-template-collection.components.CSaveRelationsBehavior'
+                )
             )
         );
     }
@@ -111,22 +111,24 @@ abstract class BaseHtmlChunk extends ActiveRecord
      * $relatedSearchModel = $model->getRelatedSearchModel('relationName');
      *
      * Then, when invoking CGridView:
-     * 	...
-     * 		'dataProvider' => $relatedSearchModel->search(),
-     * 		'filter' => $relatedSearchModel,
-     * 	...
+     *    ...
+     *        'dataProvider' => $relatedSearchModel->search(),
+     *        'filter' => $relatedSearchModel,
+     *    ...
      * @returns CActiveRecord
      */
     public function getRelatedSearchModel($name)
     {
 
         $md = $this->getMetaData();
-        if (!isset($md->relations[$name]))
+        if (!isset($md->relations[$name])) {
             throw new CDbException(Yii::t('yii', '{class} does not have relation "{name}".', array('{class}' => get_class($this), '{name}' => $name)));
+        }
 
         $relation = $md->relations[$name];
-        if (!($relation instanceof CHasManyRelation))
+        if (!($relation instanceof CHasManyRelation)) {
             throw new CException("Currently works with HAS_MANY relations only");
+        }
 
         $className = $relation->className;
         $related = new $className('search');

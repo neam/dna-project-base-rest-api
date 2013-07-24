@@ -26,18 +26,17 @@ class WordFile extends BaseWordFile
     public function behaviors()
     {
         return array_merge(
-            parent::behaviors(), array(
-        ));
+            parent::behaviors(), array());
     }
 
     public function rules()
     {
         return array_merge(
             parent::rules()
-            /* , array(
-              array('column1, column2', 'rule1'),
-              array('column3', 'rule2'),
-              ) */
+        /* , array(
+          array('column1, column2', 'rule1'),
+          array('column3', 'rule2'),
+          ) */
         );
     }
 

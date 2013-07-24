@@ -4,36 +4,38 @@ $this->breadcrumbs[] = $model->id;
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-    <?php echo Yii::t('crud', 'Exercise') ?> <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small></h1>
+    <?php echo Yii::t('crud', 'Exercise') ?>
+    <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small>
+</h1>
 
 
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
 <?php echo CHtml::encode($model->title); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_id')); ?>:</b>
 <?php echo CHtml::encode($model->slideshow_file_id); ?>
-<br />
+<br/>
 
 
 <h2><?php echo CHtml::link(Yii::t('app', 'SectionContents'), array('sectionContent/admin')); ?></h2>
 <ul>
     <?php
-    if (is_array($model->sectionContents))
+    if (is_array($model->sectionContents)) {
         foreach ($model->sectionContents as $foreignobj) {
 
             echo '<li>';
@@ -41,6 +43,7 @@ $this->breadcrumbs[] = $model->id;
 
             echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('sectionContent/update', 'id' => $foreignobj->id), array('class' => 'edit'));
         }
+    }
     ?></ul><p><?php
     echo CHtml::link(
         Yii::t('app', 'Create'), array('sectionContent/create', 'SectionContent' => array('exercise_id' => $model->{$model->tableSchema->primaryKey}))

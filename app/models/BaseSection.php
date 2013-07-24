@@ -52,13 +52,13 @@ abstract class BaseSection extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-            array('chapter_id', 'required'),
-            array('title_en, slug_en, ordinal, menu_label_en, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_de', 'default', 'setOnEmpty' => true, 'value' => null),
-            array('ordinal', 'numerical', 'integerOnly' => true),
-            array('chapter_id', 'length', 'max' => 20),
-            array('title_en, slug_en, menu_label_en, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_de', 'length', 'max' => 255),
-            array('created, modified', 'safe'),
-            array('id, chapter_id, title_en, slug_en, ordinal, menu_label_en, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_de', 'safe', 'on' => 'search'),
+                array('chapter_id', 'required'),
+                array('title_en, slug_en, ordinal, menu_label_en, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('ordinal', 'numerical', 'integerOnly' => true),
+                array('chapter_id', 'length', 'max' => 20),
+                array('title_en, slug_en, menu_label_en, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_de', 'length', 'max' => 255),
+                array('created, modified', 'safe'),
+                array('id, chapter_id, title_en, slug_en, ordinal, menu_label_en, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -72,9 +72,9 @@ abstract class BaseSection extends ActiveRecord
     {
         return array_merge(
             parent::behaviors(), array(
-            'savedRelated' => array(
-                'class' => 'gii-template-collection.components.CSaveRelationsBehavior'
-            )
+                'savedRelated' => array(
+                    'class' => 'gii-template-collection.components.CSaveRelationsBehavior'
+                )
             )
         );
     }
@@ -165,22 +165,24 @@ abstract class BaseSection extends ActiveRecord
      * $relatedSearchModel = $model->getRelatedSearchModel('relationName');
      *
      * Then, when invoking CGridView:
-     * 	...
-     * 		'dataProvider' => $relatedSearchModel->search(),
-     * 		'filter' => $relatedSearchModel,
-     * 	...
+     *    ...
+     *        'dataProvider' => $relatedSearchModel->search(),
+     *        'filter' => $relatedSearchModel,
+     *    ...
      * @returns CActiveRecord
      */
     public function getRelatedSearchModel($name)
     {
 
         $md = $this->getMetaData();
-        if (!isset($md->relations[$name]))
+        if (!isset($md->relations[$name])) {
             throw new CDbException(Yii::t('yii', '{class} does not have relation "{name}".', array('{class}' => get_class($this), '{name}' => $name)));
+        }
 
         $relation = $md->relations[$name];
-        if (!($relation instanceof CHasManyRelation))
+        if (!($relation instanceof CHasManyRelation)) {
             throw new CException("Currently works with HAS_MANY relations only");
+        }
 
         $className = $relation->className;
         $related = new $className('search');

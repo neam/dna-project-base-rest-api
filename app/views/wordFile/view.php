@@ -4,35 +4,36 @@ $this->breadcrumbs[] = $model->id;
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-    <?php echo Yii::t('crud', 'Word File') ?> <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small></h1>
+    <?php echo Yii::t('crud', 'Word File') ?>
+    <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small>
+</h1>
 
 
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
 <?php echo CHtml::encode($model->title); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->original_media_id); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id); ?>
-<br />
-
+<br/>
 
 
 <h2>

@@ -119,7 +119,7 @@ class ExerciseController extends Controller
     public function actionEditableSaver()
     {
         Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('Exercise');  // classname of model to be updated
+        $es = new EditableSaver('Exercise'); // classname of model to be updated
         $es->update();
     }
 
@@ -131,9 +131,9 @@ class ExerciseController extends Controller
             if ($model->save()) {
                 echo CJSON::encode($model->getAttributes());
             } else {
-                $errors = array_map(function($v) {
-                        return join(', ', $v);
-                    }, $model->getErrors());
+                $errors = array_map(function ($v) {
+                    return join(', ', $v);
+                }, $model->getErrors());
                 echo CJSON::encode(array('errors' => $errors));
             }
         } else {
@@ -157,9 +157,9 @@ class ExerciseController extends Controller
                     $this->redirect(array('admin'));
                 }
             }
-        }
-        else
+        } else {
             throw new CHttpException(400, Yii::t('crud', 'Invalid request. Please do not repeat this request again.'));
+        }
     }
 
     public function actionIndex()
@@ -183,8 +183,9 @@ class ExerciseController extends Controller
     public function loadModel($id)
     {
         $model = Exercise::model()->findByPk($id);
-        if ($model === null)
+        if ($model === null) {
             throw new CHttpException(404, Yii::t('crud', 'The requested page does not exist.'));
+        }
         return $model;
     }
 

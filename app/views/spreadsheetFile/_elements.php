@@ -7,13 +7,13 @@
         <?php
         $input = $this->widget(
             'Relation', array(
-            'model' => $model,
-            'relation' => 'dataSource',
-            'fields' => 'itemLabel',
-            'allowEmpty' => true,
-            'style' => 'dropdownlist',
-            'htmlOptions' => array(
-                'checkAll' => 'all'),
+                'model' => $model,
+                'relation' => 'dataSource',
+                'fields' => 'itemLabel',
+                'allowEmpty' => true,
+                'style' => 'dropdownlist',
+                'htmlOptions' => array(
+                    'checkAll' => 'all'),
             )
             , true);
         echo $form->customRow($model, 'data_source_id', $input);
@@ -33,7 +33,7 @@
                         'data-toggle' => 'modal',
                         'data-target' => '#' . $formId . '-modal',
                     ),
-                    ), true);
+                ), true);
                 ?>
             </div>
         </div>
@@ -54,13 +54,13 @@
         <?php
         $input = $this->widget(
             'Relation', array(
-            'model' => $model,
-            'relation' => 'originalMedia',
-            'fields' => 'itemLabel',
-            'allowEmpty' => true,
-            'style' => 'dropdownlist',
-            'htmlOptions' => array(
-                'checkAll' => 'all'),
+                'model' => $model,
+                'relation' => 'originalMedia',
+                'fields' => 'itemLabel',
+                'allowEmpty' => true,
+                'style' => 'dropdownlist',
+                'htmlOptions' => array(
+                    'checkAll' => 'all'),
             )
             , true);
         echo $form->customRow($model, 'original_media_id', $input);
@@ -80,7 +80,7 @@
                         'data-toggle' => 'modal',
                         'data-target' => '#' . $formId . '-modal',
                     ),
-                    ), true);
+                ), true);
                 ?>
             </div>
         </div>
@@ -101,13 +101,13 @@
         <?php
         $input = $this->widget(
             'Relation', array(
-            'model' => $model,
-            'relation' => 'processedMedia',
-            'fields' => 'itemLabel',
-            'allowEmpty' => true,
-            'style' => 'dropdownlist',
-            'htmlOptions' => array(
-                'checkAll' => 'all'),
+                'model' => $model,
+                'relation' => 'processedMedia',
+                'fields' => 'itemLabel',
+                'allowEmpty' => true,
+                'style' => 'dropdownlist',
+                'htmlOptions' => array(
+                    'checkAll' => 'all'),
             )
             , true);
         echo $form->customRow($model, 'processed_media_id', $input);
@@ -127,7 +127,7 @@
                         'data-toggle' => 'modal',
                         'data-target' => '#' . $formId . '-modal',
                     ),
-                    ), true);
+                ), true);
                 ?>
             </div>
         </div>
@@ -156,10 +156,12 @@
         <?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
 
         <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
-    </div> <!-- main inputs -->
+    </div>
+    <!-- main inputs -->
 
 
     <div class="span4"> <!-- sub inputs -->
 
-    </div> <!-- sub inputs -->
+    </div>
+    <!-- sub inputs -->
 </div>

@@ -11,30 +11,30 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'enableAjaxValidation' => true,
     'enableClientValidation' => true,
     'type' => 'horizontal',
-    ));
+));
 ?>
 
-<div class="modal-header">
-    <button type="button" class="close" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">×</button>
-    <h3><?php echo Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Word File'))); ?></h3>
-</div>
-<div class="modal-body">
+    <div class="modal-header">
+        <button type="button" class="close" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">×</button>
+        <h3><?php echo Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Word File'))); ?></h3>
+    </div>
+    <div class="modal-body">
 
-    <?php
-    $this->renderPartial('/wordFile/_elements', array(
-        'model' => $model,
-        'form' => $form,
-    ));
-    ?>
+        <?php
+        $this->renderPartial('/wordFile/_elements', array(
+            'model' => $model,
+            'form' => $form,
+        ));
+        ?>
 
-</div>
-<div class="modal-footer">
-    <a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">Cancel</a>
-    <?php
-    echo CHtml::ajaxSubmitButton('Save', CHtml::normalizeUrl(array('wordFile/editableCreator', 'render' => true)), array(
-        'dataType' => 'json',
-        'type' => 'post',
-        'success' => 'function(data, config) {
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">Cancel</a>
+        <?php
+        echo CHtml::ajaxSubmitButton('Save', CHtml::normalizeUrl(array('wordFile/editableCreator', 'render' => true)), array(
+            'dataType' => 'json',
+            'type' => 'post',
+            'success' => 'function(data, config) {
 				//$("#loader").show();
 				if (data && data.' . $pk . ') {
 					$("#' . $form->id . '").trigger("reset");
@@ -45,7 +45,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 					config.error.call(this, data && data.errors ? data.errors : "Unknown error");
 				}
 			}',
-        'error' => 'function(errors) {
+            'error' => 'function(errors) {
 				//$("#loader").show();
 				var msg = "";
 				if (errors && errors.responseText) {
@@ -57,13 +57,13 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 				}
 				alert(msg);
 			}',
-        'beforeSend' => 'function() {
+            'beforeSend' => 'function() {
 				//$("#loader").show();
 			}',
         ), array('class' => 'btn btn-primary'));
-    ?>
+        ?>
 
-</div>
+    </div>
 
 <?php
 $this->endWidget(); // form

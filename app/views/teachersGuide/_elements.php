@@ -15,10 +15,12 @@
         <?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
 
         <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
-    </div> <!-- main inputs -->
+    </div>
+    <!-- main inputs -->
 
 
     <div class="span4"> <!-- sub inputs -->
 
-    </div> <!-- sub inputs -->
+    </div>
+    <!-- sub inputs -->
 </div>

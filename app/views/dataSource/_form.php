@@ -28,8 +28,8 @@
             'class' => 'btn'
         ));
         echo ' ' . CHtml::submitButton(Yii::t('crud', 'Save'), array(
-            'class' => 'btn btn-primary'
-        ));
+                'class' => 'btn btn-primary'
+            ));
         ?>
     </div>
 

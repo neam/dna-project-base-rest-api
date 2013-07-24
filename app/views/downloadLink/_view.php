@@ -2,23 +2,23 @@
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($data->id), array('downloadLink/view', 'id' => $data->id)); ?>
-    <br />
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
     <?php echo CHtml::encode($data->title); ?>
-    <br />
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
     <?php echo CHtml::encode($data->created); ?>
-    <br />
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('modified')); ?>:</b>
     <?php echo CHtml::encode($data->modified); ?>
-    <br />
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('p3_media_id')); ?>:</b>
     <?php echo CHtml::encode($data->p3_media_id); ?>
-    <br />
+    <br/>
 
     <?php if (Yii::app()->user->checkAccess('DownloadLink.*')): ?>
         <div class="admin-container show">

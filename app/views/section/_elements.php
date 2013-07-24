@@ -5,13 +5,13 @@
         <?php
         $input = $this->widget(
             'Relation', array(
-            'model' => $model,
-            'relation' => 'chapter',
-            'fields' => 'itemLabel',
-            'allowEmpty' => true,
-            'style' => 'dropdownlist',
-            'htmlOptions' => array(
-                'checkAll' => 'all'),
+                'model' => $model,
+                'relation' => 'chapter',
+                'fields' => 'itemLabel',
+                'allowEmpty' => true,
+                'style' => 'dropdownlist',
+                'htmlOptions' => array(
+                    'checkAll' => 'all'),
             )
             , true);
         echo $form->customRow($model, 'chapter_id', $input);
@@ -31,7 +31,7 @@
                         'data-toggle' => 'modal',
                         'data-target' => '#' . $formId . '-modal',
                     ),
-                    ), true);
+                ), true);
                 ?>
             </div>
         </div>
@@ -92,10 +92,12 @@
         <?php echo $form->textFieldRow($model, 'menu_label_sv', array('maxlength' => 255)); ?>
 
         <?php echo $form->textFieldRow($model, 'menu_label_de', array('maxlength' => 255)); ?>
-    </div> <!-- main inputs -->
+    </div>
+    <!-- main inputs -->
 
 
     <div class="span4"> <!-- sub inputs -->
 
-    </div> <!-- sub inputs -->
+    </div>
+    <!-- sub inputs -->
 </div>

@@ -4,38 +4,40 @@ $this->breadcrumbs[] = $model->id;
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-    <?php echo Yii::t('crud', 'Section Content') ?> <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small></h1>
+    <?php echo Yii::t('crud', 'Section Content') ?>
+    <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small>
+</h1>
 
 
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('section_id')); ?>:</b>
 <?php echo CHtml::encode($model->section_id); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('ordinal')); ?>:</b>
 <?php echo CHtml::encode($model->ordinal); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('html_chunk_id')); ?>:</b>
 <?php echo CHtml::encode($model->html_chunk_id); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('viz_view_id')); ?>:</b>
 <?php echo CHtml::encode($model->viz_view_id); ?>
-<br />
+<br/>
 
 <?php /*
   <b><?php echo CHtml::encode($model->getAttributeLabel('video_file_id')); ?>:</b>
@@ -62,7 +64,8 @@ $this->breadcrumbs[] = $model->id;
   <?php echo CHtml::encode($model->download_link_id); ?>
   <br />
 
- */ ?>
+ */
+?>
 
 
 <h2>

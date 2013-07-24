@@ -4,40 +4,42 @@ $this->breadcrumbs[] = $model->id;
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-    <?php echo Yii::t('crud', 'Slideshow File') ?> <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small></h1>
+    <?php echo Yii::t('crud', 'Slideshow File') ?>
+    <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small>
+</h1>
 
 
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
 <?php echo CHtml::encode($model->title); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->original_media_id); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id); ?>
-<br />
+<br/>
 
 
 <h2><?php echo CHtml::link(Yii::t('app', 'DataChunks'), array('dataChunk/admin')); ?></h2>
 <ul>
     <?php
-    if (is_array($model->dataChunks))
+    if (is_array($model->dataChunks)) {
         foreach ($model->dataChunks as $foreignobj) {
 
             echo '<li>';
@@ -45,6 +47,7 @@ $this->breadcrumbs[] = $model->id;
 
             echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('dataChunk/update', 'id' => $foreignobj->id), array('class' => 'edit'));
         }
+    }
     ?></ul><p><?php
     echo CHtml::link(
         Yii::t('app', 'Create'), array('dataChunk/create', 'DataChunk' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
@@ -52,7 +55,7 @@ $this->breadcrumbs[] = $model->id;
     ?></p><h2><?php echo CHtml::link(Yii::t('app', 'Exercises'), array('exercise/admin')); ?></h2>
 <ul>
     <?php
-    if (is_array($model->exercises))
+    if (is_array($model->exercises)) {
         foreach ($model->exercises as $foreignobj) {
 
             echo '<li>';
@@ -60,22 +63,24 @@ $this->breadcrumbs[] = $model->id;
 
             echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('exercise/update', 'id' => $foreignobj->id), array('class' => 'edit'));
         }
+    }
     ?></ul><p><?php
     echo CHtml::link(
         Yii::t('app', 'Create'), array('exercise/create', 'Exercise' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
     );
     ?></p><h2><?php echo CHtml::link(Yii::t('app', 'Presentations'), array('presentation/admin')); ?></h2>
 <ul>
-        <?php
-        if (is_array($model->presentations))
-            foreach ($model->presentations as $foreignobj) {
+    <?php
+    if (is_array($model->presentations)) {
+        foreach ($model->presentations as $foreignobj) {
 
-                echo '<li>';
-                echo CHtml::link($foreignobj->itemLabel, array('presentation/view', 'id' => $foreignobj->id));
+            echo '<li>';
+            echo CHtml::link($foreignobj->itemLabel, array('presentation/view', 'id' => $foreignobj->id));
 
-                echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('presentation/update', 'id' => $foreignobj->id), array('class' => 'edit'));
-            }
-        ?></ul><p><?php
+            echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('presentation/update', 'id' => $foreignobj->id), array('class' => 'edit'));
+        }
+    }
+    ?></ul><p><?php
     echo CHtml::link(
         Yii::t('app', 'Create'), array('presentation/create', 'Presentation' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
     );
