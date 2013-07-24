@@ -204,8 +204,8 @@ $this->widget('TbGridView', array(
             'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
         ),
         array(
-            'name' => 'processed_media_id',
-            'value' => 'CHtml::value($data,\'processedMedia.itemLabel\')',
+            'name' => 'processed_media_id_en',
+            'value' => 'CHtml::value($data,\'processedMediaIdEn.itemLabel\')',
             'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
         ),
         array(
@@ -256,6 +256,41 @@ $this->widget('TbGridView', array(
           'url' => $this->createUrl('spreadsheetFile/editableSaver'),
           'placement' => 'right',
           )
+          ),
+          array(
+          'name'=>'processed_media_id_es',
+          'value'=>'CHtml::value($data,\'processedMediaIdEs.itemLabel\')',
+          'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+          ),
+          array(
+          'name'=>'processed_media_id_fa',
+          'value'=>'CHtml::value($data,\'processedMediaIdFa.itemLabel\')',
+          'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+          ),
+          array(
+          'name'=>'processed_media_id_hi',
+          'value'=>'CHtml::value($data,\'processedMediaIdHi.itemLabel\')',
+          'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+          ),
+          array(
+          'name'=>'processed_media_id_pt',
+          'value'=>'CHtml::value($data,\'processedMediaIdPt.itemLabel\')',
+          'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+          ),
+          array(
+          'name'=>'processed_media_id_sv',
+          'value'=>'CHtml::value($data,\'processedMediaIdSv.itemLabel\')',
+          'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+          ),
+          array(
+          'name'=>'processed_media_id_cn',
+          'value'=>'CHtml::value($data,\'processedMediaIdCn.itemLabel\')',
+          'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+          ),
+          array(
+          'name'=>'processed_media_id_de',
+          'value'=>'CHtml::value($data,\'processedMediaIdDe.itemLabel\')',
+          'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
           ),
          */
         array(

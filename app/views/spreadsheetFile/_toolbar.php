@@ -79,7 +79,7 @@
             <?php
             $this->widget('bootstrap.widgets.TbButtonGroup', array(
                 'buttons' => array(
-                    array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'dataSource - DataSource', 'url' => array('dataSource/admin')), array('label' => 'originalMedia - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMedia - P3Media', 'url' => array('p3Media/admin')),
+                    array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'dataSource - DataSource', 'url' => array('dataSource/admin')), array('label' => 'originalMedia - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdEn - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdCn - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdDe - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdEs - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdFa - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdHi - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdPt - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdSv - P3Media', 'url' => array('p3Media/admin')),
                     )
                     ),
                 ),
@@ -91,10 +91,10 @@
 
 <?php if ($this->action->id == 'admin'): ?>
     <div class="search-form" style="display:none">
-    <?php
-    $this->renderPartial('_search', array(
-        'model' => $model,
-    ));
-    ?>
+        <?php
+        $this->renderPartial('_search', array(
+            'model' => $model,
+        ));
+        ?>
     </div>
 <?php endif; ?>

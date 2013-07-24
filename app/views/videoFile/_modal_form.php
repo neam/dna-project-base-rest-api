@@ -4,7 +4,7 @@
 /* @var $pk The primary key field added object */
 /* @var $field The field of the newly added object to be used as the key/label of the parent form select-input */
 
-$this->beginWidget('bootstrap.widgets.TbModal', array('id' => $formId . "-modal", 'htmlOptions' => array('data-focus-on' => "input:first")));
+$this->beginWidget('bootstrap.widgets.TbModal', array('id' => $formId . "-modal"));
 
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id' => $formId,
@@ -35,31 +35,31 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             'dataType' => 'json',
             'type' => 'post',
             'success' => 'function(data, config) {
-				//$("#loader").show();
-				if (data && data.' . $pk . ') {
-					$("#' . $form->id . '").trigger("reset");
-					$("#' . $formId . '-modal").modal("hide");
-					$("' . $inputSelector . '")
-						.append($("<option>", { value : data.' . $pk . ', selected: "selected" }).text(data.' . $field . '));
-				} else {
-					config.error.call(this, data && data.errors ? data.errors : "Unknown error");
-				}
-			}',
+                //$("#loader").show();
+                if (data && data.' . $pk . ') {
+                    $("#' . $form->id . '").trigger("reset");
+                    $("#' . $formId . '-modal").modal("hide");
+                    $("' . $inputSelector . '")
+                        .append($("<option>", { value : data.' . $pk . ', selected: "selected" }).text(data.' . $field . '));
+                } else {
+                    config.error.call(this, data && data.errors ? data.errors : "Unknown error");
+                }
+            }',
             'error' => 'function(errors) {
-				//$("#loader").show();
-				var msg = "";
-				if (errors && errors.responseText) {
-					msg = errors.responseText;
-				} else {
-					$.each(errors, function(k, v) {
-						msg += v + "<br>";
-					});
-				}
-				alert(msg);
-			}',
+                //$("#loader").show();
+                var msg = "";
+                if (errors && errors.responseText) {
+                    msg = errors.responseText;
+                } else {
+                    $.each(errors, function(k, v) {
+                        msg += v + "<br>";
+                    });
+                }
+                alert(msg);
+            }',
             'beforeSend' => 'function() {
-				//$("#loader").show();
-			}',
+                //$("#loader").show();
+            }',
         ), array('class' => 'btn btn-primary'));
         ?>
 
