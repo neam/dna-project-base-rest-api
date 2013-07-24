@@ -77,6 +77,30 @@ class SectionController extends Controller
         if (isset($_POST['Section'])) {
             $model->attributes = $_POST['Section'];
 
+            if (isset($_POST['Section']['HtmlChunk'])) {
+                $model->setRelationRecords('htmlChunks', $_POST['Section']['HtmlChunk']);
+            }
+            if (isset($_POST['Section']['VizView'])) {
+                $model->setRelationRecords('vizViews', $_POST['Section']['VizView']);
+            }
+            if (isset($_POST['Section']['VideoFile'])) {
+                $model->setRelationRecords('videoFiles', $_POST['Section']['VideoFile']);
+            }
+            if (isset($_POST['Section']['TeachersGuide'])) {
+                $model->setRelationRecords('teachersGuides', $_POST['Section']['TeachersGuide']);
+            }
+            if (isset($_POST['Section']['Exercise'])) {
+                $model->setRelationRecords('exercises', $_POST['Section']['Exercise']);
+            }
+            if (isset($_POST['Section']['Presentation'])) {
+                $model->setRelationRecords('presentations', $_POST['Section']['Presentation']);
+            }
+            if (isset($_POST['Section']['DataChunk'])) {
+                $model->setRelationRecords('dataChunks', $_POST['Section']['DataChunk']);
+            }
+            if (isset($_POST['Section']['DownloadLink'])) {
+                $model->setRelationRecords('downloadLinks', $_POST['Section']['DownloadLink']);
+            }
             try {
                 if ($model->save()) {
                     if (isset($_GET['returnUrl'])) {
@@ -105,6 +129,46 @@ class SectionController extends Controller
         if (isset($_POST['Section'])) {
             $model->attributes = $_POST['Section'];
 
+            if (isset($_POST['Section']['HtmlChunk'])) {
+                $model->setRelationRecords('htmlChunks', $_POST['Section']['HtmlChunk']);
+            } else {
+                $model->setRelationRecords('htmlChunks', array());
+            }
+            if (isset($_POST['Section']['VizView'])) {
+                $model->setRelationRecords('vizViews', $_POST['Section']['VizView']);
+            } else {
+                $model->setRelationRecords('vizViews', array());
+            }
+            if (isset($_POST['Section']['VideoFile'])) {
+                $model->setRelationRecords('videoFiles', $_POST['Section']['VideoFile']);
+            } else {
+                $model->setRelationRecords('videoFiles', array());
+            }
+            if (isset($_POST['Section']['TeachersGuide'])) {
+                $model->setRelationRecords('teachersGuides', $_POST['Section']['TeachersGuide']);
+            } else {
+                $model->setRelationRecords('teachersGuides', array());
+            }
+            if (isset($_POST['Section']['Exercise'])) {
+                $model->setRelationRecords('exercises', $_POST['Section']['Exercise']);
+            } else {
+                $model->setRelationRecords('exercises', array());
+            }
+            if (isset($_POST['Section']['Presentation'])) {
+                $model->setRelationRecords('presentations', $_POST['Section']['Presentation']);
+            } else {
+                $model->setRelationRecords('presentations', array());
+            }
+            if (isset($_POST['Section']['DataChunk'])) {
+                $model->setRelationRecords('dataChunks', $_POST['Section']['DataChunk']);
+            } else {
+                $model->setRelationRecords('dataChunks', array());
+            }
+            if (isset($_POST['Section']['DownloadLink'])) {
+                $model->setRelationRecords('downloadLinks', $_POST['Section']['DownloadLink']);
+            } else {
+                $model->setRelationRecords('downloadLinks', array());
+            }
 
             try {
                 if ($model->save()) {

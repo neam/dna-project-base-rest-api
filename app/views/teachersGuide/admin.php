@@ -23,34 +23,34 @@ return false;
 </h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<?php
-$this->widget('TbGridView', array(
-    'id' => 'teachers-guide-grid',
-    'dataProvider' => $model->search(),
-    'filter' => $model,
-    'pager' => array(
-        'class' => 'TbPager',
-        'displayFirstAndLast' => true,
-    ),
-    'columns' => array(
-        'id',
-        'title_en',
-        'created',
-        'modified',
-        'title_es',
-        'title_fa',
-        'title_hi',
-        /*
-          'title_pt',
-          'title_sv',
-          'title_de',
-         */
-        array(
-            'class' => 'TbButtonColumn',
-            'viewButtonUrl' => "Yii::app()->controller->createUrl('view', array('id' => \$data->id))",
-            'updateButtonUrl' => "Yii::app()->controller->createUrl('update', array('id' => \$data->id))",
-            'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
+<?php $this->widget('TbGridView',
+    array(
+        'id' => 'teachers-guide-grid',
+        'dataProvider' => $model->search(),
+        'filter' => $model,
+        'pager' => array(
+            'class' => 'TbPager',
+            'displayFirstAndLast' => true,
         ),
-    ),
-));
-?>
+        'columns' => array(
+            'id',
+            'title_en',
+            'created',
+            'modified',
+            'title_es',
+            'title_fa',
+            'title_hi',
+            /*
+            'title_pt',
+            'title_sv',
+            'title_de',
+            'title_cn',
+            */
+            array(
+                'class' => 'TbButtonColumn',
+                'viewButtonUrl' => "Yii::app()->controller->createUrl('view', array('id' => \$data->id))",
+                'updateButtonUrl' => "Yii::app()->controller->createUrl('update', array('id' => \$data->id))",
+                'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
+            ),
+        ),
+    )); ?>

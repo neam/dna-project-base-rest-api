@@ -14,6 +14,7 @@
  * @property string $title_pt
  * @property string $title_sv
  * @property string $title_de
+ * @property string $title_cn
  *
  * Relations of table "teachers_guide" available as properties of the model:
  * @property SectionContent[] $sectionContents
@@ -35,10 +36,10 @@ abstract class BaseTeachersGuide extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de', 'length', 'max' => 255),
+                array('title_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_de, title_cn', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, title_cn', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, title_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_de', 'safe', 'on' => 'search'),
+                array('id, title_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_de, title_cn', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -79,6 +80,7 @@ abstract class BaseTeachersGuide extends ActiveRecord
             'title_pt' => Yii::t('crud', 'Title Pt'),
             'title_sv' => Yii::t('crud', 'Title Sv'),
             'title_de' => Yii::t('crud', 'Title De'),
+            'title_cn' => Yii::t('crud', 'Title Cn'),
         );
     }
 
@@ -98,6 +100,7 @@ abstract class BaseTeachersGuide extends ActiveRecord
         $criteria->compare('t.title_pt', $this->title_pt, true);
         $criteria->compare('t.title_sv', $this->title_sv, true);
         $criteria->compare('t.title_de', $this->title_de, true);
+        $criteria->compare('t.title_cn', $this->title_cn, true);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

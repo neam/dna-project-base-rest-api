@@ -24,6 +24,7 @@
  * @property integer $processed_media_id_sv
  * @property integer $processed_media_id_cn
  * @property integer $processed_media_id_de
+ * @property string $title_cn
  *
  * Relations of table "spreadsheet_file" available as properties of the model:
  * @property DataSource $dataSource
@@ -54,12 +55,12 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, created, modified, data_source_id, original_media_id, processed_media_id_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('title_en, created, modified, data_source_id, original_media_id, processed_media_id_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, title_cn', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('original_media_id, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
-                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de', 'length', 'max' => 255),
+                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, title_cn', 'length', 'max' => 255),
                 array('data_source_id', 'length', 'max' => 20),
                 array('created, modified', 'safe'),
-                array('id, title_en, created, modified, data_source_id, original_media_id, processed_media_id_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'safe', 'on' => 'search'),
+                array('id, title_en, created, modified, data_source_id, original_media_id, processed_media_id_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, title_cn', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -119,6 +120,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
             'processed_media_id_sv' => Yii::t('crud', 'Processed Media Id Sv'),
             'processed_media_id_cn' => Yii::t('crud', 'Processed Media Id Cn'),
             'processed_media_id_de' => Yii::t('crud', 'Processed Media Id De'),
+            'title_cn' => Yii::t('crud', 'Title Cn'),
         );
     }
 
@@ -148,6 +150,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
         $criteria->compare('t.processed_media_id_sv', $this->processed_media_id_sv);
         $criteria->compare('t.processed_media_id_cn', $this->processed_media_id_cn);
         $criteria->compare('t.processed_media_id_de', $this->processed_media_id_de);
+        $criteria->compare('t.title_cn', $this->title_cn, true);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

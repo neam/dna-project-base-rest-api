@@ -1,10 +1,13 @@
 <div class="row">
-    <div class="span8"> <!-- main inputs -->
+<div class="span8"> <!-- main inputs -->
+
+    <div class="form-horizontal">
 
 
         <?php
         $input = $this->widget(
-            'Relation', array(
+            'Relation',
+            array(
                 'model' => $model,
                 'relation' => 'chapter',
                 'fields' => 'itemLabel',
@@ -92,12 +95,147 @@
         <?php echo $form->textFieldRow($model, 'menu_label_sv', array('maxlength' => 255)); ?>
 
         <?php echo $form->textFieldRow($model, 'menu_label_de', array('maxlength' => 255)); ?>
+
+        <?php echo $form->textFieldRow($model, 'slug_cn', array('maxlength' => 255)); ?>
+
+        <?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
+
+        <?php echo $form->textFieldRow($model, 'menu_label_cn', array('maxlength' => 255)); ?>
     </div>
-    <!-- main inputs -->
+</div>
+<!-- main inputs -->
+
+<div class="span4"> <!-- sub inputs -->
+
+    <h3>
+        <?php echo Yii::t('crud', 'htmlChunks'); ?>
+    </h3>
+    <?php $this->widget(
+        'Relation',
+        array(
+            'model' => $model,
+            'relation' => 'htmlChunks',
+            'fields' => 'itemLabel',
+            'allowEmpty' => true,
+            'style' => 'multiselect',
+            'htmlOptions' => array(
+                'checkAll' => 'all'),
+        )
+    ) ?>
+
+    <h3>
+        <?php echo Yii::t('crud', 'vizViews'); ?>
+    </h3>
+    <?php $this->widget(
+        'Relation',
+        array(
+            'model' => $model,
+            'relation' => 'vizViews',
+            'fields' => 'itemLabel',
+            'allowEmpty' => true,
+            'style' => 'multiselect',
+            'htmlOptions' => array(
+                'checkAll' => 'all'),
+        )
+    ) ?>
+
+    <h3>
+        <?php echo Yii::t('crud', 'videoFiles'); ?>
+    </h3>
+    <?php $this->widget(
+        'Relation',
+        array(
+            'model' => $model,
+            'relation' => 'videoFiles',
+            'fields' => 'itemLabel',
+            'allowEmpty' => true,
+            'style' => 'multiselect',
+            'htmlOptions' => array(
+                'checkAll' => 'all'),
+        )
+    ) ?>
+
+    <h3>
+        <?php echo Yii::t('crud', 'teachersGuides'); ?>
+    </h3>
+    <?php $this->widget(
+        'Relation',
+        array(
+            'model' => $model,
+            'relation' => 'teachersGuides',
+            'fields' => 'itemLabel',
+            'allowEmpty' => true,
+            'style' => 'multiselect',
+            'htmlOptions' => array(
+                'checkAll' => 'all'),
+        )
+    ) ?>
+
+    <h3>
+        <?php echo Yii::t('crud', 'exercises'); ?>
+    </h3>
+    <?php $this->widget(
+        'Relation',
+        array(
+            'model' => $model,
+            'relation' => 'exercises',
+            'fields' => 'itemLabel',
+            'allowEmpty' => true,
+            'style' => 'multiselect',
+            'htmlOptions' => array(
+                'checkAll' => 'all'),
+        )
+    ) ?>
+
+    <h3>
+        <?php echo Yii::t('crud', 'presentations'); ?>
+    </h3>
+    <?php $this->widget(
+        'Relation',
+        array(
+            'model' => $model,
+            'relation' => 'presentations',
+            'fields' => 'itemLabel',
+            'allowEmpty' => true,
+            'style' => 'multiselect',
+            'htmlOptions' => array(
+                'checkAll' => 'all'),
+        )
+    ) ?>
+
+    <h3>
+        <?php echo Yii::t('crud', 'dataChunks'); ?>
+    </h3>
+    <?php $this->widget(
+        'Relation',
+        array(
+            'model' => $model,
+            'relation' => 'dataChunks',
+            'fields' => 'itemLabel',
+            'allowEmpty' => true,
+            'style' => 'multiselect',
+            'htmlOptions' => array(
+                'checkAll' => 'all'),
+        )
+    ) ?>
+
+    <h3>
+        <?php echo Yii::t('crud', 'downloadLinks'); ?>
+    </h3>
+    <?php $this->widget(
+        'Relation',
+        array(
+            'model' => $model,
+            'relation' => 'downloadLinks',
+            'fields' => 'itemLabel',
+            'allowEmpty' => true,
+            'style' => 'multiselect',
+            'htmlOptions' => array(
+                'checkAll' => 'all'),
+        )
+    ) ?>
 
 
-    <div class="span4"> <!-- sub inputs -->
-
-    </div>
-    <!-- sub inputs -->
+</div>
+<!-- sub inputs -->
 </div>

@@ -6,6 +6,7 @@
 
 
     <?php
+
     $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         'id' => 'download-link-form',
         'enableAjaxValidation' => true,

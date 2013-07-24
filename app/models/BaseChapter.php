@@ -21,6 +21,8 @@
  * @property string $title_sv
  * @property string $slug_de
  * @property string $title_de
+ * @property string $slug_cn
+ * @property string $title_cn
  *
  * Relations of table "chapter" available as properties of the model:
  * @property Section[] $sections
@@ -42,10 +44,10 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, slug_en, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('title_en, slug_en, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de', 'length', 'max' => 255),
+                array('title_en, slug_en, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, slug_cn, title_cn', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('title_en, slug_en, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, slug_cn, title_cn', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, title_en, slug_en, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de', 'safe', 'on' => 'search'),
+                array('id, title_en, slug_en, created, modified, slug_es, title_es, slug_fa, title_fa, slug_hi, title_hi, slug_pt, title_pt, slug_sv, title_sv, slug_de, title_de, slug_cn, title_cn', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -93,6 +95,8 @@ abstract class BaseChapter extends ActiveRecord
             'title_sv' => Yii::t('crud', 'Title Sv'),
             'slug_de' => Yii::t('crud', 'Slug De'),
             'title_de' => Yii::t('crud', 'Title De'),
+            'slug_cn' => Yii::t('crud', 'Slug Cn'),
+            'title_cn' => Yii::t('crud', 'Title Cn'),
         );
     }
 
@@ -119,6 +123,8 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t.title_sv', $this->title_sv, true);
         $criteria->compare('t.slug_de', $this->slug_de, true);
         $criteria->compare('t.title_de', $this->title_de, true);
+        $criteria->compare('t.slug_cn', $this->slug_cn, true);
+        $criteria->compare('t.title_cn', $this->title_cn, true);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

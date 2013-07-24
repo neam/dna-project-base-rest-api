@@ -1,6 +1,6 @@
 <div class="btn-toolbar">
     <div class="btn-group">
-        <?php ?><?php
+        <?php  ?><?php
         switch ($this->action->id) {
             case "create":
                 $this->widget("bootstrap.widgets.TbButton", array(
@@ -72,12 +72,10 @@
                 "label" => Yii::t("crud", "Search"),
                 "icon" => "icon-search",
                 "htmlOptions" => array("class" => "search-button")
-            ));
-            ?>    </div>
+            ));?>    </div>
 
         <div class="btn-group">
-            <?php
-            $this->widget('bootstrap.widgets.TbButtonGroup', array(
+            <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
                 'buttons' => array(
                     array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'sectionContents - SectionContent', 'url' => array('sectionContent/admin')), array('label' => 'originalMedia - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdEn - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdCn - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdDe - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdEs - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdFa - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdHi - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdPt - P3Media', 'url' => array('p3Media/admin')), array('label' => 'processedMediaIdSv - P3Media', 'url' => array('p3Media/admin')),
                     )
@@ -91,10 +89,8 @@
 
 <?php if ($this->action->id == 'admin'): ?>
     <div class="search-form" style="display:none">
-        <?php
-        $this->renderPartial('_search', array(
-            'model' => $model,
-        ));
-        ?>
+    <?php $this->renderPartial('_search', array(
+        'model' => $model,
+    )); ?>
     </div>
 <?php endif; ?>

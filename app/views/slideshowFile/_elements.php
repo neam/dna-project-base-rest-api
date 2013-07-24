@@ -6,14 +6,16 @@
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'originalMedia',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'original_media_id', $input);
@@ -53,14 +55,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdEn',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_en', $input);
@@ -112,14 +116,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdEs',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_es', $input);
@@ -159,14 +165,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdFa',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_fa', $input);
@@ -206,14 +214,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdHi',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_hi', $input);
@@ -253,14 +263,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdPt',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_pt', $input);
@@ -300,14 +312,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdSv',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_sv', $input);
@@ -347,14 +361,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdCn',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_cn', $input);
@@ -394,14 +410,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdDe',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_de', $input);
@@ -438,6 +456,8 @@ $this->renderPartial('/p3Media/_modal_form', array(
 $this->endClip();
 ?>
 
+
+<?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
 </div>
 <!-- main inputs -->
 

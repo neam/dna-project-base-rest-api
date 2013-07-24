@@ -6,6 +6,7 @@
 
 
     <?php
+
     $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         'id' => 'slideshow-file-form',
         'enableAjaxValidation' => true,

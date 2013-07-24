@@ -1,19 +1,24 @@
 <div class="row">
 <div class="span8"> <!-- main inputs -->
 
+<div class="form-horizontal">
+
+
 <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'originalMedia',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'original_media_id', $input);
@@ -53,7 +58,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdEn',
         'fields' => 'itemLabel',
@@ -112,7 +118,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdEs',
         'fields' => 'itemLabel',
@@ -159,7 +166,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdFa',
         'fields' => 'itemLabel',
@@ -206,7 +214,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdHi',
         'fields' => 'itemLabel',
@@ -253,7 +262,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdPt',
         'fields' => 'itemLabel',
@@ -300,7 +310,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdSv',
         'fields' => 'itemLabel',
@@ -347,7 +358,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdCn',
         'fields' => 'itemLabel',
@@ -394,7 +406,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdDe',
         'fields' => 'itemLabel',
@@ -438,11 +451,29 @@ $this->renderPartial('/p3Media/_modal_form', array(
 $this->endClip();
 ?>
 
+
+<?php echo $form->textAreaRow($model, 'subtitles_es', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_fa', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_hi', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_pt', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_sv', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_cn', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
+
+</div>
 </div>
 <!-- main inputs -->
 
-
 <div class="span4"> <!-- sub inputs -->
+
 
 </div>
 <!-- sub inputs -->

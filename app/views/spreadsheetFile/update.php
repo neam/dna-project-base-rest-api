@@ -16,20 +16,21 @@ $this->renderPartial('_form', array(
 ?>
 
 <?php
+
 /*
-  Code example to include an editable detail view:
+Code example to include an editable detail view:
 
-  <h2>
-  <?php echo Yii::t('crud','Editable Detail View')?></h2>
+<h2>
+    <?php echo Yii::t('crud','Editable Detail View')?></h2>
 
-  <?php
-  $this->widget('EditableDetailView', array(
-  'data' => $model,
-  'url' => $this->createUrl('editableSaver'),
-  ));
-  ?>
+<?php
+$this->widget('EditableDetailView', array(
+    'data' => $model,
+    'url' => $this->createUrl('editableSaver'),
+));
+?>
 
- */
+*/
 ?>
 
 

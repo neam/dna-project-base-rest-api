@@ -6,6 +6,7 @@
  * Columns in table "video_file" available as properties of the model:
  * @property string $id
  * @property string $title_en
+ * @property string $subtitles_en
  * @property string $created
  * @property string $modified
  * @property integer $original_media_id
@@ -23,6 +24,14 @@
  * @property integer $processed_media_id_sv
  * @property integer $processed_media_id_cn
  * @property integer $processed_media_id_de
+ * @property string $subtitles_es
+ * @property string $subtitles_fa
+ * @property string $subtitles_hi
+ * @property string $subtitles_pt
+ * @property string $subtitles_sv
+ * @property string $subtitles_cn
+ * @property string $subtitles_de
+ * @property string $title_cn
  *
  * Relations of table "video_file" available as properties of the model:
  * @property SectionContent[] $sectionContents
@@ -53,11 +62,11 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, created, modified, original_media_id, processed_media_id_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('title_en, subtitles_en, created, modified, original_media_id, processed_media_id_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, subtitles_es, subtitles_fa, subtitles_hi, subtitles_pt, subtitles_sv, subtitles_cn, subtitles_de, title_cn', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('original_media_id, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
-                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de', 'length', 'max' => 255),
-                array('created, modified', 'safe'),
-                array('id, title_en, created, modified, original_media_id, processed_media_id_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'safe', 'on' => 'search'),
+                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, title_cn', 'length', 'max' => 255),
+                array('subtitles_en, created, modified, subtitles_es, subtitles_fa, subtitles_hi, subtitles_pt, subtitles_sv, subtitles_cn, subtitles_de', 'safe'),
+                array('id, title_en, subtitles_en, created, modified, original_media_id, processed_media_id_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, subtitles_es, subtitles_fa, subtitles_hi, subtitles_pt, subtitles_sv, subtitles_cn, subtitles_de, title_cn', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -99,6 +108,7 @@ abstract class BaseVideoFile extends ActiveRecord
         return array(
             'id' => Yii::t('crud', 'ID'),
             'title_en' => Yii::t('crud', 'Title En'),
+            'subtitles_en' => Yii::t('crud', 'Subtitles En'),
             'created' => Yii::t('crud', 'Created'),
             'modified' => Yii::t('crud', 'Modified'),
             'original_media_id' => Yii::t('crud', 'Original Media'),
@@ -116,6 +126,14 @@ abstract class BaseVideoFile extends ActiveRecord
             'processed_media_id_sv' => Yii::t('crud', 'Processed Media Id Sv'),
             'processed_media_id_cn' => Yii::t('crud', 'Processed Media Id Cn'),
             'processed_media_id_de' => Yii::t('crud', 'Processed Media Id De'),
+            'subtitles_es' => Yii::t('crud', 'Subtitles Es'),
+            'subtitles_fa' => Yii::t('crud', 'Subtitles Fa'),
+            'subtitles_hi' => Yii::t('crud', 'Subtitles Hi'),
+            'subtitles_pt' => Yii::t('crud', 'Subtitles Pt'),
+            'subtitles_sv' => Yii::t('crud', 'Subtitles Sv'),
+            'subtitles_cn' => Yii::t('crud', 'Subtitles Cn'),
+            'subtitles_de' => Yii::t('crud', 'Subtitles De'),
+            'title_cn' => Yii::t('crud', 'Title Cn'),
         );
     }
 
@@ -127,6 +145,7 @@ abstract class BaseVideoFile extends ActiveRecord
 
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.title_en', $this->title_en, true);
+        $criteria->compare('t.subtitles_en', $this->subtitles_en, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.original_media_id', $this->original_media_id);
@@ -144,6 +163,14 @@ abstract class BaseVideoFile extends ActiveRecord
         $criteria->compare('t.processed_media_id_sv', $this->processed_media_id_sv);
         $criteria->compare('t.processed_media_id_cn', $this->processed_media_id_cn);
         $criteria->compare('t.processed_media_id_de', $this->processed_media_id_de);
+        $criteria->compare('t.subtitles_es', $this->subtitles_es, true);
+        $criteria->compare('t.subtitles_fa', $this->subtitles_fa, true);
+        $criteria->compare('t.subtitles_hi', $this->subtitles_hi, true);
+        $criteria->compare('t.subtitles_pt', $this->subtitles_pt, true);
+        $criteria->compare('t.subtitles_sv', $this->subtitles_sv, true);
+        $criteria->compare('t.subtitles_cn', $this->subtitles_cn, true);
+        $criteria->compare('t.subtitles_de', $this->subtitles_de, true);
+        $criteria->compare('t.title_cn', $this->title_cn, true);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

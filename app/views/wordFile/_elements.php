@@ -1,12 +1,15 @@
 <div class="row">
 <div class="span8"> <!-- main inputs -->
 
+<div class="form-horizontal">
+
 
 <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'originalMedia',
         'fields' => 'itemLabel',
@@ -53,7 +56,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdEn',
         'fields' => 'itemLabel',
@@ -112,7 +116,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdEs',
         'fields' => 'itemLabel',
@@ -159,7 +164,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdFa',
         'fields' => 'itemLabel',
@@ -206,7 +212,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdHi',
         'fields' => 'itemLabel',
@@ -253,7 +260,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdPt',
         'fields' => 'itemLabel',
@@ -300,7 +308,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdSv',
         'fields' => 'itemLabel',
@@ -347,7 +356,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdCn',
         'fields' => 'itemLabel',
@@ -394,7 +404,8 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'processedMediaIdDe',
         'fields' => 'itemLabel',
@@ -438,11 +449,17 @@ $this->renderPartial('/p3Media/_modal_form', array(
 $this->endClip();
 ?>
 
+
+<?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
+</div>
 </div>
 <!-- main inputs -->
 
-
 <div class="span4"> <!-- sub inputs -->
+    <h2>
+        <?php echo Yii::t('crud', 'Relations') ?>
+    </h2>
+
 
 </div>
 <!-- sub inputs -->

@@ -6,14 +6,16 @@
 
         <?php
         $input = $this->widget(
-            'Relation', array(
+            'Relation',
+            array(
                 'model' => $model,
                 'relation' => 'dataSource',
                 'fields' => 'itemLabel',
                 'allowEmpty' => true,
                 'style' => 'dropdownlist',
                 'htmlOptions' => array(
-                    'checkAll' => 'all'),
+                    'checkAll' => 'all'
+                ),
             )
             , true);
         echo $form->customRow($model, 'data_source_id', $input);
@@ -53,14 +55,16 @@
 
         <?php
         $input = $this->widget(
-            'Relation', array(
+            'Relation',
+            array(
                 'model' => $model,
                 'relation' => 'slideshowFile',
                 'fields' => 'itemLabel',
                 'allowEmpty' => true,
                 'style' => 'dropdownlist',
                 'htmlOptions' => array(
-                    'checkAll' => 'all'),
+                    'checkAll' => 'all'
+                ),
             )
             , true);
         echo $form->customRow($model, 'slideshow_file_id', $input);
@@ -109,6 +113,8 @@
         <?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
 
         <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
+
+        <?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
     </div>
     <!-- main inputs -->
 

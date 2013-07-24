@@ -6,14 +6,16 @@
 
         <?php
         $input = $this->widget(
-            'Relation', array(
+            'Relation',
+            array(
                 'model' => $model,
                 'relation' => 'p3Media',
                 'fields' => 'itemLabel',
                 'allowEmpty' => true,
                 'style' => 'dropdownlist',
                 'htmlOptions' => array(
-                    'checkAll' => 'all'),
+                    'checkAll' => 'all'
+                ),
             )
             , true);
         echo $form->customRow($model, 'p3_media_id', $input);
@@ -62,6 +64,8 @@
         <?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
 
         <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
+
+        <?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
     </div>
     <!-- main inputs -->
 

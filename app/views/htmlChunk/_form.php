@@ -6,11 +6,12 @@
 
 
     <?php
+
     $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         'id' => 'html-chunk-form',
         'enableAjaxValidation' => true,
         'enableClientValidation' => true,
-        'type' => 'vertical',
+        'type' => 'horizontal',
     ));
 
     echo $form->errorSummary($model);

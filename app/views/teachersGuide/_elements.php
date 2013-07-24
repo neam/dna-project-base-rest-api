@@ -15,6 +15,8 @@
         <?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
 
         <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
+
+        <?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
     </div>
     <!-- main inputs -->
 

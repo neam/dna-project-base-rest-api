@@ -1,11 +1,9 @@
 <div class="wide form">
 
-    <?php
-    $form = $this->beginWidget('CActiveForm', array(
+    <?php $form = $this->beginWidget('CActiveForm', array(
         'action' => Yii::app()->createUrl($this->route),
         'method' => 'get',
-    ));
-    ?>
+    )); ?>
 
     <div class="row">
         <?php echo $form->label($model, 'id'); ?>
@@ -56,6 +54,11 @@
     <div class="row">
         <?php echo $form->label($model, 'markup_de'); ?>
         <?php echo $form->textArea($model, 'markup_de', array('rows' => 6, 'cols' => 50)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'markup_cn'); ?>
+        <?php echo $form->textArea($model, 'markup_cn', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row buttons">

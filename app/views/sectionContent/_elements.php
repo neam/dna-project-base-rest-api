@@ -4,14 +4,16 @@
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'section',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'section_id', $input);
@@ -53,14 +55,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'htmlChunk',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'html_chunk_id', $input);
@@ -100,14 +104,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'vizView',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'viz_view_id', $input);
@@ -147,14 +153,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'videoFile',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'video_file_id', $input);
@@ -194,14 +202,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'teachersGuide',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'teachers_guide_id', $input);
@@ -241,14 +251,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'exercise',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'exercise_id', $input);
@@ -288,14 +300,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'presentation',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'presentation_id', $input);
@@ -335,14 +349,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'dataChunk',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'data_chunk_id', $input);
@@ -382,14 +398,16 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation', array(
+    'Relation',
+    array(
         'model' => $model,
         'relation' => 'downloadLink',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'),
+            'checkAll' => 'all'
+        ),
     )
     , true);
 echo $form->customRow($model, 'download_link_id', $input);

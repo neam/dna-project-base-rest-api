@@ -13,5 +13,6 @@ $this->breadcrumbs[] = Yii::t('crud', 'Create');
 $this->renderPartial('_form', array(
     'model' => $model,
     'buttons' => 'create'));
+
 ?>
 
