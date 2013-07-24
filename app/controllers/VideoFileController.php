@@ -17,6 +17,12 @@ class VideoFileController extends Controller
     public function accessRules()
     {
         return array(
+            array('allow',
+                'actions' => array(
+                    'subtitles',
+                ),
+                'users' => array('*'),
+            ),
             array(
                 'allow',
                 'actions' => array(
@@ -60,6 +66,15 @@ class VideoFileController extends Controller
         }
         return true;
     }
+
+    public function actionSubtitles($id)
+    {
+        $model = $this->loadModel($id);
+
+        echo $model->subtitles;
+        exit;
+    }
+
 
     public function actionView($id)
     {
