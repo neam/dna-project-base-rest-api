@@ -17,7 +17,8 @@ class SlideshowFileController extends Controller
     public function accessRules()
     {
         return array(
-            array('allow',
+            array(
+                'allow',
                 'actions' => array(
                     'index',
                     'view',
@@ -30,7 +31,8 @@ class SlideshowFileController extends Controller
                 ),
                 'roles' => array('SlideshowFile.*'),
             ),
-            array('deny',
+            array(
+                'deny',
                 'users' => array('*'),
             ),
         );
@@ -41,8 +43,12 @@ class SlideshowFileController extends Controller
         parent::beforeAction($action);
         // map identifcationColumn to id
         if (!isset($_GET['id']) && isset($_GET['id'])) {
-            $model = SlideshowFile::model()->find('id = :id', array(
-                ':id' => $_GET['id']));
+            $model = SlideshowFile::model()->find(
+                'id = :id',
+                array(
+                    ':id' => $_GET['id']
+                )
+            );
             if ($model !== null) {
                 $_GET['id'] = $model->id;
             } else {
@@ -131,9 +137,12 @@ class SlideshowFileController extends Controller
             if ($model->save()) {
                 echo CJSON::encode($model->getAttributes());
             } else {
-                $errors = array_map(function ($v) {
-                    return join(', ', $v);
-                }, $model->getErrors());
+                $errors = array_map(
+                    function ($v) {
+                        return join(', ', $v);
+                    },
+                    $model->getErrors()
+                );
                 echo CJSON::encode(array('errors' => $errors));
             }
         } else {
