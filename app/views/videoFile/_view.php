@@ -4,7 +4,7 @@
 
         <?php
         $videoMedia = P3Media::model()->findByPk($data->processed_media_id_en); // Currently we hard-code to use the english movie file
-        $videoUrl = $videoMedia->createUrl('original');
+        $videoUrl = $videoMedia->createUrl('original-public');
         $subtitleUrl = $this->createUrl('videoFile/subtitles', array('id' => $data->id));
         ?>
 
