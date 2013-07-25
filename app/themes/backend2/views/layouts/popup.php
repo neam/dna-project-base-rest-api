@@ -25,7 +25,7 @@
         $cs = Yii::app()->getClientScript();
         $published = Yii::app()->assetManager->publish(Yii::app()->theme->basePath . '/css/backend.css');
         $cs->registerCssFile($published);
-        ?>`
+        ?>
 
 		<!-- Le fav and touch icons -->
 		<link rel="shortcut icon" href="images/favicon.ico">
