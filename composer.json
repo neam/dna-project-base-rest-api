@@ -91,6 +91,7 @@
         "phpoffice/phpexcel": "1.7.9",
         "phpoffice/phpword": "dev-develop",
         "phpoffice/phppowerpoint": "dev-master",
+        "schmunk42/giic": "dev-master",
         "clevertech/yiibooster": "dev-master as 1.1.0",
         "vitalets/x-editable-yii": "1.2.0",
 		"anggiaj/eselect2": "dev-master",
