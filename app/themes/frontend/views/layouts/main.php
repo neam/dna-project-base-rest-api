@@ -32,10 +32,11 @@
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="60">
 
+<?php $this->renderFile(
+    Yii::getPathOfAlias('application.themes.frontend.views.layouts') . DIRECTORY_SEPARATOR . '_menu.php'
+) ?>
+
 <div class="container">
-    <?php $this->renderFile(
-        Yii::getPathOfAlias('application.themes.frontend.views.layouts') . DIRECTORY_SEPARATOR . '_menu.php'
-    ) ?>
     <div class="subwrapper">
         <?php echo $content; ?>
     </div>

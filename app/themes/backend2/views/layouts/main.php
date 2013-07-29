@@ -27,6 +27,7 @@
         true
     ); // set last param to `true` for development
     $cs->registerCssFile($css . "/backend.css");
+    $cs->registerCssFile($css . "/gscms.css");
     ?>
 </head>
 

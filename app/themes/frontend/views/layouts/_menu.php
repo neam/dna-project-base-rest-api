@@ -14,7 +14,7 @@ $this->widget(
     array(
         //'fluid' => true,
         'collapse' => true,
-        'fixed' => false,
+        'fixed' => 'top',
         'items' => array(
             array(
                 'class' => 'TbMenu',
