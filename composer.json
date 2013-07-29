@@ -50,6 +50,18 @@
             "url": "https://github.com/neam/yii-i18n-columns"
         },
         {
+            "type": "vcs",
+            "url": "https://github.com/PHPOffice/PHPExcel"
+        },
+        {
+            "type": "vcs",
+            "url": "file:///Users/motin/Dev/Projects/Gapminder/gapminder-school-product/cms/tmp/PHPWord"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/PHPOffice/PHPPowerPoint"
+        },
+        {
             "type":"composer",
             "url":"http://packages.phundament.com"
         }
@@ -76,6 +88,9 @@
         "kswedberg/jquery-smooth-scroll":"1.4.10",
         "firstrow/stranslateablebehavior":"@dev",
         "neam/yii-i18n-columns":"0.2.0",
+        "phpoffice/phpexcel": "1.7.9",
+        "phpoffice/phpword": "dev-develop",
+        "phpoffice/phppowerpoint": "dev-master",
         "clevertech/yiibooster": "dev-master as 1.1.0",
         "vitalets/x-editable-yii": "1.2.0",
 		"anggiaj/eselect2": "dev-master",

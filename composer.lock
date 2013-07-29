@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "577185abed64665536a724bbec82a908",
+    "hash": "b4d5d1a0fba390c6e10b38008671b795",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -160,6 +160,139 @@
                 "issues": "https://github.com/neam/yii-i18n-columns/issues"
             },
             "time": "2013-07-25 06:40:38"
+        },
+        {
+            "name": "phpoffice/phpexcel",
+            "version": "1.7.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PHPExcel.git",
+                "reference": "1.7.9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/1.7.9",
+                "reference": "1.7.9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPExcel": "Classes/"
+                }
+            },
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Mark Baker"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://blog.rootslabs.net"
+                },
+                {
+                    "name": "Erik Tilt"
+                }
+            ],
+            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "http://phpexcel.codeplex.com",
+            "keywords": [
+                "Excel",
+                "OpenXML",
+                "PHP",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "support": {
+                "source": "https://github.com/PHPOffice/PHPExcel/tree/1.7.9",
+                "issues": "https://github.com/PHPOffice/PHPExcel/issues"
+            },
+            "time": "2013-05-24 11:57:42"
+        },
+        {
+            "name": "phpoffice/phppowerpoint",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PHPPowerPoint.git",
+                "reference": "1ed4c9b7bf7cac6d5225154370ff83785289d0c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PHPPowerPoint/zipball/1ed4c9b7bf7cac6d5225154370ff83785289d0c4",
+                "reference": "1ed4c9b7bf7cac6d5225154370ff83785289d0c4",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPPowerPoint": "Classes/"
+                }
+            },
+            "support": {
+                "source": "https://github.com/PHPOffice/PHPPowerPoint/tree/master",
+                "issues": "https://github.com/PHPOffice/PHPPowerPoint/issues"
+            },
+            "time": "2013-01-12 20:47:02"
+        },
+        {
+            "name": "phpoffice/phpword",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "/Users/motin/Dev/Projects/Gapminder/gapminder-school-product/cms/tmp/PHPWord",
+                "reference": "744d3f53d42ee31cd1f29daefd1c7c8cd87161d0"
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Mark Baker"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://blog.rootslabs.net"
+                },
+                {
+                    "name": "Erik Tilt"
+                }
+            ],
+            "description": "PHPWord - OpenXML - Read, Create and Write Spreadsheet documents in PHP - word processing",
+            "homepage": "http://phpword.codeplex.com",
+            "keywords": [
+                "OpenXML",
+                "PHP",
+                "Word",
+                "doc",
+                "docx",
+                "word"
+            ],
+            "time": "2013-07-25 09:04:46"
         },
         {
             "name": "phundament/backend-theme",
@@ -1030,6 +1163,8 @@
         "mishamx/yii-user": 20,
         "phundament/backend-theme": 20,
         "firstrow/stranslateablebehavior": 20,
+        "phpoffice/phpword": 20,
+        "phpoffice/phppowerpoint": 20,
         "clevertech/yiibooster": 20,
         "anggiaj/eselect2": 20,
         "waalzer/app-demo-data": 20,
