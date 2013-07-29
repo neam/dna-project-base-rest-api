@@ -47,8 +47,7 @@
             </div>
         </div>
     </div>
-</div>
-<!-- /container -->
+</div><!-- /container -->
 
 <footer></footer>
 
