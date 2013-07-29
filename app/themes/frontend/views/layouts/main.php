@@ -26,7 +26,7 @@
         -1, // level
         false); // forceCopy
     $cs->registerCssFile($css . '/p3.css');
-    $cs->registerCssFile($css . '/style.css');
+    $cs->registerCssFile($css . '/gscms.css');
     ?>
 </head>
 
