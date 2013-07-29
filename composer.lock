@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e746d0883d4f702c7b2e7ddd34a47dd3",
+    "hash": "e7b0aab4456a6c6e2b6897cf4e91bdee",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -886,6 +886,24 @@
             "time": "2013-07-13 10:41:32"
         },
         {
+            "name": "thomaspark/bootswatch",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomaspark/bootswatch.git",
+                "reference": "a9aab510f11515c7dec294e7b24e838ff583e15a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thomaspark/bootswatch/archive/a9aab510f11515c7dec294e7b24e838ff583e15a.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library",
+            "description": "Themes for Twitter Bootstrap",
+            "homepage": "https://github.com/thomaspark/bootswatch"
+        },
+        {
             "name": "vitalets/x-editable-yii",
             "version": "1.2.0",
             "source": {
@@ -1148,24 +1166,6 @@
                 "issues": "https://github.com/schmunk42/database-command/issues"
             },
             "time": "2013-04-24 15:22:11"
-        },
-        {
-            "name": "thomaspark/bootswatch",
-            "version": "v2.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thomaspark/bootswatch.git",
-                "reference": "a9aab510f11515c7dec294e7b24e838ff583e15a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/thomaspark/bootswatch/archive/a9aab510f11515c7dec294e7b24e838ff583e15a.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library",
-            "description": "Themes for Twitter Bootstrap",
-            "homepage": "https://github.com/thomaspark/bootswatch"
         },
         {
             "name": "twitter/bootstrap",

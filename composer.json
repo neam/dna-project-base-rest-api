@@ -92,6 +92,7 @@
         "phpoffice/phpword": "dev-added-composer-json",
         "phpoffice/phppowerpoint": "dev-master",
         "schmunk42/giic": "dev-master",
+        "thomaspark/bootswatch": "2.3.*",
         "clevertech/yiibooster": "dev-master as 1.1.0",
         "vitalets/x-editable-yii": "1.2.0",
 		"anggiaj/eselect2": "dev-master",
