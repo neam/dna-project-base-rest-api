@@ -13,38 +13,51 @@
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
     <?php
     $cs = Yii::app()->getClientScript();
     $cs->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
-    $cs->registerLinkTag('shortcut icon', NULL, Yii::app()->theme->baseUrl . '/img/favicon.ico', NULL, NULL);
+    $cs->registerLinkTag('shortcut icon', NULL, '/favicon.ico', NULL, NULL);
 
     // CSS files
-    if (Yii::app()->hasComponent('less')) {
-        Yii::app()->less->files = array('themes/' . Yii::app()->theme->name . '/less/p3.less' => 'themes/' . Yii::app()->theme->name . '/css/p3.css');
-        Yii::app()->less->register();
-    } else {
-        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/p3.css');
-    }
-    $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/style.css');
+    $css = Yii::app()->assetManager->publish(
+        Yii::app()->theme->basePath . '/assets',
+        true,   // hash by name
+        -1,     // level
+        false); // forceCopy
+    $cs->registerCssFile($css . '/p3.css');
     ?>
 </head>
 
-<body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="60">
-
-<?php $this->renderFile(Yii::getPathOfAlias('application.themes.frontend.views.layouts') . DIRECTORY_SEPARATOR . '_menu.php') ?>
+<body>
 
 <div class="container">
+    <?php $this->renderFile(
+        Yii::getPathOfAlias('application.themes.frontend.views.layouts') . DIRECTORY_SEPARATOR . '_menu.php'
+    ) ?>
     <div class="subwrapper">
         <?php echo $content; ?>
     </div>
     <hr>
     <footer>
-        <?php
-        include(Yii::getPathOfAlias('i18n.en-US') . DIRECTORY_SEPARATOR . "general" . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "copyright_en.html");
-        ?>
-        <!--Powered by <a href="http://phundament.com">Phundament</a>-->
+        Powered by <a href="http://phundament.com">Phundament</a>
     </footer>
 </div>
 <!-- /container -->
+
+
+<div id="backend">
+<?php
+
+if (Yii::app()->user->checkAccess('Editor')) {
+    $cs->registerCssFile($css . '/backend.css');
+    $this->renderFile(
+        Yii::getPathOfAlias('application.themes.backend2.views.layouts') . DIRECTORY_SEPARATOR . '_navbar.php'
+    );
+}
+
+?>
+</div>
+
 </body>
 </html>
