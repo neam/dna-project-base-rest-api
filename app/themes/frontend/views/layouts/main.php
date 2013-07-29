@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
-    <meta name="description" content="<?php echo (P3Page::getActivePage())?P3Page::getActivePage()->t('description'):'' ?>">
-    <meta name="keywords" content="<?php echo (P3Page::getActivePage())?P3Page::getActivePage()->t('keywords'):'' ?>">
+    <meta name="description"
+          content="<?php echo (P3Page::getActivePage()) ? P3Page::getActivePage()->t('description') : '' ?>">
+    <meta name="keywords"
+          content="<?php echo (P3Page::getActivePage()) ? P3Page::getActivePage()->t('keywords') : '' ?>">
     <meta name="author" content="">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -18,10 +20,9 @@
 
     // CSS files
     if (Yii::app()->hasComponent('less')) {
-        Yii::app()->less->files = array('themes/'.Yii::app()->theme->name.'/less/p3.less' => 'themes/'.Yii::app()->theme->name.'/css/p3.css');
+        Yii::app()->less->files = array('themes/' . Yii::app()->theme->name . '/less/p3.less' => 'themes/' . Yii::app()->theme->name . '/css/p3.css');
         Yii::app()->less->register();
-    }
-    else {
+    } else {
         $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/p3.css');
     }
     $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/style.css');
@@ -39,7 +40,7 @@
     <hr>
     <footer>
         <?php
-        include(Yii::getPathOfAlias('i18n.en-US').DIRECTORY_SEPARATOR."general".DIRECTORY_SEPARATOR."html".DIRECTORY_SEPARATOR."copyright_en.html");
+        include(Yii::getPathOfAlias('i18n.en-US') . DIRECTORY_SEPARATOR . "general" . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "copyright_en.html");
         ?>
         <!--Powered by <a href="http://phundament.com">Phundament</a>-->
     </footer>
