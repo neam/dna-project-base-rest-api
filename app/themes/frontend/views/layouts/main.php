@@ -26,10 +26,11 @@
         -1, // level
         false); // forceCopy
     $cs->registerCssFile($css . '/p3.css');
+    $cs->registerCssFile($css . '/style.css');
     ?>
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="60">
 
 <div class="container">
     <?php $this->renderFile(

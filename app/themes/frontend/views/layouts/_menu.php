@@ -33,7 +33,31 @@ $this->widget(
                             array('label' => Yii::t('app', 'Languages')),
                             array(
                                 'label' => 'English',
-                                'url' => array_merge(array(''), $_GET, array('lang' => 'en'))
+                                'url' => array_merge(array(''), $_GET, array('lang' => 'en_us'))
+                            ),
+                            array(
+                                'label' => 'Hindi',
+                                'url' => array_merge(array(''), $_GET, array('lang' => 'hi_in'))
+                            ),
+                            array(
+                                'label' => 'Persian',
+                                'url' => array_merge(array(''), $_GET, array('lang' => 'fa_ir'))
+                            ),
+                            array(
+                                'label' => 'Svenska',
+                                'url' => array_merge(array(''), $_GET, array('lang' => 'sv_se'))
+                            ),
+                            array(
+                                'label' => 'Português',
+                                'url' => array_merge(array(''), $_GET, array('lang' => 'pt_pt'))
+                            ),
+                            array(
+                                'label' => 'Castellano/Español',
+                                'url' => array_merge(array(''), $_GET, array('lang' => 'es_es'))
+                            ),
+                            array(
+                                'label' => 'Chinese',
+                                'url' => array_merge(array(''), $_GET, array('lang' => 'cn'))
                             ),
                             array(
                                 'label' => 'Deutsch',
