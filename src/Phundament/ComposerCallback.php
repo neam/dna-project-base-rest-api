@@ -72,8 +72,7 @@ class ComposerCallback
     public static function preInstall(Event $event)
     {
         $composer = $event->getComposer();
-        // do stuff
-        echo "Welcome to Phundament\n\n";
+        echo self::phundamentAscii();
         echo "Installing application...\n\n";
 
         self::runHook('pre-install');
@@ -87,7 +86,7 @@ class ComposerCallback
     public static function postInstall(Event $event)
     {
         self::runHook('post-install');
-        echo "\n\nInstallation completed.\n\nThank you for choosing Phundament!\n\n";
+        echo "\nThank you for choosing Phundament!\n\n";
     }
 
     /**
@@ -98,7 +97,8 @@ class ComposerCallback
      */
     public static function preUpdate(Event $event)
     {
-        echo "Welcome to Phundament\n\nUpdating packages...\n\n";
+        echo self::phundamentAscii();
+        echo "Updating packages...\n\n";
         self::runHook('pre-update');
     }
 
@@ -111,7 +111,7 @@ class ComposerCallback
     public static function postUpdate(Event $event)
     {
         self::runHook('post-update');
-        echo "\n\nUpdate completed.\n\n";
+        echo "\n";
     }
 
     /**
@@ -162,10 +162,20 @@ class ComposerCallback
         if ($app === null) return;
 
         if (isset($app->params['composer.callbacks'][$name])) {
-            echo "composer.callback: ".$name."\n\n";
-            $args = $app->params['composer.callbacks'][$name];
-            $app->commandRunner->addCommands(\Yii::getPathOfAlias('system.cli.commands'));
-            $app->commandRunner->run($args);
+            echo "composer.callback: " . $name . "\n\n";
+            $cmd = $app->params['composer.callbacks'][$name];
+
+            // check for multiple commands
+            if (is_array($cmd[0])) {
+                foreach ($cmd AS $args) {
+                    $app->commandRunner->addCommands(\Yii::getPathOfAlias('system.cli.commands'));
+                    $app->commandRunner->run($args);
+                }
+            } else {
+                $args = $cmd;
+                $app->commandRunner->addCommands(\Yii::getPathOfAlias('system.cli.commands'));
+                $app->commandRunner->run($args);
+            }
         }
     }
 
@@ -192,6 +202,19 @@ class ComposerCallback
             $app = \Yii::app();
         }
         return $app;
+    }
+
+    private static function phundamentAscii(){
+        $return = <<<TXT
+ ____  _                     _                            _
+|  _ \| |__  _   _ _ __   __| | __ _ _ __ ___   ___ _ __ | |_
+| |_) | '_ \| | | | '_ \ / _` |/ _` | '_ ` _ \ / _ \ '_ \| __|
+|  __/| | | | |_| | | | | (_| | (_| | | | | | |  __/ | | | |_
+|_|   |_| |_|\__,_|_| |_|\__,_|\__,_|_| |_| |_|\___|_| |_|\__|
+
+TXT;
+        $return .= "\n";
+        return $return;
     }
 
 }

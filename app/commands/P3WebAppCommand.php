@@ -85,7 +85,7 @@ EOD;
             $this->_rootPath = $path = $dir . DIRECTORY_SEPARATOR . basename($path);
         }
 
-        if ($this->confirm("Create a Web application under '$path'?", !$this->interactive)) {
+        if ($this->confirm("Create a Web application under '$path'?", true)) {
             $sourceDir = $this->getSourceDir();
             if ($sourceDir === false) {
                 die("\nUnable to locate the source directory.\n");
@@ -118,22 +118,48 @@ EOD;
                     break;
             }
             $list = $this->buildFileList($sourceDir, $path, '', $ignoreFiles, $renameMap);
+
+            echo "\nNote: Your environment configuration will be defined in `main-local.php`";
+            if ($this->prompt("\nChoose your environment: 1 development | 2 production", '1') == 2) {
+                $list['app/config/main-local.php']['callback'] = array($this, 'callbackReplaceEnvironment');
+            } else if ($this->confirm("\nActivate `demo-data` migration?", false)) {
+                $list['app/config/console-local.php']['callback'] = array($this, 'callbackEnableDemoData');
+                echo "\nNote: Demo data migration module enabled in `console-local.php`.";
+            }
+            echo "\n";
+
             $this->copyFiles($list);
+
             echo "\nSetting permissions";
             $this->setPermissions($path);
-            echo "\nYour application has been created successfully under {$path}.\n";
+
+            echo "\nYour application has been created successfully under {$path}.";
+        } else {
+            echo "\nInstallation aborted.\n";
+            echo "\n\nInstallation aborted.\n";
+            exit(); // do not continue composer process
         }
+        echo "\n";
     }
 
 
     public function confirm($message, $default = false)
     {
         if ($this->interactive == false) {
+            echo $message." ".$default."\n";
             return $default;
         }
         return parent::confirm($message, $default);
     }
 
+    public function prompt($message, $default = false)
+    {
+        if ($this->interactive == false) {
+            echo $message." ".$default."\n";
+            return $default;
+        }
+        return parent::prompt($message, $default);
+    }
 
     /**
      * Adjusts created application file and directory permissions
@@ -162,4 +188,22 @@ EOD;
         return realpath(dirname(__FILE__) . '/views/p3-webapp');
     }
 
+    protected function getConfigDir()
+    {
+        return realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config');
+    }
+
+    public function callbackReplaceEnvironment($source, $params)
+    {
+        $content = file_get_contents($source);
+        $content = str_replace('main-development.php', 'main-production.php', $content);
+        return $content;
+    }
+
+    public function callbackEnableDemoData($source, $params)
+    {
+        $content = file_get_contents($source);
+        $content = str_replace("#'app-demo-data'", "'app-demo-data'", $content);
+        return $content;
+    }
 }

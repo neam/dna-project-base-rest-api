@@ -5,7 +5,7 @@
 // DO NOT COMMIT THIS FILE !!!
 
 // include 'development' or 'production'
-$environmentConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'development.php';
+$environmentConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'main-development.php';
 
 
 $localConfig = array(
@@ -14,13 +14,9 @@ $localConfig = array(
     )
 );
 
-
+// merge configs in the following order (most to least important) local, {env}, main
 if (is_file($environmentConfigFile)) {
     return CMap::mergeArray(require($environmentConfigFile), $localConfig);
-}
-else {
+} else {
     return $localConfig;
 }
-?>
-
-?>
