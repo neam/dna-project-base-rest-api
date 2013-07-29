@@ -27,7 +27,7 @@ $this->widget(
                 'items' => array(
                     array(
                         'label' => Yii::app()->language,
-                        'icon' => 'globe white',
+                        'icon' => 'globe',
                         'url' => '#',
                         'items' => array(
                             array('label' => Yii::t('app', 'Languages')),
@@ -75,8 +75,8 @@ $this->widget(
                         'label' => ucfirst(Yii::app()->user->name),
                         'visible' => !Yii::app()->user->isGuest,
                         'icon' => Yii::app()->user->checkAccess('Superuser') ?
-                            'warning-sign white' :
-                            'user white',
+                            'warning-sign' :
+                            'user',
                         'items' => array(
                             array('label' => Yii::t('app', 'User')),
                             array(
@@ -104,7 +104,7 @@ $this->widget(
                         'label' => Yii::t('app', 'Login'),
                         'url' => Yii::app()->user->loginUrl,
                         'visible' => Yii::app()->user->isGuest,
-                        'icon' => 'lock white'
+                        'icon' => 'lock'
                     ),
                 ),
             ),
