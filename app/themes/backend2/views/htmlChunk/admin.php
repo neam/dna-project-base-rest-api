@@ -42,8 +42,8 @@ return false;
 #        'markup_hi',
 #        'markup_pt',
 #        'markup_sv',
-#        'markup_de',
 #        'markup_cn',
+#        'markup_de',
             array(
                 'class' => 'TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('view', array('id' => \$data->id))",

@@ -1,6 +1,8 @@
 <div class="row">
 <div class="span8"> <!-- main inputs -->
 
+<div class="form-horizontal">
+
 
 <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
@@ -14,8 +16,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'data_source_id', $input);
@@ -63,8 +64,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'original_media_id', $input);
@@ -102,6 +102,8 @@ $this->endClip();
 ?>
 
 
+<?php echo $form->textFieldRow($model, 'generate_processed_media'); ?>
+
 <?php
 $input = $this->widget(
     'Relation',
@@ -112,8 +114,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_en', $input);
@@ -161,6 +162,8 @@ $this->endClip();
 
 <?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
 
+<?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
+
 <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
 
 <?php
@@ -173,8 +176,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_es', $input);
@@ -222,8 +224,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_fa', $input);
@@ -271,8 +272,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_hi', $input);
@@ -320,8 +320,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_pt', $input);
@@ -369,8 +368,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_sv', $input);
@@ -418,8 +416,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_cn', $input);
@@ -467,8 +464,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'processed_media_id_de', $input);
@@ -506,12 +502,12 @@ $this->endClip();
 ?>
 
 
-<?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
+</div>
 </div>
 <!-- main inputs -->
 
-
 <div class="span4"> <!-- sub inputs -->
+
 
 </div>
 <!-- sub inputs -->

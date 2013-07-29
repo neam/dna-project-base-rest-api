@@ -48,8 +48,8 @@ return false;
             'title_hi',
             'title_pt',
             'title_sv',
-            'title_de',
             'title_cn',
+            'title_de',
             */
             array(
                 'class' => 'TbButtonColumn',

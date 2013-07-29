@@ -7,13 +7,29 @@
 
     <div class="row">
         <?php echo $form->label($model, 'id'); ?>
-
         <?php echo $form->textField($model, 'id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
     <div class="row">
         <?php echo $form->label($model, 'title_en'); ?>
         <?php echo $form->textField($model, 'title_en', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'original_media_id'); ?>
+        <?php echo $form->dropDownList($model, 'original_media_id', CHtml::listData(P3Media::model()->findAll(),
+            'id', 'title'), array('prompt' => 'all')); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'generate_processed_media'); ?>
+        <?php echo $form->checkBox($model, 'generate_processed_media'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'processed_media_id_en'); ?>
+        <?php echo $form->dropDownList($model, 'processed_media_id_en', CHtml::listData(P3Media::model()->findAll(),
+            'id', 'title'), array('prompt' => 'all')); ?>
     </div>
 
     <div class="row">
@@ -24,18 +40,6 @@
     <div class="row">
         <?php echo $form->label($model, 'modified'); ?>
         <?php echo $form->textField($model, 'modified'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'original_media_id'); ?>
-        <?php echo $form->dropDownList($model, 'original_media_id', CHtml::listData(P3Media::model()->findAll(),
-            'id', 'title'), array('prompt' => 'all')); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'processed_media_id_en'); ?>
-        <?php echo $form->dropDownList($model, 'processed_media_id_en', CHtml::listData(P3Media::model()->findAll(),
-            'id', 'title'), array('prompt' => 'all')); ?>
     </div>
 
     <div class="row">
@@ -61,6 +65,11 @@
     <div class="row">
         <?php echo $form->label($model, 'title_sv'); ?>
         <?php echo $form->textField($model, 'title_sv', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'title_cn'); ?>
+        <?php echo $form->textField($model, 'title_cn', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
     <div class="row">
@@ -108,11 +117,6 @@
         <?php echo $form->label($model, 'processed_media_id_de'); ?>
         <?php echo $form->dropDownList($model, 'processed_media_id_de', CHtml::listData(P3Media::model()->findAll(),
             'id', 'title'), array('prompt' => 'all')); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_cn'); ?>
-        <?php echo $form->textField($model, 'title_cn', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
     <div class="row buttons">

@@ -7,7 +7,6 @@
 
     <div class="row">
         <?php echo $form->label($model, 'id'); ?>
-
         <?php echo $form->textField($model, 'id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
@@ -52,13 +51,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'markup_de'); ?>
-        <?php echo $form->textArea($model, 'markup_de', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->label($model, 'markup_cn'); ?>
+        <?php echo $form->textArea($model, 'markup_cn', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'markup_cn'); ?>
-        <?php echo $form->textArea($model, 'markup_cn', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->label($model, 'markup_de'); ?>
+        <?php echo $form->textArea($model, 'markup_de', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row buttons">

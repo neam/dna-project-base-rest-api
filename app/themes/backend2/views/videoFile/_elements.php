@@ -56,6 +56,8 @@ $this->endClip();
 ?>
 
 
+<?php echo $form->textFieldRow($model, 'generate_processed_media'); ?>
+
 <?php
 $input = $this->widget(
     'Relation',
@@ -114,7 +116,23 @@ $this->endClip();
 
 <?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
 
+<?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
+
 <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_es', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_fa', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_hi', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_pt', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_sv', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_cn', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+<?php echo $form->textAreaRow($model, 'subtitles_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
 <?php
 $input = $this->widget(
@@ -451,22 +469,6 @@ $this->renderPartial('/p3Media/_modal_form', array(
 $this->endClip();
 ?>
 
-
-<?php echo $form->textAreaRow($model, 'subtitles_es', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-<?php echo $form->textAreaRow($model, 'subtitles_fa', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-<?php echo $form->textAreaRow($model, 'subtitles_hi', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-<?php echo $form->textAreaRow($model, 'subtitles_pt', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-<?php echo $form->textAreaRow($model, 'subtitles_sv', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-<?php echo $form->textAreaRow($model, 'subtitles_cn', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-<?php echo $form->textAreaRow($model, 'subtitles_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-<?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
 
 </div>
 </div>

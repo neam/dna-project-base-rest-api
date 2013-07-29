@@ -1,6 +1,8 @@
 <div class="row">
 <div class="span8"> <!-- main inputs -->
 
+<div class="form-horizontal">
+
 
 <?php
 $input = $this->widget(
@@ -12,8 +14,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'section_id', $input);
@@ -63,8 +64,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'html_chunk_id', $input);
@@ -112,8 +112,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'viz_view_id', $input);
@@ -161,8 +160,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'video_file_id', $input);
@@ -210,8 +208,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'teachers_guide_id', $input);
@@ -259,8 +256,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'exercise_id', $input);
@@ -308,8 +304,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'presentation_id', $input);
@@ -357,8 +352,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'data_chunk_id', $input);
@@ -406,8 +400,7 @@ $input = $this->widget(
         'allowEmpty' => true,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
+            'checkAll' => 'all'),
     )
     , true);
 echo $form->customRow($model, 'download_link_id', $input);
@@ -444,11 +437,13 @@ $this->renderPartial('/downloadLink/_modal_form', array(
 $this->endClip();
 ?>
 
+
+</div>
 </div>
 <!-- main inputs -->
 
-
 <div class="span4"> <!-- sub inputs -->
+
 
 </div>
 <!-- sub inputs -->

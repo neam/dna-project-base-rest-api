@@ -54,6 +54,8 @@ $this->endClip();
 ?>
 
 
+<?php echo $form->textFieldRow($model, 'generate_processed_media'); ?>
+
 <?php
 $input = $this->widget(
     'Relation',
@@ -111,6 +113,8 @@ $this->endClip();
 <?php echo $form->textFieldRow($model, 'title_pt', array('maxlength' => 255)); ?>
 
 <?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
+
+<?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
 
 <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
 
@@ -450,15 +454,11 @@ $this->endClip();
 ?>
 
 
-<?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
 </div>
 </div>
 <!-- main inputs -->
 
 <div class="span4"> <!-- sub inputs -->
-    <h2>
-        <?php echo Yii::t('crud', 'Relations') ?>
-    </h2>
 
 
 </div>

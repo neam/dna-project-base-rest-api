@@ -35,21 +35,21 @@ return false;
         'columns' => array(
             'id',
             'title_en',
-            'created',
-            'modified',
             array(
                 'name' => 'slideshow_file_id',
                 'value' => 'CHtml::value($data,\'slideshowFile.itemLabel\')',
                 'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'itemLabel'),
             ),
+            'created',
+            'modified',
             'title_es',
             'title_fa',
             /*
             'title_hi',
             'title_pt',
             'title_sv',
-            'title_de',
             'title_cn',
+            'title_de',
             */
             array(
                 'class' => 'TbButtonColumn',

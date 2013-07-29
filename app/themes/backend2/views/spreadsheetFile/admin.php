@@ -35,8 +35,6 @@ return false;
         'columns' => array(
             'id',
             'title_en',
-            'created',
-            'modified',
             array(
                 'name' => 'data_source_id',
                 'value' => 'CHtml::value($data,\'dataSource.itemLabel\')',
@@ -47,17 +45,21 @@ return false;
                 'value' => 'CHtml::value($data,\'originalMedia.itemLabel\')',
                 'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
             ),
+            'generate_processed_media',
             array(
                 'name' => 'processed_media_id_en',
                 'value' => 'CHtml::value($data,\'processedMediaIdEn.itemLabel\')',
                 'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
             ),
+            'created',
             /*
+            'modified',
             'title_es',
             'title_fa',
             'title_hi',
             'title_pt',
             'title_sv',
+            'title_cn',
             'title_de',
             array(
                         'name'=>'processed_media_id_es',
@@ -94,7 +96,6 @@ return false;
                         'value'=>'CHtml::value($data,\'processedMediaIdDe.itemLabel\')',
                                 'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
                                 ),
-            'title_cn',
             */
             array(
                 'class' => 'TbButtonColumn',

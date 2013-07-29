@@ -7,13 +7,18 @@
 
     <div class="row">
         <?php echo $form->label($model, 'id'); ?>
-
         <?php echo $form->textField($model, 'id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
     <div class="row">
         <?php echo $form->label($model, 'title_en'); ?>
         <?php echo $form->textField($model, 'title_en', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'slideshow_file_id'); ?>
+        <?php echo $form->dropDownList($model, 'slideshow_file_id', CHtml::listData(SlideshowFile::model()->findAll(),
+            'id', 'title_en'), array('prompt' => 'all')); ?>
     </div>
 
     <div class="row">
@@ -24,12 +29,6 @@
     <div class="row">
         <?php echo $form->label($model, 'modified'); ?>
         <?php echo $form->textField($model, 'modified'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'slideshow_file_id'); ?>
-        <?php echo $form->dropDownList($model, 'slideshow_file_id', CHtml::listData(SlideshowFile::model()->findAll(),
-            'id', 'title_en'), array('prompt' => 'all')); ?>
     </div>
 
     <div class="row">
@@ -58,13 +57,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'title_de'); ?>
-        <?php echo $form->textField($model, 'title_de', array('size' => 60, 'maxlength' => 255)); ?>
+        <?php echo $form->label($model, 'title_cn'); ?>
+        <?php echo $form->textField($model, 'title_cn', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'title_cn'); ?>
-        <?php echo $form->textField($model, 'title_cn', array('size' => 60, 'maxlength' => 255)); ?>
+        <?php echo $form->label($model, 'title_de'); ?>
+        <?php echo $form->textField($model, 'title_de', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
     <div class="row buttons">
