@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7aaa40fffb5f84823b409584166b4a30",
+    "hash": "e746d0883d4f702c7b2e7ddd34a47dd3",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -248,11 +248,17 @@
         },
         {
             "name": "phpoffice/phpword",
-            "version": "dev-develop",
+            "version": "dev-added-composer-json",
             "source": {
                 "type": "git",
-                "url": "/Users/motin/Dev/Projects/Gapminder/gapminder-school-product/cms/tmp/PHPWord",
+                "url": "https://github.com/motin/PHPWord.git",
                 "reference": "744d3f53d42ee31cd1f29daefd1c7c8cd87161d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/motin/PHPWord/zipball/744d3f53d42ee31cd1f29daefd1c7c8cd87161d0",
+                "reference": "744d3f53d42ee31cd1f29daefd1c7c8cd87161d0",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.2.0"
@@ -292,6 +298,9 @@
                 "docx",
                 "word"
             ],
+            "support": {
+                "source": "https://github.com/motin/PHPWord/tree/added-composer-json"
+            },
             "time": "2013-07-25 09:04:46"
         },
         {
