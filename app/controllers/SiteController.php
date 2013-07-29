@@ -38,7 +38,6 @@ class SiteController extends Controller
      */
     public function actionGiiscript()
     {
-        Yii::app()->theme = 'backend';
         $this->render('giiscript');
     }
 
