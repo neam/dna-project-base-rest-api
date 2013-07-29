@@ -115,16 +115,16 @@
         },
         {
             "name": "neam/yii-i18n-columns",
-            "version": "dev-master",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-i18n-columns.git",
-                "reference": "ac47a52923120b9cdef1d5513c82e490ce635787"
+                "reference": "0.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/ac47a52923120b9cdef1d5513c82e490ce635787",
-                "reference": "ac47a52923120b9cdef1d5513c82e490ce635787",
+                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/0.2.0",
+                "reference": "0.2.0",
                 "shasum": ""
             },
             "require": {
@@ -156,10 +156,10 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/neam/yii-i18n-columns/tree/master",
+                "source": "https://github.com/neam/yii-i18n-columns/tree/0.2.0",
                 "issues": "https://github.com/neam/yii-i18n-columns/issues"
             },
-            "time": "2013-07-08 18:55:06"
+            "time": "2013-07-25 06:40:38"
         },
         {
             "name": "phundament/backend-theme",
@@ -1030,7 +1030,6 @@
         "mishamx/yii-user": 20,
         "phundament/backend-theme": 20,
         "firstrow/stranslateablebehavior": 20,
-        "neam/yii-i18n-columns": 20,
         "clevertech/yiibooster": 20,
         "anggiaj/eselect2": 20,
         "waalzer/app-demo-data": 20,

@@ -75,7 +75,7 @@
         "yiiext/migrate-command":"0.7.*",
         "kswedberg/jquery-smooth-scroll":"1.4.10",
         "firstrow/stranslateablebehavior":"@dev",
-        "neam/yii-i18n-columns":"@dev",
+        "neam/yii-i18n-columns":"0.2.0",
         "clevertech/yiibooster": "dev-master as 1.1.0",
         "vitalets/x-editable-yii": "1.2.0",
 		"anggiaj/eselect2": "dev-master",

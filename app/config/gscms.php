@@ -26,7 +26,7 @@ $gscmsConfig = array(
 	'language' => 'en', // default language, see also components.langHandler
 	'aliases' => array(
 		// i18n-columns
-		'i18n-columns' => 'vendor.neam.yii-i18n-columns',
+        'i18n-columns' => 'vendor.neam.yii-i18n-columns',
 	),
 	'import' => array(
 		'i18n-columns.behaviors.I18nColumnsBehavior',
