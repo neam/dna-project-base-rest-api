@@ -13,8 +13,8 @@
  * @property string $markup_hi
  * @property string $markup_pt
  * @property string $markup_sv
- * @property string $markup_de
  * @property string $markup_cn
+ * @property string $markup_de
  *
  * Relations of table "html_chunk" available as properties of the model:
  * @property SectionContent[] $sectionContents
@@ -36,9 +36,9 @@ abstract class BaseHtmlChunk extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de, markup_cn', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de, markup_cn', 'safe'),
-                array('id, markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_de, markup_cn', 'safe', 'on' => 'search'),
+                array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'safe'),
+                array('id, markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -78,8 +78,8 @@ abstract class BaseHtmlChunk extends ActiveRecord
             'markup_hi' => Yii::t('crud', 'Markup Hi'),
             'markup_pt' => Yii::t('crud', 'Markup Pt'),
             'markup_sv' => Yii::t('crud', 'Markup Sv'),
-            'markup_de' => Yii::t('crud', 'Markup De'),
             'markup_cn' => Yii::t('crud', 'Markup Cn'),
+            'markup_de' => Yii::t('crud', 'Markup De'),
         );
     }
 
@@ -98,8 +98,8 @@ abstract class BaseHtmlChunk extends ActiveRecord
         $criteria->compare('t.markup_hi', $this->markup_hi, true);
         $criteria->compare('t.markup_pt', $this->markup_pt, true);
         $criteria->compare('t.markup_sv', $this->markup_sv, true);
-        $criteria->compare('t.markup_de', $this->markup_de, true);
         $criteria->compare('t.markup_cn', $this->markup_cn, true);
+        $criteria->compare('t.markup_de', $this->markup_de, true);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

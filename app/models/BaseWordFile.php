@@ -6,15 +6,17 @@
  * Columns in table "word_file" available as properties of the model:
  * @property string $id
  * @property string $title_en
+ * @property integer $original_media_id
+ * @property integer $generate_processed_media
+ * @property integer $processed_media_id_en
  * @property string $created
  * @property string $modified
- * @property integer $original_media_id
- * @property integer $processed_media_id_en
  * @property string $title_es
  * @property string $title_fa
  * @property string $title_hi
  * @property string $title_pt
  * @property string $title_sv
+ * @property string $title_cn
  * @property string $title_de
  * @property integer $processed_media_id_es
  * @property integer $processed_media_id_fa
@@ -23,7 +25,6 @@
  * @property integer $processed_media_id_sv
  * @property integer $processed_media_id_cn
  * @property integer $processed_media_id_de
- * @property string $title_cn
  *
  * Relations of table "word_file" available as properties of the model:
  * @property P3Media $originalMedia
@@ -53,11 +54,11 @@ abstract class BaseWordFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, created, modified, original_media_id, processed_media_id_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, title_cn', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('original_media_id, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
-                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, title_cn', 'length', 'max' => 255),
+                array('title_en, original_media_id, generate_processed_media, processed_media_id_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('original_media_id, generate_processed_media, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
+                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, title_en, created, modified, original_media_id, processed_media_id_en, title_es, title_fa, title_hi, title_pt, title_sv, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, title_cn', 'safe', 'on' => 'search'),
+                array('id, title_en, original_media_id, generate_processed_media, processed_media_id_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -98,15 +99,17 @@ abstract class BaseWordFile extends ActiveRecord
         return array(
             'id' => Yii::t('crud', 'ID'),
             'title_en' => Yii::t('crud', 'Title En'),
+            'original_media_id' => Yii::t('crud', 'Original Media'),
+            'generate_processed_media' => Yii::t('crud', 'Generate Processed Media'),
+            'processed_media_id_en' => Yii::t('crud', 'Processed Media Id En'),
             'created' => Yii::t('crud', 'Created'),
             'modified' => Yii::t('crud', 'Modified'),
-            'original_media_id' => Yii::t('crud', 'Original Media'),
-            'processed_media_id_en' => Yii::t('crud', 'Processed Media Id En'),
             'title_es' => Yii::t('crud', 'Title Es'),
             'title_fa' => Yii::t('crud', 'Title Fa'),
             'title_hi' => Yii::t('crud', 'Title Hi'),
             'title_pt' => Yii::t('crud', 'Title Pt'),
             'title_sv' => Yii::t('crud', 'Title Sv'),
+            'title_cn' => Yii::t('crud', 'Title Cn'),
             'title_de' => Yii::t('crud', 'Title De'),
             'processed_media_id_es' => Yii::t('crud', 'Processed Media Id Es'),
             'processed_media_id_fa' => Yii::t('crud', 'Processed Media Id Fa'),
@@ -115,7 +118,6 @@ abstract class BaseWordFile extends ActiveRecord
             'processed_media_id_sv' => Yii::t('crud', 'Processed Media Id Sv'),
             'processed_media_id_cn' => Yii::t('crud', 'Processed Media Id Cn'),
             'processed_media_id_de' => Yii::t('crud', 'Processed Media Id De'),
-            'title_cn' => Yii::t('crud', 'Title Cn'),
         );
     }
 
@@ -127,15 +129,17 @@ abstract class BaseWordFile extends ActiveRecord
 
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.title_en', $this->title_en, true);
+        $criteria->compare('t.original_media_id', $this->original_media_id);
+        $criteria->compare('t.generate_processed_media', $this->generate_processed_media);
+        $criteria->compare('t.processed_media_id_en', $this->processed_media_id_en);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
-        $criteria->compare('t.original_media_id', $this->original_media_id);
-        $criteria->compare('t.processed_media_id_en', $this->processed_media_id_en);
         $criteria->compare('t.title_es', $this->title_es, true);
         $criteria->compare('t.title_fa', $this->title_fa, true);
         $criteria->compare('t.title_hi', $this->title_hi, true);
         $criteria->compare('t.title_pt', $this->title_pt, true);
         $criteria->compare('t.title_sv', $this->title_sv, true);
+        $criteria->compare('t.title_cn', $this->title_cn, true);
         $criteria->compare('t.title_de', $this->title_de, true);
         $criteria->compare('t.processed_media_id_es', $this->processed_media_id_es);
         $criteria->compare('t.processed_media_id_fa', $this->processed_media_id_fa);
@@ -144,7 +148,6 @@ abstract class BaseWordFile extends ActiveRecord
         $criteria->compare('t.processed_media_id_sv', $this->processed_media_id_sv);
         $criteria->compare('t.processed_media_id_cn', $this->processed_media_id_cn);
         $criteria->compare('t.processed_media_id_de', $this->processed_media_id_de);
-        $criteria->compare('t.title_cn', $this->title_cn, true);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

@@ -89,8 +89,8 @@
 
 <?php if ($this->action->id == 'admin'): ?>
     <div class="search-form" style="display:none">
-        <?php $this->renderPartial('_search', array(
-            'model' => $model,
-        )); ?>
+    <?php $this->renderPartial('_search', array(
+        'model' => $model,
+    )); ?>
     </div>
 <?php endif; ?>
