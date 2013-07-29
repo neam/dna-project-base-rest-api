@@ -305,6 +305,10 @@ $mainConfig = array(
                 '^user/activation/(.*)' => 'frontend',
                 '^user/(.*)' => 'backend2',
                 '^rights/(.*)' => 'backend2',
+                '^([^/]*)/update' => 'backend2',
+                '^([^/]*)/admin' => 'backend2',
+                '^([^/]*)/create' => 'backend2',
+                '^(.*)' => 'frontend',
             )
         ),
         'urlManager' => array(
