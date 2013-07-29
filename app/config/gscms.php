@@ -26,6 +26,10 @@ $gscmsConfig = array(
     'aliases' => array(
         // i18n-columns
         'i18n-columns' => 'vendor.neam.yii-i18n-columns',
+        // phpoffice libraries
+        'phpexcel' => 'vendor.phpoffice.phpexcel.Classes',
+        'phpword' => 'vendor.phpoffice.phpword.src',
+        'phppowerpoint' => 'vendor.phpoffice.phppowerpoint.Classes',
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
