@@ -111,7 +111,7 @@ class WordFileController extends Controller
                     if (isset($_GET['returnUrl'])) {
                         $this->redirect($_GET['returnUrl']);
                     } else {
-                        $this->redirect(array('view', 'id' => $model->id));
+                        $this->redirect(array('update', 'id' => $model->id));
                     }
                 }
             } catch (Exception $e) {
