@@ -50,7 +50,7 @@ class SlideshowFile extends BaseSlideshowFile
 
         require_once("http://localhost:8080/GapcmsJavaBridge/java/Java.inc");
 
-        $sourceDataPptFileName = Yii::getPathOfAlias("application")."/includes/source_data.ppt";
+        $sourceDataPptFileName = Yii::getPathOfAlias("application") . "/includes/source_data.ppt";
 
         try {
 
@@ -60,7 +60,37 @@ class SlideshowFile extends BaseSlideshowFile
 
             $newSlide = $ppt->createSlide();
 
-            foreach ($sourceDataPpt->getSlides()[0]->getShapes() as $shape) {
+            $translate = array(
+                '${t:DATA DOCUMENTATION}' => 'DATA DOCUMENTATION',
+                '${t:Updates and translations to this file may be available here:}' => 'Updates and translations to this file may be available here:',
+                '${chapter_url}' => 'http://www.gapminder.org/foo',
+                '${datasource1_title}' => 'Data Slide 1',
+                '${datasource1_description}' => 'UN Population Division, World Population Prospect 2012 mid-estimate and mid-projection.',
+                '${datasource1_url}' => 'http://un.org/esa/population',
+                '${datasource2_title}' => 'Data before 1950',
+                '${datasource2_description}' => 'Compiled by Gapminder from historical records from various sources. Detailed documentation in English here:',
+                '${datasource2_url}' => 'www.gapminder.org/data/documentation/gd003/',
+            );
+
+            foreach ($sourceDataPpt->getSlides()[0]->getShapes() as $k => $shape) {
+
+                foreach ($shape->getTextRun()->getRichTextRuns() as $i => $rt) {
+
+                    $text = $rt->getText();
+
+                    //var_dump($k, $i, java_values($rt->getText())); //, java_values($shape->getText())
+
+                    foreach ($translate as $search => $replace) {
+
+                        if (strpos($text, $search) !== false) {
+                            $text = str_replace($search, $replace, $text);
+                            $rt->setText(new java("java.lang.String", $text));
+                        }
+
+                    }
+
+                }
+
                 $newSlide->addShape($shape);
             }
 
