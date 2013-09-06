@@ -209,7 +209,7 @@ $mainConfig = array(
             'defaultRoles' => array('Authenticated', 'Guest'),
             // see correspoing business rules, note: superusers always get checkAcess == true
         ),
-        'bootstrap' => array(
+        'bootstrap'     => array(
             'class'         => 'vendor.clevertech.yiibooster.src.components.Bootstrap',
             'coreCss'       => true, // whether to register any CSS at all, defaults to true
             'bootstrapCss'  => false, // use csutom css from theme
