@@ -77,7 +77,7 @@
         <div class="btn-group">
             <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
                 'buttons' => array(
-                    array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'sections - Section', 'url' => array('section/admin')),
+                    array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'sections - Section', 'url' => array('//section/admin')),
                     )
                     ),
                 ),
