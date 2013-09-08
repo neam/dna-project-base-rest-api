@@ -48,7 +48,7 @@ $this->widget('EditableDetailView', array(
     ?></div>
 
 <?php
-$relatedSearchModel = $model->getRelatedSearchModel('sections');
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'sections');
 $this->widget('TbGridView',
     array(
         'id' => '//section-grid',
