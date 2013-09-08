@@ -42,7 +42,7 @@ $this->widget('EditableDetailView', array(
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(// TODO
-            #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('//section/create','Section' => array('chapter_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
+            #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('section/create','Section' => array('chapter_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
         ),
     ));
     ?></div>
@@ -51,7 +51,7 @@ $this->widget('EditableDetailView', array(
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'sections');
 $this->widget('TbGridView',
     array(
-        'id' => '//section-grid',
+        'id' => 'section-grid',
         'dataProvider' => $relatedSearchModel->search(),
         'filter' => count($model->sections) > 1 ? $relatedSearchModel : null,
         'pager' => array(
@@ -280,9 +280,9 @@ $this->widget('TbGridView',
             */
             array(
                 'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('//section/view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('//section/update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('//section/delete', array('id' => \$data->id))",
+                'viewButtonUrl' => "Yii::app()->controller->createUrl('section/view', array('id' => \$data->id))",
+                'updateButtonUrl' => "Yii::app()->controller->createUrl('section/update', array('id' => \$data->id))",
+                'deleteButtonUrl' => "Yii::app()->controller->createUrl('section/delete', array('id' => \$data->id))",
             ),
         ),
     ));
