@@ -33,55 +33,83 @@ return false;
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
-            'id',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'id',
+                'editable' => array(
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             array(
                 'name' => 'section_id',
                 'value' => 'CHtml::value($data,\'section.itemLabel\')',
-                'filter' => CHtml::listData(Section::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(Section::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            'ordinal',
-            'created',
-            'modified',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'ordinal',
+                'editable' => array(
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'created',
+                'editable' => array(
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'modified',
+                'editable' => array(
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             array(
                 'name' => 'html_chunk_id',
                 'value' => 'CHtml::value($data,\'htmlChunk.itemLabel\')',
-                'filter' => CHtml::listData(HtmlChunk::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'viz_view_id',
                 'value' => 'CHtml::value($data,\'vizView.itemLabel\')',
-                'filter' => CHtml::listData(VizView::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(VizView::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
                         'name'=>'video_file_id',
                         'value'=>'CHtml::value($data,\'videoFile.itemLabel\')',
-                                'filter'=>CHtml::listData(VideoFile::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(VideoFile::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'teachers_guide_id',
                         'value'=>'CHtml::value($data,\'teachersGuide.itemLabel\')',
-                                'filter'=>CHtml::listData(TeachersGuide::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(TeachersGuide::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'exercise_id',
                         'value'=>'CHtml::value($data,\'exercise.itemLabel\')',
-                                'filter'=>CHtml::listData(Exercise::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(Exercise::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'presentation_id',
                         'value'=>'CHtml::value($data,\'presentation.itemLabel\')',
-                                'filter'=>CHtml::listData(Presentation::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(Presentation::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'data_chunk_id',
                         'value'=>'CHtml::value($data,\'dataChunk.itemLabel\')',
-                                'filter'=>CHtml::listData(DataChunk::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(DataChunk::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'download_link_id',
                         'value'=>'CHtml::value($data,\'downloadLink.itemLabel\')',
-                                'filter'=>CHtml::listData(DownloadLink::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(DownloadLink::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             */
             array(
@@ -90,5 +118,5 @@ return false;
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
             ),
-        ),
+        )
     )); ?>

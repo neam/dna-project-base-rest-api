@@ -33,18 +33,95 @@ return false;
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
-            'id',
-            'title_en',
-            'created',
-            'modified',
-            'title_es',
-            'title_fa',
-            'title_hi',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'id',
+                'editable' => array(
+                    'url' => $this->createUrl('/teachersGuide/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/teachersGuide/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'created',
+                'editable' => array(
+                    'url' => $this->createUrl('/teachersGuide/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'modified',
+                'editable' => array(
+                    'url' => $this->createUrl('/teachersGuide/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_es',
+                'editable' => array(
+                    'url' => $this->createUrl('/teachersGuide/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_fa',
+                'editable' => array(
+                    'url' => $this->createUrl('/teachersGuide/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_hi',
+                'editable' => array(
+                    'url' => $this->createUrl('/teachersGuide/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             /*
-            'title_pt',
-            'title_sv',
-            'title_de',
-            'title_cn',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_pt',
+                'editable' => array(
+                    'url' => $this->createUrl('/teachersGuide/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_sv',
+                'editable' => array(
+                    'url' => $this->createUrl('/teachersGuide/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_de',
+                'editable' => array(
+                    'url' => $this->createUrl('/teachersGuide/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_cn',
+                'editable' => array(
+                    'url' => $this->createUrl('/teachersGuide/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -52,5 +129,5 @@ return false;
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
             ),
-        ),
+        )
     )); ?>

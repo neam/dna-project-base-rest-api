@@ -33,40 +33,236 @@ return false;
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
-            'id',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'id',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             array(
                 'name' => 'chapter_id',
                 'value' => 'CHtml::value($data,\'chapter.itemLabel\')',
-                'filter' => CHtml::listData(Chapter::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            'title_en',
-            'slug_en',
-            'ordinal',
-            'menu_label_en',
-            'created',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'slug_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'ordinal',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'menu_label_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'created',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             /*
-            'modified',
-            'title_es',
-            'title_fa',
-            'title_hi',
-            'title_pt',
-            'title_sv',
-            'title_cn',
-            'title_de',
-            'slug_es',
-            'slug_fa',
-            'slug_hi',
-            'slug_pt',
-            'slug_sv',
-            'slug_cn',
-            'slug_de',
-            'menu_label_es',
-            'menu_label_fa',
-            'menu_label_hi',
-            'menu_label_pt',
-            'menu_label_sv',
-            'menu_label_cn',
-            'menu_label_de',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'modified',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_es',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_fa',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_hi',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_pt',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_sv',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_cn',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_de',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'slug_es',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'slug_fa',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'slug_hi',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'slug_pt',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'slug_sv',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'slug_cn',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'slug_de',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'menu_label_es',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'menu_label_fa',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'menu_label_hi',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'menu_label_pt',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'menu_label_sv',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'menu_label_cn',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'menu_label_de',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -74,5 +270,5 @@ return false;
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
             ),
-        ),
+        )
     )); ?>

@@ -6,7 +6,7 @@
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'section',
@@ -41,7 +41,7 @@ $formId = 'section-content-section_id-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/section/_modal_form', array(
+$this->renderPartial('//section/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#SectionContent_section_id',
     'model' => new Section,
@@ -56,7 +56,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'htmlChunk',
@@ -91,7 +91,7 @@ $formId = 'section-content-html_chunk_id-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/htmlChunk/_modal_form', array(
+$this->renderPartial('//htmlChunk/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#SectionContent_html_chunk_id',
     'model' => new HtmlChunk,
@@ -104,7 +104,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'vizView',
@@ -139,7 +139,7 @@ $formId = 'section-content-viz_view_id-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/vizView/_modal_form', array(
+$this->renderPartial('//vizView/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#SectionContent_viz_view_id',
     'model' => new VizView,
@@ -152,7 +152,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'videoFile',
@@ -187,7 +187,7 @@ $formId = 'section-content-video_file_id-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/videoFile/_modal_form', array(
+$this->renderPartial('//videoFile/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#SectionContent_video_file_id',
     'model' => new VideoFile,
@@ -200,7 +200,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'teachersGuide',
@@ -235,7 +235,7 @@ $formId = 'section-content-teachers_guide_id-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/teachersGuide/_modal_form', array(
+$this->renderPartial('//teachersGuide/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#SectionContent_teachers_guide_id',
     'model' => new TeachersGuide,
@@ -248,7 +248,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'exercise',
@@ -283,7 +283,7 @@ $formId = 'section-content-exercise_id-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/exercise/_modal_form', array(
+$this->renderPartial('//exercise/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#SectionContent_exercise_id',
     'model' => new Exercise,
@@ -296,7 +296,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'presentation',
@@ -331,7 +331,7 @@ $formId = 'section-content-presentation_id-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/presentation/_modal_form', array(
+$this->renderPartial('//presentation/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#SectionContent_presentation_id',
     'model' => new Presentation,
@@ -344,7 +344,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'dataChunk',
@@ -379,7 +379,7 @@ $formId = 'section-content-data_chunk_id-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/dataChunk/_modal_form', array(
+$this->renderPartial('//dataChunk/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#SectionContent_data_chunk_id',
     'model' => new DataChunk,
@@ -392,7 +392,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'downloadLink',
@@ -427,7 +427,7 @@ $formId = 'section-content-download_link_id-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/downloadLink/_modal_form', array(
+$this->renderPartial('//downloadLink/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#SectionContent_download_link_id',
     'model' => new DownloadLink,

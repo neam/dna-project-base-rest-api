@@ -77,7 +77,7 @@
         <div class="btn-group">
             <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
                 'buttons' => array(
-                    array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'dataChunks - DataChunk', 'url' => array('dataChunk/admin')), array('label' => 'spreadsheetFiles - SpreadsheetFile', 'url' => array('spreadsheetFile/admin')),
+                    array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'dataChunks - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'spreadsheetFiles - SpreadsheetFile', 'url' => array('//spreadsheetFile/admin')),
                     )
                     ),
                 ),

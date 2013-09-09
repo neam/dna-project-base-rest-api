@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e5bff8cd6bd3695829bfbe8135134301",
+    "hash": "a00a27fd01ae7732f50e65b8b384ee9f",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -34,7 +34,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/clevertech/YiiBooster/archive/98ea9b57f54735435efa9dfba76a9924c1163a1b.zip",
+                "url": "https://github.com/clevertech/YiiBooster/archive/bd6b4d6840db4fcc3a1ccede51f0d03b16a9fe63.zip",
                 "reference": "3b3f02ca",
                 "shasum": null
             },
@@ -398,7 +398,6 @@
                 "yiisoft/yii": ">=1.1.12"
             },
             "type": "yii-extension",
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -412,12 +411,16 @@
             "description": "Yii application info and skeleton",
             "homepage": "http://phundament.com/",
             "keywords": [
-                "Skeleton",
                 "application",
                 "information",
+                "skeleton",
                 "webapp",
                 "yii"
             ],
+            "support": {
+                "source": "https://github.com/schmunk42/p3admin/tree/0.14.1",
+                "issues": "https://github.com/schmunk42/p3admin/issues"
+            },
             "time": "2013-07-19 07:43:39"
         },
         {
@@ -777,16 +780,16 @@
         },
         {
             "name": "schmunk42/relation",
-            "version": "1.0.1",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii-relation.git",
-                "reference": "1.0.1"
+                "reference": "c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-relation/zipball/1.0.1",
-                "reference": "1.0.1",
+                "url": "https://api.github.com/repos/schmunk42/yii-relation/zipball/c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de",
+                "reference": "c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de",
                 "shasum": ""
             },
             "require": {
@@ -818,7 +821,7 @@
                 "relations",
                 "yii"
             ],
-            "time": "2013-08-15 14:48:46"
+            "time": "2013-08-23 14:56:11"
         },
         {
             "name": "schmunk42/web-user-behavior",
@@ -859,6 +862,62 @@
                 "issues": "https://github.com/schmunk42/web-user-behavior/issues"
             },
             "time": "2013-03-10 23:22:14"
+        },
+        {
+            "name": "schmunk42/yii-sakila-crud",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/yii-sakila-crud.git",
+                "reference": "efb529ca9a7776be346f4246bcd6cb7324efa152"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/yii-sakila-crud/zipball/efb529ca9a7776be346f4246bcd6cb7324efa152",
+                "reference": "efb529ca9a7776be346f4246bcd6cb7324efa152",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "description": "Yii Framework test-module with gtc slim templates on saklia MySQL demo database",
+            "homepage": "http://phundament.com/",
+            "keywords": [
+                "crud",
+                "gii-template-collection",
+                "yii"
+            ],
+            "time": "2013-08-01 21:27:05"
+        },
+        {
+            "name": "thomaspark/bootswatch",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomaspark/bootswatch.git",
+                "reference": "a9aab510f11515c7dec294e7b24e838ff583e15a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thomaspark/bootswatch/archive/a9aab510f11515c7dec294e7b24e838ff583e15a.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library",
+            "description": "Themes for Twitter Bootstrap",
+            "homepage": "https://github.com/thomaspark/bootswatch"
         },
         {
             "name": "vitalets/x-editable-yii",
@@ -1075,10 +1134,10 @@
                 "package"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/gii-template-collection/tree/0.12.0",
+                "source": "https://github.com/schmunk42/gii-template-collection/tree/0.12.5",
                 "issues": "https://github.com/schmunk42/gii-template-collection/issues"
             },
-            "time": "2013-08-15 12:06:08"
+            "time": "2013-08-23 02:43:46"
         },
         {
             "name": "phundament/lessii",

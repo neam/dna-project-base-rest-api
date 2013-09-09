@@ -41,14 +41,14 @@ $this->widget('EditableDetailView', array(
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('dataChunk/create', 'DataChunk' => array('data_source_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+        'buttons' => array(// TODO
+            #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('dataChunk/create','DataChunk' => array('data_source_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
         ),
     ));
     ?></div>
 
 <?php
-$relatedSearchModel = $model->getRelatedSearchModel('dataChunks');
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'dataChunks');
 $this->widget('TbGridView',
     array(
         'id' => 'dataChunk-grid',
@@ -64,53 +64,53 @@ $this->widget('TbGridView',
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'name' => 'slideshow_file_id',
                 'value' => 'CHtml::value($data,\'slideshowFile.itemLabel\')',
-                'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_es',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_fa',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_hi',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             /*
@@ -118,32 +118,32 @@ $this->widget('TbGridView',
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_pt',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_sv',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_cn',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_de',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             */
@@ -164,14 +164,14 @@ $this->widget('TbGridView',
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('spreadsheetFile/create', 'SpreadsheetFile' => array('data_source_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+        'buttons' => array(// TODO
+            #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('spreadsheetFile/create','SpreadsheetFile' => array('data_source_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
         ),
     ));
     ?></div>
 
 <?php
-$relatedSearchModel = $model->getRelatedSearchModel('spreadsheetFiles');
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'spreadsheetFiles');
 $this->widget('TbGridView',
     array(
         'id' => 'spreadsheetFile-grid',
@@ -187,50 +187,50 @@ $this->widget('TbGridView',
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
-                    'url' => $this->createUrl('spreadsheetFile/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data,\'originalMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'generate_processed_media',
                 'editable' => array(
-                    'url' => $this->createUrl('spreadsheetFile/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'name' => 'processed_media_id_en',
                 'value' => 'CHtml::value($data,\'processedMediaIdEn.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('spreadsheetFile/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('spreadsheetFile/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_es',
                 'editable' => array(
-                    'url' => $this->createUrl('spreadsheetFile/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             /*
@@ -238,84 +238,84 @@ $this->widget('TbGridView',
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_fa',
                 'editable' => array(
-                    'url' => $this->createUrl('spreadsheetFile/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_hi',
                 'editable' => array(
-                    'url' => $this->createUrl('spreadsheetFile/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_pt',
                 'editable' => array(
-                    'url' => $this->createUrl('spreadsheetFile/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_sv',
                 'editable' => array(
-                    'url' => $this->createUrl('spreadsheetFile/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_cn',
                 'editable' => array(
-                    'url' => $this->createUrl('spreadsheetFile/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_de',
                 'editable' => array(
-                    'url' => $this->createUrl('spreadsheetFile/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                         'name'=>'processed_media_id_es',
                         'value'=>'CHtml::value($data,\'processedMediaIdEs.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_fa',
                         'value'=>'CHtml::value($data,\'processedMediaIdFa.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_hi',
                         'value'=>'CHtml::value($data,\'processedMediaIdHi.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_pt',
                         'value'=>'CHtml::value($data,\'processedMediaIdPt.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_sv',
                         'value'=>'CHtml::value($data,\'processedMediaIdSv.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_cn',
                         'value'=>'CHtml::value($data,\'processedMediaIdCn.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_de',
                         'value'=>'CHtml::value($data,\'processedMediaIdDe.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             */
             array(

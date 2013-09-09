@@ -33,22 +33,35 @@ return false;
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
-            'id',
-#        'markup_en',
-            'created',
-            'modified',
-#        'markup_es',
-#        'markup_fa',
-#        'markup_hi',
-#        'markup_pt',
-#        'markup_sv',
-#        'markup_cn',
-#        'markup_de',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'id',
+                'editable' => array(
+                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'created',
+                'editable' => array(
+                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'modified',
+                'editable' => array(
+                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             array(
                 'class' => 'TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
             ),
-        ),
+        )
     )); ?>

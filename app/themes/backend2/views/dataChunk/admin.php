@@ -33,28 +33,105 @@ return false;
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
-            'id',
-            'title_en',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'id',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             array(
                 'name' => 'data_source_id',
                 'value' => 'CHtml::value($data,\'dataSource.itemLabel\')',
-                'filter' => CHtml::listData(DataSource::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(DataSource::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'slideshow_file_id',
                 'value' => 'CHtml::value($data,\'slideshowFile.itemLabel\')',
-                'filter' => CHtml::listData(SlideshowFile::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            'created',
-            'modified',
-            'title_es',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'created',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'modified',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_es',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             /*
-            'title_fa',
-            'title_hi',
-            'title_pt',
-            'title_sv',
-            'title_cn',
-            'title_de',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_fa',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_hi',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_pt',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_sv',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_cn',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_de',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -62,5 +139,5 @@ return false;
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
             ),
-        ),
+        )
     )); ?>

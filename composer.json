@@ -86,6 +86,7 @@
         "thomaspark/bootswatch": "2.3.*",
 		"anggiaj/eselect2": "dev-master",
         "schmunk42/yii-sakila-crud": "@dev",
+        "schmunk42/relation": "1.*",
         "yiisoft/yii":"1.1.14"
     },
     "require-dev":{

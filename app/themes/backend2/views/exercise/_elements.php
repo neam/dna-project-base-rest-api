@@ -8,7 +8,7 @@
 
             <?php
             $input = $this->widget(
-                'Relation',
+                '\GtcRelation',
                 array(
                     'model' => $model,
                     'relation' => 'slideshowFile',
@@ -43,7 +43,7 @@
 
             <?php
             $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('/slideshowFile/_modal_form', array(
+            $this->renderPartial('//slideshowFile/_modal_form', array(
                 'formId' => $formId,
                 'inputSelector' => '#Exercise_slideshow_file_id',
                 'model' => new SlideshowFile,

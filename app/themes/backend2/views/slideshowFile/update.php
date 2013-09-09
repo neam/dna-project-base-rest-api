@@ -41,14 +41,14 @@ $this->widget('EditableDetailView', array(
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('dataChunk/create', 'DataChunk' => array('slideshow_file_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+        'buttons' => array(// TODO
+            #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('dataChunk/create','DataChunk' => array('slideshow_file_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
         ),
     ));
     ?></div>
 
 <?php
-$relatedSearchModel = $model->getRelatedSearchModel('dataChunks');
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'dataChunks');
 $this->widget('TbGridView',
     array(
         'id' => 'dataChunk-grid',
@@ -64,53 +64,53 @@ $this->widget('TbGridView',
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'name' => 'data_source_id',
                 'value' => 'CHtml::value($data,\'dataSource.itemLabel\')',
-                'filter' => CHtml::listData(DataSource::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(DataSource::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_es',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_fa',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_hi',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             /*
@@ -118,32 +118,32 @@ $this->widget('TbGridView',
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_pt',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_sv',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_cn',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_de',
                 'editable' => array(
-                    'url' => $this->createUrl('dataChunk/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             */
@@ -164,14 +164,14 @@ $this->widget('TbGridView',
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('slideshow_file_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+        'buttons' => array(// TODO
+            #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('exercise/create','Exercise' => array('slideshow_file_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
         ),
     ));
     ?></div>
 
 <?php
-$relatedSearchModel = $model->getRelatedSearchModel('exercises');
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'exercises');
 $this->widget('TbGridView',
     array(
         'id' => 'exercise-grid',
@@ -187,56 +187,56 @@ $this->widget('TbGridView',
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
-                    'url' => $this->createUrl('exercise/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('exercise/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('exercise/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_es',
                 'editable' => array(
-                    'url' => $this->createUrl('exercise/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_fa',
                 'editable' => array(
-                    'url' => $this->createUrl('exercise/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_hi',
                 'editable' => array(
-                    'url' => $this->createUrl('exercise/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_pt',
                 'editable' => array(
-                    'url' => $this->createUrl('exercise/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             /*
@@ -244,24 +244,24 @@ $this->widget('TbGridView',
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_sv',
                 'editable' => array(
-                    'url' => $this->createUrl('exercise/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_cn',
                 'editable' => array(
-                    'url' => $this->createUrl('exercise/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_de',
                 'editable' => array(
-                    'url' => $this->createUrl('exercise/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             */
@@ -282,14 +282,14 @@ $this->widget('TbGridView',
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('presentation/create', 'Presentation' => array('slideshow_file_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+        'buttons' => array(// TODO
+            #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('presentation/create','Presentation' => array('slideshow_file_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
         ),
     ));
     ?></div>
 
 <?php
-$relatedSearchModel = $model->getRelatedSearchModel('presentations');
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'presentations');
 $this->widget('TbGridView',
     array(
         'id' => 'presentation-grid',
@@ -305,56 +305,56 @@ $this->widget('TbGridView',
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
-                    'url' => $this->createUrl('presentation/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('presentation/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('presentation/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_es',
                 'editable' => array(
-                    'url' => $this->createUrl('presentation/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_fa',
                 'editable' => array(
-                    'url' => $this->createUrl('presentation/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_hi',
                 'editable' => array(
-                    'url' => $this->createUrl('presentation/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_pt',
                 'editable' => array(
-                    'url' => $this->createUrl('presentation/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             /*
@@ -362,24 +362,24 @@ $this->widget('TbGridView',
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_sv',
                 'editable' => array(
-                    'url' => $this->createUrl('presentation/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_cn',
                 'editable' => array(
-                    'url' => $this->createUrl('presentation/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_de',
                 'editable' => array(
-                    'url' => $this->createUrl('presentation/editableSaver'),
-                    'placement' => 'right',
+                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
+                    //'placement' => 'right',
                 )
             ),
             */

@@ -33,23 +33,100 @@ return false;
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
-            'id',
-            'title_en',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'id',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             array(
                 'name' => 'p3_media_id',
                 'value' => 'CHtml::value($data,\'p3Media.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            'created',
-            'modified',
-            'title_es',
-            'title_fa',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'created',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'modified',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_es',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_fa',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             /*
-            'title_hi',
-            'title_pt',
-            'title_sv',
-            'title_cn',
-            'title_de',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_hi',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_pt',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_sv',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_cn',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_de',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -57,5 +134,5 @@ return false;
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
             ),
-        ),
+        )
     )); ?>

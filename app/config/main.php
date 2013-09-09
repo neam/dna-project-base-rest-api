@@ -45,6 +45,7 @@ $mainConfig = array(
         'application.modules.user.views.asset' => 'vendor.mishamx.yii-user.views.asset',
         'application.modules.user.components'  => 'vendor.mishamx.yii-user.components',
         'gii-template-collection'              => 'vendor.phundament.gii-template-collection',
+        'GtcRelation'                          => 'vendor.schmunk42.relation.widgets.GtcRelation',
     ),
     // autoloading model and component classes
     'import'     => array(

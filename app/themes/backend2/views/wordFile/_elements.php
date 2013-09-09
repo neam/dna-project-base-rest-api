@@ -8,7 +8,7 @@
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'originalMedia',
@@ -43,7 +43,7 @@ $formId = 'word-file-original_media_id-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/p3Media/_modal_form', array(
+$this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#WordFile_original_media_id',
     'model' => new P3Media,
@@ -58,7 +58,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'processedMediaIdEn',
@@ -93,7 +93,7 @@ $formId = 'word-file-processed_media_id_en-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/p3Media/_modal_form', array(
+$this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#WordFile_processed_media_id_en',
     'model' => new P3Media,
@@ -120,7 +120,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'processedMediaIdEs',
@@ -155,7 +155,7 @@ $formId = 'word-file-processed_media_id_es-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/p3Media/_modal_form', array(
+$this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#WordFile_processed_media_id_es',
     'model' => new P3Media,
@@ -168,7 +168,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'processedMediaIdFa',
@@ -203,7 +203,7 @@ $formId = 'word-file-processed_media_id_fa-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/p3Media/_modal_form', array(
+$this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#WordFile_processed_media_id_fa',
     'model' => new P3Media,
@@ -216,7 +216,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'processedMediaIdHi',
@@ -251,7 +251,7 @@ $formId = 'word-file-processed_media_id_hi-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/p3Media/_modal_form', array(
+$this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#WordFile_processed_media_id_hi',
     'model' => new P3Media,
@@ -264,7 +264,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'processedMediaIdPt',
@@ -299,7 +299,7 @@ $formId = 'word-file-processed_media_id_pt-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/p3Media/_modal_form', array(
+$this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#WordFile_processed_media_id_pt',
     'model' => new P3Media,
@@ -312,7 +312,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'processedMediaIdSv',
@@ -347,7 +347,7 @@ $formId = 'word-file-processed_media_id_sv-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/p3Media/_modal_form', array(
+$this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#WordFile_processed_media_id_sv',
     'model' => new P3Media,
@@ -360,7 +360,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'processedMediaIdCn',
@@ -395,7 +395,7 @@ $formId = 'word-file-processed_media_id_cn-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/p3Media/_modal_form', array(
+$this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#WordFile_processed_media_id_cn',
     'model' => new P3Media,
@@ -408,7 +408,7 @@ $this->endClip();
 
 <?php
 $input = $this->widget(
-    'Relation',
+    '\GtcRelation',
     array(
         'model' => $model,
         'relation' => 'processedMediaIdDe',
@@ -443,7 +443,7 @@ $formId = 'word-file-processed_media_id_de-' . \uniqid() . '-form';
 
 <?php
 $this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/p3Media/_modal_form', array(
+$this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#WordFile_processed_media_id_de',
     'model' => new P3Media,

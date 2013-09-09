@@ -8,7 +8,7 @@
 
             <?php
             $input = $this->widget(
-                'Relation',
+                '\GtcRelation',
                 array(
                     'model' => $model,
                     'relation' => 'p3Media',
@@ -43,7 +43,7 @@
 
             <?php
             $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('/p3Media/_modal_form', array(
+            $this->renderPartial('//p3Media/_modal_form', array(
                 'formId' => $formId,
                 'inputSelector' => '#DownloadLink_p3_media_id',
                 'model' => new P3Media,

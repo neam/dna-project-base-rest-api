@@ -33,71 +33,147 @@ return false;
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
-            'id',
-            'title_en',
-#        'subtitles_en',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'id',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data,\'originalMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            'generate_processed_media',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'generate_processed_media',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             array(
                 'name' => 'processed_media_id_en',
                 'value' => 'CHtml::value($data,\'processedMediaIdEn.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            'created',
-            'modified',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'created',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'modified',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             /*
-            'title_es',
-            'title_fa',
-            'title_hi',
-            'title_pt',
-            'title_sv',
-            'title_cn',
-            'title_de',
-    #        'subtitles_es',
-    #        'subtitles_fa',
-    #        'subtitles_hi',
-    #        'subtitles_pt',
-    #        'subtitles_sv',
-    #        'subtitles_cn',
-    #        'subtitles_de',
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_es',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_fa',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_hi',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_pt',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_sv',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_cn',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'editable.EditableColumn',
+                'name' => 'title_de',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             array(
                         'name'=>'processed_media_id_es',
                         'value'=>'CHtml::value($data,\'processedMediaIdEs.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_fa',
                         'value'=>'CHtml::value($data,\'processedMediaIdFa.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_hi',
                         'value'=>'CHtml::value($data,\'processedMediaIdHi.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_pt',
                         'value'=>'CHtml::value($data,\'processedMediaIdPt.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_sv',
                         'value'=>'CHtml::value($data,\'processedMediaIdSv.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_cn',
                         'value'=>'CHtml::value($data,\'processedMediaIdCn.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             array(
                         'name'=>'processed_media_id_de',
                         'value'=>'CHtml::value($data,\'processedMediaIdDe.itemLabel\')',
-                                'filter'=>CHtml::listData(P3Media::model()->findAll(), 'id', 'itemLabel'),
+                                'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
                                 ),
             */
             array(
@@ -106,5 +182,5 @@ return false;
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
             ),
-        ),
+        )
     )); ?>
