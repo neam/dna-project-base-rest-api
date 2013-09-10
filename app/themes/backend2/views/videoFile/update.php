@@ -41,7 +41,7 @@ $this->widget('EditableDetailView', array(
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(// TODO
+        'buttons' => array( // TODO
             #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('sectionContent/create','SectionContent' => array('video_file_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
         ),
     ));
