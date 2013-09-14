@@ -41,6 +41,100 @@ class SiteController extends Controller
         $this->render('giiscript');
     }
 
+    public function actionWorkflowdev()
+    {
+
+        require_once Yii::app()->basePath . '/../vendor/ezc/ezcomponents/Base/src/base.php';
+        Yii::registerAutoloader(array('ezcBase', 'autoload'), true);
+
+        // Set up database connection.
+        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+
+        // Set up workflow definition storage (database).
+        $definition = new ezcWorkflowDatabaseDefinitionStorage($db);
+
+        try {
+
+            // Load latest version of workflow named "Test".
+            $workflow = $definition->loadByName('Foo');
+
+        } catch (ezcWorkflowDefinitionStorageException $e) {
+
+            $this->createWorkflowFoo($definition);
+
+            // Load latest version of workflow named "Test".
+            $workflow = $definition->loadByName('Foo');
+
+        }
+
+        //var_dump($workflow);
+
+        // Generate GraphViz/dot markup for workflow "Test".
+        $visitor = new ezcWorkflowVisitorVisualization;
+        $workflow->accept($visitor);
+        $graphVizSyntax = (string) $visitor;
+
+        $this->render('workflowdev', array('graphVizSyntax' => $graphVizSyntax));
+
+    }
+
+    private function createWorkflowFoo($definition)
+    {
+
+        // Create new workflow of name "Foo".
+        $workflow = new ezcWorkflow('Foo');
+
+        // Create an Input node that expects a boolean workflow variable of name "choice".
+        $input = new ezcWorkflowNodeInput(
+            array('choice' => new ezcWorkflowConditionIsBool)
+        );
+
+        // Add the previously created Input node
+        // as an outgoing node to the start node.
+        $workflow->startNode->addOutNode($input);
+
+        // Create a new Exclusive Choice node and add it as an
+        // outgoing node to the previously created Input node.
+        // This node will choose which output to run based on the
+        // choice workflow variable.
+        $branch = new ezcWorkflowNodeExclusiveChoice;
+        $branch->addInNode($input);
+
+        // Either $true or $false will be run depending on
+        // the above choice.
+        // Note that neither $true nor $false are valid action nodes.
+        // see the next example
+        $trueNode = new ezcWorkflowNodeAction('PrintTrue');
+        $falseNode = new ezcWorkflowNodeAction('PrintFalse');
+
+        // Branch
+        // Condition: Variable "choice" has boolean value "true".
+        // Action:    PrintTrue service object.
+        $branch->addConditionalOutNode(
+            new ezcWorkflowConditionVariable('choice', new ezcWorkflowConditionIsTrue),
+            $trueNode);
+
+        // Branch
+        // Condition: Variable "choice" has boolean value "false".
+        // Action:    PrintFalse service object.
+        $branch->addConditionalOutNode(
+            new ezcWorkflowConditionVariable('choice', new ezcWorkflowConditionIsFalse),
+            $falseNode
+        );
+
+        // Create SimpleMerge node and add the two possible threads of
+        // execution as incoming nodes of the end node.
+        $merge = new ezcWorkflowNodeSimpleMerge;
+        $merge->addInNode($trueNode);
+        $merge->addInNode($falseNode);
+        $merge->addOutNode($workflow->endNode);
+
+        // Save workflow definition to database.
+        $definition->save($workflow);
+
+    }
+
+
     /**
      * This is the action to handle external exceptions.
      */
