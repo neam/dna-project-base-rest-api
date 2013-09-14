@@ -34,6 +34,28 @@
             }
         },
         {
+            "type": "package",
+            "package": {
+                "name": "ezc/ezcomponents",
+                "version": "@dev",
+                "dist": {
+                    "url": "http://www.ezcomponents.org/files/downloads/ezcomponents-2009.2.1-lite.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ascendro/yii-graphviz",
+                "version": "@dev",
+                "source": {
+                    "url": "https://github.com/ascendro/yii-graphviz.git",
+                    "type": "git",
+                    "reference": "707993b53083cc746b6b7969c9b8f9529e099e1b"
+                }
+            }
+        },
             "type": "vcs",
             "url": "https://github.com/neam/yii-i18n-columns"
         },
@@ -85,6 +107,8 @@
         "schmunk42/giic": "dev-master",
         "thomaspark/bootswatch": "2.3.*",
 		"anggiaj/eselect2": "dev-master",
+        "ezc/ezcomponents": "@dev",
+        "ascendro/yii-graphviz": "@dev",
         "schmunk42/yii-sakila-crud": "@dev",
         "schmunk42/relation": "1.*",
         "yiisoft/yii":"1.1.14"

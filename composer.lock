@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "a00a27fd01ae7732f50e65b8b384ee9f",
+    "hash": "d7e2fcdd7836b7404fcf97e8343a56c4",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -23,6 +23,17 @@
             "description": "ESelect2 is a widget extension for Yii framework. This extension is a wrapper for Select2 Jquery plugin (https://github.com/ivaynberg/select2). ",
             "homepage": "https://github.com/anggiaj/ESelect2",
             "time": "2013-09-05 02:47:21"
+        },
+        {
+            "name": "ascendro/yii-graphviz",
+            "version": "@dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ascendro/yii-graphviz.git",
+                "reference": "707993b53083cc746b6b7969c9b8f9529e099e1b"
+            },
+            "type": "library",
+            "time": "2013-08-14 17:37:07"
         },
         {
             "name": "clevertech/yiibooster",
@@ -61,6 +72,17 @@
             "description": "Rights is a module for the Yii PHP framework. This module utilizes Yii's built-in Database Authorization Manager (CDbAuthManager) to provide a web interface for advanced access control within Yii-applications.",
             "homepage": "http://www.yiiframework.com/extension/rights",
             "time": "2011-10-12 09:05:52"
+        },
+        {
+            "name": "ezc/ezcomponents",
+            "version": "@dev",
+            "dist": {
+                "type": "zip",
+                "url": "http://www.ezcomponents.org/files/downloads/ezcomponents-2009.2.1-lite.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
         },
         {
             "name": "firstrow/stranslateablebehavior",
@@ -1286,6 +1308,8 @@
         "phpoffice/phppowerpoint": 20,
         "schmunk42/giic": 20,
         "anggiaj/eselect2": 20,
+        "ezc/ezcomponents": 20,
+        "ascendro/yii-graphviz": 20,
         "schmunk42/yii-sakila-crud": 20,
         "phundament/lessii": 20
     },
