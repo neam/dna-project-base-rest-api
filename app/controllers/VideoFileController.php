@@ -162,6 +162,13 @@ class VideoFileController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
+        // Tmp - manually set continue_from_approved_for_translation to true before we have built the authoring workflow etc
+        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
+
+        $execution->resume(array('continue_from_approved_for_translation' => true));
+        $execution->unsetVariable('continue_from_approved_for_translation');
+
         $this->render('author', array('model' => $model,));
 
     }
@@ -180,11 +187,24 @@ class VideoFileController extends Controller
         // Set up database connection.
         $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
 
-        // Check current workflow status
-        $execution = new ezcWorkflowDatabaseExecution( $db, (int) $model->translation_workflow_execution_id );
+        // Check and redirect depending on current workflow execution status
+        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
+        $waitingFor = $execution->getWaitingFor();
 
-        // todo redirect etc
+        if (isset($waitingFor["continue_from_approved_for_translation"])) {
+            $this->redirect(array('author', 'id' => $model->id));
+            return;
+        }
+        if (isset($waitingFor["continue_from_write_subtitles"])) {
+            $this->redirect(array('translateSubtitles', 'id' => $model->id));
+            return;
+        }
+        if (isset($waitingFor["continue_from_translate_title_and_about"])) {
+            $this->redirect(array('translateTitleAndAbout', 'id' => $model->id));
+            return;
+        }
 
+        // A temporary debug page
         $this->render('translate', array('model' => $model, 'execution' => $execution));
     }
 
@@ -193,7 +213,13 @@ class VideoFileController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $this->render('translate/subtitles', array('model' => $model,));
+        // Set up database connection.
+        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+
+        // Check and redirect depending on current workflow execution status
+        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
+
+        $this->render('translate/subtitles', array('model' => $model, 'execution' => $execution));
     }
 
     public function actionTranslateTitleAndAbout($id)
@@ -201,7 +227,13 @@ class VideoFileController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $this->render('translate/title_and_about', array('model' => $model,));
+        // Set up database connection.
+        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+
+        // Check and redirect depending on current workflow execution status
+        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
+
+        $this->render('translate/title_and_about', array('model' => $model, 'execution' => $execution));
     }
 
     public function actionEditableSaver()
