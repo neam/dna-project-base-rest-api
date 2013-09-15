@@ -7,30 +7,42 @@
 
     <?php
 
-    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-        'id' => 'video-file-form',
-        'enableAjaxValidation' => true,
-        'enableClientValidation' => true,
-        'type' => 'horizontal',
-    ));
+    $form = $this->beginWidget(
+        'bootstrap.widgets.TbActiveForm',
+        array(
+            'id' => 'video-file-form',
+            'enableAjaxValidation' => true,
+            'enableClientValidation' => true,
+            'type' => 'horizontal',
+        )
+    );
 
     echo $form->errorSummary($model);
 
-    $this->renderPartial('_elements', array(
-        'model' => $model,
-        'form' => $form,
-    ));
+    $this->renderPartial(
+        '_elements',
+        array(
+            'model' => $model,
+            'form' => $form,
+        )
+    );
     ?>
     <div class="form-actions">
 
         <?php
-        echo CHtml::Button(Yii::t('crud', 'Cancel'), array(
-            'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('videofile/admin'),
-            'class' => 'btn'
-        ));
-        echo ' ' . CHtml::submitButton(Yii::t('crud', 'Save'), array(
-                'class' => 'btn btn-primary'
-            ));
+        echo CHtml::Button(
+            Yii::t('crud', 'Cancel'),
+            array(
+                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('videofile/admin'),
+                'class' => 'btn'
+            )
+        );
+        echo ' ' . CHtml::submitButton(
+                Yii::t('crud', 'Save'),
+                array(
+                    'class' => 'btn btn-primary'
+                )
+            );
         ?>
     </div>
 
@@ -39,7 +51,10 @@
 
 <!-- Modal create-forms referenced to from create buttons (if any) -->
 <?php
-foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
+foreach (array_reverse(
+             $this->clips->toArray(),
+             true
+         ) as $key => $clip) { // Reverse order for recursive modals to render properly
     if (strpos($key, "modal:") === 0) {
         echo $clip;
     }

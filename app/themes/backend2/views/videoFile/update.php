@@ -1,6 +1,9 @@
 <?php
 $this->breadcrumbs[Yii::t('crud', 'Video Files')] = array('admin');
-$this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
+$this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array(
+    'view',
+    'id' => $model->{$model->tableSchema->primaryKey}
+);
 $this->breadcrumbs[] = Yii::t('crud', 'Update');
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
@@ -11,8 +14,12 @@ $this->breadcrumbs[] = Yii::t('crud', 'Update');
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <?php
-$this->renderPartial('_form', array(
-    'model' => $model));
+$this->renderPartial(
+    '_form',
+    array(
+        'model' => $model
+    )
+);
 ?>
 
 <?php
@@ -39,17 +46,21 @@ $this->widget('EditableDetailView', array(
     <?php echo Yii::t('crud', 'Section Contents'); ?> </h2>
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(// TODO
-            #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('sectionContent/create','SectionContent' => array('video_file_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
-        ),
-    ));
+    <?php $this->widget(
+        'bootstrap.widgets.TbButtonGroup',
+        array(
+            'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+            'buttons' => array(// TODO
+                #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('sectionContent/create','SectionContent' => array('video_file_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
+            ),
+        )
+    );
     ?></div>
 
 <?php
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'sectionContents');
-$this->widget('TbGridView',
+$this->widget(
+    'TbGridView',
     array(
         'id' => 'sectionContent-grid',
         'dataProvider' => $relatedSearchModel->search(),
@@ -133,6 +144,7 @@ $this->widget('TbGridView',
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('sectionContent/delete', array('id' => \$data->id))",
             ),
         ),
-    ));
+    )
+);
 ?>
 

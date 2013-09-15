@@ -1,6 +1,9 @@
 <?php
 $this->breadcrumbs[Yii::t('crud', 'Video Files')] = array('admin');
-$this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
+$this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array(
+    'view',
+    'id' => $model->{$model->tableSchema->primaryKey}
+);
 $this->breadcrumbs[] = Yii::t('crud', 'Translate');
 $this->breadcrumbs[] = Yii::t('crud', 'Subtitles');
 ?>

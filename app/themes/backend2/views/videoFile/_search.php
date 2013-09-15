@@ -2,10 +2,13 @@
 
 
 <?php
-$form = $this->beginWidget('TbActiveForm', array(
-    'action' => Yii::app()->createUrl($this->route),
-    'method' => 'get',
-)); ?>
+$form = $this->beginWidget(
+    'TbActiveForm',
+    array(
+        'action' => Yii::app()->createUrl($this->route),
+        'method' => 'get',
+    )
+); ?>
 
 
 
@@ -60,7 +63,11 @@ $form = $this->beginWidget('TbActiveForm', array(
 
 <div class="row">
     <?php echo $form->label($model, 'translation_workflow_execution_id_en'); ?>
-    <?php echo $form->textField($model, 'translation_workflow_execution_id_en', array('size' => 10, 'maxlength' => 10)); ?>
+    <?php echo $form->textField(
+        $model,
+        'translation_workflow_execution_id_en',
+        array('size' => 10, 'maxlength' => 10)
+    ); ?>
 
 </div>
 
@@ -228,49 +235,77 @@ $form = $this->beginWidget('TbActiveForm', array(
 
 <div class="row">
     <?php echo $form->label($model, 'translation_workflow_execution_id_es'); ?>
-    <?php echo $form->textField($model, 'translation_workflow_execution_id_es', array('size' => 10, 'maxlength' => 10)); ?>
+    <?php echo $form->textField(
+        $model,
+        'translation_workflow_execution_id_es',
+        array('size' => 10, 'maxlength' => 10)
+    ); ?>
 
 </div>
 
 
 <div class="row">
     <?php echo $form->label($model, 'translation_workflow_execution_id_fa'); ?>
-    <?php echo $form->textField($model, 'translation_workflow_execution_id_fa', array('size' => 10, 'maxlength' => 10)); ?>
+    <?php echo $form->textField(
+        $model,
+        'translation_workflow_execution_id_fa',
+        array('size' => 10, 'maxlength' => 10)
+    ); ?>
 
 </div>
 
 
 <div class="row">
     <?php echo $form->label($model, 'translation_workflow_execution_id_hi'); ?>
-    <?php echo $form->textField($model, 'translation_workflow_execution_id_hi', array('size' => 10, 'maxlength' => 10)); ?>
+    <?php echo $form->textField(
+        $model,
+        'translation_workflow_execution_id_hi',
+        array('size' => 10, 'maxlength' => 10)
+    ); ?>
 
 </div>
 
 
 <div class="row">
     <?php echo $form->label($model, 'translation_workflow_execution_id_pt'); ?>
-    <?php echo $form->textField($model, 'translation_workflow_execution_id_pt', array('size' => 10, 'maxlength' => 10)); ?>
+    <?php echo $form->textField(
+        $model,
+        'translation_workflow_execution_id_pt',
+        array('size' => 10, 'maxlength' => 10)
+    ); ?>
 
 </div>
 
 
 <div class="row">
     <?php echo $form->label($model, 'translation_workflow_execution_id_sv'); ?>
-    <?php echo $form->textField($model, 'translation_workflow_execution_id_sv', array('size' => 10, 'maxlength' => 10)); ?>
+    <?php echo $form->textField(
+        $model,
+        'translation_workflow_execution_id_sv',
+        array('size' => 10, 'maxlength' => 10)
+    ); ?>
 
 </div>
 
 
 <div class="row">
     <?php echo $form->label($model, 'translation_workflow_execution_id_cn'); ?>
-    <?php echo $form->textField($model, 'translation_workflow_execution_id_cn', array('size' => 10, 'maxlength' => 10)); ?>
+    <?php echo $form->textField(
+        $model,
+        'translation_workflow_execution_id_cn',
+        array('size' => 10, 'maxlength' => 10)
+    ); ?>
 
 </div>
 
 
 <div class="row">
     <?php echo $form->label($model, 'translation_workflow_execution_id_de'); ?>
-    <?php echo $form->textField($model, 'translation_workflow_execution_id_de', array('size' => 10, 'maxlength' => 10)); ?>
+    <?php echo $form->textField(
+        $model,
+        'translation_workflow_execution_id_de',
+        array('size' => 10, 'maxlength' => 10)
+    ); ?>
 
 </div>
 

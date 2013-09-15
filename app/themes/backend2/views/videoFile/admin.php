@@ -2,18 +2,21 @@
 $this->breadcrumbs[] = Yii::t('crud', 'Video Files');
 
 
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-$('.search-form').toggle();
-return false;
-});
-$('.search-form form').submit(function(){
-$.fn.yiiGridView.update('video-file-grid', {
-data: $(this).serialize()
-});
-return false;
-});
-");
+Yii::app()->clientScript->registerScript(
+    'search',
+    "
+   $('.search-button').click(function(){
+   $('.search-form').toggle();
+   return false;
+   });
+   $('.search-form form').submit(function(){
+   $.fn.yiiGridView.update('video-file-grid', {
+   data: $(this).serialize()
+   });
+   return false;
+   });
+   "
+);
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
@@ -23,7 +26,8 @@ return false;
 </h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<?php $this->widget('TbGridView',
+<?php $this->widget(
+    'TbGridView',
     array(
         'id' => 'video-file-grid',
         'dataProvider' => $model->search(),
@@ -70,12 +74,20 @@ return false;
             array(
                 'name' => 'authoring_workflow_execution_id',
                 'value' => 'CHtml::value($data,\'authoringWorkflowExecution.itemLabel\')',
-                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'filter' => CHtml::listData(
+                    Execution::model()->findAll(array('limit' => 1000)),
+                    'workflow_id',
+                    'itemLabel'
+                ),
             ),
             array(
                 'name' => 'translation_workflow_execution_id_en',
                 'value' => 'CHtml::value($data,\'translationWorkflowExecutionIdEn.itemLabel\')',
-                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'filter' => CHtml::listData(
+                    Execution::model()->findAll(array('limit' => 1000)),
+                    'workflow_id',
+                    'itemLabel'
+                ),
             ),
             /*
             array(
@@ -228,4 +240,5 @@ return false;
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
             ),
         )
-    )); ?>
+    )
+); ?>
