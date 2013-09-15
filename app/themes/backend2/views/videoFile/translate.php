@@ -10,6 +10,7 @@ om har språk:
 
     echo "Translate video to " . $lang;
 
+    /*
     $definition = new VideoFileTranslationWorkflow();
     $definition->setWorkflow($workflow);
 
@@ -21,6 +22,7 @@ om har språk:
     ));
 
     echo $definition->getGraphvizSyntax();
+    */
 
     ?>
 

@@ -180,14 +180,14 @@ class VideoFileController extends Controller
         // Set up database connection.
         $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
 
-        // Set up workflow definition storage (database).
-        $definition = new ezcWorkflowDatabaseDefinitionStorage($db);
-
         // Check current workflow status
-        // todo redirect etc
-        $workflow = $definition->loadById($model->translation_workflow_id);
+        $execution = new ezcWorkflowDatabaseExecution( $db, (int) $model->translation_workflow_execution_id );
 
-        $this->render('translate', array('model' => $model, 'workflow' => $workflow));
+        // todo redirect etc
+
+        var_dump($execution->getWaitingFor(), $execution);
+
+        $this->render('translate', array('model' => $model, 'execution' => $execution));
     }
 
     public function actionTranslateSubtitles($id)
