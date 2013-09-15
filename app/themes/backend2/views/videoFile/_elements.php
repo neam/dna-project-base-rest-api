@@ -106,6 +106,38 @@ $this->endClip();
 ?>
 
 
+<?php
+$input = $this->widget(
+    '\GtcRelation',
+    array(
+        'model' => $model,
+        'relation' => 'authoringWorkflowExecution',
+        'fields' => 'itemLabel',
+        'allowEmpty' => true,
+        'style' => 'dropdownlist',
+        'htmlOptions' => array(
+            'checkAll' => 'all'),
+    )
+    , true);
+echo $form->customRow($model, 'authoring_workflow_execution_id', $input);
+?>
+
+<?php
+$input = $this->widget(
+    '\GtcRelation',
+    array(
+        'model' => $model,
+        'relation' => 'translationWorkflowExecutionIdEn',
+        'fields' => 'itemLabel',
+        'allowEmpty' => true,
+        'style' => 'dropdownlist',
+        'htmlOptions' => array(
+            'checkAll' => 'all'),
+    )
+    , true);
+echo $form->customRow($model, 'translation_workflow_execution_id_en', $input);
+?>
+
 <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
 
 <?php echo $form->textFieldRow($model, 'title_fa', array('maxlength' => 255)); ?>
@@ -467,6 +499,123 @@ $this->renderPartial('//p3Media/_modal_form', array(
     'field' => 'itemLabel',
 ));
 $this->endClip();
+?>
+
+<?php
+$input = $this->widget(
+    '\GtcRelation',
+    array(
+        'model' => $model,
+        'relation' => 'translationWorkflowExecutionIdEs',
+        'fields' => 'itemLabel',
+        'allowEmpty' => true,
+        'style' => 'dropdownlist',
+        'htmlOptions' => array(
+            'checkAll' => 'all'),
+    )
+    , true);
+echo $form->customRow($model, 'translation_workflow_execution_id_es', $input);
+?>
+
+
+<?php
+$input = $this->widget(
+    '\GtcRelation',
+    array(
+        'model' => $model,
+        'relation' => 'translationWorkflowExecutionIdFa',
+        'fields' => 'itemLabel',
+        'allowEmpty' => true,
+        'style' => 'dropdownlist',
+        'htmlOptions' => array(
+            'checkAll' => 'all'),
+    )
+    , true);
+echo $form->customRow($model, 'translation_workflow_execution_id_fa', $input);
+?>
+
+
+<?php
+$input = $this->widget(
+    '\GtcRelation',
+    array(
+        'model' => $model,
+        'relation' => 'translationWorkflowExecutionIdHi',
+        'fields' => 'itemLabel',
+        'allowEmpty' => true,
+        'style' => 'dropdownlist',
+        'htmlOptions' => array(
+            'checkAll' => 'all'),
+    )
+    , true);
+echo $form->customRow($model, 'translation_workflow_execution_id_hi', $input);
+?>
+
+<?php
+$input = $this->widget(
+    '\GtcRelation',
+    array(
+        'model' => $model,
+        'relation' => 'translationWorkflowExecutionIdPt',
+        'fields' => 'itemLabel',
+        'allowEmpty' => true,
+        'style' => 'dropdownlist',
+        'htmlOptions' => array(
+            'checkAll' => 'all'),
+    )
+    , true);
+echo $form->customRow($model, 'translation_workflow_execution_id_pt', $input);
+?>
+
+
+<?php
+$input = $this->widget(
+    '\GtcRelation',
+    array(
+        'model' => $model,
+        'relation' => 'translationWorkflowExecutionIdSv',
+        'fields' => 'itemLabel',
+        'allowEmpty' => true,
+        'style' => 'dropdownlist',
+        'htmlOptions' => array(
+            'checkAll' => 'all'),
+    )
+    , true);
+echo $form->customRow($model, 'translation_workflow_execution_id_sv', $input);
+?>
+
+
+<?php
+$input = $this->widget(
+    '\GtcRelation',
+    array(
+        'model' => $model,
+        'relation' => 'translationWorkflowExecutionIdCn',
+        'fields' => 'itemLabel',
+        'allowEmpty' => true,
+        'style' => 'dropdownlist',
+        'htmlOptions' => array(
+            'checkAll' => 'all'),
+    )
+    , true);
+echo $form->customRow($model, 'translation_workflow_execution_id_cn', $input);
+?>
+
+
+<?php
+$input = $this->widget(
+    '\GtcRelation',
+    array(
+        'model' => $model,
+        'relation' => 'translationWorkflowExecutionIdDe',
+        'fields' => 'itemLabel',
+        'allowEmpty' => true,
+        'style' => 'dropdownlist',
+        'htmlOptions' => array(
+            'checkAll' => 'all'),
+    )
+    , true);
+echo $form->customRow($model, 'translation_workflow_execution_id_de', $input);
 ?>
 
 

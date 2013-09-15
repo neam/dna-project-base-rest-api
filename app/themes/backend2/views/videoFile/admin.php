@@ -68,6 +68,17 @@ return false;
                 'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
+                'name' => 'authoring_workflow_execution_id',
+                'value' => 'CHtml::value($data,\'authoringWorkflowExecution.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'translation_workflow_execution_id_en',
+                'value' => 'CHtml::value($data,\'translationWorkflowExecutionIdEn.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            /*
+            array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'created',
                 'editable' => array(
@@ -83,7 +94,6 @@ return false;
                     //'placement' => 'right',
                 )
             ),
-            /*
             array(
                 'class' => 'editable.EditableColumn',
                 'name' => 'title_es',
@@ -174,6 +184,41 @@ return false;
                         'name'=>'processed_media_id_de',
                         'value'=>'CHtml::value($data,\'processedMediaIdDe.itemLabel\')',
                                 'filter'=>CHtml::listData(P3Media::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
+                                ),
+            array(
+                        'name'=>'translation_workflow_execution_id_es',
+                        'value'=>'CHtml::value($data,\'translationWorkflowExecutionIdEs.itemLabel\')',
+                                'filter'=>CHtml::listData(Execution::model()->findAll(array('limit'=>1000)), 'workflow_id', 'itemLabel'),
+                                ),
+            array(
+                        'name'=>'translation_workflow_execution_id_fa',
+                        'value'=>'CHtml::value($data,\'translationWorkflowExecutionIdFa.itemLabel\')',
+                                'filter'=>CHtml::listData(Execution::model()->findAll(array('limit'=>1000)), 'workflow_id', 'itemLabel'),
+                                ),
+            array(
+                        'name'=>'translation_workflow_execution_id_hi',
+                        'value'=>'CHtml::value($data,\'translationWorkflowExecutionIdHi.itemLabel\')',
+                                'filter'=>CHtml::listData(Execution::model()->findAll(array('limit'=>1000)), 'workflow_id', 'itemLabel'),
+                                ),
+            array(
+                        'name'=>'translation_workflow_execution_id_pt',
+                        'value'=>'CHtml::value($data,\'translationWorkflowExecutionIdPt.itemLabel\')',
+                                'filter'=>CHtml::listData(Execution::model()->findAll(array('limit'=>1000)), 'workflow_id', 'itemLabel'),
+                                ),
+            array(
+                        'name'=>'translation_workflow_execution_id_sv',
+                        'value'=>'CHtml::value($data,\'translationWorkflowExecutionIdSv.itemLabel\')',
+                                'filter'=>CHtml::listData(Execution::model()->findAll(array('limit'=>1000)), 'workflow_id', 'itemLabel'),
+                                ),
+            array(
+                        'name'=>'translation_workflow_execution_id_cn',
+                        'value'=>'CHtml::value($data,\'translationWorkflowExecutionIdCn.itemLabel\')',
+                                'filter'=>CHtml::listData(Execution::model()->findAll(array('limit'=>1000)), 'workflow_id', 'itemLabel'),
+                                ),
+            array(
+                        'name'=>'translation_workflow_execution_id_de',
+                        'value'=>'CHtml::value($data,\'translationWorkflowExecutionIdDe.itemLabel\')',
+                                'filter'=>CHtml::listData(Execution::model()->findAll(array('limit'=>1000)), 'workflow_id', 'itemLabel'),
                                 ),
             */
             array(

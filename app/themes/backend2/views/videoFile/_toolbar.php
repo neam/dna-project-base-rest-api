@@ -91,7 +91,7 @@
         <div class="btn-group">
             <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
                 'buttons' => array(
-                    array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin')), array('label' => 'originalMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdEn - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdCn - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdDe - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdEs - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdFa - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdHi - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdPt - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdSv - P3Media', 'url' => array('//p3Media/admin')),
+                    array('label' => Yii::t('crud', 'Relations'), 'icon' => 'icon-search', 'items' => array(array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin')), array('label' => 'translationWorkflowExecutionIdDe - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdEn - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdCn - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdEs - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdFa - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdHi - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdPt - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdSv - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecution - Execution', 'url' => array('//execution/admin')), array('label' => 'originalMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdEn - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdCn - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdDe - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdEs - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdFa - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdHi - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdPt - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdSv - P3Media', 'url' => array('//p3Media/admin')),
                     )
                     ),
                 ),
@@ -103,8 +103,8 @@
 
 <?php if ($this->action->id == 'admin'): ?>
     <div class="search-form" style="display:none">
-        <?php $this->renderPartial('_search', array(
-            'model' => $model,
-        )); ?>
+    <?php $this->renderPartial('_search', array(
+        'model' => $model,
+    )); ?>
     </div>
 <?php endif; ?>
