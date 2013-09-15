@@ -3,10 +3,22 @@
         <?php  ?><?php
         switch ($this->action->id) {
             case "view":
+                /*
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("crud", "Update"),
                     "icon" => "icon-edit",
                     "url" => array("update", "id" => $model->{$model->tableSchema->primaryKey})
+                ));
+                */
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("crud", "Author"),
+                    "icon" => "icon-edit",
+                    "url" => array("author", "id" => $model->{$model->tableSchema->primaryKey})
+                ));
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("crud", "Translate"),
+                    "icon" => "icon-edit",
+                    "url" => array("translate", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
                         "label" => Yii::t("crud", "Delete"),

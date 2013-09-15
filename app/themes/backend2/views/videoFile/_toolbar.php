@@ -40,10 +40,17 @@
                     "url" => array("author", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("crud", "Translate"),
+                    "icon" => "icon-edit",
+                    "url" => array("translate", "id" => $model->{$model->tableSchema->primaryKey})
+                ));
+                /*
+                $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("crud", "Create"),
                     "icon" => "icon-plus",
                     "url" => array("create")
                 ));
+                */
                 $this->widget("bootstrap.widgets.TbButton", array(
                         "label" => Yii::t("crud", "Delete"),
                         "type" => "danger",
