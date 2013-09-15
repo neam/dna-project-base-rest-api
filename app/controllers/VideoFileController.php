@@ -185,8 +185,6 @@ class VideoFileController extends Controller
 
         // todo redirect etc
 
-        var_dump($execution->getWaitingFor(), $execution);
-
         $this->render('translate', array('model' => $model, 'execution' => $execution));
     }
 
