@@ -20,6 +20,10 @@ Yii::setPathOfAlias('common', $root . DIRECTORY_SEPARATOR . 'common');
 Yii::setPathOfAlias('frontend', $root . DIRECTORY_SEPARATOR . 'frontend');
 Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
 
+// Load ez components auto-loader
+require_once Yii::getPathOfAlias('backend') . '/vendor/ezc/ezcomponents/Base/src/base.php';
+Yii::registerAutoloader(array('ezcBase', 'autoload'), true);
+
 $gscmsConfig = array(
     'name' => 'Gapminder School CMS',
     'language' => 'en', // default language, see also components.langHandler
@@ -30,9 +34,15 @@ $gscmsConfig = array(
         'phpexcel' => 'vendor.phpoffice.phpexcel.Classes',
         'phpword' => 'vendor.phpoffice.phpword.src',
         'phppowerpoint' => 'vendor.phpoffice.phppowerpoint.Classes',
+        // yii graphviz
+        'yii-graphviz' => 'vendor.ascendro.yii-graphviz',
+        // fix hard-coded aliases
+        'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode'
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
+        'application.components.workflow.LabeledWorkflowNodeInput',
+        'application.workflows.*',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool

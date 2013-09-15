@@ -30,6 +30,11 @@ class VideoFileController extends Controller
                     'view',
                     'create',
                     'update',
+                    'add',
+                    'author',
+                    'translate',
+                    'translateSubtitles',
+                    'translateTitleAndAbout',
                     'editableSaver',
                     'editableCreator',
                     'admin',
@@ -135,6 +140,70 @@ class VideoFileController extends Controller
         }
 
         $this->render('update', array('model' => $model,));
+    }
+
+    public function actionAdd()
+    {
+
+        $videoFile = new VideoFile();
+        if (!$videoFile->save()) {
+            throw new SaveException();
+        }
+
+        Yii::app()->user->setFlash('success', "Video File Added");
+
+        $this->redirect(array('author', 'id' => $videoFile->id));
+
+    }
+
+    public function actionAuthor($id)
+    {
+
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+
+        $this->render('author', array('model' => $model,));
+
+    }
+
+    public function actionTranslate($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+
+        // Do not show translation tools if we are browsing the site in the sourceLanguage
+        if (Yii::app()->sourceLanguage == $_GET['lang']) {
+            $this->render('translate/choose_language', array('model' => $model,));
+            return;
+        }
+
+        // Set up database connection.
+        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+
+        // Set up workflow definition storage (database).
+        $definition = new ezcWorkflowDatabaseDefinitionStorage($db);
+
+        // Check current workflow status
+        // todo redirect etc
+        $workflow = $definition->loadById($model->translation_workflow_id);
+
+        $this->render('translate', array('model' => $model, 'workflow' => $workflow));
+    }
+
+    public function actionTranslateSubtitles($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+
+        $this->render('translate/subtitles', array('model' => $model,));
+    }
+
+    public function actionTranslateTitleAndAbout($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+
+        $this->render('translate/title_and_about', array('model' => $model,));
     }
 
     public function actionEditableSaver()

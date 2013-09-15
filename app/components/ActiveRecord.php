@@ -27,7 +27,7 @@ class ActiveRecord extends CActiveRecord
             'SlideshowFile' => array('title', 'processed_media_id'),
             'SpreadsheetFile' => array('title', 'processed_media_id'),
             'TeachersGuide' => array('title'),
-            'VideoFile' => array('title', 'subtitles', 'processed_media_id'),
+            'VideoFile' => array('title', 'subtitles', 'processed_media_id', 'translation_workflow_id'),
             'VizView' => array('title'),
             'WordFile' => array('title', 'processed_media_id'),
         );
@@ -35,7 +35,7 @@ class ActiveRecord extends CActiveRecord
         $multilingualRelationsMap = array(
             'SlideshowFile' => array('processedMedia' => 'processed_media_id'),
             'SpreadsheetFile' => array('processedMedia' => 'processed_media_id'),
-            'VideoFile' => array('processedMedia' => 'processed_media_id'),
+            'VideoFile' => array('processedMedia' => 'processed_media_id', 'translationWorkflow' => 'translation_workflow_id'),
             'WordFile' => array('processedMedia' => 'processed_media_id'),
         );
 

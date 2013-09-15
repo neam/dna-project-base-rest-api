@@ -44,9 +44,6 @@ class SiteController extends Controller
     public function actionWorkflowdev()
     {
 
-        require_once Yii::app()->basePath . '/../vendor/ezc/ezcomponents/Base/src/base.php';
-        Yii::registerAutoloader(array('ezcBase', 'autoload'), true);
-
         // Set up database connection.
         $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
 

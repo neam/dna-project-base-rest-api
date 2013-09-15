@@ -10,10 +10,17 @@
                 ));
                 break;
             case "admin":
+                /*
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("crud", "Create"),
                     "icon" => "icon-plus",
                     "url" => array("create")
+                ));
+                */
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("crud", "Add Video File"),
+                    "icon" => "icon-plus",
+                    "url" => array("add")
                 ));
                 break;
             case "view":
@@ -26,6 +33,11 @@
                     "label" => Yii::t("crud", "Update"),
                     "icon" => "icon-edit",
                     "url" => array("update", "id" => $model->{$model->tableSchema->primaryKey})
+                ));
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("crud", "Author"),
+                    "icon" => "icon-edit",
+                    "url" => array("author", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("crud", "Create"),
@@ -43,6 +55,7 @@
                 );
                 break;
             case "update":
+            case "author":
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("crud", "Manage"),
                     "icon" => "icon-list-alt",
@@ -63,6 +76,7 @@
                     )
                 );
                 break;
+
         }
         ?>    </div>
     <?php if ($this->action->id == 'admin'): ?>

@@ -290,6 +290,8 @@ $mainConfig = array(
                 '^([^/]*)/update' => 'backend2',
                 '^([^/]*)/admin' => 'backend2',
                 '^([^/]*)/create' => 'backend2',
+                '^([^/]*)/translate(.*)' => 'backend2',
+                '^([^/]*)/author(.*)' => 'backend2',
                 '^site/giiscript' => 'backend2',
                 '^(.*)' => 'frontend',
             )
