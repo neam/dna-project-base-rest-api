@@ -30,7 +30,14 @@ $this->widget(
         'type' => 'list',
         'items' => array_merge(
             array(
-                array('label' => Yii::t('app', 'Application')),
+                array('label' => ucfirst(Yii::app()->user->name)),
+                array(
+                    'label' => Yii::t('app', 'Profile'),
+                    'icon' => 'tasks ',
+                    'url' => array('/user/profile'),
+                    'visible' => !Yii::app()->user->isGuest
+                ),
+                array('label' => Yii::t('app', 'Contents')),
             ),
             $controllerItems,
             array(
@@ -42,12 +49,6 @@ $this->widget(
                     'visible' => Yii::app()->user->checkAccess('Editor')
                 ),
                 */
-                array(
-                    'label' => Yii::t('app', 'Overview'),
-                    'icon' => 'cog',
-                    'url' => array('/p3admin/default/overview'),
-                    'visible' => Yii::app()->user->checkAccess('Admin')
-                ),
                 /*
                 '---',
                 array('label' => Yii::t('app', 'Pages')),
@@ -112,7 +113,15 @@ $this->widget(
                     'icon' => 'star',
                     'url' => array('/rights/authItem/roles'),
                     'visible' => Yii::app()->user->checkAccess('Admin')
-                )
+                ),
+                '---',
+                array('label' => Yii::t('app', 'Developer')),
+                array(
+                    'label' => Yii::t('app', 'Overview'),
+                    'icon' => 'cog',
+                    'url' => array('/p3admin/default/overview'),
+                    'visible' => Yii::app()->user->checkAccess('Admin')
+                ),
             )
         )
     )

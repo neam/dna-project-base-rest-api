@@ -35,7 +35,7 @@ $this->widget(
                 'items' => array(
                     array(
                         'icon' => 'eye-open white',
-                        'url' => '',
+                        'url' => '#',
                         'visible' => Yii::app()->user->checkAccess('Editor'),
                         'itemOptions' => array(
                             "id" => "P3WidgetContainerShowControls",
@@ -57,6 +57,7 @@ $this->widget(
                 'htmlOptions' => array('class' => ''),
                 'items' => array(
 
+                    /*
                     array(
                         #'label'   => Yii::t('app', 'Upload'),
                         'icon' => 'file white',
@@ -145,6 +146,7 @@ $this->widget(
                             ),
                         ),
                     ),
+                    */
                     array(
                         #'label'   => Yii::t('app', 'Upload'),
                         'icon' => 'picture white',
@@ -262,11 +264,13 @@ $this->widget(
                         'url' => array('/p3admin/default/overview'),
                         'visible' => Yii::app()->user->checkAccess('Admin')
                     ),
+                    /*
                     array(
                         'label' => 'Phundament',
-                        'url' => array('/p3admin/default/index'),
+                        'url' => array('/p3admin/default/overview'),
                         'icon' => 'heart white',
                     ),
+                    */
                 )
             ),
         )
