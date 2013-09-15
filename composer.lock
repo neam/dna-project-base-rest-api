@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d7e2fcdd7836b7404fcf97e8343a56c4",
+    "hash": "28db869b40ad86083b7920b7996772f2",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -123,6 +123,17 @@
             "description": "A configurable set of panels that display various debug information about the current request/response. ",
             "homepage": "https://github.com/malyshev/yii-debug-toolbar",
             "time": "2013-04-10 15:53:54"
+        },
+        {
+            "name": "mihanentalpo/yii-sql-migration-generator",
+            "version": "@dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MihanEntalpo/yii-sql-migration-generator.git",
+                "reference": "5a0b93a4f0ac9ace6a4e7e1d92dc0980bba17cee"
+            },
+            "type": "library",
+            "time": "2013-08-08 07:00:22"
         },
         {
             "name": "mishamx/yii-user",
@@ -1310,6 +1321,7 @@
         "anggiaj/eselect2": 20,
         "ezc/ezcomponents": 20,
         "ascendro/yii-graphviz": 20,
+        "mihanentalpo/yii-sql-migration-generator": 20,
         "schmunk42/yii-sakila-crud": 20,
         "phundament/lessii": 20
     },
