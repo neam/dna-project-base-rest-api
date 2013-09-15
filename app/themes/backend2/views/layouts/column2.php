@@ -10,10 +10,13 @@
             <div id="sidebar">
                 <h4>Operations</h4>
                 <?php
-                $this->widget('bootstrap.widgets.TbMenu', array(
-                    'items' => $this->menu,
-                    'htmlOptions' => array('class' => 'operations'),
-                ));
+                $this->widget(
+                    'bootstrap.widgets.TbMenu',
+                    array(
+                        'items' => $this->menu,
+                        'htmlOptions' => array('class' => 'operations'),
+                    )
+                );
                 ?>
             </div>
             <!-- sidebar -->

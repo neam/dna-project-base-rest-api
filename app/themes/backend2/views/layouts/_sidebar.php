@@ -1,6 +1,6 @@
 <?php
-//Yii::import('p3pages.modules.*');
 Yii::import('p3admin.P3AdminModule');
+Yii::import('p3pages.modules.*');
 
 $page = P3Page::getActivePage();
 if ($page !== null) {
@@ -13,6 +13,9 @@ if ($page !== null) {
 $module = new P3AdminModule('p3admin', null);
 $controllerItems = array();
 foreach ($module->findApplicationControllers() as $name) {
+    if ($name == "site") {
+        continue;
+    }
     $controllerItems[] = array(
         'label' => Yii::t('app', ucfirst($name)),
         'icon' => 'list-alt',
@@ -25,7 +28,8 @@ $this->widget(
     'TbMenu',
     array(
         'type' => 'list',
-        'items' => array_merge(array(
+        'items' => array_merge(
+            array(
                 array('label' => Yii::t('app', 'Application')),
             ),
             $controllerItems,
@@ -39,9 +43,9 @@ $this->widget(
                 ),
                 */
                 array(
-                    'label' => Yii::t('app', 'Settings'),
+                    'label' => Yii::t('app', 'Overview'),
                     'icon' => 'cog',
-                    'url' => array('/p3admin/default/settings'),
+                    'url' => array('/p3admin/default/overview'),
                     'visible' => Yii::app()->user->checkAccess('Admin')
                 ),
                 /*
@@ -56,16 +60,22 @@ $this->widget(
                 */
                 array('label' => Yii::t('app', 'Media')),
                 array(
+                    'label' => Yii::t('app', 'Browser'),
+                    'icon' => 'th',
+                    'url' => array('/p3media/default/browser'),
+                    'visible' => Yii::app()->user->checkAccess('P3media.Default.*')
+                ),
+                array(
                     'label' => Yii::t('app', 'Upload'),
-                    'icon' => 'circle-arrow-up',
+                    'icon' => 'upload',
                     'url' => array('/p3media/import/upload'),
                     'visible' => Yii::app()->user->checkAccess('P3media.Import.*')
                 ),
                 array(
-                    'label' => Yii::t('app', 'Gallery'),
-                    'icon' => 'th',
-                    'url' => array('/p3media/default/browser'),
-                    'visible' => Yii::app()->user->checkAccess('P3media.Default.*')
+                    'label' => Yii::t('app', 'Local File Scan'),
+                    'icon' => 'circle-arrow-up',
+                    'url' => array('/p3media/import/scan'),
+                    'visible' => Yii::app()->user->checkAccess('P3media.Import.*')
                 ),
                 /*
                 array('label' => Yii::t('app', 'Widgets')),
@@ -102,8 +112,9 @@ $this->widget(
                     'icon' => 'star',
                     'url' => array('/rights/authItem/roles'),
                     'visible' => Yii::app()->user->checkAccess('Admin')
-                ),
-            )),
+                )
+            )
+        )
     )
 );
 ?>
