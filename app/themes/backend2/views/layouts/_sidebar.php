@@ -30,11 +30,29 @@ $this->widget(
         'type' => 'list',
         'items' => array_merge(
             array(
-                array('label' => ucfirst(Yii::app()->user->name)),
+                array('label' => ucfirst(Yii::app()->user->name), 'visible' => !Yii::app()->user->isGuest),
+                array(
+                    'label' => Yii::t('app', 'Dashboard'),
+                    'icon' => 'th-large',
+                    'url' => array('/user/dashboard'),
+                    'visible' => !Yii::app()->user->isGuest
+                ),
+                array(
+                    'label' => Yii::t('app', 'Translations'),
+                    'icon' => 'globe',
+                    'url' => array('/user/translations'),
+                    'visible' => !Yii::app()->user->isGuest
+                ),
                 array(
                     'label' => Yii::t('app', 'Profile'),
-                    'icon' => 'tasks ',
+                    'icon' => 'user',
                     'url' => array('/user/profile'),
+                    'visible' => !Yii::app()->user->isGuest
+                ),
+                array(
+                    'label' => Yii::t('app', 'History'),
+                    'icon' => 'time',
+                    'url' => array('/user/history'),
                     'visible' => !Yii::app()->user->isGuest
                 ),
                 array('label' => Yii::t('app', 'Contents')),
