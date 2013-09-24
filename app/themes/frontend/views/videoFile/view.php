@@ -15,73 +15,650 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
-<?php echo CHtml::encode($model->title); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_en')); ?>:</b>
+<?php echo CHtml::encode($model->title_en); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
-<?php echo CHtml::encode($model->created); ?>
-<br/>
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
-<?php echo CHtml::encode($model->modified); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_en')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_en); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->original_media_id); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id')); ?>:</b>
-<?php echo CHtml::encode($model->processed_media_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('generate_processed_media')); ?>:</b>
+<?php echo CHtml::encode($model->generate_processed_media); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_en')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_en); ?>
+<br/>
 
-<h2><?php echo CHtml::link(Yii::t('app', 'SectionContents'), array('sectionContent/admin')); ?></h2>
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id); ?>
+<br/>
+
+<?php /*
+    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_en')); ?>:</b>
+<?php echo CHtml::encode($model->translation_workflow_execution_id_en); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
+<?php echo CHtml::encode($model->created); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
+<?php echo CHtml::encode($model->modified); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('title_es')); ?>:</b>
+<?php echo CHtml::encode($model->title_es); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('title_fa')); ?>:</b>
+<?php echo CHtml::encode($model->title_fa); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('title_hi')); ?>:</b>
+<?php echo CHtml::encode($model->title_hi); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('title_pt')); ?>:</b>
+<?php echo CHtml::encode($model->title_pt); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('title_sv')); ?>:</b>
+<?php echo CHtml::encode($model->title_sv); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('title_cn')); ?>:</b>
+<?php echo CHtml::encode($model->title_cn); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('title_de')); ?>:</b>
+<?php echo CHtml::encode($model->title_de); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_es')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_es); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_fa')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_fa); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_hi')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_hi); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_pt')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_pt); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_sv')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_sv); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_cn')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_cn); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_de')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_de); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_es')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_es); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_fa')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_fa); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_hi')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_hi); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_pt')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_pt); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_sv')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_sv); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_cn')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_cn); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_de')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_de); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_es')); ?>:</b>
+<?php echo CHtml::encode($model->translation_workflow_execution_id_es); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_fa')); ?>:</b>
+<?php echo CHtml::encode($model->translation_workflow_execution_id_fa); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_hi')); ?>:</b>
+<?php echo CHtml::encode($model->translation_workflow_execution_id_hi); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_pt')); ?>:</b>
+<?php echo CHtml::encode($model->translation_workflow_execution_id_pt); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_sv')); ?>:</b>
+<?php echo CHtml::encode($model->translation_workflow_execution_id_sv); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_cn')); ?>:</b>
+<?php echo CHtml::encode($model->translation_workflow_execution_id_cn); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_de')); ?>:</b>
+<?php echo CHtml::encode($model->translation_workflow_execution_id_de); ?>
+    <br />
+
+    */
+?>
+
+<h2><?php echo CHtml::link(Yii::t('app', 'SectionContents'), array('//sectionContent/admin')); ?></h2>
 <ul>
-    <?php
-    if (is_array($model->sectionContents)) {
+    <?php if (is_array($model->sectionContents)) {
         foreach ($model->sectionContents as $foreignobj) {
 
             echo '<li>';
-            echo CHtml::link($foreignobj->itemLabel, array('sectionContent/view', 'id' => $foreignobj->id));
+            echo CHtml::link($foreignobj->itemLabel, array('//sectionContent/view', 'id' => $foreignobj->id));
 
-            echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('sectionContent/update', 'id' => $foreignobj->id), array('class' => 'edit'));
+            echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('//sectionContent/update', 'id' => $foreignobj->id), array('class' => 'edit'));
+
         }
     }
-    ?></ul><p><?php
-    echo CHtml::link(
-        Yii::t('app', 'Create'), array('sectionContent/create', 'SectionContent' => array('video_file_id' => $model->{$model->tableSchema->primaryKey}))
-    );
-    ?></p>
-<h2>
-    <?php echo Yii::t('crud', 'Data') ?></h2>
+    ?></ul><p><?php echo CHtml::link(
+        Yii::t('app', 'Create'),
+        array('//sectionContent/create', 'SectionContent' => array('video_file_id' => $model->{$model->tableSchema->primaryKey}))
+    );  ?></p>
+<div class="row">
+    <div class="span7">
+        <h2>
+            <?php echo Yii::t('crud', 'Data') ?>
+            <small>
+                <?php echo $model->itemLabel ?>            </small>
+        </h2>
 
-<p>
-    <?php
-    $this->widget('TbDetailView', array(
-        'data' => $model,
-        'attributes' => array(
-            'id',
-            'title_en',
-            'created',
-            'modified',
+        <?php
+        $this->widget(
+            'TbDetailView',
             array(
-                'name' => 'original_media_id',
-                'value' => ($model->originalMedia !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->originalMedia->itemLabel, array('p3Media/view', 'id' => $model->originalMedia->id), array('class' => 'btn')) : 'n/a',
-                'type' => 'html',
-            ),
-            array(
-                'name' => 'processed_media_id',
-                'value' => ($model->processedMedia !== null) ? '<span class=label>CBelongsToRelation</span><br/>' . CHtml::link($model->processedMedia->itemLabel, array('p3Media/view', 'id' => $model->processedMedia->id), array('class' => 'btn')) : 'n/a',
-                'type' => 'html',
-            ),
-            'title_es',
-            'title_fa',
-            'title_hi',
-            'title_pt',
-            'title_sv',
-            'title_de',
-        ),
-    ));
-    ?></p>
+                'data' => $model,
+                'attributes' => array(
+                    array(
+                        'name' => 'id',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'id',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_en',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_en',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'subtitles_en',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'subtitles_en',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'original_media_id',
+                        'value' => ($model->originalMedia !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->originalMedia->itemLabel,
+                                array('//p3Media/view', 'id' => $model->originalMedia->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->originalMedia->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'generate_processed_media',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'generate_processed_media',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'processed_media_id_en',
+                        'value' => ($model->processedMediaIdEn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdEn->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdEn->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdEn->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id',
+                        'value' => ($model->authoringWorkflowExecution !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecution->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'translation_workflow_execution_id_en',
+                        'value' => ($model->translationWorkflowExecutionIdEn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdEn->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdEn->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdEn->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'created',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'created',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'modified',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'modified',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_es',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_es',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_fa',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_fa',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_hi',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_hi',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_pt',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_pt',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_sv',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_sv',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_cn',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_cn',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_de',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_de',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'subtitles_es',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'subtitles_es',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'subtitles_fa',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'subtitles_fa',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'subtitles_hi',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'subtitles_hi',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'subtitles_pt',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'subtitles_pt',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'subtitles_sv',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'subtitles_sv',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'subtitles_cn',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'subtitles_cn',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'subtitles_de',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'EditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'subtitles_de',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'processed_media_id_es',
+                        'value' => ($model->processedMediaIdEs !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdEs->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdEs->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdEs->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_fa',
+                        'value' => ($model->processedMediaIdFa !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdFa->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdFa->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdFa->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_hi',
+                        'value' => ($model->processedMediaIdHi !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdHi->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdHi->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdHi->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_pt',
+                        'value' => ($model->processedMediaIdPt !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdPt->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdPt->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdPt->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_sv',
+                        'value' => ($model->processedMediaIdSv !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdSv->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdSv->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdSv->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_cn',
+                        'value' => ($model->processedMediaIdCn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdCn->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdCn->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdCn->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_de',
+                        'value' => ($model->processedMediaIdDe !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdDe->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdDe->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdDe->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'translation_workflow_execution_id_es',
+                        'value' => ($model->translationWorkflowExecutionIdEs !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdEs->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdEs->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdEs->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'translation_workflow_execution_id_fa',
+                        'value' => ($model->translationWorkflowExecutionIdFa !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdFa->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdFa->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdFa->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'translation_workflow_execution_id_hi',
+                        'value' => ($model->translationWorkflowExecutionIdHi !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdHi->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdHi->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdHi->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'translation_workflow_execution_id_pt',
+                        'value' => ($model->translationWorkflowExecutionIdPt !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdPt->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdPt->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdPt->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'translation_workflow_execution_id_sv',
+                        'value' => ($model->translationWorkflowExecutionIdSv !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdSv->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdSv->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdSv->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'translation_workflow_execution_id_cn',
+                        'value' => ($model->translationWorkflowExecutionIdCn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdCn->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdCn->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdCn->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'translation_workflow_execution_id_de',
+                        'value' => ($model->translationWorkflowExecutionIdDe !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdDe->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdDe->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdDe->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                ),
+            )); ?>
+    </div>
 
+    <div class="span5">
+        <?php $this->renderPartial('_view-relations', array('model' => $model)); ?>    </div>
+</div>
