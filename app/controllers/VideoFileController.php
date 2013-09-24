@@ -338,11 +338,7 @@ class VideoFileController extends Controller
     {
         $md = $model->getMetaData();
         if (!isset($md->relations[$name])) {
-            throw new CDbException(Yii::t(
-                'yii',
-                '{class} does not have relation "{name}".',
-                array('{class}' => get_class($model), '{name}' => $name)
-            ));
+            throw new CDbException(Yii::t('yii', '{class} does not have relation "{name}".', array('{class}' => get_class($model), '{name}' => $name)));
         }
 
         $relation = $md->relations[$name];

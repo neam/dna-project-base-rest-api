@@ -4,11 +4,13 @@ $this->breadcrumbs[] = $model->id;
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-    <?php echo Yii::t('crud', 'Video File') ?>
-    <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small>
+
+    <?php echo Yii::t('crud', 'Video File'); ?>
+    <small>
+        <?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?>
+    </small>
+
 </h1>
-
-
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
@@ -40,149 +42,133 @@ $this->breadcrumbs[] = $model->id;
 <br/>
 
 <?php /*
-    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_en')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_en')); ?>:</b>
 <?php echo CHtml::encode($model->translation_workflow_execution_id_en); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('title_es')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_es')); ?>:</b>
 <?php echo CHtml::encode($model->title_es); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('title_fa')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_fa')); ?>:</b>
 <?php echo CHtml::encode($model->title_fa); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('title_hi')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_hi')); ?>:</b>
 <?php echo CHtml::encode($model->title_hi); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('title_pt')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_pt')); ?>:</b>
 <?php echo CHtml::encode($model->title_pt); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('title_sv')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_sv')); ?>:</b>
 <?php echo CHtml::encode($model->title_sv); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('title_cn')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_cn')); ?>:</b>
 <?php echo CHtml::encode($model->title_cn); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('title_de')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_de')); ?>:</b>
 <?php echo CHtml::encode($model->title_de); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_es')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_es')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_es); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_fa')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_fa')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_fa); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_hi')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_hi')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_hi); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_pt')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_pt')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_pt); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_sv')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_sv')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_sv); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_cn')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_cn')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_cn); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_de')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_de')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_de); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_es')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_es')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_es); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_fa')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_fa')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_fa); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_hi')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_hi')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_hi); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_pt')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_pt')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_pt); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_sv')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_sv')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_sv); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_cn')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_cn')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_cn); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_de')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_de')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_de); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_es')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_es')); ?>:</b>
 <?php echo CHtml::encode($model->translation_workflow_execution_id_es); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_fa')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_fa')); ?>:</b>
 <?php echo CHtml::encode($model->translation_workflow_execution_id_fa); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_hi')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_hi')); ?>:</b>
 <?php echo CHtml::encode($model->translation_workflow_execution_id_hi); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_pt')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_pt')); ?>:</b>
 <?php echo CHtml::encode($model->translation_workflow_execution_id_pt); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_sv')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_sv')); ?>:</b>
 <?php echo CHtml::encode($model->translation_workflow_execution_id_sv); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_cn')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_cn')); ?>:</b>
 <?php echo CHtml::encode($model->translation_workflow_execution_id_cn); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_de')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_de')); ?>:</b>
 <?php echo CHtml::encode($model->translation_workflow_execution_id_de); ?>
     <br />
 
     */
 ?>
 
-<h2><?php echo CHtml::link(Yii::t('app', 'SectionContents'), array('//sectionContent/admin')); ?></h2>
-<ul>
-    <?php if (is_array($model->sectionContents)) {
-        foreach ($model->sectionContents as $foreignobj) {
-
-            echo '<li>';
-            echo CHtml::link($foreignobj->itemLabel, array('//sectionContent/view', 'id' => $foreignobj->id));
-
-            echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('//sectionContent/update', 'id' => $foreignobj->id), array('class' => 'edit'));
-
-        }
-    }
-    ?></ul><p><?php echo CHtml::link(
-        Yii::t('app', 'Create'),
-        array('//sectionContent/create', 'SectionContent' => array('video_file_id' => $model->{$model->tableSchema->primaryKey}))
-    );  ?></p>
 <div class="row">
     <div class="span7">
         <h2>

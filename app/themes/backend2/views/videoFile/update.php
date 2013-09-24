@@ -1,36 +1,30 @@
 <?php
+$this->setPageTitle(
+    Yii::t('crud', 'Video File')
+    . ' - '
+    . Yii::t('crud', 'Update')
+    . ': '
+    . $model->getItemLabel()
+);
 $this->breadcrumbs[Yii::t('crud', 'Video Files')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
 $this->breadcrumbs[] = Yii::t('crud', 'Update');
 ?>
+
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-    <?php echo Yii::t('crud', 'Video File') ?>
-    <small><?php echo Yii::t('crud', 'Update') ?> #<?php echo $model->id ?></small>
+
+    <?php echo Yii::t('crud', 'Video File'); ?>
+    <small>
+        <?php echo Yii::t('crud', 'Update') ?> #<?php echo $model->id ?>
+    </small>
+
 </h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<?php
-$this->renderPartial('_form', array(
-    'model' => $model));
-?>
 
 <?php
-
-/*
-Code example to include an editable detail view:
-
-<h2>
-    <?php echo Yii::t('crud','Editable Detail View')?></h2>
-
-<?php
-$this->widget('EditableDetailView', array(
-    'data' => $model,
-    'url' => $this->createUrl('editableSaver'),
-));
-?>
-
-*/
+$this->renderPartial('_form', array('model' => $model));
 ?>
 
 
@@ -53,7 +47,7 @@ $this->widget('TbGridView',
     array(
         'id' => 'sectionContent-grid',
         'dataProvider' => $relatedSearchModel->search(),
-        'filter' => count($model->sectionContents) > 1 ? $relatedSearchModel : null,
+        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->sectionContents) > 1 ? $relatedSearchModel : null,
         'pager' => array(
             'class' => 'TbPager',
             'displayFirstAndLast' => true,
