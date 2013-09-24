@@ -11,7 +11,7 @@ if (!isset($this->menu) || $this->menu === array()) {
     );
 }
 ?>
-<h1><?php echo Yii::t('crud', 'Video Files') ?></h1>
+    <h1><?php echo Yii::t('crud', 'Video Files'); ?></h1>
 
 <?php
 $this->widget('zii.widgets.CListView', array(

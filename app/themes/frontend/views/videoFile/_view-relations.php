@@ -1,5 +1,5 @@
 <h2>
-    <?php echo Yii::t('crud', 'Relations') ?>    </h2>
+    <?php echo Yii::t('crud', 'Relations') ?></h2>
 
 
 <?php
@@ -47,4 +47,3 @@ echo '</h3>' ?>
     ?>
 </ul>
 
-    
