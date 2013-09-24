@@ -1,9 +1,6 @@
 <?php
 $this->breadcrumbs[Yii::t('crud', 'Video Files')] = array('admin');
-$this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array(
-    'view',
-    'id' => $model->{$model->tableSchema->primaryKey}
-);
+$this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
 $this->breadcrumbs[] = Yii::t('crud', 'Update');
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
@@ -14,12 +11,8 @@ $this->breadcrumbs[] = Yii::t('crud', 'Update');
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <?php
-$this->renderPartial(
-    '_form',
-    array(
-        'model' => $model
-    )
-);
+$this->renderPartial('_form', array(
+    'model' => $model));
 ?>
 
 <?php
@@ -46,21 +39,17 @@ $this->widget('EditableDetailView', array(
     <?php echo Yii::t('crud', 'Section Contents'); ?> </h2>
 
 <div class="btn-group">
-    <?php $this->widget(
-        'bootstrap.widgets.TbButtonGroup',
-        array(
-            'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-            'buttons' => array(// TODO
-                #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('sectionContent/create','SectionContent' => array('video_file_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
-            ),
-        )
-    );
+    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'buttons' => array(
+            array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('video_file_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+        ),
+    ));
     ?></div>
 
 <?php
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'sectionContents');
-$this->widget(
-    'TbGridView',
+$this->widget('TbGridView',
     array(
         'id' => 'sectionContent-grid',
         'dataProvider' => $relatedSearchModel->search(),
@@ -73,7 +62,7 @@ $this->widget(
             'id',
             array(
                 'name' => 'section_id',
-                'value' => 'CHtml::value($data,\'section.itemLabel\')',
+                'value' => 'CHtml::value($data, \'section.itemLabel\')',
                 'filter' => CHtml::listData(Section::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
@@ -102,39 +91,39 @@ $this->widget(
             ),
             array(
                 'name' => 'html_chunk_id',
-                'value' => 'CHtml::value($data,\'htmlChunk.itemLabel\')',
+                'value' => 'CHtml::value($data, \'htmlChunk.itemLabel\')',
                 'filter' => CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'viz_view_id',
-                'value' => 'CHtml::value($data,\'vizView.itemLabel\')',
+                'value' => 'CHtml::value($data, \'vizView.itemLabel\')',
                 'filter' => CHtml::listData(VizView::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'teachers_guide_id',
-                'value' => 'CHtml::value($data,\'teachersGuide.itemLabel\')',
+                'value' => 'CHtml::value($data, \'teachersGuide.itemLabel\')',
                 'filter' => CHtml::listData(TeachersGuide::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
-                        'name'=>'exercise_id',
-                        'value'=>'CHtml::value($data,\'exercise.itemLabel\')',
-                                'filter'=>CHtml::listData(Exercise::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
+                        'name' => 'exercise_id',
+                        'value' => 'CHtml::value($data, \'exercise.itemLabel\')',
+                                'filter' => CHtml::listData(Exercise::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                                 ),
             array(
-                        'name'=>'presentation_id',
-                        'value'=>'CHtml::value($data,\'presentation.itemLabel\')',
-                                'filter'=>CHtml::listData(Presentation::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
+                        'name' => 'presentation_id',
+                        'value' => 'CHtml::value($data, \'presentation.itemLabel\')',
+                                'filter' => CHtml::listData(Presentation::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                                 ),
             array(
-                        'name'=>'data_chunk_id',
-                        'value'=>'CHtml::value($data,\'dataChunk.itemLabel\')',
-                                'filter'=>CHtml::listData(DataChunk::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
+                        'name' => 'data_chunk_id',
+                        'value' => 'CHtml::value($data, \'dataChunk.itemLabel\')',
+                                'filter' => CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                                 ),
             array(
-                        'name'=>'download_link_id',
-                        'value'=>'CHtml::value($data,\'downloadLink.itemLabel\')',
-                                'filter'=>CHtml::listData(DownloadLink::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
+                        'name' => 'download_link_id',
+                        'value' => 'CHtml::value($data, \'downloadLink.itemLabel\')',
+                                'filter' => CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                                 ),
             */
             array(
@@ -144,7 +133,6 @@ $this->widget(
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('sectionContent/delete', array('id' => \$data->id))",
             ),
         ),
-    )
-);
+    ));
 ?>
 

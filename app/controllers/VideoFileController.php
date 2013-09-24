@@ -40,7 +40,7 @@ class VideoFileController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('VideoFile.*'),
+                'roles' => array('B61b08a5.VideoFile.*'),
             ),
             array(
                 'deny',
@@ -338,7 +338,11 @@ class VideoFileController extends Controller
     {
         $md = $model->getMetaData();
         if (!isset($md->relations[$name])) {
-            throw new CDbException(Yii::t('yii', '{class} does not have relation "{name}".', array('{class}' => get_class($model), '{name}' => $name)));
+            throw new CDbException(Yii::t(
+                'yii',
+                '{class} does not have relation "{name}".',
+                array('{class}' => get_class($model), '{name}' => $name)
+            ));
         }
 
         $relation = $md->relations[$name];
@@ -357,6 +361,5 @@ class VideoFileController extends Controller
 
         return $related;
     }
-
 
 }
