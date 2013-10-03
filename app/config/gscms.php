@@ -103,4 +103,7 @@ $gscmsConfig = array(
     )
 );
 
+//require('logging.php');
+//require('mail.php');
+
 return $gscmsConfig;
