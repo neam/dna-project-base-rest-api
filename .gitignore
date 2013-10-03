@@ -7,5 +7,5 @@ nbproject
 .idea
 *.swp
 .vagrant
-components
+/components
 www/graphs
