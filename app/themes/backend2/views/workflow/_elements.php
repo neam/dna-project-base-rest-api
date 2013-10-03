@@ -5,9 +5,9 @@
 
             <?php echo $form->textFieldRow($model, 'workflow_name', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textFieldRow($model, 'workflow_version', array('maxlength' => 10)); ?>
+            <?php //echo $form->textFieldRow($model, 'workflow_version', array('maxlength' => 10)); ?>
 
-            <?php echo $form->textFieldRow($model, 'workflow_created'); ?>
+            <?php //echo $form->textFieldRow($model, 'workflow_created'); ?>
         </div>
     </div>
     <!-- main inputs -->
