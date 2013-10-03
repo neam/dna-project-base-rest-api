@@ -20,13 +20,12 @@ Yii::setPathOfAlias('common', $root . DIRECTORY_SEPARATOR . 'common');
 Yii::setPathOfAlias('frontend', $root . DIRECTORY_SEPARATOR . 'frontend');
 Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
 
-// Load ez components auto-loader
-require_once Yii::getPathOfAlias('backend') . '/vendor/ezc/ezcomponents/Base/src/base.php';
-Yii::registerAutoloader(array('ezcBase', 'autoload'), true);
-
 $gscmsConfig = array(
     'name' => 'Gapminder School CMS',
     'language' => 'en', // default language, see also components.langHandler
+    'preload' => array(
+        'ezc',
+    ),
     'aliases' => array(
         // i18n-columns
         'i18n-columns' => 'vendor.neam.yii-i18n-columns',
@@ -97,6 +96,9 @@ $gscmsConfig = array(
                 'pt_pt' => 'pt',
                 'sv_se' => 'sv',
             )
+        ),
+        'ezc' => array(
+            'class' => 'application.components.EzcComponent',
         ),
     )
 );
