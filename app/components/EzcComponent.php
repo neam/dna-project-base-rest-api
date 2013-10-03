@@ -31,7 +31,7 @@ class EzcComponent extends CApplicationComponent
 
     }
 
-    public function buildWorkflow($name)
+    public function buildWorkflow($name, $inMemory = false)
     {
 
         $class = $name . "Workflow";
@@ -41,7 +41,7 @@ class EzcComponent extends CApplicationComponent
         }
 
         $builder = new $class();
-        $workflow = $builder->buildWorkflow($name);
+        $workflow = $builder->buildWorkflow($name, $inMemory);
 
         return $workflow;
 

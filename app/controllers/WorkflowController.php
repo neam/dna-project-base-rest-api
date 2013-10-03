@@ -66,7 +66,7 @@ class WorkflowController extends Controller
         $model = $this->loadModel($id);
 
         // Create a in-memory version of the current workflow
-        $workflowBuilt = Yii::app()->ezc->buildWorkflow($model->workflow_name);
+        $workflowBuilt = Yii::app()->ezc->buildWorkflow($model->workflow_name, true);
 
         // Generate GraphViz/dot markup for workflow
         $graphVizSyntaxBuilt = Yii::app()->ezc->graphVizSyntax($workflowBuilt);

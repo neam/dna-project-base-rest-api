@@ -1,7 +1,7 @@
 <?php
 
 // todo - add persistency
-class LabeledWorkflowNodeInput extends ezcWorkflowNodeInput
+class gscmsLabeledWorkflowNodeInput extends ezcWorkflowNodeInput
 {
 
     private $label;
@@ -21,11 +21,15 @@ class LabeledWorkflowNodeInput extends ezcWorkflowNodeInput
     function __toString()
     {
 
+        $return = "Input";
+
         if (!is_null($this->label)) {
-            return "Input (" . $this->label . ")";
+            $return .= " (" . $this->label . ")";
         }
 
-        return parent::__toString();
+        $return .= "\n\n" . print_r($this->getConfiguration(), true) . "";
+
+        return $return;
     }
 
 }

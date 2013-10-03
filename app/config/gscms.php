@@ -40,7 +40,7 @@ $gscmsConfig = array(
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
-        'application.components.workflow.LabeledWorkflowNodeInput',
+        'application.workflows.custom.*',
         'application.workflows.*',
     ),
     'modules' => array(
