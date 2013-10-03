@@ -98,7 +98,20 @@ class WorkflowController extends Controller
             $model->attributes = $_POST['Workflow'];
 
             try {
-                if ($model->save()) {
+
+                // Set up database connection.
+                $db =& Yii::app()->ezc->db;
+
+                // Set up workflow definition storage (database).
+                $definition = new ezcWorkflowDatabaseDefinitionStorage($db);
+
+                // Create a in-memory version of the current workflow
+                $workflow = Yii::app()->ezc->buildWorkflow($model->workflow_name);
+
+                // Save workflow definition to database.
+                $definition->save($workflow);
+
+                if (true /*$model->save()*/) {
                     if (isset($_GET['returnUrl'])) {
                         $this->redirect($_GET['returnUrl']);
                     } else {
