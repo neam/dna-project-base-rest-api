@@ -8,3 +8,4 @@ nbproject
 *.swp
 .vagrant
 components
+www/graphs

@@ -57,6 +57,7 @@ $this->widget(
                 'htmlOptions' => array('class' => ''),
                 'items' => array(
 
+                    /*
                     array(
                         #'label'   => Yii::t('app', 'Upload'),
                         'icon' => 'file white',
@@ -145,6 +146,7 @@ $this->widget(
                             ),
                         ),
                     ),
+                    */
                     array(
                         #'label'   => Yii::t('app', 'Upload'),
                         'icon' => 'picture white',
@@ -155,7 +157,7 @@ $this->widget(
                             ),
                             array(
                                 'label' => Yii::t('app', 'Upload'),
-                                'icon' => 'circle-arrow-up',
+                                'icon' => 'upload',
                                 'url' => array('/p3media/import/upload'),
                                 'visible' => Yii::app()->user->checkAccess('P3media.Import.*')
                             ),
@@ -175,32 +177,33 @@ $this->widget(
                 'htmlOptions' => array('class' => 'pull-right'),
                 'items' => array(
                     array(
-                        #'label'   => Yii::t('app', 'Settings'),
-                        'icon' => 'cog white',
-                        'url' => array('/p3admin/default/settings'),
-                        'visible' => Yii::app()->user->checkAccess('Admin')
-                    ),
-                    array(
                         'label' => ucfirst(Yii::app()->user->name),
                         'visible' => !Yii::app()->user->isGuest,
-                        'icon' => Yii::app()->user->checkAccess('Superuser') ?
-                            'warning-sign white' :
-                            'user white',
+                        'icon' => 'user white',
                         'items' => array(
+                            /*
+                            array(
+                                'label'   => Yii::t('app', 'List'),
+                                'icon'    => 'list ',
+                                'url'     => array('/user'),
+                                'visible' => !Yii::app()->user->isGuest
+                            ),
+                            '---',*/
                             array('label' => Yii::t('app', 'User')),
+                            array(
+                                'label' => Yii::t('app', 'Accounts'),
+                                'visible' => !Yii::app()->user->isGuest,
+                                'icon' => 'user',
+                                'url' => array('/user/admin/admin'),
+                                'visible' => !Yii::app()->user->isGuest
+                            ),
+                            array('label' => ucfirst(Yii::app()->user->name)),
                             array(
                                 'label' => Yii::t('app', 'Profile'),
                                 'icon' => 'tasks ',
                                 'url' => array('/user/profile'),
                                 'visible' => !Yii::app()->user->isGuest
                             ),
-                            array(
-                                'label' => Yii::t('app', 'List'),
-                                'icon' => 'list ',
-                                'url' => array('/user'),
-                                'visible' => !Yii::app()->user->isGuest
-                            ),
-                            '---',
                             array(
                                 'label' => Yii::t('app', 'Logout'),
                                 'icon' => 'lock ',
@@ -256,10 +259,18 @@ $this->widget(
                         ),
                     ),
                     array(
+                        #'label'   => Yii::t('app', 'Settings'),
+                        'icon' => 'cog white',
+                        'url' => array('/p3admin/default/overview'),
+                        'visible' => Yii::app()->user->checkAccess('Admin')
+                    ),
+                    /*
+                    array(
                         'label' => 'Phundament',
-                        'url' => array('/p3admin/default/index'),
+                        'url' => array('/p3admin/default/overview'),
                         'icon' => 'heart white',
                     ),
+                    */
                 )
             ),
         )

@@ -40,4 +40,84 @@ class VideoFile extends BaseVideoFile
         );
     }
 
+    protected function beforeSave()
+    {
+        if (parent::beforeSave()) {
+
+            // todo - better check to only load workflow db definition when necessary
+            if (true) {
+
+                // Set up database connection.
+                $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+
+                // Set up workflow definition storage (database).
+                $definition = new ezcWorkflowDatabaseDefinitionStorage($db);
+
+                // Authoring workflow
+                if (is_null($this->authoring_workflow_execution_id)) {
+                    // todo
+
+                }
+
+                // Translation workflows
+                foreach (Yii::app()->langHandler->languages as $lang) {
+
+                    $attribute = "translation_workflow_execution_id_" . $lang;
+
+                    if (!is_null($this->$attribute)) {
+                        continue;
+                    }
+
+                    // todo - come up with nifty way of updating workflows when necessary
+                    try {
+
+                        // Load latest version of the relevant workflow
+                        $workflow = $definition->loadByName('VideoFileTranslationWorkflow');
+
+                    } catch (ezcWorkflowDefinitionStorageException $e) {
+
+                        // Get workflow definition
+                        $workflow = $this->buildTranslationWorkflow('VideoFileTranslationWorkflow');
+
+                        // Save workflow definition to database.
+                        $definition->save($workflow);
+
+                        // Load latest version of workflow
+                        $workflow = $definition->loadByName('VideoFileTranslationWorkflow');
+
+                    }
+
+                    // Set up database-based workflow executer.
+                    $execution = new ezcWorkflowDatabaseExecution($db);
+
+                    // Pass workflow object to workflow executer.
+                    $execution->workflow = $workflow;
+
+                    // Set metadata in translation workflow execution marking who created the object
+                    // todo
+
+                    // Start workflow execution.
+                    $id = $execution->start();
+
+                    // Store the workflow id in the current item
+                    $this->$attribute = $id;
+
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function buildTranslationWorkflow($name)
+    {
+
+        Yii::import('application.workflows.' . $name);
+        $definition = new $name();
+        return $definition->buildWorkflow($name);
+
+    }
+
 }
+

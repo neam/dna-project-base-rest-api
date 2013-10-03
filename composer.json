@@ -29,9 +29,9 @@
                 "name": "kswedberg/jquery-smooth-scroll",
                 "version": "1.4.10",
                 "source": {
-                        "url": "https://github.com/kswedberg/jquery-smooth-scroll.git",
+                    "url": "https://github.com/kswedberg/jquery-smooth-scroll.git",
                     "type": "git",
-                "reference": "1.4.10"
+                    "reference": "1.4.10"
                 }
             }
         },
@@ -58,6 +58,19 @@
                 }
             }
         },
+        {
+            "type": "package",
+            "package": {
+                "name": "mihanentalpo/yii-sql-migration-generator",
+                "version": "@dev",
+                "source": {
+                    "url": "https://github.com/MihanEntalpo/yii-sql-migration-generator.git",
+                    "type": "git",
+                    "reference": "5a0b93a4f0ac9ace6a4e7e1d92dc0980bba17cee"
+                }
+            }
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/neam/yii-i18n-columns"
         },
@@ -111,6 +124,7 @@
 		"anggiaj/eselect2": "dev-master",
         "ezc/ezcomponents": "@dev",
         "ascendro/yii-graphviz": "@dev",
+        "mihanentalpo/yii-sql-migration-generator": "@dev",
         "schmunk42/yii-sakila-crud": "@dev",
         "schmunk42/relation": "1.*",
         "yiisoft/yii":"1.1.14"

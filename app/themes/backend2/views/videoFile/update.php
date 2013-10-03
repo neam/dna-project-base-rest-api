@@ -1,36 +1,30 @@
 <?php
+$this->setPageTitle(
+    Yii::t('crud', 'Video File')
+    . ' - '
+    . Yii::t('crud', 'Update')
+    . ': '
+    . $model->getItemLabel()
+);
 $this->breadcrumbs[Yii::t('crud', 'Video Files')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
 $this->breadcrumbs[] = Yii::t('crud', 'Update');
 ?>
+
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-    <?php echo Yii::t('crud', 'Video File') ?>
-    <small><?php echo Yii::t('crud', 'Update') ?> #<?php echo $model->id ?></small>
+
+    <?php echo Yii::t('crud', 'Video File'); ?>
+    <small>
+        <?php echo Yii::t('crud', 'Update') ?> #<?php echo $model->id ?>
+    </small>
+
 </h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<?php
-$this->renderPartial('_form', array(
-    'model' => $model));
-?>
 
 <?php
-
-/*
-Code example to include an editable detail view:
-
-<h2>
-    <?php echo Yii::t('crud','Editable Detail View')?></h2>
-
-<?php
-$this->widget('EditableDetailView', array(
-    'data' => $model,
-    'url' => $this->createUrl('editableSaver'),
-));
-?>
-
-*/
+$this->renderPartial('_form', array('model' => $model));
 ?>
 
 
@@ -41,8 +35,8 @@ $this->widget('EditableDetailView', array(
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array( // TODO
-            #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('sectionContent/create','SectionContent' => array('video_file_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
+        'buttons' => array(
+            array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('video_file_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
     ?></div>
@@ -53,7 +47,7 @@ $this->widget('TbGridView',
     array(
         'id' => 'sectionContent-grid',
         'dataProvider' => $relatedSearchModel->search(),
-        'filter' => count($model->sectionContents) > 1 ? $relatedSearchModel : null,
+        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->sectionContents) > 1 ? $relatedSearchModel : null,
         'pager' => array(
             'class' => 'TbPager',
             'displayFirstAndLast' => true,
@@ -62,7 +56,7 @@ $this->widget('TbGridView',
             'id',
             array(
                 'name' => 'section_id',
-                'value' => 'CHtml::value($data,\'section.itemLabel\')',
+                'value' => 'CHtml::value($data, \'section.itemLabel\')',
                 'filter' => CHtml::listData(Section::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
@@ -91,40 +85,40 @@ $this->widget('TbGridView',
             ),
             array(
                 'name' => 'html_chunk_id',
-                'value' => 'CHtml::value($data,\'htmlChunk.itemLabel\')',
+                'value' => 'CHtml::value($data, \'htmlChunk.itemLabel\')',
                 'filter' => CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'viz_view_id',
-                'value' => 'CHtml::value($data,\'vizView.itemLabel\')',
+                'value' => 'CHtml::value($data, \'vizView.itemLabel\')',
                 'filter' => CHtml::listData(VizView::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'teachers_guide_id',
-                'value' => 'CHtml::value($data,\'teachersGuide.itemLabel\')',
+                'value' => 'CHtml::value($data, \'teachersGuide.itemLabel\')',
                 'filter' => CHtml::listData(TeachersGuide::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
-                        'name'=>'exercise_id',
-                        'value'=>'CHtml::value($data,\'exercise.itemLabel\')',
-                                'filter'=>CHtml::listData(Exercise::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
-                                ),
+                    'name' => 'exercise_id',
+                    'value' => 'CHtml::value($data, \'exercise.itemLabel\')',
+                    'filter' => CHtml::listData(Exercise::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
-                        'name'=>'presentation_id',
-                        'value'=>'CHtml::value($data,\'presentation.itemLabel\')',
-                                'filter'=>CHtml::listData(Presentation::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
-                                ),
+                    'name' => 'presentation_id',
+                    'value' => 'CHtml::value($data, \'presentation.itemLabel\')',
+                    'filter' => CHtml::listData(Presentation::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
-                        'name'=>'data_chunk_id',
-                        'value'=>'CHtml::value($data,\'dataChunk.itemLabel\')',
-                                'filter'=>CHtml::listData(DataChunk::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
-                                ),
+                    'name' => 'data_chunk_id',
+                    'value' => 'CHtml::value($data, \'dataChunk.itemLabel\')',
+                    'filter' => CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
-                        'name'=>'download_link_id',
-                        'value'=>'CHtml::value($data,\'downloadLink.itemLabel\')',
-                                'filter'=>CHtml::listData(DownloadLink::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
-                                ),
+                    'name' => 'download_link_id',
+                    'value' => 'CHtml::value($data, \'downloadLink.itemLabel\')',
+                    'filter' => CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             */
             array(
                 'class' => 'TbButtonColumn',

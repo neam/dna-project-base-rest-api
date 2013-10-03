@@ -16,20 +16,22 @@
   /* override variables with local values */
 @import "variables.less";
 
-/* force scrollbars */
-html {
-  overflow-y: scroll;
-}
-
 .subwrapper {
   margin-top: 20px;
 }
 
 footer {
-  margin-bottom: 30px;
+  margin-bottom: 120px;
 }
 
-/* workaround for 'status-bar' on chrome and firefox */
+// fix responsive images
+
+img {
+  height: auto !important;
+}
+
+// workaround for 'status-bar' on chrome and firefox
+
 #backend-navbar {
   opacity: 0.85;
   .navbar-fixed-bottom {
@@ -40,30 +42,98 @@ footer {
   }
 }
 
-/* fix responsive images */
-img {
-  height: auto !important;
+// fluid thumb grid
+
+.row-fluid {
+  // fix rows in fluid rows
+  .row {
+    margin-left: 0;
+  }
+  ul.thumbnails {
+    li.span12 + li {
+      margin-left: 0px;
+    }
+    li.span6:nth-child(2n + 3) {
+      margin-left: 0px;
+    }
+    li.span4:nth-child(3n + 4) {
+      margin-left: 0px;
+    }
+    li.span3:nth-child(4n + 5) {
+      margin-left: 0px;
+    }
+    li.span2:nth-child(6n + 7) {
+      margin-left: 0px;
+    }
+    li.span1:nth-child(12n + 13) {
+      margin-left: 0px;
+    }
+  }
 }
 
-#rights.container {
+// form
+
+input, textarea, .uneditable-input {
   width: auto;
-  .flashes {
-    top: 0px;
-    left: 0px;
-    width: 100%;
+}
+
+.errorSummary {
+  .alert;
+  .alert-error;
+}
+
+TEXTAREA.error, SELECT.error, INPUT.error, .select2-container.error A {
+  border: 2px solid @errorText;
+}
+
+.errorMessage {
+  color: @errorText;
+}
+
+.form-horizontal {
+  input {
+    max-width: 90%;
   }
 }
 
-table {
-  input, textarea, .uneditable-input {
-    width: auto;
-    max-width: 60px; /* TODO */
+// select2
+
+.select2-container {
+  min-width: 50%;
+  max-width: 90%;
+  margin-bottom: 9px;
+}
+
+// grid
+
+.grid-view {
+  table {
+    select, input, textarea, .uneditable-input {
+      width: 100%;
+      max-width: 90%;
+    }
+    td:first-child {
+      min-width: 200px;
+    }
+    td.button-column {
+      white-space: nowrap;
+    }
   }
 }
 
-td.button-column {
-  white-space: nowrap;
+// JSON editor
+
+input.je-key-input {
+  width: 20%;
+  text-align: left;
 }
+
+input.je-val-input {
+  width: 50%;
+  text-align: left;
+}
+
+// CRUD hints
 
 .hint {
   color: @grayLight;
@@ -74,8 +144,76 @@ td.button-column {
   .hint {
     margin-bottom: 0.5em;
   }
-
 }
+
+// p3admin module
+
+#p3admin-settings-view {
+  ul.thumbnails li {
+    height: 100px;
+  }
+}
+
+// p3media module
+
+#p3media-default-browser {
+  ul.thumbnails {
+    li {
+      h5 {
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.sorter {
+  float: right;
+  UL {
+    float: none;
+    display: inline;
+    margin-left: 0px;
+  }
+  UL LI {
+    float: none;
+    display: inline;
+    margin-left: 20px;
+  }
+}
+
+.fileupload-content .ui-progressbar {
+  min-width: 40px;
+  width: auto;
+}
+
+
+// rights module
+
+#rights.container {
+  width: auto;
+  * {
+    font-family: @baseFontFamily !important; // TODO
+  }
+  .flashes {
+    top: 80px;
+    left: 0px;
+    width: 100%;
+  }
+  #menu UL.actions {
+    LI A {
+      .btn;
+    }
+  }
+  A.revoke-link {
+    .label;
+    background-color: @successText;
+    &[href]     { background-color: darken(@successText, 10%); }
+  }
+}
+
+// responsive rules
 
 @media (min-width: 768px) {
   #backend {
