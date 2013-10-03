@@ -163,7 +163,7 @@ class VideoFileController extends Controller
         $model->scenario = $this->scenario;
 
         // Tmp - manually set continue_from_approved_for_translation to true before we have built the authoring workflow etc
-        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+        $db =& Yii::app()->ezc->db;
         $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
 
         $execution->resume(array('continue_from_approved_for_translation' => true));
@@ -185,7 +185,7 @@ class VideoFileController extends Controller
         }
 
         // Set up database connection.
-        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+        $db =& Yii::app()->ezc->db;
 
         // Check and redirect depending on current workflow execution status
         $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
@@ -214,7 +214,7 @@ class VideoFileController extends Controller
         $model->scenario = $this->scenario;
 
         // Set up database connection.
-        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+        $db =& Yii::app()->ezc->db;
 
         // Check and redirect depending on current workflow execution status
         $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
@@ -228,7 +228,7 @@ class VideoFileController extends Controller
         $model->scenario = $this->scenario;
 
         // Set up database connection.
-        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+        $db =& Yii::app()->ezc->db;
 
         // Check and redirect depending on current workflow execution status
         $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);

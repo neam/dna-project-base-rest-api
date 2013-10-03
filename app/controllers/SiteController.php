@@ -45,7 +45,7 @@ class SiteController extends Controller
     {
 
         // Set up database connection.
-        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+        $db =& Yii::app()->ezc->db;
 
         // Set up workflow definition storage (database).
         $definition = new ezcWorkflowDatabaseDefinitionStorage($db);
