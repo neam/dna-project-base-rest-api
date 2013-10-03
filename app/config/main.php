@@ -68,6 +68,7 @@ $mainConfig = array(
         'vendor.clevertech.yiibooster.src.widgets.*', //
         'vendor.anggiaj.eselect2.*',
         'editable.*', // Include X-Editable for Yii classes
+        'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior',
     ),
     'modules'    => array(
         // backend for ckeditor styles and templates

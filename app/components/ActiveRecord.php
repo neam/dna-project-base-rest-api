@@ -8,11 +8,13 @@ class ActiveRecord extends CActiveRecord
 
         $behaviors = array();
 
-        $behaviors['CTimestampBehavior'] = array(
-            'class' => 'zii.behaviors.CTimestampBehavior',
-            'createAttribute' => 'created',
-            'updateAttribute' => 'modified',
-        );
+        if (!in_array(get_class($this), array("Workflow"))) {
+            $behaviors['CTimestampBehavior'] = array(
+                'class' => 'zii.behaviors.CTimestampBehavior',
+                'createAttribute' => 'created',
+                'updateAttribute' => 'modified',
+            );
+        }
 
         // List of model attributes to translate
         $translateMap = array(
