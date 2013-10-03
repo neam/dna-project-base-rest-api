@@ -24,7 +24,7 @@ $gscmsConfig = array(
     'name' => 'Gapminder School CMS',
     'language' => 'en', // default language, see also components.langHandler
     'preload' => array(
-        'ezc',
+        //'ezc', // trying out if we can lazy-load this instead of preloading it...
     ),
     'aliases' => array(
         // i18n-columns
