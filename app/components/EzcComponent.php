@@ -20,4 +20,31 @@ class EzcComponent extends CApplicationComponent
         return $this->_db;
     }
 
+    public function graphvizSyntax($workflow)
+    {
+
+        $visitor = new ezcWorkflowVisitorVisualization;
+        $workflow->accept($visitor);
+        $graphVizSyntax = (string) $visitor;
+
+        return $graphVizSyntax;
+
+    }
+
+    public function buildWorkflow($name)
+    {
+
+        $class = $name . "Workflow";
+
+        if (!class_exists($class)) {
+            throw new CException("Class $class does not exist");
+        }
+
+        $builder = new $class();
+        $workflow = $builder->buildWorkflow($name);
+
+        return $workflow;
+
+    }
+
 }

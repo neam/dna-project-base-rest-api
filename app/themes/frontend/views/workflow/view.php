@@ -13,6 +13,9 @@ $this->breadcrumbs[] = $model->workflow_id;
 </h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+
+<?php
+/*
 <b><?php echo CHtml::encode($model->getAttributeLabel('workflow_id')); ?>:</b>
 <?php echo CHtml::link(CHtml::encode($model->workflow_id), array('view', 'workflow_id' => $model->workflow_id)); ?>
 <br/>
@@ -28,7 +31,85 @@ $this->breadcrumbs[] = $model->workflow_id;
 <b><?php echo CHtml::encode($model->getAttributeLabel('workflow_created')); ?>:</b>
 <?php echo CHtml::encode($model->workflow_created); ?>
 <br/>
+ */
+?>
 
+<div class="row">
+    <div class="span7">
+
+        <h2>
+            <?php echo Yii::t('crud', 'Built Visual Representation') ?>
+        </h2>
+
+        <?php
+
+        Yii::import('vendor.ascendro.yii-graphviz.components.Graphviz');
+
+        $this->widget('vendor.ascendro.yii-graphviz.widgets.Graph', array(
+            'configuration' => $graphVizSyntaxBuilt,
+            'alt' => "Alt text",
+            'title' => "Image title",
+            'map' => false, //True if my graphviz syntax features links and i want to have them clickable
+        ));
+
+        ?>
+
+    </div>
+
+    <div class="span5">
+
+        <h2>
+            <?php echo Yii::t('crud', 'Graphviz Syntax') ?>
+        </h2>
+
+        <?php
+
+        echo "<pre>" . $graphVizSyntaxBuilt . "</pre>";
+
+        ?>
+
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="span7">
+
+        <h2>
+            <?php echo Yii::t('crud', 'Stored Visual Representation') ?>
+        </h2>
+
+        <?php
+
+        Yii::import('vendor.ascendro.yii-graphviz.components.Graphviz');
+
+        $this->widget('vendor.ascendro.yii-graphviz.widgets.Graph', array(
+            'configuration' => $graphVizSyntaxStored,
+            'alt' => "Alt text",
+            'title' => "Image title",
+            'map' => false, //True if my graphviz syntax features links and i want to have them clickable
+        ));
+
+        ?>
+
+    </div>
+
+    <div class="span5">
+
+        <h2>
+            <?php echo Yii::t('crud', 'Graphviz Syntax') ?>
+        </h2>
+
+        <?php
+
+        echo "<pre>" . $graphVizSyntaxStored . "</pre>";
+
+        ?>
+
+    </div>
+
+</div>
 
 <div class="row">
     <div class="span7">

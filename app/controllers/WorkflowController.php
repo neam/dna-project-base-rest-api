@@ -64,7 +64,27 @@ class WorkflowController extends Controller
     public function actionView($id)
     {
         $model = $this->loadModel($id);
-        $this->render('view', array('model' => $model,));
+
+        // Create a in-memory version of the current workflow
+        $workflowBuilt = Yii::app()->ezc->buildWorkflow($model->workflow_name);
+
+        // Generate GraphViz/dot markup for workflow
+        $graphVizSyntaxBuilt = Yii::app()->ezc->graphVizSyntax($workflowBuilt);
+
+        // Set up database connection.
+        $db =& Yii::app()->ezc->db;
+
+        // Set up workflow definition storage (database).
+        $definition = new ezcWorkflowDatabaseDefinitionStorage($db);
+
+        // Load the current workflow from database
+        $workflowStored = $definition->loadById($model->workflow_id);
+
+        // Generate GraphViz/dot markup for workflow
+        $graphVizSyntaxStored = Yii::app()->ezc->graphVizSyntax($workflowStored);
+
+        $this->render('view', array('model' => $model, 'graphVizSyntaxBuilt' => $graphVizSyntaxBuilt, 'graphVizSyntaxStored' => $graphVizSyntaxStored));
+
     }
 
     public function actionCreate()
