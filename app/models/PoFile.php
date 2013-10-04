@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('DataSource', dirname(__FILE__));
-Yii::import('DataSource.*');
+Yii::setPathOfAlias('PoFile', dirname(__FILE__));
+Yii::import('PoFile.*');
 
-class DataSource extends BaseDataSource
+class PoFile extends BasePoFile
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.

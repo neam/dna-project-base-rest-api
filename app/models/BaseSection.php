@@ -76,7 +76,7 @@ abstract class BaseSection extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -93,35 +93,35 @@ abstract class BaseSection extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => Yii::t('crud', 'ID'),
-            'chapter_id' => Yii::t('crud', 'Chapter'),
-            'title_en' => Yii::t('crud', 'Title En'),
-            'slug_en' => Yii::t('crud', 'Slug En'),
-            'ordinal' => Yii::t('crud', 'Ordinal'),
-            'menu_label_en' => Yii::t('crud', 'Menu Label En'),
-            'created' => Yii::t('crud', 'Created'),
-            'modified' => Yii::t('crud', 'Modified'),
-            'title_es' => Yii::t('crud', 'Title Es'),
-            'title_fa' => Yii::t('crud', 'Title Fa'),
-            'title_hi' => Yii::t('crud', 'Title Hi'),
-            'title_pt' => Yii::t('crud', 'Title Pt'),
-            'title_sv' => Yii::t('crud', 'Title Sv'),
-            'title_cn' => Yii::t('crud', 'Title Cn'),
-            'title_de' => Yii::t('crud', 'Title De'),
-            'slug_es' => Yii::t('crud', 'Slug Es'),
-            'slug_fa' => Yii::t('crud', 'Slug Fa'),
-            'slug_hi' => Yii::t('crud', 'Slug Hi'),
-            'slug_pt' => Yii::t('crud', 'Slug Pt'),
-            'slug_sv' => Yii::t('crud', 'Slug Sv'),
-            'slug_cn' => Yii::t('crud', 'Slug Cn'),
-            'slug_de' => Yii::t('crud', 'Slug De'),
-            'menu_label_es' => Yii::t('crud', 'Menu Label Es'),
-            'menu_label_fa' => Yii::t('crud', 'Menu Label Fa'),
-            'menu_label_hi' => Yii::t('crud', 'Menu Label Hi'),
-            'menu_label_pt' => Yii::t('crud', 'Menu Label Pt'),
-            'menu_label_sv' => Yii::t('crud', 'Menu Label Sv'),
-            'menu_label_cn' => Yii::t('crud', 'Menu Label Cn'),
-            'menu_label_de' => Yii::t('crud', 'Menu Label De'),
+            'id' => Yii::t('model', 'ID'),
+            'chapter_id' => Yii::t('model', 'Chapter'),
+            'title_en' => Yii::t('model', 'Title En'),
+            'slug_en' => Yii::t('model', 'Slug En'),
+            'ordinal' => Yii::t('model', 'Ordinal'),
+            'menu_label_en' => Yii::t('model', 'Menu Label En'),
+            'created' => Yii::t('model', 'Created'),
+            'modified' => Yii::t('model', 'Modified'),
+            'title_es' => Yii::t('model', 'Title Es'),
+            'title_fa' => Yii::t('model', 'Title Fa'),
+            'title_hi' => Yii::t('model', 'Title Hi'),
+            'title_pt' => Yii::t('model', 'Title Pt'),
+            'title_sv' => Yii::t('model', 'Title Sv'),
+            'title_cn' => Yii::t('model', 'Title Cn'),
+            'title_de' => Yii::t('model', 'Title De'),
+            'slug_es' => Yii::t('model', 'Slug Es'),
+            'slug_fa' => Yii::t('model', 'Slug Fa'),
+            'slug_hi' => Yii::t('model', 'Slug Hi'),
+            'slug_pt' => Yii::t('model', 'Slug Pt'),
+            'slug_sv' => Yii::t('model', 'Slug Sv'),
+            'slug_cn' => Yii::t('model', 'Slug Cn'),
+            'slug_de' => Yii::t('model', 'Slug De'),
+            'menu_label_es' => Yii::t('model', 'Menu Label Es'),
+            'menu_label_fa' => Yii::t('model', 'Menu Label Fa'),
+            'menu_label_hi' => Yii::t('model', 'Menu Label Hi'),
+            'menu_label_pt' => Yii::t('model', 'Menu Label Pt'),
+            'menu_label_sv' => Yii::t('model', 'Menu Label Sv'),
+            'menu_label_cn' => Yii::t('model', 'Menu Label Cn'),
+            'menu_label_de' => Yii::t('model', 'Menu Label De'),
         );
     }
 

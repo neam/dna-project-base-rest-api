@@ -55,7 +55,7 @@ abstract class BaseVizView extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -71,18 +71,18 @@ abstract class BaseVizView extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => Yii::t('crud', 'ID'),
-            'title_en' => Yii::t('crud', 'Title En'),
-            'embed_template' => Yii::t('crud', 'Embed Template'),
-            'created' => Yii::t('crud', 'Created'),
-            'modified' => Yii::t('crud', 'Modified'),
-            'title_es' => Yii::t('crud', 'Title Es'),
-            'title_fa' => Yii::t('crud', 'Title Fa'),
-            'title_hi' => Yii::t('crud', 'Title Hi'),
-            'title_pt' => Yii::t('crud', 'Title Pt'),
-            'title_sv' => Yii::t('crud', 'Title Sv'),
-            'title_cn' => Yii::t('crud', 'Title Cn'),
-            'title_de' => Yii::t('crud', 'Title De'),
+            'id' => Yii::t('model', 'ID'),
+            'title_en' => Yii::t('model', 'Title En'),
+            'embed_template' => Yii::t('model', 'Embed Template'),
+            'created' => Yii::t('model', 'Created'),
+            'modified' => Yii::t('model', 'Modified'),
+            'title_es' => Yii::t('model', 'Title Es'),
+            'title_fa' => Yii::t('model', 'Title Fa'),
+            'title_hi' => Yii::t('model', 'Title Hi'),
+            'title_pt' => Yii::t('model', 'Title Pt'),
+            'title_sv' => Yii::t('model', 'Title Sv'),
+            'title_cn' => Yii::t('model', 'Title Cn'),
+            'title_de' => Yii::t('model', 'Title De'),
         );
     }
 

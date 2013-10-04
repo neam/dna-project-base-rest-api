@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('DataSource', dirname(__FILE__));
-Yii::import('DataSource.*');
+Yii::setPathOfAlias('ExamQuestionAlternative', dirname(__FILE__));
+Yii::import('ExamQuestionAlternative.*');
 
-class DataSource extends BaseDataSource
+class ExamQuestionAlternative extends BaseExamQuestionAlternative
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.

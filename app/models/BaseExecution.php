@@ -15,6 +15,8 @@
  * @property string $execution_next_thread_id
  *
  * Relations of table "execution" available as properties of the model:
+ * @property Chapter[] $chapters
+ * @property Workflow $workflow
  * @property VideoFile[] $videoFiles
  * @property VideoFile[] $videoFiles1
  * @property VideoFile[] $videoFiles2
@@ -62,7 +64,7 @@ abstract class BaseExecution extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -71,9 +73,11 @@ abstract class BaseExecution extends ActiveRecord
     public function relations()
     {
         return array(
-            'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_de'),
-            'videoFiles1' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_en'),
-            'videoFiles2' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_cn'),
+            'chapters' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id'),
+            'workflow' => array(self::BELONGS_TO, 'Workflow', 'workflow_id'),
+            'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_en'),
+            'videoFiles1' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_cn'),
+            'videoFiles2' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_de'),
             'videoFiles3' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_es'),
             'videoFiles4' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_fa'),
             'videoFiles5' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_hi'),
@@ -86,15 +90,15 @@ abstract class BaseExecution extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'workflow_id' => Yii::t('crud', 'Workflow'),
-            'execution_id' => Yii::t('crud', 'Execution'),
-            'execution_parent' => Yii::t('crud', 'Execution Parent'),
-            'execution_started' => Yii::t('crud', 'Execution Started'),
-            'execution_suspended' => Yii::t('crud', 'Execution Suspended'),
-            'execution_variables' => Yii::t('crud', 'Execution Variables'),
-            'execution_waiting_for' => Yii::t('crud', 'Execution Waiting For'),
-            'execution_threads' => Yii::t('crud', 'Execution Threads'),
-            'execution_next_thread_id' => Yii::t('crud', 'Execution Next Thread'),
+            'workflow_id' => Yii::t('model', 'Workflow'),
+            'execution_id' => Yii::t('model', 'Execution'),
+            'execution_parent' => Yii::t('model', 'Execution Parent'),
+            'execution_started' => Yii::t('model', 'Execution Started'),
+            'execution_suspended' => Yii::t('model', 'Execution Suspended'),
+            'execution_variables' => Yii::t('model', 'Execution Variables'),
+            'execution_waiting_for' => Yii::t('model', 'Execution Waiting For'),
+            'execution_threads' => Yii::t('model', 'Execution Threads'),
+            'execution_next_thread_id' => Yii::t('model', 'Execution Next Thread'),
         );
     }
 
@@ -104,7 +108,7 @@ abstract class BaseExecution extends ActiveRecord
             $criteria = new CDbCriteria;
         }
 
-        $criteria->compare('t.workflow_id', $this->workflow_id, true);
+        $criteria->compare('t.workflow_id', $this->workflow_id);
         $criteria->compare('t.execution_id', $this->execution_id, true);
         $criteria->compare('t.execution_parent', $this->execution_parent, true);
         $criteria->compare('t.execution_started', $this->execution_started);

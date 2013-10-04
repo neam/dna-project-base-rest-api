@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('DataSource', dirname(__FILE__));
-Yii::import('DataSource.*');
+Yii::setPathOfAlias('VectorGraphic', dirname(__FILE__));
+Yii::import('VectorGraphic.*');
 
-class DataSource extends BaseDataSource
+class VectorGraphic extends BaseVectorGraphic
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.

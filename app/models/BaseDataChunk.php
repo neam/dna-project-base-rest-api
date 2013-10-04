@@ -6,8 +6,13 @@
  * Columns in table "data_chunk" available as properties of the model:
  * @property string $id
  * @property string $title_en
+ * @property string $slug
+ * @property string $about
+ * @property integer $file_media_id
+ * @property string $metadata
  * @property string $data_source_id
  * @property string $slideshow_file_id
+ * @property string $vector_graphic_id
  * @property string $created
  * @property string $modified
  * @property string $title_es
@@ -19,6 +24,8 @@
  * @property string $title_de
  *
  * Relations of table "data_chunk" available as properties of the model:
+ * @property VectorGraphic $vectorGraphic
+ * @property P3Media $fileMedia
  * @property DataSource $dataSource
  * @property SlideshowFile $slideshowFile
  * @property SectionContent[] $sectionContents
@@ -40,11 +47,12 @@ abstract class BaseDataChunk extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, data_source_id, slideshow_file_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
-                array('data_source_id, slideshow_file_id', 'length', 'max' => 20),
-                array('created, modified', 'safe'),
-                array('id, title_en, data_source_id, slideshow_file_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'safe', 'on' => 'search'),
+                array('title_en, slug, about, file_media_id, metadata, data_source_id, slideshow_file_id, vector_graphic_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('file_media_id', 'numerical', 'integerOnly' => true),
+                array('title_en, slug, about, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
+                array('data_source_id, slideshow_file_id, vector_graphic_id', 'length', 'max' => 20),
+                array('metadata, created, modified', 'safe'),
+                array('id, title_en, slug, about, file_media_id, metadata, data_source_id, slideshow_file_id, vector_graphic_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -59,7 +67,7 @@ abstract class BaseDataChunk extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -68,6 +76,8 @@ abstract class BaseDataChunk extends ActiveRecord
     public function relations()
     {
         return array(
+            'vectorGraphic' => array(self::BELONGS_TO, 'VectorGraphic', 'vector_graphic_id'),
+            'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
             'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
             'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
             'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'data_chunk_id'),
@@ -77,19 +87,24 @@ abstract class BaseDataChunk extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => Yii::t('crud', 'ID'),
-            'title_en' => Yii::t('crud', 'Title En'),
-            'data_source_id' => Yii::t('crud', 'Data Source'),
-            'slideshow_file_id' => Yii::t('crud', 'Slideshow File'),
-            'created' => Yii::t('crud', 'Created'),
-            'modified' => Yii::t('crud', 'Modified'),
-            'title_es' => Yii::t('crud', 'Title Es'),
-            'title_fa' => Yii::t('crud', 'Title Fa'),
-            'title_hi' => Yii::t('crud', 'Title Hi'),
-            'title_pt' => Yii::t('crud', 'Title Pt'),
-            'title_sv' => Yii::t('crud', 'Title Sv'),
-            'title_cn' => Yii::t('crud', 'Title Cn'),
-            'title_de' => Yii::t('crud', 'Title De'),
+            'id' => Yii::t('model', 'ID'),
+            'title_en' => Yii::t('model', 'Title En'),
+            'slug' => Yii::t('model', 'Slug'),
+            'about' => Yii::t('model', 'About'),
+            'file_media_id' => Yii::t('model', 'File Media'),
+            'metadata' => Yii::t('model', 'Metadata'),
+            'data_source_id' => Yii::t('model', 'Data Source'),
+            'slideshow_file_id' => Yii::t('model', 'Slideshow File'),
+            'vector_graphic_id' => Yii::t('model', 'Vector Graphic'),
+            'created' => Yii::t('model', 'Created'),
+            'modified' => Yii::t('model', 'Modified'),
+            'title_es' => Yii::t('model', 'Title Es'),
+            'title_fa' => Yii::t('model', 'Title Fa'),
+            'title_hi' => Yii::t('model', 'Title Hi'),
+            'title_pt' => Yii::t('model', 'Title Pt'),
+            'title_sv' => Yii::t('model', 'Title Sv'),
+            'title_cn' => Yii::t('model', 'Title Cn'),
+            'title_de' => Yii::t('model', 'Title De'),
         );
     }
 
@@ -101,8 +116,13 @@ abstract class BaseDataChunk extends ActiveRecord
 
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.title_en', $this->title_en, true);
+        $criteria->compare('t.slug', $this->slug, true);
+        $criteria->compare('t.about', $this->about, true);
+        $criteria->compare('t.file_media_id', $this->file_media_id);
+        $criteria->compare('t.metadata', $this->metadata, true);
         $criteria->compare('t.data_source_id', $this->data_source_id);
         $criteria->compare('t.slideshow_file_id', $this->slideshow_file_id);
+        $criteria->compare('t.vector_graphic_id', $this->vector_graphic_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.title_es', $this->title_es, true);

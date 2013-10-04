@@ -76,7 +76,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -101,28 +101,28 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => Yii::t('crud', 'ID'),
-            'title_en' => Yii::t('crud', 'Title En'),
-            'data_source_id' => Yii::t('crud', 'Data Source'),
-            'original_media_id' => Yii::t('crud', 'Original Media'),
-            'generate_processed_media' => Yii::t('crud', 'Generate Processed Media'),
-            'processed_media_id_en' => Yii::t('crud', 'Processed Media Id En'),
-            'created' => Yii::t('crud', 'Created'),
-            'modified' => Yii::t('crud', 'Modified'),
-            'title_es' => Yii::t('crud', 'Title Es'),
-            'title_fa' => Yii::t('crud', 'Title Fa'),
-            'title_hi' => Yii::t('crud', 'Title Hi'),
-            'title_pt' => Yii::t('crud', 'Title Pt'),
-            'title_sv' => Yii::t('crud', 'Title Sv'),
-            'title_cn' => Yii::t('crud', 'Title Cn'),
-            'title_de' => Yii::t('crud', 'Title De'),
-            'processed_media_id_es' => Yii::t('crud', 'Processed Media Id Es'),
-            'processed_media_id_fa' => Yii::t('crud', 'Processed Media Id Fa'),
-            'processed_media_id_hi' => Yii::t('crud', 'Processed Media Id Hi'),
-            'processed_media_id_pt' => Yii::t('crud', 'Processed Media Id Pt'),
-            'processed_media_id_sv' => Yii::t('crud', 'Processed Media Id Sv'),
-            'processed_media_id_cn' => Yii::t('crud', 'Processed Media Id Cn'),
-            'processed_media_id_de' => Yii::t('crud', 'Processed Media Id De'),
+            'id' => Yii::t('model', 'ID'),
+            'title_en' => Yii::t('model', 'Title En'),
+            'data_source_id' => Yii::t('model', 'Data Source'),
+            'original_media_id' => Yii::t('model', 'Original Media'),
+            'generate_processed_media' => Yii::t('model', 'Generate Processed Media'),
+            'processed_media_id_en' => Yii::t('model', 'Processed Media Id En'),
+            'created' => Yii::t('model', 'Created'),
+            'modified' => Yii::t('model', 'Modified'),
+            'title_es' => Yii::t('model', 'Title Es'),
+            'title_fa' => Yii::t('model', 'Title Fa'),
+            'title_hi' => Yii::t('model', 'Title Hi'),
+            'title_pt' => Yii::t('model', 'Title Pt'),
+            'title_sv' => Yii::t('model', 'Title Sv'),
+            'title_cn' => Yii::t('model', 'Title Cn'),
+            'title_de' => Yii::t('model', 'Title De'),
+            'processed_media_id_es' => Yii::t('model', 'Processed Media Id Es'),
+            'processed_media_id_fa' => Yii::t('model', 'Processed Media Id Fa'),
+            'processed_media_id_hi' => Yii::t('model', 'Processed Media Id Hi'),
+            'processed_media_id_pt' => Yii::t('model', 'Processed Media Id Pt'),
+            'processed_media_id_sv' => Yii::t('model', 'Processed Media Id Sv'),
+            'processed_media_id_cn' => Yii::t('model', 'Processed Media Id Cn'),
+            'processed_media_id_de' => Yii::t('model', 'Processed Media Id De'),
         );
     }
 

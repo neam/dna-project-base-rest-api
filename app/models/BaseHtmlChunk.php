@@ -53,7 +53,7 @@ abstract class BaseHtmlChunk extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -69,17 +69,17 @@ abstract class BaseHtmlChunk extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => Yii::t('crud', 'ID'),
-            'markup_en' => Yii::t('crud', 'Markup En'),
-            'created' => Yii::t('crud', 'Created'),
-            'modified' => Yii::t('crud', 'Modified'),
-            'markup_es' => Yii::t('crud', 'Markup Es'),
-            'markup_fa' => Yii::t('crud', 'Markup Fa'),
-            'markup_hi' => Yii::t('crud', 'Markup Hi'),
-            'markup_pt' => Yii::t('crud', 'Markup Pt'),
-            'markup_sv' => Yii::t('crud', 'Markup Sv'),
-            'markup_cn' => Yii::t('crud', 'Markup Cn'),
-            'markup_de' => Yii::t('crud', 'Markup De'),
+            'id' => Yii::t('model', 'ID'),
+            'markup_en' => Yii::t('model', 'Markup En'),
+            'created' => Yii::t('model', 'Created'),
+            'modified' => Yii::t('model', 'Modified'),
+            'markup_es' => Yii::t('model', 'Markup Es'),
+            'markup_fa' => Yii::t('model', 'Markup Fa'),
+            'markup_hi' => Yii::t('model', 'Markup Hi'),
+            'markup_pt' => Yii::t('model', 'Markup Pt'),
+            'markup_sv' => Yii::t('model', 'Markup Sv'),
+            'markup_cn' => Yii::t('model', 'Markup Cn'),
+            'markup_de' => Yii::t('model', 'Markup De'),
         );
     }
 

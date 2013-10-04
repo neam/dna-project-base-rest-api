@@ -7,6 +7,9 @@
  * @property string $id
  * @property string $title_en
  * @property string $slug_en
+ * @property integer $thumbnail_media_id
+ * @property string $about
+ * @property string $authoring_workflow_execution_id
  * @property string $created
  * @property string $modified
  * @property string $title_es
@@ -25,6 +28,8 @@
  * @property string $slug_de
  *
  * Relations of table "chapter" available as properties of the model:
+ * @property P3Media $thumbnailMedia
+ * @property Execution $authoringWorkflowExecution
  * @property Section[] $sections
  */
 abstract class BaseChapter extends ActiveRecord
@@ -44,10 +49,12 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, slug_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('title_en, slug_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
+                array('title_en, slug_en, thumbnail_media_id, about, authoring_workflow_execution_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('thumbnail_media_id', 'numerical', 'integerOnly' => true),
+                array('title_en, slug_en, about, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
+                array('authoring_workflow_execution_id', 'length', 'max' => 10),
                 array('created, modified', 'safe'),
-                array('id, title_en, slug_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'safe', 'on' => 'search'),
+                array('id, title_en, slug_en, thumbnail_media_id, about, authoring_workflow_execution_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -62,7 +69,7 @@ abstract class BaseChapter extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -71,6 +78,8 @@ abstract class BaseChapter extends ActiveRecord
     public function relations()
     {
         return array(
+            'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
+            'authoringWorkflowExecution' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id'),
             'sections' => array(self::HAS_MANY, 'Section', 'chapter_id'),
         );
     }
@@ -78,25 +87,28 @@ abstract class BaseChapter extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => Yii::t('crud', 'ID'),
-            'title_en' => Yii::t('crud', 'Title En'),
-            'slug_en' => Yii::t('crud', 'Slug En'),
-            'created' => Yii::t('crud', 'Created'),
-            'modified' => Yii::t('crud', 'Modified'),
-            'title_es' => Yii::t('crud', 'Title Es'),
-            'title_fa' => Yii::t('crud', 'Title Fa'),
-            'title_hi' => Yii::t('crud', 'Title Hi'),
-            'title_pt' => Yii::t('crud', 'Title Pt'),
-            'title_sv' => Yii::t('crud', 'Title Sv'),
-            'title_cn' => Yii::t('crud', 'Title Cn'),
-            'title_de' => Yii::t('crud', 'Title De'),
-            'slug_es' => Yii::t('crud', 'Slug Es'),
-            'slug_fa' => Yii::t('crud', 'Slug Fa'),
-            'slug_hi' => Yii::t('crud', 'Slug Hi'),
-            'slug_pt' => Yii::t('crud', 'Slug Pt'),
-            'slug_sv' => Yii::t('crud', 'Slug Sv'),
-            'slug_cn' => Yii::t('crud', 'Slug Cn'),
-            'slug_de' => Yii::t('crud', 'Slug De'),
+            'id' => Yii::t('model', 'ID'),
+            'title_en' => Yii::t('model', 'Title En'),
+            'slug_en' => Yii::t('model', 'Slug En'),
+            'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
+            'about' => Yii::t('model', 'About'),
+            'authoring_workflow_execution_id' => Yii::t('model', 'Authoring Workflow Execution'),
+            'created' => Yii::t('model', 'Created'),
+            'modified' => Yii::t('model', 'Modified'),
+            'title_es' => Yii::t('model', 'Title Es'),
+            'title_fa' => Yii::t('model', 'Title Fa'),
+            'title_hi' => Yii::t('model', 'Title Hi'),
+            'title_pt' => Yii::t('model', 'Title Pt'),
+            'title_sv' => Yii::t('model', 'Title Sv'),
+            'title_cn' => Yii::t('model', 'Title Cn'),
+            'title_de' => Yii::t('model', 'Title De'),
+            'slug_es' => Yii::t('model', 'Slug Es'),
+            'slug_fa' => Yii::t('model', 'Slug Fa'),
+            'slug_hi' => Yii::t('model', 'Slug Hi'),
+            'slug_pt' => Yii::t('model', 'Slug Pt'),
+            'slug_sv' => Yii::t('model', 'Slug Sv'),
+            'slug_cn' => Yii::t('model', 'Slug Cn'),
+            'slug_de' => Yii::t('model', 'Slug De'),
         );
     }
 
@@ -109,6 +121,9 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.title_en', $this->title_en, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
+        $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
+        $criteria->compare('t.about', $this->about, true);
+        $criteria->compare('t.authoring_workflow_execution_id', $this->authoring_workflow_execution_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.title_es', $this->title_es, true);

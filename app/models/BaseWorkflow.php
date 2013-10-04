@@ -9,7 +9,8 @@
  * @property string $workflow_version
  * @property integer $workflow_created
  *
- * There are no model relations.
+ * Relations of table "workflow" available as properties of the model:
+ * @property Execution[] $executions
  */
 abstract class BaseWorkflow extends ActiveRecord
 {
@@ -48,7 +49,7 @@ abstract class BaseWorkflow extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -57,16 +58,17 @@ abstract class BaseWorkflow extends ActiveRecord
     public function relations()
     {
         return array(
+            'executions' => array(self::HAS_MANY, 'Execution', 'workflow_id'),
         );
     }
 
     public function attributeLabels()
     {
         return array(
-            'workflow_id' => Yii::t('crud', 'Workflow'),
-            'workflow_name' => Yii::t('crud', 'Workflow Name'),
-            'workflow_version' => Yii::t('crud', 'Workflow Version'),
-            'workflow_created' => Yii::t('crud', 'Workflow Created'),
+            'workflow_id' => Yii::t('model', 'Workflow'),
+            'workflow_name' => Yii::t('model', 'Workflow Name'),
+            'workflow_version' => Yii::t('model', 'Workflow Version'),
+            'workflow_created' => Yii::t('model', 'Workflow Created'),
         );
     }
 

@@ -17,8 +17,10 @@
  * @property string $presentation_id
  * @property string $data_chunk_id
  * @property string $download_link_id
+ * @property string $exam_question_id
  *
  * Relations of table "section_content" available as properties of the model:
+ * @property ExamQuestion $examQuestion
  * @property DataChunk $dataChunk
  * @property DownloadLink $downloadLink
  * @property Exercise $exercise
@@ -47,11 +49,11 @@ abstract class BaseSectionContent extends ActiveRecord
         return array_merge(
             parent::rules(), array(
                 array('section_id', 'required'),
-                array('ordinal, created, modified, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('ordinal, created, modified, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id, exam_question_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('ordinal', 'numerical', 'integerOnly' => true),
-                array('section_id, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id', 'length', 'max' => 20),
+                array('section_id, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id, exam_question_id', 'length', 'max' => 20),
                 array('created, modified', 'safe'),
-                array('id, section_id, ordinal, created, modified, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id', 'safe', 'on' => 'search'),
+                array('id, section_id, ordinal, created, modified, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, presentation_id, data_chunk_id, download_link_id, exam_question_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -66,7 +68,7 @@ abstract class BaseSectionContent extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -75,6 +77,7 @@ abstract class BaseSectionContent extends ActiveRecord
     public function relations()
     {
         return array(
+            'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
             'dataChunk' => array(self::BELONGS_TO, 'DataChunk', 'data_chunk_id'),
             'downloadLink' => array(self::BELONGS_TO, 'DownloadLink', 'download_link_id'),
             'exercise' => array(self::BELONGS_TO, 'Exercise', 'exercise_id'),
@@ -90,19 +93,20 @@ abstract class BaseSectionContent extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => Yii::t('crud', 'ID'),
-            'section_id' => Yii::t('crud', 'Section'),
-            'ordinal' => Yii::t('crud', 'Ordinal'),
-            'created' => Yii::t('crud', 'Created'),
-            'modified' => Yii::t('crud', 'Modified'),
-            'html_chunk_id' => Yii::t('crud', 'Html Chunk'),
-            'viz_view_id' => Yii::t('crud', 'Viz View'),
-            'video_file_id' => Yii::t('crud', 'Video File'),
-            'teachers_guide_id' => Yii::t('crud', 'Teachers Guide'),
-            'exercise_id' => Yii::t('crud', 'Exercise'),
-            'presentation_id' => Yii::t('crud', 'Presentation'),
-            'data_chunk_id' => Yii::t('crud', 'Data Chunk'),
-            'download_link_id' => Yii::t('crud', 'Download Link'),
+            'id' => Yii::t('model', 'ID'),
+            'section_id' => Yii::t('model', 'Section'),
+            'ordinal' => Yii::t('model', 'Ordinal'),
+            'created' => Yii::t('model', 'Created'),
+            'modified' => Yii::t('model', 'Modified'),
+            'html_chunk_id' => Yii::t('model', 'Html Chunk'),
+            'viz_view_id' => Yii::t('model', 'Viz View'),
+            'video_file_id' => Yii::t('model', 'Video File'),
+            'teachers_guide_id' => Yii::t('model', 'Teachers Guide'),
+            'exercise_id' => Yii::t('model', 'Exercise'),
+            'presentation_id' => Yii::t('model', 'Presentation'),
+            'data_chunk_id' => Yii::t('model', 'Data Chunk'),
+            'download_link_id' => Yii::t('model', 'Download Link'),
+            'exam_question_id' => Yii::t('model', 'Exam Question'),
         );
     }
 
@@ -125,6 +129,7 @@ abstract class BaseSectionContent extends ActiveRecord
         $criteria->compare('t.presentation_id', $this->presentation_id);
         $criteria->compare('t.data_chunk_id', $this->data_chunk_id);
         $criteria->compare('t.download_link_id', $this->download_link_id);
+        $criteria->compare('t.exam_question_id', $this->exam_question_id);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,
