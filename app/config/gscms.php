@@ -42,6 +42,7 @@ $gscmsConfig = array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
         'application.workflows.custom.*',
         'application.workflows.*',
+        'application.controllers.traits.*',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool

@@ -2,6 +2,10 @@
 
 class ChapterController extends Controller
 {
+
+    use ItemController;
+    public $modelClass = "Chapter";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,7 +20,7 @@ class ChapterController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge(parent::accessRules(), array(
             array('allow',
                 'actions' => array(
                     'view',
@@ -39,7 +43,7 @@ class ChapterController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)
