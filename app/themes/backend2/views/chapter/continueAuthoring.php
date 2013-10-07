@@ -222,6 +222,7 @@ $waitingFor = $execution->getWaitingFor();
             </div>
         </div>
 
+        <?php $this->renderPartial('_form', array('model' => $model, 'buttons' => 'create')); ?>
 
         <form>
 
