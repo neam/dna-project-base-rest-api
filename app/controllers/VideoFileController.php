@@ -2,6 +2,9 @@
 
 class VideoFileController extends Controller
 {
+
+    use ItemController;
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,7 +19,7 @@ class VideoFileController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array('allow',
                 'actions' => array(
                     'subtitles',
@@ -46,7 +49,7 @@ class VideoFileController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)

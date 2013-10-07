@@ -34,7 +34,7 @@ class EzcComponent extends CApplicationComponent
     public function buildWorkflow($name, $inMemory = false)
     {
 
-        $class = $name . "Workflow";
+        $class = $name;
 
         if (!class_exists($class)) {
             throw new CException("Class $class does not exist");

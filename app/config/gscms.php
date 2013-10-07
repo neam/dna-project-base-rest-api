@@ -40,6 +40,7 @@ $gscmsConfig = array(
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
+        'application.behaviors.EzcWorkflowBehavior',
         'application.workflows.custom.*',
         'application.workflows.*',
         'application.controllers.traits.*',

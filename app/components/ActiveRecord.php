@@ -16,6 +16,19 @@ class ActiveRecord extends CActiveRecord
             );
         }
 
+        // List of models with workflows attached
+        $workflowsMap = array(
+            'Chapter' => array(),
+            'VideoFile' => array(),
+        );
+
+        if (isset($workflowsMap[get_class($this)])) {
+            $behaviors['ezc-workflow'] = array(
+                'class' => 'EzcWorkflowBehavior',
+                'workflowName' => get_class($this) . 'AuthoringWorkflow',
+            );
+        }
+
         // List of model attributes to translate
         $translateMap = array(
             'Chapter' => array('slug', 'title'),
