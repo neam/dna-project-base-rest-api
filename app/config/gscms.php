@@ -98,6 +98,10 @@ $gscmsConfig = array(
                 'sv_se' => 'sv',
             )
         ),
+        'authManager' => array(
+            'class' => 'CPhpAuthManager',
+            'authFile' => Yii::getPathOfAlias('backend') . '/app/data/auth-gcms.php',
+        ),
         'ezc' => array(
             'class' => 'application.components.EzcComponent',
         ),
