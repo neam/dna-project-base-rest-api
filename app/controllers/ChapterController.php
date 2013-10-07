@@ -4,6 +4,7 @@ class ChapterController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "Chapter";
 
     #public $layout='//layouts/column2';
@@ -20,7 +21,7 @@ class ChapterController extends Controller
 
     public function accessRules()
     {
-        return array_merge(parent::accessRules(), array(
+        return array_merge($this->itemAccessRules(), array(
             array('allow',
                 'actions' => array(
                     'view',

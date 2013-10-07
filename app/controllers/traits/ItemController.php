@@ -3,7 +3,7 @@
 trait ItemController
 {
 
-    public function accessRules()
+    public function itemAccessRules()
     {
         return array(
             array('allow',
@@ -16,7 +16,9 @@ trait ItemController
                 'actions' => array(
                     'add',
                 ),
-                'roles' => array('Creator.*'),
+                'roles' => array(
+                    'GS.item.add'
+                ),
             ),
         );
     }
@@ -41,7 +43,7 @@ trait ItemController
 
         Yii::app()->user->setFlash('success', "{$this->modelClass} Added");
 
-        $this->redirect(array('author', 'id' => $item->id));
+        $this->redirect(array('continueAuthoring', 'id' => $item->id));
     }
 
 }
