@@ -113,6 +113,7 @@ $this->widget(
                     'url' => array('/user/admin/admin'),
                     'visible' => Yii::app()->user->checkAccess('Admin')
                 ),
+                /*
                 array('label' => Yii::t('app', 'Rights')),
                 array(
                     'label' => Yii::t('app', 'Assignments'),
@@ -132,6 +133,7 @@ $this->widget(
                     'url' => array('/rights/authItem/roles'),
                     'visible' => Yii::app()->user->checkAccess('Admin')
                 ),
+                */
                 '---',
                 array('label' => Yii::t('app', 'Developer')),
                 array(
