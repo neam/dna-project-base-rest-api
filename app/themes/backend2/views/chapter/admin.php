@@ -261,6 +261,19 @@ $this->widget('TbGridView',
 
             array(
                 'class' => 'TbButtonColumn',
+                'header' => 'Workflows',
+                'buttons' => array(
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Item.Preview")', 'options' => array('title' => Yii::t('app', 'Preview'))),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Item.Edit")', 'options' => array('title' => Yii::t('app', 'Edit'))),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Item.Remove")', 'options' => array('title' => Yii::t('app', 'Remove'))),
+                ),
+                'viewButtonUrl' => 'Yii::app()->controller->createUrl("preview", array("id" => $data->id))',
+                'updateButtonUrl' => 'Yii::app()->controller->createUrl("continueAuthoring", array("id" => $data->id))',
+                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("remove", array("id" => $data->id))',
+            ),
+            array(
+                'class' => 'TbButtonColumn',
+                'header' => 'Direct',
                 'buttons' => array(
                     'view' => array('visible' => 'Yii::app()->user->checkAccess("Chapter.View")'),
                     'update' => array('visible' => 'Yii::app()->user->checkAccess("Chapter.Update")'),

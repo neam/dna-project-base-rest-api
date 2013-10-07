@@ -37,13 +37,13 @@ EOD;
         $developerRole = $auth->createRole('Developer');
         $developerRole->addChild('Super Administrator');
 
-        foreach (array('GapminderSchool', 'DollarStreet', 'IgnoranceProject', 'HumanNumbers') as $project) {
+        foreach (array('GapminderSchool', 'DollarStreet', 'IgnoranceProject', 'HumanNumbers', '') as $project) {
 
-            $prefix = $project . '.';
+            $prefix = !empty($project) ? $project . '.' : $project;
 
             // Atomic actions are called operations
             $auth->createOperation($prefix . 'Item.Add', 'Adds a temporary empty item to the database');
-            $auth->createOperation($prefix . 'Item.New', 'Completes a temporary item by stepping through fields required for DRAFT  ');
+            $auth->createOperation($prefix . 'Item.Draft', 'Completes a temporary item by stepping through fields required for DRAFT  ');
             $auth->createOperation($prefix . 'Item.PrepPreshow', 'Prepare item for preshow, by stepping through fields required for PREVIEW');
             $auth->createOperation($prefix . 'Item.Preshow', 'Put item in preshow mode, by switching itemVersion.status to PREVIEW');
             $auth->createOperation($prefix . 'Item.Evaluate', 'Evaluating an item in Preview-mode by grading and commenting on it\'s fields or the total itemVersion.');
@@ -87,7 +87,7 @@ EOD;
             // Roles has the right to perform one or many tasks and operations
             $role = $auth->createRole($prefix . 'Creator');
             $role->addChild($prefix . 'Item.Add');
-            $role->addChild($prefix . 'Item.New');
+            $role->addChild($prefix . 'Item.Draft');
             $role->addChild($prefix . 'Item.PrepPreshow');
             $role->addChild($prefix . 'Item.Preshow');
             $role->addChild($prefix . 'Item.PrepPublish');

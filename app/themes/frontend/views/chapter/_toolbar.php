@@ -9,9 +9,9 @@
                     "url" => array("chapter/admin")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Create"),
+                    "label" => Yii::t("crud", "Add"),
                     "icon" => "icon-plus",
-                    "url" => array("chapter/create")
+                    "url" => array("chapter/add")
                 ));
                 break;
             case "view":
@@ -19,6 +19,11 @@
                     "label" => Yii::t("crud", "Manage"),
                     "icon" => "icon-list-alt",
                     "url" => array("admin")
+                ));
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("model", "Edit"),
+                    "icon" => "icon-edit",
+                    "url" => array("continueAuthoring", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Update"),
