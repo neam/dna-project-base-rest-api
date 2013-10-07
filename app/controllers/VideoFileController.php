@@ -40,7 +40,7 @@ class VideoFileController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('B61b08a5.VideoFile.*'),
+                'roles' => array('92f9838d.VideoFile.*'),
             ),
             array(
                 'deny',
@@ -281,7 +281,7 @@ class VideoFileController extends Controller
                 }
             }
         } else {
-            throw new CHttpException(400, Yii::t('crud', 'Invalid request. Please do not repeat this request again.'));
+            throw new CHttpException(400, Yii::t('model', 'Invalid request. Please do not repeat this request again.'));
         }
     }
 
@@ -307,7 +307,7 @@ class VideoFileController extends Controller
     {
         $model = VideoFile::model()->findByPk($id);
         if ($model === null) {
-            throw new CHttpException(404, Yii::t('crud', 'The requested page does not exist.'));
+            throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
         return $model;
     }

@@ -3,7 +3,6 @@
 
         <div class="form-horizontal">
 
-
             <?php
             $input = $this->widget(
                 '\GtcRelation',
@@ -14,7 +13,8 @@
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
                     'htmlOptions' => array(
-                        'checkAll' => 'all'),
+                        'checkAll' => 'all'
+                    ),
                 )
                 , true);
             echo $form->customRow($model, 'chapter_id', $input);
@@ -28,15 +28,14 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Chapter'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Chapter'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',
                         ),
                     ), true);
-                    ?>
-                </div>
+                    ?>                </div>
             </div>
 
             <?php
@@ -50,7 +49,6 @@
             ));
             $this->endClip();
             ?>
-
 
             <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
@@ -101,7 +99,6 @@
             <?php echo $form->textFieldRow($model, 'menu_label_cn', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'menu_label_de', array('maxlength' => 255)); ?>
-
         </div>
     </div>
     <!-- main inputs -->
@@ -109,45 +106,44 @@
     <div class="span4"> <!-- sub inputs -->
 
         <h3>
-            <?php echo Yii::t('crud', 'htmlChunks'); ?>
+            <?php echo Yii::t('model', 'htmlChunks'); ?>
         </h3>
         <?php ?>
 
         <h3>
-            <?php echo Yii::t('crud', 'vizViews'); ?>
+            <?php echo Yii::t('model', 'vizViews'); ?>
         </h3>
         <?php ?>
 
         <h3>
-            <?php echo Yii::t('crud', 'videoFiles'); ?>
+            <?php echo Yii::t('model', 'videoFiles'); ?>
         </h3>
         <?php ?>
 
         <h3>
-            <?php echo Yii::t('crud', 'teachersGuides'); ?>
+            <?php echo Yii::t('model', 'teachersGuides'); ?>
         </h3>
         <?php ?>
 
         <h3>
-            <?php echo Yii::t('crud', 'exercises'); ?>
+            <?php echo Yii::t('model', 'exercises'); ?>
         </h3>
         <?php ?>
 
         <h3>
-            <?php echo Yii::t('crud', 'presentations'); ?>
+            <?php echo Yii::t('model', 'presentations'); ?>
         </h3>
         <?php ?>
 
         <h3>
-            <?php echo Yii::t('crud', 'dataChunks'); ?>
+            <?php echo Yii::t('model', 'dataChunks'); ?>
         </h3>
         <?php ?>
 
         <h3>
-            <?php echo Yii::t('crud', 'downloadLinks'); ?>
+            <?php echo Yii::t('model', 'downloadLinks'); ?>
         </h3>
         <?php ?>
-
 
     </div>
     <!-- sub inputs -->

@@ -3,7 +3,6 @@
 
         <div class="form-horizontal">
 
-
             <?php echo $form->html5EditorRow($model, 'markup_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
                 'link' => true,
                 'image' => false,
@@ -59,13 +58,11 @@
                 'color' => false,
                 'html' => true,
             ))); ?>
-
         </div>
     </div>
     <!-- main inputs -->
 
     <div class="span4"> <!-- sub inputs -->
-
 
     </div>
     <!-- sub inputs -->

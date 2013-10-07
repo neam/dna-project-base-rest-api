@@ -29,7 +29,7 @@ class PresentationController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('Presentation.*'),
+                'roles' => array('92f9838d.Presentation.*'),
             ),
             array(
                 'deny',
@@ -167,7 +167,7 @@ class PresentationController extends Controller
                 }
             }
         } else {
-            throw new CHttpException(400, Yii::t('crud', 'Invalid request. Please do not repeat this request again.'));
+            throw new CHttpException(400, Yii::t('model', 'Invalid request. Please do not repeat this request again.'));
         }
     }
 
@@ -193,7 +193,7 @@ class PresentationController extends Controller
     {
         $model = Presentation::model()->findByPk($id);
         if ($model === null) {
-            throw new CHttpException(404, Yii::t('crud', 'The requested page does not exist.'));
+            throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
         return $model;
     }
@@ -243,6 +243,5 @@ class PresentationController extends Controller
 
         return $related;
     }
-
 
 }

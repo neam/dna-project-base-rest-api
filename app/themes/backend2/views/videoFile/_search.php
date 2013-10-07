@@ -16,8 +16,18 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'subtitles_en'); ?>
-        <?php echo $form->textArea($model, 'subtitles_en', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->label($model, 'slug'); ?>
+        <?php echo $form->textField($model, 'slug', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'about'); ?>
+        <?php echo $form->textField($model, 'about', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'thumbnail_media_id'); ?>
+        <?php echo $form->textField($model, 'thumbnail_media_id'); ?>
     </div>
 
     <div class="row">
@@ -33,6 +43,11 @@
     <div class="row">
         <?php echo $form->label($model, 'processed_media_id_en'); ?>
         <?php echo $form->textField($model, 'processed_media_id_en'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'subtitles_en'); ?>
+        <?php echo $form->textArea($model, 'subtitles_en', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row">

@@ -1,11 +1,11 @@
 <?php
 $this->setPageTitle(
-    Yii::t('crud', 'Workflows')
+    Yii::t('model', 'Workflows')
     . ' - '
     . Yii::t('crud', 'Manage')
 );
 
-$this->breadcrumbs[] = Yii::t('crud', 'Workflows');
+$this->breadcrumbs[] = Yii::t('model', 'Workflows');
 Yii::app()->clientScript->registerScript('search', "
     $('.search-button').click(function(){
         $('.search-form').toggle();
@@ -24,7 +24,7 @@ Yii::app()->clientScript->registerScript('search', "
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
     <h1>
 
-        <?php echo Yii::t('crud', 'Workflows'); ?>
+        <?php echo Yii::t('model', 'Workflows'); ?>
         <small><?php echo Yii::t('crud', 'Manage'); ?></small>
 
     </h1>
@@ -52,7 +52,7 @@ $this->widget('TbGridView',
                 'urlExpression' => 'Yii::app()->controller->createUrl("view", array("workflow_id" => $data["workflow_id"]))'
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'workflow_id',
                 'editable' => array(
                     'url' => $this->createUrl('/workflow/editableSaver'),
@@ -60,7 +60,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'workflow_name',
                 'editable' => array(
                     'url' => $this->createUrl('/workflow/editableSaver'),
@@ -68,7 +68,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'workflow_version',
                 'editable' => array(
                     'url' => $this->createUrl('/workflow/editableSaver'),
@@ -76,7 +76,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'workflow_created',
                 'editable' => array(
                     'url' => $this->createUrl('/workflow/editableSaver'),
@@ -87,9 +87,9 @@ $this->widget('TbGridView',
             array(
                 'class' => 'TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Workflow.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Workflow.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Workflow.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("92f9838d.Workflow.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("92f9838d.Workflow.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("92f9838d.Workflow.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("workflow_id" => $data->workflow_id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("workflow_id" => $data->workflow_id))',

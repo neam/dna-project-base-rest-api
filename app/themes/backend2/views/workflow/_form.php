@@ -1,6 +1,6 @@
 <div class="">
     <p class="alert">
-        <?php echo Yii::t('crud', 'Fields with <span class="required">*</span> are required.'); ?>
+        <?php echo Yii::t('model', 'Fields with <span class="required">*</span> are required.'); ?>
     </p>
     <?php
 
@@ -20,13 +20,13 @@
     ?>
     <div class="form-actions">
         <?php
-        echo CHtml::Button(Yii::t('crud', 'Cancel'), array(
+        echo CHtml::Button(Yii::t('model', 'Cancel'), array(
                 'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('workflow/admin'),
                 'class' => 'btn'
             )
         );
         echo ' ';
-        echo CHtml::submitButton(Yii::t('crud', 'Save'), array(
+        echo CHtml::submitButton(Yii::t('model', 'Save'), array(
                 'class' => 'btn btn-primary'
             )
         );

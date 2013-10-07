@@ -3,8 +3,11 @@
 
         <div class="form-horizontal">
 
-
             <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'slug', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'about', array('maxlength' => 255)); ?>
 
             <?php
             $input = $this->widget(
@@ -16,7 +19,8 @@
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
                     'htmlOptions' => array(
-                        'checkAll' => 'all'),
+                        'checkAll' => 'all'
+                    ),
                 )
                 , true);
             echo $form->customRow($model, 'slideshow_file_id', $input);
@@ -30,15 +34,14 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Slideshow File'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Slideshow File'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',
                         ),
                     ), true);
-                    ?>
-                </div>
+                    ?>                </div>
             </div>
 
             <?php
@@ -53,7 +56,6 @@
             $this->endClip();
             ?>
 
-
             <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'title_fa', array('maxlength' => 255)); ?>
@@ -67,13 +69,11 @@
             <?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
-
         </div>
     </div>
     <!-- main inputs -->
 
     <div class="span4"> <!-- sub inputs -->
-
 
     </div>
     <!-- sub inputs -->

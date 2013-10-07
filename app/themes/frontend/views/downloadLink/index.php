@@ -1,7 +1,9 @@
 <?php
-$this->breadcrumbs['Download Links'] = array('index');
-$this->breadcrumbs[] = Yii::t('app', 'Index');
-
+$this->breadcrumbs[Yii::t('model', 'Download Links')] = array('index');
+$this->breadcrumbs[] = Yii::t('model', 'Create');
+?>
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php
 if (!isset($this->menu) || $this->menu === array()) {
     $this->menu = array(
         array('label' => Yii::t('app', 'Create'), 'url' => array('create')),
@@ -9,10 +11,11 @@ if (!isset($this->menu) || $this->menu === array()) {
     );
 }
 ?>
+    <h1><?php echo Yii::t('model', 'Download Links'); ?></h1>
 
-<h1>Download Links</h1>
-
-<?php $this->widget('zii.widgets.CListView', array(
+<?php
+$this->widget('zii.widgets.CListView', array(
     'dataProvider' => $dataProvider,
     'itemView' => '_view',
-)); ?>
+));
+?>

@@ -1,13 +1,13 @@
 <?php
-$this->breadcrumbs[Yii::t('crud', 'Workflows')] = array('admin');
+$this->breadcrumbs[Yii::t('model', 'Workflows')] = array('admin');
 $this->breadcrumbs[] = $model->workflow_id;
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
-    <?php echo Yii::t('crud', 'Workflow'); ?>
+    <?php echo Yii::t('model', 'Workflow'); ?>
     <small>
-        <?php echo Yii::t('crud', 'View') ?> #<?php echo $model->workflow_id ?>
+        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->workflow_id ?>
     </small>
 
 </h1>
@@ -114,7 +114,7 @@ $this->breadcrumbs[] = $model->workflow_id;
 <div class="row">
     <div class="span7">
         <h2>
-            <?php echo Yii::t('crud', 'Data') ?>
+            <?php echo Yii::t('model', 'Data') ?>
             <small>
                 <?php echo $model->itemLabel ?>            </small>
         </h2>
@@ -129,7 +129,7 @@ $this->breadcrumbs[] = $model->workflow_id;
                         'name' => 'workflow_id',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'workflow_id',
@@ -142,7 +142,7 @@ $this->breadcrumbs[] = $model->workflow_id;
                         'name' => 'workflow_name',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'workflow_name',
@@ -155,7 +155,7 @@ $this->breadcrumbs[] = $model->workflow_id;
                         'name' => 'workflow_version',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'workflow_version',
@@ -168,7 +168,7 @@ $this->breadcrumbs[] = $model->workflow_id;
                         'name' => 'workflow_created',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'workflow_created',

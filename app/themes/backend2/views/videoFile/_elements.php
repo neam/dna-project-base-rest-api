@@ -5,7 +5,56 @@
 
             <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textAreaRow($model, 'subtitles_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+            <?php echo $form->textFieldRow($model, 'slug', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'about', array('maxlength' => 255)); ?>
+
+            <?php
+            $input = $this->widget(
+                '\GtcRelation',
+                array(
+                    'model' => $model,
+                    'relation' => 'thumbnailMedia',
+                    'fields' => 'itemLabel',
+                    'allowEmpty' => true,
+                    'style' => 'dropdownlist',
+                    'htmlOptions' => array(
+                        'checkAll' => 'all'
+                    ),
+                )
+                , true);
+            echo $form->customRow($model, 'thumbnail_media_id', $input);
+            ?>
+
+            <?php
+            $formId = 'video-file-thumbnail_media_id-' . \uniqid() . '-form';
+            ?>
+
+            <div class="control-group">
+                <div class="controls">
+                    <?php
+                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
+                        'icon' => 'icon-plus',
+                        'htmlOptions' => array(
+                            'data-toggle' => 'modal',
+                            'data-target' => '#' . $formId . '-modal',
+                        ),
+                    ), true);
+                    ?>                </div>
+            </div>
+
+            <?php
+            $this->beginClip('modal:' . $formId . '-modal');
+            $this->renderPartial('//p3Media/_modal_form', array(
+                'formId' => $formId,
+                'inputSelector' => '#VideoFile_thumbnail_media_id',
+                'model' => new P3Media,
+                'pk' => 'id',
+                'field' => 'itemLabel',
+            ));
+            $this->endClip();
+            ?>
 
             <?php
             $input = $this->widget(
@@ -32,7 +81,7 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'P3 Media'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -81,7 +130,7 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'P3 Media'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -103,6 +152,8 @@
             $this->endClip();
             ?>
 
+            <?php echo $form->textAreaRow($model, 'subtitles_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
             <?php
             $input = $this->widget(
                 '\GtcRelation',
@@ -121,38 +172,6 @@
             ?>
 
             <?php
-            $formId = 'video-file-authoring_workflow_execution_id-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Execution'))),
-                        'icon' => 'icon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            if (false) {
-                $this->renderPartial('//execution/_modal_form', array(
-                    'formId' => $formId,
-                    'inputSelector' => '#VideoFile_authoring_workflow_execution_id',
-                    'model' => new Execution,
-                    'pk' => 'execution_id',
-                    'field' => 'itemLabel',
-                ));
-            }
-            $this->endClip();
-            ?>
-
-            <?php
             $input = $this->widget(
                 '\GtcRelation',
                 array(
@@ -167,38 +186,6 @@
                 )
                 , true);
             echo $form->customRow($model, 'translation_workflow_execution_id_en', $input);
-            ?>
-
-            <?php
-            $formId = 'video-file-translation_workflow_execution_id_en-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Execution'))),
-                        'icon' => 'icon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            if (false) {
-                $this->renderPartial('//execution/_modal_form', array(
-                    'formId' => $formId,
-                    'inputSelector' => '#VideoFile_translation_workflow_execution_id_en',
-                    'model' => new Execution,
-                    'pk' => 'execution_id',
-                    'field' => 'itemLabel',
-                ));
-            }
-            $this->endClip();
             ?>
 
             <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
@@ -254,7 +241,7 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'P3 Media'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -301,7 +288,7 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'P3 Media'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -348,7 +335,7 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'P3 Media'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -395,7 +382,7 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'P3 Media'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -442,7 +429,7 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'P3 Media'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -489,7 +476,7 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'P3 Media'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -536,7 +523,7 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'P3 Media'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -576,38 +563,6 @@
             ?>
 
             <?php
-            $formId = 'video-file-translation_workflow_execution_id_es-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Execution'))),
-                        'icon' => 'icon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            if (false) {
-                $this->renderPartial('//execution/_modal_form', array(
-                    'formId' => $formId,
-                    'inputSelector' => '#VideoFile_translation_workflow_execution_id_es',
-                    'model' => new Execution,
-                    'pk' => 'execution_id',
-                    'field' => 'itemLabel',
-                ));
-            }
-            $this->endClip();
-            ?>
-
-            <?php
             $input = $this->widget(
                 '\GtcRelation',
                 array(
@@ -622,38 +577,6 @@
                 )
                 , true);
             echo $form->customRow($model, 'translation_workflow_execution_id_fa', $input);
-            ?>
-
-            <?php
-            $formId = 'video-file-translation_workflow_execution_id_fa-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Execution'))),
-                        'icon' => 'icon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            if (false) {
-                $this->renderPartial('//execution/_modal_form', array(
-                    'formId' => $formId,
-                    'inputSelector' => '#VideoFile_translation_workflow_execution_id_fa',
-                    'model' => new Execution,
-                    'pk' => 'execution_id',
-                    'field' => 'itemLabel',
-                ));
-            }
-            $this->endClip();
             ?>
 
             <?php
@@ -674,38 +597,6 @@
             ?>
 
             <?php
-            $formId = 'video-file-translation_workflow_execution_id_hi-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Execution'))),
-                        'icon' => 'icon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            if (false) {
-                $this->renderPartial('//execution/_modal_form', array(
-                    'formId' => $formId,
-                    'inputSelector' => '#VideoFile_translation_workflow_execution_id_hi',
-                    'model' => new Execution,
-                    'pk' => 'execution_id',
-                    'field' => 'itemLabel',
-                ));
-            }
-            $this->endClip();
-            ?>
-
-            <?php
             $input = $this->widget(
                 '\GtcRelation',
                 array(
@@ -720,38 +611,6 @@
                 )
                 , true);
             echo $form->customRow($model, 'translation_workflow_execution_id_pt', $input);
-            ?>
-
-            <?php
-            $formId = 'video-file-translation_workflow_execution_id_pt-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Execution'))),
-                        'icon' => 'icon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            if (false) {
-                $this->renderPartial('//execution/_modal_form', array(
-                    'formId' => $formId,
-                    'inputSelector' => '#VideoFile_translation_workflow_execution_id_pt',
-                    'model' => new Execution,
-                    'pk' => 'execution_id',
-                    'field' => 'itemLabel',
-                ));
-            }
-            $this->endClip();
             ?>
 
             <?php
@@ -772,38 +631,6 @@
             ?>
 
             <?php
-            $formId = 'video-file-translation_workflow_execution_id_sv-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Execution'))),
-                        'icon' => 'icon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            if (false) {
-                $this->renderPartial('//execution/_modal_form', array(
-                    'formId' => $formId,
-                    'inputSelector' => '#VideoFile_translation_workflow_execution_id_sv',
-                    'model' => new Execution,
-                    'pk' => 'execution_id',
-                    'field' => 'itemLabel',
-                ));
-            }
-            $this->endClip();
-            ?>
-
-            <?php
             $input = $this->widget(
                 '\GtcRelation',
                 array(
@@ -821,38 +648,6 @@
             ?>
 
             <?php
-            $formId = 'video-file-translation_workflow_execution_id_cn-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Execution'))),
-                        'icon' => 'icon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            if (false) {
-                $this->renderPartial('//execution/_modal_form', array(
-                    'formId' => $formId,
-                    'inputSelector' => '#VideoFile_translation_workflow_execution_id_cn',
-                    'model' => new Execution,
-                    'pk' => 'execution_id',
-                    'field' => 'itemLabel',
-                ));
-            }
-            $this->endClip();
-            ?>
-
-            <?php
             $input = $this->widget(
                 '\GtcRelation',
                 array(
@@ -867,38 +662,6 @@
                 )
                 , true);
             echo $form->customRow($model, 'translation_workflow_execution_id_de', $input);
-            ?>
-
-            <?php
-            $formId = 'video-file-translation_workflow_execution_id_de-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Execution'))),
-                        'icon' => 'icon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            if (false) {
-                $this->renderPartial('//execution/_modal_form', array(
-                    'formId' => $formId,
-                    'inputSelector' => '#VideoFile_translation_workflow_execution_id_de',
-                    'model' => new Execution,
-                    'pk' => 'execution_id',
-                    'field' => 'itemLabel',
-                ));
-            }
-            $this->endClip();
             ?>
         </div>
     </div>

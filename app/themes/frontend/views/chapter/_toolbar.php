@@ -1,6 +1,6 @@
 <div class="btn-toolbar">
     <div class="btn-group">
-        <?php  ?><?php
+        <?php
         switch ($this->action->id) {
             case "index":
                 $this->widget("bootstrap.widgets.TbButton", array(
@@ -21,7 +21,7 @@
                     "url" => array("admin")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Update"),
+                    "label" => Yii::t("model", "Update"),
                     "icon" => "icon-edit",
                     "url" => array("update", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
@@ -31,14 +31,13 @@
                     "url" => array("create")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
-                        "label" => Yii::t("crud", "Delete"),
-                        "type" => "danger",
-                        "icon" => "icon-remove icon-white",
-                        "htmlOptions" => array(
-                            "submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
-                            "confirm" => Yii::t("crud", "Do you want to delete this item?"))
-                    )
-                );
+                    "label" => Yii::t("model", "Delete"),
+                    "type" => "danger",
+                    "icon" => "icon-remove icon-white",
+                    "htmlOptions" => array(
+                        "submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
+                        "confirm" => Yii::t("model", "Do you want to delete this item?"))
+                ));
                 break;
         }
         ?>    </div>

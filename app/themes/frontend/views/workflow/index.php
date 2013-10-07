@@ -1,6 +1,6 @@
 <?php
-$this->breadcrumbs[Yii::t('crud', 'Workflows')] = array('index');
-$this->breadcrumbs[] = Yii::t('crud', 'Create');
+$this->breadcrumbs[Yii::t('model', 'Workflows')] = array('index');
+$this->breadcrumbs[] = Yii::t('model', 'Create');
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <?php
@@ -11,7 +11,7 @@ if (!isset($this->menu) || $this->menu === array()) {
     );
 }
 ?>
-    <h1><?php echo Yii::t('crud', 'Workflows'); ?></h1>
+    <h1><?php echo Yii::t('model', 'Workflows'); ?></h1>
 
 <?php
 $this->widget('zii.widgets.CListView', array(
