@@ -93,9 +93,9 @@ $this->widget('TbGridView',
             array(
                 'class' => 'TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("92f9838d.PoFile.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("92f9838d.PoFile.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("92f9838d.PoFile.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("PoFile.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("PoFile.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("PoFile.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',

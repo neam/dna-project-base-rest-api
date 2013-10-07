@@ -146,44 +146,35 @@ EOD;
         $developerRole->addChild('P3admin.Default.Index');
         $auth->createOperation('P3admin.Default.Settings');
         $developerRole->addChild('P3admin.Default.Settings');
-        $auth->createOperation('Chapter.*');
-        $developerRole->addChild('Chapter.*');
-        $auth->createOperation('DataChunk.*');
-        $developerRole->addChild('DataChunk.*');
-        $auth->createOperation('DownloadLink.*');
-        $developerRole->addChild('DownloadLink.*');
-        $auth->createOperation('ExamQuestion.*');
-        $developerRole->addChild('ExamQuestion.*');
-        $auth->createOperation('ExamQuestionAlternative.*');
-        $developerRole->addChild('ExamQuestionAlternative.*');
-        $auth->createOperation('Exercise.*');
-        $developerRole->addChild('Exercise.*');
-        $auth->createOperation('HtmlChunk.*');
-        $developerRole->addChild('HtmlChunk.*');
-        $auth->createOperation('PoFile.*');
-        $developerRole->addChild('PoFile.*');
-        $auth->createOperation('Presentation.*');
-        $developerRole->addChild('Presentation.*');
-        $auth->createOperation('Section.*');
-        $developerRole->addChild('Section.*');
-        $auth->createOperation('SectionContent.*');
-        $developerRole->addChild('SectionContent.*');
-        $auth->createOperation('SlideshowFile.*');
-        $developerRole->addChild('SlideshowFile.*');
-        $auth->createOperation('SpreadsheetFile.*');
-        $developerRole->addChild('SpreadsheetFile.*');
-        $auth->createOperation('TeachersGuide.*');
-        $developerRole->addChild('TeachersGuide.*');
-        $auth->createOperation('VectorGraphic.*');
-        $developerRole->addChild('VectorGraphic.*');
-        $auth->createOperation('VideoFile.*');
-        $developerRole->addChild('VideoFile.*');
-        $auth->createOperation('VizView.*');
-        $developerRole->addChild('VizView.*');
-        $auth->createOperation('WordFile.*');
-        $developerRole->addChild('WordFile.*');
-        $auth->createOperation('Workflow.*');
-        $developerRole->addChild('Workflow.*');
+
+        foreach (array(
+                     'Chapter',
+                     'DataChunk',
+                     'DownloadLink',
+                     'ExamQuestion',
+                     'ExamQuestionAlternative',
+                     'Exercise',
+                     'HtmlChunk',
+                     'PoFile',
+                     'Presentation',
+                     'Section',
+                     'SectionContent',
+                     'SlideshowFile',
+                     'SpreadsheetFile',
+                     'TeachersGuide',
+                     'VectorGraphic',
+                     'VideoFile',
+                     'VizView',
+                     'WordFile',
+                     'Workflow',
+                 ) as $model) {
+            foreach (array('*', 'View', 'Update', 'Delete') as $action) {
+
+                $auth->createOperation("{$model}.{$action}");
+                $developerRole->addChild("{$model}.{$action}");
+
+            }
+        }
         $auth->createOperation('Admin');
         $developerRole->addChild('Admin');
 

@@ -87,9 +87,9 @@ $this->widget('TbGridView',
             array(
                 'class' => 'TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("92f9838d.Workflow.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("92f9838d.Workflow.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("92f9838d.Workflow.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Workflow.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Workflow.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Workflow.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("workflow_id" => $data->workflow_id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("workflow_id" => $data->workflow_id))',
