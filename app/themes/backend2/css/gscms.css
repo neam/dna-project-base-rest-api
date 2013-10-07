@@ -22,3 +22,8 @@
 .container-fluid .breadcrumb {
 	margin-top: 10px!important;
 }
+
+/* Other */
+.well-white {
+    background-color: white;
+}
