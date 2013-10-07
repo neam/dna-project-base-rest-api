@@ -40,15 +40,11 @@ class VideoFile extends BaseVideoFile
         );
     }
 
-    protected function beforeSave()
+    protected function initiateWorkflowExecutions()
     {
-        if (parent::beforeSave()) {
-
-            // todo - better check to only load workflow db definition when necessary
-            if (true) {
 
                 // Set up database connection.
-                $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+        $db =& Yii::app()->ezc->db;
 
                 // Set up workflow definition storage (database).
                 $definition = new ezcWorkflowDatabaseDefinitionStorage($db);
@@ -103,6 +99,18 @@ class VideoFile extends BaseVideoFile
                     $this->$attribute = $id;
 
                 }
+            }
+
+    protected function beforeSave()
+    {
+        if (parent::beforeSave()) {
+
+            // todo - better check to only load workflow db definition when necessary
+            if (true) {
+
+                $this->initiateWorkflowExecutions();
+
+
             }
             return true;
         } else {
