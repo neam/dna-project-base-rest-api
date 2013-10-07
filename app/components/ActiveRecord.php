@@ -54,8 +54,6 @@ class ActiveRecord extends CActiveRecord
             'WordFile' => array('processedMedia' => 'processed_media_id'),
         );
 
-        $translatedRelationsMap = array();
-
         if (isset($translateMap[get_class($this)])) {
             $behaviors['i18n-columns'] = array(
                 'class' => 'I18nColumnsBehavior',
