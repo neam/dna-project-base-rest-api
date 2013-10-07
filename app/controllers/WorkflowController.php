@@ -29,7 +29,7 @@ class WorkflowController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.Workflow.*'),
+                'roles' => array('92f9838d.Workflow.*', 'Developer'),
             ),
             array(
                 'deny',

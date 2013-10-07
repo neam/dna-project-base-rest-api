@@ -43,7 +43,7 @@ class VideoFileController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.VideoFile.*'),
+                'roles' => array('92f9838d.VideoFile.*', 'Developer'),
             ),
             array(
                 'deny',

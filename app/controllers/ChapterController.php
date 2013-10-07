@@ -39,7 +39,7 @@ class ChapterController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.Chapter.*'),
+                'roles' => array('92f9838d.Chapter.*', 'Developer'),
             ),
             array(
                 'deny',

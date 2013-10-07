@@ -32,6 +32,11 @@ EOD;
 
         $superAdministratorRole = $auth->createRole('Super Administrator');
 
+        // We can use the developer role temporarily to get access to items while developing (ie add to roles => array('Developer') in access control filter)
+        // it has access to all of Super Administrator items and these temporary dev items (for instance features not yet released)
+        $developerRole = $auth->createRole('Developer');
+        $developerRole->addChild('Super Administrator');
+
         foreach (array('GS', 'DS', 'IP', 'HN') as $project) {
 
             $prefix = $project . '.';
@@ -128,6 +133,9 @@ EOD;
 
         // Assign super administrator role to super user (id 1)
         $auth->assign('Super Administrator', 1);
+
+        // For now also assign developer role to super user
+        $auth->assign('Developer', 1);
 
         $auth->save();
 
