@@ -31,8 +31,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'authoring_workflow_execution_id'); ?>
-        <?php echo $form->textField($model, 'authoring_workflow_execution_id', array('size' => 10, 'maxlength' => 10)); ?>
+        <?php echo $form->label($model, 'authoring_workflow_execution_id_en'); ?>
+        <?php echo $form->textField($model, 'authoring_workflow_execution_id_en', array('size' => 10, 'maxlength' => 10)); ?>
     </div>
 
     <div class="row">
@@ -113,6 +113,41 @@
     <div class="row">
         <?php echo $form->label($model, 'slug_de'); ?>
         <?php echo $form->textField($model, 'slug_de', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'authoring_workflow_execution_id_es'); ?>
+        <?php echo $form->textField($model, 'authoring_workflow_execution_id_es', array('size' => 10, 'maxlength' => 10)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'authoring_workflow_execution_id_fa'); ?>
+        <?php echo $form->textField($model, 'authoring_workflow_execution_id_fa', array('size' => 10, 'maxlength' => 10)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'authoring_workflow_execution_id_hi'); ?>
+        <?php echo $form->textField($model, 'authoring_workflow_execution_id_hi', array('size' => 10, 'maxlength' => 10)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'authoring_workflow_execution_id_pt'); ?>
+        <?php echo $form->textField($model, 'authoring_workflow_execution_id_pt', array('size' => 10, 'maxlength' => 10)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'authoring_workflow_execution_id_sv'); ?>
+        <?php echo $form->textField($model, 'authoring_workflow_execution_id_sv', array('size' => 10, 'maxlength' => 10)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'authoring_workflow_execution_id_cn'); ?>
+        <?php echo $form->textField($model, 'authoring_workflow_execution_id_cn', array('size' => 10, 'maxlength' => 10)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'authoring_workflow_execution_id_de'); ?>
+        <?php echo $form->textField($model, 'authoring_workflow_execution_id_de', array('size' => 10, 'maxlength' => 10)); ?>
     </div>
 
 

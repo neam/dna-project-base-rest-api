@@ -16,6 +16,13 @@
  *
  * Relations of table "execution" available as properties of the model:
  * @property Chapter[] $chapters
+ * @property Chapter[] $chapters1
+ * @property Chapter[] $chapters2
+ * @property Chapter[] $chapters3
+ * @property Chapter[] $chapters4
+ * @property Chapter[] $chapters5
+ * @property Chapter[] $chapters6
+ * @property Chapter[] $chapters7
  * @property Workflow $workflow
  * @property VideoFile[] $videoFiles
  * @property VideoFile[] $videoFiles1
@@ -73,17 +80,24 @@ abstract class BaseExecution extends ActiveRecord
     public function relations()
     {
         return array(
-            'chapters' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id'),
+            'chapters' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_de'),
+            'chapters1' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_en'),
+            'chapters2' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_cn'),
+            'chapters3' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_es'),
+            'chapters4' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_fa'),
+            'chapters5' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_hi'),
+            'chapters6' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_pt'),
+            'chapters7' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_sv'),
             'workflow' => array(self::BELONGS_TO, 'Workflow', 'workflow_id'),
-            'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_en'),
-            'videoFiles1' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_cn'),
-            'videoFiles2' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_de'),
-            'videoFiles3' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_es'),
-            'videoFiles4' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_fa'),
-            'videoFiles5' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_hi'),
-            'videoFiles6' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_pt'),
-            'videoFiles7' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id_sv'),
-            'videoFiles8' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id'),
+            'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id'),
+            'videoFiles1' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_en'),
+            'videoFiles2' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_cn'),
+            'videoFiles3' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_de'),
+            'videoFiles4' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_es'),
+            'videoFiles5' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_fa'),
+            'videoFiles6' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_hi'),
+            'videoFiles7' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_pt'),
+            'videoFiles8' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_sv'),
         );
     }
 

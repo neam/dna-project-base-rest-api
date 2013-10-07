@@ -31,7 +31,7 @@ class ActiveRecord extends CActiveRecord
 
         // List of model attributes to translate
         $translateMap = array(
-            'Chapter' => array('slug', 'title'),
+            'Chapter' => array('slug', 'title', 'authoring_workflow_execution_id'),
             'DataChunk' => array('title'),
             'DataSource' => array('title'),
             'DownloadLink' => array('title'),
@@ -42,15 +42,16 @@ class ActiveRecord extends CActiveRecord
             'SlideshowFile' => array('title', 'processed_media_id'),
             'SpreadsheetFile' => array('title', 'processed_media_id'),
             'TeachersGuide' => array('title'),
-            'VideoFile' => array('title', 'subtitles', 'processed_media_id', 'translation_workflow_execution_id'),
+            'VideoFile' => array('title', 'subtitles', 'processed_media_id', 'authoring_workflow_execution_id'),
             'VizView' => array('title'),
             'WordFile' => array('title', 'processed_media_id'),
         );
 
         $multilingualRelationsMap = array(
+            'Chapter' => array('authoringWorkflowExecution' => 'authoring_workflow_execution_id'),
             'SlideshowFile' => array('processedMedia' => 'processed_media_id'),
             'SpreadsheetFile' => array('processedMedia' => 'processed_media_id'),
-            'VideoFile' => array('processedMedia' => 'processed_media_id', 'translationWorkflowExecution' => 'translation_workflow_execution_id'),
+            'VideoFile' => array('processedMedia' => 'processed_media_id', 'authoringWorkflowExecution' => 'authoring_workflow_execution_id'),
             'WordFile' => array('processedMedia' => 'processed_media_id'),
         );
 

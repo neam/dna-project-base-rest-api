@@ -89,8 +89,8 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'name' => 'authoring_workflow_execution_id',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecution.itemLabel\')',
+                'name' => 'authoring_workflow_execution_id_en',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEn.itemLabel\')',
                 'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
             ),
             array(
@@ -221,6 +221,41 @@ $this->widget('TbGridView',
                     'url' => $this->createUrl('/chapter/editableSaver'),
                     //'placement' => 'right',
                 )
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_es',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEs.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_fa',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdFa.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_hi',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdHi.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_pt',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdPt.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_sv',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdSv.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_cn',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdCn.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_de',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdDe.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
             ),
             */
 

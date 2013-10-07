@@ -159,7 +159,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'authoringWorkflowExecution',
+                    'relation' => 'authoringWorkflowExecutionIdEn',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -168,7 +168,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'authoring_workflow_execution_id', $input);
+            echo $form->customRow($model, 'authoring_workflow_execution_id_en', $input);
             ?>
 
             <?php
@@ -176,7 +176,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'translationWorkflowExecutionIdEn',
+                    'relation' => 'translationWorkflowExecution',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -185,7 +185,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'translation_workflow_execution_id_en', $input);
+            echo $form->customRow($model, 'translation_workflow_execution_id', $input);
             ?>
 
             <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
@@ -550,7 +550,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'translationWorkflowExecutionIdEs',
+                    'relation' => 'authoringWorkflowExecutionIdEs',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -559,7 +559,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'translation_workflow_execution_id_es', $input);
+            echo $form->customRow($model, 'authoring_workflow_execution_id_es', $input);
             ?>
 
             <?php
@@ -567,7 +567,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'translationWorkflowExecutionIdFa',
+                    'relation' => 'authoringWorkflowExecutionIdFa',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -576,7 +576,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'translation_workflow_execution_id_fa', $input);
+            echo $form->customRow($model, 'authoring_workflow_execution_id_fa', $input);
             ?>
 
             <?php
@@ -584,7 +584,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'translationWorkflowExecutionIdHi',
+                    'relation' => 'authoringWorkflowExecutionIdHi',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -593,7 +593,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'translation_workflow_execution_id_hi', $input);
+            echo $form->customRow($model, 'authoring_workflow_execution_id_hi', $input);
             ?>
 
             <?php
@@ -601,7 +601,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'translationWorkflowExecutionIdPt',
+                    'relation' => 'authoringWorkflowExecutionIdPt',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -610,7 +610,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'translation_workflow_execution_id_pt', $input);
+            echo $form->customRow($model, 'authoring_workflow_execution_id_pt', $input);
             ?>
 
             <?php
@@ -618,7 +618,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'translationWorkflowExecutionIdSv',
+                    'relation' => 'authoringWorkflowExecutionIdSv',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -627,7 +627,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'translation_workflow_execution_id_sv', $input);
+            echo $form->customRow($model, 'authoring_workflow_execution_id_sv', $input);
             ?>
 
             <?php
@@ -635,7 +635,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'translationWorkflowExecutionIdCn',
+                    'relation' => 'authoringWorkflowExecutionIdCn',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -644,7 +644,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'translation_workflow_execution_id_cn', $input);
+            echo $form->customRow($model, 'authoring_workflow_execution_id_cn', $input);
             ?>
 
             <?php
@@ -652,7 +652,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'translationWorkflowExecutionIdDe',
+                    'relation' => 'authoringWorkflowExecutionIdDe',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -661,7 +661,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'translation_workflow_execution_id_de', $input);
+            echo $form->customRow($model, 'authoring_workflow_execution_id_de', $input);
             ?>
         </div>
     </div>

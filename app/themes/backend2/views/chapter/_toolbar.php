@@ -81,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'thumbnailMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'authoringWorkflowExecution - Execution', 'url' => array('//execution/admin')), array('label' => 'sections - Section', 'url' => array('//section/admin'))
+                        'items' => array(array('label' => 'authoringWorkflowExecutionIdDe - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdEn - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdCn - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdEs - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdFa - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdHi - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdPt - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdSv - Execution', 'url' => array('//execution/admin')), array('label' => 'thumbnailMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'sections - Section', 'url' => array('//section/admin'))
                         )
                     ),
                 ),

@@ -50,12 +50,12 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->subtitles_en); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_en')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_en); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_en')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_en); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id')); ?>:</b>
+<?php echo CHtml::encode($model->translation_workflow_execution_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
@@ -150,32 +150,32 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->processed_media_id_de); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_es')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_es); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_es')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_es); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_fa')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_fa); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_fa')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_fa); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_hi')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_hi); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_hi')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_hi); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_pt')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_pt); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_pt')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_pt); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_sv')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_sv); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_sv')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_sv); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_cn')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_cn); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_cn')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_cn); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_de')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_de); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_de')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_de); ?>
 <br />
 
     */
@@ -307,24 +307,24 @@ $this->breadcrumbs[] = $model->id;
                         )
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id',
-                        'value' => ($model->authoringWorkflowExecution !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecution->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                        'name' => 'authoring_workflow_execution_id_en',
+                        'value' => ($model->authoringWorkflowExecutionIdEn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdEn->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdEn->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdEn->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_en',
-                        'value' => ($model->translationWorkflowExecutionIdEn !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdEn->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdEn->execution_id),
+                        'name' => 'translation_workflow_execution_id',
+                        'value' => ($model->translationWorkflowExecution !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecution->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecution->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdEn->execution_id),
+                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecution->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -614,79 +614,79 @@ $this->breadcrumbs[] = $model->id;
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_es',
-                        'value' => ($model->translationWorkflowExecutionIdEs !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdEs->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdEs->execution_id),
+                        'name' => 'authoring_workflow_execution_id_es',
+                        'value' => ($model->authoringWorkflowExecutionIdEs !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdEs->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdEs->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdEs->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdEs->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_fa',
-                        'value' => ($model->translationWorkflowExecutionIdFa !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdFa->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdFa->execution_id),
+                        'name' => 'authoring_workflow_execution_id_fa',
+                        'value' => ($model->authoringWorkflowExecutionIdFa !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdFa->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdFa->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdFa->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdFa->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_hi',
-                        'value' => ($model->translationWorkflowExecutionIdHi !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdHi->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdHi->execution_id),
+                        'name' => 'authoring_workflow_execution_id_hi',
+                        'value' => ($model->authoringWorkflowExecutionIdHi !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdHi->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdHi->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdHi->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdHi->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_pt',
-                        'value' => ($model->translationWorkflowExecutionIdPt !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdPt->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdPt->execution_id),
+                        'name' => 'authoring_workflow_execution_id_pt',
+                        'value' => ($model->authoringWorkflowExecutionIdPt !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdPt->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdPt->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdPt->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdPt->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_sv',
-                        'value' => ($model->translationWorkflowExecutionIdSv !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdSv->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdSv->execution_id),
+                        'name' => 'authoring_workflow_execution_id_sv',
+                        'value' => ($model->authoringWorkflowExecutionIdSv !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdSv->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdSv->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdSv->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdSv->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_cn',
-                        'value' => ($model->translationWorkflowExecutionIdCn !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdCn->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdCn->execution_id),
+                        'name' => 'authoring_workflow_execution_id_cn',
+                        'value' => ($model->authoringWorkflowExecutionIdCn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdCn->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdCn->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdCn->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdCn->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_de',
-                        'value' => ($model->translationWorkflowExecutionIdDe !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdDe->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdDe->execution_id),
+                        'name' => 'authoring_workflow_execution_id_de',
+                        'value' => ($model->authoringWorkflowExecutionIdDe !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdDe->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdDe->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdDe->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdDe->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
