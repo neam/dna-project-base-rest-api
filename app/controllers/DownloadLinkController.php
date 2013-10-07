@@ -29,7 +29,7 @@ class DownloadLinkController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.DownloadLink.*'),
+                'roles' => array('DownloadLink.*'),
             ),
             array(
                 'deny',

@@ -29,7 +29,7 @@ class ExamQuestionController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.ExamQuestion.*'),
+                'roles' => array('ExamQuestion.*'),
             ),
             array(
                 'deny',

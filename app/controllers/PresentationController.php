@@ -29,7 +29,7 @@ class PresentationController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.Presentation.*'),
+                'roles' => array('Presentation.*'),
             ),
             array(
                 'deny',

@@ -29,7 +29,7 @@ class SectionContentController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.SectionContent.*'),
+                'roles' => array('SectionContent.*'),
             ),
             array(
                 'deny',

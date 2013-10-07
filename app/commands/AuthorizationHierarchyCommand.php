@@ -137,6 +137,56 @@ EOD;
         // For now also assign developer role to super user
         $auth->assign('Developer', 1);
 
+        // Temporary dev items assigned to Developer role until properly sorted into hierarchy
+        $auth->createOperation('P3media.Import.*');
+        $developerRole->addChild('P3media.Import.*');
+        $auth->createOperation('P3media.Import.scan');
+        $developerRole->addChild('P3media.Import.scan');
+        $auth->createOperation('P3admin.Default.Index');
+        $developerRole->addChild('P3admin.Default.Index');
+        $auth->createOperation('P3admin.Default.Settings');
+        $developerRole->addChild('P3admin.Default.Settings');
+        $auth->createOperation('Chapter.*');
+        $developerRole->addChild('Chapter.*');
+        $auth->createOperation('DataChunk.*');
+        $developerRole->addChild('DataChunk.*');
+        $auth->createOperation('DownloadLink.*');
+        $developerRole->addChild('DownloadLink.*');
+        $auth->createOperation('ExamQuestion.*');
+        $developerRole->addChild('ExamQuestion.*');
+        $auth->createOperation('ExamQuestionAlternative.*');
+        $developerRole->addChild('ExamQuestionAlternative.*');
+        $auth->createOperation('Exercise.*');
+        $developerRole->addChild('Exercise.*');
+        $auth->createOperation('HtmlChunk.*');
+        $developerRole->addChild('HtmlChunk.*');
+        $auth->createOperation('PoFile.*');
+        $developerRole->addChild('PoFile.*');
+        $auth->createOperation('Presentation.*');
+        $developerRole->addChild('Presentation.*');
+        $auth->createOperation('Section.*');
+        $developerRole->addChild('Section.*');
+        $auth->createOperation('SectionContent.*');
+        $developerRole->addChild('SectionContent.*');
+        $auth->createOperation('SlideshowFile.*');
+        $developerRole->addChild('SlideshowFile.*');
+        $auth->createOperation('SpreadsheetFile.*');
+        $developerRole->addChild('SpreadsheetFile.*');
+        $auth->createOperation('TeachersGuide.*');
+        $developerRole->addChild('TeachersGuide.*');
+        $auth->createOperation('VectorGraphic.*');
+        $developerRole->addChild('VectorGraphic.*');
+        $auth->createOperation('VideoFile.*');
+        $developerRole->addChild('VideoFile.*');
+        $auth->createOperation('VizView.*');
+        $developerRole->addChild('VizView.*');
+        $auth->createOperation('WordFile.*');
+        $developerRole->addChild('WordFile.*');
+        $auth->createOperation('Workflow.*');
+        $developerRole->addChild('Workflow.*');
+        $auth->createOperation('Admin');
+        $developerRole->addChild('Admin');
+
         $auth->save();
 
     }

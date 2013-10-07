@@ -29,7 +29,7 @@ class TeachersGuideController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.TeachersGuide.*'),
+                'roles' => array('TeachersGuide.*'),
             ),
             array(
                 'deny',

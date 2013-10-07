@@ -29,7 +29,7 @@ class DataChunkController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.DataChunk.*'),
+                'roles' => array('DataChunk.*'),
             ),
             array(
                 'deny',

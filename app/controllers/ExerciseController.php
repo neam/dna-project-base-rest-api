@@ -29,7 +29,7 @@ class ExerciseController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.Exercise.*'),
+                'roles' => array('Exercise.*'),
             ),
             array(
                 'deny',

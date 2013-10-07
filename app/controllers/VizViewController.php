@@ -29,7 +29,7 @@ class VizViewController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.VizView.*'),
+                'roles' => array('VizView.*'),
             ),
             array(
                 'deny',

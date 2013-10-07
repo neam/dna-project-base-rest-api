@@ -29,7 +29,7 @@ class VectorGraphicController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.VectorGraphic.*'),
+                'roles' => array('VectorGraphic.*'),
             ),
             array(
                 'deny',

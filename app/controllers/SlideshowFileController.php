@@ -29,7 +29,7 @@ class SlideshowFileController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.SlideshowFile.*'),
+                'roles' => array('SlideshowFile.*'),
             ),
             array(
                 'deny',

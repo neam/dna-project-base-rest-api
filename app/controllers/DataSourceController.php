@@ -29,7 +29,7 @@ class DataSourceController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.DataSource.*'),
+                'roles' => array('DataSource.*'),
             ),
             array(
                 'deny',

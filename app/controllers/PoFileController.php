@@ -29,7 +29,7 @@ class PoFileController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.PoFile.*'),
+                'roles' => array('PoFile.*'),
             ),
             array(
                 'deny',

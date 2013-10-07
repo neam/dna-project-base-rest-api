@@ -29,7 +29,7 @@ class SpreadsheetFileController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.SpreadsheetFile.*'),
+                'roles' => array('SpreadsheetFile.*'),
             ),
             array(
                 'deny',

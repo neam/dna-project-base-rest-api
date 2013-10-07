@@ -29,7 +29,7 @@ class WordFileController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('92f9838d.WordFile.*'),
+                'roles' => array('WordFile.*'),
             ),
             array(
                 'deny',
