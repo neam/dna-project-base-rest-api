@@ -17,7 +17,7 @@ trait ItemController
                     'add',
                 ),
                 'roles' => array(
-                    'GS.item.add'
+                    'GapminderSchool.Item.Add'
                 ),
             ),
             array('allow',
@@ -25,7 +25,7 @@ trait ItemController
                     'translate',
                 ),
                 'roles' => array(
-                    'GS.item.translate'
+                    'GapminderSchool.Item.Translate'
                 ),
             ),
         );

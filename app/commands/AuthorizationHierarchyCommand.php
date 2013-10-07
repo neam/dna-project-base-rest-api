@@ -37,86 +37,86 @@ EOD;
         $developerRole = $auth->createRole('Developer');
         $developerRole->addChild('Super Administrator');
 
-        foreach (array('GS', 'DS', 'IP', 'HN') as $project) {
+        foreach (array('GapminderSchool', 'DollarStreet', 'IgnoranceProject', 'HumanNumbers') as $project) {
 
             $prefix = $project . '.';
 
             // Atomic actions are called operations
-            $auth->createOperation($prefix . 'item.add', 'Adds a temporary empty item to the database');
-            $auth->createOperation($prefix . 'item.new', 'Completes a temporary item by stepping through fields required for DRAFT  ');
-            $auth->createOperation($prefix . 'item.prepPreshow', 'Prepare item for preshow, by stepping through fields required for PREVIEW');
-            $auth->createOperation($prefix . 'item.preshow', 'Put item in preshow mode, by switching itemVersion.status to PREVIEW');
-            $auth->createOperation($prefix . 'item.evaluate', 'Evaluating an item in Preview-mode by grading and commenting on it\'s fields or the total itemVersion.');
-            $auth->createOperation($prefix . 'item.prepPublish', 'Prepare for publishing, by stepping through fields required for PUBLIC.');
-            $auth->createOperation($prefix . 'item.preview', 'Preview the current content.');
-            $auth->createOperation($prefix . 'item.review', 'Reviewing the full content by stepping to next field approved==false.');
-            $auth->createOperation($prefix . 'item.proofRead', 'Review and improve language');
-            $auth->createOperation($prefix . 'item.translate', 'Translate to languages that you added to our profile.');
-            $auth->createOperation($prefix . 'item.publish', 'Make public for the first time, or when replacing a previous version.');
-            $auth->createOperation($prefix . 'item.edit', 'Look at all fields, no obvious goal');
-            $auth->createOperation($prefix . 'item.clone', 'Creates a new itemVersion with incremented version number and goes to "edit" workFlow. If the original is in PUBLIC after achieving publishableFlag == true, suggest workFlow PrepPublish');
-            $auth->createOperation($prefix . 'item.remove', 'Removed means there\'s something wrong with the content so it should not be used in any language any time');
-            $auth->createOperation($prefix . 'item.replace', 'Replaced, means it\'s OK to fall back to, in case translation is missing for new version');
+            $auth->createOperation($prefix . 'Item.Add', 'Adds a temporary empty item to the database');
+            $auth->createOperation($prefix . 'Item.New', 'Completes a temporary item by stepping through fields required for DRAFT  ');
+            $auth->createOperation($prefix . 'Item.PrepPreshow', 'Prepare item for preshow, by stepping through fields required for PREVIEW');
+            $auth->createOperation($prefix . 'Item.Preshow', 'Put item in preshow mode, by switching itemVersion.status to PREVIEW');
+            $auth->createOperation($prefix . 'Item.Evaluate', 'Evaluating an item in Preview-mode by grading and commenting on it\'s fields or the total itemVersion.');
+            $auth->createOperation($prefix . 'Item.PrepPublish', 'Prepare for publishing, by stepping through fields required for PUBLIC.');
+            $auth->createOperation($prefix . 'Item.Preview', 'Preview the current content.');
+            $auth->createOperation($prefix . 'Item.Review', 'Reviewing the full content by stepping to next field approved==false.');
+            $auth->createOperation($prefix . 'Item.ProofRead', 'Review and improve language');
+            $auth->createOperation($prefix . 'Item.Translate', 'Translate to languages that you added to our profile.');
+            $auth->createOperation($prefix . 'Item.Publish', 'Make public for the first time, or when replacing a previous version.');
+            $auth->createOperation($prefix . 'Item.Edit', 'Look at all fields, no obvious goal');
+            $auth->createOperation($prefix . 'Item.Clone', 'Creates a new itemVersion with incremented version number and goes to "edit" workFlow. If the original is in PUBLIC after achieving publishableFlag == true, suggest workFlow PrepPublish');
+            $auth->createOperation($prefix . 'Item.Remove', 'Removed means there\'s something wrong with the content so it should not be used in any language any time');
+            $auth->createOperation($prefix . 'Item.Replace', 'Replaced, means it\'s OK to fall back to, in case translation is missing for new version');
 
             // Actions under special circumstances are called tasks - if a user may perform the task then the user may perform the task's associated operations
 
             // "Own" items
             $bizRule = 'return Yii::app()->user->id==$params["post"]->creator_id;';
-            $task = $auth->createTask($prefix . 'item.removeOwn', 'Remove an item created by the user himself', $bizRule);
-            $task->addChild($prefix . 'item.remove');
-            $task = $auth->createTask($prefix . 'item.replaceOwn', 'Replace an item created by the user himself', $bizRule);
-            $task->addChild($prefix . 'item.replace');
+            $task = $auth->createTask($prefix . 'Item.RemoveOwn', 'Remove an item created by the user himself', $bizRule);
+            $task->addChild($prefix . 'Item.Remove');
+            $task = $auth->createTask($prefix . 'Item.ReplaceOwn', 'Replace an item created by the user himself', $bizRule);
+            $task->addChild($prefix . 'Item.Replace');
 
             // Status-dependent
             $bizRule = 'return $params["post"]->version->status == "Public";';
-            $task = $auth->createTask($prefix . 'item.removePublic', 'Remove an item that is public', $bizRule);
-            $task->addChild($prefix . 'item.remove');
-            $task = $auth->createTask($prefix . 'item.replacePublic', 'Remove an item that is public', $bizRule);
-            $task->addChild($prefix . 'item.replace');
+            $task = $auth->createTask($prefix . 'Item.RemovePublic', 'Remove an item that is public', $bizRule);
+            $task->addChild($prefix . 'Item.Remove');
+            $task = $auth->createTask($prefix . 'Item.ReplacePublic', 'Remove an item that is public', $bizRule);
+            $task->addChild($prefix . 'Item.Replace');
             $bizRule = 'return $params["post"]->version->status != "Public";';
-            $task = $auth->createTask($prefix . 'item.removeNonPublic', 'Remove an item that is not public', $bizRule);
-            $task->addChild($prefix . 'item.remove');
-            $task = $auth->createTask($prefix . 'item.replaceNonPublic', 'Remove an item that is not public', $bizRule);
-            $task->addChild($prefix . 'item.replace');
+            $task = $auth->createTask($prefix . 'Item.RemoveNonPublic', 'Remove an item that is not public', $bizRule);
+            $task->addChild($prefix . 'Item.Remove');
+            $task = $auth->createTask($prefix . 'Item.ReplaceNonPublic', 'Remove an item that is not public', $bizRule);
+            $task->addChild($prefix . 'Item.Replace');
 
             // Language-dependent
             $bizRule = 'return in_array(Yii::app()->language, Yii::app()->user->languages);'; // todo: make this work
-            $task = $auth->createTask($prefix . 'item.translateIntoSpokenLanguage', 'Translate current language', $bizRule);
-            $task->addChild($prefix . 'item.translate');
+            $task = $auth->createTask($prefix . 'Item.TranslateIntoSpokenLanguage', 'Translate current language', $bizRule);
+            $task->addChild($prefix . 'Item.Translate');
 
             // Roles has the right to perform one or many tasks and operations
             $role = $auth->createRole($prefix . 'Creator');
-            $role->addChild($prefix . 'item.add');
-            $role->addChild($prefix . 'item.new');
-            $role->addChild($prefix . 'item.prepPreshow');
-            $role->addChild($prefix . 'item.preshow');
-            $role->addChild($prefix . 'item.prepPublish');
-            $role->addChild($prefix . 'item.edit');
-            $role->addChild($prefix . 'item.clone');
-            $role->addChild($prefix . 'item.removeOwn');
-            $role->addChild($prefix . 'item.replaceOwn');
-            $role->addChild($prefix . 'item.removeNonPublic');
-            $role->addChild($prefix . 'item.replaceNonPublic');
+            $role->addChild($prefix . 'Item.Add');
+            $role->addChild($prefix . 'Item.New');
+            $role->addChild($prefix . 'Item.PrepPreshow');
+            $role->addChild($prefix . 'Item.Preshow');
+            $role->addChild($prefix . 'Item.PrepPublish');
+            $role->addChild($prefix . 'Item.Edit');
+            $role->addChild($prefix . 'Item.Clone');
+            $role->addChild($prefix . 'Item.RemoveOwn');
+            $role->addChild($prefix . 'Item.ReplaceOwn');
+            $role->addChild($prefix . 'Item.RemoveNonPublic');
+            $role->addChild($prefix . 'Item.ReplaceNonPublic');
 
             $role = $auth->createRole($prefix . 'Previewer');
-            $role->addChild($prefix . 'item.preview');
+            $role->addChild($prefix . 'Item.Preview');
 
             $role = $auth->createRole($prefix . 'Evaluator');
-            $role->addChild($prefix . 'item.evaluate');
+            $role->addChild($prefix . 'Item.Evaluate');
 
             $role = $auth->createRole($prefix . 'Approver');
-            $role->addChild($prefix . 'item.review');
+            $role->addChild($prefix . 'Item.Review');
 
             $role = $auth->createRole($prefix . 'Proofreader');
-            $role->addChild($prefix . 'item.proofRead');
+            $role->addChild($prefix . 'Item.ProofRead');
 
             $role = $auth->createRole($prefix . 'Translator');
-            $role->addChild($prefix . 'item.translateIntoSpokenLanguage');
+            $role->addChild($prefix . 'Item.TranslateIntoSpokenLanguage');
 
             $role = $auth->createRole($prefix . 'Publisher');
-            $role->addChild($prefix . 'item.publish');
-            $role->addChild($prefix . 'item.removePublic');
-            $role->addChild($prefix . 'item.replacePublic');
+            $role->addChild($prefix . 'Item.Publish');
+            $role->addChild($prefix . 'Item.RemovePublic');
+            $role->addChild($prefix . 'Item.ReplacePublic');
 
             $role = $auth->createRole($prefix . 'Administrator');
             $role->addChild($prefix . 'Publisher');
