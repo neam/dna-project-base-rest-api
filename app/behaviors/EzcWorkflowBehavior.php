@@ -38,14 +38,10 @@ class EzcWorkflowBehavior extends CActiveRecordBehavior
     protected function initiateWorkflowExecutions()
     {
 
-        // Authoring workflow
-        $attribute = "authoring_workflow_execution_id";
-        $this->initiateWorkflowExecution($attribute, $this->workflowName);
-
-        // Translation workflows - one for each language
+        // Authoring workflows - one for each language
         foreach (Yii::app()->langHandler->languages as $lang) {
 
-            $attribute = "translation_workflow_execution_id_" . $lang;
+            $attribute = "authoring_workflow_execution_id_" . $lang;
             $this->initiateWorkflowExecution($attribute, $this->workflowName);
 
         }
@@ -93,7 +89,7 @@ class EzcWorkflowBehavior extends CActiveRecordBehavior
         // Pass workflow object to workflow executer.
         $execution->workflow = $workflow;
 
-        // Set metadata in translation workflow execution marking who created the object
+        // Set metadata in workflow execution marking who created the object
         // todo
 
         // Start workflow execution.
