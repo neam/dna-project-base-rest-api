@@ -5,6 +5,8 @@
  *
  * Columns in table "chapter" available as properties of the model:
  * @property string $id
+ * @property integer $version
+ * @property string $cloned_from_id
  * @property string $title_en
  * @property string $slug_en
  * @property integer $thumbnail_media_id
@@ -35,9 +37,11 @@
  * @property string $authoring_workflow_execution_id_de
  *
  * Relations of table "chapter" available as properties of the model:
- * @property Execution $authoringWorkflowExecutionIdDe
+ * @property Chapter $clonedFrom
+ * @property Chapter[] $chapters
  * @property Execution $authoringWorkflowExecutionIdEn
  * @property Execution $authoringWorkflowExecutionIdCn
+ * @property Execution $authoringWorkflowExecutionIdDe
  * @property Execution $authoringWorkflowExecutionIdEs
  * @property Execution $authoringWorkflowExecutionIdFa
  * @property Execution $authoringWorkflowExecutionIdHi
@@ -63,19 +67,20 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, slug_en, thumbnail_media_id, about, authoring_workflow_execution_id_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('thumbnail_media_id', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about, authoring_workflow_execution_id_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, thumbnail_media_id', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id', 'length', 'max' => 20),
                 array('title_en, slug_en, about, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('authoring_workflow_execution_id_en, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'length', 'max' => 10),
                 array('created, modified', 'safe'),
-                array('id, title_en, slug_en, thumbnail_media_id, about, authoring_workflow_execution_id_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about, authoring_workflow_execution_id_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->title_en;
+        return (string) $this->cloned_from_id;
     }
 
     public function behaviors()
@@ -92,9 +97,11 @@ abstract class BaseChapter extends ActiveRecord
     public function relations()
     {
         return array(
-            'authoringWorkflowExecutionIdDe' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id_de'),
+            'clonedFrom' => array(self::BELONGS_TO, 'Chapter', 'cloned_from_id'),
+            'chapters' => array(self::HAS_MANY, 'Chapter', 'cloned_from_id'),
             'authoringWorkflowExecutionIdEn' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id_en'),
             'authoringWorkflowExecutionIdCn' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id_cn'),
+            'authoringWorkflowExecutionIdDe' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id_de'),
             'authoringWorkflowExecutionIdEs' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id_es'),
             'authoringWorkflowExecutionIdFa' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id_fa'),
             'authoringWorkflowExecutionIdHi' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id_hi'),
@@ -109,6 +116,8 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array(
             'id' => Yii::t('model', 'ID'),
+            'version' => Yii::t('model', 'Version'),
+            'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'title_en' => Yii::t('model', 'Title En'),
             'slug_en' => Yii::t('model', 'Slug En'),
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
@@ -147,6 +156,8 @@ abstract class BaseChapter extends ActiveRecord
         }
 
         $criteria->compare('t.id', $this->id, true);
+        $criteria->compare('t.version', $this->version);
+        $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.title_en', $this->title_en, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);

@@ -20,9 +20,9 @@
  * @property string $exam_question_id
  *
  * Relations of table "section_content" available as properties of the model:
- * @property ExamQuestion $examQuestion
  * @property DataChunk $dataChunk
  * @property DownloadLink $downloadLink
+ * @property ExamQuestion $examQuestion
  * @property Exercise $exercise
  * @property HtmlChunk $htmlChunk
  * @property Presentation $presentation
@@ -77,9 +77,9 @@ abstract class BaseSectionContent extends ActiveRecord
     public function relations()
     {
         return array(
-            'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
             'dataChunk' => array(self::BELONGS_TO, 'DataChunk', 'data_chunk_id'),
             'downloadLink' => array(self::BELONGS_TO, 'DownloadLink', 'download_link_id'),
+            'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
             'exercise' => array(self::BELONGS_TO, 'Exercise', 'exercise_id'),
             'htmlChunk' => array(self::BELONGS_TO, 'HtmlChunk', 'html_chunk_id'),
             'presentation' => array(self::BELONGS_TO, 'Presentation', 'presentation_id'),
