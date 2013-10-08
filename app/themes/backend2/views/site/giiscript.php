@@ -9,7 +9,14 @@
         init$gii();
         var model = $('select[name="model"]').val();
         $gii('#FullCrudCode_model').val(model).keyup();
+
+        // Define default options
         $gii('#FullCrudCode_textEditor').val('html5Editor');
+        if (model == 'VideoFile' || model == 'VizView') {
+            $gii('#FullCrudCode_textEditor').val('texteditor');
+        }
+        $gii('#FullCrudCode_internalModels').val('Execution'.split(','));
+
         $gii('input[name="preview"]').click();
         setTimeout(function () {
             init$gii();
@@ -73,18 +80,24 @@ echo CHtml::dropDownList('model', null, array(
     'DataChunk' => 'DataChunk',
     'DataSource' => 'DataSource',
     'DownloadLink' => 'DownloadLink',
+    'ExamQuestion' => 'ExamQuestion',
+    'ExamQuestionAlternative' => 'ExamQuestionAlternative',
     'Exercise' => 'Exercise',
     'HtmlChunk' => 'HtmlChunk',
+    'PoFile' => 'PoFile',
     'Presentation' => 'Presentation',
     'Section' => 'Section',
     'SectionContent' => 'SectionContent',
     'SlideshowFile' => 'SlideshowFile',
     'SpreadsheetFile' => 'SpreadsheetFile',
     'TeachersGuide' => 'TeachersGuide',
+    'VectorGraphic' => 'VectorGraphic',
     'VideoFile' => 'VideoFile',
     'VizView' => 'VizView',
     'WordFile' => 'WordFile',
+    'Workflow' => 'Workflow',
 ));
+
 ?>
 
 <p>

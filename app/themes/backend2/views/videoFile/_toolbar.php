@@ -4,61 +4,61 @@
         switch ($this->action->id) {
             case "create":
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Manage"),
+                    "label" => Yii::t("model", "Manage"),
                     "icon" => "icon-list-alt",
                     "url" => array("admin")
                 ));
                 break;
             case "admin":
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Create"),
+                    "label" => Yii::t("model", "Create"),
                     "icon" => "icon-plus",
                     "url" => array("create")
                 ));
                 break;
             case "view":
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Manage"),
+                    "label" => Yii::t("model", "Manage"),
                     "icon" => "icon-list-alt",
                     "url" => array("admin")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Update"),
+                    "label" => Yii::t("model", "Update"),
                     "icon" => "icon-edit",
                     "url" => array("update", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Create"),
+                    "label" => Yii::t("model", "Create"),
                     "icon" => "icon-plus",
                     "url" => array("create")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Delete"),
+                    "label" => Yii::t("model", "Delete"),
                     "type" => "danger",
                     "icon" => "icon-remove icon-white",
                     "htmlOptions" => array(
                         "submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
-                        "confirm" => Yii::t("crud", "Do you want to delete this item?"))
+                        "confirm" => Yii::t("model", "Do you want to delete this item?"))
                 ));
                 break;
             case "update":
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Manage"),
+                    "label" => Yii::t("model", "Manage"),
                     "icon" => "icon-list-alt",
                     "url" => array("admin")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "View"),
+                    "label" => Yii::t("model", "View"),
                     "icon" => "icon-eye-open",
                     "url" => array("view", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Delete"),
+                    "label" => Yii::t("model", "Delete"),
                     "type" => "danger",
                     "icon" => "icon-remove icon-white",
                     "htmlOptions" => array(
                         "submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
-                        "confirm" => Yii::t("crud", "Do you want to delete this item?"))
+                        "confirm" => Yii::t("model", "Do you want to delete this item?"))
                 ));
                 break;
         }
@@ -67,7 +67,7 @@
         <div class="btn-group">
             <?php
             $this->widget('bootstrap.widgets.TbButton', array(
-                'label' => Yii::t('crud', 'Search'),
+                'label' => Yii::t('model', 'Search'),
                 'icon' => 'icon-search',
                 'htmlOptions' => array('class' => 'search-button')
             ));?>
@@ -79,9 +79,9 @@
             $this->widget('bootstrap.widgets.TbButtonGroup', array(
                 'buttons' => array(
                     array(
-                        'label' => Yii::t('crud', 'Relations'),
+                        'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin')), array('label' => 'translationWorkflowExecutionIdDe - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdEn - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdCn - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdEs - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdFa - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdHi - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdPt - Execution', 'url' => array('//execution/admin')), array('label' => 'translationWorkflowExecutionIdSv - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecution - Execution', 'url' => array('//execution/admin')), array('label' => 'originalMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdEn - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdCn - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdDe - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdEs - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdFa - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdHi - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdPt - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdSv - P3Media', 'url' => array('//p3Media/admin'))
+                        'items' => array(array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin')), array('label' => 'translationWorkflowExecution - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdEn - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdCn - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdDe - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdEs - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdFa - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdHi - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdPt - Execution', 'url' => array('//execution/admin')), array('label' => 'authoringWorkflowExecutionIdSv - Execution', 'url' => array('//execution/admin')), array('label' => 'originalMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdEn - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdCn - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdDe - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdEs - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdFa - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdHi - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdPt - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'processedMediaIdSv - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'thumbnailMedia - P3Media', 'url' => array('//p3Media/admin'))
                         )
                     ),
                 ),

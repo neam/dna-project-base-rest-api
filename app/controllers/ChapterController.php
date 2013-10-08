@@ -2,6 +2,11 @@
 
 class ChapterController extends Controller
 {
+
+    use ItemController;
+
+    public $modelClass = "Chapter";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,7 +21,7 @@ class ChapterController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array('allow',
                 'actions' => array(
                     'view',
@@ -26,6 +31,7 @@ class ChapterController extends Controller
             array('allow',
                 'actions' => array(
                     'index',
+                    'view',
                     'create',
                     'update',
                     'editableSaver',
@@ -39,7 +45,7 @@ class ChapterController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)
@@ -171,7 +177,7 @@ class ChapterController extends Controller
                 }
             }
         } else {
-            throw new CHttpException(400, Yii::t('crud', 'Invalid request. Please do not repeat this request again.'));
+            throw new CHttpException(400, Yii::t('model', 'Invalid request. Please do not repeat this request again.'));
         }
     }
 
@@ -197,7 +203,7 @@ class ChapterController extends Controller
     {
         $model = Chapter::model()->findByPk($id);
         if ($model === null) {
-            throw new CHttpException(404, Yii::t('crud', 'The requested page does not exist.'));
+            throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
         return $model;
     }
@@ -247,6 +253,5 @@ class ChapterController extends Controller
 
         return $related;
     }
-
 
 }

@@ -24,7 +24,7 @@ $gscmsConfig = array(
     'name' => 'Gapminder School CMS',
     'language' => 'en', // default language, see also components.langHandler
     'preload' => array(
-        'ezc',
+        //'ezc', // trying out if we can lazy-load this instead of preloading it...
     ),
     'aliases' => array(
         // i18n-columns
@@ -40,8 +40,10 @@ $gscmsConfig = array(
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
-        'application.components.workflow.LabeledWorkflowNodeInput',
+        'application.behaviors.EzcWorkflowBehavior',
+        'application.workflows.custom.*',
         'application.workflows.*',
+        'application.controllers.traits.*',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
@@ -96,6 +98,10 @@ $gscmsConfig = array(
                 'pt_pt' => 'pt',
                 'sv_se' => 'sv',
             )
+        ),
+        'authManager' => array(
+            'class' => 'CPhpAuthManager',
+            'authFile' => Yii::getPathOfAlias('backend') . '/app/data/auth-gcms.php',
         ),
         'ezc' => array(
             'class' => 'application.components.EzcComponent',

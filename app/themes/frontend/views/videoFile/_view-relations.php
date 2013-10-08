@@ -3,7 +3,8 @@
 
 
 <?php
-echo '<h3>SectionContents ';
+echo '<h3>';
+echo Yii::t('model', 'SectionContents') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(

@@ -1,22 +1,22 @@
 <?php
 $this->setPageTitle(
-    Yii::t('crud', 'Video File')
+    Yii::t('model', 'Video File')
     . ' - '
-    . Yii::t('crud', 'Update')
+    . Yii::t('model', 'Update')
     . ': '
     . $model->getItemLabel()
 );
-$this->breadcrumbs[Yii::t('crud', 'Video Files')] = array('admin');
+$this->breadcrumbs[Yii::t('model', 'Video Files')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Update');
+$this->breadcrumbs[] = Yii::t('model', 'Update');
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
-    <?php echo Yii::t('crud', 'Video File'); ?>
+    <?php echo Yii::t('model', 'Video File'); ?>
     <small>
-        <?php echo Yii::t('crud', 'Update') ?> #<?php echo $model->id ?>
+        <?php echo Yii::t('model', 'Update') ?> #<?php echo $model->id ?>
     </small>
 
 </h1>
@@ -30,13 +30,13 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <h2>
-    <?php echo Yii::t('crud', 'Section Contents'); ?> </h2>
+    <?php echo Yii::t('model', 'Section Contents'); ?> </h2>
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('crud', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('video_file_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('video_file_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
     ?></div>
@@ -60,7 +60,7 @@ $this->widget('TbGridView',
                 'filter' => CHtml::listData(Section::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'ordinal',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFile/editableSaver'),
@@ -68,7 +68,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFile/editableSaver'),
@@ -76,7 +76,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFile/editableSaver'),
@@ -118,6 +118,11 @@ $this->widget('TbGridView',
                     'name' => 'download_link_id',
                     'value' => 'CHtml::value($data, \'downloadLink.itemLabel\')',
                     'filter' => CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'exam_question_id',
+                    'value' => 'CHtml::value($data, \'examQuestion.itemLabel\')',
+                    'filter' => CHtml::listData(ExamQuestion::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(

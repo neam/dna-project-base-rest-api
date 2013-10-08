@@ -1,6 +1,6 @@
 <?php
-$this->breadcrumbs[Yii::t('crud', 'Video Files')] = array('index');
-$this->breadcrumbs[] = Yii::t('crud', 'Create');
+$this->breadcrumbs[Yii::t('model', 'Video Files')] = array('index');
+$this->breadcrumbs[] = Yii::t('model', 'Create');
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <?php
@@ -11,7 +11,7 @@ if (!isset($this->menu) || $this->menu === array()) {
     );
 }
 ?>
-    <h1><?php echo Yii::t('crud', 'Video Files'); ?></h1>
+    <h1><?php echo Yii::t('model', 'Video Files'); ?></h1>
 
 <?php
 $this->widget('zii.widgets.CListView', array(

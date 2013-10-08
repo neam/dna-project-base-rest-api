@@ -1326,7 +1326,7 @@
         "phundament/lessii": 20
     },
     "platform": {
-        "php": ">=5.3.2"
+        "php": ">=5.4.0"
     },
     "platform-dev": [
 

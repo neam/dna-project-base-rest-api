@@ -2,6 +2,11 @@
 
 class VideoFileController extends Controller
 {
+
+    use ItemController;
+
+    public $modelClass = "VideoFile";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,7 +21,7 @@ class VideoFileController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array('allow',
                 'actions' => array(
                     'subtitles',
@@ -30,9 +35,6 @@ class VideoFileController extends Controller
                     'view',
                     'create',
                     'update',
-                    'add',
-                    'author',
-                    'translate',
                     'translateSubtitles',
                     'translateTitleAndAbout',
                     'editableSaver',
@@ -40,13 +42,13 @@ class VideoFileController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('B61b08a5.VideoFile.*'),
+                'roles' => array('VideoFile.*'),
             ),
             array(
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)
@@ -142,79 +144,13 @@ class VideoFileController extends Controller
         $this->render('update', array('model' => $model,));
     }
 
-    public function actionAdd()
-    {
-
-        $videoFile = new VideoFile();
-        if (!$videoFile->save()) {
-            throw new SaveException();
-        }
-
-        Yii::app()->user->setFlash('success', "Video File Added");
-
-        $this->redirect(array('author', 'id' => $videoFile->id));
-
-    }
-
-    public function actionAuthor($id)
-    {
-
-        $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
-
-        // Tmp - manually set continue_from_approved_for_translation to true before we have built the authoring workflow etc
-        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
-        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
-
-        $execution->resume(array('continue_from_approved_for_translation' => true));
-        $execution->unsetVariable('continue_from_approved_for_translation');
-
-        $this->render('author', array('model' => $model,));
-
-    }
-
-    public function actionTranslate($id)
-    {
-        $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
-
-        // Do not show translation tools if we are browsing the site in the sourceLanguage
-        if (Yii::app()->sourceLanguage == $_GET['lang']) {
-            $this->render('translate/choose_language', array('model' => $model,));
-            return;
-        }
-
-        // Set up database connection.
-        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
-
-        // Check and redirect depending on current workflow execution status
-        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
-        $waitingFor = $execution->getWaitingFor();
-
-        if (isset($waitingFor["continue_from_approved_for_translation"])) {
-            $this->redirect(array('author', 'id' => $model->id));
-            return;
-        }
-        if (isset($waitingFor["continue_from_write_subtitles"])) {
-            $this->redirect(array('translateSubtitles', 'id' => $model->id));
-            return;
-        }
-        if (isset($waitingFor["continue_from_translate_title_and_about"])) {
-            $this->redirect(array('translateTitleAndAbout', 'id' => $model->id));
-            return;
-        }
-
-        // A temporary debug page
-        $this->render('translate', array('model' => $model, 'execution' => $execution));
-    }
-
     public function actionTranslateSubtitles($id)
     {
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
         // Set up database connection.
-        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+        $db =& Yii::app()->ezc->db;
 
         // Check and redirect depending on current workflow execution status
         $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
@@ -228,7 +164,7 @@ class VideoFileController extends Controller
         $model->scenario = $this->scenario;
 
         // Set up database connection.
-        $db = ezcDbFactory::create('mysql://' . YII_DB_USER . ':' . YII_DB_PASSWORD . '@' . YII_DB_HOST . '/' . YII_DB_NAME);
+        $db =& Yii::app()->ezc->db;
 
         // Check and redirect depending on current workflow execution status
         $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
@@ -281,7 +217,7 @@ class VideoFileController extends Controller
                 }
             }
         } else {
-            throw new CHttpException(400, Yii::t('crud', 'Invalid request. Please do not repeat this request again.'));
+            throw new CHttpException(400, Yii::t('model', 'Invalid request. Please do not repeat this request again.'));
         }
     }
 
@@ -307,7 +243,7 @@ class VideoFileController extends Controller
     {
         $model = VideoFile::model()->findByPk($id);
         if ($model === null) {
-            throw new CHttpException(404, Yii::t('crud', 'The requested page does not exist.'));
+            throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
         return $model;
     }

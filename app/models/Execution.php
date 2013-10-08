@@ -28,7 +28,8 @@ class Execution extends BaseExecution
         return array_merge(
             parent::behaviors(),
             array()
-        );    }
+        );
+    }
 
     public function rules()
     {

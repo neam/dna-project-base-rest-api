@@ -8,15 +8,30 @@ class ActiveRecord extends CActiveRecord
 
         $behaviors = array();
 
-        $behaviors['CTimestampBehavior'] = array(
-            'class' => 'zii.behaviors.CTimestampBehavior',
-            'createAttribute' => 'created',
-            'updateAttribute' => 'modified',
+        if (!in_array(get_class($this), array("Workflow"))) {
+            $behaviors['CTimestampBehavior'] = array(
+                'class' => 'zii.behaviors.CTimestampBehavior',
+                'createAttribute' => 'created',
+                'updateAttribute' => 'modified',
+            );
+        }
+
+        // List of models with workflows attached
+        $workflowsMap = array(
+            'Chapter' => array(),
+            'VideoFile' => array(),
         );
+
+        if (isset($workflowsMap[get_class($this)])) {
+            $behaviors['ezc-workflow'] = array(
+                'class' => 'EzcWorkflowBehavior',
+                'workflowName' => get_class($this) . 'AuthoringWorkflow',
+            );
+        }
 
         // List of model attributes to translate
         $translateMap = array(
-            'Chapter' => array('slug', 'title'),
+            'Chapter' => array('slug', 'title', 'authoring_workflow_execution_id'),
             'DataChunk' => array('title'),
             'DataSource' => array('title'),
             'DownloadLink' => array('title'),
@@ -27,19 +42,18 @@ class ActiveRecord extends CActiveRecord
             'SlideshowFile' => array('title', 'processed_media_id'),
             'SpreadsheetFile' => array('title', 'processed_media_id'),
             'TeachersGuide' => array('title'),
-            'VideoFile' => array('title', 'subtitles', 'processed_media_id', 'translation_workflow_execution_id'),
+            'VideoFile' => array('title', 'subtitles', 'processed_media_id', 'authoring_workflow_execution_id'),
             'VizView' => array('title'),
             'WordFile' => array('title', 'processed_media_id'),
         );
 
         $multilingualRelationsMap = array(
+            'Chapter' => array('authoringWorkflowExecution' => 'authoring_workflow_execution_id'),
             'SlideshowFile' => array('processedMedia' => 'processed_media_id'),
             'SpreadsheetFile' => array('processedMedia' => 'processed_media_id'),
-            'VideoFile' => array('processedMedia' => 'processed_media_id', 'translationWorkflowExecution' => 'translation_workflow_execution_id'),
+            'VideoFile' => array('processedMedia' => 'processed_media_id', 'authoringWorkflowExecution' => 'authoring_workflow_execution_id'),
             'WordFile' => array('processedMedia' => 'processed_media_id'),
         );
-
-        $translatedRelationsMap = array();
 
         if (isset($translateMap[get_class($this)])) {
             $behaviors['i18n-columns'] = array(

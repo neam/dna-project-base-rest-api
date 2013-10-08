@@ -1,13 +1,13 @@
 <?php
-$this->breadcrumbs[Yii::t('crud', 'Video Files')] = array('admin');
+$this->breadcrumbs[Yii::t('model', 'Video Files')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
-    <?php echo Yii::t('crud', 'Video File'); ?>
+    <?php echo Yii::t('model', 'Video File'); ?>
     <small>
-        <?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?>
+        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
     </small>
 
 </h1>
@@ -21,8 +21,16 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->title_en); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_en')); ?>:</b>
-<?php echo CHtml::encode($model->subtitles_en); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug')); ?>:</b>
+<?php echo CHtml::encode($model->slug); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('about')); ?>:</b>
+<?php echo CHtml::encode($model->about); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->thumbnail_media_id); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id')); ?>:</b>
@@ -33,138 +41,142 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->generate_processed_media); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_en')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_en); ?>
-<br/>
+<br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id); ?>
-<br/>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_en')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_en); ?>
+<br />
 
-<?php /*
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_en')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_en); ?>
-    <br />
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_en')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_en); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id')); ?>:</b>
+<?php echo CHtml::encode($model->translation_workflow_execution_id); ?>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_es')); ?>:</b>
 <?php echo CHtml::encode($model->title_es); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_fa')); ?>:</b>
 <?php echo CHtml::encode($model->title_fa); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_hi')); ?>:</b>
 <?php echo CHtml::encode($model->title_hi); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_pt')); ?>:</b>
 <?php echo CHtml::encode($model->title_pt); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_sv')); ?>:</b>
 <?php echo CHtml::encode($model->title_sv); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_cn')); ?>:</b>
 <?php echo CHtml::encode($model->title_cn); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_de')); ?>:</b>
 <?php echo CHtml::encode($model->title_de); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_es')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_es); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_fa')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_fa); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_hi')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_hi); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_pt')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_pt); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_sv')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_sv); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_cn')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_cn); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_de')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_de); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_es')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_es); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_fa')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_fa); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_hi')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_hi); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_pt')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_pt); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_sv')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_sv); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_cn')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_cn); ?>
-    <br />
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_de')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_de); ?>
-    <br />
+<br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_es')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_es); ?>
-    <br />
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_es')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_es); ?>
+<br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_fa')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_fa); ?>
-    <br />
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_fa')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_fa); ?>
+<br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_hi')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_hi); ?>
-    <br />
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_hi')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_hi); ?>
+<br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_pt')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_pt); ?>
-    <br />
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_pt')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_pt); ?>
+<br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_sv')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_sv); ?>
-    <br />
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_sv')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_sv); ?>
+<br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_cn')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_cn); ?>
-    <br />
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_cn')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_cn); ?>
+<br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translation_workflow_execution_id_de')); ?>:</b>
-<?php echo CHtml::encode($model->translation_workflow_execution_id_de); ?>
-    <br />
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_de')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_de); ?>
+<br />
 
     */
 ?>
@@ -172,7 +184,7 @@ $this->breadcrumbs[] = $model->id;
 <div class="row">
     <div class="span7">
         <h2>
-            <?php echo Yii::t('crud', 'Data') ?>
+            <?php echo Yii::t('model', 'Data') ?>
             <small>
                 <?php echo $model->itemLabel ?>            </small>
         </h2>
@@ -187,7 +199,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'id',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'id',
@@ -200,7 +212,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'title_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'title_en',
@@ -210,17 +222,41 @@ $this->breadcrumbs[] = $model->id;
                         )
                     ),
                     array(
-                        'name' => 'subtitles_en',
+                        'name' => 'slug',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
-                                'attribute' => 'subtitles_en',
+                                'attribute' => 'slug',
                                 'url' => $this->createUrl('/videoFile/editableSaver'),
                             ),
                             true
                         )
+                    ),
+                    array(
+                        'name' => 'about',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'about',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'thumbnail_media_id',
+                        'value' => ($model->thumbnailMedia !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->thumbnailMedia->itemLabel,
+                                array('//p3Media/view', 'id' => $model->thumbnailMedia->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->thumbnailMedia->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                     array(
                         'name' => 'original_media_id',
@@ -237,7 +273,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'generate_processed_media',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'generate_processed_media',
@@ -258,24 +294,37 @@ $this->breadcrumbs[] = $model->id;
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id',
-                        'value' => ($model->authoringWorkflowExecution !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecution->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                        'name' => 'subtitles_en',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'subtitles_en',
+                                'url' => $this->createUrl('/videoFile/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id_en',
+                        'value' => ($model->authoringWorkflowExecutionIdEn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdEn->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdEn->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdEn->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_en',
-                        'value' => ($model->translationWorkflowExecutionIdEn !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdEn->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdEn->execution_id),
+                        'name' => 'translation_workflow_execution_id',
+                        'value' => ($model->translationWorkflowExecution !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecution->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecution->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdEn->execution_id),
+                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecution->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -283,7 +332,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'created',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'created',
@@ -296,7 +345,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'modified',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'modified',
@@ -309,7 +358,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'title_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'title_es',
@@ -322,7 +371,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'title_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'title_fa',
@@ -335,7 +384,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'title_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'title_hi',
@@ -348,7 +397,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'title_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'title_pt',
@@ -361,7 +410,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'title_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'title_sv',
@@ -374,7 +423,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'title_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'title_cn',
@@ -387,7 +436,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'title_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'title_de',
@@ -400,7 +449,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'subtitles_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'subtitles_es',
@@ -413,7 +462,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'subtitles_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'subtitles_fa',
@@ -426,7 +475,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'subtitles_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'subtitles_hi',
@@ -439,7 +488,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'subtitles_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'subtitles_pt',
@@ -452,7 +501,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'subtitles_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'subtitles_sv',
@@ -465,7 +514,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'subtitles_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'subtitles_cn',
@@ -478,7 +527,7 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'subtitles_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'EditableField',
+                            'TbEditableField',
                             array(
                                 'model' => $model,
                                 'attribute' => 'subtitles_de',
@@ -565,79 +614,79 @@ $this->breadcrumbs[] = $model->id;
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_es',
-                        'value' => ($model->translationWorkflowExecutionIdEs !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdEs->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdEs->execution_id),
+                        'name' => 'authoring_workflow_execution_id_es',
+                        'value' => ($model->authoringWorkflowExecutionIdEs !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdEs->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdEs->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdEs->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdEs->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_fa',
-                        'value' => ($model->translationWorkflowExecutionIdFa !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdFa->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdFa->execution_id),
+                        'name' => 'authoring_workflow_execution_id_fa',
+                        'value' => ($model->authoringWorkflowExecutionIdFa !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdFa->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdFa->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdFa->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdFa->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_hi',
-                        'value' => ($model->translationWorkflowExecutionIdHi !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdHi->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdHi->execution_id),
+                        'name' => 'authoring_workflow_execution_id_hi',
+                        'value' => ($model->authoringWorkflowExecutionIdHi !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdHi->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdHi->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdHi->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdHi->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_pt',
-                        'value' => ($model->translationWorkflowExecutionIdPt !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdPt->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdPt->execution_id),
+                        'name' => 'authoring_workflow_execution_id_pt',
+                        'value' => ($model->authoringWorkflowExecutionIdPt !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdPt->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdPt->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdPt->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdPt->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_sv',
-                        'value' => ($model->translationWorkflowExecutionIdSv !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdSv->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdSv->execution_id),
+                        'name' => 'authoring_workflow_execution_id_sv',
+                        'value' => ($model->authoringWorkflowExecutionIdSv !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdSv->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdSv->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdSv->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdSv->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_cn',
-                        'value' => ($model->translationWorkflowExecutionIdCn !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdCn->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdCn->execution_id),
+                        'name' => 'authoring_workflow_execution_id_cn',
+                        'value' => ($model->authoringWorkflowExecutionIdCn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdCn->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdCn->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdCn->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdCn->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'translation_workflow_execution_id_de',
-                        'value' => ($model->translationWorkflowExecutionIdDe !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->translationWorkflowExecutionIdDe->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->translationWorkflowExecutionIdDe->execution_id),
+                        'name' => 'authoring_workflow_execution_id_de',
+                        'value' => ($model->authoringWorkflowExecutionIdDe !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdDe->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecutionIdDe->execution_id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->translationWorkflowExecutionIdDe->execution_id),
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecutionIdDe->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),

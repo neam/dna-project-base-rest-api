@@ -1,85 +1,308 @@
 <?php
-$this->breadcrumbs[Yii::t('crud', 'Data Sources')] = array('admin');
+$this->breadcrumbs[Yii::t('model', 'Data Sources')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-    <?php echo Yii::t('crud', 'Data Source') ?>
-    <small><?php echo Yii::t('crud', 'View') ?> #<?php echo $model->id ?></small>
+
+    <?php echo Yii::t('model', 'Data Source'); ?>
+    <small>
+        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
+    </small>
+
 </h1>
-
-
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
-<?php echo CHtml::encode($model->title); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_en')); ?>:</b>
+<?php echo CHtml::encode($model->title_en); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug')); ?>:</b>
+<?php echo CHtml::encode($model->slug); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('about')); ?>:</b>
+<?php echo CHtml::encode($model->about); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('logo_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->logo_media_id); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('mini_logo_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->mini_logo_media_id); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('link')); ?>:</b>
+<?php echo CHtml::encode($model->link); ?>
+<br/>
+
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
-<br/>
+<br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_es')); ?>:</b>
+<?php echo CHtml::encode($model->title_es); ?>
+<br />
 
-<h2><?php echo CHtml::link(Yii::t('app', 'DataChunks'), array('dataChunk/admin')); ?></h2>
-<ul>
-    <?php
-    if (is_array($model->dataChunks)) {
-        foreach ($model->dataChunks as $foreignobj) {
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_fa')); ?>:</b>
+<?php echo CHtml::encode($model->title_fa); ?>
+<br />
 
-            echo '<li>';
-            echo CHtml::link($foreignobj->itemLabel, array('dataChunk/view', 'id' => $foreignobj->id));
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_hi')); ?>:</b>
+<?php echo CHtml::encode($model->title_hi); ?>
+<br />
 
-            echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('dataChunk/update', 'id' => $foreignobj->id), array('class' => 'edit'));
-        }
-    }
-    ?></ul><p><?php
-    echo CHtml::link(
-        Yii::t('app', 'Create'), array('dataChunk/create', 'DataChunk' => array('data_source_id' => $model->{$model->tableSchema->primaryKey}))
-    );
-    ?></p><h2><?php echo CHtml::link(Yii::t('app', 'SpreadsheetFiles'), array('spreadsheetFile/admin')); ?></h2>
-<ul>
-    <?php
-    if (is_array($model->spreadsheetFiles)) {
-        foreach ($model->spreadsheetFiles as $foreignobj) {
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_pt')); ?>:</b>
+<?php echo CHtml::encode($model->title_pt); ?>
+<br />
 
-            echo '<li>';
-            echo CHtml::link($foreignobj->itemLabel, array('spreadsheetFile/view', 'id' => $foreignobj->id));
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_sv')); ?>:</b>
+<?php echo CHtml::encode($model->title_sv); ?>
+<br />
 
-            echo ' ' . CHtml::link(Yii::t('app', 'Update'), array('spreadsheetFile/update', 'id' => $foreignobj->id), array('class' => 'edit'));
-        }
-    }
-    ?></ul><p><?php
-    echo CHtml::link(
-        Yii::t('app', 'Create'), array('spreadsheetFile/create', 'SpreadsheetFile' => array('data_source_id' => $model->{$model->tableSchema->primaryKey}))
-    );
-    ?></p>
-<h2>
-    <?php echo Yii::t('crud', 'Data') ?></h2>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_cn')); ?>:</b>
+<?php echo CHtml::encode($model->title_cn); ?>
+<br />
 
-<p>
-    <?php
-    $this->widget('TbDetailView', array(
-        'data' => $model,
-        'attributes' => array(
-            'id',
-            'title_en',
-            'created',
-            'modified',
-            'title_es',
-            'title_fa',
-            'title_hi',
-            'title_pt',
-            'title_sv',
-            'title_de',
-        ),
-    ));
-    ?></p>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_de')); ?>:</b>
+<?php echo CHtml::encode($model->title_de); ?>
+<br />
 
+    */
+?>
+
+<div class="row">
+    <div class="span7">
+        <h2>
+            <?php echo Yii::t('model', 'Data') ?>
+            <small>
+                <?php echo $model->itemLabel ?>            </small>
+        </h2>
+
+        <?php
+        $this->widget(
+            'TbDetailView',
+            array(
+                'data' => $model,
+                'attributes' => array(
+                    array(
+                        'name' => 'id',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'id',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_en',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_en',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'slug',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'slug',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'about',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'about',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'logo_media_id',
+                        'value' => ($model->logoMedia !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->logoMedia->itemLabel,
+                                array('//p3Media/view', 'id' => $model->logoMedia->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->logoMedia->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'mini_logo_media_id',
+                        'value' => ($model->miniLogoMedia !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->miniLogoMedia->itemLabel,
+                                array('//p3Media/view', 'id' => $model->miniLogoMedia->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->miniLogoMedia->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'link',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'link',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'created',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'created',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'modified',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'modified',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_es',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_es',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_fa',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_fa',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_hi',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_hi',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_pt',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_pt',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_sv',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_sv',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_cn',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_cn',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'title_de',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'title_de',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                ),
+            )); ?>
+    </div>
+
+    <div class="span5">
+        <?php $this->renderPartial('_view-relations', array('model' => $model)); ?>    </div>
+</div>

@@ -6,6 +6,8 @@
  * Columns in table "presentation" available as properties of the model:
  * @property string $id
  * @property string $title_en
+ * @property string $slug
+ * @property string $about
  * @property string $slideshow_file_id
  * @property string $created
  * @property string $modified
@@ -38,11 +40,11 @@ abstract class BasePresentation extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, slideshow_file_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
+                array('title_en, slug, about, slideshow_file_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('title_en, slug, about, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
                 array('slideshow_file_id', 'length', 'max' => 20),
                 array('created, modified', 'safe'),
-                array('id, title_en, slideshow_file_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'safe', 'on' => 'search'),
+                array('id, title_en, slug, about, slideshow_file_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -57,7 +59,7 @@ abstract class BasePresentation extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -74,18 +76,20 @@ abstract class BasePresentation extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => Yii::t('crud', 'ID'),
-            'title_en' => Yii::t('crud', 'Title En'),
-            'slideshow_file_id' => Yii::t('crud', 'Slideshow File'),
-            'created' => Yii::t('crud', 'Created'),
-            'modified' => Yii::t('crud', 'Modified'),
-            'title_es' => Yii::t('crud', 'Title Es'),
-            'title_fa' => Yii::t('crud', 'Title Fa'),
-            'title_hi' => Yii::t('crud', 'Title Hi'),
-            'title_pt' => Yii::t('crud', 'Title Pt'),
-            'title_sv' => Yii::t('crud', 'Title Sv'),
-            'title_cn' => Yii::t('crud', 'Title Cn'),
-            'title_de' => Yii::t('crud', 'Title De'),
+            'id' => Yii::t('model', 'ID'),
+            'title_en' => Yii::t('model', 'Title En'),
+            'slug' => Yii::t('model', 'Slug'),
+            'about' => Yii::t('model', 'About'),
+            'slideshow_file_id' => Yii::t('model', 'Slideshow File'),
+            'created' => Yii::t('model', 'Created'),
+            'modified' => Yii::t('model', 'Modified'),
+            'title_es' => Yii::t('model', 'Title Es'),
+            'title_fa' => Yii::t('model', 'Title Fa'),
+            'title_hi' => Yii::t('model', 'Title Hi'),
+            'title_pt' => Yii::t('model', 'Title Pt'),
+            'title_sv' => Yii::t('model', 'Title Sv'),
+            'title_cn' => Yii::t('model', 'Title Cn'),
+            'title_de' => Yii::t('model', 'Title De'),
         );
     }
 
@@ -97,6 +101,8 @@ abstract class BasePresentation extends ActiveRecord
 
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.title_en', $this->title_en, true);
+        $criteria->compare('t.slug', $this->slug, true);
+        $criteria->compare('t.about', $this->about, true);
         $criteria->compare('t.slideshow_file_id', $this->slideshow_file_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);

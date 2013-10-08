@@ -1,48 +1,42 @@
 <?php
-$this->breadcrumbs[Yii::t('crud', 'Chapters')] = array('admin');
+$this->setPageTitle(
+    Yii::t('model', 'Chapter')
+    . ' - '
+    . Yii::t('model', 'Update')
+    . ': '
+    . $model->getItemLabel()
+);
+$this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Update');
+$this->breadcrumbs[] = Yii::t('model', 'Update');
 ?>
+
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-    <?php echo Yii::t('crud', 'Chapter') ?>
-    <small><?php echo Yii::t('crud', 'Update') ?> #<?php echo $model->id ?></small>
+
+    <?php echo Yii::t('model', 'Chapter'); ?>
+    <small>
+        <?php echo Yii::t('model', 'Update') ?> #<?php echo $model->id ?>
+    </small>
+
 </h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<?php
-$this->renderPartial('_form', array(
-    'model' => $model));
-?>
 
 <?php
-
-/*
-Code example to include an editable detail view:
-
-<h2>
-    <?php echo Yii::t('crud','Editable Detail View')?></h2>
-
-<?php
-$this->widget('EditableDetailView', array(
-    'data' => $model,
-    'url' => $this->createUrl('editableSaver'),
-));
-?>
-
-*/
+$this->renderPartial('_form', array('model' => $model));
 ?>
 
 
 
 <h2>
-    <?php echo Yii::t('crud', 'Sections'); ?> </h2>
+    <?php echo Yii::t('model', 'Sections'); ?> </h2>
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(// TODO
-            #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('section/create','Section' => array('chapter_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
+        'buttons' => array(
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('section/create', 'Section' => array('chapter_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
     ?></div>
@@ -53,7 +47,7 @@ $this->widget('TbGridView',
     array(
         'id' => 'section-grid',
         'dataProvider' => $relatedSearchModel->search(),
-        'filter' => count($model->sections) > 1 ? $relatedSearchModel : null,
+        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->sections) > 1 ? $relatedSearchModel : null,
         'pager' => array(
             'class' => 'TbPager',
             'displayFirstAndLast' => true,
@@ -61,7 +55,7 @@ $this->widget('TbGridView',
         'columns' => array(
             'id',
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
@@ -69,7 +63,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'slug_en',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
@@ -77,7 +71,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'ordinal',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
@@ -85,7 +79,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'menu_label_en',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
@@ -93,7 +87,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
@@ -101,7 +95,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
@@ -109,7 +103,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'title_es',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
@@ -118,165 +112,165 @@ $this->widget('TbGridView',
             ),
             /*
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_fa',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_fa',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_hi',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_hi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_pt',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_sv',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_sv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_cn',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_de',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_de',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'slug_es',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_es',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'slug_fa',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fa',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'slug_hi',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'slug_pt',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'slug_sv',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'slug_cn',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'slug_de',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_de',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'menu_label_es',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'menu_label_es',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'menu_label_fa',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'menu_label_fa',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'menu_label_hi',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'menu_label_hi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'menu_label_pt',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'menu_label_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'menu_label_sv',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'menu_label_sv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'menu_label_cn',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'menu_label_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'menu_label_de',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'menu_label_de',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             */
             array(
                 'class' => 'TbButtonColumn',
