@@ -2,12 +2,12 @@
 $this->setPageTitle(
     Yii::t('model', 'Chapter')
     . ' - '
-    . Yii::t('crud', 'Continue Authoring')
+    . Yii::t('crud', 'Draft')
 );
 
 $this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
+$this->breadcrumbs[] = Yii::t('crud', 'Draft');
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
@@ -51,7 +51,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
         <div class="row">
             <div class="span9">
 
-                <h2>Mockup!
+                <h2>Step 1: Title & About
                     <small></small>
                 </h2>
 
