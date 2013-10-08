@@ -4,6 +4,14 @@
     <?php echo CHtml::link(CHtml::encode($data->id), array('vectorGraphic/view', 'id' => $data->id)); ?>
     <br/>
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('version')); ?>:</b>
+    <?php echo CHtml::encode($data->version); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('cloned_from_id')); ?>:</b>
+    <?php echo CHtml::encode($data->cloned_from_id); ?>
+    <br/>
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
     <?php echo CHtml::encode($data->title); ?>
     <br/>
@@ -20,14 +28,21 @@
     <?php echo CHtml::encode($data->file_media_id); ?>
     <br/>
 
+    <?php /*
+    <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id')); ?>:</b>
+    <?php echo CHtml::encode($data->authoring_workflow_execution_id); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
     <?php echo CHtml::encode($data->created); ?>
-    <br/>
+    <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('modified')); ?>:</b>
     <?php echo CHtml::encode($data->modified); ?>
-    <br/>
+    <br />
 
+    */
+    ?>
     <?php if (Yii::app()->user->checkAccess('VectorGraphic.*')): ?>
         <div class="admin-container show">
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Vector Graphic'))), array('vectorGraphic/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>

@@ -81,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'examQuestionAlternatives - ExamQuestionAlternative', 'url' => array('//examQuestionAlternative/admin')), array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin'))
+                        'items' => array(array('label' => 'authoringWorkflowExecution - Execution', 'url' => array('//execution/admin')), array('label' => 'clonedFrom - VizView', 'url' => array('//vizView/admin')), array('label' => 'examQuestionAlternatives - ExamQuestionAlternative', 'url' => array('//examQuestionAlternative/admin')), array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin'))
                         )
                     ),
                 ),

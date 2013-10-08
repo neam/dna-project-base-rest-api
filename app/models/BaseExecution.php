@@ -23,7 +23,19 @@
  * @property Chapter[] $chapters5
  * @property Chapter[] $chapters6
  * @property Chapter[] $chapters7
+ * @property DataChunk[] $dataChunks
+ * @property DataSource[] $dataSources
+ * @property DownloadLink[] $downloadLinks
+ * @property ExamQuestion[] $examQuestions
  * @property Workflow $workflow
+ * @property Exercise[] $exercises
+ * @property HtmlChunk[] $htmlChunks
+ * @property PoFile[] $poFiles
+ * @property Presentation[] $presentations
+ * @property SlideshowFile[] $slideshowFiles
+ * @property SpreadsheetFile[] $spreadsheetFiles
+ * @property TeachersGuide[] $teachersGuides
+ * @property VectorGraphic[] $vectorGraphics
  * @property VideoFile[] $videoFiles
  * @property VideoFile[] $videoFiles1
  * @property VideoFile[] $videoFiles2
@@ -32,7 +44,8 @@
  * @property VideoFile[] $videoFiles5
  * @property VideoFile[] $videoFiles6
  * @property VideoFile[] $videoFiles7
- * @property VideoFile[] $videoFiles8
+ * @property VizView[] $vizViews
+ * @property WordFile[] $wordFiles
  */
 abstract class BaseExecution extends ActiveRecord
 {
@@ -80,24 +93,37 @@ abstract class BaseExecution extends ActiveRecord
     public function relations()
     {
         return array(
-            'chapters' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_de'),
-            'chapters1' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_en'),
-            'chapters2' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_cn'),
+            'chapters' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_en'),
+            'chapters1' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_cn'),
+            'chapters2' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_de'),
             'chapters3' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_es'),
             'chapters4' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_fa'),
             'chapters5' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_hi'),
             'chapters6' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_pt'),
             'chapters7' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_sv'),
+            'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'authoring_workflow_execution_id'),
+            'dataSources' => array(self::HAS_MANY, 'DataSource', 'authoring_workflow_execution_id'),
+            'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'authoring_workflow_execution_id'),
+            'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'authoring_workflow_execution_id'),
             'workflow' => array(self::BELONGS_TO, 'Workflow', 'workflow_id'),
-            'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'translation_workflow_execution_id'),
-            'videoFiles1' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_en'),
-            'videoFiles2' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_cn'),
-            'videoFiles3' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_de'),
-            'videoFiles4' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_es'),
-            'videoFiles5' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_fa'),
-            'videoFiles6' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_hi'),
-            'videoFiles7' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_pt'),
-            'videoFiles8' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_sv'),
+            'exercises' => array(self::HAS_MANY, 'Exercise', 'authoring_workflow_execution_id'),
+            'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'authoring_workflow_execution_id'),
+            'poFiles' => array(self::HAS_MANY, 'PoFile', 'authoring_workflow_execution_id'),
+            'presentations' => array(self::HAS_MANY, 'Presentation', 'authoring_workflow_execution_id'),
+            'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'authoring_workflow_execution_id'),
+            'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'authoring_workflow_execution_id'),
+            'teachersGuides' => array(self::HAS_MANY, 'TeachersGuide', 'authoring_workflow_execution_id'),
+            'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'authoring_workflow_execution_id'),
+            'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_en'),
+            'videoFiles1' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_cn'),
+            'videoFiles2' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_de'),
+            'videoFiles3' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_es'),
+            'videoFiles4' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_fa'),
+            'videoFiles5' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_hi'),
+            'videoFiles6' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_pt'),
+            'videoFiles7' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_sv'),
+            'vizViews' => array(self::HAS_MANY, 'VizView', 'authoring_workflow_execution_id'),
+            'wordFiles' => array(self::HAS_MANY, 'WordFile', 'authoring_workflow_execution_id'),
         );
     }
 

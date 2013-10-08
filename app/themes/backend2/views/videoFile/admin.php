@@ -61,6 +61,19 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'videoFiles.itemLabel\')',
+                'filter' => CHtml::listData(VideoFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFile/editableSaver'),
@@ -93,6 +106,7 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
                 'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
+            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'generate_processed_media',
@@ -106,17 +120,10 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'processedMediaIdEn.itemLabel\')',
                 'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            /*
             #'subtitles_en',
-            /*
             array(
                 'name' => 'authoring_workflow_execution_id_en',
                 'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEn.itemLabel\')',
-                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
-            ),
-            array(
-                'name' => 'translation_workflow_execution_id',
-                'value' => 'CHtml::value($data, \'translationWorkflowExecution.itemLabel\')',
                 'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
             ),
             array(

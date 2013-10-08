@@ -81,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'vectorGraphic - VectorGraphic', 'url' => array('//vectorGraphic/admin')), array('label' => 'fileMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'dataSource - DataSource', 'url' => array('//dataSource/admin')), array('label' => 'slideshowFile - SlideshowFile', 'url' => array('//slideshowFile/admin')), array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin'))
+                        'items' => array(array('label' => 'authoringWorkflowExecution - Execution', 'url' => array('//execution/admin')), array('label' => 'clonedFrom - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'dataChunks - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'dataSource - DataSource', 'url' => array('//dataSource/admin')), array('label' => 'fileMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'slideshowFile - SlideshowFile', 'url' => array('//slideshowFile/admin')), array('label' => 'vectorGraphic - VectorGraphic', 'url' => array('//vectorGraphic/admin')), array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin'))
                         )
                     ),
                 ),

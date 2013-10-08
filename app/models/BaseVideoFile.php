@@ -5,6 +5,8 @@
  *
  * Columns in table "video_file" available as properties of the model:
  * @property string $id
+ * @property integer $version
+ * @property string $cloned_from_id
  * @property string $title_en
  * @property string $slug
  * @property string $about
@@ -14,7 +16,6 @@
  * @property integer $processed_media_id_en
  * @property string $subtitles_en
  * @property string $authoring_workflow_execution_id_en
- * @property string $translation_workflow_execution_id
  * @property string $created
  * @property string $modified
  * @property string $title_es
@@ -48,7 +49,8 @@
  *
  * Relations of table "video_file" available as properties of the model:
  * @property SectionContent[] $sectionContents
- * @property Execution $translationWorkflowExecution
+ * @property VideoFile $clonedFrom
+ * @property VideoFile[] $videoFiles
  * @property Execution $authoringWorkflowExecutionIdEn
  * @property Execution $authoringWorkflowExecutionIdCn
  * @property Execution $authoringWorkflowExecutionIdDe
@@ -85,19 +87,20 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, slug, about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, subtitles_en, authoring_workflow_execution_id_en, translation_workflow_execution_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, subtitles_es, subtitles_fa, subtitles_hi, subtitles_pt, subtitles_sv, subtitles_cn, subtitles_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, title_en, slug, about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, subtitles_en, authoring_workflow_execution_id_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, subtitles_es, subtitles_fa, subtitles_hi, subtitles_pt, subtitles_sv, subtitles_cn, subtitles_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id', 'length', 'max' => 20),
                 array('title_en, slug, about, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
-                array('authoring_workflow_execution_id_en, translation_workflow_execution_id, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'length', 'max' => 10),
+                array('authoring_workflow_execution_id_en, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'length', 'max' => 10),
                 array('subtitles_en, created, modified, subtitles_es, subtitles_fa, subtitles_hi, subtitles_pt, subtitles_sv, subtitles_cn, subtitles_de', 'safe'),
-                array('id, title_en, slug, about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, subtitles_en, authoring_workflow_execution_id_en, translation_workflow_execution_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, subtitles_es, subtitles_fa, subtitles_hi, subtitles_pt, subtitles_sv, subtitles_cn, subtitles_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, slug, about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, subtitles_en, authoring_workflow_execution_id_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, subtitles_es, subtitles_fa, subtitles_hi, subtitles_pt, subtitles_sv, subtitles_cn, subtitles_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->title_en;
+        return (string) $this->cloned_from_id;
     }
 
     public function behaviors()
@@ -115,7 +118,8 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array(
             'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'video_file_id'),
-            'translationWorkflowExecution' => array(self::BELONGS_TO, 'Execution', 'translation_workflow_execution_id'),
+            'clonedFrom' => array(self::BELONGS_TO, 'VideoFile', 'cloned_from_id'),
+            'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'cloned_from_id'),
             'authoringWorkflowExecutionIdEn' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id_en'),
             'authoringWorkflowExecutionIdCn' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id_cn'),
             'authoringWorkflowExecutionIdDe' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id_de'),
@@ -141,6 +145,8 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array(
             'id' => Yii::t('model', 'ID'),
+            'version' => Yii::t('model', 'Version'),
+            'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'title_en' => Yii::t('model', 'Title En'),
             'slug' => Yii::t('model', 'Slug'),
             'about' => Yii::t('model', 'About'),
@@ -150,7 +156,6 @@ abstract class BaseVideoFile extends ActiveRecord
             'processed_media_id_en' => Yii::t('model', 'Processed Media Id En'),
             'subtitles_en' => Yii::t('model', 'Subtitles En'),
             'authoring_workflow_execution_id_en' => Yii::t('model', 'Authoring Workflow Execution Id En'),
-            'translation_workflow_execution_id' => Yii::t('model', 'Translation Workflow Execution'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'title_es' => Yii::t('model', 'Title Es'),
@@ -191,6 +196,8 @@ abstract class BaseVideoFile extends ActiveRecord
         }
 
         $criteria->compare('t.id', $this->id, true);
+        $criteria->compare('t.version', $this->version);
+        $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.title_en', $this->title_en, true);
         $criteria->compare('t.slug', $this->slug, true);
         $criteria->compare('t.about', $this->about, true);
@@ -200,7 +207,6 @@ abstract class BaseVideoFile extends ActiveRecord
         $criteria->compare('t.processed_media_id_en', $this->processed_media_id_en);
         $criteria->compare('t.subtitles_en', $this->subtitles_en, true);
         $criteria->compare('t.authoring_workflow_execution_id_en', $this->authoring_workflow_execution_id_en);
-        $criteria->compare('t.translation_workflow_execution_id', $this->translation_workflow_execution_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.title_es', $this->title_es, true);

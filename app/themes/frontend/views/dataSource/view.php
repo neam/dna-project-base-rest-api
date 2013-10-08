@@ -17,6 +17,14 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
+<?php echo CHtml::encode($model->version); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('cloned_from_id')); ?>:</b>
+<?php echo CHtml::encode($model->cloned_from_id); ?>
+<br/>
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_en')); ?>:</b>
 <?php echo CHtml::encode($model->title_en); ?>
 <br/>
@@ -33,15 +41,19 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->logo_media_id); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('mini_logo_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->mini_logo_media_id); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('link')); ?>:</b>
 <?php echo CHtml::encode($model->link); ?>
-<br/>
+<br />
 
-<?php /*
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
 <br />
@@ -107,6 +119,30 @@ $this->breadcrumbs[] = $model->id;
                             ),
                             true
                         )
+                    ),
+                    array(
+                        'name' => 'version',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'version',
+                                'url' => $this->createUrl('/dataSource/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'cloned_from_id',
+                        'value' => ($model->clonedFrom !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                array('//vizView/view', 'id' => $model->clonedFrom->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//vizView/update', 'id' => $model->clonedFrom->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                     array(
                         'name' => 'title_en',
@@ -181,6 +217,17 @@ $this->breadcrumbs[] = $model->id;
                             ),
                             true
                         )
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id',
+                        'value' => ($model->authoringWorkflowExecution !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecution->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                     array(
                         'name' => 'created',

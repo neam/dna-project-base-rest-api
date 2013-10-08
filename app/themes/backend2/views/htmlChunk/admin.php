@@ -59,7 +59,25 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'htmlChunks.itemLabel\')',
+                'filter' => CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
             #'markup_en',
+            array(
+                'name' => 'authoring_workflow_execution_id',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecution.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',

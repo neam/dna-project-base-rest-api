@@ -3,12 +3,31 @@
 
         <div class="form-horizontal">
 
+            <?php echo $form->textFieldRow($model, 'version'); ?>
+
             <?php echo $form->html5EditorRow($model, 'markup_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
                 'link' => true,
                 'image' => false,
                 'color' => false,
                 'html' => true,
             ))); ?>
+
+            <?php
+            $input = $this->widget(
+                '\GtcRelation',
+                array(
+                    'model' => $model,
+                    'relation' => 'authoringWorkflowExecution',
+                    'fields' => 'itemLabel',
+                    'allowEmpty' => true,
+                    'style' => 'dropdownlist',
+                    'htmlOptions' => array(
+                        'checkAll' => 'all'
+                    ),
+                )
+                , true);
+            echo $form->customRow($model, 'authoring_workflow_execution_id', $input);
+            ?>
 
             <?php echo $form->html5EditorRow($model, 'markup_es', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
                 'link' => true,

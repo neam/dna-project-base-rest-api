@@ -81,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'dataChunks - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'logoMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'miniLogoMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'spreadsheetFiles - SpreadsheetFile', 'url' => array('//spreadsheetFile/admin'))
+                        'items' => array(array('label' => 'dataChunks - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'authoringWorkflowExecution - Execution', 'url' => array('//execution/admin')), array('label' => 'clonedFrom - VizView', 'url' => array('//vizView/admin')), array('label' => 'logoMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'miniLogoMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'spreadsheetFiles - SpreadsheetFile', 'url' => array('//spreadsheetFile/admin'))
                         )
                     ),
                 ),

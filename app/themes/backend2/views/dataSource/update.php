@@ -56,6 +56,19 @@ $this->widget('TbGridView',
             'id',
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'dataChunks.itemLabel\')',
+                'filter' => CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
                     'url' => $this->createUrl('/dataSource/editableSaver'),
@@ -84,17 +97,22 @@ $this->widget('TbGridView',
                 'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'metadata',
-            array(
-                'name' => 'slideshow_file_id',
-                'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
-                'filter' => CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'name' => 'vector_graphic_id',
-                'value' => 'CHtml::value($data, \'vectorGraphic.itemLabel\')',
-                'filter' => CHtml::listData(VectorGraphic::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
             /*
+            array(
+                    'name' => 'slideshow_file_id',
+                    'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
+                    'filter' => CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'vector_graphic_id',
+                    'value' => 'CHtml::value($data, \'vectorGraphic.itemLabel\')',
+                    'filter' => CHtml::listData(VectorGraphic::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecution.itemLabel\')',
+                    'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'created',
@@ -206,6 +224,19 @@ $this->widget('TbGridView',
             'id',
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataSource/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'spreadsheetFiles.itemLabel\')',
+                'filter' => CHtml::listData(SpreadsheetFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
                     'url' => $this->createUrl('/dataSource/editableSaver'),
@@ -231,30 +262,35 @@ $this->widget('TbGridView',
                 'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/dataSource/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'modified',
-                'editable' => array(
-                    'url' => $this->createUrl('/dataSource/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_es',
-                'editable' => array(
-                    'url' => $this->createUrl('/dataSource/editableSaver'),
-                    //'placement' => 'right',
-                )
+                'name' => 'authoring_workflow_execution_id',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecution.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
             ),
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'created',
+                    'editable' => array(
+                        'url' => $this->createUrl('/dataSource/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'modified',
+                    'editable' => array(
+                        'url' => $this->createUrl('/dataSource/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_es',
+                    'editable' => array(
+                        'url' => $this->createUrl('/dataSource/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'title_fa',

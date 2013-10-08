@@ -17,31 +17,43 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
+<?php echo CHtml::encode($model->version); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('cloned_from_id')); ?>:</b>
+<?php echo CHtml::encode($model->cloned_from_id); ?>
+<br/>
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_en')); ?>:</b>
 <?php echo CHtml::encode($model->title_en); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('p3_media_id')); ?>:</b>
-<?php echo CHtml::encode($model->p3_media_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('file_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->file_media_id); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_es')); ?>:</b>
 <?php echo CHtml::encode($model->title_es); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_fa')); ?>:</b>
 <?php echo CHtml::encode($model->title_fa); ?>
-<br/>
+<br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_hi')); ?>:</b>
 <?php echo CHtml::encode($model->title_hi); ?>
 <br />
@@ -93,6 +105,30 @@ $this->breadcrumbs[] = $model->id;
                         )
                     ),
                     array(
+                        'name' => 'version',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'version',
+                                'url' => $this->createUrl('/downloadLink/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'cloned_from_id',
+                        'value' => ($model->clonedFrom !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                array('//downloadLink/view', 'id' => $model->clonedFrom->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//downloadLink/update', 'id' => $model->clonedFrom->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
                         'name' => 'title_en',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -106,13 +142,24 @@ $this->breadcrumbs[] = $model->id;
                         )
                     ),
                     array(
-                        'name' => 'p3_media_id',
-                        'value' => ($model->p3Media !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->p3Media->itemLabel,
-                                array('//p3Media/view', 'id' => $model->p3Media->id),
+                        'name' => 'file_media_id',
+                        'value' => ($model->fileMedia !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->fileMedia->itemLabel,
+                                array('//p3Media/view', 'id' => $model->fileMedia->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//p3Media/update', 'id' => $model->p3Media->id),
+                                array('//p3Media/update', 'id' => $model->fileMedia->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id',
+                        'value' => ($model->authoringWorkflowExecution !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecution->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),

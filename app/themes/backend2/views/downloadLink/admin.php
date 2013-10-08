@@ -61,6 +61,19 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'downloadLinks.itemLabel\')',
+                'filter' => CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
                     'url' => $this->createUrl('/downloadLink/editableSaver'),
@@ -68,9 +81,14 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'name' => 'p3_media_id',
-                'value' => 'CHtml::value($data, \'p3Media.itemLabel\')',
+                'name' => 'file_media_id',
+                'value' => 'CHtml::value($data, \'fileMedia.itemLabel\')',
                 'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecution.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -88,6 +106,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'title_es',
@@ -112,7 +131,6 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'title_pt',

@@ -11,6 +11,16 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'version'); ?>
+        <?php echo $form->textField($model, 'version'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'cloned_from_id'); ?>
+        <?php echo $form->textField($model, 'cloned_from_id', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'title_en'); ?>
         <?php echo $form->textField($model, 'title_en', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
@@ -28,6 +38,11 @@
     <div class="row">
         <?php echo $form->label($model, 'processed_media_id_en'); ?>
         <?php echo $form->textField($model, 'processed_media_id_en'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'authoring_workflow_execution_id'); ?>
+        <?php echo $form->textField($model, 'authoring_workflow_execution_id', array('size' => 10, 'maxlength' => 10)); ?>
     </div>
 
     <div class="row">

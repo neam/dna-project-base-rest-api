@@ -61,6 +61,19 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'vectorGraphics.itemLabel\')',
+                'filter' => CHtml::listData(VectorGraphic::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'title',
                 'editable' => array(
                     'url' => $this->createUrl('/vectorGraphic/editableSaver'),
@@ -88,6 +101,12 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'fileMedia.itemLabel\')',
                 'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
+            array(
+                'name' => 'authoring_workflow_execution_id',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecution.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',

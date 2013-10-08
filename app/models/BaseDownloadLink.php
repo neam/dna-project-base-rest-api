@@ -5,8 +5,11 @@
  *
  * Columns in table "download_link" available as properties of the model:
  * @property string $id
+ * @property integer $version
+ * @property string $cloned_from_id
  * @property string $title_en
- * @property integer $p3_media_id
+ * @property integer $file_media_id
+ * @property string $authoring_workflow_execution_id
  * @property string $created
  * @property string $modified
  * @property string $title_es
@@ -18,7 +21,10 @@
  * @property string $title_de
  *
  * Relations of table "download_link" available as properties of the model:
- * @property P3Media $p3Media
+ * @property P3Media $fileMedia
+ * @property Execution $authoringWorkflowExecution
+ * @property DownloadLink $clonedFrom
+ * @property DownloadLink[] $downloadLinks
  * @property SectionContent[] $sectionContents
  */
 abstract class BaseDownloadLink extends ActiveRecord
@@ -38,18 +44,20 @@ abstract class BaseDownloadLink extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, p3_media_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('p3_media_id', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, title_en, file_media_id, authoring_workflow_execution_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, file_media_id', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id', 'length', 'max' => 20),
                 array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
+                array('authoring_workflow_execution_id', 'length', 'max' => 10),
                 array('created, modified', 'safe'),
-                array('id, title_en, p3_media_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, file_media_id, authoring_workflow_execution_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->title_en;
+        return (string) $this->cloned_from_id;
     }
 
     public function behaviors()
@@ -66,7 +74,10 @@ abstract class BaseDownloadLink extends ActiveRecord
     public function relations()
     {
         return array(
-            'p3Media' => array(self::BELONGS_TO, 'P3Media', 'p3_media_id'),
+            'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
+            'authoringWorkflowExecution' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id'),
+            'clonedFrom' => array(self::BELONGS_TO, 'DownloadLink', 'cloned_from_id'),
+            'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'cloned_from_id'),
             'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'download_link_id'),
         );
     }
@@ -75,8 +86,11 @@ abstract class BaseDownloadLink extends ActiveRecord
     {
         return array(
             'id' => Yii::t('model', 'ID'),
+            'version' => Yii::t('model', 'Version'),
+            'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'title_en' => Yii::t('model', 'Title En'),
-            'p3_media_id' => Yii::t('model', 'P3 Media'),
+            'file_media_id' => Yii::t('model', 'File Media'),
+            'authoring_workflow_execution_id' => Yii::t('model', 'Authoring Workflow Execution'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'title_es' => Yii::t('model', 'Title Es'),
@@ -96,8 +110,11 @@ abstract class BaseDownloadLink extends ActiveRecord
         }
 
         $criteria->compare('t.id', $this->id, true);
+        $criteria->compare('t.version', $this->version);
+        $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.title_en', $this->title_en, true);
-        $criteria->compare('t.p3_media_id', $this->p3_media_id);
+        $criteria->compare('t.file_media_id', $this->file_media_id);
+        $criteria->compare('t.authoring_workflow_execution_id', $this->authoring_workflow_execution_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.title_es', $this->title_es, true);

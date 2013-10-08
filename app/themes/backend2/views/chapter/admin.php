@@ -61,6 +61,19 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'chapters.itemLabel\')',
+                'filter' => CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
@@ -93,6 +106,7 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEn.itemLabel\')',
                 'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
             ),
+            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
@@ -109,7 +123,6 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'title_es',

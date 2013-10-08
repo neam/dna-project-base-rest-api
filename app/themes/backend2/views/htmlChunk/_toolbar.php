@@ -81,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin'))
+                        'items' => array(array('label' => 'authoringWorkflowExecution - Execution', 'url' => array('//execution/admin')), array('label' => 'clonedFrom - HtmlChunk', 'url' => array('//htmlChunk/admin')), array('label' => 'htmlChunks - HtmlChunk', 'url' => array('//htmlChunk/admin')), array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin'))
                         )
                     ),
                 ),
