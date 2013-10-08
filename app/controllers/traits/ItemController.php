@@ -104,12 +104,26 @@ trait ItemController
 
         $db =& Yii::app()->ezc->db;
 
-        // Check and redirect depending on current workflow execution status
+        if (isset($_POST[$this->modelClass])) {
+			// postning
+            $model->attributes = $_POST['Chapter'];
+            try {
+                if ($model->save()) {
+                    if (isset($_GET['returnUrl'])) {
+                        $this->redirect($_GET['returnUrl']);
+                    } else {
+                        $this->redirect(array('continueAuthoring', 'id' => $model->id));
+                    }
+                }
+            } catch (Exception $e) {
+                $model->addError('id', $e->getMessage());
+            }
+        } elseif (isset($_GET[$this->modelClass])) {
+            $model->attributes = $_GET[$this->modelClass];
+        }
+
         $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->authoring_workflow_execution_id);
-
         $this->render('draft', array('model' => $model, 'execution' => $execution));
-
-
     }
 
     public function actionTranslate($id)
