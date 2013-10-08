@@ -47,11 +47,21 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
     </div>
     <div class="span9 well well-white">
 
+	<?php
+    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+        'id' => 'chapter-form',
+        'enableAjaxValidation' => true,
+        'enableClientValidation' => true,
+        'type' => 'horizontal',
+    ));
+    echo $form->errorSummary($model);
+    ?>
+
 
         <div class="row">
             <div class="span9">
 
-                <h2>Step 1: Title & About
+                <h2>Step 1: Create Draft
                     <small></small>
                 </h2>
 
@@ -62,13 +72,10 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
 
                     <div class="btn-group">
                         <?php
-                        $this->widget("bootstrap.widgets.TbButton", array(
-                            "label" => Yii::t("model", "Save and Continue"),
-                            "type" => "primary",
-                            "size" => "large",
-                            "icon" => "icon-forward",
-                            "url" => array("continueAuthoring", "id" => $model->{$model->tableSchema->primaryKey})
-                        ));
+				        echo CHtml::submitButton(Yii::t('model', 'Save and Continue'), array(
+				                'class' => 'btn btn-large btn-primary'
+				            )
+				        );
                         ?>
 
                     </div>
@@ -78,40 +85,30 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
             </div>
         </div>
 
-        <?php $this->renderPartial('_form', array('model' => $model, 'buttons' => 'create')); ?>
+        <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
-        <form>
+        <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
 
-            <div class="row">
-                <div class="span3">
 
-                    Thumbnail
-                    <img src="http://placehold.it/400x400">
+	    <div class="form-actions">
+	        <?php
+	        echo CHtml::Button(Yii::t('model', 'Cancel'), array(
+	                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+	                'class' => 'btn'
+	            )
+	        );
+	        echo ' ';
+	        echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+	                'class' => 'btn btn-primary'
+	            )
+	        );
+	        ?>    </div>
 
-                </div>
-                <div class="span9">
+	        <div class="alert alert-info">
+	            Hint: Lorem ipsum
+	        </div>
 
-                    Title
-
-                    Tags
-
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="span12">
-
-                    About
-
-                </div>
-            </div>
-
-        </form>
-
-        <div class="alert alert-info">
-            Hint: Lorem ipsum
-        </div>
-
+	    <?php $this->endWidget() ?>
 
     </div>
 

@@ -292,6 +292,7 @@ $mainConfig = array(
                 '^([^/]*)/admin' => 'backend2',
                 '^([^/]*)/create' => 'backend2',
                 '^([^/]*)/continueAuthoring' => 'backend2',
+                '^([^/]*)/draft' => 'backend2',
                 '^([^/]*)/translate(.*)' => 'backend2',
                 '^([^/]*)/author(.*)' => 'backend2',
                 '^site/giiscript' => 'backend2',

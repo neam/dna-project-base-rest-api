@@ -22,6 +22,14 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
+                    'draft',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.Draft'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
                     'translate',
                 ),
                 'roles' => array(
@@ -87,6 +95,21 @@ trait ItemController
         Yii::app()->user->setFlash('success', "{$this->modelClass} Added");
 
         $this->redirect(array('continueAuthoring', 'id' => $item->id));
+    }
+
+    public function actionDraft($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+
+        $db =& Yii::app()->ezc->db;
+
+        // Check and redirect depending on current workflow execution status
+        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->authoring_workflow_execution_id);
+
+        $this->render('draft', array('model' => $model, 'execution' => $execution));
+
+
     }
 
     public function actionTranslate($id)
