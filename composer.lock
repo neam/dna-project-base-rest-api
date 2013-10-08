@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "28db869b40ad86083b7920b7996772f2",
+    "hash": "b3f0a72f66c1536b469af7f9c847c5af",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -156,16 +156,16 @@
         },
         {
             "name": "neam/yii-i18n-columns",
-            "version": "0.2.0",
+            "version": "0.3.0-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-i18n-columns.git",
-                "reference": "0.2.0"
+                "reference": "0.3.0-alpha"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/0.2.0",
-                "reference": "0.2.0",
+                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/0.3.0-alpha",
+                "reference": "0.3.0-alpha",
                 "shasum": ""
             },
             "require": {
@@ -197,10 +197,10 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/neam/yii-i18n-columns/tree/0.2.0",
+                "source": "https://github.com/neam/yii-i18n-columns/tree/0.3.0-alpha",
                 "issues": "https://github.com/neam/yii-i18n-columns/issues"
             },
-            "time": "2013-07-25 06:40:38"
+            "time": "2013-10-08 00:23:50"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -1315,6 +1315,7 @@
         "waalzer/app-demo-data": 20,
         "yiiext/migrate-command": 20,
         "firstrow/stranslateablebehavior": 20,
+        "neam/yii-i18n-columns": 15,
         "phpoffice/phpword": 20,
         "phpoffice/phppowerpoint": 20,
         "schmunk42/giic": 20,
