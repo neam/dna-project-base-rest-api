@@ -3,6 +3,8 @@
 
         <div class="form-horizontal">
 
+            <?php echo $form->textFieldRow($model, 'version'); ?>
+
             <?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
 
             <?php echo $form->html5EditorRow($model, 'about', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
@@ -57,6 +59,23 @@
                 'field' => 'itemLabel',
             ));
             $this->endClip();
+            ?>
+
+            <?php
+            $input = $this->widget(
+                '\GtcRelation',
+                array(
+                    'model' => $model,
+                    'relation' => 'authoringWorkflowExecution',
+                    'fields' => 'itemLabel',
+                    'allowEmpty' => true,
+                    'style' => 'dropdownlist',
+                    'htmlOptions' => array(
+                        'checkAll' => 'all'
+                    ),
+                )
+                , true);
+            echo $form->customRow($model, 'authoring_workflow_execution_id', $input);
             ?>
         </div>
     </div>

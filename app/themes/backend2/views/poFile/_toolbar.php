@@ -81,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'fileMedia - P3Media', 'url' => array('//p3Media/admin'))
+                        'items' => array(array('label' => 'clonedFrom - PoFile', 'url' => array('//poFile/admin')), array('label' => 'poFiles - PoFile', 'url' => array('//poFile/admin')), array('label' => 'authoringWorkflowExecution - Execution', 'url' => array('//execution/admin')), array('label' => 'fileMedia - P3Media', 'url' => array('//p3Media/admin'))
                         )
                     ),
                 ),

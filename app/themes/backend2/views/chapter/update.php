@@ -30,6 +30,249 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <h2>
+    <?php echo Yii::t('model', 'Chapters'); ?> </h2>
+
+<div class="btn-group">
+    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'buttons' => array(
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+        ),
+    ));
+    ?></div>
+
+<?php
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'chapters');
+$this->widget('TbGridView',
+    array(
+        'id' => 'chapter-grid',
+        'dataProvider' => $relatedSearchModel->search(),
+        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->chapters) > 1 ? $relatedSearchModel : null,
+        'pager' => array(
+            'class' => 'TbPager',
+            'displayFirstAndLast' => true,
+        ),
+        'columns' => array(
+            'id',
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'thumbnail_media_id',
+                'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'about',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_en',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEn.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'created',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'modified',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_es',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_fa',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_hi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_sv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'title_de',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_es',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fa',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_de',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapter/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_es',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEs.itemLabel\')',
+                    'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_fa',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdFa.itemLabel\')',
+                    'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_hi',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdHi.itemLabel\')',
+                    'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_pt',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdPt.itemLabel\')',
+                    'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_sv',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdSv.itemLabel\')',
+                    'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_cn',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdCn.itemLabel\')',
+                    'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_de',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdDe.itemLabel\')',
+                    'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            */
+            array(
+                'class' => 'TbButtonColumn',
+                'viewButtonUrl' => "Yii::app()->controller->createUrl('chapter/view', array('id' => \$data->id))",
+                'updateButtonUrl' => "Yii::app()->controller->createUrl('chapter/update', array('id' => \$data->id))",
+                'deleteButtonUrl' => "Yii::app()->controller->createUrl('chapter/delete', array('id' => \$data->id))",
+            ),
+        ),
+    ));
+?>
+
+
+<h2>
     <?php echo Yii::t('model', 'Sections'); ?> </h2>
 
 <div class="btn-group">

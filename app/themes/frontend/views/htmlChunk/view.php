@@ -17,8 +17,20 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
+<?php echo CHtml::encode($model->version); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('cloned_from_id')); ?>:</b>
+<?php echo CHtml::encode($model->cloned_from_id); ?>
+<br/>
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('markup_en')); ?>:</b>
 <?php echo CHtml::encode($model->markup_en); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
@@ -29,19 +41,19 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->modified); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('markup_es')); ?>:</b>
 <?php echo CHtml::encode($model->markup_es); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('markup_fa')); ?>:</b>
 <?php echo CHtml::encode($model->markup_fa); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('markup_hi')); ?>:</b>
 <?php echo CHtml::encode($model->markup_hi); ?>
-<br/>
+<br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('markup_pt')); ?>:</b>
 <?php echo CHtml::encode($model->markup_pt); ?>
 <br />
@@ -89,6 +101,30 @@ $this->breadcrumbs[] = $model->id;
                         )
                     ),
                     array(
+                        'name' => 'version',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'version',
+                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'cloned_from_id',
+                        'value' => ($model->clonedFrom !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                array('//htmlChunk/view', 'id' => $model->clonedFrom->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//htmlChunk/update', 'id' => $model->clonedFrom->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
                         'name' => 'markup_en',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -100,6 +136,17 @@ $this->breadcrumbs[] = $model->id;
                             ),
                             true
                         )
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id',
+                        'value' => ($model->authoringWorkflowExecution !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecution->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                     array(
                         'name' => 'created',

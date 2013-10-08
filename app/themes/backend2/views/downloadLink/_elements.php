@@ -3,6 +3,8 @@
 
         <div class="form-horizontal">
 
+            <?php echo $form->textFieldRow($model, 'version'); ?>
+
             <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
             <?php
@@ -10,7 +12,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'p3Media',
+                    'relation' => 'fileMedia',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -19,11 +21,11 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'p3_media_id', $input);
+            echo $form->customRow($model, 'file_media_id', $input);
             ?>
 
             <?php
-            $formId = 'download-link-p3_media_id-' . \uniqid() . '-form';
+            $formId = 'download-link-file_media_id-' . \uniqid() . '-form';
             ?>
 
             <div class="control-group">
@@ -44,12 +46,29 @@
             $this->beginClip('modal:' . $formId . '-modal');
             $this->renderPartial('//p3Media/_modal_form', array(
                 'formId' => $formId,
-                'inputSelector' => '#DownloadLink_p3_media_id',
+                'inputSelector' => '#DownloadLink_file_media_id',
                 'model' => new P3Media,
                 'pk' => 'id',
                 'field' => 'itemLabel',
             ));
             $this->endClip();
+            ?>
+
+            <?php
+            $input = $this->widget(
+                '\GtcRelation',
+                array(
+                    'model' => $model,
+                    'relation' => 'authoringWorkflowExecution',
+                    'fields' => 'itemLabel',
+                    'allowEmpty' => true,
+                    'style' => 'dropdownlist',
+                    'htmlOptions' => array(
+                        'checkAll' => 'all'
+                    ),
+                )
+                , true);
+            echo $form->customRow($model, 'authoring_workflow_execution_id', $input);
             ?>
 
             <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>

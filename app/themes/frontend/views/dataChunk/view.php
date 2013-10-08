@@ -17,6 +17,14 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
+<?php echo CHtml::encode($model->version); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('cloned_from_id')); ?>:</b>
+<?php echo CHtml::encode($model->cloned_from_id); ?>
+<br/>
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_en')); ?>:</b>
 <?php echo CHtml::encode($model->title_en); ?>
 <br/>
@@ -33,21 +41,25 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->file_media_id); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('metadata')); ?>:</b>
 <?php echo CHtml::encode($model->metadata); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('data_source_id')); ?>:</b>
 <?php echo CHtml::encode($model->data_source_id); ?>
-<br/>
+<br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_id')); ?>:</b>
 <?php echo CHtml::encode($model->slideshow_file_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('vector_graphic_id')); ?>:</b>
 <?php echo CHtml::encode($model->vector_graphic_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
@@ -115,6 +127,30 @@ $this->breadcrumbs[] = $model->id;
                             ),
                             true
                         )
+                    ),
+                    array(
+                        'name' => 'version',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'version',
+                                'url' => $this->createUrl('/dataChunk/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'cloned_from_id',
+                        'value' => ($model->clonedFrom !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                array('//dataChunk/view', 'id' => $model->clonedFrom->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//dataChunk/update', 'id' => $model->clonedFrom->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                     array(
                         'name' => 'title_en',
@@ -209,6 +245,17 @@ $this->breadcrumbs[] = $model->id;
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
                                 array('//vectorGraphic/update', 'id' => $model->vectorGraphic->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id',
+                        'value' => ($model->authoringWorkflowExecution !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecution->itemLabel,
+                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),

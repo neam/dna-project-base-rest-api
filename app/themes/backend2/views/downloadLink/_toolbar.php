@@ -81,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'p3Media - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin'))
+                        'items' => array(array('label' => 'fileMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'authoringWorkflowExecution - Execution', 'url' => array('//execution/admin')), array('label' => 'clonedFrom - DownloadLink', 'url' => array('//downloadLink/admin')), array('label' => 'downloadLinks - DownloadLink', 'url' => array('//downloadLink/admin')), array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin'))
                         )
                     ),
                 ),

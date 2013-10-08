@@ -3,6 +3,8 @@
 
         <div class="form-horizontal">
 
+            <?php echo $form->textFieldRow($model, 'version'); ?>
+
             <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug', array('maxlength' => 255)); ?>
@@ -169,23 +171,6 @@
                 )
                 , true);
             echo $form->customRow($model, 'authoring_workflow_execution_id_en', $input);
-            ?>
-
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'translationWorkflowExecution',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'translation_workflow_execution_id', $input);
             ?>
 
             <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>

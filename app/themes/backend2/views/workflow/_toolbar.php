@@ -74,6 +74,21 @@
         </div>
 
 
+        <div class="btn-group">
+            <?php
+            $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                'buttons' => array(
+                    array(
+                        'label' => Yii::t('model', 'Relations'),
+                        'icon' => 'icon-search',
+                        'items' => array(array('label' => 'executions - Execution', 'url' => array('//execution/admin'))
+                        )
+                    ),
+                ),
+            ));
+            ?>        </div>
+
+
     <?php endif; ?></div>
 
 <?php if ($this->action->id == 'admin'): ?>

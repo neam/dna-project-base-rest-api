@@ -61,6 +61,19 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'dataChunks.itemLabel\')',
+                'filter' => CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'title_en',
                 'editable' => array(
                     'url' => $this->createUrl('/dataChunk/editableSaver'),
@@ -94,6 +107,7 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'dataSource.itemLabel\')',
                 'filter' => CHtml::listData(DataSource::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
+            /*
             array(
                 'name' => 'slideshow_file_id',
                 'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
@@ -104,7 +118,11 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'vectorGraphic.itemLabel\')',
                 'filter' => CHtml::listData(VectorGraphic::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            /*
+            array(
+                'name' => 'authoring_workflow_execution_id',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecution.itemLabel\')',
+                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',

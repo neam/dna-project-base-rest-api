@@ -3,6 +3,8 @@
 
         <div class="form-horizontal">
 
+            <?php echo $form->textFieldRow($model, 'version'); ?>
+
             <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>

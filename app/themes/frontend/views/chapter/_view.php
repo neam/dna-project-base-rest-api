@@ -4,6 +4,14 @@
     <?php echo CHtml::link(CHtml::encode($data->id), array('chapter/view', 'id' => $data->id)); ?>
     <br/>
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('version')); ?>:</b>
+    <?php echo CHtml::encode($data->version); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('cloned_from_id')); ?>:</b>
+    <?php echo CHtml::encode($data->cloned_from_id); ?>
+    <br/>
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('title_en')); ?>:</b>
     <?php echo CHtml::encode($data->title_en); ?>
     <br/>
@@ -20,15 +28,15 @@
     <?php echo CHtml::encode($data->about); ?>
     <br/>
 
+    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id_en')); ?>:</b>
     <?php echo CHtml::encode($data->authoring_workflow_execution_id_en); ?>
-    <br/>
+    <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
     <?php echo CHtml::encode($data->created); ?>
-    <br/>
+    <br />
 
-    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('modified')); ?>:</b>
     <?php echo CHtml::encode($data->modified); ?>
     <br />
