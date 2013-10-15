@@ -44,10 +44,8 @@ trait ItemController
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $db =& Yii::app()->ezc->db;
-
         // Check and redirect depending on current workflow execution status
-        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->authoring_workflow_execution_id);
+        $execution = Yii::app()->ezc->getWorkflowDatabaseExecution((int) $model->authoring_workflow_execution_id);
         $waitingFor = $execution->getWaitingFor();
 
         if (isset($waitingFor["continue_from_approved_for_translation"])) {
@@ -75,8 +73,7 @@ trait ItemController
         $model->scenario = $this->scenario;
 
         // Tmp - manually set continue_from_approved_for_translation to true before we have built the authoring workflow etc
-        $db =& Yii::app()->ezc->db;
-        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
+        $execution = Yii::app()->ezc->getWorkflowDatabaseExecution((int) $model->translation_workflow_execution_id);
 
         $execution->resume(array('continue_from_approved_for_translation' => true));
         $execution->unsetVariable('continue_from_approved_for_translation');
@@ -102,8 +99,6 @@ trait ItemController
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $db =& Yii::app()->ezc->db;
-
         if (isset($_POST[$this->modelClass])) {
 			// postning
             $model->attributes = $_POST['Chapter'];
@@ -122,7 +117,8 @@ trait ItemController
             $model->attributes = $_GET[$this->modelClass];
         }
 
-        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->authoring_workflow_execution_id);
+        $execution = Yii::app()->ezc->getWorkflowDatabaseExecution((int) $model->authoring_workflow_execution_id);
+
         $this->render('draft', array('model' => $model, 'execution' => $execution));
     }
 
@@ -137,11 +133,8 @@ trait ItemController
             return;
         }
 
-        // Set up database connection.
-        $db =& Yii::app()->ezc->db;
-
         // Check and redirect depending on current workflow execution status
-        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
+        $execution = Yii::app()->ezc->getWorkflowDatabaseExecution((int) $model->translation_workflow_execution_id);
         $waitingFor = $execution->getWaitingFor();
 
         if (isset($waitingFor["continue_from_approved_for_translation"])) {

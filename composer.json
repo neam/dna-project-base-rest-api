@@ -76,6 +76,10 @@
             "url": "https://github.com/PHPOffice/PHPPowerPoint"
         },
         {
+            "type": "vcs",
+            "url": "https://github.com/motin/WorkflowDatabaseTiein"
+        },
+        {
             "type":"composer",
             "url":"http://packages.phundament.com"
         }
@@ -111,7 +115,7 @@
         "schmunk42/giic": "dev-master",
         "thomaspark/bootswatch": "2.3.*",
 		"anggiaj/eselect2": "dev-master",
-        "zetacomponents/workflow-database-tiein": "dev-master",
+        "zetacomponents/workflow-database-tiein": "dev-awaiting-prs",
         "zetacomponents/workflow": "dev-master",
         "zetacomponents/database": "dev-travis",
         "ascendro/yii-graphviz": "@dev",

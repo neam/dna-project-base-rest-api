@@ -71,11 +71,8 @@ class WorkflowController extends Controller
         // Generate GraphViz/dot markup for workflow
         $graphVizSyntaxBuilt = Yii::app()->ezc->graphVizSyntax($workflowBuilt);
 
-        // Set up database connection.
-        $db =& Yii::app()->ezc->db;
-
         // Set up workflow definition storage (database).
-        $definition = new ezcWorkflowDatabaseDefinitionStorage($db);
+        $definition = Yii::app()->ezc->getWorkflowDatabaseDefinitionStorage();
 
         // Load the current workflow from database
         $workflowStored = $definition->loadById($model->workflow_id);

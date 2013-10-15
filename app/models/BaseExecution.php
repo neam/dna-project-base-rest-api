@@ -57,7 +57,7 @@ abstract class BaseExecution extends ActiveRecord
 
     public function tableName()
     {
-        return 'execution';
+        return 'ezc_execution';
     }
 
     public function rules()

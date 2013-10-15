@@ -22,7 +22,7 @@ abstract class BaseWorkflow extends ActiveRecord
 
     public function tableName()
     {
-        return 'workflow';
+        return 'ezc_workflow';
     }
 
     public function rules()
