@@ -38,17 +38,6 @@
         {
             "type": "package",
             "package": {
-                "name": "ezc/ezcomponents",
-                "version": "@dev",
-                "dist": {
-                    "url": "http://www.ezcomponents.org/files/downloads/ezcomponents-2009.2.1-lite.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
                 "name": "ascendro/yii-graphviz",
                 "version": "@dev",
                 "source": {
@@ -122,7 +111,9 @@
         "schmunk42/giic": "dev-master",
         "thomaspark/bootswatch": "2.3.*",
 		"anggiaj/eselect2": "dev-master",
-        "ezc/ezcomponents": "@dev",
+        "zetacomponents/workflow-database-tiein": "dev-master",
+        "zetacomponents/workflow": "dev-master",
+        "zetacomponents/database": "dev-travis",
         "ascendro/yii-graphviz": "@dev",
         "mihanentalpo/yii-sql-migration-generator": "@dev",
         "schmunk42/yii-sakila-crud": "@dev",

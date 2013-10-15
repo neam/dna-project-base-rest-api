@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b3f0a72f66c1536b469af7f9c847c5af",
+    "hash": "d7d7d9589a379c4888e4d43609ea6255",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -72,17 +72,6 @@
             "description": "Rights is a module for the Yii PHP framework. This module utilizes Yii's built-in Database Authorization Manager (CDbAuthManager) to provide a web interface for advanced access control within Yii-applications.",
             "homepage": "http://www.yiiframework.com/extension/rights",
             "time": "2011-10-12 09:05:52"
-        },
-        {
-            "name": "ezc/ezcomponents",
-            "version": "@dev",
-            "dist": {
-                "type": "zip",
-                "url": "http://www.ezcomponents.org/files/downloads/ezcomponents-2009.2.1-lite.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
         },
         {
             "name": "firstrow/stranslateablebehavior",
@@ -1089,6 +1078,273 @@
             "type": "library",
             "description": "Yii PHP Framework",
             "homepage": "https://github.com/yiisoft/yii"
+        },
+        {
+            "name": "zetacomponents/base",
+            "version": "1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Base.git",
+                "reference": "52ca69c1de55f3fa4f595779e5bc831da7ee176c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zetacomponents/Base/zipball/52ca69c1de55f3fa4f595779e5bc831da7ee176c",
+                "reference": "52ca69c1de55f3fa4f595779e5bc831da7ee176c",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "The Base package provides the basic infrastructure that all packages rely on. Therefore every component relies on this package.",
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2009-12-21 12:14:16"
+        },
+        {
+            "name": "zetacomponents/database",
+            "version": "dev-travis",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Database.git",
+                "reference": "54e98d9138a3ce5ccaee652b17dc7d3a52c3ac73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zetacomponents/Database/zipball/54e98d9138a3ce5ccaee652b17dc7d3a52c3ac73",
+                "reference": "54e98d9138a3ce5ccaee652b17dc7d3a52c3ac73",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                },
+                {
+                    "name": "Joel Arvidsson"
+                },
+                {
+                    "name": "Friedel Hill"
+                },
+                {
+                    "name": "Christian Michel"
+                }
+            ],
+            "description": "A lightweight database layer on top of PHP's PDO that allows you to utilize a database without having to take care of differences in SQL dialects.",
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2013-01-11 11:07:24"
+        },
+        {
+            "name": "zetacomponents/workflow",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Workflow.git",
+                "reference": "c575f142069c6c8967c578b0c0f92eb9029df29a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zetacomponents/Workflow/zipball/c575f142069c6c8967c578b0c0f92eb9029df29a",
+                "reference": "c575f142069c6c8967c578b0c0f92eb9029df29a",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "The purpose of the Workflow component is to provide the core functionality of an activity-based workflow system including the definition and execution of workflow specifications.",
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:57:09"
+        },
+        {
+            "name": "zetacomponents/workflow-database-tiein",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/WorkflowDatabaseTiein.git",
+                "reference": "1337e68002dcdff2ca83b7bd242809199941ea8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zetacomponents/WorkflowDatabaseTiein/zipball/1337e68002dcdff2ca83b7bd242809199941ea8c",
+                "reference": "1337e68002dcdff2ca83b7bd242809199941ea8c",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "Contains the database backend for the Workflow component.",
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:57:12"
         }
     ],
     "packages-dev": [
@@ -1320,7 +1576,9 @@
         "phpoffice/phppowerpoint": 20,
         "schmunk42/giic": 20,
         "anggiaj/eselect2": 20,
-        "ezc/ezcomponents": 20,
+        "zetacomponents/workflow-database-tiein": 20,
+        "zetacomponents/workflow": 20,
+        "zetacomponents/database": 20,
         "ascendro/yii-graphviz": 20,
         "mihanentalpo/yii-sql-migration-generator": 20,
         "schmunk42/yii-sakila-crud": 20,

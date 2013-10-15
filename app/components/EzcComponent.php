@@ -2,7 +2,7 @@
 
 class EzcComponent extends CApplicationComponent
 {
-    public $ezcAlias = 'vendor.ezc.ezcomponents';
+    public $ezcAlias = 'vendor.zetacomponents';
     private $_db = null;
 
     public function init()
