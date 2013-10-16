@@ -290,9 +290,9 @@ $this->widget('TbGridView',
             array(
                 'class' => 'TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Snapshot.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Snapshot.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Snapshot.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Snapshot.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Snapshot.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Snapshot.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',

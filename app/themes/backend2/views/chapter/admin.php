@@ -280,10 +280,23 @@ $this->widget('TbGridView',
 
             array(
                 'class' => 'TbButtonColumn',
+                'header' => 'Workflows',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Chapter.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Chapter.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Chapter.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Item.Preview")', 'options' => array('title' => Yii::t('app', 'Preview'))),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Item.Edit")', 'options' => array('title' => Yii::t('app', 'Edit'))),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Item.Remove")', 'options' => array('title' => Yii::t('app', 'Remove'))),
+                ),
+                'viewButtonUrl' => 'Yii::app()->controller->createUrl("preview", array("id" => $data->id))',
+                'updateButtonUrl' => 'Yii::app()->controller->createUrl("continueAuthoring", array("id" => $data->id))',
+                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("remove", array("id" => $data->id))',
+            ),
+            array(
+                'class' => 'TbButtonColumn',
+                'header' => 'Direct',
+                'buttons' => array(
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Chapter.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Chapter.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Chapter.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',

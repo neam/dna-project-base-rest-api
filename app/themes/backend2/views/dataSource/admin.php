@@ -294,9 +294,9 @@ $this->widget('TbGridView',
             array(
                 'class' => 'TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.DataSource.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.DataSource.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.DataSource.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("DataSource.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("DataSource.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("DataSource.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
