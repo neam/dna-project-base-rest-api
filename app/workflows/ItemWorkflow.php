@@ -5,12 +5,6 @@ class ItemWorkflow
     private $workflow;
     private $process_steps = array();
 
-    function setWorkflow($workflow)
-    {
-        $this->workflow = $workflow;
-        return $this;
-    }
-
     function buildWorkflow($name, $inMemory = false)
     {
         $this->workflow = new ezcWorkflow($name);
