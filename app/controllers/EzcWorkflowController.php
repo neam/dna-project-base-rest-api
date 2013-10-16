@@ -43,7 +43,7 @@ class EzcWorkflowController extends Controller
         parent::beforeAction($action);
         // map identifcationColumn to id
         if (!isset($_GET['id']) && isset($_GET['workflow_id'])) {
-            $model = EzcWorkflow::model()->find(
+            $model = EzcWorkflowModel::model()->find(
                 'workflow_id = :workflow_id',
                 array(
                     ':workflow_id' => $_GET['workflow_id']
@@ -209,7 +209,7 @@ class EzcWorkflowController extends Controller
 
     public function actionAdmin()
     {
-        $model = new EzcWorkflow('search');
+        $model = new EzcWorkflowModel('search');
         $model->unsetAttributes();
 
         if (isset($_GET['EzcWorkflow'])) {
@@ -221,7 +221,7 @@ class EzcWorkflowController extends Controller
 
     public function loadModel($id)
     {
-        $model = EzcWorkflow::model()->findByPk($id);
+        $model = EzcWorkflowModel::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }

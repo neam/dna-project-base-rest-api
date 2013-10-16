@@ -4,7 +4,7 @@
 Yii::setPathOfAlias('EzcWorkflow', dirname(__FILE__));
 Yii::import('EzcWorkflow.*');
 
-class EzcWorkflow extends BaseEzcWorkflow
+class EzcWorkflowModel extends BaseEzcWorkflow
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
