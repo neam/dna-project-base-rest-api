@@ -10,7 +10,7 @@
  * @property string $slug_en
  * @property string $question_en
  * @property string $source_node_id
- * @property string $authoring_workflow_execution_id
+ * @property string $authoring_workflow_execution_id_en
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -28,10 +28,24 @@
  * @property string $question_sv
  * @property string $question_cn
  * @property string $question_de
+ * @property string $authoring_workflow_execution_id_es
+ * @property string $authoring_workflow_execution_id_fa
+ * @property string $authoring_workflow_execution_id_hi
+ * @property string $authoring_workflow_execution_id_pt
+ * @property string $authoring_workflow_execution_id_sv
+ * @property string $authoring_workflow_execution_id_cn
+ * @property string $authoring_workflow_execution_id_de
  *
  * Relations of table "exam_question" available as properties of the model:
+ * @property EzcExecution $authoringWorkflowExecutionIdDe
  * @property Snapshot $clonedFrom
- * @property EzcExecution $authoringWorkflowExecution
+ * @property EzcExecution $authoringWorkflowExecutionIdEn
+ * @property EzcExecution $authoringWorkflowExecutionIdCn
+ * @property EzcExecution $authoringWorkflowExecutionIdEs
+ * @property EzcExecution $authoringWorkflowExecutionIdFa
+ * @property EzcExecution $authoringWorkflowExecutionIdHi
+ * @property EzcExecution $authoringWorkflowExecutionIdPt
+ * @property EzcExecution $authoringWorkflowExecutionIdSv
  * @property Node $node
  * @property Node $sourceNode
  * @property ExamQuestionAlternative[] $examQuestionAlternatives
@@ -54,13 +68,13 @@ abstract class BaseExamQuestion extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, slug_en, question_en, source_node_id, authoring_workflow_execution_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, slug_en, question_en, source_node_id, authoring_workflow_execution_id_en, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, source_node_id, node_id', 'length', 'max' => 20),
                 array('slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('authoring_workflow_execution_id', 'length', 'max' => 10),
+                array('authoring_workflow_execution_id_en, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'length', 'max' => 10),
                 array('question_en, created, modified, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de', 'safe'),
-                array('id, version, cloned_from_id, slug_en, question_en, source_node_id, authoring_workflow_execution_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, slug_en, question_en, source_node_id, authoring_workflow_execution_id_en, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -84,8 +98,15 @@ abstract class BaseExamQuestion extends ActiveRecord
     public function relations()
     {
         return array(
+            'authoringWorkflowExecutionIdDe' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_de'),
             'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
-            'authoringWorkflowExecution' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id'),
+            'authoringWorkflowExecutionIdEn' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_en'),
+            'authoringWorkflowExecutionIdCn' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_cn'),
+            'authoringWorkflowExecutionIdEs' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_es'),
+            'authoringWorkflowExecutionIdFa' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_fa'),
+            'authoringWorkflowExecutionIdHi' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_hi'),
+            'authoringWorkflowExecutionIdPt' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_pt'),
+            'authoringWorkflowExecutionIdSv' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_sv'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'sourceNode' => array(self::BELONGS_TO, 'Node', 'source_node_id'),
             'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'exam_question_id'),
@@ -102,7 +123,7 @@ abstract class BaseExamQuestion extends ActiveRecord
             'slug_en' => Yii::t('model', 'Slug En'),
             'question_en' => Yii::t('model', 'Question En'),
             'source_node_id' => Yii::t('model', 'Source Node'),
-            'authoring_workflow_execution_id' => Yii::t('model', 'Authoring Workflow Execution'),
+            'authoring_workflow_execution_id_en' => Yii::t('model', 'Authoring Workflow Execution Id En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -120,6 +141,13 @@ abstract class BaseExamQuestion extends ActiveRecord
             'question_sv' => Yii::t('model', 'Question Sv'),
             'question_cn' => Yii::t('model', 'Question Cn'),
             'question_de' => Yii::t('model', 'Question De'),
+            'authoring_workflow_execution_id_es' => Yii::t('model', 'Authoring Workflow Execution Id Es'),
+            'authoring_workflow_execution_id_fa' => Yii::t('model', 'Authoring Workflow Execution Id Fa'),
+            'authoring_workflow_execution_id_hi' => Yii::t('model', 'Authoring Workflow Execution Id Hi'),
+            'authoring_workflow_execution_id_pt' => Yii::t('model', 'Authoring Workflow Execution Id Pt'),
+            'authoring_workflow_execution_id_sv' => Yii::t('model', 'Authoring Workflow Execution Id Sv'),
+            'authoring_workflow_execution_id_cn' => Yii::t('model', 'Authoring Workflow Execution Id Cn'),
+            'authoring_workflow_execution_id_de' => Yii::t('model', 'Authoring Workflow Execution Id De'),
         );
     }
 
@@ -135,7 +163,7 @@ abstract class BaseExamQuestion extends ActiveRecord
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t.question_en', $this->question_en, true);
         $criteria->compare('t.source_node_id', $this->source_node_id);
-        $criteria->compare('t.authoring_workflow_execution_id', $this->authoring_workflow_execution_id);
+        $criteria->compare('t.authoring_workflow_execution_id_en', $this->authoring_workflow_execution_id_en);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);
@@ -153,6 +181,13 @@ abstract class BaseExamQuestion extends ActiveRecord
         $criteria->compare('t.question_sv', $this->question_sv, true);
         $criteria->compare('t.question_cn', $this->question_cn, true);
         $criteria->compare('t.question_de', $this->question_de, true);
+        $criteria->compare('t.authoring_workflow_execution_id_es', $this->authoring_workflow_execution_id_es);
+        $criteria->compare('t.authoring_workflow_execution_id_fa', $this->authoring_workflow_execution_id_fa);
+        $criteria->compare('t.authoring_workflow_execution_id_hi', $this->authoring_workflow_execution_id_hi);
+        $criteria->compare('t.authoring_workflow_execution_id_pt', $this->authoring_workflow_execution_id_pt);
+        $criteria->compare('t.authoring_workflow_execution_id_sv', $this->authoring_workflow_execution_id_sv);
+        $criteria->compare('t.authoring_workflow_execution_id_cn', $this->authoring_workflow_execution_id_cn);
+        $criteria->compare('t.authoring_workflow_execution_id_de', $this->authoring_workflow_execution_id_de);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,
