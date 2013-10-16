@@ -35,6 +35,7 @@
  * @property Snapshot[] $snapshots
  * @property SpreadsheetFile[] $spreadsheetFiles
  * @property TeachersGuide[] $teachersGuides
+ * @property TextDoc[] $textDocs
  * @property VectorGraphic[] $vectorGraphics
  * @property VideoFile[] $videoFiles
  * @property VideoFile[] $videoFiles1
@@ -44,7 +45,6 @@
  * @property VideoFile[] $videoFiles5
  * @property VideoFile[] $videoFiles6
  * @property VideoFile[] $videoFiles7
- * @property WordFile[] $wordFiles
  */
 abstract class BaseEzcExecution extends ActiveRecord
 {
@@ -112,6 +112,7 @@ abstract class BaseEzcExecution extends ActiveRecord
             'snapshots' => array(self::HAS_MANY, 'Snapshot', 'authoring_workflow_execution_id'),
             'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'authoring_workflow_execution_id'),
             'teachersGuides' => array(self::HAS_MANY, 'TeachersGuide', 'authoring_workflow_execution_id'),
+            'textDocs' => array(self::HAS_MANY, 'TextDoc', 'authoring_workflow_execution_id'),
             'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'authoring_workflow_execution_id'),
             'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_en'),
             'videoFiles1' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_cn'),
@@ -121,7 +122,6 @@ abstract class BaseEzcExecution extends ActiveRecord
             'videoFiles5' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_hi'),
             'videoFiles6' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_pt'),
             'videoFiles7' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_sv'),
-            'wordFiles' => array(self::HAS_MANY, 'WordFile', 'authoring_workflow_execution_id'),
         );
     }
 

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model base class for the table "word_file".
+ * This is the model base class for the table "text_doc".
  *
- * Columns in table "word_file" available as properties of the model:
+ * Columns in table "text_doc" available as properties of the model:
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
@@ -32,7 +32,7 @@
  * @property integer $processed_media_id_cn
  * @property integer $processed_media_id_de
  *
- * Relations of table "word_file" available as properties of the model:
+ * Relations of table "text_doc" available as properties of the model:
  * @property EzcExecution $authoringWorkflowExecution
  * @property Node $node
  * @property P3Media $originalMedia
@@ -44,10 +44,10 @@
  * @property P3Media $processedMediaIdHi
  * @property P3Media $processedMediaIdPt
  * @property P3Media $processedMediaIdSv
- * @property WordFile $clonedFrom
- * @property WordFile[] $wordFiles
+ * @property TextDoc $clonedFrom
+ * @property TextDoc[] $textDocs
  */
-abstract class BaseWordFile extends ActiveRecord
+abstract class BaseTextDoc extends ActiveRecord
 {
 
     public static function model($className = __CLASS__)
@@ -57,7 +57,7 @@ abstract class BaseWordFile extends ActiveRecord
 
     public function tableName()
     {
-        return 'word_file';
+        return 'text_doc';
     }
 
     public function rules()
@@ -105,8 +105,8 @@ abstract class BaseWordFile extends ActiveRecord
             'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
             'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
             'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
-            'clonedFrom' => array(self::BELONGS_TO, 'WordFile', 'cloned_from_id'),
-            'wordFiles' => array(self::HAS_MANY, 'WordFile', 'cloned_from_id'),
+            'clonedFrom' => array(self::BELONGS_TO, 'TextDoc', 'cloned_from_id'),
+            'textDocs' => array(self::HAS_MANY, 'TextDoc', 'cloned_from_id'),
         );
     }
 

@@ -27,10 +27,10 @@
  * @property Snapshot[] $snapshots
  * @property SpreadsheetFile[] $spreadsheetFiles
  * @property TeachersGuide[] $teachersGuides
+ * @property TextDoc[] $textDocs
  * @property Tool[] $tools
  * @property VectorGraphic[] $vectorGraphics
  * @property VideoFile[] $videoFiles
- * @property WordFile[] $wordFiles
  */
 abstract class BaseNode extends ActiveRecord
 {
@@ -93,10 +93,10 @@ abstract class BaseNode extends ActiveRecord
             'snapshots' => array(self::HAS_MANY, 'Snapshot', 'node_id'),
             'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'node_id'),
             'teachersGuides' => array(self::HAS_MANY, 'TeachersGuide', 'node_id'),
+            'textDocs' => array(self::HAS_MANY, 'TextDoc', 'node_id'),
             'tools' => array(self::HAS_MANY, 'Tool', 'node_id'),
             'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'node_id'),
             'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'node_id'),
-            'wordFiles' => array(self::HAS_MANY, 'WordFile', 'node_id'),
         );
     }
 

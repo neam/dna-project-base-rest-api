@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('WordFile', dirname(__FILE__));
-Yii::import('WordFile.*');
+Yii::setPathOfAlias('TextDoc', dirname(__FILE__));
+Yii::import('TextDoc.*');
 
-class WordFile extends BaseWordFile
+class TextDoc extends BaseTextDoc
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
@@ -26,7 +26,9 @@ class WordFile extends BaseWordFile
     public function behaviors()
     {
         return array_merge(
-            parent::behaviors(), array());
+            parent::behaviors(),
+            array()
+        );
     }
 
     public function rules()
