@@ -4,7 +4,7 @@
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'Chapters') . ' ';
+echo Yii::t('model', 'relation.Chapters') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -13,7 +13,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///chapter/admin')
+                'url' => array('///chapter/admin', 'Chapter' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
@@ -51,7 +51,7 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'Sections') . ' ';
+echo Yii::t('model', 'relation.Sections') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -60,7 +60,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///section/admin')
+                'url' => array('///section/admin', 'Section' => array('chapter_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',

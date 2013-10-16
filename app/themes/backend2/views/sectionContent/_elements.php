@@ -104,7 +104,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'vizView',
+                    'relation' => 'snapshot',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -113,18 +113,18 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'viz_view_id', $input);
+            echo $form->customRow($model, 'snapshot_id', $input);
             ?>
 
             <?php
-            $formId = 'section-content-viz_view_id-' . \uniqid() . '-form';
+            $formId = 'section-content-snapshot_id-' . \uniqid() . '-form';
             ?>
 
             <div class="control-group">
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Viz View'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Snapshot'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -136,10 +136,10 @@
 
             <?php
             $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//vizView/_modal_form', array(
+            $this->renderPartial('//snapshot/_modal_form', array(
                 'formId' => $formId,
-                'inputSelector' => '#SectionContent_viz_view_id',
-                'model' => new VizView,
+                'inputSelector' => '#SectionContent_snapshot_id',
+                'model' => new Snapshot,
                 'pk' => 'id',
                 'field' => 'itemLabel',
             ));
@@ -292,7 +292,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'presentation',
+                    'relation' => 'slideshowFile',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -301,18 +301,18 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'presentation_id', $input);
+            echo $form->customRow($model, 'slideshow_file_id', $input);
             ?>
 
             <?php
-            $formId = 'section-content-presentation_id-' . \uniqid() . '-form';
+            $formId = 'section-content-slideshow_file_id-' . \uniqid() . '-form';
             ?>
 
             <div class="control-group">
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Presentation'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Slideshow File'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -324,10 +324,10 @@
 
             <?php
             $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//presentation/_modal_form', array(
+            $this->renderPartial('//slideshowFile/_modal_form', array(
                 'formId' => $formId,
-                'inputSelector' => '#SectionContent_presentation_id',
-                'model' => new Presentation,
+                'inputSelector' => '#SectionContent_slideshow_file_id',
+                'model' => new SlideshowFile,
                 'pk' => 'id',
                 'field' => 'itemLabel',
             ));
@@ -474,6 +474,8 @@
             ));
             $this->endClip();
             ?>
+
+            <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
         </div>
     </div>
     <!-- main inputs -->

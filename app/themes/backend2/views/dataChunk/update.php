@@ -72,20 +72,13 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'slug',
+                'name' => 'slug_en',
                 'editable' => array(
                     'url' => $this->createUrl('/dataChunk/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'about',
-                'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+            #'about_en',
             array(
                 'name' => 'file_media_id',
                 'value' => 'CHtml::value($data, \'fileMedia.itemLabel\')',
@@ -109,9 +102,9 @@ $this->widget('TbGridView',
                     'filter' => CHtml::listData(VectorGraphic::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'authoring_workflow_execution_id',
-                    'value' => 'CHtml::value($data, \'authoringWorkflowExecution.itemLabel\')',
-                    'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                    'name' => 'authoring_workflow_execution_id_en',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEn.itemLabel\')',
+                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -128,6 +121,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/dataChunk/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'node_id',
+                    'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -184,6 +182,104 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/dataChunk/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_es',
+                    'editable' => array(
+                        'url' => $this->createUrl('/dataChunk/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fa',
+                    'editable' => array(
+                        'url' => $this->createUrl('/dataChunk/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/dataChunk/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/dataChunk/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/dataChunk/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/dataChunk/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_de',
+                    'editable' => array(
+                        'url' => $this->createUrl('/dataChunk/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            #'about_es',
+            #'about_fa',
+            #'about_hi',
+            #'about_pt',
+            #'about_sv',
+            #'about_cn',
+            #'about_de',
+            array(
+                    'name' => 'authoring_workflow_execution_id_es',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEs.itemLabel\')',
+                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_fa',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdFa.itemLabel\')',
+                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_hi',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdHi.itemLabel\')',
+                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_pt',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdPt.itemLabel\')',
+                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_sv',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdSv.itemLabel\')',
+                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_cn',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdCn.itemLabel\')',
+                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'authoring_workflow_execution_id_de',
+                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdDe.itemLabel\')',
+                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
                 ),
             */
             array(
@@ -257,9 +353,9 @@ $this->widget('TbGridView',
                 'filter' => CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'viz_view_id',
-                'value' => 'CHtml::value($data, \'vizView.itemLabel\')',
-                'filter' => CHtml::listData(VizView::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'name' => 'snapshot_id',
+                'value' => 'CHtml::value($data, \'snapshot.itemLabel\')',
+                'filter' => CHtml::listData(Snapshot::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'video_file_id',
@@ -278,9 +374,9 @@ $this->widget('TbGridView',
                     'filter' => CHtml::listData(Exercise::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'presentation_id',
-                    'value' => 'CHtml::value($data, \'presentation.itemLabel\')',
-                    'filter' => CHtml::listData(Presentation::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'name' => 'slideshow_file_id',
+                    'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
+                    'filter' => CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'download_link_id',
@@ -291,6 +387,11 @@ $this->widget('TbGridView',
                     'name' => 'exam_question_id',
                     'value' => 'CHtml::value($data, \'examQuestion.itemLabel\')',
                     'filter' => CHtml::listData(ExamQuestion::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'node_id',
+                    'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(

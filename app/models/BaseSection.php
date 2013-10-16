@@ -12,6 +12,7 @@
  * @property string $menu_label_en
  * @property string $created
  * @property string $modified
+ * @property string $node_id
  * @property string $title_es
  * @property string $title_fa
  * @property string $title_hi
@@ -36,6 +37,7 @@
  *
  * Relations of table "section" available as properties of the model:
  * @property Chapter $chapter
+ * @property Node $node
  * @property SectionContent[] $sectionContents
  */
 abstract class BaseSection extends ActiveRecord
@@ -56,12 +58,12 @@ abstract class BaseSection extends ActiveRecord
         return array_merge(
             parent::rules(), array(
                 array('chapter_id', 'required'),
-                array('title_en, slug_en, ordinal, menu_label_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_cn, menu_label_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('title_en, slug_en, ordinal, menu_label_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_cn, menu_label_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('ordinal', 'numerical', 'integerOnly' => true),
-                array('chapter_id', 'length', 'max' => 20),
+                array('chapter_id, node_id', 'length', 'max' => 20),
                 array('title_en, slug_en, menu_label_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_cn, menu_label_de', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, chapter_id, title_en, slug_en, ordinal, menu_label_en, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_cn, menu_label_de', 'safe', 'on' => 'search'),
+                array('id, chapter_id, title_en, slug_en, ordinal, menu_label_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_cn, menu_label_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -86,6 +88,7 @@ abstract class BaseSection extends ActiveRecord
     {
         return array(
             'chapter' => array(self::BELONGS_TO, 'Chapter', 'chapter_id'),
+            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'section_id'),
         );
     }
@@ -101,6 +104,7 @@ abstract class BaseSection extends ActiveRecord
             'menu_label_en' => Yii::t('model', 'Menu Label En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'node_id' => Yii::t('model', 'Node'),
             'title_es' => Yii::t('model', 'Title Es'),
             'title_fa' => Yii::t('model', 'Title Fa'),
             'title_hi' => Yii::t('model', 'Title Hi'),
@@ -139,6 +143,7 @@ abstract class BaseSection extends ActiveRecord
         $criteria->compare('t.menu_label_en', $this->menu_label_en, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.title_es', $this->title_es, true);
         $criteria->compare('t.title_fa', $this->title_fa, true);
         $criteria->compare('t.title_hi', $this->title_hi, true);

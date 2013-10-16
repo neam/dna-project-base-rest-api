@@ -12,22 +12,9 @@
                 'html' => true,
             ))); ?>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'authoringWorkflowExecution',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'authoring_workflow_execution_id', $input);
-            ?>
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_en', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 
             <?php echo $form->html5EditorRow($model, 'markup_es', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
                 'link' => true,
@@ -77,6 +64,20 @@
                 'color' => false,
                 'html' => true,
             ))); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_es', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_fa', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_hi', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_pt', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_sv', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_cn', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_de', array('maxlength' => 10)); ?>
         </div>
     </div>
     <!-- main inputs -->

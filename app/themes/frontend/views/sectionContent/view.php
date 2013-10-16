@@ -37,8 +37,8 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->html_chunk_id); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('viz_view_id')); ?>:</b>
-<?php echo CHtml::encode($model->viz_view_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('snapshot_id')); ?>:</b>
+<?php echo CHtml::encode($model->snapshot_id); ?>
 <br/>
 
 <?php /*
@@ -54,8 +54,8 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->exercise_id); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('presentation_id')); ?>:</b>
-<?php echo CHtml::encode($model->presentation_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_id')); ?>:</b>
+<?php echo CHtml::encode($model->slideshow_file_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('data_chunk_id')); ?>:</b>
@@ -68,6 +68,10 @@ $this->breadcrumbs[] = $model->id;
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('exam_question_id')); ?>:</b>
 <?php echo CHtml::encode($model->exam_question_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
+<?php echo CHtml::encode($model->node_id); ?>
 <br />
 
     */
@@ -162,13 +166,13 @@ $this->breadcrumbs[] = $model->id;
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'viz_view_id',
-                        'value' => ($model->vizView !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->vizView->itemLabel,
-                                array('//vizView/view', 'id' => $model->vizView->id),
+                        'name' => 'snapshot_id',
+                        'value' => ($model->snapshot !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshot->itemLabel,
+                                array('//snapshot/view', 'id' => $model->snapshot->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//vizView/update', 'id' => $model->vizView->id),
+                                array('//snapshot/update', 'id' => $model->snapshot->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -206,13 +210,13 @@ $this->breadcrumbs[] = $model->id;
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'presentation_id',
-                        'value' => ($model->presentation !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->presentation->itemLabel,
-                                array('//presentation/view', 'id' => $model->presentation->id),
+                        'name' => 'slideshow_file_id',
+                        'value' => ($model->slideshowFile !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFile->itemLabel,
+                                array('//slideshowFile/view', 'id' => $model->slideshowFile->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//presentation/update', 'id' => $model->presentation->id),
+                                array('//slideshowFile/update', 'id' => $model->slideshowFile->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -246,6 +250,17 @@ $this->breadcrumbs[] = $model->id;
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
                                 array('//examQuestion/update', 'id' => $model->examQuestion->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'node_id',
+                        'value' => ($model->node !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                array('//node/view', 'id' => $model->node->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//node/update', 'id' => $model->node->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),

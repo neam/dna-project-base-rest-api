@@ -30,7 +30,7 @@
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Viz View'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Snapshot'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -42,10 +42,10 @@
 
             <?php
             $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//vizView/_modal_form', array(
+            $this->renderPartial('//snapshot/_modal_form', array(
                 'formId' => $formId,
                 'inputSelector' => '#DataSource_cloned_from_id',
-                'model' => new VizView,
+                'model' => new Snapshot,
                 'pk' => 'id',
                 'field' => 'itemLabel',
             ));
@@ -54,14 +54,9 @@
 
             <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textFieldRow($model, 'slug', array('maxlength' => 255)); ?>
+            <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
 
-            <?php echo $form->html5EditorRow($model, 'about', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
-                'link' => true,
-                'image' => false,
-                'color' => false,
-                'html' => true,
-            ))); ?>
+            <?php echo $form->textAreaRow($model, 'about_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
             <?php
             $input = $this->widget(
@@ -159,22 +154,9 @@
 
             <?php echo $form->textFieldRow($model, 'link', array('maxlength' => 255)); ?>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'authoringWorkflowExecution',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'authoring_workflow_execution_id', $input);
-            ?>
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_en', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 
             <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
 
@@ -189,6 +171,48 @@
             <?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'slug_es', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'slug_fa', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'slug_hi', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'slug_pt', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'slug_sv', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'slug_cn', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'slug_de', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_es', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_fa', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_hi', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_pt', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_sv', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_cn', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_es', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_fa', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_hi', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_pt', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_sv', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_cn', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_de', array('maxlength' => 10)); ?>
         </div>
     </div>
     <!-- main inputs -->

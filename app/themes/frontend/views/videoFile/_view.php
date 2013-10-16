@@ -48,8 +48,8 @@
 
     <?php if (Yii::app()->user->checkAccess('VideoFile.*')): ?>
         <div class="admin-container show">
-            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('crud', 'Author {model}', array('{model}' => Yii::t('crud', 'Video File'))), array('videoFile/author', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
-            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('crud', 'Translate {model}', array('{model}' => Yii::t('crud', 'Video File'))), array('videoFile/translate', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('crud', 'Update {model}', array('{model}' => Yii::t('crud', 'Update File'))), array('videoFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('crud', 'Edit {model}', array('{model}' => Yii::t('crud', 'Video File'))), array('videoFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
 

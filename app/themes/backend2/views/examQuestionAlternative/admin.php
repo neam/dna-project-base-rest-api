@@ -39,7 +39,8 @@ $this->widget('TbGridView',
         'id' => 'exam-question-alternative-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
-        'template' => '{pager}{summary}{items}{pager}',
+        'responsiveTable' => true,
+        'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
             'class' => 'TbPager',
             'displayFirstAndLast' => true,
@@ -67,7 +68,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'markup',
+            #'markup_en',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'correct',
@@ -97,6 +98,18 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'name' => 'node_id',
+                'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            #'markup_es',
+            #'markup_fa',
+            #'markup_hi',
+            #'markup_pt',
+            #'markup_sv',
+            #'markup_cn',
+            #'markup_de',
 
             array(
                 'class' => 'TbButtonColumn',

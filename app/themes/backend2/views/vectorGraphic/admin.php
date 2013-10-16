@@ -39,7 +39,8 @@ $this->widget('TbGridView',
         'id' => 'vector-graphic-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
-        'template' => '{pager}{summary}{items}{pager}',
+        'responsiveTable' => true,
+        'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
             'class' => 'TbPager',
             'displayFirstAndLast' => true,
@@ -74,7 +75,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title',
+                'name' => 'title_en',
                 'editable' => array(
                     'url' => $this->createUrl('/vectorGraphic/editableSaver'),
                     //'placement' => 'right',
@@ -82,29 +83,27 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'slug',
+                'name' => 'slug_en',
                 'editable' => array(
                     'url' => $this->createUrl('/vectorGraphic/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
+            #'about_en',
             array(
-                'class' => 'TbEditableColumn',
-                'name' => 'about',
-                'editable' => array(
-                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'name' => 'file_media_id',
-                'value' => 'CHtml::value($data, \'fileMedia.itemLabel\')',
+                'name' => 'original_media_id',
+                'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
                 'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecution.itemLabel\')',
-                'filter' => CHtml::listData(Execution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'processed_media_id_en',
+                'value' => 'CHtml::value($data, \'processedMediaIdEn.itemLabel\')',
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_en',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEn.itemLabel\')',
+                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
             ),
             /*
             array(
@@ -123,6 +122,201 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'name' => 'node_id',
+                'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_es',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_fa',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_hi',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_pt',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_sv',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_cn',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_de',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_es',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_fa',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_hi',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_pt',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_sv',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_cn',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_de',
+                'editable' => array(
+                    'url' => $this->createUrl('/vectorGraphic/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            #'about_es',
+            #'about_fa',
+            #'about_hi',
+            #'about_pt',
+            #'about_sv',
+            #'about_cn',
+            #'about_de',
+            array(
+                'name' => 'processed_media_id_es',
+                'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_fa',
+                'value' => 'CHtml::value($data, \'processedMediaIdFa.itemLabel\')',
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_hi',
+                'value' => 'CHtml::value($data, \'processedMediaIdHi.itemLabel\')',
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_pt',
+                'value' => 'CHtml::value($data, \'processedMediaIdPt.itemLabel\')',
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_sv',
+                'value' => 'CHtml::value($data, \'processedMediaIdSv.itemLabel\')',
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_cn',
+                'value' => 'CHtml::value($data, \'processedMediaIdCn.itemLabel\')',
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_de',
+                'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_es',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEs.itemLabel\')',
+                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_fa',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdFa.itemLabel\')',
+                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_hi',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdHi.itemLabel\')',
+                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_pt',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdPt.itemLabel\')',
+                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_sv',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdSv.itemLabel\')',
+                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_cn',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdCn.itemLabel\')',
+                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'authoring_workflow_execution_id_de',
+                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdDe.itemLabel\')',
+                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+            ),
+            */
 
             array(
                 'class' => 'TbButtonColumn',

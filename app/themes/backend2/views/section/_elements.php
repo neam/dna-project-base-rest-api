@@ -58,6 +58,8 @@
 
             <?php echo $form->textFieldRow($model, 'menu_label_en', array('maxlength' => 255)); ?>
 
+            <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
+
             <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'title_fa', array('maxlength' => 255)); ?>
@@ -111,7 +113,7 @@
         <?php ?>
 
         <h3>
-            <?php echo Yii::t('model', 'vizViews'); ?>
+            <?php echo Yii::t('model', 'snapshots'); ?>
         </h3>
         <?php ?>
 
@@ -131,7 +133,7 @@
         <?php ?>
 
         <h3>
-            <?php echo Yii::t('model', 'presentations'); ?>
+            <?php echo Yii::t('model', 'slideshoFiles'); ?>
         </h3>
         <?php ?>
 
@@ -142,6 +144,11 @@
 
         <h3>
             <?php echo Yii::t('model', 'downloadLinks'); ?>
+        </h3>
+        <?php ?>
+
+        <h3>
+            <?php echo Yii::t('model', 'examQuestions'); ?>
         </h3>
         <?php ?>
 

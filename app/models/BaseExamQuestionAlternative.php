@@ -6,14 +6,23 @@
  * Columns in table "exam_question_alternative" available as properties of the model:
  * @property string $id
  * @property string $slug
- * @property string $markup
+ * @property string $markup_en
  * @property integer $correct
  * @property string $exam_question_id
  * @property string $created
  * @property string $modified
+ * @property string $node_id
+ * @property string $markup_es
+ * @property string $markup_fa
+ * @property string $markup_hi
+ * @property string $markup_pt
+ * @property string $markup_sv
+ * @property string $markup_cn
+ * @property string $markup_de
  *
  * Relations of table "exam_question_alternative" available as properties of the model:
  * @property ExamQuestion $examQuestion
+ * @property Node $node
  */
 abstract class BaseExamQuestionAlternative extends ActiveRecord
 {
@@ -32,12 +41,12 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('slug, markup, correct, exam_question_id, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('slug, markup_en, correct, exam_question_id, created, modified, node_id, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('correct', 'numerical', 'integerOnly' => true),
                 array('slug', 'length', 'max' => 255),
-                array('exam_question_id', 'length', 'max' => 20),
-                array('markup, created, modified', 'safe'),
-                array('id, slug, markup, correct, exam_question_id, created, modified', 'safe', 'on' => 'search'),
+                array('exam_question_id, node_id', 'length', 'max' => 20),
+                array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'safe'),
+                array('id, slug, markup_en, correct, exam_question_id, created, modified, node_id, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -62,6 +71,7 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
     {
         return array(
             'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
+            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
         );
     }
 
@@ -70,11 +80,19 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
         return array(
             'id' => Yii::t('model', 'ID'),
             'slug' => Yii::t('model', 'Slug'),
-            'markup' => Yii::t('model', 'Markup'),
+            'markup_en' => Yii::t('model', 'Markup En'),
             'correct' => Yii::t('model', 'Correct'),
             'exam_question_id' => Yii::t('model', 'Exam Question'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'node_id' => Yii::t('model', 'Node'),
+            'markup_es' => Yii::t('model', 'Markup Es'),
+            'markup_fa' => Yii::t('model', 'Markup Fa'),
+            'markup_hi' => Yii::t('model', 'Markup Hi'),
+            'markup_pt' => Yii::t('model', 'Markup Pt'),
+            'markup_sv' => Yii::t('model', 'Markup Sv'),
+            'markup_cn' => Yii::t('model', 'Markup Cn'),
+            'markup_de' => Yii::t('model', 'Markup De'),
         );
     }
 
@@ -86,11 +104,19 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
 
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.slug', $this->slug, true);
-        $criteria->compare('t.markup', $this->markup, true);
+        $criteria->compare('t.markup_en', $this->markup_en, true);
         $criteria->compare('t.correct', $this->correct);
         $criteria->compare('t.exam_question_id', $this->exam_question_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.node_id', $this->node_id);
+        $criteria->compare('t.markup_es', $this->markup_es, true);
+        $criteria->compare('t.markup_fa', $this->markup_fa, true);
+        $criteria->compare('t.markup_hi', $this->markup_hi, true);
+        $criteria->compare('t.markup_pt', $this->markup_pt, true);
+        $criteria->compare('t.markup_sv', $this->markup_sv, true);
+        $criteria->compare('t.markup_cn', $this->markup_cn, true);
+        $criteria->compare('t.markup_de', $this->markup_de, true);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

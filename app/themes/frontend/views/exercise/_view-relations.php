@@ -4,7 +4,7 @@
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'Exercises') . ' ';
+echo Yii::t('model', 'relation.Exercises') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -13,7 +13,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///exercise/admin')
+                'url' => array('///exercise/admin', 'Exercise' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
@@ -51,7 +51,7 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'SectionContents') . ' ';
+echo Yii::t('model', 'relation.SectionContents') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -60,7 +60,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///sectionContent/admin')
+                'url' => array('///sectionContent/admin', 'SectionContent' => array('exercise_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',

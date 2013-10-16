@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d7d7d9589a379c4888e4d43609ea6255",
+    "hash": "f28961ab559c5402bb612307ff1579c7",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -1282,23 +1282,27 @@
         },
         {
             "name": "zetacomponents/workflow-database-tiein",
-            "version": "dev-master",
+            "version": "dev-awaiting-prs",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zetacomponents/WorkflowDatabaseTiein.git",
-                "reference": "1337e68002dcdff2ca83b7bd242809199941ea8c"
+                "url": "https://github.com/motin/WorkflowDatabaseTiein.git",
+                "reference": "cdbf920945d47bcc2f341086f6d270355e3e678a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zetacomponents/WorkflowDatabaseTiein/zipball/1337e68002dcdff2ca83b7bd242809199941ea8c",
-                "reference": "1337e68002dcdff2ca83b7bd242809199941ea8c",
+                "url": "https://api.github.com/repos/motin/WorkflowDatabaseTiein/zipball/cdbf920945d47bcc2f341086f6d270355e3e678a",
+                "reference": "cdbf920945d47bcc2f341086f6d270355e3e678a",
                 "shasum": ""
             },
             "require": {
                 "zetacomponents/base": "*"
             },
             "require-dev": {
-                "zetacomponents/unit-test": "*"
+                "phpunit/phpunit": "3.7.*",
+                "zetacomponents/database": "dev-travis",
+                "zetacomponents/database-schema": "dev-master",
+                "zetacomponents/unit-test": "dev-master",
+                "zetacomponents/workflow": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -1306,7 +1310,6 @@
                     "src"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -1344,7 +1347,10 @@
             ],
             "description": "Contains the database backend for the Workflow component.",
             "homepage": "https://github.com/zetacomponents",
-            "time": "2012-05-21 09:57:12"
+            "support": {
+                "source": "https://github.com/motin/WorkflowDatabaseTiein/tree/awaiting-prs"
+            },
+            "time": "2013-10-15 15:28:49"
         }
     ],
     "packages-dev": [

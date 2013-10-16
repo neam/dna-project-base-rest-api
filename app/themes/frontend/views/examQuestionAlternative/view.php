@@ -21,8 +21,8 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->slug); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('markup')); ?>:</b>
-<?php echo CHtml::encode($model->markup); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('markup_en')); ?>:</b>
+<?php echo CHtml::encode($model->markup_en); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('correct')); ?>:</b>
@@ -41,6 +41,41 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->modified); ?>
 <br/>
 
+<?php /*
+<b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
+<?php echo CHtml::encode($model->node_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('markup_es')); ?>:</b>
+<?php echo CHtml::encode($model->markup_es); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('markup_fa')); ?>:</b>
+<?php echo CHtml::encode($model->markup_fa); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('markup_hi')); ?>:</b>
+<?php echo CHtml::encode($model->markup_hi); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('markup_pt')); ?>:</b>
+<?php echo CHtml::encode($model->markup_pt); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('markup_sv')); ?>:</b>
+<?php echo CHtml::encode($model->markup_sv); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('markup_cn')); ?>:</b>
+<?php echo CHtml::encode($model->markup_cn); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('markup_de')); ?>:</b>
+<?php echo CHtml::encode($model->markup_de); ?>
+<br />
+
+    */
+?>
 
 <div class="row">
     <div class="span7">
@@ -83,13 +118,13 @@ $this->breadcrumbs[] = $model->id;
                         )
                     ),
                     array(
-                        'name' => 'markup',
+                        'name' => 'markup_en',
                         'type' => 'raw',
                         'value' => $this->widget(
                             'TbEditableField',
                             array(
                                 'model' => $model,
-                                'attribute' => 'markup',
+                                'attribute' => 'markup_en',
                                 'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
                             ),
                             true
@@ -140,6 +175,108 @@ $this->breadcrumbs[] = $model->id;
                             array(
                                 'model' => $model,
                                 'attribute' => 'modified',
+                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'node_id',
+                        'value' => ($model->node !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                array('//node/view', 'id' => $model->node->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//node/update', 'id' => $model->node->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'markup_es',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'markup_es',
+                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'markup_fa',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'markup_fa',
+                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'markup_hi',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'markup_hi',
+                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'markup_pt',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'markup_pt',
+                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'markup_sv',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'markup_sv',
+                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'markup_cn',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'markup_cn',
+                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'markup_de',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'markup_de',
                                 'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
                             ),
                             true

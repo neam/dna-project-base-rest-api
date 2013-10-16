@@ -26,28 +26,20 @@ class VideoFile extends BaseVideoFile
     public function behaviors()
     {
         return array_merge(
-            parent::behaviors(), array());
+            parent::behaviors(),
+            array()
+        );
     }
 
     public function rules()
     {
         return array_merge(
-            parent::rules(), array( /*
-                array('column1, column2', 'rule1'),
-                array('column3', 'rule2'),
-                */
-            )
+            parent::rules()
+        /* , array(
+          array('column1, column2', 'rule1'),
+          array('column3', 'rule2'),
+          ) */
         );
     }
 
-    public function buildTranslationWorkflow($name)
-    {
-
-        Yii::import('application.workflows.' . $name);
-        $definition = new $name();
-        return $definition->buildWorkflow($name);
-
-    }
-
 }
-

@@ -35,8 +35,6 @@ class VideoFileController extends Controller
                     'view',
                     'create',
                     'update',
-                    'translateSubtitles',
-                    'translateTitleAndAbout',
                     'editableSaver',
                     'editableCreator',
                     'admin',
@@ -142,34 +140,6 @@ class VideoFileController extends Controller
         }
 
         $this->render('update', array('model' => $model,));
-    }
-
-    public function actionTranslateSubtitles($id)
-    {
-        $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
-
-        // Set up database connection.
-        $db =& Yii::app()->ezc->db;
-
-        // Check and redirect depending on current workflow execution status
-        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
-
-        $this->render('translate/subtitles', array('model' => $model, 'execution' => $execution));
-    }
-
-    public function actionTranslateTitleAndAbout($id)
-    {
-        $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
-
-        // Set up database connection.
-        $db =& Yii::app()->ezc->db;
-
-        // Check and redirect depending on current workflow execution status
-        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->translation_workflow_execution_id);
-
-        $this->render('translate/title_and_about', array('model' => $model, 'execution' => $execution));
     }
 
     public function actionEditableSaver()

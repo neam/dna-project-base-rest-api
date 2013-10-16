@@ -4,7 +4,7 @@
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'DataChunks') . ' ';
+echo Yii::t('model', 'relation.DataChunks') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -13,7 +13,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///dataChunk/admin')
+                'url' => array('///dataChunk/admin', 'DataChunk' => array('data_source_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
@@ -51,7 +51,7 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'SpreadsheetFiles') . ' ';
+echo Yii::t('model', 'relation.SpreadsheetFiles') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -60,7 +60,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///spreadsheetFile/admin')
+                'url' => array('///spreadsheetFile/admin', 'SpreadsheetFile' => array('data_source_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',

@@ -80,8 +80,8 @@ class SectionController extends Controller
             if (isset($_POST['Section']['HtmlChunk'])) {
                 $model->setRelationRecords('htmlChunks', $_POST['Section']['HtmlChunk']);
             }
-            if (isset($_POST['Section']['VizView'])) {
-                $model->setRelationRecords('vizViews', $_POST['Section']['VizView']);
+            if (isset($_POST['Section']['Snapshot'])) {
+                $model->setRelationRecords('snapshots', $_POST['Section']['Snapshot']);
             }
             if (isset($_POST['Section']['VideoFile'])) {
                 $model->setRelationRecords('videoFiles', $_POST['Section']['VideoFile']);
@@ -92,14 +92,17 @@ class SectionController extends Controller
             if (isset($_POST['Section']['Exercise'])) {
                 $model->setRelationRecords('exercises', $_POST['Section']['Exercise']);
             }
-            if (isset($_POST['Section']['Presentation'])) {
-                $model->setRelationRecords('presentations', $_POST['Section']['Presentation']);
+            if (isset($_POST['Section']['SlideshowFIle'])) {
+                $model->setRelationRecords('slideshoFiles', $_POST['Section']['SlideshowFIle']);
             }
             if (isset($_POST['Section']['DataChunk'])) {
                 $model->setRelationRecords('dataChunks', $_POST['Section']['DataChunk']);
             }
             if (isset($_POST['Section']['DownloadLink'])) {
                 $model->setRelationRecords('downloadLinks', $_POST['Section']['DownloadLink']);
+            }
+            if (isset($_POST['Section']['ExamQuestion'])) {
+                $model->setRelationRecords('examQuestions', $_POST['Section']['ExamQuestion']);
             }
             try {
                 if ($model->save()) {
@@ -134,10 +137,10 @@ class SectionController extends Controller
             } else {
                 $model->setRelationRecords('htmlChunks', array());
             }
-            if (isset($_POST['Section']['VizView'])) {
-                $model->setRelationRecords('vizViews', $_POST['Section']['VizView']);
+            if (isset($_POST['Section']['Snapshot'])) {
+                $model->setRelationRecords('snapshots', $_POST['Section']['Snapshot']);
             } else {
-                $model->setRelationRecords('vizViews', array());
+                $model->setRelationRecords('snapshots', array());
             }
             if (isset($_POST['Section']['VideoFile'])) {
                 $model->setRelationRecords('videoFiles', $_POST['Section']['VideoFile']);
@@ -154,10 +157,10 @@ class SectionController extends Controller
             } else {
                 $model->setRelationRecords('exercises', array());
             }
-            if (isset($_POST['Section']['Presentation'])) {
-                $model->setRelationRecords('presentations', $_POST['Section']['Presentation']);
+            if (isset($_POST['Section']['SlideshowFIle'])) {
+                $model->setRelationRecords('slideshoFiles', $_POST['Section']['SlideshowFIle']);
             } else {
-                $model->setRelationRecords('presentations', array());
+                $model->setRelationRecords('slideshoFiles', array());
             }
             if (isset($_POST['Section']['DataChunk'])) {
                 $model->setRelationRecords('dataChunks', $_POST['Section']['DataChunk']);
@@ -168,6 +171,11 @@ class SectionController extends Controller
                 $model->setRelationRecords('downloadLinks', $_POST['Section']['DownloadLink']);
             } else {
                 $model->setRelationRecords('downloadLinks', array());
+            }
+            if (isset($_POST['Section']['ExamQuestion'])) {
+                $model->setRelationRecords('examQuestions', $_POST['Section']['ExamQuestion']);
+            } else {
+                $model->setRelationRecords('examQuestions', array());
             }
 
             try {

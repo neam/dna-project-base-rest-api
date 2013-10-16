@@ -55,14 +55,8 @@ class EzcWorkflowBehavior extends CActiveRecordBehavior
             return;
         }
 
-        // Set up database connection.
-        $db =& Yii::app()->ezc->db;
-
         // Set up workflow definition storage (database).
-        static $definition;
-        if (!$definition) {
-            $definition = new ezcWorkflowDatabaseDefinitionStorage($db);
-        }
+        $definition = Yii::app()->ezc->getWorkflowDatabaseDefinitionStorage();
 
         // todo - come up with nifty way of updating workflows when necessary
         try {
@@ -84,7 +78,7 @@ class EzcWorkflowBehavior extends CActiveRecordBehavior
         }
 
         // Set up database-based workflow executer.
-        $execution = new ezcWorkflowDatabaseExecution($db);
+        $execution = Yii::app()->ezc->getWorkflowDatabaseExecution();
 
         // Pass workflow object to workflow executer.
         $execution->workflow = $workflow;

@@ -31,20 +31,25 @@ class ActiveRecord extends CActiveRecord
 
         // List of model attributes to translate
         $translateMap = array(
-            'Chapter' => array('slug', 'title', 'authoring_workflow_execution_id'),
-            'DataChunk' => array('title'),
-            'DataSource' => array('title'),
-            'DownloadLink' => array('title'),
-            'Exercise' => array('title'),
-            'HtmlChunk' => array('markup'),
-            'Presentation' => array('title'),
+            'Chapter' => array('slug', 'title', 'about', 'authoring_workflow_execution_id'),
+            'DataChunk' => array('slug', 'title', 'about', 'authoring_workflow_execution_id'),
+            'DataSource' => array('slug', 'title', 'about', 'authoring_workflow_execution_id'),
+            'DownloadLink' => array('title', 'authoring_workflow_execution_id'),
+            'ExamQuestion' => array('slug', 'question', 'authoring_workflow_execution_id'),
+            'ExamQuestionAlternative' => array('markup'),
+            'Exercise' => array('slug', 'title', 'question', 'description', 'authoring_workflow_execution_id'),
+            'HtmlChunk' => array('markup', 'authoring_workflow_execution_id'),
+            'PoFile' => array('processed_media_id', 'authoring_workflow_execution_id'),
+            'Presentation' => array('title', 'authoring_workflow_execution_id'),
             'Section' => array('slug', 'title', 'menu_label'),
-            'SlideshowFile' => array('title', 'processed_media_id'),
-            'SpreadsheetFile' => array('title', 'processed_media_id'),
-            'TeachersGuide' => array('title'),
-            'VideoFile' => array('title', 'subtitles', 'processed_media_id', 'authoring_workflow_execution_id'),
-            'VizView' => array('title'),
-            'WordFile' => array('title', 'processed_media_id'),
+            'SlideshowFile' => array('slug', 'title', 'about', 'processed_media_id', 'authoring_workflow_execution_id'),
+            'Snapshot' => array('slug', 'title', 'about', 'authoring_workflow_execution_id'),
+            'SpreadsheetFile' => array('title', 'processed_media_id', 'authoring_workflow_execution_id'),
+            'TeachersGuide' => array('title', 'authoring_workflow_execution_id'),
+            'TextDoc' => array('slug', 'title', 'about', 'processed_media_id', 'authoring_workflow_execution_id'),
+            'Tool' => array('slug', 'title', 'about'),
+            'VectorGraphic' => array('slug', 'title', 'about', 'processed_media_id', 'authoring_workflow_execution_id'),
+            'VideoFile' => array('slug', 'title', 'about', 'subtitles', 'processed_media_id', 'authoring_workflow_execution_id'),
         );
 
         $multilingualRelationsMap = array(

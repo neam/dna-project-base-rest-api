@@ -4,7 +4,7 @@
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'HtmlChunks') . ' ';
+echo Yii::t('model', 'relation.HtmlChunks') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -13,7 +13,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///htmlChunk/admin')
+                'url' => array('///htmlChunk/admin', 'HtmlChunk' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
@@ -51,7 +51,7 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'SectionContents') . ' ';
+echo Yii::t('model', 'relation.SectionContents') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -60,7 +60,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///sectionContent/admin')
+                'url' => array('///sectionContent/admin', 'SectionContent' => array('html_chunk_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
