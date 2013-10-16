@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f28961ab559c5402bb612307ff1579c7",
+    "hash": "3bbc28018123627c84a441bbb9e011ee",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -542,46 +542,10 @@
             "version": "0.15.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/schmunk42/p3media.git",
-                "reference": "0.15.1"
+                "url": "https://github.com/motin/p3media.git",
+                "reference": "fe705edde3467e9d22c293bc22cf8a62b7bf2338"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3media/zipball/0.15.1",
-                "reference": "0.15.1",
-                "shasum": ""
-            },
-            "require": {
-                "clevertech/yiibooster": "1.*",
-                "php": ">=5.3.0",
-                "phundament/p3extensions": ">=0.15.1",
-                "yiisoft/yii": "1.1.*"
-            },
-            "type": "yii-extension",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Munk",
-                    "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
-                }
-            ],
-            "description": "Yii media file manager module with ckeditor integration",
-            "homepage": "https://github.com/schmunk42/p3media",
-            "keywords": [
-                "extension",
-                "file",
-                "manager",
-                "module",
-                "yii"
-            ],
-            "support": {
-                "source": "https://github.com/schmunk42/p3media/tree/0.15.1",
-                "issues": "https://github.com/schmunk42/p3media/issues"
-            },
-            "time": "2013-08-15 18:53:35"
+            "type": "library"
         },
         {
             "name": "phundament/p3pages",

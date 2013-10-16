@@ -60,6 +60,18 @@
             }
         },
         {
+            "type": "package",
+            "package": {
+                "name": "phundament/p3media",
+                "version": "0.15.1",
+                "source": {
+                    "url": "https://github.com/motin/p3media.git",
+                    "type": "git",
+                    "reference": "fe705edde3467e9d22c293bc22cf8a62b7bf2338"
+                }
+            }
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/neam/yii-i18n-columns"
         },
@@ -99,7 +111,7 @@
         "phundament/p3admin":"0.14.*",
         "phundament/p3bootstrap":"0.19.*",
         "phundament/p3pages":"0.14.*",
-        "phundament/p3media":"0.15.*",
+        "phundament/p3media":"0.15.1",
         "phundament/p3widgets":"0.14.*",
         "vitalets/x-editable-yii": "1.2.0",
         "waalzer/app-demo-data": "@dev",
