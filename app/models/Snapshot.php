@@ -20,7 +20,7 @@ class Snapshot extends BaseSnapshot
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return (string) $this->title;
     }
 
     public function behaviors()
