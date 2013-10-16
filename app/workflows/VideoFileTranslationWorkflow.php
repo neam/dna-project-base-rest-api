@@ -17,7 +17,7 @@ class VideoFileTranslationWorkflow
     function buildProcessSteps($inMemory)
     {
         // Do not store custom classes if not in memory only
-        $nodeInputClass = $inMemory ? "gscmsLabeledWorkflowNodeInput" : "ezcWorkflowNodeInput";
+        $nodeInputClass = $inMemory ? "gcmsLabeledWorkflowNodeInput" : "ezcWorkflowNodeInput";
         
         $this->process_steps['approved_for_translation'] = new $nodeInputClass(array(
             'Label: approved_for_translation' => new ezcWorkflowConditionIsAnything(),
