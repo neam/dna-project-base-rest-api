@@ -10,7 +10,7 @@
  * @property string $created
  * @property string $modified
  * @property string $html_chunk_id
- * @property string $viz_view_id
+ * @property string $snapshot_id
  * @property string $video_file_id
  * @property string $teachers_guide_id
  * @property string $exercise_id
@@ -21,6 +21,7 @@
  * @property string $node_id
  *
  * Relations of table "section_content" available as properties of the model:
+ * @property Snapshot $snapshot
  * @property DataChunk $dataChunk
  * @property DownloadLink $downloadLink
  * @property ExamQuestion $examQuestion
@@ -31,7 +32,6 @@
  * @property SlideshowFile $slideshowFile
  * @property TeachersGuide $teachersGuide
  * @property VideoFile $videoFile
- * @property Snapshot $vizView
  */
 abstract class BaseSectionContent extends ActiveRecord
 {
@@ -51,11 +51,11 @@ abstract class BaseSectionContent extends ActiveRecord
         return array_merge(
             parent::rules(), array(
                 array('section_id', 'required'),
-                array('ordinal, created, modified, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('ordinal, created, modified, html_chunk_id, snapshot_id, video_file_id, teachers_guide_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('ordinal', 'numerical', 'integerOnly' => true),
-                array('section_id, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'length', 'max' => 20),
+                array('section_id, html_chunk_id, snapshot_id, video_file_id, teachers_guide_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'length', 'max' => 20),
                 array('created, modified', 'safe'),
-                array('id, section_id, ordinal, created, modified, html_chunk_id, viz_view_id, video_file_id, teachers_guide_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'safe', 'on' => 'search'),
+                array('id, section_id, ordinal, created, modified, html_chunk_id, snapshot_id, video_file_id, teachers_guide_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -79,6 +79,7 @@ abstract class BaseSectionContent extends ActiveRecord
     public function relations()
     {
         return array(
+            'snapshot' => array(self::BELONGS_TO, 'Snapshot', 'snapshot_id'),
             'dataChunk' => array(self::BELONGS_TO, 'DataChunk', 'data_chunk_id'),
             'downloadLink' => array(self::BELONGS_TO, 'DownloadLink', 'download_link_id'),
             'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
@@ -89,7 +90,6 @@ abstract class BaseSectionContent extends ActiveRecord
             'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
             'teachersGuide' => array(self::BELONGS_TO, 'TeachersGuide', 'teachers_guide_id'),
             'videoFile' => array(self::BELONGS_TO, 'VideoFile', 'video_file_id'),
-            'vizView' => array(self::BELONGS_TO, 'Snapshot', 'viz_view_id'),
         );
     }
 
@@ -102,7 +102,7 @@ abstract class BaseSectionContent extends ActiveRecord
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'html_chunk_id' => Yii::t('model', 'Html Chunk'),
-            'viz_view_id' => Yii::t('model', 'Viz View'),
+            'snapshot_id' => Yii::t('model', 'Snapshot'),
             'video_file_id' => Yii::t('model', 'Video File'),
             'teachers_guide_id' => Yii::t('model', 'Teachers Guide'),
             'exercise_id' => Yii::t('model', 'Exercise'),
@@ -126,7 +126,7 @@ abstract class BaseSectionContent extends ActiveRecord
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.html_chunk_id', $this->html_chunk_id);
-        $criteria->compare('t.viz_view_id', $this->viz_view_id);
+        $criteria->compare('t.snapshot_id', $this->snapshot_id);
         $criteria->compare('t.video_file_id', $this->video_file_id);
         $criteria->compare('t.teachers_guide_id', $this->teachers_guide_id);
         $criteria->compare('t.exercise_id', $this->exercise_id);

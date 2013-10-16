@@ -112,7 +112,7 @@ abstract class BaseSnapshot extends ActiveRecord
         return array(
             'dataSources' => array(self::HAS_MANY, 'DataSource', 'cloned_from_id'),
             'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'cloned_from_id'),
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'viz_view_id'),
+            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'snapshot_id'),
             'authoringWorkflowExecutionIdDe' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_de'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
