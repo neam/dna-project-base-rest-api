@@ -31,6 +31,18 @@ class EzcExecution extends BaseEzcExecution
         );
     }
 
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(),
+            array(
+                'workflow' => array(self::BELONGS_TO, 'EzcWorkflowModel', 'workflow_id'),
+            )
+        );
+    }
+
+
+
     public function rules()
     {
         return array_merge(
