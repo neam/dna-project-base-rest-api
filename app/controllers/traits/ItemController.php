@@ -30,10 +30,114 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
+                    'prepPreshow',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.PrepPreshow'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'preshow',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.Preshow'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'evaluate',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.Evaluate'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'prepPublish',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.PrepPublish'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'preview',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.Preview'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'review',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.Review'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'prepPreshow',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.PrepPreshow'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'proofRead',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.ProofRead'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
                     'translate',
                 ),
                 'roles' => array(
                     'GapminderSchool.Item.Translate'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'publish',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.Publish'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'edit',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.Edit'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'clone',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.Clone'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'remove',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.Remove'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'replace',
+                ),
+                'roles' => array(
+                    'GapminderSchool.Item.Replace'
                 ),
             ),
         );
@@ -121,6 +225,102 @@ trait ItemController
 
         $this->render('draft', array('model' => $model, 'execution' => $execution));
     }
+
+    public function actionPrepPreshow($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+
+        $db =& Yii::app()->ezc->db;
+
+        if (isset($_POST[$this->modelClass])) {
+			// postning
+            $model->attributes = $_POST['Chapter'];
+            try {
+                if ($model->save()) {
+                    if (isset($_GET['returnUrl'])) {
+                        $this->redirect($_GET['returnUrl']);
+                    } else {
+                        $this->redirect(array('continueAuthoring', 'id' => $model->id));
+                    }
+                }
+            } catch (Exception $e) {
+                $model->addError('id', $e->getMessage());
+            }
+        } elseif (isset($_GET[$this->modelClass])) {
+            $model->attributes = $_GET[$this->modelClass];
+        }
+
+        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->authoring_workflow_execution_id);
+        $this->render('preppreshow', array('model' => $model, 'execution' => $execution));
+    }
+
+    public function actionPreshow($id)
+    {
+    	echo "Preshow";
+    	exit;
+    }
+
+    public function actionEvaluate($id)
+    {
+    	echo "Evaluate";
+    	exit;
+    }
+
+    public function actionPrepPublish($id)
+    {
+    	echo "Prepare for publish";
+    	exit;
+    }
+
+    public function actionPreview($id)
+    {
+    	echo "Preview";
+    	exit;
+    }
+
+    public function actionReview($id)
+    {
+    	echo "Review";
+    	exit;
+    }
+
+    public function actionProofRead($id)
+    {
+    	echo "ProofRead";
+    	exit;
+    }
+
+    public function actionPublish($id)
+    {
+    	echo "Publish";
+    	exit;
+    }
+
+    public function actionEdit($id)
+    {
+    	echo "Edit";
+    	exit;
+    }
+
+    public function actionClone($id)
+    {
+    	echo "Clone";
+    	exit;
+    }
+
+    public function actionRemove($id)
+    {
+    	echo "Remove";
+    	exit;
+    }
+
+    public function actionReplace($id)
+    {
+    	echo "Replace";
+    	exit;
+    }
+
 
     public function actionTranslate($id)
     {
