@@ -1,6 +1,6 @@
 <?php
 
-class WorkflowController extends Controller
+class EzcWorkflowController extends Controller
 {
     #public $layout='//layouts/column2';
 
@@ -29,7 +29,7 @@ class WorkflowController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('Workflow.*'),
+                'roles' => array('EzcWorkflow.*'),
             ),
             array(
                 'deny',
@@ -43,7 +43,7 @@ class WorkflowController extends Controller
         parent::beforeAction($action);
         // map identifcationColumn to id
         if (!isset($_GET['id']) && isset($_GET['workflow_id'])) {
-            $model = Workflow::model()->find(
+            $model = EzcWorkflow::model()->find(
                 'workflow_id = :workflow_id',
                 array(
                     ':workflow_id' => $_GET['workflow_id']
@@ -86,13 +86,13 @@ class WorkflowController extends Controller
 
     public function actionCreate()
     {
-        $model = new Workflow;
+        $model = new EzcWorkflow;
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'workflow-form');
+        $this->performAjaxValidation($model, 'ezc-workflow-form');
 
-        if (isset($_POST['Workflow'])) {
-            $model->attributes = $_POST['Workflow'];
+        if (isset($_POST['EzcWorkflow'])) {
+            $model->attributes = $_POST['EzcWorkflow'];
 
             try {
 
@@ -118,8 +118,8 @@ class WorkflowController extends Controller
             } catch (Exception $e) {
                 $model->addError('workflow_id', $e->getMessage());
             }
-        } elseif (isset($_GET['Workflow'])) {
-            $model->attributes = $_GET['Workflow'];
+        } elseif (isset($_GET['EzcWorkflow'])) {
+            $model->attributes = $_GET['EzcWorkflow'];
         }
 
         $this->render('create', array('model' => $model));
@@ -130,10 +130,10 @@ class WorkflowController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'workflow-form');
+        $this->performAjaxValidation($model, 'ezc-workflow-form');
 
-        if (isset($_POST['Workflow'])) {
-            $model->attributes = $_POST['Workflow'];
+        if (isset($_POST['EzcWorkflow'])) {
+            $model->attributes = $_POST['EzcWorkflow'];
 
 
             try {
@@ -155,15 +155,15 @@ class WorkflowController extends Controller
     public function actionEditableSaver()
     {
         Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('Workflow'); // classname of model to be updated
+        $es = new EditableSaver('EzcWorkflow'); // classname of model to be updated
         $es->update();
     }
 
     public function actionEditableCreator()
     {
-        if (isset($_POST['Workflow'])) {
-            $model = new Workflow;
-            $model->attributes = $_POST['Workflow'];
+        if (isset($_POST['EzcWorkflow'])) {
+            $model = new EzcWorkflow;
+            $model->attributes = $_POST['EzcWorkflow'];
             if ($model->save()) {
                 echo CJSON::encode($model->getAttributes());
             } else {
@@ -203,17 +203,17 @@ class WorkflowController extends Controller
 
     public function actionIndex()
     {
-        $dataProvider = new CActiveDataProvider('Workflow');
+        $dataProvider = new CActiveDataProvider('EzcWorkflow');
         $this->render('index', array('dataProvider' => $dataProvider,));
     }
 
     public function actionAdmin()
     {
-        $model = new Workflow('search');
+        $model = new EzcWorkflow('search');
         $model->unsetAttributes();
 
-        if (isset($_GET['Workflow'])) {
-            $model->attributes = $_GET['Workflow'];
+        if (isset($_GET['EzcWorkflow'])) {
+            $model->attributes = $_GET['EzcWorkflow'];
         }
 
         $this->render('admin', array('model' => $model,));
@@ -221,7 +221,7 @@ class WorkflowController extends Controller
 
     public function loadModel($id)
     {
-        $model = Workflow::model()->findByPk($id);
+        $model = EzcWorkflow::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
@@ -230,7 +230,7 @@ class WorkflowController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'workflow-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'ezc-workflow-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
