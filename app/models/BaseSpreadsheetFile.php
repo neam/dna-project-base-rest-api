@@ -15,6 +15,7 @@
  * @property string $authoring_workflow_execution_id
  * @property string $created
  * @property string $modified
+ * @property string $node_id
  * @property string $title_es
  * @property string $title_fa
  * @property string $title_hi
@@ -31,8 +32,9 @@
  * @property integer $processed_media_id_de
  *
  * Relations of table "spreadsheet_file" available as properties of the model:
- * @property Execution $authoringWorkflowExecution
  * @property DataSource $dataSource
+ * @property EzcExecution $authoringWorkflowExecution
+ * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
  * @property P3Media $processedMediaIdCn
@@ -62,13 +64,13 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, authoring_workflow_execution_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, authoring_workflow_execution_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, original_media_id, generate_processed_media, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, data_source_id', 'length', 'max' => 20),
+                array('cloned_from_id, data_source_id, node_id', 'length', 'max' => 20),
                 array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
                 array('authoring_workflow_execution_id', 'length', 'max' => 10),
                 array('created, modified', 'safe'),
-                array('id, version, cloned_from_id, title_en, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, authoring_workflow_execution_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, authoring_workflow_execution_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -92,8 +94,9 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
     public function relations()
     {
         return array(
-            'authoringWorkflowExecution' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id'),
             'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
+            'authoringWorkflowExecution' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id'),
+            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
             'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
             'processedMediaIdCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_cn'),
@@ -122,6 +125,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
             'authoring_workflow_execution_id' => Yii::t('model', 'Authoring Workflow Execution'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'node_id' => Yii::t('model', 'Node'),
             'title_es' => Yii::t('model', 'Title Es'),
             'title_fa' => Yii::t('model', 'Title Fa'),
             'title_hi' => Yii::t('model', 'Title Hi'),
@@ -156,6 +160,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
         $criteria->compare('t.authoring_workflow_execution_id', $this->authoring_workflow_execution_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.title_es', $this->title_es, true);
         $criteria->compare('t.title_fa', $this->title_fa, true);
         $criteria->compare('t.title_hi', $this->title_hi, true);

@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('Workflow', dirname(__FILE__));
-Yii::import('Workflow.*');
+Yii::setPathOfAlias('EzcNodeConnection', dirname(__FILE__));
+Yii::import('EzcNodeConnection.*');
 
-class Workflow extends BaseWorkflow
+class EzcNodeConnection extends BaseEzcNodeConnection
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.

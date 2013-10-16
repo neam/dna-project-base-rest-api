@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('Chapter', dirname(__FILE__));
-Yii::import('Chapter.*');
+Yii::setPathOfAlias('Edge', dirname(__FILE__));
+Yii::import('Edge.*');
 
-class Chapter extends BaseChapter
+class Edge extends BaseEdge
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.

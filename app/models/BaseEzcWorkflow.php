@@ -1,18 +1,18 @@
 <?php
 
 /**
- * This is the model base class for the table "workflow".
+ * This is the model base class for the table "ezc_workflow".
  *
- * Columns in table "workflow" available as properties of the model:
+ * Columns in table "ezc_workflow" available as properties of the model:
  * @property string $workflow_id
  * @property string $workflow_name
  * @property string $workflow_version
  * @property integer $workflow_created
  *
- * Relations of table "workflow" available as properties of the model:
- * @property Execution[] $executions
+ * Relations of table "ezc_workflow" available as properties of the model:
+ * @property EzcExecution[] $ezcExecutions
  */
-abstract class BaseWorkflow extends ActiveRecord
+abstract class BaseEzcWorkflow extends ActiveRecord
 {
 
     public static function model($className = __CLASS__)
@@ -58,7 +58,7 @@ abstract class BaseWorkflow extends ActiveRecord
     public function relations()
     {
         return array(
-            'executions' => array(self::HAS_MANY, 'Execution', 'workflow_id'),
+            'ezcExecutions' => array(self::HAS_MANY, 'EzcExecution', 'workflow_id'),
         );
     }
 

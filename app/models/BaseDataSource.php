@@ -16,6 +16,7 @@
  * @property string $authoring_workflow_execution_id
  * @property string $created
  * @property string $modified
+ * @property string $node_id
  * @property string $title_es
  * @property string $title_fa
  * @property string $title_hi
@@ -26,8 +27,9 @@
  *
  * Relations of table "data_source" available as properties of the model:
  * @property DataChunk[] $dataChunks
- * @property Execution $authoringWorkflowExecution
- * @property VizView $clonedFrom
+ * @property Snapshot $clonedFrom
+ * @property EzcExecution $authoringWorkflowExecution
+ * @property Node $node
  * @property P3Media $logoMedia
  * @property P3Media $miniLogoMedia
  * @property SpreadsheetFile[] $spreadsheetFiles
@@ -49,13 +51,13 @@ abstract class BaseDataSource extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug, about, logo_media_id, mini_logo_media_id, link, authoring_workflow_execution_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, slug, about, logo_media_id, mini_logo_media_id, link, authoring_workflow_execution_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, logo_media_id, mini_logo_media_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id', 'length', 'max' => 20),
+                array('cloned_from_id, node_id', 'length', 'max' => 20),
                 array('title_en, slug, link, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
                 array('authoring_workflow_execution_id', 'length', 'max' => 10),
                 array('about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug, about, logo_media_id, mini_logo_media_id, link, authoring_workflow_execution_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, slug, about, logo_media_id, mini_logo_media_id, link, authoring_workflow_execution_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -80,8 +82,9 @@ abstract class BaseDataSource extends ActiveRecord
     {
         return array(
             'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'data_source_id'),
-            'authoringWorkflowExecution' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id'),
-            'clonedFrom' => array(self::BELONGS_TO, 'VizView', 'cloned_from_id'),
+            'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
+            'authoringWorkflowExecution' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id'),
+            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'logoMedia' => array(self::BELONGS_TO, 'P3Media', 'logo_media_id'),
             'miniLogoMedia' => array(self::BELONGS_TO, 'P3Media', 'mini_logo_media_id'),
             'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'data_source_id'),
@@ -103,6 +106,7 @@ abstract class BaseDataSource extends ActiveRecord
             'authoring_workflow_execution_id' => Yii::t('model', 'Authoring Workflow Execution'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'node_id' => Yii::t('model', 'Node'),
             'title_es' => Yii::t('model', 'Title Es'),
             'title_fa' => Yii::t('model', 'Title Fa'),
             'title_hi' => Yii::t('model', 'Title Hi'),
@@ -131,6 +135,7 @@ abstract class BaseDataSource extends ActiveRecord
         $criteria->compare('t.authoring_workflow_execution_id', $this->authoring_workflow_execution_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.title_es', $this->title_es, true);
         $criteria->compare('t.title_fa', $this->title_fa, true);
         $criteria->compare('t.title_hi', $this->title_hi, true);

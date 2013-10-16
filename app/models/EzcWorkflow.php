@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('Chapter', dirname(__FILE__));
-Yii::import('Chapter.*');
+Yii::setPathOfAlias('EzcWorkflow', dirname(__FILE__));
+Yii::import('EzcWorkflow.*');
 
-class Chapter extends BaseChapter
+class EzcWorkflow extends BaseEzcWorkflow
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.

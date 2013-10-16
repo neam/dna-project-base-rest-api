@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('Execution', dirname(__FILE__));
-Yii::import('Execution.*');
+Yii::setPathOfAlias('EzcVariableHandler', dirname(__FILE__));
+Yii::import('EzcVariableHandler.*');
 
-class Execution extends BaseExecution
+class EzcVariableHandler extends BaseEzcVariableHandler
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
@@ -20,7 +20,7 @@ class Execution extends BaseExecution
 
     public function getItemLabel()
     {
-        return (string) $this->execution_id." (Workflow: {$this->workflow_id})";
+        return parent::getItemLabel();
     }
 
     public function behaviors()

@@ -11,6 +11,7 @@
  * @property string $authoring_workflow_execution_id
  * @property string $created
  * @property string $modified
+ * @property string $node_id
  * @property string $markup_es
  * @property string $markup_fa
  * @property string $markup_hi
@@ -20,9 +21,10 @@
  * @property string $markup_de
  *
  * Relations of table "html_chunk" available as properties of the model:
- * @property Execution $authoringWorkflowExecution
+ * @property EzcExecution $authoringWorkflowExecution
  * @property HtmlChunk $clonedFrom
  * @property HtmlChunk[] $htmlChunks
+ * @property Node $node
  * @property SectionContent[] $sectionContents
  */
 abstract class BaseHtmlChunk extends ActiveRecord
@@ -42,12 +44,12 @@ abstract class BaseHtmlChunk extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, markup_en, authoring_workflow_execution_id, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, markup_en, authoring_workflow_execution_id, created, modified, node_id, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id', 'length', 'max' => 20),
+                array('cloned_from_id, node_id', 'length', 'max' => 20),
                 array('authoring_workflow_execution_id', 'length', 'max' => 10),
                 array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'safe'),
-                array('id, version, cloned_from_id, markup_en, authoring_workflow_execution_id, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, markup_en, authoring_workflow_execution_id, created, modified, node_id, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -71,9 +73,10 @@ abstract class BaseHtmlChunk extends ActiveRecord
     public function relations()
     {
         return array(
-            'authoringWorkflowExecution' => array(self::BELONGS_TO, 'Execution', 'authoring_workflow_execution_id'),
+            'authoringWorkflowExecution' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id'),
             'clonedFrom' => array(self::BELONGS_TO, 'HtmlChunk', 'cloned_from_id'),
             'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'cloned_from_id'),
+            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'html_chunk_id'),
         );
     }
@@ -88,6 +91,7 @@ abstract class BaseHtmlChunk extends ActiveRecord
             'authoring_workflow_execution_id' => Yii::t('model', 'Authoring Workflow Execution'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'node_id' => Yii::t('model', 'Node'),
             'markup_es' => Yii::t('model', 'Markup Es'),
             'markup_fa' => Yii::t('model', 'Markup Fa'),
             'markup_hi' => Yii::t('model', 'Markup Hi'),
@@ -111,6 +115,7 @@ abstract class BaseHtmlChunk extends ActiveRecord
         $criteria->compare('t.authoring_workflow_execution_id', $this->authoring_workflow_execution_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.markup_es', $this->markup_es, true);
         $criteria->compare('t.markup_fa', $this->markup_fa, true);
         $criteria->compare('t.markup_hi', $this->markup_hi, true);

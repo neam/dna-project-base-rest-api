@@ -1,29 +1,29 @@
 <?php
 
 /**
- * This is the model base class for the table "po_file".
+ * This is the model base class for the table "tool".
  *
- * Columns in table "po_file" available as properties of the model:
+ * Columns in table "tool" available as properties of the model:
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
  * @property string $title
+ * @property string $slug
  * @property string $about
- * @property integer $file_media_id
- * @property string $authoring_workflow_execution_id
+ * @property string $embed_template
+ * @property string $po_file_id
  * @property string $created
  * @property string $modified
  * @property string $node_id
  *
- * Relations of table "po_file" available as properties of the model:
- * @property EzcExecution $authoringWorkflowExecution
+ * Relations of table "tool" available as properties of the model:
+ * @property Snapshot[] $snapshots
  * @property Node $node
- * @property P3Media $fileMedia
- * @property PoFile $clonedFrom
- * @property PoFile[] $poFiles
+ * @property PoFile $poFile
+ * @property Tool $clonedFrom
  * @property Tool[] $tools
  */
-abstract class BasePoFile extends ActiveRecord
+abstract class BaseTool extends ActiveRecord
 {
 
     public static function model($className = __CLASS__)
@@ -33,20 +33,19 @@ abstract class BasePoFile extends ActiveRecord
 
     public function tableName()
     {
-        return 'po_file';
+        return 'tool';
     }
 
     public function rules()
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title, about, file_media_id, authoring_workflow_execution_id, created, modified, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, file_media_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, node_id', 'length', 'max' => 20),
-                array('title', 'length', 'max' => 255),
-                array('authoring_workflow_execution_id', 'length', 'max' => 10),
-                array('about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, title, about, file_media_id, authoring_workflow_execution_id, created, modified, node_id', 'safe', 'on' => 'search'),
+                array('version, cloned_from_id, title, slug, about, embed_template, po_file_id, created, modified, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id, po_file_id, node_id', 'length', 'max' => 20),
+                array('title, slug', 'length', 'max' => 255),
+                array('about, embed_template, created, modified', 'safe'),
+                array('id, version, cloned_from_id, title, slug, about, embed_template, po_file_id, created, modified, node_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -70,12 +69,11 @@ abstract class BasePoFile extends ActiveRecord
     public function relations()
     {
         return array(
-            'authoringWorkflowExecution' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id'),
+            'snapshots' => array(self::HAS_MANY, 'Snapshot', 'tool_id'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
-            'clonedFrom' => array(self::BELONGS_TO, 'PoFile', 'cloned_from_id'),
-            'poFiles' => array(self::HAS_MANY, 'PoFile', 'cloned_from_id'),
-            'tools' => array(self::HAS_MANY, 'Tool', 'po_file_id'),
+            'poFile' => array(self::BELONGS_TO, 'PoFile', 'po_file_id'),
+            'clonedFrom' => array(self::BELONGS_TO, 'Tool', 'cloned_from_id'),
+            'tools' => array(self::HAS_MANY, 'Tool', 'cloned_from_id'),
         );
     }
 
@@ -86,9 +84,10 @@ abstract class BasePoFile extends ActiveRecord
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'title' => Yii::t('model', 'Title'),
+            'slug' => Yii::t('model', 'Slug'),
             'about' => Yii::t('model', 'About'),
-            'file_media_id' => Yii::t('model', 'File Media'),
-            'authoring_workflow_execution_id' => Yii::t('model', 'Authoring Workflow Execution'),
+            'embed_template' => Yii::t('model', 'Embed Template'),
+            'po_file_id' => Yii::t('model', 'Po File'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -105,9 +104,10 @@ abstract class BasePoFile extends ActiveRecord
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.title', $this->title, true);
+        $criteria->compare('t.slug', $this->slug, true);
         $criteria->compare('t.about', $this->about, true);
-        $criteria->compare('t.file_media_id', $this->file_media_id);
-        $criteria->compare('t.authoring_workflow_execution_id', $this->authoring_workflow_execution_id);
+        $criteria->compare('t.embed_template', $this->embed_template, true);
+        $criteria->compare('t.po_file_id', $this->po_file_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);

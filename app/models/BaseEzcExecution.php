@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model base class for the table "execution".
+ * This is the model base class for the table "ezc_execution".
  *
- * Columns in table "execution" available as properties of the model:
+ * Columns in table "ezc_execution" available as properties of the model:
  * @property string $workflow_id
  * @property string $execution_id
  * @property string $execution_parent
@@ -14,7 +14,7 @@
  * @property string $execution_threads
  * @property string $execution_next_thread_id
  *
- * Relations of table "execution" available as properties of the model:
+ * Relations of table "ezc_execution" available as properties of the model:
  * @property Chapter[] $chapters
  * @property Chapter[] $chapters1
  * @property Chapter[] $chapters2
@@ -27,12 +27,12 @@
  * @property DataSource[] $dataSources
  * @property DownloadLink[] $downloadLinks
  * @property ExamQuestion[] $examQuestions
- * @property Workflow $workflow
  * @property Exercise[] $exercises
+ * @property EzcWorkflow $workflow
  * @property HtmlChunk[] $htmlChunks
  * @property PoFile[] $poFiles
- * @property Presentation[] $presentations
  * @property SlideshowFile[] $slideshowFiles
+ * @property Snapshot[] $snapshots
  * @property SpreadsheetFile[] $spreadsheetFiles
  * @property TeachersGuide[] $teachersGuides
  * @property VectorGraphic[] $vectorGraphics
@@ -44,10 +44,9 @@
  * @property VideoFile[] $videoFiles5
  * @property VideoFile[] $videoFiles6
  * @property VideoFile[] $videoFiles7
- * @property VizView[] $vizViews
  * @property WordFile[] $wordFiles
  */
-abstract class BaseExecution extends ActiveRecord
+abstract class BaseEzcExecution extends ActiveRecord
 {
 
     public static function model($className = __CLASS__)
@@ -105,12 +104,12 @@ abstract class BaseExecution extends ActiveRecord
             'dataSources' => array(self::HAS_MANY, 'DataSource', 'authoring_workflow_execution_id'),
             'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'authoring_workflow_execution_id'),
             'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'authoring_workflow_execution_id'),
-            'workflow' => array(self::BELONGS_TO, 'Workflow', 'workflow_id'),
             'exercises' => array(self::HAS_MANY, 'Exercise', 'authoring_workflow_execution_id'),
+            'workflow' => array(self::BELONGS_TO, 'EzcWorkflow', 'workflow_id'),
             'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'authoring_workflow_execution_id'),
             'poFiles' => array(self::HAS_MANY, 'PoFile', 'authoring_workflow_execution_id'),
-            'presentations' => array(self::HAS_MANY, 'Presentation', 'authoring_workflow_execution_id'),
             'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'authoring_workflow_execution_id'),
+            'snapshots' => array(self::HAS_MANY, 'Snapshot', 'authoring_workflow_execution_id'),
             'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'authoring_workflow_execution_id'),
             'teachersGuides' => array(self::HAS_MANY, 'TeachersGuide', 'authoring_workflow_execution_id'),
             'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'authoring_workflow_execution_id'),
@@ -122,7 +121,6 @@ abstract class BaseExecution extends ActiveRecord
             'videoFiles5' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_hi'),
             'videoFiles6' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_pt'),
             'videoFiles7' => array(self::HAS_MANY, 'VideoFile', 'authoring_workflow_execution_id_sv'),
-            'vizViews' => array(self::HAS_MANY, 'VizView', 'authoring_workflow_execution_id'),
             'wordFiles' => array(self::HAS_MANY, 'WordFile', 'authoring_workflow_execution_id'),
         );
     }

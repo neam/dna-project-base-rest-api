@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('VizView', dirname(__FILE__));
-Yii::import('VizView.*');
+Yii::setPathOfAlias('EzcExecution', dirname(__FILE__));
+Yii::import('EzcExecution.*');
 
-class VizView extends BaseVizView
+class EzcExecution extends BaseEzcExecution
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
@@ -26,7 +26,9 @@ class VizView extends BaseVizView
     public function behaviors()
     {
         return array_merge(
-            parent::behaviors(), array());
+            parent::behaviors(),
+            array()
+        );
     }
 
     public function rules()

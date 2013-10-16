@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('Presentation', dirname(__FILE__));
-Yii::import('Presentation.*');
+Yii::setPathOfAlias('EzcExecutionState', dirname(__FILE__));
+Yii::import('EzcExecutionState.*');
 
-class Presentation extends BasePresentation
+class EzcExecutionState extends BaseEzcExecutionState
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
