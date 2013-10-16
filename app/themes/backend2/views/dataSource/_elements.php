@@ -154,39 +154,9 @@
 
             <?php echo $form->textFieldRow($model, 'link', array('maxlength' => 255)); ?>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'authoringWorkflowExecutionIdEn',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'authoring_workflow_execution_id_en', $input);
-            ?>
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_en', array('maxlength' => 10)); ?>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'node',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'node_id', $input);
-            ?>
+            <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 
             <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
 
@@ -230,124 +200,19 @@
 
             <?php echo $form->textAreaRow($model, 'about_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'authoringWorkflowExecutionIdEs',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'authoring_workflow_execution_id_es', $input);
-            ?>
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_es', array('maxlength' => 10)); ?>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'authoringWorkflowExecutionIdFa',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'authoring_workflow_execution_id_fa', $input);
-            ?>
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_fa', array('maxlength' => 10)); ?>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'authoringWorkflowExecutionIdHi',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'authoring_workflow_execution_id_hi', $input);
-            ?>
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_hi', array('maxlength' => 10)); ?>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'authoringWorkflowExecutionIdPt',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'authoring_workflow_execution_id_pt', $input);
-            ?>
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_pt', array('maxlength' => 10)); ?>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'authoringWorkflowExecutionIdSv',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'authoring_workflow_execution_id_sv', $input);
-            ?>
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_sv', array('maxlength' => 10)); ?>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'authoringWorkflowExecutionIdCn',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'authoring_workflow_execution_id_cn', $input);
-            ?>
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_cn', array('maxlength' => 10)); ?>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'authoringWorkflowExecutionIdDe',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'authoring_workflow_execution_id_de', $input);
-            ?>
+            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_de', array('maxlength' => 10)); ?>
         </div>
     </div>
     <!-- main inputs -->
