@@ -1,6 +1,6 @@
 <?php
 
-class WordFileController extends Controller
+class TextDocController extends Controller
 {
     #public $layout='//layouts/column2';
 
@@ -29,7 +29,7 @@ class WordFileController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('WordFile.*'),
+                'roles' => array('TextDoc.*'),
             ),
             array(
                 'deny',
@@ -43,7 +43,7 @@ class WordFileController extends Controller
         parent::beforeAction($action);
         // map identifcationColumn to id
         if (!isset($_GET['id']) && isset($_GET['id'])) {
-            $model = WordFile::model()->find(
+            $model = TextDoc::model()->find(
                 'id = :id',
                 array(
                     ':id' => $_GET['id']
@@ -69,13 +69,13 @@ class WordFileController extends Controller
 
     public function actionCreate()
     {
-        $model = new WordFile;
+        $model = new TextDoc;
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'word-file-form');
+        $this->performAjaxValidation($model, 'text-doc-form');
 
-        if (isset($_POST['WordFile'])) {
-            $model->attributes = $_POST['WordFile'];
+        if (isset($_POST['TextDoc'])) {
+            $model->attributes = $_POST['TextDoc'];
 
             try {
                 if ($model->save()) {
@@ -88,8 +88,8 @@ class WordFileController extends Controller
             } catch (Exception $e) {
                 $model->addError('id', $e->getMessage());
             }
-        } elseif (isset($_GET['WordFile'])) {
-            $model->attributes = $_GET['WordFile'];
+        } elseif (isset($_GET['TextDoc'])) {
+            $model->attributes = $_GET['TextDoc'];
         }
 
         $this->render('create', array('model' => $model));
@@ -100,10 +100,10 @@ class WordFileController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'word-file-form');
+        $this->performAjaxValidation($model, 'text-doc-form');
 
-        if (isset($_POST['WordFile'])) {
-            $model->attributes = $_POST['WordFile'];
+        if (isset($_POST['TextDoc'])) {
+            $model->attributes = $_POST['TextDoc'];
 
 
             try {
@@ -111,7 +111,7 @@ class WordFileController extends Controller
                     if (isset($_GET['returnUrl'])) {
                         $this->redirect($_GET['returnUrl']);
                     } else {
-                        $this->redirect(array('update', 'id' => $model->id));
+                        $this->redirect(array('view', 'id' => $model->id));
                     }
                 }
             } catch (Exception $e) {
@@ -125,15 +125,15 @@ class WordFileController extends Controller
     public function actionEditableSaver()
     {
         Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('WordFile'); // classname of model to be updated
+        $es = new EditableSaver('TextDoc'); // classname of model to be updated
         $es->update();
     }
 
     public function actionEditableCreator()
     {
-        if (isset($_POST['WordFile'])) {
-            $model = new WordFile;
-            $model->attributes = $_POST['WordFile'];
+        if (isset($_POST['TextDoc'])) {
+            $model = new TextDoc;
+            $model->attributes = $_POST['TextDoc'];
             if ($model->save()) {
                 echo CJSON::encode($model->getAttributes());
             } else {
@@ -173,17 +173,17 @@ class WordFileController extends Controller
 
     public function actionIndex()
     {
-        $dataProvider = new CActiveDataProvider('WordFile');
+        $dataProvider = new CActiveDataProvider('TextDoc');
         $this->render('index', array('dataProvider' => $dataProvider,));
     }
 
     public function actionAdmin()
     {
-        $model = new WordFile('search');
+        $model = new TextDoc('search');
         $model->unsetAttributes();
 
-        if (isset($_GET['WordFile'])) {
-            $model->attributes = $_GET['WordFile'];
+        if (isset($_GET['TextDoc'])) {
+            $model->attributes = $_GET['TextDoc'];
         }
 
         $this->render('admin', array('model' => $model,));
@@ -191,7 +191,7 @@ class WordFileController extends Controller
 
     public function loadModel($id)
     {
-        $model = WordFile::model()->findByPk($id);
+        $model = TextDoc::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
@@ -200,7 +200,7 @@ class WordFileController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'word-file-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'text-doc-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
