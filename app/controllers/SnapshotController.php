@@ -29,7 +29,7 @@ class SnapshotController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('B61b08a5.Snapshot.*'),
+                'roles' => array('Snapshot.*'),
             ),
             array(
                 'deny',

@@ -29,7 +29,7 @@ class ToolController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('B61b08a5.Tool.*'),
+                'roles' => array('Tool.*'),
             ),
             array(
                 'deny',
