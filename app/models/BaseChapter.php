@@ -10,7 +10,7 @@
  * @property string $title_en
  * @property string $slug_en
  * @property integer $thumbnail_media_id
- * @property string $about
+ * @property string $about_en
  * @property string $authoring_workflow_execution_id_en
  * @property string $created
  * @property string $modified
@@ -36,6 +36,13 @@
  * @property string $authoring_workflow_execution_id_sv
  * @property string $authoring_workflow_execution_id_cn
  * @property string $authoring_workflow_execution_id_de
+ * @property string $about_es
+ * @property string $about_fa
+ * @property string $about_hi
+ * @property string $about_pt
+ * @property string $about_sv
+ * @property string $about_cn
+ * @property string $about_de
  *
  * Relations of table "chapter" available as properties of the model:
  * @property Chapter $clonedFrom
@@ -69,13 +76,13 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, thumbnail_media_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id', 'length', 'max' => 20),
                 array('title_en, slug_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('authoring_workflow_execution_id_en, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'length', 'max' => 10),
-                array('about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'safe', 'on' => 'search'),
+                array('about_en, created, modified, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe'),
+                array('id, version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -124,7 +131,7 @@ abstract class BaseChapter extends ActiveRecord
             'title_en' => Yii::t('model', 'Title En'),
             'slug_en' => Yii::t('model', 'Slug En'),
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
-            'about' => Yii::t('model', 'About'),
+            'about_en' => Yii::t('model', 'About En'),
             'authoring_workflow_execution_id_en' => Yii::t('model', 'Authoring Workflow Execution Id En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
@@ -150,6 +157,13 @@ abstract class BaseChapter extends ActiveRecord
             'authoring_workflow_execution_id_sv' => Yii::t('model', 'Authoring Workflow Execution Id Sv'),
             'authoring_workflow_execution_id_cn' => Yii::t('model', 'Authoring Workflow Execution Id Cn'),
             'authoring_workflow_execution_id_de' => Yii::t('model', 'Authoring Workflow Execution Id De'),
+            'about_es' => Yii::t('model', 'About Es'),
+            'about_fa' => Yii::t('model', 'About Fa'),
+            'about_hi' => Yii::t('model', 'About Hi'),
+            'about_pt' => Yii::t('model', 'About Pt'),
+            'about_sv' => Yii::t('model', 'About Sv'),
+            'about_cn' => Yii::t('model', 'About Cn'),
+            'about_de' => Yii::t('model', 'About De'),
         );
     }
 
@@ -165,7 +179,7 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t.title_en', $this->title_en, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
-        $criteria->compare('t.about', $this->about, true);
+        $criteria->compare('t.about_en', $this->about_en, true);
         $criteria->compare('t.authoring_workflow_execution_id_en', $this->authoring_workflow_execution_id_en);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
@@ -191,6 +205,13 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t.authoring_workflow_execution_id_sv', $this->authoring_workflow_execution_id_sv);
         $criteria->compare('t.authoring_workflow_execution_id_cn', $this->authoring_workflow_execution_id_cn);
         $criteria->compare('t.authoring_workflow_execution_id_de', $this->authoring_workflow_execution_id_de);
+        $criteria->compare('t.about_es', $this->about_es, true);
+        $criteria->compare('t.about_fa', $this->about_fa, true);
+        $criteria->compare('t.about_hi', $this->about_hi, true);
+        $criteria->compare('t.about_pt', $this->about_pt, true);
+        $criteria->compare('t.about_sv', $this->about_sv, true);
+        $criteria->compare('t.about_cn', $this->about_cn, true);
+        $criteria->compare('t.about_de', $this->about_de, true);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,
