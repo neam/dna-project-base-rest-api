@@ -20,7 +20,7 @@ class EzcExecution extends BaseEzcExecution
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return (string) $this->execution_id." (Workflow: {$this->workflow_id})";
     }
 
     public function behaviors()
