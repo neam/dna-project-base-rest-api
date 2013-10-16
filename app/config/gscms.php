@@ -105,6 +105,7 @@ $gscmsConfig = array(
         ),
         'ezc' => array(
             'class' => 'application.components.EzcComponent',
+            'tablePrefix' => 'ezc_',
         ),
     )
 );

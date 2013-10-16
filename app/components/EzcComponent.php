@@ -3,7 +3,7 @@
 class EzcComponent extends CApplicationComponent
 {
     public $ezcAlias = 'vendor.zetacomponents';
-    public $tablePrefix = 'ezc_';
+    public $tablePrefix = '';
     private $_db = null;
     private $_definition = null;
 
