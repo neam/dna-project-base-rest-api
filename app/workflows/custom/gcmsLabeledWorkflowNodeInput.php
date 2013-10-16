@@ -1,7 +1,7 @@
 <?php
 
 // todo - add persistency
-class gscmsLabeledWorkflowNodeInput extends ezcWorkflowNodeInput
+class gcmsLabeledWorkflowNodeInput extends ezcWorkflowNodeInput
 {
 
     private $label;
