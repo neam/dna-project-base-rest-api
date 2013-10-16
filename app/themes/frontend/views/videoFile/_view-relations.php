@@ -4,7 +4,7 @@
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'SectionContents') . ' ';
+echo Yii::t('model', 'relation.SectionContents') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -13,7 +13,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///sectionContent/admin')
+                'url' => array('///sectionContent/admin', 'SectionContent' => array('video_file_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
@@ -51,7 +51,7 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'VideoFiles') . ' ';
+echo Yii::t('model', 'relation.VideoFiles') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -60,7 +60,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///videoFile/admin')
+                'url' => array('///videoFile/admin', 'VideoFile' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',

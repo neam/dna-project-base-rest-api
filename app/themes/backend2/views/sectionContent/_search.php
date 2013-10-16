@@ -36,8 +36,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'viz_view_id'); ?>
-        <?php echo $form->textField($model, 'viz_view_id', array('size' => 20, 'maxlength' => 20)); ?>
+        <?php echo $form->label($model, 'snapshot_id'); ?>
+        <?php echo $form->textField($model, 'snapshot_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
     <div class="row">
@@ -56,8 +56,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'presentation_id'); ?>
-        <?php echo $form->textField($model, 'presentation_id', array('size' => 20, 'maxlength' => 20)); ?>
+        <?php echo $form->label($model, 'slideshow_file_id'); ?>
+        <?php echo $form->textField($model, 'slideshow_file_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
     <div class="row">
@@ -73,6 +73,11 @@
     <div class="row">
         <?php echo $form->label($model, 'exam_question_id'); ?>
         <?php echo $form->textField($model, 'exam_question_id', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'node_id'); ?>
+        <?php echo $form->textField($model, 'node_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
 

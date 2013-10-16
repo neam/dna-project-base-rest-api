@@ -46,6 +46,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'node_id'); ?>
+        <?php echo $form->textField($model, 'node_id', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'title_es'); ?>
         <?php echo $form->textField($model, 'title_es', array('size' => 60, 'maxlength' => 255)); ?>
     </div>

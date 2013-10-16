@@ -24,8 +24,8 @@
     <?php echo CHtml::encode($data->thumbnail_media_id); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about')); ?>:</b>
-    <?php echo CHtml::encode($data->about); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_en')); ?>:</b>
+    <?php echo CHtml::encode($data->about_en); ?>
     <br/>
 
     <?php /*
@@ -39,6 +39,10 @@
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('modified')); ?>:</b>
     <?php echo CHtml::encode($data->modified); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('node_id')); ?>:</b>
+    <?php echo CHtml::encode($data->node_id); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('title_es')); ?>:</b>
@@ -123,6 +127,34 @@
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id_de')); ?>:</b>
     <?php echo CHtml::encode($data->authoring_workflow_execution_id_de); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_es')); ?>:</b>
+    <?php echo CHtml::encode($data->about_es); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_fa')); ?>:</b>
+    <?php echo CHtml::encode($data->about_fa); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_hi')); ?>:</b>
+    <?php echo CHtml::encode($data->about_hi); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_pt')); ?>:</b>
+    <?php echo CHtml::encode($data->about_pt); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_sv')); ?>:</b>
+    <?php echo CHtml::encode($data->about_sv); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_cn')); ?>:</b>
+    <?php echo CHtml::encode($data->about_cn); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_de')); ?>:</b>
+    <?php echo CHtml::encode($data->about_de); ?>
     <br />
 
     */

@@ -46,6 +46,10 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->modified); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
+<?php echo CHtml::encode($model->node_id); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_es')); ?>:</b>
 <?php echo CHtml::encode($model->title_es); ?>
 <br />
@@ -248,6 +252,17 @@ $this->breadcrumbs[] = $model->id;
                             ),
                             true
                         )
+                    ),
+                    array(
+                        'name' => 'node_id',
+                        'value' => ($model->node !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                array('//node/view', 'id' => $model->node->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//node/update', 'id' => $model->node->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                     array(
                         'name' => 'title_es',

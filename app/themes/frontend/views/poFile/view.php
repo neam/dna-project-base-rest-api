@@ -33,21 +33,85 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->about); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('file_media_id')); ?>:</b>
-<?php echo CHtml::encode($model->file_media_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->original_media_id); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_en')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_en); ?>
 <br/>
 
 <?php /*
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_en')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_en); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
+<?php echo CHtml::encode($model->node_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_es')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_es); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_fa')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_fa); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_hi')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_hi); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_pt')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_pt); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_sv')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_sv); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_cn')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_cn); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_de')); ?>:</b>
+<?php echo CHtml::encode($model->processed_media_id_de); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_es')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_es); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_fa')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_fa); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_hi')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_hi); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_pt')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_pt); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_sv')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_sv); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_cn')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_cn); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_de')); ?>:</b>
+<?php echo CHtml::encode($model->authoring_workflow_execution_id_de); ?>
 <br />
 
     */
@@ -131,24 +195,35 @@ $this->breadcrumbs[] = $model->id;
                         )
                     ),
                     array(
-                        'name' => 'file_media_id',
-                        'value' => ($model->fileMedia !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->fileMedia->itemLabel,
-                                array('//p3Media/view', 'id' => $model->fileMedia->id),
+                        'name' => 'original_media_id',
+                        'value' => ($model->originalMedia !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->originalMedia->itemLabel,
+                                array('//p3Media/view', 'id' => $model->originalMedia->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//p3Media/update', 'id' => $model->fileMedia->id),
+                                array('//p3Media/update', 'id' => $model->originalMedia->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id',
-                        'value' => ($model->authoringWorkflowExecution !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecution->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                        'name' => 'processed_media_id_en',
+                        'value' => ($model->processedMediaIdEn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdEn->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdEn->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                array('//p3Media/update', 'id' => $model->processedMediaIdEn->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id_en',
+                        'value' => ($model->authoringWorkflowExecutionIdEn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdEn->itemLabel,
+                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdEn->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdEn->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -177,6 +252,171 @@ $this->breadcrumbs[] = $model->id;
                             ),
                             true
                         )
+                    ),
+                    array(
+                        'name' => 'node_id',
+                        'value' => ($model->node !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                array('//node/view', 'id' => $model->node->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//node/update', 'id' => $model->node->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_es',
+                        'value' => ($model->processedMediaIdEs !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdEs->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdEs->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdEs->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_fa',
+                        'value' => ($model->processedMediaIdFa !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdFa->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdFa->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdFa->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_hi',
+                        'value' => ($model->processedMediaIdHi !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdHi->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdHi->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdHi->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_pt',
+                        'value' => ($model->processedMediaIdPt !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdPt->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdPt->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdPt->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_sv',
+                        'value' => ($model->processedMediaIdSv !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdSv->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdSv->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdSv->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_cn',
+                        'value' => ($model->processedMediaIdCn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdCn->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdCn->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdCn->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'processed_media_id_de',
+                        'value' => ($model->processedMediaIdDe !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdDe->itemLabel,
+                                array('//p3Media/view', 'id' => $model->processedMediaIdDe->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->processedMediaIdDe->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id_es',
+                        'value' => ($model->authoringWorkflowExecutionIdEs !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdEs->itemLabel,
+                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdEs->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdEs->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id_fa',
+                        'value' => ($model->authoringWorkflowExecutionIdFa !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdFa->itemLabel,
+                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdFa->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdFa->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id_hi',
+                        'value' => ($model->authoringWorkflowExecutionIdHi !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdHi->itemLabel,
+                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdHi->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdHi->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id_pt',
+                        'value' => ($model->authoringWorkflowExecutionIdPt !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdPt->itemLabel,
+                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdPt->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdPt->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id_sv',
+                        'value' => ($model->authoringWorkflowExecutionIdSv !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdSv->itemLabel,
+                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdSv->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdSv->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id_cn',
+                        'value' => ($model->authoringWorkflowExecutionIdCn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdCn->itemLabel,
+                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdCn->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdCn->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'authoring_workflow_execution_id_de',
+                        'value' => ($model->authoringWorkflowExecutionIdDe !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdDe->itemLabel,
+                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdDe->execution_id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdDe->execution_id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                 ),
             )); ?>

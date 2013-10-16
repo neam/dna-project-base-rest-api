@@ -16,8 +16,8 @@
     <?php echo CHtml::encode($data->title_en); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id')); ?>:</b>
-    <?php echo CHtml::encode($data->authoring_workflow_execution_id); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id_en')); ?>:</b>
+    <?php echo CHtml::encode($data->authoring_workflow_execution_id_en); ?>
     <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
@@ -29,6 +29,10 @@
     <br/>
 
     <?php /*
+    <b><?php echo CHtml::encode($data->getAttributeLabel('node_id')); ?>:</b>
+    <?php echo CHtml::encode($data->node_id); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('title_es')); ?>:</b>
     <?php echo CHtml::encode($data->title_es); ?>
     <br />
@@ -55,6 +59,34 @@
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('title_cn')); ?>:</b>
     <?php echo CHtml::encode($data->title_cn); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id_es')); ?>:</b>
+    <?php echo CHtml::encode($data->authoring_workflow_execution_id_es); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id_fa')); ?>:</b>
+    <?php echo CHtml::encode($data->authoring_workflow_execution_id_fa); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id_hi')); ?>:</b>
+    <?php echo CHtml::encode($data->authoring_workflow_execution_id_hi); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id_pt')); ?>:</b>
+    <?php echo CHtml::encode($data->authoring_workflow_execution_id_pt); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id_sv')); ?>:</b>
+    <?php echo CHtml::encode($data->authoring_workflow_execution_id_sv); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id_cn')); ?>:</b>
+    <?php echo CHtml::encode($data->authoring_workflow_execution_id_cn); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('authoring_workflow_execution_id_de')); ?>:</b>
+    <?php echo CHtml::encode($data->authoring_workflow_execution_id_de); ?>
     <br />
 
     */

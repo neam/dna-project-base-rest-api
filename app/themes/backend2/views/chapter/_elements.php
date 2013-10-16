@@ -56,7 +56,7 @@
             $this->endClip();
             ?>
 
-            <?php echo $form->textFieldRow($model, 'about', array('maxlength' => 255)); ?>
+            <?php echo $form->textAreaRow($model, 'about_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
             <?php
             $input = $this->widget(
@@ -73,6 +73,23 @@
                 )
                 , true);
             echo $form->customRow($model, 'authoring_workflow_execution_id_en', $input);
+            ?>
+
+            <?php
+            $input = $this->widget(
+                '\GtcRelation',
+                array(
+                    'model' => $model,
+                    'relation' => 'node',
+                    'fields' => 'itemLabel',
+                    'allowEmpty' => true,
+                    'style' => 'dropdownlist',
+                    'htmlOptions' => array(
+                        'checkAll' => 'all'
+                    ),
+                )
+                , true);
+            echo $form->customRow($model, 'node_id', $input);
             ?>
 
             <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
@@ -221,6 +238,20 @@
                 , true);
             echo $form->customRow($model, 'authoring_workflow_execution_id_de', $input);
             ?>
+
+            <?php echo $form->textAreaRow($model, 'about_es', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_fa', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_hi', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_pt', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_sv', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_cn', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'about_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
         </div>
     </div>
     <!-- main inputs -->

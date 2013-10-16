@@ -39,7 +39,8 @@ $this->widget('TbGridView',
         'id' => 'section-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
-        'template' => '{pager}{summary}{items}{pager}',
+        'responsiveTable' => true,
+        'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
             'class' => 'TbPager',
             'displayFirstAndLast' => true,
@@ -113,6 +114,11 @@ $this->widget('TbGridView',
                 )
             ),
             /*
+            array(
+                'name' => 'node_id',
+                'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'title_es',
@@ -286,9 +292,9 @@ $this->widget('TbGridView',
             array(
                 'class' => 'TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Section.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Section.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Section.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Section.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Section.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("B61b08a5.Section.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',

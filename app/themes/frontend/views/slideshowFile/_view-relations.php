@@ -4,7 +4,7 @@
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'DataChunks') . ' ';
+echo Yii::t('model', 'relation.DataChunks') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -13,7 +13,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///dataChunk/admin')
+                'url' => array('///dataChunk/admin', 'DataChunk' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
@@ -51,7 +51,7 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'Exercises') . ' ';
+echo Yii::t('model', 'relation.Exercises') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -60,7 +60,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///exercise/admin')
+                'url' => array('///exercise/admin', 'Exercise' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
@@ -98,7 +98,7 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'Presentations') . ' ';
+echo Yii::t('model', 'relation.SectionContents') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -107,13 +107,13 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///presentation/admin')
+                'url' => array('///sectionContent/admin', 'SectionContent' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
                 'url' => array(
-                    '///presentation/create',
-                    'Presentation' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey})
+                    '///sectionContent/create',
+                    'SectionContent' => array('slideshow_file_id' => $model->{$model->tableSchema->primaryKey})
                 )
             ),
 
@@ -124,17 +124,17 @@ echo '</h3>' ?>
 <ul>
 
     <?php
-    $records = $model->presentations(array('limit' => 250, 'scopes' => ''));
+    $records = $model->sectionContents(array('limit' => 250, 'scopes' => ''));
     if (is_array($records)) {
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
                 '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
-                array('//presentation/view', 'id' => $relatedModel->id)
+                array('//sectionContent/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
                 ' <i class="icon icon-pencil"></i>',
-                array('//presentation/update', 'id' => $relatedModel->id)
+                array('//sectionContent/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }
@@ -145,7 +145,7 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'SlideshowFiles') . ' ';
+echo Yii::t('model', 'relation.SlideshowFiles') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
     array(
@@ -154,7 +154,7 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///slideshowFile/admin')
+                'url' => array('///slideshowFile/admin', 'SlideshowFile' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
