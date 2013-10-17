@@ -12,7 +12,6 @@
  * @property integer $original_media_id
  * @property integer $generate_processed_media
  * @property integer $processed_media_id_en
- * @property string $authoring_workflow_execution_id_en
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -30,24 +29,9 @@
  * @property integer $processed_media_id_sv
  * @property integer $processed_media_id_cn
  * @property integer $processed_media_id_de
- * @property string $authoring_workflow_execution_id_es
- * @property string $authoring_workflow_execution_id_fa
- * @property string $authoring_workflow_execution_id_hi
- * @property string $authoring_workflow_execution_id_pt
- * @property string $authoring_workflow_execution_id_sv
- * @property string $authoring_workflow_execution_id_cn
- * @property string $authoring_workflow_execution_id_de
  *
  * Relations of table "spreadsheet_file" available as properties of the model:
- * @property EzcExecution $authoringWorkflowExecutionIdDe
  * @property DataSource $dataSource
- * @property EzcExecution $authoringWorkflowExecutionIdEn
- * @property EzcExecution $authoringWorkflowExecutionIdCn
- * @property EzcExecution $authoringWorkflowExecutionIdEs
- * @property EzcExecution $authoringWorkflowExecutionIdFa
- * @property EzcExecution $authoringWorkflowExecutionIdHi
- * @property EzcExecution $authoringWorkflowExecutionIdPt
- * @property EzcExecution $authoringWorkflowExecutionIdSv
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -78,13 +62,12 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, original_media_id, generate_processed_media, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, data_source_id, node_id', 'length', 'max' => 20),
                 array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
-                array('authoring_workflow_execution_id_en, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'length', 'max' => 10),
                 array('created, modified', 'safe'),
-                array('id, version, cloned_from_id, title_en, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -108,15 +91,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
     public function relations()
     {
         return array(
-            'authoringWorkflowExecutionIdDe' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_de'),
             'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
-            'authoringWorkflowExecutionIdEn' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_en'),
-            'authoringWorkflowExecutionIdCn' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_cn'),
-            'authoringWorkflowExecutionIdEs' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_es'),
-            'authoringWorkflowExecutionIdFa' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_fa'),
-            'authoringWorkflowExecutionIdHi' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_hi'),
-            'authoringWorkflowExecutionIdPt' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_pt'),
-            'authoringWorkflowExecutionIdSv' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_sv'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
             'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
@@ -143,7 +118,6 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
             'original_media_id' => Yii::t('model', 'Original Media'),
             'generate_processed_media' => Yii::t('model', 'Generate Processed Media'),
             'processed_media_id_en' => Yii::t('model', 'Processed Media Id En'),
-            'authoring_workflow_execution_id_en' => Yii::t('model', 'Authoring Workflow Execution Id En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -161,13 +135,6 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
             'processed_media_id_sv' => Yii::t('model', 'Processed Media Id Sv'),
             'processed_media_id_cn' => Yii::t('model', 'Processed Media Id Cn'),
             'processed_media_id_de' => Yii::t('model', 'Processed Media Id De'),
-            'authoring_workflow_execution_id_es' => Yii::t('model', 'Authoring Workflow Execution Id Es'),
-            'authoring_workflow_execution_id_fa' => Yii::t('model', 'Authoring Workflow Execution Id Fa'),
-            'authoring_workflow_execution_id_hi' => Yii::t('model', 'Authoring Workflow Execution Id Hi'),
-            'authoring_workflow_execution_id_pt' => Yii::t('model', 'Authoring Workflow Execution Id Pt'),
-            'authoring_workflow_execution_id_sv' => Yii::t('model', 'Authoring Workflow Execution Id Sv'),
-            'authoring_workflow_execution_id_cn' => Yii::t('model', 'Authoring Workflow Execution Id Cn'),
-            'authoring_workflow_execution_id_de' => Yii::t('model', 'Authoring Workflow Execution Id De'),
         );
     }
 
@@ -185,7 +152,6 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
         $criteria->compare('t.original_media_id', $this->original_media_id);
         $criteria->compare('t.generate_processed_media', $this->generate_processed_media);
         $criteria->compare('t.processed_media_id_en', $this->processed_media_id_en);
-        $criteria->compare('t.authoring_workflow_execution_id_en', $this->authoring_workflow_execution_id_en);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);
@@ -203,13 +169,6 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
         $criteria->compare('t.processed_media_id_sv', $this->processed_media_id_sv);
         $criteria->compare('t.processed_media_id_cn', $this->processed_media_id_cn);
         $criteria->compare('t.processed_media_id_de', $this->processed_media_id_de);
-        $criteria->compare('t.authoring_workflow_execution_id_es', $this->authoring_workflow_execution_id_es);
-        $criteria->compare('t.authoring_workflow_execution_id_fa', $this->authoring_workflow_execution_id_fa);
-        $criteria->compare('t.authoring_workflow_execution_id_hi', $this->authoring_workflow_execution_id_hi);
-        $criteria->compare('t.authoring_workflow_execution_id_pt', $this->authoring_workflow_execution_id_pt);
-        $criteria->compare('t.authoring_workflow_execution_id_sv', $this->authoring_workflow_execution_id_sv);
-        $criteria->compare('t.authoring_workflow_execution_id_cn', $this->authoring_workflow_execution_id_cn);
-        $criteria->compare('t.authoring_workflow_execution_id_de', $this->authoring_workflow_execution_id_de);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

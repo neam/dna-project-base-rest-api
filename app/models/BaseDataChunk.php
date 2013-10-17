@@ -15,7 +15,6 @@
  * @property string $data_source_id
  * @property string $slideshow_file_id
  * @property string $vector_graphic_id
- * @property string $authoring_workflow_execution_id_en
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -40,26 +39,13 @@
  * @property string $about_sv
  * @property string $about_cn
  * @property string $about_de
- * @property string $authoring_workflow_execution_id_es
- * @property string $authoring_workflow_execution_id_fa
- * @property string $authoring_workflow_execution_id_hi
- * @property string $authoring_workflow_execution_id_pt
- * @property string $authoring_workflow_execution_id_sv
- * @property string $authoring_workflow_execution_id_cn
- * @property string $authoring_workflow_execution_id_de
+ * @property string $data_chunk_qa_state_id
  *
  * Relations of table "data_chunk" available as properties of the model:
- * @property EzcExecution $authoringWorkflowExecutionIdDe
+ * @property DataChunkQaState $dataChunkQaState
  * @property DataChunk $clonedFrom
  * @property DataChunk[] $dataChunks
  * @property DataSource $dataSource
- * @property EzcExecution $authoringWorkflowExecutionIdEn
- * @property EzcExecution $authoringWorkflowExecutionIdCn
- * @property EzcExecution $authoringWorkflowExecutionIdEs
- * @property EzcExecution $authoringWorkflowExecutionIdFa
- * @property EzcExecution $authoringWorkflowExecutionIdHi
- * @property EzcExecution $authoringWorkflowExecutionIdPt
- * @property EzcExecution $authoringWorkflowExecutionIdSv
  * @property Node $node
  * @property P3Media $fileMedia
  * @property SlideshowFile $slideshowFile
@@ -83,13 +69,12 @@ abstract class BaseDataChunk extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug_en, about_en, file_media_id, metadata, data_source_id, slideshow_file_id, vector_graphic_id, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, slug_en, about_en, file_media_id, metadata, data_source_id, slideshow_file_id, vector_graphic_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, data_chunk_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, file_media_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, data_source_id, slideshow_file_id, vector_graphic_id, node_id', 'length', 'max' => 20),
+                array('cloned_from_id, data_source_id, slideshow_file_id, vector_graphic_id, node_id, data_chunk_qa_state_id', 'length', 'max' => 20),
                 array('title_en, slug_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('authoring_workflow_execution_id_en, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'length', 'max' => 10),
                 array('about_en, metadata, created, modified, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug_en, about_en, file_media_id, metadata, data_source_id, slideshow_file_id, vector_graphic_id, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, slug_en, about_en, file_media_id, metadata, data_source_id, slideshow_file_id, vector_graphic_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, data_chunk_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -113,17 +98,10 @@ abstract class BaseDataChunk extends ActiveRecord
     public function relations()
     {
         return array(
-            'authoringWorkflowExecutionIdDe' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_de'),
+            'dataChunkQaState' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id'),
             'clonedFrom' => array(self::BELONGS_TO, 'DataChunk', 'cloned_from_id'),
             'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'cloned_from_id'),
             'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
-            'authoringWorkflowExecutionIdEn' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_en'),
-            'authoringWorkflowExecutionIdCn' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_cn'),
-            'authoringWorkflowExecutionIdEs' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_es'),
-            'authoringWorkflowExecutionIdFa' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_fa'),
-            'authoringWorkflowExecutionIdHi' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_hi'),
-            'authoringWorkflowExecutionIdPt' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_pt'),
-            'authoringWorkflowExecutionIdSv' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_sv'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
             'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
@@ -146,7 +124,6 @@ abstract class BaseDataChunk extends ActiveRecord
             'data_source_id' => Yii::t('model', 'Data Source'),
             'slideshow_file_id' => Yii::t('model', 'Slideshow File'),
             'vector_graphic_id' => Yii::t('model', 'Vector Graphic'),
-            'authoring_workflow_execution_id_en' => Yii::t('model', 'Authoring Workflow Execution Id En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -171,13 +148,7 @@ abstract class BaseDataChunk extends ActiveRecord
             'about_sv' => Yii::t('model', 'About Sv'),
             'about_cn' => Yii::t('model', 'About Cn'),
             'about_de' => Yii::t('model', 'About De'),
-            'authoring_workflow_execution_id_es' => Yii::t('model', 'Authoring Workflow Execution Id Es'),
-            'authoring_workflow_execution_id_fa' => Yii::t('model', 'Authoring Workflow Execution Id Fa'),
-            'authoring_workflow_execution_id_hi' => Yii::t('model', 'Authoring Workflow Execution Id Hi'),
-            'authoring_workflow_execution_id_pt' => Yii::t('model', 'Authoring Workflow Execution Id Pt'),
-            'authoring_workflow_execution_id_sv' => Yii::t('model', 'Authoring Workflow Execution Id Sv'),
-            'authoring_workflow_execution_id_cn' => Yii::t('model', 'Authoring Workflow Execution Id Cn'),
-            'authoring_workflow_execution_id_de' => Yii::t('model', 'Authoring Workflow Execution Id De'),
+            'data_chunk_qa_state_id' => Yii::t('model', 'Data Chunk Qa State'),
         );
     }
 
@@ -198,7 +169,6 @@ abstract class BaseDataChunk extends ActiveRecord
         $criteria->compare('t.data_source_id', $this->data_source_id);
         $criteria->compare('t.slideshow_file_id', $this->slideshow_file_id);
         $criteria->compare('t.vector_graphic_id', $this->vector_graphic_id);
-        $criteria->compare('t.authoring_workflow_execution_id_en', $this->authoring_workflow_execution_id_en);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);
@@ -223,13 +193,7 @@ abstract class BaseDataChunk extends ActiveRecord
         $criteria->compare('t.about_sv', $this->about_sv, true);
         $criteria->compare('t.about_cn', $this->about_cn, true);
         $criteria->compare('t.about_de', $this->about_de, true);
-        $criteria->compare('t.authoring_workflow_execution_id_es', $this->authoring_workflow_execution_id_es);
-        $criteria->compare('t.authoring_workflow_execution_id_fa', $this->authoring_workflow_execution_id_fa);
-        $criteria->compare('t.authoring_workflow_execution_id_hi', $this->authoring_workflow_execution_id_hi);
-        $criteria->compare('t.authoring_workflow_execution_id_pt', $this->authoring_workflow_execution_id_pt);
-        $criteria->compare('t.authoring_workflow_execution_id_sv', $this->authoring_workflow_execution_id_sv);
-        $criteria->compare('t.authoring_workflow_execution_id_cn', $this->authoring_workflow_execution_id_cn);
-        $criteria->compare('t.authoring_workflow_execution_id_de', $this->authoring_workflow_execution_id_de);
+        $criteria->compare('t.data_chunk_qa_state_id', $this->data_chunk_qa_state_id);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

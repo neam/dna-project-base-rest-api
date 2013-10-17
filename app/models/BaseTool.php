@@ -36,9 +36,11 @@
  * @property string $about_sv
  * @property string $about_cn
  * @property string $about_de
+ * @property string $tool_qa_state_id
  *
  * Relations of table "tool" available as properties of the model:
  * @property Snapshot[] $snapshots
+ * @property ToolQaState $toolQaState
  * @property Node $node
  * @property PoFile $poFile
  * @property Tool $clonedFrom
@@ -61,12 +63,12 @@ abstract class BaseTool extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug_en, about_en, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, slug_en, about_en, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, tool_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, po_file_id, node_id', 'length', 'max' => 20),
+                array('cloned_from_id, po_file_id, node_id, tool_qa_state_id', 'length', 'max' => 20),
                 array('title_en, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
                 array('about_en, embed_template, created, modified, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug_en, about_en, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, slug_en, about_en, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, tool_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -91,6 +93,7 @@ abstract class BaseTool extends ActiveRecord
     {
         return array(
             'snapshots' => array(self::HAS_MANY, 'Snapshot', 'tool_id'),
+            'toolQaState' => array(self::BELONGS_TO, 'ToolQaState', 'tool_qa_state_id'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'poFile' => array(self::BELONGS_TO, 'PoFile', 'po_file_id'),
             'clonedFrom' => array(self::BELONGS_TO, 'Tool', 'cloned_from_id'),
@@ -133,6 +136,7 @@ abstract class BaseTool extends ActiveRecord
             'about_sv' => Yii::t('model', 'About Sv'),
             'about_cn' => Yii::t('model', 'About Cn'),
             'about_de' => Yii::t('model', 'About De'),
+            'tool_qa_state_id' => Yii::t('model', 'Tool Qa State'),
         );
     }
 
@@ -174,6 +178,7 @@ abstract class BaseTool extends ActiveRecord
         $criteria->compare('t.about_sv', $this->about_sv, true);
         $criteria->compare('t.about_cn', $this->about_cn, true);
         $criteria->compare('t.about_de', $this->about_de, true);
+        $criteria->compare('t.tool_qa_state_id', $this->tool_qa_state_id);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,
