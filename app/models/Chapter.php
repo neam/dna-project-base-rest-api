@@ -34,11 +34,10 @@ class Chapter extends BaseChapter
     public function rules()
     {
         return array_merge(
-            parent::rules()
-        /* , array(
-          array('column1, column2', 'rule1'),
-          array('column3', 'rule2'),
-          ) */
+            parent::rules(), array(
+                array('title, slug', 'required', 'on' => 'draft,preview,public'),
+                array('thumbnail, about, video, teachers_guide, exercises, snapshots, credits', 'required', 'on' => 'public'),
+            )
         );
     }
 
