@@ -146,22 +146,44 @@ trait ItemController
     public function actionContinueAuthoring($id)
     {
         $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
 
         // Check and redirect depending on current workflow execution status
         $execution = Yii::app()->ezc->getWorkflowDatabaseExecution((int) $model->authoring_workflow_execution_id);
+
+        // Supply id if necessary
+        /*
+        if (isset($execution->getWaitingFor()["id"])) {
+            $execution->resume(array('id' => $id));
+        }
+        */
+
+        // Check draft progress
+        $model->scenario = 'draft_en';
+        $model->validate();
+        $execution->resume(array('draft' => !$model->hasErrors()));
+
+        // Check preview progress
+        $model->scenario = 'preview_en';
+        $model->validate();
+        $execution->resume(array('previewable' => !$model->hasErrors()));
+
+        // Check publish progress
+        $model->scenario = 'publish_en';
+        $model->validate();
+        $execution->resume(array('publishable' => !$model->hasErrors()));
+
         $waitingFor = $execution->getWaitingFor();
 
-        if (isset($waitingFor["continue_from_approved_for_translation"])) {
-            $this->redirect(array('author', 'id' => $model->id));
+        if (isset($waitingFor["fields_for_draft"])) {
+            $this->redirect(array('draft', 'id' => $model->id));
             return;
         }
-        if (isset($waitingFor["continue_from_write_subtitles"])) {
-            $this->redirect(array('translateSubtitles', 'id' => $model->id));
+        if (isset($waitingFor["fields_for_preview"])) {
+            $this->redirect(array('prepPreshow', 'id' => $model->id));
             return;
         }
-        if (isset($waitingFor["continue_from_translate_title_and_about"])) {
-            $this->redirect(array('translateTitleAndAbout', 'id' => $model->id));
+        if (isset($waitingFor["fields_for_publish"])) {
+            $this->redirect(array('prepPublish', 'id' => $model->id));
             return;
         }
 

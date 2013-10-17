@@ -89,6 +89,15 @@ class EzcWorkflowBehavior extends CActiveRecordBehavior
         // Start workflow execution.
         $id = $execution->start();
 
+        /*
+        // Supply modelClass
+        $execution->resume(
+            array(
+                'modelClass' => get_class($this->owner),
+            )
+        );
+        */
+
         // Store the workflow id in the current item
         $this->owner->$attribute = $id;
 

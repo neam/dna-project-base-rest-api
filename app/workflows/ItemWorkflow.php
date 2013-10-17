@@ -19,16 +19,35 @@ class ItemWorkflow
         // Do not store custom classes if not in memory only
         $nodeInputClass = $inMemory ? "gcmsLabeledWorkflowNodeInput" : "ezcWorkflowNodeInput";
 
+        $split = new ezcWorkflowNodeParallelSplit();
+
+        $this->process_steps['construct'] = new $nodeInputClass(array(
+            'modelClass' => new ezcWorkflowConditionIsAnything(),
+            'id' => new ezcWorkflowConditionIsAnything(),
+        ));
+
+        /*
+        $this->process_steps['split'] = new ezcWorkflowNodeParallelSplit();
+
+        // Check-progress-loop
+        $this->process_steps['merge'] = new ezcWorkflowNodeSimpleMerge();
+        $this->process_steps['do_check_progress'] = new $nodeInputClass(array(
+            'do_check_progress' => new ezcWorkflowConditionIsTrue(),
+        ));
+        $this->process_steps['check_progress'] = new ezcWorkflowNodeAction(array(
+            'class' => 'gcmsCheckProgressServiceObject',
+            'arguments' => array()
+        ));
+        */
+
+        // Authoring workflow
         $this->process_steps['new'] = new $nodeInputClass(array(
-            'Label: New' => new ezcWorkflowConditionIsAnything(),
             'draft' => new ezcWorkflowConditionIsTrue(),
         ));
         $this->process_steps['draft'] = new $nodeInputClass(array(
-            'Label: Draft' => new ezcWorkflowConditionIsAnything(),
             'previewable' => new ezcWorkflowConditionIsTrue(),
         ));
         $this->process_steps['preview'] = new $nodeInputClass(array(
-            'Label: Preview' => new ezcWorkflowConditionIsAnything(),
             'publishable' => new ezcWorkflowConditionIsTrue(),
             'candidate' => new ezcWorkflowConditionIsTrue(),
             'approved' => new ezcWorkflowConditionIsTrue(),
@@ -36,19 +55,33 @@ class ItemWorkflow
             'translated' => new ezcWorkflowConditionIsTrue(),
         ));
         $this->process_steps['public'] = new $nodeInputClass(array(
-            'Label: Public' => new ezcWorkflowConditionIsAnything(),
             'replaced' => new ezcWorkflowConditionIsTrue(),
         ));
         $this->process_steps['replaced'] = new $nodeInputClass(array(
-            'Label: Replaced' => new ezcWorkflowConditionIsAnything(),
             'stayhere' => new ezcWorkflowConditionIsFalse(),
         ));
     }
 
     function connectProcessSteps()
     {
-        $this->workflow->startNode->addOutNode($this->process_steps['new']);
+        $this->workflow->startNode->addOutNode($this->process_steps['construct']);
 
+        $this->process_steps['construct']->addOutNode($this->process_steps['new']);
+
+        /*
+        $this->process_steps['construct']->addOutNode($this->process_steps['split']);
+        $this->process_steps['split']->addOutNode($this->process_steps['merge']);
+
+        // Check-progress action loop
+        $this->process_steps['merge']->addOutNode($this->process_steps['do_check_progress']);
+        $this->process_steps['do_check_progress']->addOutNode($this->process_steps['check_progress']);
+        $this->process_steps['check_progress']->addOutNode($this->process_steps['merge']);
+
+
+        $this->process_steps['split']->addOutNode($this->process_steps['new']);
+        */
+
+        // Authoring workflow
         $this->process_steps['new']->addOutNode($this->process_steps['draft']);
         $this->process_steps['draft']->addOutNode($this->process_steps['preview']);
         $this->process_steps['preview']->addOutNode($this->process_steps['public']);
