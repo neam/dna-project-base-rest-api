@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3bbc28018123627c84a441bbb9e011ee",
+    "hash": "e45c905dd56477c798fa70e6fbed07ae",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -543,7 +543,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/p3media.git",
-                "reference": "fe705edde3467e9d22c293bc22cf8a62b7bf2338"
+                "reference": "06c671418935dc5c0bf30c3cfd7a7127bf70cb1e"
             },
             "type": "library"
         },
