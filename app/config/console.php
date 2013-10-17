@@ -109,6 +109,10 @@ $consoleConfig = array(
         'i18n-columns'    => array(
             'class' => 'i18n-columns.commands.I18nColumnsCommand',
         ),
+        // qa-attributes command
+        'qa-attributes'    => array(
+            'class' => 'qa-attributes.commands.QaAttributesCommand',
+        ),
         // composer callback
         'backend-theme' => array(
             'class'     => 'vendor.phundament.backend-theme.commands.PhBackendThemeCommand',

@@ -29,6 +29,30 @@ class ActiveRecord extends CActiveRecord
             );
         }
 
+        // List of models using qa attributes behavior
+        $qaModels = array(
+            'Chapter' => 'Chapter',
+            'DataChunk' => 'DataChunk',
+            'DataSource' => 'DataSource',
+            'ExamQuestion' => 'ExamQuestion',
+            'Exercise' => 'Exercise',
+            'HtmlChunk' => 'HtmlChunk',
+            'PoFile' => 'PoFile',
+            'SlideshowFile' => 'SlideshowFile',
+            'Snapshot' => 'Snapshot',
+            'SpreadsheetFile' => 'SpreadsheetFile',
+            'TextDoc' => 'TextDoc',
+            'Tool' => 'Tool',
+            'VectorGraphic' => 'VectorGraphic',
+            'VideoFile' => 'VideoFile',
+        );
+
+        if (isset($qaModels[get_class($this)])) {
+            $behaviors['qa-attributes'] = array(
+                'class' => 'QaAttributesBehavior',
+            );
+        }
+
         // List of model attributes to translate
         $translateMap = array(
             'Chapter' => array('slug', 'title', 'about', 'authoring_workflow_execution_id'),
