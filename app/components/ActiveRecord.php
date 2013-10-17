@@ -31,20 +31,20 @@ class ActiveRecord extends CActiveRecord
 
         // List of models using qa attributes behavior
         $qaModels = array(
-            'Chapter' => 'Chapter',
-            'DataChunk' => 'DataChunk',
-            'DataSource' => 'DataSource',
-            'ExamQuestion' => 'ExamQuestion',
-            'Exercise' => 'Exercise',
-            'HtmlChunk' => 'HtmlChunk',
-            'PoFile' => 'PoFile',
-            'SlideshowFile' => 'SlideshowFile',
-            'Snapshot' => 'Snapshot',
-            'SpreadsheetFile' => 'SpreadsheetFile',
-            'TextDoc' => 'TextDoc',
-            'Tool' => 'Tool',
-            'VectorGraphic' => 'VectorGraphic',
-            'VideoFile' => 'VideoFile',
+            'Chapter' => 'chapter',
+            'DataChunk' => 'data_chunk',
+            'DataSource' => 'data_source',
+            'ExamQuestion' => 'exam_question',
+            'Exercise' => 'exercise',
+            'HtmlChunk' => 'html_chunk',
+            'PoFile' => 'po_file',
+            'SlideshowFile' => 'slideshow_file',
+            'Snapshot' => 'snapshot',
+            'SpreadsheetFile' => 'spreadsheet_file',
+            'TextDoc' => 'text_doc',
+            'Tool' => 'tool',
+            'VectorGraphic' => 'vector_graphic',
+            'VideoFile' => 'video_file',
         );
 
         if (isset($qaModels[get_class($this)])) {
