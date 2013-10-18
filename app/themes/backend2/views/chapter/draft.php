@@ -42,7 +42,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
 <div class="row">
     <div class="span3 well well-white">
 
-        <?php echo $this->renderPartial('elements/_progress', compact("model", "execution")); ?>
+        <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
 
     </div>
     <div class="span9 well well-white">
