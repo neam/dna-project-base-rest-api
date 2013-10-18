@@ -142,6 +142,10 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->about_de); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('tool_qa_state_id')); ?>:</b>
+<?php echo CHtml::encode($model->tool_qa_state_id); ?>
+<br />
+
     */
 ?>
 
@@ -568,6 +572,17 @@ $this->breadcrumbs[] = $model->id;
                             ),
                             true
                         )
+                    ),
+                    array(
+                        'name' => 'tool_qa_state_id',
+                        'value' => ($model->toolQaState !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->toolQaState->itemLabel,
+                                array('//toolQaState/view', 'id' => $model->toolQaState->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//toolQaState/update', 'id' => $model->toolQaState->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                 ),
             )); ?>

@@ -13,13 +13,13 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///videoFile/admin', 'VideoFile' => array('video_file_qa_state_id_de' => $model->{$model->tableSchema->primaryKey}))
+                'url' => array('///videoFile/admin', 'VideoFile' => array('video_file_qa_state_id_en' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
                 'url' => array(
                     '///videoFile/create',
-                    'VideoFile' => array('video_file_qa_state_id_de' => $model->{$model->tableSchema->primaryKey})
+                    'VideoFile' => array('video_file_qa_state_id_en' => $model->{$model->tableSchema->primaryKey})
                 )
             ),
 
@@ -60,13 +60,13 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///videoFile/admin', 'VideoFile' => array('video_file_qa_state_id_en' => $model->{$model->tableSchema->primaryKey}))
+                'url' => array('///videoFile/admin', 'VideoFile' => array('video_file_qa_state_id_cn' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
                 'url' => array(
                     '///videoFile/create',
-                    'VideoFile' => array('video_file_qa_state_id_en' => $model->{$model->tableSchema->primaryKey})
+                    'VideoFile' => array('video_file_qa_state_id_cn' => $model->{$model->tableSchema->primaryKey})
                 )
             ),
 
@@ -107,13 +107,13 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///videoFile/admin', 'VideoFile' => array('video_file_qa_state_id_cn' => $model->{$model->tableSchema->primaryKey}))
+                'url' => array('///videoFile/admin', 'VideoFile' => array('video_file_qa_state_id_de' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
                 'url' => array(
                     '///videoFile/create',
-                    'VideoFile' => array('video_file_qa_state_id_cn' => $model->{$model->tableSchema->primaryKey})
+                    'VideoFile' => array('video_file_qa_state_id_de' => $model->{$model->tableSchema->primaryKey})
                 )
             ),
 

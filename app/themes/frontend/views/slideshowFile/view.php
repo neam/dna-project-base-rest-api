@@ -50,10 +50,6 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->processed_media_id_en); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_en')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_en); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
 <br />
@@ -178,32 +174,36 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->about_de); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_es')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_es); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_qa_state_id_en')); ?>:</b>
+<?php echo CHtml::encode($model->slideshow_file_qa_state_id_en); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_fa')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_fa); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_qa_state_id_es')); ?>:</b>
+<?php echo CHtml::encode($model->slideshow_file_qa_state_id_es); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_hi')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_hi); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_qa_state_id_fa')); ?>:</b>
+<?php echo CHtml::encode($model->slideshow_file_qa_state_id_fa); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_pt')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_pt); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_qa_state_id_hi')); ?>:</b>
+<?php echo CHtml::encode($model->slideshow_file_qa_state_id_hi); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_sv')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_sv); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_qa_state_id_pt')); ?>:</b>
+<?php echo CHtml::encode($model->slideshow_file_qa_state_id_pt); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_cn')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_cn); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_qa_state_id_sv')); ?>:</b>
+<?php echo CHtml::encode($model->slideshow_file_qa_state_id_sv); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_de')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_de); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_qa_state_id_cn')); ?>:</b>
+<?php echo CHtml::encode($model->slideshow_file_qa_state_id_cn); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_qa_state_id_de')); ?>:</b>
+<?php echo CHtml::encode($model->slideshow_file_qa_state_id_de); ?>
 <br />
 
     */
@@ -331,17 +331,6 @@ $this->breadcrumbs[] = $model->id;
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
                                 array('//p3Media/update', 'id' => $model->processedMediaIdEn->id),
-                                array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'authoring_workflow_execution_id_en',
-                        'value' => ($model->authoringWorkflowExecutionIdEn !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdEn->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdEn->execution_id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdEn->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -733,79 +722,90 @@ $this->breadcrumbs[] = $model->id;
                         )
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_es',
-                        'value' => ($model->authoringWorkflowExecutionIdEs !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdEs->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdEs->execution_id),
+                        'name' => 'slideshow_file_qa_state_id_en',
+                        'value' => ($model->slideshowFileQaStateIdEn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdEn->itemLabel,
+                                array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdEn->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdEs->execution_id),
+                                array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdEn->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_fa',
-                        'value' => ($model->authoringWorkflowExecutionIdFa !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdFa->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdFa->execution_id),
+                        'name' => 'slideshow_file_qa_state_id_es',
+                        'value' => ($model->slideshowFileQaStateIdEs !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdEs->itemLabel,
+                                array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdEs->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdFa->execution_id),
+                                array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdEs->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_hi',
-                        'value' => ($model->authoringWorkflowExecutionIdHi !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdHi->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdHi->execution_id),
+                        'name' => 'slideshow_file_qa_state_id_fa',
+                        'value' => ($model->slideshowFileQaStateIdFa !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdFa->itemLabel,
+                                array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdFa->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdHi->execution_id),
+                                array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdFa->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_pt',
-                        'value' => ($model->authoringWorkflowExecutionIdPt !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdPt->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdPt->execution_id),
+                        'name' => 'slideshow_file_qa_state_id_hi',
+                        'value' => ($model->slideshowFileQaStateIdHi !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdHi->itemLabel,
+                                array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdHi->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdPt->execution_id),
+                                array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdHi->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_sv',
-                        'value' => ($model->authoringWorkflowExecutionIdSv !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdSv->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdSv->execution_id),
+                        'name' => 'slideshow_file_qa_state_id_pt',
+                        'value' => ($model->slideshowFileQaStateIdPt !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdPt->itemLabel,
+                                array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdPt->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdSv->execution_id),
+                                array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdPt->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_cn',
-                        'value' => ($model->authoringWorkflowExecutionIdCn !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdCn->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdCn->execution_id),
+                        'name' => 'slideshow_file_qa_state_id_sv',
+                        'value' => ($model->slideshowFileQaStateIdSv !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdSv->itemLabel,
+                                array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdSv->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdCn->execution_id),
+                                array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdSv->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_de',
-                        'value' => ($model->authoringWorkflowExecutionIdDe !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdDe->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdDe->execution_id),
+                        'name' => 'slideshow_file_qa_state_id_cn',
+                        'value' => ($model->slideshowFileQaStateIdCn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdCn->itemLabel,
+                                array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdCn->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdDe->execution_id),
+                                array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdCn->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'slideshow_file_qa_state_id_de',
+                        'value' => ($model->slideshowFileQaStateIdDe !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdDe->itemLabel,
+                                array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdDe->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdDe->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),

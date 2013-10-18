@@ -29,7 +29,7 @@ class VectorGraphicQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.VectorGraphicQaState.*'),
+                'roles' => array('VectorGraphicQaState.*'),
             ),
             array(
                 'deny',

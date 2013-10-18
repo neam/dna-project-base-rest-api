@@ -29,7 +29,7 @@ class PoFileQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.PoFileQaState.*'),
+                'roles' => array('PoFileQaState.*'),
             ),
             array(
                 'deny',

@@ -29,7 +29,7 @@ class SnapshotQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.SnapshotQaState.*'),
+                'roles' => array('SnapshotQaState.*'),
             ),
             array(
                 'deny',

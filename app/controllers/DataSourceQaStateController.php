@@ -29,7 +29,7 @@ class DataSourceQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.DataSourceQaState.*'),
+                'roles' => array('DataSourceQaState.*'),
             ),
             array(
                 'deny',

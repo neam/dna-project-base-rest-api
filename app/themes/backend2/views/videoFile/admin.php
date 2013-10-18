@@ -117,14 +117,6 @@ $this->widget('TbGridView',
             #'subtitles_en',
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_en',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFile/editableSaver'),
@@ -241,62 +233,6 @@ $this->widget('TbGridView',
                 'name' => 'processed_media_id_de',
                 'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                 'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_es',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_fa',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_hi',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_pt',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_sv',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_cn',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_de',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                    //'placement' => 'right',
-                )
             ),
             array(
                 'class' => 'TbEditableColumn',

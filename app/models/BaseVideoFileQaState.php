@@ -85,9 +85,9 @@ abstract class BaseVideoFileQaState extends ActiveRecord
     public function relations()
     {
         return array(
-            'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_de'),
-            'videoFiles1' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_en'),
-            'videoFiles2' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_cn'),
+            'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_en'),
+            'videoFiles1' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_cn'),
+            'videoFiles2' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_de'),
             'videoFiles3' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_es'),
             'videoFiles4' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_fa'),
             'videoFiles5' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_hi'),

@@ -97,21 +97,12 @@ $this->widget('TbGridView',
             #'about_en',
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_en',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
@@ -120,6 +111,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            /*
             array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',

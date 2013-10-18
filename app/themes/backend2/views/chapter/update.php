@@ -86,7 +86,7 @@ $this->widget('TbGridView',
             #'about_en',
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_en',
+                'name' => 'created',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
                     //'placement' => 'right',
@@ -94,21 +94,13 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'created',
+                'name' => 'modified',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             /*
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'modified',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
@@ -221,62 +213,6 @@ $this->widget('TbGridView',
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'authoring_workflow_execution_id_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'authoring_workflow_execution_id_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'authoring_workflow_execution_id_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'authoring_workflow_execution_id_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'authoring_workflow_execution_id_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'authoring_workflow_execution_id_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'authoring_workflow_execution_id_de',
                     'editable' => array(
                         'url' => $this->createUrl('/chapter/editableSaver'),
                         //'placement' => 'right',

@@ -29,7 +29,7 @@ class ToolQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.ToolQaState.*'),
+                'roles' => array('ToolQaState.*'),
             ),
             array(
                 'deny',

@@ -11,7 +11,6 @@
  * @property string $slug_en
  * @property integer $thumbnail_media_id
  * @property string $about_en
- * @property string $authoring_workflow_execution_id_en
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -29,13 +28,6 @@
  * @property string $slug_sv
  * @property string $slug_cn
  * @property string $slug_de
- * @property string $authoring_workflow_execution_id_es
- * @property string $authoring_workflow_execution_id_fa
- * @property string $authoring_workflow_execution_id_hi
- * @property string $authoring_workflow_execution_id_pt
- * @property string $authoring_workflow_execution_id_sv
- * @property string $authoring_workflow_execution_id_cn
- * @property string $authoring_workflow_execution_id_de
  * @property string $about_es
  * @property string $about_fa
  * @property string $about_hi
@@ -53,9 +45,9 @@
  * @property string $chapter_qa_state_id_de
  *
  * Relations of table "chapter" available as properties of the model:
- * @property ChapterQaState $chapterQaStateIdDe
  * @property ChapterQaState $chapterQaStateIdEn
  * @property ChapterQaState $chapterQaStateIdCn
+ * @property ChapterQaState $chapterQaStateIdDe
  * @property ChapterQaState $chapterQaStateIdEs
  * @property ChapterQaState $chapterQaStateIdFa
  * @property ChapterQaState $chapterQaStateIdHi
@@ -84,13 +76,12 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, thumbnail_media_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'length', 'max' => 20),
                 array('title_en, slug_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('authoring_workflow_execution_id_en, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'length', 'max' => 10),
                 array('about_en, created, modified, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -114,9 +105,9 @@ abstract class BaseChapter extends ActiveRecord
     public function relations()
     {
         return array(
-            'chapterQaStateIdDe' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_de'),
             'chapterQaStateIdEn' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_en'),
             'chapterQaStateIdCn' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_cn'),
+            'chapterQaStateIdDe' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_de'),
             'chapterQaStateIdEs' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_es'),
             'chapterQaStateIdFa' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_fa'),
             'chapterQaStateIdHi' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_hi'),
@@ -140,7 +131,6 @@ abstract class BaseChapter extends ActiveRecord
             'slug_en' => Yii::t('model', 'Slug En'),
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
             'about_en' => Yii::t('model', 'About En'),
-            'authoring_workflow_execution_id_en' => Yii::t('model', 'Authoring Workflow Execution Id En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -158,13 +148,6 @@ abstract class BaseChapter extends ActiveRecord
             'slug_sv' => Yii::t('model', 'Slug Sv'),
             'slug_cn' => Yii::t('model', 'Slug Cn'),
             'slug_de' => Yii::t('model', 'Slug De'),
-            'authoring_workflow_execution_id_es' => Yii::t('model', 'Authoring Workflow Execution Id Es'),
-            'authoring_workflow_execution_id_fa' => Yii::t('model', 'Authoring Workflow Execution Id Fa'),
-            'authoring_workflow_execution_id_hi' => Yii::t('model', 'Authoring Workflow Execution Id Hi'),
-            'authoring_workflow_execution_id_pt' => Yii::t('model', 'Authoring Workflow Execution Id Pt'),
-            'authoring_workflow_execution_id_sv' => Yii::t('model', 'Authoring Workflow Execution Id Sv'),
-            'authoring_workflow_execution_id_cn' => Yii::t('model', 'Authoring Workflow Execution Id Cn'),
-            'authoring_workflow_execution_id_de' => Yii::t('model', 'Authoring Workflow Execution Id De'),
             'about_es' => Yii::t('model', 'About Es'),
             'about_fa' => Yii::t('model', 'About Fa'),
             'about_hi' => Yii::t('model', 'About Hi'),
@@ -196,7 +179,6 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
         $criteria->compare('t.about_en', $this->about_en, true);
-        $criteria->compare('t.authoring_workflow_execution_id_en', $this->authoring_workflow_execution_id_en, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);
@@ -214,13 +196,6 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t.slug_sv', $this->slug_sv, true);
         $criteria->compare('t.slug_cn', $this->slug_cn, true);
         $criteria->compare('t.slug_de', $this->slug_de, true);
-        $criteria->compare('t.authoring_workflow_execution_id_es', $this->authoring_workflow_execution_id_es, true);
-        $criteria->compare('t.authoring_workflow_execution_id_fa', $this->authoring_workflow_execution_id_fa, true);
-        $criteria->compare('t.authoring_workflow_execution_id_hi', $this->authoring_workflow_execution_id_hi, true);
-        $criteria->compare('t.authoring_workflow_execution_id_pt', $this->authoring_workflow_execution_id_pt, true);
-        $criteria->compare('t.authoring_workflow_execution_id_sv', $this->authoring_workflow_execution_id_sv, true);
-        $criteria->compare('t.authoring_workflow_execution_id_cn', $this->authoring_workflow_execution_id_cn, true);
-        $criteria->compare('t.authoring_workflow_execution_id_de', $this->authoring_workflow_execution_id_de, true);
         $criteria->compare('t.about_es', $this->about_es, true);
         $criteria->compare('t.about_fa', $this->about_fa, true);
         $criteria->compare('t.about_hi', $this->about_hi, true);

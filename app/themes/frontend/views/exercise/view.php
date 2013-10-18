@@ -50,10 +50,6 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->slideshow_file_id); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_en')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_en); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
 <br />
@@ -178,32 +174,36 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->description_de); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_es')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_es); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('exercise_qa_state_id_en')); ?>:</b>
+<?php echo CHtml::encode($model->exercise_qa_state_id_en); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_fa')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_fa); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('exercise_qa_state_id_es')); ?>:</b>
+<?php echo CHtml::encode($model->exercise_qa_state_id_es); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_hi')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_hi); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('exercise_qa_state_id_fa')); ?>:</b>
+<?php echo CHtml::encode($model->exercise_qa_state_id_fa); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_pt')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_pt); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('exercise_qa_state_id_hi')); ?>:</b>
+<?php echo CHtml::encode($model->exercise_qa_state_id_hi); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_sv')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_sv); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('exercise_qa_state_id_pt')); ?>:</b>
+<?php echo CHtml::encode($model->exercise_qa_state_id_pt); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_cn')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_cn); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('exercise_qa_state_id_sv')); ?>:</b>
+<?php echo CHtml::encode($model->exercise_qa_state_id_sv); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('authoring_workflow_execution_id_de')); ?>:</b>
-<?php echo CHtml::encode($model->authoring_workflow_execution_id_de); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('exercise_qa_state_id_cn')); ?>:</b>
+<?php echo CHtml::encode($model->exercise_qa_state_id_cn); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('exercise_qa_state_id_de')); ?>:</b>
+<?php echo CHtml::encode($model->exercise_qa_state_id_de); ?>
 <br />
 
     */
@@ -331,17 +331,6 @@ $this->breadcrumbs[] = $model->id;
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
                                 array('//slideshowFile/update', 'id' => $model->slideshowFile->id),
-                                array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'authoring_workflow_execution_id_en',
-                        'value' => ($model->authoringWorkflowExecutionIdEn !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdEn->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdEn->execution_id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdEn->execution_id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -747,79 +736,90 @@ $this->breadcrumbs[] = $model->id;
                         )
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_es',
-                        'value' => ($model->authoringWorkflowExecutionIdEs !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdEs->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdEs->execution_id),
+                        'name' => 'exercise_qa_state_id_en',
+                        'value' => ($model->exerciseQaStateIdEn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->exerciseQaStateIdEn->itemLabel,
+                                array('//exerciseQaState/view', 'id' => $model->exerciseQaStateIdEn->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdEs->execution_id),
+                                array('//exerciseQaState/update', 'id' => $model->exerciseQaStateIdEn->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_fa',
-                        'value' => ($model->authoringWorkflowExecutionIdFa !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdFa->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdFa->execution_id),
+                        'name' => 'exercise_qa_state_id_es',
+                        'value' => ($model->exerciseQaStateIdEs !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->exerciseQaStateIdEs->itemLabel,
+                                array('//exerciseQaState/view', 'id' => $model->exerciseQaStateIdEs->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdFa->execution_id),
+                                array('//exerciseQaState/update', 'id' => $model->exerciseQaStateIdEs->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_hi',
-                        'value' => ($model->authoringWorkflowExecutionIdHi !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdHi->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdHi->execution_id),
+                        'name' => 'exercise_qa_state_id_fa',
+                        'value' => ($model->exerciseQaStateIdFa !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->exerciseQaStateIdFa->itemLabel,
+                                array('//exerciseQaState/view', 'id' => $model->exerciseQaStateIdFa->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdHi->execution_id),
+                                array('//exerciseQaState/update', 'id' => $model->exerciseQaStateIdFa->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_pt',
-                        'value' => ($model->authoringWorkflowExecutionIdPt !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdPt->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdPt->execution_id),
+                        'name' => 'exercise_qa_state_id_hi',
+                        'value' => ($model->exerciseQaStateIdHi !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->exerciseQaStateIdHi->itemLabel,
+                                array('//exerciseQaState/view', 'id' => $model->exerciseQaStateIdHi->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdPt->execution_id),
+                                array('//exerciseQaState/update', 'id' => $model->exerciseQaStateIdHi->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_sv',
-                        'value' => ($model->authoringWorkflowExecutionIdSv !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdSv->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdSv->execution_id),
+                        'name' => 'exercise_qa_state_id_pt',
+                        'value' => ($model->exerciseQaStateIdPt !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->exerciseQaStateIdPt->itemLabel,
+                                array('//exerciseQaState/view', 'id' => $model->exerciseQaStateIdPt->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdSv->execution_id),
+                                array('//exerciseQaState/update', 'id' => $model->exerciseQaStateIdPt->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_cn',
-                        'value' => ($model->authoringWorkflowExecutionIdCn !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdCn->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdCn->execution_id),
+                        'name' => 'exercise_qa_state_id_sv',
+                        'value' => ($model->exerciseQaStateIdSv !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->exerciseQaStateIdSv->itemLabel,
+                                array('//exerciseQaState/view', 'id' => $model->exerciseQaStateIdSv->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdCn->execution_id),
+                                array('//exerciseQaState/update', 'id' => $model->exerciseQaStateIdSv->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'authoring_workflow_execution_id_de',
-                        'value' => ($model->authoringWorkflowExecutionIdDe !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecutionIdDe->itemLabel,
-                                array('//ezcExecution/view', 'execution_id' => $model->authoringWorkflowExecutionIdDe->execution_id),
+                        'name' => 'exercise_qa_state_id_cn',
+                        'value' => ($model->exerciseQaStateIdCn !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->exerciseQaStateIdCn->itemLabel,
+                                array('//exerciseQaState/view', 'id' => $model->exerciseQaStateIdCn->id),
                                 array('class' => '')) . ' ' . CHtml::link(
                                 '<i class="icon icon-pencil"></i> ',
-                                array('//ezcExecution/update', 'execution_id' => $model->authoringWorkflowExecutionIdDe->execution_id),
+                                array('//exerciseQaState/update', 'id' => $model->exerciseQaStateIdCn->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'exercise_qa_state_id_de',
+                        'value' => ($model->exerciseQaStateIdDe !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->exerciseQaStateIdDe->itemLabel,
+                                array('//exerciseQaState/view', 'id' => $model->exerciseQaStateIdDe->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//exerciseQaState/update', 'id' => $model->exerciseQaStateIdDe->id),
                                 array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),

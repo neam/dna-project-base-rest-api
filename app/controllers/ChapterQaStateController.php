@@ -29,7 +29,7 @@ class ChapterQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.ChapterQaState.*'),
+                'roles' => array('ChapterQaState.*'),
             ),
             array(
                 'deny',

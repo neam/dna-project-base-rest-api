@@ -29,7 +29,7 @@ class ExerciseQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.ExerciseQaState.*'),
+                'roles' => array('ExerciseQaState.*'),
             ),
             array(
                 'deny',

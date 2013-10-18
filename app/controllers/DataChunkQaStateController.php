@@ -29,7 +29,7 @@ class DataChunkQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.DataChunkQaState.*'),
+                'roles' => array('DataChunkQaState.*'),
             ),
             array(
                 'deny',

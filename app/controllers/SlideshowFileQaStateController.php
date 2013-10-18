@@ -29,7 +29,7 @@ class SlideshowFileQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.SlideshowFileQaState.*'),
+                'roles' => array('SlideshowFileQaState.*'),
             ),
             array(
                 'deny',

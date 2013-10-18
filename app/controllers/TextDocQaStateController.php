@@ -29,7 +29,7 @@ class TextDocQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.TextDocQaState.*'),
+                'roles' => array('TextDocQaState.*'),
             ),
             array(
                 'deny',

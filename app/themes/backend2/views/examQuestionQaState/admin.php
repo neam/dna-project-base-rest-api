@@ -218,9 +218,9 @@ $this->widget('TbGridView',
             array(
                 'class' => 'TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.ExamQuestionQaState.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.ExamQuestionQaState.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.ExamQuestionQaState.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("ExamQuestionQaState.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("ExamQuestionQaState.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("ExamQuestionQaState.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',

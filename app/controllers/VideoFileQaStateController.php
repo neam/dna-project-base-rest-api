@@ -29,7 +29,7 @@ class VideoFileQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.VideoFileQaState.*'),
+                'roles' => array('VideoFileQaState.*'),
             ),
             array(
                 'deny',
