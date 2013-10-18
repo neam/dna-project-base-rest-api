@@ -69,6 +69,7 @@ $mainConfig = array(
         'vendor.anggiaj.eselect2.*',
         'editable.*', // Include X-Editable for Yii classes
         'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior',
+        'vendor.schmunk42.relation.widgets.GtcRelation',
     ),
     'modules'    => array(
         // backend for ckeditor styles and templates
