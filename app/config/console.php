@@ -109,9 +109,9 @@ $consoleConfig = array(
         'i18n-columns'    => array(
             'class' => 'i18n-columns.commands.I18nColumnsCommand',
         ),
-        // qa-attributes command
-        'qa-attributes'    => array(
-            'class' => 'qa-attributes.commands.QaAttributesCommand',
+        // qa-state command
+        'qa-state'    => array(
+            'class' => 'qa-state.commands.QaStateCommand',
         ),
         // composer callback
         'backend-theme' => array(

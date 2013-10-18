@@ -33,8 +33,8 @@ class ActiveRecord extends CActiveRecord
         );
 
         if (isset($qaModels[get_class($this)])) {
-            $behaviors['qa-attributes'] = array(
-                'class' => 'QaAttributesBehavior',
+            $behaviors['qa-state'] = array(
+                'class' => 'QaStateBehavior',
             );
         }
 

@@ -29,8 +29,8 @@ $gscmsConfig = array(
     'aliases' => array(
         // i18n-columns
         'i18n-columns' => 'vendor.neam.yii-i18n-columns',
-        // qa-attributes
-        'qa-attributes' => 'vendor.neam.yii-qa-attributes',
+        // qa-state
+        'qa-state' => 'vendor.neam.yii-qa-state',
         // phpoffice libraries
         'phpexcel' => 'vendor.phpoffice.phpexcel.Classes',
         'phpword' => 'vendor.phpoffice.phpword.src',
@@ -42,7 +42,7 @@ $gscmsConfig = array(
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
-        'qa-attributes.behaviors.QaAttributesBehavior',
+        'qa-state.behaviors.QaStateBehavior',
         'application.behaviors.EzcWorkflowBehavior',
         'application.workflows.custom.*',
         'application.workflows.*',
