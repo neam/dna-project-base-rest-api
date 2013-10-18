@@ -7,8 +7,9 @@ $config = & $gcmsConfig;
 
 $config['params']['dataModelMeta'] = array();
 
-// Models that should have CRUD generated
+// Base models that should have CRUD generated
 $config['params']['dataModelMeta']['crudModels'] = array(
+    'Changeset' => 'changeset',
     'Chapter' => 'chapter',
     'DataChunk' => 'data_chunk',
     'DataSource' => 'data_source',
@@ -17,6 +18,7 @@ $config['params']['dataModelMeta']['crudModels'] = array(
     'ExamQuestionAlternative' => 'exam_question_alternative',
     'Exercise' => 'exercise',
     'HtmlChunk' => 'html_chunk',
+    'Node' => 'node',
     'PoFile' => 'po_file',
     'Section' => 'section',
     'SectionContent' => 'section_content',

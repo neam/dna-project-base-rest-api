@@ -9,6 +9,7 @@
  * @property string $modified
  *
  * Relations of table "node" available as properties of the model:
+ * @property Changeset[] $changesets
  * @property Chapter[] $chapters
  * @property DataChunk[] $dataChunks
  * @property DataSource[] $dataSources
@@ -75,6 +76,7 @@ abstract class BaseNode extends ActiveRecord
     public function relations()
     {
         return array(
+            'changesets' => array(self::HAS_MANY, 'Changeset', 'node_id'),
             'chapters' => array(self::HAS_MANY, 'Chapter', 'node_id'),
             'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'node_id'),
             'dataSources' => array(self::HAS_MANY, 'DataSource', 'node_id'),
