@@ -129,6 +129,10 @@
     <?php echo CHtml::encode($data->about_de); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('tool_qa_state_id')); ?>:</b>
+    <?php echo CHtml::encode($data->tool_qa_state_id); ?>
+    <br />
+
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('Tool.*')): ?>

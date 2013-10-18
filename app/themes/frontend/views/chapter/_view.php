@@ -157,6 +157,38 @@
     <?php echo CHtml::encode($data->about_de); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('chapter_qa_state_id_en')); ?>:</b>
+    <?php echo CHtml::encode($data->chapter_qa_state_id_en); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('chapter_qa_state_id_es')); ?>:</b>
+    <?php echo CHtml::encode($data->chapter_qa_state_id_es); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('chapter_qa_state_id_fa')); ?>:</b>
+    <?php echo CHtml::encode($data->chapter_qa_state_id_fa); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('chapter_qa_state_id_hi')); ?>:</b>
+    <?php echo CHtml::encode($data->chapter_qa_state_id_hi); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('chapter_qa_state_id_pt')); ?>:</b>
+    <?php echo CHtml::encode($data->chapter_qa_state_id_pt); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('chapter_qa_state_id_sv')); ?>:</b>
+    <?php echo CHtml::encode($data->chapter_qa_state_id_sv); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('chapter_qa_state_id_cn')); ?>:</b>
+    <?php echo CHtml::encode($data->chapter_qa_state_id_cn); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('chapter_qa_state_id_de')); ?>:</b>
+    <?php echo CHtml::encode($data->chapter_qa_state_id_de); ?>
+    <br />
+
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>

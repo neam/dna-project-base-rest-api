@@ -105,8 +105,6 @@
             $this->endClip();
             ?>
 
-            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_en', array('maxlength' => 10)); ?>
-
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_es', array('maxlength' => 255)); ?>
@@ -480,19 +478,21 @@
             $this->endClip();
             ?>
 
-            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_es', array('maxlength' => 10)); ?>
+            <?php echo $form->textFieldRow($model, 'vector_graphic_qa_state_id_en', array('maxlength' => 20)); ?>
 
-            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_fa', array('maxlength' => 10)); ?>
+            <?php echo $form->textFieldRow($model, 'vector_graphic_qa_state_id_es', array('maxlength' => 20)); ?>
 
-            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_hi', array('maxlength' => 10)); ?>
+            <?php echo $form->textFieldRow($model, 'vector_graphic_qa_state_id_fa', array('maxlength' => 20)); ?>
 
-            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_pt', array('maxlength' => 10)); ?>
+            <?php echo $form->textFieldRow($model, 'vector_graphic_qa_state_id_hi', array('maxlength' => 20)); ?>
 
-            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_sv', array('maxlength' => 10)); ?>
+            <?php echo $form->textFieldRow($model, 'vector_graphic_qa_state_id_pt', array('maxlength' => 20)); ?>
 
-            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_cn', array('maxlength' => 10)); ?>
+            <?php echo $form->textFieldRow($model, 'vector_graphic_qa_state_id_sv', array('maxlength' => 20)); ?>
 
-            <?php echo $form->textFieldRow($model, 'authoring_workflow_execution_id_de', array('maxlength' => 10)); ?>
+            <?php echo $form->textFieldRow($model, 'vector_graphic_qa_state_id_cn', array('maxlength' => 20)); ?>
+
+            <?php echo $form->textFieldRow($model, 'vector_graphic_qa_state_id_de', array('maxlength' => 20)); ?>
         </div>
     </div>
     <!-- main inputs -->

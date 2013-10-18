@@ -237,6 +237,11 @@ $this->widget('TbGridView',
             #'about_sv',
             #'about_cn',
             #'about_de',
+            array(
+                'name' => 'tool_qa_state_id',
+                'value' => 'CHtml::value($data, \'toolQaState.itemLabel\')',
+                'filter' => CHtml::listData(ToolQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
             */
 
             array(

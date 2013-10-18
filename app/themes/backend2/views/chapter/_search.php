@@ -200,6 +200,46 @@
         <?php echo $form->textArea($model, 'about_de', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->label($model, 'chapter_qa_state_id_en'); ?>
+        <?php echo $form->textField($model, 'chapter_qa_state_id_en', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'chapter_qa_state_id_es'); ?>
+        <?php echo $form->textField($model, 'chapter_qa_state_id_es', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'chapter_qa_state_id_fa'); ?>
+        <?php echo $form->textField($model, 'chapter_qa_state_id_fa', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'chapter_qa_state_id_hi'); ?>
+        <?php echo $form->textField($model, 'chapter_qa_state_id_hi', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'chapter_qa_state_id_pt'); ?>
+        <?php echo $form->textField($model, 'chapter_qa_state_id_pt', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'chapter_qa_state_id_sv'); ?>
+        <?php echo $form->textField($model, 'chapter_qa_state_id_sv', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'chapter_qa_state_id_cn'); ?>
+        <?php echo $form->textField($model, 'chapter_qa_state_id_cn', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'chapter_qa_state_id_de'); ?>
+        <?php echo $form->textField($model, 'chapter_qa_state_id_de', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>

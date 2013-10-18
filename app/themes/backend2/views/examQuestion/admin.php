@@ -88,11 +88,6 @@ $this->widget('TbGridView',
                 'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_en',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEn.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
-            ),
-            array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
@@ -108,12 +103,12 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            /*
             array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
                 'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
+            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_es',
@@ -178,39 +173,44 @@ $this->widget('TbGridView',
             #'question_cn',
             #'question_de',
             array(
-                'name' => 'authoring_workflow_execution_id_es',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEs.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'exam_question_qa_state_id_en',
+                'value' => 'CHtml::value($data, \'examQuestionQaStateIdEn.itemLabel\')',
+                'filter' => CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_fa',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdFa.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'exam_question_qa_state_id_es',
+                'value' => 'CHtml::value($data, \'examQuestionQaStateIdEs.itemLabel\')',
+                'filter' => CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_hi',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdHi.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'exam_question_qa_state_id_fa',
+                'value' => 'CHtml::value($data, \'examQuestionQaStateIdFa.itemLabel\')',
+                'filter' => CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_pt',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdPt.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'exam_question_qa_state_id_hi',
+                'value' => 'CHtml::value($data, \'examQuestionQaStateIdHi.itemLabel\')',
+                'filter' => CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_sv',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdSv.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'exam_question_qa_state_id_pt',
+                'value' => 'CHtml::value($data, \'examQuestionQaStateIdPt.itemLabel\')',
+                'filter' => CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_cn',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdCn.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'exam_question_qa_state_id_sv',
+                'value' => 'CHtml::value($data, \'examQuestionQaStateIdSv.itemLabel\')',
+                'filter' => CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_de',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdDe.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'exam_question_qa_state_id_cn',
+                'value' => 'CHtml::value($data, \'examQuestionQaStateIdCn.itemLabel\')',
+                'filter' => CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'exam_question_qa_state_id_de',
+                'value' => 'CHtml::value($data, \'examQuestionQaStateIdDe.itemLabel\')',
+                'filter' => CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             */
 

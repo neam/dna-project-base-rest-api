@@ -105,12 +105,6 @@ $this->widget('TbGridView',
                 'filter' => CHtml::listData(Tool::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_en',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEn.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
-            ),
-            /*
-            array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
@@ -118,6 +112,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
@@ -251,39 +246,44 @@ $this->widget('TbGridView',
             #'about_cn',
             #'about_de',
             array(
-                'name' => 'authoring_workflow_execution_id_es',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEs.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'snapshot_qa_state_id_en',
+                'value' => 'CHtml::value($data, \'snapshotQaStateIdEn.itemLabel\')',
+                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_fa',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdFa.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'snapshot_qa_state_id_es',
+                'value' => 'CHtml::value($data, \'snapshotQaStateIdEs.itemLabel\')',
+                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_hi',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdHi.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'snapshot_qa_state_id_fa',
+                'value' => 'CHtml::value($data, \'snapshotQaStateIdFa.itemLabel\')',
+                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_pt',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdPt.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'snapshot_qa_state_id_hi',
+                'value' => 'CHtml::value($data, \'snapshotQaStateIdHi.itemLabel\')',
+                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_sv',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdSv.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'snapshot_qa_state_id_pt',
+                'value' => 'CHtml::value($data, \'snapshotQaStateIdPt.itemLabel\')',
+                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_cn',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdCn.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'snapshot_qa_state_id_sv',
+                'value' => 'CHtml::value($data, \'snapshotQaStateIdSv.itemLabel\')',
+                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'authoring_workflow_execution_id_de',
-                'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdDe.itemLabel\')',
-                'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                'name' => 'snapshot_qa_state_id_cn',
+                'value' => 'CHtml::value($data, \'snapshotQaStateIdCn.itemLabel\')',
+                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'snapshot_qa_state_id_de',
+                'value' => 'CHtml::value($data, \'snapshotQaStateIdDe.itemLabel\')',
+                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             */
 

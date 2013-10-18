@@ -558,6 +558,22 @@
             <?php echo $form->textAreaRow($model, 'about_cn', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
             <?php echo $form->textAreaRow($model, 'about_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textFieldRow($model, 'video_file_qa_state_id_en', array('maxlength' => 20)); ?>
+
+            <?php echo $form->textFieldRow($model, 'video_file_qa_state_id_es', array('maxlength' => 20)); ?>
+
+            <?php echo $form->textFieldRow($model, 'video_file_qa_state_id_fa', array('maxlength' => 20)); ?>
+
+            <?php echo $form->textFieldRow($model, 'video_file_qa_state_id_hi', array('maxlength' => 20)); ?>
+
+            <?php echo $form->textFieldRow($model, 'video_file_qa_state_id_pt', array('maxlength' => 20)); ?>
+
+            <?php echo $form->textFieldRow($model, 'video_file_qa_state_id_sv', array('maxlength' => 20)); ?>
+
+            <?php echo $form->textFieldRow($model, 'video_file_qa_state_id_cn', array('maxlength' => 20)); ?>
+
+            <?php echo $form->textFieldRow($model, 'video_file_qa_state_id_de', array('maxlength' => 20)); ?>
         </div>
     </div>
     <!-- main inputs -->
