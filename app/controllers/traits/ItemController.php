@@ -162,8 +162,6 @@ trait ItemController
             return;
         }
 
-        // A temporary debug page
-        $this->render('continueAuthoring', array('model' => $model));
 
     }
 
@@ -197,56 +195,13 @@ trait ItemController
 
     public function actionDraft($id)
     {
-        $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
-
-        if (isset($_POST[$this->modelClass])) {
-			// postning
-            $model->attributes = $_POST['Chapter'];
-            try {
-                if ($model->save()) {
-                    if (isset($_GET['returnUrl'])) {
-                        $this->redirect($_GET['returnUrl']);
-                    } else {
-                        $this->redirect(array('continueAuthoring', 'id' => $model->id));
-                    }
-                }
-            } catch (Exception $e) {
-                $model->addError('id', $e->getMessage());
-            }
-        } elseif (isset($_GET[$this->modelClass])) {
-            $model->attributes = $_GET[$this->modelClass];
-        }
-
+        $model = $this->saveAndContinueOnSuccess($id);
         $this->render('draft', array('model' => $model));
     }
 
     public function actionPrepPreshow($id)
     {
-        $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
-
-        $db =& Yii::app()->ezc->db;
-
-        if (isset($_POST[$this->modelClass])) {
-			// postning
-            $model->attributes = $_POST['Chapter'];
-            try {
-                if ($model->save()) {
-                    if (isset($_GET['returnUrl'])) {
-                        $this->redirect($_GET['returnUrl']);
-                    } else {
-                        $this->redirect(array('continueAuthoring', 'id' => $model->id));
-                    }
-                }
-            } catch (Exception $e) {
-                $model->addError('id', $e->getMessage());
-            }
-        } elseif (isset($_GET[$this->modelClass])) {
-            $model->attributes = $_GET[$this->modelClass];
-        }
-
-        $execution = new ezcWorkflowDatabaseExecution($db, (int) $model->authoring_workflow_execution_id);
+        $model = $this->saveAndContinueOnSuccess($id);
         $this->render('preppreshow', array('model' => $model, 'execution' => $execution));
     }
 
@@ -294,8 +249,8 @@ trait ItemController
 
     public function actionEdit($id)
     {
-    	echo "Edit";
-    	exit;
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('/_item/edit', array('model' => $model));
     }
 
     public function actionClone($id)
@@ -347,6 +302,32 @@ trait ItemController
 
         // A temporary debug page
         $this->render('translate', array('model' => $model, 'execution' => $execution));
+    }
+
+    protected function saveAndContinueOnSuccess($id) {
+
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+
+        if (isset($_POST[$this->modelClass])) {
+            $model->attributes = $_POST['Chapter'];
+            try {
+                if ($model->save()) {
+                    if (isset($_GET['returnUrl'])) {
+                        $this->redirect($_GET['returnUrl']);
+                    } else {
+                        $this->redirect(array('continueAuthoring', 'id' => $model->id));
+                    }
+                }
+            } catch (Exception $e) {
+                $model->addError('id', $e->getMessage());
+            }
+        } elseif (isset($_GET[$this->modelClass])) {
+            $model->attributes = $_GET[$this->modelClass];
+        }
+
+        return $model;
+
     }
 
 }
