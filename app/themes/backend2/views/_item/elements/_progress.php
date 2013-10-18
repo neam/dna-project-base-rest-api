@@ -4,7 +4,13 @@
 ?>
 
 <?php
-var_dump($model->getAttributes(), $model->qaState()->getAttributes());
+//var_dump($model->getAttributes(), $model->qaState()->getAttributes());
+
+$validationProgress = ($model->qaState()->draft_validation_progress + $model->qaState()->preview_validation_progress + $model->qaState()->public_validation_progress) / 3;
+$evaluationProgress = 0; //($model->qaState()->draft_evaluation_progress + $model->qaState()->preview_evaluation_progress + $model->qaState()->public_evaluation_progress) / 3;
+$publishingProgress = ($validationProgress + $evaluationProgress + $model->qaState()->approval_progress + $model->qaState()->proofing_progress) / 5;
+$translationProgress = ($model->qaState()->translations_draft_validation_progress + $model->qaState()->translations_preview_validation_progress + $model->qaState()->translations_public_validation_progress + $model->qaState()->translations_approval_progress + $model->qaState()->translations_proofing_progress) / 5;
+
 ?>
 
 <div class="row">
@@ -33,7 +39,7 @@ var_dump($model->getAttributes(), $model->qaState()->getAttributes());
             'bootstrap.widgets.TbProgress',
             array(
                 'type' => 'success', // 'info', 'success' or 'danger'
-                'percent' => 0,
+                'percent' => $model->qaState()->draft_validation_progress,
             )
         );
         ?>
@@ -60,7 +66,7 @@ var_dump($model->getAttributes(), $model->qaState()->getAttributes());
             'bootstrap.widgets.TbProgress',
             array(
                 'type' => 'success', // 'info', 'success' or 'danger'
-                'percent' => 60,
+                'percent' => $model->qaState()->preview_validation_progress,
             )
         );
         ?>
@@ -87,7 +93,7 @@ var_dump($model->getAttributes(), $model->qaState()->getAttributes());
             'bootstrap.widgets.TbProgress',
             array(
                 'type' => 'success', // 'info', 'success' or 'danger'
-                'percent' => 60,
+                'percent' => $evaluationProgress,
             )
         );
         ?>
@@ -114,7 +120,115 @@ var_dump($model->getAttributes(), $model->qaState()->getAttributes());
             'bootstrap.widgets.TbProgress',
             array(
                 'type' => 'success', // 'info', 'success' or 'danger'
-                'percent' => 60,
+                'percent' => $model->qaState()->public_validation_progress,
+            )
+        );
+        ?>
+    </div>
+    <div class="span8">
+
+        <?php
+        $this->widget("bootstrap.widgets.TbButton", array(
+            "label" => Yii::t("model", "Prepare for publishing"),
+            "type" => $this->action->id == "prepPublish" ? "inverse" : null,
+            "size" => "small",
+            "icon" => "icon-edit",
+            "url" => array("prepPublish", "id" => $model->{$model->tableSchema->primaryKey})
+        ));
+        ?>
+
+    </div>
+</div>
+<div class="row">
+    <div class="span4">
+
+        <?php
+        $this->widget(
+            'bootstrap.widgets.TbProgress',
+            array(
+                'type' => 'success', // 'info', 'success' or 'danger'
+                'percent' => $model->qaState()->approval_progress,
+            )
+        );
+        ?>
+    </div>
+    <div class="span8">
+
+        <?php
+        $this->widget("bootstrap.widgets.TbButton", array(
+            "label" => Yii::t("crud", "Review"),
+            "type" => $this->action->id == "review" ? "inverse" : null,
+            "size" => "small",
+            "icon" => "icon-check",
+            "url" => array("review", "id" => $model->{$model->tableSchema->primaryKey})
+        ));
+        ?>
+
+    </div>
+</div>
+<div class="row">
+    <div class="span4">
+
+        <?php
+        $this->widget(
+            'bootstrap.widgets.TbProgress',
+            array(
+                'type' => 'success', // 'info', 'success' or 'danger'
+                'percent' => $model->qaState()->proofing_progress,
+            )
+        );
+        ?>
+    </div>
+    <div class="span8">
+
+        <?php
+        $this->widget("bootstrap.widgets.TbButton", array(
+            "label" => Yii::t("model", "Proofread"),
+            "type" => $this->action->id == "proofRead" ? "inverse" : null,
+            "size" => "small",
+            "icon" => "icon-certificate",
+            "url" => array("proofRead", "id" => $model->{$model->tableSchema->primaryKey})
+        ));
+        ?>
+
+    </div>
+</div>
+<div class="row">
+    <div class="span4">
+
+        <?php
+        $this->widget(
+            'bootstrap.widgets.TbProgress',
+            array(
+                'type' => 'success', // 'info', 'success' or 'danger'
+                'percent' => $translationProgress,
+            )
+        );
+        ?>
+    </div>
+    <div class="span8">
+
+        <?php
+        $this->widget("bootstrap.widgets.TbButton", array(
+            "label" => Yii::t("model", "Translate"),
+            "type" => $this->action->id == "translate" ? "inverse" : null,
+            "size" => "small",
+            "icon" => "icon-globe",
+            "url" => array("translate", "id" => $model->{$model->tableSchema->primaryKey})
+        ));
+        ?>
+
+    </div>
+</div>
+<div class="row">
+    <div class="span4">
+
+        <?php
+        $this->widget(
+            'bootstrap.widgets.TbProgress',
+            array(
+                'type' => 'success', // 'info', 'success' or 'danger'
+                'percent' => $publishingProgress,
             )
         );
         ?>
@@ -140,10 +254,10 @@ var_dump($model->getAttributes(), $model->qaState()->getAttributes());
 
         <hr>
 
-        X% Completed<br/>
+        <?php print $publishingProgress; ?>% Completed<br/>
         X required fields missing<br/>
 
-        Status: DRAFT
+        Status: <?php print $model->qaState()->status; ?>
 
     </div>
 </div>
