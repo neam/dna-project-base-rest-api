@@ -25,6 +25,13 @@
  *
  * Relations of table "po_file_qa_state" available as properties of the model:
  * @property PoFile[] $poFiles
+ * @property PoFile[] $poFiles1
+ * @property PoFile[] $poFiles2
+ * @property PoFile[] $poFiles3
+ * @property PoFile[] $poFiles4
+ * @property PoFile[] $poFiles5
+ * @property PoFile[] $poFiles6
+ * @property PoFile[] $poFiles7
  */
 abstract class BasePoFileQaState extends ActiveRecord
 {
@@ -70,7 +77,14 @@ abstract class BasePoFileQaState extends ActiveRecord
     public function relations()
     {
         return array(
-            'poFiles' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id'),
+            'poFiles' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_de'),
+            'poFiles1' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_en'),
+            'poFiles2' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_cn'),
+            'poFiles3' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_es'),
+            'poFiles4' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_fa'),
+            'poFiles5' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_hi'),
+            'poFiles6' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_pt'),
+            'poFiles7' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_sv'),
         );
     }
 

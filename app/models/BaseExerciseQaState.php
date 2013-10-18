@@ -33,6 +33,13 @@
  *
  * Relations of table "exercise_qa_state" available as properties of the model:
  * @property Exercise[] $exercises
+ * @property Exercise[] $exercises1
+ * @property Exercise[] $exercises2
+ * @property Exercise[] $exercises3
+ * @property Exercise[] $exercises4
+ * @property Exercise[] $exercises5
+ * @property Exercise[] $exercises6
+ * @property Exercise[] $exercises7
  */
 abstract class BaseExerciseQaState extends ActiveRecord
 {
@@ -78,7 +85,14 @@ abstract class BaseExerciseQaState extends ActiveRecord
     public function relations()
     {
         return array(
-            'exercises' => array(self::HAS_MANY, 'Exercise', 'exercise_qa_state_id'),
+            'exercises' => array(self::HAS_MANY, 'Exercise', 'exercise_qa_state_id_de'),
+            'exercises1' => array(self::HAS_MANY, 'Exercise', 'exercise_qa_state_id_en'),
+            'exercises2' => array(self::HAS_MANY, 'Exercise', 'exercise_qa_state_id_cn'),
+            'exercises3' => array(self::HAS_MANY, 'Exercise', 'exercise_qa_state_id_es'),
+            'exercises4' => array(self::HAS_MANY, 'Exercise', 'exercise_qa_state_id_fa'),
+            'exercises5' => array(self::HAS_MANY, 'Exercise', 'exercise_qa_state_id_hi'),
+            'exercises6' => array(self::HAS_MANY, 'Exercise', 'exercise_qa_state_id_pt'),
+            'exercises7' => array(self::HAS_MANY, 'Exercise', 'exercise_qa_state_id_sv'),
         );
     }
 

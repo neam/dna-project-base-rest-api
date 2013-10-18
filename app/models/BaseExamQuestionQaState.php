@@ -27,6 +27,13 @@
  *
  * Relations of table "exam_question_qa_state" available as properties of the model:
  * @property ExamQuestion[] $examQuestions
+ * @property ExamQuestion[] $examQuestions1
+ * @property ExamQuestion[] $examQuestions2
+ * @property ExamQuestion[] $examQuestions3
+ * @property ExamQuestion[] $examQuestions4
+ * @property ExamQuestion[] $examQuestions5
+ * @property ExamQuestion[] $examQuestions6
+ * @property ExamQuestion[] $examQuestions7
  */
 abstract class BaseExamQuestionQaState extends ActiveRecord
 {
@@ -72,7 +79,14 @@ abstract class BaseExamQuestionQaState extends ActiveRecord
     public function relations()
     {
         return array(
-            'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id'),
+            'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_de'),
+            'examQuestions1' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_en'),
+            'examQuestions2' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_cn'),
+            'examQuestions3' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_es'),
+            'examQuestions4' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_fa'),
+            'examQuestions5' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_hi'),
+            'examQuestions6' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_pt'),
+            'examQuestions7' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_sv'),
         );
     }
 

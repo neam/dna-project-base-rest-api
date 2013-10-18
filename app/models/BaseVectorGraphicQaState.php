@@ -27,6 +27,13 @@
  *
  * Relations of table "vector_graphic_qa_state" available as properties of the model:
  * @property VectorGraphic[] $vectorGraphics
+ * @property VectorGraphic[] $vectorGraphics1
+ * @property VectorGraphic[] $vectorGraphics2
+ * @property VectorGraphic[] $vectorGraphics3
+ * @property VectorGraphic[] $vectorGraphics4
+ * @property VectorGraphic[] $vectorGraphics5
+ * @property VectorGraphic[] $vectorGraphics6
+ * @property VectorGraphic[] $vectorGraphics7
  */
 abstract class BaseVectorGraphicQaState extends ActiveRecord
 {
@@ -72,7 +79,14 @@ abstract class BaseVectorGraphicQaState extends ActiveRecord
     public function relations()
     {
         return array(
-            'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id'),
+            'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_de'),
+            'vectorGraphics1' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_en'),
+            'vectorGraphics2' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_cn'),
+            'vectorGraphics3' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_es'),
+            'vectorGraphics4' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_fa'),
+            'vectorGraphics5' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_hi'),
+            'vectorGraphics6' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_pt'),
+            'vectorGraphics7' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_sv'),
         );
     }
 

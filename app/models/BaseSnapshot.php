@@ -37,17 +37,31 @@
  * @property string $about_sv
  * @property string $about_cn
  * @property string $about_de
- * @property string $snapshot_qa_state_id
+ * @property string $snapshot_qa_state_id_en
+ * @property string $snapshot_qa_state_id_es
+ * @property string $snapshot_qa_state_id_fa
+ * @property string $snapshot_qa_state_id_hi
+ * @property string $snapshot_qa_state_id_pt
+ * @property string $snapshot_qa_state_id_sv
+ * @property string $snapshot_qa_state_id_cn
+ * @property string $snapshot_qa_state_id_de
  *
  * Relations of table "snapshot" available as properties of the model:
  * @property DataSource[] $dataSources
  * @property ExamQuestion[] $examQuestions
  * @property SectionContent[] $sectionContents
- * @property SnapshotQaState $snapshotQaState
+ * @property SnapshotQaState $snapshotQaStateIdDe
  * @property Node $node
  * @property Snapshot $clonedFrom
  * @property Snapshot[] $snapshots
  * @property Tool $tool
+ * @property SnapshotQaState $snapshotQaStateIdEn
+ * @property SnapshotQaState $snapshotQaStateIdCn
+ * @property SnapshotQaState $snapshotQaStateIdEs
+ * @property SnapshotQaState $snapshotQaStateIdFa
+ * @property SnapshotQaState $snapshotQaStateIdHi
+ * @property SnapshotQaState $snapshotQaStateIdPt
+ * @property SnapshotQaState $snapshotQaStateIdSv
  */
 abstract class BaseSnapshot extends ActiveRecord
 {
@@ -66,12 +80,12 @@ abstract class BaseSnapshot extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug_en, about_en, link, embed_override, tool_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, snapshot_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, slug_en, about_en, link, embed_override, tool_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, tool_id, node_id, snapshot_qa_state_id', 'length', 'max' => 20),
+                array('cloned_from_id, tool_id, node_id, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'length', 'max' => 20),
                 array('title_en, slug_en, link, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('about_en, embed_override, created, modified, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug_en, about_en, link, embed_override, tool_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, snapshot_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, slug_en, about_en, link, embed_override, tool_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -98,11 +112,18 @@ abstract class BaseSnapshot extends ActiveRecord
             'dataSources' => array(self::HAS_MANY, 'DataSource', 'cloned_from_id'),
             'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'cloned_from_id'),
             'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'snapshot_id'),
-            'snapshotQaState' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id'),
+            'snapshotQaStateIdDe' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_de'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
             'snapshots' => array(self::HAS_MANY, 'Snapshot', 'cloned_from_id'),
             'tool' => array(self::BELONGS_TO, 'Tool', 'tool_id'),
+            'snapshotQaStateIdEn' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_en'),
+            'snapshotQaStateIdCn' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_cn'),
+            'snapshotQaStateIdEs' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_es'),
+            'snapshotQaStateIdFa' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_fa'),
+            'snapshotQaStateIdHi' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_hi'),
+            'snapshotQaStateIdPt' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_pt'),
+            'snapshotQaStateIdSv' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_sv'),
         );
     }
 
@@ -142,7 +163,14 @@ abstract class BaseSnapshot extends ActiveRecord
             'about_sv' => Yii::t('model', 'About Sv'),
             'about_cn' => Yii::t('model', 'About Cn'),
             'about_de' => Yii::t('model', 'About De'),
-            'snapshot_qa_state_id' => Yii::t('model', 'Snapshot Qa State'),
+            'snapshot_qa_state_id_en' => Yii::t('model', 'Snapshot Qa State Id En'),
+            'snapshot_qa_state_id_es' => Yii::t('model', 'Snapshot Qa State Id Es'),
+            'snapshot_qa_state_id_fa' => Yii::t('model', 'Snapshot Qa State Id Fa'),
+            'snapshot_qa_state_id_hi' => Yii::t('model', 'Snapshot Qa State Id Hi'),
+            'snapshot_qa_state_id_pt' => Yii::t('model', 'Snapshot Qa State Id Pt'),
+            'snapshot_qa_state_id_sv' => Yii::t('model', 'Snapshot Qa State Id Sv'),
+            'snapshot_qa_state_id_cn' => Yii::t('model', 'Snapshot Qa State Id Cn'),
+            'snapshot_qa_state_id_de' => Yii::t('model', 'Snapshot Qa State Id De'),
         );
     }
 
@@ -185,7 +213,14 @@ abstract class BaseSnapshot extends ActiveRecord
         $criteria->compare('t.about_sv', $this->about_sv, true);
         $criteria->compare('t.about_cn', $this->about_cn, true);
         $criteria->compare('t.about_de', $this->about_de, true);
-        $criteria->compare('t.snapshot_qa_state_id', $this->snapshot_qa_state_id);
+        $criteria->compare('t.snapshot_qa_state_id_en', $this->snapshot_qa_state_id_en);
+        $criteria->compare('t.snapshot_qa_state_id_es', $this->snapshot_qa_state_id_es);
+        $criteria->compare('t.snapshot_qa_state_id_fa', $this->snapshot_qa_state_id_fa);
+        $criteria->compare('t.snapshot_qa_state_id_hi', $this->snapshot_qa_state_id_hi);
+        $criteria->compare('t.snapshot_qa_state_id_pt', $this->snapshot_qa_state_id_pt);
+        $criteria->compare('t.snapshot_qa_state_id_sv', $this->snapshot_qa_state_id_sv);
+        $criteria->compare('t.snapshot_qa_state_id_cn', $this->snapshot_qa_state_id_cn);
+        $criteria->compare('t.snapshot_qa_state_id_de', $this->snapshot_qa_state_id_de);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

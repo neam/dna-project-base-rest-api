@@ -27,6 +27,13 @@
  *
  * Relations of table "data_chunk_qa_state" available as properties of the model:
  * @property DataChunk[] $dataChunks
+ * @property DataChunk[] $dataChunks1
+ * @property DataChunk[] $dataChunks2
+ * @property DataChunk[] $dataChunks3
+ * @property DataChunk[] $dataChunks4
+ * @property DataChunk[] $dataChunks5
+ * @property DataChunk[] $dataChunks6
+ * @property DataChunk[] $dataChunks7
  */
 abstract class BaseDataChunkQaState extends ActiveRecord
 {
@@ -72,7 +79,14 @@ abstract class BaseDataChunkQaState extends ActiveRecord
     public function relations()
     {
         return array(
-            'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'data_chunk_qa_state_id'),
+            'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'data_chunk_qa_state_id_de'),
+            'dataChunks1' => array(self::HAS_MANY, 'DataChunk', 'data_chunk_qa_state_id_en'),
+            'dataChunks2' => array(self::HAS_MANY, 'DataChunk', 'data_chunk_qa_state_id_cn'),
+            'dataChunks3' => array(self::HAS_MANY, 'DataChunk', 'data_chunk_qa_state_id_es'),
+            'dataChunks4' => array(self::HAS_MANY, 'DataChunk', 'data_chunk_qa_state_id_fa'),
+            'dataChunks5' => array(self::HAS_MANY, 'DataChunk', 'data_chunk_qa_state_id_hi'),
+            'dataChunks6' => array(self::HAS_MANY, 'DataChunk', 'data_chunk_qa_state_id_pt'),
+            'dataChunks7' => array(self::HAS_MANY, 'DataChunk', 'data_chunk_qa_state_id_sv'),
         );
     }
 

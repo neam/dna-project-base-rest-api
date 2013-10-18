@@ -27,6 +27,13 @@
  *
  * Relations of table "data_source_qa_state" available as properties of the model:
  * @property DataSource[] $dataSources
+ * @property DataSource[] $dataSources1
+ * @property DataSource[] $dataSources2
+ * @property DataSource[] $dataSources3
+ * @property DataSource[] $dataSources4
+ * @property DataSource[] $dataSources5
+ * @property DataSource[] $dataSources6
+ * @property DataSource[] $dataSources7
  */
 abstract class BaseDataSourceQaState extends ActiveRecord
 {
@@ -72,7 +79,14 @@ abstract class BaseDataSourceQaState extends ActiveRecord
     public function relations()
     {
         return array(
-            'dataSources' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id'),
+            'dataSources' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_de'),
+            'dataSources1' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_en'),
+            'dataSources2' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_cn'),
+            'dataSources3' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_es'),
+            'dataSources4' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_fa'),
+            'dataSources5' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_hi'),
+            'dataSources6' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_pt'),
+            'dataSources7' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_sv'),
         );
     }
 

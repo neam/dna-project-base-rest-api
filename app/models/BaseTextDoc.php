@@ -44,10 +44,17 @@
  * @property string $about_sv
  * @property string $about_cn
  * @property string $about_de
- * @property string $text_doc_qa_state_id
+ * @property string $text_doc_qa_state_id_en
+ * @property string $text_doc_qa_state_id_es
+ * @property string $text_doc_qa_state_id_fa
+ * @property string $text_doc_qa_state_id_hi
+ * @property string $text_doc_qa_state_id_pt
+ * @property string $text_doc_qa_state_id_sv
+ * @property string $text_doc_qa_state_id_cn
+ * @property string $text_doc_qa_state_id_de
  *
  * Relations of table "text_doc" available as properties of the model:
- * @property TextDocQaState $textDocQaState
+ * @property TextDocQaState $textDocQaStateIdDe
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -60,6 +67,13 @@
  * @property P3Media $processedMediaIdSv
  * @property TextDoc $clonedFrom
  * @property TextDoc[] $textDocs
+ * @property TextDocQaState $textDocQaStateIdEn
+ * @property TextDocQaState $textDocQaStateIdCn
+ * @property TextDocQaState $textDocQaStateIdEs
+ * @property TextDocQaState $textDocQaStateIdFa
+ * @property TextDocQaState $textDocQaStateIdHi
+ * @property TextDocQaState $textDocQaStateIdPt
+ * @property TextDocQaState $textDocQaStateIdSv
  */
 abstract class BaseTextDoc extends ActiveRecord
 {
@@ -78,12 +92,12 @@ abstract class BaseTextDoc extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug_en, about_en, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, text_doc_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, slug_en, about_en, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, text_doc_qa_state_id_en, text_doc_qa_state_id_es, text_doc_qa_state_id_fa, text_doc_qa_state_id_hi, text_doc_qa_state_id_pt, text_doc_qa_state_id_sv, text_doc_qa_state_id_cn, text_doc_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, original_media_id, generate_processed_media, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, node_id, text_doc_qa_state_id', 'length', 'max' => 20),
+                array('cloned_from_id, node_id, text_doc_qa_state_id_en, text_doc_qa_state_id_es, text_doc_qa_state_id_fa, text_doc_qa_state_id_hi, text_doc_qa_state_id_pt, text_doc_qa_state_id_sv, text_doc_qa_state_id_cn, text_doc_qa_state_id_de', 'length', 'max' => 20),
                 array('title_en, slug_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('about_en, created, modified, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug_en, about_en, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, text_doc_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, slug_en, about_en, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, text_doc_qa_state_id_en, text_doc_qa_state_id_es, text_doc_qa_state_id_fa, text_doc_qa_state_id_hi, text_doc_qa_state_id_pt, text_doc_qa_state_id_sv, text_doc_qa_state_id_cn, text_doc_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -107,7 +121,7 @@ abstract class BaseTextDoc extends ActiveRecord
     public function relations()
     {
         return array(
-            'textDocQaState' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id'),
+            'textDocQaStateIdDe' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_de'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
             'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
@@ -120,6 +134,13 @@ abstract class BaseTextDoc extends ActiveRecord
             'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
             'clonedFrom' => array(self::BELONGS_TO, 'TextDoc', 'cloned_from_id'),
             'textDocs' => array(self::HAS_MANY, 'TextDoc', 'cloned_from_id'),
+            'textDocQaStateIdEn' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_en'),
+            'textDocQaStateIdCn' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_cn'),
+            'textDocQaStateIdEs' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_es'),
+            'textDocQaStateIdFa' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_fa'),
+            'textDocQaStateIdHi' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_hi'),
+            'textDocQaStateIdPt' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_pt'),
+            'textDocQaStateIdSv' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_sv'),
         );
     }
 
@@ -166,7 +187,14 @@ abstract class BaseTextDoc extends ActiveRecord
             'about_sv' => Yii::t('model', 'About Sv'),
             'about_cn' => Yii::t('model', 'About Cn'),
             'about_de' => Yii::t('model', 'About De'),
-            'text_doc_qa_state_id' => Yii::t('model', 'Text Doc Qa State'),
+            'text_doc_qa_state_id_en' => Yii::t('model', 'Text Doc Qa State Id En'),
+            'text_doc_qa_state_id_es' => Yii::t('model', 'Text Doc Qa State Id Es'),
+            'text_doc_qa_state_id_fa' => Yii::t('model', 'Text Doc Qa State Id Fa'),
+            'text_doc_qa_state_id_hi' => Yii::t('model', 'Text Doc Qa State Id Hi'),
+            'text_doc_qa_state_id_pt' => Yii::t('model', 'Text Doc Qa State Id Pt'),
+            'text_doc_qa_state_id_sv' => Yii::t('model', 'Text Doc Qa State Id Sv'),
+            'text_doc_qa_state_id_cn' => Yii::t('model', 'Text Doc Qa State Id Cn'),
+            'text_doc_qa_state_id_de' => Yii::t('model', 'Text Doc Qa State Id De'),
         );
     }
 
@@ -216,7 +244,14 @@ abstract class BaseTextDoc extends ActiveRecord
         $criteria->compare('t.about_sv', $this->about_sv, true);
         $criteria->compare('t.about_cn', $this->about_cn, true);
         $criteria->compare('t.about_de', $this->about_de, true);
-        $criteria->compare('t.text_doc_qa_state_id', $this->text_doc_qa_state_id);
+        $criteria->compare('t.text_doc_qa_state_id_en', $this->text_doc_qa_state_id_en);
+        $criteria->compare('t.text_doc_qa_state_id_es', $this->text_doc_qa_state_id_es);
+        $criteria->compare('t.text_doc_qa_state_id_fa', $this->text_doc_qa_state_id_fa);
+        $criteria->compare('t.text_doc_qa_state_id_hi', $this->text_doc_qa_state_id_hi);
+        $criteria->compare('t.text_doc_qa_state_id_pt', $this->text_doc_qa_state_id_pt);
+        $criteria->compare('t.text_doc_qa_state_id_sv', $this->text_doc_qa_state_id_sv);
+        $criteria->compare('t.text_doc_qa_state_id_cn', $this->text_doc_qa_state_id_cn);
+        $criteria->compare('t.text_doc_qa_state_id_de', $this->text_doc_qa_state_id_de);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

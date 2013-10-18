@@ -27,10 +27,24 @@
  * @property string $question_sv
  * @property string $question_cn
  * @property string $question_de
- * @property string $exam_question_qa_state_id
+ * @property string $exam_question_qa_state_id_en
+ * @property string $exam_question_qa_state_id_es
+ * @property string $exam_question_qa_state_id_fa
+ * @property string $exam_question_qa_state_id_hi
+ * @property string $exam_question_qa_state_id_pt
+ * @property string $exam_question_qa_state_id_sv
+ * @property string $exam_question_qa_state_id_cn
+ * @property string $exam_question_qa_state_id_de
  *
  * Relations of table "exam_question" available as properties of the model:
- * @property ExamQuestionQaState $examQuestionQaState
+ * @property ExamQuestionQaState $examQuestionQaStateIdDe
+ * @property ExamQuestionQaState $examQuestionQaStateIdEn
+ * @property ExamQuestionQaState $examQuestionQaStateIdCn
+ * @property ExamQuestionQaState $examQuestionQaStateIdEs
+ * @property ExamQuestionQaState $examQuestionQaStateIdFa
+ * @property ExamQuestionQaState $examQuestionQaStateIdHi
+ * @property ExamQuestionQaState $examQuestionQaStateIdPt
+ * @property ExamQuestionQaState $examQuestionQaStateIdSv
  * @property Snapshot $clonedFrom
  * @property Node $node
  * @property Node $sourceNode
@@ -54,12 +68,12 @@ abstract class BaseExamQuestion extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, slug_en, question_en, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, exam_question_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, slug_en, question_en, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, source_node_id, node_id, exam_question_qa_state_id', 'length', 'max' => 20),
+                array('cloned_from_id, source_node_id, node_id, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'length', 'max' => 20),
                 array('slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('question_en, created, modified, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de', 'safe'),
-                array('id, version, cloned_from_id, slug_en, question_en, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, exam_question_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, slug_en, question_en, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -83,7 +97,14 @@ abstract class BaseExamQuestion extends ActiveRecord
     public function relations()
     {
         return array(
-            'examQuestionQaState' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id'),
+            'examQuestionQaStateIdDe' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_de'),
+            'examQuestionQaStateIdEn' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_en'),
+            'examQuestionQaStateIdCn' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_cn'),
+            'examQuestionQaStateIdEs' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_es'),
+            'examQuestionQaStateIdFa' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_fa'),
+            'examQuestionQaStateIdHi' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_hi'),
+            'examQuestionQaStateIdPt' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_pt'),
+            'examQuestionQaStateIdSv' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_sv'),
             'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'sourceNode' => array(self::BELONGS_TO, 'Node', 'source_node_id'),
@@ -118,7 +139,14 @@ abstract class BaseExamQuestion extends ActiveRecord
             'question_sv' => Yii::t('model', 'Question Sv'),
             'question_cn' => Yii::t('model', 'Question Cn'),
             'question_de' => Yii::t('model', 'Question De'),
-            'exam_question_qa_state_id' => Yii::t('model', 'Exam Question Qa State'),
+            'exam_question_qa_state_id_en' => Yii::t('model', 'Exam Question Qa State Id En'),
+            'exam_question_qa_state_id_es' => Yii::t('model', 'Exam Question Qa State Id Es'),
+            'exam_question_qa_state_id_fa' => Yii::t('model', 'Exam Question Qa State Id Fa'),
+            'exam_question_qa_state_id_hi' => Yii::t('model', 'Exam Question Qa State Id Hi'),
+            'exam_question_qa_state_id_pt' => Yii::t('model', 'Exam Question Qa State Id Pt'),
+            'exam_question_qa_state_id_sv' => Yii::t('model', 'Exam Question Qa State Id Sv'),
+            'exam_question_qa_state_id_cn' => Yii::t('model', 'Exam Question Qa State Id Cn'),
+            'exam_question_qa_state_id_de' => Yii::t('model', 'Exam Question Qa State Id De'),
         );
     }
 
@@ -151,7 +179,14 @@ abstract class BaseExamQuestion extends ActiveRecord
         $criteria->compare('t.question_sv', $this->question_sv, true);
         $criteria->compare('t.question_cn', $this->question_cn, true);
         $criteria->compare('t.question_de', $this->question_de, true);
-        $criteria->compare('t.exam_question_qa_state_id', $this->exam_question_qa_state_id);
+        $criteria->compare('t.exam_question_qa_state_id_en', $this->exam_question_qa_state_id_en);
+        $criteria->compare('t.exam_question_qa_state_id_es', $this->exam_question_qa_state_id_es);
+        $criteria->compare('t.exam_question_qa_state_id_fa', $this->exam_question_qa_state_id_fa);
+        $criteria->compare('t.exam_question_qa_state_id_hi', $this->exam_question_qa_state_id_hi);
+        $criteria->compare('t.exam_question_qa_state_id_pt', $this->exam_question_qa_state_id_pt);
+        $criteria->compare('t.exam_question_qa_state_id_sv', $this->exam_question_qa_state_id_sv);
+        $criteria->compare('t.exam_question_qa_state_id_cn', $this->exam_question_qa_state_id_cn);
+        $criteria->compare('t.exam_question_qa_state_id_de', $this->exam_question_qa_state_id_de);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

@@ -27,6 +27,13 @@
  *
  * Relations of table "text_doc_qa_state" available as properties of the model:
  * @property TextDoc[] $textDocs
+ * @property TextDoc[] $textDocs1
+ * @property TextDoc[] $textDocs2
+ * @property TextDoc[] $textDocs3
+ * @property TextDoc[] $textDocs4
+ * @property TextDoc[] $textDocs5
+ * @property TextDoc[] $textDocs6
+ * @property TextDoc[] $textDocs7
  */
 abstract class BaseTextDocQaState extends ActiveRecord
 {
@@ -72,7 +79,14 @@ abstract class BaseTextDocQaState extends ActiveRecord
     public function relations()
     {
         return array(
-            'textDocs' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id'),
+            'textDocs' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_de'),
+            'textDocs1' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_en'),
+            'textDocs2' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_cn'),
+            'textDocs3' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_es'),
+            'textDocs4' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_fa'),
+            'textDocs5' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_hi'),
+            'textDocs6' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_pt'),
+            'textDocs7' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_sv'),
         );
     }
 

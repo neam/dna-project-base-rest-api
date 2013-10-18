@@ -25,6 +25,13 @@
  *
  * Relations of table "snapshot_qa_state" available as properties of the model:
  * @property Snapshot[] $snapshots
+ * @property Snapshot[] $snapshots1
+ * @property Snapshot[] $snapshots2
+ * @property Snapshot[] $snapshots3
+ * @property Snapshot[] $snapshots4
+ * @property Snapshot[] $snapshots5
+ * @property Snapshot[] $snapshots6
+ * @property Snapshot[] $snapshots7
  */
 abstract class BaseSnapshotQaState extends ActiveRecord
 {
@@ -70,7 +77,14 @@ abstract class BaseSnapshotQaState extends ActiveRecord
     public function relations()
     {
         return array(
-            'snapshots' => array(self::HAS_MANY, 'Snapshot', 'snapshot_qa_state_id'),
+            'snapshots' => array(self::HAS_MANY, 'Snapshot', 'snapshot_qa_state_id_de'),
+            'snapshots1' => array(self::HAS_MANY, 'Snapshot', 'snapshot_qa_state_id_en'),
+            'snapshots2' => array(self::HAS_MANY, 'Snapshot', 'snapshot_qa_state_id_cn'),
+            'snapshots3' => array(self::HAS_MANY, 'Snapshot', 'snapshot_qa_state_id_es'),
+            'snapshots4' => array(self::HAS_MANY, 'Snapshot', 'snapshot_qa_state_id_fa'),
+            'snapshots5' => array(self::HAS_MANY, 'Snapshot', 'snapshot_qa_state_id_hi'),
+            'snapshots6' => array(self::HAS_MANY, 'Snapshot', 'snapshot_qa_state_id_pt'),
+            'snapshots7' => array(self::HAS_MANY, 'Snapshot', 'snapshot_qa_state_id_sv'),
         );
     }
 

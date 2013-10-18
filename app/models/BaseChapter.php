@@ -43,10 +43,24 @@
  * @property string $about_sv
  * @property string $about_cn
  * @property string $about_de
- * @property string $chapter_qa_state_id
+ * @property string $chapter_qa_state_id_en
+ * @property string $chapter_qa_state_id_es
+ * @property string $chapter_qa_state_id_fa
+ * @property string $chapter_qa_state_id_hi
+ * @property string $chapter_qa_state_id_pt
+ * @property string $chapter_qa_state_id_sv
+ * @property string $chapter_qa_state_id_cn
+ * @property string $chapter_qa_state_id_de
  *
  * Relations of table "chapter" available as properties of the model:
- * @property ChapterQaState $chapterQaState
+ * @property ChapterQaState $chapterQaStateIdDe
+ * @property ChapterQaState $chapterQaStateIdEn
+ * @property ChapterQaState $chapterQaStateIdCn
+ * @property ChapterQaState $chapterQaStateIdEs
+ * @property ChapterQaState $chapterQaStateIdFa
+ * @property ChapterQaState $chapterQaStateIdHi
+ * @property ChapterQaState $chapterQaStateIdPt
+ * @property ChapterQaState $chapterQaStateIdSv
  * @property Chapter $clonedFrom
  * @property Chapter[] $chapters
  * @property Node $node
@@ -70,13 +84,13 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, thumbnail_media_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, node_id, chapter_qa_state_id', 'length', 'max' => 20),
+                array('cloned_from_id, node_id, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'length', 'max' => 20),
                 array('title_en, slug_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('authoring_workflow_execution_id_en, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'length', 'max' => 10),
                 array('about_en, created, modified, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -100,7 +114,14 @@ abstract class BaseChapter extends ActiveRecord
     public function relations()
     {
         return array(
-            'chapterQaState' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id'),
+            'chapterQaStateIdDe' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_de'),
+            'chapterQaStateIdEn' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_en'),
+            'chapterQaStateIdCn' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_cn'),
+            'chapterQaStateIdEs' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_es'),
+            'chapterQaStateIdFa' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_fa'),
+            'chapterQaStateIdHi' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_hi'),
+            'chapterQaStateIdPt' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_pt'),
+            'chapterQaStateIdSv' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_sv'),
             'clonedFrom' => array(self::BELONGS_TO, 'Chapter', 'cloned_from_id'),
             'chapters' => array(self::HAS_MANY, 'Chapter', 'cloned_from_id'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
@@ -151,7 +172,14 @@ abstract class BaseChapter extends ActiveRecord
             'about_sv' => Yii::t('model', 'About Sv'),
             'about_cn' => Yii::t('model', 'About Cn'),
             'about_de' => Yii::t('model', 'About De'),
-            'chapter_qa_state_id' => Yii::t('model', 'Chapter Qa State'),
+            'chapter_qa_state_id_en' => Yii::t('model', 'Chapter Qa State Id En'),
+            'chapter_qa_state_id_es' => Yii::t('model', 'Chapter Qa State Id Es'),
+            'chapter_qa_state_id_fa' => Yii::t('model', 'Chapter Qa State Id Fa'),
+            'chapter_qa_state_id_hi' => Yii::t('model', 'Chapter Qa State Id Hi'),
+            'chapter_qa_state_id_pt' => Yii::t('model', 'Chapter Qa State Id Pt'),
+            'chapter_qa_state_id_sv' => Yii::t('model', 'Chapter Qa State Id Sv'),
+            'chapter_qa_state_id_cn' => Yii::t('model', 'Chapter Qa State Id Cn'),
+            'chapter_qa_state_id_de' => Yii::t('model', 'Chapter Qa State Id De'),
         );
     }
 
@@ -200,7 +228,14 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t.about_sv', $this->about_sv, true);
         $criteria->compare('t.about_cn', $this->about_cn, true);
         $criteria->compare('t.about_de', $this->about_de, true);
-        $criteria->compare('t.chapter_qa_state_id', $this->chapter_qa_state_id);
+        $criteria->compare('t.chapter_qa_state_id_en', $this->chapter_qa_state_id_en);
+        $criteria->compare('t.chapter_qa_state_id_es', $this->chapter_qa_state_id_es);
+        $criteria->compare('t.chapter_qa_state_id_fa', $this->chapter_qa_state_id_fa);
+        $criteria->compare('t.chapter_qa_state_id_hi', $this->chapter_qa_state_id_hi);
+        $criteria->compare('t.chapter_qa_state_id_pt', $this->chapter_qa_state_id_pt);
+        $criteria->compare('t.chapter_qa_state_id_sv', $this->chapter_qa_state_id_sv);
+        $criteria->compare('t.chapter_qa_state_id_cn', $this->chapter_qa_state_id_cn);
+        $criteria->compare('t.chapter_qa_state_id_de', $this->chapter_qa_state_id_de);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

@@ -37,11 +37,25 @@
  * @property string $about_sv
  * @property string $about_cn
  * @property string $about_de
- * @property string $data_source_qa_state_id
+ * @property string $data_source_qa_state_id_en
+ * @property string $data_source_qa_state_id_es
+ * @property string $data_source_qa_state_id_fa
+ * @property string $data_source_qa_state_id_hi
+ * @property string $data_source_qa_state_id_pt
+ * @property string $data_source_qa_state_id_sv
+ * @property string $data_source_qa_state_id_cn
+ * @property string $data_source_qa_state_id_de
  *
  * Relations of table "data_source" available as properties of the model:
  * @property DataChunk[] $dataChunks
- * @property DataSourceQaState $dataSourceQaState
+ * @property DataSourceQaState $dataSourceQaStateIdDe
+ * @property DataSourceQaState $dataSourceQaStateIdEn
+ * @property DataSourceQaState $dataSourceQaStateIdCn
+ * @property DataSourceQaState $dataSourceQaStateIdEs
+ * @property DataSourceQaState $dataSourceQaStateIdFa
+ * @property DataSourceQaState $dataSourceQaStateIdHi
+ * @property DataSourceQaState $dataSourceQaStateIdPt
+ * @property DataSourceQaState $dataSourceQaStateIdSv
  * @property Snapshot $clonedFrom
  * @property Node $node
  * @property P3Media $logoMedia
@@ -65,12 +79,12 @@ abstract class BaseDataSource extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug_en, about_en, logo_media_id, mini_logo_media_id, link, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, data_source_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, slug_en, about_en, logo_media_id, mini_logo_media_id, link, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, data_source_qa_state_id_en, data_source_qa_state_id_es, data_source_qa_state_id_fa, data_source_qa_state_id_hi, data_source_qa_state_id_pt, data_source_qa_state_id_sv, data_source_qa_state_id_cn, data_source_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, logo_media_id, mini_logo_media_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, node_id, data_source_qa_state_id', 'length', 'max' => 20),
+                array('cloned_from_id, node_id, data_source_qa_state_id_en, data_source_qa_state_id_es, data_source_qa_state_id_fa, data_source_qa_state_id_hi, data_source_qa_state_id_pt, data_source_qa_state_id_sv, data_source_qa_state_id_cn, data_source_qa_state_id_de', 'length', 'max' => 20),
                 array('title_en, slug_en, link, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('about_en, created, modified, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug_en, about_en, logo_media_id, mini_logo_media_id, link, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, data_source_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, slug_en, about_en, logo_media_id, mini_logo_media_id, link, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, data_source_qa_state_id_en, data_source_qa_state_id_es, data_source_qa_state_id_fa, data_source_qa_state_id_hi, data_source_qa_state_id_pt, data_source_qa_state_id_sv, data_source_qa_state_id_cn, data_source_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -95,7 +109,14 @@ abstract class BaseDataSource extends ActiveRecord
     {
         return array(
             'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'data_source_id'),
-            'dataSourceQaState' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id'),
+            'dataSourceQaStateIdDe' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_de'),
+            'dataSourceQaStateIdEn' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_en'),
+            'dataSourceQaStateIdCn' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_cn'),
+            'dataSourceQaStateIdEs' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_es'),
+            'dataSourceQaStateIdFa' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_fa'),
+            'dataSourceQaStateIdHi' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_hi'),
+            'dataSourceQaStateIdPt' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_pt'),
+            'dataSourceQaStateIdSv' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_sv'),
             'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'logoMedia' => array(self::BELONGS_TO, 'P3Media', 'logo_media_id'),
@@ -140,7 +161,14 @@ abstract class BaseDataSource extends ActiveRecord
             'about_sv' => Yii::t('model', 'About Sv'),
             'about_cn' => Yii::t('model', 'About Cn'),
             'about_de' => Yii::t('model', 'About De'),
-            'data_source_qa_state_id' => Yii::t('model', 'Data Source Qa State'),
+            'data_source_qa_state_id_en' => Yii::t('model', 'Data Source Qa State Id En'),
+            'data_source_qa_state_id_es' => Yii::t('model', 'Data Source Qa State Id Es'),
+            'data_source_qa_state_id_fa' => Yii::t('model', 'Data Source Qa State Id Fa'),
+            'data_source_qa_state_id_hi' => Yii::t('model', 'Data Source Qa State Id Hi'),
+            'data_source_qa_state_id_pt' => Yii::t('model', 'Data Source Qa State Id Pt'),
+            'data_source_qa_state_id_sv' => Yii::t('model', 'Data Source Qa State Id Sv'),
+            'data_source_qa_state_id_cn' => Yii::t('model', 'Data Source Qa State Id Cn'),
+            'data_source_qa_state_id_de' => Yii::t('model', 'Data Source Qa State Id De'),
         );
     }
 
@@ -183,7 +211,14 @@ abstract class BaseDataSource extends ActiveRecord
         $criteria->compare('t.about_sv', $this->about_sv, true);
         $criteria->compare('t.about_cn', $this->about_cn, true);
         $criteria->compare('t.about_de', $this->about_de, true);
-        $criteria->compare('t.data_source_qa_state_id', $this->data_source_qa_state_id);
+        $criteria->compare('t.data_source_qa_state_id_en', $this->data_source_qa_state_id_en);
+        $criteria->compare('t.data_source_qa_state_id_es', $this->data_source_qa_state_id_es);
+        $criteria->compare('t.data_source_qa_state_id_fa', $this->data_source_qa_state_id_fa);
+        $criteria->compare('t.data_source_qa_state_id_hi', $this->data_source_qa_state_id_hi);
+        $criteria->compare('t.data_source_qa_state_id_pt', $this->data_source_qa_state_id_pt);
+        $criteria->compare('t.data_source_qa_state_id_sv', $this->data_source_qa_state_id_sv);
+        $criteria->compare('t.data_source_qa_state_id_cn', $this->data_source_qa_state_id_cn);
+        $criteria->compare('t.data_source_qa_state_id_de', $this->data_source_qa_state_id_de);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,
