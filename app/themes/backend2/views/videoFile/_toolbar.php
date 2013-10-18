@@ -11,6 +11,11 @@
                 break;
             case "admin":
                 $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("model", "Add"),
+                    "icon" => "icon-plus",
+                    "url" => array("add")
+                ));
+                $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Create"),
                     "icon" => "icon-plus",
                     "url" => array("create")

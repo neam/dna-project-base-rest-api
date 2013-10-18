@@ -2,6 +2,10 @@
 
 class ExerciseController extends Controller
 {
+    use ItemController;
+
+    public $modelClass = "Exercise";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,9 +20,14 @@ class ExerciseController extends Controller
 
     public function accessRules()
     {
-        return array(
-            array(
-                'allow',
+        return array_merge($this->itemAccessRules(), array(
+            array('allow',
+                'actions' => array(
+                    'view',
+                ),
+                'users' => array('*'),
+            ),
+            array('allow',
                 'actions' => array(
                     'index',
                     'view',
@@ -35,7 +44,7 @@ class ExerciseController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)

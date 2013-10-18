@@ -246,49 +246,49 @@ trait ItemController
     public function actionPrepPreshow($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppreshow', array('model' => $model, 'execution' => $execution));
+        $this->render('preppreshow', array('model' => $model));
     }
 
     public function actionPreshow($id)
     {
-    	echo "Preshow";
-    	exit;
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('preshow', array('model' => $model));
     }
 
     public function actionEvaluate($id)
     {
-    	echo "Evaluate";
-    	exit;
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('evaluate', array('model' => $model));
     }
 
     public function actionPrepPublish($id)
     {
-    	echo "Prepare for publish";
-    	exit;
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('preppublish', array('model' => $model));
     }
 
     public function actionPreview($id)
     {
-    	echo "Preview";
-    	exit;
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('preview', array('model' => $model));
     }
 
     public function actionReview($id)
     {
-    	echo "Review";
-    	exit;
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('review', array('model' => $model));
     }
 
     public function actionProofRead($id)
     {
-    	echo "ProofRead";
-    	exit;
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('proofread', array('model' => $model));
     }
 
     public function actionPublish($id)
     {
-    	echo "Publish";
-    	exit;
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('publish', array('model' => $model));
     }
 
     public function actionEdit($id)
@@ -354,8 +354,9 @@ trait ItemController
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
+
         if (isset($_POST[$this->modelClass])) {
-            $model->attributes = $_POST['Chapter'];
+            $model->attributes = $_POST[$this->modelClass];
             try {
 
                 // refresh qa state (to be sure that we have the most actual state)
