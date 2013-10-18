@@ -27,7 +27,7 @@
         false // forceCopy
     ); // set last param to `true` for development
     $cs->registerCssFile($css . "/backend.css");
-    $cs->registerCssFile($css . "/gscms.css");
+    $cs->registerCssFile($css . "/gcms.css");
     ?>
 </head>
 

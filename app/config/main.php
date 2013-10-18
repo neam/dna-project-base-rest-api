@@ -9,7 +9,7 @@
 // configuration files precedence: main-local, main-{env}, main
 
 // also includes environment config file, eg. 'development' or 'production', we merge the files (if available!) at the botton
-$localConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'gscms.php';
+$localConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'gcms.php';
 
 // convenience variables
 $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);

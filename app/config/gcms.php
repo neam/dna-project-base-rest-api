@@ -20,8 +20,8 @@ Yii::setPathOfAlias('common', $root . DIRECTORY_SEPARATOR . 'common');
 Yii::setPathOfAlias('frontend', $root . DIRECTORY_SEPARATOR . 'frontend');
 Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
 
-$gscmsConfig = array(
-    'name' => 'Gapminder School CMS',
+$gcmsConfig = array(
+    'name' => 'Gapminder CMS',
     'language' => 'en', // default language, see also components.langHandler
     'preload' => array(
         //'ezc', // trying out if we can lazy-load this instead of preloading it...
@@ -116,4 +116,4 @@ $gscmsConfig = array(
 require('logging.php');
 //require('mail.php');
 
-return $gscmsConfig;
+return $gcmsConfig;

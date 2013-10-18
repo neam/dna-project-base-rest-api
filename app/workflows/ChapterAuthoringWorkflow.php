@@ -17,7 +17,7 @@ class ChapterAuthoringWorkflow
     function buildProcessSteps($inMemory)
     {
         // Do not store custom classes if not in memory only
-        $nodeInputClass = $inMemory ? "gscmsLabeledWorkflowNodeInput" : "ezcWorkflowNodeInput";
+        $nodeInputClass = $inMemory ? "gcmsLabeledWorkflowNodeInput" : "ezcWorkflowNodeInput";
 
         $this->process_steps['new'] = new $nodeInputClass(array(
             'Label: New' => new ezcWorkflowConditionIsAnything(),

@@ -1,6 +1,6 @@
 <?php
 
-$config = & $gscmsConfig;
+$config = & $gcmsConfig;
 
 if (DEBUG_LOGS)
 {
