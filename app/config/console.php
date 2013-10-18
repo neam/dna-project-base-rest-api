@@ -120,7 +120,9 @@ $consoleConfig = array(
             'themeName' => 'backend2',
         ),
     ),
-    'params'     => array(
+    'params' => CMap::mergeArray(
+        $mainConfig['params'],
+        array(
         'composer.callbacks' => array(
             // command and args for Yii command runner
             'yiisoft/yii-install'              => $webappCommand,
@@ -144,7 +146,7 @@ $consoleConfig = array(
             #                                      ),
             #'post-update'                      => array('yiic', 'migrate', '--interactive=1'),
         ),
-    )
+    )),
 );
 
 // return merged config, from highest to lowest precedence: console-local, console
