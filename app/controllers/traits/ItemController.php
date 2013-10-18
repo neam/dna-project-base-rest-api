@@ -147,8 +147,6 @@ trait ItemController
     {
         $model = $this->loadModel($id);
 
-        $model->refreshQaState();
-
         if ($model->qaState()->draft_validation_progress < 100) {
             $this->redirect(array('draft', 'id' => $model->id));
             return;
@@ -350,7 +348,8 @@ trait ItemController
         $this->render('translate', array('model' => $model, 'execution' => $execution));
     }
 
-    protected function saveAndContinueOnSuccess($id) {
+    protected function saveAndContinueOnSuccess($id)
+    {
 
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
@@ -358,14 +357,52 @@ trait ItemController
         if (isset($_POST[$this->modelClass])) {
             $model->attributes = $_POST['Chapter'];
             try {
-                if ($model->save()) {
-                    if (isset($_GET['returnUrl'])) {
-                        $this->redirect($_GET['returnUrl']);
-                    } else {
-                        $this->redirect(array('continueAuthoring', 'id' => $model->id));
-                    }
+
+                // refresh qa state (to be sure that we have the most actual state)
+                $model->refreshQaState();
+
+                $qsStates = array();
+                $qsStates["before"] = $model->qaState();
+
+                // start transaction
+                $transaction = Yii::app()->db->beginTransaction();
+
+                // save
+                if (!$model->save()) {
+                    throw new SaveException($model);
                 }
+
+                // refresh qa state
+                $model->refreshQaState();
+                $qsStates["after"] = $model->qaState();
+
+                // calculate difference
+                $qsStates["diff"] = array_diff_assoc($qsStates["before"], $qsStates["after"]);
+
+                // log for dev purposes
+                Yii::log("Changeset: " . print_r($qsStates, true), "flow", __METHOD__);
+
+                // save changeset
+                $changeset = new Changeset();
+                $changeset->contents = json_encode($qsStates);
+                $changeset->user_id = Yii::app()->user->id;
+                $changeset->node_id = $model->node->id;
+                if (!$changeset->save()) {
+                    throw new SaveException($changeset);
+                }
+
+                // commit transaction
+                $transaction->commit();
+
+                // redirect
+                if (isset($_GET['returnUrl'])) {
+                    $this->redirect($_GET['returnUrl']);
+                } else {
+                    $this->redirect(array('continueAuthoring', 'id' => $model->id));
+                }
+
             } catch (Exception $e) {
+                $transaction->rollback();
                 $model->addError('id', $e->getMessage());
             }
         } elseif (isset($_GET[$this->modelClass])) {
