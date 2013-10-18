@@ -81,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'snapshots - Snapshot', 'url' => array('//snapshot/admin')), array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'poFile - PoFile', 'url' => array('//poFile/admin')), array('label' => 'clonedFrom - Tool', 'url' => array('//tool/admin')), array('label' => 'tools - Tool', 'url' => array('//tool/admin'))
+                        'items' => array(array('label' => 'snapshots - Snapshot', 'url' => array('//snapshot/admin')), array('label' => 'toolQaState - ToolQaState', 'url' => array('//toolQaState/admin')), array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'poFile - PoFile', 'url' => array('//poFile/admin')), array('label' => 'clonedFrom - Tool', 'url' => array('//tool/admin')), array('label' => 'tools - Tool', 'url' => array('//tool/admin'))
                         )
                     ),
                 ),

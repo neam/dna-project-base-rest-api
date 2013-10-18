@@ -146,27 +146,24 @@ trait ItemController
     public function actionContinueAuthoring($id)
     {
         $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
 
-        // Check and redirect depending on current workflow execution status
-        $execution = Yii::app()->ezc->getWorkflowDatabaseExecution((int) $model->authoring_workflow_execution_id);
-        $waitingFor = $execution->getWaitingFor();
+        $model->refreshQaState();
 
-        if (isset($waitingFor["continue_from_approved_for_translation"])) {
-            $this->redirect(array('author', 'id' => $model->id));
+        if ($model->qaState()->draft_validation_progress < 100) {
+            $this->redirect(array('draft', 'id' => $model->id));
             return;
         }
-        if (isset($waitingFor["continue_from_write_subtitles"])) {
-            $this->redirect(array('translateSubtitles', 'id' => $model->id));
+        if ($model->qaState()->preview_validation_progress < 100) {
+            $this->redirect(array('prepPreshow', 'id' => $model->id));
             return;
         }
-        if (isset($waitingFor["continue_from_translate_title_and_about"])) {
-            $this->redirect(array('translateTitleAndAbout', 'id' => $model->id));
+        if ($model->qaState()->public_validation_progress < 100) {
+            $this->redirect(array('prepPublish', 'id' => $model->id));
             return;
         }
 
         // A temporary debug page
-        $this->render('continueAuthoring', array('model' => $model, 'execution' => $execution));
+        $this->render('continueAuthoring', array('model' => $model));
 
     }
 
@@ -221,9 +218,7 @@ trait ItemController
             $model->attributes = $_GET[$this->modelClass];
         }
 
-        $execution = Yii::app()->ezc->getWorkflowDatabaseExecution((int) $model->authoring_workflow_execution_id);
-
-        $this->render('draft', array('model' => $model, 'execution' => $execution));
+        $this->render('draft', array('model' => $model));
     }
 
     public function actionPrepPreshow($id)

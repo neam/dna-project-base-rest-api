@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3bbc28018123627c84a441bbb9e011ee",
+    "hash": "16dc60ad79f04486a1cea2cb4e13093f",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -190,6 +190,48 @@
                 "issues": "https://github.com/neam/yii-i18n-columns/issues"
             },
             "time": "2013-10-08 00:23:50"
+        },
+        {
+            "name": "neam/yii-qa-state",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-qa-state.git",
+                "reference": "fe5e3316fac8a81ca67e88232a02f59478eda67c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/fe5e3316fac8a81ca67e88232a02f59478eda67c",
+                "reference": "fe5e3316fac8a81ca67e88232a02f59478eda67c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "Transparent attribute translation for ActiveRecords, without requiring lookup tables for translated field contents.",
+            "homepage": "https://github.com/neam/yii-qa-state",
+            "keywords": [
+                "qa",
+                "quality assurance",
+                "workflow",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/neam/yii-qa-state/tree/develop",
+                "issues": "https://github.com/neam/yii-qa-state/issues"
+            },
+            "time": "2013-10-18 07:33:10"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -543,7 +585,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/p3media.git",
-                "reference": "fe705edde3467e9d22c293bc22cf8a62b7bf2338"
+                "reference": "06c671418935dc5c0bf30c3cfd7a7127bf70cb1e"
             },
             "type": "library"
         },
@@ -1542,6 +1584,7 @@
         "yiiext/migrate-command": 20,
         "firstrow/stranslateablebehavior": 20,
         "neam/yii-i18n-columns": 15,
+        "neam/yii-qa-state": 20,
         "phpoffice/phpword": 20,
         "phpoffice/phppowerpoint": 20,
         "schmunk42/giic": 20,

@@ -11,7 +11,6 @@
  * @property string $about
  * @property integer $original_media_id
  * @property integer $processed_media_id_en
- * @property string $authoring_workflow_execution_id_en
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -22,23 +21,17 @@
  * @property integer $processed_media_id_sv
  * @property integer $processed_media_id_cn
  * @property integer $processed_media_id_de
- * @property string $authoring_workflow_execution_id_es
- * @property string $authoring_workflow_execution_id_fa
- * @property string $authoring_workflow_execution_id_hi
- * @property string $authoring_workflow_execution_id_pt
- * @property string $authoring_workflow_execution_id_sv
- * @property string $authoring_workflow_execution_id_cn
- * @property string $authoring_workflow_execution_id_de
+ * @property string $po_file_qa_state_id_en
+ * @property string $po_file_qa_state_id_es
+ * @property string $po_file_qa_state_id_fa
+ * @property string $po_file_qa_state_id_hi
+ * @property string $po_file_qa_state_id_pt
+ * @property string $po_file_qa_state_id_sv
+ * @property string $po_file_qa_state_id_cn
+ * @property string $po_file_qa_state_id_de
  *
  * Relations of table "po_file" available as properties of the model:
- * @property EzcExecution $authoringWorkflowExecutionIdDe
- * @property EzcExecution $authoringWorkflowExecutionIdEn
- * @property EzcExecution $authoringWorkflowExecutionIdCn
- * @property EzcExecution $authoringWorkflowExecutionIdEs
- * @property EzcExecution $authoringWorkflowExecutionIdFa
- * @property EzcExecution $authoringWorkflowExecutionIdHi
- * @property EzcExecution $authoringWorkflowExecutionIdPt
- * @property EzcExecution $authoringWorkflowExecutionIdSv
+ * @property PoFileQaState $poFileQaStateIdDe
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -51,6 +44,13 @@
  * @property P3Media $processedMediaIdSv
  * @property PoFile $clonedFrom
  * @property PoFile[] $poFiles
+ * @property PoFileQaState $poFileQaStateIdEn
+ * @property PoFileQaState $poFileQaStateIdCn
+ * @property PoFileQaState $poFileQaStateIdEs
+ * @property PoFileQaState $poFileQaStateIdFa
+ * @property PoFileQaState $poFileQaStateIdHi
+ * @property PoFileQaState $poFileQaStateIdPt
+ * @property PoFileQaState $poFileQaStateIdSv
  * @property Tool[] $tools
  */
 abstract class BasePoFile extends ActiveRecord
@@ -70,13 +70,12 @@ abstract class BasePoFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title, about, original_media_id, processed_media_id_en, authoring_workflow_execution_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title, about, original_media_id, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, po_file_qa_state_id_en, po_file_qa_state_id_es, po_file_qa_state_id_fa, po_file_qa_state_id_hi, po_file_qa_state_id_pt, po_file_qa_state_id_sv, po_file_qa_state_id_cn, po_file_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, original_media_id, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, node_id', 'length', 'max' => 20),
+                array('cloned_from_id, node_id, po_file_qa_state_id_en, po_file_qa_state_id_es, po_file_qa_state_id_fa, po_file_qa_state_id_hi, po_file_qa_state_id_pt, po_file_qa_state_id_sv, po_file_qa_state_id_cn, po_file_qa_state_id_de', 'length', 'max' => 20),
                 array('title', 'length', 'max' => 255),
-                array('authoring_workflow_execution_id_en, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'length', 'max' => 10),
                 array('about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, title, about, original_media_id, processed_media_id_en, authoring_workflow_execution_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title, about, original_media_id, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, po_file_qa_state_id_en, po_file_qa_state_id_es, po_file_qa_state_id_fa, po_file_qa_state_id_hi, po_file_qa_state_id_pt, po_file_qa_state_id_sv, po_file_qa_state_id_cn, po_file_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -100,14 +99,7 @@ abstract class BasePoFile extends ActiveRecord
     public function relations()
     {
         return array(
-            'authoringWorkflowExecutionIdDe' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_de'),
-            'authoringWorkflowExecutionIdEn' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_en'),
-            'authoringWorkflowExecutionIdCn' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_cn'),
-            'authoringWorkflowExecutionIdEs' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_es'),
-            'authoringWorkflowExecutionIdFa' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_fa'),
-            'authoringWorkflowExecutionIdHi' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_hi'),
-            'authoringWorkflowExecutionIdPt' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_pt'),
-            'authoringWorkflowExecutionIdSv' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_sv'),
+            'poFileQaStateIdDe' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_de'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
             'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
@@ -120,6 +112,13 @@ abstract class BasePoFile extends ActiveRecord
             'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
             'clonedFrom' => array(self::BELONGS_TO, 'PoFile', 'cloned_from_id'),
             'poFiles' => array(self::HAS_MANY, 'PoFile', 'cloned_from_id'),
+            'poFileQaStateIdEn' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_en'),
+            'poFileQaStateIdCn' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_cn'),
+            'poFileQaStateIdEs' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_es'),
+            'poFileQaStateIdFa' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_fa'),
+            'poFileQaStateIdHi' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_hi'),
+            'poFileQaStateIdPt' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_pt'),
+            'poFileQaStateIdSv' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_sv'),
             'tools' => array(self::HAS_MANY, 'Tool', 'po_file_id'),
         );
     }
@@ -134,7 +133,6 @@ abstract class BasePoFile extends ActiveRecord
             'about' => Yii::t('model', 'About'),
             'original_media_id' => Yii::t('model', 'Original Media'),
             'processed_media_id_en' => Yii::t('model', 'Processed Media Id En'),
-            'authoring_workflow_execution_id_en' => Yii::t('model', 'Authoring Workflow Execution Id En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -145,13 +143,14 @@ abstract class BasePoFile extends ActiveRecord
             'processed_media_id_sv' => Yii::t('model', 'Processed Media Id Sv'),
             'processed_media_id_cn' => Yii::t('model', 'Processed Media Id Cn'),
             'processed_media_id_de' => Yii::t('model', 'Processed Media Id De'),
-            'authoring_workflow_execution_id_es' => Yii::t('model', 'Authoring Workflow Execution Id Es'),
-            'authoring_workflow_execution_id_fa' => Yii::t('model', 'Authoring Workflow Execution Id Fa'),
-            'authoring_workflow_execution_id_hi' => Yii::t('model', 'Authoring Workflow Execution Id Hi'),
-            'authoring_workflow_execution_id_pt' => Yii::t('model', 'Authoring Workflow Execution Id Pt'),
-            'authoring_workflow_execution_id_sv' => Yii::t('model', 'Authoring Workflow Execution Id Sv'),
-            'authoring_workflow_execution_id_cn' => Yii::t('model', 'Authoring Workflow Execution Id Cn'),
-            'authoring_workflow_execution_id_de' => Yii::t('model', 'Authoring Workflow Execution Id De'),
+            'po_file_qa_state_id_en' => Yii::t('model', 'Po File Qa State Id En'),
+            'po_file_qa_state_id_es' => Yii::t('model', 'Po File Qa State Id Es'),
+            'po_file_qa_state_id_fa' => Yii::t('model', 'Po File Qa State Id Fa'),
+            'po_file_qa_state_id_hi' => Yii::t('model', 'Po File Qa State Id Hi'),
+            'po_file_qa_state_id_pt' => Yii::t('model', 'Po File Qa State Id Pt'),
+            'po_file_qa_state_id_sv' => Yii::t('model', 'Po File Qa State Id Sv'),
+            'po_file_qa_state_id_cn' => Yii::t('model', 'Po File Qa State Id Cn'),
+            'po_file_qa_state_id_de' => Yii::t('model', 'Po File Qa State Id De'),
         );
     }
 
@@ -168,7 +167,6 @@ abstract class BasePoFile extends ActiveRecord
         $criteria->compare('t.about', $this->about, true);
         $criteria->compare('t.original_media_id', $this->original_media_id);
         $criteria->compare('t.processed_media_id_en', $this->processed_media_id_en);
-        $criteria->compare('t.authoring_workflow_execution_id_en', $this->authoring_workflow_execution_id_en);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);
@@ -179,13 +177,14 @@ abstract class BasePoFile extends ActiveRecord
         $criteria->compare('t.processed_media_id_sv', $this->processed_media_id_sv);
         $criteria->compare('t.processed_media_id_cn', $this->processed_media_id_cn);
         $criteria->compare('t.processed_media_id_de', $this->processed_media_id_de);
-        $criteria->compare('t.authoring_workflow_execution_id_es', $this->authoring_workflow_execution_id_es);
-        $criteria->compare('t.authoring_workflow_execution_id_fa', $this->authoring_workflow_execution_id_fa);
-        $criteria->compare('t.authoring_workflow_execution_id_hi', $this->authoring_workflow_execution_id_hi);
-        $criteria->compare('t.authoring_workflow_execution_id_pt', $this->authoring_workflow_execution_id_pt);
-        $criteria->compare('t.authoring_workflow_execution_id_sv', $this->authoring_workflow_execution_id_sv);
-        $criteria->compare('t.authoring_workflow_execution_id_cn', $this->authoring_workflow_execution_id_cn);
-        $criteria->compare('t.authoring_workflow_execution_id_de', $this->authoring_workflow_execution_id_de);
+        $criteria->compare('t.po_file_qa_state_id_en', $this->po_file_qa_state_id_en);
+        $criteria->compare('t.po_file_qa_state_id_es', $this->po_file_qa_state_id_es);
+        $criteria->compare('t.po_file_qa_state_id_fa', $this->po_file_qa_state_id_fa);
+        $criteria->compare('t.po_file_qa_state_id_hi', $this->po_file_qa_state_id_hi);
+        $criteria->compare('t.po_file_qa_state_id_pt', $this->po_file_qa_state_id_pt);
+        $criteria->compare('t.po_file_qa_state_id_sv', $this->po_file_qa_state_id_sv);
+        $criteria->compare('t.po_file_qa_state_id_cn', $this->po_file_qa_state_id_cn);
+        $criteria->compare('t.po_file_qa_state_id_de', $this->po_file_qa_state_id_de);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

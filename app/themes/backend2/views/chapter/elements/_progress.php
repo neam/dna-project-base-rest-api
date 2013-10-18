@@ -1,8 +1,11 @@
 <?php
-$waitingFor = $execution->getWaitingFor();
+/* @var $this ChapterController */
+/* @var $execution ezcWorkflowDatabaseExecution */
 ?>
 
-<?php //print_r($waitingFor); ?>
+<?php
+var_dump($model->getAttributes(), $model->qaState()->getAttributes());
+?>
 
 <div class="row">
     <h2>Progress</h2>

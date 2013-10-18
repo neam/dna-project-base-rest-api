@@ -67,13 +67,17 @@
                 "source": {
                     "url": "https://github.com/motin/p3media.git",
                     "type": "git",
-                    "reference": "fe705edde3467e9d22c293bc22cf8a62b7bf2338"
+                    "reference": "06c671418935dc5c0bf30c3cfd7a7127bf70cb1e"
                 }
             }
         },
         {
             "type": "vcs",
             "url": "https://github.com/neam/yii-i18n-columns"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/neam/yii-qa-state"
         },
         {
             "type": "vcs",
@@ -121,6 +125,7 @@
         "kswedberg/jquery-smooth-scroll":"1.4.10",
         "firstrow/stranslateablebehavior":"@dev",
         "neam/yii-i18n-columns":"0.3.0-alpha",
+        "neam/yii-qa-state":"@dev",
         "phpoffice/phpexcel": "1.7.9",
         "phpoffice/phpword": "dev-added-composer-json",
         "phpoffice/phppowerpoint": "dev-master",

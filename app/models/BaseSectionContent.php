@@ -21,7 +21,6 @@
  * @property string $node_id
  *
  * Relations of table "section_content" available as properties of the model:
- * @property Snapshot $snapshot
  * @property DataChunk $dataChunk
  * @property DownloadLink $downloadLink
  * @property ExamQuestion $examQuestion
@@ -30,6 +29,7 @@
  * @property Node $node
  * @property Section $section
  * @property SlideshowFile $slideshowFile
+ * @property Snapshot $snapshot
  * @property TeachersGuide $teachersGuide
  * @property VideoFile $videoFile
  */
@@ -79,7 +79,6 @@ abstract class BaseSectionContent extends ActiveRecord
     public function relations()
     {
         return array(
-            'snapshot' => array(self::BELONGS_TO, 'Snapshot', 'snapshot_id'),
             'dataChunk' => array(self::BELONGS_TO, 'DataChunk', 'data_chunk_id'),
             'downloadLink' => array(self::BELONGS_TO, 'DownloadLink', 'download_link_id'),
             'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
@@ -88,6 +87,7 @@ abstract class BaseSectionContent extends ActiveRecord
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             'section' => array(self::BELONGS_TO, 'Section', 'section_id'),
             'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
+            'snapshot' => array(self::BELONGS_TO, 'Snapshot', 'snapshot_id'),
             'teachersGuide' => array(self::BELONGS_TO, 'TeachersGuide', 'teachers_guide_id'),
             'videoFile' => array(self::BELONGS_TO, 'VideoFile', 'video_file_id'),
         );

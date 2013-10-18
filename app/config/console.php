@@ -105,9 +105,13 @@ $consoleConfig = array(
         'webapp'        => array(
             'class' => 'application.commands.P3WebAppCommand',
         ),
-	// translate command
+        // translate command
         'i18n-columns'    => array(
             'class' => 'i18n-columns.commands.I18nColumnsCommand',
+        ),
+        // qa-state command
+        'qa-state'    => array(
+            'class' => 'qa-state.commands.QaStateCommand',
         ),
         // composer callback
         'backend-theme' => array(

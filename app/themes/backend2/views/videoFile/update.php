@@ -217,9 +217,12 @@ $this->widget('TbGridView',
                 ),
             #'subtitles_en',
             array(
+                    'class' => 'TbEditableColumn',
                     'name' => 'authoring_workflow_execution_id_en',
-                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEn.itemLabel\')',
-                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                    'editable' => array(
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -341,39 +344,60 @@ $this->widget('TbGridView',
                     'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
+                    'class' => 'TbEditableColumn',
                     'name' => 'authoring_workflow_execution_id_es',
-                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdEs.itemLabel\')',
-                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                    'editable' => array(
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
+                    'class' => 'TbEditableColumn',
                     'name' => 'authoring_workflow_execution_id_fa',
-                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdFa.itemLabel\')',
-                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                    'editable' => array(
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
+                    'class' => 'TbEditableColumn',
                     'name' => 'authoring_workflow_execution_id_hi',
-                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdHi.itemLabel\')',
-                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                    'editable' => array(
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
+                    'class' => 'TbEditableColumn',
                     'name' => 'authoring_workflow_execution_id_pt',
-                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdPt.itemLabel\')',
-                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                    'editable' => array(
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
+                    'class' => 'TbEditableColumn',
                     'name' => 'authoring_workflow_execution_id_sv',
-                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdSv.itemLabel\')',
-                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                    'editable' => array(
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
+                    'class' => 'TbEditableColumn',
                     'name' => 'authoring_workflow_execution_id_cn',
-                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdCn.itemLabel\')',
-                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                    'editable' => array(
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
+                    'class' => 'TbEditableColumn',
                     'name' => 'authoring_workflow_execution_id_de',
-                    'value' => 'CHtml::value($data, \'authoringWorkflowExecutionIdDe.itemLabel\')',
-                    'filter' => CHtml::listData(EzcExecution::model()->findAll(array('limit' => 1000)), 'workflow_id', 'itemLabel'),
+                    'editable' => array(
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -438,6 +462,46 @@ $this->widget('TbGridView',
             #'about_sv',
             #'about_cn',
             #'about_de',
+            array(
+                    'name' => 'video_file_qa_state_id_en',
+                    'value' => 'CHtml::value($data, \'videoFileQaStateIdEn.itemLabel\')',
+                    'filter' => CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'video_file_qa_state_id_es',
+                    'value' => 'CHtml::value($data, \'videoFileQaStateIdEs.itemLabel\')',
+                    'filter' => CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'video_file_qa_state_id_fa',
+                    'value' => 'CHtml::value($data, \'videoFileQaStateIdFa.itemLabel\')',
+                    'filter' => CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'video_file_qa_state_id_hi',
+                    'value' => 'CHtml::value($data, \'videoFileQaStateIdHi.itemLabel\')',
+                    'filter' => CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'video_file_qa_state_id_pt',
+                    'value' => 'CHtml::value($data, \'videoFileQaStateIdPt.itemLabel\')',
+                    'filter' => CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'video_file_qa_state_id_sv',
+                    'value' => 'CHtml::value($data, \'videoFileQaStateIdSv.itemLabel\')',
+                    'filter' => CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'video_file_qa_state_id_cn',
+                    'value' => 'CHtml::value($data, \'videoFileQaStateIdCn.itemLabel\')',
+                    'filter' => CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'video_file_qa_state_id_de',
+                    'value' => 'CHtml::value($data, \'videoFileQaStateIdDe.itemLabel\')',
+                    'filter' => CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             */
             array(
                 'class' => 'TbButtonColumn',

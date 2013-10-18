@@ -20,7 +20,7 @@ class EzcExecution extends BaseEzcExecution
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return (string) $this->execution_id." (Workflow: {$this->workflow_id})";
     }
 
     public function behaviors()
@@ -30,6 +30,18 @@ class EzcExecution extends BaseEzcExecution
             array()
         );
     }
+
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(),
+            array(
+                'workflow' => array(self::BELONGS_TO, 'EzcWorkflowModel', 'workflow_id'),
+            )
+        );
+    }
+
+
 
     public function rules()
     {

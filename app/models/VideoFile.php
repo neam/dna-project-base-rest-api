@@ -34,11 +34,11 @@ class VideoFile extends BaseVideoFile
     public function rules()
     {
         return array_merge(
-            parent::rules()
-        /* , array(
-          array('column1, column2', 'rule1'),
-          array('column3', 'rule2'),
-          ) */
+            parent::rules(), array(
+                array('title, slug', 'required', 'on' => 'draft,preview,public'),
+                array('clip', 'required', 'on' => 'preview,public'),
+                array('about, thumbnail, subtitles', 'required', 'on' => 'public'),
+            )
         );
     }
 

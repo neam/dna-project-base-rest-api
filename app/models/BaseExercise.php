@@ -13,7 +13,6 @@
  * @property string $description_en
  * @property integer $thumbnail_media_id
  * @property string $slideshow_file_id
- * @property string $authoring_workflow_execution_id_en
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -45,23 +44,24 @@
  * @property string $description_sv
  * @property string $description_cn
  * @property string $description_de
- * @property string $authoring_workflow_execution_id_es
- * @property string $authoring_workflow_execution_id_fa
- * @property string $authoring_workflow_execution_id_hi
- * @property string $authoring_workflow_execution_id_pt
- * @property string $authoring_workflow_execution_id_sv
- * @property string $authoring_workflow_execution_id_cn
- * @property string $authoring_workflow_execution_id_de
+ * @property string $exercise_qa_state_id_en
+ * @property string $exercise_qa_state_id_es
+ * @property string $exercise_qa_state_id_fa
+ * @property string $exercise_qa_state_id_hi
+ * @property string $exercise_qa_state_id_pt
+ * @property string $exercise_qa_state_id_sv
+ * @property string $exercise_qa_state_id_cn
+ * @property string $exercise_qa_state_id_de
  *
  * Relations of table "exercise" available as properties of the model:
- * @property EzcExecution $authoringWorkflowExecutionIdDe
- * @property EzcExecution $authoringWorkflowExecutionIdEn
- * @property EzcExecution $authoringWorkflowExecutionIdCn
- * @property EzcExecution $authoringWorkflowExecutionIdEs
- * @property EzcExecution $authoringWorkflowExecutionIdFa
- * @property EzcExecution $authoringWorkflowExecutionIdHi
- * @property EzcExecution $authoringWorkflowExecutionIdPt
- * @property EzcExecution $authoringWorkflowExecutionIdSv
+ * @property ExerciseQaState $exerciseQaStateIdDe
+ * @property ExerciseQaState $exerciseQaStateIdEn
+ * @property ExerciseQaState $exerciseQaStateIdCn
+ * @property ExerciseQaState $exerciseQaStateIdEs
+ * @property ExerciseQaState $exerciseQaStateIdFa
+ * @property ExerciseQaState $exerciseQaStateIdHi
+ * @property ExerciseQaState $exerciseQaStateIdPt
+ * @property ExerciseQaState $exerciseQaStateIdSv
  * @property Exercise $clonedFrom
  * @property Exercise[] $exercises
  * @property Node $node
@@ -86,13 +86,12 @@ abstract class BaseExercise extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug_en, question_en, description_en, thumbnail_media_id, slideshow_file_id, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, description_es, description_fa, description_hi, description_pt, description_sv, description_cn, description_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, slug_en, question_en, description_en, thumbnail_media_id, slideshow_file_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, description_es, description_fa, description_hi, description_pt, description_sv, description_cn, description_de, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, thumbnail_media_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, slideshow_file_id, node_id', 'length', 'max' => 20),
+                array('cloned_from_id, slideshow_file_id, node_id, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'length', 'max' => 20),
                 array('title_en, slug_en, question_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de', 'length', 'max' => 255),
-                array('authoring_workflow_execution_id_en, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'length', 'max' => 10),
                 array('description_en, created, modified, description_es, description_fa, description_hi, description_pt, description_sv, description_cn, description_de', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug_en, question_en, description_en, thumbnail_media_id, slideshow_file_id, authoring_workflow_execution_id_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, description_es, description_fa, description_hi, description_pt, description_sv, description_cn, description_de, authoring_workflow_execution_id_es, authoring_workflow_execution_id_fa, authoring_workflow_execution_id_hi, authoring_workflow_execution_id_pt, authoring_workflow_execution_id_sv, authoring_workflow_execution_id_cn, authoring_workflow_execution_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title_en, slug_en, question_en, description_en, thumbnail_media_id, slideshow_file_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, description_es, description_fa, description_hi, description_pt, description_sv, description_cn, description_de, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -116,14 +115,14 @@ abstract class BaseExercise extends ActiveRecord
     public function relations()
     {
         return array(
-            'authoringWorkflowExecutionIdDe' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_de'),
-            'authoringWorkflowExecutionIdEn' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_en'),
-            'authoringWorkflowExecutionIdCn' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_cn'),
-            'authoringWorkflowExecutionIdEs' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_es'),
-            'authoringWorkflowExecutionIdFa' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_fa'),
-            'authoringWorkflowExecutionIdHi' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_hi'),
-            'authoringWorkflowExecutionIdPt' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_pt'),
-            'authoringWorkflowExecutionIdSv' => array(self::BELONGS_TO, 'EzcExecution', 'authoring_workflow_execution_id_sv'),
+            'exerciseQaStateIdDe' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_de'),
+            'exerciseQaStateIdEn' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_en'),
+            'exerciseQaStateIdCn' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_cn'),
+            'exerciseQaStateIdEs' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_es'),
+            'exerciseQaStateIdFa' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_fa'),
+            'exerciseQaStateIdHi' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_hi'),
+            'exerciseQaStateIdPt' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_pt'),
+            'exerciseQaStateIdSv' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_sv'),
             'clonedFrom' => array(self::BELONGS_TO, 'Exercise', 'cloned_from_id'),
             'exercises' => array(self::HAS_MANY, 'Exercise', 'cloned_from_id'),
             'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
@@ -145,7 +144,6 @@ abstract class BaseExercise extends ActiveRecord
             'description_en' => Yii::t('model', 'Description En'),
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
             'slideshow_file_id' => Yii::t('model', 'Slideshow File'),
-            'authoring_workflow_execution_id_en' => Yii::t('model', 'Authoring Workflow Execution Id En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -177,13 +175,14 @@ abstract class BaseExercise extends ActiveRecord
             'description_sv' => Yii::t('model', 'Description Sv'),
             'description_cn' => Yii::t('model', 'Description Cn'),
             'description_de' => Yii::t('model', 'Description De'),
-            'authoring_workflow_execution_id_es' => Yii::t('model', 'Authoring Workflow Execution Id Es'),
-            'authoring_workflow_execution_id_fa' => Yii::t('model', 'Authoring Workflow Execution Id Fa'),
-            'authoring_workflow_execution_id_hi' => Yii::t('model', 'Authoring Workflow Execution Id Hi'),
-            'authoring_workflow_execution_id_pt' => Yii::t('model', 'Authoring Workflow Execution Id Pt'),
-            'authoring_workflow_execution_id_sv' => Yii::t('model', 'Authoring Workflow Execution Id Sv'),
-            'authoring_workflow_execution_id_cn' => Yii::t('model', 'Authoring Workflow Execution Id Cn'),
-            'authoring_workflow_execution_id_de' => Yii::t('model', 'Authoring Workflow Execution Id De'),
+            'exercise_qa_state_id_en' => Yii::t('model', 'Exercise Qa State Id En'),
+            'exercise_qa_state_id_es' => Yii::t('model', 'Exercise Qa State Id Es'),
+            'exercise_qa_state_id_fa' => Yii::t('model', 'Exercise Qa State Id Fa'),
+            'exercise_qa_state_id_hi' => Yii::t('model', 'Exercise Qa State Id Hi'),
+            'exercise_qa_state_id_pt' => Yii::t('model', 'Exercise Qa State Id Pt'),
+            'exercise_qa_state_id_sv' => Yii::t('model', 'Exercise Qa State Id Sv'),
+            'exercise_qa_state_id_cn' => Yii::t('model', 'Exercise Qa State Id Cn'),
+            'exercise_qa_state_id_de' => Yii::t('model', 'Exercise Qa State Id De'),
         );
     }
 
@@ -202,7 +201,6 @@ abstract class BaseExercise extends ActiveRecord
         $criteria->compare('t.description_en', $this->description_en, true);
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
         $criteria->compare('t.slideshow_file_id', $this->slideshow_file_id);
-        $criteria->compare('t.authoring_workflow_execution_id_en', $this->authoring_workflow_execution_id_en);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);
@@ -234,13 +232,14 @@ abstract class BaseExercise extends ActiveRecord
         $criteria->compare('t.description_sv', $this->description_sv, true);
         $criteria->compare('t.description_cn', $this->description_cn, true);
         $criteria->compare('t.description_de', $this->description_de, true);
-        $criteria->compare('t.authoring_workflow_execution_id_es', $this->authoring_workflow_execution_id_es);
-        $criteria->compare('t.authoring_workflow_execution_id_fa', $this->authoring_workflow_execution_id_fa);
-        $criteria->compare('t.authoring_workflow_execution_id_hi', $this->authoring_workflow_execution_id_hi);
-        $criteria->compare('t.authoring_workflow_execution_id_pt', $this->authoring_workflow_execution_id_pt);
-        $criteria->compare('t.authoring_workflow_execution_id_sv', $this->authoring_workflow_execution_id_sv);
-        $criteria->compare('t.authoring_workflow_execution_id_cn', $this->authoring_workflow_execution_id_cn);
-        $criteria->compare('t.authoring_workflow_execution_id_de', $this->authoring_workflow_execution_id_de);
+        $criteria->compare('t.exercise_qa_state_id_en', $this->exercise_qa_state_id_en);
+        $criteria->compare('t.exercise_qa_state_id_es', $this->exercise_qa_state_id_es);
+        $criteria->compare('t.exercise_qa_state_id_fa', $this->exercise_qa_state_id_fa);
+        $criteria->compare('t.exercise_qa_state_id_hi', $this->exercise_qa_state_id_hi);
+        $criteria->compare('t.exercise_qa_state_id_pt', $this->exercise_qa_state_id_pt);
+        $criteria->compare('t.exercise_qa_state_id_sv', $this->exercise_qa_state_id_sv);
+        $criteria->compare('t.exercise_qa_state_id_cn', $this->exercise_qa_state_id_cn);
+        $criteria->compare('t.exercise_qa_state_id_de', $this->exercise_qa_state_id_de);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,

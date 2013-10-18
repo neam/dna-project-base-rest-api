@@ -103,6 +103,8 @@
             <?php echo $form->textAreaRow($model, 'about_cn', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
             <?php echo $form->textAreaRow($model, 'about_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textFieldRow($model, 'tool_qa_state_id', array('maxlength' => 20)); ?>
         </div>
     </div>
     <!-- main inputs -->

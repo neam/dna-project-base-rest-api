@@ -86,21 +86,18 @@ class EzcWorkflowController extends Controller
 
     public function actionCreate()
     {
-        $model = new EzcWorkflow;
+        $model = new EzcWorkflowModel;
         $model->scenario = $this->scenario;
 
         $this->performAjaxValidation($model, 'ezc-workflow-form');
 
-        if (isset($_POST['EzcWorkflow'])) {
-            $model->attributes = $_POST['EzcWorkflow'];
+        if (isset($_POST['EzcWorkflowModel'])) {
+            $model->attributes = $_POST['EzcWorkflowModel'];
 
             try {
 
-                // Set up database connection.
-                $db =& Yii::app()->ezc->db;
-
                 // Set up workflow definition storage (database).
-                $definition = new ezcWorkflowDatabaseDefinitionStorage($db);
+                $definition = Yii::app()->ezc->getWorkflowDatabaseDefinitionStorage();
 
                 // Create a in-memory version of the current workflow
                 $workflow = Yii::app()->ezc->buildWorkflow($model->workflow_name);
@@ -112,14 +109,14 @@ class EzcWorkflowController extends Controller
                     if (isset($_GET['returnUrl'])) {
                         $this->redirect($_GET['returnUrl']);
                     } else {
-                        $this->redirect(array('view', 'id' => $model->workflow_id));
+                        $this->redirect(array('view', 'id' => $workflow->id));
                     }
                 }
             } catch (Exception $e) {
                 $model->addError('workflow_id', $e->getMessage());
             }
-        } elseif (isset($_GET['EzcWorkflow'])) {
-            $model->attributes = $_GET['EzcWorkflow'];
+        } elseif (isset($_GET['EzcWorkflowModel'])) {
+            $model->attributes = $_GET['EzcWorkflowModel'];
         }
 
         $this->render('create', array('model' => $model));
@@ -132,8 +129,8 @@ class EzcWorkflowController extends Controller
 
         $this->performAjaxValidation($model, 'ezc-workflow-form');
 
-        if (isset($_POST['EzcWorkflow'])) {
-            $model->attributes = $_POST['EzcWorkflow'];
+        if (isset($_POST['EzcWorkflowModel'])) {
+            $model->attributes = $_POST['EzcWorkflowModel'];
 
 
             try {
@@ -155,15 +152,15 @@ class EzcWorkflowController extends Controller
     public function actionEditableSaver()
     {
         Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('EzcWorkflow'); // classname of model to be updated
+        $es = new EditableSaver('EzcWorkflowModel'); // classname of model to be updated
         $es->update();
     }
 
     public function actionEditableCreator()
     {
-        if (isset($_POST['EzcWorkflow'])) {
-            $model = new EzcWorkflow;
-            $model->attributes = $_POST['EzcWorkflow'];
+        if (isset($_POST['EzcWorkflowModel'])) {
+            $model = new EzcWorkflowModel;
+            $model->attributes = $_POST['EzcWorkflowModel'];
             if ($model->save()) {
                 echo CJSON::encode($model->getAttributes());
             } else {
@@ -203,7 +200,7 @@ class EzcWorkflowController extends Controller
 
     public function actionIndex()
     {
-        $dataProvider = new CActiveDataProvider('EzcWorkflow');
+        $dataProvider = new CActiveDataProvider('EzcWorkflowModel');
         $this->render('index', array('dataProvider' => $dataProvider,));
     }
 
@@ -212,8 +209,8 @@ class EzcWorkflowController extends Controller
         $model = new EzcWorkflowModel('search');
         $model->unsetAttributes();
 
-        if (isset($_GET['EzcWorkflow'])) {
-            $model->attributes = $_GET['EzcWorkflow'];
+        if (isset($_GET['EzcWorkflowModel'])) {
+            $model->attributes = $_GET['EzcWorkflowModel'];
         }
 
         $this->render('admin', array('model' => $model,));
