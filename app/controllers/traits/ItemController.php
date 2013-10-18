@@ -161,7 +161,53 @@ trait ItemController
             $this->redirect(array('prepPublish', 'id' => $model->id));
             return;
         }
+        if ($model->qaState()->draft_evaluation_progress < 100) {
+            $this->redirect(array('evaluate', 'id' => $model->id));
+            return;
+        }
+        if ($model->qaState()->preview_evaluation_progress < 100) {
+            $this->redirect(array('evaluate', 'id' => $model->id));
+            return;
+        }
+        if ($model->qaState()->public_evaluation_progress < 100) {
+            $this->redirect(array('evaluate', 'id' => $model->id));
+            return;
+        }
+        if ($model->qaState()->approval_progress < 100) {
+            $this->redirect(array('review', 'id' => $model->id));
+            return;
+        }
+        if ($model->qaState()->proofing_progress < 100) {
+            $this->redirect(array('proofRead', 'id' => $model->id));
+            return;
+        }
+        if ($model->qaState()->translations_draft_validation_progress < 100) {
+            $this->redirect(array('translate', 'id' => $model->id));
+            return;
+        }
+        if ($model->qaState()->translations_preview_validation_progress < 100) {
+            $this->redirect(array('translate', 'id' => $model->id));
+            return;
+        }
+        if ($model->qaState()->translations_public_validation_progress < 100) {
+            $this->redirect(array('translate', 'id' => $model->id));
+            return;
+        }
+        if ($model->qaState()->translations_approval_progress < 100) {
+            $this->redirect(array('translate', 'id' => $model->id));
+            return;
+        }
+        if ($model->qaState()->translations_proofing_progress < 100) {
+            $this->redirect(array('translate', 'id' => $model->id));
+            return;
+        }
+        if ($model->qaState()->status != "public") {
+            $this->redirect(array('publish', 'id' => $model->id));
+            return;
+        }
 
+        $this->redirect(array('edit', 'id' => $model->id));
+        return;
 
     }
 
