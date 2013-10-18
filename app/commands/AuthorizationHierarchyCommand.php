@@ -120,6 +120,7 @@ EOD;
 
             $role = $auth->createRole($prefix . 'Administrator');
             $role->addChild($prefix . 'Publisher');
+            $role->addChild($prefix . 'Approver');
             $role->addChild($prefix . 'Creator');
             $role->addChild($prefix . 'Previewer');
             $role->addChild($prefix . 'Evaluator');
