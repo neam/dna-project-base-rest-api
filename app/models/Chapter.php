@@ -31,6 +31,14 @@ class Chapter extends BaseChapter
         );
     }
 
+    // todo
+    public $thumbnail;
+    public $video;
+    public $teachers_guide;
+    public $exercises;
+    public $snapshots;
+    public $credits;
+
     public function rules()
     {
         return array_merge(

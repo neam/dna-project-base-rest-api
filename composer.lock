@@ -197,12 +197,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-qa-state.git",
-                "reference": "fe5e3316fac8a81ca67e88232a02f59478eda67c"
+                "reference": "1b976c097a1bc1cd8076d2fa8ef0d0f64d3e6f34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/fe5e3316fac8a81ca67e88232a02f59478eda67c",
-                "reference": "fe5e3316fac8a81ca67e88232a02f59478eda67c",
+                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/1b976c097a1bc1cd8076d2fa8ef0d0f64d3e6f34",
+                "reference": "1b976c097a1bc1cd8076d2fa8ef0d0f64d3e6f34",
                 "shasum": ""
             },
             "require": {
@@ -231,7 +231,7 @@
                 "source": "https://github.com/neam/yii-qa-state/tree/develop",
                 "issues": "https://github.com/neam/yii-qa-state/issues"
             },
-            "time": "2013-10-18 07:33:10"
+            "time": "2013-10-18 13:23:42"
         },
         {
             "name": "phpoffice/phpexcel",

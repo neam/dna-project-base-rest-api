@@ -357,16 +357,17 @@ trait ItemController
 
         if (isset($_POST[$this->modelClass])) {
             $model->attributes = $_POST[$this->modelClass];
-            try {
 
-                // refresh qa state (to be sure that we have the most actual state)
-                $model->refreshQaState();
+            // refresh qa state (to be sure that we have the most actual state)
+            $model->refreshQaState();
+
+            // start transaction
+            $transaction = Yii::app()->db->beginTransaction();
+
+            try {
 
                 $qsStates = array();
                 $qsStates["before"] = $model->qaState()->attributes;
-
-                // start transaction
-                $transaction = Yii::app()->db->beginTransaction();
 
                 // save
                 if (!$model->save()) {
@@ -403,8 +404,8 @@ trait ItemController
                 }
 
             } catch (Exception $e) {
-                $transaction->rollback();
                 $model->addError('id', $e->getMessage());
+                $transaction->rollback();
             }
         } elseif (isset($_GET[$this->modelClass])) {
             $model->attributes = $_GET[$this->modelClass];
