@@ -148,28 +148,13 @@ EOD;
         $auth->createOperation('P3admin.Default.Settings');
         $developerRole->addChild('P3admin.Default.Settings');
 
-        foreach (array(
-                     'Chapter' => 'Chapter',
-                     'DataChunk' => 'DataChunk',
-                     'DataSource' => 'DataSource',
-                     'DownloadLink' => 'DownloadLink',
-                     'ExamQuestion' => 'ExamQuestion',
-                     'ExamQuestionAlternative' => 'ExamQuestionAlternative',
-                     'Exercise' => 'Exercise',
-                     'HtmlChunk' => 'HtmlChunk',
-                     'PoFile' => 'PoFile',
-                     'Section' => 'Section',
-                     'SectionContent' => 'SectionContent',
-                     'SlideshowFile' => 'SlideshowFile',
-                     'Snapshot' => 'Snapshot',
-                     'SpreadsheetFile' => 'SpreadsheetFile',
-                     'TeachersGuide' => 'TeachersGuide',
-                     'TextDoc' => 'TextDoc',
-                     'Tool' => 'Tool',
-                     'VectorGraphic' => 'VectorGraphic',
-                     'VideoFile' => 'VideoFile',
-                     'EzcWorkflow' => 'EzcWorkflow',
-                 ) as $model) {
+        $baseModels = Yii::app()->params['dataModelMeta']['crudModels'];
+        $qaStateModels = Yii::app()->params['dataModelMeta']['qaStateModels'];
+
+        // merge
+        $cruds = array_merge($baseModels, $qaStateModels);
+
+        foreach ($cruds as $model => $table) {
             foreach (array('*', 'View', 'Update', 'Delete') as $action) {
 
                 $auth->createOperation("{$model}.{$action}");
