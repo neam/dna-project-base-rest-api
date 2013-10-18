@@ -8564,6 +8564,6 @@ input.je-val-input {
     margin-left: 220px;
   }
   #backend .sidebar-wrapper UL.nav {
-    position: fixed;
+    position: relative;
   }
 }
