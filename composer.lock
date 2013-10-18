@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "16dc60ad79f04486a1cea2cb4e13093f",
+    "hash": "8bc60d1b4fc846b22c3c85f8bc86329f",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -808,48 +808,13 @@
         },
         {
             "name": "schmunk42/relation",
-            "version": "1.0.3",
+            "version": "1.0.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/schmunk42/yii-relation.git",
-                "reference": "c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de"
+                "url": "https://github.com/motin/yii-relation.git",
+                "reference": "b275ae18ed4798dc01cad72e9b27878c851d1312"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-relation/zipball/c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de",
-                "reference": "c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "yiisoft/yii": "1.1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "behaviors/",
-                    "widgets/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Munk",
-                    "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
-                }
-            ],
-            "description": "Yii Framework components for active record relations",
-            "keywords": [
-                "active",
-                "record",
-                "relations",
-                "yii"
-            ],
-            "time": "2013-08-23 14:56:11"
+            "type": "library"
         },
         {
             "name": "schmunk42/web-user-behavior",

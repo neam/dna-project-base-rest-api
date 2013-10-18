@@ -72,6 +72,18 @@
             }
         },
         {
+            "type": "package",
+            "package": {
+                "name": "schmunk42/relation",
+                "version": "1.0.3.1",
+                "source": {
+                    "url": "https://github.com/motin/yii-relation.git",
+                    "type": "git",
+                    "reference": "b275ae18ed4798dc01cad72e9b27878c851d1312"
+                }
+            }
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/neam/yii-i18n-columns"
         },
