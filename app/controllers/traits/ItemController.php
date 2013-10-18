@@ -362,7 +362,7 @@ trait ItemController
                 $model->refreshQaState();
 
                 $qsStates = array();
-                $qsStates["before"] = $model->qaState();
+                $qsStates["before"] = $model->qaState()->attributes;
 
                 // start transaction
                 $transaction = Yii::app()->db->beginTransaction();
@@ -374,7 +374,7 @@ trait ItemController
 
                 // refresh qa state
                 $model->refreshQaState();
-                $qsStates["after"] = $model->qaState();
+                $qsStates["after"] = $model->qaState()->attributes;
 
                 // calculate difference
                 $qsStates["diff"] = array_diff_assoc($qsStates["before"], $qsStates["after"]);
@@ -386,7 +386,7 @@ trait ItemController
                 $changeset = new Changeset();
                 $changeset->contents = json_encode($qsStates);
                 $changeset->user_id = Yii::app()->user->id;
-                $changeset->node_id = $model->node->id;
+                $changeset->node_id = $model->ensureNode()->id;
                 if (!$changeset->save()) {
                     throw new SaveException($changeset);
                 }

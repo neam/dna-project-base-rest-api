@@ -77,4 +77,22 @@ class ActiveRecord extends CActiveRecord
         return array_merge(parent::behaviors(), $behaviors);
     }
 
+    /**
+     * Ensures node relation
+     */
+    public function ensureNode()
+    {
+
+        if (is_null($this->node_id)) {
+            $node = new Node();
+            $node->save();
+            $this->node_id = $node->id;
+            $this->save();
+            $this->refresh();
+        }
+
+        return $this->node;
+
+    }
+
 }
