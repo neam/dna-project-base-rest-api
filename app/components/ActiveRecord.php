@@ -17,20 +17,7 @@ class ActiveRecord extends CActiveRecord
         }
 
         // List of models using qa attributes behavior
-        $qaModels = array(
-            'Chapter' => 'chapter',
-            'DataChunk' => 'data_chunk',
-            'DataSource' => 'data_source',
-            'ExamQuestion' => 'exam_question',
-            'Exercise' => 'exercise',
-            'PoFile' => 'po_file',
-            'SlideshowFile' => 'slideshow_file',
-            'Snapshot' => 'snapshot',
-            'TextDoc' => 'text_doc',
-            'Tool' => 'tool',
-            'VectorGraphic' => 'vector_graphic',
-            'VideoFile' => 'video_file',
-        );
+        $qaModels = Yii::app()->params['dataModelMeta']['qaModels'];
 
         if (isset($qaModels[get_class($this)])) {
             $behaviors['qa-state'] = array(

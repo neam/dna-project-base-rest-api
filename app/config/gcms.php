@@ -114,6 +114,7 @@ $gcmsConfig = array(
 );
 
 require('logging.php');
+require('datamodelmeta.php');
 //require('mail.php');
 
 return $gcmsConfig;
