@@ -31,11 +31,9 @@ $qaModels = array(
     'DataSource' => 'data_source',
     'ExamQuestion' => 'exam_question',
     'Exercise' => 'exercise',
-    'HtmlChunk' => 'html_chunk',
     'PoFile' => 'po_file',
     'SlideshowFile' => 'slideshow_file',
     'Snapshot' => 'snapshot',
-    'SpreadsheetFile' => 'spreadsheet_file',
     'TextDoc' => 'text_doc',
     'Tool' => 'tool',
     'VectorGraphic' => 'vector_graphic',
@@ -47,11 +45,18 @@ array_walk($qaStateModels, function (&$value, $key) {
     $value .= "QaState";
 });
 
+$qaStateTables = array_values($qaModels);
+array_walk($qaStateTables, function (&$value, $key) {
+    $value .= "_qa_state";
+});
+
 // init actions
 $actions = array();
 
+$cruds = array_merge($models, array_combine($qaStateModels, $qaStateTables));
+
 // generate hybrid CRUDs into application
-foreach ($models AS $model => $table) {
+foreach ($cruds AS $model => $table) {
     $action = array(
         "codeModel" => "FullCrudCode",
         "generator" => 'vendor.phundament.gii-template-collection.fullCrud.FullCrudGenerator',
