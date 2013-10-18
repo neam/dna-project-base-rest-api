@@ -147,48 +147,23 @@ trait ItemController
     {
         $model = $this->loadModel($id);
 
-        // Check and redirect depending on current workflow execution status
-        $execution = Yii::app()->ezc->getWorkflowDatabaseExecution((int) $model->authoring_workflow_execution_id);
+        $model->refreshQaState();
 
-        // Supply id if necessary
-        /*
-        if (isset($execution->getWaitingFor()["id"])) {
-            $execution->resume(array('id' => $id));
-        }
-        */
-
-        // Check draft progress
-        $model->scenario = 'draft_en';
-        $model->validate();
-        $execution->resume(array('draft' => !$model->hasErrors()));
-
-        // Check preview progress
-        $model->scenario = 'preview_en';
-        $model->validate();
-        $execution->resume(array('previewable' => !$model->hasErrors()));
-
-        // Check publish progress
-        $model->scenario = 'publish_en';
-        $model->validate();
-        $execution->resume(array('publishable' => !$model->hasErrors()));
-
-        $waitingFor = $execution->getWaitingFor();
-
-        if (isset($waitingFor["fields_for_draft"])) {
+        if ($model->qaState()->draft_validation_progress < 100) {
             $this->redirect(array('draft', 'id' => $model->id));
             return;
         }
-        if (isset($waitingFor["fields_for_preview"])) {
+        if ($model->qaState()->preview_validation_progress < 100) {
             $this->redirect(array('prepPreshow', 'id' => $model->id));
             return;
         }
-        if (isset($waitingFor["fields_for_publish"])) {
+        if ($model->qaState()->public_validation_progress < 100) {
             $this->redirect(array('prepPublish', 'id' => $model->id));
             return;
         }
 
         // A temporary debug page
-        $this->render('continueAuthoring', array('model' => $model, 'execution' => $execution));
+        $this->render('continueAuthoring', array('model' => $model));
 
     }
 
@@ -243,9 +218,7 @@ trait ItemController
             $model->attributes = $_GET[$this->modelClass];
         }
 
-        $execution = Yii::app()->ezc->getWorkflowDatabaseExecution((int) $model->authoring_workflow_execution_id);
-
-        $this->render('draft', array('model' => $model, 'execution' => $execution));
+        $this->render('draft', array('model' => $model));
     }
 
     public function actionPrepPreshow($id)

@@ -8,24 +8,11 @@ class ActiveRecord extends CActiveRecord
 
         $behaviors = array();
 
-        if (!in_array(get_class($this), array("Workflow"))) {
+        if (!in_array(get_class($this), array("Workflow")) && strpos(get_class($this), "QaState") === false) {
             $behaviors['CTimestampBehavior'] = array(
                 'class' => 'zii.behaviors.CTimestampBehavior',
                 'createAttribute' => 'created',
                 'updateAttribute' => 'modified',
-            );
-        }
-
-        // List of models with workflows attached
-        $workflowsMap = array(
-            'Chapter' => array(),
-            'VideoFile' => array(),
-        );
-
-        if (isset($workflowsMap[get_class($this)])) {
-            $behaviors['ezc-workflow'] = array(
-                'class' => 'EzcWorkflowBehavior',
-                'workflowName' => get_class($this) . 'AuthoringWorkflow',
             );
         }
 

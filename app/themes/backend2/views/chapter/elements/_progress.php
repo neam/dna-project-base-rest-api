@@ -3,7 +3,9 @@
 /* @var $execution ezcWorkflowDatabaseExecution */
 ?>
 
-<?php var_dump($execution->getWaitingFor(), $execution->getVariables()); ?>
+<?php
+var_dump($model->getAttributes(), $model->qaState()->getAttributes());
+?>
 
 <div class="row">
     <h2>Progress</h2>
