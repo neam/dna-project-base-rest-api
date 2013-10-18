@@ -48,6 +48,7 @@ $gcmsConfig = array(
         'application.workflows.*',
         'application.controllers.traits.*',
         'application.models.wrappers.Users',
+        'application.exceptions.*',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
