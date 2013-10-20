@@ -61,7 +61,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
         <div class="row">
             <div class="span9">
 
-                <h2>Step 1: Create Draft
+                <h2>Create Draft
                     <small></small>
                 </h2>
 

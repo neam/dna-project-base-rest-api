@@ -61,7 +61,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for preshow');
         <div class="row">
             <div class="span9">
 
-                <h2>Step x: Prepare for preshow
+                <h2>Prepare for preshow
                     <small></small>
                 </h2>
 
@@ -81,8 +81,6 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for preshow');
 
             </div>
         </div>
-
-        <h4>(This is not used for chapters)</h4>
 
         <div class="form-actions">
         <?php
