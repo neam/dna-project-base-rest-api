@@ -32,6 +32,22 @@ class AccountController extends Controller
                 'roles' => array('Account.*'),
             ),
             array(
+                'allow',
+                'actions' => array(
+                    'profile',
+                ),
+                'users' => array('*'),
+            ),
+            array(
+                'allow',
+                'actions' => array(
+                    'dashboard',
+                    'translations',
+                    'history',
+                ),
+                'users' => array('@'),
+            ),
+            array(
                 'deny',
                 'users' => array('*'),
             ),
@@ -59,6 +75,30 @@ class AccountController extends Controller
             $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
         }
         return true;
+    }
+
+    public function actionDashboard($id = null)
+    {
+        $model = $this->loadModel($id);
+        $this->render('dashboard', array('model' => $model,));
+    }
+
+    public function actionTranslations($id = null)
+    {
+        $model = $this->loadModel($id);
+        $this->render('translations', array('model' => $model,));
+    }
+
+    public function actionProfile($id = null)
+    {
+        $model = $this->loadModel($id);
+        $this->render('profile', array('model' => $model,));
+    }
+
+    public function actionHistory($id = null)
+    {
+        $model = $this->loadModel($id);
+        $this->render('history', array('model' => $model,));
     }
 
     public function actionView($id)
@@ -191,6 +231,9 @@ class AccountController extends Controller
 
     public function loadModel($id)
     {
+        if (is_null($id)) {
+            $id = Yii::app()->user->id;
+        }
         $model = Account::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));

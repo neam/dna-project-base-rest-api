@@ -34,25 +34,25 @@ $this->widget(
                 array(
                     'label' => Yii::t('app', 'Dashboard'),
                     'icon' => 'th-large',
-                    'url' => array('/user/dashboard'),
+                    'url' => array('/account/dashboard'),
                     'visible' => !Yii::app()->user->isGuest
                 ),
                 array(
                     'label' => Yii::t('app', 'Translations'),
                     'icon' => 'globe',
-                    'url' => array('/user/translations'),
+                    'url' => array('/account/translations'),
                     'visible' => !Yii::app()->user->isGuest
                 ),
                 array(
                     'label' => Yii::t('app', 'Profile'),
                     'icon' => 'user',
-                    'url' => array('/user/profile'),
+                    'url' => array('/account/profile'),
                     'visible' => !Yii::app()->user->isGuest
                 ),
                 array(
                     'label' => Yii::t('app', 'History'),
                     'icon' => 'time',
-                    'url' => array('/user/history'),
+                    'url' => array('/account/history'),
                     'visible' => !Yii::app()->user->isGuest
                 ),
                 array('label' => Yii::t('app', 'Contents')),

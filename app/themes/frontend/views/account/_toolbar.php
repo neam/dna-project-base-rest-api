@@ -17,6 +17,34 @@
                         "confirm" => Yii::t("model", "Do you want to delete this item?"))
                 ));
                 break;
+            default:
+                if (isset($model)) {
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Dashboard"),
+                        "icon" => "icon-th-large" . ($this->action->id == "dashboard" ? " icon-white" : null),
+                        "type" => $this->action->id == "dashboard" ? "inverse" : null,
+                        "url" => array("dashboard", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Translations"),
+                        "icon" => "icon-globe" . ($this->action->id == "translations" ? " icon-white" : null),
+                        "type" => $this->action->id == "translations" ? "inverse" : null,
+                        "url" => array("translations", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Profile"),
+                        "icon" => "icon-user" . ($this->action->id == "profile" ? " icon-white" : null),
+                        "type" => $this->action->id == "profile" ? "inverse" : null,
+                        "url" => array("profile", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "History"),
+                        "icon" => "icon-time" . ($this->action->id == "history" ? " icon-white" : null),
+                        "type" => $this->action->id == "history" ? "inverse" : null,
+                        "url" => array("history", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
+                }
+                break;
         }
         ?>    </div>
 </div>
