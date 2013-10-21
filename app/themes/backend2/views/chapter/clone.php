@@ -2,7 +2,7 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Publish')
+    . Yii::t('crud', 'Clone')
 );
 
 $this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
@@ -61,7 +61,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
         <div class="row">
             <div class="span9">
 
-                <h2>Publish
+                <h2>Clone
                     <small></small>
                 </h2>
 

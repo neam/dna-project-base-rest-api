@@ -2,10 +2,10 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Publish')
+    . Yii::t('crud', 'Replace')
 );
 
-$this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
+$this->breadcrumbs[Yii::t('model', 'Exercises')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
 $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 ?>
@@ -49,7 +49,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 
 	<?php
     $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-        'id' => 'chapter-form',
+        'id' => 'exercise-form',
         'enableAjaxValidation' => true,
         'enableClientValidation' => true,
         'type' => 'horizontal',
@@ -61,7 +61,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
         <div class="row">
             <div class="span9">
 
-                <h2>Publish
+                <h2>Replace
                     <small></small>
                 </h2>
 
@@ -78,7 +78,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 	    <div class="form-actions">
 	        <?php
 	        echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-	                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+	                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('exercise/admin'),
 	                'class' => 'btn'
 	            )
 	        );

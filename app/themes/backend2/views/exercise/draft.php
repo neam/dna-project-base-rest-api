@@ -1,6 +1,6 @@
 <?php
 $this->setPageTitle(
-    Yii::t('model', 'Exercise')
+    Yii::t('model', $this->modelClass)
     . ' - '
     . Yii::t('crud', 'Draft')
 );
@@ -16,7 +16,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
     <div class="span12">
 
         <h1>
-            <?php echo(empty($model->title) ? Yii::t('model', 'Exercise') . " #" . $model->id : $model->title); ?>
+            <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
             <small>vX</small>
 
             <div class="btn-group">
@@ -61,7 +61,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
         <div class="row">
             <div class="span9">
 
-                <h2>Step 1: Create Draft
+                <h2>Create Draft
                     <small></small>
                 </h2>
 

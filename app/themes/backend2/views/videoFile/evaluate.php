@@ -2,10 +2,10 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Publish')
+    . Yii::t('crud', 'Evaluate')
 );
 
-$this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
+$this->breadcrumbs[Yii::t('model', 'Video Files')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
 $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 ?>
@@ -49,7 +49,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 
 	<?php
     $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-        'id' => 'chapter-form',
+        'id' => 'videoFile-form',
         'enableAjaxValidation' => true,
         'enableClientValidation' => true,
         'type' => 'horizontal',
@@ -61,7 +61,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
         <div class="row">
             <div class="span9">
 
-                <h2>Publish
+                <h2>Evaluate
                     <small></small>
                 </h2>
 
@@ -73,12 +73,63 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 
             </div>
         </div>
+		<div class="control-group ">
+			<div style="float:right">
+			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+			    'type' => 'primary',
+			    'toggle' => 'radio',
+			    'buttons' => array(
+			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
+			        array('label'=>'Don\'t approve','htmlOptions'=>array('class'=>'btn-danger')),
+			    ),
+			)); ?>
+			</div>
+			<label class="control-label" for="<?php echo $this->modelClass; ?>_title_comment"><?php echo "title_en: "; ?></label>
+			<div class="controls">
+				<?php echo $model->attributes["title_en"]; ?>
+			</div>
+
+		</div>
+
+		<div class="control-group ">
+			<label class="control-label" for="Chapter_title_comment">Comment:</label>
+			<div class="controls">
+				<textarea rows="6" cols="50" class="span8" name="Chapter[title_comment]" id="Chapter_title_comment"></textarea>
+				<span class="help-inline error" id="Chapter_title_comment_em_" style="display: none"></span>
+			</div>
+		</div>
+
+		<div class="control-group ">
+			<div style="float:right">
+			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+			    'type' => 'primary',
+			    'toggle' => 'radio',
+			    'buttons' => array(
+			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
+			        array('label'=>'Don\'t approve','htmlOptions'=>array('class'=>'btn-danger')),
+			    ),
+			)); ?>
+			</div>
+			<label class="control-label" for="Chapter_slug_comment"><?php echo "slug_en: "; ?></label>
+			<div class="controls">
+				<?php echo $model->attributes["slug_en"]; ?>
+			</div>
+
+		</div>
+
+		<div class="control-group ">
+			<label class="control-label" for="Chapter_slug_comment">Comment:</label>
+			<div class="controls">
+				<textarea rows="6" cols="50" class="span8" name="Chapter[slug_comment]" id="Chapter_slug_comment"></textarea>
+				<span class="help-inline error" id="Chapter_slug_comment_em_" style="display: none"></span>
+			</div>
+		</div>
 
 
 	    <div class="form-actions">
 	        <?php
 	        echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-	                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+	                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('videoFile/admin'),
 	                'class' => 'btn'
 	            )
 	        );

@@ -5,7 +5,7 @@ $this->setPageTitle(
     . Yii::t('crud', 'Draft')
 );
 
-$this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
+$this->breadcrumbs[Yii::t('model', 'Exercises')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
 $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
 ?>
@@ -49,7 +49,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
 
     <?php
     $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-        'id' => 'chapter-form',
+        'id' => 'exercise-form',
         'enableAjaxValidation' => true,
         'enableClientValidation' => true,
         'type' => 'horizontal',
@@ -103,7 +103,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             ?>
 
             <?php
-            $formId = 'chapter-thumbnail_media_id-' . \uniqid() . '-form';
+            $formId = 'exercise-thumbnail_media_id-' . \uniqid() . '-form';
             ?>
 
             <div class="control-group">
@@ -125,7 +125,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             $this->beginClip('modal:' . $formId . '-modal');
             $this->renderPartial('//p3Media/_modal_form', array(
                 'formId' => $formId,
-                'inputSelector' => '#Chapter_thumbnail_media_id',
+                'inputSelector' => '#exercise_thumbnail_media_id',
                 'model' => new P3Media,
                 'pk' => 'id',
                 'field' => 'itemLabel',
@@ -163,7 +163,7 @@ credits
             <div class="form-actions">
             <?php
             echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-                    'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+                    'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('exercise/admin'),
                     'class' => 'btn'
                 )
             );

@@ -1,6 +1,6 @@
 <?php
 $this->setPageTitle(
-    Yii::t('model', 'Exercise')
+    Yii::t('model', $this->modelClass)
     . ' - '
     . Yii::t('model', 'Update')
     . ': '
@@ -14,7 +14,7 @@ $this->breadcrumbs[] = Yii::t('model', 'Update');
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
-    <?php echo Yii::t('model', 'Exercise'); ?>
+    <?php echo Yii::t('model', $this->modelClass); ?>
     <small>
         <?php echo Yii::t('model', 'Update') ?> #<?php echo $model->id ?>
     </small>
