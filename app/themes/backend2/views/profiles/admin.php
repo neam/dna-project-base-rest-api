@@ -114,7 +114,63 @@ $this->widget('TbGridView',
             /*
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'can_translate_to',
+                'name' => 'can_translate_to_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'can_translate_to_es',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'can_translate_to_fa',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'can_translate_to_hi',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'can_translate_to_pt',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'can_translate_to_sv',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'can_translate_to_cn',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'can_translate_to_de',
                 'editable' => array(
                     'url' => $this->createUrl('/profiles/editableSaver'),
                     //'placement' => 'right',

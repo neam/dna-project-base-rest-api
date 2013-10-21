@@ -64,7 +64,21 @@
 
             <?php echo $form->textFieldRow($model, 'lives_in', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textFieldRow($model, 'can_translate_to'); ?>
+            <?php echo $form->textFieldRow($model, 'can_translate_to_en'); ?>
+
+            <?php echo $form->textFieldRow($model, 'can_translate_to_es'); ?>
+
+            <?php echo $form->textFieldRow($model, 'can_translate_to_fa'); ?>
+
+            <?php echo $form->textFieldRow($model, 'can_translate_to_hi'); ?>
+
+            <?php echo $form->textFieldRow($model, 'can_translate_to_pt'); ?>
+
+            <?php echo $form->textFieldRow($model, 'can_translate_to_sv'); ?>
+
+            <?php echo $form->textFieldRow($model, 'can_translate_to_cn'); ?>
+
+            <?php echo $form->textFieldRow($model, 'can_translate_to_de'); ?>
         </div>
     </div>
     <!-- main inputs -->

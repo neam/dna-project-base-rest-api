@@ -36,6 +36,7 @@ class ActiveRecord extends CActiveRecord
             'Exercise' => array('slug', 'title', 'question', 'description', 'exercise_qa_state_id'),
             'HtmlChunk' => array('markup'),
             'PoFile' => array('processed_media_id', 'po_file_qa_state_id'),
+            'Profiles' => array('can_translate_to'),
             'Section' => array('slug', 'title', 'menu_label'),
             'SlideshowFile' => array('slug', 'title', 'about', 'processed_media_id', 'slideshow_file_qa_state_id'),
             'Snapshot' => array('slug', 'title', 'about', 'snapshot_qa_state_id'),

@@ -51,8 +51,43 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'can_translate_to'); ?>
-        <?php echo $form->checkBox($model, 'can_translate_to'); ?>
+        <?php echo $form->label($model, 'can_translate_to_en'); ?>
+        <?php echo $form->checkBox($model, 'can_translate_to_en'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'can_translate_to_es'); ?>
+        <?php echo $form->checkBox($model, 'can_translate_to_es'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'can_translate_to_fa'); ?>
+        <?php echo $form->checkBox($model, 'can_translate_to_fa'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'can_translate_to_hi'); ?>
+        <?php echo $form->checkBox($model, 'can_translate_to_hi'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'can_translate_to_pt'); ?>
+        <?php echo $form->checkBox($model, 'can_translate_to_pt'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'can_translate_to_sv'); ?>
+        <?php echo $form->checkBox($model, 'can_translate_to_sv'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'can_translate_to_cn'); ?>
+        <?php echo $form->checkBox($model, 'can_translate_to_cn'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'can_translate_to_de'); ?>
+        <?php echo $form->checkBox($model, 'can_translate_to_de'); ?>
     </div>
 
 

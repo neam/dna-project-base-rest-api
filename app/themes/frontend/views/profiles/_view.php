@@ -37,8 +37,36 @@
     <?php echo CHtml::encode($data->lives_in); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('can_translate_to')); ?>:</b>
-    <?php echo CHtml::encode($data->can_translate_to); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('can_translate_to_en')); ?>:</b>
+    <?php echo CHtml::encode($data->can_translate_to_en); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('can_translate_to_es')); ?>:</b>
+    <?php echo CHtml::encode($data->can_translate_to_es); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('can_translate_to_fa')); ?>:</b>
+    <?php echo CHtml::encode($data->can_translate_to_fa); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('can_translate_to_hi')); ?>:</b>
+    <?php echo CHtml::encode($data->can_translate_to_hi); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('can_translate_to_pt')); ?>:</b>
+    <?php echo CHtml::encode($data->can_translate_to_pt); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('can_translate_to_sv')); ?>:</b>
+    <?php echo CHtml::encode($data->can_translate_to_sv); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('can_translate_to_cn')); ?>:</b>
+    <?php echo CHtml::encode($data->can_translate_to_cn); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('can_translate_to_de')); ?>:</b>
+    <?php echo CHtml::encode($data->can_translate_to_de); ?>
     <br />
 
     */
