@@ -80,7 +80,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 			    'toggle' => 'radio',
 			    'buttons' => array(
 			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Don\'t approve','htmlOptions'=>array('class'=>'btn-danger')),
+			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
 			    ),
 			)); ?>
 			</div>
@@ -106,7 +106,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 			    'toggle' => 'radio',
 			    'buttons' => array(
 			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Don\'t approve','htmlOptions'=>array('class'=>'btn-danger')),
+			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
 			    ),
 			)); ?>
 			</div>

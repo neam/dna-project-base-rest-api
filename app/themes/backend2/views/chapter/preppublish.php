@@ -135,16 +135,76 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
 
             <?php echo $form->textAreaRow($model, 'about', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
-<div class="control-group ">
-<label class="control-label" for="TestForm_multiDropdown">Tags</label>
-<div class="controls"><select multiple="multiple" name="TestForm[multiDropdown][]" id="TestForm_multiDropdown">
-<option value="0">1</option>
-<option value="1">2</option>
-<option value="2">3</option>
-<option value="3">4</option>
-<option value="4">5</option>
-</select></div>
-</div>
+			<div class="control-group ">
+				<label class="control-label" for="TestForm_multiDropdown">Tags</label>
+				<div class="controls">
+					<?php
+					$this->widget(
+					    'bootstrap.widgets.TbSelect2',
+					    array(
+					        'asDropDownList' => false,
+					        'name' => 'tags',
+					        'options' => array(
+					            'tags' => array('predefined-tag-1', 'cool-tag', 'some-other-tag', 'isnt-tags-cool-or-what'),
+					            'tokenSeparators' => array(',', ' ')
+					        )
+					    )
+					);
+					?>
+				</div>
+			</div>
+
+			<div class="control-group ">
+				<label class="control-label" for="">Videos</label>
+				<div class="controls">
+					<ul><li>Video1</li><li>Video2</li></ul>
+					<?php
+			            echo CHtml::Button(Yii::t('model', 'Create new video'), array(
+			                    //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+			                    'class' => 'btn'
+			                )
+			            );
+            		?>
+				</div>
+			</div>
+
+
+            <?php echo $form->html5EditorRow($model, 'teachers_guide', array('rows' => 6, 'cols' => 50, 'class' => 'span6', 'options' => array(
+                'link' => true,
+                'image' => false,
+                'color' => false,
+                'html' => true,
+            ))); ?>
+
+
+			<div class="control-group ">
+				<label class="control-label" for="">Exercices</label>
+				<div class="controls">
+					<ul><li>Exercise 1</li><li>Exercise 2</li></ul>
+					<?php
+			            echo CHtml::Button(Yii::t('model', 'Create new exercise'), array(
+			                    //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+			                    'class' => 'btn'
+			                )
+			            );
+            		?>
+				</div>
+			</div>
+
+
+			<div class="control-group ">
+				<label class="control-label" for="">Snapshots</label>
+				<div class="controls">
+					<ul><li>Snapshot 1</li><li>Snapshot 2</li></ul>
+					<?php
+			            echo CHtml::Button(Yii::t('model', 'Create new snapshot'), array(
+			                    //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+			                    'class' => 'btn'
+			                )
+			            );
+            		?>
+				</div>
+			</div>
 
 
 <!--

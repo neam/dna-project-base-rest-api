@@ -73,58 +73,45 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 
             </div>
         </div>
-		<div class="control-group ">
-			<div style="float:right">
+        <div class="row control-group">
+            <div class="span1">Title:</div>
+            <div class="span2"><?php echo $model->attributes["title_en"]; ?></div>
+            <div class="span2">
 			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
 			    'type' => 'primary',
 			    'toggle' => 'radio',
 			    'buttons' => array(
 			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Don\'t approve','htmlOptions'=>array('class'=>'btn-danger')),
+			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
 			    ),
 			)); ?>
-			</div>
-			<label class="control-label" for="<?php echo $this->modelClass; ?>_title_comment"><?php echo "title_en: "; ?></label>
-			<div class="controls">
-				<?php echo $model->attributes["title_en"]; ?>
-			</div>
-
-		</div>
-
-		<div class="control-group ">
-			<label class="control-label" for="Chapter_title_comment">Comment:</label>
-			<div class="controls">
+            </div>
+            <div class="span1">Comment:</div>
+            <div class="span4">
 				<textarea rows="6" cols="50" class="span8" name="Chapter[title_comment]" id="Chapter_title_comment"></textarea>
 				<span class="help-inline error" id="Chapter_title_comment_em_" style="display: none"></span>
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<div class="control-group ">
-			<div style="float:right">
+        <div class="row control-group">
+            <div class="span1">Slug:</div>
+            <div class="span2"><?php echo $model->attributes["slug_en"]; ?></div>
+            <div class="span2">
 			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
 			    'type' => 'primary',
 			    'toggle' => 'radio',
 			    'buttons' => array(
 			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Don\'t approve','htmlOptions'=>array('class'=>'btn-danger')),
+			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
 			    ),
 			)); ?>
-			</div>
-			<label class="control-label" for="Chapter_slug_comment"><?php echo "slug_en: "; ?></label>
-			<div class="controls">
-				<?php echo $model->attributes["slug_en"]; ?>
-			</div>
-
-		</div>
-
-		<div class="control-group ">
-			<label class="control-label" for="Chapter_slug_comment">Comment:</label>
-			<div class="controls">
-				<textarea rows="6" cols="50" class="span8" name="Chapter[slug_comment]" id="Chapter_slug_comment"></textarea>
-				<span class="help-inline error" id="Chapter_slug_comment_em_" style="display: none"></span>
-			</div>
-		</div>
-
+            </div>
+            <div class="span1">Comment:</div>
+            <div class="span4">
+				<textarea rows="6" cols="50" class="span8" name="Chapter[title_comment]" id="Chapter_title_comment"></textarea>
+				<span class="help-inline error" id="Chapter_title_comment_em_" style="display: none"></span>
+            </div>
+        </div>
 
 	    <div class="form-actions">
 	        <?php
