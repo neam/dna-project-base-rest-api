@@ -11,6 +11,9 @@ $evaluationProgress = 0; //($model->qaState()->draft_evaluation_progress + $mode
 $publishingProgress = ($validationProgress + $evaluationProgress + $model->qaState()->approval_progress + $model->qaState()->proofing_progress) / 5;
 $translationProgress = ($model->qaState()->translations_draft_validation_progress + $model->qaState()->translations_preview_validation_progress + $model->qaState()->translations_public_validation_progress + $model->qaState()->translations_approval_progress + $model->qaState()->translations_proofing_progress) / 5;
 
+$requiredFieldsCount = count($model->qaStateBehavior()->qaAttributes("public"));
+$requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $model->qaState()->public_validation_progress / 100);
+
 ?>
 
 <div class="row">
@@ -255,7 +258,7 @@ $translationProgress = ($model->qaState()->translations_draft_validation_progres
         <hr>
 
         <?php print $publishingProgress; ?>% Completed<br/>
-        X required fields missing<br/>
+        <?php print $requiredFieldsMissing; ?> required fields missing<br/>
 
         Status: <?php print $model->qaState()->status; ?>
 
