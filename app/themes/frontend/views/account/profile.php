@@ -194,29 +194,45 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                         <?php echo Yii::t('account', 'Permissions'); ?>
                     </h2>
 
+                    <!--
                     <div class="row">
                         <div class="span12">
                             <a>Apply for new permission</a>
                         </div>
                     </div>
+                    -->
                     <div class="row">
                         <div class="span4">
-                            <h4>Roles</h4>
-
+                            <!--<h4>Roles</h4>-->
                             <p>
                                 <?php
-                                $items = array_keys(Yii::app()->authManager->getAuthItems(2, $model->id));
-                                print implode(", ", $items);
+                                $roles = array_keys(Yii::app()->authManager->getAuthItems(2, $model->id));
                                 ?>
+
+                                <?php if (empty($roles)): ?>
+
+                            <div class="alert alert-error">
+                                <?php echo Yii::t('account', 'You do not have any permissions assigned.'); ?>
+                                <?php echo Yii::t('account', 'Only administrators can assign permissions.'); ?>
+                                <?php //echo Yii::t('account', 'Please apply for a permission.'); ?>
+                            </div>
+
+                            <?php endif; ?>
+
+                            <?php
+                            print implode(", ", $roles);
+                            ?>
+
                             </p>
                         </div>
+                        <?php /*
                         <div class="span4">
                             <h4>Operations</h4>
 
                             <p>
                                 <?php
-                                $items = array_keys(Yii::app()->authManager->getAuthItems(1, $model->id));
-                                print implode(", ", $items);
+                                $operations = array_keys(Yii::app()->authManager->getAuthItems(1, $model->id));
+                                print implode(", ", $operations);
                                 ?>
                             </p>
                         </div>
@@ -225,11 +241,12 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
 
                             <p>
                                 <?php
-                                $items = array_keys(Yii::app()->authManager->getAuthItems(0, $model->id));
-                                print implode(", ", $items);
+                                $tasks = array_keys(Yii::app()->authManager->getAuthItems(0, $model->id));
+                                print implode(", ", $tasks);
                                 ?>
                             </p>
-                        </div>
+                        </div> */
+                        ?>
                     </div>
 
                 </div>
