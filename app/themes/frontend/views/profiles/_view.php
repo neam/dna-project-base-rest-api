@@ -12,6 +12,37 @@
     <?php echo CHtml::encode($data->last_name); ?>
     <br/>
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('public_profile')); ?>:</b>
+    <?php echo CHtml::encode($data->public_profile); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('picture_media_id')); ?>:</b>
+    <?php echo CHtml::encode($data->picture_media_id); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('website')); ?>:</b>
+    <?php echo CHtml::encode($data->website); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('others_may_contact_me')); ?>:</b>
+    <?php echo CHtml::encode($data->others_may_contact_me); ?>
+    <br/>
+
+    <?php /*
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about')); ?>:</b>
+    <?php echo CHtml::encode($data->about); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('lives_in')); ?>:</b>
+    <?php echo CHtml::encode($data->lives_in); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('can_translate_to')); ?>:</b>
+    <?php echo CHtml::encode($data->can_translate_to); ?>
+    <br />
+
+    */
+    ?>
     <?php if (Yii::app()->user->checkAccess('Profiles.*')): ?>
         <div class="admin-container show">
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Profiles'))), array('profiles/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>

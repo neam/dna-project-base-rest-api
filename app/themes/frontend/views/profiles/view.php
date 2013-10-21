@@ -25,6 +25,37 @@ $this->breadcrumbs[] = $model->user_id;
 <?php echo CHtml::encode($model->last_name); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('public_profile')); ?>:</b>
+<?php echo CHtml::encode($model->public_profile); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('picture_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->picture_media_id); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('website')); ?>:</b>
+<?php echo CHtml::encode($model->website); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('others_may_contact_me')); ?>:</b>
+<?php echo CHtml::encode($model->others_may_contact_me); ?>
+<br/>
+
+<?php /*
+<b><?php echo CHtml::encode($model->getAttributeLabel('about')); ?>:</b>
+<?php echo CHtml::encode($model->about); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('lives_in')); ?>:</b>
+<?php echo CHtml::encode($model->lives_in); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to')); ?>:</b>
+<?php echo CHtml::encode($model->can_translate_to); ?>
+<br />
+
+    */
+?>
 
 <div class="row">
     <div class="span7">
@@ -72,6 +103,95 @@ $this->breadcrumbs[] = $model->user_id;
                             array(
                                 'model' => $model,
                                 'attribute' => 'last_name',
+                                'url' => $this->createUrl('/profiles/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'public_profile',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'public_profile',
+                                'url' => $this->createUrl('/profiles/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'picture_media_id',
+                        'value' => ($model->pictureMedia !== null) ? CHtml::link(
+                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->pictureMedia->itemLabel,
+                                array('//p3Media/view', 'id' => $model->pictureMedia->id),
+                                array('class' => '')) . ' ' . CHtml::link(
+                                '<i class="icon icon-pencil"></i> ',
+                                array('//p3Media/update', 'id' => $model->pictureMedia->id),
+                                array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'website',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'website',
+                                'url' => $this->createUrl('/profiles/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'others_may_contact_me',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'others_may_contact_me',
+                                'url' => $this->createUrl('/profiles/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'about',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'about',
+                                'url' => $this->createUrl('/profiles/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'lives_in',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'lives_in',
+                                'url' => $this->createUrl('/profiles/editableSaver'),
+                            ),
+                            true
+                        )
+                    ),
+                    array(
+                        'name' => 'can_translate_to',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                            'TbEditableField',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'can_translate_to',
                                 'url' => $this->createUrl('/profiles/editableSaver'),
                             ),
                             true

@@ -73,6 +73,54 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'public_profile',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'picture_media_id',
+                'value' => 'CHtml::value($data, \'pictureMedia.itemLabel\')',
+                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'website',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'others_may_contact_me',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            #'about',
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'lives_in',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            /*
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'can_translate_to',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            */
 
             array(
                 'class' => 'TbButtonColumn',
