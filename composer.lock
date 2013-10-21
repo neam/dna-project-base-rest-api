@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "8bc60d1b4fc846b22c3c85f8bc86329f",
+    "hash": "ed808639160417164128d8411a6dde7a",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -53,6 +53,44 @@
             "description": "YiiBooster",
             "homepage": "https://github.com/clevertech/YiiBooster",
             "time": "2013-07-29 18:56:00"
+        },
+        {
+            "name": "codemix/hybridauthmanager",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codemix/hybridauthmanager.git",
+                "reference": "8d1c51b083d8bae2541b51a92eb2141e335f517b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codemix/hybridauthmanager/zipball/8d1c51b083d8bae2541b51a92eb2141e335f517b",
+                "reference": "8d1c51b083d8bae2541b51a92eb2141e335f517b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Härtl",
+                    "email": "haertl.mike@gmail.com"
+                }
+            ],
+            "description": "An AuthManager for Yii that stores the hierarchy in a flat PHP file and the assignmens in DB",
+            "keywords": [
+                "RBAC",
+                "authorization"
+            ],
+            "support": {
+                "source": "https://github.com/codemix/hybridauthmanager/tree/master",
+                "issues": "https://github.com/codemix/hybridauthmanager/issues"
+            },
+            "time": "2013-08-22 19:12:29"
         },
         {
             "name": "crisu83/yii-rights",
@@ -1559,6 +1597,7 @@
         "zetacomponents/database": 20,
         "ascendro/yii-graphviz": 20,
         "mihanentalpo/yii-sql-migration-generator": 20,
+        "codemix/hybridauthmanager": 20,
         "schmunk42/yii-sakila-crud": 20,
         "phundament/lessii": 20
     },
