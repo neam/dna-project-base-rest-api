@@ -5,7 +5,7 @@ $this->setPageTitle(
     . Yii::t('crud', 'Draft')
 );
 
-$this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
+$this->breadcrumbs[Yii::t('model', 'Video Files')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
 $this->breadcrumbs[] = Yii::t('crud', 'Draft');
 ?>
@@ -49,7 +49,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
 
 	<?php
     $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-        'id' => 'chapter-form',
+        'id' => 'videoFile-form',
         'enableAjaxValidation' => true,
         'enableClientValidation' => true,
         'type' => 'horizontal',
@@ -93,7 +93,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
 	    <div class="form-actions">
 	        <?php
 	        echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-	                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+	                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('videoFile/admin'),
 	                'class' => 'btn'
 	            )
 	        );

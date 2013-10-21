@@ -299,20 +299,20 @@ trait ItemController
 
     public function actionClone($id)
     {
-    	echo "Clone";
-    	exit;
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('clone', array('model' => $model));
     }
 
     public function actionRemove($id)
     {
-    	echo "Remove";
-    	exit;
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('remove', array('model' => $model));
     }
 
     public function actionReplace($id)
     {
-    	echo "Replace";
-    	exit;
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('replace', array('model' => $model));
     }
 
 

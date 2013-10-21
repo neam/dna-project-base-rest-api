@@ -2,12 +2,12 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Draft')
+    . Yii::t('crud', 'Prepare for preshow')
 );
 
 $this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Draft');
+$this->breadcrumbs[] = Yii::t('crud', 'Prepare for preshow');
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
@@ -47,7 +47,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
     </div>
     <div class="span9 well well-white">
 
-	<?php
+    <?php
     $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         'id' => 'chapter-form',
         'enableAjaxValidation' => true,
@@ -61,7 +61,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
         <div class="row">
             <div class="span9">
 
-                <h2>Create Draft
+                <h2>Prepare for preshow
                     <small></small>
                 </h2>
 
@@ -69,47 +69,50 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
             <div class="span3">
 
                 <div class="btn-toolbar pull-right">
-
                     <div class="btn-group">
                         <?php
-				        echo CHtml::submitButton(Yii::t('model', 'Save and Continue'), array(
-				                'class' => 'btn btn-large btn-primary'
-				            )
-				        );
+                        echo CHtml::submitButton(Yii::t('model', 'Save and Continue'), array(
+                                'class' => 'btn btn-large btn-primary'
+                            )
+                        );
                         ?>
-
                     </div>
-
                 </div>
 
             </div>
         </div>
 
-        <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
+        <div class="form-actions">
+        <?php
+        echo CHtml::Button(Yii::t('model', 'Cancel'), array(
+                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+                'class' => 'btn'
+            )
+        );
+        echo ' ';
+        echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+                'class' => 'btn btn-primary'
+            )
+        );
+        ?>
+        </div>
 
-        <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
+        <div class="alert alert-info">
+            Hint: Lorem ipsum
+        </div>
 
-
-	    <div class="form-actions">
-	        <?php
-	        echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-	                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-	                'class' => 'btn'
-	            )
-	        );
-	        echo ' ';
-	        echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-	                'class' => 'btn btn-primary'
-	            )
-	        );
-	        ?>    </div>
-
-	        <div class="alert alert-info">
-	            Hint: Lorem ipsum
-	        </div>
-
-	    <?php $this->endWidget() ?>
+        <?php $this->endWidget() ?>
 
     </div>
 
 </div>
+
+
+<?php
+foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
+    if (strpos($key, "modal:") === 0) {
+        echo $clip;
+    }
+}
+?>
+

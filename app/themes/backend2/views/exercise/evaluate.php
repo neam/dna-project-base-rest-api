@@ -2,12 +2,12 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Draft')
+    . Yii::t('crud', 'Evaluate')
 );
 
-$this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
+$this->breadcrumbs[Yii::t('model', 'Exercises')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Draft');
+$this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
@@ -61,7 +61,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
         <div class="row">
             <div class="span9">
 
-                <h2>Create Draft
+                <h2>Evaluate
                     <small></small>
                 </h2>
 
@@ -69,25 +69,61 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
             <div class="span3">
 
                 <div class="btn-toolbar pull-right">
-
-                    <div class="btn-group">
-                        <?php
-				        echo CHtml::submitButton(Yii::t('model', 'Save and Continue'), array(
-				                'class' => 'btn btn-large btn-primary'
-				            )
-				        );
-                        ?>
-
-                    </div>
-
                 </div>
 
             </div>
         </div>
+		<div class="control-group ">
+			<div style="float:right">
+			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+			    'type' => 'primary',
+			    'toggle' => 'radio',
+			    'buttons' => array(
+			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
+			        array('label'=>'Don\'t approve','htmlOptions'=>array('class'=>'btn-danger')),
+			    ),
+			)); ?>
+			</div>
+			<label class="control-label" for="<?php echo $this->modelClass; ?>_title_comment"><?php echo "title_en: "; ?></label>
+			<div class="controls">
+				<?php echo $model->attributes["title_en"]; ?>
+			</div>
 
-        <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
+		</div>
 
-        <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
+		<div class="control-group ">
+			<label class="control-label" for="Chapter_title_comment">Comment:</label>
+			<div class="controls">
+				<textarea rows="6" cols="50" class="span8" name="Chapter[title_comment]" id="Chapter_title_comment"></textarea>
+				<span class="help-inline error" id="Chapter_title_comment_em_" style="display: none"></span>
+			</div>
+		</div>
+
+		<div class="control-group ">
+			<div style="float:right">
+			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+			    'type' => 'primary',
+			    'toggle' => 'radio',
+			    'buttons' => array(
+			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
+			        array('label'=>'Don\'t approve','htmlOptions'=>array('class'=>'btn-danger')),
+			    ),
+			)); ?>
+			</div>
+			<label class="control-label" for="Chapter_slug_comment"><?php echo "slug_en: "; ?></label>
+			<div class="controls">
+				<?php echo $model->attributes["slug_en"]; ?>
+			</div>
+
+		</div>
+
+		<div class="control-group ">
+			<label class="control-label" for="Chapter_slug_comment">Comment:</label>
+			<div class="controls">
+				<textarea rows="6" cols="50" class="span8" name="Chapter[slug_comment]" id="Chapter_slug_comment"></textarea>
+				<span class="help-inline error" id="Chapter_slug_comment_em_" style="display: none"></span>
+			</div>
+		</div>
 
 
 	    <div class="form-actions">
