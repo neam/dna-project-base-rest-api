@@ -77,7 +77,7 @@ echo '</h3>' ?>
 <ul>
 
     <?php
-    $records = array($model->profiles(array('limit' => 250, 'scopes' => ''));
+    $records = array($model->profiles(array('limit' => 250, 'scopes' => '')));
     if (is_array($records)) {
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
