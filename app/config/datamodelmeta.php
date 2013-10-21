@@ -9,6 +9,7 @@ $config['params']['dataModelMeta'] = array();
 
 // Base models that should have CRUD generated
 $config['params']['dataModelMeta']['crudModels'] = array(
+    // Contents
     'Changeset' => 'changeset',
     'Chapter' => 'chapter',
     'DataChunk' => 'data_chunk',
@@ -30,6 +31,9 @@ $config['params']['dataModelMeta']['crudModels'] = array(
     'Tool' => 'tool',
     'VectorGraphic' => 'vector_graphic',
     'VideoFile' => 'video_file',
+    // User management
+    'Account' => 'users',
+    'Profiles' => 'profiles',
 );
 
 // Models that are part of the qa process
