@@ -260,7 +260,22 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
         <?php print $publishingProgress; ?>% Completed<br/>
         <?php print $requiredFieldsMissing; ?> required fields missing<br/>
 
-        Status: <?php print $model->qaState()->status; ?>
+        Status: <?php $this->widget(
+            'bootstrap.widgets.TbEditableField',
+            array(
+                'type' => 'select',
+                'model' => $model->qaState(),
+                'attribute' => 'status',
+                'url' => $this->createUrl('/' . lcfirst($model->tableName()) . 'QaState/editableSaver'),
+                'source' => array(
+                    array("value" => null, "text" => "Empty"),
+                    array("value" => "new", "text" => "New"),
+                    array("value" => "draft", "text" => "Draft"),
+                    array("value" => "preview", "text" => "Preview"),
+                    array("value" => "public", "text" => "Public"),
+                ),
+            )
+        ); ?>
 
     </div>
 </div>
