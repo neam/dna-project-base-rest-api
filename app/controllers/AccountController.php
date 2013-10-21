@@ -34,7 +34,7 @@ class AccountController extends Controller
             array(
                 'allow',
                 'actions' => array(
-                    'profile',
+                    'publicProfile',
                 ),
                 'users' => array('*'),
             ),
@@ -43,6 +43,7 @@ class AccountController extends Controller
                 'actions' => array(
                     'dashboard',
                     'translations',
+                    'profile',
                     'history',
                 ),
                 'users' => array('@'),

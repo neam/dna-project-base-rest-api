@@ -50,4 +50,34 @@ class Controller extends CController
         }
     }
 
+    /**
+     * Adds toggle action for all controllers.
+     * The child controller needs to update access filters accordingly.
+     * Attributes that can be toggled are specified by "safe" rules on scenario toggle.
+     */
+    public function actionToggle($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'toggle';
+
+        if (isset($_GET['attribute'])) {
+            $attribute = $_GET['attribute'];
+
+            try {
+                $before = $model->$attribute;
+                $model->attributes = array($attribute => $model->$attribute == 1 ? 0 : 1);
+                // check if safe, ie got set
+                if ($model->$attribute === $before) {
+                    throw new CException('Unsafe attribute');
+                }
+                if ($model->save()) {
+                    // do nothing is fine
+                }
+            } catch (Exception $e) {
+                $model->addError('id', $e->getMessage());
+            }
+        }
+    }
+
+
 }

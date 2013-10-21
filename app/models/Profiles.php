@@ -34,11 +34,9 @@ class Profiles extends BaseProfiles
     public function rules()
     {
         return array_merge(
-            parent::rules()
-        /* , array(
-          array('column1, column2', 'rule1'),
-          array('column3', 'rule2'),
-          ) */
+            parent::rules(), array(
+                array('public_profile, ' . implode(', ', I18nColumnsBehavior::attributeColumns('can_translate_to')), 'safe', 'on' => 'toggle'),
+            )
         );
     }
 

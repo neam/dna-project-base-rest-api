@@ -11,5 +11,17 @@ $this->breadcrumbs[] = $model->id;
         </small>
 
     </h1>
-
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+
+<div class="row">
+    <div class="span12">
+        <b><?php echo CHtml::encode($model->getAttributeLabel('create_at')); ?>:</b>
+        <?php echo CHtml::encode($model->create_at); ?>
+        <br/>
+
+        <b><?php echo CHtml::encode($model->getAttributeLabel('lastvisit_at')); ?>:</b>
+        <?php echo CHtml::encode($model->lastvisit_at); ?>
+        <br/>
+    </div>
+</div>
+

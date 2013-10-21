@@ -28,6 +28,7 @@ class ProfilesController extends Controller
                     'editableCreator',
                     'admin',
                     'delete',
+                    'toggle',
                 ),
                 'roles' => array('Profiles.*'),
             ),

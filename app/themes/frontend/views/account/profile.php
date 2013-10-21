@@ -13,181 +13,236 @@ $this->breadcrumbs[] = $model->id;
 </h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
-<?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-<br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('username')); ?>:</b>
-<?php echo CHtml::encode($model->username); ?>
-<br/>
+<?php if (Yii::app()->user->hasFlash('profileMessage')): ?>
+    <div class="success alert alert-success">
+        <?php echo Yii::app()->user->getFlash('profileMessage'); ?>
+    </div>
+<?php endif; ?>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('password')); ?>:</b>
-<?php echo CHtml::encode($model->password); ?>
-<br/>
+<style>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('email')); ?>:</b>
-<?php echo CHtml::encode($model->email); ?>
-<br/>
+    div#account-profile-public-profile-toggle-grid {
+        display: inline;
+    }
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('activkey')); ?>:</b>
-<?php echo CHtml::encode($model->activkey); ?>
-<br/>
+    #account-profile-public-profile-toggle-grid .table th, .table td {
+        border: 0px;
+    }
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('superuser')); ?>:</b>
-<?php echo CHtml::encode($model->superuser); ?>
-<br/>
+    #account-profile-public-profile-toggle-grid table {
+        width: 0%;
+        display: inline;
+    }
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('status')); ?>:</b>
-<?php echo CHtml::encode($model->status); ?>
-<br/>
+    .account-profile-grid .uneditable-input {
+        margin-bottom: 10px;
+    }
 
-<?php /*
-<b><?php echo CHtml::encode($model->getAttributeLabel('create_at')); ?>:</b>
-<?php echo CHtml::encode($model->create_at); ?>
-<br />
+</style>
+<div class="account-profile-grid">
+    <div class="row">
+        <div class="span12" style="line-height: 30px;">
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('lastvisit_at')); ?>:</b>
-<?php echo CHtml::encode($model->lastvisit_at); ?>
-<br />
-
-    */
-?>
-
-<div class="row">
-    <div class="span7">
-        <h2>
-            <?php echo Yii::t('model', 'Data') ?>
-            <small>
-                <?php echo $model->itemLabel ?>            </small>
-        </h2>
-
-        <?php
-        $this->widget(
-            'TbDetailView',
-            array(
-                'data' => $model,
-                'attributes' => array(
+            <div class="pull-left">
+                <?php
+                $relatedSearchModel = $model->profiles; //getRelatedSearchModel($model, 'profiles');
+                $columns = array();
+                $columns[] = array(
+                    'class' => 'TbToggleColumn',
+                    'checkedButtonLabel' => 'Inactivate',
+                    'uncheckedButtonLabel' => 'Activate',
+                    'displayText' => false,
+                    'name' => 'public_profile',
+                    'value' => 'CHtml::value($data,\'public_profile\')',
+                    'filter' => false,
+                    'toggleAction' => 'profiles/toggle'
+                );
+                $this->widget('TbGridView',
                     array(
-                        'name' => 'id',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'id',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
-                    ),
-                    array(
-                        'name' => 'username',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'username',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
-                    ),
-                    array(
-                        'name' => 'password',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'password',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
-                    ),
-                    array(
-                        'name' => 'email',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'email',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
-                    ),
-                    array(
-                        'name' => 'activkey',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'activkey',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
-                    ),
-                    array(
-                        'name' => 'superuser',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'superuser',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
-                    ),
-                    array(
-                        'name' => 'status',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'status',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
-                    ),
-                    array(
-                        'name' => 'create_at',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'create_at',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
-                    ),
-                    array(
-                        'name' => 'lastvisit_at',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'lastvisit_at',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
-                    ),
-                ),
-            )); ?>
+                        'id' => 'account-profile-public-profile-toggle-grid',
+                        'type' => TbGridView::TYPE_CONDENSED,
+                        'template' => '{items}',
+                        'dataProvider' => $relatedSearchModel->search(),
+                        'filter' => null,
+                        'enableSorting' => false,
+                        'hideHeader' => true,
+                        'pager' => array(
+                            'class' => 'TbPager',
+                            'displayFirstAndLast' => true,
+                        ),
+                        'columns' => $columns,
+                    ));
+                ?>
+            </div>
+
+            <div class="pull-left"><?php print Yii::t('account', 'Public profile'); ?></div>
+
+            <div class="pull-left" style="margin-left: 30px;">
+                <?php
+                echo CHtml::link(Yii::t("model", "Show public page"), array("publicProfile", "id" => $model->{$model->tableSchema->primaryKey}));
+                ?>
+            </div>
+
+        </div>
     </div>
 
-    <div class="span5">
-        <?php $this->renderPartial('_view-relations', array('model' => $model)); ?>    </div>
+    <div class="row">
+        <div class="span9">
+
+            <div class="row">
+                <div class="span12">
+
+                    <?php
+
+                    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+                        'id' => 'profiles-form',
+                        'enableAjaxValidation' => true,
+                        'enableClientValidation' => true,
+                        'type' => 'vertical',
+                    ));
+
+                    ?>
+
+                    <h2>
+                        <?php echo Yii::t('account', 'Info'); ?>
+
+                        <?php
+                        if (false) {
+                            echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+                                'class' => 'btn btn-primary'
+                            ));
+                        }
+                        ?>
+
+                    </h2>
+
+                    <?php
+
+                    echo $form->errorSummary($model);
+
+                    $this->renderPartial('/profiles/_elements', array(
+                        'model' => $model->profiles,
+                        'form' => $form,
+                    ));
+                    ?>
+
+                    <?php $this->endWidget() ?>
+
+                    <!-- Modal create-forms referenced to from create buttons (if any) -->
+
+                    <?php
+                    foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
+                        if (strpos($key, "modal:") === 0) {
+                            echo $clip;
+                        }
+                    }
+                    ?>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span4">
+
+                    <h2>
+                        <?php echo Yii::t('account', 'Languages'); ?>
+                    </h2>
+
+                    <?php print Yii::t('account', 'Which languages are you able to translate into? Check all that apply.'); ?>
+
+                    <?php
+                    $relatedSearchModel = $model->profiles; //getRelatedSearchModel($model, 'profiles');
+                    $columns = array();
+                    foreach (Yii::app()->langHandler->languages as $lang) {
+                        if ($lang == "en") {
+                            continue;
+                        }
+                        $columns[] = array(
+                            'class' => 'TbToggleColumn',
+                            'checkedButtonLabel' => 'Yes',
+                            'uncheckedButtonLabel' => 'No',
+                            'displayText' => false,
+                            'name' => 'can_translate_to_' . $lang,
+                            'header' => ucfirst($lang),
+                            'value' => 'CHtml::value($data,\'can_translate_to_' . $lang . '\')',
+                            'filter' => false,
+                            'toggleAction' => 'profiles/toggle'
+                        );
+                    }
+                    $this->widget('TbGridView',
+                        array(
+                            'id' => 'changeset-grid',
+                            'template' => '{items}',
+                            'dataProvider' => $relatedSearchModel->search(),
+                            'filter' => null,
+                            'enableSorting' => false,
+                            'pager' => array(
+                                'class' => 'TbPager',
+                                'displayFirstAndLast' => true,
+                            ),
+                            'columns' => $columns,
+                        ));
+                    ?>
+
+                </div>
+
+                <div class="span5">
+
+                    <h2>
+                        <?php echo Yii::t('account', 'Permissions'); ?>
+                    </h2>
+
+                    <div class="row">
+                        <div class="span12">
+                            <a>Apply for new permission</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span4">
+                            <h4>Roles</h4>
+
+                            <p>
+                                <?php
+                                $items = array_keys(Yii::app()->authManager->getAuthItems(2, $model->id));
+                                print implode(", ", $items);
+                                ?>
+                            </p>
+                        </div>
+                        <div class="span4">
+                            <h4>Operations</h4>
+
+                            <p>
+                                <?php
+                                $items = array_keys(Yii::app()->authManager->getAuthItems(1, $model->id));
+                                print implode(", ", $items);
+                                ?>
+                            </p>
+                        </div>
+                        <div class="span4">
+                            <h4>Tasks</h4>
+
+                            <p>
+                                <?php
+                                $items = array_keys(Yii::app()->authManager->getAuthItems(0, $model->id));
+                                print implode(", ", $items);
+                                ?>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="span3">
+
+            <h2>
+                <?php echo Yii::t('account', 'Badges'); ?>
+            </h2>
+
+            TODO
+
+        </div>
+    </div>
 </div>
