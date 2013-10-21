@@ -5,7 +5,7 @@ $this->breadcrumbs[] = $model->id;
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
     <h1>
 
-        <?php echo $model->profiles->first_name." ".$model->profiles->last_name; ?>
+        <?php echo $model->profiles->first_name . " " . $model->profiles->last_name; ?>
         <small>
             <?php echo Yii::t('model', 'Translations') ?> <!--#<?php echo $model->id ?>-->
         </small>
