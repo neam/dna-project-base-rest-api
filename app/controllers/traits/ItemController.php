@@ -18,7 +18,7 @@ trait ItemController
                     'add',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Add'
+                    'Item.Add'
                 ),
             ),
             array('allow',
@@ -26,7 +26,7 @@ trait ItemController
                     'draft',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Draft'
+                    'Item.Draft'
                 ),
             ),
             array('allow',
@@ -34,7 +34,7 @@ trait ItemController
                     'prepPreshow',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.PrepPreshow'
+                    'Item.PrepPreshow'
                 ),
             ),
             array('allow',
@@ -42,7 +42,7 @@ trait ItemController
                     'preshow',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Preshow'
+                    'Item.Preshow'
                 ),
             ),
             array('allow',
@@ -50,7 +50,7 @@ trait ItemController
                     'evaluate',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Evaluate'
+                    'Item.Evaluate'
                 ),
             ),
             array('allow',
@@ -58,7 +58,7 @@ trait ItemController
                     'prepPublish',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.PrepPublish'
+                    'Item.PrepPublish'
                 ),
             ),
             array('allow',
@@ -66,7 +66,7 @@ trait ItemController
                     'preview',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Preview'
+                    'Item.Preview'
                 ),
             ),
             array('allow',
@@ -74,7 +74,7 @@ trait ItemController
                     'review',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Review'
+                    'Item.Review'
                 ),
             ),
             array('allow',
@@ -82,7 +82,7 @@ trait ItemController
                     'prepPreshow',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.PrepPreshow'
+                    'Item.PrepPreshow'
                 ),
             ),
             array('allow',
@@ -90,7 +90,7 @@ trait ItemController
                     'proofRead',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.ProofRead'
+                    'Item.ProofRead'
                 ),
             ),
             array('allow',
@@ -98,7 +98,7 @@ trait ItemController
                     'translate',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Translate'
+                    'Item.Translate'
                 ),
             ),
             array('allow',
@@ -106,7 +106,7 @@ trait ItemController
                     'publish',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Publish'
+                    'Item.Publish'
                 ),
             ),
             array('allow',
@@ -114,7 +114,7 @@ trait ItemController
                     'edit',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Edit'
+                    'Item.Edit'
                 ),
             ),
             array('allow',
@@ -122,7 +122,7 @@ trait ItemController
                     'clone',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Clone'
+                    'Item.Clone'
                 ),
             ),
             array('allow',
@@ -130,7 +130,7 @@ trait ItemController
                     'remove',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Remove'
+                    'Item.Remove'
                 ),
             ),
             array('allow',
@@ -138,7 +138,7 @@ trait ItemController
                     'replace',
                 ),
                 'roles' => array(
-                    'GapminderSchool.Item.Replace'
+                    'Item.Replace'
                 ),
             ),
         );
