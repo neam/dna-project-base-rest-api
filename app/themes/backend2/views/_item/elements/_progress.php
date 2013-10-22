@@ -36,33 +36,33 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
 <?php if ($this->action->id == "draft" || $this->action->id == "prepPublish"): ?>
 
-<div class="row">
-    <div class="span4">
+    <div class="row">
+        <div class="span4">
 
-        <?php
-        $this->widget(
-            'bootstrap.widgets.TbProgress',
-            array(
-                'type' => 'success', // 'info', 'success' or 'danger'
-                'percent' => $model->qaState()->draft_validation_progress,
-            )
-        );
-        ?>
+            <?php
+            $this->widget(
+                'bootstrap.widgets.TbProgress',
+                array(
+                    'type' => 'success', // 'info', 'success' or 'danger'
+                    'percent' => $model->qaState()->draft_validation_progress,
+                )
+            );
+            ?>
+        </div>
+        <div class="span8">
+
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Title & Slug"),
+                "type" => $this->action->id == "draft" ? "inverse" : null,
+                "size" => "small",
+                "icon" => "icon-thumbs-up" . ($this->action->id == "draft" ? " icon-white" : null),
+                "url" => array("draft", "id" => $model->{$model->tableSchema->primaryKey})
+            ));
+            ?>
+
+        </div>
     </div>
-    <div class="span8">
-
-        <?php
-        $this->widget("bootstrap.widgets.TbButton", array(
-            "label" => Yii::t("model", "Title & Slug"),
-            "type" => $this->action->id == "draft" ? "inverse" : null,
-            "size" => "small",
-            "icon" => "icon-thumbs-up" . ($this->action->id == "draft" ? " icon-white" : null),
-            "url" => array("draft", "id" => $model->{$model->tableSchema->primaryKey})
-        ));
-        ?>
-
-    </div>
-</div>
 
 <?php endif; ?>
 
@@ -95,141 +95,141 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
         </div>
     </div>
-<div class="row">
-    <div class="span4">
+    <div class="row">
+        <div class="span4">
 
-        <?php
-        $this->widget(
-            'bootstrap.widgets.TbProgress',
-            array(
-                'type' => 'success', // 'info', 'success' or 'danger'
-                'percent' => $publishingProgress,
-            )
-        );
-        ?>
+            <?php
+            $this->widget(
+                'bootstrap.widgets.TbProgress',
+                array(
+                    'type' => 'success', // 'info', 'success' or 'danger'
+                    'percent' => $publishingProgress,
+                )
+            );
+            ?>
+        </div>
+        <div class="span8">
+
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "About"),
+                "type" => $this->action->id == "publish" ? "inverse" : null,
+                "size" => "small",
+                "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
+                "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+            ));
+            ?>
+
+        </div>
     </div>
-    <div class="span8">
+    <div class="row">
+        <div class="span4">
 
-        <?php
-        $this->widget("bootstrap.widgets.TbButton", array(
-            "label" => Yii::t("model", "About"),
-            "type" => $this->action->id == "publish" ? "inverse" : null,
-            "size" => "small",
-            "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-            "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
-        ));
-        ?>
+            <?php
+            $this->widget(
+                'bootstrap.widgets.TbProgress',
+                array(
+                    'type' => 'success', // 'info', 'success' or 'danger'
+                    'percent' => $publishingProgress,
+                )
+            );
+            ?>
+        </div>
+        <div class="span8">
 
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Teachers Guide"),
+                "type" => $this->action->id == "publish" ? "inverse" : null,
+                "size" => "small",
+                "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
+                "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+            ));
+            ?>
+
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="span4">
+    <div class="row">
+        <div class="span4">
 
-        <?php
-        $this->widget(
-            'bootstrap.widgets.TbProgress',
-            array(
-                'type' => 'success', // 'info', 'success' or 'danger'
-                'percent' => $publishingProgress,
-            )
-        );
-        ?>
+            <?php
+            $this->widget(
+                'bootstrap.widgets.TbProgress',
+                array(
+                    'type' => 'success', // 'info', 'success' or 'danger'
+                    'percent' => $publishingProgress,
+                )
+            );
+            ?>
+        </div>
+        <div class="span8">
+
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Exercise(s)"),
+                "type" => $this->action->id == "publish" ? "inverse" : null,
+                "size" => "small",
+                "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
+                "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+            ));
+            ?>
+
+        </div>
     </div>
-    <div class="span8">
+    <div class="row">
+        <div class="span4">
 
-        <?php
-        $this->widget("bootstrap.widgets.TbButton", array(
-            "label" => Yii::t("model", "Teachers Guide"),
-            "type" => $this->action->id == "publish" ? "inverse" : null,
-            "size" => "small",
-            "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-            "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
-        ));
-        ?>
+            <?php
+            $this->widget(
+                'bootstrap.widgets.TbProgress',
+                array(
+                    'type' => 'success', // 'info', 'success' or 'danger'
+                    'percent' => $publishingProgress,
+                )
+            );
+            ?>
+        </div>
+        <div class="span8">
 
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Video"),
+                "type" => $this->action->id == "publish" ? "inverse" : null,
+                "size" => "small",
+                "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
+                "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+            ));
+            ?>
+
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="span4">
+    <div class="row">
+        <div class="span4">
 
-        <?php
-        $this->widget(
-            'bootstrap.widgets.TbProgress',
-            array(
-                'type' => 'success', // 'info', 'success' or 'danger'
-                'percent' => $publishingProgress,
-            )
-        );
-        ?>
+            <?php
+            $this->widget(
+                'bootstrap.widgets.TbProgress',
+                array(
+                    'type' => 'success', // 'info', 'success' or 'danger'
+                    'percent' => $publishingProgress,
+                )
+            );
+            ?>
+        </div>
+        <div class="span8">
+
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Slideshow(s)"),
+                "type" => $this->action->id == "publish" ? "inverse" : null,
+                "size" => "small",
+                "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
+                "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+            ));
+            ?>
+
+        </div>
     </div>
-    <div class="span8">
-
-        <?php
-        $this->widget("bootstrap.widgets.TbButton", array(
-            "label" => Yii::t("model", "Exercise(s)"),
-            "type" => $this->action->id == "publish" ? "inverse" : null,
-            "size" => "small",
-            "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-            "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
-        ));
-        ?>
-
-    </div>
-</div>
-<div class="row">
-    <div class="span4">
-
-        <?php
-        $this->widget(
-            'bootstrap.widgets.TbProgress',
-            array(
-                'type' => 'success', // 'info', 'success' or 'danger'
-                'percent' => $publishingProgress,
-            )
-        );
-        ?>
-    </div>
-    <div class="span8">
-
-        <?php
-        $this->widget("bootstrap.widgets.TbButton", array(
-            "label" => Yii::t("model", "Video"),
-            "type" => $this->action->id == "publish" ? "inverse" : null,
-            "size" => "small",
-            "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-            "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
-        ));
-        ?>
-
-    </div>
-</div>
-<div class="row">
-    <div class="span4">
-
-        <?php
-        $this->widget(
-            'bootstrap.widgets.TbProgress',
-            array(
-                'type' => 'success', // 'info', 'success' or 'danger'
-                'percent' => $publishingProgress,
-            )
-        );
-        ?>
-    </div>
-    <div class="span8">
-
-        <?php
-        $this->widget("bootstrap.widgets.TbButton", array(
-            "label" => Yii::t("model", "Slideshow(s)"),
-            "type" => $this->action->id == "publish" ? "inverse" : null,
-            "size" => "small",
-            "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-            "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
-        ));
-        ?>
-
-    </div>
-</div>
 <?php endif; ?>
 
 
@@ -247,8 +247,8 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
     <div class="span12">
 
         <?php if ($this->action->id == "draft"): ?>
-        <?php $publishingProgress = 100; ?>
-        <?php $requiredFieldsMissing = "No"; ?>
+            <?php $publishingProgress = 100; ?>
+            <?php $requiredFieldsMissing = "No"; ?>
         <?php endif; ?>
 
         <?php print $publishingProgress; ?>% Completed<br/>
