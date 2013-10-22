@@ -49,4 +49,27 @@ class Chapter extends BaseChapter
         );
     }
 
+    public function attributeLabels()
+    {
+        return array_merge(
+            parent::attributeLabels(), array(
+                'title' => Yii::t('model', 'Title'),
+                'title_en' => Yii::t('model', 'English Title'),
+            )
+        );
+    }
+    public function getAttributeHint($key){
+        $a = $this->attributeHints();
+        return $a[$key];
+    }
+    public function attributeHints()
+    {
+        return array_merge(
+            parent::attributeHints(), array(
+                'title_en' => Yii::t('model', 'Chapter titles are descriptive with common language. Mentioning what data, geography and time is covered. '),
+                'slug_en' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "regional_population_map" url to the chapter with populatoins on the map.'),
+            )
+        );
+    }
+
 }

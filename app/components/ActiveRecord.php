@@ -96,4 +96,14 @@ class ActiveRecord extends CActiveRecord
 
     }
 
+    public function attributeLabels()
+    {
+        return array();
+    }
+
+    public function attributeHints()
+    {
+           return array();
+    }
+
 }
