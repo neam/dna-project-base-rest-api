@@ -44,15 +44,15 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
     </div>
     <div class="span9 well well-white">
 
-	<?php
-    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-        'id' => 'chapter-form',
-        'enableAjaxValidation' => true,
-        'enableClientValidation' => true,
-        'type' => 'horizontal',
-    ));
-    echo $form->errorSummary($model);
-    ?>
+        <?php
+        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+            'id' => 'chapter-form',
+            'enableAjaxValidation' => true,
+            'enableClientValidation' => true,
+            'type' => 'horizontal',
+        ));
+        echo $form->errorSummary($model);
+        ?>
 
 
         <div class="row">
@@ -76,157 +76,157 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
             <div class="span1">Title:</div>
             <div class="span4"><?php echo $model->attributes["title_en"]; ?></div>
             <div class="span2">
-			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-			    'type' => 'primary',
-			    'toggle' => 'radio',
-			    'buttons' => array(
-			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
-			    ),
-			)); ?>
+                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                    'type' => 'primary',
+                    'toggle' => 'radio',
+                    'buttons' => array(
+                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
+                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
+                    ),
+                )); ?>
             </div>
         </div>
         <div class="row control-group">
             <div class="span1">Slug:</div>
             <div class="span4"><?php echo $model->attributes["slug_en"]; ?></div>
             <div class="span2">
-			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-			    'type' => 'primary',
-			    'toggle' => 'radio',
-			    'buttons' => array(
-			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
-			    ),
-			)); ?>
+                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                    'type' => 'primary',
+                    'toggle' => 'radio',
+                    'buttons' => array(
+                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
+                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
+                    ),
+                )); ?>
             </div>
         </div>
         <div class="row control-group">
             <div class="span1">Thumbnail:</div>
             <div class="span4"><?php echo $model->attributes["thumbnail_media_id"]; ?></div>
             <div class="span2">
-			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-			    'type' => 'primary',
-			    'toggle' => 'radio',
-			    'buttons' => array(
-			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
-			    ),
-			)); ?>
+                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                    'type' => 'primary',
+                    'toggle' => 'radio',
+                    'buttons' => array(
+                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
+                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
+                    ),
+                )); ?>
             </div>
         </div>
         <div class="row control-group">
             <div class="span1">About:</div>
             <div class="span4"><?php echo $model->attributes["about_en"]; ?></div>
             <div class="span2">
-			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-			    'type' => 'primary',
-			    'toggle' => 'radio',
-			    'buttons' => array(
-			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
-			    ),
-			)); ?>
+                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                    'type' => 'primary',
+                    'toggle' => 'radio',
+                    'buttons' => array(
+                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
+                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
+                    ),
+                )); ?>
             </div>
         </div>
         <div class="row control-group">
             <div class="span1">Tags:</div>
             <div class="span4"></div>
             <div class="span2">
-			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-			    'type' => 'primary',
-			    'toggle' => 'radio',
-			    'buttons' => array(
-			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
-			    ),
-			)); ?>
+                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                    'type' => 'primary',
+                    'toggle' => 'radio',
+                    'buttons' => array(
+                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
+                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
+                    ),
+                )); ?>
             </div>
         </div>
         <div class="row control-group">
             <div class="span1">Videos:</div>
             <div class="span4">
-            	<div>Video 1</div>
-            	<div>Video 2</div>
+                <div>Video 1</div>
+                <div>Video 2</div>
             </div>
             <div class="span2">
-			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-			    'type' => 'primary',
-			    'toggle' => 'radio',
-			    'buttons' => array(
-			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
-			    ),
-			)); ?>
+                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                    'type' => 'primary',
+                    'toggle' => 'radio',
+                    'buttons' => array(
+                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
+                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
+                    ),
+                )); ?>
             </div>
         </div>
         <div class="row control-group">
             <div class="span1">Teachers guide:</div>
             <div class="span4">xxx</div>
             <div class="span2">
-			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-			    'type' => 'primary',
-			    'toggle' => 'radio',
-			    'buttons' => array(
-			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
-			    ),
-			)); ?>
+                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                    'type' => 'primary',
+                    'toggle' => 'radio',
+                    'buttons' => array(
+                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
+                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
+                    ),
+                )); ?>
             </div>
         </div>
         <div class="row control-group">
             <div class="span1">Exercises:</div>
             <div class="span4">
-            	<div>Exercise 1</div>
-            	<div>Exercise 2</div>
+                <div>Exercise 1</div>
+                <div>Exercise 2</div>
             </div>
             <div class="span2">
-			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-			    'type' => 'primary',
-			    'toggle' => 'radio',
-			    'buttons' => array(
-			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
-			    ),
-			)); ?>
+                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                    'type' => 'primary',
+                    'toggle' => 'radio',
+                    'buttons' => array(
+                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
+                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
+                    ),
+                )); ?>
             </div>
         </div>
         <div class="row control-group">
             <div class="span1">Snapshots:</div>
             <div class="span4">
-            	<div>Snapshot 1</div>
-            	<div>Snapshot 2</div>
+                <div>Snapshot 1</div>
+                <div>Snapshot 2</div>
             </div>
             <div class="span2">
-			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-			    'type' => 'primary',
-			    'toggle' => 'radio',
-			    'buttons' => array(
-			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
-			    ),
-			)); ?>
+                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                    'type' => 'primary',
+                    'toggle' => 'radio',
+                    'buttons' => array(
+                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
+                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
+                    ),
+                )); ?>
             </div>
         </div>
 
-	    <div class="form-actions">
-	        <?php
-	        echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-	                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-	                'class' => 'btn'
-	            )
-	        );
-	        echo ' ';
-	        echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-	                'class' => 'btn btn-primary'
-	            )
-	        );
-	        ?>    </div>
+        <div class="form-actions">
+            <?php
+            echo CHtml::Button(Yii::t('model', 'Cancel'), array(
+                    'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+                    'class' => 'btn'
+                )
+            );
+            echo ' ';
+            echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+                    'class' => 'btn btn-primary'
+                )
+            );
+            ?>    </div>
 
-	        <div class="alert alert-info">
-	            Hint: Lorem ipsum
-	        </div>
+        <div class="alert alert-info">
+            Hint: Lorem ipsum
+        </div>
 
-	    <?php $this->endWidget() ?>
+        <?php $this->endWidget() ?>
 
     </div>
 

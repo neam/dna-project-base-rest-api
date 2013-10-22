@@ -47,15 +47,15 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
     </div>
     <div class="span9 well well-white">
 
-    <?php
-    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-        'id' => 'chapter-form',
-        'enableAjaxValidation' => true,
-        'enableClientValidation' => true,
-        'type' => 'horizontal',
-    ));
-    echo $form->errorSummary($model);
-    ?>
+        <?php
+        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+            'id' => 'chapter-form',
+            'enableAjaxValidation' => true,
+            'enableClientValidation' => true,
+            'type' => 'horizontal',
+        ));
+        echo $form->errorSummary($model);
+        ?>
 
 
         <div class="row">
@@ -85,29 +85,29 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             </div>
         </div>
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'thumbnailMedia',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'thumbnail_media_id', $input);
-            ?>
+        <?php
+        $input = $this->widget(
+            '\GtcRelation',
+            array(
+                'model' => $model,
+                'relation' => 'thumbnailMedia',
+                'fields' => 'itemLabel',
+                'allowEmpty' => true,
+                'style' => 'dropdownlist',
+                'htmlOptions' => array(
+                    'checkAll' => 'all'
+                ),
+            )
+            , true);
+        echo $form->customRow($model, 'thumbnail_media_id', $input);
+        ?>
 
-            <?php
-            $formId = 'chapter-thumbnail_media_id-' . \uniqid() . '-form';
-            ?>
+        <?php
+        $formId = 'chapter-thumbnail_media_id-' . \uniqid() . '-form';
+        ?>
 
-            <div class="control-group">
-                <div class="controls">
+        <div class="control-group">
+            <div class="controls">
                 <?php
                 echo $this->widget('bootstrap.widgets.TbButton', array(
                     'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
@@ -118,109 +118,122 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
                     ),
                 ), true);
                 ?>
-                </div>
             </div>
+        </div>
 
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//p3Media/_modal_form', array(
-                'formId' => $formId,
-                'inputSelector' => '#Chapter_thumbnail_media_id',
-                'model' => new P3Media,
-                'pk' => 'id',
-                'field' => 'itemLabel',
-            ));
-            $this->endClip();
-            ?>
+        <?php
+        $this->beginClip('modal:' . $formId . '-modal');
+        $this->renderPartial('//p3Media/_modal_form', array(
+            'formId' => $formId,
+            'inputSelector' => '#Chapter_thumbnail_media_id',
+            'model' => new P3Media,
+            'pk' => 'id',
+            'field' => 'itemLabel',
+        ));
+        $this->endClip();
+        ?>
 
-            <?php echo $form->textAreaRow($model, 'about', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+        <?php echo $form->textAreaRow($model, 'about', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
-			<div class="control-group ">
-				<label class="control-label" for="TestForm_multiDropdown">Tags</label>
-				<div class="controls">
-					<?php
-					$this->widget(
-					    'bootstrap.widgets.TbSelect2',
-					    array(
-					        'asDropDownList' => false,
-					        'name' => 'tags',
-					        'options' => array(
-					            'tags' => array('predefined-tag-1', 'cool-tag', 'some-other-tag', 'isnt-tags-cool-or-what'),
-					            'tokenSeparators' => array(',', ' ')
-					        )
-					    )
-					);
-					?>
-				</div>
-			</div>
+        <div class="control-group ">
+            <label class="control-label" for="TestForm_multiDropdown">Tags</label>
 
-			<div class="control-group ">
-				<label class="control-label" for="">Videos</label>
-				<div class="controls">
-					<ul><li>Video1</li><li>Video2</li></ul>
-					<?php
-			            echo CHtml::Button(Yii::t('model', 'Create new video'), array(
-			                    //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-			                    'class' => 'btn'
-			                )
-			            );
-            		?>
-				</div>
-			</div>
+            <div class="controls">
+                <?php
+                $this->widget(
+                    'bootstrap.widgets.TbSelect2',
+                    array(
+                        'asDropDownList' => false,
+                        'name' => 'tags',
+                        'options' => array(
+                            'tags' => array('predefined-tag-1', 'cool-tag', 'some-other-tag', 'isnt-tags-cool-or-what'),
+                            'tokenSeparators' => array(',', ' ')
+                        )
+                    )
+                );
+                ?>
+            </div>
+        </div>
 
+        <div class="control-group ">
+            <label class="control-label" for="">Videos</label>
 
-            <?php echo $form->html5EditorRow($model, 'teachers_guide', array('rows' => 6, 'cols' => 50, 'class' => 'span6', 'options' => array(
-                'link' => true,
-                'image' => false,
-                'color' => false,
-                'html' => true,
-            ))); ?>
+            <div class="controls">
+                <ul>
+                    <li>Video1</li>
+                    <li>Video2</li>
+                </ul>
+                <?php
+                echo CHtml::Button(Yii::t('model', 'Create new video'), array(
+                        //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+                        'class' => 'btn'
+                    )
+                );
+                ?>
+            </div>
+        </div>
 
 
-			<div class="control-group ">
-				<label class="control-label" for="">Exercices</label>
-				<div class="controls">
-					<ul><li>Exercise 1</li><li>Exercise 2</li></ul>
-					<?php
-			            echo CHtml::Button(Yii::t('model', 'Create new exercise'), array(
-			                    //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-			                    'class' => 'btn'
-			                )
-			            );
-            		?>
-				</div>
-			</div>
+        <?php echo $form->html5EditorRow($model, 'teachers_guide', array('rows' => 6, 'cols' => 50, 'class' => 'span6', 'options' => array(
+            'link' => true,
+            'image' => false,
+            'color' => false,
+            'html' => true,
+        ))); ?>
 
 
-			<div class="control-group ">
-				<label class="control-label" for="">Snapshots</label>
-				<div class="controls">
-					<ul><li>Snapshot 1</li><li>Snapshot 2</li></ul>
-					<?php
-			            echo CHtml::Button(Yii::t('model', 'Create new snapshot'), array(
-			                    //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-			                    'class' => 'btn'
-			                )
-			            );
-            		?>
-				</div>
-			</div>
+        <div class="control-group ">
+            <label class="control-label" for="">Exercices</label>
+
+            <div class="controls">
+                <ul>
+                    <li>Exercise 1</li>
+                    <li>Exercise 2</li>
+                </ul>
+                <?php
+                echo CHtml::Button(Yii::t('model', 'Create new exercise'), array(
+                        //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+                        'class' => 'btn'
+                    )
+                );
+                ?>
+            </div>
+        </div>
 
 
-<!--
-tags
-video
-teachers guide
-excecrices
-snapshots
-datachunks
-tests
-related
-credits
--->
+        <div class="control-group ">
+            <label class="control-label" for="">Snapshots</label>
+
+            <div class="controls">
+                <ul>
+                    <li>Snapshot 1</li>
+                    <li>Snapshot 2</li>
+                </ul>
+                <?php
+                echo CHtml::Button(Yii::t('model', 'Create new snapshot'), array(
+                        //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+                        'class' => 'btn'
+                    )
+                );
+                ?>
+            </div>
+        </div>
 
 
-            <div class="form-actions">
+        <!--
+        tags
+        video
+        teachers guide
+        excecrices
+        snapshots
+        datachunks
+        tests
+        related
+        credits
+        -->
+
+
+        <div class="form-actions">
             <?php
             echo CHtml::Button(Yii::t('model', 'Cancel'), array(
                     'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
@@ -233,11 +246,11 @@ credits
                 )
             );
             ?>
-            </div>
+        </div>
 
-            <div class="alert alert-info">
-                Hint: Lorem ipsum
-            </div>
+        <div class="alert alert-info">
+            Hint: Lorem ipsum
+        </div>
 
         <?php $this->endWidget() ?>
 

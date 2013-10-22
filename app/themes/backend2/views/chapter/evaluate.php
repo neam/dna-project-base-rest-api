@@ -47,15 +47,15 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
     </div>
     <div class="span9 well well-white">
 
-	<?php
-    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-        'id' => 'chapter-form',
-        'enableAjaxValidation' => true,
-        'enableClientValidation' => true,
-        'type' => 'horizontal',
-    ));
-    echo $form->errorSummary($model);
-    ?>
+        <?php
+        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+            'id' => 'chapter-form',
+            'enableAjaxValidation' => true,
+            'enableClientValidation' => true,
+            'type' => 'horizontal',
+        ));
+        echo $form->errorSummary($model);
+        ?>
 
 
         <div class="row">
@@ -77,19 +77,20 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
             <div class="span1">Title:</div>
             <div class="span2"><?php echo $model->attributes["title_en"]; ?></div>
             <div class="span2">
-			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-			    'type' => 'primary',
-			    'toggle' => 'radio',
-			    'buttons' => array(
-			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
-			    ),
-			)); ?>
+                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                    'type' => 'primary',
+                    'toggle' => 'radio',
+                    'buttons' => array(
+                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
+                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
+                    ),
+                )); ?>
             </div>
             <div class="span1">Comment:</div>
             <div class="span4">
-				<textarea rows="6" cols="50" class="span8" name="Chapter[title_comment]" id="Chapter_title_comment"></textarea>
-				<span class="help-inline error" id="Chapter_title_comment_em_" style="display: none"></span>
+                <textarea rows="6" cols="50" class="span8" name="Chapter[title_comment]"
+                          id="Chapter_title_comment"></textarea>
+                <span class="help-inline error" id="Chapter_title_comment_em_" style="display: none"></span>
             </div>
         </div>
 
@@ -97,41 +98,42 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
             <div class="span1">Slug:</div>
             <div class="span2"><?php echo $model->attributes["slug_en"]; ?></div>
             <div class="span2">
-			<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-			    'type' => 'primary',
-			    'toggle' => 'radio',
-			    'buttons' => array(
-			        array('label'=>'Approve','htmlOptions'=>array('class'=>'btn-success')),
-			        array('label'=>'Reject','htmlOptions'=>array('class'=>'btn-danger')),
-			    ),
-			)); ?>
+                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                    'type' => 'primary',
+                    'toggle' => 'radio',
+                    'buttons' => array(
+                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
+                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
+                    ),
+                )); ?>
             </div>
             <div class="span1">Comment:</div>
             <div class="span4">
-				<textarea rows="6" cols="50" class="span8" name="Chapter[title_comment]" id="Chapter_title_comment"></textarea>
-				<span class="help-inline error" id="Chapter_title_comment_em_" style="display: none"></span>
+                <textarea rows="6" cols="50" class="span8" name="Chapter[title_comment]"
+                          id="Chapter_title_comment"></textarea>
+                <span class="help-inline error" id="Chapter_title_comment_em_" style="display: none"></span>
             </div>
         </div>
 
-	    <div class="form-actions">
-	        <?php
-	        echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-	                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-	                'class' => 'btn'
-	            )
-	        );
-	        echo ' ';
-	        echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-	                'class' => 'btn btn-primary'
-	            )
-	        );
-	        ?>    </div>
+        <div class="form-actions">
+            <?php
+            echo CHtml::Button(Yii::t('model', 'Cancel'), array(
+                    'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+                    'class' => 'btn'
+                )
+            );
+            echo ' ';
+            echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+                    'class' => 'btn btn-primary'
+                )
+            );
+            ?>    </div>
 
-	        <div class="alert alert-info">
-	            Hint: Lorem ipsum
-	        </div>
+        <div class="alert alert-info">
+            Hint: Lorem ipsum
+        </div>
 
-	    <?php $this->endWidget() ?>
+        <?php $this->endWidget() ?>
 
     </div>
 

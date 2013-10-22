@@ -47,15 +47,15 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
     </div>
     <div class="span9 well well-white">
 
-	<?php
-    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-        'id' => 'videoFile-form',
-        'enableAjaxValidation' => true,
-        'enableClientValidation' => true,
-        'type' => 'horizontal',
-    ));
-    echo $form->errorSummary($model);
-    ?>
+        <?php
+        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+            'id' => 'videoFile-form',
+            'enableAjaxValidation' => true,
+            'enableClientValidation' => true,
+            'type' => 'horizontal',
+        ));
+        echo $form->errorSummary($model);
+        ?>
 
 
         <div class="row">
@@ -75,25 +75,25 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
         </div>
 
 
-	    <div class="form-actions">
-	        <?php
-	        echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-	                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('videoFile/admin'),
-	                'class' => 'btn'
-	            )
-	        );
-	        echo ' ';
-	        echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-	                'class' => 'btn btn-primary'
-	            )
-	        );
-	        ?>    </div>
+        <div class="form-actions">
+            <?php
+            echo CHtml::Button(Yii::t('model', 'Cancel'), array(
+                    'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('videoFile/admin'),
+                    'class' => 'btn'
+                )
+            );
+            echo ' ';
+            echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+                    'class' => 'btn btn-primary'
+                )
+            );
+            ?>    </div>
 
-	        <div class="alert alert-info">
-	            Hint: Lorem ipsum
-	        </div>
+        <div class="alert alert-info">
+            Hint: Lorem ipsum
+        </div>
 
-	    <?php $this->endWidget() ?>
+        <?php $this->endWidget() ?>
 
     </div>
 

@@ -47,15 +47,15 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for preshow');
     </div>
     <div class="span9 well well-white">
 
-    <?php
-    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-        'id' => 'exercise-form',
-        'enableAjaxValidation' => true,
-        'enableClientValidation' => true,
-        'type' => 'horizontal',
-    ));
-    echo $form->errorSummary($model);
-    ?>
+        <?php
+        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+            'id' => 'exercise-form',
+            'enableAjaxValidation' => true,
+            'enableClientValidation' => true,
+            'type' => 'horizontal',
+        ));
+        echo $form->errorSummary($model);
+        ?>
 
 
         <div class="row">
@@ -83,18 +83,18 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for preshow');
         </div>
 
         <div class="form-actions">
-        <?php
-        echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('exercise/admin'),
-                'class' => 'btn'
-            )
-        );
-        echo ' ';
-        echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-                'class' => 'btn btn-primary'
-            )
-        );
-        ?>
+            <?php
+            echo CHtml::Button(Yii::t('model', 'Cancel'), array(
+                    'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('exercise/admin'),
+                    'class' => 'btn'
+                )
+            );
+            echo ' ';
+            echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+                    'class' => 'btn btn-primary'
+                )
+            );
+            ?>
         </div>
 
         <div class="alert alert-info">
