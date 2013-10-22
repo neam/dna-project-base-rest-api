@@ -61,15 +61,67 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
         <div class="row">
             <div class="span9">
 
-                <h2>Prepare for publishing
+                <h2><?php Yii::t('app', 'Prepare for publishing'); ?>
                     <small></small>
                 </h2>
 
             </div>
+            <div class="span3">
+
+                <div class="btn-toolbar pull-right">
+
+                    <div class="btn-group">
+                        <?php
+                        echo CHtml::submitButton(Yii::t('model', 'Save and Continue'), array(
+                                'class' => 'btn btn-large btn-primary'
+                            )
+                        );
+                        ?>
+
+                    </div>
+
+                </div>
+
+            </div>
         </div>
 
-        <p>Now you're supposed to go directly to the first field.... thumbnail</p>
+        <div class="control-group ">
+            <label class="control-label" for="">Snapshots</label>
 
+            <div class="controls">
+                <ul>
+                    <li>Snapshot 1</li>
+                    <li>Snapshot 2</li>
+                </ul>
+                <?php
+                echo CHtml::Button(Yii::t('model', 'Create new snapshot'), array(
+                        //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+                        'class' => 'btn'
+                    )
+                );
+                ?>
+            </div>
+        </div>
+
+
+        <div class="form-actions">
+            <?php
+            echo CHtml::Button(Yii::t('model', 'Cancel'), array(
+                    'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
+                    'class' => 'btn'
+                )
+            );
+            echo ' ';
+            echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+                    'class' => 'btn btn-primary'
+                )
+            );
+            ?>
+        </div>
+
+        <div class="alert alert-info">
+            Hint: Lorem ipsum
+        </div>
 
         <?php $this->endWidget() ?>
 

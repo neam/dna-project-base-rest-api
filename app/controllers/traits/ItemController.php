@@ -63,6 +63,54 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
+                    'prepPublishThumbnail',
+                ),
+                'roles' => array(
+                    'Item.PrepPublish'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'prepPublishAbout',
+                ),
+                'roles' => array(
+                    'Item.PrepPublish'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'prepPublishTeachersguide',
+                ),
+                'roles' => array(
+                    'Item.PrepPublish'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'prepPublishExercises',
+                ),
+                'roles' => array(
+                    'Item.PrepPublish'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'prepPublishVideos',
+                ),
+                'roles' => array(
+                    'Item.PrepPublish'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'prepPublishSnapshots',
+                ),
+                'roles' => array(
+                    'Item.PrepPublish'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
                     'preview',
                 ),
                 'roles' => array(
@@ -264,8 +312,45 @@ trait ItemController
 
     public function actionPrepPublish($id)
     {
+        // TODO SHOULD GO TO ... thumbnail?
         $model = $this->saveAndContinueOnSuccess($id);
         $this->render('preppublish', array('model' => $model));
+    }
+
+    public function actionPrepPublishThumbnail($id)
+    {
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('preppublish-thumbnail', array('model' => $model));
+    }
+
+    public function actionPrepPublishAbout($id)
+    {
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('preppublish-about', array('model' => $model));
+    }
+
+    public function actionPrepPublishExercises($id)
+    {
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('preppublish-exercises', array('model' => $model));
+    }
+
+    public function actionPrepPublishSnapshots($id)
+    {
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('preppublish-snapshots', array('model' => $model));
+    }
+
+    public function actionPrepPublishTeachersguide($id)
+    {
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('preppublish-teachersguide', array('model' => $model));
+    }
+
+    public function actionPrepPublishVideos($id)
+    {
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('preppublish-videos', array('model' => $model));
     }
 
     public function actionPreview($id)

@@ -34,7 +34,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
 </div>
 
-<?php if ($this->action->id == "draft" || $this->action->id == "prepPublish"): ?>
+<?php if ($this->action->id == "draft" || $this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish")!==false)): ?>
 
     <div class="row">
         <div class="span4">
@@ -66,7 +66,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
 <?php endif; ?>
 
-<?php if ($this->action->id == "prepPublish"): ?>
+<?php if ($this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish")!==false)): ?>
 
     <div class="row">
         <div class="span4">
@@ -89,7 +89,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 "type" => $this->action->id == "publish" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+                "url" => array("prepPublishThumbnail", "id" => $model->{$model->tableSchema->primaryKey})
             ));
             ?>
 
@@ -116,7 +116,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 "type" => $this->action->id == "publish" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+                "url" => array("prepPublishAbout", "id" => $model->{$model->tableSchema->primaryKey})
             ));
             ?>
 
@@ -143,7 +143,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 "type" => $this->action->id == "publish" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+                "url" => array("prepPublishTeachersguide", "id" => $model->{$model->tableSchema->primaryKey})
             ));
             ?>
 
@@ -170,7 +170,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 "type" => $this->action->id == "publish" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+                "url" => array("prepPublishExercises", "id" => $model->{$model->tableSchema->primaryKey})
             ));
             ?>
 
@@ -197,7 +197,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 "type" => $this->action->id == "publish" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+                "url" => array("prepPublishVideos", "id" => $model->{$model->tableSchema->primaryKey})
             ));
             ?>
 
@@ -220,11 +220,11 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
             <?php
             $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "Slideshow(s)"),
+                "label" => Yii::t("model", "Snapshot(s)"),
                 "type" => $this->action->id == "publish" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+                "url" => array("prepPublishSnapshots", "id" => $model->{$model->tableSchema->primaryKey})
             ));
             ?>
 
