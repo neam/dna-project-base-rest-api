@@ -6,7 +6,7 @@
 <?php endif; ?>
 
 <?php if (empty($chaptersInProgress)): ?>
-    No chapters in progress
+    <?php Yii::t('app', 'No chapters in progress'); ?>
 <?php else: ?>
     <ul>
         <?php foreach ($chaptersInProgress as $chapter): ?>
