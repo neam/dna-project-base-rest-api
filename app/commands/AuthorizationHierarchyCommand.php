@@ -57,6 +57,7 @@ EOD;
             $auth->createOperation($prefix . 'Item.Clone', 'Creates a new itemVersion with incremented version number and goes to "edit" workFlow. If the original is in PUBLIC after achieving publishableFlag == true, suggest workFlow PrepPublish');
             $auth->createOperation($prefix . 'Item.Remove', 'Removed means there\'s something wrong with the content so it should not be used in any language any time');
             $auth->createOperation($prefix . 'Item.Replace', 'Replaced, means it\'s OK to fall back to, in case translation is missing for new version');
+            $auth->createOperation($prefix . 'Item.Go', 'Displays the item and it\'s related items');
 
             // Actions under special circumstances are called tasks - if a user may perform the task then the user may perform the task's associated operations
 

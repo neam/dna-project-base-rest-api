@@ -9,6 +9,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'continueAuthoring',
+                    'go',
                 ),
                 'users' => array('*'),
             ),
@@ -315,6 +316,12 @@ trait ItemController
         $this->render('replace', array('model' => $model));
     }
 
+    public function actionGo($id)
+    {
+        $this->layout = 'go';
+        $model = $this->loadModel($id);
+        $this->render('/_item/go', array('model' => $model));
+    }
 
     public function actionTranslate($id)
     {
