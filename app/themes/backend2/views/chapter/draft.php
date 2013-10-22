@@ -16,7 +16,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
     <div class="span12">
 
         <h1>
-            <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
+            Create Draft - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
             <small>vX</small>
 
             <div class="btn-group">
@@ -36,7 +36,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
     </div>
 </div>
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
 <br/>
 
 <div class="row">
@@ -61,7 +61,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
         <div class="row">
             <div class="span9">
 
-                <h2>Create Draft
+                <h2>Title & Slug
                     <small></small>
                 </h2>
 
