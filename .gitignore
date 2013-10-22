@@ -4,8 +4,8 @@
 
 nbproject
 .DS_Store
-.idea
 *.swp
 .vagrant
 /components
 www/graphs
+.idea/workspace.xml
