@@ -395,7 +395,7 @@ trait ItemController
                 $changeset = new Changeset();
                 $changeset->contents = json_encode($qsStates);
                 $changeset->user_id = Yii::app()->user->id;
-                $changeset->node_id = $model->ensureNode()->id;
+                $changeset->node_id = $model->node()->id;
                 if (!$changeset->save()) {
                     throw new SaveException($changeset);
                 }

@@ -81,7 +81,7 @@ class ActiveRecord extends CActiveRecord
     /**
      * Ensures node relation
      */
-    public function ensureNode()
+    public function node()
     {
 
         if (is_null($this->node_id)) {

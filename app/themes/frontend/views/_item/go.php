@@ -5,7 +5,7 @@
     <div class="span3">
         <?php
 
-        foreach ($model->ensureNode()->edges as $edge) {
+        foreach ($model->node()->edges as $edge) {
             var_dump($edge->attributes);
         }
 
