@@ -80,16 +80,34 @@ $this->widget(
                         'items' => array(
                             array('label' => Yii::t('app', 'User')),
                             array(
+                                'label' => Yii::t('app', 'Dashboard'),
+                                'icon' => 'th-large',
+                                'url' => array('/account/dashboard'),
+                                'visible' => !Yii::app()->user->isGuest
+                            ),
+                            array(
+                                'label' => Yii::t('app', 'Translations'),
+                                'icon' => 'globe',
+                                'url' => array('/account/translations'),
+                                'visible' => !Yii::app()->user->isGuest
+                            ),
+                            array(
                                 'label' => Yii::t('app', 'Profile'),
-                                'icon' => 'tasks',
-                                'url' => array('/user/profile'),
+                                'icon' => 'user',
+                                'url' => array('/account/profile'),
+                                'visible' => !Yii::app()->user->isGuest
+                            ),
+                            array(
+                                'label' => Yii::t('app', 'History'),
+                                'icon' => 'time',
+                                'url' => array('/account/history'),
                                 'visible' => !Yii::app()->user->isGuest
                             ),
                             array(
                                 'label' => Yii::t('app', 'List'),
                                 'icon' => 'list',
                                 'url' => array('/user'),
-                                'visible' => !Yii::app()->user->isGuest
+                                'visible' => Yii::app()->user->checkAccess('Superuser')
                             ),
                             '---',
                             array(

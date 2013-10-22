@@ -28,6 +28,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if (!Yii::app()->user->isGuest) {
+            $this->redirect($this->createUrl('account/dashboard'));
+            exit;
+        }
+
         $chaptersInProgress = Chapter::model()->findAll();
 
         $this->render('index', compact("chaptersInProgress"));

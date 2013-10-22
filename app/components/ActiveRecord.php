@@ -8,7 +8,7 @@ class ActiveRecord extends CActiveRecord
 
         $behaviors = array();
 
-        if (!in_array(get_class($this), array("Workflow")) && strpos(get_class($this), "QaState") === false) {
+        if (!in_array(get_class($this), array("Workflow", "Profiles", "Users", "Account")) && strpos(get_class($this), "QaState") === false) {
             $behaviors['CTimestampBehavior'] = array(
                 'class' => 'zii.behaviors.CTimestampBehavior',
                 'createAttribute' => 'created',
@@ -36,6 +36,7 @@ class ActiveRecord extends CActiveRecord
             'Exercise' => array('slug', 'title', 'question', 'description', 'exercise_qa_state_id'),
             'HtmlChunk' => array('markup'),
             'PoFile' => array('processed_media_id', 'po_file_qa_state_id'),
+            'Profiles' => array('can_translate_to'),
             'Section' => array('slug', 'title', 'menu_label'),
             'SlideshowFile' => array('slug', 'title', 'about', 'processed_media_id', 'slideshow_file_qa_state_id'),
             'Snapshot' => array('slug', 'title', 'about', 'snapshot_qa_state_id'),

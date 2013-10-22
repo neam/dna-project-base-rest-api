@@ -199,12 +199,6 @@
                                 ),
                                 array('label' => ucfirst(Yii::app()->user->name)),
                                 array(
-                                    'label' => Yii::t('app', 'Profile'),
-                                    'icon' => 'tasks ',
-                                    'url' => array('/user/profile'),
-                                    'visible' => !Yii::app()->user->isGuest
-                                ),
-                                array(
                                     'label' => Yii::t('app', 'Logout'),
                                     'icon' => 'lock ',
                                     'url' => array('/site/logout'),

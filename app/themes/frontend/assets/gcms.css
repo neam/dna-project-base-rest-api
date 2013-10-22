@@ -321,3 +321,8 @@
 .container .breadcrumb {
 	margin-top: 10px!important;
 }
+
+/* Do not line-wrap label for this checkbox */
+.rememberMe label {
+    display: inline;
+}

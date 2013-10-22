@@ -108,6 +108,10 @@
             "url": "https://github.com/motin/WorkflowDatabaseTiein"
         },
         {
+            "type": "vcs",
+            "url": "https://github.com/codemix/hybridauthmanager"
+        },
+        {
             "type":"composer",
             "url":"http://packages.phundament.com"
         }
@@ -149,6 +153,7 @@
         "zetacomponents/database": "dev-travis",
         "ascendro/yii-graphviz": "@dev",
         "mihanentalpo/yii-sql-migration-generator": "@dev",
+        "codemix/hybridauthmanager": "dev-master",
         "schmunk42/yii-sakila-crud": "@dev",
         "schmunk42/relation": "1.*",
         "yiisoft/yii":"1.1.14"
