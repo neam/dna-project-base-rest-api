@@ -2,12 +2,12 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Draft')
+    . Yii::t('crud', 'Create Draft')
 );
 
 $this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Draft');
+$this->breadcrumbs[] = Yii::t('crud', 'Create Draft');
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
@@ -16,7 +16,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
     <div class="span12">
 
         <h1>
-            Create Draft - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
+            <?php echo Yii::t('app','Create Draft'); ?> - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
             <small>vX</small>
 
             <div class="btn-group">
@@ -61,7 +61,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Draft');
         <div class="row">
             <div class="span9">
 
-                <h2>Title & Slug
+                <h2><?php echo Yii::t('app','Title & Slug'); ?>
                     <small></small>
                 </h2>
 
