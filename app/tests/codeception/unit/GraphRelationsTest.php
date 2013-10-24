@@ -49,6 +49,34 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
         $this->assertEquals($exercise->id, $chapter->exercises[0]->id);
         $this->assertEquals($chapter->id, $exercise->parentChapters[0]->id);
 
+        $snapshot = new Snapshot();
+        $snapshot->save();
+
+        $this->assertTrue(!is_null($snapshot->node()->id));
+
+        $edge = new Edge();
+        $edge->from_node_id = $chapter->node()->id;
+        $edge->to_node_id = $snapshot->node()->id;
+        $edge->save();
+
+        $chapter->node()->refresh();
+        $chapter->refresh();
+
+        $this->assertEquals(2, count($chapter->node()->outEdges));
+        $this->assertEquals(1, count($snapshot->node()->inEdges));
+
+        $this->assertEquals(2, count($chapter->outEdges));
+        $this->assertEquals(1, count($snapshot->inEdges));
+
+        $this->assertEquals(2, count($chapter->outNodes));
+        $this->assertEquals(1, count($snapshot->inNodes));
+
+        $this->assertEquals(1, count($chapter->exercises));
+        $this->assertEquals(1, count($chapter->snapshots));
+
+        $this->assertEquals($snapshot->id, $chapter->snapshots[0]->id);
+        $this->assertEquals($chapter->id, $snapshot->parentChapters[0]->id);
+
     }
 
 }

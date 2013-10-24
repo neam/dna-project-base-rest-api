@@ -37,6 +37,7 @@ class Chapter extends BaseChapter
             parent::relations(),
             array(
                 'exercises' => array(self::HAS_MANY, 'Exercise', array('id' => 'node_id'), 'through' => 'outNodes'),
+                'snapshots' => array(self::HAS_MANY, 'Snapshot', array('id' => 'node_id'), 'through' => 'outNodes'),
             )
         );
     }
@@ -45,7 +46,6 @@ class Chapter extends BaseChapter
     public $thumbnail;
     public $video;
     public $teachers_guide;
-    public $snapshots;
     public $credits;
 
     public function rules()
