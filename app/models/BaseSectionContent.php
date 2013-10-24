@@ -78,18 +78,20 @@ abstract class BaseSectionContent extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'dataChunk' => array(self::BELONGS_TO, 'DataChunk', 'data_chunk_id'),
-            'downloadLink' => array(self::BELONGS_TO, 'DownloadLink', 'download_link_id'),
-            'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
-            'exercise' => array(self::BELONGS_TO, 'Exercise', 'exercise_id'),
-            'htmlChunk' => array(self::BELONGS_TO, 'HtmlChunk', 'html_chunk_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'section' => array(self::BELONGS_TO, 'Section', 'section_id'),
-            'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
-            'snapshot' => array(self::BELONGS_TO, 'Snapshot', 'snapshot_id'),
-            'teachersGuide' => array(self::BELONGS_TO, 'TeachersGuide', 'teachers_guide_id'),
-            'videoFile' => array(self::BELONGS_TO, 'VideoFile', 'video_file_id'),
+        return array_merge(
+            parent::relations(), array(
+                'dataChunk' => array(self::BELONGS_TO, 'DataChunk', 'data_chunk_id'),
+                'downloadLink' => array(self::BELONGS_TO, 'DownloadLink', 'download_link_id'),
+                'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
+                'exercise' => array(self::BELONGS_TO, 'Exercise', 'exercise_id'),
+                'htmlChunk' => array(self::BELONGS_TO, 'HtmlChunk', 'html_chunk_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'section' => array(self::BELONGS_TO, 'Section', 'section_id'),
+                'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
+                'snapshot' => array(self::BELONGS_TO, 'Snapshot', 'snapshot_id'),
+                'teachersGuide' => array(self::BELONGS_TO, 'TeachersGuide', 'teachers_guide_id'),
+                'videoFile' => array(self::BELONGS_TO, 'VideoFile', 'video_file_id'),
+            )
         );
     }
 

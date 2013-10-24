@@ -37,9 +37,9 @@
  * @property string $exam_question_qa_state_id_de
  *
  * Relations of table "exam_question" available as properties of the model:
- * @property ExamQuestionQaState $examQuestionQaStateIdDe
  * @property ExamQuestionQaState $examQuestionQaStateIdEn
  * @property ExamQuestionQaState $examQuestionQaStateIdCn
+ * @property ExamQuestionQaState $examQuestionQaStateIdDe
  * @property ExamQuestionQaState $examQuestionQaStateIdEs
  * @property ExamQuestionQaState $examQuestionQaStateIdFa
  * @property ExamQuestionQaState $examQuestionQaStateIdHi
@@ -96,20 +96,22 @@ abstract class BaseExamQuestion extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'examQuestionQaStateIdDe' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_de'),
-            'examQuestionQaStateIdEn' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_en'),
-            'examQuestionQaStateIdCn' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_cn'),
-            'examQuestionQaStateIdEs' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_es'),
-            'examQuestionQaStateIdFa' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_fa'),
-            'examQuestionQaStateIdHi' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_hi'),
-            'examQuestionQaStateIdPt' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_pt'),
-            'examQuestionQaStateIdSv' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_sv'),
-            'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'sourceNode' => array(self::BELONGS_TO, 'Node', 'source_node_id'),
-            'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'exam_question_id'),
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'exam_question_id'),
+        return array_merge(
+            parent::relations(), array(
+                'examQuestionQaStateIdEn' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_en'),
+                'examQuestionQaStateIdCn' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_cn'),
+                'examQuestionQaStateIdDe' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_de'),
+                'examQuestionQaStateIdEs' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_es'),
+                'examQuestionQaStateIdFa' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_fa'),
+                'examQuestionQaStateIdHi' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_hi'),
+                'examQuestionQaStateIdPt' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_pt'),
+                'examQuestionQaStateIdSv' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id_sv'),
+                'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'sourceNode' => array(self::BELONGS_TO, 'Node', 'source_node_id'),
+                'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'exam_question_id'),
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'exam_question_id'),
+            )
         );
     }
 

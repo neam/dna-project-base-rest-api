@@ -54,9 +54,9 @@
  * @property string $exercise_qa_state_id_de
  *
  * Relations of table "exercise" available as properties of the model:
- * @property ExerciseQaState $exerciseQaStateIdDe
  * @property ExerciseQaState $exerciseQaStateIdEn
  * @property ExerciseQaState $exerciseQaStateIdCn
+ * @property ExerciseQaState $exerciseQaStateIdDe
  * @property ExerciseQaState $exerciseQaStateIdEs
  * @property ExerciseQaState $exerciseQaStateIdFa
  * @property ExerciseQaState $exerciseQaStateIdHi
@@ -114,21 +114,23 @@ abstract class BaseExercise extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'exerciseQaStateIdDe' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_de'),
-            'exerciseQaStateIdEn' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_en'),
-            'exerciseQaStateIdCn' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_cn'),
-            'exerciseQaStateIdEs' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_es'),
-            'exerciseQaStateIdFa' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_fa'),
-            'exerciseQaStateIdHi' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_hi'),
-            'exerciseQaStateIdPt' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_pt'),
-            'exerciseQaStateIdSv' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_sv'),
-            'clonedFrom' => array(self::BELONGS_TO, 'Exercise', 'cloned_from_id'),
-            'exercises' => array(self::HAS_MANY, 'Exercise', 'cloned_from_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
-            'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'exercise_id'),
+        return array_merge(
+            parent::relations(), array(
+                'exerciseQaStateIdEn' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_en'),
+                'exerciseQaStateIdCn' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_cn'),
+                'exerciseQaStateIdDe' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_de'),
+                'exerciseQaStateIdEs' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_es'),
+                'exerciseQaStateIdFa' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_fa'),
+                'exerciseQaStateIdHi' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_hi'),
+                'exerciseQaStateIdPt' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_pt'),
+                'exerciseQaStateIdSv' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id_sv'),
+                'clonedFrom' => array(self::BELONGS_TO, 'Exercise', 'cloned_from_id'),
+                'exercises' => array(self::HAS_MANY, 'Exercise', 'cloned_from_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
+                'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'exercise_id'),
+            )
         );
     }
 

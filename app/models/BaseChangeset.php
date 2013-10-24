@@ -13,8 +13,8 @@
  * @property string $modified
  *
  * Relations of table "changeset" available as properties of the model:
- * @property Users $user
  * @property Node $node
+ * @property Users $user
  */
 abstract class BaseChangeset extends ActiveRecord
 {
@@ -61,9 +61,11 @@ abstract class BaseChangeset extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+        return array_merge(
+            parent::relations(), array(
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
+            )
         );
     }
 

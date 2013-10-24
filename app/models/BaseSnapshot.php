@@ -50,13 +50,13 @@
  * @property DataSource[] $dataSources
  * @property ExamQuestion[] $examQuestions
  * @property SectionContent[] $sectionContents
- * @property SnapshotQaState $snapshotQaStateIdDe
  * @property Node $node
  * @property Snapshot $clonedFrom
  * @property Snapshot[] $snapshots
  * @property Tool $tool
  * @property SnapshotQaState $snapshotQaStateIdEn
  * @property SnapshotQaState $snapshotQaStateIdCn
+ * @property SnapshotQaState $snapshotQaStateIdDe
  * @property SnapshotQaState $snapshotQaStateIdEs
  * @property SnapshotQaState $snapshotQaStateIdFa
  * @property SnapshotQaState $snapshotQaStateIdHi
@@ -108,22 +108,24 @@ abstract class BaseSnapshot extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'dataSources' => array(self::HAS_MANY, 'DataSource', 'cloned_from_id'),
-            'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'cloned_from_id'),
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'snapshot_id'),
-            'snapshotQaStateIdDe' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_de'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
-            'snapshots' => array(self::HAS_MANY, 'Snapshot', 'cloned_from_id'),
-            'tool' => array(self::BELONGS_TO, 'Tool', 'tool_id'),
-            'snapshotQaStateIdEn' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_en'),
-            'snapshotQaStateIdCn' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_cn'),
-            'snapshotQaStateIdEs' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_es'),
-            'snapshotQaStateIdFa' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_fa'),
-            'snapshotQaStateIdHi' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_hi'),
-            'snapshotQaStateIdPt' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_pt'),
-            'snapshotQaStateIdSv' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_sv'),
+        return array_merge(
+            parent::relations(), array(
+                'dataSources' => array(self::HAS_MANY, 'DataSource', 'cloned_from_id'),
+                'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'cloned_from_id'),
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'snapshot_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
+                'snapshots' => array(self::HAS_MANY, 'Snapshot', 'cloned_from_id'),
+                'tool' => array(self::BELONGS_TO, 'Tool', 'tool_id'),
+                'snapshotQaStateIdEn' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_en'),
+                'snapshotQaStateIdCn' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_cn'),
+                'snapshotQaStateIdDe' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_de'),
+                'snapshotQaStateIdEs' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_es'),
+                'snapshotQaStateIdFa' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_fa'),
+                'snapshotQaStateIdHi' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_hi'),
+                'snapshotQaStateIdPt' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_pt'),
+                'snapshotQaStateIdSv' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_sv'),
+            )
         );
     }
 

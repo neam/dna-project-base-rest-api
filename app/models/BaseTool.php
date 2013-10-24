@@ -40,11 +40,11 @@
  *
  * Relations of table "tool" available as properties of the model:
  * @property Snapshot[] $snapshots
- * @property ToolQaState $toolQaState
  * @property Node $node
  * @property PoFile $poFile
  * @property Tool $clonedFrom
  * @property Tool[] $tools
+ * @property ToolQaState $toolQaState
  */
 abstract class BaseTool extends ActiveRecord
 {
@@ -91,13 +91,15 @@ abstract class BaseTool extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'snapshots' => array(self::HAS_MANY, 'Snapshot', 'tool_id'),
-            'toolQaState' => array(self::BELONGS_TO, 'ToolQaState', 'tool_qa_state_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'poFile' => array(self::BELONGS_TO, 'PoFile', 'po_file_id'),
-            'clonedFrom' => array(self::BELONGS_TO, 'Tool', 'cloned_from_id'),
-            'tools' => array(self::HAS_MANY, 'Tool', 'cloned_from_id'),
+        return array_merge(
+            parent::relations(), array(
+                'snapshots' => array(self::HAS_MANY, 'Snapshot', 'tool_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'poFile' => array(self::BELONGS_TO, 'PoFile', 'po_file_id'),
+                'clonedFrom' => array(self::BELONGS_TO, 'Tool', 'cloned_from_id'),
+                'tools' => array(self::HAS_MANY, 'Tool', 'cloned_from_id'),
+                'toolQaState' => array(self::BELONGS_TO, 'ToolQaState', 'tool_qa_state_id'),
+            )
         );
     }
 

@@ -69,9 +69,11 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+        return array_merge(
+            parent::relations(), array(
+                'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+            )
         );
     }
 

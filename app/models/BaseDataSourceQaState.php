@@ -78,15 +78,17 @@ abstract class BaseDataSourceQaState extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'dataSources' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_de'),
-            'dataSources1' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_en'),
-            'dataSources2' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_cn'),
-            'dataSources3' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_es'),
-            'dataSources4' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_fa'),
-            'dataSources5' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_hi'),
-            'dataSources6' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_pt'),
-            'dataSources7' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_sv'),
+        return array_merge(
+            parent::relations(), array(
+                'dataSources' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_en'),
+                'dataSources1' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_cn'),
+                'dataSources2' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_de'),
+                'dataSources3' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_es'),
+                'dataSources4' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_fa'),
+                'dataSources5' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_hi'),
+                'dataSources6' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_pt'),
+                'dataSources7' => array(self::HAS_MANY, 'DataSource', 'data_source_qa_state_id_sv'),
+            )
         );
     }
 

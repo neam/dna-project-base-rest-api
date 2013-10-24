@@ -64,9 +64,11 @@ abstract class BaseAccount extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'changesets' => array(self::HAS_MANY, 'Changeset', 'user_id'),
-            'profiles' => array(self::HAS_ONE, 'Profiles', 'user_id'),
+        return array_merge(
+            parent::relations(), array(
+                'changesets' => array(self::HAS_MANY, 'Changeset', 'user_id'),
+                'profiles' => array(self::HAS_ONE, 'Profiles', 'user_id'),
+            )
         );
     }
 

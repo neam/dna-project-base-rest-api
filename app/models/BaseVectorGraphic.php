@@ -54,7 +54,6 @@
  *
  * Relations of table "vector_graphic" available as properties of the model:
  * @property DataChunk[] $dataChunks
- * @property VectorGraphicQaState $vectorGraphicQaStateIdDe
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -69,6 +68,7 @@
  * @property VectorGraphic[] $vectorGraphics
  * @property VectorGraphicQaState $vectorGraphicQaStateIdEn
  * @property VectorGraphicQaState $vectorGraphicQaStateIdCn
+ * @property VectorGraphicQaState $vectorGraphicQaStateIdDe
  * @property VectorGraphicQaState $vectorGraphicQaStateIdEs
  * @property VectorGraphicQaState $vectorGraphicQaStateIdFa
  * @property VectorGraphicQaState $vectorGraphicQaStateIdHi
@@ -120,28 +120,30 @@ abstract class BaseVectorGraphic extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'vector_graphic_id'),
-            'vectorGraphicQaStateIdDe' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_de'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
-            'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
-            'processedMediaIdCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_cn'),
-            'processedMediaIdDe' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_de'),
-            'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
-            'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
-            'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
-            'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
-            'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
-            'clonedFrom' => array(self::BELONGS_TO, 'VectorGraphic', 'cloned_from_id'),
-            'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'cloned_from_id'),
-            'vectorGraphicQaStateIdEn' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_en'),
-            'vectorGraphicQaStateIdCn' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_cn'),
-            'vectorGraphicQaStateIdEs' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_es'),
-            'vectorGraphicQaStateIdFa' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_fa'),
-            'vectorGraphicQaStateIdHi' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_hi'),
-            'vectorGraphicQaStateIdPt' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_pt'),
-            'vectorGraphicQaStateIdSv' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_sv'),
+        return array_merge(
+            parent::relations(), array(
+                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'vector_graphic_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
+                'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
+                'processedMediaIdCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_cn'),
+                'processedMediaIdDe' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_de'),
+                'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
+                'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
+                'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
+                'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
+                'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
+                'clonedFrom' => array(self::BELONGS_TO, 'VectorGraphic', 'cloned_from_id'),
+                'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'cloned_from_id'),
+                'vectorGraphicQaStateIdEn' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_en'),
+                'vectorGraphicQaStateIdCn' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_cn'),
+                'vectorGraphicQaStateIdDe' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_de'),
+                'vectorGraphicQaStateIdEs' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_es'),
+                'vectorGraphicQaStateIdFa' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_fa'),
+                'vectorGraphicQaStateIdHi' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_hi'),
+                'vectorGraphicQaStateIdPt' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_pt'),
+                'vectorGraphicQaStateIdSv' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_sv'),
+            )
         );
     }
 

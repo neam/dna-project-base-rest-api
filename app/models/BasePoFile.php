@@ -31,7 +31,6 @@
  * @property string $po_file_qa_state_id_de
  *
  * Relations of table "po_file" available as properties of the model:
- * @property PoFileQaState $poFileQaStateIdDe
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -46,6 +45,7 @@
  * @property PoFile[] $poFiles
  * @property PoFileQaState $poFileQaStateIdEn
  * @property PoFileQaState $poFileQaStateIdCn
+ * @property PoFileQaState $poFileQaStateIdDe
  * @property PoFileQaState $poFileQaStateIdEs
  * @property PoFileQaState $poFileQaStateIdFa
  * @property PoFileQaState $poFileQaStateIdHi
@@ -98,28 +98,30 @@ abstract class BasePoFile extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'poFileQaStateIdDe' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_de'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
-            'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
-            'processedMediaIdCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_cn'),
-            'processedMediaIdDe' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_de'),
-            'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
-            'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
-            'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
-            'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
-            'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
-            'clonedFrom' => array(self::BELONGS_TO, 'PoFile', 'cloned_from_id'),
-            'poFiles' => array(self::HAS_MANY, 'PoFile', 'cloned_from_id'),
-            'poFileQaStateIdEn' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_en'),
-            'poFileQaStateIdCn' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_cn'),
-            'poFileQaStateIdEs' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_es'),
-            'poFileQaStateIdFa' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_fa'),
-            'poFileQaStateIdHi' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_hi'),
-            'poFileQaStateIdPt' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_pt'),
-            'poFileQaStateIdSv' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_sv'),
-            'tools' => array(self::HAS_MANY, 'Tool', 'po_file_id'),
+        return array_merge(
+            parent::relations(), array(
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
+                'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
+                'processedMediaIdCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_cn'),
+                'processedMediaIdDe' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_de'),
+                'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
+                'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
+                'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
+                'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
+                'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
+                'clonedFrom' => array(self::BELONGS_TO, 'PoFile', 'cloned_from_id'),
+                'poFiles' => array(self::HAS_MANY, 'PoFile', 'cloned_from_id'),
+                'poFileQaStateIdEn' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_en'),
+                'poFileQaStateIdCn' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_cn'),
+                'poFileQaStateIdDe' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_de'),
+                'poFileQaStateIdEs' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_es'),
+                'poFileQaStateIdFa' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_fa'),
+                'poFileQaStateIdHi' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_hi'),
+                'poFileQaStateIdPt' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_pt'),
+                'poFileQaStateIdSv' => array(self::BELONGS_TO, 'PoFileQaState', 'po_file_qa_state_id_sv'),
+                'tools' => array(self::HAS_MANY, 'Tool', 'po_file_id'),
+            )
         );
     }
 

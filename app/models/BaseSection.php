@@ -86,10 +86,12 @@ abstract class BaseSection extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'chapter' => array(self::BELONGS_TO, 'Chapter', 'chapter_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'section_id'),
+        return array_merge(
+            parent::relations(), array(
+                'chapter' => array(self::BELONGS_TO, 'Chapter', 'chapter_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'section_id'),
+            )
         );
     }
 

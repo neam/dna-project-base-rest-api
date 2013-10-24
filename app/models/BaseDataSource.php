@@ -48,9 +48,9 @@
  *
  * Relations of table "data_source" available as properties of the model:
  * @property DataChunk[] $dataChunks
- * @property DataSourceQaState $dataSourceQaStateIdDe
  * @property DataSourceQaState $dataSourceQaStateIdEn
  * @property DataSourceQaState $dataSourceQaStateIdCn
+ * @property DataSourceQaState $dataSourceQaStateIdDe
  * @property DataSourceQaState $dataSourceQaStateIdEs
  * @property DataSourceQaState $dataSourceQaStateIdFa
  * @property DataSourceQaState $dataSourceQaStateIdHi
@@ -107,21 +107,23 @@ abstract class BaseDataSource extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'data_source_id'),
-            'dataSourceQaStateIdDe' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_de'),
-            'dataSourceQaStateIdEn' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_en'),
-            'dataSourceQaStateIdCn' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_cn'),
-            'dataSourceQaStateIdEs' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_es'),
-            'dataSourceQaStateIdFa' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_fa'),
-            'dataSourceQaStateIdHi' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_hi'),
-            'dataSourceQaStateIdPt' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_pt'),
-            'dataSourceQaStateIdSv' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_sv'),
-            'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'logoMedia' => array(self::BELONGS_TO, 'P3Media', 'logo_media_id'),
-            'miniLogoMedia' => array(self::BELONGS_TO, 'P3Media', 'mini_logo_media_id'),
-            'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'data_source_id'),
+        return array_merge(
+            parent::relations(), array(
+                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'data_source_id'),
+                'dataSourceQaStateIdEn' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_en'),
+                'dataSourceQaStateIdCn' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_cn'),
+                'dataSourceQaStateIdDe' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_de'),
+                'dataSourceQaStateIdEs' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_es'),
+                'dataSourceQaStateIdFa' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_fa'),
+                'dataSourceQaStateIdHi' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_hi'),
+                'dataSourceQaStateIdPt' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_pt'),
+                'dataSourceQaStateIdSv' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_sv'),
+                'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'logoMedia' => array(self::BELONGS_TO, 'P3Media', 'logo_media_id'),
+                'miniLogoMedia' => array(self::BELONGS_TO, 'P3Media', 'mini_logo_media_id'),
+                'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'data_source_id'),
+            )
         );
     }
 

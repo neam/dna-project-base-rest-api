@@ -69,8 +69,10 @@ abstract class BaseToolQaState extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'tools' => array(self::HAS_MANY, 'Tool', 'tool_qa_state_id'),
+        return array_merge(
+            parent::relations(), array(
+                'tools' => array(self::HAS_MANY, 'Tool', 'tool_qa_state_id'),
+            )
         );
     }
 

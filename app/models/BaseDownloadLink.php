@@ -72,12 +72,14 @@ abstract class BaseDownloadLink extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'clonedFrom' => array(self::BELONGS_TO, 'DownloadLink', 'cloned_from_id'),
-            'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'cloned_from_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'download_link_id'),
+        return array_merge(
+            parent::relations(), array(
+                'clonedFrom' => array(self::BELONGS_TO, 'DownloadLink', 'cloned_from_id'),
+                'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'cloned_from_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'download_link_id'),
+            )
         );
     }
 

@@ -78,15 +78,17 @@ abstract class BaseSlideshowFileQaState extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_de'),
-            'slideshowFiles1' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_en'),
-            'slideshowFiles2' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_cn'),
-            'slideshowFiles3' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_es'),
-            'slideshowFiles4' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_fa'),
-            'slideshowFiles5' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_hi'),
-            'slideshowFiles6' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_pt'),
-            'slideshowFiles7' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_sv'),
+        return array_merge(
+            parent::relations(), array(
+                'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_en'),
+                'slideshowFiles1' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_cn'),
+                'slideshowFiles2' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_de'),
+                'slideshowFiles3' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_es'),
+                'slideshowFiles4' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_fa'),
+                'slideshowFiles5' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_hi'),
+                'slideshowFiles6' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_pt'),
+                'slideshowFiles7' => array(self::HAS_MANY, 'SlideshowFile', 'slideshow_file_qa_state_id_sv'),
+            )
         );
     }
 

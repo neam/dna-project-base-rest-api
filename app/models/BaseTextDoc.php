@@ -54,7 +54,6 @@
  * @property string $text_doc_qa_state_id_de
  *
  * Relations of table "text_doc" available as properties of the model:
- * @property TextDocQaState $textDocQaStateIdDe
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -69,6 +68,7 @@
  * @property TextDoc[] $textDocs
  * @property TextDocQaState $textDocQaStateIdEn
  * @property TextDocQaState $textDocQaStateIdCn
+ * @property TextDocQaState $textDocQaStateIdDe
  * @property TextDocQaState $textDocQaStateIdEs
  * @property TextDocQaState $textDocQaStateIdFa
  * @property TextDocQaState $textDocQaStateIdHi
@@ -120,27 +120,29 @@ abstract class BaseTextDoc extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'textDocQaStateIdDe' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_de'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
-            'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
-            'processedMediaIdCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_cn'),
-            'processedMediaIdDe' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_de'),
-            'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
-            'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
-            'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
-            'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
-            'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
-            'clonedFrom' => array(self::BELONGS_TO, 'TextDoc', 'cloned_from_id'),
-            'textDocs' => array(self::HAS_MANY, 'TextDoc', 'cloned_from_id'),
-            'textDocQaStateIdEn' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_en'),
-            'textDocQaStateIdCn' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_cn'),
-            'textDocQaStateIdEs' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_es'),
-            'textDocQaStateIdFa' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_fa'),
-            'textDocQaStateIdHi' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_hi'),
-            'textDocQaStateIdPt' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_pt'),
-            'textDocQaStateIdSv' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_sv'),
+        return array_merge(
+            parent::relations(), array(
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
+                'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
+                'processedMediaIdCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_cn'),
+                'processedMediaIdDe' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_de'),
+                'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
+                'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
+                'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
+                'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
+                'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
+                'clonedFrom' => array(self::BELONGS_TO, 'TextDoc', 'cloned_from_id'),
+                'textDocs' => array(self::HAS_MANY, 'TextDoc', 'cloned_from_id'),
+                'textDocQaStateIdEn' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_en'),
+                'textDocQaStateIdCn' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_cn'),
+                'textDocQaStateIdDe' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_de'),
+                'textDocQaStateIdEs' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_es'),
+                'textDocQaStateIdFa' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_fa'),
+                'textDocQaStateIdHi' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_hi'),
+                'textDocQaStateIdPt' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_pt'),
+                'textDocQaStateIdSv' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id_sv'),
+            )
         );
     }
 

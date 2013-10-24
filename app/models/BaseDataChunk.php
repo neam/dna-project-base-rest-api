@@ -49,9 +49,9 @@
  * @property string $data_chunk_qa_state_id_de
  *
  * Relations of table "data_chunk" available as properties of the model:
- * @property DataChunkQaState $dataChunkQaStateIdDe
  * @property DataChunkQaState $dataChunkQaStateIdEn
  * @property DataChunkQaState $dataChunkQaStateIdCn
+ * @property DataChunkQaState $dataChunkQaStateIdDe
  * @property DataChunkQaState $dataChunkQaStateIdEs
  * @property DataChunkQaState $dataChunkQaStateIdFa
  * @property DataChunkQaState $dataChunkQaStateIdHi
@@ -111,23 +111,25 @@ abstract class BaseDataChunk extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'dataChunkQaStateIdDe' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_de'),
-            'dataChunkQaStateIdEn' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_en'),
-            'dataChunkQaStateIdCn' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_cn'),
-            'dataChunkQaStateIdEs' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_es'),
-            'dataChunkQaStateIdFa' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_fa'),
-            'dataChunkQaStateIdHi' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_hi'),
-            'dataChunkQaStateIdPt' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_pt'),
-            'dataChunkQaStateIdSv' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_sv'),
-            'clonedFrom' => array(self::BELONGS_TO, 'DataChunk', 'cloned_from_id'),
-            'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'cloned_from_id'),
-            'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
-            'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
-            'vectorGraphic' => array(self::BELONGS_TO, 'VectorGraphic', 'vector_graphic_id'),
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'data_chunk_id'),
+        return array_merge(
+            parent::relations(), array(
+                'dataChunkQaStateIdEn' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_en'),
+                'dataChunkQaStateIdCn' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_cn'),
+                'dataChunkQaStateIdDe' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_de'),
+                'dataChunkQaStateIdEs' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_es'),
+                'dataChunkQaStateIdFa' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_fa'),
+                'dataChunkQaStateIdHi' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_hi'),
+                'dataChunkQaStateIdPt' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_pt'),
+                'dataChunkQaStateIdSv' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_sv'),
+                'clonedFrom' => array(self::BELONGS_TO, 'DataChunk', 'cloned_from_id'),
+                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'cloned_from_id'),
+                'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
+                'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
+                'vectorGraphic' => array(self::BELONGS_TO, 'VectorGraphic', 'vector_graphic_id'),
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'data_chunk_id'),
+            )
         );
     }
 

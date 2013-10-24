@@ -78,15 +78,17 @@ abstract class BaseTextDocQaState extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'textDocs' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_de'),
-            'textDocs1' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_en'),
-            'textDocs2' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_cn'),
-            'textDocs3' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_es'),
-            'textDocs4' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_fa'),
-            'textDocs5' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_hi'),
-            'textDocs6' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_pt'),
-            'textDocs7' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_sv'),
+        return array_merge(
+            parent::relations(), array(
+                'textDocs' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_en'),
+                'textDocs1' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_cn'),
+                'textDocs2' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_de'),
+                'textDocs3' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_es'),
+                'textDocs4' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_fa'),
+                'textDocs5' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_hi'),
+                'textDocs6' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_pt'),
+                'textDocs7' => array(self::HAS_MANY, 'TextDoc', 'text_doc_qa_state_id_sv'),
+            )
         );
     }
 

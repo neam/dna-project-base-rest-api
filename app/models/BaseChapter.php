@@ -104,20 +104,22 @@ abstract class BaseChapter extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'chapterQaStateIdEn' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_en'),
-            'chapterQaStateIdCn' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_cn'),
-            'chapterQaStateIdDe' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_de'),
-            'chapterQaStateIdEs' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_es'),
-            'chapterQaStateIdFa' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_fa'),
-            'chapterQaStateIdHi' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_hi'),
-            'chapterQaStateIdPt' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_pt'),
-            'chapterQaStateIdSv' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_sv'),
-            'clonedFrom' => array(self::BELONGS_TO, 'Chapter', 'cloned_from_id'),
-            'chapters' => array(self::HAS_MANY, 'Chapter', 'cloned_from_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
-            'sections' => array(self::HAS_MANY, 'Section', 'chapter_id'),
+        return array_merge(
+            parent::relations(), array(
+                'chapterQaStateIdEn' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_en'),
+                'chapterQaStateIdCn' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_cn'),
+                'chapterQaStateIdDe' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_de'),
+                'chapterQaStateIdEs' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_es'),
+                'chapterQaStateIdFa' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_fa'),
+                'chapterQaStateIdHi' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_hi'),
+                'chapterQaStateIdPt' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_pt'),
+                'chapterQaStateIdSv' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id_sv'),
+                'clonedFrom' => array(self::BELONGS_TO, 'Chapter', 'cloned_from_id'),
+                'chapters' => array(self::HAS_MANY, 'Chapter', 'cloned_from_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
+                'sections' => array(self::HAS_MANY, 'Section', 'chapter_id'),
+            )
         );
     }
 

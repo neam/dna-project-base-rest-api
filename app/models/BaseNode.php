@@ -75,30 +75,32 @@ abstract class BaseNode extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'changesets' => array(self::HAS_MANY, 'Changeset', 'node_id'),
-            'chapters' => array(self::HAS_MANY, 'Chapter', 'node_id'),
-            'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'node_id'),
-            'dataSources' => array(self::HAS_MANY, 'DataSource', 'node_id'),
-            'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'node_id'),
-            'edges' => array(self::HAS_MANY, 'Edge', 'from_node_id'),
-            'edges1' => array(self::HAS_MANY, 'Edge', 'to_node_id'),
-            'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'node_id'),
-            'examQuestions1' => array(self::HAS_MANY, 'ExamQuestion', 'source_node_id'),
-            'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'node_id'),
-            'exercises' => array(self::HAS_MANY, 'Exercise', 'node_id'),
-            'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'node_id'),
-            'poFiles' => array(self::HAS_MANY, 'PoFile', 'node_id'),
-            'sections' => array(self::HAS_MANY, 'Section', 'node_id'),
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'node_id'),
-            'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'node_id'),
-            'snapshots' => array(self::HAS_MANY, 'Snapshot', 'node_id'),
-            'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'node_id'),
-            'teachersGuides' => array(self::HAS_MANY, 'TeachersGuide', 'node_id'),
-            'textDocs' => array(self::HAS_MANY, 'TextDoc', 'node_id'),
-            'tools' => array(self::HAS_MANY, 'Tool', 'node_id'),
-            'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'node_id'),
-            'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'node_id'),
+        return array_merge(
+            parent::relations(), array(
+                'changesets' => array(self::HAS_MANY, 'Changeset', 'node_id'),
+                'chapters' => array(self::HAS_MANY, 'Chapter', 'node_id'),
+                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'node_id'),
+                'dataSources' => array(self::HAS_MANY, 'DataSource', 'node_id'),
+                'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'node_id'),
+                'edges' => array(self::HAS_MANY, 'Edge', 'from_node_id'),
+                'edges1' => array(self::HAS_MANY, 'Edge', 'to_node_id'),
+                'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'node_id'),
+                'examQuestions1' => array(self::HAS_MANY, 'ExamQuestion', 'source_node_id'),
+                'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'node_id'),
+                'exercises' => array(self::HAS_MANY, 'Exercise', 'node_id'),
+                'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'node_id'),
+                'poFiles' => array(self::HAS_MANY, 'PoFile', 'node_id'),
+                'sections' => array(self::HAS_MANY, 'Section', 'node_id'),
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'node_id'),
+                'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'node_id'),
+                'snapshots' => array(self::HAS_MANY, 'Snapshot', 'node_id'),
+                'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'node_id'),
+                'teachersGuides' => array(self::HAS_MANY, 'TeachersGuide', 'node_id'),
+                'textDocs' => array(self::HAS_MANY, 'TextDoc', 'node_id'),
+                'tools' => array(self::HAS_MANY, 'Tool', 'node_id'),
+                'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'node_id'),
+                'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'node_id'),
+            )
         );
     }
 

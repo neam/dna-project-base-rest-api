@@ -57,7 +57,6 @@
  * @property DataChunk[] $dataChunks
  * @property Exercise[] $exercises
  * @property SectionContent[] $sectionContents
- * @property SlideshowFileQaState $slideshowFileQaStateIdDe
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -72,6 +71,7 @@
  * @property SlideshowFile[] $slideshowFiles
  * @property SlideshowFileQaState $slideshowFileQaStateIdEn
  * @property SlideshowFileQaState $slideshowFileQaStateIdCn
+ * @property SlideshowFileQaState $slideshowFileQaStateIdDe
  * @property SlideshowFileQaState $slideshowFileQaStateIdEs
  * @property SlideshowFileQaState $slideshowFileQaStateIdFa
  * @property SlideshowFileQaState $slideshowFileQaStateIdHi
@@ -123,30 +123,32 @@ abstract class BaseSlideshowFile extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'slideshow_file_id'),
-            'exercises' => array(self::HAS_MANY, 'Exercise', 'slideshow_file_id'),
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'slideshow_file_id'),
-            'slideshowFileQaStateIdDe' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_de'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
-            'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
-            'processedMediaIdCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_cn'),
-            'processedMediaIdDe' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_de'),
-            'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
-            'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
-            'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
-            'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
-            'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
-            'clonedFrom' => array(self::BELONGS_TO, 'SlideshowFile', 'cloned_from_id'),
-            'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'cloned_from_id'),
-            'slideshowFileQaStateIdEn' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_en'),
-            'slideshowFileQaStateIdCn' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_cn'),
-            'slideshowFileQaStateIdEs' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_es'),
-            'slideshowFileQaStateIdFa' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_fa'),
-            'slideshowFileQaStateIdHi' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_hi'),
-            'slideshowFileQaStateIdPt' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_pt'),
-            'slideshowFileQaStateIdSv' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_sv'),
+        return array_merge(
+            parent::relations(), array(
+                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'slideshow_file_id'),
+                'exercises' => array(self::HAS_MANY, 'Exercise', 'slideshow_file_id'),
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'slideshow_file_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
+                'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
+                'processedMediaIdCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_cn'),
+                'processedMediaIdDe' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_de'),
+                'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
+                'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
+                'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
+                'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
+                'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
+                'clonedFrom' => array(self::BELONGS_TO, 'SlideshowFile', 'cloned_from_id'),
+                'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'cloned_from_id'),
+                'slideshowFileQaStateIdEn' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_en'),
+                'slideshowFileQaStateIdCn' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_cn'),
+                'slideshowFileQaStateIdDe' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_de'),
+                'slideshowFileQaStateIdEs' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_es'),
+                'slideshowFileQaStateIdFa' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_fa'),
+                'slideshowFileQaStateIdHi' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_hi'),
+                'slideshowFileQaStateIdPt' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_pt'),
+                'slideshowFileQaStateIdSv' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_sv'),
+            )
         );
     }
 

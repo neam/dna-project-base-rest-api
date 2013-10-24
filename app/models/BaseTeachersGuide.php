@@ -70,11 +70,13 @@ abstract class BaseTeachersGuide extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'teachers_guide_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'clonedFrom' => array(self::BELONGS_TO, 'TeachersGuide', 'cloned_from_id'),
-            'teachersGuides' => array(self::HAS_MANY, 'TeachersGuide', 'cloned_from_id'),
+        return array_merge(
+            parent::relations(), array(
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'teachers_guide_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'clonedFrom' => array(self::BELONGS_TO, 'TeachersGuide', 'cloned_from_id'),
+                'teachersGuides' => array(self::HAS_MANY, 'TeachersGuide', 'cloned_from_id'),
+            )
         );
     }
 

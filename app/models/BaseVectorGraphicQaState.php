@@ -78,15 +78,17 @@ abstract class BaseVectorGraphicQaState extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_de'),
-            'vectorGraphics1' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_en'),
-            'vectorGraphics2' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_cn'),
-            'vectorGraphics3' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_es'),
-            'vectorGraphics4' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_fa'),
-            'vectorGraphics5' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_hi'),
-            'vectorGraphics6' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_pt'),
-            'vectorGraphics7' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_sv'),
+        return array_merge(
+            parent::relations(), array(
+                'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_en'),
+                'vectorGraphics1' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_cn'),
+                'vectorGraphics2' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_de'),
+                'vectorGraphics3' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_es'),
+                'vectorGraphics4' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_fa'),
+                'vectorGraphics5' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_hi'),
+                'vectorGraphics6' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_pt'),
+                'vectorGraphics7' => array(self::HAS_MANY, 'VectorGraphic', 'vector_graphic_qa_state_id_sv'),
+            )
         );
     }
 

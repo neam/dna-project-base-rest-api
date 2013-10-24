@@ -90,20 +90,22 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
-            'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
-            'processedMediaIdCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_cn'),
-            'processedMediaIdDe' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_de'),
-            'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
-            'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
-            'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
-            'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
-            'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
-            'clonedFrom' => array(self::BELONGS_TO, 'SpreadsheetFile', 'cloned_from_id'),
-            'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'cloned_from_id'),
+        return array_merge(
+            parent::relations(), array(
+                'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
+                'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
+                'processedMediaIdCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_cn'),
+                'processedMediaIdDe' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_de'),
+                'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
+                'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
+                'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
+                'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
+                'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
+                'clonedFrom' => array(self::BELONGS_TO, 'SpreadsheetFile', 'cloned_from_id'),
+                'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'cloned_from_id'),
+            )
         );
     }
 

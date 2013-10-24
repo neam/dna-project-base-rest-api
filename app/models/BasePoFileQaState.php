@@ -76,15 +76,17 @@ abstract class BasePoFileQaState extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'poFiles' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_de'),
-            'poFiles1' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_en'),
-            'poFiles2' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_cn'),
-            'poFiles3' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_es'),
-            'poFiles4' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_fa'),
-            'poFiles5' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_hi'),
-            'poFiles6' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_pt'),
-            'poFiles7' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_sv'),
+        return array_merge(
+            parent::relations(), array(
+                'poFiles' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_en'),
+                'poFiles1' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_cn'),
+                'poFiles2' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_de'),
+                'poFiles3' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_es'),
+                'poFiles4' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_fa'),
+                'poFiles5' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_hi'),
+                'poFiles6' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_pt'),
+                'poFiles7' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id_sv'),
+            )
         );
     }
 

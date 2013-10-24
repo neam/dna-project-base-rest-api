@@ -69,11 +69,13 @@ abstract class BaseHtmlChunk extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'clonedFrom' => array(self::BELONGS_TO, 'HtmlChunk', 'cloned_from_id'),
-            'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'cloned_from_id'),
-            'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'html_chunk_id'),
+        return array_merge(
+            parent::relations(), array(
+                'clonedFrom' => array(self::BELONGS_TO, 'HtmlChunk', 'cloned_from_id'),
+                'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'cloned_from_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'html_chunk_id'),
+            )
         );
     }
 

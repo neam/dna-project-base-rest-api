@@ -78,15 +78,17 @@ abstract class BaseExamQuestionQaState extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_de'),
-            'examQuestions1' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_en'),
-            'examQuestions2' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_cn'),
-            'examQuestions3' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_es'),
-            'examQuestions4' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_fa'),
-            'examQuestions5' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_hi'),
-            'examQuestions6' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_pt'),
-            'examQuestions7' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_sv'),
+        return array_merge(
+            parent::relations(), array(
+                'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_en'),
+                'examQuestions1' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_cn'),
+                'examQuestions2' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_de'),
+                'examQuestions3' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_es'),
+                'examQuestions4' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_fa'),
+                'examQuestions5' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_hi'),
+                'examQuestions6' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_pt'),
+                'examQuestions7' => array(self::HAS_MANY, 'ExamQuestion', 'exam_question_qa_state_id_sv'),
+            )
         );
     }
 
