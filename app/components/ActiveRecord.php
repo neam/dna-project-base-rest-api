@@ -96,6 +96,19 @@ class ActiveRecord extends CActiveRecord
 
     }
 
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(),
+            array(
+                'outEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'from_node_id'), 'through' => 'node'),
+                'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
+                'inEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'to_node_id'), 'through' => 'node'),
+                'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
+            )
+        );
+    }
+
     public function attributeLabels()
     {
         return array();

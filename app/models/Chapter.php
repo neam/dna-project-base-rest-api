@@ -31,11 +31,20 @@ class Chapter extends BaseChapter
         );
     }
 
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(),
+            array(
+                'exercises' => array(self::HAS_MANY, 'Exercise', array('id' => 'node_id'), 'through' => 'outNodes'),
+            )
+        );
+    }
+
     // todo
     public $thumbnail;
     public $video;
     public $teachers_guide;
-    public $exercises;
     public $snapshots;
     public $credits;
 

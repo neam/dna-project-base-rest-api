@@ -34,6 +34,16 @@ class Exercise extends BaseExercise
         );
     }
 
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(),
+            array(
+                'parentChapters' => array(self::HAS_MANY, 'Chapter', array('id' => 'node_id'), 'through' => 'inNodes'),
+            )
+        );
+    }
+
     public function rules()
     {
         return array_merge(

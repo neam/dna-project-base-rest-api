@@ -38,6 +38,17 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
         $this->assertEquals(1, count($chapter->node()->outEdges));
         $this->assertEquals(1, count($exercise->node()->inEdges));
 
+        $this->assertEquals(1, count($chapter->outEdges));
+        $this->assertEquals(1, count($exercise->inEdges));
+
+        $this->assertEquals(1, count($chapter->outNodes));
+        $this->assertEquals(1, count($exercise->inNodes));
+
+        $this->assertEquals(1, count($chapter->exercises));
+
+        $this->assertEquals($exercise->id, $chapter->exercises[0]->id);
+        $this->assertEquals($chapter->id, $exercise->parentChapters[0]->id);
+
     }
 
 }
