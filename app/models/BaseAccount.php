@@ -87,7 +87,7 @@ abstract class BaseAccount extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -103,9 +103,9 @@ abstract class BaseAccount extends ActiveRecord
         $criteria->compare('t.create_at', $this->create_at, true);
         $criteria->compare('t.lastvisit_at', $this->lastvisit_at, true);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

@@ -42,4 +42,11 @@ class TextDocQaState extends BaseTextDocQaState
         );
     }
 
+    public function search()
+    {
+        return new CActiveDataProvider(get_class($this), array(
+            'criteria' => $this->searchCriteria(),
+        ));
+    }
+
 }

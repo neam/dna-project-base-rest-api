@@ -131,7 +131,7 @@ abstract class BaseSection extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -168,9 +168,9 @@ abstract class BaseSection extends ActiveRecord
         $criteria->compare('t.menu_label_cn', $this->menu_label_cn, true);
         $criteria->compare('t.menu_label_de', $this->menu_label_de, true);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

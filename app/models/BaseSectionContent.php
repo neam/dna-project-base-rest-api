@@ -116,7 +116,7 @@ abstract class BaseSectionContent extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -138,9 +138,9 @@ abstract class BaseSectionContent extends ActiveRecord
         $criteria->compare('t.exam_question_id', $this->exam_question_id);
         $criteria->compare('t.node_id', $this->node_id);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

@@ -130,7 +130,7 @@ abstract class BaseExerciseQaState extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -163,9 +163,9 @@ abstract class BaseExerciseQaState extends ActiveRecord
         $criteria->compare('t.thumbnail_proofed', $this->thumbnail_proofed);
         $criteria->compare('t.materials_proofed', $this->materials_proofed);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

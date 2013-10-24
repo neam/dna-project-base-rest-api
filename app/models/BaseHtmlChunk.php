@@ -99,7 +99,7 @@ abstract class BaseHtmlChunk extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -120,9 +120,9 @@ abstract class BaseHtmlChunk extends ActiveRecord
         $criteria->compare('t.markup_cn', $this->markup_cn, true);
         $criteria->compare('t.markup_de', $this->markup_de, true);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

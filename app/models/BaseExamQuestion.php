@@ -152,7 +152,7 @@ abstract class BaseExamQuestion extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -190,9 +190,9 @@ abstract class BaseExamQuestion extends ActiveRecord
         $criteria->compare('t.exam_question_qa_state_id_cn', $this->exam_question_qa_state_id_cn);
         $criteria->compare('t.exam_question_qa_state_id_de', $this->exam_question_qa_state_id_de);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

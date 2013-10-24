@@ -114,7 +114,7 @@ abstract class BaseSnapshotQaState extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -139,9 +139,9 @@ abstract class BaseSnapshotQaState extends ActiveRecord
         $criteria->compare('t.slug_proofed', $this->slug_proofed);
         $criteria->compare('t.link_proofed', $this->link_proofed);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

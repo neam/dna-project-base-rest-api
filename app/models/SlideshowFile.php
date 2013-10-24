@@ -123,4 +123,11 @@ class SlideshowFile extends BaseSlideshowFile
         return parent::afterSave();
     }
 
+    public function search()
+    {
+        return new CActiveDataProvider(get_class($this), array(
+            'criteria' => $this->searchCriteria(),
+        ));
+    }
+
 }

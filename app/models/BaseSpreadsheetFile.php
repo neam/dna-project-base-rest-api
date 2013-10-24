@@ -140,7 +140,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -172,9 +172,9 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
         $criteria->compare('t.processed_media_id_cn', $this->processed_media_id_cn);
         $criteria->compare('t.processed_media_id_de', $this->processed_media_id_de);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

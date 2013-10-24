@@ -118,7 +118,7 @@ abstract class BaseExamQuestionQaState extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -145,9 +145,9 @@ abstract class BaseExamQuestionQaState extends ActiveRecord
         $criteria->compare('t.question_proofed', $this->question_proofed);
         $criteria->compare('t.source_proofed', $this->source_proofed);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

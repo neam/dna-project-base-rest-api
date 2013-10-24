@@ -69,7 +69,7 @@ abstract class BaseEdge extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -79,9 +79,9 @@ abstract class BaseEdge extends ActiveRecord
         $criteria->compare('t.from_node_id', $this->from_node_id);
         $criteria->compare('t.to_node_id', $this->to_node_id);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

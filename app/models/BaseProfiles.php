@@ -87,7 +87,7 @@ abstract class BaseProfiles extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -104,9 +104,9 @@ abstract class BaseProfiles extends ActiveRecord
         $criteria->compare('t.lives_in', $this->lives_in, true);
         $criteria->compare('t.can_translate_to', $this->can_translate_to);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

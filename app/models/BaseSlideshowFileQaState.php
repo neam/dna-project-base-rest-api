@@ -118,7 +118,7 @@ abstract class BaseSlideshowFileQaState extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -145,9 +145,9 @@ abstract class BaseSlideshowFileQaState extends ActiveRecord
         $criteria->compare('t.title_proofed', $this->title_proofed);
         $criteria->compare('t.file_proofed', $this->file_proofed);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

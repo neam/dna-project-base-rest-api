@@ -100,7 +100,7 @@ abstract class BaseTeachersGuide extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -121,9 +121,9 @@ abstract class BaseTeachersGuide extends ActiveRecord
         $criteria->compare('t.title_de', $this->title_de, true);
         $criteria->compare('t.title_cn', $this->title_cn, true);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

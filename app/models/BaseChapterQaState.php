@@ -142,7 +142,7 @@ abstract class BaseChapterQaState extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -181,9 +181,9 @@ abstract class BaseChapterQaState extends ActiveRecord
         $criteria->compare('t.snapshots_proofed', $this->snapshots_proofed);
         $criteria->compare('t.credits_proofed', $this->credits_proofed);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

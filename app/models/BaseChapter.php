@@ -168,7 +168,7 @@ abstract class BaseChapter extends ActiveRecord
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
@@ -214,9 +214,9 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t.chapter_qa_state_id_cn', $this->chapter_qa_state_id_cn);
         $criteria->compare('t.chapter_qa_state_id_de', $this->chapter_qa_state_id_de);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }
