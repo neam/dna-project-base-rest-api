@@ -81,6 +81,15 @@ $gcmsConfig = array(
             'enableParamLogging' => true, // Log SQL parameters
             //'schemaCachingDuration'=>3600*24,
         ),
+        'dbTest'   => array(
+            'connectionString' => 'mysql:host=' . TEST_DB_HOST . (defined('TEST_DB_PORT') ? ';port=' . TEST_DB_PORT : '') . ';dbname=' . TEST_DB_NAME,
+            'emulatePrepare' => true,
+            'username' => TEST_DB_USER,
+            'password' => TEST_DB_PASSWORD,
+            'charset' => 'utf8',
+            'enableParamLogging' => true, // Log SQL parameters
+            //'schemaCachingDuration'=>3600*24,
+        ),
         'langHandler' => array(
             'languages' => array(
                 'en',
