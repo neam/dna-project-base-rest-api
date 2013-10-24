@@ -20,6 +20,7 @@ $config['params']['dataModelMeta']['crudModels'] = array(
     'Exercise' => 'exercise',
     'HtmlChunk' => 'html_chunk',
     'Node' => 'node',
+    'Edge' => 'edge',
     'PoFile' => 'po_file',
     'Section' => 'section',
     'SectionContent' => 'section_content',
