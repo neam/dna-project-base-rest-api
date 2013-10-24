@@ -67,10 +67,13 @@ class Chapter extends BaseChapter
             )
         );
     }
-    public function getAttributeHint($key){
+
+    public function getAttributeHint($key)
+    {
         $a = $this->attributeHints();
         return $a[$key];
     }
+
     public function attributeHints()
     {
         return array_merge(

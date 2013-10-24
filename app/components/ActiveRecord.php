@@ -116,7 +116,7 @@ class ActiveRecord extends CActiveRecord
 
     public function attributeHints()
     {
-           return array();
+        return array();
     }
 
 }

@@ -20,7 +20,7 @@ class Node extends BaseNode
 
     public function getItemLabel()
     {
-        return "Node #".$this->id;
+        return "Node #" . $this->id;
     }
 
     public function behaviors()
