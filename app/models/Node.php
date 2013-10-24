@@ -31,6 +31,14 @@ class Node extends BaseNode
         );
     }
 
+    public function relations()
+    {
+        return array(
+            'outEdges' => array(self::HAS_MANY, 'Edge', 'from_node_id'),
+            'inEdges' => array(self::HAS_MANY, 'Edge', 'to_node_id'),
+        );
+    }
+
     public function rules()
     {
         return array_merge(
