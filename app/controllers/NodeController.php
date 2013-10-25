@@ -20,6 +20,13 @@ class NodeController extends Controller
             array(
                 'allow',
                 'actions' => array(
+                    'go',
+                ),
+                'users' => array('*'),
+            ),
+            array(
+                'allow',
+                'actions' => array(
                     'index',
                     'view',
                     'create',
@@ -59,6 +66,14 @@ class NodeController extends Controller
             $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
         }
         return true;
+    }
+
+    public function actionGo($id)
+    {
+        $this->layout = 'go';
+        $node = $this->loadModel($id);
+
+        $this->render('/_item/go', array('model' => $node->item()));
     }
 
     public function actionView($id)

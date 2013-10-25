@@ -3,12 +3,14 @@
         <?php $this->renderPartial('_view', array('data' => $model)); ?>
     </div>
     <div class="span3">
+        <?php if (count($model->node()->outNodes) == 0): ?>
+            <?php echo Yii::t('go', 'There are no related nodes'); ?>
         <?php
-
-        foreach ($model->node()->edges as $edge) {
-            var_dump($edge->attributes);
-        }
-
+        else:
+            foreach ($model->node()->outNodes as $node) {
+                var_dump($node->attributes);
+            }
+        endif;
         ?>
     </div>
 </div>
