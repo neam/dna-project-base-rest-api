@@ -331,6 +331,9 @@ $mainConfig = array(
                 '<lang:[a-z]{2}(_[a-z]{2})?>/img/<preset:[a-zA-Z0-9-._]+>/<title:.+>_<id:\d+><extension:.[a-zA-Z0-9]{1,}+>'
                                                                => 'p3media/file/image',
                 // Yii
+                'pages/<view:\w+>' => 'site/page',
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<lang:[a-z]{2}(_[a-z]{2})?>/pages/<view:\w+>' => 'site/page',
                 '<lang:[a-z]{2}(_[a-z]{2})?>/<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<lang:[a-z]{2}(_[a-z]{2})?>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
