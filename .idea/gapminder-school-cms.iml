@@ -22,9 +22,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/mihanentalpo/yii-sql-migration-generator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mishamx/yii-user" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nbproject/private" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/neam/yii-i18n-columns" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/neam/yii-versioning-behavior" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-java-bridge/pjb" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/phpexcel" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/phppowerpoint" />
@@ -78,7 +75,6 @@
       <library name="PHP">
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/zetacomponents/base" />
-          <root url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/lipsum-widget" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/fancybox-widget" />
           <root url="file://$MODULE_DIR$/vendor/thomaspark/bootswatch" />
@@ -105,7 +101,6 @@
           <root url="file://$MODULE_DIR$/vendor/cloudhead/less.js" />
           <root url="file://$MODULE_DIR$/vendor/crisu83/yii-auth" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/yii-sakila-crud" />
-          <root url="file://$MODULE_DIR$/vendor/neam/yii-versioning-behavior" />
           <root url="file://$MODULE_DIR$/vendor/firstrow/stranslateablebehavior" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3bootstrap" />
           <root url="file://$MODULE_DIR$/vendor/zetacomponents/workflow" />
@@ -119,22 +114,20 @@
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/christiansalazarh/cruge" />
           <root url="file://$MODULE_DIR$/vendor/codemix/hybridauthmanager" />
-          <root url="file://$MODULE_DIR$/vendor/neam/yii-i18n-columns" />
-          <root url="file://$MODULE_DIR$/vendor/phundament/jquery-file-upload" />
           <root url="file://$MODULE_DIR$/vendor/nbproject/private" />
+          <root url="file://$MODULE_DIR$/vendor/phundament/jquery-file-upload" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3pages" />
           <root url="file://$MODULE_DIR$/vendor/clevertech/yiibooster" />
           <root url="file://$MODULE_DIR$/vendor/phundament/lessii" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/database-command" />
           <root url="file://$MODULE_DIR$/vendor/php-java-bridge/pjb" />
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phpword" />
-          <root url="file://$MODULE_DIR$/vendor/phundament/p3extensions" />
           <root url="file://$MODULE_DIR$/vendor/malyshev/yii-debug-toolbar" />
           <root url="file://$MODULE_DIR$/vendor/mishamx/yii-user" />
+          <root url="file://$MODULE_DIR$/vendor/phundament/p3extensions" />
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/zetacomponents/base" />
-          <root url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/lipsum-widget" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/fancybox-widget" />
           <root url="file://$MODULE_DIR$/vendor/thomaspark/bootswatch" />
@@ -161,7 +154,6 @@
           <root url="file://$MODULE_DIR$/vendor/cloudhead/less.js" />
           <root url="file://$MODULE_DIR$/vendor/crisu83/yii-auth" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/yii-sakila-crud" />
-          <root url="file://$MODULE_DIR$/vendor/neam/yii-versioning-behavior" />
           <root url="file://$MODULE_DIR$/vendor/firstrow/stranslateablebehavior" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3bootstrap" />
           <root url="file://$MODULE_DIR$/vendor/zetacomponents/workflow" />
@@ -175,21 +167,21 @@
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/christiansalazarh/cruge" />
           <root url="file://$MODULE_DIR$/vendor/codemix/hybridauthmanager" />
-          <root url="file://$MODULE_DIR$/vendor/neam/yii-i18n-columns" />
-          <root url="file://$MODULE_DIR$/vendor/phundament/jquery-file-upload" />
           <root url="file://$MODULE_DIR$/vendor/nbproject/private" />
+          <root url="file://$MODULE_DIR$/vendor/phundament/jquery-file-upload" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3pages" />
           <root url="file://$MODULE_DIR$/vendor/clevertech/yiibooster" />
           <root url="file://$MODULE_DIR$/vendor/phundament/lessii" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/database-command" />
           <root url="file://$MODULE_DIR$/vendor/php-java-bridge/pjb" />
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phpword" />
-          <root url="file://$MODULE_DIR$/vendor/phundament/p3extensions" />
           <root url="file://$MODULE_DIR$/vendor/malyshev/yii-debug-toolbar" />
           <root url="file://$MODULE_DIR$/vendor/mishamx/yii-user" />
+          <root url="file://$MODULE_DIR$/vendor/phundament/p3extensions" />
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="sass-stdlib" level="application" />
   </component>
 </module>
 
