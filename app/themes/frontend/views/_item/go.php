@@ -7,9 +7,11 @@
             <?php echo Yii::t('go', 'There are no related nodes'); ?>
         <?php
         else:
-            foreach ($model->node()->outNodes as $node) {
-                var_dump($node->attributes);
-            }
+            foreach ($model->node()->outNodes as $node):
+                ?>
+                <?php $this->renderPartial('_related-view', array('data' => $node->item())); ?>
+            <?php
+            endforeach;
         endif;
         ?>
     </div>
