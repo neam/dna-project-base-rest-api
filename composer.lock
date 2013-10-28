@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ed808639160417164128d8411a6dde7a",
+    "hash": "4e201ce9014d1a138f8249883d273854",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -270,6 +270,50 @@
                 "issues": "https://github.com/neam/yii-qa-state/issues"
             },
             "time": "2013-10-18 13:23:42"
+        },
+        {
+            "name": "neam/yii-relational-graph-db",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-relational-graph-db.git",
+                "reference": "d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-relational-graph-db/zipball/d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6",
+                "reference": "d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "behaviors/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "Ability to relate any items within a relational database with each other, using the concept of nodes and edges.",
+            "homepage": "https://github.com/neam/yii-relational-graph-db",
+            "keywords": [
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/neam/yii-relational-graph-db/tree/develop",
+                "issues": "https://github.com/neam/yii-relational-graph-db/issues"
+            },
+            "time": "2013-10-28 16:48:19"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -1588,6 +1632,7 @@
         "firstrow/stranslateablebehavior": 20,
         "neam/yii-i18n-columns": 15,
         "neam/yii-qa-state": 20,
+        "neam/yii-relational-graph-db": 20,
         "phpoffice/phpword": 20,
         "phpoffice/phppowerpoint": 20,
         "schmunk42/giic": 20,

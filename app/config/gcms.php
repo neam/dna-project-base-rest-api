@@ -31,6 +31,8 @@ $gcmsConfig = array(
         'i18n-columns' => 'vendor.neam.yii-i18n-columns',
         // qa-state
         'qa-state' => 'vendor.neam.yii-qa-state',
+        // relational-graph-db
+        'relational-graph-db' => 'vendor.neam.yii-relational-graph-db',
         // phpoffice libraries
         'phpexcel' => 'vendor.phpoffice.phpexcel.Classes',
         'phpword' => 'vendor.phpoffice.phpword.src',
@@ -43,6 +45,7 @@ $gcmsConfig = array(
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
         'qa-state.behaviors.QaStateBehavior',
+        'relational-graph-db.behaviors.RelationalGraphDbBehavior',
         'application.behaviors.EzcWorkflowBehavior',
         'application.workflows.custom.*',
         'application.workflows.*',

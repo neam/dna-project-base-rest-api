@@ -93,6 +93,10 @@
         },
         {
             "type": "vcs",
+            "url": "https://github.com/neam/yii-relational-graph-db"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/PHPOffice/PHPExcel"
         },
         {
@@ -142,6 +146,7 @@
         "firstrow/stranslateablebehavior":"@dev",
         "neam/yii-i18n-columns":"0.3.0-alpha",
         "neam/yii-qa-state":"@dev",
+        "neam/yii-relational-graph-db":"@dev",
         "phpoffice/phpexcel": "1.7.9",
         "phpoffice/phpword": "dev-added-composer-json",
         "phpoffice/phppowerpoint": "dev-master",
