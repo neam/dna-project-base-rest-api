@@ -117,6 +117,9 @@ $gcmsConfig = array(
             'class' => 'CPhpAuthManager',
             'authFile' => Yii::getPathOfAlias('backend') . '/app/data/auth-gcms.php',
         ),
+        'assetManager' => array(
+            'class' => 'AssetManager',
+        ),
         'ezc' => array(
             'class' => 'application.components.EzcComponent',
             'tablePrefix' => 'ezc_',
