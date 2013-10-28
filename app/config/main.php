@@ -319,6 +319,10 @@ $mainConfig = array(
             'appendParams'   => false, // in general more error resistant
             'urlFormat'      => 'get', // use 'path', otherwise rules below won't work
             'rules'          => array(
+                // special short urls
+                'go/<id:\d+>'                  => 'node/go',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/go/<id:\d+>'                  => 'node/go',
+
                 // backend
                 'phundament'                             => 'p3admin/default/index',
                 // standard login page URL
