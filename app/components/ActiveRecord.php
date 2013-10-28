@@ -16,12 +16,17 @@ class ActiveRecord extends CActiveRecord
             );
         }
 
-        // List of models using qa attributes behavior
         $qaModels = Yii::app()->params['dataModelMeta']['qaModels'];
-
         if (isset($qaModels[get_class($this)])) {
             $behaviors['qa-state'] = array(
                 'class' => 'QaStateBehavior',
+            );
+        }
+
+        $graphModels = Yii::app()->params['dataModelMeta']['graphModels'];
+        if (isset($graphModels[get_class($this)])) {
+            $behaviors['relational-graph-db'] = array(
+                'class' => 'RelationalGraphDbBehavior',
             );
         }
 

@@ -53,6 +53,11 @@ $config['params']['dataModelMeta']['qaModels'] = array(
     'VideoFile' => 'video_file',
 );
 
+// Models that are related by nodes and edges
+$config['params']['dataModelMeta']['graphModels'] = array_merge($config['params']['dataModelMeta']['qaModels'], array(
+    'ExamQuestionAlternative' => 'exam_question_alternative',
+));
+
 // The accompanying qa state models
 $qaStateModels = array();
 foreach ($config['params']['dataModelMeta']['qaModels'] as $model => $table) {
