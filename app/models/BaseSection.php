@@ -5,7 +5,7 @@
  *
  * Columns in table "section" available as properties of the model:
  * @property string $id
- * @property string $chapter_id
+ * @property string $page_id
  * @property string $title_en
  * @property string $slug_en
  * @property integer $ordinal
@@ -36,7 +36,7 @@
  * @property string $menu_label_de
  *
  * Relations of table "section" available as properties of the model:
- * @property Chapter $chapter
+ * @property Page $page
  * @property Node $node
  * @property SectionContent[] $sectionContents
  */
@@ -57,20 +57,20 @@ abstract class BaseSection extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('chapter_id', 'required'),
+                array('page_id', 'required'),
                 array('title_en, slug_en, ordinal, menu_label_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_cn, menu_label_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('ordinal', 'numerical', 'integerOnly' => true),
-                array('chapter_id, node_id', 'length', 'max' => 20),
+                array('page_id, node_id', 'length', 'max' => 20),
                 array('title_en, slug_en, menu_label_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_cn, menu_label_de', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, chapter_id, title_en, slug_en, ordinal, menu_label_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_cn, menu_label_de', 'safe', 'on' => 'search'),
+                array('id, page_id, title_en, slug_en, ordinal, menu_label_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, menu_label_es, menu_label_fa, menu_label_hi, menu_label_pt, menu_label_sv, menu_label_cn, menu_label_de', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->chapter_id;
+        return (string) $this->page_id;
     }
 
     public function behaviors()
@@ -88,7 +88,7 @@ abstract class BaseSection extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'chapter' => array(self::BELONGS_TO, 'Chapter', 'chapter_id'),
+                'page' => array(self::BELONGS_TO, 'Page', 'page_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'section_id'),
             )
@@ -99,7 +99,7 @@ abstract class BaseSection extends ActiveRecord
     {
         return array(
             'id' => Yii::t('model', 'ID'),
-            'chapter_id' => Yii::t('model', 'Chapter'),
+            'page_id' => Yii::t('model', 'Page'),
             'title_en' => Yii::t('model', 'Title En'),
             'slug_en' => Yii::t('model', 'Slug En'),
             'ordinal' => Yii::t('model', 'Ordinal'),
@@ -138,7 +138,7 @@ abstract class BaseSection extends ActiveRecord
         }
 
         $criteria->compare('t.id', $this->id, true);
-        $criteria->compare('t.chapter_id', $this->chapter_id);
+        $criteria->compare('t.page_id', $this->page_id);
         $criteria->compare('t.title_en', $this->title_en, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t.ordinal', $this->ordinal);

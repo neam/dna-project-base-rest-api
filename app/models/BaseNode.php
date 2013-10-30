@@ -27,7 +27,6 @@
  * @property SlideshowFile[] $slideshowFiles
  * @property Snapshot[] $snapshots
  * @property SpreadsheetFile[] $spreadsheetFiles
- * @property TeachersGuide[] $teachersGuides
  * @property TextDoc[] $textDocs
  * @property Tool[] $tools
  * @property VectorGraphic[] $vectorGraphics
@@ -95,7 +94,6 @@ abstract class BaseNode extends ActiveRecord
                 'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'node_id'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'node_id'),
                 'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'node_id'),
-                'teachersGuides' => array(self::HAS_MANY, 'TeachersGuide', 'node_id'),
                 'textDocs' => array(self::HAS_MANY, 'TextDoc', 'node_id'),
                 'tools' => array(self::HAS_MANY, 'Tool', 'node_id'),
                 'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'node_id'),

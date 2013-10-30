@@ -11,6 +11,7 @@
  * @property string $slug_en
  * @property integer $thumbnail_media_id
  * @property string $about_en
+ * @property string $teachers_guide_en
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -43,6 +44,13 @@
  * @property string $chapter_qa_state_id_sv
  * @property string $chapter_qa_state_id_cn
  * @property string $chapter_qa_state_id_de
+ * @property string $teachers_guide_es
+ * @property string $teachers_guide_fa
+ * @property string $teachers_guide_hi
+ * @property string $teachers_guide_pt
+ * @property string $teachers_guide_sv
+ * @property string $teachers_guide_cn
+ * @property string $teachers_guide_de
  *
  * Relations of table "chapter" available as properties of the model:
  * @property ChapterQaState $chapterQaStateIdEn
@@ -57,7 +65,6 @@
  * @property Chapter[] $chapters
  * @property Node $node
  * @property P3Media $thumbnailMedia
- * @property Section[] $sections
  */
 abstract class BaseChapter extends ActiveRecord
 {
@@ -76,12 +83,12 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, teachers_guide_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de, teachers_guide_es, teachers_guide_fa, teachers_guide_hi, teachers_guide_pt, teachers_guide_sv, teachers_guide_cn, teachers_guide_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, thumbnail_media_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'length', 'max' => 20),
                 array('title_en, slug_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('about_en, created, modified, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('about_en, teachers_guide_en, created, modified, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, teachers_guide_es, teachers_guide_fa, teachers_guide_hi, teachers_guide_pt, teachers_guide_sv, teachers_guide_cn, teachers_guide_de', 'safe'),
+                array('id, version, cloned_from_id, title_en, slug_en, thumbnail_media_id, about_en, teachers_guide_en, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de, teachers_guide_es, teachers_guide_fa, teachers_guide_hi, teachers_guide_pt, teachers_guide_sv, teachers_guide_cn, teachers_guide_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -118,7 +125,6 @@ abstract class BaseChapter extends ActiveRecord
                 'chapters' => array(self::HAS_MANY, 'Chapter', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
-                'sections' => array(self::HAS_MANY, 'Section', 'chapter_id'),
             )
         );
     }
@@ -133,6 +139,7 @@ abstract class BaseChapter extends ActiveRecord
             'slug_en' => Yii::t('model', 'Slug En'),
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
             'about_en' => Yii::t('model', 'About En'),
+            'teachers_guide_en' => Yii::t('model', 'Teachers Guide En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -165,6 +172,13 @@ abstract class BaseChapter extends ActiveRecord
             'chapter_qa_state_id_sv' => Yii::t('model', 'Chapter Qa State Id Sv'),
             'chapter_qa_state_id_cn' => Yii::t('model', 'Chapter Qa State Id Cn'),
             'chapter_qa_state_id_de' => Yii::t('model', 'Chapter Qa State Id De'),
+            'teachers_guide_es' => Yii::t('model', 'Teachers Guide Es'),
+            'teachers_guide_fa' => Yii::t('model', 'Teachers Guide Fa'),
+            'teachers_guide_hi' => Yii::t('model', 'Teachers Guide Hi'),
+            'teachers_guide_pt' => Yii::t('model', 'Teachers Guide Pt'),
+            'teachers_guide_sv' => Yii::t('model', 'Teachers Guide Sv'),
+            'teachers_guide_cn' => Yii::t('model', 'Teachers Guide Cn'),
+            'teachers_guide_de' => Yii::t('model', 'Teachers Guide De'),
         );
     }
 
@@ -181,6 +195,7 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
         $criteria->compare('t.about_en', $this->about_en, true);
+        $criteria->compare('t.teachers_guide_en', $this->teachers_guide_en, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);
@@ -213,6 +228,13 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t.chapter_qa_state_id_sv', $this->chapter_qa_state_id_sv);
         $criteria->compare('t.chapter_qa_state_id_cn', $this->chapter_qa_state_id_cn);
         $criteria->compare('t.chapter_qa_state_id_de', $this->chapter_qa_state_id_de);
+        $criteria->compare('t.teachers_guide_es', $this->teachers_guide_es, true);
+        $criteria->compare('t.teachers_guide_fa', $this->teachers_guide_fa, true);
+        $criteria->compare('t.teachers_guide_hi', $this->teachers_guide_hi, true);
+        $criteria->compare('t.teachers_guide_pt', $this->teachers_guide_pt, true);
+        $criteria->compare('t.teachers_guide_sv', $this->teachers_guide_sv, true);
+        $criteria->compare('t.teachers_guide_cn', $this->teachers_guide_cn, true);
+        $criteria->compare('t.teachers_guide_de', $this->teachers_guide_de, true);
 
 
         return $criteria;

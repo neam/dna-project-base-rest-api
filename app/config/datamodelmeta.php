@@ -21,6 +21,7 @@ $config['params']['dataModelMeta']['crudModels'] = array(
     'HtmlChunk' => 'html_chunk',
     'Node' => 'node',
     'Edge' => 'edge',
+    'Page' => 'page',
     'PoFile' => 'po_file',
     'Section' => 'section',
     'SectionContent' => 'section_content',
