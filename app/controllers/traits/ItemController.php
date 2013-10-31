@@ -31,6 +31,14 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
+                    'deleteEdge',
+                ),
+                'roles' => array(
+                    'Item.DeleteEdge'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
                     'prepPreshow',
                 ),
                 'roles' => array(
@@ -274,7 +282,7 @@ trait ItemController
 
     }
 
-    public function actionAdd()
+public function actionAdd()
     {
         $item = new $this->modelClass();
         if (!$item->save()) {
@@ -284,6 +292,28 @@ trait ItemController
         Yii::app()->user->setFlash('success', "{$this->modelClass} Added");
 
         $this->redirect(array('continueAuthoring', 'id' => $item->id));
+    }
+
+    public function actionDeleteEdge()
+    {
+        $from = $_GET["from"];
+        $to = $_GET["to"];
+        $del = Edge::model()->deleteAll(
+            'from_node_id=:from_node_id AND to_node_id=:to_node_id',
+            array(
+                ':from_node_id'=>$from,
+                ':to_node_id'=>$to,
+            )
+        );
+        if ($del){
+            $message = "Relation deleted";
+        } else {
+            $message = "Unable to delete relation";
+        }
+        if (isset($_GET['returnUrl'])) {
+            $delimiter = (strpos($_GET['returnUrl'],"?")!==false) ? "&" : "?" ;
+            $this->redirect($_GET['returnUrl'].$delimiter."message=$message");
+        }
     }
 
     public function actionDraft($id)
@@ -441,9 +471,6 @@ trait ItemController
     }
 
     private function removeEdges($edgeid){
-        //$edge = new Edge();
-        //$edge->id = $edgeid;
-        //$edge->delete();
     }
     private function addEdges($fromid, $toids, $model){
         $from_model = $this->loadModel($fromid);
@@ -483,16 +510,22 @@ trait ItemController
         }
     }
 
-    private function fixPostFromGrid($p){
-        $ret = array();
-        foreach ($_POST as $key => $p){
+    // Asks $_POST if a value isn't part of "Model"
+    // If it ends with _c0, we suppose it's from a grid input, and put it into $_POST[$this->modelClass]
+    // Returns $_POST with fixed values
+    private function fixPostFromGrid($post){
+        $return_array = array();
+        foreach ($post as $key => $p){
             if (strrpos($key,'_c0')!==false){
-                $fixedkey = substr($key,0, -3);
-                $ret["Chapter"][$fixedkey] = $p;
+                $newkey = substr($key,0, -3);
+                $return_array[$this->modelClass][$newkey] = $p;
             }
-            $ret[$key] = $p;
+            else
+            {
+                $return_array[$key] = $p;
+            }
         }
-        return $ret;
+        return $return_array;
     }
 
     protected function saveAndContinueOnSuccess($id)
