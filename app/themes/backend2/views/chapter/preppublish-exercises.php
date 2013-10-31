@@ -86,35 +86,32 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
         </div>
 
         <?php
-            var_dump ( $model->node()->edges );
-            /*
-            $edge = new Edge();
-            $edge->from_node_id = $chapter->ensureNode()->id;
-            $edge->to_node_id = $video->ensureNode()->id;
-            if (!$edge->save()) {
-                throw new SaveException($edge);
-            }
-            */
+        $allExercises = new Exercise('search');
+        $this->widget(
+            'bootstrap.widgets.TbExtendedGridView',
+            array(
+                'id' => 'exercises_to_add',
+                'type' => 'striped bordered',
+                'dataProvider' => $allExercises->search(),
+                'pager' => array(
+                    'class' => 'TbPager',
+                    'displayFirstAndLast' => true,
+                ),
+                'bulkActions' => array(
+                    'actionButtons' => array(
+                    ),
+                    'checkBoxColumnConfig' => array(
+                        'name' => 'id'
+                    ),
+                ),
+                'columns' => array(
+                    array('name' => 'id', 'header' => 'Id'),
+                    array('name' => 'title', 'header' => 'Title'),
+                )
+            )
+        );
+
         ?>
-
-        <div class="control-group ">
-            <label class="control-label" for="">Exercices</label>
-
-            <div class="controls">
-                <ul>
-                    <li>Exercise 1</li>
-                    <li>Exercise 2</li>
-                </ul>
-                <?php
-                echo CHtml::Button(Yii::t('model', 'Create new exercise'), array(
-                        //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-                        'class' => 'btn'
-                    )
-                );
-                ?>
-            </div>
-        </div>
-
         <div class="form-actions">
             <?php
             echo CHtml::Button(Yii::t('model', 'Cancel'), array(

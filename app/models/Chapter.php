@@ -43,6 +43,14 @@ class Chapter extends BaseChapter
     }
 
     // todo
+    public $exercises_to_add;
+    public $snapshots_to_add;
+    public $videos_to_add;
+
+    public $exercises_to_remove;
+    public $snapshots_to_remove;
+    public $videos_to_remove;
+
     public $thumbnail;
     public $video;
     public $teachers_guide;

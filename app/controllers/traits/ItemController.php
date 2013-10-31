@@ -440,14 +440,60 @@ trait ItemController
         $this->render('translate', array('model' => $model, 'execution' => $execution));
     }
 
+    private function removeEdges($edgeid){
+        //$edge = new Edge();
+        //$edge->id = $edgeid;
+        //$edge->delete();
+    }
+    private function addEdges($fromid, $toids, $model){
+        $from_model = $this->loadModel($fromid);
+        $from_node_id = $from_model->node()->id;
+
+        foreach ($toids as $toid){
+            $to_model = $model::model()->findByPk($toid);
+            $to_node_id = $to_model->node()->id;
+
+            $edge = new Edge();
+            $edge->from_node_id = $from_node_id;
+            $edge->to_node_id = $to_node_id;
+
+            if (!$edge->save()){
+                throw new SaveException($edge);
+            }
+        }
+    }
+    private function listenForEdges($id){
+        var_dump ($_POST[$this->modelClass]);
+        exit;
+        if (isset($_POST[$this->modelClass]["exercises_to_add"])){
+            $this->addEdges($id, $_POST[$this->modelClass]["exercises_to_add"],'Exercise');
+        }
+        else if (isset($_POST[$this->modelClass]["exercises_to_remove"])){
+            $this->removeEdges($_POST[$this->modelClass]["exercises_to_remove"]);
+        }
+        else if (isset($_POST[$this->modelClass]["snapshots_to_add"])){
+            $this->addEdges($id, $_POST[$this->modelClass]["snapshots_to_add"],'Snapshot');
+        }
+        else if (isset($_POST[$this->modelClass]["snapshots_to_remove"])){
+            $this->removeEdges($_POST[$this->modelClass]["snapshots_to_remove"]);
+        }
+        else if (isset($_POST[$this->modelClass]["videos_to_add"])){
+            $this->addEdges($id, $_POST[$this->modelClass]["videos_to_add"],'Video');
+        }
+        else if (isset($_POST[$this->modelClass]["videos_to_remove"])){
+            $this->removeEdges($_POST[$this->modelClass]["videos_to_remove"]);
+        }
+    }
+
     protected function saveAndContinueOnSuccess($id)
     {
-
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
 
         if (isset($_POST[$this->modelClass])) {
+            $this->listenForEdges($id);
+
             $model->attributes = $_POST[$this->modelClass];
 
             // refresh qa state (to be sure that we have the most actual state)
