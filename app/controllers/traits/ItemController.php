@@ -463,8 +463,6 @@ trait ItemController
         }
     }
     private function listenForEdges($id){
-        var_dump ($_POST[$this->modelClass]);
-        exit;
         if (isset($_POST[$this->modelClass]["exercises_to_add"])){
             $this->addEdges($id, $_POST[$this->modelClass]["exercises_to_add"],'Exercise');
         }
@@ -485,11 +483,24 @@ trait ItemController
         }
     }
 
+    private function fixPostFromGrid($p){
+        $ret = array();
+        foreach ($_POST as $key => $p){
+            if (strrpos($key,'_c0')!==false){
+                $fixedkey = substr($key,0, -3);
+                $ret["Chapter"][$fixedkey] = $p;
+            }
+            $ret[$key] = $p;
+        }
+        return $ret;
+    }
+
     protected function saveAndContinueOnSuccess($id)
     {
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
+        $_POST = $this->fixPostFromGrid($_POST);
 
         if (isset($_POST[$this->modelClass])) {
             $this->listenForEdges($id);

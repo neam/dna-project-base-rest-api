@@ -85,23 +85,54 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             </div>
         </div>
 
-        <div class="control-group ">
-            <label class="control-label" for="">Snapshots</label>
-
-            <div class="controls">
+        <h2>Snapshots</h2>
+        <div class="controls">
+            <?php if ($model->snapshots): ?>
                 <ul>
-                    <li>Snapshot 1</li>
-                    <li>Snapshot 2</li>
+                    <?php foreach ($model->snapshots as $snapshot): ?>
+                        <li><?php echo $snapshot->title; ?></li>
+                    <?php endforeach; ?>
                 </ul>
-                <?php
-                echo CHtml::Button(Yii::t('model', 'Create new snapshot'), array(
-                        //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-                        'class' => 'btn'
-                    )
-                );
-                ?>
-            </div>
+            <?php endif; ?>
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Create new snapshot"),
+                "url" => array("/snapshot/")
+            ));
+            ?>
         </div>
+
+        <?php
+
+        ?>
+
+        <h2>Choose snapshot to add</h2>
+        <?php
+        $allSnapshots = new Snapshot('search');
+        $this->widget(
+            'bootstrap.widgets.TbExtendedGridView',
+            array(
+                'id' => 'snapshots_to_add',
+                'type' => 'striped bordered',
+                'dataProvider' => $allSnapshots->search(),
+                'pager' => array(
+                    'class' => 'TbPager',
+                    'displayFirstAndLast' => true,
+                ),
+                'bulkActions' => array(
+                    'actionButtons' => array(
+                    ),
+                    'checkBoxColumnConfig' => array(
+                        'name' => 'id'
+                    ),
+                ),
+                'columns' => array(
+                    array('name' => 'id', 'header' => 'Id'),
+                    array('name' => 'title', 'header' => 'Title'),
+                )
+            )
+        );
+        ?>
 
 
         <div class="form-actions">

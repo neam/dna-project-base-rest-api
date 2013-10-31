@@ -85,6 +85,28 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             </div>
         </div>
 
+        <h2>Exercises</h2>
+        <div class="controls">
+            <?php if ($model->exercises): ?>
+            <ul>
+                <?php foreach ($model->exercises as $exercise): ?>
+                <li><?php echo $exercise->title; ?></li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Create new exercise"),
+                "url" => array("/exercise/")
+            ));
+            ?>
+        </div>
+
+        <?php
+
+        ?>
+
+        <h2>Choose exercise to add</h2>
         <?php
         $allExercises = new Exercise('search');
         $this->widget(
@@ -110,8 +132,8 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
                 )
             )
         );
-
         ?>
+
         <div class="form-actions">
             <?php
             echo CHtml::Button(Yii::t('model', 'Cancel'), array(
