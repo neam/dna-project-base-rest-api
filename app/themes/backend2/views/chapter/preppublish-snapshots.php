@@ -90,7 +90,17 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             <?php if ($model->snapshots): ?>
                 <ul>
                     <?php foreach ($model->snapshots as $snapshot): ?>
-                        <li><?php echo $snapshot->title; ?></li>
+                        <li>
+                            <?php echo $snapshot->title; ?>
+                            <?php
+                            $this->widget("bootstrap.widgets.TbButton", array(
+                                "label" => Yii::t("model", "Delete relation"),
+                                "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from"=>$model->node()->id,"to"=>$snapshot->node()->id,"returnUrl"=>Yii::app()->request->url),
+                                "size" => "small",
+                                "type" => "danger"
+                            ));
+                            ?>
+                        </li>
                     <?php endforeach; ?>
                 </ul>
             <?php endif; ?>
@@ -101,10 +111,6 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             ));
             ?>
         </div>
-
-        <?php
-
-        ?>
 
         <h2>Choose snapshot to add</h2>
         <?php

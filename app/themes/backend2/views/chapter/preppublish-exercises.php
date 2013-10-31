@@ -90,7 +90,17 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             <?php if ($model->exercises): ?>
             <ul>
                 <?php foreach ($model->exercises as $exercise): ?>
-                <li><?php echo $exercise->title; ?></li>
+                <li>
+                    <?php echo $exercise->title; ?>
+                    <?php
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Delete relation"),
+                        "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from"=>$model->node()->id,"to"=>$exercise->node()->id,"returnUrl"=>Yii::app()->request->url),
+                        "size" => "small",
+                        "type" => "danger"
+                    ));
+                    ?>
+                </li>
                 <?php endforeach; ?>
             </ul>
             <?php endif; ?>
@@ -101,10 +111,6 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             ));
             ?>
         </div>
-
-        <?php
-
-        ?>
 
         <h2>Choose exercise to add</h2>
         <?php
