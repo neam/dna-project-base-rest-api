@@ -44,6 +44,8 @@ EOD;
             // Atomic actions are called operations
             $auth->createOperation($prefix . 'Item.Add', 'Adds a temporary empty item to the database');
             $auth->createOperation($prefix . 'Item.Draft', 'Completes a temporary item by stepping through fields required for DRAFT  ');
+            $auth->createOperation($prefix . 'Item.AddEdge', 'Add a relation');
+            $auth->createOperation($prefix . 'Item.DeleteEdge', 'Remove a relation');
             $auth->createOperation($prefix . 'Item.PrepPreshow', 'Prepare item for preshow, by stepping through fields required for PREVIEW');
             $auth->createOperation($prefix . 'Item.Preshow', 'Put item in preshow mode, by switching itemVersion.status to PREVIEW');
             $auth->createOperation($prefix . 'Item.Evaluate', 'Evaluating an item in Preview-mode by grading and commenting on it\'s fields or the total itemVersion.');
@@ -89,6 +91,8 @@ EOD;
             $role = $auth->createRole($prefix . 'Creator');
             $role->addChild($prefix . 'Item.Add');
             $role->addChild($prefix . 'Item.Draft');
+            $role->addChild($prefix . 'Item.AddEdge');
+            $role->addChild($prefix . 'Item.DeleteEdge');
             $role->addChild($prefix . 'Item.PrepPreshow');
             $role->addChild($prefix . 'Item.Preshow');
             $role->addChild($prefix . 'Item.PrepPublish');
