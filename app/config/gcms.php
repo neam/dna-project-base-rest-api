@@ -23,8 +23,7 @@ Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
 $gcmsConfig = array(
     'name' => 'Gapminder CMS',
     'language' => 'en', // default language, see also components.langHandler
-    'preload' => array(
-        //'ezc', // trying out if we can lazy-load this instead of preloading it...
+    'preload' => array(//'ezc', // trying out if we can lazy-load this instead of preloading it...
     ),
     'aliases' => array(
         // i18n-columns
@@ -84,7 +83,7 @@ $gcmsConfig = array(
             'enableParamLogging' => true, // Log SQL parameters
             //'schemaCachingDuration'=>3600*24,
         ),
-        'dbTest'   => array(
+        'dbTest' => array(
             'connectionString' => 'mysql:host=' . TEST_DB_HOST . (defined('TEST_DB_PORT') ? ';port=' . TEST_DB_PORT : '') . ';dbname=' . TEST_DB_NAME,
             'emulatePrepare' => true,
             'username' => TEST_DB_USER,
