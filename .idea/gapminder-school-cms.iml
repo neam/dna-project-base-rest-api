@@ -99,7 +99,6 @@
           <root url="file://$MODULE_DIR$/vendor/phundament/gii-template-collection" />
           <root url="file://$MODULE_DIR$/vendor/anggiaj/eselect2" />
           <root url="file://$MODULE_DIR$/vendor/cloudhead/less.js" />
-          <root url="file://$MODULE_DIR$/vendor/crisu83/yii-auth" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/yii-sakila-crud" />
           <root url="file://$MODULE_DIR$/vendor/firstrow/stranslateablebehavior" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3bootstrap" />
@@ -152,7 +151,6 @@
           <root url="file://$MODULE_DIR$/vendor/phundament/gii-template-collection" />
           <root url="file://$MODULE_DIR$/vendor/anggiaj/eselect2" />
           <root url="file://$MODULE_DIR$/vendor/cloudhead/less.js" />
-          <root url="file://$MODULE_DIR$/vendor/crisu83/yii-auth" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/yii-sakila-crud" />
           <root url="file://$MODULE_DIR$/vendor/firstrow/stranslateablebehavior" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3bootstrap" />

@@ -85,35 +85,60 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             </div>
         </div>
 
-        <?php
-            var_dump ( $model->node()->edges );
-            /*
-            $edge = new Edge();
-            $edge->from_node_id = $chapter->ensureNode()->id;
-            $edge->to_node_id = $video->ensureNode()->id;
-            if (!$edge->save()) {
-                throw new SaveException($edge);
-            }
-            */
-        ?>
-
-        <div class="control-group ">
-            <label class="control-label" for="">Exercices</label>
-
-            <div class="controls">
-                <ul>
-                    <li>Exercise 1</li>
-                    <li>Exercise 2</li>
-                </ul>
-                <?php
-                echo CHtml::Button(Yii::t('model', 'Create new exercise'), array(
-                        //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-                        'class' => 'btn'
-                    )
-                );
-                ?>
-            </div>
+        <h2>Exercises</h2>
+        <div class="controls">
+            <?php if ($model->exercises): ?>
+            <ul>
+                <?php foreach ($model->exercises as $exercise): ?>
+                <li>
+                    <?php echo $exercise->title; ?>
+                    <?php
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Delete relation"),
+                        "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from"=>$model->node()->id,"to"=>$exercise->node()->id,"returnUrl"=>Yii::app()->request->url),
+                        "size" => "small",
+                        "type" => "danger"
+                    ));
+                    ?>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Create new exercise"),
+                "url" => array("/exercise/")
+            ));
+            ?>
         </div>
+
+        <h2>Choose exercise to add</h2>
+        <?php
+        $allExercises = new Exercise('search');
+        $this->widget(
+            'bootstrap.widgets.TbExtendedGridView',
+            array(
+                'id' => 'exercises_to_add',
+                'type' => 'striped bordered',
+                'dataProvider' => $allExercises->search(),
+                'pager' => array(
+                    'class' => 'TbPager',
+                    'displayFirstAndLast' => true,
+                ),
+                'bulkActions' => array(
+                    'actionButtons' => array(
+                    ),
+                    'checkBoxColumnConfig' => array(
+                        'name' => 'id'
+                    ),
+                ),
+                'columns' => array(
+                    array('name' => 'id', 'header' => 'Id'),
+                    array('name' => 'title', 'header' => 'Title'),
+                )
+            )
+        );
+        ?>
 
         <div class="form-actions">
             <?php

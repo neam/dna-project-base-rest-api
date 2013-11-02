@@ -31,6 +31,14 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
+                    'deleteEdge',
+                ),
+                'roles' => array(
+                    'Item.DeleteEdge'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
                     'prepPreshow',
                 ),
                 'roles' => array(
@@ -274,7 +282,7 @@ trait ItemController
 
     }
 
-    public function actionAdd()
+public function actionAdd()
     {
         $item = new $this->modelClass();
         if (!$item->save()) {
@@ -284,6 +292,28 @@ trait ItemController
         Yii::app()->user->setFlash('success', "{$this->modelClass} Added");
 
         $this->redirect(array('continueAuthoring', 'id' => $item->id));
+    }
+
+    public function actionDeleteEdge()
+    {
+        $from = $_GET["from"];
+        $to = $_GET["to"];
+        $del = Edge::model()->deleteAll(
+            'from_node_id=:from_node_id AND to_node_id=:to_node_id',
+            array(
+                ':from_node_id'=>$from,
+                ':to_node_id'=>$to,
+            )
+        );
+        if ($del){
+            $message = "Relation deleted";
+        } else {
+            $message = "Unable to delete relation";
+        }
+        if (isset($_GET['returnUrl'])) {
+            $delimiter = (strpos($_GET['returnUrl'],"?")!==false) ? "&" : "?" ;
+            $this->redirect($_GET['returnUrl'].$delimiter."message=$message");
+        }
     }
 
     public function actionDraft($id)
@@ -440,14 +470,74 @@ trait ItemController
         $this->render('translate', array('model' => $model, 'execution' => $execution));
     }
 
+    private function removeEdges($edgeid){
+    }
+    private function addEdges($fromid, $toids, $model){
+        $from_model = $this->loadModel($fromid);
+        $from_node_id = $from_model->node()->id;
+
+        foreach ($toids as $toid){
+            $to_model = $model::model()->findByPk($toid);
+            $to_node_id = $to_model->node()->id;
+
+            $edge = new Edge();
+            $edge->from_node_id = $from_node_id;
+            $edge->to_node_id = $to_node_id;
+
+            if (!$edge->save()){
+                throw new SaveException($edge);
+            }
+        }
+    }
+    private function listenForEdges($id){
+        if (isset($_POST[$this->modelClass]["exercises_to_add"])){
+            $this->addEdges($id, $_POST[$this->modelClass]["exercises_to_add"],'Exercise');
+        }
+        else if (isset($_POST[$this->modelClass]["exercises_to_remove"])){
+            $this->removeEdges($_POST[$this->modelClass]["exercises_to_remove"]);
+        }
+        else if (isset($_POST[$this->modelClass]["snapshots_to_add"])){
+            $this->addEdges($id, $_POST[$this->modelClass]["snapshots_to_add"],'Snapshot');
+        }
+        else if (isset($_POST[$this->modelClass]["snapshots_to_remove"])){
+            $this->removeEdges($_POST[$this->modelClass]["snapshots_to_remove"]);
+        }
+        else if (isset($_POST[$this->modelClass]["videos_to_add"])){
+            $this->addEdges($id, $_POST[$this->modelClass]["videos_to_add"],'Video');
+        }
+        else if (isset($_POST[$this->modelClass]["videos_to_remove"])){
+            $this->removeEdges($_POST[$this->modelClass]["videos_to_remove"]);
+        }
+    }
+
+    // Asks $_POST if a value isn't part of "Model"
+    // If it ends with _c0, we suppose it's from a grid input, and put it into $_POST[$this->modelClass]
+    // Returns $_POST with fixed values
+    private function fixPostFromGrid($post){
+        $return_array = array();
+        foreach ($post as $key => $p){
+            if (strrpos($key,'_c0')!==false){
+                $newkey = substr($key,0, -3);
+                $return_array[$this->modelClass][$newkey] = $p;
+            }
+            else
+            {
+                $return_array[$key] = $p;
+            }
+        }
+        return $return_array;
+    }
+
     protected function saveAndContinueOnSuccess($id)
     {
-
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
+        $_POST = $this->fixPostFromGrid($_POST);
 
         if (isset($_POST[$this->modelClass])) {
+            $this->listenForEdges($id);
+
             $model->attributes = $_POST[$this->modelClass];
 
             // refresh qa state (to be sure that we have the most actual state)

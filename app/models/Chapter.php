@@ -42,7 +42,6 @@ class Chapter extends BaseChapter
         );
     }
 
-    // todo
     public $thumbnail;
     public $video;
     public $teachers_guide;
