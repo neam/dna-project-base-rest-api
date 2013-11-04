@@ -12,7 +12,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
 
         <h1>
@@ -39,7 +39,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <br/>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span3 well well-white">
 
         <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
@@ -48,7 +48,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
     <div class="span9 well well-white">
 
 
-        <div class="row">
+        <div class="row-fluid">
             <div class="span9">
 
                 <h2>Mockup!
@@ -78,11 +78,11 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
             </div>
         </div>
 
-        <?php $this->renderPartial('_form', array('model' => $model, 'buttons' => 'create')); ?>
+        <?php $this->renderPartial("application.themes.backend2.views.".lcfirst(get_class($model))."._form", array('model' => $model, 'buttons' => 'create', 'elementsViewAlias' => "application.themes.backend2.views.".lcfirst(get_class($model))."._elements")); ?>
 
         <form>
 
-            <div class="row">
+            <div class="row-fluid">
                 <div class="span3">
 
                     Thumbnail
@@ -98,7 +98,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row-fluid">
                 <div class="span12">
 
                     About
