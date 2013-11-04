@@ -20,7 +20,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
     <div class="span12">
 
-        <h3>Visible fields</h3>
+        <h3>Edit contents</h3>
 
         <div class="row-fluid">
             <div class="span4">
