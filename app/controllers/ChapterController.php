@@ -175,7 +175,7 @@ class ChapterController extends Controller
     {
         $this->scenario = "step_teachers_guide";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'teachersguide', 'stepCaption' => Yii::t('app', 'Teacher\'s guide')));
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'teachers_guide', 'stepCaption' => Yii::t('app', 'Teacher\'s guide')));
     }
 
     public function actionPrepPublishVideos($id)
