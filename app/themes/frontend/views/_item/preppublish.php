@@ -37,7 +37,7 @@ $this->breadcrumbs[] = $stepCaption;
     </div>
 </div>
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
 <br/>
 
 <div class="row-fluid">
