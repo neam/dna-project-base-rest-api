@@ -23,7 +23,7 @@ class ActiveRecord extends CActiveRecord
             );
         }
 
-        $graphModels =DataModel::graphModels();
+        $graphModels = DataModel::graphModels();
         if (isset($graphModels[get_class($this)])) {
             $behaviors['relational-graph-db'] = array(
                 'class' => 'RelationalGraphDbBehavior',
