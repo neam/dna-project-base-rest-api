@@ -15,6 +15,8 @@
                 </li>
             <?php endforeach; ?>
         </ul>
+    <?php else: ?>
+        <div><?php echo Yii::t("model", "No snapshots"); ?></div>
     <?php endif; ?>
     <?php
     $this->widget("bootstrap.widgets.TbButton", array(
