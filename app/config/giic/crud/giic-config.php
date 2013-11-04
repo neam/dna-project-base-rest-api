@@ -2,10 +2,10 @@
 // GIIC CONFIG FILE
 // ----------------
 
-$baseModels = Yii::app()->params['dataModelMeta']['crudModels'];
-$qaModels = Yii::app()->params['dataModelMeta']['qaModels'];
-$qaStateModels = Yii::app()->params['dataModelMeta']['qaStateModels'];
-$internalModels = Yii::app()->params['dataModelMeta']['internalModels'];
+$baseModels = DataModel::crudModels();
+$qaModels = DataModel::qaModels();
+$qaStateModels = DataModel::qaStateModels();
+$internalModels = DataModel::internalModels();
 
 // merge
 $cruds = array_merge($baseModels, $qaStateModels);

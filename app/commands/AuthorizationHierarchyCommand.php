@@ -153,8 +153,8 @@ EOD;
         $auth->createOperation('P3admin.Default.Settings');
         $developerRole->addChild('P3admin.Default.Settings');
 
-        $baseModels = Yii::app()->params['dataModelMeta']['crudModels'];
-        $qaStateModels = Yii::app()->params['dataModelMeta']['qaStateModels'];
+        $baseModels = DataModel::crudModels();
+        $qaStateModels = DataModel::qaStateModels();
 
         // merge
         $cruds = array_merge($baseModels, $qaStateModels);

@@ -16,14 +16,14 @@ class ActiveRecord extends CActiveRecord
             );
         }
 
-        $qaModels = Yii::app()->params['dataModelMeta']['qaModels'];
+        $qaModels = DataModel::qaModels();
         if (isset($qaModels[get_class($this)])) {
             $behaviors['qa-state'] = array(
                 'class' => 'QaStateBehavior',
             );
         }
 
-        $graphModels = Yii::app()->params['dataModelMeta']['graphModels'];
+        $graphModels =DataModel::graphModels();
         if (isset($graphModels[get_class($this)])) {
             $behaviors['relational-graph-db'] = array(
                 'class' => 'RelationalGraphDbBehavior',
@@ -105,7 +105,7 @@ class ActiveRecord extends CActiveRecord
     {
         $relations = array();
 
-        $graphModels = Yii::app()->params['dataModelMeta']['graphModels'];
+        $graphModels = DataModel::graphModels();
         if (isset($graphModels[get_class($this)])) {
             $relations = array(
                 'outEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'from_node_id'), 'through' => 'node'),
