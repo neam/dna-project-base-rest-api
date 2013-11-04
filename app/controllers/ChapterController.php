@@ -70,6 +70,7 @@ class ChapterController extends Controller
 
     public function actionDraftTitle($id)
     {
+        $this->scenario = "step_title";
         $model = $this->saveAndContinueOnSuccess($id);
         $this->render('/_item/draft', array('model' => $model, 'step' => 'title', 'stepCaption' => Yii::t('app', 'Title')));
     }
@@ -81,47 +82,98 @@ class ChapterController extends Controller
 
     public function actionPrepPublish($id)
     {
-        $this->redirect(array('chapter/prepPublishThumbnail', 'id' => $id));
+
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_title';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/prepPublishTitle', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_thumbnail';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/prepPublishThumbnail', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_about';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/prepPublishAbout', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_teachers_guide';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/prepPublishTeachersguide', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_exercises';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/prepPublishExercises', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_videos';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/prepPublishVideos', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_snapshots';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/prepPublishSnapshots', 'id' => $id));
+            return;
+        }
+        $this->redirect(array('chapter/prepPublishSnapshots', 'id' => $id));
+
     }
 
     public function actionPrepPublishTitle($id)
     {
+        $this->scenario = "step_title";
         $model = $this->saveAndContinueOnSuccess($id);
         $this->render('/_item/preppublish', array('model' => $model, 'step' => 'title', 'stepCaption' => Yii::t('app', 'Title')));
     }
 
     public function actionPrepPublishThumbnail($id)
     {
+        $this->scenario = "step_thumbnail";
         $model = $this->saveAndContinueOnSuccess($id);
         $this->render('/_item/preppublish', array('model' => $model, 'step' => 'thumbnail', 'stepCaption' => Yii::t('app', 'Thumbnail')));
     }
 
     public function actionPrepPublishAbout($id)
     {
+        $this->scenario = "step_about";
         $model = $this->saveAndContinueOnSuccess($id);
         $this->render('/_item/preppublish', array('model' => $model, 'step' => 'about', 'stepCaption' => Yii::t('app', 'About')));
     }
 
     public function actionPrepPublishExercises($id)
     {
+        $this->scenario = "step_exercises";
         $model = $this->saveAndContinueOnSuccess($id);
         $this->render('/_item/preppublish', array('model' => $model, 'step' => 'exercises', 'stepCaption' => Yii::t('app', 'Exercise(s)')));
     }
 
     public function actionPrepPublishSnapshots($id)
     {
+        $this->scenario = "step_snapshots";
         $model = $this->saveAndContinueOnSuccess($id);
         $this->render('/_item/preppublish', array('model' => $model, 'step' => 'snapshots', 'stepCaption' => Yii::t('app', 'Snapshot(s)')));
     }
 
     public function actionPrepPublishTeachersguide($id)
     {
+        $this->scenario = "step_teachers_guide";
         $model = $this->saveAndContinueOnSuccess($id);
         $this->render('/_item/preppublish', array('model' => $model, 'step' => 'teachersguide', 'stepCaption' => Yii::t('app', 'Teacher\'s guide')));
     }
 
     public function actionPrepPublishVideos($id)
     {
+        $this->scenario = "step_videos";
         $model = $this->saveAndContinueOnSuccess($id);
         $this->render('/_item/preppublish', array('model' => $model, 'step' => 'videos', 'stepCaption' => Yii::t('app', 'Video(s)')));
     }
