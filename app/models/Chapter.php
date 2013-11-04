@@ -72,12 +72,12 @@ class Chapter extends BaseChapter
                 array('credits', 'required', 'on' => 'step_credits'),
                 // Ordinary validation rules
                 array('thumbnail', 'validateThumbnail', 'on' => 'public'),
-                array('about', 'length', 'min' => 10, 'max' => 200, 'on' => 'public'),
+                array('about', 'length', 'min' => 10, 'max' => 200),
                 array('video', 'validateVideo', 'on' => 'public'),
-                array('teachers_guide', 'length', 'min' => 150, 'max' => 400, 'on' => 'public'),
+                array('teachers_guide', 'length', 'min' => 150, 'max' => 400),
                 array('exercises', 'validateExercises', 'on' => 'public'),
                 array('snapshots', 'validateSnapshots', 'on' => 'public'),
-                array('credits', 'length', 'min' => 1, 'max' => 200, 'on' => 'public'),
+                array('credits', 'length', 'min' => 1, 'max' => 200),
             )
         );
     }
