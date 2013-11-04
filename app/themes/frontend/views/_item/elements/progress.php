@@ -1,19 +1,5 @@
 <?php
 /* @var $this ChapterController */
-/* @var $execution ezcWorkflowDatabaseExecution */
-?>
-
-<?php
-//var_dump($model->getAttributes(), $model->qaState()->getAttributes());
-
-$validationProgress = ($model->qaState()->draft_validation_progress + $model->qaState()->preview_validation_progress + $model->qaState()->public_validation_progress) / 3;
-$evaluationProgress = 0; //($model->qaState()->draft_evaluation_progress + $model->qaState()->preview_evaluation_progress + $model->qaState()->public_evaluation_progress) / 3;
-$publishingProgress = ($validationProgress + $evaluationProgress + $model->qaState()->approval_progress + $model->qaState()->proofing_progress) / 5;
-$translationProgress = ($model->qaState()->translations_draft_validation_progress + $model->qaState()->translations_preview_validation_progress + $model->qaState()->translations_public_validation_progress + $model->qaState()->translations_approval_progress + $model->qaState()->translations_proofing_progress) / 5;
-
-$requiredFieldsCount = count($model->qaStateBehavior()->qaAttributes("public"));
-$requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $model->qaState()->public_validation_progress / 100);
-
 ?>
 
 <div class="row-fluid">
