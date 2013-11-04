@@ -38,7 +38,6 @@ class ChapterController extends Controller
                     'prepPublishExercises',
                     'prepPublishVideos',
                     'prepPublishSnapshots',
-                    'prepPublishThumbnail',
                 ),
                 'roles' => array(
                     'Item.PrepPublish'
