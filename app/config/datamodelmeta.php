@@ -28,7 +28,6 @@ $config['params']['dataModelMeta']['crudModels'] = array(
     'SlideshowFile' => 'slideshow_file',
     'Snapshot' => 'snapshot',
     'SpreadsheetFile' => 'spreadsheet_file',
-    'TeachersGuide' => 'teachers_guide',
     'TextDoc' => 'text_doc',
     'Tool' => 'tool',
     'VectorGraphic' => 'vector_graphic',

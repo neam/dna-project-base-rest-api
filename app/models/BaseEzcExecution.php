@@ -104,14 +104,6 @@
  * @property SpreadsheetFile[] $spreadsheetFiles5
  * @property SpreadsheetFile[] $spreadsheetFiles6
  * @property SpreadsheetFile[] $spreadsheetFiles7
- * @property TeachersGuide[] $teachersGuides
- * @property TeachersGuide[] $teachersGuides1
- * @property TeachersGuide[] $teachersGuides2
- * @property TeachersGuide[] $teachersGuides3
- * @property TeachersGuide[] $teachersGuides4
- * @property TeachersGuide[] $teachersGuides5
- * @property TeachersGuide[] $teachersGuides6
- * @property TeachersGuide[] $teachersGuides7
  * @property TextDoc[] $textDocs
  * @property TextDoc[] $textDocs1
  * @property TextDoc[] $textDocs2
@@ -272,14 +264,6 @@ abstract class BaseEzcExecution extends ActiveRecord
             'spreadsheetFiles5' => array(self::HAS_MANY, 'SpreadsheetFile', 'authoring_workflow_execution_id_hi'),
             'spreadsheetFiles6' => array(self::HAS_MANY, 'SpreadsheetFile', 'authoring_workflow_execution_id_pt'),
             'spreadsheetFiles7' => array(self::HAS_MANY, 'SpreadsheetFile', 'authoring_workflow_execution_id_sv'),
-            'teachersGuides' => array(self::HAS_MANY, 'TeachersGuide', 'authoring_workflow_execution_id_de'),
-            'teachersGuides1' => array(self::HAS_MANY, 'TeachersGuide', 'authoring_workflow_execution_id_en'),
-            'teachersGuides2' => array(self::HAS_MANY, 'TeachersGuide', 'authoring_workflow_execution_id_cn'),
-            'teachersGuides3' => array(self::HAS_MANY, 'TeachersGuide', 'authoring_workflow_execution_id_es'),
-            'teachersGuides4' => array(self::HAS_MANY, 'TeachersGuide', 'authoring_workflow_execution_id_fa'),
-            'teachersGuides5' => array(self::HAS_MANY, 'TeachersGuide', 'authoring_workflow_execution_id_hi'),
-            'teachersGuides6' => array(self::HAS_MANY, 'TeachersGuide', 'authoring_workflow_execution_id_pt'),
-            'teachersGuides7' => array(self::HAS_MANY, 'TeachersGuide', 'authoring_workflow_execution_id_sv'),
             'textDocs' => array(self::HAS_MANY, 'TextDoc', 'authoring_workflow_execution_id_de'),
             'textDocs1' => array(self::HAS_MANY, 'TextDoc', 'authoring_workflow_execution_id_en'),
             'textDocs2' => array(self::HAS_MANY, 'TextDoc', 'authoring_workflow_execution_id_cn'),
