@@ -34,7 +34,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
 </div>
 
-<?php if ($this->action->id == "draft" || $this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish")!==false)): ?>
+<?php if ($this->action->id == "draft" || $this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish") !== false)): ?>
 
     <div class="row">
         <div class="span4">
@@ -66,7 +66,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
 <?php endif; ?>
 
-<?php if ($this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish")!==false)): ?>
+<?php if ($this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish") !== false)): ?>
 
     <div class="row">
         <div class="span4">

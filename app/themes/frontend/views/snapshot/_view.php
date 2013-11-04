@@ -16,7 +16,8 @@
 
         <?php echo str_replace("{language}", Yii::app()->language, $markup); ?>
 
-    <?php else: ?>
+    <?php
+    else: ?>
 
         <div class="alert">
             <?php echo Yii::t('app', 'No markup to render'); ?>

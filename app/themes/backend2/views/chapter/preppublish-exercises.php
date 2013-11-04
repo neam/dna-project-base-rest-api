@@ -86,23 +86,24 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
         </div>
 
         <h2>Exercises</h2>
+
         <div class="controls">
             <?php if ($model->exercises): ?>
-            <ul>
-                <?php foreach ($model->exercises as $exercise): ?>
-                <li>
-                    <?php echo $exercise->title; ?>
-                    <?php
-                    $this->widget("bootstrap.widgets.TbButton", array(
-                        "label" => Yii::t("model", "Delete relation"),
-                        "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from"=>$model->node()->id,"to"=>$exercise->node()->id,"returnUrl"=>Yii::app()->request->url),
-                        "size" => "small",
-                        "type" => "danger"
-                    ));
-                    ?>
-                </li>
-                <?php endforeach; ?>
-            </ul>
+                <ul>
+                    <?php foreach ($model->exercises as $exercise): ?>
+                        <li>
+                            <?php echo $exercise->title; ?>
+                            <?php
+                            $this->widget("bootstrap.widgets.TbButton", array(
+                                "label" => Yii::t("model", "Delete relation"),
+                                "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $exercise->node()->id, "returnUrl" => Yii::app()->request->url),
+                                "size" => "small",
+                                "type" => "danger"
+                            ));
+                            ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             <?php endif; ?>
             <?php
             $this->widget("bootstrap.widgets.TbButton", array(
@@ -126,8 +127,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
                     'displayFirstAndLast' => true,
                 ),
                 'bulkActions' => array(
-                    'actionButtons' => array(
-                    ),
+                    'actionButtons' => array(),
                     'checkBoxColumnConfig' => array(
                         'name' => 'id'
                     ),

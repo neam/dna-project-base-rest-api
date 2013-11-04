@@ -75,8 +75,8 @@ $this->widget(
                         'label' => ucfirst(Yii::app()->user->name),
                         'visible' => !Yii::app()->user->isGuest,
                         'icon' => Yii::app()->user->checkAccess('Superuser') ?
-                            'warning-sign' :
-                            'user',
+                                'warning-sign' :
+                                'user',
                         'items' => array(
                             array('label' => Yii::t('app', 'User')),
                             array(

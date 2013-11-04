@@ -86,6 +86,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
         </div>
 
         <h2>Snapshots</h2>
+
         <div class="controls">
             <?php if ($model->snapshots): ?>
                 <ul>
@@ -95,7 +96,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
                             <?php
                             $this->widget("bootstrap.widgets.TbButton", array(
                                 "label" => Yii::t("model", "Delete relation"),
-                                "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from"=>$model->node()->id,"to"=>$snapshot->node()->id,"returnUrl"=>Yii::app()->request->url),
+                                "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $snapshot->node()->id, "returnUrl" => Yii::app()->request->url),
                                 "size" => "small",
                                 "type" => "danger"
                             ));
@@ -126,8 +127,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
                     'displayFirstAndLast' => true,
                 ),
                 'bulkActions' => array(
-                    'actionButtons' => array(
-                    ),
+                    'actionButtons' => array(),
                     'checkBoxColumnConfig' => array(
                         'name' => 'id'
                     ),

@@ -85,7 +85,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             </div>
         </div>
 
-        <?php echo $form->textAreaRow($model, 'about', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'hintOptions' => array('class' => 'alert alert-info'), 'hint'=>'about_en')); ?>
+        <?php echo $form->textAreaRow($model, 'about', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'hintOptions' => array('class' => 'alert alert-info'), 'hint' => 'about_en')); ?>
 
         <div class="form-actions">
             <?php

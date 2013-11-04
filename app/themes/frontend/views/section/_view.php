@@ -9,7 +9,8 @@
 
         <?php endforeach; ?>
 
-    <?php else:
+    <?php
+    else:
         ?>
         <div class="alert">
             <?php echo Yii::t('app', 'Section contains no sectionContents'); ?>

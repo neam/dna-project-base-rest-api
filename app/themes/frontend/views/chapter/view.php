@@ -71,7 +71,8 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                 }
                 ?>
             </ul>
-        <?php else:
+        <?php
+        else:
             echo Yii::t('app', 'Chapter contains no sections');
         endif;
         ?>
@@ -105,7 +106,8 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
             <?php endforeach; ?>
 
-        <?php else:
+        <?php
+        else:
             ?>
             <div class="alert">
                 <?php echo Yii::t('app', 'Chapter contains no sections'); ?>

@@ -16,7 +16,8 @@ $this->breadcrumbs[] = Yii::t('crud', 'Create Draft');
     <div class="span12">
 
         <h1>
-            <?php echo Yii::t('app','Create Draft'); ?> - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
+            <?php echo Yii::t('app', 'Create Draft'); ?>
+            - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
             <small>vX</small>
 
             <div class="btn-group">
@@ -61,7 +62,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Create Draft');
         <div class="row">
             <div class="span9">
 
-                <h2><?php echo Yii::t('app','Title & Slug'); ?>
+                <h2><?php echo Yii::t('app', 'Title & Slug'); ?>
                     <small></small>
                 </h2>
 
