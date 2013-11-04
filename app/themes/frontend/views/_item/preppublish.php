@@ -73,7 +73,7 @@ $this->breadcrumbs[] = $stepCaption;
 
                     <div class="btn-group">
                         <?php
-                        echo CHtml::submitButton(Yii::t('model', 'Save and Continue'), array(
+                        echo CHtml::submitButton(Yii::t('model', 'Next'), array(
                                 'class' => 'btn btn-large btn-primary'
                             )
                         );
