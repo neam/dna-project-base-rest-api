@@ -1,6 +1,6 @@
 <div class="control-group">
     <div class="controls">
-        <?php if ($model->video): ?>
+        <?php if ($model->videos): ?>
             <ul>
                 <?php foreach ($model->videos as $video): ?>
                     <li>

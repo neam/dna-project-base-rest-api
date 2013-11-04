@@ -36,6 +36,7 @@ class Chapter extends BaseChapter
         return array_merge(
             parent::relations(),
             array(
+                'videos' => array(self::HAS_MANY, 'VideoFile', array('id' => 'node_id'), 'through' => 'outNodes'),
                 'exercises' => array(self::HAS_MANY, 'Exercise', array('id' => 'node_id'), 'through' => 'outNodes'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', array('id' => 'node_id'), 'through' => 'outNodes'),
             )
@@ -43,7 +44,6 @@ class Chapter extends BaseChapter
     }
 
     public $thumbnail;
-    public $video;
     public $credits;
 
     public function rules()
