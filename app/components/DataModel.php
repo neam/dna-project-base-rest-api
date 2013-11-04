@@ -87,4 +87,11 @@ class DataModel
 
     }
 
+    static public function modelLabels()
+    {
+        return array(
+            'Chapter' => 'n==0#Chapter(s)|n==1#Chapter|n>1#Chapters',
+        );
+    }
+
 }

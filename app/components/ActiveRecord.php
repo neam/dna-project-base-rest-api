@@ -131,4 +131,10 @@ class ActiveRecord extends CActiveRecord
         return array();
     }
 
+    public function getModelLabel()
+    {
+        $labels = DataModel::modelLabels();
+        return $labels[get_class($this)];
+    }
+
 }
