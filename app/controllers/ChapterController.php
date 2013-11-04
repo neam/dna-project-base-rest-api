@@ -72,7 +72,7 @@ class ChapterController extends Controller
     public function actionDraftTitle($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('draft', array('model' => $model, 'step' => 'title', 'stepCaption' => 'Title'));
+        $this->render('draft', array('model' => $model, 'step' => 'title', 'stepCaption' => Yii::t('app', 'Title')));
     }
 
     public function actionPrepPublish($id)
@@ -83,43 +83,43 @@ class ChapterController extends Controller
     public function actionPrepPublishTitle($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish', array('model' => $model, 'step' => 'title', 'stepCaption' => 'Title'));
+        $this->render('preppublish', array('model' => $model, 'step' => 'title', 'stepCaption' => Yii::t('app', 'Title')));
     }
 
     public function actionPrepPublishThumbnail($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish', array('model' => $model, 'step' => 'thumbnail', 'stepCaption' => 'Thumbnail'));
+        $this->render('preppublish', array('model' => $model, 'step' => 'thumbnail', 'stepCaption' => Yii::t('app', 'Thumbnail')));
     }
 
     public function actionPrepPublishAbout($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish', array('model' => $model, 'step' => 'about', 'stepCaption' => 'About'));
+        $this->render('preppublish', array('model' => $model, 'step' => 'about', 'stepCaption' => Yii::t('app', 'About')));
     }
 
     public function actionPrepPublishExercises($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish', array('model' => $model, 'step' => 'exercises', 'stepCaption' => 'Exercise(s)'));
+        $this->render('preppublish', array('model' => $model, 'step' => 'exercises', 'stepCaption' => Yii::t('app', 'Exercise(s)')));
     }
 
     public function actionPrepPublishSnapshots($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish', array('model' => $model, 'step' => 'snapshots', 'stepCaption' => 'Snapshot(s)'));
+        $this->render('preppublish', array('model' => $model, 'step' => 'snapshots', 'stepCaption' => Yii::t('app', 'Snapshot(s)')));
     }
 
     public function actionPrepPublishTeachersguide($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish', array('model' => $model, 'step' => 'teachersguide', 'stepCaption' => 'Teacher\'s guide'));
+        $this->render('preppublish', array('model' => $model, 'step' => 'teachersguide', 'stepCaption' => Yii::t('app', 'Teacher\'s guide')));
     }
 
     public function actionPrepPublishVideos($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish', array('model' => $model, 'step' => 'videos', 'stepCaption' => 'Video(s)'));
+        $this->render('preppublish', array('model' => $model, 'step' => 'videos', 'stepCaption' => Yii::t('app', 'Video(s)')));
     }
 
     public function beforeAction($action)
