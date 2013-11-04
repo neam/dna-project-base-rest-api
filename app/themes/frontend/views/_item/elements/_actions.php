@@ -116,7 +116,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                     "label" => Yii::t("model", "All"),
                     "type" => $this->action->id == "edit" ? "inverse" : null,
                     "size" => "small",
-                    "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
+                    "icon" => "icon-thumbs-up" . ($this->action->id == "edit" ? " icon-white" : null),
                     "url" => array("edit", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 ?>
