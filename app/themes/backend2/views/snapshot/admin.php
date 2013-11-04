@@ -29,8 +29,9 @@ Yii::app()->clientScript->registerScript('search', "
 
     </h1>
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
+<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php Yii::beginProfile('Snapshot.view.grid'); ?>
 
 
 <?php
@@ -39,7 +40,7 @@ $this->widget('TbGridView',
         'id' => 'snapshot-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
-        'responsiveTable' => true,
+        #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
             'class' => 'TbPager',
@@ -71,7 +72,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'snapshots.itemLabel\')',
-                'filter' => CHtml::listData(Snapshot::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Snapshot::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -102,7 +103,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'tool_id',
                 'value' => 'CHtml::value($data, \'tool.itemLabel\')',
-                'filter' => CHtml::listData(Tool::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Tool::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -124,7 +125,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -248,42 +249,42 @@ $this->widget('TbGridView',
             array(
                 'name' => 'snapshot_qa_state_id_en',
                 'value' => 'CHtml::value($data, \'snapshotQaStateIdEn.itemLabel\')',
-                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'snapshot_qa_state_id_es',
                 'value' => 'CHtml::value($data, \'snapshotQaStateIdEs.itemLabel\')',
-                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'snapshot_qa_state_id_fa',
                 'value' => 'CHtml::value($data, \'snapshotQaStateIdFa.itemLabel\')',
-                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'snapshot_qa_state_id_hi',
                 'value' => 'CHtml::value($data, \'snapshotQaStateIdHi.itemLabel\')',
-                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'snapshot_qa_state_id_pt',
                 'value' => 'CHtml::value($data, \'snapshotQaStateIdPt.itemLabel\')',
-                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'snapshot_qa_state_id_sv',
                 'value' => 'CHtml::value($data, \'snapshotQaStateIdSv.itemLabel\')',
-                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'snapshot_qa_state_id_cn',
                 'value' => 'CHtml::value($data, \'snapshotQaStateIdCn.itemLabel\')',
-                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'snapshot_qa_state_id_de',
                 'value' => 'CHtml::value($data, \'snapshotQaStateIdDe.itemLabel\')',
-                'filter' => CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             */
 
@@ -302,3 +303,4 @@ $this->widget('TbGridView',
     )
 );
 ?>
+<?php Yii::endProfile('Snapshot.view.grid'); ?>

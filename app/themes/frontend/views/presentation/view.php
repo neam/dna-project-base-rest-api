@@ -103,216 +103,216 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'id',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'id',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'id',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'version',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'version',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'version',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'cloned_from_id',
                         'value' => ($model->clonedFrom !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
-                                array('//presentation/view', 'id' => $model->clonedFrom->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//presentation/update', 'id' => $model->clonedFrom->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                    array('//presentation/view', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//presentation/update', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'title_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_en',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_en',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slideshow_file_id',
                         'value' => ($model->slideshowFile !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFile->itemLabel,
-                                array('//slideshowFile/view', 'id' => $model->slideshowFile->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//slideshowFile/update', 'id' => $model->slideshowFile->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFile->itemLabel,
+                                    array('//slideshowFile/view', 'id' => $model->slideshowFile->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//slideshowFile/update', 'id' => $model->slideshowFile->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'authoring_workflow_execution_id',
                         'value' => ($model->authoringWorkflowExecution !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecution->itemLabel,
-                                array('//execution/view', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//execution/update', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->authoringWorkflowExecution->itemLabel,
+                                    array('//execution/view', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//execution/update', 'execution_id' => $model->authoringWorkflowExecution->execution_id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'created',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'created',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'created',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'modified',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'modified',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'modified',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_es',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_es',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_fa',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_fa',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_hi',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_hi',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_pt',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_pt',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_sv',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_sv',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_cn',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_cn',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_de',
-                                'url' => $this->createUrl('/presentation/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_de',
+                                    'url' => $this->createUrl('/presentation/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                 ),
             )); ?>

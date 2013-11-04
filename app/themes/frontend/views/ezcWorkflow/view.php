@@ -129,53 +129,53 @@ $this->breadcrumbs[] = $model->workflow_id;
                         'name' => 'workflow_id',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'workflow_id',
-                                'url' => $this->createUrl('/ezcWorkflow/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'workflow_id',
+                                    'url' => $this->createUrl('/ezcWorkflow/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'workflow_name',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'workflow_name',
-                                'url' => $this->createUrl('/ezcWorkflow/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'workflow_name',
+                                    'url' => $this->createUrl('/ezcWorkflow/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'workflow_version',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'workflow_version',
-                                'url' => $this->createUrl('/ezcWorkflow/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'workflow_version',
+                                    'url' => $this->createUrl('/ezcWorkflow/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'workflow_created',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'workflow_created',
-                                'url' => $this->createUrl('/ezcWorkflow/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'workflow_created',
+                                    'url' => $this->createUrl('/ezcWorkflow/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                 ),
             )); ?>

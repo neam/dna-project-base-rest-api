@@ -81,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'user - Users', 'url' => array('//users/admin')), array('label' => 'node - Node', 'url' => array('//node/admin'))
+                        'items' => array(array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'user - Users', 'url' => array('//users/admin'))
                         )
                     ),
                 ),

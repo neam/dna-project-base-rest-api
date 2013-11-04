@@ -37,7 +37,6 @@ class Section extends BaseSection
             'htmlChunks' => array(self::MANY_MANY, 'HtmlChunk', 'section_content(section_id, html_chunk_id)'),
             'snapshots' => array(self::MANY_MANY, 'Snapshot', 'section_content(section_id, snapshot_id)'),
             'videoFiles' => array(self::MANY_MANY, 'VideoFile', 'section_content(section_id, video_file_id)'),
-            'teachersGuides' => array(self::MANY_MANY, 'TeachersGuide', 'section_content(section_id, teachers_guide_id)'),
             'exercises' => array(self::MANY_MANY, 'Exercise', 'section_content(section_id, exercise_id)'),
             'slideshoFiles' => array(self::MANY_MANY, 'SlideshowFIle', 'section_content(section_id, slideshow_file_id)'),
             'dataChunks' => array(self::MANY_MANY, 'DataChunk', 'section_content(section_id, data_chunk_id)'),

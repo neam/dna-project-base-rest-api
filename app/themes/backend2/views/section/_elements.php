@@ -8,7 +8,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'chapter',
+                    'relation' => 'page',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -17,18 +17,18 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'chapter_id', $input);
+            echo $form->customRow($model, 'page_id', $input);
             ?>
 
             <?php
-            $formId = 'section-chapter_id-' . \uniqid() . '-form';
+            $formId = 'section-page_id-' . \uniqid() . '-form';
             ?>
 
             <div class="control-group">
                 <div class="controls">
                     <?php
                     echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Chapter'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Page'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -40,10 +40,10 @@
 
             <?php
             $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//chapter/_modal_form', array(
+            $this->renderPartial('//page/_modal_form', array(
                 'formId' => $formId,
-                'inputSelector' => '#Section_chapter_id',
-                'model' => new Chapter,
+                'inputSelector' => '#Section_page_id',
+                'model' => new Page,
                 'pk' => 'id',
                 'field' => 'itemLabel',
             ));
@@ -119,11 +119,6 @@
 
         <h3>
             <?php echo Yii::t('model', 'videoFiles'); ?>
-        </h3>
-        <?php ?>
-
-        <h3>
-            <?php echo Yii::t('model', 'teachersGuides'); ?>
         </h3>
         <?php ?>
 

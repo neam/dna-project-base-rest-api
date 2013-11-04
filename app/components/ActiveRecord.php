@@ -32,7 +32,7 @@ class ActiveRecord extends CActiveRecord
 
         // List of model attributes to translate
         $translateMap = array(
-            'Chapter' => array('slug', 'title', 'about', 'chapter_qa_state_id'),
+            'Chapter' => array('slug', 'title', 'about', 'teachers_guide', 'chapter_qa_state_id'),
             'DataChunk' => array('slug', 'title', 'about', 'data_chunk_qa_state_id'),
             'DataSource' => array('slug', 'title', 'about', 'data_source_qa_state_id'),
             'DownloadLink' => array('title'),
@@ -40,13 +40,13 @@ class ActiveRecord extends CActiveRecord
             'ExamQuestionAlternative' => array('markup'),
             'Exercise' => array('slug', 'title', 'question', 'description', 'exercise_qa_state_id'),
             'HtmlChunk' => array('markup'),
+            'Page' => array('slug', 'title', 'about'),
             'PoFile' => array('processed_media_id', 'po_file_qa_state_id'),
             'Profiles' => array('can_translate_to'),
             'Section' => array('slug', 'title', 'menu_label'),
             'SlideshowFile' => array('slug', 'title', 'about', 'processed_media_id', 'slideshow_file_qa_state_id'),
             'Snapshot' => array('slug', 'title', 'about', 'snapshot_qa_state_id'),
             'SpreadsheetFile' => array('title', 'processed_media_id'),
-            'TeachersGuide' => array('title'),
             'TextDoc' => array('slug', 'title', 'about', 'processed_media_id', 'text_doc_qa_state_id'),
             'Tool' => array('slug', 'title', 'about'),
             'VectorGraphic' => array('slug', 'title', 'about', 'processed_media_id', 'vector_graphic_qa_state_id'),
@@ -103,14 +103,21 @@ class ActiveRecord extends CActiveRecord
 
     public function relations()
     {
-        return array_merge(
-            parent::relations(),
-            array(
+        $relations = array();
+
+        $graphModels = Yii::app()->params['dataModelMeta']['graphModels'];
+        if (isset($graphModels[get_class($this)])) {
+            $relations = array(
                 'outEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'from_node_id'), 'through' => 'node'),
                 'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
                 'inEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'to_node_id'), 'through' => 'node'),
                 'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
-            )
+            );
+        }
+
+        return array_merge(
+            parent::relations(),
+            $relations
         );
     }
 

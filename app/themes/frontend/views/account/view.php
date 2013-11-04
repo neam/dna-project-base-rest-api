@@ -71,118 +71,118 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'id',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'id',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'id',
+                                    'url' => $this->createUrl('/account/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'username',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'username',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'username',
+                                    'url' => $this->createUrl('/account/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'password',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'password',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'password',
+                                    'url' => $this->createUrl('/account/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'email',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'email',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'email',
+                                    'url' => $this->createUrl('/account/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'activkey',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'activkey',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'activkey',
+                                    'url' => $this->createUrl('/account/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'superuser',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'superuser',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'superuser',
+                                    'url' => $this->createUrl('/account/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'status',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'status',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'status',
+                                    'url' => $this->createUrl('/account/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'create_at',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'create_at',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'create_at',
+                                    'url' => $this->createUrl('/account/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'lastvisit_at',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'lastvisit_at',
-                                'url' => $this->createUrl('/account/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'lastvisit_at',
+                                    'url' => $this->createUrl('/account/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                 ),
             )); ?>

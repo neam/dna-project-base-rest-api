@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('TeachersGuide', dirname(__FILE__));
-Yii::import('TeachersGuide.*');
+Yii::setPathOfAlias('Page', dirname(__FILE__));
+Yii::import('Page.*');
 
-class TeachersGuide extends BaseTeachersGuide
+class Page extends BasePage
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
@@ -26,7 +26,9 @@ class TeachersGuide extends BaseTeachersGuide
     public function behaviors()
     {
         return array_merge(
-            parent::behaviors(), array());
+            parent::behaviors(),
+            array()
+        );
     }
 
     public function rules()

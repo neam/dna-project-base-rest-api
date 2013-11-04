@@ -107,235 +107,235 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'id',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'id',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'id',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'status',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'status',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'status',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'draft_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'draft_validation_progress',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'draft_validation_progress',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'preview_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'preview_validation_progress',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'preview_validation_progress',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'public_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'public_validation_progress',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'public_validation_progress',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'approval_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'approval_progress',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'approval_progress',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'proofing_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'proofing_progress',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'proofing_progress',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'translations_draft_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'translations_draft_validation_progress',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translations_draft_validation_progress',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'translations_preview_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'translations_preview_validation_progress',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translations_preview_validation_progress',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'translations_public_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'translations_public_validation_progress',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translations_public_validation_progress',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'translations_approval_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'translations_approval_progress',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translations_approval_progress',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'translations_proofing_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'translations_proofing_progress',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translations_proofing_progress',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'previewing_welcome',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'previewing_welcome',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'previewing_welcome',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'candidate_for_public_status',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'candidate_for_public_status',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'candidate_for_public_status',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_approved',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_approved',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_approved',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'file_approved',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'file_approved',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'file_approved',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_proofed',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_proofed',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'file_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'file_proofed',
-                                'url' => $this->createUrl('/poFileQaState/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'file_proofed',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                 ),
             )); ?>

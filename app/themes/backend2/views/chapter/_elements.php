@@ -58,6 +58,8 @@
 
             <?php echo $form->textAreaRow($model, 'about_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
+            <?php echo $form->textAreaRow($model, 'teachers_guide_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 
             <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
@@ -117,6 +119,20 @@
             <?php echo $form->textFieldRow($model, 'chapter_qa_state_id_cn', array('maxlength' => 20)); ?>
 
             <?php echo $form->textFieldRow($model, 'chapter_qa_state_id_de', array('maxlength' => 20)); ?>
+
+            <?php echo $form->textAreaRow($model, 'teachers_guide_es', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'teachers_guide_fa', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'teachers_guide_hi', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'teachers_guide_pt', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'teachers_guide_sv', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'teachers_guide_cn', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
+            <?php echo $form->textAreaRow($model, 'teachers_guide_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
         </div>
     </div>
     <!-- main inputs -->

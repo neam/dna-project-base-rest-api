@@ -12,7 +12,6 @@
  * @property string $html_chunk_id
  * @property string $snapshot_id
  * @property string $video_file_id
- * @property string $teachers_guide_id
  * @property string $exercise_id
  * @property string $slideshow_file_id
  * @property string $data_chunk_id
@@ -30,7 +29,6 @@
  * @property Section $section
  * @property SlideshowFile $slideshowFile
  * @property Snapshot $snapshot
- * @property TeachersGuide $teachersGuide
  * @property VideoFile $videoFile
  */
 abstract class BaseSectionContent extends ActiveRecord
@@ -51,11 +49,11 @@ abstract class BaseSectionContent extends ActiveRecord
         return array_merge(
             parent::rules(), array(
                 array('section_id', 'required'),
-                array('ordinal, created, modified, html_chunk_id, snapshot_id, video_file_id, teachers_guide_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('ordinal, created, modified, html_chunk_id, snapshot_id, video_file_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('ordinal', 'numerical', 'integerOnly' => true),
-                array('section_id, html_chunk_id, snapshot_id, video_file_id, teachers_guide_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'length', 'max' => 20),
+                array('section_id, html_chunk_id, snapshot_id, video_file_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'length', 'max' => 20),
                 array('created, modified', 'safe'),
-                array('id, section_id, ordinal, created, modified, html_chunk_id, snapshot_id, video_file_id, teachers_guide_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'safe', 'on' => 'search'),
+                array('id, section_id, ordinal, created, modified, html_chunk_id, snapshot_id, video_file_id, exercise_id, slideshow_file_id, data_chunk_id, download_link_id, exam_question_id, node_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -89,7 +87,6 @@ abstract class BaseSectionContent extends ActiveRecord
                 'section' => array(self::BELONGS_TO, 'Section', 'section_id'),
                 'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
                 'snapshot' => array(self::BELONGS_TO, 'Snapshot', 'snapshot_id'),
-                'teachersGuide' => array(self::BELONGS_TO, 'TeachersGuide', 'teachers_guide_id'),
                 'videoFile' => array(self::BELONGS_TO, 'VideoFile', 'video_file_id'),
             )
         );
@@ -106,7 +103,6 @@ abstract class BaseSectionContent extends ActiveRecord
             'html_chunk_id' => Yii::t('model', 'Html Chunk'),
             'snapshot_id' => Yii::t('model', 'Snapshot'),
             'video_file_id' => Yii::t('model', 'Video File'),
-            'teachers_guide_id' => Yii::t('model', 'Teachers Guide'),
             'exercise_id' => Yii::t('model', 'Exercise'),
             'slideshow_file_id' => Yii::t('model', 'Slideshow File'),
             'data_chunk_id' => Yii::t('model', 'Data Chunk'),
@@ -130,7 +126,6 @@ abstract class BaseSectionContent extends ActiveRecord
         $criteria->compare('t.html_chunk_id', $this->html_chunk_id);
         $criteria->compare('t.snapshot_id', $this->snapshot_id);
         $criteria->compare('t.video_file_id', $this->video_file_id);
-        $criteria->compare('t.teachers_guide_id', $this->teachers_guide_id);
         $criteria->compare('t.exercise_id', $this->exercise_id);
         $criteria->compare('t.slideshow_file_id', $this->slideshow_file_id);
         $criteria->compare('t.data_chunk_id', $this->data_chunk_id);

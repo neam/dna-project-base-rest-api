@@ -1,5 +1,7 @@
+<!--
 <h2>
     <?php echo Yii::t('crud', 'Relations') ?></h2>
+-->
 
 
 <?php
@@ -850,53 +852,6 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'relation.TeachersGuides') . ' ';
-$this->widget(
-    'bootstrap.widgets.TbButtonGroup',
-    array(
-        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'size' => 'mini',
-        'buttons' => array(
-            array(
-                'icon' => 'icon-list-alt',
-                'url' => array('///teachersGuide/admin', 'TeachersGuide' => array('node_id' => $model->{$model->tableSchema->primaryKey}))
-            ),
-            array(
-                'icon' => 'icon-plus',
-                'url' => array(
-                    '///teachersGuide/create',
-                    'TeachersGuide' => array('node_id' => $model->{$model->tableSchema->primaryKey})
-                )
-            ),
-
-        )
-    )
-);
-echo '</h3>' ?>
-<ul>
-
-    <?php
-    $records = $model->teachersGuides(array('limit' => 250, 'scopes' => ''));
-    if (is_array($records)) {
-        foreach ($records as $i => $relatedModel) {
-            echo '<li>';
-            echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
-                array('//teachersGuide/view', 'id' => $relatedModel->id)
-            );
-            echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
-                array('//teachersGuide/update', 'id' => $relatedModel->id)
-            );
-            echo '</li>';
-        }
-    }
-    ?>
-</ul>
-
-
-<?php
-echo '<h3>';
 echo Yii::t('model', 'relation.TextDocs') . ' ';
 $this->widget(
     'bootstrap.widgets.TbButtonGroup',
@@ -1075,6 +1030,146 @@ echo '</h3>' ?>
             echo CHtml::link(
                 ' <i class="icon icon-pencil"></i>',
                 array('//videoFile/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.OutEdges') . ' ';
+$this->widget(
+    'bootstrap.widgets.TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'icon-list-alt',
+                'url' => array('///edge/admin', 'Edge' => array('from_node_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'icon-plus',
+                'url' => array(
+                    '///edge/create',
+                    'Edge' => array('from_node_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->outEdges(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//edge/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon icon-pencil"></i>',
+                array('//edge/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php echo '<h3>' . Yii::t('model', 'relation.OutNodes') . '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->outNodes(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//node/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon icon-pencil"></i>',
+                array('//node/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.InEdges') . ' ';
+$this->widget(
+    'bootstrap.widgets.TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'icon-list-alt',
+                'url' => array('///edge/admin', 'Edge' => array('to_node_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'icon-plus',
+                'url' => array(
+                    '///edge/create',
+                    'Edge' => array('to_node_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->inEdges(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//edge/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon icon-pencil"></i>',
+                array('//edge/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php echo '<h3>' . Yii::t('model', 'relation.InNodes') . '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->inNodes(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//node/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon icon-pencil"></i>',
+                array('//node/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }

@@ -13,7 +13,14 @@
  * @property integer $others_may_contact_me
  * @property string $about
  * @property string $lives_in
- * @property integer $can_translate_to
+ * @property integer $can_translate_to_en
+ * @property integer $can_translate_to_es
+ * @property integer $can_translate_to_fa
+ * @property integer $can_translate_to_hi
+ * @property integer $can_translate_to_pt
+ * @property integer $can_translate_to_sv
+ * @property integer $can_translate_to_cn
+ * @property integer $can_translate_to_de
  *
  * Relations of table "profiles" available as properties of the model:
  * @property P3Media $pictureMedia
@@ -36,11 +43,11 @@ abstract class BaseProfiles extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('first_name, last_name, public_profile, picture_media_id, website, others_may_contact_me, about, lives_in, can_translate_to', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('public_profile, picture_media_id, others_may_contact_me, can_translate_to', 'numerical', 'integerOnly' => true),
+                array('first_name, last_name, public_profile, picture_media_id, website, others_may_contact_me, about, lives_in, can_translate_to_en, can_translate_to_es, can_translate_to_fa, can_translate_to_hi, can_translate_to_pt, can_translate_to_sv, can_translate_to_cn, can_translate_to_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('public_profile, picture_media_id, others_may_contact_me, can_translate_to_en, can_translate_to_es, can_translate_to_fa, can_translate_to_hi, can_translate_to_pt, can_translate_to_sv, can_translate_to_cn, can_translate_to_de', 'numerical', 'integerOnly' => true),
                 array('first_name, last_name, website, lives_in', 'length', 'max' => 255),
                 array('about', 'safe'),
-                array('user_id, first_name, last_name, public_profile, picture_media_id, website, others_may_contact_me, about, lives_in, can_translate_to', 'safe', 'on' => 'search'),
+                array('user_id, first_name, last_name, public_profile, picture_media_id, website, others_may_contact_me, about, lives_in, can_translate_to_en, can_translate_to_es, can_translate_to_fa, can_translate_to_hi, can_translate_to_pt, can_translate_to_sv, can_translate_to_cn, can_translate_to_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -83,7 +90,14 @@ abstract class BaseProfiles extends ActiveRecord
             'others_may_contact_me' => Yii::t('model', 'Others May Contact Me'),
             'about' => Yii::t('model', 'About'),
             'lives_in' => Yii::t('model', 'Lives In'),
-            'can_translate_to' => Yii::t('model', 'Can Translate To'),
+            'can_translate_to_en' => Yii::t('model', 'Can Translate To En'),
+            'can_translate_to_es' => Yii::t('model', 'Can Translate To Es'),
+            'can_translate_to_fa' => Yii::t('model', 'Can Translate To Fa'),
+            'can_translate_to_hi' => Yii::t('model', 'Can Translate To Hi'),
+            'can_translate_to_pt' => Yii::t('model', 'Can Translate To Pt'),
+            'can_translate_to_sv' => Yii::t('model', 'Can Translate To Sv'),
+            'can_translate_to_cn' => Yii::t('model', 'Can Translate To Cn'),
+            'can_translate_to_de' => Yii::t('model', 'Can Translate To De'),
         );
     }
 
@@ -102,7 +116,14 @@ abstract class BaseProfiles extends ActiveRecord
         $criteria->compare('t.others_may_contact_me', $this->others_may_contact_me);
         $criteria->compare('t.about', $this->about, true);
         $criteria->compare('t.lives_in', $this->lives_in, true);
-        $criteria->compare('t.can_translate_to', $this->can_translate_to);
+        $criteria->compare('t.can_translate_to_en', $this->can_translate_to_en);
+        $criteria->compare('t.can_translate_to_es', $this->can_translate_to_es);
+        $criteria->compare('t.can_translate_to_fa', $this->can_translate_to_fa);
+        $criteria->compare('t.can_translate_to_hi', $this->can_translate_to_hi);
+        $criteria->compare('t.can_translate_to_pt', $this->can_translate_to_pt);
+        $criteria->compare('t.can_translate_to_sv', $this->can_translate_to_sv);
+        $criteria->compare('t.can_translate_to_cn', $this->can_translate_to_cn);
+        $criteria->compare('t.can_translate_to_de', $this->can_translate_to_de);
 
 
         return $criteria;

@@ -29,8 +29,9 @@ Yii::app()->clientScript->registerScript('search', "
 
     </h1>
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
+<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php Yii::beginProfile('Chapter.view.grid'); ?>
 
 
 <?php
@@ -39,7 +40,7 @@ $this->widget('TbGridView',
         'id' => 'chapter-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
-        'responsiveTable' => true,
+        #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
             'class' => 'TbPager',
@@ -71,7 +72,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'chapters.itemLabel\')',
-                'filter' => CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -92,9 +93,10 @@ $this->widget('TbGridView',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'about_en',
+            #'teachers_guide_en',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
@@ -115,7 +117,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -229,62 +231,6 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_es',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_fa',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_hi',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_pt',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_sv',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_cn',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'authoring_workflow_execution_id_de',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
             #'about_es',
             #'about_fa',
             #'about_hi',
@@ -292,23 +238,57 @@ $this->widget('TbGridView',
             #'about_sv',
             #'about_cn',
             #'about_de',
+            array(
+                'name' => 'chapter_qa_state_id_en',
+                'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
+                'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'chapter_qa_state_id_es',
+                'value' => 'CHtml::value($data, \'chapterQaStateIdEs.itemLabel\')',
+                'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'chapter_qa_state_id_fa',
+                'value' => 'CHtml::value($data, \'chapterQaStateIdFa.itemLabel\')',
+                'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'chapter_qa_state_id_hi',
+                'value' => 'CHtml::value($data, \'chapterQaStateIdHi.itemLabel\')',
+                'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'chapter_qa_state_id_pt',
+                'value' => 'CHtml::value($data, \'chapterQaStateIdPt.itemLabel\')',
+                'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'chapter_qa_state_id_sv',
+                'value' => 'CHtml::value($data, \'chapterQaStateIdSv.itemLabel\')',
+                'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'chapter_qa_state_id_cn',
+                'value' => 'CHtml::value($data, \'chapterQaStateIdCn.itemLabel\')',
+                'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'chapter_qa_state_id_de',
+                'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
+                'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            #'teachers_guide_es',
+            #'teachers_guide_fa',
+            #'teachers_guide_hi',
+            #'teachers_guide_pt',
+            #'teachers_guide_sv',
+            #'teachers_guide_cn',
+            #'teachers_guide_de',
             */
 
             array(
                 'class' => 'TbButtonColumn',
-                'header' => 'Workflows',
-                'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Item.Preview")', 'options' => array('title' => Yii::t('app', 'Preview'))),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Item.Edit")', 'options' => array('title' => Yii::t('app', 'Edit'))),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Item.Remove")', 'options' => array('title' => Yii::t('app', 'Remove'))),
-                ),
-                'viewButtonUrl' => 'Yii::app()->controller->createUrl("preview", array("id" => $data->id))',
-                'updateButtonUrl' => 'Yii::app()->controller->createUrl("continueAuthoring", array("id" => $data->id))',
-                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("remove", array("id" => $data->id))',
-            ),
-            array(
-                'class' => 'TbButtonColumn',
-                'header' => 'Direct',
                 'buttons' => array(
                     'view' => array('visible' => 'Yii::app()->user->checkAccess("Chapter.View")'),
                     'update' => array('visible' => 'Yii::app()->user->checkAccess("Chapter.Update")'),
@@ -322,3 +302,4 @@ $this->widget('TbGridView',
     )
 );
 ?>
+<?php Yii::endProfile('Chapter.view.grid'); ?>

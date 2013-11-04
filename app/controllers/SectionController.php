@@ -86,9 +86,6 @@ class SectionController extends Controller
             if (isset($_POST['Section']['VideoFile'])) {
                 $model->setRelationRecords('videoFiles', $_POST['Section']['VideoFile']);
             }
-            if (isset($_POST['Section']['TeachersGuide'])) {
-                $model->setRelationRecords('teachersGuides', $_POST['Section']['TeachersGuide']);
-            }
             if (isset($_POST['Section']['Exercise'])) {
                 $model->setRelationRecords('exercises', $_POST['Section']['Exercise']);
             }
@@ -146,11 +143,6 @@ class SectionController extends Controller
                 $model->setRelationRecords('videoFiles', $_POST['Section']['VideoFile']);
             } else {
                 $model->setRelationRecords('videoFiles', array());
-            }
-            if (isset($_POST['Section']['TeachersGuide'])) {
-                $model->setRelationRecords('teachersGuides', $_POST['Section']['TeachersGuide']);
-            } else {
-                $model->setRelationRecords('teachersGuides', array());
             }
             if (isset($_POST['Section']['Exercise'])) {
                 $model->setRelationRecords('exercises', $_POST['Section']['Exercise']);

@@ -102,219 +102,219 @@ $this->breadcrumbs[] = $model->user_id;
                     array(
                         'name' => 'user_id',
                         'value' => ($model->user !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->user->itemLabel,
-                                array('//users/view', 'id' => $model->user->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//users/update', 'id' => $model->user->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->user->itemLabel,
+                                    array('//users/view', 'id' => $model->user->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//users/update', 'id' => $model->user->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'first_name',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'first_name',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'first_name',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'last_name',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'last_name',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'last_name',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'public_profile',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'public_profile',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'public_profile',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'picture_media_id',
                         'value' => ($model->pictureMedia !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->pictureMedia->itemLabel,
-                                array('//p3Media/view', 'id' => $model->pictureMedia->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//p3Media/update', 'id' => $model->pictureMedia->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->pictureMedia->itemLabel,
+                                    array('//p3Media/view', 'id' => $model->pictureMedia->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//p3Media/update', 'id' => $model->pictureMedia->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'website',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'website',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'website',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'others_may_contact_me',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'others_may_contact_me',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'others_may_contact_me',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'lives_in',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'lives_in',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'lives_in',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'can_translate_to_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'can_translate_to_en',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'can_translate_to_en',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'can_translate_to_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'can_translate_to_es',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'can_translate_to_es',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'can_translate_to_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'can_translate_to_fa',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'can_translate_to_fa',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'can_translate_to_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'can_translate_to_hi',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'can_translate_to_hi',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'can_translate_to_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'can_translate_to_pt',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'can_translate_to_pt',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'can_translate_to_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'can_translate_to_sv',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'can_translate_to_sv',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'can_translate_to_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'can_translate_to_cn',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'can_translate_to_cn',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'can_translate_to_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'can_translate_to_de',
-                                'url' => $this->createUrl('/profiles/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'can_translate_to_de',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                 ),
             )); ?>
