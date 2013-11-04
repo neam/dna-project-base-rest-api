@@ -5,7 +5,7 @@ $this->setPageTitle(
     . Yii::t('crud', 'Draft')
 );
 
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('admin');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
 $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publishing');
 $this->breadcrumbs[] = $stepCaption;
