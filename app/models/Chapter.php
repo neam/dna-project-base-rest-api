@@ -44,7 +44,6 @@ class Chapter extends BaseChapter
     }
 
     public $thumbnail;
-    public $video;
     public $credits;
 
     public function rules()
@@ -53,22 +52,24 @@ class Chapter extends BaseChapter
             parent::rules(), array(
                 // Define status-dependent fields
                 array('title, slug', 'required', 'on' => 'draft,preview,public'),
-                array('thumbnail, about, video, teachers_guide, exercises, snapshots, credits', 'required', 'on' => 'public'),
+                array('thumbnail, about, videos, teachers_guide, exercises, snapshots, credits', 'required', 'on' => 'public'),
                 // Define step-dependent fields
                 array('title, slug', 'safe', 'on' => 'step_title'),
                 array('thumbnail_media_id', 'safe', 'on' => 'step_thumbnail'),
                 array('about', 'safe', 'on' => 'step_about'),
-                array('video', 'safe', 'on' => 'step_video'),
+                array('videos', 'safe', 'on' => 'step_videos'),
                 array('teachers_guide', 'safe', 'on' => 'step_teachers_guide'),
                 array('exercises', 'safe', 'on' => 'step_exercises'),
-                array('snapshots', 'safe', 'on' => 'step_credits'),
+                array('snapshots', 'safe', 'on' => 'step_snapshots'),
+                array('credits', 'safe', 'on' => 'step_credits'),
                 array('title, slug', 'required', 'on' => 'step_title'),
                 array('thumbnail_media_id', 'required', 'on' => 'step_thumbnail'),
                 array('about', 'required', 'on' => 'step_about'),
-                array('video', 'required', 'on' => 'step_video'),
+                array('videos', 'required', 'on' => 'step_videos'),
                 array('teachers_guide', 'required', 'on' => 'step_teachers_guide'),
                 array('exercises', 'required', 'on' => 'step_exercises'),
-                array('snapshots', 'required', 'on' => 'step_credits'),
+                array('snapshots', 'required', 'on' => 'step_snapshots'),
+                array('credits', 'required', 'on' => 'step_credits'),
                 // Ordinary validation rules
                 array('thumbnail', 'validateThumbnail', 'on' => 'public'),
                 array('about', 'length', 'min' => 10, 'max' => 200, 'on' => 'public'),
