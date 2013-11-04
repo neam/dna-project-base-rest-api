@@ -123,7 +123,7 @@ class Chapter extends BaseChapter
     public function getAttributeHint($key)
     {
         $a = $this->attributeHints();
-        if (isset($a[$key])){
+        if (isset($a[$key])) {
             return $a[$key];
         }
     }
