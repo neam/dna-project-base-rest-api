@@ -61,15 +61,31 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
         <div class="row-fluid">
             <div class="span9">
 
-                <h2>Prepare for publishing
+                <h2><?php print $stepCaption; ?>
                     <small></small>
                 </h2>
 
             </div>
+            <div class="span3">
+
+                <div class="btn-toolbar pull-right">
+
+                    <div class="btn-group">
+                        <?php
+                        echo CHtml::submitButton(Yii::t('model', 'Save and Continue'), array(
+                                'class' => 'btn btn-large btn-primary'
+                            )
+                        );
+                        ?>
+
+                    </div>
+
+                </div>
+
+            </div>
         </div>
 
-        <p>Now you're supposed to go directly to the first field.... thumbnail</p>
-
+        <?php $this->renderPartial('steps/' . $step, compact("model", "form")); ?>
 
         <?php $this->endWidget() ?>
 

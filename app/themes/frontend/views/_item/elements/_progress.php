@@ -34,7 +34,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
 </div>
 
-<?php if ($this->action->id == "draft" || $this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish") !== false)): ?>
+<?php if ($this->action->id == "draft"): ?>
 
     <div class="row-fluid">
         <div class="span4">
@@ -53,11 +53,11 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
             <?php
             $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "Title & Slug"),
+                "label" => Yii::t("model", "Title"),
                 "type" => $this->action->id == "draft" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "draft" ? " icon-white" : null),
-                "url" => array("draft", "id" => $model->{$model->tableSchema->primaryKey})
+                "url" => array("draftTitle", "id" => $model->{$model->tableSchema->primaryKey})
             ));
             ?>
 
@@ -67,6 +67,34 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 <?php endif; ?>
 
 <?php if ($this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish") !== false)): ?>
+
+    <div class="row-fluid">
+        <div class="span4">
+
+            <?php
+            $this->widget(
+                'bootstrap.widgets.TbProgress',
+                array(
+                    'type' => 'success', // 'info', 'success' or 'danger'
+                    'percent' => $model->qaState()->draft_validation_progress,
+                )
+            );
+            ?>
+        </div>
+        <div class="span8">
+
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Title"),
+                "type" => $this->action->id == "draft" ? "inverse" : null,
+                "size" => "small",
+                "icon" => "icon-thumbs-up" . ($this->action->id == "draft" ? " icon-white" : null),
+                "url" => array("prepPublishTitle", "id" => $model->{$model->tableSchema->primaryKey})
+            ));
+            ?>
+
+        </div>
+    </div>
 
     <div class="row-fluid">
         <div class="span4">

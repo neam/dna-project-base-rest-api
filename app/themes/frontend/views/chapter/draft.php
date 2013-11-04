@@ -62,7 +62,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Create Draft');
         <div class="row-fluid">
             <div class="span9">
 
-                <h2><?php echo Yii::t('app', 'Title & Slug'); ?>
+                <h2><?php print $stepCaption; ?>
                     <small></small>
                 </h2>
 
@@ -86,28 +86,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Create Draft');
             </div>
         </div>
 
-        <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255, 'hintOptions' => array('class' => 'alert alert-info'), 'hint' => $model->getAttributeHint('title_en'))); ?>
-
-        <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255, 'hintOptions' => array('class' => 'alert alert-info'), 'hint' => $model->getAttributeHint('slug_en'))); ?>
-
-
-        <div class="form-actions">
-            <?php
-            echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-                    'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-                    'class' => 'btn'
-                )
-            );
-            echo ' ';
-            echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-                    'class' => 'btn btn-primary'
-                )
-            );
-            ?>    </div>
-
-        <div class="alert alert-info">
-            Hint: Lorem ipsum
-        </div>
+        <?php $this->renderPartial('steps/' . $step, compact("model", "form")); ?>
 
         <?php $this->endWidget() ?>
 

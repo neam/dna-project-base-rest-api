@@ -30,6 +30,8 @@ class ChapterController extends Controller
             ),
             array('allow',
                 'actions' => array(
+                    'draftTitle',
+                    'prepPublishTitle',
                     'prepPublishAbout',
                     'prepPublishThumbnail',
                     'prepPublishTeachersguide',
@@ -62,40 +64,62 @@ class ChapterController extends Controller
         ));
     }
 
+    public function actionDraft($id)
+    {
+        $this->redirect(array('chapter/draftTitle', 'id' => $id));
+    }
+
+    public function actionDraftTitle($id)
+    {
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('draft', array('model' => $model, 'step' => 'title', 'stepCaption' => 'Title'));
+    }
+
+    public function actionPrepPublish($id)
+    {
+        $this->redirect(array('chapter/prepPublishThumbnail', 'id' => $id));
+    }
+
+    public function actionPrepPublishTitle($id)
+    {
+        $model = $this->saveAndContinueOnSuccess($id);
+        $this->render('preppublish', array('model' => $model, 'step' => 'title', 'stepCaption' => 'Title'));
+    }
+
     public function actionPrepPublishThumbnail($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish-thumbnail', array('model' => $model));
+        $this->render('preppublish', array('model' => $model, 'step' => 'thumbnail', 'stepCaption' => 'Thumbnail'));
     }
 
     public function actionPrepPublishAbout($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish-about', array('model' => $model));
+        $this->render('preppublish', array('model' => $model, 'step' => 'about', 'stepCaption' => 'About'));
     }
 
     public function actionPrepPublishExercises($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish-exercises', array('model' => $model));
+        $this->render('preppublish', array('model' => $model, 'step' => 'exercises', 'stepCaption' => 'Exercise(s)'));
     }
 
     public function actionPrepPublishSnapshots($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish-snapshots', array('model' => $model));
+        $this->render('preppublish', array('model' => $model, 'step' => 'snapshots', 'stepCaption' => 'Snapshot(s)'));
     }
 
     public function actionPrepPublishTeachersguide($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish-teachersguide', array('model' => $model));
+        $this->render('preppublish', array('model' => $model, 'step' => 'teachersguide', 'stepCaption' => 'Teacher\'s guide'));
     }
 
     public function actionPrepPublishVideos($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish-videos', array('model' => $model));
+        $this->render('preppublish', array('model' => $model, 'step' => 'videos', 'stepCaption' => 'Video(s)'));
     }
 
     public function beforeAction($action)
