@@ -30,47 +30,13 @@ class ChapterController extends Controller
             ),
             array('allow',
                 'actions' => array(
-                    'prepPublishThumbnail',
-                ),
-                'roles' => array(
-                    'Item.PrepPublish'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
                     'prepPublishAbout',
-                ),
-                'roles' => array(
-                    'Item.PrepPublish'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
+                    'prepPublishThumbnail',
                     'prepPublishTeachersguide',
-                ),
-                'roles' => array(
-                    'Item.PrepPublish'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
                     'prepPublishExercises',
-                ),
-                'roles' => array(
-                    'Item.PrepPublish'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
                     'prepPublishVideos',
-                ),
-                'roles' => array(
-                    'Item.PrepPublish'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
                     'prepPublishSnapshots',
+                    'prepPublishThumbnail',
                 ),
                 'roles' => array(
                     'Item.PrepPublish'
