@@ -29,8 +29,9 @@ Yii::app()->clientScript->registerScript('search', "
 
     </h1>
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
+<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php Yii::beginProfile('DataChunk.view.grid'); ?>
 
 
 <?php
@@ -39,7 +40,7 @@ $this->widget('TbGridView',
         'id' => 'data-chunk-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
-        'responsiveTable' => true,
+        #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
             'class' => 'TbPager',
@@ -71,7 +72,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'dataChunks.itemLabel\')',
-                'filter' => CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -93,24 +94,24 @@ $this->widget('TbGridView',
             array(
                 'name' => 'file_media_id',
                 'value' => 'CHtml::value($data, \'fileMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'metadata',
             array(
                 'name' => 'data_source_id',
                 'value' => 'CHtml::value($data, \'dataSource.itemLabel\')',
-                'filter' => CHtml::listData(DataSource::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(DataSource::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'slideshow_file_id',
                 'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
-                'filter' => CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
                 'name' => 'vector_graphic_id',
                 'value' => 'CHtml::value($data, \'vectorGraphic.itemLabel\')',
-                'filter' => CHtml::listData(VectorGraphic::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(VectorGraphic::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -131,7 +132,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -255,42 +256,42 @@ $this->widget('TbGridView',
             array(
                 'name' => 'data_chunk_qa_state_id_en',
                 'value' => 'CHtml::value($data, \'dataChunkQaStateIdEn.itemLabel\')',
-                'filter' => CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'data_chunk_qa_state_id_es',
                 'value' => 'CHtml::value($data, \'dataChunkQaStateIdEs.itemLabel\')',
-                'filter' => CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'data_chunk_qa_state_id_fa',
                 'value' => 'CHtml::value($data, \'dataChunkQaStateIdFa.itemLabel\')',
-                'filter' => CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'data_chunk_qa_state_id_hi',
                 'value' => 'CHtml::value($data, \'dataChunkQaStateIdHi.itemLabel\')',
-                'filter' => CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'data_chunk_qa_state_id_pt',
                 'value' => 'CHtml::value($data, \'dataChunkQaStateIdPt.itemLabel\')',
-                'filter' => CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'data_chunk_qa_state_id_sv',
                 'value' => 'CHtml::value($data, \'dataChunkQaStateIdSv.itemLabel\')',
-                'filter' => CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'data_chunk_qa_state_id_cn',
                 'value' => 'CHtml::value($data, \'dataChunkQaStateIdCn.itemLabel\')',
-                'filter' => CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'data_chunk_qa_state_id_de',
                 'value' => 'CHtml::value($data, \'dataChunkQaStateIdDe.itemLabel\')',
-                'filter' => CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             */
 
@@ -309,3 +310,4 @@ $this->widget('TbGridView',
     )
 );
 ?>
+<?php Yii::endProfile('DataChunk.view.grid'); ?>

@@ -39,6 +39,7 @@ $this->renderPartial('_form', array('model' => $model));
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('spreadsheetFile/create', 'SpreadsheetFile' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
+
     ?></div>
 
 <?php
@@ -73,12 +74,12 @@ $this->widget('TbGridView',
             array(
                 'name' => 'data_source_id',
                 'value' => 'CHtml::value($data, \'dataSource.itemLabel\')',
-                'filter' => CHtml::listData(DataSource::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(DataSource::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -91,7 +92,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'processed_media_id_en',
                 'value' => 'CHtml::value($data, \'processedMediaIdEn.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -113,7 +114,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -174,37 +175,37 @@ $this->widget('TbGridView',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
-                    'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'processed_media_id_fa',
                     'value' => 'CHtml::value($data, \'processedMediaIdFa.itemLabel\')',
-                    'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'processed_media_id_hi',
                     'value' => 'CHtml::value($data, \'processedMediaIdHi.itemLabel\')',
-                    'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'processed_media_id_pt',
                     'value' => 'CHtml::value($data, \'processedMediaIdPt.itemLabel\')',
-                    'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'processed_media_id_sv',
                     'value' => 'CHtml::value($data, \'processedMediaIdSv.itemLabel\')',
-                    'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'processed_media_id_cn',
                     'value' => 'CHtml::value($data, \'processedMediaIdCn.itemLabel\')',
-                    'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
-                    'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(

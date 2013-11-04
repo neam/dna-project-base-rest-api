@@ -29,8 +29,9 @@ Yii::app()->clientScript->registerScript('search', "
 
     </h1>
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
+<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php Yii::beginProfile('DownloadLink.view.grid'); ?>
 
 
 <?php
@@ -39,7 +40,7 @@ $this->widget('TbGridView',
         'id' => 'download-link-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
-        'responsiveTable' => true,
+        #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
             'class' => 'TbPager',
@@ -71,7 +72,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'downloadLinks.itemLabel\')',
-                'filter' => CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -84,7 +85,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'file_media_id',
                 'value' => 'CHtml::value($data, \'fileMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -105,7 +106,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
@@ -181,3 +182,4 @@ $this->widget('TbGridView',
     )
 );
 ?>
+<?php Yii::endProfile('DownloadLink.view.grid'); ?>

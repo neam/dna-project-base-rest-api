@@ -29,8 +29,9 @@ Yii::app()->clientScript->registerScript('search', "
 
     </h1>
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
+<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php Yii::beginProfile('VideoFileQaState.view.grid'); ?>
 
 
 <?php
@@ -39,7 +40,7 @@ $this->widget('TbGridView',
         'id' => 'video-file-qa-state-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
-        'responsiveTable' => true,
+        #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
             'class' => 'TbPager',
@@ -278,3 +279,4 @@ $this->widget('TbGridView',
     )
 );
 ?>
+<?php Yii::endProfile('VideoFileQaState.view.grid'); ?>

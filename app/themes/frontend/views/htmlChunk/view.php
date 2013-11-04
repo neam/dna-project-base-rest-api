@@ -91,179 +91,179 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'id',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'id',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'id',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'version',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'version',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'version',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'cloned_from_id',
                         'value' => ($model->clonedFrom !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
-                                array('//htmlChunk/view', 'id' => $model->clonedFrom->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//htmlChunk/update', 'id' => $model->clonedFrom->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                    array('//htmlChunk/view', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//htmlChunk/update', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'markup_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_en',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_en',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'created',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'created',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'created',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'modified',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'modified',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'modified',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
-                                array('//node/view', 'id' => $model->node->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//node/update', 'id' => $model->node->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    array('//node/view', 'id' => $model->node->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//node/update', 'id' => $model->node->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'markup_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_es',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_es',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_fa',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_fa',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_hi',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_hi',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_pt',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_pt',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_sv',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_sv',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_cn',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_cn',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_de',
-                                'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_de',
+                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                 ),
             )); ?>

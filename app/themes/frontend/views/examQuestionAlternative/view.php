@@ -95,192 +95,192 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'id',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'id',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'id',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_en',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_en',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'correct',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'correct',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'correct',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'exam_question_id',
                         'value' => ($model->examQuestion !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->examQuestion->itemLabel,
-                                array('//examQuestion/view', 'id' => $model->examQuestion->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//examQuestion/update', 'id' => $model->examQuestion->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->examQuestion->itemLabel,
+                                    array('//examQuestion/view', 'id' => $model->examQuestion->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//examQuestion/update', 'id' => $model->examQuestion->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'created',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'created',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'created',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'modified',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'modified',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'modified',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
-                                array('//node/view', 'id' => $model->node->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//node/update', 'id' => $model->node->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    array('//node/view', 'id' => $model->node->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//node/update', 'id' => $model->node->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'markup_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_es',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_es',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_fa',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_fa',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_hi',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_hi',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_pt',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_pt',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_sv',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_sv',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_cn',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_cn',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'markup_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'markup_de',
-                                'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'markup_de',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                 ),
             )); ?>

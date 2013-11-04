@@ -39,6 +39,7 @@ $this->renderPartial('_form', array('model' => $model));
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('tool/create', 'Tool' => array('tool_qa_state_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
+
     ?></div>
 
 <?php
@@ -65,7 +66,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'tools.itemLabel\')',
-                'filter' => CHtml::listData(Tool::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Tool::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -88,7 +89,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'po_file_id',
                 'value' => 'CHtml::value($data, \'poFile.itemLabel\')',
-                'filter' => CHtml::listData(PoFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(PoFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
@@ -110,7 +111,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',

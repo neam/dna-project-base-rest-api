@@ -11,11 +11,6 @@
                 break;
             case "admin":
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("model", "Add"),
-                    "icon" => "icon-plus",
-                    "url" => array("add")
-                ));
-                $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Create"),
                     "icon" => "icon-plus",
                     "url" => array("create")
@@ -86,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'exerciseQaStateIdDe - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdEn - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdCn - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdEs - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdFa - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdHi - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdPt - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdSv - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'clonedFrom - Exercise', 'url' => array('//exercise/admin')), array('label' => 'exercises - Exercise', 'url' => array('//exercise/admin')), array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'thumbnailMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'slideshowFile - SlideshowFile', 'url' => array('//slideshowFile/admin')), array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin'))
+                        'items' => array(array('label' => 'outEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'outNodes - Node', 'url' => array('//node/admin')), array('label' => 'inEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'inNodes - Node', 'url' => array('//node/admin')), array('label' => 'exerciseQaStateIdEn - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdCn - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdDe - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdEs - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdFa - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdHi - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdPt - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'exerciseQaStateIdSv - ExerciseQaState', 'url' => array('//exerciseQaState/admin')), array('label' => 'clonedFrom - Exercise', 'url' => array('//exercise/admin')), array('label' => 'exercises - Exercise', 'url' => array('//exercise/admin')), array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'thumbnailMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'slideshowFile - SlideshowFile', 'url' => array('//slideshowFile/admin')), array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin')), array('label' => 'parentChapters - Chapter', 'url' => array('//chapter/admin'))
                         )
                     ),
                 ),

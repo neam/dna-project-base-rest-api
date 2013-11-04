@@ -41,6 +41,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'teachers_guide_en'); ?>
+        <?php echo $form->textArea($model, 'teachers_guide_en', array('rows' => 6, 'cols' => 50)); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'created'); ?>
         <?php echo $form->textField($model, 'created'); ?>
     </div>
@@ -198,6 +203,41 @@
     <div class="row">
         <?php echo $form->label($model, 'chapter_qa_state_id_de'); ?>
         <?php echo $form->textField($model, 'chapter_qa_state_id_de', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'teachers_guide_es'); ?>
+        <?php echo $form->textArea($model, 'teachers_guide_es', array('rows' => 6, 'cols' => 50)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'teachers_guide_fa'); ?>
+        <?php echo $form->textArea($model, 'teachers_guide_fa', array('rows' => 6, 'cols' => 50)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'teachers_guide_hi'); ?>
+        <?php echo $form->textArea($model, 'teachers_guide_hi', array('rows' => 6, 'cols' => 50)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'teachers_guide_pt'); ?>
+        <?php echo $form->textArea($model, 'teachers_guide_pt', array('rows' => 6, 'cols' => 50)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'teachers_guide_sv'); ?>
+        <?php echo $form->textArea($model, 'teachers_guide_sv', array('rows' => 6, 'cols' => 50)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'teachers_guide_cn'); ?>
+        <?php echo $form->textArea($model, 'teachers_guide_cn', array('rows' => 6, 'cols' => 50)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'teachers_guide_de'); ?>
+        <?php echo $form->textArea($model, 'teachers_guide_de', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
 

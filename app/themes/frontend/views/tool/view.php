@@ -167,421 +167,421 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'id',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'id',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'id',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'version',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'version',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'version',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'cloned_from_id',
                         'value' => ($model->clonedFrom !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
-                                array('//tool/view', 'id' => $model->clonedFrom->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//tool/update', 'id' => $model->clonedFrom->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                    array('//tool/view', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//tool/update', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'title_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_en',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_en',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_en',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_en',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_en',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_en',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'embed_template',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'embed_template',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'embed_template',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'po_file_id',
                         'value' => ($model->poFile !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->poFile->itemLabel,
-                                array('//poFile/view', 'id' => $model->poFile->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//poFile/update', 'id' => $model->poFile->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->poFile->itemLabel,
+                                    array('//poFile/view', 'id' => $model->poFile->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//poFile/update', 'id' => $model->poFile->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'created',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'created',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'created',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'modified',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'modified',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'modified',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
-                                array('//node/view', 'id' => $model->node->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//node/update', 'id' => $model->node->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    array('//node/view', 'id' => $model->node->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//node/update', 'id' => $model->node->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'slug_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_es',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_es',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_fa',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_fa',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_hi',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_hi',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_pt',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_pt',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_sv',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_sv',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_cn',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_cn',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_de',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_de',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_es',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_es',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_fa',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_fa',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_hi',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_hi',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_pt',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_pt',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_sv',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_sv',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_cn',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_cn',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_de',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_de',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_es',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_es',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_fa',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_fa',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_hi',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_hi',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_pt',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_pt',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_sv',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_sv',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_cn',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_cn',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_de',
-                                'url' => $this->createUrl('/tool/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_de',
+                                    'url' => $this->createUrl('/tool/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'tool_qa_state_id',
                         'value' => ($model->toolQaState !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->toolQaState->itemLabel,
-                                array('//toolQaState/view', 'id' => $model->toolQaState->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//toolQaState/update', 'id' => $model->toolQaState->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->toolQaState->itemLabel,
+                                    array('//toolQaState/view', 'id' => $model->toolQaState->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//toolQaState/update', 'id' => $model->toolQaState->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                 ),

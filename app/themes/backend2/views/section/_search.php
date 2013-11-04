@@ -11,8 +11,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'chapter_id'); ?>
-        <?php echo $form->textField($model, 'chapter_id', array('size' => 20, 'maxlength' => 20)); ?>
+        <?php echo $form->label($model, 'page_id'); ?>
+        <?php echo $form->textField($model, 'page_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
     <div class="row">

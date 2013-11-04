@@ -1,5 +1,7 @@
+<!--
 <h2>
     <?php echo Yii::t('crud', 'Relations') ?></h2>
+-->
 
 
 <?php
@@ -13,13 +15,13 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///examQuestion/admin', 'ExamQuestion' => array('exam_question_qa_state_id_de' => $model->{$model->tableSchema->primaryKey}))
+                'url' => array('///examQuestion/admin', 'ExamQuestion' => array('exam_question_qa_state_id_en' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
                 'url' => array(
                     '///examQuestion/create',
-                    'ExamQuestion' => array('exam_question_qa_state_id_de' => $model->{$model->tableSchema->primaryKey})
+                    'ExamQuestion' => array('exam_question_qa_state_id_en' => $model->{$model->tableSchema->primaryKey})
                 )
             ),
 
@@ -60,13 +62,13 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///examQuestion/admin', 'ExamQuestion' => array('exam_question_qa_state_id_en' => $model->{$model->tableSchema->primaryKey}))
+                'url' => array('///examQuestion/admin', 'ExamQuestion' => array('exam_question_qa_state_id_cn' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
                 'url' => array(
                     '///examQuestion/create',
-                    'ExamQuestion' => array('exam_question_qa_state_id_en' => $model->{$model->tableSchema->primaryKey})
+                    'ExamQuestion' => array('exam_question_qa_state_id_cn' => $model->{$model->tableSchema->primaryKey})
                 )
             ),
 
@@ -107,13 +109,13 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'icon-list-alt',
-                'url' => array('///examQuestion/admin', 'ExamQuestion' => array('exam_question_qa_state_id_cn' => $model->{$model->tableSchema->primaryKey}))
+                'url' => array('///examQuestion/admin', 'ExamQuestion' => array('exam_question_qa_state_id_de' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'icon-plus',
                 'url' => array(
                     '///examQuestion/create',
-                    'ExamQuestion' => array('exam_question_qa_state_id_cn' => $model->{$model->tableSchema->primaryKey})
+                    'ExamQuestion' => array('exam_question_qa_state_id_de' => $model->{$model->tableSchema->primaryKey})
                 )
             ),
 

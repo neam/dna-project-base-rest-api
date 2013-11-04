@@ -29,8 +29,9 @@ Yii::app()->clientScript->registerScript('search', "
 
     </h1>
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
+<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php Yii::beginProfile('SectionContent.view.grid'); ?>
 
 
 <?php
@@ -39,7 +40,7 @@ $this->widget('TbGridView',
         'id' => 'section-content-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
-        'responsiveTable' => true,
+        #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
             'class' => 'TbPager',
@@ -63,7 +64,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'section_id',
                 'value' => 'CHtml::value($data, \'section.itemLabel\')',
-                'filter' => CHtml::listData(Section::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Section::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -92,53 +93,48 @@ $this->widget('TbGridView',
             array(
                 'name' => 'html_chunk_id',
                 'value' => 'CHtml::value($data, \'htmlChunk.itemLabel\')',
-                'filter' => CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'snapshot_id',
                 'value' => 'CHtml::value($data, \'snapshot.itemLabel\')',
-                'filter' => CHtml::listData(Snapshot::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Snapshot::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'video_file_id',
                 'value' => 'CHtml::value($data, \'videoFile.itemLabel\')',
-                'filter' => CHtml::listData(VideoFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(VideoFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
-                'name' => 'teachers_guide_id',
-                'value' => 'CHtml::value($data, \'teachersGuide.itemLabel\')',
-                'filter' => CHtml::listData(TeachersGuide::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
                 'name' => 'exercise_id',
                 'value' => 'CHtml::value($data, \'exercise.itemLabel\')',
-                'filter' => CHtml::listData(Exercise::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(Exercise::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'slideshow_file_id',
                 'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
-                'filter' => CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'data_chunk_id',
                 'value' => 'CHtml::value($data, \'dataChunk.itemLabel\')',
-                'filter' => CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'download_link_id',
                 'value' => 'CHtml::value($data, \'downloadLink.itemLabel\')',
-                'filter' => CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'exam_question_id',
                 'value' => 'CHtml::value($data, \'examQuestion.itemLabel\')',
-                'filter' => CHtml::listData(ExamQuestion::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(ExamQuestion::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             */
 
@@ -157,3 +153,4 @@ $this->widget('TbGridView',
     )
 );
 ?>
+<?php Yii::endProfile('SectionContent.view.grid'); ?>

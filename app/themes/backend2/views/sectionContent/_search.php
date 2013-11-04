@@ -46,11 +46,6 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'teachers_guide_id'); ?>
-        <?php echo $form->textField($model, 'teachers_guide_id', array('size' => 20, 'maxlength' => 20)); ?>
-    </div>
-
-    <div class="row">
         <?php echo $form->label($model, 'exercise_id'); ?>
         <?php echo $form->textField($model, 'exercise_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>

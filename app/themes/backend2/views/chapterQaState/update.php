@@ -39,6 +39,7 @@ $this->renderPartial('_form', array('model' => $model));
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('chapter_qa_state_id_en' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
+
     ?></div>
 
 <?php
@@ -65,7 +66,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'chapters.itemLabel\')',
-                'filter' => CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -86,18 +87,19 @@ $this->widget('TbGridView',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'about_en',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+            #'teachers_guide_en',
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'created',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'modified',
@@ -109,7 +111,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -233,38 +235,45 @@ $this->widget('TbGridView',
             array(
                     'name' => 'chapter_qa_state_id_es',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEs.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_fa',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdFa.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_hi',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdHi.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_pt',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdPt.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_sv',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdSv.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_cn',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdCn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_de',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
+            #'teachers_guide_es',
+            #'teachers_guide_fa',
+            #'teachers_guide_hi',
+            #'teachers_guide_pt',
+            #'teachers_guide_sv',
+            #'teachers_guide_cn',
+            #'teachers_guide_de',
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -287,6 +296,7 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('chapter_qa_state_id_cn' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
+
     ?></div>
 
 <?php
@@ -313,7 +323,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'chapters.itemLabel\')',
-                'filter' => CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -334,18 +344,19 @@ $this->widget('TbGridView',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'about_en',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+            #'teachers_guide_en',
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'created',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'modified',
@@ -357,7 +368,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -481,38 +492,45 @@ $this->widget('TbGridView',
             array(
                     'name' => 'chapter_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_es',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEs.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_fa',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdFa.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_hi',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdHi.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_pt',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdPt.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_sv',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdSv.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_de',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
+            #'teachers_guide_es',
+            #'teachers_guide_fa',
+            #'teachers_guide_hi',
+            #'teachers_guide_pt',
+            #'teachers_guide_sv',
+            #'teachers_guide_cn',
+            #'teachers_guide_de',
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -535,6 +553,7 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('chapter_qa_state_id_de' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
+
     ?></div>
 
 <?php
@@ -561,7 +580,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'chapters.itemLabel\')',
-                'filter' => CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -582,18 +601,19 @@ $this->widget('TbGridView',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'about_en',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+            #'teachers_guide_en',
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'created',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'modified',
@@ -605,7 +625,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -729,38 +749,45 @@ $this->widget('TbGridView',
             array(
                     'name' => 'chapter_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_es',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEs.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_fa',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdFa.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_hi',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdHi.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_pt',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdPt.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_sv',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdSv.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_cn',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdCn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
+            #'teachers_guide_es',
+            #'teachers_guide_fa',
+            #'teachers_guide_hi',
+            #'teachers_guide_pt',
+            #'teachers_guide_sv',
+            #'teachers_guide_cn',
+            #'teachers_guide_de',
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -783,6 +810,7 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('chapter_qa_state_id_es' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
+
     ?></div>
 
 <?php
@@ -809,7 +837,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'chapters.itemLabel\')',
-                'filter' => CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -830,18 +858,19 @@ $this->widget('TbGridView',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'about_en',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+            #'teachers_guide_en',
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'created',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'modified',
@@ -853,7 +882,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -977,38 +1006,45 @@ $this->widget('TbGridView',
             array(
                     'name' => 'chapter_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_fa',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdFa.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_hi',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdHi.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_pt',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdPt.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_sv',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdSv.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_cn',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdCn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_de',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
+            #'teachers_guide_es',
+            #'teachers_guide_fa',
+            #'teachers_guide_hi',
+            #'teachers_guide_pt',
+            #'teachers_guide_sv',
+            #'teachers_guide_cn',
+            #'teachers_guide_de',
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -1031,6 +1067,7 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('chapter_qa_state_id_fa' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
+
     ?></div>
 
 <?php
@@ -1057,7 +1094,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'chapters.itemLabel\')',
-                'filter' => CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -1078,18 +1115,19 @@ $this->widget('TbGridView',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'about_en',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+            #'teachers_guide_en',
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'created',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'modified',
@@ -1101,7 +1139,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -1225,38 +1263,45 @@ $this->widget('TbGridView',
             array(
                     'name' => 'chapter_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_es',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEs.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_hi',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdHi.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_pt',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdPt.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_sv',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdSv.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_cn',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdCn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_de',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
+            #'teachers_guide_es',
+            #'teachers_guide_fa',
+            #'teachers_guide_hi',
+            #'teachers_guide_pt',
+            #'teachers_guide_sv',
+            #'teachers_guide_cn',
+            #'teachers_guide_de',
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -1279,6 +1324,7 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('chapter_qa_state_id_hi' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
+
     ?></div>
 
 <?php
@@ -1305,7 +1351,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'chapters.itemLabel\')',
-                'filter' => CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -1326,18 +1372,19 @@ $this->widget('TbGridView',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'about_en',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+            #'teachers_guide_en',
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'created',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'modified',
@@ -1349,7 +1396,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -1473,38 +1520,45 @@ $this->widget('TbGridView',
             array(
                     'name' => 'chapter_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_es',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEs.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_fa',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdFa.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_pt',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdPt.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_sv',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdSv.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_cn',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdCn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_de',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
+            #'teachers_guide_es',
+            #'teachers_guide_fa',
+            #'teachers_guide_hi',
+            #'teachers_guide_pt',
+            #'teachers_guide_sv',
+            #'teachers_guide_cn',
+            #'teachers_guide_de',
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -1527,6 +1581,7 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('chapter_qa_state_id_pt' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
+
     ?></div>
 
 <?php
@@ -1553,7 +1608,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'chapters.itemLabel\')',
-                'filter' => CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -1574,18 +1629,19 @@ $this->widget('TbGridView',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'about_en',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+            #'teachers_guide_en',
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'created',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'modified',
@@ -1597,7 +1653,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -1721,38 +1777,45 @@ $this->widget('TbGridView',
             array(
                     'name' => 'chapter_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_es',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEs.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_fa',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdFa.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_hi',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdHi.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_sv',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdSv.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_cn',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdCn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_de',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
+            #'teachers_guide_es',
+            #'teachers_guide_fa',
+            #'teachers_guide_hi',
+            #'teachers_guide_pt',
+            #'teachers_guide_sv',
+            #'teachers_guide_cn',
+            #'teachers_guide_de',
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -1775,6 +1838,7 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('chapter_qa_state_id_sv' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
+
     ?></div>
 
 <?php
@@ -1801,7 +1865,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'cloned_from_id',
                 'value' => 'CHtml::value($data, \'chapters.itemLabel\')',
-                'filter' => CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -1822,18 +1886,19 @@ $this->widget('TbGridView',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'about_en',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
+            #'teachers_guide_en',
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'created',
+                    'editable' => array(
+                        'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'modified',
@@ -1845,7 +1910,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -1969,38 +2034,45 @@ $this->widget('TbGridView',
             array(
                     'name' => 'chapter_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_es',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEs.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_fa',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdFa.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_hi',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdHi.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_pt',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdPt.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_cn',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdCn.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'chapter_qa_state_id_de',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
-                    'filter' => CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
+            #'teachers_guide_es',
+            #'teachers_guide_fa',
+            #'teachers_guide_hi',
+            #'teachers_guide_pt',
+            #'teachers_guide_sv',
+            #'teachers_guide_cn',
+            #'teachers_guide_de',
             */
             array(
                 'class' => 'TbButtonColumn',

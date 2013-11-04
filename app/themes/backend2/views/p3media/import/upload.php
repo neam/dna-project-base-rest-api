@@ -18,7 +18,7 @@ if (!isset($_GET['parent_form'])) {
 </ol>
 
 <style type="text/css">
-        /* Some CSS hacks to clarify upload form */
+    /* Some CSS hacks to clarify upload form */
     #fileupload form {
         margin-bottom: 0;
     }

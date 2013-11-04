@@ -199,511 +199,511 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'id',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'id',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'id',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'version',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'version',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'version',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'cloned_from_id',
                         'value' => ($model->clonedFrom !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
-                                array('//snapshot/view', 'id' => $model->clonedFrom->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//snapshot/update', 'id' => $model->clonedFrom->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                    array('//snapshot/view', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//snapshot/update', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'title_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_en',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_en',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_en',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_en',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_en',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_en',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'link',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'link',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'link',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'embed_override',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'embed_override',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'embed_override',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'tool_id',
                         'value' => ($model->tool !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->tool->itemLabel,
-                                array('//tool/view', 'id' => $model->tool->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//tool/update', 'id' => $model->tool->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->tool->itemLabel,
+                                    array('//tool/view', 'id' => $model->tool->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//tool/update', 'id' => $model->tool->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'created',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'created',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'created',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'modified',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'modified',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'modified',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
-                                array('//node/view', 'id' => $model->node->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//node/update', 'id' => $model->node->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    array('//node/view', 'id' => $model->node->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//node/update', 'id' => $model->node->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'title_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_es',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_es',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_fa',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_fa',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_hi',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_hi',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_pt',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_pt',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_sv',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_sv',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_cn',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_cn',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_de',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_de',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_es',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_es',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_fa',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_fa',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_hi',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_hi',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_pt',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_pt',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_sv',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_sv',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_cn',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_cn',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'slug_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'slug_de',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_de',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_es',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_es',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_fa',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_fa',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_hi',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_hi',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_pt',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_pt',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_sv',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_sv',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_cn',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_cn',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'about_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'about_de',
-                                'url' => $this->createUrl('/snapshot/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_de',
+                                    'url' => $this->createUrl('/snapshot/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'snapshot_qa_state_id_en',
                         'value' => ($model->snapshotQaStateIdEn !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdEn->itemLabel,
-                                array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdEn->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdEn->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdEn->itemLabel,
+                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdEn->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdEn->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'snapshot_qa_state_id_es',
                         'value' => ($model->snapshotQaStateIdEs !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdEs->itemLabel,
-                                array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdEs->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdEs->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdEs->itemLabel,
+                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdEs->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdEs->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'snapshot_qa_state_id_fa',
                         'value' => ($model->snapshotQaStateIdFa !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdFa->itemLabel,
-                                array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdFa->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdFa->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdFa->itemLabel,
+                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdFa->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdFa->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'snapshot_qa_state_id_hi',
                         'value' => ($model->snapshotQaStateIdHi !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdHi->itemLabel,
-                                array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdHi->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdHi->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdHi->itemLabel,
+                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdHi->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdHi->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'snapshot_qa_state_id_pt',
                         'value' => ($model->snapshotQaStateIdPt !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdPt->itemLabel,
-                                array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdPt->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdPt->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdPt->itemLabel,
+                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdPt->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdPt->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'snapshot_qa_state_id_sv',
                         'value' => ($model->snapshotQaStateIdSv !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdSv->itemLabel,
-                                array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdSv->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdSv->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdSv->itemLabel,
+                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdSv->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdSv->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'snapshot_qa_state_id_cn',
                         'value' => ($model->snapshotQaStateIdCn !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdCn->itemLabel,
-                                array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdCn->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdCn->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdCn->itemLabel,
+                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdCn->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdCn->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'snapshot_qa_state_id_de',
                         'value' => ($model->snapshotQaStateIdDe !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdDe->itemLabel,
-                                array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdDe->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdDe->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdDe->itemLabel,
+                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdDe->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdDe->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                 ),

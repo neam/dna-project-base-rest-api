@@ -29,6 +29,10 @@
     <br/>
 
     <?php /*
+    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_en')); ?>:</b>
+    <?php echo CHtml::encode($data->teachers_guide_en); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
     <?php echo CHtml::encode($data->created); ?>
     <br />
@@ -155,6 +159,34 @@
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('chapter_qa_state_id_de')); ?>:</b>
     <?php echo CHtml::encode($data->chapter_qa_state_id_de); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_es')); ?>:</b>
+    <?php echo CHtml::encode($data->teachers_guide_es); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_fa')); ?>:</b>
+    <?php echo CHtml::encode($data->teachers_guide_fa); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_hi')); ?>:</b>
+    <?php echo CHtml::encode($data->teachers_guide_hi); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_pt')); ?>:</b>
+    <?php echo CHtml::encode($data->teachers_guide_pt); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_sv')); ?>:</b>
+    <?php echo CHtml::encode($data->teachers_guide_sv); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_cn')); ?>:</b>
+    <?php echo CHtml::encode($data->teachers_guide_cn); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_de')); ?>:</b>
+    <?php echo CHtml::encode($data->teachers_guide_de); ?>
     <br />
 
     */

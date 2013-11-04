@@ -95,190 +95,190 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'id',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'id',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'id',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'version',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'version',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'version',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'cloned_from_id',
                         'value' => ($model->clonedFrom !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
-                                array('//downloadLink/view', 'id' => $model->clonedFrom->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//downloadLink/update', 'id' => $model->clonedFrom->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                    array('//downloadLink/view', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//downloadLink/update', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'title_en',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_en',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_en',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'file_media_id',
                         'value' => ($model->fileMedia !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->fileMedia->itemLabel,
-                                array('//p3Media/view', 'id' => $model->fileMedia->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//p3Media/update', 'id' => $model->fileMedia->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->fileMedia->itemLabel,
+                                    array('//p3Media/view', 'id' => $model->fileMedia->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//p3Media/update', 'id' => $model->fileMedia->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'created',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'created',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'created',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'modified',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'modified',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'modified',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
-                                array('//node/view', 'id' => $model->node->id),
-                                array('class' => '')) . ' ' . CHtml::link(
-                                '<i class="icon icon-pencil"></i> ',
-                                array('//node/update', 'id' => $model->node->id),
-                                array('class' => '')) : 'n/a',
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    array('//node/view', 'id' => $model->node->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//node/update', 'id' => $model->node->id),
+                                    array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'title_es',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_es',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_es',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_fa',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_fa',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_fa',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_hi',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_hi',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_hi',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_pt',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_pt',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_pt',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_sv',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_sv',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_sv',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_cn',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_cn',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_cn',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => 'title_de',
                         'type' => 'raw',
                         'value' => $this->widget(
-                            'TbEditableField',
-                            array(
-                                'model' => $model,
-                                'attribute' => 'title_de',
-                                'url' => $this->createUrl('/downloadLink/editableSaver'),
-                            ),
-                            true
-                        )
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_de',
+                                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                 ),
             )); ?>

@@ -198,53 +198,6 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'teachersGuide',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'teachers_guide_id', $input);
-            ?>
-
-            <?php
-            $formId = 'section-content-teachers_guide_id-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Teachers Guide'))),
-                        'icon' => 'icon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//teachersGuide/_modal_form', array(
-                'formId' => $formId,
-                'inputSelector' => '#SectionContent_teachers_guide_id',
-                'model' => new TeachersGuide,
-                'pk' => 'id',
-                'field' => 'itemLabel',
-            ));
-            $this->endClip();
-            ?>
-
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
                     'relation' => 'exercise',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,

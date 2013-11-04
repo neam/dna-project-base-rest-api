@@ -15,10 +15,16 @@
 
     echo $form->errorSummary($model);
 
-    $this->renderPartial('_elements', array(
-        'model' => $model,
-        'form' => $form,
-    ));
+    if (!isset($elementsViewAlias)) {
+        $elementsViewAlias = '_elements';
+    }
+
+    $this->renderPartial($elementsViewAlias, array(
+
+        $this->renderPartial('_elements', array(
+            'model' => $model,
+            'form' => $form,
+        ));
     ?>
     <div class="form-actions">
         <?php
