@@ -5,9 +5,9 @@ $this->setPageTitle(
     . Yii::t('crud', 'Replace')
 );
 
-$this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
+$this->breadcrumbs[] = Yii::t('crud', 'Replace');
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>

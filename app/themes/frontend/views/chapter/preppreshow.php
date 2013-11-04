@@ -5,9 +5,10 @@ $this->setPageTitle(
     . Yii::t('crud', 'Prepare for preshow')
 );
 
-$this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
 $this->breadcrumbs[] = Yii::t('crud', 'Prepare for preshow');
+$this->breadcrumbs[] = $stepCaption;
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
