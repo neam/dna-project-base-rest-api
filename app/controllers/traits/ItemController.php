@@ -409,33 +409,6 @@ trait ItemController
         }
     }
 
-    private function listenForEdges($id)
-    {
-        if (isset($_POST[$this->modelClass]["exercises_to_add"])) {
-            $this->addEdges($id, $_POST[$this->modelClass]["exercises_to_add"], 'Exercise');
-        } else {
-            if (isset($_POST[$this->modelClass]["exercises_to_remove"])) {
-                $this->removeEdges($_POST[$this->modelClass]["exercises_to_remove"]);
-            } else {
-                if (isset($_POST[$this->modelClass]["snapshots_to_add"])) {
-                    $this->addEdges($id, $_POST[$this->modelClass]["snapshots_to_add"], 'Snapshot');
-                } else {
-                    if (isset($_POST[$this->modelClass]["snapshots_to_remove"])) {
-                        $this->removeEdges($_POST[$this->modelClass]["snapshots_to_remove"]);
-                    } else {
-                        if (isset($_POST[$this->modelClass]["videos_to_add"])) {
-                            $this->addEdges($id, $_POST[$this->modelClass]["videos_to_add"], 'VideoFile');
-                        } else {
-                            if (isset($_POST[$this->modelClass]["videos_to_remove"])) {
-                                $this->removeEdges($_POST[$this->modelClass]["videos_to_remove"]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     // Asks $_POST if a value isn't part of "Model"
     // If it ends with _c0, we suppose it's from a grid input, and put it into $_POST[$this->modelClass]
     // Returns $_POST with fixed values
