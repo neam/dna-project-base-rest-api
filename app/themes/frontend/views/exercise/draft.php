@@ -2,17 +2,17 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Clone')
+    . Yii::t('crud', 'Draft')
 );
 
 $this->breadcrumbs[Yii::t('model', 'Exercises')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
+$this->breadcrumbs[] = Yii::t('crud', 'Draft');
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
 
         <h1>
@@ -39,7 +39,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <br/>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span3 well well-white">
 
         <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
@@ -58,10 +58,10 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
         ?>
 
 
-        <div class="row">
+        <div class="row-fluid">
             <div class="span9">
 
-                <h2>Clone
+                <h2>Create Draft
                     <small></small>
                 </h2>
 
@@ -69,10 +69,25 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
             <div class="span3">
 
                 <div class="btn-toolbar pull-right">
+
+                    <div class="btn-group">
+                        <?php
+                        echo CHtml::submitButton(Yii::t('model', 'Save and Continue'), array(
+                                'class' => 'btn btn-large btn-primary'
+                            )
+                        );
+                        ?>
+
+                    </div>
+
                 </div>
 
             </div>
         </div>
+
+        <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
+
+        <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
 
 
         <div class="form-actions">

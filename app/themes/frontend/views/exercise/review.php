@@ -2,7 +2,7 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Remove')
+    . Yii::t('crud', 'Evaluate')
 );
 
 $this->breadcrumbs[Yii::t('model', 'Exercises')] = array('admin');
@@ -12,7 +12,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
 
         <h1>
@@ -39,7 +39,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <br/>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span3 well well-white">
 
         <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
@@ -58,10 +58,10 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
         ?>
 
 
-        <div class="row">
+        <div class="row-fluid">
             <div class="span9">
 
-                <h2>Remove
+                <h2>Review
                     <small></small>
                 </h2>
 

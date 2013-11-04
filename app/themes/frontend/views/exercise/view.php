@@ -209,7 +209,7 @@ $this->breadcrumbs[] = $model->id;
     */
 ?>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span7">
         <h2>
             <?php echo Yii::t('model', 'Data') ?>
