@@ -40,12 +40,16 @@ $this->breadcrumbs[] = Yii::t('crud', 'Publish');
 <br/>
 
 <div class="row-fluid">
-    <div class="span3 well well-white">
+    <div class="span3">
 
-        <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
+        <div class="row-fluid">
+            <div class="span12 well well-white">
+                <?php echo $this->renderPartial('/_item/elements/_actions', compact("model", "execution")); ?>
+            </div>
+        </div>
 
     </div>
-    <div class="span9 well well-white">
+    <div class="span9">
 
         <?php
         $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
