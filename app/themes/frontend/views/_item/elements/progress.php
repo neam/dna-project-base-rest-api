@@ -20,231 +20,45 @@
 
 </div>
 
-<?php if ($this->action->id == "draft" || (strpos($this->action->id, "draft") !== false)): ?>
+<?php
+$steps = $model->flowSteps();
+$stepCaptions = $model->flowStepCaptions();
+?>
 
-    <div class="row-fluid">
-        <div class="span4">
+<?php if ($this->action->id == "draft" || (strpos($this->action->id, "draft") !== false)):
 
-            <?php
-            $this->widget(
-                'bootstrap.widgets.TbProgress',
-                array(
-                    'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $model->qaState()->draft_validation_progress,
-                )
-            );
-            ?>
-        </div>
-        <div class="span8">
+    foreach ($steps['draft'] as $step => $options) {
+        $action = 'draft' . ucfirst(isset($options['action']) ? $options['action'] : $step);
+        $caption = $stepCaptions[$step];
+        $this->renderPartial("/_item/elements/_progress-item", compact("step", "caption", "options", "action", "model"));
+    }
 
-            <?php
-            $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "Title"),
-                "type" => $this->action->id == "draftTitle" ? "inverse" : null,
-                "size" => "small",
-                "icon" => "icon-thumbs-up" . ($this->action->id == "draft" ? " icon-white" : null),
-                "url" => array("draftTitle", "id" => $model->{$model->tableSchema->primaryKey})
-            ));
-            ?>
+elseif ($this->action->id == "prepPreview" || (strpos($this->action->id, "prepPreview") !== false)):
 
-        </div>
-    </div>
+    foreach (array_merge($steps['draft'], $steps['preview']) as $step => $options) {
+        $action = 'prepPreview' . ucfirst(isset($options['action']) ? $options['action'] : $step);
+        $caption = $stepCaptions[$step];
+        $this->renderPartial("/_item/elements/_progress-item", compact("step", "caption", "options", "action", "model"));
+    }
 
-<?php endif; ?>
+elseif ($this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish") !== false)):
 
-<?php if ($this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish") !== false)): ?>
+    foreach (array_merge($steps['draft'], $steps['preview'], $steps['public']) as $step => $options) {
+        $action = 'prepPublish' . ucfirst(isset($options['action']) ? $options['action'] : $step);
+        $caption = $stepCaptions[$step];
+        $this->renderPartial("/_item/elements/_progress-item", compact("step", "caption", "options", "action", "model"));
+    }
 
-    <div class="row-fluid">
-        <div class="span4">
+elseif ($this->action->id == "edit" || (strpos($this->action->id, "edit") !== false)):
 
-            <?php
-            $this->widget(
-                'bootstrap.widgets.TbProgress',
-                array(
-                    'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $model->calculateValidationProgress('step_title'),
-                )
-            );
-            ?>
-        </div>
-        <div class="span8">
+    foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
+        $action = 'edit' . ucfirst(isset($options['action']) ? $options['action'] : $step);
+        $caption = $stepCaptions[$step];
+        $this->renderPartial("/_item/elements/_progress-item", compact("step", "caption", "options", "action", "model"));
+    }
 
-            <?php
-            $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "Title"),
-                "type" => $this->action->id == "prepPublishTitle" ? "inverse" : null,
-                "size" => "small",
-                "icon" => "icon-thumbs-up" . ($this->action->id == "draft" ? " icon-white" : null),
-                "url" => array("prepPublishTitle", "id" => $model->{$model->tableSchema->primaryKey})
-            ));
-            ?>
-
-        </div>
-    </div>
-
-    <div class="row-fluid">
-        <div class="span4">
-
-            <?php
-            $this->widget(
-                'bootstrap.widgets.TbProgress',
-                array(
-                    'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $model->calculateValidationProgress('step_thumbnail'),
-                )
-            );
-            ?>
-        </div>
-        <div class="span8">
-
-            <?php
-            $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "Thumbnail"),
-                "type" => $this->action->id == "prepPublishThumbnail" ? "inverse" : null,
-                "size" => "small",
-                "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("prepPublishThumbnail", "id" => $model->{$model->tableSchema->primaryKey})
-            ));
-            ?>
-
-        </div>
-    </div>
-    <div class="row-fluid">
-        <div class="span4">
-
-            <?php
-            $this->widget(
-                'bootstrap.widgets.TbProgress',
-                array(
-                    'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $model->calculateValidationProgress('step_about'),
-                )
-            );
-            ?>
-        </div>
-        <div class="span8">
-
-            <?php
-            $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "About"),
-                "type" => $this->action->id == "prepPublishAbout" ? "inverse" : null,
-                "size" => "small",
-                "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("prepPublishAbout", "id" => $model->{$model->tableSchema->primaryKey})
-            ));
-            ?>
-
-        </div>
-    </div>
-    <div class="row-fluid">
-        <div class="span4">
-
-            <?php
-            $this->widget(
-                'bootstrap.widgets.TbProgress',
-                array(
-                    'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $model->calculateValidationProgress('step_teachers_guide'),
-                )
-            );
-            ?>
-        </div>
-        <div class="span8">
-
-            <?php
-            $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "Teachers Guide"),
-                "type" => $this->action->id == "prepPublishTeachersguide" ? "inverse" : null,
-                "size" => "small",
-                "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("prepPublishTeachersguide", "id" => $model->{$model->tableSchema->primaryKey})
-            ));
-            ?>
-
-        </div>
-    </div>
-    <div class="row-fluid">
-        <div class="span4">
-
-            <?php
-            $this->widget(
-                'bootstrap.widgets.TbProgress',
-                array(
-                    'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $model->calculateValidationProgress('step_exercises'),
-                )
-            );
-            ?>
-        </div>
-        <div class="span8">
-
-            <?php
-            $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "Exercise(s)"),
-                "type" => $this->action->id == "prepPublishExercises" ? "inverse" : null,
-                "size" => "small",
-                "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("prepPublishExercises", "id" => $model->{$model->tableSchema->primaryKey})
-            ));
-            ?>
-
-        </div>
-    </div>
-    <div class="row-fluid">
-        <div class="span4">
-
-            <?php
-            $this->widget(
-                'bootstrap.widgets.TbProgress',
-                array(
-                    'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $model->calculateValidationProgress('step_videos'),
-                )
-            );
-            ?>
-        </div>
-        <div class="span8">
-
-            <?php
-            $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "Video"),
-                "type" => $this->action->id == "prepPublishVideos" ? "inverse" : null,
-                "size" => "small",
-                "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("prepPublishVideos", "id" => $model->{$model->tableSchema->primaryKey})
-            ));
-            ?>
-
-        </div>
-    </div>
-    <div class="row-fluid">
-        <div class="span4">
-
-            <?php
-            $this->widget(
-                'bootstrap.widgets.TbProgress',
-                array(
-                    'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $model->calculateValidationProgress('step_snapshots'),
-                )
-            );
-            ?>
-        </div>
-        <div class="span8">
-
-            <?php
-            $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "Snapshot(s)"),
-                "type" => $this->action->id == "prepPublishSnapshots" ? "inverse" : null,
-                "size" => "small",
-                "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                "url" => array("prepPublishSnapshots", "id" => $model->{$model->tableSchema->primaryKey})
-            ));
-            ?>
-
-        </div>
-    </div>
-<?php endif; ?>
+endif;
+?>
 
 <?php /*
 <div class="row-fluid">

@@ -111,6 +111,55 @@ class Chapter extends BaseChapter
         return true;
     }
 
+    public function flowSteps()
+    {
+        return array(
+            'draft' => array(
+                'title' => array(
+                    'icon' => 'edit',
+                ),
+            ),
+            'preview' => array(),
+            'public' => array(
+                'thumbnail' => array(
+                    'icon' => 'edit',
+                ),
+                'about' => array(
+                    'icon' => 'edit',
+                ),
+                'teachers_guide' => array(
+                    'icon' => 'edit',
+                    'action' => 'teachersGuide',
+                ),
+                'videos' => array(
+                    'icon' => 'edit',
+                ),
+                'snapshots' => array(
+                    'icon' => 'edit',
+                ),
+            ),
+            'all' => array(
+                'credits' => array(
+                    'icon' => 'edit',
+                )
+            ),
+        );
+    }
+
+    public function flowStepCaptions()
+    {
+        return array(
+            'title' => Yii::t('app', 'Title'),
+            'thumbnail' => Yii::t('app', 'Thumbnail'),
+            'about' => Yii::t('app', 'About'),
+            'teachers_guide' => Yii::t('app', 'Teacher\'s guide'),
+            'exercises' => Yii::t('app', 'Exercise(s)'),
+            'videos' => Yii::t('app', 'Video'),
+            'snapshots' => Yii::t('app', 'Snapshot(s)'),
+            'credits' => Yii::t('app', 'Credits'),
+        );
+    }
+
     public function attributeLabels()
     {
         return array_merge(
