@@ -31,6 +31,13 @@ class ChapterController extends Controller
             array('allow',
                 'actions' => array(
                     'draftTitle',
+                ),
+                'roles' => array(
+                    'Item.Draft'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
                     'prepPublishTitle',
                     'prepPublishAbout',
                     'prepPublishThumbnail',
