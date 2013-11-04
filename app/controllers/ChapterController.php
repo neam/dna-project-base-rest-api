@@ -34,7 +34,7 @@ class ChapterController extends Controller
                     'prepPublishTitle',
                     'prepPublishAbout',
                     'prepPublishThumbnail',
-                    'prepPublishTeachersguide',
+                    'prepPublishTeachersGuide',
                     'prepPublishExercises',
                     'prepPublishVideos',
                     'prepPublishSnapshots',
@@ -104,7 +104,7 @@ class ChapterController extends Controller
         $model->clearErrors();
         $model->scenario = 'step_teachers_guide';
         if (!$model->validate()) {
-            $this->redirect(array('chapter/prepPublishTeachersguide', 'id' => $id));
+            $this->redirect(array('chapter/prepPublishTeachersGuide', 'id' => $id));
             return;
         }
         $model->clearErrors();
@@ -164,7 +164,7 @@ class ChapterController extends Controller
         $this->render('/_item/preppublish', array('model' => $model, 'step' => 'snapshots', 'stepCaption' => Yii::t('app', 'Snapshot(s)')));
     }
 
-    public function actionPrepPublishTeachersguide($id)
+    public function actionPrepPublishTeachersGuide($id)
     {
         $this->scenario = "step_teachers_guide";
         $model = $this->saveAndContinueOnSuccess($id);
