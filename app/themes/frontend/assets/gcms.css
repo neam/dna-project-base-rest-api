@@ -326,3 +326,8 @@
 .rememberMe label {
     display: inline;
 }
+
+/* Other */
+.well-white {
+    background-color: white;
+}

@@ -12,7 +12,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
 
         <h1>
@@ -39,7 +39,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <br/>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span3 well well-white">
 
         <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
@@ -58,7 +58,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
         ?>
 
 
-        <div class="row">
+        <div class="row-fluid">
             <div class="span9">
 
                 <h2><?php Yii::t('app', 'Prepare for publishing'); ?>
@@ -85,22 +85,61 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             </div>
         </div>
 
-        <div class="control-group ">
-            <label class="control-label" for="">Videos</label>
+        <h2>Snapshots</h2>
 
-            <div class="controls">
+        <div class="controls">
+            <?php if ($model->snapshots): ?>
                 <ul>
-                    <li>Video1</li>
+                    <?php foreach ($model->snapshots as $snapshot): ?>
+                        <li>
+                            <?php echo $snapshot->title; ?>
+                            <?php
+                            $this->widget("bootstrap.widgets.TbButton", array(
+                                "label" => Yii::t("model", "Delete relation"),
+                                "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $snapshot->node()->id, "returnUrl" => Yii::app()->request->url),
+                                "size" => "small",
+                                "type" => "danger"
+                            ));
+                            ?>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
-                <?php
-                echo CHtml::Button(Yii::t('model', 'Create new video'), array(
-                        //'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-                        'class' => 'btn'
-                    )
-                );
-                ?>
-            </div>
+            <?php endif; ?>
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Create new snapshot"),
+                "url" => array("/snapshot/")
+            ));
+            ?>
         </div>
+
+        <h2>Choose snapshot to add</h2>
+        <?php
+        $allSnapshots = new Snapshot('search');
+        $this->widget(
+            'bootstrap.widgets.TbExtendedGridView',
+            array(
+                'id' => 'snapshots_to_add',
+                'type' => 'striped bordered',
+                'dataProvider' => $allSnapshots->search(),
+                'pager' => array(
+                    'class' => 'TbPager',
+                    'displayFirstAndLast' => true,
+                ),
+                'bulkActions' => array(
+                    'actionButtons' => array(),
+                    'checkBoxColumnConfig' => array(
+                        'name' => 'id'
+                    ),
+                ),
+                'columns' => array(
+                    array('name' => 'id', 'header' => 'Id'),
+                    array('name' => 'title', 'header' => 'Title'),
+                )
+            )
+        );
+        ?>
+
 
         <div class="form-actions">
             <?php

@@ -2,17 +2,17 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Prepare for preshow')
+    . Yii::t('crud', 'Draft')
 );
 
 $this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Prepare for preshow');
+$this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
 
         <h1>
@@ -39,7 +39,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for preshow');
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <br/>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span3 well well-white">
 
         <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
@@ -58,10 +58,10 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for preshow');
         ?>
 
 
-        <div class="row">
+        <div class="row-fluid">
             <div class="span9">
 
-                <h2>Prepare for preshow
+                <h2><?php Yii::t('app', 'Prepare for publishing'); ?>
                     <small></small>
                 </h2>
 
@@ -69,6 +69,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for preshow');
             <div class="span3">
 
                 <div class="btn-toolbar pull-right">
+
                     <div class="btn-group">
                         <?php
                         echo CHtml::submitButton(Yii::t('model', 'Save and Continue'), array(
@@ -76,11 +77,15 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for preshow');
                             )
                         );
                         ?>
+
                     </div>
+
                 </div>
 
             </div>
         </div>
+
+        <?php echo $form->textAreaRow($model, 'about', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'hintOptions' => array('class' => 'alert alert-info'), 'hint' => 'about_en')); ?>
 
         <div class="form-actions">
             <?php

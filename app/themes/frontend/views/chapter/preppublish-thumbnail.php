@@ -12,7 +12,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
 
         <h1>
@@ -39,7 +39,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <br/>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span3 well well-white">
 
         <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
@@ -58,7 +58,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
         ?>
 
 
-        <div class="row">
+        <div class="row-fluid">
             <div class="span9">
 
                 <h2><?php Yii::t('app', 'Prepare for publishing'); ?>
@@ -85,60 +85,27 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             </div>
         </div>
 
-        <h2>Exercises</h2>
-
-        <div class="controls">
-            <?php if ($model->exercises): ?>
-                <ul>
-                    <?php foreach ($model->exercises as $exercise): ?>
-                        <li>
-                            <?php echo $exercise->title; ?>
-                            <?php
-                            $this->widget("bootstrap.widgets.TbButton", array(
-                                "label" => Yii::t("model", "Delete relation"),
-                                "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $exercise->node()->id, "returnUrl" => Yii::app()->request->url),
-                                "size" => "small",
-                                "type" => "danger"
-                            ));
-                            ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
-            <?php
-            $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "Create new exercise"),
-                "url" => array("/exercise/")
-            ));
-            ?>
-        </div>
-
-        <h2>Choose exercise to add</h2>
         <?php
-        $allExercises = new Exercise('search');
-        $this->widget(
-            'bootstrap.widgets.TbExtendedGridView',
+        $input = $this->widget(
+            '\GtcRelation',
             array(
-                'id' => 'exercises_to_add',
-                'type' => 'striped bordered',
-                'dataProvider' => $allExercises->search(),
-                'pager' => array(
-                    'class' => 'TbPager',
-                    'displayFirstAndLast' => true,
+                'model' => $model,
+                'relation' => 'thumbnailMedia',
+                'fields' => 'itemLabel',
+                'allowEmpty' => true,
+                'style' => 'dropdownlist',
+                'htmlOptions' => array(
+                    'checkAll' => 'all'
                 ),
-                'bulkActions' => array(
-                    'actionButtons' => array(),
-                    'checkBoxColumnConfig' => array(
-                        'name' => 'id'
-                    ),
-                ),
-                'columns' => array(
-                    array('name' => 'id', 'header' => 'Id'),
-                    array('name' => 'title', 'header' => 'Title'),
-                )
             )
-        );
+            , true);
+        echo $form->customRow($model, 'thumbnail_media_id', $input);
         ?>
+
+        <?php
+        $formId = 'chapter-thumbnail_media_id-' . \uniqid() . '-form';
+        ?>
+
 
         <div class="form-actions">
             <?php

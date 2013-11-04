@@ -2,21 +2,22 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Draft')
+    . Yii::t('crud', 'Create Draft')
 );
 
 $this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
+$this->breadcrumbs[] = Yii::t('crud', 'Create Draft');
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
 
         <h1>
-            <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
+            <?php echo Yii::t('app', 'Create Draft'); ?>
+            - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
             <small>vX</small>
 
             <div class="btn-group">
@@ -36,10 +37,10 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
     </div>
 </div>
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
 <br/>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span3 well well-white">
 
         <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
@@ -58,10 +59,10 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
         ?>
 
 
-        <div class="row">
+        <div class="row-fluid">
             <div class="span9">
 
-                <h2><?php Yii::t('app', 'Prepare for publishing'); ?>
+                <h2><?php echo Yii::t('app', 'Title & Slug'); ?>
                     <small></small>
                 </h2>
 
@@ -85,26 +86,9 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
             </div>
         </div>
 
-        <?php
-        $input = $this->widget(
-            '\GtcRelation',
-            array(
-                'model' => $model,
-                'relation' => 'thumbnailMedia',
-                'fields' => 'itemLabel',
-                'allowEmpty' => true,
-                'style' => 'dropdownlist',
-                'htmlOptions' => array(
-                    'checkAll' => 'all'
-                ),
-            )
-            , true);
-        echo $form->customRow($model, 'thumbnail_media_id', $input);
-        ?>
+        <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255, 'hintOptions' => array('class' => 'alert alert-info'), 'hint' => $model->getAttributeHint('title_en'))); ?>
 
-        <?php
-        $formId = 'chapter-thumbnail_media_id-' . \uniqid() . '-form';
-        ?>
+        <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255, 'hintOptions' => array('class' => 'alert alert-info'), 'hint' => $model->getAttributeHint('slug_en'))); ?>
 
 
         <div class="form-actions">
@@ -119,8 +103,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
                     'class' => 'btn btn-primary'
                 )
             );
-            ?>
-        </div>
+            ?>    </div>
 
         <div class="alert alert-info">
             Hint: Lorem ipsum
@@ -131,13 +114,3 @@ $this->breadcrumbs[] = Yii::t('crud', 'Prepare for publish');
     </div>
 
 </div>
-
-
-<?php
-foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
-    if (strpos($key, "modal:") === 0) {
-        echo $clip;
-    }
-}
-?>
-

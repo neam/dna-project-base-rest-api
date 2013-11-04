@@ -58,7 +58,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
     });
 </script>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span3 bs-docs-sidebar">
         <?php if (!empty($model->sections)): ?>
             <ul class="nav nav-list bs-docs-sidenav affix">

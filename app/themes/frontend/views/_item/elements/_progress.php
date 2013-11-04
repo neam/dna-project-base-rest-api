@@ -16,11 +16,11 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
 ?>
 
-<div class="row">
+<div class="row-fluid">
     <h2>Progress</h2>
 </div>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span4">
 
         %
@@ -36,7 +36,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
 <?php if ($this->action->id == "draft" || $this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish") !== false)): ?>
 
-    <div class="row">
+    <div class="row-fluid">
         <div class="span4">
 
             <?php
@@ -68,7 +68,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
 <?php if ($this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish") !== false)): ?>
 
-    <div class="row">
+    <div class="row-fluid">
         <div class="span4">
 
             <?php
@@ -95,7 +95,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
         </div>
     </div>
-    <div class="row">
+    <div class="row-fluid">
         <div class="span4">
 
             <?php
@@ -122,7 +122,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
         </div>
     </div>
-    <div class="row">
+    <div class="row-fluid">
         <div class="span4">
 
             <?php
@@ -149,7 +149,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
         </div>
     </div>
-    <div class="row">
+    <div class="row-fluid">
         <div class="span4">
 
             <?php
@@ -176,7 +176,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
         </div>
     </div>
-    <div class="row">
+    <div class="row-fluid">
         <div class="span4">
 
             <?php
@@ -203,7 +203,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
         </div>
     </div>
-    <div class="row">
+    <div class="row-fluid">
         <div class="span4">
 
             <?php
@@ -242,7 +242,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
 
 
-<div class="row">
+<div class="row-fluid">
 
     <div class="span12">
 
@@ -295,7 +295,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
         <div class="alert-info alert"><b>HINT</b> To add videos, exercises etc before evaluation, use Edit mode.</div>
 
 
-        <div class="row">
+        <div class="row-fluid">
             <div class="span4">
 
                 <?php
@@ -322,7 +322,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
             </div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
             <div class="span4">
 
                 <?php
@@ -349,7 +349,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
             </div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
             <div class="span4">
 
                 <?php
@@ -376,7 +376,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
             </div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
             <div class="span4">
 
                 <?php
@@ -403,7 +403,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
             </div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
             <div class="span4">
 
                 <?php
@@ -430,7 +430,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
             </div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
             <div class="span4">
 
                 <?php
@@ -457,7 +457,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
             </div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
             <div class="span4">
 
                 <?php
@@ -484,7 +484,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
 
             </div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
             <div class="span4">
 
                 <?php

@@ -2,22 +2,21 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Create Draft')
+    . Yii::t('crud', 'Replace')
 );
 
 $this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Create Draft');
+$this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
 
         <h1>
-            <?php echo Yii::t('app', 'Create Draft'); ?>
-            - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
+            <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
             <small>vX</small>
 
             <div class="btn-group">
@@ -37,10 +36,10 @@ $this->breadcrumbs[] = Yii::t('crud', 'Create Draft');
     </div>
 </div>
 
-<?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <br/>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span3 well well-white">
 
         <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
@@ -59,10 +58,10 @@ $this->breadcrumbs[] = Yii::t('crud', 'Create Draft');
         ?>
 
 
-        <div class="row">
+        <div class="row-fluid">
             <div class="span9">
 
-                <h2><?php echo Yii::t('app', 'Title & Slug'); ?>
+                <h2>Replace
                     <small></small>
                 </h2>
 
@@ -70,25 +69,10 @@ $this->breadcrumbs[] = Yii::t('crud', 'Create Draft');
             <div class="span3">
 
                 <div class="btn-toolbar pull-right">
-
-                    <div class="btn-group">
-                        <?php
-                        echo CHtml::submitButton(Yii::t('model', 'Save and Continue'), array(
-                                'class' => 'btn btn-large btn-primary'
-                            )
-                        );
-                        ?>
-
-                    </div>
-
                 </div>
 
             </div>
         </div>
-
-        <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255, 'hintOptions' => array('class' => 'alert alert-info'), 'hint' => $model->getAttributeHint('title_en'))); ?>
-
-        <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255, 'hintOptions' => array('class' => 'alert alert-info'), 'hint' => $model->getAttributeHint('slug_en'))); ?>
 
 
         <div class="form-actions">

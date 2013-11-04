@@ -2,7 +2,7 @@
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Proofread')
+    . Yii::t('crud', 'Evaluate')
 );
 
 $this->breadcrumbs[Yii::t('model', 'Chapters')] = array('admin');
@@ -12,7 +12,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
 
         <h1>
@@ -20,7 +20,6 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
             <small>vX</small>
 
             <div class="btn-group">
-
                 <?php
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Preview"),
@@ -28,9 +27,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
                     "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 ?>
-
             </div>
-
         </h1>
 
     </div>
@@ -39,7 +36,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <br/>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span3 well well-white">
 
         <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
@@ -58,10 +55,10 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
         ?>
 
 
-        <div class="row">
+        <div class="row-fluid">
             <div class="span9">
 
-                <h2>Proofread
+                <h2>Review
                     <small></small>
                 </h2>
 
@@ -69,6 +66,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
             <div class="span3">
 
                 <div class="btn-toolbar pull-right">
+
                 </div>
 
             </div>
@@ -209,7 +207,6 @@ $this->breadcrumbs[] = Yii::t('crud', 'Evaluate');
                 )); ?>
             </div>
         </div>
-
 
         <div class="form-actions">
             <?php
