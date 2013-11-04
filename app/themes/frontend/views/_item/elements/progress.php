@@ -76,7 +76,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 'bootstrap.widgets.TbProgress',
                 array(
                     'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $model->qaState()->draft_validation_progress,
+                    'percent' => $model->calculateValidationProgress('step_title'),
                 )
             );
             ?>
@@ -104,7 +104,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 'bootstrap.widgets.TbProgress',
                 array(
                     'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $publishingProgress,
+                    'percent' => $model->calculateValidationProgress('step_thumbnail'),
                 )
             );
             ?>
@@ -131,7 +131,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 'bootstrap.widgets.TbProgress',
                 array(
                     'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $publishingProgress,
+                    'percent' => $model->calculateValidationProgress('step_about'),
                 )
             );
             ?>
@@ -158,7 +158,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 'bootstrap.widgets.TbProgress',
                 array(
                     'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $publishingProgress,
+                    'percent' => $model->calculateValidationProgress('step_teachers_guide'),
                 )
             );
             ?>
@@ -185,7 +185,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 'bootstrap.widgets.TbProgress',
                 array(
                     'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $publishingProgress,
+                    'percent' => $model->calculateValidationProgress('step_exercises'),
                 )
             );
             ?>
@@ -212,7 +212,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 'bootstrap.widgets.TbProgress',
                 array(
                     'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $publishingProgress,
+                    'percent' => $model->calculateValidationProgress('step_videos'),
                 )
             );
             ?>
@@ -239,7 +239,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                 'bootstrap.widgets.TbProgress',
                 array(
                     'type' => 'success', // 'info', 'success' or 'danger'
-                    'percent' => $publishingProgress,
+                    'percent' => $model->calculateValidationProgress('step_snapshots'),
                 )
             );
             ?>
@@ -260,6 +260,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
     </div>
 <?php endif; ?>
 
+<?php /*
 <div class="row-fluid">
 
     <div class="span12">
@@ -294,3 +295,5 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
     </div>
 </div>
 
+        */
+?>
