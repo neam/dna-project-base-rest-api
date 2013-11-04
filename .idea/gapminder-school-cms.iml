@@ -27,7 +27,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/phppowerpoint" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/phpword" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/backend-theme" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/gii-template-collection" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/jquery-file-upload" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/lessii" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/nbproject" />
@@ -96,7 +95,6 @@
           <root url="file://$MODULE_DIR$/vendor/phundament/p3admin" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/migrate-command" />
           <root url="file://$MODULE_DIR$/vendor/phundament/backend-theme" />
-          <root url="file://$MODULE_DIR$/vendor/phundament/gii-template-collection" />
           <root url="file://$MODULE_DIR$/vendor/anggiaj/eselect2" />
           <root url="file://$MODULE_DIR$/vendor/cloudhead/less.js" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/yii-sakila-crud" />
@@ -148,7 +146,6 @@
           <root url="file://$MODULE_DIR$/vendor/phundament/p3admin" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/migrate-command" />
           <root url="file://$MODULE_DIR$/vendor/phundament/backend-theme" />
-          <root url="file://$MODULE_DIR$/vendor/phundament/gii-template-collection" />
           <root url="file://$MODULE_DIR$/vendor/anggiaj/eselect2" />
           <root url="file://$MODULE_DIR$/vendor/cloudhead/less.js" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/yii-sakila-crud" />
