@@ -424,7 +424,7 @@ trait ItemController
                         $this->removeEdges($_POST[$this->modelClass]["snapshots_to_remove"]);
                     } else {
                         if (isset($_POST[$this->modelClass]["videos_to_add"])) {
-                            $this->addEdges($id, $_POST[$this->modelClass]["videos_to_add"], 'Video');
+                            $this->addEdges($id, $_POST[$this->modelClass]["videos_to_add"], 'VideoFile');
                         } else {
                             if (isset($_POST[$this->modelClass]["videos_to_remove"])) {
                                 $this->removeEdges($_POST[$this->modelClass]["videos_to_remove"]);
