@@ -75,6 +75,11 @@ class ChapterController extends Controller
         $this->render('/_item/draft', array('model' => $model, 'step' => 'title', 'stepCaption' => Yii::t('app', 'Title')));
     }
 
+    public function actionPrepPreshow($id)
+    {
+        $this->redirect(array('chapter/prepPublish', 'id' => $id));
+    }
+
     public function actionPrepPublish($id)
     {
         $this->redirect(array('chapter/prepPublishThumbnail', 'id' => $id));

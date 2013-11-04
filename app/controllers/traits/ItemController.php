@@ -271,32 +271,32 @@ trait ItemController
     public function actionDraft($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('draft', array('model' => $model));
+        $this->render('/_item/draft', array('model' => $model));
     }
 
     public function actionPrepPreshow($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppreshow', array('model' => $model));
+        $this->render('/_item/preppreshow', array('model' => $model));
     }
 
     public function actionPreshow($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preshow', array('model' => $model));
+        $this->render('/_item/preshow', array('model' => $model));
     }
 
     public function actionEvaluate($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('evaluate', array('model' => $model));
+        $this->render('/_item/evaluate', array('model' => $model));
     }
 
     public function actionPrepPublish($id)
     {
         // TODO SHOULD GO TO ... thumbnail?
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preppublish', array('model' => $model));
+        $this->render('/_item/preppublish', array('model' => $model));
     }
 
     public function actionPreview($id)
@@ -308,19 +308,19 @@ trait ItemController
     public function actionReview($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('review', array('model' => $model));
+        $this->render('/_item/review', array('model' => $model));
     }
 
     public function actionProofRead($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('proofread', array('model' => $model));
+        $this->render('/_item/proofread', array('model' => $model));
     }
 
     public function actionPublish($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('publish', array('model' => $model));
+        $this->render('/_item/publish', array('model' => $model));
     }
 
     public function actionEdit($id)
@@ -332,19 +332,19 @@ trait ItemController
     public function actionClone($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('clone', array('model' => $model));
+        $this->render('/_item/clone', array('model' => $model));
     }
 
     public function actionRemove($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('remove', array('model' => $model));
+        $this->render('/_item/remove', array('model' => $model));
     }
 
     public function actionReplace($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('replace', array('model' => $model));
+        $this->render('/_item/replace', array('model' => $model));
     }
 
     public function actionGo($id)

@@ -54,7 +54,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
             <?php
             $this->widget("bootstrap.widgets.TbButton", array(
                 "label" => Yii::t("model", "Title"),
-                "type" => $this->action->id == "draft" ? "inverse" : null,
+                "type" => $this->action->id == "draftTitle" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "draft" ? " icon-white" : null),
                 "url" => array("draftTitle", "id" => $model->{$model->tableSchema->primaryKey})
@@ -86,7 +86,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
             <?php
             $this->widget("bootstrap.widgets.TbButton", array(
                 "label" => Yii::t("model", "Title"),
-                "type" => $this->action->id == "draft" ? "inverse" : null,
+                "type" => $this->action->id == "prepPublishTitle" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "draft" ? " icon-white" : null),
                 "url" => array("prepPublishTitle", "id" => $model->{$model->tableSchema->primaryKey})
@@ -114,7 +114,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
             <?php
             $this->widget("bootstrap.widgets.TbButton", array(
                 "label" => Yii::t("model", "Thumbnail"),
-                "type" => $this->action->id == "publish" ? "inverse" : null,
+                "type" => $this->action->id == "prepPublishThumbnail" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
                 "url" => array("prepPublishThumbnail", "id" => $model->{$model->tableSchema->primaryKey})
@@ -141,7 +141,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
             <?php
             $this->widget("bootstrap.widgets.TbButton", array(
                 "label" => Yii::t("model", "About"),
-                "type" => $this->action->id == "publish" ? "inverse" : null,
+                "type" => $this->action->id == "prepPublishAbout" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
                 "url" => array("prepPublishAbout", "id" => $model->{$model->tableSchema->primaryKey})
@@ -168,7 +168,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
             <?php
             $this->widget("bootstrap.widgets.TbButton", array(
                 "label" => Yii::t("model", "Teachers Guide"),
-                "type" => $this->action->id == "publish" ? "inverse" : null,
+                "type" => $this->action->id == "prepPublishTeachersguide" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
                 "url" => array("prepPublishTeachersguide", "id" => $model->{$model->tableSchema->primaryKey})
@@ -195,7 +195,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
             <?php
             $this->widget("bootstrap.widgets.TbButton", array(
                 "label" => Yii::t("model", "Exercise(s)"),
-                "type" => $this->action->id == "publish" ? "inverse" : null,
+                "type" => $this->action->id == "prepPublishExercises" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
                 "url" => array("prepPublishExercises", "id" => $model->{$model->tableSchema->primaryKey})
@@ -222,7 +222,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
             <?php
             $this->widget("bootstrap.widgets.TbButton", array(
                 "label" => Yii::t("model", "Video"),
-                "type" => $this->action->id == "publish" ? "inverse" : null,
+                "type" => $this->action->id == "prepPublishVideos" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
                 "url" => array("prepPublishVideos", "id" => $model->{$model->tableSchema->primaryKey})
@@ -249,7 +249,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
             <?php
             $this->widget("bootstrap.widgets.TbButton", array(
                 "label" => Yii::t("model", "Snapshot(s)"),
-                "type" => $this->action->id == "publish" ? "inverse" : null,
+                "type" => $this->action->id == "prepPublishSnapshots" ? "inverse" : null,
                 "size" => "small",
                 "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
                 "url" => array("prepPublishSnapshots", "id" => $model->{$model->tableSchema->primaryKey})
