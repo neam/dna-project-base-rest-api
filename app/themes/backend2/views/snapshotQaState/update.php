@@ -30,7 +30,10 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <h2>
-    <?php echo Yii::t('model', 'Snapshots'); ?> </h2>
+    <?php echo Yii::t('model', 'Snapshots'); ?>
+    <small>snapshots</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -39,7 +42,6 @@ $this->renderPartial('_form', array('model' => $model));
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('snapshot_qa_state_id_en' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -288,7 +290,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Snapshots'); ?> </h2>
+    <?php echo Yii::t('model', 'Snapshots'); ?>
+    <small>snapshots1</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -297,7 +302,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('snapshot_qa_state_id_cn' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -546,7 +550,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Snapshots'); ?> </h2>
+    <?php echo Yii::t('model', 'Snapshots'); ?>
+    <small>snapshots2</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -555,7 +562,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('snapshot_qa_state_id_de' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -804,7 +810,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Snapshots'); ?> </h2>
+    <?php echo Yii::t('model', 'Snapshots'); ?>
+    <small>snapshots3</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -813,7 +822,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('snapshot_qa_state_id_es' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1062,7 +1070,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Snapshots'); ?> </h2>
+    <?php echo Yii::t('model', 'Snapshots'); ?>
+    <small>snapshots4</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1071,7 +1082,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('snapshot_qa_state_id_fa' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1320,7 +1330,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Snapshots'); ?> </h2>
+    <?php echo Yii::t('model', 'Snapshots'); ?>
+    <small>snapshots5</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1329,7 +1342,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('snapshot_qa_state_id_hi' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1578,7 +1590,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Snapshots'); ?> </h2>
+    <?php echo Yii::t('model', 'Snapshots'); ?>
+    <small>snapshots6</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1587,7 +1602,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('snapshot_qa_state_id_pt' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1836,7 +1850,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Snapshots'); ?> </h2>
+    <?php echo Yii::t('model', 'Snapshots'); ?>
+    <small>snapshots7</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1845,7 +1862,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('snapshot_qa_state_id_sv' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php

@@ -30,7 +30,10 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <h2>
-    <?php echo Yii::t('model', 'Vector Graphics'); ?> </h2>
+    <?php echo Yii::t('model', 'Vector Graphics'); ?>
+    <small>vectorGraphics</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -39,7 +42,6 @@ $this->renderPartial('_form', array('model' => $model));
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('vectorGraphic/create', 'VectorGraphic' => array('vector_graphic_qa_state_id_en' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -319,7 +321,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Vector Graphics'); ?> </h2>
+    <?php echo Yii::t('model', 'Vector Graphics'); ?>
+    <small>vectorGraphics1</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -328,7 +333,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('vectorGraphic/create', 'VectorGraphic' => array('vector_graphic_qa_state_id_cn' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -608,7 +612,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Vector Graphics'); ?> </h2>
+    <?php echo Yii::t('model', 'Vector Graphics'); ?>
+    <small>vectorGraphics2</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -617,7 +624,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('vectorGraphic/create', 'VectorGraphic' => array('vector_graphic_qa_state_id_de' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -897,7 +903,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Vector Graphics'); ?> </h2>
+    <?php echo Yii::t('model', 'Vector Graphics'); ?>
+    <small>vectorGraphics3</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -906,7 +915,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('vectorGraphic/create', 'VectorGraphic' => array('vector_graphic_qa_state_id_es' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1186,7 +1194,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Vector Graphics'); ?> </h2>
+    <?php echo Yii::t('model', 'Vector Graphics'); ?>
+    <small>vectorGraphics4</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1195,7 +1206,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('vectorGraphic/create', 'VectorGraphic' => array('vector_graphic_qa_state_id_fa' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1475,7 +1485,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Vector Graphics'); ?> </h2>
+    <?php echo Yii::t('model', 'Vector Graphics'); ?>
+    <small>vectorGraphics5</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1484,7 +1497,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('vectorGraphic/create', 'VectorGraphic' => array('vector_graphic_qa_state_id_hi' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1764,7 +1776,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Vector Graphics'); ?> </h2>
+    <?php echo Yii::t('model', 'Vector Graphics'); ?>
+    <small>vectorGraphics6</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1773,7 +1788,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('vectorGraphic/create', 'VectorGraphic' => array('vector_graphic_qa_state_id_pt' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -2053,7 +2067,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Vector Graphics'); ?> </h2>
+    <?php echo Yii::t('model', 'Vector Graphics'); ?>
+    <small>vectorGraphics7</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -2062,7 +2079,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('vectorGraphic/create', 'VectorGraphic' => array('vector_graphic_qa_state_id_sv' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php

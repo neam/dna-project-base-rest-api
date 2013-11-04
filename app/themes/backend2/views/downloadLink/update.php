@@ -30,7 +30,10 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <h2>
-    <?php echo Yii::t('model', 'Download Links'); ?> </h2>
+    <?php echo Yii::t('model', 'Download Links'); ?>
+    <small>downloadLinks</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -39,7 +42,6 @@ $this->renderPartial('_form', array('model' => $model));
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('downloadLink/create', 'DownloadLink' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -167,7 +169,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Section Contents'); ?> </h2>
+    <?php echo Yii::t('model', 'Section Contents'); ?>
+    <small>sectionContents</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -176,7 +181,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('download_link_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php

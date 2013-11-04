@@ -30,7 +30,10 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exercises'); ?> </h2>
+    <?php echo Yii::t('model', 'Exercises'); ?>
+    <small>exercises</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -39,7 +42,6 @@ $this->renderPartial('_form', array('model' => $model));
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('exercise_qa_state_id_en' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -348,7 +350,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exercises'); ?> </h2>
+    <?php echo Yii::t('model', 'Exercises'); ?>
+    <small>exercises1</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -357,7 +362,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('exercise_qa_state_id_cn' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -666,7 +670,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exercises'); ?> </h2>
+    <?php echo Yii::t('model', 'Exercises'); ?>
+    <small>exercises2</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -675,7 +682,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('exercise_qa_state_id_de' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -984,7 +990,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exercises'); ?> </h2>
+    <?php echo Yii::t('model', 'Exercises'); ?>
+    <small>exercises3</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -993,7 +1002,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('exercise_qa_state_id_es' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1302,7 +1310,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exercises'); ?> </h2>
+    <?php echo Yii::t('model', 'Exercises'); ?>
+    <small>exercises4</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1311,7 +1322,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('exercise_qa_state_id_fa' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1620,7 +1630,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exercises'); ?> </h2>
+    <?php echo Yii::t('model', 'Exercises'); ?>
+    <small>exercises5</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1629,7 +1642,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('exercise_qa_state_id_hi' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1938,7 +1950,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exercises'); ?> </h2>
+    <?php echo Yii::t('model', 'Exercises'); ?>
+    <small>exercises6</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1947,7 +1962,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('exercise_qa_state_id_pt' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -2256,7 +2270,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exercises'); ?> </h2>
+    <?php echo Yii::t('model', 'Exercises'); ?>
+    <small>exercises7</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -2265,7 +2282,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('exercise_qa_state_id_sv' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php

@@ -30,13 +30,16 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <h2>
-    <?php echo Yii::t('model', 'Edges'); ?> </h2>
+    <?php echo Yii::t('model', 'Edges'); ?>
+    <small>outEdges</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('Edge' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('from_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
 
@@ -109,66 +112,22 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Nodes'); ?> </h2>
+    <?php echo Yii::t('model', 'Nodes'); ?>
+    <small>outNodes</small>
+</h2>
 
-<div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('node/create', 'Node' => array('Node' => $model->outEdges->to_node_id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
-        ),
-    ));
-
-    ?></div>
-
-<?php
-$relatedSearchModel = $this->getRelatedSearchModel($model, 'outNodes');
-$this->widget('TbGridView',
-    array(
-        'id' => 'node-grid',
-        'dataProvider' => $relatedSearchModel->search(),
-        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->outNodes) > 1 ? $relatedSearchModel : null,
-        'pager' => array(
-            'class' => 'TbPager',
-            'displayFirstAndLast' => true,
-        ),
-        'columns' => array(
-            'id',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/dataSource/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'modified',
-                'editable' => array(
-                    'url' => $this->createUrl('/dataSource/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('node/view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('node/update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('node/delete', array('id' => \$data->id))",
-            ),
-        ),
-    ));
-?>
-
-
+This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.
 <h2>
-    <?php echo Yii::t('model', 'Edges'); ?> </h2>
+    <?php echo Yii::t('model', 'Edges'); ?>
+    <small>inEdges</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('Edge' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('to_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
 
@@ -241,60 +200,16 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Nodes'); ?> </h2>
+    <?php echo Yii::t('model', 'Nodes'); ?>
+    <small>inNodes</small>
+</h2>
 
-<div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('node/create', 'Node' => array('Node' => $model->inEdges->from_node_id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
-        ),
-    ));
-
-    ?></div>
-
-<?php
-$relatedSearchModel = $this->getRelatedSearchModel($model, 'inNodes');
-$this->widget('TbGridView',
-    array(
-        'id' => 'node-grid',
-        'dataProvider' => $relatedSearchModel->search(),
-        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->inNodes) > 1 ? $relatedSearchModel : null,
-        'pager' => array(
-            'class' => 'TbPager',
-            'displayFirstAndLast' => true,
-        ),
-        'columns' => array(
-            'id',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/dataSource/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'modified',
-                'editable' => array(
-                    'url' => $this->createUrl('/dataSource/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('node/view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('node/update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('node/delete', array('id' => \$data->id))",
-            ),
-        ),
-    ));
-?>
-
-
+This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.
 <h2>
-    <?php echo Yii::t('model', 'Data Chunks'); ?> </h2>
+    <?php echo Yii::t('model', 'Data Chunks'); ?>
+    <small>dataChunks</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -303,7 +218,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('dataChunk/create', 'DataChunk' => array('data_source_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -559,7 +473,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Spreadsheet Files'); ?> </h2>
+    <?php echo Yii::t('model', 'Spreadsheet Files'); ?>
+    <small>spreadsheetFiles</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -568,7 +485,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('spreadsheetFile/create', 'SpreadsheetFile' => array('data_source_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php

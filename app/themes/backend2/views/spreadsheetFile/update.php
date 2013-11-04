@@ -30,7 +30,10 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <h2>
-    <?php echo Yii::t('model', 'Spreadsheet Files'); ?> </h2>
+    <?php echo Yii::t('model', 'Spreadsheet Files'); ?>
+    <small>spreadsheetFiles</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -39,7 +42,6 @@ $this->renderPartial('_form', array('model' => $model));
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('spreadsheetFile/create', 'SpreadsheetFile' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php

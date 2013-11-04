@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs[Yii::t('model', 'Snapshot Qa States')] = array('index');
-$this->breadcrumbs[] = Yii::t('model', 'Create');
+$this->breadcrumbs[] = Yii::t('model', 'Index');
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <?php

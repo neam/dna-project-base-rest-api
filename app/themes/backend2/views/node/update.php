@@ -30,7 +30,10 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <h2>
-    <?php echo Yii::t('model', 'Changesets'); ?> </h2>
+    <?php echo Yii::t('model', 'Changesets'); ?>
+    <small>changesets</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -39,7 +42,6 @@ $this->renderPartial('_form', array('model' => $model));
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('changeset/create', 'Changeset' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -97,7 +99,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Chapters'); ?> </h2>
+    <?php echo Yii::t('model', 'Chapters'); ?>
+    <small>chapters</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -106,7 +111,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -354,7 +358,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Data Chunks'); ?> </h2>
+    <?php echo Yii::t('model', 'Data Chunks'); ?>
+    <small>dataChunks</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -363,7 +370,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('dataChunk/create', 'DataChunk' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -619,7 +625,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Data Sources'); ?> </h2>
+    <?php echo Yii::t('model', 'Data Sources'); ?>
+    <small>dataSources</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -628,7 +637,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('dataSource/create', 'DataSource' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -881,7 +889,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Download Links'); ?> </h2>
+    <?php echo Yii::t('model', 'Download Links'); ?>
+    <small>downloadLinks</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -890,7 +901,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('downloadLink/create', 'DownloadLink' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1018,7 +1028,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Edges'); ?> </h2>
+    <?php echo Yii::t('model', 'Edges'); ?>
+    <small>edges</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1027,7 +1040,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('from_node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1092,7 +1104,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Edges'); ?> </h2>
+    <?php echo Yii::t('model', 'Edges'); ?>
+    <small>edges1</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1101,7 +1116,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('to_node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1166,7 +1180,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exam Questions'); ?> </h2>
+    <?php echo Yii::t('model', 'Exam Questions'); ?>
+    <small>examQuestions</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1175,7 +1192,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('examQuestion/create', 'ExamQuestion' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1351,7 +1367,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exam Questions'); ?> </h2>
+    <?php echo Yii::t('model', 'Exam Questions'); ?>
+    <small>examQuestions1</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1360,7 +1379,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('examQuestion/create', 'ExamQuestion' => array('source_node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1536,7 +1554,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exam Question Alternatives'); ?> </h2>
+    <?php echo Yii::t('model', 'Exam Question Alternatives'); ?>
+    <small>examQuestionAlternatives</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1545,7 +1566,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('examQuestionAlternative/create', 'ExamQuestionAlternative' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1620,7 +1640,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Exercises'); ?> </h2>
+    <?php echo Yii::t('model', 'Exercises'); ?>
+    <small>exercises</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1629,7 +1652,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -1938,7 +1960,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Html Chunks'); ?> </h2>
+    <?php echo Yii::t('model', 'Html Chunks'); ?>
+    <small>htmlChunks</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -1947,7 +1972,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('htmlChunk/create', 'HtmlChunk' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -2014,7 +2038,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Po Files'); ?> </h2>
+    <?php echo Yii::t('model', 'Po Files'); ?>
+    <small>poFiles</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -2023,7 +2050,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('poFile/create', 'PoFile' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -2176,7 +2202,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Sections'); ?> </h2>
+    <?php echo Yii::t('model', 'Sections'); ?>
+    <small>sections</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -2185,7 +2214,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('section/create', 'Section' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -2436,7 +2464,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Section Contents'); ?> </h2>
+    <?php echo Yii::t('model', 'Section Contents'); ?>
+    <small>sectionContents</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -2445,7 +2476,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -2544,7 +2574,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Slideshow Files'); ?> </h2>
+    <?php echo Yii::t('model', 'Slideshow Files'); ?>
+    <small>slideshowFiles</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -2553,7 +2586,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('slideshowFile/create', 'SlideshowFile' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -2841,7 +2873,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Snapshots'); ?> </h2>
+    <?php echo Yii::t('model', 'Snapshots'); ?>
+    <small>snapshots</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -2850,7 +2885,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -3099,7 +3133,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Spreadsheet Files'); ?> </h2>
+    <?php echo Yii::t('model', 'Spreadsheet Files'); ?>
+    <small>spreadsheetFiles</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -3108,7 +3145,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('spreadsheetFile/create', 'SpreadsheetFile' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -3289,7 +3325,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Text Docs'); ?> </h2>
+    <?php echo Yii::t('model', 'Text Docs'); ?>
+    <small>textDocs</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -3298,7 +3337,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('textDoc/create', 'TextDoc' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -3586,7 +3624,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Tools'); ?> </h2>
+    <?php echo Yii::t('model', 'Tools'); ?>
+    <small>tools</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -3595,7 +3636,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('tool/create', 'Tool' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -3801,7 +3841,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Vector Graphics'); ?> </h2>
+    <?php echo Yii::t('model', 'Vector Graphics'); ?>
+    <small>vectorGraphics</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -3810,7 +3853,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('vectorGraphic/create', 'VectorGraphic' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -4090,7 +4132,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Video Files'); ?> </h2>
+    <?php echo Yii::t('model', 'Video Files'); ?>
+    <small>videoFiles</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -4099,7 +4144,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('videoFile/create', 'VideoFile' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -4400,7 +4444,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Edges'); ?> </h2>
+    <?php echo Yii::t('model', 'Edges'); ?>
+    <small>outEdges</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -4409,7 +4456,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('from_node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -4474,60 +4520,16 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Nodes'); ?> </h2>
+    <?php echo Yii::t('model', 'Nodes'); ?>
+    <small>outNodes</small>
+</h2>
 
-<div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('node/create', 'Node' => array('Node' => $model->outEdges->to_node_id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
-        ),
-    ));
-
-    ?></div>
-
-<?php
-$relatedSearchModel = $this->getRelatedSearchModel($model, 'outNodes');
-$this->widget('TbGridView',
-    array(
-        'id' => 'node-grid',
-        'dataProvider' => $relatedSearchModel->search(),
-        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->outNodes) > 1 ? $relatedSearchModel : null,
-        'pager' => array(
-            'class' => 'TbPager',
-            'displayFirstAndLast' => true,
-        ),
-        'columns' => array(
-            'id',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/node/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'modified',
-                'editable' => array(
-                    'url' => $this->createUrl('/node/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('node/view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('node/update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('node/delete', array('id' => \$data->id))",
-            ),
-        ),
-    ));
-?>
-
-
+This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.
 <h2>
-    <?php echo Yii::t('model', 'Edges'); ?> </h2>
+    <?php echo Yii::t('model', 'Edges'); ?>
+    <small>inEdges</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -4536,7 +4538,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('to_node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -4601,54 +4602,8 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Nodes'); ?> </h2>
+    <?php echo Yii::t('model', 'Nodes'); ?>
+    <small>inNodes</small>
+</h2>
 
-<div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('node/create', 'Node' => array('Node' => $model->inEdges->from_node_id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
-        ),
-    ));
-
-    ?></div>
-
-<?php
-$relatedSearchModel = $this->getRelatedSearchModel($model, 'inNodes');
-$this->widget('TbGridView',
-    array(
-        'id' => 'node-grid',
-        'dataProvider' => $relatedSearchModel->search(),
-        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->inNodes) > 1 ? $relatedSearchModel : null,
-        'pager' => array(
-            'class' => 'TbPager',
-            'displayFirstAndLast' => true,
-        ),
-        'columns' => array(
-            'id',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/node/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'modified',
-                'editable' => array(
-                    'url' => $this->createUrl('/node/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('node/view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('node/update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('node/delete', array('id' => \$data->id))",
-            ),
-        ),
-    ));
-?>
-
+This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.

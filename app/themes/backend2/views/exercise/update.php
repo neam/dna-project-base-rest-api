@@ -30,13 +30,16 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <h2>
-    <?php echo Yii::t('model', 'Edges'); ?> </h2>
+    <?php echo Yii::t('model', 'Edges'); ?>
+    <small>outEdges</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('Edge' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('from_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
 
@@ -109,66 +112,22 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Nodes'); ?> </h2>
+    <?php echo Yii::t('model', 'Nodes'); ?>
+    <small>outNodes</small>
+</h2>
 
-<div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('node/create', 'Node' => array('Node' => $model->outEdges->to_node_id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
-        ),
-    ));
-
-    ?></div>
-
-<?php
-$relatedSearchModel = $this->getRelatedSearchModel($model, 'outNodes');
-$this->widget('TbGridView',
-    array(
-        'id' => 'node-grid',
-        'dataProvider' => $relatedSearchModel->search(),
-        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->outNodes) > 1 ? $relatedSearchModel : null,
-        'pager' => array(
-            'class' => 'TbPager',
-            'displayFirstAndLast' => true,
-        ),
-        'columns' => array(
-            'id',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/exercise/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'modified',
-                'editable' => array(
-                    'url' => $this->createUrl('/exercise/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('node/view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('node/update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('node/delete', array('id' => \$data->id))",
-            ),
-        ),
-    ));
-?>
-
-
+This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.
 <h2>
-    <?php echo Yii::t('model', 'Edges'); ?> </h2>
+    <?php echo Yii::t('model', 'Edges'); ?>
+    <small>inEdges</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('Edge' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('to_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
 
@@ -241,60 +200,16 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Nodes'); ?> </h2>
+    <?php echo Yii::t('model', 'Nodes'); ?>
+    <small>inNodes</small>
+</h2>
 
-<div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('node/create', 'Node' => array('Node' => $model->inEdges->from_node_id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
-        ),
-    ));
-
-    ?></div>
-
-<?php
-$relatedSearchModel = $this->getRelatedSearchModel($model, 'inNodes');
-$this->widget('TbGridView',
-    array(
-        'id' => 'node-grid',
-        'dataProvider' => $relatedSearchModel->search(),
-        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->inNodes) > 1 ? $relatedSearchModel : null,
-        'pager' => array(
-            'class' => 'TbPager',
-            'displayFirstAndLast' => true,
-        ),
-        'columns' => array(
-            'id',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/exercise/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'modified',
-                'editable' => array(
-                    'url' => $this->createUrl('/exercise/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('node/view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('node/update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('node/delete', array('id' => \$data->id))",
-            ),
-        ),
-    ));
-?>
-
-
+This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.
 <h2>
-    <?php echo Yii::t('model', 'Exercises'); ?> </h2>
+    <?php echo Yii::t('model', 'Exercises'); ?>
+    <small>exercises</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -303,7 +218,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -612,7 +526,10 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Section Contents'); ?> </h2>
+    <?php echo Yii::t('model', 'Section Contents'); ?>
+    <small>sectionContents</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -621,7 +538,6 @@ $this->widget('TbGridView',
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('exercise_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
-
     ?></div>
 
 <?php
@@ -720,263 +636,8 @@ $this->widget('TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Chapters'); ?> </h2>
+    <?php echo Yii::t('model', 'Chapters'); ?>
+    <small>parentChapters</small>
+</h2>
 
-<div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('Chapter' => $model->inNodes->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
-        ),
-    ));
-
-    ?></div>
-
-<?php
-$relatedSearchModel = $this->getRelatedSearchModel($model, 'parentChapters');
-$this->widget('TbGridView',
-    array(
-        'id' => 'chapter-grid',
-        'dataProvider' => $relatedSearchModel->search(),
-        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->parentChapters) > 1 ? $relatedSearchModel : null,
-        'pager' => array(
-            'class' => 'TbPager',
-            'displayFirstAndLast' => true,
-        ),
-        'columns' => array(
-            'id',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'version',
-                'editable' => array(
-                    'url' => $this->createUrl('/exercise/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'name' => 'cloned_from_id',
-                'value' => 'CHtml::value($data, \'chapters.itemLabel\')',
-                'filter' => '', //CHtml::listData(Chapter::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_en',
-                'editable' => array(
-                    'url' => $this->createUrl('/exercise/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'slug_en',
-                'editable' => array(
-                    'url' => $this->createUrl('/exercise/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'name' => 'thumbnail_media_id',
-                'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
-                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            #'about_en',
-            #'teachers_guide_en',
-            /*
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'created',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'modified',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'name' => 'node_id',
-                    'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'slug_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'slug_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'slug_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'slug_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'slug_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exercise/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
-            array(
-                    'name' => 'chapter_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'chapter_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'chapter_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'chapter_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'chapter_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'chapter_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'chapter_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'chapter_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            #'teachers_guide_es',
-            #'teachers_guide_fa',
-            #'teachers_guide_hi',
-            #'teachers_guide_pt',
-            #'teachers_guide_sv',
-            #'teachers_guide_cn',
-            #'teachers_guide_de',
-            */
-            array(
-                'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('chapter/view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('chapter/update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('chapter/delete', array('id' => \$data->id))",
-            ),
-        ),
-    ));
-?>
-
+This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.
