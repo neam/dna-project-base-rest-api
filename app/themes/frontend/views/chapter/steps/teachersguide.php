@@ -5,6 +5,6 @@
     'html' => true,
 ))); ?>
 
-<div class="alert alert-info">
-    Hint: Lorem ipsum
-</div>
+<p class="alert alert-info help-block">
+    <?php echo $model->getAttributeHint("teachers_guide_en"); ?>
+</p>

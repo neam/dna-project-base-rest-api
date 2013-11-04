@@ -19,6 +19,6 @@ echo $form->customRow($model, 'thumbnail_media_id', $input);
 $formId = 'chapter-thumbnail_media_id-' . \uniqid() . '-form';
 ?>
 
-<div class="alert alert-info">
-    Hint: Lorem ipsum
-</div>
+<p class="alert alert-info help-block">
+    <?php echo $model->getAttributeHint("thumbnail"); ?>
+</p>

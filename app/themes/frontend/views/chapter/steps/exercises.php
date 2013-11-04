@@ -1,30 +1,35 @@
-<div class="controls">
-    <?php if ($model->exercises): ?>
-        <ul>
-            <?php foreach ($model->exercises as $exercise): ?>
-                <li>
-                    <?php echo $exercise->title; ?>
-                    <?php
-                    $this->widget("bootstrap.widgets.TbButton", array(
-                        "label" => Yii::t("model", "Delete relation"),
-                        "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $exercise->node()->id, "returnUrl" => Yii::app()->request->url),
-                        "size" => "small",
-                        "type" => "danger"
-                    ));
-                    ?>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php else: ?>
-        <div><?php echo Yii::t("model", "No exercises"); ?></div>
-    <?php endif; ?>
-    <?php
-    $this->widget("bootstrap.widgets.TbButton", array(
-        "label" => Yii::t("model", "Create new exercise"),
-        "url" => array("/exercise/")
-    ));
-    ?>
+<div class="control-group">
+    <div class="controls">
+        <?php if ($model->exercises): ?>
+            <ul>
+                <?php foreach ($model->exercises as $exercise): ?>
+                    <li>
+                        <?php echo $exercise->title; ?>
+                        <?php
+                        $this->widget("bootstrap.widgets.TbButton", array(
+                            "label" => Yii::t("model", "Delete relation"),
+                            "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $exercise->node()->id, "returnUrl" => Yii::app()->request->url),
+                            "size" => "small",
+                            "type" => "danger"
+                        ));
+                        ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <div><?php echo Yii::t("model", "No exercises"); ?></div>
+        <?php endif; ?>
+        <?php
+        $this->widget("bootstrap.widgets.TbButton", array(
+            "label" => Yii::t("model", "Create new exercise"),
+            "url" => array("/exercise/")
+        ));
+        ?>
+    </div>
 </div>
+<p class="alert alert-info help-block">
+    <?php echo $model->getAttributeHint("exercise"); ?>
+</p>
 
 <h2>Choose exercise to add</h2>
 <?php
@@ -52,7 +57,3 @@ $this->widget(
     )
 );
 ?>
-
-<div class="alert alert-info">
-    Hint: Lorem ipsum
-</div>
