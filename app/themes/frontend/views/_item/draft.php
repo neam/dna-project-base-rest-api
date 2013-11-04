@@ -46,13 +46,13 @@ $this->breadcrumbs[] = $stepCaption;
 
         <div class="row-fluid">
             <div class="span12 well well-white">
-                <?php echo $this->renderPartial('/_item/elements/_progress', compact("model", "execution")); ?>
+                <?php echo $this->renderPartial('/_item/elements/progress', compact("model", "execution")); ?>
             </div>
         </div>
 
         <div class="row-fluid">
             <div class="span12 well well-white">
-                <?php echo $this->renderPartial('/_item/elements/_actions', compact("model", "execution")); ?>
+                <?php echo $this->renderPartial('/_item/elements/actions', compact("model", "execution")); ?>
             </div>
         </div>
 
