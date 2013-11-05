@@ -20,6 +20,13 @@ class ProfilesController extends Controller
             array(
                 'allow',
                 'actions' => array(
+                    'toggleOwn',
+                ),
+                'users' => array('*'),
+            ),
+            array(
+                'allow',
+                'actions' => array(
                     'index',
                     'view',
                     'create',
@@ -121,6 +128,21 @@ class ProfilesController extends Controller
         }
 
         $this->render('update', array('model' => $model,));
+    }
+
+    public function actionToggleOwn($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'toggle';
+
+        // Verify that this is in fact the logged in user's profile
+        $account = Account::model()->findByPk(Yii::app()->user->id);
+        if (Yii::app()->user->id !== $account->profiles->user_id) {
+            throw new CHttpException(403, "The current logged in user does not match the profile which was supposed to be altered.");
+        }
+
+        $this->actionToggle($id);
+
     }
 
     public function actionEditableSaver()

@@ -168,7 +168,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                             'header' => ucfirst($lang),
                             'value' => 'CHtml::value($data,\'can_translate_to_' . $lang . '\')',
                             'filter' => false,
-                            'toggleAction' => 'profiles/toggle'
+                            'toggleAction' => 'profiles/toggleOwn'
                         );
                     }
                     $this->widget('TbGridView',
