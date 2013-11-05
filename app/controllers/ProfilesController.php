@@ -22,7 +22,7 @@ class ProfilesController extends Controller
                 'actions' => array(
                     'toggleOwn',
                 ),
-                'users' => array('*'),
+                'users' => array('@'),
             ),
             array(
                 'allow',
