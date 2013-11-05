@@ -23,7 +23,7 @@ class Exercise extends BaseExercise
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return $this->title;
     }
 
     public function behaviors()
