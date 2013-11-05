@@ -1,4 +1,9 @@
 <?php
+
+Yii::app()->bootstrap->registerAssetCss('../select2/select2.css');
+Yii::app()->bootstrap->registerAssetJs('../select2/select2.js');
+Yii::app()->clientScript->registerScript('step_thumbnail-select2','$("#item-form select").select2();');
+
 $input = $this->widget(
     '\GtcRelation',
     array(
