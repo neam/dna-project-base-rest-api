@@ -54,6 +54,18 @@ $this->widget('TbGridView',
                 'urlExpression' => 'Yii::app()->controller->createUrl("view", array("id" => $data["id"]))'
             ),
             array(
+                'class' => 'TbButtonColumn',
+                'header' => 'Workflows',
+                'buttons' => array(
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Item.Preview")', 'options' => array('title' => Yii::t('app', 'Preview'))),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Item.Edit")', 'options' => array('title' => Yii::t('app', 'Edit'))),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Item.Remove")', 'options' => array('title' => Yii::t('app', 'Remove'))),
+                ),
+                'viewButtonUrl' => 'Yii::app()->controller->createUrl("preview", array("id" => $data->id))',
+                'updateButtonUrl' => 'Yii::app()->controller->createUrl("continueAuthoring", array("id" => $data->id))',
+                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("remove", array("id" => $data->id))',
+            ),
+            array(
                 'class' => 'TbEditableColumn',
                 'name' => 'id',
                 'editable' => array(
@@ -76,21 +88,12 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
-                'editable' => array(
-                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
                 'name' => 'slug_en',
                 'editable' => array(
                     'url' => $this->createUrl('/snapshot/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'link',
@@ -99,12 +102,13 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'embed_override',
+            /*
             array(
-                'name' => 'tool_id',
-                'value' => 'CHtml::value($data, \'tool.itemLabel\')',
-                'filter' => '', //CHtml::listData(Tool::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'name' => 'thumbnail_media_id',
+                'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
+            */
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
@@ -113,7 +117,6 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
@@ -122,6 +125,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            /*
             array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
