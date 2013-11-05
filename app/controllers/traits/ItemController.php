@@ -302,7 +302,7 @@ trait ItemController
     public function actionPreview($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('preview', array('model' => $model));
+        $this->render('view', array('model' => $model, 'preview' => true));
     }
 
     public function actionReview($id)
