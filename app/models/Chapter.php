@@ -131,14 +131,17 @@ class Chapter extends BaseChapter
                     'icon' => 'edit',
                     'action' => 'teachersGuide',
                 ),
-                'videos' => array(
+                'exercises' => array(
                     'icon' => 'edit',
                 ),
-                'snapshots' => array(
+                'videos' => array(
                     'icon' => 'edit',
                 ),
             ),
             'all' => array(
+                'snapshots' => array(
+                    'icon' => 'edit',
+                ),
                 'credits' => array(
                     'icon' => 'edit',
                 )
