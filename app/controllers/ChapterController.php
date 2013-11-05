@@ -79,7 +79,8 @@ class ChapterController extends Controller
     {
         $this->scenario = "step_title";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/draft', array('model' => $model, 'step' => 'title', 'stepCaption' => Yii::t('app', 'Title')));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/draft', array('model' => $model, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
     }
 
     public function actionPrepPreshow($id)
@@ -140,49 +141,56 @@ class ChapterController extends Controller
     {
         $this->scenario = "step_title";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'title', 'stepCaption' => Yii::t('app', 'Title')));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
     }
 
     public function actionPrepPublishThumbnail($id)
     {
         $this->scenario = "step_thumbnail";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'thumbnail', 'stepCaption' => Yii::t('app', 'Thumbnail')));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
     }
 
     public function actionPrepPublishAbout($id)
     {
         $this->scenario = "step_about";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'about', 'stepCaption' => Yii::t('app', 'About')));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
     }
 
     public function actionPrepPublishExercises($id)
     {
         $this->scenario = "step_exercises";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'exercises', 'stepCaption' => Yii::t('app', 'Exercise(s)')));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'exercises', 'stepCaption' => $stepCaptions['exercises']));
     }
 
     public function actionPrepPublishSnapshots($id)
     {
         $this->scenario = "step_snapshots";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'snapshots', 'stepCaption' => Yii::t('app', 'Snapshot(s)')));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'snapshots', 'stepCaption' => $stepCaptions['snapshots']));
     }
 
     public function actionPrepPublishTeachersGuide($id)
     {
         $this->scenario = "step_teachers_guide";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'teachers_guide', 'stepCaption' => Yii::t('app', 'Teacher\'s guide')));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'teachers_guide', 'stepCaption' => $stepCaptions['teachers_guide']));
     }
 
     public function actionPrepPublishVideos($id)
     {
         $this->scenario = "step_videos";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'videos', 'stepCaption' => Yii::t('app', 'Video(s)')));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'videos', 'stepCaption' => $stepCaptions['videos']));
     }
 
     protected function listenForEdges($id)
