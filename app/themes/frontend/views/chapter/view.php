@@ -58,15 +58,85 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
     });
 </script>
 
+<?php
+
+$sections = array();
+
+// video
+if ($model->videos) {
+    $sections[] = array(
+        "menu_label" => $model->videos[0]->itemLabel,
+        "title" => $model->videos[0]->itemLabel,
+        "slug" => $model->videos[0]->slug,
+        "model" => $model->videos[0],
+    );
+}
+
+// snapshots
+if ($model->snapshots) {
+    foreach ($model->snapshots as $relatedModel) {
+        $sections[] = array(
+            "menu_label" => $relatedModel->itemLabel,
+            "title" => $relatedModel->itemLabel,
+            "slug" => $relatedModel->slug,
+            "model" => $relatedModel,
+        );
+    }
+}
+
+// teachers guide
+if (!empty($model->teachers_guide)) {
+    $sections[] = array(
+        "menu_label" => Yii::t('app', 'Teacher\'s Guide'),
+        "title" => Yii::t('app', 'Teacher\'s Guide'),
+        "slug" => 'teachers-guide',
+        "markup" => $model->teachers_guide,
+    );
+}
+
+// exercises
+if ($model->exercises) {
+    foreach ($model->exercises as $relatedModel) {
+        $sections[] = array(
+            "menu_label" => $relatedModel->itemLabel,
+            "title" => $relatedModel->itemLabel,
+            "slug" => $relatedModel->slug,
+            "model" => $relatedModel,
+        );
+    }
+}
+
+// slideshow
+// todo
+
+// test
+// todo
+
+// data
+// todo
+
+// faq
+// not in the data model currently
+
+// credits
+// todo
+
+// feedback
+// not in the data model currently
+
+?>
+
+lsad flajs dflkjas fs
+
 <div class="row-fluid">
     <div class="span3 bs-docs-sidebar">
-        <?php if (!empty($model->sections)): ?>
+        <?php if (!empty($sections)): ?>
             <ul class="nav nav-list bs-docs-sidenav affix">
 
                 <?php
-                foreach ($model->sections as $i => $foreignobj) {
+                foreach ($sections as $i => $section) {
                     echo CHtml::openTag('li', array('class' => $i == 0 ? 'active' : null));
-                    echo CHtml::link('<i class="icon-chevron-right"></i> ' . $foreignobj->menu_label, '#' . $foreignobj->slug);
+                    echo CHtml::link('<i class="icon-chevron-right"></i> ' . $section["menu_label"], '#' . $section["slug"]);
                     echo CHtml::closeTag('li');
                 }
                 ?>
@@ -89,17 +159,21 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
             </div>
         <?php endif; ?>
 
-        <?php if (!empty($model->sections)): ?>
-            <?php foreach ($model->sections as $foreignobj): ?>
+        <?php if (!empty($sections)): ?>
+            <?php foreach ($sections as $section): ?>
 
-                <section id="<?= $foreignobj->slug ?>">
+                <section id="<?= $section["slug"] ?>">
 
                     <div class="page-header">
-                        <h1><?= $foreignobj->title ?></h1>
+                        <h1><?= $section["title"] ?></h1>
                     </div>
 
                     <?php
-                    $this->renderPartial('/section/_view', array("data" => $foreignobj));
+                    if (isset($section["model"])) {
+                        $this->renderPartial('/' . lcfirst(get_class($section["model"])) . '/_view', array("data" => $section["model"]));
+                    } else {
+                        print $section["markup"];
+                    }
                     ?>
 
                 </section>
