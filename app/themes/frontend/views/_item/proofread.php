@@ -59,7 +59,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Proofread');
 
         <?php
         $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-            'id' => 'chapter-form',
+            'id' => 'item-form',
             'enableAjaxValidation' => true,
             'enableClientValidation' => true,
             'type' => 'horizontal',
