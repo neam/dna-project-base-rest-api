@@ -72,7 +72,7 @@ $this->breadcrumbs[] = $stepCaption;
         <div class="row-fluid">
             <div class="span9">
 
-                <h2>Prepare for preshow
+                <h2><?php print $stepCaption; ?>
                     <small></small>
                 </h2>
 
@@ -80,6 +80,7 @@ $this->breadcrumbs[] = $stepCaption;
             <div class="span3">
 
                 <div class="btn-toolbar pull-right">
+
                     <div class="btn-group">
                         <?php
                         echo CHtml::submitButton(Yii::t('model', 'Next'), array(
@@ -87,30 +88,15 @@ $this->breadcrumbs[] = $stepCaption;
                             )
                         );
                         ?>
+
                     </div>
+
                 </div>
 
             </div>
         </div>
 
-        <div class="form-actions">
-            <?php
-            echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-                    'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-                    'class' => 'btn'
-                )
-            );
-            echo ' ';
-            echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-                    'class' => 'btn btn-primary'
-                )
-            );
-            ?>
-        </div>
-
-        <div class="alert alert-info">
-            Hint: Lorem ipsum
-        </div>
+        <?php $this->renderPartial('steps/' . $step, compact("model", "form")); ?>
 
         <?php $this->endWidget() ?>
 
