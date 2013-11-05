@@ -1,14 +1,14 @@
 <?php
 $this->breadcrumbs[] = Yii::t('model', 'Users');
-$this->breadcrumbs[] = $model->username;
-$this->breadcrumbs[] = Yii::t('account', 'Profile');
+$this->breadcrumbs[$model->username] = array('account/profile', 'id' => $model->id);
+$this->breadcrumbs[] = Yii::t('account', 'Public profile');
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo $model->profiles->first_name . " " . $model->profiles->last_name; ?>
     <small>
-        <?php echo Yii::t('account', 'Profile') ?> <!--#<?php echo $model->id ?>-->
+        <?php echo Yii::t('account', 'Public profile') ?> <!--#<?php echo $model->id ?>-->
     </small>
 
 </h1>

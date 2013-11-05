@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs[] = Yii::t('model', 'Users');
-$this->breadcrumbs[] = $model->username;
+$this->breadcrumbs[$model->username] = array('account/profile', 'id' => $model->id);
 $this->breadcrumbs[] = Yii::t('account', 'Translations');
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
