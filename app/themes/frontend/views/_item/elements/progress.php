@@ -33,10 +33,10 @@ $stepCaptions = $model->flowStepCaptions();
         $this->renderPartial("/_item/elements/_progress-item", compact("step", "caption", "options", "action", "model"));
     }
 
-elseif ($this->action->id == "prepPreview" || (strpos($this->action->id, "prepPreview") !== false)):
+elseif ($this->action->id == "prepPreshow" || (strpos($this->action->id, "prepPreshow") !== false)):
 
     foreach (array_merge($steps['draft'], $steps['preview']) as $step => $options) {
-        $action = 'prepPreview' . ucfirst(isset($options['action']) ? $options['action'] : $step);
+        $action = 'prepPreshow' . ucfirst(isset($options['action']) ? $options['action'] : $step);
         $caption = $stepCaptions[$step];
         $this->renderPartial("/_item/elements/_progress-item", compact("step", "caption", "options", "action", "model"));
     }
