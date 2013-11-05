@@ -73,7 +73,7 @@ class Chapter extends BaseChapter
                 // Ordinary validation rules
                 array('thumbnail', 'validateThumbnail', 'on' => 'public'),
                 array('about', 'length', 'min' => 10, 'max' => 200),
-                array('video', 'validateVideo', 'on' => 'public'),
+                array('videos', 'validateVideo', 'on' => 'public'),
                 array('teachers_guide', 'length', 'min' => 150, 'max' => 400),
                 array('exercises', 'validateExercises', 'on' => 'public'),
                 array('snapshots', 'validateSnapshots', 'on' => 'public'),
