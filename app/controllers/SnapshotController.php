@@ -2,7 +2,9 @@
 
 class SnapshotController extends Controller
 {
-    #public $layout='//layouts/column2';
+
+    use ItemController;
+    public $modelClass = "Snapshot";
 
     public $defaultAction = "admin";
     public $scenario = "crud";
@@ -16,9 +18,45 @@ class SnapshotController extends Controller
 
     public function accessRules()
     {
-        return array(
-            array(
-                'allow',
+        return array_merge($this->itemAccessRules(), array(
+            array('allow',
+                'actions' => array(
+                    'view',
+                ),
+                'users' => array('*'),
+            ),
+            array('allow',
+                'actions' => array(
+                    'draftSlug',
+                ),
+                'roles' => array(
+                    'Item.Draft'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'prepPreshowLink',
+                ),
+                'roles' => array(
+                    'Item.PrepPreshow'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'prepPublishSlug',
+                    'prepPublishTitle',
+                    'prepPublishAbout',
+                    'prepPublishThumbnail',
+                    'prepPublishLink',
+                    'prepPublishEmbedOverride',
+                    'prepPublishTool',
+                    'prepPublishRelated',
+                ),
+                'roles' => array(
+                    'Item.PrepPublish'
+                ),
+            ),
+            array('allow',
                 'actions' => array(
                     'index',
                     'view',
@@ -35,7 +73,198 @@ class SnapshotController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
+    }
+
+    public function actionDraft($id)
+    {
+        $this->redirect(array('snapshot/draftSlug', 'id' => $id));
+    }
+
+    public function actionDraftSlug($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_slug';
+        $this->scenario = "step_slug";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/draft', array('model' => $model, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
+    }
+
+    public function actionPrepPreshow($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_slug';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/prepPreshowSlug', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_link';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/prepPreshowLink', 'id' => $id));
+            return;
+        }
+        $this->redirect(array('snapshot/prepPublish', 'id' => $id));
+    }
+    public function actionPrepPreshowSlug($id)
+    {
+        $this->scenario = "step_link";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppreshow', array('model' => $model, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
+    }
+
+    public function actionPrepPreshowLink($id)
+    {
+        $this->scenario = "step_link";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppreshow', array('model' => $model, 'step' => 'link', 'stepCaption' => $stepCaptions['link']));
+    }
+
+    public function actionPrepPublish($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_title';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/prepPublishTitle', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_about';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/prepPublishAbout', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        /*
+        $model->scenario = 'step_thumbnail';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/prepPublishThumbnail', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        */
+        $model->scenario = 'step_embed_override';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/prepPublishEmbedOverride', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_tool';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/prepPublishTool', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_related';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/prepPublishRelated', 'id' => $id));
+            return;
+        }
+        /*
+        $model->clearErrors();
+        $model->scenario = 'step_datachunks';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/prepPublishDataChunks', 'id' => $id));
+            return;
+        }
+        */
+
+    }
+
+    public function actionPrepPublishSlug($id)
+    {
+        $this->scenario = "step_slug";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
+    }
+
+    public function actionPrepPublishTitle($id)
+    {
+        $this->scenario = "step_title";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+    }
+
+    public function actionPrepPublishAbout($id)
+    {
+        $this->scenario = "step_about";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
+    }
+
+    /*
+    public function actionPrepPublishThumbnail($id)
+    {
+        $this->scenario = "step_thumbnail";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
+    }
+    */
+
+    public function actionPrepPublishLink($id)
+    {
+        $this->scenario = "step_link";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'link', 'stepCaption' => $stepCaptions['link']));
+    }
+
+    public function actionPrepPublishEmbedOverride($id)
+    {
+        $this->scenario = "step_embed_override";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'embed_override', 'stepCaption' => $stepCaptions['embed_override']));
+    }
+
+    public function actionPrepPublishTool($id)
+    {
+        $this->scenario = "step_tool";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'tool', 'stepCaption' => $stepCaptions['tool']));
+    }
+
+    public function actionPrepPublishRelated($id)
+    {
+        $this->scenario = "step_related";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'related', 'stepCaption' => $stepCaptions['related']));
+    }
+
+    protected function listenForEdges($id)
+    {
+        if (isset($_POST[$this->modelClass]["exercises_to_add"])) {
+            $this->addEdges($id, $_POST[$this->modelClass]["exercises_to_add"], 'Exercise');
+        } else {
+            if (isset($_POST[$this->modelClass]["exercises_to_remove"])) {
+                $this->removeEdges($_POST[$this->modelClass]["exercises_to_remove"]);
+            } else {
+                if (isset($_POST[$this->modelClass]["snapshots_to_add"])) {
+                    $this->addEdges($id, $_POST[$this->modelClass]["snapshots_to_add"], 'Snapshot');
+                } else {
+                    if (isset($_POST[$this->modelClass]["snapshots_to_remove"])) {
+                        $this->removeEdges($_POST[$this->modelClass]["snapshots_to_remove"]);
+                    } else {
+                        if (isset($_POST[$this->modelClass]["videos_to_add"])) {
+                            $this->addEdges($id, $_POST[$this->modelClass]["videos_to_add"], 'VideoFile');
+                        } else {
+                            if (isset($_POST[$this->modelClass]["videos_to_remove"])) {
+                                $this->removeEdges($_POST[$this->modelClass]["videos_to_remove"]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public function beforeAction($action)
