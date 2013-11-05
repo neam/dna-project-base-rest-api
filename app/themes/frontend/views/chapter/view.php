@@ -2,6 +2,8 @@
 //$this->breadcrumbs[Yii::t('crud', 'Chapters')] = array('index');
 $this->breadcrumbs[] = $model->title;
 
+$sections = $this->chapterSections($model);
+
 // Deps for smooth scroll
 $cs = Yii::app()->getClientScript();
 $cs->registerCoreScript('jquery');
@@ -57,74 +59,6 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
     });
 </script>
-
-<?php
-
-$sections = array();
-
-// video
-if ($model->videos) {
-    $sections[] = array(
-        "menu_label" => $model->videos[0]->itemLabel,
-        "title" => $model->videos[0]->itemLabel,
-        "slug" => $model->videos[0]->slug,
-        "model" => $model->videos[0],
-    );
-}
-
-// snapshots
-if ($model->snapshots) {
-    foreach ($model->snapshots as $relatedModel) {
-        $sections[] = array(
-            "menu_label" => $relatedModel->itemLabel,
-            "title" => $relatedModel->itemLabel,
-            "slug" => $relatedModel->slug,
-            "model" => $relatedModel,
-        );
-    }
-}
-
-// teachers guide
-if (!empty($model->teachers_guide)) {
-    $sections[] = array(
-        "menu_label" => Yii::t('app', 'Teacher\'s Guide'),
-        "title" => Yii::t('app', 'Teacher\'s Guide'),
-        "slug" => 'teachers-guide',
-        "markup" => $model->teachers_guide,
-    );
-}
-
-// exercises
-if ($model->exercises) {
-    foreach ($model->exercises as $relatedModel) {
-        $sections[] = array(
-            "menu_label" => $relatedModel->itemLabel,
-            "title" => $relatedModel->itemLabel,
-            "slug" => $relatedModel->slug,
-            "model" => $relatedModel,
-        );
-    }
-}
-
-// slideshow
-// todo
-
-// test
-// todo
-
-// data
-// todo
-
-// faq
-// not in the data model currently
-
-// credits
-// todo
-
-// feedback
-// not in the data model currently
-
-?>
 
 <div class="row-fluid">
     <div class="span3 bs-docs-sidebar">

@@ -243,6 +243,77 @@ class ChapterController extends Controller
         return true;
     }
 
+    protected function chapterSections($chapter)
+    {
+
+        $sections = array();
+
+        // video
+        if ($chapter->videos) {
+            $sections[] = array(
+                "menu_label" => $chapter->videos[0]->itemLabel,
+                "title" => $chapter->videos[0]->itemLabel,
+                "slug" => $chapter->videos[0]->slug,
+                "model" => $chapter->videos[0],
+            );
+        }
+
+        // snapshots
+        if ($chapter->snapshots) {
+            foreach ($chapter->snapshots as $relatedModel) {
+                $sections[] = array(
+                    "menu_label" => $relatedModel->itemLabel,
+                    "title" => $relatedModel->itemLabel,
+                    "slug" => $relatedModel->slug,
+                    "model" => $relatedModel,
+                );
+            }
+        }
+
+        // teachers guide
+        if (!empty($chapter->teachers_guide)) {
+            $sections[] = array(
+                "menu_label" => Yii::t('app', 'Teacher\'s Guide'),
+                "title" => Yii::t('app', 'Teacher\'s Guide'),
+                "slug" => 'teachers-guide',
+                "markup" => $chapter->teachers_guide,
+            );
+        }
+
+        // exercises
+        if ($chapter->exercises) {
+            foreach ($chapter->exercises as $relatedModel) {
+                $sections[] = array(
+                    "menu_label" => $relatedModel->itemLabel,
+                    "title" => $relatedModel->itemLabel,
+                    "slug" => $relatedModel->slug,
+                    "model" => $relatedModel,
+                );
+            }
+        }
+
+        // slideshow
+        // todo
+
+        // test
+        // todo
+
+        // data
+        // todo
+
+        // faq
+        // not in the data model currently
+
+        // credits
+        // todo
+
+        // feedback
+        // not in the data model currently
+
+        return $sections;
+
+    }
+
     public function actionView($id)
     {
         $model = $this->loadModel($id);
