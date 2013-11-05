@@ -1,32 +1,22 @@
-<div class="view">
+<div class="view well well-white">
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($data->id), array('chapter/view', 'id' => $data->id)); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('version')); ?>:</b>
-    <?php echo CHtml::encode($data->version); ?>
-    <br/>
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('cloned_from_id')); ?>:</b>
-    <?php echo CHtml::encode($data->cloned_from_id); ?>
-    <br/>
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_en')); ?>:</b>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
     <?php echo CHtml::encode($data->title_en); ?>
-    <br/>
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_en')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_en); ?>
     <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('thumbnail_media_id')); ?>:</b>
     <?php echo CHtml::encode($data->thumbnail_media_id); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_en')); ?>:</b>
-    <?php echo CHtml::encode($data->about_en); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about')); ?>:</b>
+    <?php echo CHtml::encode($data->about); ?>
     <br/>
+
+    <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/view', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
 
     <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_en')); ?>:</b>
@@ -193,7 +183,10 @@
     ?>
     <?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>
         <div class="admin-container show">
-            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            <?php if (Yii::app()->user->checkAccess('Developer')): ?>
+                <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            <?php endif; ?>
         </div>
     <?php endif; ?>
 

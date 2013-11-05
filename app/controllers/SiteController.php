@@ -35,9 +35,8 @@ class SiteController extends Controller
         }
         */
 
-        $chaptersInProgress = Chapter::model()->findAll();
+        $this->redirect($this->createUrl('chapter/index'));
 
-        $this->render('index', compact("chaptersInProgress"));
     }
 
     /**
