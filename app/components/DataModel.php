@@ -91,7 +91,19 @@ class DataModel
     {
         return array(
             'Chapter' => 'n==0#Chapter(s)|n==1#Chapter|n>1#Chapters',
+            'DataChunk' => 'n==0#DataChunk(s)|n==1#DataChunk|n>1#DataChunks',
+            'DataSource' => 'n==0#DataSource(s)|n==1#DataSource|n>1#DataSources',
+            'ExamQuestion' => 'n==0#ExamQuestion(s)|n==1#ExamQuestion|n>1#ExamQuestions',
+            'Exercise' => 'n==0#Exercise(s)|n==1#Exercise|n>1#Exercises',
+            'PoFile' => 'n==0#PoFile(s)|n==1#PoFile|n>1#PoFiles',
+            'SlideshowFile' => 'n==0#SlideshowFile(s)|n==1#SlideshowFile|n>1#SlideshowFiles',
+            'Snapshot' => 'n==0#Snapshot(s)|n==1#Snapshot|n>1#Snapshots',
+            'TextDoc' => 'n==0#TextDoc(s)|n==1#TextDoc|n>1#TextDocs',
+            'Tool' => 'n==0#Tool(s)|n==1#Tool|n>1#Tools',
+            'VectorGraphic' => 'n==0#VectorGraphic(s)|n==1#VectorGraphic|n>1#VectorGraphics',
+            'VideoFile' => 'n==0#VideoFile(s)|n==1#VideoFile|n>1#VideoFiles',
         );
     }
 
 }
+
