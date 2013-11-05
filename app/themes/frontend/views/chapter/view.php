@@ -100,13 +100,33 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                         <h1><?= $section["title"] ?></h1>
                     </div>
 
-                    <?php
-                    if (isset($section["model"])) {
-                        $this->renderPartial('/' . lcfirst(get_class($section["model"])) . '/_view', array("data" => $section["model"]));
-                    } else {
-                        print $section["markup"];
-                    }
-                    ?>
+                    <?php if (isset($section["subsections"])): ?>
+                        <?php foreach ($section["subsections"] as $subsection): ?>
+
+                            <div class="view">
+
+                                <h2><?= $subsection["title"] ?></h2>
+
+                                <?php
+                                if (isset($subsection["model"])) {
+                                    $this->renderPartial('/' . lcfirst(get_class($subsection["model"])) . '/_view', array("data" => $subsection["model"]));
+                                } else {
+                                    print $subsection["markup"];
+                                }
+                                ?>
+
+                            </div>
+                        <?php endforeach; ?>
+
+                    <?php else: ?>
+                        <?php
+                        if (isset($section["model"])) {
+                            $this->renderPartial('/' . lcfirst(get_class($section["model"])) . '/_view', array("data" => $section["model"]));
+                        } else {
+                            print $section["markup"];
+                        }
+                        ?>
+                    <?php endif; ?>
 
                 </section>
 

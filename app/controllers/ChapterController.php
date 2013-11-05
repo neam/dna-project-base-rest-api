@@ -282,14 +282,21 @@ class ChapterController extends Controller
 
         // exercises
         if ($chapter->exercises) {
+            $subsections = array();
             foreach ($chapter->exercises as $relatedModel) {
-                $sections[] = array(
+                $subsections[] = array(
                     "menu_label" => $relatedModel->itemLabel,
                     "title" => $relatedModel->itemLabel,
                     "slug" => $relatedModel->slug,
                     "model" => $relatedModel,
                 );
             }
+            $sections[] = array(
+                "menu_label" => Yii::t('app', 'Exercises'),
+                "title" => Yii::t('app', 'Exercises'),
+                "slug" => 'exercises',
+                "subsections" => $subsections,
+            );
         }
 
         // slideshow
