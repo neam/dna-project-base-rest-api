@@ -126,8 +126,6 @@ if ($model->exercises) {
 
 ?>
 
-lsad flajs dflkjas fs
-
 <div class="row-fluid">
     <div class="span3 bs-docs-sidebar">
         <?php if (!empty($sections)): ?>
