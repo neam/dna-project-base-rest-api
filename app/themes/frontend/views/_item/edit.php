@@ -87,7 +87,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
             </div>
         </div>
 
-        <?php $this->renderPartial("application.themes.backend2.views.".lcfirst(get_class($model))."._form", array('model' => $model, 'buttons' => 'create', 'elementsViewAlias' => "application.themes.backend2.views.".lcfirst(get_class($model))."._elements")); ?>
+        <?php $this->renderPartial("application.themes.backend2.views." . lcfirst(get_class($model)) . "._form", array('model' => $model, 'buttons' => 'create', 'elementsViewAlias' => "application.themes.backend2.views." . lcfirst(get_class($model)) . "._elements")); ?>
 
         <form>
 
