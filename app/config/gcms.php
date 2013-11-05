@@ -23,7 +23,7 @@ Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
 $gcmsConfig = array(
     'name' => 'Gapminder CMS',
     'language' => 'en', // default language, see also components.langHandler
-    'preload' => array(//'ezc', // trying out if we can lazy-load this instead of preloading it...
+    'preload' => array( //'ezc', // trying out if we can lazy-load this instead of preloading it...
     ),
     'aliases' => array(
         // i18n-columns
