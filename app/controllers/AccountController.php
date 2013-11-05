@@ -106,6 +106,12 @@ class AccountController extends Controller
         $this->render('history', array('model' => $model,));
     }
 
+    public function actionPublicProfile($id)
+    {
+        $model = $this->loadModel($id);
+        $this->render('public-profile', array('model' => $model,));
+    }
+
     public function actionView($id)
     {
         $model = $this->loadModel($id);
