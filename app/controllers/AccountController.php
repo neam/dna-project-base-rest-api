@@ -78,26 +78,30 @@ class AccountController extends Controller
         return true;
     }
 
-    public function actionDashboard($id = null)
+    public function actionDashboard()
     {
+        $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
         $this->render('dashboard', array('model' => $model,));
     }
 
-    public function actionTranslations($id = null)
+    public function actionTranslations()
     {
+        $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
         $this->render('translations', array('model' => $model,));
     }
 
-    public function actionProfile($id = null)
+    public function actionProfile()
     {
+        $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
         $this->render('profile', array('model' => $model,));
     }
 
-    public function actionHistory($id = null)
+    public function actionHistory()
     {
+        $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
         $this->render('history', array('model' => $model,));
     }
