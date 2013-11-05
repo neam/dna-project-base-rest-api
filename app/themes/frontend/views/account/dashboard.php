@@ -32,5 +32,24 @@ $roles = array_keys(Yii::app()->authManager->getAuthItems(2, $model->id));
         <?php //echo Yii::t('account', 'Please apply for a permission.'); ?>
     </div>
 
+<?php else: ?>
+
+    <?php foreach (DataModel::qaModels() as $modelClass => $table): ?>
+
+        <?php if (Yii::app()->user->checkAccess('Item.Add')): ?>
+
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Create $modelClass"),
+                "size" => "large",
+                "icon" => "icon-plus",
+                "url" => array(lcfirst($modelClass) . "/add")
+            ));
+            ?>
+
+        <?php endif; ?>
+
+    <?php endforeach; ?>
+
 <?php endif; ?>
 
