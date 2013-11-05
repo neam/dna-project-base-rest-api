@@ -126,6 +126,9 @@ $gcmsConfig = array(
             'class' => 'application.components.EzcComponent',
             'tablePrefix' => 'ezc_',
         ),
+        'user' => array(
+            'returnUrl' => array('/'),
+        )
     )
 );
 
