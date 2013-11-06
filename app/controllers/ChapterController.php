@@ -45,7 +45,6 @@ class ChapterController extends Controller
                     'prepPublishTeachersGuide',
                     'prepPublishExercises',
                     'prepPublishVideos',
-                    'prepPublishSnapshots',
                 ),
                 'roles' => array(
                     'Item.PrepPublish'
@@ -56,10 +55,19 @@ class ChapterController extends Controller
                     'view',
                     'create',
                     'update',
+                    'edit',
                     'editableSaver',
                     'editableCreator',
                     'admin',
                     'delete',
+                    'editFlow',
+                    'editTitle',
+                    'editAbout',
+                    'editThumbnail',
+                    'editTeachersGuide',
+                    'editExercises',
+                    'editVideos',
+                    'editSnapshots',
                 ),
                 'roles' => array('Chapter.*'),
             ),
@@ -91,7 +99,6 @@ class ChapterController extends Controller
 
     public function actionPrepPublish($id)
     {
-
         $model = $this->loadModel($id);
         $model->scenario = 'step_title';
         if (!$model->validate()) {
@@ -128,14 +135,7 @@ class ChapterController extends Controller
             $this->redirect(array('chapter/prepPublishVideos', 'id' => $id));
             return;
         }
-        $model->clearErrors();
-        $model->scenario = 'step_snapshots';
-        if (!$model->validate()) {
-            $this->redirect(array('chapter/prepPublishSnapshots', 'id' => $id));
-            return;
-        }
-        $this->redirect(array('chapter/prepPublishSnapshots', 'id' => $id));
-
+        $this->redirect(array('chapter/edit', 'id' => $id));
     }
 
     public function actionPrepPublishTitle($id)
@@ -174,15 +174,6 @@ class ChapterController extends Controller
         $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'exercises', 'stepCaption' => $stepCaptions['exercises']));
     }
 
-    public function actionPrepPublishSnapshots($id)
-    {
-        $this->scenario = "step_snapshots";
-        $model = $this->saveAndContinueOnSuccess($id);
-        $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'snapshots', 'stepCaption' => $stepCaptions['snapshots']));
-    }
-
     public function actionPrepPublishTeachersGuide($id)
     {
         $this->scenario = "step_teachers_guide";
@@ -199,6 +190,93 @@ class ChapterController extends Controller
         $stepCaptions = $model->flowStepCaptions();
         $workflowCaption = Yii::t('app', 'Prepare for publishing');
         $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'videos', 'stepCaption' => $stepCaptions['videos']));
+    }
+
+    public function actionEdit($id){
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_title';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/editTitle', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_thumbnail';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/editThumbnail', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_about';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/editAbout', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_teachers_guide';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/editTeachersGuide', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_exercises';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/editExercises', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_videos';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/editVideos', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_snapshots';
+        if (!$model->validate()) {
+            $this->redirect(array('chapter/editSnapshots', 'id' => $id));
+            return;
+        }
+    }
+    public function actionEditTitle($id){
+        $this->scenario = "step_title";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+    }
+    public function actionEditThumbnail($id){
+        $this->scenario = "step_thumbnail";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
+    }
+    public function actionEditAbout($id){
+        $this->scenario = "step_about";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
+    }
+    public function actionEditTeachersGuide($id){
+        $this->scenario = "step_teachers_guide";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'teachers_guide', 'stepCaption' => $stepCaptions['teachers_guide']));
+    }
+    public function actionEditExercise($id){
+        $this->scenario = "step_exercise";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'exercise', 'stepCaption' => $stepCaptions['exercise']));
+    }
+    public function actionEditVideos($id){
+        $this->scenario = "step_videos";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'videos', 'stepCaption' => $stepCaptions['videos']));
+    }
+    public function actionEditSnapshots($id){
+        $this->scenario = "step_snapshots";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'snapshots', 'stepCaption' => $stepCaptions['snapshots']));
     }
 
     protected function listenForEdges($id)

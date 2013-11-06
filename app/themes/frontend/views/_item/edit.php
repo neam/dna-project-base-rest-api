@@ -1,13 +1,14 @@
 <?php
 $this->setPageTitle(
-    Yii::t('model', 'Chapter')
+    Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Continue Authoring')
+    . Yii::t('crud', 'Edit')
 );
 
 $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
+$this->breadcrumbs[] = Yii::t('crud', 'Edit');
+$this->breadcrumbs[] = $stepCaption;
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
@@ -16,8 +17,12 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
     <div class="span12">
 
         <h1>
+<<<<<<< Updated upstream
             <?php echo $workflowCaption; ?>
             - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
+=======
+            <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
+>>>>>>> Stashed changes
             <small>vX</small>
 
             <div class="btn-group">
@@ -58,10 +63,21 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
     </div>
     <div class="span9">
 
+        <?php
+        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+            'id' => 'item-form',
+            'enableAjaxValidation' => true,
+            'enableClientValidation' => true,
+            'type' => 'horizontal',
+        ));
+        echo $form->errorSummary($model);
+        ?>
+
+
         <div class="row-fluid">
             <div class="span9">
 
-                <h2>Mockup!
+                <h2><?php print $stepCaption; ?>
                     <small></small>
                 </h2>
 
@@ -72,13 +88,10 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
 
                     <div class="btn-group">
                         <?php
-                        $this->widget("bootstrap.widgets.TbButton", array(
-                            "label" => Yii::t("model", "Save and Continue"),
-                            "type" => "primary",
-                            "size" => "large",
-                            "icon" => "icon-forward",
-                            "url" => array("continueAuthoring", "id" => $model->{$model->tableSchema->primaryKey})
-                        ));
+                        echo CHtml::submitButton(Yii::t('model', 'Next'), array(
+                                'class' => 'btn btn-large btn-primary'
+                            )
+                        );
                         ?>
 
                     </div>
@@ -88,41 +101,20 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
             </div>
         </div>
 
-        <?php $this->renderPartial("application.themes.backend2.views." . lcfirst(get_class($model)) . "._form", array('model' => $model, 'buttons' => 'create', 'elementsViewAlias' => "application.themes.backend2.views." . lcfirst(get_class($model)) . "._elements")); ?>
+        <?php $this->renderPartial('steps/' . $step, compact("model", "form")); ?>
 
-        <form>
-
-            <div class="row-fluid">
-                <div class="span3">
-
-                    Thumbnail
-                    <img src="http://placehold.it/400x400">
-
-                </div>
-                <div class="span9">
-
-                    Title
-
-                    Tags
-
-                </div>
-            </div>
-
-            <div class="row-fluid">
-                <div class="span12">
-
-                    About
-
-                </div>
-            </div>
-
-        </form>
-
-        <div class="alert alert-info">
-            Hint: Lorem ipsum
-        </div>
-
+        <?php $this->endWidget() ?>
 
     </div>
 
 </div>
+
+
+<?php
+foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
+    if (strpos($key, "modal:") === 0) {
+        echo $clip;
+    }
+}
+?>
+
