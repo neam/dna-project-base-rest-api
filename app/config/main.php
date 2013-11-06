@@ -79,6 +79,7 @@ $mainConfig = array(
         'vendor.sammaye.auditrail2.models.AuditTrail', //
         'vendor.bwoester.yii-static-events-component.*',
         'vendor.bwoester.yii-event-interceptor.*',
+        'vendor.gusnips.yii-translate.TranslateModule',
     ),
     /*
     'behaviors'  => array(
