@@ -15,7 +15,7 @@ require_once($dir.'vendor/yiisoft/yii/framework/yii.php');
 // config files
 $main   = require($dir.'app/config/main.php');
 $local  = require($dir.'app/config/main-local.php');
-$env    = require($dir.'app/config/env-'.$local['params']['env'].'.php');
+$env    = require($dir.'app/config/env-'.$main['params']['env'].'.php');
 
 // merge configurations
 $config = CMap::mergeArray($main,$env,$local);
