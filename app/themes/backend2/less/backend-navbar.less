@@ -1,0 +1,27 @@
+/**
+ * Main less include file
+ *
+ * This file is copied from p3bootstrap. You have to run
+ * php composer.phar install --dev
+ * in order to get the files defined in the @import(s) below
+ *
+ * paths are adjustes to work from ./www/themes/THEMENAME
+ */
+
+#backend {
+  // fix for backend-navbar disappearing under container and widget overlays
+  position: absolute;
+  z-index: 1500;
+
+  /* import bootrap */
+@import "../../../../vendor/twitter/bootstrap/less/variables.less";
+@import "variables.less";
+//@import "../../../../vendor/twitter/bootstrap/less/dropdowns.less";
+@import "../../../../vendor/twitter/bootstrap/less/buttons.less";
+@import "../../../../vendor/twitter/bootstrap/less/mixins.less";
+@import "../../../../vendor/twitter/bootstrap/less/navbar.less";
+  //@import "../../../../vendor/twitter/bootstrap/less/bootstrap.less";
+  /* use bootstrap with blueprint translation (for old extensions) */
+  //@import "../../../../vendor/phundament/lessii/translations/blueprint-bootstrap.less";
+  /* override variables with local values */
+}

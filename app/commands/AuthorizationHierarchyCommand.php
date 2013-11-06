@@ -147,6 +147,18 @@ EOD;
         $developerRole->addChild('P3admin.Default.Index');
         $auth->createOperation('P3admin.Default.Settings');
         $developerRole->addChild('P3admin.Default.Settings');
+        $auth->createOperation('Admin');
+        $developerRole->addChild('Admin');
+        $auth->createOperation('Editor');
+        $developerRole->addChild('Editor');
+        $auth->createOperation('P3pages.P3Page.*');
+        $developerRole->addChild('P3pages.P3Page.*');
+        $auth->createOperation('P3pages.P3PageTranslation.*');
+        $developerRole->addChild('P3pages.P3PageTranslation.*');
+        $auth->createOperation('P3widgets.Default.*');
+        $developerRole->addChild('P3widgets.Default.*');
+        $auth->createOperation('Translate.*');
+        $developerRole->addChild('Translate.*');
 
         $baseModels = DataModel::crudModels();
         $qaStateModels = DataModel::qaStateModels();
@@ -162,8 +174,6 @@ EOD;
 
             }
         }
-        $auth->createOperation('Admin');
-        $developerRole->addChild('Admin');
 
         $auth->save();
 
