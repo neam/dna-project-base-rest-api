@@ -4,9 +4,7 @@ php:
   - 5.4
 
 before_script:
-    - composer install --prefer-dist
-    - composer require --dev --prefer-dist "codeception/codeception:1.6.2"
-    - app/yiic migrate --interactive=0
+    - composer require --dev "codeception/codeception:1.6.7"
     - php -S localhost:31415 -t www/ &
 
 script: sh test.sh
@@ -17,3 +15,4 @@ env:
 branches:
   only:
     - master
+    - develop

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "4e201ce9014d1a138f8249883d273854",
+    "hash": "055d5a57c76e4496b25ef05c250d21e4",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -34,6 +34,24 @@
             },
             "type": "library",
             "time": "2013-08-14 17:37:07"
+        },
+        {
+            "name": "bwoester/yii-event-interceptor",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bwoester/yii-event-interceptor.git",
+                "reference": "28d9305a17f966c4e06e99092cc50de047a22445"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/bwoester/yii-event-interceptor/archive/28d9305a17f966c4e06e99092cc50de047a22445.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "yii-extension",
+            "description": "A component, that allows to intercept events raised by observed components.",
+            "homepage": "https://github.com/bwoester/yii-event-interceptor"
         },
         {
             "name": "clevertech/yiibooster",
@@ -94,22 +112,94 @@
         },
         {
             "name": "crisu83/yii-rights",
-            "version": "dev-tip",
+            "version": "dev-master",
             "source": {
-                "type": "hg",
-                "url": "https://bitbucket.org/Crisu83/yii-rights",
-                "reference": "437267d8b1edd121ccb860b5a5f00203362ec3ae"
+                "type": "git",
+                "url": "https://github.com/schmunk42/yii-rights.git",
+                "reference": "4f2ccb66378e1e5bf37deae34635fe68bf057faa"
+            },
+            "type": "library",
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de"
+                }
+            ],
+            "description": "Yii Rights module",
+            "time": "2013-10-11 09:20:14"
+        },
+        {
+            "name": "bwoester/yii-static-events-component",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bwoester/yii-static-events-component.git",
+                "reference": "71e3a74a28ab8307b87947a3db483226d5b90982"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/Crisu83/yii-rights/get/437267d8b1.zip",
+                "url": "https://github.com/bwoester/yii-static-events-component/archive/71e3a74a28ab8307b87947a3db483226d5b90982.zip",
                 "reference": null,
                 "shasum": null
             },
             "type": "yii-extension",
-            "description": "Rights is a module for the Yii PHP framework. This module utilizes Yii's built-in Database Authorization Manager (CDbAuthManager) to provide a web interface for advanced access control within Yii-applications.",
-            "homepage": "http://www.yiiframework.com/extension/rights",
-            "time": "2011-10-12 09:05:52"
+            "description": "Allows you to register event handlers on class base.",
+            "homepage": "https://github.com/bwoester/yii-static-events-component"
+        },
+        {
+            "name": "clevertech/yiibooster",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clevertech/YiiBooster.git",
+                "reference": "aab8eed9c41767baf1c7e4f8c164fe877e32687d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/clevertech/YiiBooster/archive/aab8eed9c41767baf1c7e4f8c164fe877e32687d.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "yii-extension",
+            "description": "YiiBooster",
+            "homepage": "https://github.com/clevertech/YiiBooster"
+        },
+        {
+            "name": "gusnips/yii-translate",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Quexer69/yii.translate.git",
+                "reference": "be21c3820cc5669e3af0fe173c8f1a99a0835a31"
+            },
+            "suggest": {
+                "Translate": "Any yii translate extension"
+            },
+            "type": "yii-application",
+            "autoload": {
+                "classmap": [
+                    "components/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "",
+                    "email": "",
+                    "homepage": ""
+                }
+            ],
+            "description": "Yii Translate Component",
+            "homepage": "https://github.com/gusnips",
+            "keywords": [
+                "Translate",
+                "application",
+                "web",
+                "yii"
+            ],
+            "time": "2013-10-10 23:10:19"
         },
         {
             "name": "firstrow/stranslateablebehavior",
@@ -152,6 +242,39 @@
             "time": "2013-04-10 15:53:54"
         },
         {
+            "name": "mikehaertl/packagecompressor",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/packagecompressor.git",
+                "reference": "cf53e842e561737df67f7ac4233184ebafc1d792"
+            },
+            "require": {
+                "mrclay/minify": "2.1.*",
+                "php": ">=5.0.0"
+            },
+            "type": "yii-extension",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Haertl",
+                    "email": "haertl.mike@gmail.com"
+                }
+            ],
+            "description": "packagecompressor is a Yii extension that can compress Javascript/CSS and is based on Yii's package system",
+            "homepage": "https://github.com/mikehaertl/packagecompressor",
+            "keywords": [
+                "compress",
+                "css",
+                "javascript",
+                "minify",
+                "yii"
+            ],
+            "time": "2013-10-13 21:24:07"
+        },
+        {
             "name": "mihanentalpo/yii-sql-migration-generator",
             "version": "@dev",
             "source": {
@@ -163,23 +286,161 @@
             "time": "2013-08-08 07:00:22"
         },
         {
+            "name": "mikehaertl/translatable",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikehaertl/translatable.git",
+                "reference": "790e7b97d7b2242ea7a6ef8dbb5d5a6643d6160b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikehaertl/translatable/zipball/790e7b97d7b2242ea7a6ef8dbb5d5a6643d6160b",
+                "reference": "790e7b97d7b2242ea7a6ef8dbb5d5a6643d6160b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "type": "yii-extension",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Haertl",
+                    "email": "haertl.mike@gmail.com"
+                }
+            ],
+            "description": "translatable is a Yii extension to transparently translate ActiveRecord attributes.",
+            "homepage": "https://github.com/mikehaertl/translatable",
+            "keywords": [
+                "i18n",
+                "translation",
+                "yii"
+            ],
+            "time": "2013-10-05 07:21:54"
+        },
+        {
             "name": "mishamx/yii-user",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phundament/yii-user.git",
-                "reference": "00c8ca23c72adf1a07b3555b6274f6d6c911564d"
+                "reference": "740915a5054ee3de5fb57727db8c8753e03133cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/phundament/yii-user/archive/00c8ca23c72adf1a07b3555b6274f6d6c911564d.zip",
+                "url": "https://github.com/phundament/yii-user/archive/740915a5054ee3de5fb57727db8c8753e03133cb.zip",
                 "reference": null,
                 "shasum": null
             },
             "type": "yii-extension",
             "description": "Yii PHP Framework extension for registration and management users accounts.",
             "homepage": "https://github.com/phundament/yii-user",
-            "time": "2013-04-08 21:52:47"
+            "time": "2013-10-01 10:19:48"
+        },
+        {
+            "name": "mrclay/minify",
+            "version": "2.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrclay/minify.git",
+                "reference": "db7fe244932ea77cf1438965693672ea12b33da8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrclay/minify/zipball/db7fe244932ea77cf1438965693672ea12b33da8",
+                "reference": "db7fe244932ea77cf1438965693672ea12b33da8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "php": ">=5.2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "min/lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Clay",
+                    "email": "steve@mrclay.org",
+                    "homepage": "http://www.mrclay.org/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Minify is a PHP5 app that helps you follow several rules for client-side performance. It combines multiple CSS or Javascript files, removes unnecessary whitespace and comments, and serves them with gzip encoding and optimal client-side cache headers",
+            "homepage": "http://code.google.com/p/minify/",
+            "time": "2013-07-23 19:58:28"
+        },
+        {
+            "name": "nordsoftware/yii-emailer",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nordsoftware/yii-emailer.git",
+                "reference": "639323136d4d2b5cf2338040bf49d500e29d2fd2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nordsoftware/yii-emailer/zipball/639323136d4d2b5cf2338040bf49d500e29d2fd2",
+                "reference": "639323136d4d2b5cf2338040bf49d500e29d2fd2",
+                "shasum": ""
+            },
+            "require": {
+                "nordsoftware/yii-utils": "dev-master",
+                "swiftmailer/swiftmailer": "4.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christoffer Niska",
+                    "email": "christoffer.niska@nordsoftware.com"
+                },
+                {
+                    "name": "Kenneth Söderlund",
+                    "email": "kenneth.soderlund@nordsoftware.com"
+                }
+            ],
+            "description": "Extension for creating and sending emails for the Yii PHP framework.",
+            "time": "2013-05-14 17:03:27"
+        },
+        {
+            "name": "nordsoftware/yii-utils",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nordsoftware/yii-utils.git",
+                "reference": "c9eb69f53d2f3ba0acab169ab5bb9e7a2881cc13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nordsoftware/yii-utils/zipball/c9eb69f53d2f3ba0acab169ab5bb9e7a2881cc13",
+                "reference": "c9eb69f53d2f3ba0acab169ab5bb9e7a2881cc13",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Christoffer Niska",
+                    "email": "christoffer.niska@nordsoftware.com"
+                }
+            ],
+            "description": "Utility classes for the Yii PHP framework.",
+            "time": "2013-06-18 14:27:35"
         },
         {
             "name": "neam/yii-i18n-columns",
@@ -468,16 +729,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii-backend-theme.git",
-                "reference": "c27a0bdb4febb08489c1eadee0df8b37fab8cf0c"
+                "reference": "96a9ae4067b3fe5b39c0a4685fc7a9af1857b6c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/c27a0bdb4febb08489c1eadee0df8b37fab8cf0c",
-                "reference": "c27a0bdb4febb08489c1eadee0df8b37fab8cf0c",
+                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/96a9ae4067b3fe5b39c0a4685fc7a9af1857b6c5",
+                "reference": "96a9ae4067b3fe5b39c0a4685fc7a9af1857b6c5",
                 "shasum": ""
             },
             "require": {
-                "clevertech/yiibooster": "1.*",
+                "clevertech/yiibooster": ">=1.0,<3.0",
                 "php": ">=5.3.0",
                 "yiisoft/yii": "1.1.*"
             },
@@ -506,7 +767,7 @@
                 "theme",
                 "yii"
             ],
-            "time": "2013-07-29 18:58:37"
+            "time": "2013-10-13 21:54:15"
         },
         {
             "name": "phundament/jquery-file-upload",
@@ -529,23 +790,23 @@
         },
         {
             "name": "phundament/p3admin",
-            "version": "0.14.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3admin.git",
-                "reference": "0.14.1"
+                "reference": "bf884189df7e699b512f18755b4c1fcc33abb565"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3admin/zipball/0.14.1",
-                "reference": "0.14.1",
+                "url": "https://api.github.com/repos/schmunk42/p3admin/zipball/bf884189df7e699b512f18755b4c1fcc33abb565",
+                "reference": "bf884189df7e699b512f18755b4c1fcc33abb565",
                 "shasum": ""
             },
             "require": {
-                "clevertech/yiibooster": "1.*",
+                "clevertech/yiibooster": ">=1.0,<3.0",
                 "php": ">=5.3.0",
-                "phundament/p3extensions": ">=0.7",
                 "phundament/p3widgets": "*",
+                "sammaye/auditrail2": "1.*",
                 "yiisoft/yii": ">=1.1.12"
             },
             "type": "yii-extension",
@@ -569,29 +830,29 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3admin/tree/0.14.1",
+                "source": "https://github.com/schmunk42/p3admin/tree/master",
                 "issues": "https://github.com/schmunk42/p3admin/issues"
             },
-            "time": "2013-07-19 07:43:39"
+            "time": "2013-10-13 22:21:12"
         },
         {
             "name": "phundament/p3bootstrap",
-            "version": "0.19.1",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3bootstrap.git",
-                "reference": "0.19.1"
+                "reference": "884baea7a3b8d13c1d0090f73086573ac9ab9c9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3bootstrap/zipball/0.19.1",
-                "reference": "0.19.1",
+                "url": "https://api.github.com/repos/schmunk42/p3bootstrap/zipball/884baea7a3b8d13c1d0090f73086573ac9ab9c9e",
+                "reference": "884baea7a3b8d13c1d0090f73086573ac9ab9c9e",
                 "shasum": ""
             },
             "require": {
-                "clevertech/yiibooster": "1.*",
+                "clevertech/yiibooster": ">=1.0,<3.0",
                 "php": ">=5.3.0",
-                "phundament/p3pages": ">=0.11",
+                "phundament/p3pages": ">=0.17",
                 "phundament/p3widgets": ">=0.11",
                 "yiisoft/yii": "1.1.*"
             },
@@ -619,23 +880,23 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3bootstrap/tree/0.19.1",
+                "source": "https://github.com/schmunk42/p3bootstrap/tree/develop",
                 "issues": "https://github.com/schmunk42/p3bootstrap/issues"
             },
-            "time": "2013-07-23 01:57:21"
+            "time": "2013-10-13 21:53:10"
         },
         {
             "name": "phundament/p3extensions",
-            "version": "0.15.1",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3extensions.git",
-                "reference": "0.15.1"
+                "reference": "157b90492eb04e913d32f52f05b371b319494c1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3extensions/zipball/0.15.1",
-                "reference": "0.15.1",
+                "url": "https://api.github.com/repos/schmunk42/p3extensions/zipball/157b90492eb04e913d32f52f05b371b319494c1b",
+                "reference": "157b90492eb04e913d32f52f05b371b319494c1b",
                 "shasum": ""
             },
             "require": {
@@ -661,43 +922,104 @@
                 "phundament"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3extensions/tree/0.15.1",
+                "source": "https://github.com/schmunk42/p3extensions/tree/develop",
                 "issues": "https://github.com/schmunk42/p3extensions/issues"
             },
-            "time": "2013-08-15 18:50:35"
+            "time": "2013-10-11 23:22:53"
         },
         {
             "name": "phundament/p3media",
-            "version": "0.15.1",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/motin/p3media.git",
-                "reference": "06c671418935dc5c0bf30c3cfd7a7127bf70cb1e"
-            },
-            "type": "library"
-        },
-        {
-            "name": "phundament/p3pages",
-            "version": "0.14.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmunk42/p3pages.git",
-                "reference": "0.14.2"
+                "url": "https://github.com/schmunk42/p3media.git",
+                "reference": "0cdd2ae495e1111a057c2ad936d7cba5b5d49063"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/0.14.2",
-                "reference": "0.14.2",
+                "url": "https://api.github.com/repos/schmunk42/p3media/zipball/0cdd2ae495e1111a057c2ad936d7cba5b5d49063",
+                "reference": "0cdd2ae495e1111a057c2ad936d7cba5b5d49063",
                 "shasum": ""
             },
             "require": {
-                "clevertech/yiibooster": "1.*",
+                "bwoester/yii-event-interceptor": "1.*",
+                "bwoester/yii-static-events-component": "1.*",
+                "clevertech/yiibooster": ">=1.0,<3.0",
+                "mikehaertl/translatable": "1.*",
                 "php": ">=5.3.0",
-                "phundament/p3extensions": ">=0.13",
+                "phundament/p3extensions": ">=0.17.0",
+                "sammaye/auditrail2": "1.*",
+                "schmunk42/access": "@dev",
+                "schmunk42/adjacency-list-behavior": "@dev",
                 "schmunk42/relation": "1.*",
+                "yiiext/status-behavior": "0.6.*",
                 "yiisoft/yii": "1.1.*"
             },
             "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "models/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "description": "Yii media file manager module with ckeditor integration",
+            "homepage": "https://github.com/schmunk42/p3media",
+            "keywords": [
+                "extension",
+                "file",
+                "manager",
+                "module",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/schmunk42/p3media/tree/develop",
+                "issues": "https://github.com/schmunk42/p3media/issues"
+            },
+            "time": "2013-10-14 01:30:46"
+        },
+        {
+            "name": "phundament/p3pages",
+            "version": "dev-release/0.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/p3pages.git",
+                "reference": "63be9eb1d3082b0310e91422177f3610c5ebc418"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/63be9eb1d3082b0310e91422177f3610c5ebc418",
+                "reference": "63be9eb1d3082b0310e91422177f3610c5ebc418",
+                "shasum": ""
+            },
+            "require": {
+                "bwoester/yii-event-interceptor": "1.*",
+                "bwoester/yii-static-events-component": "1.*",
+                "clevertech/yiibooster": ">=1.0,<3.0",
+                "mikehaertl/translatable": "1.*",
+                "php": ">=5.3.0",
+                "phundament/p3extensions": ">=0.17.0",
+                "sammaye/auditrail2": "1.*",
+                "schmunk42/access": "@dev",
+                "schmunk42/adjacency-list-behavior": "@dev",
+                "schmunk42/relation": "1.*",
+                "yiiext/status-behavior": "0.6.*",
+                "yiisoft/yii": "1.1.*"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "models/"
+                ]
+            },
             "license": [
                 "BSD-3-Clause"
             ],
@@ -717,30 +1039,36 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3pages/tree/0.14.2",
+                "source": "https://github.com/schmunk42/p3pages/tree/release/0.17.0",
                 "issues": "https://github.com/schmunk42/p3pages/issues"
             },
-            "time": "2013-08-15 16:01:58"
+            "time": "2013-10-14 01:30:06"
         },
         {
             "name": "phundament/p3widgets",
-            "version": "0.14.0",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3widgets.git",
-                "reference": "0.14.0"
+                "reference": "9f7b05b238aa2f8a94dc841bafdf6830531b4e85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3widgets/zipball/0.14.0",
-                "reference": "0.14.0",
+                "url": "https://api.github.com/repos/schmunk42/p3widgets/zipball/9f7b05b238aa2f8a94dc841bafdf6830531b4e85",
+                "reference": "9f7b05b238aa2f8a94dc841bafdf6830531b4e85",
                 "shasum": ""
             },
             "require": {
-                "clevertech/yiibooster": "1.*",
+                "bwoester/yii-event-interceptor": "1.*",
+                "bwoester/yii-static-events-component": "1.*",
+                "clevertech/yiibooster": ">=1.0,<3.0",
+                "mikehaertl/translatable": "1.*",
                 "php": ">=5.3.0",
-                "phundament/p3extensions": ">=0.13",
+                "phundament/p3extensions": ">=0.17.0",
+                "sammaye/auditrail2": "1.*",
+                "schmunk42/access": "@dev",
                 "schmunk42/relation": "1.*",
+                "yiiext/status-behavior": "0.6.*",
                 "yiisoft/yii": "1.1.*"
             },
             "type": "yii-extension",
@@ -768,10 +1096,106 @@
                 "widget"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3widgets/tree/0.14.0",
+                "source": "https://github.com/schmunk42/p3widgets/tree/develop",
                 "issues": "https://github.com/schmunk42/p3widgets/issues"
             },
-            "time": "2013-08-15 15:58:07"
+            "time": "2013-10-14 01:29:13"
+        },
+        {
+            "name": "sammaye/auditrail2",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sammaye/audittrail.git",
+                "reference": "f75cf7c98f33e717421759f559be67383cfd6250"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sammaye/audittrail/zipball/f75cf7c98f33e717421759f559be67383cfd6250",
+                "reference": "f75cf7c98f33e717421759f559be67383cfd6250",
+                "shasum": ""
+            },
+            "type": "yii-extension",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sammaye",
+                    "homepage": "http://sammaye.wordpress.com"
+                }
+            ],
+            "description": "A reload of the popular audit trail extension",
+            "keywords": [
+                "Audit",
+                "phundament",
+                "trail",
+                "yii"
+            ],
+            "time": "2013-09-18 08:00:49"
+        },
+        {
+            "name": "schmunk42/access",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/yii-access.git",
+                "reference": "b6b95759eeb7a8f8d92eb4657962004fd6532eb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/yii-access/zipball/b6b95759eeb7a8f8d92eb4657962004fd6532eb1",
+                "reference": "b6b95759eeb7a8f8d92eb4657962004fd6532eb1",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "behaviors/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "description": "Yii Framework Active Record access check implementation",
+            "time": "2013-10-07 14:24:00"
+        },
+        {
+            "name": "schmunk42/adjacency-list-behavior",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/yii-adjacency-list-behavior.git",
+                "reference": "88b740e03781b82ca759759353a6a6e799764ff3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/yii-adjacency-list-behavior/zipball/88b740e03781b82ca759759353a6a6e799764ff3",
+                "reference": "88b740e03781b82ca759759353a6a6e799764ff3",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "description": "Yii Framework Active Record Behavior for tree structures",
+            "time": "2013-09-28 01:08:04"
         },
         {
             "name": "schmunk42/ckeditor-configurator",
@@ -779,17 +1203,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii-ckeditor-configurator.git",
-                "reference": "a21ecf5d4817e68fd7592a52dd2d2753bdabaeb6"
+                "reference": "15e3ad391dac512caa284f30fbb00b1983c8075a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-ckeditor-configurator/zipball/a21ecf5d4817e68fd7592a52dd2d2753bdabaeb6",
-                "reference": "a21ecf5d4817e68fd7592a52dd2d2753bdabaeb6",
+                "url": "https://api.github.com/repos/schmunk42/yii-ckeditor-configurator/zipball/15e3ad391dac512caa284f30fbb00b1983c8075a",
+                "reference": "15e3ad391dac512caa284f30fbb00b1983c8075a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "yiisoft/yii": "1.1.*"
+                "schmunk42/relation": "1.*",
+                "yiisoft/yii": ">=1.1.14"
             },
             "suggest": {
                 "ckeditor": "Any ckeditor extension"
@@ -811,7 +1236,7 @@
                 "CKEditor",
                 "yii"
             ],
-            "time": "2013-07-25 12:45:15"
+            "time": "2013-09-28 19:09:28"
         },
         {
             "name": "schmunk42/giic",
@@ -895,13 +1320,19 @@
         },
         {
             "name": "schmunk42/relation",
-            "version": "1.0.3.1",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/motin/yii-relation.git",
-                "reference": "b275ae18ed4798dc01cad72e9b27878c851d1312"
+                "url": "https://github.com/schmunk42/yii-relation.git",
+                "reference": "c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de"
             },
-            "type": "library"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/yii-relation/zipball/c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de",
+                "reference": "c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de",
+                "shasum": ""
+            },
+            "time": "2013-08-23 14:56:11"
         },
         {
             "name": "schmunk42/web-user-behavior",
@@ -1000,22 +1431,53 @@
             "homepage": "https://github.com/thomaspark/bootswatch"
         },
         {
-            "name": "vitalets/x-editable-yii",
-            "version": "1.2.0",
+            "name": "swiftmailer/swiftmailer",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vitalets/x-editable-yii.git",
-                "reference": "064a871c486bd269880fca66642d614df9c6b232"
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "a73b60218b75352d8474b52d0a0aa94c0286fa67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/vitalets/x-editable-yii/archive/064a871c486bd269880fca66642d614df9c6b232.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/a73b60218b75352d8474b52d0a0aa94c0286fa67",
+                "reference": "a73b60218b75352d8474b52d0a0aa94c0286fa67",
+                "shasum": ""
             },
-            "type": "yii-extension",
-            "description": "Yii extension for creating editable elements",
-            "homepage": "https://github.com/vitalets/x-editable-yii"
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.3-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Chris Corbyn"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "mail",
+                "mailer"
+            ],
+            "time": "2013-01-08 15:50:34"
         },
         {
             "name": "waalzer/app-demo-data",
@@ -1118,6 +1580,23 @@
             "description": "This is an enhanced version of the Yii Database Migration Tool that adds module support and many more usefull features.",
             "homepage": "https://github.com/yiiext/migrate-command",
             "time": "2013-05-09 15:14:47"
+        },
+        {
+            "name": "yiiext/status-behavior",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/status-behavior.git",
+                "reference": "565bb1832b2fab054c1632b769c613385587ff35"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "/"
+                ]
+            },
+            "description": "Yii Framework Active Record Status behavior for models",
+            "time": "2013-10-08 14:00:22"
         },
         {
             "name": "yiisoft/yii",
@@ -1432,15 +1911,15 @@
         },
         {
             "name": "crisu83/yii-less",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-less.git",
-                "reference": "91daf8744b95900571cf4d04e5218d3834d496cd"
+                "reference": "09532bf98bd6cc9048c6bb4a7761d90df3214e76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Crisu83/yii-less/archive/91daf8744b95900571cf4d04e5218d3834d496cd.zip",
+                "url": "https://github.com/Crisu83/yii-less/archive/09532bf98bd6cc9048c6bb4a7761d90df3214e76.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1450,16 +1929,16 @@
         },
         {
             "name": "phundament/gii-template-collection",
-            "version": "0.12.5",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/gii-template-collection.git",
-                "reference": "0.12.5"
+                "reference": "ea353d8d903101c8e52ad68996be0e4257d06be6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/gii-template-collection/zipball/0.12.5",
-                "reference": "0.12.5",
+                "url": "https://api.github.com/repos/schmunk42/gii-template-collection/zipball/ea353d8d903101c8e52ad68996be0e4257d06be6",
+                "reference": "ea353d8d903101c8e52ad68996be0e4257d06be6",
                 "shasum": ""
             },
             "require": {
@@ -1487,10 +1966,10 @@
                 "package"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/gii-template-collection/tree/0.12.5",
+                "source": "https://github.com/schmunk42/gii-template-collection/tree/develop",
                 "issues": "https://github.com/schmunk42/gii-template-collection/issues"
             },
-            "time": "2013-08-23 02:43:46"
+            "time": "2013-10-08 09:58:30"
         },
         {
             "name": "phundament/lessii",
@@ -1539,16 +2018,16 @@
         },
         {
             "name": "schmunk42/database-command",
-            "version": "0.8.10",
+            "version": "0.8.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/database-command.git",
-                "reference": "0.8.10"
+                "reference": "66b6f16491bac9dedea743ebb0c6847c7f78e456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/database-command/zipball/0.8.10",
-                "reference": "0.8.10",
+                "url": "https://api.github.com/repos/schmunk42/database-command/zipball/66b6f16491bac9dedea743ebb0c6847c7f78e456",
+                "reference": "66b6f16491bac9dedea743ebb0c6847c7f78e456",
                 "shasum": ""
             },
             "require": {
@@ -1556,13 +2035,15 @@
                 "yiisoft/yii": "1.1.*"
             },
             "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Tobias Munk",
-                    "email": "schmunk@usrbin.de"
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii command to create database migrations from existing schema",
@@ -1575,11 +2056,34 @@
                 "migration",
                 "yii"
             ],
-            "support": {
-                "source": "https://github.com/schmunk42/database-command/tree/0.8.10",
-                "issues": "https://github.com/schmunk42/database-command/issues"
+            "time": "2013-09-28 19:08:25"
+        },
+        {
+            "name": "twitter/bootstrap",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/giic.git",
+                "reference": "ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c"
             },
-            "time": "2013-04-24 15:22:11"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/giic/zipball/ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c",
+                "reference": "ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
+            "homepage": "http://twitter.github.com/bootstrap/",
+            "keywords": [
+                "bootstrap",
+                "css"
+            ],
+            "time": "2013-10-01 19:16:50"
         },
         {
             "name": "twitter/bootstrap",
@@ -1606,32 +2110,116 @@
                 "bootstrap",
                 "css"
             ],
-            "time": "2013-05-17 17:26:09"
+            "time": "2013-10-01 19:16:50"
+        },        {
+            "name": "thomaspark/bootswatch",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomaspark/bootswatch.git",
+                "reference": "a9aab510f11515c7dec294e7b24e838ff583e15a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thomaspark/bootswatch/archive/a9aab510f11515c7dec294e7b24e838ff583e15a.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library",
+            "description": "Themes for Twitter Bootstrap",
+            "homepage": "https://github.com/thomaspark/bootswatch"
+        },
+        {
+            "name": "twitter/bootstrap",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap.git",
+                "reference": "b4c4072679943773a7582daa63f545ba818fa627"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/twbs/bootstrap/archive/b4c4072679943773a7582daa63f545ba818fa627.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library",
+            "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
+            "homepage": "https://github.com/twbs/bootstrap"
         }
     ],
     "aliases": [
         {
-            "alias": "1.1.1",
-            "alias_normalized": "1.1.1.0",
+            "alias": "0.16.0",
+            "alias_normalized": "0.16.0.0",
             "version": "9999999-dev",
-            "package": "clevertech/yiibooster"
+            "package": "phundament/p3admin"
+        },
+        {
+            "alias": "0.17.0",
+            "alias_normalized": "0.17.0.0",
+            "version": "dev-develop",
+            "package": "phundament/p3extensions"
+        },
+        {
+            "alias": "0.22.0",
+            "alias_normalized": "0.22.0.0",
+            "version": "dev-develop",
+            "package": "phundament/p3bootstrap"
+        },
+        {
+            "alias": "0.17.0",
+            "alias_normalized": "0.17.0.0",
+            "version": "dev-release/0.17.0",
+            "package": "phundament/p3pages"
+        },
+        {
+            "alias": "0.16.0",
+            "alias_normalized": "0.16.0.0",
+            "version": "dev-develop",
+            "package": "phundament/p3media"
+        },
+        {
+            "alias": "0.16.0",
+            "alias_normalized": "0.16.0.0",
+            "version": "dev-develop",
+            "package": "phundament/p3widgets"
         },
         {
             "alias": "0.7.2.1",
             "alias_normalized": "0.7.2.1",
             "version": "9999999-dev",
             "package": "yiiext/migrate-command"
+        },
+        {
+            "alias": "0.6-dev",
+            "alias_normalized": "0.6.0.0-dev",
+            "version": "9999999-dev",
+            "package": "yiiext/status-behavior"
+        },
+        {
+            "alias": "0.13.0",
+            "alias_normalized": "0.13.0.0",
+            "version": "dev-develop",
+            "package": "phundament/gii-template-collection"
         }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
         "crisu83/yii-rights": 20,
-        "clevertech/yiibooster": 20,
+        "gusnips/yii-translate": 20,
         "malyshev/yii-debug-toolbar": 20,
+        "mikehaertl/packagecompressor": 20,
         "mishamx/yii-user": 20,
-        "schmunk42/ckeditor-configurator": 20,
         "phundament/backend-theme": 20,
         "phundament/jquery-file-upload": 20,
+        "phundament/p3admin": 20,
+        "phundament/p3extensions": 20,
+        "phundament/p3bootstrap": 20,
+        "phundament/p3pages": 20,
+        "phundament/p3media": 20,
+        "phundament/p3widgets": 20,
+        "schmunk42/ckeditor-configurator": 20,
         "waalzer/app-demo-data": 20,
         "yiiext/migrate-command": 20,
         "firstrow/stranslateablebehavior": 20,
@@ -1649,7 +2237,13 @@
         "mihanentalpo/yii-sql-migration-generator": 20,
         "codemix/hybridauthmanager": 20,
         "schmunk42/yii-sakila-crud": 20,
-        "phundament/lessii": 20
+        "yiiext/status-behavior": 20,
+        "schmunk42/access": 20,
+        "schmunk42/adjacency-list-behavior": 20,
+        "nordsoftware/yii-utils": 20,
+        "phundament/gii-template-collection": 20,
+        "phundament/lessii": 20,
+        "schmunk42/giic": 20
     },
     "platform": {
         "php": ">=5.4.0"

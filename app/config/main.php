@@ -16,8 +16,15 @@ $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' 
 $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SERVER['SCRIPT_NAME']) == '\\') ? '' :
     dirname($_SERVER['SCRIPT_NAME']);
 
+$languages = array(
+    'en' => 'English',
+    'de' => 'Deutsch',
+    'lv' => 'Latviešu',
+    'ru' => 'Русский',
+);
+
 // main application configuration
-$mainConfig = array(
+return array(
     'basePath'   => $applicationDirectory,
     'name'       => 'Company Inc.',
     'theme'      => 'frontend', // theme is copied eg. from vendor/p3bootstrap
@@ -34,7 +41,6 @@ $mainConfig = array(
         'vendor'                               => $applicationDirectory . '/../vendor',
         // componentns
         'bootstrap'                            => 'vendor.clevertech.yiibooster.src',
-        'editable'                             => 'vendor.vitalets.x-editable-yii',
         // p3widgets
         'jsonEditorView'                       => 'vendor.phundament.p3extensions.widgets.jsonEditorView',
         'ckeditor'                             => 'vendor.phundament.p3extensions.widgets.ckeditor',
@@ -60,16 +66,26 @@ $mainConfig = array(
         'vendor.phundament.p3extensions.helpers.*', // shared classes - P3StringHelper
         'vendor.phundament.p3extensions.validators.*', // shared classes - P3StringHelper
         'vendor.phundament.p3pages.models.*', // Meta description and keywords (P3Media)
-        'vendor.phundament.p3media.models.*',
+        'vendor.phundament.p3media.models.*', // Meta description and keywords (P3Media)
+        'vendor.phundament.p3extensions.widgets.ckeditor.*', // shared classes
         // imports for components from packages, which do not support composer autoloading
         'vendor.mishamx.yii-user.models.*', // User Model
         'vendor.crisu83.yii-rights.components.*', // RWebUser
         'vendor.yiiext.fancybox-widget.*', // Fancybox Widget
         'vendor.clevertech.yiibooster.src.widgets.*', //
         'vendor.anggiaj.eselect2.*',
-        'editable.*', // Include X-Editable for Yii classes
         'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior',
         'vendor.schmunk42.relation.widgets.GtcRelation',
+        'vendor.sammaye.auditrail2.models.AuditTrail', //
+        'vendor.bwoester.yii-static-events-component.*',
+        'vendor.bwoester.yii-event-interceptor.*',
+    ),
+    'behaviors'  => array(
+        // attach EventBridgeBehavior to application, so we can attach to
+        // application events on a per class base.
+        'eventBridge' => array(
+            'class' => 'EventBridgeBehavior',
+        ),
     ),
     'modules'    => array(
         // backend for ckeditor styles and templates
@@ -102,7 +118,7 @@ $mainConfig = array(
                 'protectedRuntimePath' => 'runtime/p3media',
                 'presets'              => array(
                     'large'            => array(
-                        'name'     => 'Large 1600px',
+                        'name'     => 'Large JPG 1600px',
                         'commands' => array(
                             'resize'  => array(1600, 1600, 2), // Image::AUTO
                             'quality' => '85',
@@ -110,49 +126,49 @@ $mainConfig = array(
                         'type'     => 'jpg',
                     ),
                     'medium'           => array(
-                        'name'     => 'Medium 800px',
+                        'name'     => 'Medium PNG 800px',
                         'commands' => array(
                             'resize'  => array(800, 800, 2), // Image::AUTO
                             'quality' => '85',
                         ),
-                        'type'     => 'jpg',
+                        'type'     => 'png',
                     ),
                     'medium-crop'      => array(
-                        'name'     => 'Medium cropped 800x600px',
+                        'name'     => 'Medium PNG cropped 800x600px',
                         'commands' => array(
                             'resize'  => array(800, 600, 7), // crop
                             'quality' => '85',
                         ),
-                        'type'     => 'jpg',
+                        'type'     => 'png',
                     ),
                     'small'            => array(
-                        'name'     => 'Small 400px',
+                        'name'     => 'Small PNG 400px',
                         'commands' => array(
                             'resize'  => array(400, 400, 2), // Image::AUTO
                             'quality' => '85',
                         ),
-                        'type'     => 'jpg',
+                        'type'     => 'png',
                     ),
                     'icon-32'          => array(
-                        'name'     => 'Icon 32x32',
+                        'name'     => 'Icon PNG 32x32',
                         'commands' => array(
                             'resize' => array(32, 32),
                         ),
                         'type'     => 'png'
                     ),
-                    'original'         => array(
-                        'name'         => 'Original File',
-                        'originalFile' => true,
-                    ),
-                    'original-public'  => array(
-                        'name'         => 'Original File Public',
-                        'originalFile' => true,
-                        'savePublic'   => true,
-                    ),
                     'download'         => array(
                         'name'         => 'Download File',
                         'originalFile' => true,
                         'attachment'   => true,
+                    ),
+                    'original'         => array(
+                        //'name'         => 'Original File', // uncomment name to enable preset in dropdowns
+                        'originalFile' => true,
+                    ),
+                    'original-public'  => array(
+                        //'name'         => 'Original File Public',
+                        'originalFile' => true,
+                        'savePublic'   => true,
                     ),
                     'p3media-ckbrowse' => array(
                         'commands' => array(
@@ -200,8 +216,12 @@ $mainConfig = array(
             #'superuserName' => 'admin'
         ),
         'user'                 => array(
-            'class'               => 'vendor.mishamx.yii-user.UserModule',
-            'activeAfterRegister' => false,
+            'class'                => 'vendor.mishamx.yii-user.UserModule',
+            'activeAfterRegister'  => false,
+            'customMessageCatalog' => 'UserModule.user' // disable fallback catalog
+        ),
+        'translate'            => array(
+            'class' => 'vendor.gusnips.yii-translate.TranslateModule',
         ),
     ),
     // application components
@@ -213,21 +233,71 @@ $mainConfig = array(
             // see correspoing business rules, note: superusers always get checkAcess == true
         ),
         'bootstrap'     => array(
-            'class'         => 'vendor.clevertech.yiibooster.src.components.Bootstrap',
-            'coreCss'       => true, // whether to register any CSS at all, defaults to true
-            'bootstrapCss'  => false, // use csutom css from theme
-            'jqueryCss'     => false, // use csutom css from theme
-            'responsiveCss' => false, // use csutom css from theme
+            'class'          => 'vendor.clevertech.yiibooster.src.components.Bootstrap',
+            'coreCss'        => true, // whether to register any CSS at all, defaults to true
+            'bootstrapCss'   => false, // use csutom css from theme
+            'responsiveCss'  => false, // use csutom css from theme
+            'jqueryCss'      => true, // use csutom css from theme
+            'fontAwesomeCss' => true,
             // whether to register the Bootstrap responsive CSS (bootstrap-responsive.min.css), default to false
-            'plugins'       => array(),
+            'plugins'        => array(),
         ),
         'cache'         => array(
             'class' => 'CDummyCache',
+        ),
+        'clientScript'  => array(
+            'class'              => 'vendor.mikehaertl.packagecompressor.PackageCompressor',
+            'coreScriptPosition' => 0, // HEAD
+            'enableCompression'  => false, // enable to activate component
+            'combineOnly'        => true, // set to false on production systems
+            'rewriteCssUris'     => true,
+            'blockedScripts'     => array(
+                'jquery.fancybox-1.3.4.js',
+                'jquery.fancybox-1.3.4.css',
+            ),
+            'packages'           => array(
+                'fancybox' => array(
+                    'basePath' => 'vendor.yiiext.fancybox-widget.assets',
+                    'depends'  => array(
+                        'jquery',
+                    ),
+                    'js'       => array(
+                        'jquery.fancybox-1.3.4.js',
+                    ),
+                    'css'      => array(
+                        'jquery.fancybox-1.3.4.css',
+                    )
+                ),
+                'frontend' => array(
+                    'basePath' => 'application.themes.frontend.assets',
+                    'depends'  => array(
+                        'jquery',
+                        'jquery.ui',
+                        'bbq',
+                        'bootstrap.js',
+                        'bootbox',
+                        'notify',
+                        'jquery-css',
+                        'bootstrap-yii',
+                        'font-awesome',
+                        'cookie',
+                        'jquery',
+                        'fancybox',
+                    ),
+                    /*'js'      => array(
+                        'js/app.js',
+                    ),*/
+                    'css'      => array(
+                        'p3.css',
+                    )
+                ),
+            )
         ),
         'db'            => array(
             'tablePrefix'      => '',
             // SQLite
             'connectionString' => 'sqlite:' . $applicationDirectory . '/data/default.db',
+            #'initSQLs'=>array('PRAGMA foreign_keys = ON'),
             // MySQL
             #'connectionString' => 'mysql:host=localhost;dbname=p3',
             #'emulatePrepare' => true,
@@ -235,19 +305,42 @@ $mainConfig = array(
             #'password' => 'test',
             #'charset' => 'utf8',
         ),
-        //X-editable config
-        'editable'      => array(
-            'class'    => 'editable.EditableConfig',
-            'form'     => 'bootstrap',
-            'mode'     => 'popup',
-            'defaults' => array(
-                'emptytext' => 'Click to edit',
-                //'ajaxOptions' => array('dataType' => 'json') //useful for json exchange with server
-            )
+        'dbTest'        => array(
+            // MySQL
+            'class'            => 'CDbConnection',
+            'tablePrefix'      => '',
+            'connectionString' => 'sqlite:' . $applicationDirectory . '/data/test.db',
         ),
         'errorHandler'  => array(
             // use 'site/error' action to display errors
             'errorAction' => 'site/error',
+        ),
+        'events'        => array(
+            'class'  => 'EventRegistry',
+            'attach' => array(
+                // eg. set default access fields in models with event-bridge behavior
+                'P3Widget' => array(
+                    'onAfterConstruct' => array(
+                        function ($event) {
+                            //$event->sender->access_delete = 'Editor';
+                        },
+                    ),
+                ),
+                'P3Page'   => array(
+                    'onAfterConstruct' => array(
+                        function ($event) {
+
+                        },
+                    ),
+                ),
+                'P3Media'  => array(
+                    'onAfterConstruct' => array(
+                        function ($event) {
+
+                        },
+                    ),
+                ),
+            ),
         ),
         'image'         => array(
             'class'  => 'vendor.phundament.p3extensions.components.image.CImageComponent',
@@ -259,7 +352,7 @@ $mainConfig = array(
         ),
         'langHandler'   => array(
             'class'     => 'vendor.phundament.p3extensions.components.P3LangHandler',
-            //'languages' => array('en', 'de') // available languages 'ru', 'fr'
+            'languages' => array_keys($languages), // available languages, eg. 'lv', 'ru', 'fr'
         ),
         'log'           => array(
             'class'  => 'CLogRouter',
@@ -269,6 +362,17 @@ $mainConfig = array(
                     'levels' => 'error, warning',
                 ),
             ),
+        ),
+        'messages'      => array(
+            'class' => 'CDbMessageSource',
+            //'onMissingTranslation'  => configured in env-development.php,
+        ),
+        'translate'     => array(
+            'class'                  => 'vendor.gusnips.yii-translate.components.MPTranslate',
+            //any avaliable options here
+            'autoSetLanguage'        => false,
+            'useApplicationLanguage' => true,
+            'acceptedLanguages'      => $languages,
         ),
         'themeManager'  => array(
             'class'    => 'vendor.schmunk42.multi-theme.EMultiThemeManager',
@@ -310,6 +414,7 @@ $mainConfig = array(
                 '^([^/]*)/translate(.*)' => 'frontend',
                 '^([^/]*)/author(.*)' => 'frontend',
                 '^site/giiscript' => 'backend2',
+                '^translate/(.*)'            => 'backend2',
                 '^(.*)' => 'frontend',
             )
         ),
@@ -324,13 +429,15 @@ $mainConfig = array(
                 '<lang:[a-z]{2}(_[a-z]{2})?>/go/<id:\d+>'                  => 'node/go',
 
                 // backend
-                'phundament'                             => 'p3admin/default/index',
+                'phundament' => 'p3admin/default/index',
+
                 // standard login page URL
-                '<lang:[a-z]{2}(_[a-z]{2})?>/site/login' => 'user/login',
-                'site/login'                             => 'user/login',
+                //'<lang:[a-z]{2}(_[a-z]{2})?>/site/login' => 'user/login',
+                //'site/login'                             => 'user/login',
+
                 // p3pages - SEO
                 '<lang:[a-z]{2}(_[a-z]{2})?>/<pageName:[a-zA-Z0-9-._]*>-<pageId:\d+>.html'
-                                                         => 'p3pages/default/page',
+                             => 'p3pages/default/page',
                 // p3media - SEO
                 '<lang:[a-z]{2}(_[a-z]{2})?>/img/<preset:[a-zA-Z0-9-._]+>/<title:.+>_<id:\d+><extension:.[a-zA-Z0-9]{1,}+>'
                                                                => 'p3media/file/image',
@@ -366,11 +473,9 @@ $mainConfig = array(
     // using Yii::app()->params['paramName']
     'params'     => array(
         // this is used in contact page
-        'adminEmail'                => 'webmaster@example.com',
-        // global Phundament 3 parameters
-        'P3Page.fallbackLanguage'   => 'en', // defaults to 'en'
-        'P3Widget.fallbackLanguage' => 'en', // defaults to 'en'
-        'ext.ckeditor.options'      => array(
+        'adminEmail'           => 'webmaster@example.com',
+        'languages'            => $languages,
+        'ext.ckeditor.options' => array(
             'type'                            => 'fckeditor',
             'height'                          => 400,
             'filebrowserWindowWidth'          => '990',
@@ -422,35 +527,24 @@ $mainConfig = array(
             'shiftEnterMode'                  => 2,
             'fillEmptyBlocks'                 => false,
             // do not insert &nbsp; into empty blocks
-            'contentsCss'                     => $baseUrl . '/assets/e3ecaab1/ckeditor/ckeditor.css', // path is hashed by name
+            'contentsCss'                     => $baseUrl . '/assets/e3ecaab1/ckeditor/ckeditor.css',
+            // path is hashed by name
             'bodyId'                          => 'ckeditor',
             'bodyClass'                       => 'ckeditor',
             /* Assets will be published with publishAsset() */
             'templates_files'                 => array($baseUrl . '/index.php?r=ckeditorConfigurator/default/cktemplates'),
             'stylesCombo_stylesSet'           => 'my_styles:' . $baseUrl . '/index.php?r=ckeditorConfigurator/default/ckstyles',
-            /* Standard-way to specify URLs - deprecated */
-            /*'filebrowserBrowseUrl' => '/p3media/ckeditor',
-              'filebrowserImageBrowseUrl' => '/p3media/ckeditor/image',
-              'filebrowserFlashBrowseUrl' => '/p3media/ckeditor/flash',
-              'filebrowserUploadUrl' => $baseUrl . '/p3media/import/ckeditorUpload',*/
             /* URLs will be parsed with createUrl() */
             'filebrowserBrowseCreateUrl'      => array('/p3media/ckeditor'),
             'filebrowserImageBrowseCreateUrl' => array('/p3media/ckeditor/image'),
             'filebrowserFlashBrowseCreateUrl' => array('/p3media/ckeditor/flash'),
             'filebrowserUploadCreateUrl'      => array('/p3media/import/ckeditorUpload'),
         ),
-        'ext.ckeditor.dtd' => array(
+        'ext.ckeditor.dtd'     => array(
             '$removeEmpty' => array(
                 'span' => 0,
-                'i' => 0
+                'i'    => 0
             ),
         ),
     ),
 );
-
-
-if (is_file($localConfigFile)) {
-    return CMap::mergeArray($mainConfig, require($localConfigFile));
-} else {
-    return $mainConfig;
-}
