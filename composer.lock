@@ -54,25 +54,6 @@
             "homepage": "https://github.com/bwoester/yii-event-interceptor"
         },
         {
-            "name": "clevertech/yiibooster",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/clevertech/YiiBooster.git",
-                "reference": "3b3f02ca"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/clevertech/YiiBooster/archive/bd6b4d6840db4fcc3a1ccede51f0d03b16a9fe63.zip",
-                "reference": "3b3f02ca",
-                "shasum": null
-            },
-            "type": "yii-extension",
-            "description": "YiiBooster",
-            "homepage": "https://github.com/clevertech/YiiBooster",
-            "time": "2013-07-29 18:56:00"
-        },
-        {
             "name": "codemix/hybridauthmanager",
             "version": "dev-master",
             "source": {
@@ -111,24 +92,6 @@
             "time": "2013-08-22 19:12:29"
         },
         {
-            "name": "crisu83/yii-rights",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmunk42/yii-rights.git",
-                "reference": "4f2ccb66378e1e5bf37deae34635fe68bf057faa"
-            },
-            "type": "library",
-            "authors": [
-                {
-                    "name": "Tobias Munk",
-                    "email": "schmunk@usrbin.de"
-                }
-            ],
-            "description": "Yii Rights module",
-            "time": "2013-10-11 09:20:14"
-        },
-        {
             "name": "bwoester/yii-static-events-component",
             "version": "1.0.1",
             "source": {
@@ -163,6 +126,24 @@
             "type": "yii-extension",
             "description": "YiiBooster",
             "homepage": "https://github.com/clevertech/YiiBooster"
+        },
+        {
+            "name": "crisu83/yii-rights",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/yii-rights.git",
+                "reference": "4f2ccb66378e1e5bf37deae34635fe68bf057faa"
+            },
+            "type": "library",
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de"
+                }
+            ],
+            "description": "Yii Rights module",
+            "time": "2013-10-11 09:20:14"
         },
         {
             "name": "gusnips/yii-translate",
@@ -1239,46 +1220,6 @@
             "time": "2013-09-28 19:09:28"
         },
         {
-            "name": "schmunk42/giic",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmunk42/giic.git",
-                "reference": "1bfcf26de3c0ed5f1a50ded7c2321ac135f8c90f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/giic/zipball/1bfcf26de3c0ed5f1a50ded7c2321ac135f8c90f",
-                "reference": "1bfcf26de3c0ed5f1a50ded7c2321ac135f8c90f",
-                "shasum": ""
-            },
-            "require": {
-                "ext-xsl": "*",
-                "php": ">=5.3.0",
-                "yiisoft/yii": ">=1.1.12,<2.0"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Munk",
-                    "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
-                }
-            ],
-            "description": "Toolset for running Gii on the command line",
-            "homepage": "https://github.com/schmunk42/giic",
-            "keywords": [
-                "cli",
-                "gii",
-                "yii"
-            ],
-            "time": "2013-08-19 19:07:09"
-        },
-        {
             "name": "schmunk42/multi-theme",
             "version": "0.1.1",
             "source": {
@@ -1332,6 +1273,35 @@
                 "reference": "c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de",
                 "shasum": ""
             },
+            "require": {
+                "php": ">=5.3.0",
+                "yiisoft/yii": "1.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "behaviors/",
+                    "widgets/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "description": "Yii Framework components for active record relations",
+            "keywords": [
+                "active",
+                "record",
+                "relations",
+                "yii"
+            ],
             "time": "2013-08-23 14:56:11"
         },
         {
@@ -2059,8 +2029,8 @@
             "time": "2013-09-28 19:08:25"
         },
         {
-            "name": "twitter/bootstrap",
-            "version": "v2.3.2",
+            "name": "schmunk42/giic",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/giic.git",
@@ -2072,43 +2042,29 @@
                 "reference": "ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c",
                 "shasum": ""
             },
+            "require": {
+                "ext-xsl": "*",
+                "php": ">=5.3.0",
+                "yiisoft/yii": ">=1.1.12,<2.0"
+            },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache-2.0"
+                "BSD-3-Clause"
             ],
-            "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
-            "homepage": "http://twitter.github.com/bootstrap/",
-            "keywords": [
-                "bootstrap",
-                "css"
-            ],
-            "time": "2013-10-01 19:16:50"
-        },
+            "authors": [
         {
-            "name": "twitter/bootstrap",
-            "version": "v2.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twitter/bootstrap.git",
-                "reference": "v2.3.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twitter/bootstrap/zipball/v2.3.2",
-                "reference": "v2.3.2",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
             ],
-            "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
-            "homepage": "http://twitter.github.com/bootstrap/",
+            "description": "Toolset for running Gii on the command line",
+            "homepage": "https://github.com/schmunk42/giic",
             "keywords": [
-                "bootstrap",
-                "css"
+                "cli",
+                "gii",
+                "yii"
             ],
             "time": "2013-10-01 19:16:50"
         },        {
