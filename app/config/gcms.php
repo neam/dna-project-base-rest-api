@@ -65,6 +65,21 @@ $gcmsConfig = array(
                 'bootstrap.gii', // bootstrap generator
             ),
         ),
+        'p3media' => array(
+            'params' => array(
+                'presets' => array(
+                    'select2-thumb' => array(
+                        'name' => 'Select2 Thumbnail',
+                        'commands' => array(
+                            'resize' => array(150, 80, 7), // Image::AUTO
+                            'quality' => '85',
+                        ),
+                        'type' => 'jpg',
+                    ),
+
+                ),
+            ),
+        ),
     ),
     'components' => array(
         'urlManager' => array(
