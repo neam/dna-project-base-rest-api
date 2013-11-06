@@ -33,7 +33,7 @@ $consoleConfig = array(
     'import' => array_merge($mainConfig['import'], array(
         'application.commands.components.*',
     )),
-    'components' => CMap::mergeArray(
+    'components' => array_merge(
         $mainConfig['components'],
         array()
     ),
@@ -121,7 +121,7 @@ $consoleConfig = array(
             'themeName' => 'backend2',
         ),
     ),
-    'params' => CMap::mergeArray(
+    'params' => array_merge(
         $mainConfig['params'],
         array(
         'composer.callbacks' => array(
@@ -149,3 +149,5 @@ $consoleConfig = array(
         ),
     )),
 );
+
+return $consoleConfig;
