@@ -1,5 +1,6 @@
 <?php
-$actionCaption = Yii::t('crud', 'Proofread');
+$workflowCaption = Yii::t('app', 'QA');
+$actionCaption = Yii::t('app', 'Proofread');
 
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)

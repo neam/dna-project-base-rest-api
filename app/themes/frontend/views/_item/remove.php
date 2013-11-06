@@ -1,5 +1,6 @@
 <?php
-$actionCaption = Yii::t('crud', 'Remove');
+$workflowCaption = Yii::t('app', 'Other actions');
+$actionCaption = Yii::t('app', 'Remove');
 
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)

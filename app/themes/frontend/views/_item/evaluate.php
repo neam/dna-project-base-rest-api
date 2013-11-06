@@ -1,15 +1,16 @@
 <?php
-$workflowCaption = Yii::t('crud', 'Evaluate');
+$workflowCaption = Yii::t('app', 'Other actions');
+$actionCaption = Yii::t('app', 'Evaluate');
 
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . $workflowCaption
+    . $actionCaption
 );
 
 $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = $workflowCaption;
+$this->breadcrumbs[] = $actionCaption;
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
@@ -74,7 +75,7 @@ $this->breadcrumbs[] = $workflowCaption;
         <div class="row-fluid">
             <div class="span9">
 
-                <h2><?php print $workflowCaption; ?>
+                <h2><?php print $actionCaption; ?>
                     <small></small>
                 </h2>
 

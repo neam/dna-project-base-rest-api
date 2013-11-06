@@ -1,5 +1,6 @@
 <?php
-$actionCaption = Yii::t('crud', 'Mark as previewable');
+$workflowCaption = Yii::t('app', 'QA');
+$actionCaption = Yii::t('app', 'Mark as previewable');
 
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)

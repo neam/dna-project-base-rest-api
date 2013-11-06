@@ -1,5 +1,5 @@
 <?php
-$workflowCaption = Yii::t('crud', 'Edit');
+$workflowCaption = Yii::t('app', 'Edit');
 
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
