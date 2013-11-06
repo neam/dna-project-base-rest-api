@@ -82,11 +82,6 @@ EOD;
             $task = $auth->createTask($prefix . 'Item.ReplaceNonPublic', 'Remove an item that is not public', $bizRule);
             $task->addChild($prefix . 'Item.Replace');
 
-            // Language-dependent
-            $bizRule = 'return in_array(Yii::app()->language, Yii::app()->user->languages);'; // todo: make this work
-            $task = $auth->createTask($prefix . 'Item.TranslateIntoSpokenLanguage', 'Translate current language', $bizRule);
-            $task->addChild($prefix . 'Item.Translate');
-
             // Roles has the right to perform one or many tasks and operations
             $role = $auth->createRole($prefix . 'Creator');
             $role->addChild($prefix . 'Item.Add');
@@ -116,7 +111,7 @@ EOD;
             $role->addChild($prefix . 'Item.ProofRead');
 
             $role = $auth->createRole($prefix . 'Translator');
-            $role->addChild($prefix . 'Item.TranslateIntoSpokenLanguage');
+            $role->addChild($prefix . 'Item.Translate');
 
             $role = $auth->createRole($prefix . 'Publisher');
             $role->addChild($prefix . 'Item.Publish');

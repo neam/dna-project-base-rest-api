@@ -358,32 +358,8 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
+        $this->render('/_item/translate', array('model' => $model));
 
-        // Do not show translation tools if we are browsing the site in the sourceLanguage
-        if (Yii::app()->sourceLanguage == $_GET['lang']) {
-            $this->render('translate/choose_language', array('model' => $model,));
-            return;
-        }
-
-        // Check and redirect depending on current workflow execution status
-        $execution = Yii::app()->ezc->getWorkflowDatabaseExecution((int) $model->translation_workflow_execution_id);
-        $waitingFor = $execution->getWaitingFor();
-
-        if (isset($waitingFor["continue_from_approved_for_translation"])) {
-            $this->redirect(array('author', 'id' => $model->id));
-            return;
-        }
-        if (isset($waitingFor["continue_from_write_subtitles"])) {
-            $this->redirect(array('translateSubtitles', 'id' => $model->id));
-            return;
-        }
-        if (isset($waitingFor["continue_from_translate_title_and_about"])) {
-            $this->redirect(array('translateTitleAndAbout', 'id' => $model->id));
-            return;
-        }
-
-        // A temporary debug page
-        $this->render('translate', array('model' => $model, 'execution' => $execution));
     }
 
     private function removeEdges($edgeid)
