@@ -119,6 +119,7 @@ $gcmsConfig = array(
                 'de',
             )
         ),
+        /*
         'messages' => array(
             'class' => 'P3PhpMessageSource',
             'mappings' => array(
@@ -130,6 +131,7 @@ $gcmsConfig = array(
                 'sv_se' => 'sv',
             )
         ),
+        */
         'authManager' => array(
             'class' => 'CPhpAuthManager',
             'authFile' => Yii::getPathOfAlias('backend') . '/app/data/auth-gcms.php',

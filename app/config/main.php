@@ -24,7 +24,7 @@ $languages = array(
 );
 
 // main application configuration
-return array(
+$mainConfig = array(
     'basePath'   => $applicationDirectory,
     'name'       => 'Company Inc.',
     'theme'      => 'frontend', // theme is copied eg. from vendor/p3bootstrap
@@ -80,6 +80,7 @@ return array(
         'vendor.bwoester.yii-static-events-component.*',
         'vendor.bwoester.yii-event-interceptor.*',
     ),
+    /*
     'behaviors'  => array(
         // attach EventBridgeBehavior to application, so we can attach to
         // application events on a per class base.
@@ -87,6 +88,7 @@ return array(
             'class' => 'EventBridgeBehavior',
         ),
     ),
+    */
     'modules'    => array(
         // backend for ckeditor styles and templates
         'ckeditorConfigurator' => array(

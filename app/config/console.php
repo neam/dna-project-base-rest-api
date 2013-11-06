@@ -19,25 +19,17 @@ $webappCommand = array(
 
 $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
 
-// merge compnents and modules from main config
-$mainConfig = require('main.php');
-
 $consoleConfig = array(
-    'aliases' => array_merge($mainConfig['aliases'], array(
+    'aliases' => array(
         'vendor'  => $applicationDirectory . '/../vendor',
         'webroot' => $applicationDirectory . '/../www',
         'gii-template-collection'              => 'vendor.phundament.gii-template-collection', // TODO
-    )),
+    ),
     'basePath'   => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name'       => 'Phundament Console Application',
-    'import' => array_merge($mainConfig['import'], array(
+    'import' => array(
         'application.commands.components.*',
-    )),
-    'components' => array_merge(
-        $mainConfig['components'],
-        array()
     ),
-    'modules'    => $mainConfig['modules'],
     'commandMap' => array(
         // dev command
         'database'      => array(
@@ -121,9 +113,7 @@ $consoleConfig = array(
             'themeName' => 'backend2',
         ),
     ),
-    'params' => array_merge(
-        $mainConfig['params'],
-        array(
+    'params' => array(
         'composer.callbacks' => array(
             // command and args for Yii command runner
             'yiisoft/yii-install'              => $webappCommand,
@@ -147,7 +137,7 @@ $consoleConfig = array(
             #                                      ),
             #'post-update'                      => array('yiic', 'migrate', '--interactive=1'),
         ),
-    )),
+    ),
 );
 
 return $consoleConfig;

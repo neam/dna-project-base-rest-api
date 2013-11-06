@@ -1,7 +1,14 @@
 <?php
 
-// config files
 $dir     = realpath(dirname(__FILE__) . '/..') . '/';
+
+// register composer autoloader
+require_once(dirname(__FILE__) . '/../vendor/autoload.php');
+
+// load Yii
+require_once($dir . 'vendor/yiisoft/yii/framework/yii.php');
+
+// config files
 $console = require($dir . 'app/config/console.php');
 $main    = require($dir . 'app/config/main.php');
 $local   = array();
@@ -16,12 +23,6 @@ if (is_file($localFileName)) {
         $env = require($envFileName);
     }
 }
-
-// register composer autoloader
-require_once(dirname(__FILE__) . '/../vendor/autoload.php');
-
-// load Yii
-require_once($dir . 'vendor/yiisoft/yii/framework/yii.php');
 
 $webConfig = CMap::mergeArray($main, $env, $local);
 
