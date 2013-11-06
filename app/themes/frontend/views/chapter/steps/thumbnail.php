@@ -3,7 +3,8 @@
     .select2-container .select2-choice {
         display: block;
         height: 130px;
-        width: 300px;
+        min-width: 200px;
+        max-width: 400px;
     }
 
     .select2-result-selectable {
@@ -33,10 +34,14 @@ Yii::app()->bootstrap->registerAssetJs('../select2/select2.js');
 
 $baseUrl = Yii::app()->request->baseUrl;
 
+$noneLabel = Yii::t('app', 'None');
+$chooseBelowLabel = Yii::t('app', 'Click to choose existing or upload new below');
+
 $select2js = <<<EOF
 
 function format(state) {
-    if (!state.id) return state.text; // optgroup
+    if (!state.id && !state.text) return "<div class='select2-text'>{$noneLabel} - {$chooseBelowLabel}</div>";
+    if (!state.id) return state.text;
     return "<div><img class='select2-thumb' src='{$baseUrl}/p3media/file/image?preset=select2-thumb&id=" + state.id.toLowerCase() + "'/></div><div class='select2-text'>" + state.text + "</div>";
 }
 
@@ -66,7 +71,7 @@ $input = $this->widget(
         'relation' => 'thumbnailMedia',
         'fields' => 'itemLabel',
         'criteria' => $criteria,
-        'allowEmpty' => true,
+        'allowEmpty' => $noneLabel,
         'style' => 'dropdownlist',
         'htmlOptions' => array(
             'checkAll' => 'all'
