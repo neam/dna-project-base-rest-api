@@ -45,7 +45,7 @@ return array(
                 array(
                     'class'     => 'vendor.malyshev.yii-debug-toolbar.yii-debug-toolbar.YiiDebugToolbarRoute',
                     'ipFilters' => array('127.0.0.1'),
-                    'enabled'   => true,
+                    'enabled'   => DEV,
                 ),
                 // file logging
                 array(
