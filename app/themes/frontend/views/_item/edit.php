@@ -16,7 +16,8 @@ $this->breadcrumbs[] = Yii::t('crud', 'Continue Authoring');
     <div class="span12">
 
         <h1>
-            <?php echo(empty($model->title) ? Yii::t('model', 'Chapter') . " #" . $model->id : $model->title); ?>
+            <?php echo $workflowCaption; ?>
+            - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
             <small>vX</small>
 
             <div class="btn-group">

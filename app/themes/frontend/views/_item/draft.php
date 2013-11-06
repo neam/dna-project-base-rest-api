@@ -17,7 +17,7 @@ $this->breadcrumbs[] = $stepCaption;
     <div class="span12">
 
         <h1>
-            <?php echo Yii::t('app', 'Create Draft'); ?>
+            <?php echo $workflowCaption; ?>
             - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
             <small>vX</small>
 
