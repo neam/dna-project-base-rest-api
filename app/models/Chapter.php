@@ -74,7 +74,7 @@ class Chapter extends BaseChapter
                 array('thumbnail', 'validateThumbnail', 'on' => 'public'),
                 array('about', 'length', 'min' => 10, 'max' => 200),
                 array('videos', 'validateVideo', 'on' => 'public'),
-                array('teachers_guide', 'length', 'min' => 150, 'max' => 400),
+                //array('teachers_guide', 'length', 'min' => 150, 'max' => 400), // currently not keeping constraints on html fields until further notice
                 array('exercises', 'validateExercises', 'on' => 'public'),
                 array('snapshots', 'validateSnapshots', 'on' => 'public'),
                 array('credits', 'length', 'min' => 1, 'max' => 200),
