@@ -48,7 +48,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     </div>
     <div class="modal-footer">
         <a href="#" class="btn" data-toggle="modal"
-           data-target="#<?php echo $formId; ?>-modal"><?php print Yii::t('app', 'Save'); ?></a>
+           data-target="#<?php echo $formId; ?>-modal"><?php print Yii::t('app', 'Close'); ?></a>
     </div>
 
 <?php

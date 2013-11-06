@@ -13,7 +13,7 @@ if (!isset($_GET['parent_form'])) {
         <?php echo Yii::t('app', 'Click Start upload'); ?>
     </li>
     <li>
-        <?php echo Yii::t('app', 'When upload has been completed, click Save to return to the previous form'); ?>
+        <?php echo Yii::t('app', 'When upload has been completed, click Close to return to the previous form'); ?>
     </li>
 </ol>
 
