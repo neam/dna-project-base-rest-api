@@ -1,13 +1,15 @@
 <?php
+$workflowCaption = Yii::t('crud', 'Edit');
+
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Edit')
+    . $workflowCaption
 );
 
 $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Edit');
+$this->breadcrumbs[] = $workflowCaption;
 $this->breadcrumbs[] = $stepCaption;
 ?>
 

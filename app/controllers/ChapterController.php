@@ -88,8 +88,7 @@ class ChapterController extends Controller
         $this->scenario = "step_title";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Create Draft');
-        $this->render('/_item/draft', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+        $this->render('/_item/draft', array('model' => $model, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
     }
 
     public function actionPrepPreshow($id)
@@ -143,8 +142,7 @@ class ChapterController extends Controller
         $this->scenario = "step_title";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
     }
 
     public function actionPrepPublishThumbnail($id)
@@ -152,8 +150,7 @@ class ChapterController extends Controller
         $this->scenario = "step_thumbnail";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
     }
 
     public function actionPrepPublishAbout($id)
@@ -161,8 +158,7 @@ class ChapterController extends Controller
         $this->scenario = "step_about";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
     }
 
     public function actionPrepPublishExercises($id)
@@ -170,8 +166,7 @@ class ChapterController extends Controller
         $this->scenario = "step_exercises";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'exercises', 'stepCaption' => $stepCaptions['exercises']));
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'exercises', 'stepCaption' => $stepCaptions['exercises']));
     }
 
     public function actionPrepPublishTeachersGuide($id)
@@ -179,8 +174,7 @@ class ChapterController extends Controller
         $this->scenario = "step_teachers_guide";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'teachers_guide', 'stepCaption' => $stepCaptions['teachers_guide']));
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'teachers_guide', 'stepCaption' => $stepCaptions['teachers_guide']));
     }
 
     public function actionPrepPublishVideos($id)
@@ -188,8 +182,7 @@ class ChapterController extends Controller
         $this->scenario = "step_videos";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'videos', 'stepCaption' => $stepCaptions['videos']));
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'videos', 'stepCaption' => $stepCaptions['videos']));
     }
 
     public function actionEdit($id){

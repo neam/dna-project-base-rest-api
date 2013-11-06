@@ -1,13 +1,15 @@
 <?php
+$workflowCaption = Yii::t('app', 'Prepare for publishing');
+
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Draft')
+    . $workflowCaption
 );
 
 $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Prepare for publishing');
+$this->breadcrumbs[] = $workflowCaption;
 $this->breadcrumbs[] = $stepCaption;
 ?>
 

@@ -89,8 +89,7 @@ class SnapshotController extends Controller
         $this->scenario = "step_slug";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Create draft');
-        $this->render('/_item/draft', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
+        $this->render('/_item/draft', array('model' => $model, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
     }
 
     public function actionPrepPreshow($id)
@@ -109,8 +108,7 @@ class SnapshotController extends Controller
         $this->scenario = "step_slug";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for preview');
-        $this->render('/_item/preppreshow', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
+        $this->render('/_item/preppreshow', array('model' => $model, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
     }
 
     public function actionPrepPublish($id)
@@ -129,8 +127,7 @@ class SnapshotController extends Controller
         $this->scenario = "step_slug";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publish');
-        $this->render('/_item/preppreshow', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
+        $this->render('/_item/preppreshow', array('model' => $model, 'step' => 'slug', 'stepCaption' => $stepCaptions['link']));
     }
 
     public function actionEdit($id){
@@ -198,8 +195,7 @@ class SnapshotController extends Controller
         $this->scenario = "step_slug";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Edit');
-        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
     }
 
     public function actionEditTitle($id)
@@ -207,8 +203,7 @@ class SnapshotController extends Controller
         $this->scenario = "step_title";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Edit');
-        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
     }
 
     public function actionEditAbout($id)
@@ -216,8 +211,7 @@ class SnapshotController extends Controller
         $this->scenario = "step_about";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Edit');
-        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
     }
 
     /*
@@ -226,8 +220,7 @@ class SnapshotController extends Controller
         $this->scenario = "step_thumbnail";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Edit');
-        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
     }
     */
 
@@ -236,8 +229,7 @@ class SnapshotController extends Controller
         $this->scenario = "step_link";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Edit');
-        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'link', 'stepCaption' => $stepCaptions['link']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'link', 'stepCaption' => $stepCaptions['link']));
     }
 
     public function actionEditEmbedOverride($id)
@@ -245,8 +237,7 @@ class SnapshotController extends Controller
         $this->scenario = "step_embed_override";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Edit');
-        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'embed_override', 'stepCaption' => $stepCaptions['embed_override']));
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'embed_override', 'stepCaption' => $stepCaptions['embed_override']));
     }
 
     public function actionEditTool($id)
@@ -254,8 +245,7 @@ class SnapshotController extends Controller
         $this->scenario = "step_tool";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Edit');
-        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'tool', 'stepCaption' => $stepCaptions['tool']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'tool', 'stepCaption' => $stepCaptions['tool']));
     }
 
     public function actionEditRelated($id)
@@ -263,8 +253,7 @@ class SnapshotController extends Controller
         $this->scenario = "step_related";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Edit');
-        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'related', 'stepCaption' => $stepCaptions['related']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'related', 'stepCaption' => $stepCaptions['related']));
     }
 
 

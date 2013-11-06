@@ -1,13 +1,15 @@
 <?php
+$actionCaption = Yii::t('crud', 'Remove');
+
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . Yii::t('crud', 'Remove')
+    . $actionCaption
 );
 
 $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Remove');
+$this->breadcrumbs[] = $actionCaption;
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
@@ -66,7 +68,7 @@ $this->breadcrumbs[] = Yii::t('crud', 'Remove');
         <div class="row-fluid">
             <div class="span9">
 
-                <h2>Remove
+                <h2><?php print $actionCaption; ?>
                     <small></small>
                 </h2>
 
