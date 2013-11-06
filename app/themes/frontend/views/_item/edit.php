@@ -17,12 +17,8 @@ $this->breadcrumbs[] = $stepCaption;
     <div class="span12">
 
         <h1>
-<<<<<<< Updated upstream
             <?php echo $workflowCaption; ?>
             - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
-=======
-            <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
->>>>>>> Stashed changes
             <small>vX</small>
 
             <div class="btn-group">
