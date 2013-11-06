@@ -20,18 +20,25 @@
             <div><?php echo Yii::t("model", "No snapshots"); ?></div>
         <?php endif; ?>
         <?php
+        echo $this->widget('bootstrap.widgets.TbButton', array(
+            'label' => Yii::t('app', 'Add existing snapshot'),
+            'htmlOptions' => array(
+                'data-toggle' => 'modal',
+                'data-target' => '#viewModal',
+            ),
+        ), true);
+        ?><br>
+        <?php
         $this->widget("bootstrap.widgets.TbButton", array(
             "label" => Yii::t("model", "Create new snapshot"),
-            "url" => array("/snapshot/")
+            "url" => array("/snapshot/"),
+            'icon' => 'icon-plus',
         ));
         ?>
     </div>
 </div>
 
-<p class="alert alert-info help-block">
-    <?php echo $model->getAttributeHint("snapshot"); ?>
-</p>
-
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal')); ?>
 <h2>Choose snapshot to add</h2>
 <?php
 $allSnapshots = new Snapshot('search');
@@ -58,3 +65,9 @@ $this->widget(
     )
 );
 ?>
+<?php $this->endWidget(); ?>
+
+<p class="alert alert-info help-block">
+    <?php echo $model->getAttributeHint("snapshot"); ?>
+</p>
+

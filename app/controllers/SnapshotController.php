@@ -35,25 +35,17 @@ class SnapshotController extends Controller
             ),
             array('allow',
                 'actions' => array(
-                    'prepPreshowLink',
+                    //'prepPreshowLink',
                 ),
                 'roles' => array(
-                    'Item.PrepPreshow'
+                    //'Item.PrepPreshow'
                 ),
             ),
             array('allow',
                 'actions' => array(
-                    'prepPublishSlug',
-                    'prepPublishTitle',
-                    'prepPublishAbout',
-                    'prepPublishThumbnail',
-                    'prepPublishLink',
-                    'prepPublishEmbedOverride',
-                    'prepPublishTool',
-                    'prepPublishRelated',
                 ),
                 'roles' => array(
-                    'Item.PrepPublish'
+                    //'Item.PrepPublish'
                 ),
             ),
             array('allow',
@@ -66,6 +58,15 @@ class SnapshotController extends Controller
                     'editableCreator',
                     'admin',
                     'delete',
+                    'edit',
+                    'editSlug',
+                    'editTitle',
+                    'editAbout',
+                    'editThumbnail',
+                    'editLink',
+                    'editEmbedOverride',
+                    'editTool',
+                    'editRelated',
                 ),
                 'roles' => array('Snapshot.*'),
             ),
@@ -100,81 +101,27 @@ class SnapshotController extends Controller
             $this->redirect(array('snapshot/prepPreshowSlug', 'id' => $id));
             return;
         }
-        $model->clearErrors();
-        $model->scenario = 'step_link';
-        if (!$model->validate()) {
-            $this->redirect(array('snapshot/prepPreshowLink', 'id' => $id));
-            return;
-        }
         $this->redirect(array('snapshot/prepPublish', 'id' => $id));
     }
+
     public function actionPrepPreshowSlug($id)
     {
-        $this->scenario = "step_link";
+        $this->scenario = "step_slug";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
         $workflowCaption = Yii::t('app', 'Prepare for preview');
         $this->render('/_item/preppreshow', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
     }
 
-    public function actionPrepPreshowLink($id)
-    {
-        $this->scenario = "step_link";
-        $model = $this->saveAndContinueOnSuccess($id);
-        $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for preview');
-        $this->render('/_item/preppreshow', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'link', 'stepCaption' => $stepCaptions['link']));
-    }
-
     public function actionPrepPublish($id)
     {
         $model = $this->loadModel($id);
-        $model->scenario = 'step_title';
+        $model->scenario = 'step_slug';
         if (!$model->validate()) {
-            $this->redirect(array('snapshot/prepPublishTitle', 'id' => $id));
+            $this->redirect(array('snapshot/prepPublishSlug', 'id' => $id));
             return;
         }
-        $model->clearErrors();
-        $model->scenario = 'step_about';
-        if (!$model->validate()) {
-            $this->redirect(array('snapshot/prepPublishAbout', 'id' => $id));
-            return;
-        }
-        $model->clearErrors();
-        /*
-        $model->scenario = 'step_thumbnail';
-        if (!$model->validate()) {
-            $this->redirect(array('snapshot/prepPublishThumbnail', 'id' => $id));
-            return;
-        }
-        $model->clearErrors();
-        */
-        $model->scenario = 'step_embed_override';
-        if (!$model->validate()) {
-            $this->redirect(array('snapshot/prepPublishEmbedOverride', 'id' => $id));
-            return;
-        }
-        $model->clearErrors();
-        $model->scenario = 'step_tool';
-        if (!$model->validate()) {
-            $this->redirect(array('snapshot/prepPublishTool', 'id' => $id));
-            return;
-        }
-        $model->clearErrors();
-        $model->scenario = 'step_related';
-        if (!$model->validate()) {
-            $this->redirect(array('snapshot/prepPublishRelated', 'id' => $id));
-            return;
-        }
-        /*
-        $model->clearErrors();
-        $model->scenario = 'step_datachunks';
-        if (!$model->validate()) {
-            $this->redirect(array('snapshot/prepPublishDataChunks', 'id' => $id));
-            return;
-        }
-        */
-
+        $this->redirect(array('snapshot/edit', 'id' => $id));
     }
 
     public function actionPrepPublishSlug($id)
@@ -182,74 +129,144 @@ class SnapshotController extends Controller
         $this->scenario = "step_slug";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
+        $workflowCaption = Yii::t('app', 'Prepare for publish');
+        $this->render('/_item/preppreshow', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
     }
 
-    public function actionPrepPublishTitle($id)
+    public function actionEdit($id){
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_slug';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/editSlug', 'id' => $id));
+            return;
+        }
+        /*
+        $model->clearErrors();
+        $model->scenario = 'step_thumbnail';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/editThumbnail', 'id' => $id));
+            return;
+        }
+        */
+        $model->clearErrors();
+        $model->scenario = 'step_link';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/editLink', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_title';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/editTitle', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_about';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/editAbout', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_embed_override';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/editEmbedOverride', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_tool';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/editTool', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_related';
+        if (!$model->validate()) {
+            $this->redirect(array('snapshot/editRelated', 'id' => $id));
+            return;
+        }
+        // Edit is finished... what now?
+    }
+
+
+
+
+
+
+
+    public function actionEditSlug($id)
+    {
+        $this->scenario = "step_slug";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'slug', 'stepCaption' => $stepCaptions['slug']));
+    }
+
+    public function actionEditTitle($id)
     {
         $this->scenario = "step_title";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
     }
 
-    public function actionPrepPublishAbout($id)
+    public function actionEditAbout($id)
     {
         $this->scenario = "step_about";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
     }
 
     /*
-    public function actionPrepPublishThumbnail($id)
+    public function actionEditThumbnail($id)
     {
         $this->scenario = "step_thumbnail";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
     }
     */
 
-    public function actionPrepPublishLink($id)
+    public function actionEditLink($id)
     {
         $this->scenario = "step_link";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'link', 'stepCaption' => $stepCaptions['link']));
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'link', 'stepCaption' => $stepCaptions['link']));
     }
 
-    public function actionPrepPublishEmbedOverride($id)
+    public function actionEditEmbedOverride($id)
     {
         $this->scenario = "step_embed_override";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'embed_override', 'stepCaption' => $stepCaptions['embed_override']));
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'embed_override', 'stepCaption' => $stepCaptions['embed_override']));
     }
 
-    public function actionPrepPublishTool($id)
+    public function actionEditTool($id)
     {
         $this->scenario = "step_tool";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'tool', 'stepCaption' => $stepCaptions['tool']));
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'tool', 'stepCaption' => $stepCaptions['tool']));
     }
 
-    public function actionPrepPublishRelated($id)
+    public function actionEditRelated($id)
     {
         $this->scenario = "step_related";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Prepare for publishing');
-        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'related', 'stepCaption' => $stepCaptions['related']));
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'related', 'stepCaption' => $stepCaptions['related']));
     }
+
 
     protected function listenForEdges($id)
     {
