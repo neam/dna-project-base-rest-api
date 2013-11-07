@@ -49,28 +49,28 @@ class PoFile extends BasePoFile
             parent::rules(), array(
 
                 // Define status-dependent fields
-                array('title, about, processed_media_id', 'required', 'on' => 'draft,preview,public'),
+                array('title, about, original_media_id', 'required', 'on' => 'draft,preview,public'),
 
                 // Define step-dependent fields
                 array('title', 'safe', 'on' => 'step_title'),
                 array('about', 'safe', 'on' => 'step_about'),
-                array('processed_media_id', 'safe', 'on' => 'step_file'),
+                array('original_media_id', 'safe', 'on' => 'step_file'),
 
                 array('title', 'required', 'on' => 'step_title'),
                 array('about', 'required', 'on' => 'step_about'),
-                array('processed_media_id', 'required', 'on' => 'step_file'),
+                array('original_media_id', 'required', 'on' => 'step_file'),
 
                 // Ordinary validation rules
                 array('title', 'length', 'min' => 10, 'max' => 200),
                 array('about', 'length', 'min' => 3, 'max' => 400),
-                array('processed_media_id', 'validateFile', 'on' => 'public'),
+                array('original_media_id', 'validateFile', 'on' => 'public'),
             )
         );
     }
 
     public function validateFile()
     {
-        return count($this->processed_media_id) > 0;
+        return count($this->original_media_id) > 0;
     }
 
     /**
