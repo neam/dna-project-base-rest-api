@@ -24,21 +24,56 @@ class VideoFileController extends Controller
         return array_merge($this->itemAccessRules(), array(
             array('allow',
                 'actions' => array(
-                    'subtitles',
+                    'index',
+                    'view',
                 ),
                 'users' => array('*'),
             ),
-            array(
-                'allow',
+            array('allow',
                 'actions' => array(
-                    'index',
+                    'draftTitle',
+                ),
+                'roles' => array(
+                    'Item.Draft'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'PrepPreshowTitle',
+                    'PrepPreshowClip',
+                ),
+                'roles' => array(
+                    'Item.PrepPreshow'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'prepPublishTitle',
+                    'prepPublishClip',
+                    'prepPublishAbout',
+                    'prepPublishThumbnail',
+                    'prepPublishSubtitles',
+                ),
+                'roles' => array(
+                    'Item.PrepPublish'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
                     'view',
                     'create',
                     'update',
+                    'edit',
                     'editableSaver',
                     'editableCreator',
                     'admin',
                     'delete',
+                    'editFlow',
+                    'editTitle',
+                    'editClip',
+                    'editAbout',
+                    'editThumbnail',
+                    'editSubtitles',
                 ),
                 'roles' => array('VideoFile.*'),
             ),
@@ -47,6 +82,250 @@ class VideoFileController extends Controller
                 'users' => array('*'),
             ),
         ));
+    }
+
+    public function actionDraft($id)
+    {
+        $this->redirect(array('videofile/draftTitle', 'id' => $id));
+    }
+
+    public function actionDraftTitle($id)
+    {
+        $this->scenario = "step_title";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/draft', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+    }
+
+    public function actionPrepPreshow($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_title';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/prepPreshowTitle', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_clip';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/prepPreshowClip', 'id' => $id));
+            return;
+        }
+        $this->redirect(array('videofile/prepPublish', 'id' => $id));
+    }
+
+    public function actionPrepPreshowTitle($id)
+    {
+        $this->scenario = "step_title";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Prepare for preview');
+        $this->render('/_item/preppreshow', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+    }
+
+    public function actionPrepPreshowClip($id)
+    {
+        $this->scenario = "step_clip";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Prepare for preview');
+        $this->render('/_item/preppreshow', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'clip', 'stepCaption' => $stepCaptions['clip']));
+    }
+
+
+    public function actionPrepPublish($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_title';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/prepPublishTitle', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_clip';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/prepPublishClip', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_about';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/prepPublishAbout', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_thumbnail';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/prepPublishThumbnail', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_subtitles';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/prepPublishSubtitles', 'id' => $id));
+            return;
+        }
+        $this->redirect(array('videofile/edit', 'id' => $id));
+    }
+
+    public function actionPrepPublishTitle($id)
+    {
+        $this->scenario = "step_title";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Prepare for publish');
+        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+    }
+
+    public function actionPrepPublishClip($id)
+    {
+        $this->scenario = "step_clip";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Prepare for publish');
+        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'clip', 'stepCaption' => $stepCaptions['clip']));
+    }
+
+    public function actionPrepPublishAbout($id)
+    {
+        $this->scenario = "step_about";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Prepare for publish');
+        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
+    }
+
+    public function actionPrepPublishThumbnail($id)
+    {
+        $this->scenario = "step_thumbnail";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Prepare for publish');
+        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
+    }
+
+    public function actionPrepPublishSubtitles($id)
+    {
+        $this->scenario = "step_subtitles";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Prepare for publish');
+        $this->render('/_item/preppublish', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'subtitles', 'stepCaption' => $stepCaptions['subtitles']));
+    }
+
+    public function actionEdit($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_title';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/editTitle', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_clip';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/editClip', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_about';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/editAbout', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_thumbnail';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/editThumbnail', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_teachers_guide';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/editTeachersGuide', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_subtitles';
+        if (!$model->validate()) {
+            $this->redirect(array('videofile/editSubtitles', 'id' => $id));
+            return;
+        }
+        // Go to first step
+        $this->redirect(array('videofile/editTitle', 'id' => $id));
+    }
+
+    public function actionEditTitle($id)
+    {
+        $this->scenario = "step_title";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+    }
+
+    public function actionEditClip($id)
+    {
+        $this->scenario = "step_clip";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'clip', 'stepCaption' => $stepCaptions['clip']));
+    }
+
+    public function actionEditAbout($id)
+    {
+        $this->scenario = "step_about";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
+    }
+
+    public function actionEditThumbnail($id)
+    {
+        $this->scenario = "step_thumbnail";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
+    }
+
+    public function actionEditSubtitles($id)
+    {
+        $this->scenario = "step_subtitles";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $workflowCaption = Yii::t('app', 'Edit');
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'subtitles', 'stepCaption' => $stepCaptions['subtitles']));
+    }
+
+    protected function listenForEdges($id)
+    {
+        if (isset($_POST[$this->modelClass]["exercises_to_add"])) {
+            $this->addEdges($id, $_POST[$this->modelClass]["exercises_to_add"], 'Exercise');
+        } else {
+            if (isset($_POST[$this->modelClass]["exercises_to_remove"])) {
+                $this->removeEdges($_POST[$this->modelClass]["exercises_to_remove"]);
+            } else {
+                if (isset($_POST[$this->modelClass]["snapshots_to_add"])) {
+                    $this->addEdges($id, $_POST[$this->modelClass]["snapshots_to_add"], 'Snapshot');
+                } else {
+                    if (isset($_POST[$this->modelClass]["snapshots_to_remove"])) {
+                        $this->removeEdges($_POST[$this->modelClass]["snapshots_to_remove"]);
+                    } else {
+                        if (isset($_POST[$this->modelClass]["videos_to_add"])) {
+                            $this->addEdges($id, $_POST[$this->modelClass]["videos_to_add"], 'VideoFile');
+                        } else {
+                            if (isset($_POST[$this->modelClass]["videos_to_remove"])) {
+                                $this->removeEdges($_POST[$this->modelClass]["videos_to_remove"]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public function beforeAction($action)
@@ -72,14 +351,83 @@ class VideoFileController extends Controller
         return true;
     }
 
-    public function actionSubtitles($id)
+    protected function videofileSections($videofile)
     {
-        $model = $this->loadModel($id);
 
-        echo $model->subtitles;
-        exit;
+        $sections = array();
+
+        // video
+        if ($videofile->videos) {
+            $sections[] = array(
+                "menu_label" => $videofile->videos[0]->itemLabel,
+                "title" => $videofile->videos[0]->itemLabel,
+                "slug" => $videofile->videos[0]->slug,
+                "model" => $videofile->videos[0],
+            );
+        }
+
+        // snapshots
+        if ($videofile->snapshots) {
+            foreach ($videofile->snapshots as $relatedModel) {
+                $sections[] = array(
+                    "menu_label" => $relatedModel->itemLabel,
+                    "title" => $relatedModel->itemLabel,
+                    "slug" => $relatedModel->slug,
+                    "model" => $relatedModel,
+                );
+            }
+        }
+
+        // teachers guide
+        if (!empty($videofile->teachers_guide)) {
+            $sections[] = array(
+                "menu_label" => Yii::t('app', 'Teacher\'s Guide'),
+                "title" => Yii::t('app', 'Teacher\'s Guide'),
+                "slug" => 'teachers-guide',
+                "markup" => $videofile->teachers_guide,
+            );
+        }
+
+        // exercises
+        if ($videofile->exercises) {
+            $subsections = array();
+            foreach ($videofile->exercises as $relatedModel) {
+                $subsections[] = array(
+                    "menu_label" => $relatedModel->itemLabel,
+                    "title" => $relatedModel->itemLabel,
+                    "slug" => $relatedModel->slug,
+                    "model" => $relatedModel,
+                );
+            }
+            $sections[] = array(
+                "menu_label" => Yii::t('app', 'Exercises'),
+                "title" => Yii::t('app', 'Exercises'),
+                "slug" => 'exercises',
+                "subsections" => $subsections,
+            );
+        }
+
+        // slideshow
+        // todo
+
+        // test
+        // todo
+
+        // data
+        // todo
+
+        // faq
+        // not in the data model currently
+
+        // credits
+        // todo
+
+        // feedback
+        // not in the data model currently
+
+        return $sections;
+
     }
-
 
     public function actionView($id)
     {
@@ -92,7 +440,7 @@ class VideoFileController extends Controller
         $model = new VideoFile;
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'video-file-form');
+        $this->performAjaxValidation($model, 'videofile-form');
 
         if (isset($_POST['VideoFile'])) {
             $model->attributes = $_POST['VideoFile'];
@@ -120,7 +468,7 @@ class VideoFileController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'video-file-form');
+        $this->performAjaxValidation($model, 'videofile-form');
 
         if (isset($_POST['VideoFile'])) {
             $model->attributes = $_POST['VideoFile'];
@@ -220,7 +568,7 @@ class VideoFileController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'video-file-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'videofile-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
