@@ -35,8 +35,7 @@ class PoFile extends BasePoFile
     {
         return array_merge(
             parent::relations(),
-            array(
-            )
+            array()
         );
     }
 
@@ -96,12 +95,9 @@ class PoFile extends BasePoFile
                     'icon' => 'edit',
                 ),
             ),
-            'preview' => array(
-            ),
-            'public' => array(
-            ),
-            'all' => array(
-            ),
+            'preview' => array(),
+            'public' => array(),
+            'all' => array(),
         );
     }
 

@@ -4,6 +4,7 @@ class PoFileController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "PoFile";
 
     public $defaultAction = "admin";
@@ -36,16 +37,12 @@ class PoFileController extends Controller
                 ),
             ),
             array('allow',
-                'actions' => array(
-                ),
-                'roles' => array(
-                ),
+                'actions' => array(),
+                'roles' => array(),
             ),
             array('allow',
-                'actions' => array(
-                ),
-                'roles' => array(
-                ),
+                'actions' => array(),
+                'roles' => array(),
             ),
             array('allow',
                 'actions' => array(
@@ -134,7 +131,8 @@ class PoFileController extends Controller
         $this->redirect(array('PoFile/edit', 'id' => $id));
     }
 
-    public function actionEdit($id){
+    public function actionEdit($id)
+    {
         $model = $this->loadModel($id);
         $model->scenario = 'step_title';
         if (!$model->validate()) {
@@ -155,11 +153,6 @@ class PoFileController extends Controller
         }
         // Edit is finished... what now?
     }
-
-
-
-
-
 
 
     public function actionEditTitle($id)
