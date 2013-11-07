@@ -24,6 +24,3 @@ $formId = 'pofile-original_media_id-' . \uniqid() . '-form';
         <?php echo $model->getAttributeHint("file"); ?>
     </p>
 <?php endif; ?>
-
-
-
