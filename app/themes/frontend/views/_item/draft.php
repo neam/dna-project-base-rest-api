@@ -106,3 +106,11 @@ $this->breadcrumbs[] = $stepCaption;
     </div>
 
 </div>
+
+<?php
+foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
+    if (strpos($key, "modal:") === 0) {
+        echo $clip;
+    }
+}
+?>
