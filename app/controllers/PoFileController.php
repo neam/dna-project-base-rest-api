@@ -2,7 +2,10 @@
 
 class PoFileController extends Controller
 {
-    #public $layout='//layouts/column2';
+
+    use ItemController;
+
+    public $modelClass = "PoFile";
 
     public $defaultAction = "admin";
     public $scenario = "crud";
@@ -16,9 +19,32 @@ class PoFileController extends Controller
 
     public function accessRules()
     {
-        return array(
-            array(
-                'allow',
+        return array_merge($this->itemAccessRules(), array(
+            array('allow',
+                'actions' => array(
+                    'view',
+                ),
+                'users' => array('*'),
+            ),
+            array('allow',
+                'actions' => array(
+                    'draftTitle',
+                    'draftAbout',
+                    'draftFile',
+                ),
+                'roles' => array(
+                    'Item.Draft'
+                ),
+            ),
+            array('allow',
+                'actions' => array(),
+                'roles' => array(),
+            ),
+            array('allow',
+                'actions' => array(),
+                'roles' => array(),
+            ),
+            array('allow',
                 'actions' => array(
                     'index',
                     'view',
@@ -28,6 +54,10 @@ class PoFileController extends Controller
                     'editableCreator',
                     'admin',
                     'delete',
+                    'edit',
+                    'editTitle',
+                    'editAbout',
+                    'editFile',
                 ),
                 'roles' => array('PoFile.*'),
             ),
@@ -35,8 +65,112 @@ class PoFileController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
+
+    public function actionDraft($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_title';
+        if (!$model->validate()) {
+            $this->redirect(array('PoFile/draftTitle', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_about';
+        if (!$model->validate()) {
+            $this->redirect(array('PoFile/draftAbout', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_file';
+        if (!$model->validate()) {
+            $this->redirect(array('PoFile/draftFile', 'id' => $id));
+            return;
+        }
+        // Edit is finished... what now?
+    }
+
+    public function actionDraftTitle($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_title';
+        $this->scenario = "step_title";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/draft', array('model' => $model, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+    }
+
+    public function actionDraftAbout($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_about';
+        $this->scenario = "step_about";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/draft', array('model' => $model, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
+    }
+
+    public function actionDraftFile($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_file';
+        $this->scenario = "step_file";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/draft', array('model' => $model, 'step' => 'file', 'stepCaption' => $stepCaptions['file']));
+    }
+
+    public function actionPrepPreshow($id)
+    {
+        $this->redirect(array('PoFile/prepPublish', 'id' => $id));
+    }
+
+    public function actionPrepPublish($id)
+    {
+        $this->redirect(array('PoFile/edit', 'id' => $id));
+    }
+
+    public function actionEdit($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = 'step_title';
+        if (!$model->validate()) {
+            $this->redirect(array('PoFile/editTitle', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_about';
+        if (!$model->validate()) {
+            $this->redirect(array('PoFile/editAbout', 'id' => $id));
+            return;
+        }
+        $model->clearErrors();
+        $model->scenario = 'step_file';
+        if (!$model->validate()) {
+            $this->redirect(array('PoFile/editFile', 'id' => $id));
+            return;
+        }
+        // Edit is finished... what now?
+    }
+
+
+    public function actionEditTitle($id)
+    {
+        $this->scenario = "step_title";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+    }
+
+    public function actionEditAbout($id)
+    {
+        $this->scenario = "step_about";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
+    }
+
 
     public function beforeAction($action)
     {
@@ -72,7 +206,7 @@ class PoFileController extends Controller
         $model = new PoFile;
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'po-file-form');
+        $this->performAjaxValidation($model, 'PoFile-form');
 
         if (isset($_POST['PoFile'])) {
             $model->attributes = $_POST['PoFile'];
@@ -100,7 +234,7 @@ class PoFileController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'po-file-form');
+        $this->performAjaxValidation($model, 'PoFile-form');
 
         if (isset($_POST['PoFile'])) {
             $model->attributes = $_POST['PoFile'];
@@ -200,7 +334,7 @@ class PoFileController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'po-file-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'PoFile-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

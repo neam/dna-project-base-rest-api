@@ -410,10 +410,11 @@ trait ItemController
         $_POST = $this->fixPostFromGrid($_POST);
 
         if (isset($_POST[$this->modelClass])) {
-            $this->listenForEdges($id);
+            if (method_exists($this,"listenForEdges")){
+                $this->listenForEdges($id);
+            }
 
             $model->attributes = $_POST[$this->modelClass];
-
             // refresh qa state (to be sure that we have the most actual state)
             $model->refreshQaState();
 
