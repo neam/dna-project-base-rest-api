@@ -28,12 +28,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        /* Not desired behavior, but kept commented in case we should redirect logged in users somewhere else
+
         if (!Yii::app()->user->isGuest) {
             $this->redirect($this->createUrl('account/dashboard'));
             exit;
         }
-        */
 
         $this->redirect($this->createUrl('chapter/index'));
 

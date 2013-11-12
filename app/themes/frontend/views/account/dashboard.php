@@ -1,6 +1,6 @@
 <?php
-$this->breadcrumbs[] = Yii::t('model', 'Users');
-$this->breadcrumbs[$model->username] = array('account/profile', 'id' => $model->id);
+//$this->breadcrumbs[] = Yii::t('model', 'Users');
+//$this->breadcrumbs[$model->username] = array('account/profile', 'id' => $model->id);
 $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
 ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
@@ -33,6 +33,25 @@ $roles = array_keys(Yii::app()->authManager->getAuthItems(2, $model->id));
     </div>
 
 <?php else: ?>
+
+    <?php foreach (DataModel::qaModels() as $modelClass => $table): ?>
+
+        <?php if (Yii::app()->user->checkAccess('Item.Add')): ?>
+
+            <?php
+            $this->widget("bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "List {$modelClass}s"),
+                "size" => "large",
+                "icon" => "icon-globe",
+                "url" => array(lcfirst($modelClass) . "/index")
+            ));
+            ?>
+
+        <?php endif; ?>
+
+    <?php endforeach; ?>
+
+    <hr>
 
     <?php foreach (DataModel::qaModels() as $modelClass => $table): ?>
 
