@@ -3,6 +3,9 @@
 class ActiveRecord extends CActiveRecord
 {
 
+    // Hard code source language to en for now. TODO: Be able to choose and store source language
+    public $source_language = 'en';
+
     public function behaviors()
     {
 

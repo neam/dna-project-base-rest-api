@@ -87,7 +87,7 @@ class ChapterController extends Controller
 
     public function actionDraftInfo($id)
     {
-        $this->scenario = "step_info";
+        $this->scenario = "draft-step_info";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/draft', array('model' => $model, 'step' => 'info', 'stepCaption' => $stepCaptions['info']));
