@@ -410,7 +410,7 @@ trait ItemController
         $_POST = $this->fixPostFromGrid($_POST);
 
         if (isset($_POST[$this->modelClass])) {
-            if (method_exists($this,"listenForEdges")){
+            if (method_exists($this, "listenForEdges")) {
                 $this->listenForEdges($id);
             }
 

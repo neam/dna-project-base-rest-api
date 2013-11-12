@@ -20,7 +20,7 @@ $this->breadcrumbs[] = $stepCaption;
 <div class="row-fluid">
     <div class="span3">
 
-<br/>
+        <br/>
 
         <div class="row-fluid">
             <div class="span12">
