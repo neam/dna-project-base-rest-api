@@ -15,33 +15,16 @@ $this->breadcrumbs[] = $stepCaption;
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row-fluid">
-    <div class="span12">
+<?php
+$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    'id' => 'item-form',
+    'enableAjaxValidation' => true,
+    'enableClientValidation' => true,
+    'type' => 'horizontal',
+));
+?>
 
-        <h1>
-            <?php echo $workflowCaption; ?>
-            - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
-            <small>vX</small>
-
-            <div class="btn-group">
-
-                <?php
-                $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("model", "Preview"),
-                    "icon" => "icon-eye-open",
-                    "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey})
-                ));
-                ?>
-
-            </div>
-
-        </h1>
-
-    </div>
-</div>
-
-<?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
-<br/>
+<?php $this->renderPartial("_flowbar", compact("model", "workflowCaption", "form")); ?>
 
 <div class="row-fluid">
     <div class="span3">
@@ -62,12 +45,6 @@ $this->breadcrumbs[] = $stepCaption;
     <div class="span9">
 
         <?php
-        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-            'id' => 'item-form',
-            'enableAjaxValidation' => true,
-            'enableClientValidation' => true,
-            'type' => 'horizontal',
-        ));
         echo $form->errorSummary($model);
         ?>
 
@@ -85,12 +62,6 @@ $this->breadcrumbs[] = $stepCaption;
                 <div class="btn-toolbar pull-right">
 
                     <div class="btn-group">
-                        <?php
-                        echo CHtml::submitButton(Yii::t('model', 'Next'), array(
-                                'class' => 'btn btn-large btn-primary'
-                            )
-                        );
-                        ?>
 
                     </div>
 

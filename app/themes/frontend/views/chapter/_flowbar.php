@@ -48,21 +48,22 @@
                     </h3>
                 </div>
                 <div class="span4">
-                    <h4 class="required-missing">* N required missing</h4>
-                </div>
-                <div class="span2">
+                    <div class="pull-left" style="margin-right: 1em;">
+                        <h4 class="required-missing">* N required missing</h4>
+                    </div>
                     <div class="btn-group">
 
                         <?php
-                        $this->widget("bootstrap.widgets.TbButton", array(
-                            "label" => Yii::t("model", "Next"),
-                            "type" => "primary",
-                            "icon" => "icon-forward",
-                            "url" => array("", "id" => $model->{$model->tableSchema->primaryKey})
-                        ));
+                        echo CHtml::submitButton(Yii::t('model', 'Next'), array(
+                                'class' => 'btn btn-primary'
+                            )
+                        );
                         ?>
 
                     </div>
+
+                </div>
+                <div class="span2">
 
                 </div>
 
