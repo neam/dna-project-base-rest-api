@@ -15,48 +15,28 @@ $this->breadcrumbs[] = $stepCaption;
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row-fluid">
-    <div class="span12">
-
-        <h1>
-            <?php echo $workflowCaption; ?>
-            - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
-            <small>vX</small>
-
-            <div class="btn-group">
-
-                <?php
-                $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("model", "Preview"),
-                    "icon" => "icon-eye-open",
-                    "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey})
-                ));
-                ?>
-
-            </div>
-
-        </h1>
-
-    </div>
-</div>
-
-<?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
-<br/>
+<?php $this->renderPartial("_flowbar", compact("model", "workflowCaption")); ?>
 
 <div class="row-fluid">
     <div class="span3">
 
+<br/>
+
         <div class="row-fluid">
-            <div class="span12 well well-white">
+            <div class="span12">
                 <?php echo $this->renderPartial('/_item/elements/progress', compact("model", "execution")); ?>
             </div>
         </div>
 
+        <hr/>
+
+        <!--
         <div class="row-fluid">
             <div class="span12 well well-white">
                 <?php echo $this->renderPartial('/_item/elements/actions', compact("model", "execution")); ?>
             </div>
         </div>
+        -->
 
     </div>
     <div class="span9">
