@@ -238,7 +238,7 @@ trait ItemController
     {
         $item = new $this->modelClass();
         if (!$item->save()) {
-            throw new SaveException();
+            throw new SaveException($item);
         }
 
         Yii::app()->user->setFlash('success', "{$this->modelClass} Added");
