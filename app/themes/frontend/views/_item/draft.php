@@ -24,7 +24,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 ));
 ?>
 
-<?php $this->renderPartial("_flowbar", compact("model", "workflowCaption", "form")); ?>
+<?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form")); ?>
 
 <div class="row-fluid">
     <div class="span3">

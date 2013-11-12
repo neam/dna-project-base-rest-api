@@ -15,7 +15,16 @@ $this->breadcrumbs[] = $stepCaption;
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<?php $this->renderPartial("_flowbar", compact("model", "workflowCaption")); ?>
+<?php
+$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    'id' => 'item-form',
+    'enableAjaxValidation' => true,
+    'enableClientValidation' => true,
+    'type' => 'horizontal',
+));
+?>
+
+<?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form")); ?>
 
 <div class="row-fluid">
     <div class="span3">
@@ -42,12 +51,6 @@ $this->breadcrumbs[] = $stepCaption;
     <div class="span9">
 
         <?php
-        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-            'id' => 'item-form',
-            'enableAjaxValidation' => true,
-            'enableClientValidation' => true,
-            'type' => 'horizontal',
-        ));
         echo $form->errorSummary($model);
         ?>
 
@@ -65,12 +68,6 @@ $this->breadcrumbs[] = $stepCaption;
                 <div class="btn-toolbar pull-right">
 
                     <div class="btn-group">
-                        <?php
-                        echo CHtml::submitButton(Yii::t('model', 'Next'), array(
-                                'class' => 'btn btn-large btn-primary'
-                            )
-                        );
-                        ?>
 
                     </div>
 
