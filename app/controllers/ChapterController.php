@@ -31,7 +31,7 @@ class ChapterController extends Controller
             ),
             array('allow',
                 'actions' => array(
-                    'draftTitle',
+                    'draftInfo',
                 ),
                 'roles' => array(
                     'Item.Draft'
@@ -39,9 +39,7 @@ class ChapterController extends Controller
             ),
             array('allow',
                 'actions' => array(
-                    'prepPublishTitle',
-                    'prepPublishAbout',
-                    'prepPublishThumbnail',
+                    'prepPublishInfo',
                     'prepPublishTeachersGuide',
                     'prepPublishExercises',
                     'prepPublishVideos',
@@ -52,6 +50,7 @@ class ChapterController extends Controller
             ),
             array('allow',
                 'actions' => array(
+                    'editInfo',
                     'view',
                     'create',
                     'update',
@@ -61,9 +60,6 @@ class ChapterController extends Controller
                     'admin',
                     'delete',
                     'editFlow',
-                    'editTitle',
-                    'editAbout',
-                    'editThumbnail',
                     'editTeachersGuide',
                     'editExercises',
                     'editVideos',
@@ -80,15 +76,15 @@ class ChapterController extends Controller
 
     public function actionDraft($id)
     {
-        $this->redirect(array('chapter/draftTitle', 'id' => $id));
+        $this->redirect(array('chapter/draftInfo', 'id' => $id));
     }
 
-    public function actionDraftTitle($id)
+    public function actionDraftInfo($id)
     {
-        $this->scenario = "step_title";
+        $this->scenario = "step_info";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/draft', array('model' => $model, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
+        $this->render('/_item/draft', array('model' => $model, 'step' => 'info', 'stepCaption' => $stepCaptions['info']));
     }
 
     public function actionPrepPreshow($id)
@@ -99,21 +95,9 @@ class ChapterController extends Controller
     public function actionPrepPublish($id)
     {
         $model = $this->loadModel($id);
-        $model->scenario = 'step_title';
+        $model->scenario = 'step_info';
         if (!$model->validate()) {
             $this->redirect(array('chapter/prepPublishTitle', 'id' => $id));
-            return;
-        }
-        $model->clearErrors();
-        $model->scenario = 'step_thumbnail';
-        if (!$model->validate()) {
-            $this->redirect(array('chapter/prepPublishThumbnail', 'id' => $id));
-            return;
-        }
-        $model->clearErrors();
-        $model->scenario = 'step_about';
-        if (!$model->validate()) {
-            $this->redirect(array('chapter/prepPublishAbout', 'id' => $id));
             return;
         }
         $model->clearErrors();
@@ -137,28 +121,12 @@ class ChapterController extends Controller
         $this->redirect(array('chapter/edit', 'id' => $id));
     }
 
-    public function actionPrepPublishTitle($id)
+    public function actionPrepPublishInfo($id)
     {
-        $this->scenario = "step_title";
+        $this->scenario = "step_info";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
-    }
-
-    public function actionPrepPublishThumbnail($id)
-    {
-        $this->scenario = "step_thumbnail";
-        $model = $this->saveAndContinueOnSuccess($id);
-        $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
-    }
-
-    public function actionPrepPublishAbout($id)
-    {
-        $this->scenario = "step_about";
-        $model = $this->saveAndContinueOnSuccess($id);
-        $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
+        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'info', 'stepCaption' => $stepCaptions['info']));
     }
 
     public function actionPrepPublishExercises($id)
@@ -187,9 +155,9 @@ class ChapterController extends Controller
 
     public function actionEdit($id){
         $model = $this->loadModel($id);
-        $model->scenario = 'step_title';
+        $model->scenario = 'step_info';
         if (!$model->validate()) {
-            $this->redirect(array('chapter/editTitle', 'id' => $id));
+            $this->redirect(array('chapter/editInfo', 'id' => $id));
             return;
         }
         $model->clearErrors();
@@ -229,26 +197,12 @@ class ChapterController extends Controller
             return;
         }
     }
-    public function actionEditTitle($id){
-        $this->scenario = "step_title";
+    public function actionEditInfo($id){
+        $this->scenario = "step_info";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
         $workflowCaption = Yii::t('app', 'Edit');
-        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'title', 'stepCaption' => $stepCaptions['title']));
-    }
-    public function actionEditThumbnail($id){
-        $this->scenario = "step_thumbnail";
-        $model = $this->saveAndContinueOnSuccess($id);
-        $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Edit');
-        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'thumbnail', 'stepCaption' => $stepCaptions['thumbnail']));
-    }
-    public function actionEditAbout($id){
-        $this->scenario = "step_about";
-        $model = $this->saveAndContinueOnSuccess($id);
-        $stepCaptions = $model->flowStepCaptions();
-        $workflowCaption = Yii::t('app', 'Edit');
-        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'about', 'stepCaption' => $stepCaptions['about']));
+        $this->render('/_item/edit', array('model' => $model, 'workflowCaption' => $workflowCaption, 'step' => 'info', 'stepCaption' => $stepCaptions['info']));
     }
     public function actionEditTeachersGuide($id){
         $this->scenario = "step_teachers_guide";

@@ -119,18 +119,12 @@ class Chapter extends BaseChapter
     {
         return array(
             'draft' => array(
-                'title' => array(
+                'info' => array(
                     'icon' => 'edit',
                 ),
             ),
             'preview' => array(),
             'public' => array(
-                'thumbnail' => array(
-                    'icon' => 'edit',
-                ),
-                'about' => array(
-                    'icon' => 'edit',
-                ),
                 'teachers_guide' => array(
                     'icon' => 'edit',
                     'action' => 'teachersGuide',
@@ -156,9 +150,7 @@ class Chapter extends BaseChapter
     public function flowStepCaptions()
     {
         return array(
-            'title' => Yii::t('app', 'Title'),
-            'thumbnail' => Yii::t('app', 'Thumbnail'),
-            'about' => Yii::t('app', 'About'),
+            'info' => Yii::t('app', 'Info'),
             'teachers_guide' => Yii::t('app', 'Teacher\'s guide'),
             'exercises' => Yii::t('app', 'Exercise(s)'),
             'videos' => Yii::t('app', 'Video'),
