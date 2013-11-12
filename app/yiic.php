@@ -18,7 +18,7 @@ $env     = array();
 $localFileName = $dir . 'app/config/main-local.php';
 if (is_file($localFileName)) {
     $local       = require($localFileName);
-    $envFileName = $dir . 'app/config/env-' . $local['params']['env'] . '.php';
+    $envFileName = $dir . 'app/config/env-' . $main['params']['env'] . '.php';
     if (is_file($envFileName)) {
         $env = require($envFileName);
     }
