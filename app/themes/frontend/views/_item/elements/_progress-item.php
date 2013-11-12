@@ -6,7 +6,7 @@
             'bootstrap.widgets.TbProgress',
             array(
                 'type' => 'success', // 'info', 'success' or 'danger'
-                'percent' => $model->calculateValidationProgress("step_".$step),
+                'percent' => $progress,
             )
         );
         ?>

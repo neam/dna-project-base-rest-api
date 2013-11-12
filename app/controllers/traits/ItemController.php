@@ -362,6 +362,23 @@ trait ItemController
 
     }
 
+    public function currentWorkflowTargetStatus()
+    {
+
+        if (strpos($this->action->id, "draft") !== false):
+            $targetStatus = "draft";
+        elseif (strpos($this->action->id, "prepPreshow") !== false):
+            $targetStatus = "preview";
+        elseif (strpos($this->action->id, "prepPublish") !== false):
+            $targetStatus = "public";
+        elseif (strpos($this->action->id, "edit") !== false):
+            $targetStatus = null;
+        endif;
+
+        return $targetStatus;
+
+    }
+
     private function removeEdges($edgeid)
     {
     }
