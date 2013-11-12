@@ -51,6 +51,17 @@ class ChapterController extends Controller
             array('allow',
                 'actions' => array(
                     'editInfo',
+                    'editTeachersGuide',
+                    'editExercises',
+                    'editVideos',
+                    'editSnapshots',
+                ),
+                'roles' => array(
+                    'Item.Edit'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
                     'view',
                     'create',
                     'update',
@@ -59,11 +70,6 @@ class ChapterController extends Controller
                     'editableCreator',
                     'admin',
                     'delete',
-                    'editFlow',
-                    'editTeachersGuide',
-                    'editExercises',
-                    'editVideos',
-                    'editSnapshots',
                 ),
                 'roles' => array('Chapter.*'),
             ),
