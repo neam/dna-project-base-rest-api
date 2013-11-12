@@ -23,6 +23,9 @@ Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
 $gcmsConfig = array(
     'name' => 'Gapminder CMS',
     'language' => 'en', // default language, see also components.langHandler
+    'params' => array(
+        'env' => 'development',
+    ),
     'preload' => array( //'ezc', // trying out if we can lazy-load this instead of preloading it...
     ),
     'aliases' => array(
@@ -119,6 +122,7 @@ $gcmsConfig = array(
                 'de',
             )
         ),
+        /*
         'messages' => array(
             'class' => 'P3PhpMessageSource',
             'mappings' => array(
@@ -130,6 +134,7 @@ $gcmsConfig = array(
                 'sv_se' => 'sv',
             )
         ),
+        */
         'authManager' => array(
             'class' => 'CPhpAuthManager',
             'authFile' => Yii::getPathOfAlias('backend') . '/app/data/auth-gcms.php',

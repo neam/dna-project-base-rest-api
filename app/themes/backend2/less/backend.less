@@ -25,13 +25,11 @@ footer {
 }
 
 // fix responsive images
-
 img {
   height: auto !important;
 }
 
 // workaround for 'status-bar' on chrome and firefox
-
 #backend-navbar {
   opacity: 0.85;
   .navbar-fixed-bottom {
@@ -42,8 +40,13 @@ img {
   }
 }
 
-// fluid thumb grid
+// we're removing the icon backgrounds, since we're using yiibooster.registerFontawesomeCss in main config
+[class^="icon-"], [class*=" icon-"] {
+  background-image: none;
+}
 
+
+// fluid thumb grid
 .row-fluid {
   // fix rows in fluid rows
   .row {
@@ -124,12 +127,12 @@ TEXTAREA.error, SELECT.error, INPUT.error, .select2-container.error A {
 // JSON editor
 
 input.je-key-input {
-  width: 20%;
+  width: 15%;
   text-align: left;
 }
 
 input.je-val-input {
-  width: 50%;
+  width: 30%;
   text-align: left;
 }
 

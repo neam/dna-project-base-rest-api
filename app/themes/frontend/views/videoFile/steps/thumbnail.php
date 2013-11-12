@@ -59,10 +59,10 @@ EOF;
 Yii::app()->clientScript->registerScript('step_thumbnail-select2', $select2js);
 
 $criteria = new CDbCriteria();
-$criteria->addCondition("mimetype IN ('image/jpeg','image/png')");
-$criteria->addCondition("t.type = 1");
+$criteria->addCondition("mime_type IN ('image/jpeg','image/png')");
+$criteria->addCondition("t.type = 'file'");
 $criteria->limit = 100;
-$criteria->order = "createdAt DESC";
+$criteria->order = "t.created_at DESC";
 
 $input = $this->widget(
     '\GtcRelation',

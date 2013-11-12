@@ -138,15 +138,33 @@ EOD;
         // For now also assign developer role to super user
         $auth->assign('Developer', 1);
 
-        // Temporary dev items assigned to Developer role until properly sorted into hierarchy
+        // Temporary dev items that gives access to phundament-specific actions. Assigned to Developer role until properly sorted into hierarchy
         $auth->createOperation('P3media.Import.*');
         $developerRole->addChild('P3media.Import.*');
         $auth->createOperation('P3media.Import.scan');
         $developerRole->addChild('P3media.Import.scan');
+        $auth->createOperation('P3media.P3Media.*');
+        $developerRole->addChild('P3media.P3Media.*');
         $auth->createOperation('P3admin.Default.Index');
         $developerRole->addChild('P3admin.Default.Index');
         $auth->createOperation('P3admin.Default.Settings');
         $developerRole->addChild('P3admin.Default.Settings');
+        $auth->createOperation('P3media.Default.*');
+        $developerRole->addChild('P3media.Default.*');
+        $auth->createOperation('P3media.P3MediaTranslation.*');
+        $developerRole->addChild('P3media.P3MediaTranslation.*');
+        $auth->createOperation('Admin');
+        $developerRole->addChild('Admin');
+        $auth->createOperation('Editor');
+        $developerRole->addChild('Editor');
+        $auth->createOperation('P3pages.P3Page.*');
+        $developerRole->addChild('P3pages.P3Page.*');
+        $auth->createOperation('P3pages.P3PageTranslation.*');
+        $developerRole->addChild('P3pages.P3PageTranslation.*');
+        $auth->createOperation('P3widgets.Default.*');
+        $developerRole->addChild('P3widgets.Default.*');
+        $auth->createOperation('Translate.*');
+        $developerRole->addChild('Translate.*');
 
         $baseModels = DataModel::crudModels();
         $qaStateModels = DataModel::qaStateModels();
@@ -162,8 +180,6 @@ EOD;
 
             }
         }
-        $auth->createOperation('Admin');
-        $developerRole->addChild('Admin');
 
         $auth->save();
 
