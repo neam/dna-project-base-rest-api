@@ -2,62 +2,19 @@
 /* @var $this ChapterController */
 ?>
 
-<div class="row-fluid">
-    <h2>Progress</h2>
-</div>
-
-<div class="row-fluid">
-    <div class="span4">
-
-        %
-
-    </div>
-    <div class="span8">
-
-        Step
-
-    </div>
-
-</div>
-
 <?php
 $steps = $model->flowSteps();
 $stepCaptions = $model->flowStepCaptions();
 ?>
 
-<?php if ($this->action->id == "draft" || (strpos($this->action->id, "draft") !== false)):
+<?php
 
-    foreach ($steps['draft'] as $step => $options) {
-        $action = 'draft' . ucfirst(isset($options['action']) ? $options['action'] : $step);
-        $caption = $stepCaptions[$step];
-        $this->renderPartial("/_item/elements/_progress-item", compact("step", "caption", "options", "action", "model"));
-    }
+$actions = $this->itemActions($model);
 
-elseif ($this->action->id == "prepPreshow" || (strpos($this->action->id, "prepPreshow") !== false)):
+foreach ($actions["stepActions"] as $action) {
+    $this->renderPartial("/_item/elements/_progress-item", $action);
+}
 
-    foreach (array_merge($steps['draft'], $steps['preview']) as $step => $options) {
-        $action = 'prepPreshow' . ucfirst(isset($options['action']) ? $options['action'] : $step);
-        $caption = $stepCaptions[$step];
-        $this->renderPartial("/_item/elements/_progress-item", compact("step", "caption", "options", "action", "model"));
-    }
-
-elseif ($this->action->id == "prepPublish" || (strpos($this->action->id, "prepPublish") !== false)):
-
-    foreach (array_merge($steps['draft'], $steps['preview'], $steps['public']) as $step => $options) {
-        $action = 'prepPublish' . ucfirst(isset($options['action']) ? $options['action'] : $step);
-        $caption = $stepCaptions[$step];
-        $this->renderPartial("/_item/elements/_progress-item", compact("step", "caption", "options", "action", "model"));
-    }
-
-elseif ($this->action->id == "edit" || (strpos($this->action->id, "edit") !== false)):
-
-    foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
-        $action = 'edit' . ucfirst(isset($options['action']) ? $options['action'] : $step);
-        $caption = $stepCaptions[$step];
-        $this->renderPartial("/_item/elements/_progress-item", compact("step", "caption", "options", "action", "model"));
-    }
-
-endif;
 ?>
 
 <?php /*

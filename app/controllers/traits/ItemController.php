@@ -24,6 +24,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'draft',
+                    'saveDraft',
                 ),
                 'roles' => array(
                     'Item.Draft'
@@ -47,7 +48,7 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
-                    'preshow',
+                    'makeTestable',
                 ),
                 'roles' => array(
                     'Item.Preshow'
@@ -156,16 +157,19 @@ trait ItemController
     {
         $model = $this->loadModel($id);
 
-        if ($model->qaState()->draft_validation_progress < 100) {
-            $this->redirect(array('draft', 'id' => $model->id));
+        if ($model->qaState()->draft_validation_progress < 100 || !$model->qaState()->draft_saved) {
+            $step = $this->nextFlowStep("draft-", $model);
+            $this->redirect(array('draft', 'id' => $model->id, 'step' => $step));
             return;
         }
-        if ($model->qaState()->preview_validation_progress < 100) {
-            $this->redirect(array('prepPreshow', 'id' => $model->id));
+        if ($model->qaState()->preview_validation_progress < 100 || !$model->qaState()->previewing_welcome) {
+            $step = $this->nextFlowStep("preview-", $model);
+            $this->redirect(array('prepPreshow', 'id' => $model->id, 'step' => $step));
             return;
         }
-        if ($model->qaState()->public_validation_progress < 100) {
-            $this->redirect(array('prepPublish', 'id' => $model->id));
+        if ($model->qaState()->public_validation_progress < 100 || !$model->qaState()->candidate_for_public_status) {
+            $step = $this->nextFlowStep("public-", $model);
+            $this->redirect(array('prepPublish', 'id' => $model->id, 'step' => $step));
             return;
         }
         if ($model->qaState()->draft_evaluation_progress < 100) {
@@ -218,6 +222,18 @@ trait ItemController
 
     }
 
+    protected function nextFlowStep($prefix, $item)
+    {
+        $steps = $item->flowSteps();
+        foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
+            if ($item->calculateValidationProgress($prefix . 'step_' . $step) < 100) {
+                return $step;
+            }
+            $item->clearErrors();
+        }
+        return 'mandatory_complete';
+    }
+
     public function actionAuthor($id)
     {
 
@@ -238,7 +254,7 @@ trait ItemController
     {
         $item = new $this->modelClass();
         if (!$item->save()) {
-            throw new SaveException();
+            throw new SaveException($item);
         }
 
         Yii::app()->user->setFlash('success', "{$this->modelClass} Added");
@@ -268,22 +284,60 @@ trait ItemController
         }
     }
 
-    public function actionDraft($id)
+    public function actionDraft($step, $id)
     {
+        $this->scenario = "draft-step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/draft', array('model' => $model));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
-    public function actionPrepPreshow($id)
+    public function actionSaveDraft($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppreshow', array('model' => $model));
+        $model = $this->loadModel($id);
+        $qaState = $model->qaState();
+
+        // save state change
+        $qaState->draft_saved = 1;
+        if (!$qaState->save()) {
+            throw new SaveException($qaState);
+        }
+
+        // redirect
+        if (isset($_GET['returnUrl'])) {
+            $this->redirect($_GET['returnUrl']);
+        } else {
+            $this->redirect(array('continueAuthoring', 'id' => $model->id));
+        }
+
     }
 
-    public function actionPreshow($id)
+    public function actionPrepPreshow($step, $id)
     {
+        $this->scenario = "preview-step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preshow', array('model' => $model));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+    }
+
+    public function actionMakeTestable($id)
+    {
+        $model = $this->loadModel($id);
+        $qaState = $model->qaState();
+
+        // save state change
+        $qaState->previewing_welcome = 1;
+        if (!$qaState->save()) {
+            throw new SaveException($qaState);
+        }
+
+        // redirect
+        if (isset($_GET['returnUrl'])) {
+            $this->redirect($_GET['returnUrl']);
+        } else {
+            $this->redirect(array('continueAuthoring', 'id' => $model->id));
+        }
+
     }
 
     public function actionEvaluate($id)
@@ -292,11 +346,12 @@ trait ItemController
         $this->render('/_item/evaluate', array('model' => $model));
     }
 
-    public function actionPrepPublish($id)
+    public function actionPrepPublish($step, $id)
     {
-        // TODO SHOULD GO TO ... thumbnail?
+        $this->scenario = "public-step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppublish', array('model' => $model));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
     public function actionPreview($id)
@@ -323,10 +378,12 @@ trait ItemController
         $this->render('/_item/publish', array('model' => $model));
     }
 
-    public function actionEdit($id)
+    public function actionEdit($step, $id)
     {
+        $this->scenario = "step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/edit', array('model' => $model));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
     public function actionClone($id)
@@ -359,6 +416,115 @@ trait ItemController
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
         $this->render('/_item/translate', array('model' => $model));
+
+    }
+
+    /**
+     * Returns actions based on the current qa state TODO: and access rules
+     * together with progress calculations and whether or not the action is available yet or not
+     * @return array
+     */
+    public function itemActions($item)
+    {
+
+        $stepActions = array();
+
+        $flagTriggerActions = array();
+
+        //var_dump($model->qaState()->attributes);
+
+        if (!$item->qaState()->draft_saved) {
+            $flagTriggerActions[] = array(
+                'label' => Yii::t('app', 'Save Draft'),
+                'requiredProgress' => $item->calculateValidationProgress('draft'),
+                'action' => 'saveDraft'
+            );
+
+            $targetStatus = "draft";
+            $editAction = "draft";
+
+        } elseif (!$item->qaState()->previewing_welcome) {
+            $flagTriggerActions[] = array(
+                'label' => Yii::t('app', 'Make Testable'),
+                'requiredProgress' => $item->calculateValidationProgress('preview'),
+                'action' => 'makeTestable'
+            );
+
+            $targetStatus = "preview";
+            $editAction = "prepPreview";
+
+
+        } elseif (!$item->qaState()->candidate_for_public_status) {
+            $flagTriggerActions[] = array(
+                'label' => Yii::t('app', 'Make Candidate'),
+                'requiredProgress' => $item->calculateValidationProgress('public'),
+                'action' => 'makeCandidate'
+            );
+
+            $targetStatus = "preview";
+            $editAction = "prepPublish";
+
+        } else {
+
+            $targetStatus = null;
+            $editAction = "edit";
+
+        }
+
+        $steps = $item->flowSteps();
+        $stepCaptions = $item->flowStepCaptions();
+        foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
+            $targetStatusStepProgress = $item->calculateValidationProgress($targetStatus . "-step_" . $step);
+            $stepProgress = $item->calculateValidationProgress("step_" . $step);
+            $stepActions[] = array(
+                "step" => $step,
+                "editAction" => $editAction,
+                "model" => $item,
+                "options" => $options,
+                "action" => $editAction . ucfirst(isset($options['action']) ? $options['action'] : $step),
+                "caption" => $stepCaptions[$step],
+                "progress" => $step == $targetStatus ? $targetStatusStepProgress : $stepProgress,
+            );
+        }
+
+        return compact("stepActions", "flagTriggerActions");
+
+    }
+
+    /**
+     * Returns actions based on the current qa state and access rules
+     * together with progress calculations and whether or not the action is available yet or not
+     * @return array
+     */
+    public function workflowCaption($item)
+    {
+
+        if (!$item->qaState()->draft_saved) {
+            return Yii::t('app', 'Prepare to save');
+        } elseif (!$item->qaState()->previewing_welcome) {
+            return Yii::t('app', 'Prepare for testing');
+        } elseif (!$item->qaState()->candidate_for_public_status) {
+            return Yii::t('app', 'Prepare for publishing');
+        }
+
+        return null;
+
+    }
+
+    public function currentWorkflowTargetStatus()
+    {
+
+        if (strpos($this->action->id, "draft") !== false):
+            $targetStatus = "draft";
+        elseif (strpos($this->action->id, "prepPreshow") !== false):
+            $targetStatus = "preview";
+        elseif (strpos($this->action->id, "prepPublish") !== false):
+            $targetStatus = "public";
+        elseif (strpos($this->action->id, "edit") !== false):
+            $targetStatus = null;
+        endif;
+
+        return $targetStatus;
 
     }
 
@@ -410,7 +576,7 @@ trait ItemController
         $_POST = $this->fixPostFromGrid($_POST);
 
         if (isset($_POST[$this->modelClass])) {
-            if (method_exists($this,"listenForEdges")){
+            if (method_exists($this, "listenForEdges")) {
                 $this->listenForEdges($id);
             }
 
@@ -453,13 +619,6 @@ trait ItemController
                 // commit transaction
                 $transaction->commit();
 
-                // redirect
-                if (isset($_GET['returnUrl'])) {
-                    $this->redirect($_GET['returnUrl']);
-                } else {
-                    $this->redirect(array('continueAuthoring', 'id' => $model->id));
-                }
-
             } catch (Exception $e) {
                 $model->addError('id', $e->getMessage());
                 $transaction->rollback();
@@ -468,7 +627,20 @@ trait ItemController
             $model->attributes = $_GET[$this->modelClass];
         }
 
-        return $model;
+        if ($model->hasErrors() || empty($_POST)) {
+
+            return $model;
+
+        } else {
+
+            // redirect
+            if (isset($_GET['returnUrl'])) {
+                $this->redirect($_GET['returnUrl']);
+            } else {
+                $this->redirect(array('continueAuthoring', 'id' => $model->id));
+            }
+
+        }
 
     }
 
