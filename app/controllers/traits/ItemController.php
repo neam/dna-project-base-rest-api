@@ -10,6 +10,7 @@ trait ItemController
                 'actions' => array(
                     'continueAuthoring',
                     'go',
+                    'cancel',
                 ),
                 'users' => array('*'),
             ),
@@ -378,6 +379,13 @@ trait ItemController
         $this->render('/_item/publish', array('model' => $model));
     }
 
+    public function actionCancel($id)
+    {
+        $model = $this->loadModel($id);
+        $step = $this->nextFlowStep("", $model);
+        $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+    }
+
     public function actionEdit($step, $id)
     {
         $this->scenario = "step_$step";
@@ -440,7 +448,7 @@ trait ItemController
                 'action' => 'saveDraft'
             );
 
-            $targetStatus = "draft";
+            $scenarioPrefix = "draft";
             $editAction = "draft";
 
         } elseif (!$item->qaState()->previewing_welcome) {
@@ -450,7 +458,7 @@ trait ItemController
                 'action' => 'makeTestable'
             );
 
-            $targetStatus = "preview";
+            $scenarioPrefix = "preview";
             $editAction = "prepPreview";
 
 
@@ -461,20 +469,24 @@ trait ItemController
                 'action' => 'makeCandidate'
             );
 
-            $targetStatus = "preview";
+            $scenarioPrefix = "preview";
             $editAction = "prepPublish";
 
         } else {
 
-            $targetStatus = null;
+            $scenarioPrefix = null;
             $editAction = "edit";
 
+        }
+
+        // When in edit-views we consider ourselves outside any active workflow
+        if ($this->action->id == "edit") {
+            $editAction = "edit";
         }
 
         $steps = $item->flowSteps();
         $stepCaptions = $item->flowStepCaptions();
         foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
-            $targetStatusStepProgress = $item->calculateValidationProgress($targetStatus . "-step_" . $step);
             $stepProgress = $item->calculateValidationProgress("step_" . $step);
             $stepActions[] = array(
                 "step" => $step,
@@ -483,7 +495,7 @@ trait ItemController
                 "options" => $options,
                 "action" => $editAction . ucfirst(isset($options['action']) ? $options['action'] : $step),
                 "caption" => $stepCaptions[$step],
-                "progress" => $step == $targetStatus ? $targetStatusStepProgress : $stepProgress,
+                "progress" => $stepProgress,
             );
         }
 
@@ -508,23 +520,6 @@ trait ItemController
         }
 
         return null;
-
-    }
-
-    public function currentWorkflowTargetStatus()
-    {
-
-        if (strpos($this->action->id, "draft") !== false):
-            $targetStatus = "draft";
-        elseif (strpos($this->action->id, "prepPreshow") !== false):
-            $targetStatus = "preview";
-        elseif (strpos($this->action->id, "prepPublish") !== false):
-            $targetStatus = "public";
-        elseif (strpos($this->action->id, "edit") !== false):
-            $targetStatus = null;
-        endif;
-
-        return $targetStatus;
 
     }
 

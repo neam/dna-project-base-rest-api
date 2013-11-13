@@ -1,3 +1,6 @@
+<?php
+$actions = $this->itemActions($model);
+?>
 <style>
 
     .flowbar .well .row-fluid div {
@@ -16,7 +19,6 @@
         line-height: 40px;
         color: red;
     }
-
 
 </style>
 
@@ -40,65 +42,159 @@
             </div>
 
         </h1>
-        <div class="well well-small">
-            <div class="row-fluid">
-                <div class="span3">
-                    <h3>
-                        <?php echo $workflowCaption; ?>
-                    </h3>
+
+        <?php
+        // When in edit-views we consider ourselves outside any active workflow and instead offer buttons to start workflows
+        if ($this->action->id == "edit"): ?>
+
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <?php
+
+                    if (!$model->qaState()->draft_saved) {
+                        $this->widget("bootstrap.widgets.TbButton", array(
+                            "label" => Yii::t("crud", "Prepare to save"),
+                            "type" => $this->action->id == "draft" ? "inverse" : null,
+                            "icon" => "icon-pencil" . ($this->action->id == "draft" ? " icon-white" : null),
+                            "url" => array("draft", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->nextFlowStep("draft-", $model))
+                        ));
+                    } elseif (!$model->qaState()->previewing_welcome) {
+                        $this->widget("bootstrap.widgets.TbButton", array(
+                            "label" => Yii::t("crud", "Prepare for testing"),
+                            "type" => $this->action->id == "prepPreshow" ? "inverse" : null,
+                            "icon" => "icon-edit" . ($this->action->id == "" ? " icon-white" : null),
+                            "url" => array("prepPreshow", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->nextFlowStep("preview-", $model))
+                        ));
+                    } elseif (!$model->qaState()->candidate_for_public_status) {
+                        $this->widget("bootstrap.widgets.TbButton", array(
+                            "label" => Yii::t("crud", "Prepare for publishing"),
+                            "type" => $this->action->id == "prepPublish" ? "inverse" : null,
+                            "icon" => "icon-edit" . ($this->action->id == "prepPublish" ? " icon-white" : null),
+                            "url" => array("prepPublish", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->nextFlowStep("public-", $model))
+                        ));
+                    }
+
+                    ?>
                 </div>
-                <div class="span6">
-                    <div class="pull-left" style="margin-right: 1em;">
-                        <h4 class="required-missing">* N required missing</h4>
-                    </div>
-                    <div class="btn-group">
+                <div class="btn-group">
+                    <?php
 
-                        <?php
-                        echo CHtml::submitButton(Yii::t('model', 'Go to next required step'), array(
-                                'class' => 'btn btn-primary'
-                            )
-                        );
-                        ?>
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("crud", "Evaluate"),
+                        "type" => $this->action->id == "evaluate" ? "inverse" : null,
+                        "icon" => "icon-comment" . ($this->action->id == "evaluate" ? " icon-white" : null),
+                        "url" => array("evaluate", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Review"),
+                        "type" => $this->action->id == "review" ? "inverse" : null,
+                        "icon" => "icon-check" . ($this->action->id == "review" ? " icon-white" : null),
+                        "url" => array("review", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Proofread"),
+                        "type" => $this->action->id == "proofRead" ? "inverse" : null,
+                        "icon" => "icon-certificate" . ($this->action->id == "proofRead" ? " icon-white" : null),
+                        "url" => array("proofRead", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Translate"),
+                        "type" => $this->action->id == "translate" ? "inverse" : null,
+                        "icon" => "icon-globe" . ($this->action->id == "translate" ? " icon-white" : null),
+                        "url" => array("translate", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
+                    /*
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Publish"),
+                        "type" => $this->action->id == "publish" ? "inverse" : null,
+                        "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
+                        "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
+                    */
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Clone"),
+                        "type" => $this->action->id == "clone" ? "inverse" : null,
+                        "icon" => "icon-plus" . ($this->action->id == "clone" ? " icon-white" : null),
+                        "url" => array("clone", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Remove"),
+                        "type" => $this->action->id == "remove" ? "inverse" : null,
+                        "icon" => "icon-eye-close" . ($this->action->id == "remove" ? " icon-white" : null),
+                        "url" => array("remove", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Replace"),
+                        "type" => $this->action->id == "replace" ? "inverse" : null,
+                        "icon" => "icon-random" . ($this->action->id == "replace" ? " icon-white" : null),
+                        "url" => array("replace", "id" => $model->{$model->tableSchema->primaryKey})
+                    ));
 
-                    </div>
-
+                    ?>
                 </div>
-                <div class="span3">
-                    <div class="pull-right">
+            </div>
+
+        <?php else: ?>
+
+            <div class="well well-small">
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h3>
+                            <?php echo $workflowCaption; ?>
+                        </h3>
+                    </div>
+                    <div class="span6">
+                        <div class="pull-left" style="margin-right: 1em;">
+                            <h4 class="required-missing">* N required missing</h4>
+                        </div>
                         <div class="btn-group">
 
                             <?php
+                            echo CHtml::submitButton(Yii::t('model', 'Go to next required step'), array(
+                                    'class' => 'btn btn-primary'
+                                )
+                            );
+                            ?>
 
-                            $actions = $this->itemActions($model);
+                        </div>
 
-                            foreach ($actions["flagTriggerActions"] as $action):
+                    </div>
+                    <div class="span3">
+                        <div class="pull-right">
+                            <div class="btn-group">
+
+                                <?php
+
+                                foreach ($actions["flagTriggerActions"] as $action):
+                                    $this->widget("bootstrap.widgets.TbButton", array(
+                                        "label" => $action["label"],
+                                        "type" => $action["requiredProgress"] == 100 ? "success" : "error",
+                                        "url" => array($action["action"], "id" => $model->{$model->tableSchema->primaryKey})
+                                    ));
+                                endforeach;
+
+                                ?>
+
+                            </div>
+
+                            <div class="btn-group">
+
+                                <?php
                                 $this->widget("bootstrap.widgets.TbButton", array(
-                                    "label" => $action["label"],
-                                    "type" => $action["requiredProgress"] == 100 ? "success" : "error",
-                                    "url" => array($action["action"], "id" => $model->{$model->tableSchema->primaryKey})
+                                    "label" => Yii::t("model", "Cancel"),
+                                    "url" => array("cancel", "id" => $model->{$model->tableSchema->primaryKey})
                                 ));
-                            endforeach;
+                                ?>
 
-                            ?>
-
-                        </div>
-
-                        <div class="btn-group">
-
-                            <?php
-                            $this->widget("bootstrap.widgets.TbButton", array(
-                                "label" => Yii::t("model", "Cancel"),
-                                "url" => array("edit", "id" => $model->{$model->tableSchema->primaryKey})
-                            ));
-                            ?>
-
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
 
-        </div>
+        <?php endif; ?>
 
     </div>
 </div>
