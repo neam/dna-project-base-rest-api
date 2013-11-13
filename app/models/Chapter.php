@@ -138,9 +138,11 @@ class Chapter extends BaseChapter
                 'snapshots' => array(
                     'icon' => 'edit',
                 ),
+                /* next version
                 'credits' => array(
                     'icon' => 'edit',
                 )
+                */
             ),
         );
     }
