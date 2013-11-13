@@ -51,6 +51,7 @@ $actions = $this->itemActions($model);
                 <div class="btn-group">
                     <?php
 
+                    /*
                     if (!$model->qaState()->draft_saved) {
                         $this->widget("bootstrap.widgets.TbButton", array(
                             "label" => Yii::t("crud", "Prepare to save"),
@@ -59,6 +60,7 @@ $actions = $this->itemActions($model);
                             "url" => array("draft", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->firstFlowStep($model))
                         ));
                     }
+                    */
                     if (!$model->qaState()->previewing_welcome) {
                         $this->widget("bootstrap.widgets.TbButton", array(
                             "label" => Yii::t("crud", "Prepare for testing"),

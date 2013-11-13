@@ -168,10 +168,12 @@ trait ItemController
     {
 
         $model = $this->loadModel($id);
+        /*
         if (($model->qaState()->draft_validation_progress < 100 || !$model->qaState()->draft_saved) && !is_null($step = $this->nextFlowStep("draft-", $model))) {
             $this->redirect(array('draft', 'id' => $model->id, 'step' => $step));
             return;
         }
+        */
         if (($model->qaState()->preview_validation_progress < 100 || !$model->qaState()->previewing_welcome) && !is_null($step = $this->nextFlowStep("preview-", $model))) {
             $this->redirect(array('prepPreshow', 'id' => $model->id, 'step' => $step));
             return;
@@ -309,6 +311,7 @@ trait ItemController
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
+    /*
     public function actionSaveDraft($id)
     {
         $model = $this->loadModel($id);
@@ -328,6 +331,7 @@ trait ItemController
         }
 
     }
+    */
 
     public function actionPrepPreshow($step, $id)
     {
@@ -457,7 +461,8 @@ trait ItemController
 
         //var_dump($model->qaState()->attributes);
 
-        if (!$item->qaState()->draft_saved) {
+        /*
+        if ($this->action->id == "draft") {
             $flagTriggerActions[] = array(
                 'label' => Yii::t('app', 'Save Draft'),
                 'requiredProgress' => $item->calculateValidationProgress('draft'),
@@ -467,7 +472,9 @@ trait ItemController
             $scenarioPrefix = "draft";
             $editAction = "draft";
 
-        } elseif (!$item->qaState()->previewing_welcome) {
+        } else
+        */
+        if ($this->action->id == "prepPreshow") {
             $flagTriggerActions[] = array(
                 'label' => Yii::t('app', 'Make Testable'),
                 'requiredProgress' => $item->calculateValidationProgress('preview'),
@@ -477,8 +484,7 @@ trait ItemController
             $scenarioPrefix = "preview";
             $editAction = "prepPreview";
 
-
-        } elseif (!$item->qaState()->candidate_for_public_status) {
+        } elseif ($this->action->id == "prepPublish") {
             $flagTriggerActions[] = array(
                 'label' => Yii::t('app', 'Make Candidate'),
                 'requiredProgress' => $item->calculateValidationProgress('public'),
@@ -527,9 +533,10 @@ trait ItemController
     public function workflowCaption($item)
     {
 
-        if ($this->action->id == "draft") {
+        /*if ($this->action->id == "draft") {
             return Yii::t('app', 'Prepare to save');
-        } elseif ($this->action->id == "prepPreshow") {
+        } else */
+        if ($this->action->id == "prepPreshow") {
             return Yii::t('app', 'Prepare for testing');
         } elseif ($this->action->id == "prepPublish") {
             return Yii::t('app', 'Prepare for publishing');
