@@ -270,14 +270,12 @@ trait ItemController
 
     public function actionDraft($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/draft', array('model' => $model));
+        throw new CException("Override this method in the item's controller. It should redirect to the first step");
     }
 
     public function actionPrepPreshow($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppreshow', array('model' => $model));
+        throw new CException("Override this method in the item's controller. It should redirect to the first step");
     }
 
     public function actionPreshow($id)
@@ -294,9 +292,7 @@ trait ItemController
 
     public function actionPrepPublish($id)
     {
-        // TODO SHOULD GO TO ... thumbnail?
-        $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preppublish', array('model' => $model));
+        throw new CException("Override this method in the item's controller. It should redirect to the first step");
     }
 
     public function actionPreview($id)

@@ -90,7 +90,7 @@ class ChapterController extends Controller
         $this->scenario = "draft-step_info";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/draft', array('model' => $model, 'step' => 'info', 'stepCaption' => $stepCaptions['info']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'info', 'stepCaption' => $stepCaptions['info']));
     }
 
     public function actionPrepPreshow($id)
@@ -129,34 +129,34 @@ class ChapterController extends Controller
 
     public function actionPrepPublishInfo($id)
     {
-        $this->scenario = "step_info";
+        $this->scenario = "public-step_info";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'info', 'stepCaption' => $stepCaptions['info']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'info', 'stepCaption' => $stepCaptions['info']));
     }
 
     public function actionPrepPublishExercises($id)
     {
-        $this->scenario = "step_exercises";
+        $this->scenario = "public-step_exercises";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'exercises', 'stepCaption' => $stepCaptions['exercises']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'exercises', 'stepCaption' => $stepCaptions['exercises']));
     }
 
     public function actionPrepPublishTeachersGuide($id)
     {
-        $this->scenario = "step_teachers_guide";
+        $this->scenario = "public-step_teachers_guide";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'teachers_guide', 'stepCaption' => $stepCaptions['teachers_guide']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'teachers_guide', 'stepCaption' => $stepCaptions['teachers_guide']));
     }
 
     public function actionPrepPublishVideos($id)
     {
-        $this->scenario = "step_videos";
+        $this->scenario = "public-step_videos";
         $model = $this->saveAndContinueOnSuccess($id);
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/preppublish', array('model' => $model, 'step' => 'videos', 'stepCaption' => $stepCaptions['videos']));
+        $this->render('/_item/edit', array('model' => $model, 'step' => 'videos', 'stepCaption' => $stepCaptions['videos']));
     }
 
     public function actionEdit($id){
