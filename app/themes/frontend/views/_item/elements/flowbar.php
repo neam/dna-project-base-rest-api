@@ -72,11 +72,17 @@
                         <div class="btn-group">
 
                             <?php
-                            $this->widget("bootstrap.widgets.TbButton", array(
-                                "label" => Yii::t("model", "Make candidate"),
-                                "type" => "success",
-                                "url" => array("", "id" => $model->{$model->tableSchema->primaryKey})
-                            ));
+
+                            $actions = $this->itemActions($model);
+
+                            foreach ($actions["flagTriggerActions"] as $action):
+                                $this->widget("bootstrap.widgets.TbButton", array(
+                                    "label" => $action["label"],
+                                    "type" => $action["requiredProgress"] == 100 ? "success" : "error",
+                                    "url" => array($action["action"], "id" => $model->{$model->tableSchema->primaryKey})
+                                ));
+                            endforeach;
+
                             ?>
 
                         </div>
@@ -86,7 +92,7 @@
                             <?php
                             $this->widget("bootstrap.widgets.TbButton", array(
                                 "label" => Yii::t("model", "Cancel"),
-                                "url" => array("", "id" => $model->{$model->tableSchema->primaryKey})
+                                "url" => array("edit", "id" => $model->{$model->tableSchema->primaryKey})
                             ));
                             ?>
 

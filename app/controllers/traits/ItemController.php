@@ -362,6 +362,50 @@ trait ItemController
 
     }
 
+    /**
+     * Returns actions based on the current qa state and access rules
+     * together with progress calculations and whether or not the action is available yet or not
+     * @return array
+     */
+    public function itemActions($model)
+    {
+
+        $graphModels = DataModel::graphModels();
+        if (!isset($graphModels[get_class($model)])) {
+            return array();
+        }
+
+        $stepActions = array();
+
+        $flagTriggerActions = array();
+
+        //var_dump($model->qaState()->attributes);
+
+        if (!$model->qaState()->draft_saved) {
+            $flagTriggerActions[] = array(
+                'label' => Yii::t('app', 'Save Draft'),
+                'requiredProgress' => $model->calculateValidationProgress('draft'),
+                'action' => 'saveDraft'
+            );
+        } elseif (!$model->qaState()->previewing_welcome) {
+            $flagTriggerActions[] = array(
+                'label' => Yii::t('app', 'Make Testable'),
+                'requiredProgress' => $model->calculateValidationProgress('preview'),
+                'action' => 'makeTestable'
+            );
+        } elseif (!$model->qaState()->candidate_for_public_status) {
+            $flagTriggerActions[] = array(
+                'label' => Yii::t('app', 'Make Candidate'),
+                'requiredProgress' => $model->calculateValidationProgress('public'),
+                'action' => 'makeCandidate'
+            );
+        }
+
+        return compact("stepActions", "flagTriggerActions");
+
+
+    }
+
     public function currentWorkflowTargetStatus()
     {
 
