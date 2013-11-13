@@ -157,17 +157,17 @@ trait ItemController
         $model = $this->loadModel($id);
 
         if ($model->qaState()->draft_validation_progress < 100 || !$model->qaState()->draft_saved) {
-            $step = 'info'; // TODO: Make item&step-dependent
+            $step = $this->nextFlowStep("draft-", $model);
             $this->redirect(array('draft', 'id' => $model->id, 'step' => $step));
             return;
         }
         if ($model->qaState()->preview_validation_progress < 100 || !$model->qaState()->previewing_welcome) {
-            $step = 'info'; // TODO: Make item&step-dependent
+            $step = $this->nextFlowStep("preview-", $model);
             $this->redirect(array('prepPreshow', 'id' => $model->id, 'step' => $step));
             return;
         }
         if ($model->qaState()->public_validation_progress < 100 || !$model->qaState()->candidate_for_public_status) {
-            $step = 'info'; // TODO: Make item&step-dependent
+            $step = $this->nextFlowStep("public-", $model);
             $this->redirect(array('prepPublish', 'id' => $model->id, 'step' => $step));
             return;
         }
@@ -219,6 +219,18 @@ trait ItemController
         $this->redirect(array('edit', 'id' => $model->id));
         return;
 
+    }
+
+    protected function nextFlowStep($prefix, $item)
+    {
+        $steps = $item->flowSteps();
+        foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
+            if ($item->calculateValidationProgress($prefix . 'step_' . $step) < 100) {
+                return $step;
+            }
+            $item->clearErrors();
+        }
+        return 'mandatory_complete';
     }
 
     public function actionAuthor($id)
@@ -572,13 +584,6 @@ trait ItemController
                 // commit transaction
                 $transaction->commit();
 
-                // redirect
-                if (isset($_GET['returnUrl'])) {
-                    $this->redirect($_GET['returnUrl']);
-                } else {
-                    $this->redirect(array('continueAuthoring', 'id' => $model->id));
-                }
-
             } catch (Exception $e) {
                 $model->addError('id', $e->getMessage());
                 $transaction->rollback();
@@ -587,7 +592,20 @@ trait ItemController
             $model->attributes = $_GET[$this->modelClass];
         }
 
-        return $model;
+        if ($model->hasErrors() || empty($_POST)) {
+
+            return $model;
+
+        } else {
+
+            // redirect
+            if (isset($_GET['returnUrl'])) {
+                $this->redirect($_GET['returnUrl']);
+            } else {
+                $this->redirect(array('continueAuthoring', 'id' => $model->id));
+            }
+
+        }
 
     }
 
