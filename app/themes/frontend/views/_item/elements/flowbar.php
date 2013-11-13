@@ -47,14 +47,14 @@
                         <?php echo $workflowCaption; ?>
                     </h3>
                 </div>
-                <div class="span4">
+                <div class="span6">
                     <div class="pull-left" style="margin-right: 1em;">
                         <h4 class="required-missing">* N required missing</h4>
                     </div>
                     <div class="btn-group">
 
                         <?php
-                        echo CHtml::submitButton(Yii::t('model', 'Next'), array(
+                        echo CHtml::submitButton(Yii::t('model', 'Go to next required step'), array(
                                 'class' => 'btn btn-primary'
                             )
                         );
@@ -63,10 +63,6 @@
                     </div>
 
                 </div>
-                <div class="span2">
-
-                </div>
-
                 <div class="span3">
                     <div class="pull-right">
                         <div class="btn-group">
