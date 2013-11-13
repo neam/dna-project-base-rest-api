@@ -1,5 +1,9 @@
 <div class="view well well-white">
 
+    <div>
+        <?php echo CHtml::link('<i class="icon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/view', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+    </div>
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($data->id), array('chapter/view', 'id' => $data->id)); ?>
     <br/>
@@ -15,8 +19,6 @@
     <b><?php echo CHtml::encode($data->getAttributeLabel('about')); ?>:</b>
     <?php echo CHtml::encode($data->about); ?>
     <br/>
-
-    <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/view', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
 
     <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_en')); ?>:</b>
@@ -184,9 +186,13 @@
     <?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>
         <div class="admin-container show">
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
-            <?php if (Yii::app()->user->checkAccess('Developer')): ?>
-                <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
-            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if (Yii::app()->user->checkAccess('Developer')): ?>
+        <div class="admin-container show">
+            <h3>Developer access</h3>
+            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
 
