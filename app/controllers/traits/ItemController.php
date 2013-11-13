@@ -378,17 +378,50 @@ trait ItemController
                 'requiredProgress' => $item->calculateValidationProgress('draft'),
                 'action' => 'saveDraft'
             );
+
+            $targetStatus = "draft";
+            $editAction = "draft";
+
         } elseif (!$item->qaState()->previewing_welcome) {
             $flagTriggerActions[] = array(
                 'label' => Yii::t('app', 'Make Testable'),
                 'requiredProgress' => $item->calculateValidationProgress('preview'),
                 'action' => 'makeTestable'
             );
+
+            $targetStatus = "preview";
+            $editAction = "prepPreview";
+
+
         } elseif (!$item->qaState()->candidate_for_public_status) {
             $flagTriggerActions[] = array(
                 'label' => Yii::t('app', 'Make Candidate'),
                 'requiredProgress' => $item->calculateValidationProgress('public'),
                 'action' => 'makeCandidate'
+            );
+
+            $targetStatus = "preview";
+            $editAction = "prepPublish";
+
+        } else {
+
+            $targetStatus = null;
+            $editAction = "edit";
+
+        }
+
+        $steps = $item->flowSteps();
+        $stepCaptions = $item->flowStepCaptions();
+        foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
+            $targetStatusStepProgress = $item->calculateValidationProgress($targetStatus . "-step_" . $step);
+            $stepProgress = $item->calculateValidationProgress("step_" . $step);
+            $stepActions[] = array(
+                "step" => $step,
+                "model" => $item,
+                "options" => $options,
+                "action" => $editAction . ucfirst(isset($options['action']) ? $options['action'] : $step),
+                "caption" => $stepCaptions[$step],
+                "progress" => $step == $targetStatus ? $targetStatusStepProgress : $stepProgress,
             );
         }
 

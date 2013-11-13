@@ -9,15 +9,10 @@ $stepCaptions = $model->flowStepCaptions();
 
 <?php
 
-$targetStatus = $this->currentWorkflowTargetStatus();
+$actions = $this->itemActions($model);
 
-foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
-    $action = "edit" . ucfirst(isset($options['action']) ? $options['action'] : $step);
-    $caption = $stepCaptions[$step];
-    $targetStatusStepProgress = $model->calculateValidationProgress($targetStatus . "-step_" . $step);
-    $stepProgress = $model->calculateValidationProgress("step_" . $step);
-    $progress = $step == $targetStatus ? $targetStatusStepProgress : $stepProgress;
-    $this->renderPartial("/_item/elements/_progress-item", compact("step", "caption", "options", "action", "model", "progress"));
+foreach ($actions["stepActions"] as $action) {
+    $this->renderPartial("/_item/elements/_progress-item", $action);
 }
 
 ?>
