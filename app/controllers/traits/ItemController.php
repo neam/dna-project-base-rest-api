@@ -9,6 +9,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'continueAuthoring',
+                    'nextRequired',
                     'go',
                     'cancel',
                 ),
@@ -156,20 +157,26 @@ trait ItemController
 
     public function actionContinueAuthoring($id)
     {
-        $model = $this->loadModel($id);
 
-        if ($model->qaState()->draft_validation_progress < 100 || !$model->qaState()->draft_saved) {
-            $step = $this->nextFlowStep("draft-", $model);
+        $model = $this->loadModel($id);
+        $step = $this->firstFlowStep($model);
+        $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+
+    }
+
+    public function actionNextRequired($id)
+    {
+
+        $model = $this->loadModel($id);
+        if (($model->qaState()->draft_validation_progress < 100 || !$model->qaState()->draft_saved) && !is_null($step = $this->nextFlowStep("draft-", $model))) {
             $this->redirect(array('draft', 'id' => $model->id, 'step' => $step));
             return;
         }
-        if ($model->qaState()->preview_validation_progress < 100 || !$model->qaState()->previewing_welcome) {
-            $step = $this->nextFlowStep("preview-", $model);
+        if (($model->qaState()->preview_validation_progress < 100 || !$model->qaState()->previewing_welcome) && !is_null($step = $this->nextFlowStep("preview-", $model))) {
             $this->redirect(array('prepPreshow', 'id' => $model->id, 'step' => $step));
             return;
         }
-        if ($model->qaState()->public_validation_progress < 100 || !$model->qaState()->candidate_for_public_status) {
-            $step = $this->nextFlowStep("public-", $model);
+        if (($model->qaState()->public_validation_progress < 100 || !$model->qaState()->candidate_for_public_status) && !is_null($step = $this->nextFlowStep("public-", $model))) {
             $this->redirect(array('prepPublish', 'id' => $model->id, 'step' => $step));
             return;
         }
@@ -218,7 +225,7 @@ trait ItemController
             return;
         }
 
-        $this->redirect(array('edit', 'id' => $model->id));
+        $this->actionContinueAuthoring($id);
         return;
 
     }
@@ -232,7 +239,16 @@ trait ItemController
             }
             $item->clearErrors();
         }
-        return 'mandatory_complete';
+        return null;
+    }
+
+    protected function firstFlowStep($item)
+    {
+        $steps = $item->flowSteps();
+        foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
+            return $step;
+        }
+        return null;
     }
 
     public function actionAuthor($id)
@@ -632,7 +648,7 @@ trait ItemController
             if (isset($_GET['returnUrl'])) {
                 $this->redirect($_GET['returnUrl']);
             } else {
-                $this->redirect(array('continueAuthoring', 'id' => $model->id));
+                $this->redirect(array('nextRequired', 'id' => $model->id));
             }
 
         }
