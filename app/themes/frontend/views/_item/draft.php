@@ -1,5 +1,5 @@
 <?php
-$workflowCaption = Yii::t('app', 'Create draft');
+$workflowCaption = $this->workflowCaption($model);
 
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
@@ -29,17 +29,23 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 <div class="row-fluid">
     <div class="span3">
 
+        <br/>
+
         <div class="row-fluid">
-            <div class="span12 well well-white">
+            <div class="span12">
                 <?php echo $this->renderPartial('/_item/elements/progress', compact("model", "execution")); ?>
             </div>
         </div>
 
+        <hr/>
+
+        <!--
         <div class="row-fluid">
             <div class="span12 well well-white">
                 <?php echo $this->renderPartial('/_item/elements/actions', compact("model", "execution")); ?>
             </div>
         </div>
+        -->
 
     </div>
     <div class="span9">

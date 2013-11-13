@@ -1,5 +1,5 @@
 <?php
-$workflowCaption = Yii::t('app', 'Edit');
+$workflowCaption = $this->workflowCaption($model);
 
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
@@ -15,59 +15,42 @@ $this->breadcrumbs[] = $stepCaption;
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<div class="row-fluid">
-    <div class="span12">
+<?php
+$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    'id' => 'item-form',
+    'enableAjaxValidation' => true,
+    'enableClientValidation' => true,
+    'type' => 'horizontal',
+));
+?>
 
-        <h1>
-            <?php echo $workflowCaption; ?>
-            - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
-            <small>vX</small>
-
-            <div class="btn-group">
-
-                <?php
-                $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("model", "Preview"),
-                    "icon" => "icon-eye-open",
-                    "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey})
-                ));
-                ?>
-
-            </div>
-
-        </h1>
-
-    </div>
-</div>
-
-<?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
-<br/>
+<?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form")); ?>
 
 <div class="row-fluid">
     <div class="span3">
 
+        <br/>
+
         <div class="row-fluid">
-            <div class="span12 well well-white">
+            <div class="span12">
                 <?php echo $this->renderPartial('/_item/elements/progress', compact("model", "execution")); ?>
             </div>
         </div>
 
+        <hr/>
+
+        <!--
         <div class="row-fluid">
             <div class="span12 well well-white">
                 <?php echo $this->renderPartial('/_item/elements/actions', compact("model", "execution")); ?>
             </div>
         </div>
+        -->
 
     </div>
     <div class="span9">
 
         <?php
-        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-            'id' => 'item-form',
-            'enableAjaxValidation' => true,
-            'enableClientValidation' => true,
-            'type' => 'horizontal',
-        ));
         echo $form->errorSummary($model);
         ?>
 
@@ -85,12 +68,6 @@ $this->breadcrumbs[] = $stepCaption;
                 <div class="btn-toolbar pull-right">
 
                     <div class="btn-group">
-                        <?php
-                        echo CHtml::submitButton(Yii::t('model', 'Next'), array(
-                                'class' => 'btn btn-large btn-primary'
-                            )
-                        );
-                        ?>
 
                     </div>
 
@@ -107,7 +84,6 @@ $this->breadcrumbs[] = $stepCaption;
 
 </div>
 
-
 <?php
 foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
     if (strpos($key, "modal:") === 0) {
@@ -115,4 +91,3 @@ foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Rev
     }
 }
 ?>
-

@@ -398,6 +398,25 @@ trait ItemController
 
         return compact("stepActions", "flagTriggerActions");
 
+    }
+
+    /**
+     * Returns actions based on the current qa state and access rules
+     * together with progress calculations and whether or not the action is available yet or not
+     * @return array
+     */
+    public function workflowCaption($item)
+    {
+
+        if (!$item->qaState()->draft_saved) {
+            return Yii::t('app', 'Prepare to save');
+        } elseif (!$item->qaState()->previewing_welcome) {
+            return Yii::t('app', 'Prepare for testing');
+        } elseif (!$item->qaState()->candidate_for_public_status) {
+            return Yii::t('app', 'Prepare for publishing');
+        }
+
+        return null;
 
     }
 

@@ -12,7 +12,7 @@ $stepCaptions = $model->flowStepCaptions();
 $targetStatus = $this->currentWorkflowTargetStatus();
 
 foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
-    $action = $targetStatus . ucfirst(isset($options['action']) ? $options['action'] : $step);
+    $action = "edit" . ucfirst(isset($options['action']) ? $options['action'] : $step);
     $caption = $stepCaptions[$step];
     $targetStatusStepProgress = $model->calculateValidationProgress($targetStatus . "-step_" . $step);
     $stepProgress = $model->calculateValidationProgress("step_" . $step);
