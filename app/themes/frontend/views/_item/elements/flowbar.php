@@ -168,11 +168,19 @@ $actions = $this->itemActions($model);
                                 <?php
 
                                 foreach ($actions["flagTriggerActions"] as $action):
-                                    $this->widget("bootstrap.widgets.TbButton", array(
-                                        "label" => $action["label"],
-                                        "type" => $action["requiredProgress"] == 100 ? "success" : "error",
-                                        "url" => array($action["action"], "id" => $model->{$model->tableSchema->primaryKey})
-                                    ));
+                                    if ($action["requiredProgress"] < 100) {
+                                        $this->widget("bootstrap.widgets.TbButton", array(
+                                            "label" => $action["label"],
+                                            "type" => "",
+                                            "disabled" => true,
+                                        ));
+                                    } else {
+                                        $this->widget("bootstrap.widgets.TbButton", array(
+                                            "label" => $action["label"],
+                                            "type" => "success",
+                                            "url" => array($action["action"], "id" => $model->{$model->tableSchema->primaryKey})
+                                        ));
+                                    }
                                 endforeach;
 
                                 ?>
