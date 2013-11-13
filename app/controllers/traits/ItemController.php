@@ -363,17 +363,12 @@ trait ItemController
     }
 
     /**
-     * Returns actions based on the current qa state and access rules
+     * Returns actions based on the current qa state TODO: and access rules
      * together with progress calculations and whether or not the action is available yet or not
      * @return array
      */
-    public function itemActions($model)
+    public function itemActions($item)
     {
-
-        $graphModels = DataModel::graphModels();
-        if (!isset($graphModels[get_class($model)])) {
-            return array();
-        }
 
         $stepActions = array();
 
@@ -381,22 +376,22 @@ trait ItemController
 
         //var_dump($model->qaState()->attributes);
 
-        if (!$model->qaState()->draft_saved) {
+        if (!$item->qaState()->draft_saved) {
             $flagTriggerActions[] = array(
                 'label' => Yii::t('app', 'Save Draft'),
-                'requiredProgress' => $model->calculateValidationProgress('draft'),
+                'requiredProgress' => $item->calculateValidationProgress('draft'),
                 'action' => 'saveDraft'
             );
-        } elseif (!$model->qaState()->previewing_welcome) {
+        } elseif (!$item->qaState()->previewing_welcome) {
             $flagTriggerActions[] = array(
                 'label' => Yii::t('app', 'Make Testable'),
-                'requiredProgress' => $model->calculateValidationProgress('preview'),
+                'requiredProgress' => $item->calculateValidationProgress('preview'),
                 'action' => 'makeTestable'
             );
-        } elseif (!$model->qaState()->candidate_for_public_status) {
+        } elseif (!$item->qaState()->candidate_for_public_status) {
             $flagTriggerActions[] = array(
                 'label' => Yii::t('app', 'Make Candidate'),
-                'requiredProgress' => $model->calculateValidationProgress('public'),
+                'requiredProgress' => $item->calculateValidationProgress('public'),
                 'action' => 'makeCandidate'
             );
         }
