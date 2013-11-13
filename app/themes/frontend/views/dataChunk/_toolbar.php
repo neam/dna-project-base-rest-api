@@ -2,6 +2,18 @@
     <div class="btn-group">
         <?php
         switch ($this->action->id) {
+            case "index":
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("crud", "Manage"),
+                    "icon" => "icon-list-alt",
+                    "url" => array("dataChunk/admin")
+                ));
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("crud", "Add"),
+                    "icon" => "icon-plus",
+                    "url" => array("dataChunk/add")
+                ));
+                break;
             case "view":
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Update"),

@@ -2,6 +2,10 @@
 
 class DataChunkController extends Controller
 {
+    use ItemController;
+
+    public $modelClass = "DataChunk";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,7 +20,7 @@ class DataChunkController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array(
                 'allow',
                 'actions' => array(
@@ -35,7 +39,7 @@ class DataChunkController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)
