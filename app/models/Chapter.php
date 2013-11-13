@@ -64,7 +64,7 @@ class Chapter extends BaseChapter
                 array('credits', 'safe', 'on' => 'draft-step_credits,preview-step_credits,public-step_credits'),
 
                 // Define step-dependent fields - Part 2 - what fields are required at each step?
-                array('title_' . $this->source_language . '', 'required', 'on' => 'draft-step_info,public-step_info,step_info'),
+                array('title_' . $this->source_language . '', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
                 array('slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'required', 'on' => 'step_info'),
                 array('teachers_guide', 'required', 'on' => 'public-step_teachers_guide,step_teachers_guide'),
                 array('exercises', 'required', 'on' => 'public-step_exercises,step_exercises'),
