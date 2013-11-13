@@ -69,6 +69,19 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
                     <div class="btn-group">
 
+                        <?php
+                        echo CHtml::submitButton(Yii::t('model', 'Save changes'), array(
+                                'class' => 'btn btn-primary',
+                                'name' => 'save-changes',
+                            )
+                        );
+                        $this->widget("bootstrap.widgets.TbButton", array(
+                            "label" => Yii::t("model", "Undo"),
+                            "url" => Yii::app()->request->url,
+                        ));
+
+                        ?>
+
                     </div>
 
                 </div>
