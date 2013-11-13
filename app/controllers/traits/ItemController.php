@@ -156,16 +156,19 @@ trait ItemController
     {
         $model = $this->loadModel($id);
 
-        if ($model->qaState()->draft_validation_progress < 100) {
-            $this->redirect(array('draft', 'id' => $model->id));
+        if ($model->qaState()->draft_validation_progress < 100 || !$model->qaState()->draft_saved) {
+            $step = 'info'; // TODO: Make item&step-dependent
+            $this->redirect(array('draft', 'id' => $model->id, 'step' => $step));
             return;
         }
-        if ($model->qaState()->preview_validation_progress < 100) {
-            $this->redirect(array('prepPreshow', 'id' => $model->id));
+        if ($model->qaState()->preview_validation_progress < 100 || !$model->qaState()->previewing_welcome) {
+            $step = 'info'; // TODO: Make item&step-dependent
+            $this->redirect(array('prepPreshow', 'id' => $model->id, 'step' => $step));
             return;
         }
-        if ($model->qaState()->public_validation_progress < 100) {
-            $this->redirect(array('prepPublish', 'id' => $model->id));
+        if ($model->qaState()->public_validation_progress < 100 || !$model->qaState()->candidate_for_public_status) {
+            $step = 'info'; // TODO: Make item&step-dependent
+            $this->redirect(array('prepPublish', 'id' => $model->id, 'step' => $step));
             return;
         }
         if ($model->qaState()->draft_evaluation_progress < 100) {
@@ -268,14 +271,20 @@ trait ItemController
         }
     }
 
-    public function actionDraft($id)
+    public function actionDraft($step, $id)
     {
-        throw new CException("Override this method in the item's controller. It should redirect to the first step");
+        $this->scenario = "draft-step_$step";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
-    public function actionPrepPreshow($id)
+    public function actionPrepPreshow($step, $id)
     {
-        throw new CException("Override this method in the item's controller. It should redirect to the first step");
+        $this->scenario = "preview-step_$step";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
     public function actionPreshow($id)
@@ -290,9 +299,12 @@ trait ItemController
         $this->render('/_item/evaluate', array('model' => $model));
     }
 
-    public function actionPrepPublish($id)
+    public function actionPrepPublish($step, $id)
     {
-        throw new CException("Override this method in the item's controller. It should redirect to the first step");
+        $this->scenario = "public-step_$step";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
     public function actionPreview($id)
@@ -319,10 +331,12 @@ trait ItemController
         $this->render('/_item/publish', array('model' => $model));
     }
 
-    public function actionEdit($id)
+    public function actionEdit($step, $id)
     {
+        $this->scenario = "step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/edit', array('model' => $model));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
     public function actionClone($id)
@@ -417,6 +431,7 @@ trait ItemController
             $stepProgress = $item->calculateValidationProgress("step_" . $step);
             $stepActions[] = array(
                 "step" => $step,
+                "editAction" => $editAction,
                 "model" => $item,
                 "options" => $options,
                 "action" => $editAction . ucfirst(isset($options['action']) ? $options['action'] : $step),
