@@ -24,6 +24,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'draft',
+                    'saveDraft',
                 ),
                 'roles' => array(
                     'Item.Draft'
@@ -47,7 +48,7 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
-                    'preshow',
+                    'makeTestable',
                 ),
                 'roles' => array(
                     'Item.Preshow'
@@ -291,6 +292,26 @@ trait ItemController
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
+    public function actionSaveDraft($id)
+    {
+        $model = $this->loadModel($id);
+        $qaState = $model->qaState();
+
+        // save state change
+        $qaState->draft_saved = 1;
+        if (!$qaState->save()) {
+            throw new SaveException($qaState);
+        }
+
+        // redirect
+        if (isset($_GET['returnUrl'])) {
+            $this->redirect($_GET['returnUrl']);
+        } else {
+            $this->redirect(array('continueAuthoring', 'id' => $model->id));
+        }
+
+    }
+
     public function actionPrepPreshow($step, $id)
     {
         $this->scenario = "preview-step_$step";
@@ -299,10 +320,24 @@ trait ItemController
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
-    public function actionPreshow($id)
+    public function actionMakeTestable($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preshow', array('model' => $model));
+        $model = $this->loadModel($id);
+        $qaState = $model->qaState();
+
+        // save state change
+        $qaState->previewing_welcome = 1;
+        if (!$qaState->save()) {
+            throw new SaveException($qaState);
+        }
+
+        // redirect
+        if (isset($_GET['returnUrl'])) {
+            $this->redirect($_GET['returnUrl']);
+        } else {
+            $this->redirect(array('continueAuthoring', 'id' => $model->id));
+        }
+
     }
 
     public function actionEvaluate($id)
