@@ -511,11 +511,11 @@ trait ItemController
     public function workflowCaption($item)
     {
 
-        if (!$item->qaState()->draft_saved) {
+        if ($this->action->id == "draft") {
             return Yii::t('app', 'Prepare to save');
-        } elseif (!$item->qaState()->previewing_welcome) {
+        } elseif ($this->action->id == "prepPreshow") {
             return Yii::t('app', 'Prepare for testing');
-        } elseif (!$item->qaState()->candidate_for_public_status) {
+        } elseif ($this->action->id == "prepPublish") {
             return Yii::t('app', 'Prepare for publishing');
         }
 
