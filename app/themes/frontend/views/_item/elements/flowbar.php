@@ -56,23 +56,23 @@ $actions = $this->itemActions($model);
                             "label" => Yii::t("crud", "Prepare to save"),
                             "type" => $this->action->id == "draft" ? "inverse" : null,
                             "icon" => "icon-pencil" . ($this->action->id == "draft" ? " icon-white" : null),
-                            "url" => array("draft", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->nextFlowStep("draft-", $model))
+                            "url" => array("draft", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->firstFlowStep($model))
                         ));
                     }
                     if (!$model->qaState()->previewing_welcome) {
                         $this->widget("bootstrap.widgets.TbButton", array(
                             "label" => Yii::t("crud", "Prepare for testing"),
                             "type" => $this->action->id == "prepPreshow" ? "inverse" : null,
-                            "icon" => "icon-edit" . ($this->action->id == "" ? " icon-white" : null),
-                            "url" => array("prepPreshow", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->nextFlowStep("preview-", $model))
+                            "icon" => "icon-pencil" . ($this->action->id == "" ? " icon-white" : null),
+                            "url" => array("prepPreshow", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->firstFlowStep($model))
                         ));
                     }
                     if (!$model->qaState()->candidate_for_public_status) {
                         $this->widget("bootstrap.widgets.TbButton", array(
                             "label" => Yii::t("crud", "Prepare for publishing"),
                             "type" => $this->action->id == "prepPublish" ? "inverse" : null,
-                            "icon" => "icon-edit" . ($this->action->id == "prepPublish" ? " icon-white" : null),
-                            "url" => array("prepPublish", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->nextFlowStep("public-", $model))
+                            "icon" => "icon-pencil" . ($this->action->id == "prepPublish" ? " icon-white" : null),
+                            "url" => array("prepPublish", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->firstFlowStep($model))
                         ));
                     }
 
