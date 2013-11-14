@@ -97,9 +97,8 @@ class PoFile extends BasePoFile
     public function flowStepCaptions()
     {
         return array(
-            'title' => Yii::t('app', 'Title'),
-            'about' => Yii::t('app', 'About'),
             'file' => Yii::t('app', 'File'),
+            'mandatory_complete' => Yii::t('app', 'Mandatory fields filled'),
         );
     }
 
