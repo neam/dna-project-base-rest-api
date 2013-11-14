@@ -469,7 +469,6 @@ trait ItemController
                 'action' => 'saveDraft'
             );
 
-            $scenarioPrefix = "draft";
             $editAction = "draft";
 
         } else
@@ -481,7 +480,6 @@ trait ItemController
                 'action' => 'makeTestable'
             );
 
-            $scenarioPrefix = "preview";
             $editAction = "prepPreview";
 
         } elseif ($this->action->id == "prepPublish") {
@@ -491,12 +489,10 @@ trait ItemController
                 'action' => 'makeCandidate'
             );
 
-            $scenarioPrefix = "preview";
             $editAction = "prepPublish";
 
         } else {
 
-            $scenarioPrefix = null;
             $editAction = "edit";
 
         }
@@ -522,6 +518,28 @@ trait ItemController
         }
 
         return compact("stepActions", "flagTriggerActions");
+
+    }
+
+    public function currentValidationScenario()
+    {
+
+        $validationScenario = null;
+
+        /*
+        if ($this->action->id == "draft") {
+            $validationScenario = "draft";
+        } else
+        */
+        if ($this->action->id == "prepPreshow") {
+            $validationScenario = "preview";
+        } elseif ($this->action->id == "prepPublish") {
+            $validationScenario = "public";
+        } elseif ($this->action->id == "edit") {
+            $validationScenario = "public";
+        }
+
+        return $validationScenario;
 
     }
 

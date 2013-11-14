@@ -147,22 +147,31 @@ $actions = $this->itemActions($model);
                             <?php echo $workflowCaption; ?>
                         </h3>
                     </div>
-                    <div class="span6">
-                        <div class="pull-left" style="margin-right: 1em;">
-                            <h4 class="required-missing">* N required missing</h4>
+                    <?php
+                    $validationScenario = $this->currentValidationScenario();
+                    $invalidFields = $model->calculateInvalidFields($validationScenario);
+                    if ($invalidFields > 0):
+                        ?>
+                        <div class="span6">
+                            <div class="pull-left" style="margin-right: 1em;">
+                                <h4 class="required-missing">* <?php echo $invalidFields; ?> required missing</h4>
+                            </div>
+                            <div class="btn-group">
+
+                                <?php
+                                echo CHtml::submitButton(Yii::t('model', 'Go to next required step'), array(
+                                        'class' => 'btn btn-primary',
+                                        'name' => 'next-required',
+                                    )
+                                );
+                                ?>
+
+                            </div>
+
                         </div>
-                        <div class="btn-group">
-
-                            <?php
-                            echo CHtml::submitButton(Yii::t('model', 'Go to next required step'), array(
-                                    'class' => 'btn btn-primary'
-                                )
-                            );
-                            ?>
-
-                        </div>
-
-                    </div>
+                    <?php
+                    endif;
+                    ?>
                     <div class="span3">
                         <div class="pull-right">
                             <div class="btn-group">

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "055d5a57c76e4496b25ef05c250d21e4",
+    "hash": "ca3eb017abcdf0bce4bbee514ddfefd3",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -54,6 +54,42 @@
             "homepage": "https://github.com/bwoester/yii-event-interceptor"
         },
         {
+            "name": "bwoester/yii-static-events-component",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bwoester/yii-static-events-component.git",
+                "reference": "71e3a74a28ab8307b87947a3db483226d5b90982"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/bwoester/yii-static-events-component/archive/71e3a74a28ab8307b87947a3db483226d5b90982.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "yii-extension",
+            "description": "Allows you to register event handlers on class base.",
+            "homepage": "https://github.com/bwoester/yii-static-events-component"
+        },
+        {
+            "name": "clevertech/yiibooster",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clevertech/YiiBooster.git",
+                "reference": "aab8eed9c41767baf1c7e4f8c164fe877e32687d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/clevertech/YiiBooster/archive/aab8eed9c41767baf1c7e4f8c164fe877e32687d.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "yii-extension",
+            "description": "YiiBooster",
+            "homepage": "https://github.com/clevertech/YiiBooster"
+        },
+        {
             "name": "codemix/hybridauthmanager",
             "version": "dev-master",
             "source": {
@@ -92,42 +128,6 @@
             "time": "2013-08-22 19:12:29"
         },
         {
-            "name": "bwoester/yii-static-events-component",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bwoester/yii-static-events-component.git",
-                "reference": "71e3a74a28ab8307b87947a3db483226d5b90982"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/bwoester/yii-static-events-component/archive/71e3a74a28ab8307b87947a3db483226d5b90982.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "yii-extension",
-            "description": "Allows you to register event handlers on class base.",
-            "homepage": "https://github.com/bwoester/yii-static-events-component"
-        },
-        {
-            "name": "clevertech/yiibooster",
-            "version": "v2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/clevertech/YiiBooster.git",
-                "reference": "aab8eed9c41767baf1c7e4f8c164fe877e32687d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/clevertech/YiiBooster/archive/aab8eed9c41767baf1c7e4f8c164fe877e32687d.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "yii-extension",
-            "description": "YiiBooster",
-            "homepage": "https://github.com/clevertech/YiiBooster"
-        },
-        {
             "name": "crisu83/yii-rights",
             "version": "dev-master",
             "source": {
@@ -144,6 +144,17 @@
             ],
             "description": "Yii Rights module",
             "time": "2013-10-11 09:20:14"
+        },
+        {
+            "name": "firstrow/stranslateablebehavior",
+            "version": "@dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/motin/STranslateableBehavior.git",
+                "reference": "b156cd3b182e2d18b90653f4e4f00b5f2c9df659"
+            },
+            "type": "library",
+            "time": "2012-09-14 10:59:44"
         },
         {
             "name": "gusnips/yii-translate",
@@ -183,17 +194,6 @@
             "time": "2013-10-10 23:10:19"
         },
         {
-            "name": "firstrow/stranslateablebehavior",
-            "version": "@dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/motin/STranslateableBehavior.git",
-                "reference": "b156cd3b182e2d18b90653f4e4f00b5f2c9df659"
-            },
-            "type": "library",
-            "time": "2012-09-14 10:59:44"
-        },
-        {
             "name": "kswedberg/jquery-smooth-scroll",
             "version": "1.4.10",
             "source": {
@@ -221,6 +221,17 @@
             "description": "A configurable set of panels that display various debug information about the current request/response. ",
             "homepage": "https://github.com/malyshev/yii-debug-toolbar",
             "time": "2013-04-10 15:53:54"
+        },
+        {
+            "name": "mihanentalpo/yii-sql-migration-generator",
+            "version": "@dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MihanEntalpo/yii-sql-migration-generator.git",
+                "reference": "5a0b93a4f0ac9ace6a4e7e1d92dc0980bba17cee"
+            },
+            "type": "library",
+            "time": "2013-08-08 07:00:22"
         },
         {
             "name": "mikehaertl/packagecompressor",
@@ -254,17 +265,6 @@
                 "yii"
             ],
             "time": "2013-10-13 21:24:07"
-        },
-        {
-            "name": "mihanentalpo/yii-sql-migration-generator",
-            "version": "@dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/MihanEntalpo/yii-sql-migration-generator.git",
-                "reference": "5a0b93a4f0ac9ace6a4e7e1d92dc0980bba17cee"
-            },
-            "type": "library",
-            "time": "2013-08-08 07:00:22"
         },
         {
             "name": "mikehaertl/translatable",
@@ -363,6 +363,145 @@
             "time": "2013-07-23 19:58:28"
         },
         {
+            "name": "neam/yii-i18n-columns",
+            "version": "0.3.0-alpha",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-i18n-columns.git",
+                "reference": "0.3.0-alpha"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/0.3.0-alpha",
+                "reference": "0.3.0-alpha",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "yii-extension",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                },
+                {
+                    "name": "Andrej Bubis",
+                    "email": "firstrow@gmail.com"
+                }
+            ],
+            "description": "Transparent attribute translation for ActiveRecords, without requiring lookup tables for translated field contents.",
+            "homepage": "https://github.com/neam/yii-i18n-columns",
+            "keywords": [
+                "i18n",
+                "translation",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/neam/yii-i18n-columns/tree/0.3.0-alpha",
+                "issues": "https://github.com/neam/yii-i18n-columns/issues"
+            },
+            "time": "2013-10-08 00:23:50"
+        },
+        {
+            "name": "neam/yii-qa-state",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-qa-state.git",
+                "reference": "50d4cddd3b13ff572856f2415c4180919d001690"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/50d4cddd3b13ff572856f2415c4180919d001690",
+                "reference": "50d4cddd3b13ff572856f2415c4180919d001690",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "behaviors/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "Transparent attribute translation for ActiveRecords, without requiring lookup tables for translated field contents.",
+            "homepage": "https://github.com/neam/yii-qa-state",
+            "keywords": [
+                "qa",
+                "quality assurance",
+                "workflow",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/neam/yii-qa-state/tree/develop",
+                "issues": "https://github.com/neam/yii-qa-state/issues"
+            },
+            "time": "2013-11-14 12:10:42"
+        },
+        {
+            "name": "neam/yii-relational-graph-db",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-relational-graph-db.git",
+                "reference": "d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-relational-graph-db/zipball/d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6",
+                "reference": "d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "behaviors/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "Ability to relate any items within a relational database with each other, using the concept of nodes and edges.",
+            "homepage": "https://github.com/neam/yii-relational-graph-db",
+            "keywords": [
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/neam/yii-relational-graph-db/tree/develop",
+                "issues": "https://github.com/neam/yii-relational-graph-db/issues"
+            },
+            "time": "2013-10-28 16:48:19"
+        },
+        {
             "name": "nordsoftware/yii-emailer",
             "version": "1.0.0",
             "source": {
@@ -422,145 +561,6 @@
             ],
             "description": "Utility classes for the Yii PHP framework.",
             "time": "2013-06-18 14:27:35"
-        },
-        {
-            "name": "neam/yii-i18n-columns",
-            "version": "0.3.0-alpha",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/neam/yii-i18n-columns.git",
-                "reference": "0.3.0-alpha"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/0.3.0-alpha",
-                "reference": "0.3.0-alpha",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.0.0",
-                "yiisoft/yii": ">=1.1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "yii-extension",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fredrik Wollsén",
-                    "email": "fredrik@neam.se"
-                },
-                {
-                    "name": "Andrej Bubis",
-                    "email": "firstrow@gmail.com"
-                }
-            ],
-            "description": "Transparent attribute translation for ActiveRecords, without requiring lookup tables for translated field contents.",
-            "homepage": "https://github.com/neam/yii-i18n-columns",
-            "keywords": [
-                "i18n",
-                "translation",
-                "yii"
-            ],
-            "support": {
-                "source": "https://github.com/neam/yii-i18n-columns/tree/0.3.0-alpha",
-                "issues": "https://github.com/neam/yii-i18n-columns/issues"
-            },
-            "time": "2013-10-08 00:23:50"
-        },
-        {
-            "name": "neam/yii-qa-state",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/neam/yii-qa-state.git",
-                "reference": "6f6df28fa93978d79dbdb3b86001dbe7b07f6615"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/6f6df28fa93978d79dbdb3b86001dbe7b07f6615",
-                "reference": "6f6df28fa93978d79dbdb3b86001dbe7b07f6615",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.0.0",
-                "yiisoft/yii": ">=1.1.0"
-            },
-            "type": "yii-extension",
-            "autoload": {
-                "classmap": [
-                    "behaviors/"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fredrik Wollsén",
-                    "email": "fredrik@neam.se"
-                }
-            ],
-            "description": "Transparent attribute translation for ActiveRecords, without requiring lookup tables for translated field contents.",
-            "homepage": "https://github.com/neam/yii-qa-state",
-            "keywords": [
-                "qa",
-                "quality assurance",
-                "workflow",
-                "yii"
-            ],
-            "support": {
-                "source": "https://github.com/neam/yii-qa-state/tree/develop",
-                "issues": "https://github.com/neam/yii-qa-state/issues"
-            },
-            "time": "2013-11-04 17:33:37"
-        },
-        {
-            "name": "neam/yii-relational-graph-db",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/neam/yii-relational-graph-db.git",
-                "reference": "d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-relational-graph-db/zipball/d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6",
-                "reference": "d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.0.0",
-                "yiisoft/yii": ">=1.1.0"
-            },
-            "type": "yii-extension",
-            "autoload": {
-                "classmap": [
-                    "behaviors/"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fredrik Wollsén",
-                    "email": "fredrik@neam.se"
-                }
-            ],
-            "description": "Ability to relate any items within a relational database with each other, using the concept of nodes and edges.",
-            "homepage": "https://github.com/neam/yii-relational-graph-db",
-            "keywords": [
-                "yii"
-            ],
-            "support": {
-                "source": "https://github.com/neam/yii-relational-graph-db/tree/develop",
-                "issues": "https://github.com/neam/yii-relational-graph-db/issues"
-            },
-            "time": "2013-10-28 16:48:19"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -1220,6 +1220,46 @@
             "time": "2013-09-28 19:09:28"
         },
         {
+            "name": "schmunk42/giic",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/giic.git",
+                "reference": "ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/giic/zipball/ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c",
+                "reference": "ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xsl": "*",
+                "php": ">=5.3.0",
+                "yiisoft/yii": ">=1.1.12,<2.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "description": "Toolset for running Gii on the command line",
+            "homepage": "https://github.com/schmunk42/giic",
+            "keywords": [
+                "cli",
+                "gii",
+                "yii"
+            ],
+            "time": "2013-10-01 19:16:50"
+        },
+        {
             "name": "schmunk42/multi-theme",
             "version": "0.1.1",
             "source": {
@@ -1383,24 +1423,6 @@
             "time": "2013-08-01 21:27:05"
         },
         {
-            "name": "thomaspark/bootswatch",
-            "version": "v2.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thomaspark/bootswatch.git",
-                "reference": "a9aab510f11515c7dec294e7b24e838ff583e15a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/thomaspark/bootswatch/archive/a9aab510f11515c7dec294e7b24e838ff583e15a.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library",
-            "description": "Themes for Twitter Bootstrap",
-            "homepage": "https://github.com/thomaspark/bootswatch"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v4.3.0",
             "source": {
@@ -1448,6 +1470,24 @@
                 "mailer"
             ],
             "time": "2013-01-08 15:50:34"
+        },
+        {
+            "name": "thomaspark/bootswatch",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomaspark/bootswatch.git",
+                "reference": "a9aab510f11515c7dec294e7b24e838ff583e15a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thomaspark/bootswatch/archive/a9aab510f11515c7dec294e7b24e838ff583e15a.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library",
+            "description": "Themes for Twitter Bootstrap",
+            "homepage": "https://github.com/thomaspark/bootswatch"
         },
         {
             "name": "waalzer/app-demo-data",
@@ -2029,63 +2069,6 @@
             "time": "2013-09-28 19:08:25"
         },
         {
-            "name": "schmunk42/giic",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmunk42/giic.git",
-                "reference": "ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/giic/zipball/ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c",
-                "reference": "ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-xsl": "*",
-                "php": ">=5.3.0",
-                "yiisoft/yii": ">=1.1.12,<2.0"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-        {
-                    "name": "Tobias Munk",
-                    "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
-                }
-            ],
-            "description": "Toolset for running Gii on the command line",
-            "homepage": "https://github.com/schmunk42/giic",
-            "keywords": [
-                "cli",
-                "gii",
-                "yii"
-            ],
-            "time": "2013-10-01 19:16:50"
-        },        {
-            "name": "thomaspark/bootswatch",
-            "version": "v2.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thomaspark/bootswatch.git",
-                "reference": "a9aab510f11515c7dec294e7b24e838ff583e15a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/thomaspark/bootswatch/archive/a9aab510f11515c7dec294e7b24e838ff583e15a.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library",
-            "description": "Themes for Twitter Bootstrap",
-            "homepage": "https://github.com/thomaspark/bootswatch"
-        },
-        {
             "name": "twitter/bootstrap",
             "version": "v2.3.2",
             "source": {
@@ -2198,8 +2181,7 @@
         "schmunk42/adjacency-list-behavior": 20,
         "nordsoftware/yii-utils": 20,
         "phundament/gii-template-collection": 20,
-        "phundament/lessii": 20,
-        "schmunk42/giic": 20
+        "phundament/lessii": 20
     },
     "platform": {
         "php": ">=5.4.0"
