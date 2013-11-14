@@ -11,18 +11,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anggiaj/ESelect2.git",
-                "reference": "3c8beb5568e892fdc73b4c7d500c95f1c309863e"
+                "reference": "e0745da4600db73a76ff1f3b00ec7a8f6c7b04ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/anggiaj/ESelect2/archive/3c8beb5568e892fdc73b4c7d500c95f1c309863e.zip",
+                "url": "https://github.com/anggiaj/ESelect2/archive/e0745da4600db73a76ff1f3b00ec7a8f6c7b04ea.zip",
                 "reference": null,
                 "shasum": null
             },
             "type": "yii-extension",
             "description": "ESelect2 is a widget extension for Yii framework. This extension is a wrapper for Select2 Jquery plugin (https://github.com/ivaynberg/select2). ",
             "homepage": "https://github.com/anggiaj/ESelect2",
-            "time": "2013-09-05 02:47:21"
+            "time": "2013-10-14 02:37:29"
         },
         {
             "name": "ascendro/yii-graphviz",
@@ -37,39 +37,80 @@
         },
         {
             "name": "bwoester/yii-event-interceptor",
-            "version": "1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bwoester/yii-event-interceptor.git",
-                "reference": "28d9305a17f966c4e06e99092cc50de047a22445"
+                "reference": "c996d2ae0cb28dd5cb73fa22bcb3a2963a391973"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/bwoester/yii-event-interceptor/archive/28d9305a17f966c4e06e99092cc50de047a22445.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://api.github.com/repos/bwoester/yii-event-interceptor/zipball/c996d2ae0cb28dd5cb73fa22bcb3a2963a391973",
+                "reference": "c996d2ae0cb28dd5cb73fa22bcb3a2963a391973",
+                "shasum": ""
             },
-            "type": "yii-extension",
+            "require": {
+                "php": ">=5.1.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Wöster",
+                    "email": "benjamin.woester@gmail.com"
+                }
+            ],
             "description": "A component, that allows to intercept events raised by observed components.",
-            "homepage": "https://github.com/bwoester/yii-event-interceptor"
+            "homepage": "https://github.com/bwoester/yii-event-interceptor",
+            "keywords": [
+                "component",
+                "event",
+                "intercept",
+                "yii"
+            ],
+            "time": "2013-10-20 23:23:26"
         },
         {
             "name": "bwoester/yii-static-events-component",
-            "version": "1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bwoester/yii-static-events-component.git",
-                "reference": "71e3a74a28ab8307b87947a3db483226d5b90982"
+                "reference": "61cee7825aec4e70b3107fb9ab23770db54c7253"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/bwoester/yii-static-events-component/archive/71e3a74a28ab8307b87947a3db483226d5b90982.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://api.github.com/repos/bwoester/yii-static-events-component/zipball/61cee7825aec4e70b3107fb9ab23770db54c7253",
+                "reference": "61cee7825aec4e70b3107fb9ab23770db54c7253",
+                "shasum": ""
             },
-            "type": "yii-extension",
-            "description": "Allows you to register event handlers on class base.",
-            "homepage": "https://github.com/bwoester/yii-static-events-component"
+            "require": {
+                "bwoester/yii-event-interceptor": "1.0.*",
+                "php": ">=5.1.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Wöster",
+                    "email": "benjamin.woester@gmail.com"
+                }
+            ],
+            "description": "Attach events on class base.",
+            "homepage": "https://github.com/bwoester/yii-static-events-component",
+            "keywords": [
+                "component",
+                "event",
+                "static",
+                "yii"
+            ],
+            "time": "2013-10-20 23:31:06"
         },
         {
             "name": "clevertech/yiibooster",
@@ -162,7 +203,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Quexer69/yii.translate.git",
-                "reference": "be21c3820cc5669e3af0fe173c8f1a99a0835a31"
+                "reference": "108e2c51bd17c5877d85fe23b110e03c7467a80c"
             },
             "suggest": {
                 "Translate": "Any yii translate extension"
@@ -191,7 +232,7 @@
                 "web",
                 "yii"
             ],
-            "time": "2013-10-10 23:10:19"
+            "time": "2013-10-23 15:09:57"
         },
         {
             "name": "kswedberg/jquery-smooth-scroll",
@@ -209,18 +250,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/malyshev/yii-debug-toolbar.git",
-                "reference": "9102ebaaf5a00a0d2deba73f1f4de3f4198511be"
+                "reference": "4f1f9ed33bb1475e3bb82cd2d2739743dfc2aac9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/malyshev/yii-debug-toolbar/archive/9102ebaaf5a00a0d2deba73f1f4de3f4198511be.zip",
+                "url": "https://github.com/malyshev/yii-debug-toolbar/archive/4f1f9ed33bb1475e3bb82cd2d2739743dfc2aac9.zip",
                 "reference": null,
                 "shasum": null
             },
             "type": "yii-extension",
             "description": "A configurable set of panels that display various debug information about the current request/response. ",
             "homepage": "https://github.com/malyshev/yii-debug-toolbar",
-            "time": "2013-04-10 15:53:54"
+            "time": "2013-10-31 08:41:36"
         },
         {
             "name": "mihanentalpo/yii-sql-migration-generator",
@@ -710,12 +751,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii-backend-theme.git",
-                "reference": "96a9ae4067b3fe5b39c0a4685fc7a9af1857b6c5"
+                "reference": "763279b60ee3dcc62ff54e29fe20e4695b11a554"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/96a9ae4067b3fe5b39c0a4685fc7a9af1857b6c5",
-                "reference": "96a9ae4067b3fe5b39c0a4685fc7a9af1857b6c5",
+                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/763279b60ee3dcc62ff54e29fe20e4695b11a554",
+                "reference": "763279b60ee3dcc62ff54e29fe20e4695b11a554",
                 "shasum": ""
             },
             "require": {
@@ -748,7 +789,7 @@
                 "theme",
                 "yii"
             ],
-            "time": "2013-10-13 21:54:15"
+            "time": "2013-10-25 17:29:47"
         },
         {
             "name": "phundament/jquery-file-upload",
@@ -1225,12 +1266,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/giic.git",
-                "reference": "ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c"
+                "reference": "c0e433e262d56785c03c7bc69fcd704c2a052e6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/giic/zipball/ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c",
-                "reference": "ba9d0f8c0fb7ba0156c68099a0f21d1de373d48c",
+                "url": "https://api.github.com/repos/schmunk42/giic/zipball/c0e433e262d56785c03c7bc69fcd704c2a052e6d",
+                "reference": "c0e433e262d56785c03c7bc69fcd704c2a052e6d",
                 "shasum": ""
             },
             "require": {
@@ -1257,7 +1298,7 @@
                 "gii",
                 "yii"
             ],
-            "time": "2013-10-01 19:16:50"
+            "time": "2013-10-23 23:26:49"
         },
         {
             "name": "schmunk42/multi-theme",
@@ -1301,16 +1342,16 @@
         },
         {
             "name": "schmunk42/relation",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii-relation.git",
-                "reference": "c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de"
+                "reference": "32d4c75356d9d1e083245f0e1deeb9c393ed24ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-relation/zipball/c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de",
-                "reference": "c3d658b8c6aabfa3d6ba155bda79308dc8e9d5de",
+                "url": "https://api.github.com/repos/schmunk42/yii-relation/zipball/32d4c75356d9d1e083245f0e1deeb9c393ed24ab",
+                "reference": "32d4c75356d9d1e083245f0e1deeb9c393ed24ab",
                 "shasum": ""
             },
             "require": {
@@ -1342,7 +1383,7 @@
                 "relations",
                 "yii"
             ],
-            "time": "2013-08-23 14:56:11"
+            "time": "2013-10-18 16:49:30"
         },
         {
             "name": "schmunk42/web-user-behavior",
@@ -1390,12 +1431,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii-sakila-crud.git",
-                "reference": "efb529ca9a7776be346f4246bcd6cb7324efa152"
+                "reference": "6d58c6faeb49b8478f2f1729beed5ffadec7f5e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-sakila-crud/zipball/efb529ca9a7776be346f4246bcd6cb7324efa152",
-                "reference": "efb529ca9a7776be346f4246bcd6cb7324efa152",
+                "url": "https://api.github.com/repos/schmunk42/yii-sakila-crud/zipball/6d58c6faeb49b8478f2f1729beed5ffadec7f5e7",
+                "reference": "6d58c6faeb49b8478f2f1729beed5ffadec7f5e7",
                 "shasum": ""
             },
             "require": {
@@ -1420,7 +1461,7 @@
                 "gii-template-collection",
                 "yii"
             ],
-            "time": "2013-08-01 21:27:05"
+            "time": "2013-09-19 18:25:06"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1597,7 +1638,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/status-behavior.git",
-                "reference": "565bb1832b2fab054c1632b769c613385587ff35"
+                "reference": "404fbf1f33cc7ddc6668281e61ebb6f23ebbca1f"
             },
             "type": "library",
             "autoload": {
@@ -1606,7 +1647,7 @@
                 ]
             },
             "description": "Yii Framework Active Record Status behavior for models",
-            "time": "2013-10-08 14:00:22"
+            "time": "2013-10-30 00:07:29"
         },
         {
             "name": "yiisoft/yii",
@@ -1943,12 +1984,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/gii-template-collection.git",
-                "reference": "ea353d8d903101c8e52ad68996be0e4257d06be6"
+                "reference": "dd065893a17aecde72813308386567a1f11db0d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/gii-template-collection/zipball/ea353d8d903101c8e52ad68996be0e4257d06be6",
-                "reference": "ea353d8d903101c8e52ad68996be0e4257d06be6",
+                "url": "https://api.github.com/repos/schmunk42/gii-template-collection/zipball/dd065893a17aecde72813308386567a1f11db0d7",
+                "reference": "dd065893a17aecde72813308386567a1f11db0d7",
                 "shasum": ""
             },
             "require": {
@@ -1979,7 +2020,7 @@
                 "source": "https://github.com/schmunk42/gii-template-collection/tree/develop",
                 "issues": "https://github.com/schmunk42/gii-template-collection/issues"
             },
-            "time": "2013-10-08 09:58:30"
+            "time": "2013-11-06 19:35:07"
         },
         {
             "name": "phundament/lessii",
