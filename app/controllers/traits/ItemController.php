@@ -670,8 +670,8 @@ trait ItemController
         } else {
 
             // redirect
-            if (isset($_GET['returnUrl'])) {
-                $this->redirect($_GET['returnUrl']);
+            if (isset($_REQUEST['returnUrl'])) {
+                $this->redirect($_REQUEST['returnUrl']);
             } else {
                 $this->redirect(array('nextRequired', 'id' => $model->id));
             }
