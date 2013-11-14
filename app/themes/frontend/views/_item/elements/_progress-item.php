@@ -1,4 +1,7 @@
 <div class="row-fluid">
+    <div class="span1">
+        <div class="pull-left"><span class="required"><i class="icon-asterisk"></i></span></div>
+    </div>
     <div class="span4">
 
         <?php
@@ -11,7 +14,7 @@
         );
         ?>
     </div>
-    <div class="span8">
+    <div class="span7">
 
         <?php
         $this->widget("bootstrap.widgets.TbButton", array(

@@ -8254,8 +8254,10 @@ div.form INPUT[type="submit"] .caret {
 }
 .btn [class^="icon-"],
 .nav [class^="icon-"],
+i[class*="icon-"],
 .btn [class*=" icon-"],
-.nav [class*=" icon-"] {
+.nav [class*=" icon-"],
+i[class*=" icon-"] {
   background-image: none;
   display: inline-block;
   line-height: 1em;
