@@ -480,7 +480,7 @@ trait ItemController
                 'action' => 'makeTestable'
             );
 
-            $editAction = "prepPreview";
+            $editAction = "prepPreshow";
 
         } elseif ($this->action->id == "prepPublish") {
             $flagTriggerActions[] = array(
