@@ -156,17 +156,21 @@ $actions = $this->itemActions($model);
                             <div class="pull-left" style="margin-right: 1em;">
                                 <h4 class="required-missing">* <?php echo $invalidFields; ?> required missing</h4>
                             </div>
-                            <div class="btn-group">
+                            <?php
+                            $nextStep = $this->nextFlowStep("$validationScenario-", $model);
+                            if ($_GET['step'] != $nextStep): ?>
+                                <div class="btn-group">
 
-                                <?php
-                                echo CHtml::submitButton(Yii::t('model', 'Go to next required step'), array(
-                                        'class' => 'btn btn-primary',
-                                        'name' => 'next-required',
-                                    )
-                                );
-                                ?>
+                                    <?php
+                                    echo CHtml::submitButton(Yii::t('model', 'Go to next required step'), array(
+                                            'class' => 'btn btn-primary',
+                                            'name' => 'next-required',
+                                        )
+                                    );
+                                    ?>
 
-                            </div>
+                                </div>
+                            <?php endif; ?>
 
                         </div>
                     <?php
