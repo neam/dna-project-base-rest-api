@@ -30,7 +30,7 @@ EOF;
 Yii::app()->clientScript->registerScript('step_file-select2', $select2js);
 
 $criteria = new CDbCriteria();
-$criteria->addCondition("mime_type IN ('video/webm','video/mpeg','video/mp4','video/ogg','video/quicktime','video/x-matroska','video/x-ms-wmv','video/x-flv')");
+$criteria->addCondition("mime_type IN ('video/webm')");
 $criteria->addCondition("t.type = 'file'");
 $criteria->limit = 100;
 $criteria->order = "t.created_at DESC";
@@ -57,18 +57,25 @@ $formId = 'videofile-original_media_id-' . \uniqid() . '-form';
 ?>
 
 <div class="control-group">
-    <div class="controls">
-        <?php
-        echo $this->widget('bootstrap.widgets.TbButton', array(
-            'label' => Yii::t('app', 'Upload'),
-            'icon' => 'icon-plus',
-            'htmlOptions' => array(
-                'data-toggle' => 'modal',
-                'data-target' => '#' . $formId . '-modal',
-            ),
-        ), true);
-        ?>
+    <div class="control-group">
+        <div class="controls">
+            <?php
+            echo $this->widget('bootstrap.widgets.TbButton', array(
+                'label' => Yii::t('app', 'Upload'),
+                'icon' => 'icon-plus',
+                'htmlOptions' => array(
+                    'data-toggle' => 'modal',
+                    'data-target' => '#' . $formId . '-modal',
+                ),
+            ), true);
+            ?>
+        </div>
     </div>
+    <?php if ($model->getAttributeHint("clip")): ?>
+        <p class="alert alert-info help-block">
+            <?php echo $model->getAttributeHint("clip"); ?>
+        </p>
+    <?php endif; ?>
 </div>
 
 <?php
@@ -83,8 +90,3 @@ $this->renderPartial('//p3Media/_modal_form', array(
 $this->endClip();
 ?>
 
-<?php if ($model->getAttributeHint("clip")): ?>
-    <p class="alert alert-info help-block">
-        <?php echo $model->getAttributeHint("clip"); ?>
-    </p>
-<?php endif; ?>

@@ -48,28 +48,23 @@ class VideoFile extends BaseVideoFile
             parent::rules(), array(
 
                 // Define status-dependent fields
-                array('title, slug', 'required', 'on' => 'draft,preview,public'),
+                array('title_' . $this->source_language . ', slug_' . $this->source_language, 'required', 'on' => 'draft,preview,public'),
                 array('clip', 'required', 'on' => 'preview,public'),
-                array('about, thumbnail, subtitles', 'required', 'on' => 'public'),
+                array('about, thumbnail, subtitles_' . $this->source_language, 'required', 'on' => 'public'),
 
-                // Define step-dependent fields
-                array('title, slug', 'safe', 'on' => 'step_title'),
-                array('original_media_id', 'safe', 'on' => 'step_clip'),
-                array('about', 'safe', 'on' => 'step_about'),
-                array('subtitles', 'safe', 'on' => 'step_subtitles'),
-                array('thumbnail_media_id', 'safe', 'on' => 'step_thumbnail'),
+                // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
+                array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
+                array('clip, subtitles_' . $this->source_language, 'safe', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
 
-                array('title, slug', 'required', 'on' => 'step_title'),
-                array('original_media_id', 'required', 'on' => 'step_clip'),
-                array('about', 'required', 'on' => 'step_about'),
-                array('subtitles', 'required', 'on' => 'step_subtitles'),
-                array('thumbnail_media_id', 'required', 'on' => 'step_thumbnail'),
+                // Define step-dependent fields - Part 2 - what fields are required at each step?
+                array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
+                array('clip, subtitles_' . $this->source_language, 'required', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
 
                 // Ordinary validation rules
                 array('thumbnail', 'validateThumbnail', 'on' => 'public'),
                 array('clip', 'validateClip', 'on' => 'public'),
                 array('about', 'length', 'min' => 10, 'max' => 200),
-                array('subtitles', 'validateSubtitles', 'on' => 'public'),
+                array('subtitles' . $this->source_language, 'validateSubtitles', 'on' => 'public'),
             )
         );
     }
@@ -86,6 +81,7 @@ class VideoFile extends BaseVideoFile
 
     public function validateSubtitles()
     {
+        //TODO: Is this correct? Model says this is a textfield, but BluePrint says it's supposed to be a file. Just return true for now.
         return true;
     }
 
@@ -102,26 +98,16 @@ class VideoFile extends BaseVideoFile
     {
         return array(
             'draft' => array(
-                'title' => array(
+                'info' => array(
                     'icon' => 'edit',
                 ),
             ),
             'preview' => array(
-                'clip' => array(
+                'files' => array(
                     'icon' => 'edit',
                 ),
             ),
-            'public' => array(
-                'about' => array(
-                    'icon' => 'edit',
-                ),
-                'thumbnail' => array(
-                    'icon' => 'edit',
-                ),
-                'subtitles' => array(
-                    'icon' => 'edit',
-                ),
-            ),
+            'public' => array(),
             'all' => array(),
         );
     }
@@ -129,12 +115,9 @@ class VideoFile extends BaseVideoFile
     public function flowStepCaptions()
     {
         return array(
-            'title' => Yii::t('app', 'Title'),
-            'slug' => Yii::t('app', 'Slug'),
-            'about' => Yii::t('app', 'About'),
-            'thumbnail' => Yii::t('app', 'Thumbnail'),
-            'clip' => Yii::t('app', 'Clip'),
-            'subtitles' => Yii::t('app', 'Subtitles'),
+            'info' => Yii::t('app', 'Info'),
+            'files' => Yii::t('app', 'Files'),
+            'mandatory_complete' => Yii::t('app', 'Mandatory fields filled'),
         );
     }
 
@@ -144,8 +127,13 @@ class VideoFile extends BaseVideoFile
             parent::attributeLabels(), array(
                 'title' => Yii::t('model', 'Title'),
                 'title_en' => Yii::t('model', 'English Title'),
-                'slug' => Yii::t('model', 'Slug'),
-                'slug_en' => Yii::t('model', 'English Slug'),
+                'slug' => Yii::t('model', 'Nice link'),
+                'slug_en' => Yii::t('model', 'English Nice link'),
+                'about' => Yii::t('model', 'About'),
+                'about_en' => Yii::t('model', 'About (English)'),
+                'thumbnail' => Yii::t('model', 'Thumbnail'),
+                'clip' => Yii::t('model', 'Film file'),
+                'subtitles' => Yii::t('model', 'Subtitles'),
             )
         );
     }
@@ -162,13 +150,13 @@ class VideoFile extends BaseVideoFile
     {
         return array_merge(
             parent::attributeHints(), array(
-                'title' => Yii::t('model', ''),
-                'slug' => Yii::t('model', ''),
-                'clip' => Yii::t('model', ''),
-                'about' => Yii::t('model', ''),
-                'thumbnail' => Yii::t('model', ''),
-                'subtitles' => Yii::t('model', ''),
-
+                'title' => Yii::t('model', 'Descriptive language including the words that people would use to search for this video. The title can not be longer than what fits in a headline of a Google search-result snippet.'),
+                'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "where_population_increase_future" url to the video with populatoins on the map.'),
+                'about' => Yii::t('model', 'Describing the videos content. We aviod the word "and" in about texts and titles, as it\'s often become boring enumeraitons of detailes instead of figuring out what is the whole.'),
+                'thumbnail' => Yii::t('model', 'This is the small image representing the video in lists and also the start screen as the film is loading. It shows an iconic snapshot from the film, with the crucial graphics focused to help users recognize it later. Preferably a closeup of the high res films visualization with a human touch.'),
+                'clip' => Yii::t('model', 'The film needs to be .webm file.'),
+                'subtitles' => Yii::t('model', 'The subtitles in srt format'),
+                'related' => Yii::t('model', 'After watching this video you may also be interested in these Items. If the video is on a chapter page, the chapter is assumed to related to these items as well.'),
             )
         );
     }
