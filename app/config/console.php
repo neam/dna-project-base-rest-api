@@ -12,7 +12,7 @@ $webappCommand = array(
     'yiic',
     'webapp',
     'create',
-    realpath(dirname(__FILE__) . '/../../'),
+    realpath(dirname(__FILE__) . '/../'),
     'git',
     '--interactive=' . (getenv('PHUNDAMENT_TEST') ? '0' : '1')
 );
