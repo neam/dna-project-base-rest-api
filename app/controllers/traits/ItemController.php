@@ -672,8 +672,12 @@ trait ItemController
             // redirect
             if (isset($_REQUEST['returnUrl'])) {
                 $this->redirect($_REQUEST['returnUrl']);
-            } else {
+            } elseif (isset($_POST['save-changes'])) {
+                $this->redirect($_REQUEST['form-url']);
+            } elseif (isset($_POST['next-required'])) {
                 $this->redirect(array('nextRequired', 'id' => $model->id));
+            } else {
+                $this->actionCancel($model->id);
             }
 
         }

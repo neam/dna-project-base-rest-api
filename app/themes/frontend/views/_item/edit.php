@@ -24,7 +24,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 ));
 ?>
 
-<input type="hidden" name="returnUrl" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
+<input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
 
 <?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form")); ?>
 
