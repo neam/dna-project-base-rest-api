@@ -147,12 +147,12 @@ $actions = $this->itemActions($model);
                             <?php echo $workflowCaption; ?>
                         </h3>
                     </div>
-                    <?php
-                    $validationScenario = $this->currentValidationScenario();
-                    $invalidFields = $model->calculateInvalidFields($validationScenario);
-                    if ($invalidFields > 0):
-                        ?>
-                        <div class="span6">
+                    <div class="span6">
+                        <?php
+                        $validationScenario = $this->currentValidationScenario();
+                        $invalidFields = $model->calculateInvalidFields($validationScenario);
+                        if ($invalidFields > 0):
+                            ?>
                             <div class="pull-left" style="margin-right: 1em;">
                                 <h4 class="required-missing">* <?php echo $invalidFields; ?> required missing</h4>
                             </div>
@@ -172,10 +172,10 @@ $actions = $this->itemActions($model);
                                 </div>
                             <?php endif; ?>
 
-                        </div>
-                    <?php
-                    endif;
-                    ?>
+                        <?php
+                        endif;
+                        ?>
+                    </div>
                     <div class="span3">
                         <div class="pull-right">
                             <div class="btn-group">
