@@ -48,18 +48,17 @@ class PoFile extends BasePoFile
             parent::rules(), array(
 
                 // Define status-dependent fields
-                array('title, about, original_media_id', 'required', 'on' => 'draft,preview,public'),
+                array('title, original_media_id', 'required', 'on' => 'draft,preview,public'),
+                array('about', 'required', 'on' => 'public'),
 
-                // Define step-dependent fields
-                array('title', 'safe', 'on' => 'step_title'),
-                array('about', 'safe', 'on' => 'step_about'),
-                array('original_media_id', 'safe', 'on' => 'step_file'),
+                // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
+                array('title, original_media_id', 'safe', 'on' => 'draft-step_file,preview-step_file,public-step_file,step_file'),
+                array('about', 'safe', 'on' => 'public-step_file,step_file'),
 
-                array('title', 'required', 'on' => 'step_title'),
-                array('about', 'required', 'on' => 'step_about'),
-                array('original_media_id', 'required', 'on' => 'step_file'),
+                // Define step-dependent fields - Part 2 - what fields are required at each step?
+                array('title, original_media_id', 'required', 'on' => 'step_file'),
+                array('about', 'required', 'on' => 'step_file'),
 
-                // Ordinary validation rules
                 array('title', 'length', 'min' => 10, 'max' => 200),
                 array('about', 'length', 'min' => 3, 'max' => 400),
                 array('original_media_id', 'validateFile', 'on' => 'public'),
@@ -69,7 +68,7 @@ class PoFile extends BasePoFile
 
     public function validateFile()
     {
-        return count($this->original_media_id) > 0;
+        return !is_null($this->original_media_id);
     }
 
     /**
@@ -85,12 +84,6 @@ class PoFile extends BasePoFile
     {
         return array(
             'draft' => array(
-                'title' => array(
-                    'icon' => 'edit',
-                ),
-                'about' => array(
-                    'icon' => 'edit',
-                ),
                 'file' => array(
                     'icon' => 'edit',
                 ),
