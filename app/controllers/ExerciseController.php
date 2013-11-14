@@ -2,6 +2,7 @@
 
 class ExerciseController extends Controller
 {
+
     use ItemController;
 
     public $modelClass = "Exercise";
@@ -23,16 +24,17 @@ class ExerciseController extends Controller
         return array_merge($this->itemAccessRules(), array(
             array('allow',
                 'actions' => array(
+                    'index',
                     'view',
                 ),
                 'users' => array('*'),
             ),
             array('allow',
                 'actions' => array(
-                    'index',
                     'view',
                     'create',
                     'update',
+                    'edit',
                     'editableSaver',
                     'editableCreator',
                     'admin',
