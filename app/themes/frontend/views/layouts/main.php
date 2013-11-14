@@ -20,11 +20,12 @@
     $cs->registerLinkTag('shortcut icon', NULL, '/favicon.ico', NULL, NULL);
 
     // CSS files
+    $forceCopy = defined('DEV') && DEV && !empty($_GET['refresh-assets']) ? true : false;
     $css = Yii::app()->assetManager->publish(
         Yii::app()->theme->basePath . '/assets',
         true, // hash by name
         -1, // level
-        false); // forceCopy
+        $forceCopy); // forceCopy
     $cs->registerCssFile($css . '/p3.css');
     $cs->registerCssFile($css . '/gcms.css');
     ?>
