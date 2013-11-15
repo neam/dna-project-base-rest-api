@@ -1,6 +1,5 @@
 /vendor/
 /docs/
-/app/config/main-local.php
 /tests/codeception/_log
 
 nbproject
