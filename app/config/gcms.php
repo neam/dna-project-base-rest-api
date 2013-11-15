@@ -122,6 +122,10 @@ $gcmsConfig = array(
                 'de',
             )
         ),
+        // Static messages
+        'messages'      => array(
+            'class' => 'CPhpMessageSource',
+        ),
         /*
         'messages' => array(
             'class' => 'P3PhpMessageSource',
