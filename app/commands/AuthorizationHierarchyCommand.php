@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Builds the authorization hierarchy which is stored in a php-based authfile.
+ * Do not assign any items to users here, use migrations or the app UI.
+ * Class AuthorizationHierarchyCommand
+ */
 class AuthorizationHierarchyCommand extends CConsoleCommand
 {
     public function getHelp()
@@ -131,12 +136,6 @@ EOD;
             $superAdministratorRole->addChild($prefix . 'Administrator');
 
         }
-
-        // Assign super administrator role to super user (id 1)
-        $auth->assign('Super Administrator', 1);
-
-        // For now also assign developer role to super user
-        $auth->assign('Developer', 1);
 
         // Temporary dev items that gives access to phundament-specific actions. Assigned to Developer role until properly sorted into hierarchy
         $auth->createOperation('P3media.Import.*');
