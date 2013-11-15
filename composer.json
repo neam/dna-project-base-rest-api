@@ -163,7 +163,7 @@
         "yiiext/migrate-command":"dev-master#35f315b as 0.7.2.1",
         "kswedberg/jquery-smooth-scroll":"1.4.10",
         "firstrow/stranslateablebehavior":"@dev",
-        "neam/yii-i18n-columns":"0.3.0-alpha",
+        "neam/yii-i18n-columns":"0.3.1",
         "neam/yii-qa-state":"@dev",
         "neam/yii-relational-graph-db":"@dev",
         "phpoffice/phpexcel": "1.7.9",

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ca3eb017abcdf0bce4bbee514ddfefd3",
+    "hash": "b2e3dade09193e9e2fe010d192e37c00",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -405,16 +405,16 @@
         },
         {
             "name": "neam/yii-i18n-columns",
-            "version": "0.3.0-alpha",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-i18n-columns.git",
-                "reference": "0.3.0-alpha"
+                "reference": "0.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/0.3.0-alpha",
-                "reference": "0.3.0-alpha",
+                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/0.3.1",
+                "reference": "0.3.1",
                 "shasum": ""
             },
             "require": {
@@ -446,10 +446,10 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/neam/yii-i18n-columns/tree/0.3.0-alpha",
+                "source": "https://github.com/neam/yii-i18n-columns/tree/master",
                 "issues": "https://github.com/neam/yii-i18n-columns/issues"
             },
-            "time": "2013-10-08 00:23:50"
+            "time": "2013-11-15 09:35:38"
         },
         {
             "name": "neam/yii-qa-state",
@@ -2203,7 +2203,6 @@
         "waalzer/app-demo-data": 20,
         "yiiext/migrate-command": 20,
         "firstrow/stranslateablebehavior": 20,
-        "neam/yii-i18n-columns": 15,
         "neam/yii-qa-state": 20,
         "neam/yii-relational-graph-db": 20,
         "phpoffice/phpword": 20,
