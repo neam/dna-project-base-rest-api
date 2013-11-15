@@ -117,7 +117,6 @@ class VideoFile extends BaseVideoFile
         return array(
             'info' => Yii::t('app', 'Info'),
             'files' => Yii::t('app', 'Files'),
-            'mandatory_complete' => Yii::t('app', 'Mandatory fields filled'),
         );
     }
 

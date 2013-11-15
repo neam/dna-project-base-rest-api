@@ -98,7 +98,6 @@ class PoFile extends BasePoFile
     {
         return array(
             'file' => Yii::t('app', 'File'),
-            'mandatory_complete' => Yii::t('app', 'Mandatory fields filled'),
         );
     }
 

@@ -156,7 +156,6 @@ class Chapter extends BaseChapter
             'videos' => Yii::t('app', 'Video'),
             'snapshots' => Yii::t('app', 'Snapshot(s)'),
             'credits' => Yii::t('app', 'Credits'),
-            'mandatory_complete' => Yii::t('app', 'Mandatory fields filled'),
         );
     }
 

@@ -121,7 +121,6 @@ class Exercise extends BaseExercise
             'materials' => Yii::t('app', 'Materials'),
             'learning_objectives' => Yii::t('app', 'Learning Objectives'),
             'related' => Yii::t('app', 'Related'),
-            'mandatory_complete' => Yii::t('app', 'Mandatory fields filled'),
         );
     }
 
