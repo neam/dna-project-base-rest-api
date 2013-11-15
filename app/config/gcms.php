@@ -110,17 +110,8 @@ $gcmsConfig = array(
             'enableParamLogging' => true, // Log SQL parameters
             //'schemaCachingDuration'=>3600*24,
         ),
+        // Supplied in main config
         'langHandler' => array(
-            'languages' => array(
-                'en',
-                'es',
-                'fa',
-                'hi',
-                'pt',
-                'sv',
-                'cn',
-                'de',
-            )
         ),
         // Static messages
         'messages'      => array(

@@ -18,9 +18,15 @@ $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SE
 
 $languages = array(
     'en' => 'English',
+    'es' => 'Español',
+    'fa' => 'Farsi',
+    'hi' => 'Hindi',
+    'pt' => 'Portugés',
+    'sv' => 'Svenska',
+    'cn' => 'Chinese',
     'de' => 'Deutsch',
-    'lv' => 'Latviešu',
-    'ru' => 'Русский',
+    //'lv' => 'Latviešu',
+    //'ru' => 'Русский',
 );
 
 // main application configuration
