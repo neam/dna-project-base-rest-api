@@ -34,6 +34,7 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
+                    'addEdges',
                     'deleteEdge',
                 ),
                 'roles' => array(
@@ -281,6 +282,14 @@ trait ItemController
         $this->redirect(array('continueAuthoring', 'id' => $item->id));
     }
 
+    public function actionAddEdges()
+    {
+        $this->addEdges(
+            $_POST[$this->modelClass]["fromId"],
+            $_POST[$this->modelClass]["edges_to_add"],
+            $_POST[$this->modelClass]["toModel"]);
+        exit;
+    }
     public function actionDeleteEdge()
     {
         $from = $_GET["from"];
@@ -562,10 +571,6 @@ trait ItemController
 
         return null;
 
-    }
-
-    private function removeEdges($edgeid)
-    {
     }
 
     private function addEdges($fromid, $toids, $model)

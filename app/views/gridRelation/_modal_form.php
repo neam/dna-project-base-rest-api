@@ -3,12 +3,27 @@
 /* @var $inputSelector jQuery selector to the select-input of the parent form */
 /* @var $pk The primary key field added object */
 /* @var $field The field of the newly added object to be used as the key/label of the parent form select-input */
-$modalId = "addrelation-".$fromLabel."-".$toLabel. "-modal";
+$modalId = "addrelation-" . $fromLabel . "-" . $toLabel . "-modal";
 $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
 ?>
+
+    <script>
+        function getMyData(){
+            var vals = new Array();
+            $.each($("input[name='<?php echo $toLabel . 's_to_add'; ?>_c0[]']:checked"), function() {
+                vals.push($(this).val());
+            });
+            return ({'<?php echo $fromType; ?>':{'fromId':'<?php echo $fromId; ?>','toModel':'<?php echo $toType; ?>','edges_to_add':vals}});
+        }
+        function relationComplete(){
+            location.reload();
+        }
+    </script>
+
+
     <div class="modal-header">
         <button type="button" class="close" data-toggle="modal" data-target="#<?php echo $modalId; ?>-modal">×</button>
-        <h3><?php echo Yii::t('crud', '{model}', array('{model}' => Yii::t('crud', 'Choose '.$toLabel.' to add'))); ?></h3>
+        <h3><?php echo Yii::t('crud', '{model}', array('{model}' => Yii::t('crud', 'Choose ' . $toLabel . ' to add'))); ?></h3>
     </div>
     <div class="modal-body">
         <?php
@@ -16,7 +31,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
         $this->widget(
             'bootstrap.widgets.TbExtendedGridView',
             array(
-                'id' => $toLabel.'s_to_add',
+                'id' => $toLabel . 's_to_add',
                 'type' => 'striped bordered',
                 'dataProvider' => $allVideos->search(),
                 'pager' => array(
@@ -40,23 +55,35 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
     <div class="modal-footer">
         <div class="btn-group">
             <?php
-            //TODO: This one must save this stuff
-            echo CHtml::submitButton(Yii::t('model', 'Add selected'), array(
-                'class' => 'btn btn-primary',
-                'name' => 'add-selected',
-            ));
+            $id = 110;
+            echo CHtml::ajaxSubmitButton(
+                Yii::t('model', 'Add selected'),
+                array("addEdges","id"=>$fromId),
+                array(
+                    'data'=>'js:getMyData()',
+                    'beforeSend'=>'js:function(data){}',
+                    'type' => 'POST',
+                    'dataType' => 'json',
+                    'success' => 'function(html){ relationComplete(); }'
+                ),
+                array(
+                    'class' => 'btn btn-primary',
+                    'name' => 'add-selected',
+                )
+            );
             ?>
         </div>
         <div class="btn-group">
             <?php
             //TODO: link to exercise/add?to_node={chapter's_node_id}&returnUrl=<?php echo CHtml::encode(Yii::app()->request-url); and then make actionAdd comply with these parameters
             $this->widget("bootstrap.widgets.TbButton", array(
-                "label" => Yii::t("model", "Create new ".$toLabel),
-                "url" => array("/".$toType."/")
+                "label" => Yii::t("model", "Create new " . $toLabel),
+                "url" => array("/" . $toType . "/")
             ));
             ?>
         </div>
-        <a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $modalId; ?>"><?php print Yii::t('app', 'Close'); ?></a>
+        <a href="#" class="btn" data-toggle="modal"
+           data-target="#<?php echo $modalId; ?>"><?php print Yii::t('app', 'Close'); ?></a>
     </div>
 
 

@@ -31,6 +31,7 @@ $this->renderPartial('//gridRelation/_modal_form', array(
     'toLabel' => 'snapshot',
     'fromType' => 'Chapter',
     'fromLabel' => 'chapter',
+    'fromId' => $model->id,
 ));
 ?>
 

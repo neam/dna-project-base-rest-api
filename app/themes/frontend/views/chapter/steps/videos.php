@@ -31,5 +31,6 @@ $this->renderPartial('//gridRelation/_modal_form', array(
     'toLabel' => 'video',
     'fromType' => 'Chapter',
     'fromLabel' => 'chapter',
+    'fromId' => $model->id,
 ));
 ?>

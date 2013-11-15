@@ -19,5 +19,5 @@
         <?php endforeach; ?>
     </ul>
 <?php else: ?>
-    <div><?php echo Yii::t("model", $noItemsLabel); ?></div>
+    <div><?php echo Yii::t("model", $noitemsLabel); ?></div>
 <?php endif; ?>
