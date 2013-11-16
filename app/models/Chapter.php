@@ -80,8 +80,18 @@ class Chapter extends BaseChapter
                 array('exercises', 'validateExercises', 'on' => 'public'),
                 array('snapshots', 'validateSnapshots', 'on' => 'public'),
                 array('credits', 'length', 'min' => 1, 'max' => 200),
-            )
+            ),
+            $this->i18nRules()
         );
+    }
+
+    public function i18nRules()
+    {
+        $i18nRules = array();
+        foreach (Yii::app()->params["languages"] as $lang => $label) {
+            $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', about_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
+        }
+        return $i18nRules;
     }
 
     public function validateThumbnail()

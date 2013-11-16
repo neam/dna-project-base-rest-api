@@ -31,6 +31,7 @@ $this->breadcrumbs[] = $actionCaption;
                 continue;
             }
 
+            $step = $this->firstFlowStep($model);
             $action = 'translate';
             $options = array(
                 "icon" => "globe",
@@ -47,7 +48,7 @@ $this->breadcrumbs[] = $actionCaption;
                         "type" => $this->action->id == $action ? "inverse" : null,
                         "size" => "",
                         "icon" => "icon-" . $options['icon'] . ($this->action->id == $action ? " icon-white" : null),
-                        "url" => array($action, "id" => $model->{$model->tableSchema->primaryKey}, 'translateInto' => $language),
+                        "url" => array($action, "id" => $model->{$model->tableSchema->primaryKey}, 'step' => $step,'translateInto' => $language),
                         "htmlOptions" => array(
                             "class" => "span12",
                         ),

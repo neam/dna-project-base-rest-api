@@ -1,6 +1,3 @@
-<?php
-$actions = $this->itemActions($model);
-?>
 <style>
 
     .flowbar .well .row-fluid div {
@@ -149,7 +146,7 @@ $actions = $this->itemActions($model);
                     </div>
                     <div class="span6">
                         <?php
-                        $validationScenario = $this->currentValidationScenario();
+                        $validationScenario = $this->workflowData["validationScenario"];
                         $invalidFields = $model->calculateInvalidFields($validationScenario);
                         if ($invalidFields > 0):
                             ?>
@@ -182,7 +179,7 @@ $actions = $this->itemActions($model);
 
                                 <?php
 
-                                foreach ($actions["flagTriggerActions"] as $action):
+                                foreach ($this->workflowData["flagTriggerActions"] as $action):
                                     if ($action["requiredProgress"] < 100) {
                                         $this->widget("bootstrap.widgets.TbButton", array(
                                             "label" => $action["label"],

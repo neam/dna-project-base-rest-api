@@ -2,7 +2,7 @@
     <?php if ($this->action->id != "edit"): ?>
         <div class="span1">
             <?php
-            $validationScenario = $this->currentValidationScenario();
+            $validationScenario = $this->workflowData["validationScenario"];
             $invalidFields = $model->calculateInvalidFields($validationScenario . "-step_" . $step);
             if ($invalidFields > 0): ?>
                 <div class="pull-left"><span class="required"><i class="icon-asterisk"
@@ -26,12 +26,16 @@
     <div class="span7">
 
         <?php
+        $action = array($editAction, "id" => $model->{$model->tableSchema->primaryKey}, "step" => $step);
+        if (!is_null($translateInto)) {
+            $action["translateInto"] = $translateInto;
+        }
         $this->widget("bootstrap.widgets.TbButton", array(
             "label" => Yii::t("model", $caption),
             "type" => $_GET['step'] == $step ? "inverse" : null,
             "size" => "small",
             "icon" => "icon-" . $options['icon'] . ($this->action->id == $action ? " icon-white" : null),
-            "url" => array($editAction, "id" => $model->{$model->tableSchema->primaryKey}, "step" => $step)
+            "url" => $action,
         ));
         ?>
 
