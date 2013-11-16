@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b2e3dade09193e9e2fe010d192e37c00",
+    "hash": "79560581302435853647fc9d11d7002d",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -402,6 +402,47 @@
             "description": "Minify is a PHP5 app that helps you follow several rules for client-side performance. It combines multiple CSS or Javascript files, removes unnecessary whitespace and comments, and serves them with gzip encoding and optimal client-side cache headers",
             "homepage": "http://code.google.com/p/minify/",
             "time": "2013-07-23 19:58:28"
+        },
+        {
+            "name": "neam/yii-i18n-attribute-messages",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-i18n-attribute-messages.git",
+                "reference": "869e74e4eef0f3bdd4d80794a2433e765f5b1a17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-i18n-attribute-messages/zipball/869e74e4eef0f3bdd4d80794a2433e765f5b1a17",
+                "reference": "869e74e4eef0f3bdd4d80794a2433e765f5b1a17",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "Transparent attribute translation for ActiveRecords, leveraging Yii's built-in translation features for translated field contents.",
+            "homepage": "https://github.com/neam/yii-i18n-attribute-messages",
+            "keywords": [
+                "i18n",
+                "translation",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/neam/yii-i18n-attribute-messages/tree/develop",
+                "issues": "https://github.com/neam/yii-i18n-attribute-messages/issues"
+            },
+            "time": "2013-11-16 12:56:56"
         },
         {
             "name": "neam/yii-i18n-columns",
@@ -2203,6 +2244,7 @@
         "waalzer/app-demo-data": 20,
         "yiiext/migrate-command": 20,
         "firstrow/stranslateablebehavior": 20,
+        "neam/yii-i18n-attribute-messages": 20,
         "neam/yii-qa-state": 20,
         "neam/yii-relational-graph-db": 20,
         "phpoffice/phpword": 20,

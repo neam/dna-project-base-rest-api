@@ -89,6 +89,10 @@
         },
         {
             "type": "vcs",
+            "url": "https://github.com/neam/yii-i18n-attribute-messages"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/neam/yii-qa-state"
         },
         {
@@ -164,6 +168,7 @@
         "kswedberg/jquery-smooth-scroll":"1.4.10",
         "firstrow/stranslateablebehavior":"@dev",
         "neam/yii-i18n-columns":"0.3.1",
+        "neam/yii-i18n-attribute-messages":"dev-develop",
         "neam/yii-qa-state":"@dev",
         "neam/yii-relational-graph-db":"@dev",
         "phpoffice/phpexcel": "1.7.9",
