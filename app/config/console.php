@@ -98,9 +98,12 @@ $consoleConfig = array(
         'webapp'        => array(
             'class' => 'application.commands.P3WebAppCommand',
         ),
-        // translate command
+        // translate commands
         'i18n-columns'    => array(
             'class' => 'i18n-columns.commands.I18nColumnsCommand',
+        ),
+        'i18n-attribute-messages'    => array(
+            'class' => 'i18n-attribute-messages.commands.I18nAttributeMessagesCommand',
         ),
         // qa-state command
         'qa-state'    => array(
