@@ -68,5 +68,5 @@ return array (
   'Append Child Page' => '@@@@',
   'Append Sibling Page' => '@@@@',
   'Template' => '@@@@',
-  'Translation' => '@@@@',
+  'Translation' => '',
 );

@@ -36,6 +36,9 @@
  * @property integer $exercises_proofed
  * @property integer $snapshots_proofed
  * @property integer $credits_proofed
+ * @property integer $draft_saved
+ * @property integer $videos_approved
+ * @property integer $videos_proofed
  *
  * Relations of table "chapter_qa_state" available as properties of the model:
  * @property Chapter[] $chapters
@@ -64,10 +67,10 @@ abstract class BaseChapterQaState extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, thumbnail_approved, about_approved, video_approved, teachers_guide_approved, exercises_approved, snapshots_approved, credits_approved, title_proofed, slug_proofed, thumbnail_proofed, about_proofed, video_proofed, teachers_guide_proofed, exercises_proofed, snapshots_proofed, credits_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, thumbnail_approved, about_approved, video_approved, teachers_guide_approved, exercises_approved, snapshots_approved, credits_approved, title_proofed, slug_proofed, thumbnail_proofed, about_proofed, video_proofed, teachers_guide_proofed, exercises_proofed, snapshots_proofed, credits_proofed', 'numerical', 'integerOnly' => true),
+                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, thumbnail_approved, about_approved, video_approved, teachers_guide_approved, exercises_approved, snapshots_approved, credits_approved, title_proofed, slug_proofed, thumbnail_proofed, about_proofed, video_proofed, teachers_guide_proofed, exercises_proofed, snapshots_proofed, credits_proofed, draft_saved, videos_approved, videos_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, thumbnail_approved, about_approved, video_approved, teachers_guide_approved, exercises_approved, snapshots_approved, credits_approved, title_proofed, slug_proofed, thumbnail_proofed, about_proofed, video_proofed, teachers_guide_proofed, exercises_proofed, snapshots_proofed, credits_proofed, draft_saved, videos_approved, videos_proofed', 'numerical', 'integerOnly' => true),
                 array('status', 'length', 'max' => 255),
-                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, thumbnail_approved, about_approved, video_approved, teachers_guide_approved, exercises_approved, snapshots_approved, credits_approved, title_proofed, slug_proofed, thumbnail_proofed, about_proofed, video_proofed, teachers_guide_proofed, exercises_proofed, snapshots_proofed, credits_proofed', 'safe', 'on' => 'search'),
+                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, thumbnail_approved, about_approved, video_approved, teachers_guide_approved, exercises_approved, snapshots_approved, credits_approved, title_proofed, slug_proofed, thumbnail_proofed, about_proofed, video_proofed, teachers_guide_proofed, exercises_proofed, snapshots_proofed, credits_proofed, draft_saved, videos_approved, videos_proofed', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -139,6 +142,9 @@ abstract class BaseChapterQaState extends ActiveRecord
             'exercises_proofed' => Yii::t('model', 'Exercises Proofed'),
             'snapshots_proofed' => Yii::t('model', 'Snapshots Proofed'),
             'credits_proofed' => Yii::t('model', 'Credits Proofed'),
+            'draft_saved' => Yii::t('model', 'Draft Saved'),
+            'videos_approved' => Yii::t('model', 'Videos Approved'),
+            'videos_proofed' => Yii::t('model', 'Videos Proofed'),
         );
     }
 
@@ -180,6 +186,9 @@ abstract class BaseChapterQaState extends ActiveRecord
         $criteria->compare('t.exercises_proofed', $this->exercises_proofed);
         $criteria->compare('t.snapshots_proofed', $this->snapshots_proofed);
         $criteria->compare('t.credits_proofed', $this->credits_proofed);
+        $criteria->compare('t.draft_saved', $this->draft_saved);
+        $criteria->compare('t.videos_approved', $this->videos_approved);
+        $criteria->compare('t.videos_proofed', $this->videos_proofed);
 
 
         return $criteria;

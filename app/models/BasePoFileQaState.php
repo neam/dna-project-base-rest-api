@@ -22,6 +22,11 @@
  * @property integer $file_approved
  * @property integer $title_proofed
  * @property integer $file_proofed
+ * @property integer $draft_saved
+ * @property integer $about_approved
+ * @property integer $original_media_id_approved
+ * @property integer $about_proofed
+ * @property integer $original_media_id_proofed
  *
  * Relations of table "po_file_qa_state" available as properties of the model:
  * @property PoFile[] $poFiles
@@ -50,10 +55,10 @@ abstract class BasePoFileQaState extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, file_approved, title_proofed, file_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, file_approved, title_proofed, file_proofed', 'numerical', 'integerOnly' => true),
+                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, file_approved, title_proofed, file_proofed, draft_saved, about_approved, original_media_id_approved, about_proofed, original_media_id_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, file_approved, title_proofed, file_proofed, draft_saved, about_approved, original_media_id_approved, about_proofed, original_media_id_proofed', 'numerical', 'integerOnly' => true),
                 array('status', 'length', 'max' => 255),
-                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, file_approved, title_proofed, file_proofed', 'safe', 'on' => 'search'),
+                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, file_approved, title_proofed, file_proofed, draft_saved, about_approved, original_media_id_approved, about_proofed, original_media_id_proofed', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -111,6 +116,11 @@ abstract class BasePoFileQaState extends ActiveRecord
             'file_approved' => Yii::t('model', 'File Approved'),
             'title_proofed' => Yii::t('model', 'Title Proofed'),
             'file_proofed' => Yii::t('model', 'File Proofed'),
+            'draft_saved' => Yii::t('model', 'Draft Saved'),
+            'about_approved' => Yii::t('model', 'About Approved'),
+            'original_media_id_approved' => Yii::t('model', 'Original Media Id Approved'),
+            'about_proofed' => Yii::t('model', 'About Proofed'),
+            'original_media_id_proofed' => Yii::t('model', 'Original Media Id Proofed'),
         );
     }
 
@@ -138,6 +148,11 @@ abstract class BasePoFileQaState extends ActiveRecord
         $criteria->compare('t.file_approved', $this->file_approved);
         $criteria->compare('t.title_proofed', $this->title_proofed);
         $criteria->compare('t.file_proofed', $this->file_proofed);
+        $criteria->compare('t.draft_saved', $this->draft_saved);
+        $criteria->compare('t.about_approved', $this->about_approved);
+        $criteria->compare('t.original_media_id_approved', $this->original_media_id_approved);
+        $criteria->compare('t.about_proofed', $this->about_proofed);
+        $criteria->compare('t.original_media_id_proofed', $this->original_media_id_proofed);
 
 
         return $criteria;

@@ -23,7 +23,7 @@ return array(
     'import'     => array(),
     // application components
     'components' => array(
-        'messages' => array(
+        '_messages' => array(
             'class'                => 'CDbMessageSource',
             'onMissingTranslation' => array('TranslationConverter', 'findInPhpMessageSource'),
         ),

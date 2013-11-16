@@ -23,14 +23,16 @@ Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
 $gcmsConfig = array(
     'name' => 'Gapminder CMS',
     'language' => 'en', // default language, see also components.langHandler
+    'sourceLanguage' => 'en', // source code language
     'params' => array(
         'env' => 'development',
     ),
     'preload' => array( //'ezc', // trying out if we can lazy-load this instead of preloading it...
     ),
     'aliases' => array(
-        // i18n-columns
+        // i18n
         'i18n-columns' => 'vendor.neam.yii-i18n-columns',
+        'i18n-attribute-messages' => 'vendor.neam.yii-i18n-attribute-messages',
         // qa-state
         'qa-state' => 'vendor.neam.yii-qa-state',
         // relational-graph-db
@@ -46,6 +48,7 @@ $gcmsConfig = array(
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
+        'i18n-attribute-messages.behaviors.I18nAttributeMessagesBehavior',
         'qa-state.behaviors.QaStateBehavior',
         'relational-graph-db.behaviors.RelationalGraphDbBehavior',
         'application.behaviors.EzcWorkflowBehavior',
@@ -110,17 +113,12 @@ $gcmsConfig = array(
             'enableParamLogging' => true, // Log SQL parameters
             //'schemaCachingDuration'=>3600*24,
         ),
+        // Supplied in main config
         'langHandler' => array(
-            'languages' => array(
-                'en',
-                'es',
-                'fa',
-                'hi',
-                'pt',
-                'sv',
-                'cn',
-                'de',
-            )
+        ),
+        // Static messages
+        'messages'      => array(
+            'class' => 'CPhpMessageSource',
         ),
         /*
         'messages' => array(

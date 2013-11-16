@@ -30,6 +30,7 @@
  * @property integer $description_proofed
  * @property integer $thumbnail_proofed
  * @property integer $materials_proofed
+ * @property integer $draft_saved
  *
  * Relations of table "exercise_qa_state" available as properties of the model:
  * @property Exercise[] $exercises
@@ -58,10 +59,10 @@ abstract class BaseExerciseQaState extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, question_approved, description_approved, thumbnail_approved, materials_approved, title_proofed, slug_proofed, question_proofed, description_proofed, thumbnail_proofed, materials_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, question_approved, description_approved, thumbnail_approved, materials_approved, title_proofed, slug_proofed, question_proofed, description_proofed, thumbnail_proofed, materials_proofed', 'numerical', 'integerOnly' => true),
+                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, question_approved, description_approved, thumbnail_approved, materials_approved, title_proofed, slug_proofed, question_proofed, description_proofed, thumbnail_proofed, materials_proofed, draft_saved', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, question_approved, description_approved, thumbnail_approved, materials_approved, title_proofed, slug_proofed, question_proofed, description_proofed, thumbnail_proofed, materials_proofed, draft_saved', 'numerical', 'integerOnly' => true),
                 array('status', 'length', 'max' => 255),
-                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, question_approved, description_approved, thumbnail_approved, materials_approved, title_proofed, slug_proofed, question_proofed, description_proofed, thumbnail_proofed, materials_proofed', 'safe', 'on' => 'search'),
+                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, question_approved, description_approved, thumbnail_approved, materials_approved, title_proofed, slug_proofed, question_proofed, description_proofed, thumbnail_proofed, materials_proofed, draft_saved', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -127,6 +128,7 @@ abstract class BaseExerciseQaState extends ActiveRecord
             'description_proofed' => Yii::t('model', 'Description Proofed'),
             'thumbnail_proofed' => Yii::t('model', 'Thumbnail Proofed'),
             'materials_proofed' => Yii::t('model', 'Materials Proofed'),
+            'draft_saved' => Yii::t('model', 'Draft Saved'),
         );
     }
 
@@ -162,6 +164,7 @@ abstract class BaseExerciseQaState extends ActiveRecord
         $criteria->compare('t.description_proofed', $this->description_proofed);
         $criteria->compare('t.thumbnail_proofed', $this->thumbnail_proofed);
         $criteria->compare('t.materials_proofed', $this->materials_proofed);
+        $criteria->compare('t.draft_saved', $this->draft_saved);
 
 
         return $criteria;

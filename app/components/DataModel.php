@@ -105,5 +105,76 @@ class DataModel
         );
     }
 
+    /**
+     * @return array List of model attributes to translate using yii-i18n-attribute-messages
+     */
+    static public function i18nAttributeMessages()
+    {
+        return array(
+            'attributes' => array(
+                'Chapter' => array('title', 'about', 'teachers_guide'),
+                /*
+                'DataChunk' => array('title', 'about'),
+                'DataSource' => array('title', 'about'),
+                'DownloadLink' => array('title'),
+                'ExamQuestion' => array('question'),
+                'ExamQuestionAlternative' => array('markup'),
+                'Exercise' => array('title', 'question', 'description'),
+                'HtmlChunk' => array('markup'),
+                'Page' => array('title', 'about'),
+                'Section' => array('title', 'menu_label'),
+                'SlideshowFile' => array('title', 'about'),
+                'Snapshot' => array('title', 'about'),
+                'SpreadsheetFile' => array('title'),
+                'TextDoc' => array('title', 'about'),
+                'Tool' => array('title', 'about'),
+                'VectorGraphic' => array('title', 'about'),
+                'VideoFile' => array('title', 'about', 'subtitles'),
+                */
+            ),
+        );
+    }
+
+    /**
+     * @return array List of model attributes and relations to make multilingual using yii-i18n-columns
+     */
+    static public function i18nColumns()
+    {
+        return array(
+            'attributes' => array(
+                'Chapter' => array('slug', 'chapter_qa_state_id'),
+                'DataChunk' => array('slug', 'data_chunk_qa_state_id'),
+                'DataSource' => array('slug', 'data_source_qa_state_id'),
+                'ExamQuestion' => array('slug', 'exam_question_qa_state_id'),
+                'Exercise' => array('slug', 'exercise_qa_state_id'),
+                'Page' => array('slug'),
+                'PoFile' => array('processed_media_id', 'po_file_qa_state_id'),
+                'Profiles' => array('can_translate_to'),
+                'Section' => array('slug'),
+                'SlideshowFile' => array('slug', 'processed_media_id', 'slideshow_file_qa_state_id'),
+                'Snapshot' => array('slug', 'snapshot_qa_state_id'),
+                'SpreadsheetFile' => array('processed_media_id'),
+                'TextDoc' => array('slug', 'processed_media_id', 'text_doc_qa_state_id'),
+                'Tool' => array('slug'),
+                'VectorGraphic' => array('slug', 'processed_media_id', 'vector_graphic_qa_state_id'),
+                'VideoFile' => array('slug', 'processed_media_id', 'video_file_qa_state_id'),
+            ),
+            'relations' => array(
+                'Chapter' => array('chapterQaState' => 'chapter_qa_state_id'),
+                'DataChunk' => array('dataChunkQaState' => 'data_chunk_qa_state_id'),
+                'DataSource' => array('dataSourceQaState' => 'data_source_qa_state_id'),
+                'ExamQuestion' => array('examQuestionQaState' => 'exam_question_qa_state_id'),
+                'Exercise' => array('exerciseQaState' => 'exercise_qa_state_id'),
+                'PoFile' => array('processedMedia' => 'processed_media_id', 'poFileQaState' => 'po_file_qa_state_id'),
+                'SlideshowFile' => array('processedMedia' => 'processed_media_id', 'slideshowFileQaState' => 'slideshow_file_qa_state_id'),
+                'Snapshot' => array('snapshotQaState' => 'snapshot_qa_state_id'),
+                'SpreadsheetFile' => array('processedMedia' => 'processed_media_id'),
+                'TextDoc' => array('processedMedia' => 'processed_media_id', 'testDocQaState' => 'text_doc_qa_state_id'),
+                'VectorGraphic' => array('processedMedia' => 'processed_media_id', 'vectorGraphicQaState' => 'vector_graphic_qa_state_id'),
+                'VideoFile' => array('processedMedia' => 'processed_media_id', 'videoFileQaState' => 'video_file_qa_state_id'),
+            ),
+        );
+    }
+
 }
 

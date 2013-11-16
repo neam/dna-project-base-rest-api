@@ -98,9 +98,12 @@ $consoleConfig = array(
         'webapp'        => array(
             'class' => 'application.commands.P3WebAppCommand',
         ),
-        // translate command
+        // translate commands
         'i18n-columns'    => array(
             'class' => 'i18n-columns.commands.I18nColumnsCommand',
+        ),
+        'i18n-attribute-messages'    => array(
+            'class' => 'i18n-attribute-messages.commands.I18nAttributeMessagesCommand',
         ),
         // qa-state command
         'qa-state'    => array(
@@ -140,4 +143,36 @@ $consoleConfig = array(
     ),
 );
 
-return $consoleConfig;
+// config files
+$main    = require($applicationDirectory . '/config/main.php');
+$local   = array();
+$env     = array();
+
+// include local & env
+$localFileName = $applicationDirectory . '/config/main-local.php';
+if (is_file($localFileName)) {
+    $local       = require($localFileName);
+    $envFileName = $applicationDirectory . '/config/env-' . $main['params']['env'] . '.php';
+    if (is_file($envFileName)) {
+        $env = require($envFileName);
+    }
+}
+
+$webConfig = CMap::mergeArray($main, $env, $local);
+
+// create base console config from web configuration
+$config = array(
+    'name'       => $webConfig['name'],
+    'language'   => $webConfig['language'],
+    'basePath'   => $webConfig['basePath'],
+    'aliases'    => $webConfig['aliases'],
+    'import'     => $webConfig['import'],
+    'components' => $webConfig['components'],
+    'modules'    => $webConfig['modules'],
+    'params'     => $webConfig['params'],
+);
+
+// apply console config
+$config = CMap::mergeArray($config, $consoleConfig);
+
+return $config;

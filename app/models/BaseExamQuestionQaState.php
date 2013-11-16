@@ -24,6 +24,7 @@
  * @property integer $slug_proofed
  * @property integer $question_proofed
  * @property integer $source_proofed
+ * @property integer $draft_saved
  *
  * Relations of table "exam_question_qa_state" available as properties of the model:
  * @property ExamQuestion[] $examQuestions
@@ -52,10 +53,10 @@ abstract class BaseExamQuestionQaState extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, question_approved, source_approved, slug_proofed, question_proofed, source_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, question_approved, source_approved, slug_proofed, question_proofed, source_proofed', 'numerical', 'integerOnly' => true),
+                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, question_approved, source_approved, slug_proofed, question_proofed, source_proofed, draft_saved', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, question_approved, source_approved, slug_proofed, question_proofed, source_proofed, draft_saved', 'numerical', 'integerOnly' => true),
                 array('status', 'length', 'max' => 255),
-                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, question_approved, source_approved, slug_proofed, question_proofed, source_proofed', 'safe', 'on' => 'search'),
+                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, question_approved, source_approved, slug_proofed, question_proofed, source_proofed, draft_saved', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -115,6 +116,7 @@ abstract class BaseExamQuestionQaState extends ActiveRecord
             'slug_proofed' => Yii::t('model', 'Slug Proofed'),
             'question_proofed' => Yii::t('model', 'Question Proofed'),
             'source_proofed' => Yii::t('model', 'Source Proofed'),
+            'draft_saved' => Yii::t('model', 'Draft Saved'),
         );
     }
 
@@ -144,6 +146,7 @@ abstract class BaseExamQuestionQaState extends ActiveRecord
         $criteria->compare('t.slug_proofed', $this->slug_proofed);
         $criteria->compare('t.question_proofed', $this->question_proofed);
         $criteria->compare('t.source_proofed', $this->source_proofed);
+        $criteria->compare('t.draft_saved', $this->draft_saved);
 
 
         return $criteria;
