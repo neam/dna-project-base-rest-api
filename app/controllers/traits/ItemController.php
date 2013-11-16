@@ -456,11 +456,12 @@ trait ItemController
         $this->render('/_item/translation-overview', array('model' => $model));
     }
 
-    public function actionTranslate($id, $translateInto)
+    public function actionTranslate($id, $step, $translateInto)
     {
-        $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
-        $this->render('/_item/edit', array('model' => $model, 'translateInto' => $translateInto));
+        $this->scenario = "step_$step";
+        $model = $this->saveAndContinueOnSuccess($id);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step], 'translateInto' => $translateInto));
     }
 
     /**
@@ -468,7 +469,7 @@ trait ItemController
      * together with progress calculations and whether or not the action is available yet or not
      * @return array
      */
-    public function itemActions($item)
+    public function itemActions($item, $translateInto)
     {
 
         $stepActions = array();
@@ -507,6 +508,10 @@ trait ItemController
 
             $editAction = "prepPublish";
 
+        } elseif ($this->action->id == "translate") {
+
+            $editAction = "translate";
+
         } else {
 
             $editAction = "edit";
@@ -527,9 +532,9 @@ trait ItemController
                 "editAction" => $editAction,
                 "model" => $item,
                 "options" => $options,
-                "action" => $editAction . ucfirst(isset($options['action']) ? $options['action'] : $step),
                 "caption" => $stepCaptions[$step],
                 "progress" => $stepProgress,
+                "translateInto" => $translateInto,
             );
         }
 
@@ -553,6 +558,8 @@ trait ItemController
             $validationScenario = "public";
         } elseif ($this->action->id == "edit") {
             $validationScenario = "public";
+        } elseif ($this->action->id == "translate") {
+            $validationScenario = "translate";
         }
 
         return $validationScenario;
@@ -574,6 +581,8 @@ trait ItemController
             return Yii::t('app', 'Prepare for testing');
         } elseif ($this->action->id == "prepPublish") {
             return Yii::t('app', 'Prepare for publishing');
+        } elseif ($this->action->id == "translate") {
+            return Yii::t('app', 'Translation');
         }
 
         return null;

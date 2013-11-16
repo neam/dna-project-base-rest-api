@@ -1,5 +1,5 @@
 <?php
-$actions = $this->itemActions($model);
+$actions = $this->itemActions($model, $translateInto);
 ?>
 <style>
 

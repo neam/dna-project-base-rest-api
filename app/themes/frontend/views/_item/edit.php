@@ -1,5 +1,6 @@
 <?php
-$workflowCaption = $this->workflowCaption($model);
+$workflowCaption = $this->workflowCaption($model); // todo: send as part of general workflow metadata
+$translateInto = isset($translateInto) ? $translateInto : null; // todo: send as general workflow param
 
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
@@ -26,7 +27,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
 
-<?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form")); ?>
+<?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form", "translateInto")); ?>
 
 <div class="row-fluid">
     <div class="span3">
@@ -35,7 +36,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
         <div class="row-fluid">
             <div class="span12">
-                <?php echo $this->renderPartial('/_item/elements/progress', compact("model", "execution")); ?>
+                <?php echo $this->renderPartial('/_item/elements/progress', compact("model", "execution", "translateInto")); ?>
             </div>
         </div>
 
