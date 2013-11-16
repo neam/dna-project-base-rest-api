@@ -24,6 +24,7 @@
  * @property integer $slug_proofed
  * @property integer $title_proofed
  * @property integer $link_proofed
+ * @property integer $draft_saved
  *
  * Relations of table "data_source_qa_state" available as properties of the model:
  * @property DataSource[] $dataSources
@@ -52,10 +53,10 @@ abstract class BaseDataSourceQaState extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, title_approved, link_approved, slug_proofed, title_proofed, link_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, title_approved, link_approved, slug_proofed, title_proofed, link_proofed', 'numerical', 'integerOnly' => true),
+                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, title_approved, link_approved, slug_proofed, title_proofed, link_proofed, draft_saved', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, title_approved, link_approved, slug_proofed, title_proofed, link_proofed, draft_saved', 'numerical', 'integerOnly' => true),
                 array('status', 'length', 'max' => 255),
-                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, title_approved, link_approved, slug_proofed, title_proofed, link_proofed', 'safe', 'on' => 'search'),
+                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, slug_approved, title_approved, link_approved, slug_proofed, title_proofed, link_proofed, draft_saved', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -115,6 +116,7 @@ abstract class BaseDataSourceQaState extends ActiveRecord
             'slug_proofed' => Yii::t('model', 'Slug Proofed'),
             'title_proofed' => Yii::t('model', 'Title Proofed'),
             'link_proofed' => Yii::t('model', 'Link Proofed'),
+            'draft_saved' => Yii::t('model', 'Draft Saved'),
         );
     }
 
@@ -144,6 +146,7 @@ abstract class BaseDataSourceQaState extends ActiveRecord
         $criteria->compare('t.slug_proofed', $this->slug_proofed);
         $criteria->compare('t.title_proofed', $this->title_proofed);
         $criteria->compare('t.link_proofed', $this->link_proofed);
+        $criteria->compare('t.draft_saved', $this->draft_saved);
 
 
         return $criteria;

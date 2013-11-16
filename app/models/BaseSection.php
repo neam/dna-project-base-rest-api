@@ -36,8 +36,8 @@
  * @property string $menu_label_de
  *
  * Relations of table "section" available as properties of the model:
- * @property Page $page
  * @property Node $node
+ * @property Page $page
  * @property SectionContent[] $sectionContents
  */
 abstract class BaseSection extends ActiveRecord
@@ -88,8 +88,8 @@ abstract class BaseSection extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'page' => array(self::BELONGS_TO, 'Page', 'page_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'page' => array(self::BELONGS_TO, 'Page', 'page_id'),
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'section_id'),
             )
         );
