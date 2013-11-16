@@ -41,6 +41,8 @@ class ActiveRecord extends CActiveRecord
             $behaviors['i18n-attribute-messages'] = array(
                 'class' => 'I18nAttributeMessagesBehavior',
                 'translationAttributes' => $i18nAttributeMessagesMap[get_class($this)],
+                'languageSuffixes' => array_keys(Yii::app()->params["languages"]),
+                'messageSourceComponent' => 'attributeMessages',
             );
         }
 

@@ -120,6 +120,10 @@ $gcmsConfig = array(
         'messages'      => array(
             'class' => 'CPhpMessageSource',
         ),
+        // Attribute messages
+        'attributeMessages'      => array(
+            'class' => 'CDbMessageSource',
+        ),
         /*
         'messages' => array(
             'class' => 'P3PhpMessageSource',
