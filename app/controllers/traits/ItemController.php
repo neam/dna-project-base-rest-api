@@ -425,7 +425,7 @@ trait ItemController
     public function actionCancel($id)
     {
         $model = $this->loadModel($id);
-        $step = $this->nextFlowStep("", $model);
+        $step = $this->firstFlowStep($model);
         $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
     }
 
