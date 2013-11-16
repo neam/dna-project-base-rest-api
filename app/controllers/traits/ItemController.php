@@ -484,7 +484,7 @@ trait ItemController
      */
     public function actionTranslate($id, $step, $translateInto)
     {
-        $this->scenario = "step_$step";
+        $this->scenario = "into_$translateInto-step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
         $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translation'), $translateInto);
         $stepCaptions = $model->flowStepCaptions();
@@ -619,9 +619,17 @@ trait ItemController
 
         $_POST = $this->fixPostFromGrid($_POST);
 
+        // log for dev purposes
+        Yii::log("model->scenario: " . print_r($model->scenario, true), "flow", __METHOD__);
+        Yii::log("_POST: " . print_r($_POST, true), "flow", __METHOD__);
+
         if (isset($_POST[$this->modelClass])) {
 
             $model->attributes = $_POST[$this->modelClass];
+
+            // log for dev purposes
+            Yii::log("model->attributes: " . print_r($model->attributes, true), "flow", __METHOD__);
+
             // refresh qa state (to be sure that we have the most actual state)
             $model->refreshQaState();
 
