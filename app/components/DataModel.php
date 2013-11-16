@@ -113,6 +113,7 @@ class DataModel
         return array(
             'attributes' => array(
                 'Chapter' => array('slug', 'title', 'about', 'teachers_guide'),
+                /*
                 'DataChunk' => array('slug', 'title', 'about'),
                 'DataSource' => array('slug', 'title', 'about'),
                 'DownloadLink' => array('title'),
@@ -129,6 +130,7 @@ class DataModel
                 'Tool' => array('slug', 'title', 'about'),
                 'VectorGraphic' => array('slug', 'title', 'about'),
                 'VideoFile' => array('slug', 'title', 'about', 'subtitles'),
+                */
             ),
         );
     }

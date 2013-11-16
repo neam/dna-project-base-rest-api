@@ -37,7 +37,7 @@ class ActiveRecord extends CActiveRecord
         $i18nAttributeMessages = DataModel::i18nAttributeMessages();
         $i18nAttributeMessagesMap = $i18nAttributeMessages['attributes'];
 
-        if (false && isset($i18nAttributeMessagesMap[get_class($this)])) {
+        if (isset($i18nAttributeMessagesMap[get_class($this)])) {
             $behaviors['i18n-attribute-messages'] = array(
                 'class' => 'I18nAttributeMessagesBehavior',
                 'translationAttributes' => $i18nAttributeMessagesMap[get_class($this)],
