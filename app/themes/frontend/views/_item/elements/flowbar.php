@@ -102,10 +102,10 @@ $actions = $this->itemActions($model);
                         "url" => array("proofRead", "id" => $model->{$model->tableSchema->primaryKey})
                     ));
                     $this->widget("bootstrap.widgets.TbButton", array(
-                        "label" => Yii::t("model", "Translate"),
-                        "type" => $this->action->id == "translate" ? "inverse" : null,
-                        "icon" => "icon-globe" . ($this->action->id == "translate" ? " icon-white" : null),
-                        "url" => array("translate", "id" => $model->{$model->tableSchema->primaryKey})
+                        "label" => Yii::t("model", "Translations"),
+                        "type" => $this->action->id == "translationOverview" ? "inverse" : null,
+                        "icon" => "icon-globe" . ($this->action->id == "translationOverview" ? " icon-white" : null),
+                        "url" => array("translationOverview", "id" => $model->{$model->tableSchema->primaryKey})
                     ));
                     /*
                     $this->widget("bootstrap.widgets.TbButton", array(

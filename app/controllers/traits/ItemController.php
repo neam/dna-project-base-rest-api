@@ -107,6 +107,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'translate',
+                    'translationOverview',
                 ),
                 'roles' => array(
                     'Item.Translate'
