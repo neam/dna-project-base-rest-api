@@ -8,9 +8,8 @@ $stepCaptions = $model->flowStepCaptions();
 ?>
 
 <?php
-$actions = $this->itemActions($model, $translateInto);
 
-foreach ($actions["stepActions"] as $action) {
+foreach ($this->workflowData["stepActions"] as $action) {
     $this->renderPartial("/_item/elements/_progress-item", $action);
 }
 

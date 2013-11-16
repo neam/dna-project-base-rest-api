@@ -291,6 +291,7 @@ trait ItemController
             $_POST[$this->modelClass]["toModel"]);
         exit;
     }
+
     public function actionDeleteEdge()
     {
         $from = $_GET["from"];
@@ -343,10 +344,16 @@ trait ItemController
     }
     */
 
+    /**
+     * Prepare for testing workflow
+     * @param $step
+     * @param $id
+     */
     public function actionPrepPreshow($step, $id)
     {
         $this->scenario = "preview-step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
+        $this->populateWorkflowData($model, "preview", Yii::t('app', 'Prepare for testing'));
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
@@ -377,10 +384,16 @@ trait ItemController
         $this->render('/_item/evaluate', array('model' => $model));
     }
 
+    /**
+     * Prepare for publishing workflow
+     * @param $step
+     * @param $id
+     */
     public function actionPrepPublish($step, $id)
     {
         $this->scenario = "public-step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
+        $this->populateWorkflowData($model, "public", Yii::t('app', 'Prepare for publishing'));
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
@@ -416,10 +429,16 @@ trait ItemController
         $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
     }
 
+    /**
+     * "Not-in-a-workflow"-workflow
+     * @param $step
+     * @param $id
+     */
     public function actionEdit($step, $id)
     {
         $this->scenario = "step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
+        $this->populateWorkflowData($model, "public", Yii::t('app', 'Edit'));
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
@@ -453,27 +472,41 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
+        $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translation overview'));
         $this->render('/_item/translation-overview', array('model' => $model));
     }
 
+    /**
+     * Translate workflow
+     * @param $id
+     * @param $step
+     * @param $translateInto
+     */
     public function actionTranslate($id, $step, $translateInto)
     {
         $this->scenario = "step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
+        $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translation'), $translateInto);
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step], 'translateInto' => $translateInto));
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
+
+    public $workflowData = array();
 
     /**
      * Returns actions based on the current qa state TODO: and access rules
      * together with progress calculations and whether or not the action is available yet or not
      * @return array
      */
-    public function itemActions($item, $translateInto)
+    public function populateWorkflowData($item, $validationScenario, $caption, $translateInto = null)
     {
 
-        $stepActions = array();
+        $this->workflowData["action"] = $this->action->id;
+        $this->workflowData["caption"] = $caption;
+        $this->workflowData["validationScenario"] = $validationScenario;
+        $this->workflowData["translateInto"] = $translateInto;
 
+        $stepActions = array();
         $flagTriggerActions = array();
 
         //var_dump($model->qaState()->attributes);
@@ -538,54 +571,8 @@ trait ItemController
             );
         }
 
-        return compact("stepActions", "flagTriggerActions");
-
-    }
-
-    public function currentValidationScenario()
-    {
-
-        $validationScenario = null;
-
-        /*
-        if ($this->action->id == "draft") {
-            $validationScenario = "draft";
-        } else
-        */
-        if ($this->action->id == "prepPreshow") {
-            $validationScenario = "preview";
-        } elseif ($this->action->id == "prepPublish") {
-            $validationScenario = "public";
-        } elseif ($this->action->id == "edit") {
-            $validationScenario = "public";
-        } elseif ($this->action->id == "translate") {
-            $validationScenario = "translate";
-        }
-
-        return $validationScenario;
-
-    }
-
-    /**
-     * Returns actions based on the current qa state and access rules
-     * together with progress calculations and whether or not the action is available yet or not
-     * @return array
-     */
-    public function workflowCaption($item)
-    {
-
-        /*if ($this->action->id == "draft") {
-            return Yii::t('app', 'Prepare to save');
-        } else */
-        if ($this->action->id == "prepPreshow") {
-            return Yii::t('app', 'Prepare for testing');
-        } elseif ($this->action->id == "prepPublish") {
-            return Yii::t('app', 'Prepare for publishing');
-        } elseif ($this->action->id == "translate") {
-            return Yii::t('app', 'Translation');
-        }
-
-        return null;
+        $this->workflowData["stepActions"] = $stepActions;
+        $this->workflowData["flagTriggerActions"] = $flagTriggerActions;
 
     }
 

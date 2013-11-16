@@ -1,6 +1,7 @@
 <?php
-$workflowCaption = $this->workflowCaption($model); // todo: send as part of general workflow metadata
-$translateInto = isset($translateInto) ? $translateInto : null; // todo: send as general workflow param
+
+$workflowCaption = $this->workflowData["caption"];
+$translateInto = $this->workflowData["translateInto"];
 
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
