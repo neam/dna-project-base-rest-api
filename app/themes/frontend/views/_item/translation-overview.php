@@ -82,8 +82,58 @@ $this->breadcrumbs[] = $actionCaption;
             </div>
         </div>
 
+        <?php
+        $_lang = Yii::app()->language;
 
-        todo show languages
+        foreach (Yii::app()->langHandler->languages as $language): ?>
+
+            <?php
+
+            if ($language == Yii::app()->sourceLanguage) {
+                continue;
+            }
+
+            $step = 'translate_into';
+            $action = 'translateInto';
+            $caption = $language;
+            $options = array(
+                "icon" => "globe",
+            );
+
+            ?>
+
+            <div class="row-fluid">
+                <div class="span4">
+
+                    <?php
+                    $this->widget(
+                        'bootstrap.widgets.TbProgress',
+                        array(
+                            'type' => 'success', // 'info', 'success' or 'danger'
+                            'percent' => 0,
+                        )
+                    );
+                    ?>
+                </div>
+                <div class="span8">
+
+                    <?php
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", $caption),
+                        "type" => $this->action->id == $action ? "inverse" : null,
+                        "size" => "",
+                        "icon" => "icon-" . $options['icon'] . ($this->action->id == $action ? " icon-white" : null),
+                        "url" => array($action, "id" => $model->{$model->tableSchema->primaryKey}, 'translationLanguage' => $language)
+                    ));
+                    ?>
+
+                </div>
+            </div>
+
+        <?php endforeach;
+
+        Yii::app()->language = $_lang;
+        ?>
 
         <div class="alert alert-info">
             Hint: Lorem ipsum
@@ -94,3 +144,4 @@ $this->breadcrumbs[] = $actionCaption;
     </div>
 
 </div>
+

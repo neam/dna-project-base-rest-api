@@ -439,12 +439,18 @@ trait ItemController
         $this->render('/_item/go', array('model' => $model));
     }
 
-    public function actionTranslate($id)
+    public function actionTranslationOverview($id)
     {
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
-        $this->render('/_item/translate', array('model' => $model));
+        $this->render('/_item/translation-overview', array('model' => $model));
+    }
 
+    public function actionTranslate($id, $translateInto)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $this->render('/_item/edit', array('model' => $model, 'translateInto' => $translateInto));
     }
 
     /**
