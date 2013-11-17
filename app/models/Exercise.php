@@ -20,7 +20,7 @@ class Exercise extends BaseExercise
 
     public function getItemLabel()
     {
-        return (string) $this->title;
+        return (string) !empty($this->title) ? $this->title : "Exercise #" . $this->id;
     }
 
     public function behaviors()

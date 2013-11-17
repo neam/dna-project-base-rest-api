@@ -6,7 +6,7 @@
     <ul>
         <?php foreach ($items as $item): ?>
             <li>
-                <?php echo $item->title; ?>
+                <?php echo $item->itemLabel; ?>
                 <?php
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Delete relation"),

@@ -20,7 +20,7 @@ class Snapshot extends BaseSnapshot
 
     public function getItemLabel()
     {
-        return (string) $this->title;
+        return (string) !empty($this->title) ? $this->title : "Snapshot #" . $this->id;
     }
 
     public function behaviors()

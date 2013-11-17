@@ -46,7 +46,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                 ),
                 'columns' => array(
                     array('name' => 'id', 'header' => 'Id'),
-                    array('name' => 'title', 'header' => 'Title'),
+                    array('name' => 'itemLabel', 'header' => 'Title'),
                 )
             )
         );
