@@ -71,7 +71,14 @@ class NodeController extends Controller
     public function actionGo($id)
     {
         $this->layout = 'go';
-        $node = $this->loadModel($id);
+
+        try {
+            $node = $this->loadModel($id);
+        } catch (CHttpException $e) {
+            if ($e->statusCode == 404) {
+                $this->redirect("http://www.gapminder.org");
+            }
+        }
 
         $this->render('/_item/go', array('model' => $node->item()));
     }
