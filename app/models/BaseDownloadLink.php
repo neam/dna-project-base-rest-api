@@ -7,18 +7,11 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
- * @property string $title_en
+ * @property string $_title
  * @property integer $file_media_id
  * @property string $created
  * @property string $modified
  * @property string $node_id
- * @property string $title_es
- * @property string $title_fa
- * @property string $title_hi
- * @property string $title_pt
- * @property string $title_sv
- * @property string $title_cn
- * @property string $title_de
  *
  * Relations of table "download_link" available as properties of the model:
  * @property DownloadLink $clonedFrom
@@ -44,12 +37,12 @@ abstract class BaseDownloadLink extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, file_media_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, file_media_id, created, modified, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, file_media_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id', 'length', 'max' => 20),
-                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
+                array('_title', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, version, cloned_from_id, title_en, file_media_id, created, modified, node_id, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, file_media_id, created, modified, node_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -89,18 +82,11 @@ abstract class BaseDownloadLink extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
-            'title_en' => Yii::t('model', 'Title En'),
+            '_title' => Yii::t('model', 'Title'),
             'file_media_id' => Yii::t('model', 'File Media'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
-            'title_es' => Yii::t('model', 'Title Es'),
-            'title_fa' => Yii::t('model', 'Title Fa'),
-            'title_hi' => Yii::t('model', 'Title Hi'),
-            'title_pt' => Yii::t('model', 'Title Pt'),
-            'title_sv' => Yii::t('model', 'Title Sv'),
-            'title_cn' => Yii::t('model', 'Title Cn'),
-            'title_de' => Yii::t('model', 'Title De'),
         );
     }
 
@@ -113,18 +99,11 @@ abstract class BaseDownloadLink extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
-        $criteria->compare('t.title_en', $this->title_en, true);
+        $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.file_media_id', $this->file_media_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);
-        $criteria->compare('t.title_es', $this->title_es, true);
-        $criteria->compare('t.title_fa', $this->title_fa, true);
-        $criteria->compare('t.title_hi', $this->title_hi, true);
-        $criteria->compare('t.title_pt', $this->title_pt, true);
-        $criteria->compare('t.title_sv', $this->title_sv, true);
-        $criteria->compare('t.title_cn', $this->title_cn, true);
-        $criteria->compare('t.title_de', $this->title_de, true);
 
 
         return $criteria;
