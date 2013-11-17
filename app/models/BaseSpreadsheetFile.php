@@ -7,7 +7,7 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
- * @property string $title
+ * @property string $_title
  * @property string $data_source_id
  * @property integer $original_media_id
  * @property integer $generate_processed_media
@@ -55,12 +55,12 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, original_media_id, generate_processed_media, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, data_source_id, node_id', 'length', 'max' => 20),
-                array('title', 'length', 'max' => 255),
+                array('_title', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, version, cloned_from_id, title, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -108,7 +108,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
-            'title' => Yii::t('model', 'Title'),
+            '_title' => Yii::t('model', 'Title'),
             'data_source_id' => Yii::t('model', 'Data Source'),
             'original_media_id' => Yii::t('model', 'Original Media'),
             'generate_processed_media' => Yii::t('model', 'Generate Processed Media'),
@@ -135,7 +135,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
-        $criteria->compare('t.title', $this->title, true);
+        $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.data_source_id', $this->data_source_id);
         $criteria->compare('t.original_media_id', $this->original_media_id);
         $criteria->compare('t.generate_processed_media', $this->generate_processed_media);

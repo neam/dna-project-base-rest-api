@@ -7,14 +7,14 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
- * @property string $title
+ * @property string $_title
  * @property string $slug_en
- * @property string $about
+ * @property string $_about
  * @property integer $thumbnail_media_id
  * @property integer $original_media_id
  * @property integer $generate_processed_media
  * @property integer $processed_media_id_en
- * @property string $subtitles
+ * @property string $_subtitles
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -82,12 +82,12 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title, slug_en, about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, subtitles, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, video_file_qa_state_id_en, video_file_qa_state_id_es, video_file_qa_state_id_fa, video_file_qa_state_id_hi, video_file_qa_state_id_pt, video_file_qa_state_id_sv, video_file_qa_state_id_cn, video_file_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, _subtitles, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, video_file_qa_state_id_en, video_file_qa_state_id_es, video_file_qa_state_id_fa, video_file_qa_state_id_hi, video_file_qa_state_id_pt, video_file_qa_state_id_sv, video_file_qa_state_id_cn, video_file_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, video_file_qa_state_id_en, video_file_qa_state_id_es, video_file_qa_state_id_fa, video_file_qa_state_id_hi, video_file_qa_state_id_pt, video_file_qa_state_id_sv, video_file_qa_state_id_cn, video_file_qa_state_id_de', 'length', 'max' => 20),
-                array('title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('about, subtitles, created, modified', 'safe'),
-                array('id, version, cloned_from_id, title, slug_en, about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, subtitles, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, video_file_qa_state_id_en, video_file_qa_state_id_es, video_file_qa_state_id_fa, video_file_qa_state_id_hi, video_file_qa_state_id_pt, video_file_qa_state_id_sv, video_file_qa_state_id_cn, video_file_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
+                array('_about, _subtitles, created, modified', 'safe'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, _subtitles, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, video_file_qa_state_id_en, video_file_qa_state_id_es, video_file_qa_state_id_fa, video_file_qa_state_id_hi, video_file_qa_state_id_pt, video_file_qa_state_id_sv, video_file_qa_state_id_cn, video_file_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -144,14 +144,14 @@ abstract class BaseVideoFile extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
-            'title' => Yii::t('model', 'Title'),
+            '_title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
-            'about' => Yii::t('model', 'About'),
+            '_about' => Yii::t('model', 'About'),
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
             'original_media_id' => Yii::t('model', 'Original Media'),
             'generate_processed_media' => Yii::t('model', 'Generate Processed Media'),
             'processed_media_id_en' => Yii::t('model', 'Processed Media Id En'),
-            'subtitles' => Yii::t('model', 'Subtitles'),
+            '_subtitles' => Yii::t('model', 'Subtitles'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -189,14 +189,14 @@ abstract class BaseVideoFile extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
-        $criteria->compare('t.title', $this->title, true);
+        $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
-        $criteria->compare('t.about', $this->about, true);
+        $criteria->compare('t._about', $this->_about, true);
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
         $criteria->compare('t.original_media_id', $this->original_media_id);
         $criteria->compare('t.generate_processed_media', $this->generate_processed_media);
         $criteria->compare('t.processed_media_id_en', $this->processed_media_id_en);
-        $criteria->compare('t.subtitles', $this->subtitles, true);
+        $criteria->compare('t._subtitles', $this->_subtitles, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);

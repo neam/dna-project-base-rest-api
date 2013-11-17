@@ -6,10 +6,10 @@
  * Columns in table "section" available as properties of the model:
  * @property string $id
  * @property string $page_id
- * @property string $title
+ * @property string $_title
  * @property string $slug_en
  * @property integer $ordinal
- * @property string $menu_label
+ * @property string $_menu_label
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -44,12 +44,12 @@ abstract class BaseSection extends ActiveRecord
         return array_merge(
             parent::rules(), array(
                 array('page_id', 'required'),
-                array('title, slug_en, ordinal, menu_label, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('_title, slug_en, ordinal, _menu_label, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('ordinal', 'numerical', 'integerOnly' => true),
                 array('page_id, node_id', 'length', 'max' => 20),
-                array('title, slug_en, menu_label, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
+                array('_title, slug_en, _menu_label, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, page_id, title, slug_en, ordinal, menu_label, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'safe', 'on' => 'search'),
+                array('id, page_id, _title, slug_en, ordinal, _menu_label, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -86,10 +86,10 @@ abstract class BaseSection extends ActiveRecord
         return array(
             'id' => Yii::t('model', 'ID'),
             'page_id' => Yii::t('model', 'Page'),
-            'title' => Yii::t('model', 'Title'),
+            '_title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
             'ordinal' => Yii::t('model', 'Ordinal'),
-            'menu_label' => Yii::t('model', 'Menu Label'),
+            '_menu_label' => Yii::t('model', 'Menu Label'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -111,10 +111,10 @@ abstract class BaseSection extends ActiveRecord
 
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.page_id', $this->page_id);
-        $criteria->compare('t.title', $this->title, true);
+        $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t.ordinal', $this->ordinal);
-        $criteria->compare('t.menu_label', $this->menu_label, true);
+        $criteria->compare('t._menu_label', $this->_menu_label, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);

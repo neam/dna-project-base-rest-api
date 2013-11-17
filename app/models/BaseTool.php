@@ -7,9 +7,9 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
- * @property string $title
+ * @property string $_title
  * @property string $slug_en
- * @property string $about
+ * @property string $_about
  * @property string $embed_template
  * @property string $po_file_id
  * @property string $created
@@ -49,12 +49,12 @@ abstract class BaseTool extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title, slug_en, about, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, tool_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, slug_en, _about, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, tool_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, po_file_id, node_id, tool_qa_state_id', 'length', 'max' => 20),
-                array('title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('about, embed_template, created, modified', 'safe'),
-                array('id, version, cloned_from_id, title, slug_en, about, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, tool_qa_state_id', 'safe', 'on' => 'search'),
+                array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
+                array('_about, embed_template, created, modified', 'safe'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, tool_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -95,9 +95,9 @@ abstract class BaseTool extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
-            'title' => Yii::t('model', 'Title'),
+            '_title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
-            'about' => Yii::t('model', 'About'),
+            '_about' => Yii::t('model', 'About'),
             'embed_template' => Yii::t('model', 'Embed Template'),
             'po_file_id' => Yii::t('model', 'Po File'),
             'created' => Yii::t('model', 'Created'),
@@ -123,9 +123,9 @@ abstract class BaseTool extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
-        $criteria->compare('t.title', $this->title, true);
+        $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
-        $criteria->compare('t.about', $this->about, true);
+        $criteria->compare('t._about', $this->_about, true);
         $criteria->compare('t.embed_template', $this->embed_template, true);
         $criteria->compare('t.po_file_id', $this->po_file_id);
         $criteria->compare('t.created', $this->created, true);

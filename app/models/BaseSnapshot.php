@@ -7,9 +7,9 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
- * @property string $title
+ * @property string $_title
  * @property string $slug_en
- * @property string $about
+ * @property string $_about
  * @property string $link
  * @property string $embed_override
  * @property string $tool_id
@@ -66,12 +66,12 @@ abstract class BaseSnapshot extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title, slug_en, about, link, embed_override, tool_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, slug_en, _about, link, embed_override, tool_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, tool_id, node_id, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'length', 'max' => 20),
-                array('title, slug_en, link, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('about, embed_override, created, modified', 'safe'),
-                array('id, version, cloned_from_id, title, slug_en, about, link, embed_override, tool_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('_title, slug_en, link, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
+                array('_about, embed_override, created, modified', 'safe'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, link, embed_override, tool_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -121,9 +121,9 @@ abstract class BaseSnapshot extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
-            'title' => Yii::t('model', 'Title'),
+            '_title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
-            'about' => Yii::t('model', 'About'),
+            '_about' => Yii::t('model', 'About'),
             'link' => Yii::t('model', 'Link'),
             'embed_override' => Yii::t('model', 'Embed Override'),
             'tool_id' => Yii::t('model', 'Tool'),
@@ -157,9 +157,9 @@ abstract class BaseSnapshot extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
-        $criteria->compare('t.title', $this->title, true);
+        $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
-        $criteria->compare('t.about', $this->about, true);
+        $criteria->compare('t._about', $this->_about, true);
         $criteria->compare('t.link', $this->link, true);
         $criteria->compare('t.embed_override', $this->embed_override, true);
         $criteria->compare('t.tool_id', $this->tool_id);

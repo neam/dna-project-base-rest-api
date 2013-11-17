@@ -7,7 +7,7 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
- * @property string $title
+ * @property string $_title
  * @property integer $file_media_id
  * @property string $created
  * @property string $modified
@@ -37,12 +37,12 @@ abstract class BaseDownloadLink extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title, file_media_id, created, modified, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, file_media_id, created, modified, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, file_media_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id', 'length', 'max' => 20),
-                array('title', 'length', 'max' => 255),
+                array('_title', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, version, cloned_from_id, title, file_media_id, created, modified, node_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, file_media_id, created, modified, node_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -82,7 +82,7 @@ abstract class BaseDownloadLink extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
-            'title' => Yii::t('model', 'Title'),
+            '_title' => Yii::t('model', 'Title'),
             'file_media_id' => Yii::t('model', 'File Media'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
@@ -99,7 +99,7 @@ abstract class BaseDownloadLink extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
-        $criteria->compare('t.title', $this->title, true);
+        $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.file_media_id', $this->file_media_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);

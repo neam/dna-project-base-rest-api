@@ -7,10 +7,10 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
- * @property string $title
+ * @property string $_title
  * @property string $slug_en
- * @property string $question
- * @property string $description
+ * @property string $_question
+ * @property string $_description
  * @property integer $thumbnail_media_id
  * @property string $slideshow_file_id
  * @property string $created
@@ -65,12 +65,12 @@ abstract class BaseExercise extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title, slug_en, question, description, thumbnail_media_id, slideshow_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, slug_en, _question, _description, thumbnail_media_id, slideshow_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, thumbnail_media_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, slideshow_file_id, node_id, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'length', 'max' => 20),
-                array('title, slug_en, question, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('description, created, modified', 'safe'),
-                array('id, version, cloned_from_id, title, slug_en, question, description, thumbnail_media_id, slideshow_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('_title, slug_en, _question, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
+                array('_description, created, modified', 'safe'),
+                array('id, version, cloned_from_id, _title, slug_en, _question, _description, thumbnail_media_id, slideshow_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -119,10 +119,10 @@ abstract class BaseExercise extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
-            'title' => Yii::t('model', 'Title'),
+            '_title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
-            'question' => Yii::t('model', 'Question'),
-            'description' => Yii::t('model', 'Description'),
+            '_question' => Yii::t('model', 'Question'),
+            '_description' => Yii::t('model', 'Description'),
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
             'slideshow_file_id' => Yii::t('model', 'Slideshow File'),
             'created' => Yii::t('model', 'Created'),
@@ -155,10 +155,10 @@ abstract class BaseExercise extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
-        $criteria->compare('t.title', $this->title, true);
+        $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
-        $criteria->compare('t.question', $this->question, true);
-        $criteria->compare('t.description', $this->description, true);
+        $criteria->compare('t._question', $this->_question, true);
+        $criteria->compare('t._description', $this->_description, true);
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
         $criteria->compare('t.slideshow_file_id', $this->slideshow_file_id);
         $criteria->compare('t.created', $this->created, true);

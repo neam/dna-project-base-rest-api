@@ -8,7 +8,7 @@
  * @property integer $version
  * @property string $cloned_from_id
  * @property string $slug_en
- * @property string $question
+ * @property string $_question
  * @property string $source_node_id
  * @property string $created
  * @property string $modified
@@ -61,12 +61,12 @@ abstract class BaseExamQuestion extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, slug_en, question, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, slug_en, _question, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, source_node_id, node_id, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'length', 'max' => 20),
                 array('slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('question, created, modified', 'safe'),
-                array('id, version, cloned_from_id, slug_en, question, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('_question, created, modified', 'safe'),
+                array('id, version, cloned_from_id, slug_en, _question, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -115,7 +115,7 @@ abstract class BaseExamQuestion extends ActiveRecord
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'slug_en' => Yii::t('model', 'Slug En'),
-            'question' => Yii::t('model', 'Question'),
+            '_question' => Yii::t('model', 'Question'),
             'source_node_id' => Yii::t('model', 'Source Node'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
@@ -148,7 +148,7 @@ abstract class BaseExamQuestion extends ActiveRecord
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.slug_en', $this->slug_en, true);
-        $criteria->compare('t.question', $this->question, true);
+        $criteria->compare('t._question', $this->_question, true);
         $criteria->compare('t.source_node_id', $this->source_node_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);

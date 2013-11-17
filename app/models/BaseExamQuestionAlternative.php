@@ -6,7 +6,7 @@
  * Columns in table "exam_question_alternative" available as properties of the model:
  * @property string $id
  * @property string $slug
- * @property string $markup
+ * @property string $_markup
  * @property integer $correct
  * @property string $exam_question_id
  * @property string $created
@@ -34,12 +34,12 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('slug, markup, correct, exam_question_id, created, modified, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('slug, _markup, correct, exam_question_id, created, modified, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('correct', 'numerical', 'integerOnly' => true),
                 array('slug', 'length', 'max' => 255),
                 array('exam_question_id, node_id', 'length', 'max' => 20),
-                array('markup, created, modified', 'safe'),
-                array('id, slug, markup, correct, exam_question_id, created, modified, node_id', 'safe', 'on' => 'search'),
+                array('_markup, created, modified', 'safe'),
+                array('id, slug, _markup, correct, exam_question_id, created, modified, node_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -75,7 +75,7 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
         return array(
             'id' => Yii::t('model', 'ID'),
             'slug' => Yii::t('model', 'Slug'),
-            'markup' => Yii::t('model', 'Markup'),
+            '_markup' => Yii::t('model', 'Markup'),
             'correct' => Yii::t('model', 'Correct'),
             'exam_question_id' => Yii::t('model', 'Exam Question'),
             'created' => Yii::t('model', 'Created'),
@@ -92,7 +92,7 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
 
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.slug', $this->slug, true);
-        $criteria->compare('t.markup', $this->markup, true);
+        $criteria->compare('t._markup', $this->_markup, true);
         $criteria->compare('t.correct', $this->correct);
         $criteria->compare('t.exam_question_id', $this->exam_question_id);
         $criteria->compare('t.created', $this->created, true);

@@ -7,9 +7,9 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
- * @property string $title
+ * @property string $_title
  * @property string $slug_en
- * @property string $about
+ * @property string $_about
  * @property integer $logo_media_id
  * @property integer $mini_logo_media_id
  * @property string $link
@@ -65,12 +65,12 @@ abstract class BaseDataSource extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title, slug_en, about, logo_media_id, mini_logo_media_id, link, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_source_qa_state_id_en, data_source_qa_state_id_es, data_source_qa_state_id_fa, data_source_qa_state_id_hi, data_source_qa_state_id_pt, data_source_qa_state_id_sv, data_source_qa_state_id_cn, data_source_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, slug_en, _about, logo_media_id, mini_logo_media_id, link, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_source_qa_state_id_en, data_source_qa_state_id_es, data_source_qa_state_id_fa, data_source_qa_state_id_hi, data_source_qa_state_id_pt, data_source_qa_state_id_sv, data_source_qa_state_id_cn, data_source_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, logo_media_id, mini_logo_media_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, data_source_qa_state_id_en, data_source_qa_state_id_es, data_source_qa_state_id_fa, data_source_qa_state_id_hi, data_source_qa_state_id_pt, data_source_qa_state_id_sv, data_source_qa_state_id_cn, data_source_qa_state_id_de', 'length', 'max' => 20),
-                array('title, slug_en, link, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, title, slug_en, about, logo_media_id, mini_logo_media_id, link, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_source_qa_state_id_en, data_source_qa_state_id_es, data_source_qa_state_id_fa, data_source_qa_state_id_hi, data_source_qa_state_id_pt, data_source_qa_state_id_sv, data_source_qa_state_id_cn, data_source_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('_title, slug_en, link, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
+                array('_about, created, modified', 'safe'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, logo_media_id, mini_logo_media_id, link, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_source_qa_state_id_en, data_source_qa_state_id_es, data_source_qa_state_id_fa, data_source_qa_state_id_hi, data_source_qa_state_id_pt, data_source_qa_state_id_sv, data_source_qa_state_id_cn, data_source_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -119,9 +119,9 @@ abstract class BaseDataSource extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
-            'title' => Yii::t('model', 'Title'),
+            '_title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
-            'about' => Yii::t('model', 'About'),
+            '_about' => Yii::t('model', 'About'),
             'logo_media_id' => Yii::t('model', 'Logo Media'),
             'mini_logo_media_id' => Yii::t('model', 'Mini Logo Media'),
             'link' => Yii::t('model', 'Link'),
@@ -155,9 +155,9 @@ abstract class BaseDataSource extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
-        $criteria->compare('t.title', $this->title, true);
+        $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
-        $criteria->compare('t.about', $this->about, true);
+        $criteria->compare('t._about', $this->_about, true);
         $criteria->compare('t.logo_media_id', $this->logo_media_id);
         $criteria->compare('t.mini_logo_media_id', $this->mini_logo_media_id);
         $criteria->compare('t.link', $this->link, true);

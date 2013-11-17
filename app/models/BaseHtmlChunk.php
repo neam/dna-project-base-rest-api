@@ -7,7 +7,7 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
- * @property string $markup
+ * @property string $_markup
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -35,11 +35,11 @@ abstract class BaseHtmlChunk extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, markup, created, modified, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _markup, created, modified, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id', 'length', 'max' => 20),
-                array('markup, created, modified', 'safe'),
-                array('id, version, cloned_from_id, markup, created, modified, node_id', 'safe', 'on' => 'search'),
+                array('_markup, created, modified', 'safe'),
+                array('id, version, cloned_from_id, _markup, created, modified, node_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -78,7 +78,7 @@ abstract class BaseHtmlChunk extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
-            'markup' => Yii::t('model', 'Markup'),
+            '_markup' => Yii::t('model', 'Markup'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -94,7 +94,7 @@ abstract class BaseHtmlChunk extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
-        $criteria->compare('t.markup', $this->markup, true);
+        $criteria->compare('t._markup', $this->_markup, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);
