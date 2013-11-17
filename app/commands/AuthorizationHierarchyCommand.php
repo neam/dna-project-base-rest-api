@@ -144,6 +144,8 @@ EOD;
         $developerRole->addChild('P3media.Import.scan');
         $auth->createOperation('P3media.P3Media.*');
         $developerRole->addChild('P3media.P3Media.*');
+        $auth->createOperation('P3media.P3Media.View');
+        $developerRole->addChild('P3media.P3Media.View');
         $auth->createOperation('P3admin.Default.Index');
         $developerRole->addChild('P3admin.Default.Index');
         $auth->createOperation('P3admin.Default.Settings');
