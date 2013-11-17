@@ -21,8 +21,8 @@ EOD;
     public function actionBuild()
     {
         $enLocale = LocaleData::getInstance('en');
-        var_dump($enLocale->getData());
-
+        $data = $enLocale->getData();
+        var_export($data["languages"]);
     }
 
 }
