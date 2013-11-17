@@ -9,6 +9,14 @@
                 <?php echo $item->itemLabel; ?>
                 <?php
                 $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("model", "Edit"),
+                    "url" => array(lcfirst(get_class($item)) . "/continueAuthoring", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => Yii::app()->request->url),
+                    "size" => "small",
+                    "type" => "primary"
+                ));
+                ?>
+                <?php
+                $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Delete relation"),
                     "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $item->node()->id, "returnUrl" => Yii::app()->request->url),
                     "size" => "small",
