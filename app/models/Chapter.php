@@ -48,7 +48,7 @@ class Chapter extends BaseChapter
 
     public function rules()
     {
-        return array_merge(
+        $return = array_merge(
             parent::rules(), array(
 
                 // Define status-dependent fields
@@ -83,6 +83,8 @@ class Chapter extends BaseChapter
             ),
             $this->i18nRules()
         );
+        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        return $return;
     }
 
     public function i18nRules()
@@ -90,7 +92,9 @@ class Chapter extends BaseChapter
         $i18nRules = array();
         foreach (Yii::app()->params["languages"] as $lang => $label) {
             $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', about_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
+            $i18nRules[] = array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_info');
             $i18nRules[] = array('teachers_guide_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_teachers_guide');
+            $i18nRules[] = array('teachers_guide_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_teachers_guide');
         }
         return $i18nRules;
     }
