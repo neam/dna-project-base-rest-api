@@ -48,7 +48,7 @@ class Chapter extends BaseChapter
 
     public function rules()
     {
-        return array_merge(
+        $return = array_merge(
             parent::rules(), array(
 
                 // Define status-dependent fields
@@ -57,7 +57,7 @@ class Chapter extends BaseChapter
 
                 // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
                 array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('teachers_guide', 'safe', 'on' => 'draft-step_teachers_guide,preview-step_teachers_guide,public-step_teachers_guide,step_teachers_guide'),
+                array('teachers_guide_' . $this->source_language, 'safe', 'on' => 'draft-step_teachers_guide,preview-step_teachers_guide,public-step_teachers_guide,step_teachers_guide'),
                 array('exercises', 'safe', 'on' => 'draft-step_exercises,preview-step_exercises,public-step_exercises,step_exercises'),
                 array('videos', 'safe', 'on' => 'draft-step_videos,preview-step_videos,public-step_videos,step_videos'),
                 array('snapshots', 'safe', 'on' => 'draft-step_snapshots,preview-step_snapshots,public-step_snapshots,step_snapshots'),
@@ -66,7 +66,7 @@ class Chapter extends BaseChapter
                 // Define step-dependent fields - Part 2 - what fields are required at each step?
                 array('title_' . $this->source_language . ',slug_' . $this->source_language . '', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
                 array('about_' . $this->source_language . ', thumbnail_media_id', 'required', 'on' => 'public-step_info,step_info'),
-                array('teachers_guide', 'required', 'on' => 'public-step_teachers_guide,step_teachers_guide'),
+                array('teachers_guide_' . $this->source_language, 'required', 'on' => 'public-step_teachers_guide,step_teachers_guide'),
                 array('exercises', 'required', 'on' => 'public-step_exercises,step_exercises'),
                 array('videos', 'required', 'on' => 'public-step_videos,step_videos'),
                 array('snapshots', 'required', 'on' => 'step_snapshots'),
@@ -83,6 +83,8 @@ class Chapter extends BaseChapter
             ),
             $this->i18nRules()
         );
+        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        return $return;
     }
 
     public function i18nRules()
@@ -90,6 +92,9 @@ class Chapter extends BaseChapter
         $i18nRules = array();
         foreach (Yii::app()->params["languages"] as $lang => $label) {
             $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', about_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
+            $i18nRules[] = array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_info');
+            $i18nRules[] = array('teachers_guide_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_teachers_guide');
+            $i18nRules[] = array('teachers_guide_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_teachers_guide');
         }
         return $i18nRules;
     }

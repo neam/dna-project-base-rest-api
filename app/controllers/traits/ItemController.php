@@ -628,6 +628,7 @@ trait ItemController
             $model->attributes = $_POST[$this->modelClass];
 
             // log for dev purposes
+            Yii::log("model->safeAttributeNames: " . print_r($model->safeAttributeNames, true), "flow", __METHOD__);
             Yii::log("model->attributes: " . print_r($model->attributes, true), "flow", __METHOD__);
 
             // refresh qa state (to be sure that we have the most actual state)

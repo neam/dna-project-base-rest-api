@@ -33,6 +33,9 @@ class DataModel
             // User management
             'Account' => 'users',
             'Profiles' => 'profiles',
+            // Translations
+            'Message' => 'Message',
+            'SourceMessage' => 'SourceMessage'
         );
 
     }

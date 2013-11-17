@@ -114,11 +114,14 @@ $gcmsConfig = array(
             //'schemaCachingDuration'=>3600*24,
         ),
         // Supplied in main config
-        'langHandler' => array(
-        ),
+        'langHandler' => array(),
         // Static messages
-        'messages'      => array(
+        'messages' => array(
             'class' => 'CPhpMessageSource',
+        ),
+        // Attribute messages
+        'attributeMessages' => array(
+            'class' => 'CDbMessageSource',
         ),
         /*
         'messages' => array(
