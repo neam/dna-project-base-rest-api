@@ -8,7 +8,7 @@
  * @property integer $version
  * @property string $cloned_from_id
  * @property string $slug_en
- * @property string $question_en
+ * @property string $question
  * @property string $source_node_id
  * @property string $created
  * @property string $modified
@@ -20,13 +20,6 @@
  * @property string $slug_sv
  * @property string $slug_cn
  * @property string $slug_de
- * @property string $question_es
- * @property string $question_fa
- * @property string $question_hi
- * @property string $question_pt
- * @property string $question_sv
- * @property string $question_cn
- * @property string $question_de
  * @property string $exam_question_qa_state_id_en
  * @property string $exam_question_qa_state_id_es
  * @property string $exam_question_qa_state_id_fa
@@ -68,12 +61,12 @@ abstract class BaseExamQuestion extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, slug_en, question_en, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, slug_en, question, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, source_node_id, node_id, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'length', 'max' => 20),
                 array('slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('question_en, created, modified, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de', 'safe'),
-                array('id, version, cloned_from_id, slug_en, question_en, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, question_es, question_fa, question_hi, question_pt, question_sv, question_cn, question_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('question, created, modified', 'safe'),
+                array('id, version, cloned_from_id, slug_en, question, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -122,7 +115,7 @@ abstract class BaseExamQuestion extends ActiveRecord
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'slug_en' => Yii::t('model', 'Slug En'),
-            'question_en' => Yii::t('model', 'Question En'),
+            'question' => Yii::t('model', 'Question'),
             'source_node_id' => Yii::t('model', 'Source Node'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
@@ -134,13 +127,6 @@ abstract class BaseExamQuestion extends ActiveRecord
             'slug_sv' => Yii::t('model', 'Slug Sv'),
             'slug_cn' => Yii::t('model', 'Slug Cn'),
             'slug_de' => Yii::t('model', 'Slug De'),
-            'question_es' => Yii::t('model', 'Question Es'),
-            'question_fa' => Yii::t('model', 'Question Fa'),
-            'question_hi' => Yii::t('model', 'Question Hi'),
-            'question_pt' => Yii::t('model', 'Question Pt'),
-            'question_sv' => Yii::t('model', 'Question Sv'),
-            'question_cn' => Yii::t('model', 'Question Cn'),
-            'question_de' => Yii::t('model', 'Question De'),
             'exam_question_qa_state_id_en' => Yii::t('model', 'Exam Question Qa State Id En'),
             'exam_question_qa_state_id_es' => Yii::t('model', 'Exam Question Qa State Id Es'),
             'exam_question_qa_state_id_fa' => Yii::t('model', 'Exam Question Qa State Id Fa'),
@@ -162,7 +148,7 @@ abstract class BaseExamQuestion extends ActiveRecord
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.slug_en', $this->slug_en, true);
-        $criteria->compare('t.question_en', $this->question_en, true);
+        $criteria->compare('t.question', $this->question, true);
         $criteria->compare('t.source_node_id', $this->source_node_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
@@ -174,13 +160,6 @@ abstract class BaseExamQuestion extends ActiveRecord
         $criteria->compare('t.slug_sv', $this->slug_sv, true);
         $criteria->compare('t.slug_cn', $this->slug_cn, true);
         $criteria->compare('t.slug_de', $this->slug_de, true);
-        $criteria->compare('t.question_es', $this->question_es, true);
-        $criteria->compare('t.question_fa', $this->question_fa, true);
-        $criteria->compare('t.question_hi', $this->question_hi, true);
-        $criteria->compare('t.question_pt', $this->question_pt, true);
-        $criteria->compare('t.question_sv', $this->question_sv, true);
-        $criteria->compare('t.question_cn', $this->question_cn, true);
-        $criteria->compare('t.question_de', $this->question_de, true);
         $criteria->compare('t.exam_question_qa_state_id_en', $this->exam_question_qa_state_id_en);
         $criteria->compare('t.exam_question_qa_state_id_es', $this->exam_question_qa_state_id_es);
         $criteria->compare('t.exam_question_qa_state_id_fa', $this->exam_question_qa_state_id_fa);

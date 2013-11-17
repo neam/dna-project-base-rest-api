@@ -7,9 +7,9 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
- * @property string $title_en
+ * @property string $title
  * @property string $slug_en
- * @property string $about_en
+ * @property string $about
  * @property string $embed_template
  * @property string $po_file_id
  * @property string $created
@@ -22,20 +22,6 @@
  * @property string $slug_sv
  * @property string $slug_cn
  * @property string $slug_de
- * @property string $title_es
- * @property string $title_fa
- * @property string $title_hi
- * @property string $title_pt
- * @property string $title_sv
- * @property string $title_cn
- * @property string $title_de
- * @property string $about_es
- * @property string $about_fa
- * @property string $about_hi
- * @property string $about_pt
- * @property string $about_sv
- * @property string $about_cn
- * @property string $about_de
  * @property string $tool_qa_state_id
  *
  * Relations of table "tool" available as properties of the model:
@@ -63,12 +49,12 @@ abstract class BaseTool extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title_en, slug_en, about_en, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, tool_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title, slug_en, about, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, tool_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, po_file_id, node_id, tool_qa_state_id', 'length', 'max' => 20),
-                array('title_en, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
-                array('about_en, embed_template, created, modified, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de', 'safe'),
-                array('id, version, cloned_from_id, title_en, slug_en, about_en, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de, about_es, about_fa, about_hi, about_pt, about_sv, about_cn, about_de, tool_qa_state_id', 'safe', 'on' => 'search'),
+                array('title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
+                array('about, embed_template, created, modified', 'safe'),
+                array('id, version, cloned_from_id, title, slug_en, about, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, tool_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -109,9 +95,9 @@ abstract class BaseTool extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
-            'title_en' => Yii::t('model', 'Title En'),
+            'title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
-            'about_en' => Yii::t('model', 'About En'),
+            'about' => Yii::t('model', 'About'),
             'embed_template' => Yii::t('model', 'Embed Template'),
             'po_file_id' => Yii::t('model', 'Po File'),
             'created' => Yii::t('model', 'Created'),
@@ -124,20 +110,6 @@ abstract class BaseTool extends ActiveRecord
             'slug_sv' => Yii::t('model', 'Slug Sv'),
             'slug_cn' => Yii::t('model', 'Slug Cn'),
             'slug_de' => Yii::t('model', 'Slug De'),
-            'title_es' => Yii::t('model', 'Title Es'),
-            'title_fa' => Yii::t('model', 'Title Fa'),
-            'title_hi' => Yii::t('model', 'Title Hi'),
-            'title_pt' => Yii::t('model', 'Title Pt'),
-            'title_sv' => Yii::t('model', 'Title Sv'),
-            'title_cn' => Yii::t('model', 'Title Cn'),
-            'title_de' => Yii::t('model', 'Title De'),
-            'about_es' => Yii::t('model', 'About Es'),
-            'about_fa' => Yii::t('model', 'About Fa'),
-            'about_hi' => Yii::t('model', 'About Hi'),
-            'about_pt' => Yii::t('model', 'About Pt'),
-            'about_sv' => Yii::t('model', 'About Sv'),
-            'about_cn' => Yii::t('model', 'About Cn'),
-            'about_de' => Yii::t('model', 'About De'),
             'tool_qa_state_id' => Yii::t('model', 'Tool Qa State'),
         );
     }
@@ -151,9 +123,9 @@ abstract class BaseTool extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
-        $criteria->compare('t.title_en', $this->title_en, true);
+        $criteria->compare('t.title', $this->title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
-        $criteria->compare('t.about_en', $this->about_en, true);
+        $criteria->compare('t.about', $this->about, true);
         $criteria->compare('t.embed_template', $this->embed_template, true);
         $criteria->compare('t.po_file_id', $this->po_file_id);
         $criteria->compare('t.created', $this->created, true);
@@ -166,20 +138,6 @@ abstract class BaseTool extends ActiveRecord
         $criteria->compare('t.slug_sv', $this->slug_sv, true);
         $criteria->compare('t.slug_cn', $this->slug_cn, true);
         $criteria->compare('t.slug_de', $this->slug_de, true);
-        $criteria->compare('t.title_es', $this->title_es, true);
-        $criteria->compare('t.title_fa', $this->title_fa, true);
-        $criteria->compare('t.title_hi', $this->title_hi, true);
-        $criteria->compare('t.title_pt', $this->title_pt, true);
-        $criteria->compare('t.title_sv', $this->title_sv, true);
-        $criteria->compare('t.title_cn', $this->title_cn, true);
-        $criteria->compare('t.title_de', $this->title_de, true);
-        $criteria->compare('t.about_es', $this->about_es, true);
-        $criteria->compare('t.about_fa', $this->about_fa, true);
-        $criteria->compare('t.about_hi', $this->about_hi, true);
-        $criteria->compare('t.about_pt', $this->about_pt, true);
-        $criteria->compare('t.about_sv', $this->about_sv, true);
-        $criteria->compare('t.about_cn', $this->about_cn, true);
-        $criteria->compare('t.about_de', $this->about_de, true);
         $criteria->compare('t.tool_qa_state_id', $this->tool_qa_state_id);
 
 
