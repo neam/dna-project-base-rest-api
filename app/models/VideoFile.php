@@ -54,11 +54,13 @@ class VideoFile extends BaseVideoFile
 
                 // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
                 array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('clip, subtitles_' . $this->source_language, 'safe', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
+                array('clip', 'safe', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
+                array('subtitles_' . $this->source_language . ', subtitles_import_media_id', 'safe', 'on' => 'draft-step_subtitles,preview-step_subtitles,public-step_subtitles,step_subtitles'),
 
                 // Define step-dependent fields - Part 2 - what fields are required at each step?
                 array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('clip, subtitles_' . $this->source_language, 'required', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
+                array('clip', 'required', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
+                array('subtitles_' . $this->source_language, 'required', 'on' => 'draft-step_subtitles,preview-step_subtitles,public-step_subtitles,step_subtitles'),
 
                 // Ordinary validation rules
                 array('thumbnail', 'validateThumbnail', 'on' => 'public'),
@@ -106,6 +108,9 @@ class VideoFile extends BaseVideoFile
                 'files' => array(
                     'icon' => 'edit',
                 ),
+                'subtitles' => array(
+                    'icon' => 'edit',
+                ),
             ),
             'public' => array(),
             'all' => array(),
@@ -117,6 +122,7 @@ class VideoFile extends BaseVideoFile
         return array(
             'info' => Yii::t('app', 'Info'),
             'files' => Yii::t('app', 'Files'),
+            'subtitles' => Yii::t('app', 'Subtitles'),
         );
     }
 
@@ -154,7 +160,8 @@ class VideoFile extends BaseVideoFile
                 'about' => Yii::t('model', 'Describing the videos content. We aviod the word "and" in about texts and titles, as it\'s often become boring enumeraitons of detailes instead of figuring out what is the whole.'),
                 'thumbnail' => Yii::t('model', 'This is the small image representing the video in lists and also the start screen as the film is loading. It shows an iconic snapshot from the film, with the crucial graphics focused to help users recognize it later. Preferably a closeup of the high res films visualization with a human touch.'),
                 'clip' => Yii::t('model', 'The film needs to be .webm file.'),
-                'subtitles' => Yii::t('model', 'The subtitles in srt format'),
+                'subtitles' => Yii::t('model', 'The subtitles srt file contents'),
+                'subtitles_import_media_id' => Yii::t('model', 'The subtitles in srt format'),
                 'related' => Yii::t('model', 'After watching this video you may also be interested in these Items. If the video is on a chapter page, the chapter is assumed to related to these items as well.'),
             )
         );
