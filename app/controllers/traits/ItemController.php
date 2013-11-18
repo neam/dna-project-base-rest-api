@@ -166,7 +166,12 @@ trait ItemController
 
     }
 
-    public function actionNextRequired($id)
+    /**
+     * Action that redirects to the next relevant workflow based on the item's qa state
+     * Note: Not currently used
+     * @param $id
+     */
+    public function actionHelpOut($id)
     {
 
         $model = $this->loadModel($id);
@@ -689,7 +694,7 @@ trait ItemController
             } elseif (isset($_POST['save-changes'])) {
                 $this->redirect($_REQUEST['form-url']);
             } elseif (isset($_POST['next-required'])) {
-                $this->redirect(array('nextRequired', 'id' => $model->id));
+                $this->redirect($_REQUEST['next-required-url']);
             } else {
                 $this->actionCancel($model->id);
             }

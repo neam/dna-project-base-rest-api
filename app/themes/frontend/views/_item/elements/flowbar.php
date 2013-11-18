@@ -165,6 +165,8 @@
                                         )
                                     );
                                     ?>
+                                    <input type="hidden" name="next-required-url"
+                                           value="<?php echo CHtml::encode(Yii::app()->createUrl(lcfirst($this->modelClass) . '/' . $this->action->id, array('id' => $model->id, 'step' => $nextStep))); ?>"/>
 
                                 </div>
                             <?php endif; ?>
