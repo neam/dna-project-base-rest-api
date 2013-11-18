@@ -20,7 +20,7 @@ class Chapter extends BaseChapter
 
     public function getItemLabel()
     {
-        return (string) $this->title;
+        return (string) !empty($this->title) ? $this->title : "Chapter #" . $this->id;
     }
 
     public function behaviors()

@@ -20,7 +20,7 @@ class DataChunk extends BaseDataChunk
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return (string) !empty($this->title) ? $this->title : "DataChunk #" . $this->id;
     }
 
     public function behaviors()
