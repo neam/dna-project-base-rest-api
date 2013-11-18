@@ -10,7 +10,7 @@
                 <?php
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Edit"),
-                    "url" => array(lcfirst(get_class($item)) . "/continueAuthoring", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => Yii::app()->request->url),
+                    "url" => array(lcfirst(get_class($item)) . "/continueAuthoring", "id" => $item->{$item->tableSchema->primaryKey}, "returnUrl" => Yii::app()->request->url),
                     "size" => "small",
                     "type" => "primary"
                 ));
