@@ -260,22 +260,6 @@ trait ItemController
         return null;
     }
 
-    public function actionAuthor($id)
-    {
-
-        $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
-
-        // Tmp - manually set continue_from_approved_for_translation to true before we have built the authoring workflow etc
-        $execution = Yii::app()->ezc->getWorkflowDatabaseExecution((int) $model->translation_workflow_execution_id);
-
-        $execution->resume(array('continue_from_approved_for_translation' => true));
-        $execution->unsetVariable('continue_from_approved_for_translation');
-
-        $this->render('author', array('model' => $model,));
-
-    }
-
     public function actionAdd()
     {
         $item = new $this->modelClass();
