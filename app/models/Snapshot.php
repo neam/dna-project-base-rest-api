@@ -43,9 +43,6 @@ class Snapshot extends BaseSnapshot
         );
     }
 
-    public $link;
-    public $thumbnail;
-
     public function rules()
     {
         return array_merge(
@@ -53,61 +50,35 @@ class Snapshot extends BaseSnapshot
 
                 // Define status-dependent fields
                 array('slug', 'required', 'on' => 'draft,preview,public'),
-                array('link', 'required', 'on' => 'preview,public'),
-                array('about, embed_override, tool, related', 'required', 'on' => 'public'),
+                array('vizabi_state', 'required', 'on' => 'preview,public'),
 
-                // Define step-dependent fields
-                array('slug', 'safe', 'on' => 'step_slug'),
-                array('title', 'safe', 'on' => 'step_title'),
-                array('about', 'safe', 'on' => 'step_about'),
-                //array('thumbnail_media_id', 'safe', 'on' => 'step_thumbnail'),
-                array('link', 'safe', 'on' => 'step_link'),
-                array('embed_override', 'safe', 'on' => 'step_embed_override'),
-                array('tool', 'safe', 'on' => 'step_tool'),
-                array('related', 'safe', 'on' => 'step_related'),
+                // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
+                array('slug_' . $this->source_language . '', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
+                array('title_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'step_info'),
+                array('vizabi_state, tool_id, embed_override', 'safe', 'on' => 'draft-step_state,preview-step_state,public-step_state,step_state'),
 
-                array('slug', 'required', 'on' => 'step_slug'),
-                array('title', 'required', 'on' => 'step_title'),
-                array('about', 'required', 'on' => 'step_about'),
-                //array('thumbnail_media_id', 'required', 'on' => 'step_thumbnail'),
-                array('link', 'required', 'on' => 'step_link'),
-                array('embed_override', 'required', 'on' => 'step_embed_override'),
-                array('tool', 'required', 'on' => 'step_tool'),
-                array('related', 'required', 'on' => 'step_related'),
+                // Define step-dependent fields - Part 2 - what fields are required at each step?
+                array('slug_' . $this->source_language . '', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
+                array('title_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'required', 'on' => 'step_info'),
+                array('vizabi_state', 'required', 'on' => 'preview-step_state,public-step_state,step_state'),
+                array('tool_id, embed_override', 'required', 'on' => 'step_state'),
 
                 // Ordinary validation rules
-                //array('thumbnail', 'validateThumbnail', 'on' => 'public'),
-                array('about', 'length', 'min' => 10, 'max' => 200),
-                array('link', 'validateLink', 'on' => 'public'),
-                array('embed_override', 'validateEmbedOverride', 'on' => 'public'),
-                array('tools', 'validateTools', 'on' => 'public'),
-                array('related', 'validateRelated', 'on' => 'public'),
+                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
+                array('about_' . $this->source_language . '', 'length', 'min' => 10, 'max' => 200),
+                array('vizabi_state', 'validateVizabiState', 'on' => 'public'),
             )
         );
     }
 
-    public function validateEmbedOverride()
-    {
-        return true;
-        return true;
-        return !is_null($this->thumbnail_media_id);
-    }
-
     public function validateThumbnail()
     {
-        return true;
         return !is_null($this->thumbnail_media_id);
     }
 
-    public function validateLink()
+    public function validateVizabiState()
     {
-        // Check if this is an actual link?
-        return strlen($this->link)>0;
-    }
-
-    public function validateTools()
-    {
-        return count($this->tools) > 0;
+        return strlen($this->vizabi_state) > 0;
     }
 
     public function validateRelated()
@@ -128,70 +99,24 @@ class Snapshot extends BaseSnapshot
     {
         return array(
             'draft' => array(
-                'slug' => array(
+                'state' => array(
+                    'icon' => 'edit',
+                ),
+                'info' => array(
                     'icon' => 'edit',
                 ),
             ),
-            'preview' => array(
-                'link' => array(
-                    'icon' => 'edit',
-                ),
-            ),
-            'public' => array(
-                /*
-                'thumbnail' => array(
-                    'icon' => 'edit',
-                ),
-                */
-                'title' => array(
-                    'icon' => 'edit',
-                ),
-                'about' => array(
-                    'icon' => 'edit',
-                ),
-                'embed_override' => array(
-                    'icon' => 'edit',
-                    'action' => 'embedOverride',
-                ),
-                'tool' => array(
-                    'icon' => 'edit',
-                ),
-                'related' => array(
-                    'icon' => 'edit',
-                ),
-            ),
-            'all' => array(
-                /*
-                'title' => array(
-                    'icon' => 'edit',
-                ),
-                'about' => array(
-                    'icon' => 'edit',
-                ),
-                'embed_override' => array(
-                    'icon' => 'edit',
-                ),
-                'tool' => array(
-                    'icon' => 'edit',
-                ),
-                'related' => array(
-                    'icon' => 'edit',
-                ),
-                */
-            ),
+            'preview' => array(),
+            'public' => array(),
+            'all' => array(),
         );
     }
 
     public function flowStepCaptions()
     {
         return array(
-            'title' => Yii::t('app', 'Title'),
-            'slug' => Yii::t('app', 'Slug'),
-            'about' => Yii::t('app', 'About'),
-            'thumbnail' => Yii::t('app', 'Thumbnail'),
-            'link' => Yii::t('app', 'Vizabi state'),
-            'embed_override' => Yii::t('app', 'Embed override'),
-            'tool' => Yii::t('app', 'Tool'),
+            'state' => Yii::t('app', 'State'),
+            'info' => Yii::t('app', 'Info'),
             'related' => Yii::t('app', 'Related'),
         );
     }
@@ -210,10 +135,10 @@ class Snapshot extends BaseSnapshot
     {
         return array_merge(
             parent::attributeHints(), array(
-                'title_en' => Yii::t('model', 'Snapshot titles are descriptive with common language. Mentioning what data, geography and time is covered. '),
-                'slug_en' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "regional_population_map" url to the chapter with populatoins on the map.'),
-                'thumbnail' => Yii::t('model', 'This thumbnail is the visual symbol that enables users to reconginze the chapter again in a list of thumbnails. It should capture the essence of the visual presentation. and should not look like other chapters. Many chapters show bubblechart, so th thumbnail must capture the specific aspect by focusing on an essential detail.'),
-                'about_en' => Yii::t('model', 'Describe the purpose of the chapter, try aviding using the word "and". When repeating a lot of aspects there is probably a uniting aspect that should be written instead.'),
+                'title' => Yii::t('model', 'Snapshot titles are descriptive with common language. Mentioning what data, geography and time is covered. '),
+                'slug' => Yii::t('model', 'This is part of the web-vizabi_state to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "regional_population_map" url to the chapter with populatoins on the map.'),
+                'thumbnail_media_id' => Yii::t('model', 'This thumbnail is the visual symbol that enables users to reconginze the chapter again in a list of thumbnails. It should capture the essence of the visual presentation. and should not look like other chapters. Many chapters show bubblechart, so th thumbnail must capture the specific aspect by focusing on an essential detail.'),
+                'about' => Yii::t('model', 'Describe the purpose of the chapter, try aviding using the word "and". When repeating a lot of aspects there is probably a uniting aspect that should be written instead.'),
 
                 'tags' => Yii::t('model', ''),
                 'dataChunks' => Yii::t('model', ''),

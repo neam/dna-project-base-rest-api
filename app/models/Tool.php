@@ -20,7 +20,7 @@ class Tool extends BaseTool
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return (string) !empty($this->title) ? $this->title : "Tool #" . $this->id;
     }
 
     public function behaviors()
