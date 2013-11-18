@@ -43,7 +43,6 @@ class Chapter extends BaseChapter
         );
     }
 
-    public $thumbnail;
     public $credits;
 
     public function rules()
@@ -53,7 +52,7 @@ class Chapter extends BaseChapter
 
                 // Define status-dependent fields
                 array('title_' . $this->source_language . ', slug_' . $this->source_language, 'required', 'on' => 'draft,preview,public'),
-                array('thumbnail, about_' . $this->source_language . ', videos, teachers_guide, exercises, snapshots, credits', 'required', 'on' => 'public'),
+                array('thumbnail_media_id, about_' . $this->source_language . ', videos, teachers_guide, exercises, snapshots' /*, credits*/, 'required', 'on' => 'public'),
 
                 // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
                 array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
@@ -73,7 +72,7 @@ class Chapter extends BaseChapter
                 //array('credits', 'required', 'on' => 'public-step_credits,step_credits'),
 
                 // Ordinary validation rules
-                array('thumbnail', 'validateThumbnail', 'on' => 'public'),
+                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
                 array('videos', 'validateVideo', 'on' => 'public'),
                 //array('teachers_guide', 'length', 'min' => 150, 'max' => 400), // currently not keeping constraints on html fields until further notice
