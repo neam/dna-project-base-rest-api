@@ -206,14 +206,6 @@ class Snapshot extends BaseSnapshot
         );
     }
 
-    public function getAttributeHint($key)
-    {
-        $a = $this->attributeHints();
-        if (isset($a[$key])) {
-            return $a[$key];
-        }
-    }
-
     public function attributeHints()
     {
         return array_merge(

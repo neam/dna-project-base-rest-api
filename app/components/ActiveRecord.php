@@ -114,6 +114,14 @@ class ActiveRecord extends CActiveRecord
         return array();
     }
 
+    public function getAttributeHint($key)
+    {
+        $a = $this->attributeHints();
+        if (isset($a[$key])) {
+            return $a[$key];
+        }
+    }
+
     public function getModelLabel()
     {
         $labels = DataModel::modelLabels();
