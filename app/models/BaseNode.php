@@ -21,6 +21,7 @@
  * @property ExamQuestionAlternative[] $examQuestionAlternatives
  * @property Exercise[] $exercises
  * @property HtmlChunk[] $htmlChunks
+ * @property Page[] $pages
  * @property PoFile[] $poFiles
  * @property Section[] $sections
  * @property SectionContent[] $sectionContents
@@ -88,6 +89,7 @@ abstract class BaseNode extends ActiveRecord
                 'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'node_id'),
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'node_id'),
                 'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'node_id'),
+                'pages' => array(self::HAS_MANY, 'Page', 'node_id'),
                 'poFiles' => array(self::HAS_MANY, 'PoFile', 'node_id'),
                 'sections' => array(self::HAS_MANY, 'Section', 'node_id'),
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'node_id'),
