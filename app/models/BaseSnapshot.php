@@ -8,11 +8,12 @@
  * @property integer $version
  * @property string $cloned_from_id
  * @property string $vizabi_state
+ * @property string $embed_override
+ * @property string $tool_id
  * @property string $_title
  * @property string $slug_en
  * @property string $_about
- * @property string $embed_override
- * @property string $tool_id
+ * @property integer $thumbnail_media_id
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -36,6 +37,7 @@
  * @property DataSource[] $dataSources
  * @property ExamQuestion[] $examQuestions
  * @property SectionContent[] $sectionContents
+ * @property P3Media $thumbnailMedia
  * @property Node $node
  * @property Snapshot $clonedFrom
  * @property Snapshot[] $snapshots
@@ -66,12 +68,12 @@ abstract class BaseSnapshot extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, vizabi_state, _title, slug_en, _about, embed_override, tool_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, vizabi_state, embed_override, tool_id, _title, slug_en, _about, thumbnail_media_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, thumbnail_media_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, tool_id, node_id, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
-                array('vizabi_state, _about, embed_override, created, modified', 'safe'),
-                array('id, version, cloned_from_id, vizabi_state, _title, slug_en, _about, embed_override, tool_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('vizabi_state, embed_override, _about, created, modified', 'safe'),
+                array('id, version, cloned_from_id, vizabi_state, embed_override, tool_id, _title, slug_en, _about, thumbnail_media_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -99,6 +101,7 @@ abstract class BaseSnapshot extends ActiveRecord
                 'dataSources' => array(self::HAS_MANY, 'DataSource', 'cloned_from_id'),
                 'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'cloned_from_id'),
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'snapshot_id'),
+                'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'cloned_from_id'),
@@ -122,11 +125,12 @@ abstract class BaseSnapshot extends ActiveRecord
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'vizabi_state' => Yii::t('model', 'Vizabi State'),
+            'embed_override' => Yii::t('model', 'Embed Override'),
+            'tool_id' => Yii::t('model', 'Tool'),
             '_title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
             '_about' => Yii::t('model', 'About'),
-            'embed_override' => Yii::t('model', 'Embed Override'),
-            'tool_id' => Yii::t('model', 'Tool'),
+            'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -158,11 +162,12 @@ abstract class BaseSnapshot extends ActiveRecord
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.vizabi_state', $this->vizabi_state, true);
+        $criteria->compare('t.embed_override', $this->embed_override, true);
+        $criteria->compare('t.tool_id', $this->tool_id);
         $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t._about', $this->_about, true);
-        $criteria->compare('t.embed_override', $this->embed_override, true);
-        $criteria->compare('t.tool_id', $this->tool_id);
+        $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);
