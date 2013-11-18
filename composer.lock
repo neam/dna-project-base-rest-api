@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "79560581302435853647fc9d11d7002d",
+    "hash": "25030d418034faf1634c7ada94954405",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -309,16 +309,16 @@
         },
         {
             "name": "mikehaertl/translatable",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikehaertl/translatable.git",
-                "reference": "790e7b97d7b2242ea7a6ef8dbb5d5a6643d6160b"
+                "reference": "0d59a7f975b8c51c02ef07b597cd1063a552df6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikehaertl/translatable/zipball/790e7b97d7b2242ea7a6ef8dbb5d5a6643d6160b",
-                "reference": "790e7b97d7b2242ea7a6ef8dbb5d5a6643d6160b",
+                "url": "https://api.github.com/repos/mikehaertl/translatable/zipball/0d59a7f975b8c51c02ef07b597cd1063a552df6f",
+                "reference": "0d59a7f975b8c51c02ef07b597cd1063a552df6f",
                 "shasum": ""
             },
             "require": {
@@ -342,7 +342,7 @@
                 "translation",
                 "yii"
             ],
-            "time": "2013-10-05 07:21:54"
+            "time": "2013-10-26 10:04:31"
         },
         {
             "name": "mishamx/yii-user",
@@ -992,62 +992,13 @@
         },
         {
             "name": "phundament/p3media",
-            "version": "dev-develop",
+            "version": "0.16.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/schmunk42/p3media.git",
-                "reference": "0cdd2ae495e1111a057c2ad936d7cba5b5d49063"
+                "url": "https://github.com/motin/p3media.git",
+                "reference": "b0b408fe9774344946b2dff3cfaf007bcafbca64"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3media/zipball/0cdd2ae495e1111a057c2ad936d7cba5b5d49063",
-                "reference": "0cdd2ae495e1111a057c2ad936d7cba5b5d49063",
-                "shasum": ""
-            },
-            "require": {
-                "bwoester/yii-event-interceptor": "1.*",
-                "bwoester/yii-static-events-component": "1.*",
-                "clevertech/yiibooster": ">=1.0,<3.0",
-                "mikehaertl/translatable": "1.*",
-                "php": ">=5.3.0",
-                "phundament/p3extensions": ">=0.17.0",
-                "sammaye/auditrail2": "1.*",
-                "schmunk42/access": "@dev",
-                "schmunk42/adjacency-list-behavior": "@dev",
-                "schmunk42/relation": "1.*",
-                "yiiext/status-behavior": "0.6.*",
-                "yiisoft/yii": "1.1.*"
-            },
-            "type": "yii-extension",
-            "autoload": {
-                "classmap": [
-                    "models/"
-                ]
-            },
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Munk",
-                    "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
-                }
-            ],
-            "description": "Yii media file manager module with ckeditor integration",
-            "homepage": "https://github.com/schmunk42/p3media",
-            "keywords": [
-                "extension",
-                "file",
-                "manager",
-                "module",
-                "yii"
-            ],
-            "support": {
-                "source": "https://github.com/schmunk42/p3media/tree/develop",
-                "issues": "https://github.com/schmunk42/p3media/issues"
-            },
-            "time": "2013-10-14 01:30:46"
+            "type": "library"
         },
         {
             "name": "phundament/p3pages",
@@ -2198,12 +2149,6 @@
             "alias": "0.16.0",
             "alias_normalized": "0.16.0.0",
             "version": "dev-develop",
-            "package": "phundament/p3media"
-        },
-        {
-            "alias": "0.16.0",
-            "alias_normalized": "0.16.0.0",
-            "version": "dev-develop",
             "package": "phundament/p3widgets"
         },
         {
@@ -2238,7 +2183,6 @@
         "phundament/p3extensions": 20,
         "phundament/p3bootstrap": 20,
         "phundament/p3pages": 20,
-        "phundament/p3media": 20,
         "phundament/p3widgets": 20,
         "schmunk42/ckeditor-configurator": 20,
         "waalzer/app-demo-data": 20,
