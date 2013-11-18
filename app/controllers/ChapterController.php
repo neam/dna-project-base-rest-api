@@ -4,7 +4,6 @@ class ChapterController extends Controller
 {
 
     use ItemController;
-
     public $modelClass = "Chapter";
 
     #public $layout='//layouts/column2';
