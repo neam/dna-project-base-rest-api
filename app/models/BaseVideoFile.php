@@ -44,7 +44,6 @@
  *
  * Relations of table "video_file" available as properties of the model:
  * @property SectionContent[] $sectionContents
- * @property P3Media $subtitlesImportMedia
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -56,6 +55,7 @@
  * @property P3Media $processedMediaIdPt
  * @property P3Media $processedMediaIdSv
  * @property P3Media $thumbnailMedia
+ * @property P3Media $subtitlesImportMedia
  * @property VideoFile $clonedFrom
  * @property VideoFile[] $videoFiles
  * @property VideoFileQaState $videoFileQaStateIdEn
@@ -115,7 +115,6 @@ abstract class BaseVideoFile extends ActiveRecord
         return array_merge(
             parent::relations(), array(
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'video_file_id'),
-                'subtitlesImportMedia' => array(self::BELONGS_TO, 'P3Media', 'subtitles_import_media_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
                 'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
@@ -127,6 +126,7 @@ abstract class BaseVideoFile extends ActiveRecord
                 'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
                 'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
+                'subtitlesImportMedia' => array(self::BELONGS_TO, 'P3Media', 'subtitles_import_media_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'VideoFile', 'cloned_from_id'),
                 'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'cloned_from_id'),
                 'videoFileQaStateIdEn' => array(self::BELONGS_TO, 'VideoFileQaState', 'video_file_qa_state_id_en'),

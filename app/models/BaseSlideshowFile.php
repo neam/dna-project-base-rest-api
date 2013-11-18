@@ -8,7 +8,7 @@
  * @property integer $version
  * @property string $cloned_from_id
  * @property string $_title
- * @property string $slug
+ * @property string $slug_en
  * @property string $_about
  * @property integer $original_media_id
  * @property integer $generate_processed_media
@@ -31,6 +31,13 @@
  * @property string $slideshow_file_qa_state_id_sv
  * @property string $slideshow_file_qa_state_id_cn
  * @property string $slideshow_file_qa_state_id_de
+ * @property string $slug_es
+ * @property string $slug_fa
+ * @property string $slug_hi
+ * @property string $slug_pt
+ * @property string $slug_sv
+ * @property string $slug_cn
+ * @property string $slug_de
  *
  * Relations of table "slideshow_file" available as properties of the model:
  * @property DataChunk[] $dataChunks
@@ -74,12 +81,12 @@ abstract class BaseSlideshowFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug, _about, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slideshow_file_qa_state_id_en, slideshow_file_qa_state_id_es, slideshow_file_qa_state_id_fa, slideshow_file_qa_state_id_hi, slideshow_file_qa_state_id_pt, slideshow_file_qa_state_id_sv, slideshow_file_qa_state_id_cn, slideshow_file_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, slug_en, _about, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slideshow_file_qa_state_id_en, slideshow_file_qa_state_id_es, slideshow_file_qa_state_id_fa, slideshow_file_qa_state_id_hi, slideshow_file_qa_state_id_pt, slideshow_file_qa_state_id_sv, slideshow_file_qa_state_id_cn, slideshow_file_qa_state_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, original_media_id, generate_processed_media, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, slideshow_file_qa_state_id_en, slideshow_file_qa_state_id_es, slideshow_file_qa_state_id_fa, slideshow_file_qa_state_id_hi, slideshow_file_qa_state_id_pt, slideshow_file_qa_state_id_sv, slideshow_file_qa_state_id_cn, slideshow_file_qa_state_id_de', 'length', 'max' => 20),
-                array('_title, slug', 'length', 'max' => 255),
+                array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('_about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug, _about, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slideshow_file_qa_state_id_en, slideshow_file_qa_state_id_es, slideshow_file_qa_state_id_fa, slideshow_file_qa_state_id_hi, slideshow_file_qa_state_id_pt, slideshow_file_qa_state_id_sv, slideshow_file_qa_state_id_cn, slideshow_file_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slideshow_file_qa_state_id_en, slideshow_file_qa_state_id_es, slideshow_file_qa_state_id_fa, slideshow_file_qa_state_id_hi, slideshow_file_qa_state_id_pt, slideshow_file_qa_state_id_sv, slideshow_file_qa_state_id_cn, slideshow_file_qa_state_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -138,7 +145,7 @@ abstract class BaseSlideshowFile extends ActiveRecord
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
             '_title' => Yii::t('model', 'Title'),
-            'slug' => Yii::t('model', 'Slug'),
+            'slug_en' => Yii::t('model', 'Slug En'),
             '_about' => Yii::t('model', 'About'),
             'original_media_id' => Yii::t('model', 'Original Media'),
             'generate_processed_media' => Yii::t('model', 'Generate Processed Media'),
@@ -161,6 +168,13 @@ abstract class BaseSlideshowFile extends ActiveRecord
             'slideshow_file_qa_state_id_sv' => Yii::t('model', 'Slideshow File Qa State Id Sv'),
             'slideshow_file_qa_state_id_cn' => Yii::t('model', 'Slideshow File Qa State Id Cn'),
             'slideshow_file_qa_state_id_de' => Yii::t('model', 'Slideshow File Qa State Id De'),
+            'slug_es' => Yii::t('model', 'Slug Es'),
+            'slug_fa' => Yii::t('model', 'Slug Fa'),
+            'slug_hi' => Yii::t('model', 'Slug Hi'),
+            'slug_pt' => Yii::t('model', 'Slug Pt'),
+            'slug_sv' => Yii::t('model', 'Slug Sv'),
+            'slug_cn' => Yii::t('model', 'Slug Cn'),
+            'slug_de' => Yii::t('model', 'Slug De'),
         );
     }
 
@@ -174,7 +188,7 @@ abstract class BaseSlideshowFile extends ActiveRecord
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t._title', $this->_title, true);
-        $criteria->compare('t.slug', $this->slug, true);
+        $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t._about', $this->_about, true);
         $criteria->compare('t.original_media_id', $this->original_media_id);
         $criteria->compare('t.generate_processed_media', $this->generate_processed_media);
@@ -197,6 +211,13 @@ abstract class BaseSlideshowFile extends ActiveRecord
         $criteria->compare('t.slideshow_file_qa_state_id_sv', $this->slideshow_file_qa_state_id_sv);
         $criteria->compare('t.slideshow_file_qa_state_id_cn', $this->slideshow_file_qa_state_id_cn);
         $criteria->compare('t.slideshow_file_qa_state_id_de', $this->slideshow_file_qa_state_id_de);
+        $criteria->compare('t.slug_es', $this->slug_es, true);
+        $criteria->compare('t.slug_fa', $this->slug_fa, true);
+        $criteria->compare('t.slug_hi', $this->slug_hi, true);
+        $criteria->compare('t.slug_pt', $this->slug_pt, true);
+        $criteria->compare('t.slug_sv', $this->slug_sv, true);
+        $criteria->compare('t.slug_cn', $this->slug_cn, true);
+        $criteria->compare('t.slug_de', $this->slug_de, true);
 
 
         return $criteria;
