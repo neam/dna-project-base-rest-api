@@ -12,9 +12,7 @@
         ?>
         <?php
         $this->renderPartial('//gridRelation/_relation_list', array(
-            'label' => 'List of exercises',
-            'noitemsLabel' => 'No exercises',
-            'items' => $model->exercises,
+            'relation' => 'exercises',
             'model' => $model,
         ));
         ?>

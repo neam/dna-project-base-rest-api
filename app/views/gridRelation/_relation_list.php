@@ -1,4 +1,12 @@
 <?php
+$items = $model->$relation;
+$relations = $model->relations();
+$relationClassName = $relations[$relation][1];
+$labels = DataModel::modelLabels();
+$relationClassLabel = Yii::t('app', $labels[$relationClassName], 2);
+$label = Yii::t('app', 'List of {models}', array('{models}' => $relationClassLabel));
+$noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $relationClassLabel));
+
 //TODO: Make this list sortable and nicer looking...
 ?>
 <h3><?php echo Yii::t("model", $label); ?></h3>
@@ -27,5 +35,5 @@
         <?php endforeach; ?>
     </ul>
 <?php else: ?>
-    <div><?php echo Yii::t("model", $noitemsLabel); ?></div>
+    <div><?php echo Yii::t("model", $noItemsLabel); ?></div>
 <?php endif; ?>

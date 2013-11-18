@@ -12,9 +12,7 @@
         ?>
         <?php
         $this->renderPartial('//gridRelation/_relation_list', array(
-            'label' => 'List of snapshots',
-            'noitemsLabel' => 'No snapshots',
-            'items' => $model->snapshots,
+            'relation' => 'snapshots',
             'model' => $model,
         ));
         ?>

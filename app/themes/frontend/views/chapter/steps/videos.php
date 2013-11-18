@@ -12,9 +12,7 @@
         ?>
         <?php
         $this->renderPartial('//gridRelation/_relation_list', array(
-            'label' => 'List of videos',
-            'noitemsLabel' => 'No videos',
-            'items' => $model->videos,
+            'relation' => 'videos',
             'model' => $model,
         ));
         ?>
