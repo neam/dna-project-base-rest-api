@@ -27,13 +27,13 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
     </div>
     <div class="modal-body">
         <?php
-        $allVideos = new $toType('search');
+        $allRelated = new $toType('search');
         $this->widget(
             'bootstrap.widgets.TbExtendedGridView',
             array(
                 'id' => $toLabel . 's_to_add',
                 'type' => 'striped bordered',
-                'dataProvider' => $allVideos->search(),
+                'dataProvider' => $allRelated->search(),
                 'pager' => array(
                     'class' => 'TbPager',
                     'displayFirstAndLast' => true,
@@ -55,7 +55,6 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
     <div class="modal-footer">
         <div class="btn-group">
             <?php
-            $id = 110;
             echo CHtml::ajaxSubmitButton(
                 Yii::t('model', 'Add selected'),
                 array("addEdges","id"=>$fromId),
