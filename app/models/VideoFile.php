@@ -161,7 +161,7 @@ class VideoFile extends BaseVideoFile
                 'thumbnail' => Yii::t('model', 'This is the small image representing the video in lists and also the start screen as the film is loading. It shows an iconic snapshot from the film, with the crucial graphics focused to help users recognize it later. Preferably a closeup of the high res films visualization with a human touch.'),
                 'clip' => Yii::t('model', 'The film needs to be .webm file.'),
                 'subtitles' => Yii::t('model', 'The subtitles srt file contents'),
-                'subtitles_import_media_id' => Yii::t('model', 'The subtitles in srt format'),
+                'subtitles_import_media_id' => Yii::t('model', 'Here you can upload and import an existing subtitles file in srt file format'),
                 'related' => Yii::t('model', 'After watching this video you may also be interested in these Items. If the video is on a chapter page, the chapter is assumed to related to these items as well.'),
             )
         );

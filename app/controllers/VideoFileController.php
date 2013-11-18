@@ -3,7 +3,9 @@
 class VideoFileController extends Controller
 {
 
-    use ItemController;
+    use ItemController {
+        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    }
 
     public $modelClass = "VideoFile";
 
@@ -102,6 +104,29 @@ class VideoFileController extends Controller
     protected function videofileSections($videofile)
     {
         return $sections;
+    }
+
+    public function saveAndContinueOnSuccess($id)
+    {
+
+        if (isset($_POST['import'])) {
+
+            // get file path
+            $p3media = P3Media::model()->findByPk($_POST['VideoFile']['subtitles_import_media_id']);
+            $filePath = $p3media->filePath;
+
+            // read contents of file
+            $contents = file_get_contents($filePath);
+
+            // save to post
+            $_POST['VideoFile']['subtitles'] = $contents;
+
+            // emulate us hitting the save button
+            $_POST['save-changes'] = true;
+
+        }
+        return $this->parentSaveAndContinueOnSuccess($id);
+
     }
 
     public function actionView($id)

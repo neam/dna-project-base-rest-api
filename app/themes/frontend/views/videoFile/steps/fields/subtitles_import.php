@@ -98,6 +98,13 @@ $formId = 'videofile-subtitles_import_media_id-' . \uniqid() . '-form';
             ),
         ), true);
         ?>
+        <?php
+        echo CHtml::submitButton(Yii::t('model', 'Import'), array(
+                'class' => 'btn btn-primary',
+                'name' => 'import',
+            )
+        );
+        ?>
     </div>
 </div>
 
