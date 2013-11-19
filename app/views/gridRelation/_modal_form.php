@@ -74,7 +74,6 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
         </div>
         <div class="btn-group">
             <?php
-            //TODO: link to exercise/add?to_node={chapter's_node_id}&returnUrl=<?php echo CHtml::encode(Yii::app()->request-url); and then make actionAdd comply with these parameters
             $this->widget("bootstrap.widgets.TbButton", array(
                 "label" => Yii::t("model", "Create new " . $toLabel),
                 "url" => array(
