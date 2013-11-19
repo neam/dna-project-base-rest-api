@@ -39,9 +39,6 @@ class VideoFile extends BaseVideoFile
         );
     }
 
-    public $clip;
-    public $thumbnail;
-
     public function rules()
     {
         return array_merge(
@@ -49,22 +46,22 @@ class VideoFile extends BaseVideoFile
 
                 // Define status-dependent fields
                 array('title_' . $this->source_language . ', slug_' . $this->source_language, 'required', 'on' => 'draft,preview,public'),
-                array('clip', 'required', 'on' => 'preview,public'),
-                array('about, thumbnail, subtitles_' . $this->source_language, 'required', 'on' => 'public'),
+                array('original_media_id', 'required', 'on' => 'preview,public'),
+                array('about, thumbnail_media_id, subtitles_' . $this->source_language, 'required', 'on' => 'public'),
 
                 // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
                 array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('clip', 'safe', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
+                array('original_media_id', 'safe', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
                 array('subtitles_' . $this->source_language . ', subtitles_import_media_id', 'safe', 'on' => 'draft-step_subtitles,preview-step_subtitles,public-step_subtitles,step_subtitles'),
 
                 // Define step-dependent fields - Part 2 - what fields are required at each step?
                 array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('clip', 'required', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
+                array('original_media_id', 'required', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
                 array('subtitles_' . $this->source_language, 'required', 'on' => 'draft-step_subtitles,preview-step_subtitles,public-step_subtitles,step_subtitles'),
 
                 // Ordinary validation rules
-                array('thumbnail', 'validateThumbnail', 'on' => 'public'),
-                array('clip', 'validateClip', 'on' => 'public'),
+                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
+                array('original_media_id', 'validateClip', 'on' => 'public'),
                 array('about', 'length', 'min' => 10, 'max' => 200),
                 array('subtitles' . $this->source_language, 'validateSubtitles', 'on' => 'public'),
             )
@@ -136,8 +133,8 @@ class VideoFile extends BaseVideoFile
                 'slug_en' => Yii::t('model', 'English Nice link'),
                 'about' => Yii::t('model', 'About'),
                 'about_en' => Yii::t('model', 'About (English)'),
-                'thumbnail' => Yii::t('model', 'Thumbnail'),
-                'clip' => Yii::t('model', 'Film file'),
+                'thumbnail_media_id' => Yii::t('model', 'Thumbnail'),
+                'original_media_id' => Yii::t('model', 'Film file'),
                 'subtitles' => Yii::t('model', 'Subtitles'),
             )
         );
