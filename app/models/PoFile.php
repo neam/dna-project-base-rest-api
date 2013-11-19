@@ -20,7 +20,7 @@ class PoFile extends BasePoFile
 
     public function getItemLabel()
     {
-        return (string) $this->title;
+        return (string) !empty($this->title) ? $this->title : "PoFile #" . $this->id;
     }
 
     public function behaviors()
