@@ -1,6 +1,6 @@
 <?php
 
-if ($this->workflowData["translateInto"]) {
+if (!$this->workflowData["translateInto"]) {
 
     $this->renderPartial("steps/fields/subtitles", compact("form", "model"));
 
