@@ -4,10 +4,7 @@
 
         <?php
         $videoMedia = P3Media::model()->findByPk($data->processed_media_id_en); // Currently we hard-code to use the english movie file
-        //TODO: Check if original-public works properly.
-        //Error generated "Undefined index: type", might be because there's erronous data in db (not correctly processed video etc), or logic flaw?
-        //$videoUrl = $videoMedia->createUrl('original-public');
-        $videoUrl = $videoMedia->createUrl('small');
+        $videoUrl = $videoMedia->createUrl('original-public');
         $subtitleUrl = $this->createUrl('videoFile/subtitles', array('id' => $data->id));
         ?>
 
