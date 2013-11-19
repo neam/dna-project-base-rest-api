@@ -51,8 +51,8 @@ var select2opts = {
     //escapeMarkup: function(m) { return m; }
 };
 
-$("#Chapter_thumbnail_media_id").data('select2opts', select2opts);
-$("#Chapter_thumbnail_media_id").select2($("#Chapter_thumbnail_media_id").data('select2opts'));
+$("#Exercise_thumbnail_media_id").data('select2opts', select2opts);
+$("#Exercise_thumbnail_media_id").select2($("#Exercise_thumbnail_media_id").data('select2opts'));
 
 EOF;
 
@@ -104,7 +104,7 @@ $formId = 'chapter-thumbnail_media_id-' . \uniqid() . '-form';
 $this->beginClip('modal:' . $formId . '-modal');
 $this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
-    'inputSelector' => '#Chapter_thumbnail_media_id',
+    'inputSelector' => '#Exercise_thumbnail_media_id',
     'model' => new P3Media,
     'pk' => 'id',
     'field' => 'itemLabel',

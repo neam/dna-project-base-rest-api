@@ -52,17 +52,19 @@ class Exercise extends BaseExercise
 
                 // Define status-dependent fields
                 array('title_' . $this->source_language . ', slug_' . $this->source_language, 'required', 'on' => 'draft,preview,public'),
-                array('question_' . $this->source_language . ', description_' . $this->source_language . ', thumbnail_media_id, materials', 'required', 'on' => 'public'),
+                array('question_' . $this->source_language . ', description_' . $this->source_language . ', thumbnail_media_id' /*,materials*/, 'required', 'on' => 'public'),
 
                 // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
-                array('title_' . $this->source_language . ', slug_' . $this->source_language . ', question_' . $this->source_language . ', description_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('materials', 'safe', 'on' => 'draft-step_materials,preview-step_materials,public-step_materials,step_materials'),
+                array('title_' . $this->source_language . ', slug_' . $this->source_language . '', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
+                array('question_' . $this->source_language . ', description_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'public-step_info,step_info'),
+                //array('materials', 'safe', 'on' => 'draft-step_materials,preview-step_materials,public-step_materials,step_materials'),
                 //array('learning_objectives', 'safe', 'on' => 'draft-step_learning_objectives,preview-step_learning_objectives,public-step_learning_objectives,step_learning_objectives'),
                 //array('related', 'safe', 'on' => 'draft-step_related,preview-step_related,public-step_related,step_related'),
 
                 // Define step-dependent fields - Part 2 - what fields are required at each step?
-                array('title_' . $this->source_language . ', slug_' . $this->source_language . ', question_' . $this->source_language . ', description_' . $this->source_language . ', thumbnail_media_id', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('materials', 'required', 'on' => 'draft-step_materials,preview-step_materials,public-step_materials,step_materials'),
+                array('title_' . $this->source_language . ', slug_' . $this->source_language . '', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
+                array('question_' . $this->source_language . ', description_' . $this->source_language . ', thumbnail_media_id', 'required', 'on' => 'public-step_info,step_info'),
+                //array('materials', 'required', 'on' => 'draft-step_materials,preview-step_materials,public-step_materials,step_materials'),
                 //array('learning_objectives', 'required', 'on' => 'draft-step_learning_objectives,preview-step_learning_objectives,public-step_learning_objectives,step_learning_objectives'),
                 //array('related', 'required', 'on' => 'draft-step_related,preview-step_related,public-step_related,step_related'),
 
@@ -105,10 +107,11 @@ class Exercise extends BaseExercise
                 ),
             ),
             'preview' => array(),
-            'public' => array(
+            'public' => array(/*
                 'materials' => array(
                     'icon' => 'edit',
                 ),
+                */
             ),
             'all' => array(),
         );
