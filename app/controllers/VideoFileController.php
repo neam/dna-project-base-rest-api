@@ -35,7 +35,7 @@ class VideoFileController extends Controller
                     'index',
                     'view',
                 ),
-                'users' => array('*'),
+                'users' => array('@'),
             ),
             array('allow',
                 'actions' => array(
