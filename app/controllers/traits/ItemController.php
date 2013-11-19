@@ -44,6 +44,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'prepPreshow',
+                    'makeCandidate',
                 ),
                 'roles' => array(
                     'Item.PrepPreshow'
@@ -385,6 +386,26 @@ trait ItemController
         $this->populateWorkflowData($model, "public", Yii::t('app', 'Prepare for publishing'));
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+    }
+
+    public function actionMakeCandidate($id)
+    {
+        $model = $this->loadModel($id);
+        $qaState = $model->qaState();
+
+        // save state change
+        $qaState->candidate_for_public_status = 1;
+        if (!$qaState->save()) {
+            throw new SaveException($qaState);
+        }
+
+        // redirect
+        if (isset($_GET['returnUrl'])) {
+            $this->redirect($_GET['returnUrl']);
+        } else {
+            $this->redirect(array('continueAuthoring', 'id' => $model->id));
+        }
+
     }
 
     public function actionPreview($id)
