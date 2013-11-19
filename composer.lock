@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "25030d418034faf1634c7ada94954405",
+    "hash": "f01154caacca591c5acba8417811a93a",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -992,13 +992,60 @@
         },
         {
             "name": "phundament/p3media",
-            "version": "0.16.0",
+            "version": "dev-awaiting-prs",
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/p3media.git",
-                "reference": "b0b408fe9774344946b2dff3cfaf007bcafbca64"
+                "reference": "86343faf24e21ae49fe185ce52dd7d68de9acc62"
             },
-            "type": "library"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/motin/p3media/zipball/86343faf24e21ae49fe185ce52dd7d68de9acc62",
+                "reference": "86343faf24e21ae49fe185ce52dd7d68de9acc62",
+                "shasum": ""
+            },
+            "require": {
+                "bwoester/yii-static-events-component": "~1.0.2",
+                "clevertech/yiibooster": ">=1.0,<3.0",
+                "mikehaertl/translatable": "1.*",
+                "php": ">=5.3.0",
+                "phundament/p3extensions": ">=0.17.0",
+                "sammaye/auditrail2": "1.*",
+                "schmunk42/access": "@dev",
+                "schmunk42/adjacency-list-behavior": "@dev",
+                "schmunk42/relation": "1.*",
+                "yiiext/status-behavior": "0.6.*",
+                "yiisoft/yii": "1.1.*"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "models/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "description": "Yii media file manager module with ckeditor integration",
+            "homepage": "https://github.com/schmunk42/p3media",
+            "keywords": [
+                "extension",
+                "file",
+                "manager",
+                "module",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/motin/p3media/tree/awaiting-prs"
+            },
+            "time": "2013-11-19 20:28:28"
         },
         {
             "name": "phundament/p3pages",
@@ -2183,6 +2230,7 @@
         "phundament/p3extensions": 20,
         "phundament/p3bootstrap": 20,
         "phundament/p3pages": 20,
+        "phundament/p3media": 20,
         "phundament/p3widgets": 20,
         "schmunk42/ckeditor-configurator": 20,
         "waalzer/app-demo-data": 20,

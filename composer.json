@@ -60,16 +60,8 @@
             }
         },
         {
-            "type": "package",
-            "package": {
-                "name": "phundament/p3media",
-                "version": "0.16.0",
-                "source": {
-                    "url": "https://github.com/motin/p3media.git",
-                    "type": "git",
-                    "reference": "b0b408fe9774344946b2dff3cfaf007bcafbca64"
-                }
-            }
+            "type": "vcs",
+            "url": "https://github.com/motin/p3media"
         },
         {
             "type": "package",
@@ -156,7 +148,7 @@
         "phundament/p3extensions":"dev-develop as 0.17.0",
         "phundament/p3bootstrap":"dev-develop as 0.22.0",
         "phundament/p3pages":"dev-release/0.17.0 as 0.17.0",
-        "phundament/p3media":"0.16.0",
+        "phundament/p3media":"dev-awaiting-prs",
         "phundament/p3widgets":"dev-develop as 0.16.0",
         "schmunk42/ckeditor-configurator":"@dev",
         "schmunk42/multi-theme":"0.1.*",
