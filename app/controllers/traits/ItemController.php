@@ -267,9 +267,25 @@ trait ItemController
         if (!$item->save()) {
             throw new SaveException($item);
         }
+        $message = "{$this->modelClass} Added";
 
-        Yii::app()->user->setFlash('success', "{$this->modelClass} Added");
+        // If fromId is set, we assume this is a new Item which will be related:
+        if (isset($_GET["fromId"]) && is_numeric($_GET["fromId"])){
+            $fromModel = $_GET["fromModel"];
+            $fromId = $_GET["fromId"];
+            $to_node_id = $item->node_id;
 
+            $apa = $fromModel::model()->findByPk($fromId);
+            $from_node_id = $apa->node()->id;
+
+            $this->addEdge($from_node_id, $to_node_id);
+
+            if (isset($_GET["returnUrl"])){
+                $this->redirect($_GET['returnUrl']);
+            }
+            return;
+        }
+        Yii::app()->user->setFlash('success', $message);
         $this->redirect(array('continueAuthoring', 'id' => $item->id));
     }
 
@@ -594,14 +610,16 @@ trait ItemController
         foreach ($toids as $toid) {
             $to_model = $model::model()->findByPk($toid);
             $to_node_id = $to_model->node()->id;
+            $this->addEdge($from_node_id,$to_node_id);
+        }
+    }
+    private function addEdge($from_node_id, $to_node_id){
+        $edge = new Edge();
+        $edge->from_node_id = $from_node_id;
+        $edge->to_node_id = $to_node_id;
 
-            $edge = new Edge();
-            $edge->from_node_id = $from_node_id;
-            $edge->to_node_id = $to_node_id;
-
-            if (!$edge->save()) {
-                throw new SaveException($edge);
-            }
+        if (!$edge->save()) {
+            throw new SaveException($edge);
         }
     }
 
