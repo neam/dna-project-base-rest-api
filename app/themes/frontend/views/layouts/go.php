@@ -9,31 +9,11 @@
           content="<?php echo (P3Page::getActivePage()) ? P3Page::getActivePage()->t('keywords') : '' ?>">
     <meta name="author" content="">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <?php
     $cs = Yii::app()->getClientScript();
     $cs->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
     $cs->registerLinkTag('shortcut icon', NULL, '/favicon.ico', NULL, NULL);
-
-    // CSS files
-    $css = Yii::app()->assetManager->publish(
-        Yii::app()->theme->basePath . '/assets',
-        true, // hash by name
-        -1, // level
-        false); // forceCopy
-    $cs->registerCssFile($css . '/p3.css');
-    $cs->registerCssFile($css . '/gcms.css');
     ?>
-
-    <style>
-        body, .container {
-            margin: 0;
-        }
-    </style>
 
 </head>
 
@@ -42,7 +22,6 @@
 <div class="container">
     <?php echo $content; ?>
 </div>
-<!-- /container -->
 
 </body>
 </html>
