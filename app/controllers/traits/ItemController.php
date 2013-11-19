@@ -512,7 +512,7 @@ trait ItemController
     {
         $this->scenario = "into_$translateInto-step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translation'), $translateInto);
+        $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translate into {translateIntoLanguage}', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])), $translateInto);
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }

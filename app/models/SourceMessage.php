@@ -31,14 +31,19 @@ class SourceMessage extends BaseSourceMessage
         );
     }
 
+    /**
+     * Virtual attribute to represent the translation that is to be saved (used for editable field widget)
+     * @var
+     */
+    public $translation;
+
     public function rules()
     {
         return array_merge(
             parent::rules()
-        /* , array(
-          array('column1, column2', 'rule1'),
-          array('column3', 'rule2'),
-          ) */
+            , array(
+                array('translation', 'safe'),
+            )
         );
     }
 
@@ -49,7 +54,7 @@ class SourceMessage extends BaseSourceMessage
         ));
     }
 
-    static public function ensureMessage($category, $message, $language)
+    static public function ensureSourceMessage($category, $message, $language)
     {
         if (empty($language)) {
             throw new CException("Language must not be empty");
@@ -62,16 +67,7 @@ class SourceMessage extends BaseSourceMessage
                 throw new CException('Attribute source message ' . $attributes['category'] . ' - ' . $attributes['message'] . ' could not be added to the SourceMessage table. Errors: ' . print_r($model->errors, true));
             }
         }
-        $attributes = array('id' => $model->id, 'language' => $language);
-        if (($messageModel = Message::model()->find('id=:id AND language=:language', $attributes)) === null) {
-            $messageModel = new Message;
-            $messageModel->id = $model->id;
-            $messageModel->language = $language;
-            if (!$messageModel->save()) {
-                throw new CException("Could not save new Message record");
-            }
-        }
-        return $messageModel;
+        return $model;
     }
 
 }

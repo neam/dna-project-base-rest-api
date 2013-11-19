@@ -46,13 +46,17 @@ $this->widget('TbGridView', array(
                     $category = 'video-' . $data->id . '-subtitles';
                     $message = $data->sourceMessage;
                     $language = $translateInto;
-                    $message = SourceMessage::ensureMessage($category, $message, $language);
+                    $sourceMessage = SourceMessage::ensureSourceMessage($category, $message, $language);
+
+                    $currentTranslation = Yii::t($category, $message, array(), 'dbMessages', $translateInto);
 
                     $this->widget('TbEditableField', array(
                         'type' => 'text',
-                        'model' => $message,
+                        'text' => $currentTranslation == $message ? null : $currentTranslation,
+                        'model' => $sourceMessage,
                         'attribute' => 'translation',
-                        'url' => $this->createUrl('message/editableSaver'),
+                        'emptytext' => Yii::t('app', 'Write {translateIntoLanguage} here', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])),
+                        'url' => $this->createUrl('sourceMessage/editableTranslationSaver', array('id' => $sourceMessage->id, 'translateInto' => $translateInto)),
                     ));
 
                 },

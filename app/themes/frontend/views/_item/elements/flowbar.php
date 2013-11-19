@@ -139,12 +139,12 @@
 
             <div class="well well-small">
                 <div class="row-fluid">
-                    <div class="span3">
+                    <div class="span4">
                         <h3>
                             <?php echo $workflowCaption; ?>
                         </h3>
                     </div>
-                    <div class="span6">
+                    <div class="span5">
                         <?php
                         $validationScenario = $this->workflowData["validationScenario"];
                         $invalidFields = $model->calculateInvalidFields($validationScenario);
@@ -165,7 +165,7 @@
                                 <div class="btn-group">
 
                                     <?php
-                                    echo CHtml::submitButton(Yii::t('model', 'Go to next required step'), array(
+                                    echo CHtml::submitButton(Yii::t('model', 'Next'), array(
                                             'class' => 'btn btn-primary',
                                             'name' => 'next-required',
                                         )

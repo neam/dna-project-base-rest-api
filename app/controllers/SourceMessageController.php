@@ -32,6 +32,13 @@ class SourceMessageController extends Controller
                 'roles' => array('SourceMessage.*'),
             ),
             array(
+                'allow',
+                'actions' => array(
+                    'editableTranslationSaver',
+                ),
+                'roles' => array('Item.Translate'),
+            ),
+            array(
                 'deny',
                 'users' => array('*'),
             ),
@@ -127,6 +134,28 @@ class SourceMessageController extends Controller
         Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
         $es = new EditableSaver('SourceMessage'); // classname of model to be updated
         $es->update();
+    }
+
+    public function actionEditableTranslationSaver()
+    {
+
+        // get source message id and language to translate into
+        $id = $_GET['id'];
+        $translateInto = $_GET['translateInto'];
+        $translation = $_POST['value'];
+
+        // find or create message:
+        $attributes = array('id' => $id, 'language' => $translateInto);
+        if (($messageModel = Message::model()->find('id=:id AND language=:language', $attributes)) === null) {
+            $messageModel = new Message;
+            $messageModel->id = $id;
+            $messageModel->language = $translateInto;
+            $messageModel->translation = $translation;
+            if (!$messageModel->save()) {
+                throw new CException("Could not save new Message record");
+            }
+        }
+
     }
 
     public function actionEditableCreator()

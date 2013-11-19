@@ -120,7 +120,7 @@ $gcmsConfig = array(
             'class' => 'CPhpMessageSource',
         ),
         // Attribute messages
-        'attributeMessages' => array(
+        'dbMessages' => array(
             'class' => 'CDbMessageSource',
         ),
         /*
