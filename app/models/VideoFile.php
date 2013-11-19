@@ -172,7 +172,8 @@ class VideoFile extends BaseVideoFile
         $parsed = array();
         $i = 2;
         while (isset($subtitle_lines[$i])) {
-            $parsed[$subtitle_lines[$i - 2]] = array(
+            $parsed[$subtitle_lines[$i - 2]] = (object) array(
+                "id" => $subtitle_lines[$i - 2],
                 "timestamp" => $subtitle_lines[$i - 1],
                 "sourceMessage" => $subtitle_lines[$i],
             );
