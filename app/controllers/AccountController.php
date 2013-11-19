@@ -20,6 +20,13 @@ class AccountController extends Controller
             array(
                 'allow',
                 'actions' => array(
+                    'toggleRole',
+                ),
+                'roles' => array('Admin'),
+            ),
+            array(
+                'allow',
+                'actions' => array(
                     'index',
                     'view',
                     'create',
@@ -237,7 +244,25 @@ class AccountController extends Controller
             $model->attributes = $_GET['Account'];
         }
 
-        $this->render('admin', array('model' => $model,));
+        $this->render('admin', array(
+            'model' => $model,
+        ));
+    }
+
+    public function actionToggleRole($id)
+    {
+        if (isset($_GET['attribute']))
+        {
+            $attribute = $_GET['attribute'];
+
+            if (Yii::app()->authManager->isAssigned($attribute, $id)) {
+                Yii::app()->authManager->revoke($attribute, $id);
+            }
+            else
+            {
+                Yii::app()->authManager->assign($attribute, $id);
+            }
+        }
     }
 
     public function loadModel($id)
