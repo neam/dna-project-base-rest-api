@@ -33,7 +33,6 @@
  * @property string $data_source_qa_state_id_de
  *
  * Relations of table "data_source" available as properties of the model:
- * @property DataChunk[] $dataChunks
  * @property DataSourceQaState $dataSourceQaStateIdEn
  * @property DataSourceQaState $dataSourceQaStateIdCn
  * @property DataSourceQaState $dataSourceQaStateIdDe
@@ -95,7 +94,6 @@ abstract class BaseDataSource extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'data_source_id'),
                 'dataSourceQaStateIdEn' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_en'),
                 'dataSourceQaStateIdCn' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_cn'),
                 'dataSourceQaStateIdDe' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id_de'),

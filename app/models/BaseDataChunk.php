@@ -12,9 +12,6 @@
  * @property string $_about
  * @property integer $file_media_id
  * @property string $metadata
- * @property string $data_source_id
- * @property string $slideshow_file_id
- * @property string $vector_graphic_id
  * @property string $created
  * @property string $modified
  * @property string $node_id
@@ -45,11 +42,8 @@
  * @property DataChunkQaState $dataChunkQaStateIdSv
  * @property DataChunk $clonedFrom
  * @property DataChunk[] $dataChunks
- * @property DataSource $dataSource
  * @property Node $node
  * @property P3Media $fileMedia
- * @property SlideshowFile $slideshowFile
- * @property VectorGraphic $vectorGraphic
  * @property SectionContent[] $sectionContents
  */
 abstract class BaseDataChunk extends ActiveRecord
@@ -69,12 +63,12 @@ abstract class BaseDataChunk extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, data_source_id, slideshow_file_id, vector_graphic_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_chunk_qa_state_id_en, data_chunk_qa_state_id_es, data_chunk_qa_state_id_fa, data_chunk_qa_state_id_hi, data_chunk_qa_state_id_pt, data_chunk_qa_state_id_sv, data_chunk_qa_state_id_cn, data_chunk_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_chunk_qa_state_id_en, data_chunk_qa_state_id_es, data_chunk_qa_state_id_fa, data_chunk_qa_state_id_hi, data_chunk_qa_state_id_pt, data_chunk_qa_state_id_sv, data_chunk_qa_state_id_cn, data_chunk_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, file_media_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, data_source_id, slideshow_file_id, vector_graphic_id, node_id, data_chunk_qa_state_id_en, data_chunk_qa_state_id_es, data_chunk_qa_state_id_fa, data_chunk_qa_state_id_hi, data_chunk_qa_state_id_pt, data_chunk_qa_state_id_sv, data_chunk_qa_state_id_cn, data_chunk_qa_state_id_de', 'length', 'max' => 20),
+                array('cloned_from_id, node_id, data_chunk_qa_state_id_en, data_chunk_qa_state_id_es, data_chunk_qa_state_id_fa, data_chunk_qa_state_id_hi, data_chunk_qa_state_id_pt, data_chunk_qa_state_id_sv, data_chunk_qa_state_id_cn, data_chunk_qa_state_id_de', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('_about, metadata, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, data_source_id, slideshow_file_id, vector_graphic_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_chunk_qa_state_id_en, data_chunk_qa_state_id_es, data_chunk_qa_state_id_fa, data_chunk_qa_state_id_hi, data_chunk_qa_state_id_pt, data_chunk_qa_state_id_sv, data_chunk_qa_state_id_cn, data_chunk_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_chunk_qa_state_id_en, data_chunk_qa_state_id_es, data_chunk_qa_state_id_fa, data_chunk_qa_state_id_hi, data_chunk_qa_state_id_pt, data_chunk_qa_state_id_sv, data_chunk_qa_state_id_cn, data_chunk_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -109,11 +103,8 @@ abstract class BaseDataChunk extends ActiveRecord
                 'dataChunkQaStateIdSv' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id_sv'),
                 'clonedFrom' => array(self::BELONGS_TO, 'DataChunk', 'cloned_from_id'),
                 'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'cloned_from_id'),
-                'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
-                'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
-                'vectorGraphic' => array(self::BELONGS_TO, 'VectorGraphic', 'vector_graphic_id'),
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'data_chunk_id'),
             )
         );
@@ -130,9 +121,6 @@ abstract class BaseDataChunk extends ActiveRecord
             '_about' => Yii::t('model', 'About'),
             'file_media_id' => Yii::t('model', 'File Media'),
             'metadata' => Yii::t('model', 'Metadata'),
-            'data_source_id' => Yii::t('model', 'Data Source'),
-            'slideshow_file_id' => Yii::t('model', 'Slideshow File'),
-            'vector_graphic_id' => Yii::t('model', 'Vector Graphic'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'node_id' => Yii::t('model', 'Node'),
@@ -168,9 +156,6 @@ abstract class BaseDataChunk extends ActiveRecord
         $criteria->compare('t._about', $this->_about, true);
         $criteria->compare('t.file_media_id', $this->file_media_id);
         $criteria->compare('t.metadata', $this->metadata, true);
-        $criteria->compare('t.data_source_id', $this->data_source_id);
-        $criteria->compare('t.slideshow_file_id', $this->slideshow_file_id);
-        $criteria->compare('t.vector_graphic_id', $this->vector_graphic_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.node_id', $this->node_id);

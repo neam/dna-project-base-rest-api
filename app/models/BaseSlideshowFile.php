@@ -40,7 +40,6 @@
  * @property string $slug_de
  *
  * Relations of table "slideshow_file" available as properties of the model:
- * @property DataChunk[] $dataChunks
  * @property Exercise[] $exercises
  * @property SectionContent[] $sectionContents
  * @property Node $node
@@ -111,7 +110,6 @@ abstract class BaseSlideshowFile extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'slideshow_file_id'),
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'slideshow_file_id'),
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'slideshow_file_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),

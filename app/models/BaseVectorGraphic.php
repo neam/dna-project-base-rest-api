@@ -39,7 +39,6 @@
  * @property string $vector_graphic_qa_state_id_de
  *
  * Relations of table "vector_graphic" available as properties of the model:
- * @property DataChunk[] $dataChunks
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -108,7 +107,6 @@ abstract class BaseVectorGraphic extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'vector_graphic_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
                 'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),

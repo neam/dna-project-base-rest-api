@@ -37,8 +37,8 @@
  * @property DataSource[] $dataSources
  * @property ExamQuestion[] $examQuestions
  * @property SectionContent[] $sectionContents
- * @property P3Media $thumbnailMedia
  * @property Node $node
+ * @property P3Media $thumbnailMedia
  * @property Snapshot $clonedFrom
  * @property Snapshot[] $snapshots
  * @property Tool $tool
@@ -101,8 +101,8 @@ abstract class BaseSnapshot extends ActiveRecord
                 'dataSources' => array(self::HAS_MANY, 'DataSource', 'cloned_from_id'),
                 'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'cloned_from_id'),
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'snapshot_id'),
-                'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'cloned_from_id'),
                 'tool' => array(self::BELONGS_TO, 'Tool', 'tool_id'),
