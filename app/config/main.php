@@ -219,6 +219,7 @@ $mainConfig = array(
             'customMessageCatalog' => 'UserModule.user', // disable fallback catalog
             'controllerMap' => array(
                 'activation' => 'GMActivationController',
+                'registration' => 'GMRegistrationController',
             ),
         ),
         'translate'            => array(
