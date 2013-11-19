@@ -11,7 +11,7 @@ if (DEBUG_LOGS)
 	$_levels = array(
 		'flow',
 		'stat',
-		//'trace',
+		YII_DEBUG ? 'trace' : null,
 		'error',
 		'warning',
 		'profile',
