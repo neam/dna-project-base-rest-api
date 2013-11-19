@@ -155,6 +155,12 @@
                             </div>
                             <?php
                             $nextStep = $this->nextFlowStep("$validationScenario-", $model);
+
+                            // Sanity check
+                            if ($invalidFields > 0 && empty($nextStep)) {
+                                throw new CException("The item's validation rules for $validationScenario are out of sync. Make sure that the step-based validation rules match those of the overall $validationScenario validation scenarios");
+                            }
+
                             if ($_GET['step'] != $nextStep): ?>
                                 <div class="btn-group">
 
