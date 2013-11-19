@@ -8,10 +8,16 @@
         $subtitleUrl = $this->createUrl('videoFile/subtitles', array('id' => $data->id));
         ?>
 
-        <link rel="stylesheet"
-              href="<?php echo Yii::app()->request->baseUrl; ?>/../components/mediaelement/build/mediaelementplayer.min.css"/>
-        <script type="text/javascript"
-                src="<?php echo Yii::app()->request->baseUrl; ?>/../components/mediaelement/build/mediaelement-and-player.min.js"></script>
+        <?php
+        $cs = Yii::app()->clientScript;
+        $am = Yii::app()->assetManager;
+        Yii::app()->params["bowerAssets"] = $am->publish(
+            Yii::getPathOfAlias('bower-components'),
+            true // hash by name
+        );
+        $cs->registerScriptFile(Yii::app()->params["bowerAssets"] . '/mediaelement/build/mediaelement-and-player.min.js');
+        $cs->registerCssFile(Yii::app()->params["bowerAssets"] . '/mediaelement/build/mediaelementplayer.min.css');
+        ?>
 
         <video width="604" height="340" controls="controls"><!-- Not used preload="none" -->
             <source type="video/webm" src="<?php echo $videoUrl; ?>">
