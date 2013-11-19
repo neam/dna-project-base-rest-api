@@ -22,8 +22,8 @@ class GMRegistrationController extends RegistrationController {
         if (Yii::app()->user->id) {
             $this->redirect(Yii::app()->controller->module->profileUrl);
         } else {
-            if (isset($_POST['RegistrationForm'])) {
-                $model->attributes = $_POST['RegistrationForm'];
+            if (isset($_POST['GMRegistrationForm'])) {
+                $model->attributes = $_POST['GMRegistrationForm'];
                 $profile->attributes = ((isset($_POST['Profile']) ? $_POST['Profile'] : array()));
 
                 if ($model->validate() && $profile->validate()) {

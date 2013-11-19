@@ -89,9 +89,9 @@ $this->breadcrumbs = array(
         ?>
 
         <div class="row">
-            <?php echo $form->labelEx($model, 'acceptTermsAndPrivacy'); ?>
-            <?php echo $form->checkBox($model, 'acceptTermsAndPrivacy'); ?>
-            <?php echo $form->error($model, 'acceptTermsAndPrivacy'); ?>
+            <?php echo $form->labelEx($model, 'acceptTerms'); ?>
+            <?php echo $form->checkBox($model, 'acceptTerms'); ?>
+            <?php echo $form->error($model, 'acceptTerms'); ?>
         </div>
 
         <?php if (UserModule::doCaptcha('registration')): ?>

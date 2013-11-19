@@ -9,9 +9,6 @@ class GMActivationController extends ActivationController {
      */
     public function actionActivation ()
     {
-        $_GET['email'] = 'eric.nishio@nordsoftware.com';
-        $_GET['activkey'] = 'foo';
-
         $email = $_GET['email'];
         $activkey = $_GET['activkey'];
 
