@@ -180,7 +180,7 @@ class VideoFile extends BaseVideoFile
 
     public function getParsedSubtitles()
     {
-        $subtitle_lines = explode("\n", $this->subtitles);
+        $subtitle_lines = explode("\r\n", $this->subtitles);
         $parsed = array();
         $i = 2;
         while (isset($subtitle_lines[$i])) {

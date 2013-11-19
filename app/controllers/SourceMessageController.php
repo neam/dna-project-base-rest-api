@@ -150,11 +150,15 @@ class SourceMessageController extends Controller
             $messageModel = new Message;
             $messageModel->id = $id;
             $messageModel->language = $translateInto;
-            $messageModel->translation = $translation;
-            if (!$messageModel->save()) {
-                throw new CException("Could not save new Message record");
-            }
         }
+
+        $messageModel->translation = $translation;
+        if (!$messageModel->save()) {
+            throw new CException("Could not save new Message record");
+        }
+
+        // Optional but good when inspecting with developer tools
+        echo "OK";
 
     }
 

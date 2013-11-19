@@ -41,9 +41,9 @@ $this->widget('TbGridView', array(
         ),
         array(
             'name' => 'Translation',
-            'value' => function ($data) use ($translateInto) {
+            'value' => function ($data) use ($model, $translateInto) {
 
-                    $category = 'video-' . $data->id . '-subtitles';
+                    $category = "video-{$model->id}-subtitles";
                     $message = $data->sourceMessage;
                     $language = $translateInto;
                     $sourceMessage = SourceMessage::ensureSourceMessage($category, $message, $language);
