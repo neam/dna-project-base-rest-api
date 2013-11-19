@@ -170,7 +170,7 @@ class DataModel
                 'SlideshowFile' => array('processedMedia' => 'processed_media_id', 'slideshowFileQaState' => 'slideshow_file_qa_state_id'),
                 'Snapshot' => array('snapshotQaState' => 'snapshot_qa_state_id'),
                 'SpreadsheetFile' => array('processedMedia' => 'processed_media_id'),
-                'TextDoc' => array('processedMedia' => 'processed_media_id', 'testDocQaState' => 'text_doc_qa_state_id'),
+                'TextDoc' => array('processedMedia' => 'processed_media_id', 'textDocQaState' => 'text_doc_qa_state_id'),
                 'VectorGraphic' => array('processedMedia' => 'processed_media_id', 'vectorGraphicQaState' => 'vector_graphic_qa_state_id'),
                 'VideoFile' => array('processedMedia' => 'processed_media_id', 'videoFileQaState' => 'video_file_qa_state_id'),
             ),
