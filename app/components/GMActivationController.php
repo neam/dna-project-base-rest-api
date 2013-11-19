@@ -3,6 +3,10 @@
 Yii::import('vendor.mishamx.yii-user.controllers.ActivationController');
 
 class GMActivationController extends ActivationController {
+    /**
+     * Displays the user activation page.
+     * @see ActivationController::actionActivation()
+     */
     public function actionActivation ()
     {
         $_GET['email'] = 'eric.nishio@nordsoftware.com';
