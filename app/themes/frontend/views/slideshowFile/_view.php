@@ -1,5 +1,8 @@
-<div class="view">
+<div class="view well well-white">
 
+    <div class="admin-container show">
+        <?php echo CHtml::link('<i class="icon-eye"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Slideshow File'))), array('slideshowFile/view', 'id' => $data->id), array('class' => 'btn')); ?>
+    </div>
     <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($data->id), array('slideshowFile/view', 'id' => $data->id)); ?>
     <br/>
@@ -12,16 +15,16 @@
     <?php echo CHtml::encode($data->cloned_from_id); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_en')); ?>:</b>
-    <?php echo CHtml::encode($data->title_en); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_title')); ?>:</b>
+    <?php echo CHtml::encode($data->_title); ?>
     <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('slug_en')); ?>:</b>
     <?php echo CHtml::encode($data->slug_en); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_en')); ?>:</b>
-    <?php echo CHtml::encode($data->about_en); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_about')); ?>:</b>
+    <?php echo CHtml::encode($data->_about); ?>
     <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('original_media_id')); ?>:</b>
@@ -47,34 +50,6 @@
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('node_id')); ?>:</b>
     <?php echo CHtml::encode($data->node_id); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_es')); ?>:</b>
-    <?php echo CHtml::encode($data->title_es); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_fa')); ?>:</b>
-    <?php echo CHtml::encode($data->title_fa); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_hi')); ?>:</b>
-    <?php echo CHtml::encode($data->title_hi); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_pt')); ?>:</b>
-    <?php echo CHtml::encode($data->title_pt); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_sv')); ?>:</b>
-    <?php echo CHtml::encode($data->title_sv); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_cn')); ?>:</b>
-    <?php echo CHtml::encode($data->title_cn); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_de')); ?>:</b>
-    <?php echo CHtml::encode($data->title_de); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('processed_media_id_es')); ?>:</b>
@@ -103,62 +78,6 @@
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('processed_media_id_de')); ?>:</b>
     <?php echo CHtml::encode($data->processed_media_id_de); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_es')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_es); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_fa')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_fa); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_hi')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_hi); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_pt')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_pt); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_sv')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_sv); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_cn')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_cn); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_de')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_de); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_es')); ?>:</b>
-    <?php echo CHtml::encode($data->about_es); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_fa')); ?>:</b>
-    <?php echo CHtml::encode($data->about_fa); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_hi')); ?>:</b>
-    <?php echo CHtml::encode($data->about_hi); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_pt')); ?>:</b>
-    <?php echo CHtml::encode($data->about_pt); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_sv')); ?>:</b>
-    <?php echo CHtml::encode($data->about_sv); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_cn')); ?>:</b>
-    <?php echo CHtml::encode($data->about_cn); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_de')); ?>:</b>
-    <?php echo CHtml::encode($data->about_de); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('slideshow_file_qa_state_id_en')); ?>:</b>
@@ -193,10 +112,44 @@
     <?php echo CHtml::encode($data->slideshow_file_qa_state_id_de); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_es')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_es); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_fa')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_fa); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_hi')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_hi); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_pt')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_pt); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_sv')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_sv); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_cn')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_cn); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_de')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_de); ?>
+    <br />
+
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('SlideshowFile.*')): ?>
         <div class="admin-container show">
+            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Slideshow File'))), array('slideshowFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if (Yii::app()->user->checkAccess('Developer')): ?>
+        <div class="admin-container show">
+            <h3>Developer access</h3>
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Slideshow File'))), array('slideshowFile/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>

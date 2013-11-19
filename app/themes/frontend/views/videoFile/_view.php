@@ -51,8 +51,13 @@
 
     <?php if (Yii::app()->user->checkAccess('VideoFile.*')): ?>
         <div class="admin-container show">
-            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('crud', 'Update {model}', array('{model}' => Yii::t('crud', 'Update File'))), array('videoFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
-            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('crud', 'Edit {model}', array('{model}' => Yii::t('crud', 'Video File'))), array('videoFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if (Yii::app()->user->checkAccess('Developer')): ?>
+        <div class="admin-container show">
+            <h3>Developer access</h3>
+            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
 

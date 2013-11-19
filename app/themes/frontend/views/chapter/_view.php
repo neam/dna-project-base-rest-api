@@ -1,28 +1,39 @@
 <div class="view well well-white">
 
-    <div>
-        <?php echo CHtml::link('<i class="icon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/view', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+    <div class="admin-container show">
+        <?php echo CHtml::link('<i class="icon-eye"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/view', 'id' => $data->id), array('class' => 'btn')); ?>
     </div>
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($data->id), array('chapter/view', 'id' => $data->id)); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
-    <?php echo CHtml::encode($data->title_en); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('version')); ?>:</b>
+    <?php echo CHtml::encode($data->version); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('cloned_from_id')); ?>:</b>
+    <?php echo CHtml::encode($data->cloned_from_id); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_title')); ?>:</b>
+    <?php echo CHtml::encode($data->_title); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_en')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_en); ?>
     <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('thumbnail_media_id')); ?>:</b>
     <?php echo CHtml::encode($data->thumbnail_media_id); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about')); ?>:</b>
-    <?php echo CHtml::encode($data->about); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_about')); ?>:</b>
+    <?php echo CHtml::encode($data->_about); ?>
     <br/>
 
     <?php /*
-    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_en')); ?>:</b>
-    <?php echo CHtml::encode($data->teachers_guide_en); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_teachers_guide')); ?>:</b>
+    <?php echo CHtml::encode($data->_teachers_guide); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
@@ -35,34 +46,6 @@
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('node_id')); ?>:</b>
     <?php echo CHtml::encode($data->node_id); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_es')); ?>:</b>
-    <?php echo CHtml::encode($data->title_es); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_fa')); ?>:</b>
-    <?php echo CHtml::encode($data->title_fa); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_hi')); ?>:</b>
-    <?php echo CHtml::encode($data->title_hi); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_pt')); ?>:</b>
-    <?php echo CHtml::encode($data->title_pt); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_sv')); ?>:</b>
-    <?php echo CHtml::encode($data->title_sv); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_cn')); ?>:</b>
-    <?php echo CHtml::encode($data->title_cn); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_de')); ?>:</b>
-    <?php echo CHtml::encode($data->title_de); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('slug_es')); ?>:</b>
@@ -91,34 +74,6 @@
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('slug_de')); ?>:</b>
     <?php echo CHtml::encode($data->slug_de); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_es')); ?>:</b>
-    <?php echo CHtml::encode($data->about_es); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_fa')); ?>:</b>
-    <?php echo CHtml::encode($data->about_fa); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_hi')); ?>:</b>
-    <?php echo CHtml::encode($data->about_hi); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_pt')); ?>:</b>
-    <?php echo CHtml::encode($data->about_pt); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_sv')); ?>:</b>
-    <?php echo CHtml::encode($data->about_sv); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_cn')); ?>:</b>
-    <?php echo CHtml::encode($data->about_cn); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_de')); ?>:</b>
-    <?php echo CHtml::encode($data->about_de); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('chapter_qa_state_id_en')); ?>:</b>
@@ -153,34 +108,6 @@
     <?php echo CHtml::encode($data->chapter_qa_state_id_de); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_es')); ?>:</b>
-    <?php echo CHtml::encode($data->teachers_guide_es); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_fa')); ?>:</b>
-    <?php echo CHtml::encode($data->teachers_guide_fa); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_hi')); ?>:</b>
-    <?php echo CHtml::encode($data->teachers_guide_hi); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_pt')); ?>:</b>
-    <?php echo CHtml::encode($data->teachers_guide_pt); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_sv')); ?>:</b>
-    <?php echo CHtml::encode($data->teachers_guide_sv); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_cn')); ?>:</b>
-    <?php echo CHtml::encode($data->teachers_guide_cn); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('teachers_guide_de')); ?>:</b>
-    <?php echo CHtml::encode($data->teachers_guide_de); ?>
-    <br />
-
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>
@@ -188,7 +115,6 @@
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Chapter'))), array('chapter/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
-
     <?php if (Yii::app()->user->checkAccess('Developer')): ?>
         <div class="admin-container show">
             <h3>Developer access</h3>

@@ -1,5 +1,8 @@
-<div class="view">
+<div class="view well well-white">
 
+    <div class="admin-container show">
+        <?php echo CHtml::link('<i class="icon-eye"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Exam Question'))), array('examQuestion/view', 'id' => $data->id), array('class' => 'btn')); ?>
+    </div>
     <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($data->id), array('examQuestion/view', 'id' => $data->id)); ?>
     <br/>
@@ -16,8 +19,8 @@
     <?php echo CHtml::encode($data->slug_en); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('question_en')); ?>:</b>
-    <?php echo CHtml::encode($data->question_en); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_question')); ?>:</b>
+    <?php echo CHtml::encode($data->_question); ?>
     <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('source_node_id')); ?>:</b>
@@ -65,34 +68,6 @@
     <?php echo CHtml::encode($data->slug_de); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('question_es')); ?>:</b>
-    <?php echo CHtml::encode($data->question_es); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('question_fa')); ?>:</b>
-    <?php echo CHtml::encode($data->question_fa); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('question_hi')); ?>:</b>
-    <?php echo CHtml::encode($data->question_hi); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('question_pt')); ?>:</b>
-    <?php echo CHtml::encode($data->question_pt); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('question_sv')); ?>:</b>
-    <?php echo CHtml::encode($data->question_sv); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('question_cn')); ?>:</b>
-    <?php echo CHtml::encode($data->question_cn); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('question_de')); ?>:</b>
-    <?php echo CHtml::encode($data->question_de); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('exam_question_qa_state_id_en')); ?>:</b>
     <?php echo CHtml::encode($data->exam_question_qa_state_id_en); ?>
     <br />
@@ -129,6 +104,12 @@
     ?>
     <?php if (Yii::app()->user->checkAccess('ExamQuestion.*')): ?>
         <div class="admin-container show">
+            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Exam Question'))), array('examQuestion/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if (Yii::app()->user->checkAccess('Developer')): ?>
+        <div class="admin-container show">
+            <h3>Developer access</h3>
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Exam Question'))), array('examQuestion/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>

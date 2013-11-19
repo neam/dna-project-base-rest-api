@@ -1,5 +1,8 @@
-<div class="view">
+<div class="view well well-white">
 
+    <div class="admin-container show">
+        <?php echo CHtml::link('<i class="icon-eye"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Download Link'))), array('downloadLink/view', 'id' => $data->id), array('class' => 'btn')); ?>
+    </div>
     <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($data->id), array('downloadLink/view', 'id' => $data->id)); ?>
     <br/>
@@ -12,8 +15,8 @@
     <?php echo CHtml::encode($data->cloned_from_id); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_en')); ?>:</b>
-    <?php echo CHtml::encode($data->title_en); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_title')); ?>:</b>
+    <?php echo CHtml::encode($data->_title); ?>
     <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('file_media_id')); ?>:</b>
@@ -33,38 +36,16 @@
     <?php echo CHtml::encode($data->node_id); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_es')); ?>:</b>
-    <?php echo CHtml::encode($data->title_es); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_fa')); ?>:</b>
-    <?php echo CHtml::encode($data->title_fa); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_hi')); ?>:</b>
-    <?php echo CHtml::encode($data->title_hi); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_pt')); ?>:</b>
-    <?php echo CHtml::encode($data->title_pt); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_sv')); ?>:</b>
-    <?php echo CHtml::encode($data->title_sv); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_cn')); ?>:</b>
-    <?php echo CHtml::encode($data->title_cn); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_de')); ?>:</b>
-    <?php echo CHtml::encode($data->title_de); ?>
-    <br />
-
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('DownloadLink.*')): ?>
         <div class="admin-container show">
+            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Download Link'))), array('downloadLink/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if (Yii::app()->user->checkAccess('Developer')): ?>
+        <div class="admin-container show">
+            <h3>Developer access</h3>
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Download Link'))), array('downloadLink/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
