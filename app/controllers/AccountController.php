@@ -251,15 +251,12 @@ class AccountController extends Controller
 
     public function actionToggleRole($id)
     {
-        if (isset($_GET['attribute']))
-        {
+        if (isset($_GET['attribute'])) {
             $attribute = $_GET['attribute'];
 
             if (Yii::app()->authManager->isAssigned($attribute, $id)) {
                 Yii::app()->authManager->revoke($attribute, $id);
-            }
-            else
-            {
+            } else {
                 Yii::app()->authManager->assign($attribute, $id);
             }
         }
