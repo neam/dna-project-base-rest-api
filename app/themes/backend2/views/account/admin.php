@@ -22,12 +22,12 @@ Yii::app()->clientScript->registerScript('search', "
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
-    <h1>
+<h1>
 
-        <?php echo Yii::t('model', 'Accounts'); ?>
-        <small><?php echo Yii::t('crud', 'Manage'); ?></small>
+    <?php echo Yii::t('model', 'Accounts'); ?>
+    <small><?php echo Yii::t('crud', 'Manage'); ?></small>
 
-    </h1>
+</h1>
 
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
@@ -38,50 +38,70 @@ $roleColumns = array(
     array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
-        'name' => 'Admin',
-        'value' => function($data) {
-            return Yii::app()->authManager->checkAccess('Admin', $data->id);
-        },
+        'name' => 'Developer',
+        'value' => function ($data) {
+                return Yii::app()->authManager->checkAccess('Developer', $data->id);
+            },
         'filter' => true,
         'toggleAction' => 'account/toggleRole',
     ),
     array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
+        'name' => 'Super Administrator',
+        'value' => function ($data) {
+                return Yii::app()->authManager->checkAccess('Super Administrator', $data->id);
+            },
+        'filter' => true,
+        'toggleAction' => 'account/toggleRole',
+    ),
+    array(
+        'class' => 'TbToggleColumn',
+        'displayText' => false,
+        'name' => 'Administrator',
+        'value' => function ($data) {
+                return Yii::app()->authManager->checkAccess('Administrator', $data->id);
+            },
+        'filter' => true,
+        'toggleAction' => 'account/toggleRole',
+    ),
+    array(
+        'class' => 'TbToggleColumn',
+        'displayText' => false,
+        'name' => 'Publisher',
+        'value' => function ($data) {
+                return Yii::app()->authManager->checkAccess('Publisher', $data->id);
+            },
+        'filter' => false,
+        'toggleAction' => 'account/toggleRole',
+    ),
+    array(
+        'class' => 'TbToggleColumn',
+        'displayText' => false,
         'name' => 'Creator',
-        'value' => function($data) {
-            return Yii::app()->authManager->checkAccess('Creator', $data->id);
-        },
+        'value' => function ($data) {
+                return Yii::app()->authManager->checkAccess('Creator', $data->id);
+            },
         'filter' => false,
         'toggleAction' => 'account/toggleRole',
     ),
     array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
-        'name' => 'Editor',
-        'value' => function($data) {
-            return Yii::app()->authManager->checkAccess('Editor', $data->id);
-        },
+        'name' => 'Evaluator',
+        'value' => function ($data) {
+                return Yii::app()->authManager->checkAccess('Evaluator', $data->id);
+            },
         'filter' => false,
         'toggleAction' => 'account/toggleRole',
     ),
     array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
-        'name' => 'Previewer',
-        'value' => function($data) {
-            return Yii::app()->authManager->checkAccess('Previewer', $data->id);
-        },
-        'filter' => false,
-        'toggleAction' => 'account/toggleRole',
-    ),
-    array(
-        'class' => 'TbToggleColumn',
-        'displayText' => false,
-        'name' => 'Project Admin',
-        'value' => function($data) {
-            return Yii::app()->authManager->checkAccess('Project Admin', $data->id);
-        },
+        'name' => 'Approver',
+        'value' => function ($data) {
+                return Yii::app()->authManager->checkAccess('Approver', $data->id);
+            },
         'filter' => false,
         'toggleAction' => 'account/toggleRole',
     ),
@@ -89,19 +109,9 @@ $roleColumns = array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
         'name' => 'Proofreader',
-        'value' => function($data) {
-            return Yii::app()->authManager->checkAccess('Proofreader', $data->id);
-        },
-        'filter' => false,
-        'toggleAction' => 'account/toggleRole',
-    ),
-    array(
-        'class' => 'TbToggleColumn',
-        'displayText' => false,
-        'name' => 'Publisher',
-        'value' => function($data) {
-            return Yii::app()->authManager->checkAccess('Publisher', $data->id);
-        },
+        'value' => function ($data) {
+                return Yii::app()->authManager->checkAccess('Proofreader', $data->id);
+            },
         'filter' => false,
         'toggleAction' => 'account/toggleRole',
     ),
@@ -109,15 +119,16 @@ $roleColumns = array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
         'name' => 'Translator',
-        'value' => function($data) {
-            return Yii::app()->authManager->checkAccess('Translator', $data->id);
-        },
+        'value' => function ($data) {
+                return Yii::app()->authManager->checkAccess('Translator', $data->id);
+            },
         'filter' => false,
         'toggleAction' => 'account/toggleRole',
     ),
 );
 
 $columns = array_merge(array(
+    /*
     array(
         'class' => 'CLinkColumn',
         'header' => '',
@@ -132,6 +143,7 @@ $columns = array_merge(array(
             //'placement' => 'right',
         )
     ),
+    */
     array(
         'class' => 'TbEditableColumn',
         'name' => 'username',
@@ -164,6 +176,7 @@ $columns = array_merge(array(
             //'placement' => 'right',
         )
     ),*/
+    /*
     array(
         'class' => 'TbEditableColumn',
         'name' => 'superuser',
@@ -172,6 +185,7 @@ $columns = array_merge(array(
             //'placement' => 'right',
         )
     ),
+    */
     array(
         'class' => 'TbEditableColumn',
         'name' => 'status',
@@ -179,7 +193,9 @@ $columns = array_merge(array(
             'url' => $this->createUrl('/account/editableSaver'),
             //'placement' => 'right',
         )
-    ),
+    )
+), $roleColumns, array(
+
     array(
         'class' => 'TbEditableColumn',
         'name' => 'create_at',
@@ -210,7 +226,7 @@ $columns = array_merge(array(
         'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
         'deleteButtonUrl' => 'Yii::app()->controller->createUrl("delete", array("id" => $data->id))',
     ),
-), $roleColumns);
+));
 ?>
 
 <?php
