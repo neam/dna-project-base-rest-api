@@ -111,7 +111,14 @@ class VideoFileController extends Controller
     {
         $model = $this->loadModel($id);
 
-        echo $model->subtitles;
+        $subtitles = $model->getParsedSubtitles();
+        foreach ($subtitles as $subtitle) {
+            echo "{$subtitle->id}\n";
+            echo "{$subtitle->timestamp}\n";
+            echo Yii::t("video-{$model->id}-subtitles", $subtitle->sourceMessage, array(), 'dbMessages', 'sv') . "\n";
+            echo "\n";
+        }
+
         exit;
     }
 
