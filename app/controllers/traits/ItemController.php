@@ -270,7 +270,7 @@ trait ItemController
         $message = "{$this->modelClass} Added";
 
         // If fromId is set, we assume this is a new Item which will be related:
-        if (isset($_GET["fromId"]) && is_numeric($_GET["fromId"])){
+        if (isset($_GET["fromId"]) && is_numeric($_GET["fromId"])) {
             $fromModel = $_GET["fromModel"];
             $fromId = $_GET["fromId"];
             $to_node_id = $item->node_id;
@@ -280,7 +280,7 @@ trait ItemController
 
             $this->addEdge($from_node_id, $to_node_id);
 
-            if (isset($_GET["returnUrl"])){
+            if (isset($_GET["returnUrl"])) {
                 $this->redirect($_GET['returnUrl']);
             }
             return;
@@ -610,10 +610,12 @@ trait ItemController
         foreach ($toids as $toid) {
             $to_model = $model::model()->findByPk($toid);
             $to_node_id = $to_model->node()->id;
-            $this->addEdge($from_node_id,$to_node_id);
+            $this->addEdge($from_node_id, $to_node_id);
         }
     }
-    private function addEdge($from_node_id, $to_node_id){
+
+    private function addEdge($from_node_id, $to_node_id)
+    {
         $edge = new Edge();
         $edge->from_node_id = $from_node_id;
         $edge->to_node_id = $to_node_id;
