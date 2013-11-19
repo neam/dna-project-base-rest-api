@@ -30,7 +30,13 @@ $this->widget('TbGridView', array(
         'id',
         array(
             'name' => 'Subtitle',
-            'value' => '$data->sourceMessage',
+            'value' => function ($data) use ($translateInto) {
+
+                    echo $data->timestamp;
+                    echo "<br/>";
+                    echo $data->sourceMessage;
+
+                },
             'filter' => true,
         ),
         array(
