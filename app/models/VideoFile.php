@@ -47,7 +47,7 @@ class VideoFile extends BaseVideoFile
                 // Define status-dependent fields
                 array('title_' . $this->source_language . ', slug_' . $this->source_language, 'required', 'on' => 'draft,preview,public'),
                 array('original_media_id', 'required', 'on' => 'preview,public'),
-                array('about_'.$this->source_language.', thumbnail_media_id, subtitles_' . $this->source_language, 'required', 'on' => 'public'),
+                array('about_' . $this->source_language . ', thumbnail_media_id, subtitles_' . $this->source_language, 'required', 'on' => 'public'),
 
                 // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
                 array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
@@ -62,7 +62,7 @@ class VideoFile extends BaseVideoFile
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
                 array('original_media_id', 'validateClip', 'on' => 'public'),
-                array('about_'.$this->source_language, 'length', 'min' => 10, 'max' => 200),
+                array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
                 array('subtitles' . $this->source_language, 'validateSubtitles', 'on' => 'public'),
             ),
             $this->i18nRules()
