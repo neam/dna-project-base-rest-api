@@ -11,10 +11,13 @@
     <?php elseif (!is_null($data->tool) && !is_null($data->tool->embed_template)): ?>
 
         <?php
+        parse_str($data->vizabi_state, $foo);
+        $vizabi_state = substr(json_encode($foo), 1, -1);
         $markup = $data->tool->embed_template;
         ?>
 
-        <?php echo str_replace("{language}", Yii::app()->language, $markup); ?>
+        <?php $_ = str_replace("{language}", Yii::app()->language, $markup); ?>
+        <?php echo str_replace("{vizabi_state}", $vizabi_state, $_); ?>
 
     <?php
     else: ?>
