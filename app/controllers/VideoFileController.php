@@ -26,6 +26,12 @@ class VideoFileController extends Controller
         return array_merge($this->itemAccessRules(), array(
             array('allow',
                 'actions' => array(
+                    'subtitles',
+                ),
+                'users' => array('*'),
+            ),
+             array('allow',
+                'actions' => array(
                     'index',
                     'view',
                 ),
@@ -99,6 +105,14 @@ class VideoFileController extends Controller
             $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
         }
         return true;
+    }
+
+    public function actionSubtitles($id)
+    {
+        $model = $this->loadModel($id);
+
+        echo $model->subtitles;
+        exit;
     }
 
     protected function videofileSections($videofile)
