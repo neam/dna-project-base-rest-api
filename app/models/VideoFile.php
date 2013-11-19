@@ -47,7 +47,7 @@ class VideoFile extends BaseVideoFile
                 // Define status-dependent fields
                 array('title_' . $this->source_language . ', slug_' . $this->source_language, 'required', 'on' => 'draft,preview,public'),
                 array('original_media_id', 'required', 'on' => 'preview,public'),
-                array('about, thumbnail_media_id, subtitles_' . $this->source_language, 'required', 'on' => 'public'),
+                array('about_'.$this->source_language.', thumbnail_media_id, subtitles_' . $this->source_language, 'required', 'on' => 'public'),
 
                 // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
                 array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
@@ -62,10 +62,26 @@ class VideoFile extends BaseVideoFile
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
                 array('original_media_id', 'validateClip', 'on' => 'public'),
-                array('about', 'length', 'min' => 10, 'max' => 200),
+                array('about_'.$this->source_language, 'length', 'min' => 10, 'max' => 200),
                 array('subtitles' . $this->source_language, 'validateSubtitles', 'on' => 'public'),
-            )
+            ),
+            $this->i18nRules()
         );
+        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        return $return;
+    }
+
+    public function i18nRules()
+    {
+        $i18nRules = array();
+        foreach (Yii::app()->params["languages"] as $lang => $label) {
+            $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', about_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
+            $i18nRules[] = array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_info');
+            $i18nRules[] = array('subtitles_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_subtitles');
+            $i18nRules[] = array('subtitles_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_subtitles');
+
+        }
+        return $i18nRules;
     }
 
     public function validateThumbnail()
@@ -80,8 +96,7 @@ class VideoFile extends BaseVideoFile
 
     public function validateSubtitles()
     {
-        //TODO: Is this correct? Model says this is a textfield, but BluePrint says it's supposed to be a file. Just return true for now.
-        return true;
+        return !is_null($this->subtitles);
     }
 
     /**
