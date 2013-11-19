@@ -166,4 +166,19 @@ class VideoFile extends BaseVideoFile
         ));
     }
 
+    public function getParsedSubtitles()
+    {
+        $subtitle_lines = explode("\n", $this->subtitles);
+        $parsed = array();
+        $i = 2;
+        while (isset($subtitle_lines[$i])) {
+            $parsed[$subtitle_lines[$i - 2]] = array(
+                "timestamp" => $subtitle_lines[$i - 1],
+                "sourceMessage" => $subtitle_lines[$i],
+            );
+            $i = $i + 4;
+        }
+        return $parsed;
+    }
+
 }
