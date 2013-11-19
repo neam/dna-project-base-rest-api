@@ -49,50 +49,71 @@ $roleColumns = array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
         'name' => 'Creator',
+        'value' => function($data) {
+            return Yii::app()->authManager->checkAccess('Creator', $data->id);
+        },
         'filter' => false,
-        'toggleAction' => 'account/toggle',
+        'toggleAction' => 'account/toggleRole',
     ),
     array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
         'name' => 'Editor',
+        'value' => function($data) {
+            return Yii::app()->authManager->checkAccess('Editor', $data->id);
+        },
         'filter' => false,
-        'toggleAction' => 'account/toggle',
+        'toggleAction' => 'account/toggleRole',
     ),
     array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
         'name' => 'Previewer',
+        'value' => function($data) {
+            return Yii::app()->authManager->checkAccess('Previewer', $data->id);
+        },
         'filter' => false,
-        'toggleAction' => 'account/toggle',
+        'toggleAction' => 'account/toggleRole',
     ),
     array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
         'name' => 'Project Admin',
+        'value' => function($data) {
+            return Yii::app()->authManager->checkAccess('Project Admin', $data->id);
+        },
         'filter' => false,
-        'toggleAction' => 'account/toggle',
+        'toggleAction' => 'account/toggleRole',
     ),
     array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
         'name' => 'Proofreader',
+        'value' => function($data) {
+            return Yii::app()->authManager->checkAccess('Proofreader', $data->id);
+        },
         'filter' => false,
-        'toggleAction' => 'account/toggle',
+        'toggleAction' => 'account/toggleRole',
     ),
     array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
         'name' => 'Publisher',
+        'value' => function($data) {
+            return Yii::app()->authManager->checkAccess('Publisher', $data->id);
+        },
         'filter' => false,
-        'toggleAction' => 'account/toggle',
+        'toggleAction' => 'account/toggleRole',
     ),
     array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
         'name' => 'Translator',
+        'value' => function($data) {
+            return Yii::app()->authManager->checkAccess('Translator', $data->id);
+        },
         'filter' => false,
-        'toggleAction' => 'account/toggle',
+        'toggleAction' => 'account/toggleRole',
     ),
 );
 
