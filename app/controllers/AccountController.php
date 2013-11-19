@@ -249,6 +249,10 @@ class AccountController extends Controller
         ));
     }
 
+    /**
+     * Toggles a role for a given user.
+     * @param integer $id the user ID.
+     */
     public function actionToggleRole($id)
     {
         if (isset($_GET['attribute'])) {
