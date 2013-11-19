@@ -91,8 +91,8 @@
                                 array(
                                     'label' => Yii::t('app', 'Accounts'),
                                     'icon' => 'user',
-                                    'url' => array('/user/admin/admin'),
-                                    'visible' => Yii::app()->user->checkAccess('Admin')
+                                    'url' => array('/account/admin'),
+                                    'visible' => Yii::app()->user->checkAccess('Administrator')
                                 ),
                                 '---',
                                 array(

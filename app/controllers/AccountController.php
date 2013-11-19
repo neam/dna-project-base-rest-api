@@ -22,7 +22,7 @@ class AccountController extends Controller
                 'actions' => array(
                     'toggleRole',
                 ),
-                'roles' => array('Admin'),
+                'roles' => array('Administrator'),
             ),
             array(
                 'allow',
