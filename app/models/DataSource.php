@@ -47,10 +47,20 @@ class DataSource extends BaseDataSource
                 // Ordinary validation rules
                 array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 66),
             ),
-            array() //$this->i18nRules()
+            $this->i18nRules()
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
+    }
+
+    public function i18nRules()
+    {
+        $i18nRules = array();
+        foreach (Yii::app()->params["languages"] as $lang => $label) {
+            $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', about_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
+            $i18nRules[] = array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_info');
+        }
+        return $i18nRules;
     }
 
     public function flowSteps()
@@ -76,6 +86,37 @@ class DataSource extends BaseDataSource
         return array(
             'info' => Yii::t('app', 'Info'),
             'logo' => Yii::t('app', 'Logo'),
+        );
+    }
+
+    public function attributeLabels()
+    {
+        return array_merge(
+            parent::attributeLabels(), array(
+                'title' => Yii::t('model', 'Title'),
+                'title_en' => Yii::t('model', 'English Title'),
+                'slug' => Yii::t('model', 'Slug'),
+                'slug_en' => Yii::t('model', 'English Slug'),
+                'about' => Yii::t('model', 'About'),
+                'about_en' => Yii::t('model', 'English About'),
+                'logo' => Yii::t('model', 'Icon'),
+                'mini_logo' => Yii::t('model', 'Mini icon'),
+                'link' => Yii::t('model', 'Link'),
+            )
+        );
+    }
+
+    public function attributeHints()
+    {
+        return array_merge(
+            parent::attributeHints(), array(
+                'title' => Yii::t('model', 'The name of an official datasource. For Example: UN Populaiton Division, '),
+                'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines'),
+                'about' => Yii::t('model', 'Use the citaiton suggested by the data provider. Remember to clarify that data may have been modified when modeling it into the larged dataset.'),
+                'logo_media_id' => Yii::t('model', 'Don\'t forget that official logos requires agreements to be used.'),
+                'mini_logo_media_id' => Yii::t('model', 'For use inside visualizaitons, this logo should be very small, and indicate data origin.'),
+                'link' => Yii::t('model', 'A link to the datasource\'s website. Preferably a deep link to the sub-page where the data can be accessed. link to the offical website. For example the UN migraiton data is on this page: http://esa.un.org/unmigration/migrantstocks2013.htm?msax'),
+            )
         );
     }
 
