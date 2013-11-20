@@ -6,7 +6,7 @@
             'icon' => 'icon-plus',
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
-                'data-target' => '#addrelation-chapter-dataChunk-modal',
+                'data-target' => '#addrelation-slideshowFile-dataChunk-modal',
             ),
         ), true);
         ?>
@@ -27,8 +27,8 @@
 $this->renderPartial('//gridRelation/_modal_form', array(
     'toType' => 'DataChunk',
     'toLabel' => 'dataChunk',
-    'fromType' => 'Chapter',
-    'fromLabel' => 'chapter',
+    'fromType' => 'SlideshowFile',
+    'fromLabel' => 'slideshowFile',
     'fromId' => $model->id,
 ));
 ?>
