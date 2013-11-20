@@ -38,6 +38,7 @@ class SlideshowFile extends BaseSlideshowFile
             )
         );
     }
+
     public function rules()
     {
         $return = array_merge(
@@ -227,7 +228,7 @@ class SlideshowFile extends BaseSlideshowFile
             parent::attributeHints(), array(
                 'title' => Yii::t('model', 'A bundle of slides, with a name.'),
                 'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines'),
-                'about' => Yii::t('model', 'Describe the content. For exampel: "These are the print ots for the exercise Draw the World Populaiot Trend."'),
+                'about' => Yii::t('model', 'Describe the content. For example: "These are the print outs for the exercise Draw the World Population Trend."'),
                 'original_media_id' => Yii::t('model', 'The file contains the latest numbers.'),
                 'dataChunks' => Yii::t('model', 'The list of datachunks will be used to generate the datasource page that comes with the VIzualization when downloading it. Datachunks will be listed in order of appearance, each with a title, about, metadata and links to original sources.'),
                 'related' => Yii::t('model', 'Users of this slideshow may also be interested in these things.'),
