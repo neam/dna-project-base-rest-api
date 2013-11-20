@@ -1,9 +1,7 @@
-<div class="control-group">
-    <?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
-    <?php if ($model->getAttributeHint("title")): ?>
-        <p class="alert alert-info help-block">
-            <?php echo $model->getAttributeHint("title"); ?>
-        </p>
-    <?php endif; ?>
-</div>
+<?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
+<?php if ($model->getAttributeHint("title")): ?>
+    <p class="alert alert-info help-block">
+        <?php echo $model->getAttributeHint("title"); ?>
+    </p>
+<?php endif; ?>
 
