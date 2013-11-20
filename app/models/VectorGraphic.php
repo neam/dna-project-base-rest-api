@@ -31,6 +31,16 @@ class VectorGraphic extends BaseVectorGraphic
         );
     }
 
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(),
+            array(
+                'dataChunks' => array(self::HAS_MANY, 'DataChunk', array('id' => 'node_id'), 'through' => 'outNodes'),
+            )
+        );
+    }
+
     public function rules()
     {
         $return = array_merge(
@@ -59,10 +69,20 @@ class VectorGraphic extends BaseVectorGraphic
                 array('dataChunks', 'validateDataChunks'),
                 array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 250),
             ),
-            array() //$this->i18nRules()
+            $this->i18nRules()
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
+    }
+
+    public function i18nRules()
+    {
+        $i18nRules = array();
+        foreach (Yii::app()->params["languages"] as $lang => $label) {
+            $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', about_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
+            $i18nRules[] = array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_info');
+        }
+        return $i18nRules;
     }
 
     public function validateDataChunks()
@@ -99,6 +119,35 @@ class VectorGraphic extends BaseVectorGraphic
             'info' => Yii::t('app', 'Info'),
             'file' => Yii::t('app', 'File'),
             'data' => Yii::t('app', 'Data'),
+        );
+    }
+
+    public function attributeLabels()
+    {
+        return array_merge(
+            parent::attributeLabels(), array(
+                'title' => Yii::t('model', 'Title'),
+                'title_en' => Yii::t('model', 'English Title'),
+                'slug' => Yii::t('model', 'Nice link'),
+                'slug_en' => Yii::t('model', 'English Nice link'),
+                'about' => Yii::t('model', 'About'),
+                'about_en' => Yii::t('model', 'About (English)'),
+                'original_media_id' => Yii::t('model', 'File'),
+                'dataChunks' => Yii::t('model', 'Data'),
+            )
+        );
+    }
+
+    public function attributeHints()
+    {
+        return array_merge(
+            parent::attributeHints(), array(
+                'title' => Yii::t('model', 'A name of the vizualization, such as "World Wealth & Health Chart".'),
+                'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines'),
+                'about' => Yii::t('model', 'Describe the content. For example: "High-res poster of all UN-states comparing the health and wealth of all UN-States for the most reasent year."'),
+                'original_media_id' => Yii::t('model', 'A Vector Graphic File.'),
+                'dataChunks' => Yii::t('model', 'The list of datachunks will be used to generate the datasource slide that appears automatically on the last slide in the slideShow. Datachunks will be listed in order of appearance, each with a title, about, metadata and links to original sources.'),
+            )
         );
     }
 
