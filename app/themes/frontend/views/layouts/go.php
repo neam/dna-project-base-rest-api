@@ -19,14 +19,15 @@
 
 <body>
 
-<div id="logo">
-    <a href="http://www.gapminder.org" title="Gapminder">
-        <img class="logo" src="http://www.gapminder.org/wp-content/themes/gapminder/images/logos/gapminder_logo_home.jpg" alt="Gapminder - ">
-    </a>
-</div>
 <div class="container">
-    <?php echo $content; ?>
+    <div id="logo" style="height: 60px; background: #fff url('http://www.gapminder.org/wp-content/themes/gapminder/images/interface/menu/border-bg.gif') bottom left repeat-x;">
+        <a href="http://www.gapminder.org" title="Gapminder">
+            <img class="logo" style="margin: 5px 5px 5px 30px" src="http://www.gapminder.org/wp-content/themes/gapminder/images/logos/gapminder_logo_home.jpg" alt="Gapminder - ">
+        </a>
+    </div>
+    <div class="go-content" style="height: 100%; width: 100%">
+        <?php echo $content; ?>
+    </div>
 </div>
-
 </body>
 </html>
