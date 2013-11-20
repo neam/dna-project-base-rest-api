@@ -1,7 +1,7 @@
 <div class="view well well-white">
 
     <div class="admin-container show">
-        <?php echo CHtml::link('<i class="icon-eye"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Profiles'))), array('profiles/view', 'id' => $data->id), array('class' => 'btn')); ?>
+        <?php echo CHtml::link('<i class="icon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Profiles'))), array('profiles/view', 'id' => $data->id), array('class' => 'btn')); ?>
     </div>
     <b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($data->user_id), array('profiles/view', 'user_id' => $data->user_id)); ?>
