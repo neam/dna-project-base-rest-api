@@ -51,6 +51,7 @@ $gcmsConfig = array(
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
         'i18n-attribute-messages.behaviors.I18nAttributeMessagesBehavior',
+        'i18n-attribute-messages.components.MissingTranslationHandler',
         'qa-state.behaviors.QaStateBehavior',
         'relational-graph-db.behaviors.RelationalGraphDbBehavior',
         'application.behaviors.EzcWorkflowBehavior',
@@ -127,8 +128,9 @@ $gcmsConfig = array(
             'class' => 'CPhpMessageSource',
         ),
         // Attribute messages
-        'dbMessages' => array(
+        'writableMessages' => array(
             'class' => 'CDbMessageSource',
+            'onMissingTranslation' => array('MissingTranslationHandler', 'returnNull'),
         ),
         /*
         'messages' => array(

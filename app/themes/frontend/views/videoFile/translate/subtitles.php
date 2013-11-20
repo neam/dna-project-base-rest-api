@@ -48,11 +48,11 @@ $this->widget('TbGridView', array(
                     $language = $translateInto;
                     $sourceMessage = SourceMessage::ensureSourceMessage($category, $message, $language);
 
-                    $currentTranslation = Yii::t($category, $message, array(), 'dbMessages', $translateInto);
+                    $currentTranslation = Yii::t($category, $message, array(), 'writableMessages', $translateInto);
 
                     $this->widget('TbEditableField', array(
                         'type' => 'text',
-                        'text' => $currentTranslation == $message ? null : $currentTranslation,
+                        'text' => $currentTranslation,
                         'model' => $sourceMessage,
                         'attribute' => 'translation',
                         'emptytext' => Yii::t('app', 'Write {translateIntoLanguage} here', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])),
