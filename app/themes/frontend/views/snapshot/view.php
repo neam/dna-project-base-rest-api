@@ -37,10 +37,6 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->about_en); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('link')); ?>:</b>
-<?php echo CHtml::encode($model->link); ?>
-<br/>
-
 <?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('embed_override')); ?>:</b>
 <?php echo CHtml::encode($model->embed_override); ?>
