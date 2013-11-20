@@ -67,8 +67,21 @@ class Snapshot extends BaseSnapshot
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
                 array('about_' . $this->source_language . '', 'length', 'min' => 10, 'max' => 200),
                 array('vizabi_state', 'validateVizabiState', 'on' => 'public'),
-            )
+            ),
+            $this->i18nRules()
         );
+        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        return $return;
+    }
+
+    public function i18nRules()
+    {
+        $i18nRules = array();
+        foreach (Yii::app()->params["languages"] as $lang => $label) {
+            $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', about_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
+            $i18nRules[] = array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_info');
+        }
+        return $i18nRules;
     }
 
     public function validateThumbnail()
@@ -127,6 +140,16 @@ class Snapshot extends BaseSnapshot
             parent::attributeLabels(), array(
                 'title' => Yii::t('model', 'Title'),
                 'title_en' => Yii::t('model', 'English Title'),
+                'slug' => Yii::t('model', 'Nice link'),
+                'slug_en' => Yii::t('model', 'English Nice link'),
+                'about' => Yii::t('model', 'About'),
+                'about_en' => Yii::t('model', 'About (English)'),
+                'thumbnail_media_id' => Yii::t('model', 'Thumbnail'),
+                'related' => Yii::t('model', 'Related'),
+                'datachunks' => Yii::t('model', 'Data'),
+                'vizabi_state' => Yii::t('model', 'Snapshot'),
+                'tool' => Yii::t('model', 'Tool'),
+                'embed_override' => Yii::t('model', 'Embed override'),
             )
         );
     }
@@ -135,15 +158,15 @@ class Snapshot extends BaseSnapshot
     {
         return array_merge(
             parent::attributeHints(), array(
-                'title' => Yii::t('model', 'Snapshot titles are descriptive with common language. Mentioning what data, geography and time is covered. '),
-                'slug' => Yii::t('model', 'This is part of the web-vizabi_state to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "regional_population_map" url to the chapter with populatoins on the map.'),
-                'thumbnail_media_id' => Yii::t('model', 'This thumbnail is the visual symbol that enables users to reconginze the chapter again in a list of thumbnails. It should capture the essence of the visual presentation. and should not look like other chapters. Many chapters show bubblechart, so th thumbnail must capture the specific aspect by focusing on an essential detail.'),
-                'about' => Yii::t('model', 'Describe the purpose of the chapter, try aviding using the word "and". When repeating a lot of aspects there is probably a uniting aspect that should be written instead.'),
-
-                'tags' => Yii::t('model', ''),
-                'dataChunks' => Yii::t('model', ''),
-                'tests' => Yii::t('model', ''),
+                'title' => Yii::t('model', 'Descriptive language including the words that people would use to search for this. The title can not be longer than what fits in a headline of a Google search-result snippet.'),
+                'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "regional_population_map" url to the chapter with populations on the map.'),
+                'about' => Yii::t('model', 'What\'s interesting with this visualizaiton.'),
+                'thumbnail_media_id' => Yii::t('model', 'This thumbnail is used in lists of snapshots. Automatically generated'),
                 'related' => Yii::t('model', 'Users seeing this visualization may also be interested in these Items. especially list other visualizations that should be of interest. For example: A linechart showing the world Population trend, should be related to at least 4 things: 1) linecharts with four lines for regional Population trends, 2) linechart showing Babies per Woman, 3)  line chart showing Life Expectancy for the World, 3) the chapter about World Population'),
+                'datachunks' => Yii::t('model', 'This is the data that is being visualized.'),
+                'vizabi_state' => Yii::t('model', 'A link to the visualization on the related page.'),
+                'tool' => Yii::t('model', ''),
+                'embed_override' => Yii::t('model', ''),
             )
         );
     }

@@ -58,3 +58,10 @@ $this->widget(
     )
 );
 ?>
+
+
+<?php if ($model->getAttributeHint("related")): ?>
+    <p class="alert alert-info help-block">
+        <?php echo $model->getAttributeHint("related"); ?>
+    </p>
+<?php endif; ?>

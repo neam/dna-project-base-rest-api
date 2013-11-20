@@ -45,3 +45,8 @@ $this->renderPartial('/tool/_modal_form', array(
 $this->endClip();
 ?>
 
+<?php if ($model->getAttributeHint("tool")): ?>
+    <p class="alert alert-info help-block">
+        <?php echo $model->getAttributeHint("tool"); ?>
+    </p>
+<?php endif; ?>
