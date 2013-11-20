@@ -26,9 +26,7 @@ class TextDoc extends BaseTextDoc
     public function behaviors()
     {
         return array_merge(
-            parent::behaviors(),
-            array()
-        );
+            parent::behaviors(), array());
     }
 
     public function rules()
@@ -56,37 +54,20 @@ class TextDoc extends BaseTextDoc
                 array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 120),
                 array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 250),
             ),
-            array() //$this->i18nRules()
+            $this->i18nRules()
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
     }
 
-    public function flowSteps()
+    public function i18nRules()
     {
-        return array(
-            'draft' => array(
-                'info' => array(
-                    'icon' => 'edit',
-                ),
-            ),
-            'preview' => array(
-                'file' => array(
-                    'icon' => 'edit',
-                ),
-            ),
-            'public' => array(),
-            'all' => array(),
-        );
-    }
-
-    public function flowStepCaptions()
-    {
-        return array(
-            'info' => Yii::t('app', 'Info'),
-            'file' => Yii::t('app', 'File'),
-            'data' => Yii::t('app', 'Data'),
-        );
+        $i18nRules = array();
+        foreach (Yii::app()->params["languages"] as $lang => $label) {
+            $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', about_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
+            $i18nRules[] = array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_info');
+        }
+        return $i18nRules;
     }
 
     protected function hyperlink($url)
@@ -148,6 +129,71 @@ class TextDoc extends BaseTextDoc
         }
 
         return parent::afterSave();
+    }
+
+    public function flowSteps()
+    {
+        return array(
+            'draft' => array(
+                'info' => array(
+                    'icon' => 'edit',
+                ),
+            ),
+            'preview' => array(
+                'file' => array(
+                    'icon' => 'edit',
+                ),
+            ),
+            'public' => array(),
+            'all' => array(),
+        );
+    }
+
+    public function flowStepCaptions()
+    {
+        return array(
+            'info' => Yii::t('app', 'Info'),
+            'file' => Yii::t('app', 'File'),
+        );
+    }
+
+    public function attributeLabels()
+    {
+        return array_merge(
+            parent::attributeLabels(), array(
+                'title' => Yii::t('model', 'Title'),
+                'title_en' => Yii::t('model', 'English Title'),
+                'slug' => Yii::t('model', 'Nice link'),
+                'slug_en' => Yii::t('model', 'English Nice link'),
+                'about' => Yii::t('model', 'About'),
+                'about_en' => Yii::t('model', 'About (English)'),
+                'thumbnail_media_id' => Yii::t('model', 'Thumbnail'),
+                'original_media_id' => Yii::t('model', 'Film file'),
+                'subtitles' => Yii::t('model', 'Subtitles'),
+            )
+        );
+    }
+
+    public function attributeHints()
+    {
+        return array_merge(
+            parent::attributeHints(), array(
+                'title' => Yii::t('model', 'Chapter titles are descriptive with common language. Mentioning what data, geography and time is covered. '),
+                'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "regional_population_map" url to the chapter with populatins on the map.'),
+                'thumbnail_media_id' => Yii::t('model', 'This thumbnail is the visual symbol that enables users to reconginze the chapter again in a list of thumbnails. It should capture the essence of the visual presentation. and should not look like other chapters. Many chapters show bubblechart, so the thumbnail must capture the specific aspect by focusing on an essential detail.'),
+                'about' => Yii::t('model', 'Describe the purpose of the chapter, try aviding using the word "and". When repeating a lot of aspects there is probably a uniting aspect that should be written instead.'),
+                'teachers_guide' => Yii::t('model', 'You are a teacher. Your time is precious and your students are picky.  By watching the video you\'ve already understood the content of this chapter. Now you are reading the guide looking for ways to engage your students without loosing time. If the guide is good, you will realize you don\'t need any fancy technology. Maybe you just need seven small stones. You may get an advice to give the students one of the exercises first and then give the presentation, when they are more curious for an answer. That\'s what a good guide can do for a teacher!'),
+                'exercise' => Yii::t('model', 'Exercises let students build skills and use knowledge, instead of just memorize facts and then forget them. The exercises deal with the same phenomenas as the chapter video and mimics it\'s graphics so that students can bring their understanding from the videos and slideshows into assignments.'),
+                'video' => Yii::t('model', 'The video does two things. First of all it shows some core global trends and patterns. But it also gives teachers ideas for how to make these learnings come alive with simple explanations that are easy to understand and remember.  This video does not give pracitcal advice for different equipment. Such videos are found as material with the exercises of the chapter.'),
+                'snapshot' => Yii::t('model', 'The visualizaitons opens a window into the data, which let\'s the students generate their hypothesis and try answering quesitons themselves. With local data the story of the chapter can be made local, by selecting your country. The visualizations in this view should relate directly to those in the video. Visualizaitons that are indirectly relevant are in the related list.'),
+
+                'tags' => Yii::t('model', ''),
+                'dataChunks' => Yii::t('model', ''),
+                'tests' => Yii::t('model', ''),
+                'related' => Yii::t('model', ''),
+                'credits' => Yii::t('model', ''),
+            )
+        );
     }
 
     public function search()

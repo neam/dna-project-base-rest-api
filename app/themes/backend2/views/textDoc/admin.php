@@ -13,7 +13,7 @@ Yii::app()->clientScript->registerScript('search', "
     });
     $('.search-form form').submit(function(){
         $.fn.yiiGridView.update(
-            'text-doc-grid',
+            'textDoc-grid',
             {data: $(this).serialize()}
         );
         return false;
@@ -37,7 +37,7 @@ Yii::app()->clientScript->registerScript('search', "
 <?php
 $this->widget('TbGridView',
     array(
-        'id' => 'text-doc-grid',
+        'id' => 'textDoc-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
         #'responsiveTable' => true,
@@ -52,6 +52,18 @@ $this->widget('TbGridView',
                 'header' => '',
                 'labelExpression' => '$data->itemLabel',
                 'urlExpression' => 'Yii::app()->controller->createUrl("view", array("id" => $data["id"]))'
+            ),
+            array(
+                'class' => 'TbButtonColumn',
+                'header' => 'Workflows',
+                'buttons' => array(
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Item.Preview")', 'options' => array('title' => Yii::t('app', 'Preview'))),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Item.Edit")', 'options' => array('title' => Yii::t('app', 'Edit'))),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Item.Remove")', 'options' => array('title' => Yii::t('app', 'Remove'))),
+                ),
+                'viewButtonUrl' => 'Yii::app()->controller->createUrl("preview", array("id" => $data->id))',
+                'updateButtonUrl' => 'Yii::app()->controller->createUrl("continueAuthoring", array("id" => $data->id))',
+                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("remove", array("id" => $data->id))',
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -76,40 +88,19 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
-                'editable' => array(
-                    'url' => $this->createUrl('/textDoc/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
                 'name' => 'slug_en',
                 'editable' => array(
                     'url' => $this->createUrl('/textDoc/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
-            array(
-                'name' => 'original_media_id',
-                'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
-                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'generate_processed_media',
-                'editable' => array(
-                    'url' => $this->createUrl('/textDoc/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'name' => 'processed_media_id_en',
-                'value' => 'CHtml::value($data, \'processedMediaIdEn.itemLabel\')',
-                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
             /*
+            array(
+                'name' => 'thumbnail_media_id',
+                'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            */
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
@@ -126,6 +117,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            /*
             array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
@@ -186,41 +178,6 @@ $this->widget('TbGridView',
                     'url' => $this->createUrl('/textDoc/editableSaver'),
                     //'placement' => 'right',
                 )
-            ),
-            array(
-                'name' => 'processed_media_id_es',
-                'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
-                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'name' => 'processed_media_id_fa',
-                'value' => 'CHtml::value($data, \'processedMediaIdFa.itemLabel\')',
-                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'name' => 'processed_media_id_hi',
-                'value' => 'CHtml::value($data, \'processedMediaIdHi.itemLabel\')',
-                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'name' => 'processed_media_id_pt',
-                'value' => 'CHtml::value($data, \'processedMediaIdPt.itemLabel\')',
-                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'name' => 'processed_media_id_sv',
-                'value' => 'CHtml::value($data, \'processedMediaIdSv.itemLabel\')',
-                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'name' => 'processed_media_id_cn',
-                'value' => 'CHtml::value($data, \'processedMediaIdCn.itemLabel\')',
-                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'name' => 'processed_media_id_de',
-                'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
-                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -286,42 +243,42 @@ $this->widget('TbGridView',
             #'about_cn',
             #'about_de',
             array(
-                'name' => 'text_doc_qa_state_id_en',
+                'name' => 'textDoc_qa_state_id_en',
                 'value' => 'CHtml::value($data, \'textDocQaStateIdEn.itemLabel\')',
                 'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'text_doc_qa_state_id_es',
+                'name' => 'textDoc_qa_state_id_es',
                 'value' => 'CHtml::value($data, \'textDocQaStateIdEs.itemLabel\')',
                 'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'text_doc_qa_state_id_fa',
+                'name' => 'textDoc_qa_state_id_fa',
                 'value' => 'CHtml::value($data, \'textDocQaStateIdFa.itemLabel\')',
                 'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'text_doc_qa_state_id_hi',
+                'name' => 'textDoc_qa_state_id_hi',
                 'value' => 'CHtml::value($data, \'textDocQaStateIdHi.itemLabel\')',
                 'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'text_doc_qa_state_id_pt',
+                'name' => 'textDoc_qa_state_id_pt',
                 'value' => 'CHtml::value($data, \'textDocQaStateIdPt.itemLabel\')',
                 'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'text_doc_qa_state_id_sv',
+                'name' => 'textDoc_qa_state_id_sv',
                 'value' => 'CHtml::value($data, \'textDocQaStateIdSv.itemLabel\')',
                 'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'text_doc_qa_state_id_cn',
+                'name' => 'textDoc_qa_state_id_cn',
                 'value' => 'CHtml::value($data, \'textDocQaStateIdCn.itemLabel\')',
                 'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'text_doc_qa_state_id_de',
+                'name' => 'textDoc_qa_state_id_de',
                 'value' => 'CHtml::value($data, \'textDocQaStateIdDe.itemLabel\')',
                 'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
