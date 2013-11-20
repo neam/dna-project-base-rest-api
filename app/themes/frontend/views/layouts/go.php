@@ -19,6 +19,11 @@
 
 <body>
 
+<div id="logo">
+    <a href="http://www.gapminder.org" title="Gapminder">
+        <img class="logo" src="http://www.gapminder.org/wp-content/themes/gapminder/images/logos/gapminder_logo_home.jpg" alt="Gapminder - ">
+    </a>
+</div>
 <div class="container">
     <?php echo $content; ?>
 </div>
