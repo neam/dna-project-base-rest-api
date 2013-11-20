@@ -275,8 +275,8 @@ trait ItemController
             $fromId = $_GET["fromId"];
             $to_node_id = $item->node_id;
 
-            $apa = $fromModel::model()->findByPk($fromId);
-            $from_node_id = $apa->node()->id;
+            $_model = $fromModel::model()->findByPk($fromId);
+            $from_node_id = $_model->node()->id;
 
             $this->addEdge($from_node_id, $to_node_id);
 
