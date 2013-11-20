@@ -30,7 +30,8 @@ $formId = 'snapshot-tool_id-' . \uniqid() . '-form';
                 'data-target' => '#' . $formId . '-modal',
             ),
         ), true);
-        ?>                </div>
+        ?>
+    </div>
 </div>
 
 <?php
@@ -45,3 +46,6 @@ $this->renderPartial('/poFile/_modal_form', array(
 $this->endClip();
 ?>
 
+<p class="alert alert-info help-block">
+    <?php echo $model->getAttributeHint("po_file_id"); ?>
+</p>
