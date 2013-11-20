@@ -160,7 +160,7 @@ class VideoFile extends BaseVideoFile
         return array_merge(
             parent::attributeHints(), array(
                 'title' => Yii::t('model', 'Descriptive language including the words that people would use to search for this video. The title can not be longer than what fits in a headline of a Google search-result snippet.'),
-                'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "where_population_increase_future" url to the video with populatoins on the map.'),
+                'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "where_population_increase_future" url to the video with populations on the map.'),
                 'about' => Yii::t('model', 'Describing the videos content. We aviod the word "and" in about texts and titles, as it\'s often become boring enumeraitons of detailes instead of figuring out what is the whole.'),
                 'thumbnail_media_id' => Yii::t('model', 'This is the small image representing the video in lists and also the start screen as the film is loading. It shows an iconic snapshot from the film, with the crucial graphics focused to help users recognize it later. Preferably a closeup of the high res films visualization with a human touch.'),
                 'original_media_id' => Yii::t('model', 'The film needs to be .webm file.'),
