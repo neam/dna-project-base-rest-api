@@ -94,14 +94,6 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'link',
-                'editable' => array(
-                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
             /*
             array(
                 'name' => 'thumbnail_media_id',

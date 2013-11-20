@@ -36,11 +36,6 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'link'); ?>
-        <?php echo $form->textField($model, 'link', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
         <?php echo $form->label($model, 'embed_override'); ?>
         <?php echo $form->textArea($model, 'embed_override', array('rows' => 6, 'cols' => 50)); ?>
     </div>
