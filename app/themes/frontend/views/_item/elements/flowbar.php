@@ -99,7 +99,7 @@
                         "url" => array("proofRead", "id" => $model->{$model->tableSchema->primaryKey})
                     ));
                     $this->widget("bootstrap.widgets.TbButton", array(
-                        "label" => Yii::t("model", "Translations"),
+                        "label" => Yii::t("model", "Translate"),
                         "type" => $this->action->id == "translationOverview" ? "inverse" : null,
                         "icon" => "icon-globe" . ($this->action->id == "translationOverview" ? " icon-white" : null),
                         "url" => array("translationOverview", "id" => $model->{$model->tableSchema->primaryKey})
