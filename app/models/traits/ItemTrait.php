@@ -53,4 +53,54 @@ trait ItemTrait
 
     }
 
+    /**
+     * Translations are required if their source content counterpart is a string with some contents
+     * @return array
+     */
+    public function i18nRules()
+    {
+        $behaviors = $this->behaviors();
+
+        $currentlyTranslatableAttributes = array();
+
+        // i18n-attribute-messages
+        foreach ($behaviors['i18n-attribute-messages']['translationAttributes'] as $translationAttribute) {
+
+            $sourceLanguageContentAttribute = "_" . $translationAttribute;
+            $valid = !is_null($this->$sourceLanguageContentAttribute);
+            if ($valid) {
+                $currentlyTranslatableAttributes[] = $translationAttribute;
+            }
+
+        }
+
+        // i18n-columns
+        foreach ($behaviors['i18n-columns']['translationAttributes'] as $translationAttribute) {
+
+            $sourceLanguageContentAttribute = $translationAttribute . "_" . $this->source_language;
+            $valid = !is_null($this->$sourceLanguageContentAttribute);
+            if ($valid) {
+                $currentlyTranslatableAttributes[] = $translationAttribute;
+            }
+
+        }
+
+        $i18nRules = array();
+
+        foreach ($this->flowSteps() as $step => $fields) {
+            foreach ($fields as $field) {
+                $sourceLanguageContentAttribute = str_replace('_' . $this->source_language, '', $field);
+                if (!in_array($sourceLanguageContentAttribute, $currentlyTranslatableAttributes)) {
+                    continue;
+                }
+                foreach (Yii::app()->params["languages"] as $lang => $label) {
+                    $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "into_$lang-step_$step");
+                    $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "into_$lang-step_$step");
+                }
+            }
+        }
+
+        return $i18nRules;
+    }
+
 } 
