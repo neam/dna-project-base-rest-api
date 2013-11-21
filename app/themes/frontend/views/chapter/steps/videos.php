@@ -6,7 +6,7 @@
             'icon' => 'icon-plus',
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
-                'data-target' => '#addrelation-chapter-video-modal',
+                'data-target' => '#addrelation-chapter-videofile-modal',
             ),
         ), true);
         ?>

@@ -3,7 +3,7 @@
 /* @var $inputSelector jQuery selector to the select-input of the parent form */
 /* @var $pk The primary key field added object */
 /* @var $field The field of the newly added object to be used as the key/label of the parent form select-input */
-$modalId = "addrelation-" . $fromLabel . "-" . $toLabel . "-modal";
+$modalId = "addrelation-" . strtolower($fromType) . "-" . strtolower($toType) . "-modal";
 $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
 ?>
 

@@ -6,7 +6,7 @@
             'icon' => 'icon-plus',
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
-                'data-target' => '#addrelation-vectorGraphic-dataChunk-modal',
+                'data-target' => '#addrelation-vectorgraphic-datachunk-modal',
             ),
         ), true);
         ?>
@@ -26,9 +26,9 @@
 <?php
 $this->renderPartial('//gridRelation/_modal_form', array(
     'toType' => 'DataChunk',
-    'toLabel' => 'dataChunk',
+    'toLabel' => 'data chunk',
     'fromType' => 'VectorGraphic',
-    'fromLabel' => 'vectorGraphic',
+    'fromLabel' => 'vector graphic',
     'fromId' => $model->id,
 ));
 ?>
