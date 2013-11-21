@@ -63,16 +63,6 @@ class VectorGraphic extends BaseVectorGraphic
         return $return;
     }
 
-    public function i18nRules()
-    {
-        $i18nRules = array();
-        foreach (Yii::app()->params["languages"] as $lang => $label) {
-            $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', about_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
-            $i18nRules[] = array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_info');
-        }
-        return $i18nRules;
-    }
-
     public function validateDataChunks()
     {
         return count($this->dataChunks) <= 100;
