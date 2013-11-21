@@ -254,8 +254,7 @@ trait ItemController
 
     protected function firstFlowStep($item)
     {
-        $steps = $item->flowSteps();
-        foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
+        foreach ($item->flowSteps() as $step => $fields) {
             return $step;
         }
         return null;
@@ -662,15 +661,14 @@ trait ItemController
             $editAction = "edit";
         }
 
-        $steps = $item->flowSteps();
         $stepCaptions = $item->flowStepCaptions();
-        foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
+        foreach ($item->flowSteps() as $step => $fields) {
             $stepProgress = $item->calculateValidationProgress("step_" . $step);
             $stepActions[] = array(
                 "step" => $step,
                 "editAction" => $editAction,
                 "model" => $item,
-                "options" => $options,
+                "fields" => $fields,
                 "caption" => $stepCaptions[$step],
                 "progress" => $stepProgress,
                 "translateInto" => $translateInto,

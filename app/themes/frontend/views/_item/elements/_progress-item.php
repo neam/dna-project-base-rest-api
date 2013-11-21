@@ -34,7 +34,7 @@
             "label" => Yii::t("model", $caption),
             "type" => $_GET['step'] == $step ? "inverse" : null,
             "size" => "small",
-            "icon" => "icon-" . $options['icon'] . ($this->action->id == $action ? " icon-white" : null),
+            "icon" => "icon-edit" . ($this->action->id == $action ? " icon-white" : null),
             "url" => $action,
         ));
         ?>
