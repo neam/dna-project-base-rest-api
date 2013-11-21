@@ -96,6 +96,7 @@ trait ItemTrait
                 foreach (Yii::app()->params["languages"] as $lang => $label) {
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "into_$lang-step_$step");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "into_$lang-step_$step");
+                    $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "into_$lang-total_progress");
                 }
             }
         }
