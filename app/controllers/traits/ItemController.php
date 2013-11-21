@@ -471,8 +471,85 @@ trait ItemController
 
     public function actionClone($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/clone', array('model' => $model));
+        $model = $this->loadModel($id);
+
+        // clone attributes into a new object
+        $attributes = $model->attributes;
+        unset($attributes['id']);
+        $clone = $model->populateRecord($attributes);
+
+        // reset qa states
+        $behaviors = $model->behaviors();
+        $translationAttribute = 'video_file_qa_state_id';
+        if (isset($behaviors['i18n-columns']['translationAttributes']) && in_array($translationAttribute, $behaviors['i18n-columns']['translationAttributes'])) {
+            foreach (Yii::app()->params["languages"] as $lang => $label) {
+                $translatedAttribute = $translationAttribute . "_" . $lang;
+                $clone->$translatedAttribute = null;
+            }
+        }
+
+        // mark ancestry
+        $clone->cloned_from_id = $model->id;
+
+        // increment version number
+        $clone->version = is_null($model->version) ? 2 : $model->version + 1;
+
+        // start transaction
+        $transaction = Yii::app()->db->beginTransaction();
+
+        try {
+
+            // save as new object
+            $clone->isNewRecord = true;
+            if (!$clone->save()) {
+                throw new SaveException($clone);
+            }
+
+            $relations = $model->relations();
+
+            // clone relations part 1 - we want the cloned object to be related to the same items - outNodes
+            // however we do not want other objects to relate to the cloned object, so we skip inNodes
+            $cloneNode = $clone->node();
+            foreach ($model->outNodes as $outNode) {
+                $edge = new Edge;
+                $edge->from_node_id = $cloneNode->id;
+                $edge->to_node_id = $outNode->id;
+                if (!$edge->save()) {
+                    throw new SaveException($edge);
+                }
+            }
+            unset($relations['outEdges']);
+            unset($relations['inEdges']);
+            unset($relations['outNodes']);
+            unset($relations['inNodes']);
+
+            // clone relations part 2
+            foreach ($relations as $name => $relation) {
+
+                switch ($relation[0]) {
+                    case "CBelongsToRelation";
+                        // always ignoring on clone since we are doing shallow copies
+                        continue;
+                        break;
+                    case "CHasManyRelation";
+                        // for now ignoring until now better or worse
+                        continue;
+                        break;
+                    default:
+                        throw new CException("Unsupported relation: " . print_r($relation, true));
+                }
+
+            }
+
+            // commit transaction
+            $transaction->commit();
+
+        } catch (Exception $e) {
+            $clone->addError('id', $e->getMessage());
+            $transaction->rollback();
+        }
+
+        $this->redirect(array('continueAuthoring', 'id' => $clone->id));
     }
 
     public function actionRemove($id)
