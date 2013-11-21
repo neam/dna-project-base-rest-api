@@ -41,7 +41,10 @@ trait ItemTrait
                 if (in_array($field, $statusRequirements['public'])) {
                     $onStatuses = array('public');
                 }
-                $flowStepRules[] = array($field, 'required', 'on' => implode("-step_$step,", $onStatuses) . "-step_$step,step_$step");
+                if (!empty($onStatuses)) {
+                    $flowStepRules[] = array($field, 'required', 'on' => implode("-step_$step,", $onStatuses) . "-step_$step,step_$step");
+                }
+                $flowStepRules[] = array($field, 'required', 'on' => "step_$step-total_progress");
             }
 
         }

@@ -663,7 +663,13 @@ trait ItemController
 
         $stepCaptions = $item->flowStepCaptions();
         foreach ($item->flowSteps() as $step => $fields) {
-            $stepProgress = $item->calculateValidationProgress("step_" . $step);
+
+            if ($this->action->id != "edit") {
+                $stepProgress = $item->calculateValidationProgress("step_" . $step);
+            } else {
+                $stepProgress = $item->calculateValidationProgress("step_$step-total_progress");
+            }
+
             $stepActions[] = array(
                 "step" => $step,
                 "editAction" => $editAction,
