@@ -535,7 +535,7 @@ trait ItemController
                         continue;
                         break;
                     case "CHasManyRelation";
-                        // for now ignoring until now better or worse
+                        // for now ignoring until knowing better or worse
                         continue;
                         break;
                     default:
