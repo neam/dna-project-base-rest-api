@@ -128,6 +128,10 @@
             "url":"https://github.com/Quexer69/yii.translate.git"
         },
         {
+            "type":"vcs",
+            "url":"https://github.com/motin/yii-owner-behavior"
+        },
+        {
             "type":"composer",
             "url":"http://packages.phundament.com"
         }
@@ -163,6 +167,7 @@
         "neam/yii-i18n-attribute-messages":"dev-develop",
         "neam/yii-qa-state":"@dev",
         "neam/yii-relational-graph-db":"@dev",
+        "motin/yii-owner-behavior":"*@dev",
         "phpoffice/phpexcel": "1.7.9",
         "phpoffice/phpword": "dev-added-composer-json",
         "phpoffice/phppowerpoint": "dev-master",

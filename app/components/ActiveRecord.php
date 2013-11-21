@@ -24,6 +24,9 @@ class ActiveRecord extends CActiveRecord
             $behaviors['qa-state'] = array(
                 'class' => 'QaStateBehavior',
             );
+            $behaviors['owner-behavior'] = array(
+                'class' => 'OwnerBehavior',
+            );
         }
 
         $graphModels = DataModel::graphModels();

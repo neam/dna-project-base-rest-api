@@ -24,6 +24,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/packagecompressor" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/translatable" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mishamx/yii-user" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/motin/yii-owner-behavior" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mrclay/minify" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/neam/yii-i18n-schema" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
@@ -135,6 +136,7 @@
           <root url="file://$MODULE_DIR$/vendor/schmunk42/web-user-behavior" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/bwoester/yii-event-interceptor" />
+          <root url="file://$MODULE_DIR$/vendor/motin/yii-owner-behavior" />
           <root url="file://$MODULE_DIR$/vendor/codemix/hybridauthmanager" />
           <root url="file://$MODULE_DIR$/vendor/phundament/jquery-file-upload" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3pages" />
@@ -198,6 +200,7 @@
           <root url="file://$MODULE_DIR$/vendor/schmunk42/web-user-behavior" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/bwoester/yii-event-interceptor" />
+          <root url="file://$MODULE_DIR$/vendor/motin/yii-owner-behavior" />
           <root url="file://$MODULE_DIR$/vendor/codemix/hybridauthmanager" />
           <root url="file://$MODULE_DIR$/vendor/phundament/jquery-file-upload" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3pages" />

@@ -52,6 +52,7 @@ $gcmsConfig = array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
         'i18n-attribute-messages.behaviors.I18nAttributeMessagesBehavior',
         'i18n-attribute-messages.components.MissingTranslationHandler',
+        'vendor.motin.yii-owner-behavior.OwnerBehavior',
         'qa-state.behaviors.QaStateBehavior',
         'relational-graph-db.behaviors.RelationalGraphDbBehavior',
         'application.behaviors.EzcWorkflowBehavior',

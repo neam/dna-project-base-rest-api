@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f01154caacca591c5acba8417811a93a",
+    "hash": "47c1a01743c7ac55a91a1232a8224aec",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -362,6 +362,46 @@
             "description": "Yii PHP Framework extension for registration and management users accounts.",
             "homepage": "https://github.com/phundament/yii-user",
             "time": "2013-10-01 10:19:48"
+        },
+        {
+            "name": "motin/yii-owner-behavior",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/motin/yii-owner-behavior.git",
+                "reference": "85c33a96a61e005fc957bb7182ffe3ade8a5dc33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/motin/yii-owner-behavior/zipball/85c33a96a61e005fc957bb7182ffe3ade8a5dc33",
+                "reference": "85c33a96a61e005fc957bb7182ffe3ade8a5dc33",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "."
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                },
+                {
+                    "name": "thyseus",
+                    "email": "thyseus@gmail.com"
+                }
+            ],
+            "description": "Behavior to automate setting the \"owned by user\" attribute to the currently logged in user id upon creation of a record.",
+            "support": {
+                "source": "https://github.com/motin/yii-owner-behavior/tree/master",
+                "issues": "https://github.com/motin/yii-owner-behavior/issues"
+            },
+            "time": "2013-11-20 23:43:48"
         },
         {
             "name": "mrclay/minify",
@@ -2239,6 +2279,7 @@
         "neam/yii-i18n-attribute-messages": 20,
         "neam/yii-qa-state": 20,
         "neam/yii-relational-graph-db": 20,
+        "motin/yii-owner-behavior": 20,
         "phpoffice/phpword": 20,
         "phpoffice/phppowerpoint": 20,
         "schmunk42/giic": 20,
