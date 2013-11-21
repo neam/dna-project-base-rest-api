@@ -110,12 +110,12 @@ class DataSource extends BaseDataSource
     {
         return array_merge(
             parent::attributeHints(), array(
-                'title' => Yii::t('model', 'The name of an official datasource. For Example: UN Populaiton Division, '),
+                'title' => Yii::t('model', 'The name of an official datasource. For Example: UN Population Division, '),
                 'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines'),
-                'about' => Yii::t('model', 'Use the citaiton suggested by the data provider. Remember to clarify that data may have been modified when modeling it into the larged dataset.'),
+                'about' => Yii::t('model', 'Use the citation suggested by the data provider. Remember to clarify that data may have been modified when modeling it into the larged dataset.'),
                 'logo_media_id' => Yii::t('model', 'Don\'t forget that official logos requires agreements to be used.'),
-                'mini_logo_media_id' => Yii::t('model', 'For use inside visualizaitons, this logo should be very small, and indicate data origin.'),
-                'link' => Yii::t('model', 'A link to the datasource\'s website. Preferably a deep link to the sub-page where the data can be accessed. link to the offical website. For example the UN migraiton data is on this page: http://esa.un.org/unmigration/migrantstocks2013.htm?msax'),
+                'mini_logo_media_id' => Yii::t('model', 'For use inside visualizations, this logo should be very small, and indicate data origin.'),
+                'link' => Yii::t('model', 'A link to the datasource\'s website. Preferably a deep link to the sub-page where the data can be accessed. link to the offical website. For example the UN migration data is on this page: http://esa.un.org/unmigration/migrantstocks2013.htm?msax'),
             )
         );
     }

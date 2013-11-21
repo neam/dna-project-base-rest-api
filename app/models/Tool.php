@@ -121,8 +121,8 @@ class Tool extends BaseTool
     {
         return array_merge(
             parent::attributeHints(), array(
-                'title' => Yii::t('model', 'The name of this tool will be displayed on a page enumeraiton all different tools.'),
-                'slug' => Yii::t('model', 'The snapshoots states will contain the tool-identifier in their state-link, so linechart is better than an unreadable link.'),
+                'title' => Yii::t('model', 'The name of this tool will be displayed on a page enumeration all different tools.'),
+                'slug' => Yii::t('model', 'The snapshots states will contain the tool-identifier in their state-link, so linechart is better than an unreadable link.'),
                 'about' => Yii::t('model', 'What is this visualization?'),
                 'embed_template' => Yii::t('model', 'The package of JavaScript following the Vizabi template'),
                 'po_file_id' => Yii::t('model', 'The -po file with i18n content'),

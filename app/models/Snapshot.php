@@ -160,7 +160,7 @@ class Snapshot extends BaseSnapshot
             parent::attributeHints(), array(
                 'title' => Yii::t('model', 'Descriptive language including the words that people would use to search for this. The title can not be longer than what fits in a headline of a Google search-result snippet.'),
                 'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "regional_population_map" url to the chapter with populations on the map.'),
-                'about' => Yii::t('model', 'What\'s interesting with this visualizaiton.'),
+                'about' => Yii::t('model', 'What\'s interesting with this visualization.'),
                 'thumbnail_media_id' => Yii::t('model', 'This thumbnail is used in lists of snapshots. Automatically generated'),
                 'related' => Yii::t('model', 'Users seeing this visualization may also be interested in these Items. especially list other visualizations that should be of interest. For example: A linechart showing the world Population trend, should be related to at least 4 things: 1) linecharts with four lines for regional Population trends, 2) linechart showing Babies per Woman, 3)  line chart showing Life Expectancy for the World, 3) the chapter about World Population'),
                 'datachunks' => Yii::t('model', 'This is the data that is being visualized.'),
