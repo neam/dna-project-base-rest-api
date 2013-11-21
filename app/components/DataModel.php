@@ -56,6 +56,9 @@ class DataModel
             'Tool' => 'tool',
             'VectorGraphic' => 'vector_graphic',
             'VideoFile' => 'video_file',
+            // Special pages
+            'HtmlChunk' => 'html_chunk',
+            'DownloadLink' => 'download_link',
         );
 
     }
