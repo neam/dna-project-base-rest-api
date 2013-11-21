@@ -43,7 +43,7 @@ class VideoFile extends BaseVideoFile
 
     public function rules()
     {
-        return array_merge(
+        $return = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
