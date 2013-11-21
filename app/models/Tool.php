@@ -7,6 +7,8 @@ Yii::import('Tool.*');
 class Tool extends BaseTool
 {
 
+    use ItemTrait;
+
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
     {
@@ -33,29 +35,18 @@ class Tool extends BaseTool
 
     public function rules()
     {
-        return array_merge(
-            parent::rules(), array(
-
-                // Define status-dependent fields
-                array('title_' . $this->source_language . ', slug_' . $this->source_language . '', 'required', 'on' => 'draft,preview,public'),
-
-                // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
-                array('title_' . $this->source_language . ', slug_' . $this->source_language . '', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('about_' . $this->source_language . '', 'safe', 'on' => 'step_info'),
-                array('embed_template,', 'safe', 'on' => 'step_embed'),
-                array('po_file_id', 'safe', 'on' => 'step_po'),
-
-                // Define step-dependent fields - Part 2 - what fields are required at each step?
-                array('title_' . $this->source_language . ', slug_' . $this->source_language . '', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('about_' . $this->source_language . '', 'required', 'on' => 'step_info'),
-                array('embed_template,', 'required', 'on' => 'step_embed'),
-                array('po_file_id', 'required', 'on' => 'step_po'),
+        $return = array_merge(
+            parent::rules(),
+            $this->statusRequirementsRules(),
+            $this->flowStepRules(),
+            $this->i18nRules(),
+            array(
 
                 // Ordinary validation rules
                 array('title_' . $this->source_language . '', 'length', 'min' => 5, 'max' => 200),
                 array('about_' . $this->source_language . '', 'length', 'min' => 3, 'max' => 400),
-            ),
-            $this->i18nRules()
+
+            )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
@@ -71,23 +62,39 @@ class Tool extends BaseTool
         return $i18nRules;
     }
 
-    public function flowSteps()
+    /**
+     * Define status-dependent fields
+     * @return array
+     */
+    public function statusRequirements()
     {
         return array(
             'draft' => array(
-                'info' => array(
-                    'icon' => 'edit',
-                ),
+                'title_' . $this->source_language,
+                'slug_' . $this->source_language,
             ),
             'preview' => array(),
             'public' => array(),
-            'all' => array(
-                'embed' => array(
-                    'icon' => 'edit',
-                ),
-                'po' => array(
-                    'icon' => 'edit',
-                ),
+        );
+    }
+
+    /**
+     * Define step-dependent fields
+     * @return array
+     */
+    public function flowSteps()
+    {
+        return array(
+            'info' => array(
+                'title_' . $this->source_language,
+                'slug_' . $this->source_language,
+                'about_' . $this->source_language,
+            ),
+            'embed' => array(
+                'embed_template',
+            ),
+            'po' => array(
+                'po_file_id',
             ),
         );
     }

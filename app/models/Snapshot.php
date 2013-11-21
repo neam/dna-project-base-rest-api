@@ -7,6 +7,8 @@ Yii::import('Snapshot.*');
 class Snapshot extends BaseSnapshot
 {
 
+    use ItemTrait;
+
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
     {
@@ -45,30 +47,19 @@ class Snapshot extends BaseSnapshot
 
     public function rules()
     {
-        return array_merge(
-            parent::rules(), array(
-
-                // Define status-dependent fields
-                array('slug', 'required', 'on' => 'draft,preview,public'),
-                array('vizabi_state', 'required', 'on' => 'preview,public'),
-
-                // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
-                array('slug_' . $this->source_language . '', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('title_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'step_info'),
-                array('vizabi_state, tool_id, embed_override', 'safe', 'on' => 'draft-step_state,preview-step_state,public-step_state,step_state'),
-
-                // Define step-dependent fields - Part 2 - what fields are required at each step?
-                array('slug_' . $this->source_language . '', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('title_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'required', 'on' => 'step_info'),
-                array('vizabi_state', 'required', 'on' => 'preview-step_state,public-step_state,step_state'),
-                array('tool_id, embed_override', 'required', 'on' => 'step_state'),
+        $return = array_merge(
+            parent::rules(),
+            $this->statusRequirementsRules(),
+            $this->flowStepRules(),
+            $this->i18nRules(),
+            array(
 
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
                 array('about_' . $this->source_language . '', 'length', 'min' => 10, 'max' => 200),
                 array('vizabi_state', 'validateVizabiState', 'on' => 'public'),
-            ),
-            $this->i18nRules()
+
+            )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
@@ -108,20 +99,40 @@ class Snapshot extends BaseSnapshot
         return true;
     }
 
-    public function flowSteps()
+    /**
+     * Define status-dependent fields
+     * @return array
+     */
+    public function statusRequirements()
     {
         return array(
             'draft' => array(
-                'state' => array(
-                    'icon' => 'edit',
-                ),
-                'info' => array(
-                    'icon' => 'edit',
-                ),
+                'slug_' . $this->source_language,
             ),
-            'preview' => array(),
+            'preview' => array(
+                'vizabi_state',
+            ),
             'public' => array(),
-            'all' => array(),
+        );
+    }
+
+    /**
+     * Define step-dependent fields
+     * @return array
+     */
+    public function flowSteps()
+    {
+        return array(
+            'state' => array(
+                'vizabi_state',
+                'tool_id',
+                'embed_override',
+            ),
+            'info' => array(
+                'title_' . $this->source_language,
+                'slug_' . $this->source_language,
+                'about_' . $this->source_language,
+            ),
         );
     }
 
