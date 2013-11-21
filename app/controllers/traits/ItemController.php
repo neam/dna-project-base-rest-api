@@ -242,8 +242,7 @@ trait ItemController
 
     protected function nextFlowStep($prefix, $item)
     {
-        $steps = $item->flowSteps();
-        foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
+        foreach ($item->flowSteps() as $step => $options) {
             if ($item->calculateValidationProgress($prefix . 'step_' . $step) < 100) {
                 return $step;
             }
