@@ -291,10 +291,13 @@ trait ItemController
 
     public function actionAddEdges()
     {
-        $this->addEdges(
-            $_POST[$this->modelClass]["fromId"],
-            $_POST[$this->modelClass]["edges_to_add"],
-            $_POST[$this->modelClass]["toModel"]);
+        if (isset($_POST[$this->modelClass]["fromId"]) && isset($_POST[$this->modelClass]["edges_to_add"]) && isset($_POST[$this->modelClass]["toModel"])) {
+            $this->addEdges(
+                $_POST[$this->modelClass]["fromId"],
+                $_POST[$this->modelClass]["edges_to_add"],
+                $_POST[$this->modelClass]["toModel"]
+            );
+        }
         exit;
     }
 

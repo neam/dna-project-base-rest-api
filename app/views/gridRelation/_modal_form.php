@@ -79,8 +79,8 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                 "url" => array(
                     "/" . $toType . "/add/",
                     "fromId"=>$fromId,
-                    "toModel"=>$toLabel,
-                    "fromModel"=>$fromLabel,
+                    "toModel"=>$toType,
+                    "fromModel"=>$fromType,
                     "returnUrl"=>Yii::app()->request->url,
                 )
             ));
