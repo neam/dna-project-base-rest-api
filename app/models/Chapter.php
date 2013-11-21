@@ -65,7 +65,7 @@ class Chapter extends BaseChapter
                 array('credits', 'length', 'min' => 1, 'max' => 200),
             )
         );
-        Yii::log("model->rules(): " . print_r($return, true), "flow", __METHOD__);
+        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
     }
 
