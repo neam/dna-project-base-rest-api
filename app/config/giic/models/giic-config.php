@@ -21,6 +21,7 @@ foreach ($models AS $model => $table) {
             'default' => dirname(__FILE__) . '/../../../../vendor/phundament/gii-template-collection/fullModel/templates/default',
         ),
         "model" => array(
+            "baseClass" => "ActiveRecord",
             "tableName" => $table,
             "modelClass" => $model,
             "modelPath" => "application.models",

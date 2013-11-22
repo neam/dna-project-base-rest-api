@@ -6,6 +6,9 @@ Yii::import('Profiles.*');
 
 class Profiles extends BaseProfiles
 {
+    // Constants.
+    const CAN_TRANSLATE = 1;
+    const CANNOT_TRANSLATE = 0;
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
