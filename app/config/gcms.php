@@ -87,10 +87,10 @@ $gcmsConfig = array(
                         ),
                         'type' => 'jpg',
                     ),
-                    'original-public-webm'  => array(
+                    'original-public-webm' => array(
                         //'name'         => 'Original File Public',
                         'originalFile' => true,
-                        'savePublic'   => true,
+                        'savePublic' => true,
                         'type' => 'webm',
                     ),
                 ),
