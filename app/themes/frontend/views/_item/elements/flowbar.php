@@ -29,11 +29,23 @@
             <div class="btn-group pull-right">
 
                 <?php
-                $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("model", "Preview"),
-                    "icon" => "icon-eye-open",
-                    "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey})
-                ));
+                if ($this->action->id != "preview") {
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Preview"),
+                        "icon" => "icon-eye-open",
+                        "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey}, 'editingUrl' => Yii::app()->request->url)
+                    ));
+                } else {
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        'label' => Yii::t('model', 'Edit'),
+                        'icon' => 'icon-edit',
+                        'type' => 'primary',
+                        'url' => isset($_GET['editingUrl']) ? $_GET['editingUrl'] : array("continueAuthoring", "id" => $model->{$model->tableSchema->primaryKey}),
+                        'htmlOptions' => array(
+                            'class' => 'btn-action'
+                        ),
+                    ));
+                }
                 ?>
 
             </div>
@@ -135,7 +147,7 @@
                 </div>
             </div>
 
-        <?php else: ?>
+        <?php elseif ($this->action->id != "preview"): ?>
 
             <div class="well well-small">
                 <div class="row-fluid">
