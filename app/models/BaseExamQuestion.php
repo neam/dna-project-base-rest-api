@@ -12,6 +12,7 @@
  * @property string $source_node_id
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  * @property string $slug_es
  * @property string $slug_fa
@@ -41,6 +42,7 @@
  * @property Snapshot $clonedFrom
  * @property Node $node
  * @property Node $sourceNode
+ * @property Users $owner
  * @property ExamQuestionAlternative[] $examQuestionAlternatives
  * @property SectionContent[] $sectionContents
  */
@@ -61,12 +63,12 @@ abstract class BaseExamQuestion extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, slug_en, _question, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, slug_en, _question, source_node_id, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, source_node_id, node_id, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'length', 'max' => 20),
                 array('slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('_question, created, modified', 'safe'),
-                array('id, version, cloned_from_id, slug_en, _question, source_node_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, slug_en, _question, source_node_id, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exam_question_qa_state_id_en, exam_question_qa_state_id_es, exam_question_qa_state_id_fa, exam_question_qa_state_id_hi, exam_question_qa_state_id_pt, exam_question_qa_state_id_sv, exam_question_qa_state_id_cn, exam_question_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -102,6 +104,7 @@ abstract class BaseExamQuestion extends ActiveRecord
                 'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'sourceNode' => array(self::BELONGS_TO, 'Node', 'source_node_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'exam_question_id'),
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'exam_question_id'),
             )
@@ -119,6 +122,7 @@ abstract class BaseExamQuestion extends ActiveRecord
             'source_node_id' => Yii::t('model', 'Source Node'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
             'slug_es' => Yii::t('model', 'Slug Es'),
             'slug_fa' => Yii::t('model', 'Slug Fa'),
@@ -152,6 +156,7 @@ abstract class BaseExamQuestion extends ActiveRecord
         $criteria->compare('t.source_node_id', $this->source_node_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.slug_es', $this->slug_es, true);
         $criteria->compare('t.slug_fa', $this->slug_fa, true);

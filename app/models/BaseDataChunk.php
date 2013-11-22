@@ -14,6 +14,7 @@
  * @property string $metadata
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  * @property string $slug_es
  * @property string $slug_fa
@@ -44,6 +45,7 @@
  * @property DataChunk[] $dataChunks
  * @property Node $node
  * @property P3Media $fileMedia
+ * @property Users $owner
  * @property SectionContent[] $sectionContents
  */
 abstract class BaseDataChunk extends ActiveRecord
@@ -63,12 +65,12 @@ abstract class BaseDataChunk extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_chunk_qa_state_id_en, data_chunk_qa_state_id_es, data_chunk_qa_state_id_fa, data_chunk_qa_state_id_hi, data_chunk_qa_state_id_pt, data_chunk_qa_state_id_sv, data_chunk_qa_state_id_cn, data_chunk_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, file_media_id', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_chunk_qa_state_id_en, data_chunk_qa_state_id_es, data_chunk_qa_state_id_fa, data_chunk_qa_state_id_hi, data_chunk_qa_state_id_pt, data_chunk_qa_state_id_sv, data_chunk_qa_state_id_cn, data_chunk_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, file_media_id, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, data_chunk_qa_state_id_en, data_chunk_qa_state_id_es, data_chunk_qa_state_id_fa, data_chunk_qa_state_id_hi, data_chunk_qa_state_id_pt, data_chunk_qa_state_id_sv, data_chunk_qa_state_id_cn, data_chunk_qa_state_id_de', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('_about, metadata, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_chunk_qa_state_id_en, data_chunk_qa_state_id_es, data_chunk_qa_state_id_fa, data_chunk_qa_state_id_hi, data_chunk_qa_state_id_pt, data_chunk_qa_state_id_sv, data_chunk_qa_state_id_cn, data_chunk_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, data_chunk_qa_state_id_en, data_chunk_qa_state_id_es, data_chunk_qa_state_id_fa, data_chunk_qa_state_id_hi, data_chunk_qa_state_id_pt, data_chunk_qa_state_id_sv, data_chunk_qa_state_id_cn, data_chunk_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -105,6 +107,7 @@ abstract class BaseDataChunk extends ActiveRecord
                 'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'data_chunk_id'),
             )
         );
@@ -123,6 +126,7 @@ abstract class BaseDataChunk extends ActiveRecord
             'metadata' => Yii::t('model', 'Metadata'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
             'slug_es' => Yii::t('model', 'Slug Es'),
             'slug_fa' => Yii::t('model', 'Slug Fa'),
@@ -158,6 +162,7 @@ abstract class BaseDataChunk extends ActiveRecord
         $criteria->compare('t.metadata', $this->metadata, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.slug_es', $this->slug_es, true);
         $criteria->compare('t.slug_fa', $this->slug_fa, true);

@@ -12,6 +12,7 @@
  * @property string $_about
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  * @property string $slug_es
  * @property string $slug_fa
@@ -25,6 +26,7 @@
  * @property Node $node
  * @property Page $clonedFrom
  * @property Page[] $pages
+ * @property Users $owner
  * @property Section[] $sections
  */
 abstract class BasePage extends ActiveRecord
@@ -44,12 +46,12 @@ abstract class BasePage extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, _title, slug_en, _about, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('_about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -77,6 +79,7 @@ abstract class BasePage extends ActiveRecord
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Page', 'cloned_from_id'),
                 'pages' => array(self::HAS_MANY, 'Page', 'cloned_from_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'sections' => array(self::HAS_MANY, 'Section', 'page_id'),
             )
         );
@@ -93,6 +96,7 @@ abstract class BasePage extends ActiveRecord
             '_about' => Yii::t('model', 'About'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
             'slug_es' => Yii::t('model', 'Slug Es'),
             'slug_fa' => Yii::t('model', 'Slug Fa'),
@@ -118,6 +122,7 @@ abstract class BasePage extends ActiveRecord
         $criteria->compare('t._about', $this->_about, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.slug_es', $this->slug_es, true);
         $criteria->compare('t.slug_fa', $this->slug_fa, true);

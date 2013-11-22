@@ -14,6 +14,7 @@
  * @property integer $processed_media_id_en
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  * @property string $slug_es
  * @property string $slug_fa
@@ -49,6 +50,7 @@
  * @property P3Media $processedMediaIdHi
  * @property P3Media $processedMediaIdPt
  * @property P3Media $processedMediaIdSv
+ * @property Users $owner
  * @property VectorGraphic $clonedFrom
  * @property VectorGraphic[] $vectorGraphics
  * @property VectorGraphicQaState $vectorGraphicQaStateIdEn
@@ -77,12 +79,12 @@ abstract class BaseVectorGraphic extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, original_media_id, processed_media_id_en, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, vector_graphic_qa_state_id_en, vector_graphic_qa_state_id_es, vector_graphic_qa_state_id_fa, vector_graphic_qa_state_id_hi, vector_graphic_qa_state_id_pt, vector_graphic_qa_state_id_sv, vector_graphic_qa_state_id_cn, vector_graphic_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, original_media_id, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, _title, slug_en, _about, original_media_id, processed_media_id_en, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, vector_graphic_qa_state_id_en, vector_graphic_qa_state_id_es, vector_graphic_qa_state_id_fa, vector_graphic_qa_state_id_hi, vector_graphic_qa_state_id_pt, vector_graphic_qa_state_id_sv, vector_graphic_qa_state_id_cn, vector_graphic_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, original_media_id, processed_media_id_en, owner_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, vector_graphic_qa_state_id_en, vector_graphic_qa_state_id_es, vector_graphic_qa_state_id_fa, vector_graphic_qa_state_id_hi, vector_graphic_qa_state_id_pt, vector_graphic_qa_state_id_sv, vector_graphic_qa_state_id_cn, vector_graphic_qa_state_id_de', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('_about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, original_media_id, processed_media_id_en, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, vector_graphic_qa_state_id_en, vector_graphic_qa_state_id_es, vector_graphic_qa_state_id_fa, vector_graphic_qa_state_id_hi, vector_graphic_qa_state_id_pt, vector_graphic_qa_state_id_sv, vector_graphic_qa_state_id_cn, vector_graphic_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, original_media_id, processed_media_id_en, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, vector_graphic_qa_state_id_en, vector_graphic_qa_state_id_es, vector_graphic_qa_state_id_fa, vector_graphic_qa_state_id_hi, vector_graphic_qa_state_id_pt, vector_graphic_qa_state_id_sv, vector_graphic_qa_state_id_cn, vector_graphic_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -117,6 +119,7 @@ abstract class BaseVectorGraphic extends ActiveRecord
                 'processedMediaIdHi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_hi'),
                 'processedMediaIdPt' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_pt'),
                 'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'VectorGraphic', 'cloned_from_id'),
                 'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'cloned_from_id'),
                 'vectorGraphicQaStateIdEn' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id_en'),
@@ -144,6 +147,7 @@ abstract class BaseVectorGraphic extends ActiveRecord
             'processed_media_id_en' => Yii::t('model', 'Processed Media Id En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
             'slug_es' => Yii::t('model', 'Slug Es'),
             'slug_fa' => Yii::t('model', 'Slug Fa'),
@@ -186,6 +190,7 @@ abstract class BaseVectorGraphic extends ActiveRecord
         $criteria->compare('t.processed_media_id_en', $this->processed_media_id_en);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.slug_es', $this->slug_es, true);
         $criteria->compare('t.slug_fa', $this->slug_fa, true);

@@ -15,6 +15,7 @@
  * @property string $slideshow_file_id
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  * @property string $slug_es
  * @property string $slug_fa
@@ -46,6 +47,7 @@
  * @property Node $node
  * @property P3Media $thumbnailMedia
  * @property SlideshowFile $slideshowFile
+ * @property Users $owner
  * @property SectionContent[] $sectionContents
  */
 abstract class BaseExercise extends ActiveRecord
@@ -65,12 +67,12 @@ abstract class BaseExercise extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _question, _description, thumbnail_media_id, slideshow_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, thumbnail_media_id', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, _title, slug_en, _question, _description, thumbnail_media_id, slideshow_file_id, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, thumbnail_media_id, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, slideshow_file_id, node_id, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'length', 'max' => 20),
                 array('_title, slug_en, _question, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('_description, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _question, _description, thumbnail_media_id, slideshow_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _question, _description, thumbnail_media_id, slideshow_file_id, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, exercise_qa_state_id_en, exercise_qa_state_id_es, exercise_qa_state_id_fa, exercise_qa_state_id_hi, exercise_qa_state_id_pt, exercise_qa_state_id_sv, exercise_qa_state_id_cn, exercise_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -108,6 +110,7 @@ abstract class BaseExercise extends ActiveRecord
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
                 'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'exercise_id'),
             )
         );
@@ -127,6 +130,7 @@ abstract class BaseExercise extends ActiveRecord
             'slideshow_file_id' => Yii::t('model', 'Slideshow File'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
             'slug_es' => Yii::t('model', 'Slug Es'),
             'slug_fa' => Yii::t('model', 'Slug Fa'),
@@ -163,6 +167,7 @@ abstract class BaseExercise extends ActiveRecord
         $criteria->compare('t.slideshow_file_id', $this->slideshow_file_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.slug_es', $this->slug_es, true);
         $criteria->compare('t.slug_fa', $this->slug_fa, true);

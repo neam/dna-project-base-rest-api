@@ -14,6 +14,7 @@
  * @property string $po_file_id
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  * @property string $slug_es
  * @property string $slug_fa
@@ -30,6 +31,7 @@
  * @property PoFile $poFile
  * @property Tool $clonedFrom
  * @property Tool[] $tools
+ * @property Users $owner
  * @property ToolQaState $toolQaState
  */
 abstract class BaseTool extends ActiveRecord
@@ -49,12 +51,12 @@ abstract class BaseTool extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, tool_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, _title, slug_en, _about, embed_template, po_file_id, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, tool_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, po_file_id, node_id, tool_qa_state_id', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('_about, embed_template, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, embed_template, po_file_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, tool_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, embed_template, po_file_id, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, tool_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -84,6 +86,7 @@ abstract class BaseTool extends ActiveRecord
                 'poFile' => array(self::BELONGS_TO, 'PoFile', 'po_file_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Tool', 'cloned_from_id'),
                 'tools' => array(self::HAS_MANY, 'Tool', 'cloned_from_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'toolQaState' => array(self::BELONGS_TO, 'ToolQaState', 'tool_qa_state_id'),
             )
         );
@@ -102,6 +105,7 @@ abstract class BaseTool extends ActiveRecord
             'po_file_id' => Yii::t('model', 'Po File'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
             'slug_es' => Yii::t('model', 'Slug Es'),
             'slug_fa' => Yii::t('model', 'Slug Fa'),
@@ -130,6 +134,7 @@ abstract class BaseTool extends ActiveRecord
         $criteria->compare('t.po_file_id', $this->po_file_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.slug_es', $this->slug_es, true);
         $criteria->compare('t.slug_fa', $this->slug_fa, true);

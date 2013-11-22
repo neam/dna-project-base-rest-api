@@ -18,6 +18,7 @@
  * @property integer $subtitles_import_media_id
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  * @property integer $processed_media_id_es
  * @property integer $processed_media_id_fa
@@ -56,6 +57,7 @@
  * @property P3Media $processedMediaIdSv
  * @property P3Media $thumbnailMedia
  * @property P3Media $subtitlesImportMedia
+ * @property Users $owner
  * @property VideoFile $clonedFrom
  * @property VideoFile[] $videoFiles
  * @property VideoFileQaState $videoFileQaStateIdEn
@@ -84,12 +86,12 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, _subtitles, subtitles_import_media_id, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, video_file_qa_state_id_en, video_file_qa_state_id_es, video_file_qa_state_id_fa, video_file_qa_state_id_hi, video_file_qa_state_id_pt, video_file_qa_state_id_sv, video_file_qa_state_id_cn, video_file_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, subtitles_import_media_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, _title, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, video_file_qa_state_id_en, video_file_qa_state_id_es, video_file_qa_state_id_fa, video_file_qa_state_id_hi, video_file_qa_state_id_pt, video_file_qa_state_id_sv, video_file_qa_state_id_cn, video_file_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, subtitles_import_media_id, owner_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, video_file_qa_state_id_en, video_file_qa_state_id_es, video_file_qa_state_id_fa, video_file_qa_state_id_hi, video_file_qa_state_id_pt, video_file_qa_state_id_sv, video_file_qa_state_id_cn, video_file_qa_state_id_de', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('_about, _subtitles, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, _subtitles, subtitles_import_media_id, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, video_file_qa_state_id_en, video_file_qa_state_id_es, video_file_qa_state_id_fa, video_file_qa_state_id_hi, video_file_qa_state_id_pt, video_file_qa_state_id_sv, video_file_qa_state_id_cn, video_file_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, video_file_qa_state_id_en, video_file_qa_state_id_es, video_file_qa_state_id_fa, video_file_qa_state_id_hi, video_file_qa_state_id_pt, video_file_qa_state_id_sv, video_file_qa_state_id_cn, video_file_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -127,6 +129,7 @@ abstract class BaseVideoFile extends ActiveRecord
                 'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
                 'subtitlesImportMedia' => array(self::BELONGS_TO, 'P3Media', 'subtitles_import_media_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'VideoFile', 'cloned_from_id'),
                 'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'cloned_from_id'),
                 'videoFileQaStateIdEn' => array(self::BELONGS_TO, 'VideoFileQaState', 'video_file_qa_state_id_en'),
@@ -158,6 +161,7 @@ abstract class BaseVideoFile extends ActiveRecord
             'subtitles_import_media_id' => Yii::t('model', 'Subtitles Import Media'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
             'processed_media_id_es' => Yii::t('model', 'Processed Media Id Es'),
             'processed_media_id_fa' => Yii::t('model', 'Processed Media Id Fa'),
@@ -204,6 +208,7 @@ abstract class BaseVideoFile extends ActiveRecord
         $criteria->compare('t.subtitles_import_media_id', $this->subtitles_import_media_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.processed_media_id_es', $this->processed_media_id_es);
         $criteria->compare('t.processed_media_id_fa', $this->processed_media_id_fa);

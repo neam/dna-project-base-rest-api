@@ -16,6 +16,7 @@
  * @property integer $thumbnail_media_id
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  * @property string $slug_es
  * @property string $slug_fa
@@ -42,6 +43,7 @@
  * @property Snapshot $clonedFrom
  * @property Snapshot[] $snapshots
  * @property Tool $tool
+ * @property Users $owner
  * @property SnapshotQaState $snapshotQaStateIdEn
  * @property SnapshotQaState $snapshotQaStateIdCn
  * @property SnapshotQaState $snapshotQaStateIdDe
@@ -68,12 +70,12 @@ abstract class BaseSnapshot extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, vizabi_state, embed_override, tool_id, _title, slug_en, _about, thumbnail_media_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, thumbnail_media_id', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, vizabi_state, embed_override, tool_id, _title, slug_en, _about, thumbnail_media_id, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, thumbnail_media_id, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, tool_id, node_id, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('vizabi_state, embed_override, _about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, vizabi_state, embed_override, tool_id, _title, slug_en, _about, thumbnail_media_id, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, vizabi_state, embed_override, tool_id, _title, slug_en, _about, thumbnail_media_id, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, snapshot_qa_state_id_en, snapshot_qa_state_id_es, snapshot_qa_state_id_fa, snapshot_qa_state_id_hi, snapshot_qa_state_id_pt, snapshot_qa_state_id_sv, snapshot_qa_state_id_cn, snapshot_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -106,6 +108,7 @@ abstract class BaseSnapshot extends ActiveRecord
                 'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'cloned_from_id'),
                 'tool' => array(self::BELONGS_TO, 'Tool', 'tool_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'snapshotQaStateIdEn' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_en'),
                 'snapshotQaStateIdCn' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_cn'),
                 'snapshotQaStateIdDe' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id_de'),
@@ -133,6 +136,7 @@ abstract class BaseSnapshot extends ActiveRecord
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
             'slug_es' => Yii::t('model', 'Slug Es'),
             'slug_fa' => Yii::t('model', 'Slug Fa'),
@@ -170,6 +174,7 @@ abstract class BaseSnapshot extends ActiveRecord
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.slug_es', $this->slug_es, true);
         $criteria->compare('t.slug_fa', $this->slug_fa, true);

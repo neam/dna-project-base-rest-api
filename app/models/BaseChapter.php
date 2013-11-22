@@ -14,6 +14,7 @@
  * @property string $_teachers_guide
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  * @property string $slug_es
  * @property string $slug_fa
@@ -44,6 +45,7 @@
  * @property Chapter[] $chapters
  * @property Node $node
  * @property P3Media $thumbnailMedia
+ * @property Users $owner
  */
 abstract class BaseChapter extends ActiveRecord
 {
@@ -62,12 +64,12 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, thumbnail_media_id, _about, _teachers_guide, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, thumbnail_media_id', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, _title, slug_en, thumbnail_media_id, _about, _teachers_guide, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, thumbnail_media_id, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('_about, _teachers_guide, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, thumbnail_media_id, _about, _teachers_guide, created, modified, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, thumbnail_media_id, _about, _teachers_guide, created, modified, owner_id, node_id, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de, chapter_qa_state_id_en, chapter_qa_state_id_es, chapter_qa_state_id_fa, chapter_qa_state_id_hi, chapter_qa_state_id_pt, chapter_qa_state_id_sv, chapter_qa_state_id_cn, chapter_qa_state_id_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -104,6 +106,7 @@ abstract class BaseChapter extends ActiveRecord
                 'chapters' => array(self::HAS_MANY, 'Chapter', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
             )
         );
     }
@@ -121,6 +124,7 @@ abstract class BaseChapter extends ActiveRecord
             '_teachers_guide' => Yii::t('model', 'Teachers Guide'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
             'slug_es' => Yii::t('model', 'Slug Es'),
             'slug_fa' => Yii::t('model', 'Slug Fa'),
@@ -156,6 +160,7 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t._teachers_guide', $this->_teachers_guide, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.slug_es', $this->slug_es, true);
         $criteria->compare('t.slug_fa', $this->slug_fa, true);

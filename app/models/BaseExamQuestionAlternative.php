@@ -11,9 +11,11 @@
  * @property string $exam_question_id
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  *
  * Relations of table "exam_question_alternative" available as properties of the model:
+ * @property Users $owner
  * @property ExamQuestion $examQuestion
  * @property Node $node
  */
@@ -34,12 +36,12 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('slug, _markup, correct, exam_question_id, created, modified, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('correct', 'numerical', 'integerOnly' => true),
+                array('slug, _markup, correct, exam_question_id, created, modified, owner_id, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('correct, owner_id', 'numerical', 'integerOnly' => true),
                 array('slug', 'length', 'max' => 255),
                 array('exam_question_id, node_id', 'length', 'max' => 20),
                 array('_markup, created, modified', 'safe'),
-                array('id, slug, _markup, correct, exam_question_id, created, modified, node_id', 'safe', 'on' => 'search'),
+                array('id, slug, _markup, correct, exam_question_id, created, modified, owner_id, node_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -64,6 +66,7 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             )
@@ -80,6 +83,7 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
             'exam_question_id' => Yii::t('model', 'Exam Question'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
         );
     }
@@ -97,6 +101,7 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
         $criteria->compare('t.exam_question_id', $this->exam_question_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
 
 

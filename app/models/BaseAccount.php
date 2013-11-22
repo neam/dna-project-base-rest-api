@@ -16,7 +16,24 @@
  *
  * Relations of table "users" available as properties of the model:
  * @property Changeset[] $changesets
+ * @property Chapter[] $chapters
+ * @property DataChunk[] $dataChunks
+ * @property DataSource[] $dataSources
+ * @property DownloadLink[] $downloadLinks
+ * @property ExamQuestion[] $examQuestions
+ * @property ExamQuestionAlternative[] $examQuestionAlternatives
+ * @property Exercise[] $exercises
+ * @property HtmlChunk[] $htmlChunks
+ * @property Page[] $pages
+ * @property PoFile[] $poFiles
  * @property Profiles $profiles
+ * @property SlideshowFile[] $slideshowFiles
+ * @property Snapshot[] $snapshots
+ * @property SpreadsheetFile[] $spreadsheetFiles
+ * @property TextDoc[] $textDocs
+ * @property Tool[] $tools
+ * @property VectorGraphic[] $vectorGraphics
+ * @property VideoFile[] $videoFiles
  */
 abstract class BaseAccount extends ActiveRecord
 {
@@ -67,7 +84,24 @@ abstract class BaseAccount extends ActiveRecord
         return array_merge(
             parent::relations(), array(
                 'changesets' => array(self::HAS_MANY, 'Changeset', 'user_id'),
+                'chapters' => array(self::HAS_MANY, 'Chapter', 'owner_id'),
+                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'owner_id'),
+                'dataSources' => array(self::HAS_MANY, 'DataSource', 'owner_id'),
+                'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'owner_id'),
+                'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'owner_id'),
+                'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'owner_id'),
+                'exercises' => array(self::HAS_MANY, 'Exercise', 'owner_id'),
+                'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'owner_id'),
+                'pages' => array(self::HAS_MANY, 'Page', 'owner_id'),
+                'poFiles' => array(self::HAS_MANY, 'PoFile', 'owner_id'),
                 'profiles' => array(self::HAS_ONE, 'Profiles', 'user_id'),
+                'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'owner_id'),
+                'snapshots' => array(self::HAS_MANY, 'Snapshot', 'owner_id'),
+                'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'owner_id'),
+                'textDocs' => array(self::HAS_MANY, 'TextDoc', 'owner_id'),
+                'tools' => array(self::HAS_MANY, 'Tool', 'owner_id'),
+                'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'owner_id'),
+                'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'owner_id'),
             )
         );
     }

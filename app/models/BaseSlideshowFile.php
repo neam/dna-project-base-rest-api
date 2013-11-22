@@ -15,6 +15,7 @@
  * @property integer $processed_media_id_en
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  * @property integer $processed_media_id_es
  * @property integer $processed_media_id_fa
@@ -54,6 +55,7 @@
  * @property P3Media $processedMediaIdSv
  * @property SlideshowFile $clonedFrom
  * @property SlideshowFile[] $slideshowFiles
+ * @property Users $owner
  * @property SlideshowFileQaState $slideshowFileQaStateIdEn
  * @property SlideshowFileQaState $slideshowFileQaStateIdCn
  * @property SlideshowFileQaState $slideshowFileQaStateIdDe
@@ -80,12 +82,12 @@ abstract class BaseSlideshowFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slideshow_file_qa_state_id_en, slideshow_file_qa_state_id_es, slideshow_file_qa_state_id_fa, slideshow_file_qa_state_id_hi, slideshow_file_qa_state_id_pt, slideshow_file_qa_state_id_sv, slideshow_file_qa_state_id_cn, slideshow_file_qa_state_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, original_media_id, generate_processed_media, processed_media_id_en, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, _title, slug_en, _about, original_media_id, generate_processed_media, processed_media_id_en, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slideshow_file_qa_state_id_en, slideshow_file_qa_state_id_es, slideshow_file_qa_state_id_fa, slideshow_file_qa_state_id_hi, slideshow_file_qa_state_id_pt, slideshow_file_qa_state_id_sv, slideshow_file_qa_state_id_cn, slideshow_file_qa_state_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, original_media_id, generate_processed_media, processed_media_id_en, owner_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, slideshow_file_qa_state_id_en, slideshow_file_qa_state_id_es, slideshow_file_qa_state_id_fa, slideshow_file_qa_state_id_hi, slideshow_file_qa_state_id_pt, slideshow_file_qa_state_id_sv, slideshow_file_qa_state_id_cn, slideshow_file_qa_state_id_de', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'length', 'max' => 255),
                 array('_about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, original_media_id, generate_processed_media, processed_media_id_en, created, modified, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slideshow_file_qa_state_id_en, slideshow_file_qa_state_id_es, slideshow_file_qa_state_id_fa, slideshow_file_qa_state_id_hi, slideshow_file_qa_state_id_pt, slideshow_file_qa_state_id_sv, slideshow_file_qa_state_id_cn, slideshow_file_qa_state_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, original_media_id, generate_processed_media, processed_media_id_en, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_fa, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_cn, processed_media_id_de, slideshow_file_qa_state_id_en, slideshow_file_qa_state_id_es, slideshow_file_qa_state_id_fa, slideshow_file_qa_state_id_hi, slideshow_file_qa_state_id_pt, slideshow_file_qa_state_id_sv, slideshow_file_qa_state_id_cn, slideshow_file_qa_state_id_de, slug_es, slug_fa, slug_hi, slug_pt, slug_sv, slug_cn, slug_de', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -124,6 +126,7 @@ abstract class BaseSlideshowFile extends ActiveRecord
                 'processedMediaIdSv' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_sv'),
                 'clonedFrom' => array(self::BELONGS_TO, 'SlideshowFile', 'cloned_from_id'),
                 'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'cloned_from_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'slideshowFileQaStateIdEn' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_en'),
                 'slideshowFileQaStateIdCn' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_cn'),
                 'slideshowFileQaStateIdDe' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id_de'),
@@ -150,6 +153,7 @@ abstract class BaseSlideshowFile extends ActiveRecord
             'processed_media_id_en' => Yii::t('model', 'Processed Media Id En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
             'processed_media_id_es' => Yii::t('model', 'Processed Media Id Es'),
             'processed_media_id_fa' => Yii::t('model', 'Processed Media Id Fa'),
@@ -193,6 +197,7 @@ abstract class BaseSlideshowFile extends ActiveRecord
         $criteria->compare('t.processed_media_id_en', $this->processed_media_id_en);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.processed_media_id_es', $this->processed_media_id_es);
         $criteria->compare('t.processed_media_id_fa', $this->processed_media_id_fa);
