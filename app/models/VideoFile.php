@@ -53,7 +53,7 @@ class VideoFile extends BaseVideoFile
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
                 array('original_media_id', 'validateClip', 'on' => 'public'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
-                array('subtitles' . $this->source_language, 'validateSubtitles', 'on' => 'public'),
+                array('subtitles_' . $this->source_language, 'validateSubtitles', 'on' => 'public'),
             )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
@@ -72,7 +72,9 @@ class VideoFile extends BaseVideoFile
 
     public function validateSubtitles()
     {
-        return !is_null($this->subtitles);
+        // Should not throw an error
+        $this->getParsedSubtitles();
+        return !is_null($this->_subtitles);
     }
 
     /**
