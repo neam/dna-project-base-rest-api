@@ -390,6 +390,7 @@ $mainConfig = array(
                 '^user/registration/(.*)'    => 'frontend',
                 '^user/recovery/(.*)'        => 'frontend',
                 '^user/activation/(.*)'      => 'frontend',
+                '^account/admin' => 'frontend',
                 // backend
                 '^user/(.*)'                 => 'backend2',
                 '^rights/(.*)'               => 'backend2',
