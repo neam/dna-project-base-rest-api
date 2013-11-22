@@ -9,6 +9,9 @@ if (!is_readable($envbootstrap)) {
 }
 require_once($envbootstrap);
 
+// load global helper functions
+require_once(dirname(__FILE__) . '/../helpers/global.php');
+
 // Always use UTC
 date_default_timezone_set('UTC');
 

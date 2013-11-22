@@ -15,16 +15,14 @@ $this->breadcrumbs[] = $workflowCaption;
 $this->breadcrumbs[] = $stepCaption;
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)); ?>
 
-<?php
-$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-    'id' => 'item-form',
-    'enableAjaxValidation' => true,
-    'enableClientValidation' => true,
-    'type' => 'horizontal',
-));
-?>
+<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm',array(
+    'id'=>'item-form',
+    'enableAjaxValidation'=>true,
+    'enableClientValidation'=>true,
+    'type'=>'horizontal',
+)); ?>
 
 <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
 
@@ -53,52 +51,29 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
     </div>
     <div class="span9">
-
-        <?php
-        echo $form->errorSummary($model);
-        ?>
-
-
+        <?php echo $form->errorSummary($model); ?>
         <div class="row-fluid">
             <div class="span9">
-
                 <h2><?php print $stepCaption; ?>
                     <small></small>
                 </h2>
-
             </div>
             <div class="span3">
-
                 <div class="btn-toolbar pull-right">
-
                     <div class="btn-group">
-
-                        <?php
-                        switch ($this->action->id . "-" . $step) {
-                            case "translate-subtitles":
-                                $this->widget("bootstrap.widgets.TbButton", array(
-                                    "label" => Yii::t("model", "Load current translations into media player"),
-                                    "url" => Yii::app()->request->url,
-                                    "type" => "primary",
-                                ));
-                                break;
-                            default:
-                                echo CHtml::submitButton(Yii::t('model', 'Save changes'), array(
-                                        'class' => 'btn btn-primary',
-                                        'name' => 'save-changes',
-                                    )
-                                );
-                                $this->widget("bootstrap.widgets.TbButton", array(
-                                    "label" => Yii::t("model", "Reset"),
-                                    "url" => Yii::app()->request->url,
-                                ));
-                        }
-                        ?>
-
+                        <?php echo CHtml::submitButton(Yii::t('model','Save changes'),array(
+                            'class'=>'btn btn-primary btn-action',
+                            'name'=>'save-changes',
+                        )); ?>
+                        <?php $this->widget('bootstrap.widgets.TbButton',array(
+                            'htmlOptions'=>array(
+                                'class'=>'btn-action',
+                            ),
+                            'label'=>Yii::t('model','Undo'),
+                            'url'=>app()->request->url,
+                        )); ?>
                     </div>
-
                 </div>
-
             </div>
         </div>
 
@@ -106,16 +81,14 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
         <?php $this->endWidget() ?>
 
-        <?php Html::jsAreYouSure(); ?>
+        <?php Html::jsDirtyForms(); ?>
 
     </div>
 
 </div>
 
-<?php
-foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
+<?php foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
     if (strpos($key, "modal:") === 0) {
         echo $clip;
     }
-}
-?>
+} ?>

@@ -154,7 +154,7 @@ function js($url, $position = null)
  */
 function publishJs($file, $position = null)
 {
-    $filePath = Yii::app()->getBasePath() . DIRECTORY_SEPARATOR . $file;
+    $filePath = Yii::app()->getBasePath() . $file;
     $jsFile = Yii::app()->getAssetManager()->publish($filePath);
     Yii::app()->clientScript->registerScriptFile($jsFile, $position);
 }

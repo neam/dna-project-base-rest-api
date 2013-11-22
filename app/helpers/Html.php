@@ -5,11 +5,12 @@ Yii::import('bootstrap.helpers.TbHtml');
 class Html extends TbHtml
 {
     /**
-     * Registers the Are You Sure jQuery plugin and binds it to a form element.
+     * Registers the Dirty Forms jQuery plugin and binds it to a form element.
      */
-    public static function jsAreYouSure()
+    public static function jsDirtyForms()
     {
-        publishJs('themes/frontend/js/vendor/jquery.are-you-sure.js', CClientScript::POS_HEAD);
-        app()->clientScript->registerScript('registerAreYouSure', "$('form').areYouSure();", CClientScript::POS_END);
+        publishJs('/themes/frontend/js/vendor/jquery.dirtyforms.js', CClientScript::POS_HEAD);
+        app()->clientScript->registerScript('registerAreYouSure', "$('form').dirtyForms();", CClientScript::POS_END);
+        publishJs('/themes/frontend/js/toggle-dirty-buttons.js', CClientScript::POS_END); // show action buttons when form is dirty
     }
 }
