@@ -8,7 +8,10 @@ if (!$this->workflowData["translateInto"]) {
 
 } else {
 
+    $currentLang = Yii::app()->language;
+    Yii::app()->language = $this->workflowData["translateInto"];
     $this->renderPartial("/videoFile/_view", array("data" => $model));
+    Yii::app()->language = $currentLang;
 
     $this->renderPartial("translate/subtitles", compact("form", "model"));
 

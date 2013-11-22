@@ -129,7 +129,12 @@ $gcmsConfig = array(
         'messages' => array(
             'class' => 'CPhpMessageSource',
         ),
-        // Attribute messages
+        // Db messages - component 1 - used for output in views
+        'dbMessages' => array(
+            'class' => 'CDbMessageSource',
+            //'onMissingTranslation' => array('MissingTranslationHandler', 'returnFallbackTranslation'),
+        ),
+        // Db messages - component 2 - used for input forms through virtual attributes
         'writableMessages' => array(
             'class' => 'CDbMessageSource',
             'onMissingTranslation' => array('MissingTranslationHandler', 'returnNull'),
