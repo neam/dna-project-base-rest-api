@@ -164,7 +164,7 @@ abstract class BaseProfiles extends ActiveRecord
         $model = Profiles::model()->findByPk(user()->id);
         $attribute = 'can_translate_to_' . $lang;
 
-        /** @var ActiveRecord $model */
+        /** @var Profiles $model */
         if ($model->hasAttribute($attribute)) {
             return ((int) $model->{$attribute} === self::CAN_TRANSLATE) ? true : false;
         } else {
