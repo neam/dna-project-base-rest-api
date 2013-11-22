@@ -38,6 +38,7 @@
     <?php $this->renderFile(
         Yii::getPathOfAlias('application.themes.frontend.views.layouts') . DIRECTORY_SEPARATOR . '_menu.php'
     ) ?>
+    <?php $this->widget('bootstrap.widgets.TbAlert'); ?>
     <div class="subwrapper">
         <?php echo $content; ?>
     </div>

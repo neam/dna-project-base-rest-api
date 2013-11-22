@@ -101,9 +101,25 @@ class AccountController extends Controller
 
     public function actionProfile()
     {
-        $id = Yii::app()->user->id;
-        $model = $this->loadModel($id);
-        $this->render('profile', array('model' => $model,));
+        $id = user()->id;
+        $model = $this->loadModel($id); // Account
+
+        if (isset($_POST['Profiles'], $_POST['Users'])) {
+            $model->attributes = $_POST['Users'];
+            $model->profiles->attributes = $_POST['Profiles'];
+
+            if ($model->validate()
+                && $model->profiles->validate()
+                && $model->save()
+                && $model->profiles->save()) {
+                setFlash(TbAlert::TYPE_SUCCESS, t('app', 'Your account information has been updated.'));
+                $this->refresh();
+            }
+        }
+
+        $this->render('profile', array(
+            'model' => $model,
+        ));
     }
 
     public function actionHistory()

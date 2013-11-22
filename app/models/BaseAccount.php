@@ -54,6 +54,10 @@ abstract class BaseAccount extends ActiveRecord
             parent::rules(), array(
                 array('create_at', 'required'),
                 array('username, password, email, activkey, superuser, status, lastvisit_at', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('username', 'unique', 'message' => Yii::t('app', 'Username already exists.')),
+                array('email', 'unique', 'message' => Yii::t('app', 'Email address already exists.')),
+                array('email', 'email'),
+                array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => Yii::t('app', 'Incorrect symbols (A-z0-9).')),
                 array('superuser, status', 'numerical', 'integerOnly' => true),
                 array('username', 'length', 'max' => 20),
                 array('password, email, activkey', 'length', 'max' => 128),

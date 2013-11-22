@@ -270,6 +270,16 @@ function jsonDecode($string, $assoc = true, $depth = 512, $options = 0)
 }
 
 /**
+ * Sets a flash message.
+ * @param string $type the flash message type.
+ * @param string $message the message.
+ */
+function setFlash($type, $message)
+{
+    Yii::app()->user->setFlash($type, $message);
+}
+
+/**
  * Returns the current time as a MySQL date.
  * @param integer $timestamp the timestamp.
  * @return string the date.
