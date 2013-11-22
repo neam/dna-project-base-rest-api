@@ -25,20 +25,20 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->cloned_from_id); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_en')); ?>:</b>
-<?php echo CHtml::encode($model->title_en); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_title')); ?>:</b>
+<?php echo CHtml::encode($model->_title); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en')); ?>:</b>
 <?php echo CHtml::encode($model->slug_en); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_en')); ?>:</b>
-<?php echo CHtml::encode($model->question_en); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_question')); ?>:</b>
+<?php echo CHtml::encode($model->_question); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('description_en')); ?>:</b>
-<?php echo CHtml::encode($model->description_en); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_description')); ?>:</b>
+<?php echo CHtml::encode($model->_description); ?>
 <br/>
 
 <?php /*
@@ -58,36 +58,12 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->modified); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>:</b>
+<?php echo CHtml::encode($model->owner_id); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
 <?php echo CHtml::encode($model->node_id); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_es')); ?>:</b>
-<?php echo CHtml::encode($model->title_es); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_fa')); ?>:</b>
-<?php echo CHtml::encode($model->title_fa); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_hi')); ?>:</b>
-<?php echo CHtml::encode($model->title_hi); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_pt')); ?>:</b>
-<?php echo CHtml::encode($model->title_pt); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_sv')); ?>:</b>
-<?php echo CHtml::encode($model->title_sv); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_cn')); ?>:</b>
-<?php echo CHtml::encode($model->title_cn); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_de')); ?>:</b>
-<?php echo CHtml::encode($model->title_de); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_es')); ?>:</b>
@@ -116,62 +92,6 @@ $this->breadcrumbs[] = $model->id;
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_de')); ?>:</b>
 <?php echo CHtml::encode($model->slug_de); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_es')); ?>:</b>
-<?php echo CHtml::encode($model->question_es); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_fa')); ?>:</b>
-<?php echo CHtml::encode($model->question_fa); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_hi')); ?>:</b>
-<?php echo CHtml::encode($model->question_hi); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_pt')); ?>:</b>
-<?php echo CHtml::encode($model->question_pt); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_sv')); ?>:</b>
-<?php echo CHtml::encode($model->question_sv); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_cn')); ?>:</b>
-<?php echo CHtml::encode($model->question_cn); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_de')); ?>:</b>
-<?php echo CHtml::encode($model->question_de); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('description_es')); ?>:</b>
-<?php echo CHtml::encode($model->description_es); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('description_fa')); ?>:</b>
-<?php echo CHtml::encode($model->description_fa); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('description_hi')); ?>:</b>
-<?php echo CHtml::encode($model->description_hi); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('description_pt')); ?>:</b>
-<?php echo CHtml::encode($model->description_pt); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('description_sv')); ?>:</b>
-<?php echo CHtml::encode($model->description_sv); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('description_cn')); ?>:</b>
-<?php echo CHtml::encode($model->description_cn); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('description_de')); ?>:</b>
-<?php echo CHtml::encode($model->description_de); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('exercise_qa_state_id_en')); ?>:</b>
@@ -261,13 +181,13 @@ $this->breadcrumbs[] = $model->id;
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'title_en',
+                        'name' => '_title',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'title_en',
+                                    'attribute' => '_title',
                                     'url' => $this->createUrl('/exercise/editableSaver'),
                                 ),
                                 true
@@ -287,26 +207,26 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'question_en',
+                        'name' => '_question',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'question_en',
+                                    'attribute' => '_question',
                                     'url' => $this->createUrl('/exercise/editableSaver'),
                                 ),
                                 true
                             )
                     ),
                     array(
-                        'name' => 'description_en',
+                        'name' => '_description',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'description_en',
+                                    'attribute' => '_description',
                                     'url' => $this->createUrl('/exercise/editableSaver'),
                                 ),
                                 true
@@ -361,6 +281,17 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'owner_id',
+                        'value' => ($model->owner !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
+                                    array('//users/view', 'id' => $model->owner->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//users/update', 'id' => $model->owner->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
                                     '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
@@ -370,97 +301,6 @@ $this->breadcrumbs[] = $model->id;
                                     array('//node/update', 'id' => $model->node->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'title_es',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_es',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_fa',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_fa',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_hi',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_hi',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_pt',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_pt',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_sv',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_sv',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_cn',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_cn',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_de',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_de',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
                     ),
                     array(
                         'name' => 'slug_es',
@@ -548,188 +388,6 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_de',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_es',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_es',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_fa',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_fa',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_hi',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_hi',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_pt',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_pt',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_sv',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_sv',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_cn',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_cn',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_de',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_de',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'description_es',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'description_es',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'description_fa',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'description_fa',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'description_hi',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'description_hi',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'description_pt',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'description_pt',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'description_sv',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'description_sv',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'description_cn',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'description_cn',
-                                    'url' => $this->createUrl('/exercise/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'description_de',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'description_de',
                                     'url' => $this->createUrl('/exercise/editableSaver'),
                                 ),
                                 true

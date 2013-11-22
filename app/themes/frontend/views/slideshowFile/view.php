@@ -25,16 +25,16 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->cloned_from_id); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_en')); ?>:</b>
-<?php echo CHtml::encode($model->title_en); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_title')); ?>:</b>
+<?php echo CHtml::encode($model->_title); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en')); ?>:</b>
 <?php echo CHtml::encode($model->slug_en); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_en')); ?>:</b>
-<?php echo CHtml::encode($model->about_en); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_about')); ?>:</b>
+<?php echo CHtml::encode($model->_about); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id')); ?>:</b>
@@ -58,36 +58,12 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->modified); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>:</b>
+<?php echo CHtml::encode($model->owner_id); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
 <?php echo CHtml::encode($model->node_id); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_es')); ?>:</b>
-<?php echo CHtml::encode($model->title_es); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_fa')); ?>:</b>
-<?php echo CHtml::encode($model->title_fa); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_hi')); ?>:</b>
-<?php echo CHtml::encode($model->title_hi); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_pt')); ?>:</b>
-<?php echo CHtml::encode($model->title_pt); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_sv')); ?>:</b>
-<?php echo CHtml::encode($model->title_sv); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_cn')); ?>:</b>
-<?php echo CHtml::encode($model->title_cn); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_de')); ?>:</b>
-<?php echo CHtml::encode($model->title_de); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_es')); ?>:</b>
@@ -116,62 +92,6 @@ $this->breadcrumbs[] = $model->id;
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_de')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_de); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_es')); ?>:</b>
-<?php echo CHtml::encode($model->slug_es); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_fa')); ?>:</b>
-<?php echo CHtml::encode($model->slug_fa); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_hi')); ?>:</b>
-<?php echo CHtml::encode($model->slug_hi); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_pt')); ?>:</b>
-<?php echo CHtml::encode($model->slug_pt); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_sv')); ?>:</b>
-<?php echo CHtml::encode($model->slug_sv); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_cn')); ?>:</b>
-<?php echo CHtml::encode($model->slug_cn); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_de')); ?>:</b>
-<?php echo CHtml::encode($model->slug_de); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_es')); ?>:</b>
-<?php echo CHtml::encode($model->about_es); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_fa')); ?>:</b>
-<?php echo CHtml::encode($model->about_fa); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_hi')); ?>:</b>
-<?php echo CHtml::encode($model->about_hi); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_pt')); ?>:</b>
-<?php echo CHtml::encode($model->about_pt); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_sv')); ?>:</b>
-<?php echo CHtml::encode($model->about_sv); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_cn')); ?>:</b>
-<?php echo CHtml::encode($model->about_cn); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_de')); ?>:</b>
-<?php echo CHtml::encode($model->about_de); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_qa_state_id_en')); ?>:</b>
@@ -204,6 +124,34 @@ $this->breadcrumbs[] = $model->id;
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slideshow_file_qa_state_id_de')); ?>:</b>
 <?php echo CHtml::encode($model->slideshow_file_qa_state_id_de); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_es')); ?>:</b>
+<?php echo CHtml::encode($model->slug_es); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_fa')); ?>:</b>
+<?php echo CHtml::encode($model->slug_fa); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_hi')); ?>:</b>
+<?php echo CHtml::encode($model->slug_hi); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_pt')); ?>:</b>
+<?php echo CHtml::encode($model->slug_pt); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_sv')); ?>:</b>
+<?php echo CHtml::encode($model->slug_sv); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_cn')); ?>:</b>
+<?php echo CHtml::encode($model->slug_cn); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_de')); ?>:</b>
+<?php echo CHtml::encode($model->slug_de); ?>
 <br />
 
     */
@@ -261,13 +209,13 @@ $this->breadcrumbs[] = $model->id;
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'title_en',
+                        'name' => '_title',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'title_en',
+                                    'attribute' => '_title',
                                     'url' => $this->createUrl('/slideshowFile/editableSaver'),
                                 ),
                                 true
@@ -287,13 +235,13 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'about_en',
+                        'name' => '_about',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'about_en',
+                                    'attribute' => '_about',
                                     'url' => $this->createUrl('/slideshowFile/editableSaver'),
                                 ),
                                 true
@@ -361,6 +309,17 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'owner_id',
+                        'value' => ($model->owner !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
+                                    array('//users/view', 'id' => $model->owner->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//users/update', 'id' => $model->owner->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
                                     '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
@@ -370,97 +329,6 @@ $this->breadcrumbs[] = $model->id;
                                     array('//node/update', 'id' => $model->node->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'title_es',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_es',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_fa',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_fa',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_hi',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_hi',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_pt',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_pt',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_sv',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_sv',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_cn',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_cn',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_de',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_de',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
                     ),
                     array(
                         'name' => 'processed_media_id_es',
@@ -536,6 +404,94 @@ $this->breadcrumbs[] = $model->id;
                                     array('class' => '')) . ' ' . CHtml::link(
                                     '<i class="icon icon-pencil"></i> ',
                                     array('//p3Media/update', 'id' => $model->processedMediaIdDe->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'slideshow_file_qa_state_id_en',
+                        'value' => ($model->slideshowFileQaStateIdEn !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdEn->itemLabel,
+                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdEn->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdEn->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'slideshow_file_qa_state_id_es',
+                        'value' => ($model->slideshowFileQaStateIdEs !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdEs->itemLabel,
+                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdEs->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdEs->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'slideshow_file_qa_state_id_fa',
+                        'value' => ($model->slideshowFileQaStateIdFa !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdFa->itemLabel,
+                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdFa->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdFa->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'slideshow_file_qa_state_id_hi',
+                        'value' => ($model->slideshowFileQaStateIdHi !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdHi->itemLabel,
+                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdHi->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdHi->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'slideshow_file_qa_state_id_pt',
+                        'value' => ($model->slideshowFileQaStateIdPt !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdPt->itemLabel,
+                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdPt->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdPt->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'slideshow_file_qa_state_id_sv',
+                        'value' => ($model->slideshowFileQaStateIdSv !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdSv->itemLabel,
+                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdSv->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdSv->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'slideshow_file_qa_state_id_cn',
+                        'value' => ($model->slideshowFileQaStateIdCn !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdCn->itemLabel,
+                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdCn->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdCn->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'slideshow_file_qa_state_id_de',
+                        'value' => ($model->slideshowFileQaStateIdDe !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdDe->itemLabel,
+                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdDe->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdDe->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -629,185 +585,6 @@ $this->breadcrumbs[] = $model->id;
                                 ),
                                 true
                             )
-                    ),
-                    array(
-                        'name' => 'about_es',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_es',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'about_fa',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_fa',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'about_hi',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_hi',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'about_pt',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_pt',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'about_sv',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_sv',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'about_cn',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_cn',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'about_de',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_de',
-                                    'url' => $this->createUrl('/slideshowFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slideshow_file_qa_state_id_en',
-                        'value' => ($model->slideshowFileQaStateIdEn !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdEn->itemLabel,
-                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdEn->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdEn->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'slideshow_file_qa_state_id_es',
-                        'value' => ($model->slideshowFileQaStateIdEs !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdEs->itemLabel,
-                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdEs->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdEs->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'slideshow_file_qa_state_id_fa',
-                        'value' => ($model->slideshowFileQaStateIdFa !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdFa->itemLabel,
-                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdFa->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdFa->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'slideshow_file_qa_state_id_hi',
-                        'value' => ($model->slideshowFileQaStateIdHi !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdHi->itemLabel,
-                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdHi->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdHi->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'slideshow_file_qa_state_id_pt',
-                        'value' => ($model->slideshowFileQaStateIdPt !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdPt->itemLabel,
-                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdPt->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdPt->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'slideshow_file_qa_state_id_sv',
-                        'value' => ($model->slideshowFileQaStateIdSv !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdSv->itemLabel,
-                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdSv->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdSv->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'slideshow_file_qa_state_id_cn',
-                        'value' => ($model->slideshowFileQaStateIdCn !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdCn->itemLabel,
-                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdCn->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdCn->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'slideshow_file_qa_state_id_de',
-                        'value' => ($model->slideshowFileQaStateIdDe !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->slideshowFileQaStateIdDe->itemLabel,
-                                    array('//slideshowFileQaState/view', 'id' => $model->slideshowFileQaStateIdDe->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//slideshowFileQaState/update', 'id' => $model->slideshowFileQaStateIdDe->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
                     ),
                 ),
             )); ?>

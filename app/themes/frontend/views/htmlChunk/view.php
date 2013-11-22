@@ -25,8 +25,8 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->cloned_from_id); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('markup_en')); ?>:</b>
-<?php echo CHtml::encode($model->markup_en); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_markup')); ?>:</b>
+<?php echo CHtml::encode($model->_markup); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
@@ -37,37 +37,17 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->modified); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
-<?php echo CHtml::encode($model->node_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>:</b>
+<?php echo CHtml::encode($model->owner_id); ?>
 <br/>
 
 <?php /*
-<b><?php echo CHtml::encode($model->getAttributeLabel('markup_es')); ?>:</b>
-<?php echo CHtml::encode($model->markup_es); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
+<?php echo CHtml::encode($model->node_id); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('markup_fa')); ?>:</b>
-<?php echo CHtml::encode($model->markup_fa); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('markup_hi')); ?>:</b>
-<?php echo CHtml::encode($model->markup_hi); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('markup_pt')); ?>:</b>
-<?php echo CHtml::encode($model->markup_pt); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('markup_sv')); ?>:</b>
-<?php echo CHtml::encode($model->markup_sv); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('markup_cn')); ?>:</b>
-<?php echo CHtml::encode($model->markup_cn); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('markup_de')); ?>:</b>
-<?php echo CHtml::encode($model->markup_de); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('html_chunk_qa_state_id')); ?>:</b>
+<?php echo CHtml::encode($model->html_chunk_qa_state_id); ?>
 <br />
 
     */
@@ -125,13 +105,13 @@ $this->breadcrumbs[] = $model->id;
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'markup_en',
+                        'name' => '_markup',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'markup_en',
+                                    'attribute' => '_markup',
                                     'url' => $this->createUrl('/htmlChunk/editableSaver'),
                                 ),
                                 true
@@ -164,6 +144,17 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'owner_id',
+                        'value' => ($model->owner !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
+                                    array('//users/view', 'id' => $model->owner->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//users/update', 'id' => $model->owner->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
                                     '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
@@ -175,95 +166,15 @@ $this->breadcrumbs[] = $model->id;
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'markup_es',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'markup_es',
-                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'markup_fa',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'markup_fa',
-                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'markup_hi',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'markup_hi',
-                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'markup_pt',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'markup_pt',
-                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'markup_sv',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'markup_sv',
-                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'markup_cn',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'markup_cn',
-                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'markup_de',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'markup_de',
-                                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
-                                ),
-                                true
-                            )
+                        'name' => 'html_chunk_qa_state_id',
+                        'value' => ($model->htmlChunkQaState !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->htmlChunkQaState->itemLabel,
+                                    array('//htmlChunkQaState/view', 'id' => $model->htmlChunkQaState->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//htmlChunkQaState/update', 'id' => $model->htmlChunkQaState->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                 ),
             )); ?>

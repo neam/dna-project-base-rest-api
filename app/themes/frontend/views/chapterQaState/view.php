@@ -142,6 +142,18 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->credits_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('draft_saved')); ?>:</b>
+<?php echo CHtml::encode($model->draft_saved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('videos_approved')); ?>:</b>
+<?php echo CHtml::encode($model->videos_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('videos_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->videos_proofed); ?>
+<br />
+
     */
 ?>
 
@@ -570,6 +582,45 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'credits_proofed',
+                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'draft_saved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'draft_saved',
+                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'videos_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'videos_approved',
+                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'videos_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'videos_proofed',
                                     'url' => $this->createUrl('/chapterQaState/editableSaver'),
                                 ),
                                 true

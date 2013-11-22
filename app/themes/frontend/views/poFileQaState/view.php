@@ -86,6 +86,26 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->file_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('draft_saved')); ?>:</b>
+<?php echo CHtml::encode($model->draft_saved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('about_approved')); ?>:</b>
+<?php echo CHtml::encode($model->about_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id_approved')); ?>:</b>
+<?php echo CHtml::encode($model->original_media_id_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('about_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->about_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->original_media_id_proofed); ?>
+<br />
+
     */
 ?>
 
@@ -332,6 +352,71 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'file_proofed',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'draft_saved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'draft_saved',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'about_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_approved',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'original_media_id_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'original_media_id_approved',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'about_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_proofed',
+                                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'original_media_id_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'original_media_id_proofed',
                                     'url' => $this->createUrl('/poFileQaState/editableSaver'),
                                 ),
                                 true

@@ -118,6 +118,10 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->materials_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('draft_saved')); ?>:</b>
+<?php echo CHtml::encode($model->draft_saved); ?>
+<br />
+
     */
 ?>
 
@@ -468,6 +472,19 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'materials_proofed',
+                                    'url' => $this->createUrl('/exerciseQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'draft_saved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'draft_saved',
                                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                                 ),
                                 true

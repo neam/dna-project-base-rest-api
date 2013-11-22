@@ -29,8 +29,8 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->slug_en); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_en')); ?>:</b>
-<?php echo CHtml::encode($model->question_en); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_question')); ?>:</b>
+<?php echo CHtml::encode($model->_question); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('source_node_id')); ?>:</b>
@@ -44,6 +44,10 @@ $this->breadcrumbs[] = $model->id;
 <?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>:</b>
+<?php echo CHtml::encode($model->owner_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
@@ -76,34 +80,6 @@ $this->breadcrumbs[] = $model->id;
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_de')); ?>:</b>
 <?php echo CHtml::encode($model->slug_de); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_es')); ?>:</b>
-<?php echo CHtml::encode($model->question_es); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_fa')); ?>:</b>
-<?php echo CHtml::encode($model->question_fa); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_hi')); ?>:</b>
-<?php echo CHtml::encode($model->question_hi); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_pt')); ?>:</b>
-<?php echo CHtml::encode($model->question_pt); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_sv')); ?>:</b>
-<?php echo CHtml::encode($model->question_sv); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_cn')); ?>:</b>
-<?php echo CHtml::encode($model->question_cn); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_de')); ?>:</b>
-<?php echo CHtml::encode($model->question_de); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('exam_question_qa_state_id_en')); ?>:</b>
@@ -206,13 +182,13 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'question_en',
+                        'name' => '_question',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'question_en',
+                                    'attribute' => '_question',
                                     'url' => $this->createUrl('/examQuestion/editableSaver'),
                                 ),
                                 true
@@ -254,6 +230,17 @@ $this->breadcrumbs[] = $model->id;
                                 ),
                                 true
                             )
+                    ),
+                    array(
+                        'name' => 'owner_id',
+                        'value' => ($model->owner !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
+                                    array('//users/view', 'id' => $model->owner->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//users/update', 'id' => $model->owner->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                     array(
                         'name' => 'node_id',
@@ -352,97 +339,6 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_de',
-                                    'url' => $this->createUrl('/examQuestion/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_es',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_es',
-                                    'url' => $this->createUrl('/examQuestion/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_fa',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_fa',
-                                    'url' => $this->createUrl('/examQuestion/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_hi',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_hi',
-                                    'url' => $this->createUrl('/examQuestion/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_pt',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_pt',
-                                    'url' => $this->createUrl('/examQuestion/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_sv',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_sv',
-                                    'url' => $this->createUrl('/examQuestion/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_cn',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_cn',
-                                    'url' => $this->createUrl('/examQuestion/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_de',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_de',
                                     'url' => $this->createUrl('/examQuestion/editableSaver'),
                                 ),
                                 true
