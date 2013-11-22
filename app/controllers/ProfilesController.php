@@ -146,22 +146,6 @@ class ProfilesController extends Controller
 
     }
 
-    /**
-     * Toggles the can_translate_* attribute.
-     * @param string $attribute the language attribute.
-     */
-    public function actionToggleCanTranslate($attribute)
-    {
-        $model = $this->loadModel(user()->id);
-
-        /** @var Profiles $model */
-        if ($model->canTranslate($attribute)) {
-            $model->setCanTranslate($attribute, false); // set to cannot translate
-        } else {
-            $model->setCanTranslate($attribute); // set to can translate
-        }
-    }
-
     public function actionEditableSaver()
     {
         Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
