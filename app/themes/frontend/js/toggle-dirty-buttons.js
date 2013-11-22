@@ -7,7 +7,7 @@
      * Hides the buttons.
      */
     function disableButtons() {
-        $buttons.attr('disabled','');
+        $buttons.attr('disabled', '');
     }
 
     /**
