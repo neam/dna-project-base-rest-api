@@ -243,7 +243,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/chapter/editableSaver'),
                     //'placement' => 'right',
@@ -262,8 +262,8 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
                 'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            #'about_en',
-            #'teachers_guide_en',
+            #'_about',
+            #'_teachers_guide',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
@@ -282,65 +282,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/chapter/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -398,13 +347,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'chapter_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
@@ -445,13 +387,6 @@ $this->widget('TbGridView',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
-            #'teachers_guide_es',
-            #'teachers_guide_fa',
-            #'teachers_guide_hi',
-            #'teachers_guide_pt',
-            #'teachers_guide_sv',
-            #'teachers_guide_cn',
-            #'teachers_guide_de',
             */
             array(
                 'class' => 'TbButtonColumn',

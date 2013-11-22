@@ -21,8 +21,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'title_en'); ?>
-        <?php echo $form->textField($model, 'title_en', array('size' => 60, 'maxlength' => 255)); ?>
+        <?php echo $form->label($model, '_title'); ?>
+        <?php echo $form->textField($model, '_title', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
     <div class="row">
@@ -36,13 +36,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'about_en'); ?>
-        <?php echo $form->textArea($model, 'about_en', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->label($model, '_about'); ?>
+        <?php echo $form->textArea($model, '_about', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'teachers_guide_en'); ?>
-        <?php echo $form->textArea($model, 'teachers_guide_en', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->label($model, '_teachers_guide'); ?>
+        <?php echo $form->textArea($model, '_teachers_guide', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row">
@@ -56,43 +56,13 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'owner_id'); ?>
+        <?php echo $form->textField($model, 'owner_id'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'node_id'); ?>
         <?php echo $form->textField($model, 'node_id', array('size' => 20, 'maxlength' => 20)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_es'); ?>
-        <?php echo $form->textField($model, 'title_es', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_fa'); ?>
-        <?php echo $form->textField($model, 'title_fa', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_hi'); ?>
-        <?php echo $form->textField($model, 'title_hi', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_pt'); ?>
-        <?php echo $form->textField($model, 'title_pt', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_sv'); ?>
-        <?php echo $form->textField($model, 'title_sv', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_cn'); ?>
-        <?php echo $form->textField($model, 'title_cn', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_de'); ?>
-        <?php echo $form->textField($model, 'title_de', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
     <div class="row">
@@ -128,41 +98,6 @@
     <div class="row">
         <?php echo $form->label($model, 'slug_de'); ?>
         <?php echo $form->textField($model, 'slug_de', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'about_es'); ?>
-        <?php echo $form->textArea($model, 'about_es', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'about_fa'); ?>
-        <?php echo $form->textArea($model, 'about_fa', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'about_hi'); ?>
-        <?php echo $form->textArea($model, 'about_hi', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'about_pt'); ?>
-        <?php echo $form->textArea($model, 'about_pt', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'about_sv'); ?>
-        <?php echo $form->textArea($model, 'about_sv', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'about_cn'); ?>
-        <?php echo $form->textArea($model, 'about_cn', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'about_de'); ?>
-        <?php echo $form->textArea($model, 'about_de', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row">
@@ -203,41 +138,6 @@
     <div class="row">
         <?php echo $form->label($model, 'chapter_qa_state_id_de'); ?>
         <?php echo $form->textField($model, 'chapter_qa_state_id_de', array('size' => 20, 'maxlength' => 20)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'teachers_guide_es'); ?>
-        <?php echo $form->textArea($model, 'teachers_guide_es', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'teachers_guide_fa'); ?>
-        <?php echo $form->textArea($model, 'teachers_guide_fa', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'teachers_guide_hi'); ?>
-        <?php echo $form->textArea($model, 'teachers_guide_hi', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'teachers_guide_pt'); ?>
-        <?php echo $form->textArea($model, 'teachers_guide_pt', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'teachers_guide_sv'); ?>
-        <?php echo $form->textArea($model, 'teachers_guide_sv', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'teachers_guide_cn'); ?>
-        <?php echo $form->textArea($model, 'teachers_guide_cn', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'teachers_guide_de'); ?>
-        <?php echo $form->textArea($model, 'teachers_guide_de', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
 

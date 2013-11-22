@@ -50,29 +50,15 @@
             $this->endClip();
             ?>
 
-            <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
+            <?php echo $form->textFieldRow($model, '_title', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'ordinal'); ?>
 
-            <?php echo $form->textFieldRow($model, 'menu_label_en', array('maxlength' => 255)); ?>
+            <?php echo $form->textFieldRow($model, '_menu_label', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_fa', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_hi', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_pt', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_es', array('maxlength' => 255)); ?>
 
@@ -87,20 +73,6 @@
             <?php echo $form->textFieldRow($model, 'slug_cn', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_de', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'menu_label_es', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'menu_label_fa', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'menu_label_hi', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'menu_label_pt', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'menu_label_sv', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'menu_label_cn', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'menu_label_de', array('maxlength' => 255)); ?>
         </div>
     </div>
     <!-- main inputs -->

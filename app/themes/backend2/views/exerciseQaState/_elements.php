@@ -52,6 +52,8 @@
             <?php echo $form->textFieldRow($model, 'thumbnail_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'materials_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'draft_saved'); ?>
         </div>
     </div>
     <!-- main inputs -->

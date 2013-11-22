@@ -64,6 +64,12 @@
             <?php echo $form->textFieldRow($model, 'snapshots_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'credits_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'draft_saved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'videos_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'videos_proofed'); ?>
         </div>
     </div>
     <!-- main inputs -->

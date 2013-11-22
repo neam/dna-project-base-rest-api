@@ -52,11 +52,11 @@
             $this->endClip();
             ?>
 
-            <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
+            <?php echo $form->textFieldRow($model, '_title', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textAreaRow($model, 'about_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+            <?php echo $form->textAreaRow($model, '_about', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
             <?php
             $input = $this->widget(
@@ -154,21 +154,9 @@
 
             <?php echo $form->textFieldRow($model, 'link', array('maxlength' => 255)); ?>
 
+            <?php echo $form->textFieldRow($model, 'owner_id'); ?>
+
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_fa', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_hi', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_pt', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_es', array('maxlength' => 255)); ?>
 
@@ -183,20 +171,6 @@
             <?php echo $form->textFieldRow($model, 'slug_cn', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_de', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textAreaRow($model, 'about_es', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-            <?php echo $form->textAreaRow($model, 'about_fa', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-            <?php echo $form->textAreaRow($model, 'about_hi', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-            <?php echo $form->textAreaRow($model, 'about_pt', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-            <?php echo $form->textAreaRow($model, 'about_sv', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-            <?php echo $form->textAreaRow($model, 'about_cn', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-
-            <?php echo $form->textAreaRow($model, 'about_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
             <?php echo $form->textFieldRow($model, 'data_source_qa_state_id_en', array('maxlength' => 20)); ?>
 

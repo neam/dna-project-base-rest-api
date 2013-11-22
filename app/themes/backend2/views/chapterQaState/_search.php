@@ -165,6 +165,21 @@
         <?php echo $form->checkBox($model, 'credits_proofed'); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->label($model, 'draft_saved'); ?>
+        <?php echo $form->checkBox($model, 'draft_saved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'videos_approved'); ?>
+        <?php echo $form->checkBox($model, 'videos_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'videos_proofed'); ?>
+        <?php echo $form->checkBox($model, 'videos_proofed'); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>

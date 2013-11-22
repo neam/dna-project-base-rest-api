@@ -89,6 +89,7 @@ class DataModel
         return array_merge(array(
             "Node" => "node",
             "EzcExecution" => "ezc_execution",
+            "Users" => "users",
         ), self::qaStateModels());
 
     }

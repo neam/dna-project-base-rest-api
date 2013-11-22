@@ -40,6 +40,8 @@
             <?php echo $form->textFieldRow($model, 'question_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'source_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'draft_saved'); ?>
         </div>
     </div>
     <!-- main inputs -->

@@ -21,8 +21,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'markup_en'); ?>
-        <?php echo $form->textArea($model, 'markup_en', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->label($model, '_markup'); ?>
+        <?php echo $form->textArea($model, '_markup', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row">
@@ -36,43 +36,18 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'owner_id'); ?>
+        <?php echo $form->textField($model, 'owner_id'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'node_id'); ?>
         <?php echo $form->textField($model, 'node_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'markup_es'); ?>
-        <?php echo $form->textArea($model, 'markup_es', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'markup_fa'); ?>
-        <?php echo $form->textArea($model, 'markup_fa', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'markup_hi'); ?>
-        <?php echo $form->textArea($model, 'markup_hi', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'markup_pt'); ?>
-        <?php echo $form->textArea($model, 'markup_pt', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'markup_sv'); ?>
-        <?php echo $form->textArea($model, 'markup_sv', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'markup_cn'); ?>
-        <?php echo $form->textArea($model, 'markup_cn', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'markup_de'); ?>
-        <?php echo $form->textArea($model, 'markup_de', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->label($model, 'html_chunk_qa_state_id'); ?>
+        <?php echo $form->textField($model, 'html_chunk_qa_state_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
 

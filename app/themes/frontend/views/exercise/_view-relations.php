@@ -190,21 +190,21 @@ echo '</h3>' ?>
 </ul>
 
 
-<?php echo '<h3>' . Yii::t('model', 'relation.ParentChapters') . '</h3>' ?>
+<?php echo '<h3>' . Yii::t('model', 'relation.Materials') . '</h3>' ?>
 <ul>
 
     <?php
-    $records = $model->parentChapters(array('limit' => 250, 'scopes' => ''));
+    $records = $model->materials(array('limit' => 250, 'scopes' => ''));
     if (is_array($records)) {
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
                 '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
-                array('//chapter/view', 'id' => $relatedModel->id)
+                array('//videoFile/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
                 ' <i class="icon icon-pencil"></i>',
-                array('//chapter/update', 'id' => $relatedModel->id)
+                array('//videoFile/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }

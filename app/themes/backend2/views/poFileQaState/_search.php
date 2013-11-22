@@ -95,6 +95,31 @@
         <?php echo $form->checkBox($model, 'file_proofed'); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->label($model, 'draft_saved'); ?>
+        <?php echo $form->checkBox($model, 'draft_saved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'about_approved'); ?>
+        <?php echo $form->checkBox($model, 'about_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'original_media_id_approved'); ?>
+        <?php echo $form->checkBox($model, 'original_media_id_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'about_proofed'); ?>
+        <?php echo $form->checkBox($model, 'about_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'original_media_id_proofed'); ?>
+        <?php echo $form->checkBox($model, 'original_media_id_proofed'); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>

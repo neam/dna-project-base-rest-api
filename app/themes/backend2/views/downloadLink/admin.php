@@ -76,7 +76,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/downloadLink/editableSaver'),
                     //'placement' => 'right',
@@ -104,66 +104,20 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'name' => 'node_id',
-                'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_es',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
+                'name' => 'node_id',
+                'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_fa',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_hi',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_pt',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_sv',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_cn',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_de',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
+                'name' => 'download_link_qa_state_id',
+                'value' => 'CHtml::value($data, \'downloadLinkQaState.itemLabel\')',
+                'filter' => '',//CHtml::listData(DownloadLinkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             */
 

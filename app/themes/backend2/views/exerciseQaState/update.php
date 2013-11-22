@@ -72,7 +72,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
@@ -88,13 +88,13 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'question_en',
+                'name' => '_question',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            #'description_en',
+            #'_description',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
@@ -123,65 +123,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -239,69 +188,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'description_es',
-            #'description_fa',
-            #'description_hi',
-            #'description_pt',
-            #'description_sv',
-            #'description_cn',
-            #'description_de',
             array(
                     'name' => 'exercise_qa_state_id_es',
                     'value' => 'CHtml::value($data, \'exerciseQaStateIdEs.itemLabel\')',
@@ -392,7 +278,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
@@ -408,13 +294,13 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'question_en',
+                'name' => '_question',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            #'description_en',
+            #'_description',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
@@ -443,65 +329,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -559,69 +394,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'description_es',
-            #'description_fa',
-            #'description_hi',
-            #'description_pt',
-            #'description_sv',
-            #'description_cn',
-            #'description_de',
             array(
                     'name' => 'exercise_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'exerciseQaStateIdEn.itemLabel\')',
@@ -712,7 +484,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
@@ -728,13 +500,13 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'question_en',
+                'name' => '_question',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            #'description_en',
+            #'_description',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
@@ -763,65 +535,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -879,69 +600,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'description_es',
-            #'description_fa',
-            #'description_hi',
-            #'description_pt',
-            #'description_sv',
-            #'description_cn',
-            #'description_de',
             array(
                     'name' => 'exercise_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'exerciseQaStateIdEn.itemLabel\')',
@@ -1032,7 +690,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
@@ -1048,13 +706,13 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'question_en',
+                'name' => '_question',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            #'description_en',
+            #'_description',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
@@ -1083,65 +741,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -1199,69 +806,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'description_es',
-            #'description_fa',
-            #'description_hi',
-            #'description_pt',
-            #'description_sv',
-            #'description_cn',
-            #'description_de',
             array(
                     'name' => 'exercise_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'exerciseQaStateIdEn.itemLabel\')',
@@ -1352,7 +896,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
@@ -1368,13 +912,13 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'question_en',
+                'name' => '_question',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            #'description_en',
+            #'_description',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
@@ -1403,65 +947,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -1519,69 +1012,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'description_es',
-            #'description_fa',
-            #'description_hi',
-            #'description_pt',
-            #'description_sv',
-            #'description_cn',
-            #'description_de',
             array(
                     'name' => 'exercise_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'exerciseQaStateIdEn.itemLabel\')',
@@ -1672,7 +1102,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
@@ -1688,13 +1118,13 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'question_en',
+                'name' => '_question',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            #'description_en',
+            #'_description',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
@@ -1723,65 +1153,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -1839,69 +1218,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'description_es',
-            #'description_fa',
-            #'description_hi',
-            #'description_pt',
-            #'description_sv',
-            #'description_cn',
-            #'description_de',
             array(
                     'name' => 'exercise_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'exerciseQaStateIdEn.itemLabel\')',
@@ -1992,7 +1308,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
@@ -2008,13 +1324,13 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'question_en',
+                'name' => '_question',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            #'description_en',
+            #'_description',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
@@ -2043,65 +1359,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -2159,69 +1424,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'description_es',
-            #'description_fa',
-            #'description_hi',
-            #'description_pt',
-            #'description_sv',
-            #'description_cn',
-            #'description_de',
             array(
                     'name' => 'exercise_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'exerciseQaStateIdEn.itemLabel\')',
@@ -2312,7 +1514,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
@@ -2328,13 +1530,13 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'question_en',
+                'name' => '_question',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            #'description_en',
+            #'_description',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
@@ -2363,65 +1565,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -2479,69 +1630,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'description_es',
-            #'description_fa',
-            #'description_hi',
-            #'description_pt',
-            #'description_sv',
-            #'description_cn',
-            #'description_de',
             array(
                     'name' => 'exercise_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'exerciseQaStateIdEn.itemLabel\')',

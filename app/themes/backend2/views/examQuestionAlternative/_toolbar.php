@@ -81,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'outEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'outNodes - Node', 'url' => array('//node/admin')), array('label' => 'inEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'inNodes - Node', 'url' => array('//node/admin')), array('label' => 'examQuestion - ExamQuestion', 'url' => array('//examQuestion/admin')), array('label' => 'node - Node', 'url' => array('//node/admin'))
+                        'items' => array(array('label' => 'outEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'outNodes - Node', 'url' => array('//node/admin')), array('label' => 'inEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'inNodes - Node', 'url' => array('//node/admin')), array('label' => 'owner - Users', 'url' => array('//users/admin')), array('label' => 'examQuestion - ExamQuestion', 'url' => array('//examQuestion/admin')), array('label' => 'node - Node', 'url' => array('//node/admin'))
                         )
                     ),
                 ),

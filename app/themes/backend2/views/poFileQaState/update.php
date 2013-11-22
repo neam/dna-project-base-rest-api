@@ -107,6 +107,11 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
@@ -269,6 +274,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/poFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -435,6 +445,11 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
@@ -597,6 +612,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/poFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -763,6 +783,11 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
@@ -925,6 +950,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/poFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -1091,6 +1121,11 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
@@ -1253,6 +1288,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/poFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',

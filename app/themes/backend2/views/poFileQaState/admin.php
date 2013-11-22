@@ -198,6 +198,46 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'draft_saved',
+                'editable' => array(
+                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'about_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'original_media_id_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'about_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'original_media_id_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             */
 
             array(

@@ -103,6 +103,8 @@
             $this->endClip();
             ?>
 
+            <?php echo $form->textFieldRow($model, 'owner_id'); ?>
+
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 
             <?php

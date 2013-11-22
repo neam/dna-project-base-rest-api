@@ -36,6 +36,16 @@
             <?php echo $form->textFieldRow($model, 'title_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'file_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'draft_saved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'about_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'original_media_id_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'about_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'original_media_id_proofed'); ?>
         </div>
     </div>
     <!-- main inputs -->

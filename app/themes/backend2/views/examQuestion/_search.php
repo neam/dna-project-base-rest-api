@@ -26,8 +26,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'question_en'); ?>
-        <?php echo $form->textArea($model, 'question_en', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->label($model, '_question'); ?>
+        <?php echo $form->textArea($model, '_question', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row">
@@ -43,6 +43,11 @@
     <div class="row">
         <?php echo $form->label($model, 'modified'); ?>
         <?php echo $form->textField($model, 'modified'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'owner_id'); ?>
+        <?php echo $form->textField($model, 'owner_id'); ?>
     </div>
 
     <div class="row">
@@ -83,41 +88,6 @@
     <div class="row">
         <?php echo $form->label($model, 'slug_de'); ?>
         <?php echo $form->textField($model, 'slug_de', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'question_es'); ?>
-        <?php echo $form->textArea($model, 'question_es', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'question_fa'); ?>
-        <?php echo $form->textArea($model, 'question_fa', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'question_hi'); ?>
-        <?php echo $form->textArea($model, 'question_hi', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'question_pt'); ?>
-        <?php echo $form->textArea($model, 'question_pt', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'question_sv'); ?>
-        <?php echo $form->textArea($model, 'question_sv', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'question_cn'); ?>
-        <?php echo $form->textArea($model, 'question_cn', array('rows' => 6, 'cols' => 50)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'question_de'); ?>
-        <?php echo $form->textArea($model, 'question_de', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row">

@@ -69,7 +69,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'markup_en',
+            #'_markup',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'correct',
@@ -100,17 +100,15 @@ $this->widget('TbGridView',
                 )
             ),
             array(
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
                 'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            #'markup_es',
-            #'markup_fa',
-            #'markup_hi',
-            #'markup_pt',
-            #'markup_sv',
-            #'markup_cn',
-            #'markup_de',
 
             array(
                 'class' => 'TbButtonColumn',

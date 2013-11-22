@@ -310,6 +310,30 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'draft_saved',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'videos_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'videos_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             */
 
             array(

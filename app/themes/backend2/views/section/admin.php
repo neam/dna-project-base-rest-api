@@ -68,7 +68,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/section/editableSaver'),
                     //'placement' => 'right',
@@ -92,7 +92,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'menu_label_en',
+                'name' => '_menu_label',
                 'editable' => array(
                     'url' => $this->createUrl('/section/editableSaver'),
                     //'placement' => 'right',
@@ -119,62 +119,6 @@ $this->widget('TbGridView',
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
                 'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_es',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_fa',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_hi',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_pt',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_sv',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_cn',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_de',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -227,62 +171,6 @@ $this->widget('TbGridView',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_de',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'menu_label_es',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'menu_label_fa',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'menu_label_hi',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'menu_label_pt',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'menu_label_sv',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'menu_label_cn',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'menu_label_de',
                 'editable' => array(
                     'url' => $this->createUrl('/section/editableSaver'),
                     //'placement' => 'right',

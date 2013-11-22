@@ -262,6 +262,14 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'draft_saved',
+                'editable' => array(
+                    'url' => $this->createUrl('/exerciseQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             */
 
             array(

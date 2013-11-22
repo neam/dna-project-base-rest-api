@@ -54,18 +54,6 @@ $this->widget('TbGridView',
                 'urlExpression' => 'Yii::app()->controller->createUrl("view", array("id" => $data["id"]))'
             ),
             array(
-                'class' => 'TbButtonColumn',
-                'header' => 'Workflows',
-                'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Item.Preview")', 'options' => array('title' => Yii::t('app', 'Preview'))),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Item.Edit")', 'options' => array('title' => Yii::t('app', 'Edit'))),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Item.Remove")', 'options' => array('title' => Yii::t('app', 'Remove'))),
-                ),
-                'viewButtonUrl' => 'Yii::app()->controller->createUrl("preview", array("id" => $data->id))',
-                'updateButtonUrl' => 'Yii::app()->controller->createUrl("continueAuthoring", array("id" => $data->id))',
-                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("remove", array("id" => $data->id))',
-            ),
-            array(
                 'class' => 'TbEditableColumn',
                 'name' => 'id',
                 'editable' => array(
@@ -83,12 +71,12 @@ $this->widget('TbGridView',
             ),
             array(
                 'name' => 'cloned_from_id',
-                'value' => 'CHtml::value($data, \'videofiles.itemLabel\')',
+                'value' => 'CHtml::value($data, \'videoFiles.itemLabel\')',
                 'filter' => '', //CHtml::listData(VideoFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFile/editableSaver'),
                     //'placement' => 'right',
@@ -102,10 +90,36 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            #'_about',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
                 'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'original_media_id',
+                'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'generate_processed_media',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            /*
+            array(
+                'name' => 'processed_media_id_en',
+                'value' => 'CHtml::value($data, \'processedMediaIdEn.itemLabel\')',
+                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            #'_subtitles',
+            array(
+                'name' => 'subtitles_import_media_id',
+                'value' => 'CHtml::value($data, \'subtitlesImportMedia.itemLabel\')',
+                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -123,6 +137,148 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'node_id',
+                'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_es',
+                'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
+                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_fa',
+                'value' => 'CHtml::value($data, \'processedMediaIdFa.itemLabel\')',
+                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_hi',
+                'value' => 'CHtml::value($data, \'processedMediaIdHi.itemLabel\')',
+                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_pt',
+                'value' => 'CHtml::value($data, \'processedMediaIdPt.itemLabel\')',
+                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_sv',
+                'value' => 'CHtml::value($data, \'processedMediaIdSv.itemLabel\')',
+                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_cn',
+                'value' => 'CHtml::value($data, \'processedMediaIdCn.itemLabel\')',
+                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'processed_media_id_de',
+                'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
+                'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_es',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_fa',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_hi',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_pt',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_sv',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_cn',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_de',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'video_file_qa_state_id_en',
+                'value' => 'CHtml::value($data, \'videoFileQaStateIdEn.itemLabel\')',
+                'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'video_file_qa_state_id_es',
+                'value' => 'CHtml::value($data, \'videoFileQaStateIdEs.itemLabel\')',
+                'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'video_file_qa_state_id_fa',
+                'value' => 'CHtml::value($data, \'videoFileQaStateIdFa.itemLabel\')',
+                'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'video_file_qa_state_id_hi',
+                'value' => 'CHtml::value($data, \'videoFileQaStateIdHi.itemLabel\')',
+                'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'video_file_qa_state_id_pt',
+                'value' => 'CHtml::value($data, \'videoFileQaStateIdPt.itemLabel\')',
+                'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'video_file_qa_state_id_sv',
+                'value' => 'CHtml::value($data, \'videoFileQaStateIdSv.itemLabel\')',
+                'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'video_file_qa_state_id_cn',
+                'value' => 'CHtml::value($data, \'videoFileQaStateIdCn.itemLabel\')',
+                'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'video_file_qa_state_id_de',
+                'value' => 'CHtml::value($data, \'videoFileQaStateIdDe.itemLabel\')',
+                'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            */
 
             array(
                 'class' => 'TbButtonColumn',

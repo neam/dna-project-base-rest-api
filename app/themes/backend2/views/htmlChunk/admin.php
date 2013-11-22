@@ -74,7 +74,7 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'htmlChunks.itemLabel\')',
                 'filter' => '', //CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            #'markup_en',
+            #'_markup',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
@@ -92,17 +92,20 @@ $this->widget('TbGridView',
                 )
             ),
             array(
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
                 'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            #'markup_es',
-            #'markup_fa',
-            #'markup_hi',
-            #'markup_pt',
-            #'markup_sv',
-            #'markup_cn',
-            #'markup_de',
+            array(
+                'name' => 'html_chunk_qa_state_id',
+                'value' => 'CHtml::value($data, \'htmlChunkQaState.itemLabel\')',
+                'filter' => '', //CHtml::listData(HtmlChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
 
             array(
                 'class' => 'TbButtonColumn',

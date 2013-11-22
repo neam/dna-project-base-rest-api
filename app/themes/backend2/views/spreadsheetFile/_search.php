@@ -21,8 +21,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'title_en'); ?>
-        <?php echo $form->textField($model, 'title_en', array('size' => 60, 'maxlength' => 255)); ?>
+        <?php echo $form->label($model, '_title'); ?>
+        <?php echo $form->textField($model, '_title', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
     <div class="row">
@@ -56,43 +56,13 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'owner_id'); ?>
+        <?php echo $form->textField($model, 'owner_id'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'node_id'); ?>
         <?php echo $form->textField($model, 'node_id', array('size' => 20, 'maxlength' => 20)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_es'); ?>
-        <?php echo $form->textField($model, 'title_es', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_fa'); ?>
-        <?php echo $form->textField($model, 'title_fa', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_hi'); ?>
-        <?php echo $form->textField($model, 'title_hi', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_pt'); ?>
-        <?php echo $form->textField($model, 'title_pt', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_sv'); ?>
-        <?php echo $form->textField($model, 'title_sv', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_cn'); ?>
-        <?php echo $form->textField($model, 'title_cn', array('size' => 60, 'maxlength' => 255)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_de'); ?>
-        <?php echo $form->textField($model, 'title_de', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
     <div class="row">

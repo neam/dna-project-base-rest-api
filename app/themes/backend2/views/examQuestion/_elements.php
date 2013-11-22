@@ -54,7 +54,7 @@
 
             <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
 
-            <?php echo $form->html5EditorRow($model, 'question_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
+            <?php echo $form->html5EditorRow($model, '_question', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
                 'link' => true,
                 'image' => false,
                 'color' => false,
@@ -62,6 +62,8 @@
             ))); ?>
 
             <?php echo $form->textFieldRow($model, 'source_node_id', array('maxlength' => 20)); ?>
+
+            <?php echo $form->textFieldRow($model, 'owner_id'); ?>
 
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 
@@ -78,55 +80,6 @@
             <?php echo $form->textFieldRow($model, 'slug_cn', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_de', array('maxlength' => 255)); ?>
-
-            <?php echo $form->html5EditorRow($model, 'question_es', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
-                'link' => true,
-                'image' => false,
-                'color' => false,
-                'html' => true,
-            ))); ?>
-
-            <?php echo $form->html5EditorRow($model, 'question_fa', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
-                'link' => true,
-                'image' => false,
-                'color' => false,
-                'html' => true,
-            ))); ?>
-
-            <?php echo $form->html5EditorRow($model, 'question_hi', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
-                'link' => true,
-                'image' => false,
-                'color' => false,
-                'html' => true,
-            ))); ?>
-
-            <?php echo $form->html5EditorRow($model, 'question_pt', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
-                'link' => true,
-                'image' => false,
-                'color' => false,
-                'html' => true,
-            ))); ?>
-
-            <?php echo $form->html5EditorRow($model, 'question_sv', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
-                'link' => true,
-                'image' => false,
-                'color' => false,
-                'html' => true,
-            ))); ?>
-
-            <?php echo $form->html5EditorRow($model, 'question_cn', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
-                'link' => true,
-                'image' => false,
-                'color' => false,
-                'html' => true,
-            ))); ?>
-
-            <?php echo $form->html5EditorRow($model, 'question_de', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
-                'link' => true,
-                'image' => false,
-                'color' => false,
-                'html' => true,
-            ))); ?>
 
             <?php echo $form->textFieldRow($model, 'exam_question_qa_state_id_en', array('maxlength' => 20)); ?>
 

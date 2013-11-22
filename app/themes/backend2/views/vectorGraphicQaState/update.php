@@ -72,7 +72,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                     //'placement' => 'right',
@@ -86,7 +86,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -113,6 +113,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -175,69 +180,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
@@ -363,7 +305,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                     //'placement' => 'right',
@@ -377,7 +319,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -404,6 +346,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -466,69 +413,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
@@ -654,7 +538,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                     //'placement' => 'right',
@@ -668,7 +552,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -695,6 +579,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -757,69 +646,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
@@ -945,7 +771,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                     //'placement' => 'right',
@@ -959,7 +785,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -986,6 +812,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -1048,69 +879,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
@@ -1236,7 +1004,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                     //'placement' => 'right',
@@ -1250,7 +1018,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -1277,6 +1045,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -1339,69 +1112,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
@@ -1527,7 +1237,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                     //'placement' => 'right',
@@ -1541,7 +1251,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -1568,6 +1278,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -1630,69 +1345,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
@@ -1818,7 +1470,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                     //'placement' => 'right',
@@ -1832,7 +1484,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -1859,6 +1511,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -1921,69 +1578,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
@@ -2109,7 +1703,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                     //'placement' => 'right',
@@ -2123,7 +1717,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -2150,6 +1744,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -2212,69 +1811,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/vectorGraphicQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',

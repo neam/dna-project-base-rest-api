@@ -141,7 +141,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -160,8 +160,8 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
                 'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            #'about_en',
-            #'teachers_guide_en',
+            #'_about',
+            #'_teachers_guide',
             /*
             array(
                     'class' => 'TbEditableColumn',
@@ -180,60 +180,9 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -291,13 +240,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'chapter_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
@@ -338,13 +280,6 @@ $this->widget('TbGridView',
                     'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
-            #'teachers_guide_es',
-            #'teachers_guide_fa',
-            #'teachers_guide_hi',
-            #'teachers_guide_pt',
-            #'teachers_guide_sv',
-            #'teachers_guide_cn',
-            #'teachers_guide_de',
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -400,7 +335,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -414,7 +349,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'file_media_id',
                 'value' => 'CHtml::value($data, \'fileMedia.itemLabel\')',
@@ -422,21 +357,6 @@ $this->widget('TbGridView',
             ),
             #'metadata',
             /*
-            array(
-                    'name' => 'data_source_id',
-                    'value' => 'CHtml::value($data, \'dataSource.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataSource::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_id',
-                    'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'vector_graphic_id',
-                    'value' => 'CHtml::value($data, \'vectorGraphic.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VectorGraphic::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'created',
@@ -454,60 +374,9 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -565,13 +434,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'data_chunk_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'dataChunkQaStateIdEn.itemLabel\')',
@@ -667,7 +529,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -681,7 +543,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'logo_media_id',
                 'value' => 'CHtml::value($data, \'logoMedia.itemLabel\')',
@@ -718,60 +580,9 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -829,13 +640,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'data_source_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'dataSourceQaStateIdEn.itemLabel\')',
@@ -931,7 +735,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -959,61 +763,15 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_es',
-                'editable' => array(
-                    'url' => $this->createUrl('/node/editableSaver'),
-                    //'placement' => 'right',
-                )
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
+                    'name' => 'download_link_qa_state_id',
+                    'value' => 'CHtml::value($data, \'downloadLinkQaState.itemLabel\')',
+                    'filter' => '',//CHtml::listData(DownloadLinkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -1228,7 +986,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'question_en',
+            #'_question',
             array(
                 'name' => 'source_node_id',
                 'value' => 'CHtml::value($data, \'sourceNode.itemLabel\')',
@@ -1251,6 +1009,11 @@ $this->widget('TbGridView',
                 )
             ),
             /*
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_es',
@@ -1307,13 +1070,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            #'question_es',
-            #'question_fa',
-            #'question_hi',
-            #'question_pt',
-            #'question_sv',
-            #'question_cn',
-            #'question_de',
             array(
                     'name' => 'exam_question_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'examQuestionQaStateIdEn.itemLabel\')',
@@ -1415,7 +1171,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'question_en',
+            #'_question',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
@@ -1433,11 +1189,16 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'name' => 'node_id',
-                'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
+            array(
+                    'name' => 'node_id',
+                    'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_es',
@@ -1494,13 +1255,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            #'question_es',
-            #'question_fa',
-            #'question_hi',
-            #'question_pt',
-            #'question_sv',
-            #'question_cn',
-            #'question_de',
             array(
                     'name' => 'exam_question_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'examQuestionQaStateIdEn.itemLabel\')',
@@ -1589,7 +1343,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'markup_en',
+            #'_markup',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'correct',
@@ -1619,15 +1373,11 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'markup_es',
-            /*
-            #'markup_fa',
-            #'markup_hi',
-            #'markup_pt',
-            #'markup_sv',
-            #'markup_cn',
-            #'markup_de',
-            */
+            array(
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
             array(
                 'class' => 'TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('examQuestionAlternative/view', array('id' => \$data->id))",
@@ -1682,7 +1432,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -1698,13 +1448,13 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'question_en',
+                'name' => '_question',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
-            #'description_en',
+            #'_description',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
@@ -1733,60 +1483,9 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -1844,69 +1543,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'question_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'description_es',
-            #'description_fa',
-            #'description_hi',
-            #'description_pt',
-            #'description_sv',
-            #'description_cn',
-            #'description_de',
             array(
                     'name' => 'exercise_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'exerciseQaStateIdEn.itemLabel\')',
@@ -2000,7 +1636,7 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'htmlChunks.itemLabel\')',
                 'filter' => '', //CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            #'markup_en',
+            #'_markup',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
@@ -2017,20 +1653,169 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'markup_es',
-            #'markup_fa',
-            /*
-            #'markup_hi',
-            #'markup_pt',
-            #'markup_sv',
-            #'markup_cn',
-            #'markup_de',
-            */
+            array(
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'html_chunk_qa_state_id',
+                'value' => 'CHtml::value($data, \'htmlChunkQaState.itemLabel\')',
+                'filter' => '', //CHtml::listData(HtmlChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
             array(
                 'class' => 'TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('htmlChunk/view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('htmlChunk/update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('htmlChunk/delete', array('id' => \$data->id))",
+            ),
+        ),
+    ));
+?>
+
+
+<h2>
+    <?php echo Yii::t('model', 'Pages'); ?>
+    <small>pages</small>
+</h2>
+
+
+<div class="btn-group">
+    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'buttons' => array(
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('page/create', 'Page' => array('node_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+        ),
+    ));
+    ?></div>
+
+<?php
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'pages');
+$this->widget('TbGridView',
+    array(
+        'id' => 'page-grid',
+        'dataProvider' => $relatedSearchModel->search(),
+        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->pages) > 1 ? $relatedSearchModel : null,
+        'pager' => array(
+            'class' => 'TbPager',
+            'displayFirstAndLast' => true,
+        ),
+        'columns' => array(
+            'id',
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/node/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'pages.itemLabel\')',
+                'filter' => '', //CHtml::listData(Page::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => '_title',
+                'editable' => array(
+                    'url' => $this->createUrl('/node/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/node/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            #'_about',
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'created',
+                'editable' => array(
+                    'url' => $this->createUrl('/node/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'modified',
+                'editable' => array(
+                    'url' => $this->createUrl('/node/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            /*
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_es',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fa',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_de',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            */
+            array(
+                'class' => 'TbButtonColumn',
+                'viewButtonUrl' => "Yii::app()->controller->createUrl('page/view', array('id' => \$data->id))",
+                'updateButtonUrl' => "Yii::app()->controller->createUrl('page/update', array('id' => \$data->id))",
+                'deleteButtonUrl' => "Yii::app()->controller->createUrl('page/delete', array('id' => \$data->id))",
             ),
         ),
     ));
@@ -2113,6 +1898,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -2236,7 +2026,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -2260,7 +2050,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'menu_label_en',
+                'name' => '_menu_label',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -2283,62 +2073,6 @@ $this->widget('TbGridView',
                 )
             ),
             /*
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_es',
@@ -2390,62 +2124,6 @@ $this->widget('TbGridView',
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'menu_label_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'menu_label_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'menu_label_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'menu_label_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'menu_label_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'menu_label_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'menu_label_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
@@ -2616,7 +2294,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -2630,7 +2308,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -2667,60 +2345,9 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -2756,6 +2383,46 @@ $this->widget('TbGridView',
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_en',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_es',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_fa',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_hi',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_pt',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_sv',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_cn',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_de',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -2812,53 +2479,6 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
                     )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
-            array(
-                    'name' => 'slideshow_file_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -2913,9 +2533,16 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'snapshots.itemLabel\')',
                 'filter' => '', //CHtml::listData(Snapshot::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
+            #'vizabi_state',
+            #'embed_override',
+            array(
+                'name' => 'tool_id',
+                'value' => 'CHtml::value($data, \'tool.itemLabel\')',
+                'filter' => '', //CHtml::listData(Tool::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -2929,21 +2556,12 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'link',
-                'editable' => array(
-                    'url' => $this->createUrl('/node/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            #'embed_override',
             /*
+            #'_about',
             array(
-                    'name' => 'tool_id',
-                    'value' => 'CHtml::value($data, \'tool.itemLabel\')',
-                    'filter' => '',//CHtml::listData(Tool::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'name' => 'thumbnail_media_id',
+                    'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -2962,60 +2580,9 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -3073,13 +2640,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'snapshot_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'snapshotQaStateIdEn.itemLabel\')',
@@ -3175,7 +2735,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -3222,60 +2782,9 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -3367,7 +2876,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -3381,7 +2890,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -3418,60 +2927,9 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -3564,13 +3022,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'text_doc_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'textDocQaStateIdEn.itemLabel\')',
@@ -3666,7 +3117,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -3680,7 +3131,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             #'embed_template',
             array(
                 'name' => 'po_file_id',
@@ -3703,6 +3154,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -3760,69 +3216,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'tool_qa_state_id',
                     'value' => 'CHtml::value($data, \'toolQaState.itemLabel\')',
@@ -3883,7 +3276,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -3897,7 +3290,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -3924,6 +3317,11 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -3981,69 +3379,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
@@ -4174,7 +3509,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/node/editableSaver'),
                     //'placement' => 'right',
@@ -4188,7 +3523,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'thumbnail_media_id',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
@@ -4213,7 +3548,12 @@ $this->widget('TbGridView',
                     'value' => 'CHtml::value($data, \'processedMediaIdEn.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
-            #'subtitles_en',
+            #'_subtitles',
+            array(
+                    'name' => 'subtitles_import_media_id',
+                    'value' => 'CHtml::value($data, \'subtitlesImportMedia.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'created',
@@ -4231,68 +3571,10 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            #'subtitles_es',
-            #'subtitles_fa',
-            #'subtitles_hi',
-            #'subtitles_pt',
-            #'subtitles_sv',
-            #'subtitles_cn',
-            #'subtitles_de',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
@@ -4384,13 +3666,6 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
             array(
                     'name' => 'video_file_qa_state_id_en',
                     'value' => 'CHtml::value($data, \'videoFileQaStateIdEn.itemLabel\')',

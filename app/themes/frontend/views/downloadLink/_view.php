@@ -32,8 +32,16 @@
     <br/>
 
     <?php /*
+    <b><?php echo CHtml::encode($data->getAttributeLabel('owner_id')); ?>:</b>
+    <?php echo CHtml::encode($data->owner_id); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('node_id')); ?>:</b>
     <?php echo CHtml::encode($data->node_id); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('download_link_qa_state_id')); ?>:</b>
+    <?php echo CHtml::encode($data->download_link_qa_state_id); ?>
     <br />
 
     */

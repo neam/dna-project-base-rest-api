@@ -5,7 +5,7 @@
 
             <?php echo $form->textFieldRow($model, 'version'); ?>
 
-            <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
+            <?php echo $form->textFieldRow($model, '_title', array('maxlength' => 255)); ?>
 
             <?php
             $input = $this->widget(
@@ -54,21 +54,11 @@
             $this->endClip();
             ?>
 
+            <?php echo $form->textFieldRow($model, 'owner_id'); ?>
+
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 
-            <?php echo $form->textFieldRow($model, 'title_es', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_fa', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_hi', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_pt', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_sv', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_cn', array('maxlength' => 255)); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_de', array('maxlength' => 255)); ?>
+            <?php echo $form->textFieldRow($model, 'download_link_qa_state_id', array('maxlength' => 20)); ?>
         </div>
     </div>
     <!-- main inputs -->

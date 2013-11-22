@@ -82,7 +82,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'question_en',
+            #'_question',
             array(
                 'name' => 'source_node_id',
                 'value' => 'CHtml::value($data, \'sourceNode.itemLabel\')',
@@ -105,11 +105,16 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'name' => 'node_id',
-                'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
+            array(
+                'name' => 'node_id',
+                'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_es',
@@ -166,13 +171,6 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'question_es',
-            #'question_fa',
-            #'question_hi',
-            #'question_pt',
-            #'question_sv',
-            #'question_cn',
-            #'question_de',
             array(
                 'name' => 'exam_question_qa_state_id_en',
                 'value' => 'CHtml::value($data, \'examQuestionQaStateIdEn.itemLabel\')',

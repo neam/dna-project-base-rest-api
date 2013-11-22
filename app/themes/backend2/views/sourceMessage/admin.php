@@ -69,7 +69,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            'message',
+            #'message',
 
             array(
                 'class' => 'TbButtonColumn',

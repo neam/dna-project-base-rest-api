@@ -81,7 +81,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'clonedFrom - Page', 'url' => array('//page/admin')), array('label' => 'pages - Page', 'url' => array('//page/admin')), array('label' => 'sections - Section', 'url' => array('//section/admin'))
+                        'items' => array(array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'clonedFrom - Page', 'url' => array('//page/admin')), array('label' => 'pages - Page', 'url' => array('//page/admin')), array('label' => 'owner - Users', 'url' => array('//users/admin')), array('label' => 'sections - Section', 'url' => array('//section/admin'))
                         )
                     ),
                 ),

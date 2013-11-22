@@ -72,7 +72,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -86,7 +86,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -123,65 +123,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -217,6 +166,41 @@ $this->widget('TbGridView',
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_es',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_fa',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_hi',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_pt',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_sv',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_cn',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_de',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -273,48 +257,6 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
-            array(
-                    'name' => 'slideshow_file_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -371,7 +313,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -385,7 +327,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -422,65 +364,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -516,6 +407,41 @@ $this->widget('TbGridView',
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_en',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_es',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_fa',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_hi',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_pt',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_sv',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_de',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -572,48 +498,6 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
-            array(
-                    'name' => 'slideshow_file_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -670,7 +554,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -684,7 +568,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -721,65 +605,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -815,6 +648,41 @@ $this->widget('TbGridView',
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_en',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_es',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_fa',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_hi',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_pt',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_sv',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_cn',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -871,48 +739,6 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
-            array(
-                    'name' => 'slideshow_file_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -969,7 +795,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -983,7 +809,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -1020,65 +846,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -1114,6 +889,41 @@ $this->widget('TbGridView',
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_en',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_fa',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_hi',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_pt',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_sv',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_cn',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_de',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -1170,48 +980,6 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
-            array(
-                    'name' => 'slideshow_file_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -1268,7 +1036,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -1282,7 +1050,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -1319,65 +1087,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -1413,6 +1130,41 @@ $this->widget('TbGridView',
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_en',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_es',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_hi',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_pt',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_sv',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_cn',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_de',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -1469,48 +1221,6 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
-            array(
-                    'name' => 'slideshow_file_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -1567,7 +1277,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -1581,7 +1291,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -1618,65 +1328,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -1712,6 +1371,41 @@ $this->widget('TbGridView',
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_en',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_es',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_fa',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_pt',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_sv',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_cn',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_de',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -1768,48 +1462,6 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
-            array(
-                    'name' => 'slideshow_file_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -1866,7 +1518,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -1880,7 +1532,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -1917,65 +1569,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -2011,6 +1612,41 @@ $this->widget('TbGridView',
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_en',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_es',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_fa',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_hi',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_sv',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_cn',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_de',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -2067,48 +1703,6 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
-            array(
-                    'name' => 'slideshow_file_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -2165,7 +1759,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_en',
+                'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -2179,7 +1773,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'about_en',
+            #'_about',
             array(
                 'name' => 'original_media_id',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
@@ -2216,65 +1810,14 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_hi',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_pt',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_sv',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'title_de',
-                    'editable' => array(
-                        'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
-                        //'placement' => 'right',
-                    )
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -2310,6 +1853,41 @@ $this->widget('TbGridView',
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_en',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_es',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_fa',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_hi',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_pt',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_cn',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'slideshow_file_qa_state_id_de',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -2366,48 +1944,6 @@ $this->widget('TbGridView',
                         'url' => $this->createUrl('/slideshowFileQaState/editableSaver'),
                         //'placement' => 'right',
                     )
-                ),
-            #'about_es',
-            #'about_fa',
-            #'about_hi',
-            #'about_pt',
-            #'about_sv',
-            #'about_cn',
-            #'about_de',
-            array(
-                    'name' => 'slideshow_file_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
