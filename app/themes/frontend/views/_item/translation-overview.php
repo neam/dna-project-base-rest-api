@@ -48,7 +48,7 @@ $this->breadcrumbs[] = $actionCaption;
                         "type" => $this->action->id == $action ? "inverse" : null,
                         "size" => "",
                         "icon" => "icon-" . $options['icon'] . ($this->action->id == $action ? " icon-white" : null),
-                        "url" => array($action, "id" => $model->{$model->tableSchema->primaryKey}, 'step' => $step,'translateInto' => $language),
+                        "url" => array($action, "id" => $model->{$model->tableSchema->primaryKey}, 'step' => $step, 'translateInto' => $language),
                         "htmlOptions" => array(
                             "class" => "span12",
                         ),
@@ -87,7 +87,8 @@ $this->breadcrumbs[] = $actionCaption;
         ?>
 
         <div class="alert alert-info">
-            <?php print Yii::t('app', 'Hint');?>: <?php print Yii::t('app', 'Above you see the current translation progress for the current item. Choose language to help translate into above.');?>
+            <?php print Yii::t('app', 'Hint'); ?>
+            : <?php print Yii::t('app', 'Above you see the current translation progress for the current item. Choose language to help translate into above.'); ?>
         </div>
 
     </div>

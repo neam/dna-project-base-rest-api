@@ -17,11 +17,11 @@ $this->breadcrumbs[] = $stepCaption;
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)); ?>
 
-<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm',array(
-    'id'=>'item-form',
-    'enableAjaxValidation'=>true,
-    'enableClientValidation'=>true,
-    'type'=>'horizontal',
+<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    'id' => 'item-form',
+    'enableAjaxValidation' => true,
+    'enableClientValidation' => true,
+    'type' => 'horizontal',
 )); ?>
 
 <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>

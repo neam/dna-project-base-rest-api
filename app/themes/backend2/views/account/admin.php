@@ -22,212 +22,17 @@ Yii::app()->clientScript->registerScript('search', "
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
-<h1>
+    <h1>
 
-    <?php echo Yii::t('model', 'Accounts'); ?>
-    <small><?php echo Yii::t('crud', 'Manage'); ?></small>
+        <?php echo Yii::t('model', 'Accounts'); ?>
+        <small><?php echo Yii::t('crud', 'Manage'); ?></small>
 
-</h1>
+    </h1>
 
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <?php Yii::beginProfile('Account.view.grid'); ?>
 
-<?php
-$roleColumns = array(
-    array(
-        'class' => 'TbToggleColumn',
-        'displayText' => false,
-        'name' => 'Developer',
-        'value' => function ($data) {
-                return Yii::app()->authManager->checkAccess('Developer', $data->id);
-            },
-        'filter' => true,
-        'toggleAction' => 'account/toggleRole',
-    ),
-    array(
-        'class' => 'TbToggleColumn',
-        'displayText' => false,
-        'name' => 'Super Administrator',
-        'value' => function ($data) {
-                return Yii::app()->authManager->checkAccess('Super Administrator', $data->id);
-            },
-        'filter' => true,
-        'toggleAction' => 'account/toggleRole',
-    ),
-    array(
-        'class' => 'TbToggleColumn',
-        'displayText' => false,
-        'name' => 'Administrator',
-        'value' => function ($data) {
-                return Yii::app()->authManager->checkAccess('Administrator', $data->id);
-            },
-        'filter' => true,
-        'toggleAction' => 'account/toggleRole',
-    ),
-    array(
-        'class' => 'TbToggleColumn',
-        'displayText' => false,
-        'name' => 'Publisher',
-        'value' => function ($data) {
-                return Yii::app()->authManager->checkAccess('Publisher', $data->id);
-            },
-        'filter' => false,
-        'toggleAction' => 'account/toggleRole',
-    ),
-    array(
-        'class' => 'TbToggleColumn',
-        'displayText' => false,
-        'name' => 'Creator',
-        'value' => function ($data) {
-                return Yii::app()->authManager->checkAccess('Creator', $data->id);
-            },
-        'filter' => false,
-        'toggleAction' => 'account/toggleRole',
-    ),
-    array(
-        'class' => 'TbToggleColumn',
-        'displayText' => false,
-        'name' => 'Evaluator',
-        'value' => function ($data) {
-                return Yii::app()->authManager->checkAccess('Evaluator', $data->id);
-            },
-        'filter' => false,
-        'toggleAction' => 'account/toggleRole',
-    ),
-    array(
-        'class' => 'TbToggleColumn',
-        'displayText' => false,
-        'name' => 'Approver',
-        'value' => function ($data) {
-                return Yii::app()->authManager->checkAccess('Approver', $data->id);
-            },
-        'filter' => false,
-        'toggleAction' => 'account/toggleRole',
-    ),
-    array(
-        'class' => 'TbToggleColumn',
-        'displayText' => false,
-        'name' => 'Proofreader',
-        'value' => function ($data) {
-                return Yii::app()->authManager->checkAccess('Proofreader', $data->id);
-            },
-        'filter' => false,
-        'toggleAction' => 'account/toggleRole',
-    ),
-    array(
-        'class' => 'TbToggleColumn',
-        'displayText' => false,
-        'name' => 'Translator',
-        'value' => function ($data) {
-                return Yii::app()->authManager->checkAccess('Translator', $data->id);
-            },
-        'filter' => false,
-        'toggleAction' => 'account/toggleRole',
-    ),
-);
-
-$columns = array_merge(array(
-    /*
-    array(
-        'class' => 'CLinkColumn',
-        'header' => '',
-        'labelExpression' => '$data->itemLabel',
-        'urlExpression' => 'Yii::app()->controller->createUrl("view", array("id" => $data["id"]))'
-    ),
-    array(
-        'class' => 'TbEditableColumn',
-        'name' => 'id',
-        'editable' => array(
-            'url' => $this->createUrl('/account/editableSaver'),
-            //'placement' => 'right',
-        )
-    ),
-    */
-    array(
-        'class' => 'TbEditableColumn',
-        'name' => 'username',
-        'editable' => array(
-            'url' => $this->createUrl('/account/editableSaver'),
-            //'placement' => 'right',
-        )
-    ),
-    /*array(
-        'class' => 'TbEditableColumn',
-        'name' => 'password',
-        'editable' => array(
-            'url' => $this->createUrl('/account/editableSaver'),
-            //'placement' => 'right',
-        )
-    ),*/
-    array(
-        'class' => 'TbEditableColumn',
-        'name' => 'email',
-        'editable' => array(
-            'url' => $this->createUrl('/account/editableSaver'),
-            //'placement' => 'right',
-        )
-    ),
-    /*array(
-        'class' => 'TbEditableColumn',
-        'name' => 'activkey',
-        'editable' => array(
-            'url' => $this->createUrl('/account/editableSaver'),
-            //'placement' => 'right',
-        )
-    ),*/
-    /*
-    array(
-        'class' => 'TbEditableColumn',
-        'name' => 'superuser',
-        'editable' => array(
-            'url' => $this->createUrl('/account/editableSaver'),
-            //'placement' => 'right',
-        )
-    ),
-    */
-    array(
-        'class' => 'TbEditableColumn',
-        'name' => 'status',
-        'editable' => array(
-            'url' => $this->createUrl('/account/editableSaver'),
-            //'placement' => 'right',
-        )
-    )
-), $roleColumns, array(
-
-    array(
-        'class' => 'TbEditableColumn',
-        'name' => 'create_at',
-        'editable' => array(
-            'url' => $this->createUrl('/account/editableSaver'),
-            //'placement' => 'right',
-        )
-    ),
-    /*
-    array(
-        'class' => 'TbEditableColumn',
-        'name' => 'lastvisit_at',
-        'editable' => array(
-            'url' => $this->createUrl('/account/editableSaver'),
-            //'placement' => 'right',
-        )
-    ),
-    */
-
-    array(
-        'class' => 'TbButtonColumn',
-        'buttons' => array(
-            'view' => array('visible' => 'Yii::app()->user->checkAccess("Account.View")'),
-            'update' => array('visible' => 'Yii::app()->user->checkAccess("Account.Update")'),
-            'delete' => array('visible' => 'Yii::app()->user->checkAccess("Account.Delete")'),
-        ),
-        'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
-        'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
-        'deleteButtonUrl' => 'Yii::app()->controller->createUrl("delete", array("id" => $data->id))',
-    ),
-));
-?>
 
 <?php
 $this->widget('TbGridView',
@@ -241,9 +46,101 @@ $this->widget('TbGridView',
             'class' => 'TbPager',
             'displayFirstAndLast' => true,
         ),
-        'columns' => $columns,
+        'columns' => array(
+            array(
+                'class' => 'CLinkColumn',
+                'header' => '',
+                'labelExpression' => '$data->itemLabel',
+                'urlExpression' => 'Yii::app()->controller->createUrl("view", array("id" => $data["id"]))'
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'id',
+                'editable' => array(
+                    'url' => $this->createUrl('/account/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'username',
+                'editable' => array(
+                    'url' => $this->createUrl('/account/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'password',
+                'editable' => array(
+                    'url' => $this->createUrl('/account/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'email',
+                'editable' => array(
+                    'url' => $this->createUrl('/account/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'activkey',
+                'editable' => array(
+                    'url' => $this->createUrl('/account/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'superuser',
+                'editable' => array(
+                    'url' => $this->createUrl('/account/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'status',
+                'editable' => array(
+                    'url' => $this->createUrl('/account/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'create_at',
+                'editable' => array(
+                    'url' => $this->createUrl('/account/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            /*
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'lastvisit_at',
+                'editable' => array(
+                    'url' => $this->createUrl('/account/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            */
+
+            array(
+                'class' => 'TbButtonColumn',
+                'buttons' => array(
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Account.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Account.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Account.Delete")'),
+                ),
+                'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
+                'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
+                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("delete", array("id" => $data->id))',
+            ),
+        )
     )
 );
 ?>
-
 <?php Yii::endProfile('Account.view.grid'); ?>
