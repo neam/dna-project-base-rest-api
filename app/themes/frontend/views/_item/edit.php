@@ -61,17 +61,29 @@ $this->breadcrumbs[] = $stepCaption;
             <div class="span3">
                 <div class="btn-toolbar pull-right">
                     <div class="btn-group">
-                        <?php echo CHtml::submitButton(Yii::t('model','Save changes'),array(
-                            'class'=>'btn btn-primary btn-action',
-                            'name'=>'save-changes',
-                        )); ?>
-                        <?php $this->widget('bootstrap.widgets.TbButton',array(
-                            'htmlOptions'=>array(
-                                'class'=>'btn-action',
-                            ),
-                            'label'=>Yii::t('model','Undo'),
-                            'url'=>app()->request->url,
-                        )); ?>
+                        <?php
+                        switch ($this->action->id . "-" . $step) {
+                            case "translate-subtitles":
+                                $this->widget("bootstrap.widgets.TbButton", array(
+                                    "label" => Yii::t("model", "Load current translations into media player"),
+                                    "url" => Yii::app()->request->url,
+                                    "type" => "primary",
+                                ));
+                                break;
+                            default:
+                                echo CHtml::submitButton(Yii::t('model', 'Save changes'), array(
+                                    'class' => 'btn btn-primary btn-action',
+                                    'name' => 'save-changes',
+                                ));
+                                $this->widget("bootstrap.widgets.TbButton", array(
+                                    'label' => Yii::t('model', 'Reset'),
+                                    'url' => Yii::app()->request->url,
+                                    'htmlOptions' => array(
+                                        'class' => 'btn-action'
+                                    ),
+                                ));
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
