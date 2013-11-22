@@ -64,25 +64,33 @@ trait ItemTrait
         $currentlyTranslatableAttributes = array();
 
         // i18n-attribute-messages
-        foreach ($behaviors['i18n-attribute-messages']['translationAttributes'] as $translationAttribute) {
+        if (isset($behaviors['i18n-attribute-messages'])) {
+            foreach ($behaviors['i18n-attribute-messages']['translationAttributes'] as $translationAttribute) {
 
-            $sourceLanguageContentAttribute = "_" . $translationAttribute;
-            $valid = !is_null($this->$sourceLanguageContentAttribute);
-            if ($valid) {
-                $currentlyTranslatableAttributes[] = $translationAttribute;
+                $sourceLanguageContentAttribute = "_" . $translationAttribute;
+                $valid = !is_null($this->$sourceLanguageContentAttribute);
+                if ($valid) {
+                    $currentlyTranslatableAttributes[] = $translationAttribute;
+                }
+
             }
-
         }
 
         // i18n-columns
-        foreach ($behaviors['i18n-columns']['translationAttributes'] as $translationAttribute) {
+        if (isset($behaviors['i18n-columns'])) {
+            foreach ($behaviors['i18n-columns']['translationAttributes'] as $translationAttribute) {
 
-            $sourceLanguageContentAttribute = $translationAttribute . "_" . $this->source_language;
-            $valid = !is_null($this->$sourceLanguageContentAttribute);
-            if ($valid) {
-                $currentlyTranslatableAttributes[] = $translationAttribute;
+                $sourceLanguageContentAttribute = $translationAttribute . "_" . $this->source_language;
+                $valid = !is_null($this->$sourceLanguageContentAttribute);
+                if ($valid) {
+                    $currentlyTranslatableAttributes[] = $translationAttribute;
+                }
+
             }
+        }
 
+        if (empty($currentlyTranslatableAttributes)) {
+            return array();
         }
 
         $i18nRules = array();
