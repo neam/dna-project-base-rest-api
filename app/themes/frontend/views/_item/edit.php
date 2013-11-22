@@ -83,7 +83,6 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                             "label" => Yii::t("model", "Undo"),
                             "url" => Yii::app()->request->url,
                         ));
-
                         ?>
 
                     </div>
@@ -96,6 +95,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         <?php $this->renderPartial('steps/' . $step, compact("model", "form")); ?>
 
         <?php $this->endWidget() ?>
+
+        <?php Html::jsAreYouSure(); ?>
 
     </div>
 

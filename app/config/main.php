@@ -75,6 +75,7 @@ $mainConfig = array(
         'vendor.bwoester.yii-static-events-component.*',
         'vendor.bwoester.yii-event-interceptor.*',
         'vendor.gusnips.yii-translate.TranslateModule',
+        'application.helpers.*',
     ),
     /*
     'behaviors'  => array(

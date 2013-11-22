@@ -10,6 +10,9 @@ require_once(dirname(__FILE__).'/../vendor/autoload.php');
 // load Yii
 require_once($dir.'vendor/yiisoft/yii/framework/yii.php');
 
+// load helper functions
+require_once($dir.'app/helpers/global.php');
+
 // config files
 $main   = require($dir.'app/config/main.php');
 $local  = require($dir.'app/config/main-local.php');
