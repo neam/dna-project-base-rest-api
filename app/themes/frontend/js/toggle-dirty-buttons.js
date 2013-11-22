@@ -1,29 +1,37 @@
 (function() {
     var $form = $('form'),
-        $buttons = $('.btn-action');
+        $buttons = $('.btn-action'),
+        $linkButtons = $('a.btn-action');
 
     /**
      * Hides the buttons.
      */
-    function hideButtons() {
-        $buttons.hide();
+    function disableButtons() {
+        $buttons.attr('disabled','');
     }
 
     /**
      * Shows the buttons.
      */
-    function showButtons() {
-        $buttons.show();
+    function enableButtons() {
+        $buttons.removeAttr('disabled');
     }
 
     // Check if the form is dirty on change
-    $form.on('change', function() {
+    $form.on('keyup change', function() {
         if ($(this).isDirty()) {
-            showButtons();
+            enableButtons();
         } else {
-            hideButtons();
+            disableButtons();
         }
     });
 
-    hideButtons(); // hide buttons by default
+    // Prevent disabled link buttons from being clicked
+    $linkButtons.on('click', function(e) {
+        if ($(this).attr('disabled')) {
+            e.preventDefault();
+        }
+    });
+
+    disableButtons(); // disable buttons by default
 })();

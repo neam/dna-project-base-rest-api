@@ -58,7 +58,7 @@ class Profiles extends BaseProfiles
         $model = Profiles::model()->findByPk(user()->id);
         $attribute = 'can_translate_to_' . $lang;
 
-        /** @var ActiveRecord $model */
+        /** @var Profiles $model */
         if ($model->hasAttribute($attribute)) {
             $model->{$attribute} = $can ? self::CAN_TRANSLATE : self::CANNOT_TRANSLATE;
             $model->save(false);
