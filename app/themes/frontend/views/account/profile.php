@@ -164,11 +164,11 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                             'checkedButtonLabel' => 'Yes',
                             'uncheckedButtonLabel' => 'No',
                             'displayText' => false,
-                            'name' => 'can_translate_to_' . $lang,
+                            'name' => $lang,
                             'header' => ucfirst($lang),
                             'value' => 'CHtml::value($data,\'can_translate_to_' . $lang . '\')',
                             'filter' => false,
-                            'toggleAction' => 'profiles/toggleOwn'
+                            'toggleAction' => 'profiles/toggleCanTranslate'
                         );
                     }
                     $this->widget('TbGridView',
@@ -264,3 +264,5 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
         </div>
     </div>
 </div>
+
+<?php Html::jsDirtyForms(); ?>
