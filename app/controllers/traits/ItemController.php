@@ -242,8 +242,7 @@ trait ItemController
 
     protected function nextFlowStep($prefix, $item)
     {
-        $steps = $item->flowSteps();
-        foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
+        foreach ($item->flowSteps() as $step => $options) {
             if ($item->calculateValidationProgress($prefix . 'step_' . $step) < 100) {
                 return $step;
             }
@@ -254,8 +253,7 @@ trait ItemController
 
     protected function firstFlowStep($item)
     {
-        $steps = $item->flowSteps();
-        foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
+        foreach ($item->flowSteps() as $step => $fields) {
             return $step;
         }
         return null;
@@ -662,15 +660,20 @@ trait ItemController
             $editAction = "edit";
         }
 
-        $steps = $item->flowSteps();
         $stepCaptions = $item->flowStepCaptions();
-        foreach (array_merge($steps['draft'], $steps['preview'], $steps['public'], $steps['all']) as $step => $options) {
-            $stepProgress = $item->calculateValidationProgress("step_" . $step);
+        foreach ($item->flowSteps() as $step => $fields) {
+
+            if ($this->action->id != "edit") {
+                $stepProgress = $item->calculateValidationProgress("step_" . $step);
+            } else {
+                $stepProgress = $item->calculateValidationProgress("step_$step-total_progress");
+            }
+
             $stepActions[] = array(
                 "step" => $step,
                 "editAction" => $editAction,
                 "model" => $item,
-                "options" => $options,
+                "fields" => $fields,
                 "caption" => $stepCaptions[$step],
                 "progress" => $stepProgress,
                 "translateInto" => $translateInto,

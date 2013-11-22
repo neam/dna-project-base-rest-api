@@ -59,13 +59,23 @@ $this->breadcrumbs[] = $actionCaption;
                 <div class="span8">
 
                     <?php
-                    $this->widget(
-                        'bootstrap.widgets.TbProgress',
-                        array(
-                            'type' => 'success', // 'info', 'success' or 'danger'
-                            'percent' => 0,
-                        )
-                    );
+
+                    try {
+
+                        $this->widget(
+                            'bootstrap.widgets.TbProgress',
+                            array(
+                                'type' => 'success', // 'info', 'success' or 'danger'
+                                'percent' => $model->calculateValidationProgress('into_' . $language . '-total_progress'),
+                            )
+                        );
+
+                    } catch (QaStateBehaviorNoAssociatedRulesException $e) {
+
+                        echo Yii::t('exceptions', $e->getMessage());
+
+                    }
+
                     ?>
 
                 </div>

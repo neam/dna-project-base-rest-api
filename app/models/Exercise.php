@@ -7,6 +7,8 @@ Yii::import('Exercise.*');
 class Exercise extends BaseExercise
 {
 
+    use ItemTrait;
+
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
     {
@@ -47,49 +49,24 @@ class Exercise extends BaseExercise
 
     public function rules()
     {
-        return array_merge(
-            parent::rules(), array(
-
-                // Define status-dependent fields
-                array('title_' . $this->source_language . ', slug_' . $this->source_language, 'required', 'on' => 'draft,preview,public'),
-                array('question_' . $this->source_language . ', description_' . $this->source_language . ', thumbnail_media_id' /*,materials*/, 'required', 'on' => 'public'),
-
-                // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
-                array('title_' . $this->source_language . ', slug_' . $this->source_language . '', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('question_' . $this->source_language . ', description_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'public-step_info,step_info'),
-                //array('materials', 'safe', 'on' => 'draft-step_materials,preview-step_materials,public-step_materials,step_materials'),
-                //array('learning_objectives', 'safe', 'on' => 'draft-step_learning_objectives,preview-step_learning_objectives,public-step_learning_objectives,step_learning_objectives'),
-                //array('related', 'safe', 'on' => 'draft-step_related,preview-step_related,public-step_related,step_related'),
-
-                // Define step-dependent fields - Part 2 - what fields are required at each step?
-                array('title_' . $this->source_language . ', slug_' . $this->source_language . '', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('question_' . $this->source_language . ', description_' . $this->source_language . ', thumbnail_media_id', 'required', 'on' => 'public-step_info,step_info'),
-                //array('materials', 'required', 'on' => 'draft-step_materials,preview-step_materials,public-step_materials,step_materials'),
-                //array('learning_objectives', 'required', 'on' => 'draft-step_learning_objectives,preview-step_learning_objectives,public-step_learning_objectives,step_learning_objectives'),
-                //array('related', 'required', 'on' => 'draft-step_related,preview-step_related,public-step_related,step_related'),
+        $return = array_merge(
+            parent::rules(),
+            $this->statusRequirementsRules(),
+            $this->flowStepRules(),
+            $this->i18nRules(),
+            array(
 
                 // Ordinary validation rules
                 array('question_' . $this->source_language, 'length', 'min' => 25, 'max' => 200),
                 array('description_' . $this->source_language, 'length', 'min' => 100, 'max' => 400),
                 array('thumbnail', 'validateThumbnail', 'on' => 'public'),
                 array('materials', 'validateMaterials', 'on' => 'public'),
-            ),
-            $this->i18nRules()
+
+            )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
     }
-
-    public function i18nRules()
-    {
-        $i18nRules = array();
-        foreach (Yii::app()->params["languages"] as $lang => $label) {
-            $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', question_' . $lang . ', description_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
-            $i18nRules[] = array('title_' . $this->source_language . ', slug_' . $this->source_language . ', question_' . $this->source_language . ', description_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_info');
-        }
-        return $i18nRules;
-    }
-
 
     public function validateThumbnail()
     {
@@ -112,22 +89,52 @@ class Exercise extends BaseExercise
         return true;
     }
 
-    public function flowSteps()
+    /**
+     * Define status-dependent fields
+     * @return array
+     */
+    public function statusRequirements()
     {
         return array(
             'draft' => array(
-                'info' => array(
-                    'icon' => 'edit',
-                ),
+                'title_' . $this->source_language,
+                'slug_' . $this->source_language,
             ),
             'preview' => array(),
-            'public' => array(/*
-                'materials' => array(
-                    'icon' => 'edit',
-                ),
-                */
+            'public' => array(
+                'question_' . $this->source_language,
+                'description_' . $this->source_language,
+                'thumbnail_media_id',
+                //'materials',
             ),
-            'all' => array(),
+        );
+    }
+
+    /**
+     * Define step-dependent fields
+     * @return array
+     */
+    public function flowSteps()
+    {
+        return array(
+            'info' => array(
+                'title_' . $this->source_language,
+                'slug_' . $this->source_language,
+                'question_' . $this->source_language,
+                'description_' . $this->source_language,
+                'thumbnail_media_id',
+            ),
+            /*
+            'materials' => array(
+                'materials',
+            ),
+            'learning_objectives' => array(
+                'learning_objectives',
+            ),
+            'related' => array(
+                'related',
+            ),
+            */
         );
     }
 

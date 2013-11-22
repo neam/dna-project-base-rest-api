@@ -7,6 +7,8 @@ Yii::import('VideoFile.*');
 class VideoFile extends BaseVideoFile
 {
 
+    use ItemTrait;
+
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
     {
@@ -41,47 +43,21 @@ class VideoFile extends BaseVideoFile
 
     public function rules()
     {
-        return array_merge(
-            parent::rules(), array(
-
-                // Define status-dependent fields
-                array('title_' . $this->source_language . ', slug_' . $this->source_language, 'required', 'on' => 'draft,preview,public'),
-                array('original_media_id', 'required', 'on' => 'preview,public'),
-                array('about_' . $this->source_language . ', thumbnail_media_id, subtitles_' . $this->source_language, 'required', 'on' => 'public'),
-
-                // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
-                array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('original_media_id', 'safe', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
-                array('subtitles_' . $this->source_language . ', subtitles_import_media_id', 'safe', 'on' => 'draft-step_subtitles,preview-step_subtitles,public-step_subtitles,step_subtitles'),
-
-                // Define step-dependent fields - Part 2 - what fields are required at each step?
-                array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language . ', thumbnail_media_id', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('original_media_id', 'required', 'on' => 'draft-step_files,preview-step_files,public-step_files,step_files'),
-                array('subtitles_' . $this->source_language, 'required', 'on' => 'draft-step_subtitles,preview-step_subtitles,public-step_subtitles,step_subtitles'),
-
+        $return = array_merge(
+            parent::rules(),
+            $this->statusRequirementsRules(),
+            $this->flowStepRules(),
+            $this->i18nRules(),
+            array(
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
                 array('original_media_id', 'validateClip', 'on' => 'public'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
                 array('subtitles' . $this->source_language, 'validateSubtitles', 'on' => 'public'),
-            ),
-            $this->i18nRules()
+            )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
-    }
-
-    public function i18nRules()
-    {
-        $i18nRules = array();
-        foreach (Yii::app()->params["languages"] as $lang => $label) {
-            $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', about_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
-            $i18nRules[] = array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_info');
-            $i18nRules[] = array('subtitles_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_subtitles');
-            $i18nRules[] = array('subtitles_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_subtitles');
-
-        }
-        return $i18nRules;
     }
 
     public function validateThumbnail()
@@ -108,24 +84,46 @@ class VideoFile extends BaseVideoFile
         return true;
     }
 
-    public function flowSteps()
+    /**
+     * Define status-dependent fields
+     * @return array
+     */
+    public function statusRequirements()
     {
         return array(
             'draft' => array(
-                'info' => array(
-                    'icon' => 'edit',
-                ),
+                'title_' . $this->source_language,
+                'slug_' . $this->source_language,
             ),
             'preview' => array(
-                'files' => array(
-                    'icon' => 'edit',
-                ),
-                'subtitles' => array(
-                    'icon' => 'edit',
-                ),
+                'original_media_id',
             ),
-            'public' => array(),
-            'all' => array(),
+            'public' => array(
+                'about_' . $this->source_language,
+            ),
+        );
+    }
+
+    /**
+     * Define step-dependent fields
+     * @return array
+     */
+    public function flowSteps()
+    {
+        return array(
+            'info' => array(
+                'title_' . $this->source_language,
+                'slug_' . $this->source_language,
+                'about_' . $this->source_language,
+                'thumbnail_media_id',
+            ),
+            'files' => array(
+                'original_media_id',
+            ),
+            'subtitles' => array(
+                'subtitles_' . $this->source_language,
+                'subtitles_import_media_id',
+            ),
         );
     }
 

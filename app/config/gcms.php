@@ -59,6 +59,7 @@ $gcmsConfig = array(
         'application.workflows.custom.*',
         'application.workflows.*',
         'application.controllers.traits.*',
+        'application.models.traits.*',
         'application.models.wrappers.Users',
         'application.exceptions.*',
     ),

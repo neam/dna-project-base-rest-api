@@ -7,6 +7,8 @@ Yii::import('DataSource.*');
 class DataSource extends BaseDataSource
 {
 
+    use ItemTrait;
+
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
     {
@@ -26,28 +28,16 @@ class DataSource extends BaseDataSource
     public function rules()
     {
         $return = array_merge(
-            parent::rules(), array(
-
-                // Define status-dependent fields
-                array('slug_' . $this->source_language . '', 'required', 'on' => 'draft,preview,public'),
-                array('title_' . $this->source_language . '', 'required', 'on' => 'preview,public'),
-                array('about_' . $this->source_language . '', 'required', 'on' => 'public'),
-
-                // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
-                array('slug_' . $this->source_language . ', title_' . $this->source_language . ', about_' . $this->source_language . ', link', 'safe', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('logo_media_id, mini_logo_media_id', 'safe', 'on' => 'draft-step_logo,preview-step_logo,public-step_logo,step_logo'),
-
-                // Define step-dependent fields - Part 2 - what fields are required at each step?
-                array('slug_' . $this->source_language . '', 'required', 'on' => 'draft-step_info,preview-step_info,public-step_info,step_info'),
-                array('title_' . $this->source_language . '', 'required', 'on' => 'preview-step_info,public-step_info,step_info'),
-                array('about_' . $this->source_language . '', 'required', 'on' => 'public-step_info,step_info'),
-                array('link', 'required', 'on' => 'step_info'),
-                array('logo_media_id, mini_logo_media_id', 'required', 'on' => 'step_logo'),
+            parent::rules(),
+            $this->statusRequirementsRules(),
+            $this->flowStepRules(),
+            $this->i18nRules(),
+            array(
 
                 // Ordinary validation rules
                 array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 66),
-            ),
-            $this->i18nRules()
+
+            )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
@@ -63,20 +53,40 @@ class DataSource extends BaseDataSource
         return $i18nRules;
     }
 
-    public function flowSteps()
+    /**
+     * Define status-dependent fields
+     * @return array
+     */
+    public function statusRequirements()
     {
         return array(
             'draft' => array(
-                'info' => array(
-                    'icon' => 'edit',
-                ),
+                'slug_' . $this->source_language,
             ),
-            'preview' => array(),
-            'public' => array(),
-            'all' => array(
-                'logo' => array(
-                    'icon' => 'edit',
-                ),
+            'preview' => array(
+                'title_' . $this->source_language,
+            ),
+            'public' => array(
+                'about_' . $this->source_language,
+            ),
+        );
+    }
+
+    /**
+     * Define step-dependent fields
+     * @return array
+     */
+    public function flowSteps()
+    {
+        return array(
+            'info' => array(
+                'title_' . $this->source_language,
+                'slug_' . $this->source_language,
+                'about_' . $this->source_language,
+            ),
+            'logo' => array(
+                'logo_media_id',
+                'mini_logo_media_id',
             ),
         );
     }

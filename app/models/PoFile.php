@@ -7,6 +7,8 @@ Yii::import('PoFile.*');
 class PoFile extends BasePoFile
 {
 
+    use ItemTrait;
+
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
     {
@@ -44,26 +46,21 @@ class PoFile extends BasePoFile
 
     public function rules()
     {
-        return array_merge(
-            parent::rules(), array(
-
-                // Define status-dependent fields
-                array('title, original_media_id', 'required', 'on' => 'draft,preview,public'),
-                array('about', 'required', 'on' => 'public'),
-
-                // Define step-dependent fields - Part 1 - what fields are saved at each step? (Other fields are ignored upon submit)
-                array('title, original_media_id', 'safe', 'on' => 'draft-step_file,preview-step_file,public-step_file,step_file'),
-                array('about', 'safe', 'on' => 'public-step_file,step_file'),
-
-                // Define step-dependent fields - Part 2 - what fields are required at each step?
-                array('title, original_media_id', 'required', 'on' => 'step_file'),
-                array('about', 'required', 'on' => 'step_file'),
+        $return = array_merge(
+            parent::rules(),
+            $this->statusRequirementsRules(),
+            $this->flowStepRules(),
+            $this->i18nRules(),
+            array(
 
                 array('title', 'length', 'min' => 10, 'max' => 200),
                 array('about', 'length', 'min' => 3, 'max' => 400),
                 array('original_media_id', 'validateFile', 'on' => 'public'),
+
             )
         );
+        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        return $return;
     }
 
     public function validateFile()
@@ -80,17 +77,36 @@ class PoFile extends BasePoFile
         return true;
     }
 
-    public function flowSteps()
+    /**
+     * Define status-dependent fields
+     * @return array
+     */
+    public function statusRequirements()
     {
         return array(
             'draft' => array(
-                'file' => array(
-                    'icon' => 'edit',
-                ),
+                'title',
+                'original_media_id',
             ),
             'preview' => array(),
-            'public' => array(),
-            'all' => array(),
+            'public' => array(
+                'about',
+            ),
+        );
+    }
+
+    /**
+     * Define step-dependent fields
+     * @return array
+     */
+    public function flowSteps()
+    {
+        return array(
+            'file' => array(
+                'title',
+                'about',
+                'original_media_id',
+            ),
         );
     }
 
