@@ -428,7 +428,7 @@ trait ItemController
     public function actionPreview($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('view', array('model' => $model, 'preview' => true));
+        $this->render('/_item/preview', array('model' => $model));
     }
 
     public function actionReview($id)
