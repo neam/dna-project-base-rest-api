@@ -2,9 +2,6 @@
 $languages = array(
     // Default language
     'en' => 'English',
-    // Fallback languages
-    'pt' => 'Português',
-    'zh' => '中文',
     // Translation languages
     'ar' => 'العربية',
     'bg' => 'Български',
@@ -32,6 +29,7 @@ $languages = array(
     'nl' => 'Nederlands',
     'no' => 'Norsk',
     'pl' => 'Polski',
+    'pt' => 'Português',
     'pt_br' => 'Português (Brasil)',
     'pt_pt' => 'Português (Portugal)',
     'ro' => 'Română',
@@ -44,6 +42,7 @@ $languages = array(
     'tr' => 'Türkçe',
     'uk' => 'Українська',
     'vi' => 'Tiếng Việt',
+    'zh' => '中文',
     'zh_cn' => '中文 (简体)',
     'zh_tw' => '中文 (繁體)',
 );
