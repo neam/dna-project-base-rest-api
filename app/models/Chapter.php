@@ -41,6 +41,7 @@ class Chapter extends BaseChapter
                 'videos' => array(self::HAS_MANY, 'VideoFile', array('id' => 'node_id'), 'through' => 'outNodes'),
                 'exercises' => array(self::HAS_MANY, 'Exercise', array('id' => 'node_id'), 'through' => 'outNodes'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', array('id' => 'node_id'), 'through' => 'outNodes'),
+                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
             )
         );
     }
@@ -117,6 +118,7 @@ class Chapter extends BaseChapter
                 'exercises',
                 'videos',
                 'snapshots',
+                'related',
             ),
         );
     }
@@ -146,6 +148,9 @@ class Chapter extends BaseChapter
             'snapshots' => array(
                 'snapshots',
             ),
+            'related' => array(
+                'related',
+            ),
             /* next version
             'credits' => array(
                 'credits',
@@ -163,6 +168,7 @@ class Chapter extends BaseChapter
             'videos' => Yii::t('app', 'Video'),
             'snapshots' => Yii::t('app', 'Snapshot(s)'),
             'credits' => Yii::t('app', 'Credits'),
+            'related' => Yii::t('app', 'Related items'),
         );
     }
 
