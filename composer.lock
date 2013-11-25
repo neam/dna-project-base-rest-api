@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "47c1a01743c7ac55a91a1232a8224aec",
+    "hash": "7945e50f8a44edbf87a60e11c1458227",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -2059,16 +2059,16 @@
         },
         {
             "name": "phundament/gii-template-collection",
-            "version": "dev-develop",
+            "version": "dev-gcms",
             "source": {
                 "type": "git",
-                "url": "https://github.com/schmunk42/gii-template-collection.git",
-                "reference": "dd065893a17aecde72813308386567a1f11db0d7"
+                "url": "https://github.com/motin/gii-template-collection.git",
+                "reference": "a218944d8793f5272cf8f8e6ba8eb0b2a0eebf3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/gii-template-collection/zipball/dd065893a17aecde72813308386567a1f11db0d7",
-                "reference": "dd065893a17aecde72813308386567a1f11db0d7",
+                "url": "https://api.github.com/repos/motin/gii-template-collection/zipball/a218944d8793f5272cf8f8e6ba8eb0b2a0eebf3d",
+                "reference": "a218944d8793f5272cf8f8e6ba8eb0b2a0eebf3d",
                 "shasum": ""
             },
             "require": {
@@ -2096,10 +2096,9 @@
                 "package"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/gii-template-collection/tree/develop",
-                "issues": "https://github.com/schmunk42/gii-template-collection/issues"
+                "source": "https://github.com/motin/gii-template-collection/tree/gcms"
             },
-            "time": "2013-11-06 19:35:07"
+            "time": "2013-11-25 09:55:42"
         },
         {
             "name": "phundament/lessii",
@@ -2249,12 +2248,6 @@
             "alias_normalized": "0.6.0.0-dev",
             "version": "9999999-dev",
             "package": "yiiext/status-behavior"
-        },
-        {
-            "alias": "0.13.0",
-            "alias_normalized": "0.13.0.0",
-            "version": "dev-develop",
-            "package": "phundament/gii-template-collection"
         }
     ],
     "minimum-stability": "stable",
