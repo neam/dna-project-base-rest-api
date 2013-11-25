@@ -24,6 +24,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/packagecompressor" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/translatable" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mishamx/yii-user" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/moein7tl/yii-introjs" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/motin/yii-owner-behavior" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mrclay/minify" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/neam/yii-i18n-schema" />
@@ -94,6 +95,7 @@
           <root url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
           <root url="file://$MODULE_DIR$/vendor/nordsoftware/yii-emailer" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/lipsum-widget" />
+          <root url="file://$MODULE_DIR$/vendor/moein7tl/yii-introjs" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/adjacency-list-behavior" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/fancybox-widget" />
           <root url="file://$MODULE_DIR$/vendor/thomaspark/bootswatch" />
@@ -158,6 +160,7 @@
           <root url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
           <root url="file://$MODULE_DIR$/vendor/nordsoftware/yii-emailer" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/lipsum-widget" />
+          <root url="file://$MODULE_DIR$/vendor/moein7tl/yii-introjs" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/adjacency-list-behavior" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/fancybox-widget" />
           <root url="file://$MODULE_DIR$/vendor/thomaspark/bootswatch" />
