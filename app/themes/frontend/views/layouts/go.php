@@ -34,5 +34,7 @@
     resize();
 
     window.onresize = resize;
+
+    window.dispatchEvent(new Event('resize'));
 </script>
 </html>
