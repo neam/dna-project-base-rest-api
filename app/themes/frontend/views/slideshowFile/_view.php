@@ -1,6 +1,6 @@
 <div class="view well well-white">
 
-    <div class="admin-container show">
+    <div class="admin-container hide">
         <?php echo CHtml::link('<i class="icon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Slideshow File'))), array('slideshowFile/view', 'id' => $data->id), array('class' => 'btn')); ?>
     </div>
     <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
@@ -143,12 +143,12 @@
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('SlideshowFile.*')): ?>
-        <div class="admin-container show">
+        <div class="admin-container hide">
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Slideshow File'))), array('slideshowFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
     <?php if (Yii::app()->user->checkAccess('Developer')): ?>
-        <div class="admin-container show">
+        <div class="admin-container hide">
             <h3>Developer access</h3>
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Slideshow File'))), array('slideshowFile/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>

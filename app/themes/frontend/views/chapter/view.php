@@ -86,7 +86,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
         <!--<h1><?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small></h1>-->
 
         <?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>
-            <div class="admin-container show">
+            <div class="admin-container hide">
                 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
             </div>
         <?php endif; ?>

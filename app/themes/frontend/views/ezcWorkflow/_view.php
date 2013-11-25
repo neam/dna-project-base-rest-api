@@ -17,7 +17,7 @@
     <br/>
 
     <?php if (Yii::app()->user->checkAccess('EzcWorkflow.*')): ?>
-        <div class="admin-container show">
+        <div class="admin-container hide">
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Ezc Workflow'))), array('ezcWorkflow/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
