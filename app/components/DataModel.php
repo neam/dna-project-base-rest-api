@@ -102,6 +102,7 @@ class DataModel
             'DataSource' => 'n==0#DataSource(s)|n==1#DataSource|n>1#DataSources',
             'ExamQuestion' => 'n==0#ExamQuestion(s)|n==1#ExamQuestion|n>1#ExamQuestions',
             'Exercise' => 'n==0#Exercise(s)|n==1#Exercise|n>1#Exercises',
+            'Node' => 'n==0#Node(s)|n==1#Node|n>1#Nodes',
             'PoFile' => 'n==0#PoFile(s)|n==1#PoFile|n>1#PoFiles',
             'SlideshowFile' => 'n==0#SlideshowFile(s)|n==1#SlideshowFile|n>1#SlideshowFiles',
             'Snapshot' => 'n==0#Snapshot(s)|n==1#Snapshot|n>1#Snapshots',

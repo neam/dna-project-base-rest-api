@@ -295,11 +295,10 @@ trait ItemController
 
     public function actionAddEdges()
     {
-        if (isset($_POST[$this->modelClass]["fromId"]) && isset($_POST[$this->modelClass]["edges_to_add"]) && isset($_POST[$this->modelClass]["toModel"])) {
+        if (isset($_POST[$this->modelClass]["fromId"]) && isset($_POST[$this->modelClass]["edges_to_add"])) {
             $this->addEdges(
                 $_POST[$this->modelClass]["fromId"],
-                $_POST[$this->modelClass]["edges_to_add"],
-                $_POST[$this->modelClass]["toModel"]
+                $_POST[$this->modelClass]["edges_to_add"]
             );
         }
         exit;
@@ -691,14 +690,13 @@ trait ItemController
 
     }
 
-    private function addEdges($fromid, $toids, $model)
+    // $fromid = [item] id, $toid = [node] id ! important
+    private function addEdges($fromid, $toids)
     {
         $from_model = $this->loadModel($fromid);
         $from_node_id = $from_model->node()->id;
 
-        foreach ($toids as $toid) {
-            $to_model = $model::model()->findByPk($toid);
-            $to_node_id = $to_model->node()->id;
+        foreach ($toids as $to_node_id) {
             $this->addEdge($from_node_id, $to_node_id);
         }
     }

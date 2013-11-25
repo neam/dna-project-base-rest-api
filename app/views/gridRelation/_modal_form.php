@@ -14,7 +14,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
             $.each($("input[name='modalGrid']:checked"), function () {
                 vals.push($(this).val());
             });
-            var jsondata = ({'<?php echo $fromType; ?>': {'fromId': '<?php echo $fromId; ?>', 'toModel': '<?php echo $toType; ?>', 'edges_to_add': vals}});
+            var jsondata = ({'<?php echo $fromType; ?>': {'fromId': '<?php echo $fromId; ?>', 'edges_to_add': vals}});
             return jsondata;
         }
         function relationComplete() {
@@ -68,7 +68,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
         $this->widget(
             'bootstrap.widgets.TbExtendedGridView',
             array(
-                'id' => $toLabel . 's_to_add',
+                'id' => strtolower($toType) . 's_to_add',
                 'type' => 'striped bordered',
                 'dataProvider' => $dataProvider,
                 'pager' => array(
@@ -81,9 +81,9 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                         'header' => 'Id',
                         'value' => function ($data) {
                                 if (get_class($data) == "Node") {
-                                    echo CHtml::checkBox("modalGrid", null, array("value" => $data->item()->id));
-                                } else {
                                     echo CHtml::checkBox("modalGrid", null, array("value" => $data->id));
+                                } else {
+                                    echo CHtml::checkBox("modalGrid", null, array("value" => $data->node_id));
                                 }
                             }
                     ),
@@ -122,7 +122,6 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
 //   Else (edge)
 ?>
 <?php if ($allItems): ?>
-    <?php /*
     <div class="btn-group">
         <?php
         echo CHtml::ajaxSubmitButton(
@@ -130,9 +129,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
             array("addEdges", "id" => $fromId),
             array(
                 'data' => 'js:getMyData()',
-                'beforeSend' => 'js:function(data){}',
                 'type' => 'POST',
-                'dataType' => 'json',
                 'success' => 'function(html){ relationComplete(); }'
             ),
             array(
@@ -142,8 +139,6 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
         );
         ?>
     </div>
- <?php */
-    ?>
 <?php else: ?>
     <div class="btn-group">
         <?php
@@ -152,9 +147,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
             array("addEdges", "id" => $fromId),
             array(
                 'data' => 'js:getMyData()',
-                'beforeSend' => 'js:function(data){}',
                 'type' => 'POST',
-                'dataType' => 'json',
                 'success' => 'function(html){ relationComplete(); }'
             ),
             array(

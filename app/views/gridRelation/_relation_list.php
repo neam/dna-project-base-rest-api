@@ -12,13 +12,17 @@ $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $relationClassL
 <h3><?php echo Yii::t("model", $label); ?></h3>
 <?php if ($items): ?>
     <ul>
-        <?php foreach ($items as $item): ?>
+        <?php foreach ($items as $item):
+            $node_id = (get_class($item)=="Node") ? $item->id : $item->node()->id;
+            $itemLabel = (get_class($item)=="Node") ? $item->item()->itemLabel : $item->itemLabel;
+            $itemModel = (get_class($item)=="Node") ? get_class($item->item()) : lcfirst(get_class($item));
+            ?>
             <li>
-                <?php echo $item->itemLabel; ?>
+                <?php echo $itemLabel; ?>
                 <?php
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Edit"),
-                    "url" => array(lcfirst(get_class($item)) . "/continueAuthoring", "id" => $item->{$item->tableSchema->primaryKey}, "returnUrl" => Yii::app()->request->url),
+                    "url" => array($itemModel . "/continueAuthoring", "id" => $item->{$item->tableSchema->primaryKey}, "returnUrl" => Yii::app()->request->url),
                     "size" => "small",
                     "type" => "primary"
                 ));
@@ -26,7 +30,7 @@ $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $relationClassL
                 <?php
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Delete relation"),
-                    "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $item->node()->id, "returnUrl" => Yii::app()->request->url),
+                    "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $node_id, "returnUrl" => Yii::app()->request->url),
                     "size" => "small",
                     "type" => "danger"
                 ));
