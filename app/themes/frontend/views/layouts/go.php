@@ -25,7 +25,8 @@
 </body>
 <script type="text/javascript">
     function resize() {
-        var screenHeight = window.innerHeight;
+        var padding = 20;
+        var screenHeight = window.innerHeight - padding;
         document.getElementById('go-page-container').style.height = screenHeight + 'px';
         document.getElementById('go-page-content').style.height = (screenHeight - 60) + 'px';
     }
