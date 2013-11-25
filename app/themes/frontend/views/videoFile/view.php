@@ -1,45 +1,52 @@
 <?php
-$this->breadcrumbs[Yii::t('model', 'Video Files')] = array('admin');
-$this->breadcrumbs[] = $model->id;
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 ?>
+<?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
-<h1>
-
-    <?php echo Yii::t('model', 'Video File'); ?>
+<!--<h1>
+    
+    <?php echo Yii::t('model','Video File'); ?>
     <small>
-        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
+        <?php echo Yii::t('model','View')?> #<?php echo $model->id ?>
     </small>
+    
+</h1>-->
 
-</h1>
+<?php if (Yii::app()->user->checkAccess('VideoFile.*')): ?>
+    <div class="admin-container hide">
+        <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+    </div>
+<?php endif; ?>
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php $this->renderPartial("_view", array("data" => $model)); ?>
+<!--
 <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-<br/>
+    <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
 <?php echo CHtml::encode($model->version); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('cloned_from_id')); ?>:</b>
 <?php echo CHtml::encode($model->cloned_from_id); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('_title')); ?>:</b>
 <?php echo CHtml::encode($model->_title); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en')); ?>:</b>
 <?php echo CHtml::encode($model->slug_en); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('_about')); ?>:</b>
 <?php echo CHtml::encode($model->_about); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->thumbnail_media_id); ?>
-<br/>
+<br />
 
 <?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id')); ?>:</b>
@@ -167,476 +174,5 @@ $this->breadcrumbs[] = $model->id;
 <br />
 
     */
-?>
-
-<div class="row">
-    <div class="span7">
-        <h2>
-            <?php echo Yii::t('model', 'Data') ?>
-            <small>
-                <?php echo $model->itemLabel ?>            </small>
-        </h2>
-
-        <?php
-        $this->widget(
-            'TbDetailView',
-            array(
-                'data' => $model,
-                'attributes' => array(
-                    array(
-                        'name' => 'id',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'id',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'version',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'version',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'cloned_from_id',
-                        'value' => ($model->clonedFrom !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
-                                    array('//videoFile/view', 'id' => $model->clonedFrom->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//videoFile/update', 'id' => $model->clonedFrom->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => '_title',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => '_title',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_en',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_en',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => '_about',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => '_about',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'thumbnail_media_id',
-                        'value' => ($model->thumbnailMedia !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->thumbnailMedia->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->thumbnailMedia->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->thumbnailMedia->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'original_media_id',
-                        'value' => ($model->originalMedia !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->originalMedia->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->originalMedia->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->originalMedia->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'generate_processed_media',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'generate_processed_media',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'processed_media_id_en',
-                        'value' => ($model->processedMediaIdEn !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdEn->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->processedMediaIdEn->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->processedMediaIdEn->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => '_subtitles',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => '_subtitles',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'subtitles_import_media_id',
-                        'value' => ($model->subtitlesImportMedia !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->subtitlesImportMedia->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->subtitlesImportMedia->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->subtitlesImportMedia->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'created',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'created',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'modified',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'modified',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'owner_id',
-                        'value' => ($model->owner !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
-                                    array('//users/view', 'id' => $model->owner->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//users/update', 'id' => $model->owner->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'node_id',
-                        'value' => ($model->node !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
-                                    array('//node/view', 'id' => $model->node->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//node/update', 'id' => $model->node->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'processed_media_id_es',
-                        'value' => ($model->processedMediaIdEs !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdEs->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->processedMediaIdEs->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->processedMediaIdEs->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'processed_media_id_fa',
-                        'value' => ($model->processedMediaIdFa !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdFa->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->processedMediaIdFa->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->processedMediaIdFa->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'processed_media_id_hi',
-                        'value' => ($model->processedMediaIdHi !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdHi->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->processedMediaIdHi->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->processedMediaIdHi->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'processed_media_id_pt',
-                        'value' => ($model->processedMediaIdPt !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdPt->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->processedMediaIdPt->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->processedMediaIdPt->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'processed_media_id_sv',
-                        'value' => ($model->processedMediaIdSv !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdSv->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->processedMediaIdSv->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->processedMediaIdSv->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'processed_media_id_cn',
-                        'value' => ($model->processedMediaIdCn !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdCn->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->processedMediaIdCn->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->processedMediaIdCn->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'processed_media_id_de',
-                        'value' => ($model->processedMediaIdDe !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->processedMediaIdDe->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->processedMediaIdDe->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->processedMediaIdDe->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'slug_es',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_es',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_fa',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_fa',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_hi',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_hi',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_pt',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_pt',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_sv',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_sv',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_cn',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_cn',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_de',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_de',
-                                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'video_file_qa_state_id_en',
-                        'value' => ($model->videoFileQaStateIdEn !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->videoFileQaStateIdEn->itemLabel,
-                                    array('//videoFileQaState/view', 'id' => $model->videoFileQaStateIdEn->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//videoFileQaState/update', 'id' => $model->videoFileQaStateIdEn->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'video_file_qa_state_id_es',
-                        'value' => ($model->videoFileQaStateIdEs !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->videoFileQaStateIdEs->itemLabel,
-                                    array('//videoFileQaState/view', 'id' => $model->videoFileQaStateIdEs->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//videoFileQaState/update', 'id' => $model->videoFileQaStateIdEs->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'video_file_qa_state_id_fa',
-                        'value' => ($model->videoFileQaStateIdFa !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->videoFileQaStateIdFa->itemLabel,
-                                    array('//videoFileQaState/view', 'id' => $model->videoFileQaStateIdFa->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//videoFileQaState/update', 'id' => $model->videoFileQaStateIdFa->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'video_file_qa_state_id_hi',
-                        'value' => ($model->videoFileQaStateIdHi !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->videoFileQaStateIdHi->itemLabel,
-                                    array('//videoFileQaState/view', 'id' => $model->videoFileQaStateIdHi->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//videoFileQaState/update', 'id' => $model->videoFileQaStateIdHi->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'video_file_qa_state_id_pt',
-                        'value' => ($model->videoFileQaStateIdPt !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->videoFileQaStateIdPt->itemLabel,
-                                    array('//videoFileQaState/view', 'id' => $model->videoFileQaStateIdPt->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//videoFileQaState/update', 'id' => $model->videoFileQaStateIdPt->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'video_file_qa_state_id_sv',
-                        'value' => ($model->videoFileQaStateIdSv !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->videoFileQaStateIdSv->itemLabel,
-                                    array('//videoFileQaState/view', 'id' => $model->videoFileQaStateIdSv->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//videoFileQaState/update', 'id' => $model->videoFileQaStateIdSv->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'video_file_qa_state_id_cn',
-                        'value' => ($model->videoFileQaStateIdCn !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->videoFileQaStateIdCn->itemLabel,
-                                    array('//videoFileQaState/view', 'id' => $model->videoFileQaStateIdCn->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//videoFileQaState/update', 'id' => $model->videoFileQaStateIdCn->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'video_file_qa_state_id_de',
-                        'value' => ($model->videoFileQaStateIdDe !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->videoFileQaStateIdDe->itemLabel,
-                                    array('//videoFileQaState/view', 'id' => $model->videoFileQaStateIdDe->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//videoFileQaState/update', 'id' => $model->videoFileQaStateIdDe->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                ),
-            )); ?>
-    </div>
-
-    <div class="span5">
-        <?php $this->renderPartial('_view-relations', array('model' => $model)); ?>    </div>
-</div>
+    ?>
+-->

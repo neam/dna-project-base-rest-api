@@ -13,6 +13,7 @@ if (!isset($this->menu) || $this->menu === array()) {
 ?>
     <h1><?php echo Yii::t('model', 'Section Contents'); ?></h1>
 
+<?php $this->renderPartial("_toolbar"); ?>
 <?php
 $this->widget('zii.widgets.CListView', array(
     'dataProvider' => $dataProvider,

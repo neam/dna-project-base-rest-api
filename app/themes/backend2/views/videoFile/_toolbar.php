@@ -28,6 +28,11 @@
                     "url" => array("admin")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("model", "Edit"),
+                    "icon" => "icon-edit",
+                    "url" => array("continueAuthoring", "id" => $model->{$model->tableSchema->primaryKey})
+                ));
+                $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Update"),
                     "icon" => "icon-edit",
                     "url" => array("update", "id" => $model->{$model->tableSchema->primaryKey})

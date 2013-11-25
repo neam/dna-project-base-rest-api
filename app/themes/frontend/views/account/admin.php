@@ -50,8 +50,8 @@ $roleColumns = array(
         'displayText' => false,
         'name' => 'Super Administrator',
         'value' => function ($data) {
-            return Yii::app()->authManager->checkAccess('Super Administrator', $data->id);
-        },
+                return Yii::app()->authManager->checkAccess('Super Administrator', $data->id);
+            },
         'filter' => true,
         'toggleAction' => 'account/toggleRole',
     ),

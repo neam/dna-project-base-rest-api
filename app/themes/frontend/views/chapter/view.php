@@ -82,6 +82,8 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
     </div>
     <div class="span9">
 
+        <?php $this->renderPartial("/_item/elements/flowbar", compact("model")); ?>
+
         <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
         <!--<h1><?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small></h1>-->
 

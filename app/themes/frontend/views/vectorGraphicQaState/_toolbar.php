@@ -2,7 +2,29 @@
     <div class="btn-group">
         <?php
         switch ($this->action->id) {
+            case "index":
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("model", "Manage"),
+                    "icon" => "icon-edit",
+                    "url" => array("admin")
+                ));
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("model", "Add"),
+                    "icon" => "icon-edit",
+                    "url" => array("add")
+                ));
+                break;
             case "view":
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("model", "Manage"),
+                    "icon" => "icon-edit",
+                    "url" => array("admin")
+                ));
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    "label" => Yii::t("model", "Edit"),
+                    "icon" => "icon-edit",
+                    "url" => array("continueAuthoring", "id" => $model->{$model->tableSchema->primaryKey})
+                ));
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Update"),
                     "icon" => "icon-edit",

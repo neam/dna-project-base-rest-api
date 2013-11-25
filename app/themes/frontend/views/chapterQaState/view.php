@@ -1,45 +1,52 @@
 <?php
-$this->breadcrumbs[Yii::t('model', 'Chapter Qa States')] = array('admin');
-$this->breadcrumbs[] = $model->id;
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 ?>
+<?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
-<h1>
-
-    <?php echo Yii::t('model', 'Chapter Qa State'); ?>
+<!--<h1>
+    
+    <?php echo Yii::t('model','Chapter Qa State'); ?>
     <small>
-        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
+        <?php echo Yii::t('model','View')?> #<?php echo $model->id ?>
     </small>
+    
+</h1>-->
 
-</h1>
+<?php if (Yii::app()->user->checkAccess('ChapterQaState.*')): ?>
+    <div class="admin-container hide">
+        <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+    </div>
+<?php endif; ?>
 
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php $this->renderPartial("_view", array("data" => $model)); ?>
+<!--
 <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-<br/>
+    <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('status')); ?>:</b>
 <?php echo CHtml::encode($model->status); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('draft_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->draft_validation_progress); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('preview_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->preview_validation_progress); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('public_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->public_validation_progress); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
 <?php echo CHtml::encode($model->approval_progress); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('proofing_progress')); ?>:</b>
 <?php echo CHtml::encode($model->proofing_progress); ?>
-<br/>
+<br />
 
 <?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('translations_draft_validation_progress')); ?>:</b>
@@ -155,481 +162,5 @@ $this->breadcrumbs[] = $model->id;
 <br />
 
     */
-?>
-
-<div class="row">
-    <div class="span7">
-        <h2>
-            <?php echo Yii::t('model', 'Data') ?>
-            <small>
-                <?php echo $model->itemLabel ?>            </small>
-        </h2>
-
-        <?php
-        $this->widget(
-            'TbDetailView',
-            array(
-                'data' => $model,
-                'attributes' => array(
-                    array(
-                        'name' => 'id',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'id',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'status',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'status',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'draft_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'draft_validation_progress',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'preview_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'preview_validation_progress',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'public_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'public_validation_progress',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'approval_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'approval_progress',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'proofing_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'proofing_progress',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'translations_draft_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translations_draft_validation_progress',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'translations_preview_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translations_preview_validation_progress',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'translations_public_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translations_public_validation_progress',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'translations_approval_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translations_approval_progress',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'translations_proofing_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translations_proofing_progress',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'previewing_welcome',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'previewing_welcome',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'candidate_for_public_status',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'candidate_for_public_status',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_approved',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_approved',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'thumbnail_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'thumbnail_approved',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'about_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_approved',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'video_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'video_approved',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'teachers_guide_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'teachers_guide_approved',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'exercises_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'exercises_approved',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'snapshots_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'snapshots_approved',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'credits_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'credits_approved',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_proofed',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_proofed',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'thumbnail_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'thumbnail_proofed',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'about_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_proofed',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'video_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'video_proofed',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'teachers_guide_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'teachers_guide_proofed',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'exercises_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'exercises_proofed',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'snapshots_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'snapshots_proofed',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'credits_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'credits_proofed',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'draft_saved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'draft_saved',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'videos_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'videos_approved',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'videos_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'videos_proofed',
-                                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                ),
-            )); ?>
-    </div>
-
-    <div class="span5">
-        <?php $this->renderPartial('_view-relations', array('model' => $model)); ?>    </div>
-</div>
+    ?>
+-->

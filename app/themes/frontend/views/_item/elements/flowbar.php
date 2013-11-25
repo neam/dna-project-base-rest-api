@@ -29,23 +29,29 @@
             <div class="btn-group pull-right">
 
                 <?php
-                if ($this->action->id != "preview") {
+                $this->widget("bootstrap.widgets.TbButton", array(
+                    'label' => Yii::t('model', 'Edit'),
+                    'icon' => 'icon-edit',
+                    'type' => 'primary',
+                    'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array("continueAuthoring", "id" => $model->{$model->tableSchema->primaryKey}),
+                    'htmlOptions' => array(
+                        'class' => 'btn-action'
+                    ),
+                ));
+                if ($this->action->id == "preview") {
                     $this->widget("bootstrap.widgets.TbButton", array(
-                        "label" => Yii::t("model", "Preview"),
+                        "label" => Yii::t("model", "View"),
                         "icon" => "icon-eye-open",
-                        "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey}, 'editingUrl' => Yii::app()->request->url)
+                        "url" => array("view", "id" => $model->{$model->tableSchema->primaryKey})
                     ));
                 } else {
                     $this->widget("bootstrap.widgets.TbButton", array(
-                        'label' => Yii::t('model', 'Edit'),
-                        'icon' => 'icon-edit',
-                        'type' => 'primary',
-                        'url' => isset($_GET['editingUrl']) ? $_GET['editingUrl'] : array("continueAuthoring", "id" => $model->{$model->tableSchema->primaryKey}),
-                        'htmlOptions' => array(
-                            'class' => 'btn-action'
-                        ),
+                        "label" => Yii::t("model", "Preview"),
+                        "icon" => "icon-eye-open",
+                        "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey}, 'editingUrl' => $this->action->id == "view" ? null : Yii::app()->request->url)
                     ));
                 }
+
                 ?>
 
             </div>
@@ -147,7 +153,7 @@
                 </div>
             </div>
 
-        <?php elseif ($this->action->id != "preview"): ?>
+        <?php elseif ($this->action->id != "preview" && $this->action->id != "view"): ?>
 
             <div class="well well-small">
                 <div class="row-fluid">
