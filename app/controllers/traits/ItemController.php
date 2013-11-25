@@ -281,6 +281,12 @@ trait ItemController
             if (isset($_GET["returnUrl"])) {
                 $this->redirect($_GET['returnUrl']);
             }
+            header("Content-type: application/json");
+            $result = new StdClass();
+            $result->id = $item->id;
+            $result->title = $item->itemLabel;
+            echo json_encode($result);
+            exit;
             return;
         }
         Yii::app()->user->setFlash('success', $message);
