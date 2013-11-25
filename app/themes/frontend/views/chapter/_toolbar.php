@@ -15,6 +15,7 @@
                 ));
                 break;
             case "view":
+            case "preview":
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("crud", "Manage"),
                     "icon" => "icon-list-alt",

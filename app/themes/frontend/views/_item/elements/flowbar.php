@@ -29,13 +29,13 @@
             <div class="btn-group pull-right">
 
                 <?php
-                if ($this->action->id != "preview") {
+                if ($this->action->id == "view") {
                     $this->widget("bootstrap.widgets.TbButton", array(
                         "label" => Yii::t("model", "Preview"),
                         "icon" => "icon-eye-open",
-                        "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey}, 'editingUrl' => Yii::app()->request->url)
+                        "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey})
                     ));
-                } else {
+                } elseif ($this->action->id == "preview") {
                     $this->widget("bootstrap.widgets.TbButton", array(
                         'label' => Yii::t('model', 'Edit'),
                         'icon' => 'icon-edit',
@@ -44,6 +44,12 @@
                         'htmlOptions' => array(
                             'class' => 'btn-action'
                         ),
+                    ));
+                } else {
+                    $this->widget("bootstrap.widgets.TbButton", array(
+                        "label" => Yii::t("model", "Preview"),
+                        "icon" => "icon-eye-open",
+                        "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey}, 'editingUrl' => Yii::app()->request->url)
                     ));
                 }
                 ?>
@@ -147,7 +153,7 @@
                 </div>
             </div>
 
-        <?php elseif ($this->action->id != "preview"): ?>
+        <?php elseif ($this->action->id != "preview" && $this->action->id != "view"): ?>
 
             <div class="well well-small">
                 <div class="row-fluid">

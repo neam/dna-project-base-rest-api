@@ -15,8 +15,6 @@ $this->breadcrumbs[] = $workflowCaption;
 $this->breadcrumbs[] = $stepCaption;
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)); ?>
-
 <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id' => 'item-form',
     'enableAjaxValidation' => true,
@@ -27,6 +25,8 @@ $this->breadcrumbs[] = $stepCaption;
 <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
 
 <?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form", "translateInto")); ?>
+
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)); ?>
 
 <div class="row-fluid">
     <div class="span3">
