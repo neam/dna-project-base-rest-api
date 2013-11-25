@@ -135,10 +135,10 @@ class VideoFileController extends Controller
 
             // get file path
             $p3media = P3Media::model()->findByPk($_POST['VideoFile']['subtitles_import_media_id']);
-            $filePath = $p3media->filePath;
+            $fullPath = $p3media->fullPath;
 
             // read contents of file
-            $contents = file_get_contents($filePath);
+            $contents = file_get_contents($fullPath);
 
             // save to post
             $_POST['VideoFile']['subtitles'] = $contents;
