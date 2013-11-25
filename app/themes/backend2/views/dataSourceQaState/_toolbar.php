@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'dataSources - DataSource', 'url' => array('//dataSource/admin')), array('label' => 'dataSources1 - DataSource', 'url' => array('//dataSource/admin')), array('label' => 'dataSources2 - DataSource', 'url' => array('//dataSource/admin')), array('label' => 'dataSources3 - DataSource', 'url' => array('//dataSource/admin')), array('label' => 'dataSources4 - DataSource', 'url' => array('//dataSource/admin')), array('label' => 'dataSources5 - DataSource', 'url' => array('//dataSource/admin')), array('label' => 'dataSources6 - DataSource', 'url' => array('//dataSource/admin')), array('label' => 'dataSources7 - DataSource', 'url' => array('//dataSource/admin'))
+                        'items' => array(array('label' => 'dataSources - DataSource', 'url' => array('//dataSource/admin'))
                         )
                     ),
                 ),

@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'textDocs - TextDoc', 'url' => array('//textDoc/admin')), array('label' => 'textDocs1 - TextDoc', 'url' => array('//textDoc/admin')), array('label' => 'textDocs2 - TextDoc', 'url' => array('//textDoc/admin')), array('label' => 'textDocs3 - TextDoc', 'url' => array('//textDoc/admin')), array('label' => 'textDocs4 - TextDoc', 'url' => array('//textDoc/admin')), array('label' => 'textDocs5 - TextDoc', 'url' => array('//textDoc/admin')), array('label' => 'textDocs6 - TextDoc', 'url' => array('//textDoc/admin')), array('label' => 'textDocs7 - TextDoc', 'url' => array('//textDoc/admin'))
+                        'items' => array(array('label' => 'textDocs - TextDoc', 'url' => array('//textDoc/admin'))
                         )
                     ),
                 ),

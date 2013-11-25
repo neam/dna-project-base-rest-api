@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'snapshots - Snapshot', 'url' => array('//snapshot/admin')), array('label' => 'snapshots1 - Snapshot', 'url' => array('//snapshot/admin')), array('label' => 'snapshots2 - Snapshot', 'url' => array('//snapshot/admin')), array('label' => 'snapshots3 - Snapshot', 'url' => array('//snapshot/admin')), array('label' => 'snapshots4 - Snapshot', 'url' => array('//snapshot/admin')), array('label' => 'snapshots5 - Snapshot', 'url' => array('//snapshot/admin')), array('label' => 'snapshots6 - Snapshot', 'url' => array('//snapshot/admin')), array('label' => 'snapshots7 - Snapshot', 'url' => array('//snapshot/admin'))
+                        'items' => array(array('label' => 'snapshots - Snapshot', 'url' => array('//snapshot/admin'))
                         )
                     ),
                 ),

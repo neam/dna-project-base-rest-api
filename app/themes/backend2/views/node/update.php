@@ -194,14 +194,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -226,14 +218,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -241,44 +225,305 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'name' => 'chapter_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdEn.itemLabel\')',
+                    'name' => 'chapter_qa_state_id',
+                    'value' => 'CHtml::value($data, \'chapterQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'chapter_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'chapter_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'chapter_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'chapter_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'chapter_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'chapter_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'chapter_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'chapterQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ChapterQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             */
             array(
@@ -388,14 +633,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -420,14 +657,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -435,44 +664,305 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'name' => 'data_chunk_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'dataChunkQaStateIdEn.itemLabel\')',
+                    'name' => 'data_chunk_qa_state_id',
+                    'value' => 'CHtml::value($data, \'dataChunkQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'data_chunk_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'dataChunkQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_chunk_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'dataChunkQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_chunk_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'dataChunkQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_chunk_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'dataChunkQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_chunk_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'dataChunkQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_chunk_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'dataChunkQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_chunk_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'dataChunkQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             */
             array(
@@ -594,14 +1084,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -626,14 +1108,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -641,44 +1115,305 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'name' => 'data_source_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'dataSourceQaStateIdEn.itemLabel\')',
+                    'name' => 'data_source_qa_state_id',
+                    'value' => 'CHtml::value($data, \'dataSourceQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(DataSourceQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'data_source_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'dataSourceQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataSourceQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_source_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'dataSourceQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataSourceQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_source_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'dataSourceQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataSourceQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_source_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'dataSourceQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataSourceQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_source_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'dataSourceQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataSourceQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_source_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'dataSourceQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataSourceQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'data_source_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'dataSourceQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataSourceQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             */
             array(
@@ -1024,14 +1759,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -1056,14 +1783,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -1071,44 +1790,305 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdEn.itemLabel\')',
+                    'name' => 'exam_question_qa_state_id',
+                    'value' => 'CHtml::value($data, \'examQuestionQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             */
             array(
@@ -1209,14 +2189,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -1241,14 +2213,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -1256,44 +2220,305 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdEn.itemLabel\')',
+                    'name' => 'exam_question_qa_state_id',
+                    'value' => 'CHtml::value($data, \'examQuestionQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exam_question_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'examQuestionQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             */
             array(
@@ -1497,14 +2722,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -1529,14 +2746,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -1544,44 +2753,305 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'name' => 'exercise_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'exerciseQaStateIdEn.itemLabel\')',
+                    'name' => 'exercise_qa_state_id',
+                    'value' => 'CHtml::value($data, \'exerciseQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(ExerciseQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'exercise_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'exerciseQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExerciseQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exercise_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'exerciseQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExerciseQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exercise_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'exerciseQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExerciseQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exercise_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'exerciseQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExerciseQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exercise_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'exerciseQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExerciseQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exercise_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'exerciseQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExerciseQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'exercise_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'exerciseQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExerciseQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             */
             array(
@@ -1764,14 +3234,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -1796,7 +3258,7 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
+                    'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
@@ -1804,7 +3266,295 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_de',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
@@ -1910,11 +3660,6 @@ $this->widget('TbGridView',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_fa',
-                    'value' => 'CHtml::value($data, \'processedMediaIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
                     'name' => 'processed_media_id_hi',
                     'value' => 'CHtml::value($data, \'processedMediaIdHi.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
@@ -1930,54 +3675,199 @@ $this->widget('TbGridView',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_cn',
-                    'value' => 'CHtml::value($data, \'processedMediaIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'po_file_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'poFileQaStateIdEn.itemLabel\')',
+                    'name' => 'po_file_qa_state_id',
+                    'value' => 'CHtml::value($data, \'poFileQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(PoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'po_file_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'poFileQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(PoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'name' => 'processed_media_id_zh',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'po_file_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'poFileQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(PoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'name' => 'processed_media_id_ar',
+                    'value' => 'CHtml::value($data, \'processedMediaIdAr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'po_file_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'poFileQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(PoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'name' => 'processed_media_id_bg',
+                    'value' => 'CHtml::value($data, \'processedMediaIdBg.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'po_file_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'poFileQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(PoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'name' => 'processed_media_id_ca',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'po_file_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'poFileQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(PoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'name' => 'processed_media_id_cs',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'po_file_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'poFileQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(PoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'name' => 'processed_media_id_da',
+                    'value' => 'CHtml::value($data, \'processedMediaIdDa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'po_file_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'poFileQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(PoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'name' => 'processed_media_id_en_gb',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnGb.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_en_us',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnUs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_el',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fil',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFil.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hu',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_id',
+                    'value' => 'CHtml::value($data, \'processedMediaId.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_iw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIw.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_it',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ja',
+                    'value' => 'CHtml::value($data, \'processedMediaIdJa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ko',
+                    'value' => 'CHtml::value($data, \'processedMediaIdKo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lv',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_nl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_no',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_br',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtBr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_pt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ro',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ru',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_th',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_tr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_uk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdUk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_vi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdVi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_cn',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_tw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhTw.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -2083,14 +3973,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -2115,7 +3997,7 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
+                    'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
@@ -2123,7 +4005,295 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_de',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
@@ -2355,11 +4525,6 @@ $this->widget('TbGridView',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_fa',
-                    'value' => 'CHtml::value($data, \'processedMediaIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
                     'name' => 'processed_media_id_hi',
                     'value' => 'CHtml::value($data, \'processedMediaIdHi.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
@@ -2375,66 +4540,18 @@ $this->widget('TbGridView',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_cn',
-                    'value' => 'CHtml::value($data, \'processedMediaIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'slideshow_file_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'slideshow_file_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'slideshowFileQaStateIdDe.itemLabel\')',
+                    'name' => 'slideshow_file_qa_state_id',
+                    'value' => 'CHtml::value($data, \'slideshowFileQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(SlideshowFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
@@ -2466,7 +4583,7 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
+                    'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
@@ -2474,11 +4591,484 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_de',
+                    'name' => 'slug_zh',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
                     )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'name' => 'processed_media_id_zh',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ar',
+                    'value' => 'CHtml::value($data, \'processedMediaIdAr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_bg',
+                    'value' => 'CHtml::value($data, \'processedMediaIdBg.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ca',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_cs',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_da',
+                    'value' => 'CHtml::value($data, \'processedMediaIdDa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_en_gb',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnGb.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_en_us',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnUs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_el',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fil',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFil.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hu',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_id',
+                    'value' => 'CHtml::value($data, \'processedMediaId.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_iw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIw.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_it',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ja',
+                    'value' => 'CHtml::value($data, \'processedMediaIdJa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ko',
+                    'value' => 'CHtml::value($data, \'processedMediaIdKo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lv',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_nl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_no',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_br',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtBr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_pt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ro',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ru',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_th',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_tr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_uk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdUk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_vi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdVi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_cn',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_tw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhTw.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -2594,14 +5184,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -2626,14 +5208,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -2641,44 +5215,305 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'name' => 'snapshot_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'snapshotQaStateIdEn.itemLabel\')',
+                    'name' => 'snapshot_qa_state_id',
+                    'value' => 'CHtml::value($data, \'snapshotQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'snapshot_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'snapshotQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'snapshot_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'snapshotQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'snapshot_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'snapshotQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'snapshot_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'snapshotQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'snapshot_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'snapshotQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'snapshot_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'snapshotQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'snapshot_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'snapshotQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SnapshotQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             */
             array(
@@ -2792,11 +5627,6 @@ $this->widget('TbGridView',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_fa',
-                    'value' => 'CHtml::value($data, \'processedMediaIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
                     'name' => 'processed_media_id_hi',
                     'value' => 'CHtml::value($data, \'processedMediaIdHi.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
@@ -2812,13 +5642,193 @@ $this->widget('TbGridView',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_cn',
-                    'value' => 'CHtml::value($data, \'processedMediaIdCn.itemLabel\')',
+                    'name' => 'processed_media_id_de',
+                    'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_de',
-                    'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
+                    'name' => 'processed_media_id_zh',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ar',
+                    'value' => 'CHtml::value($data, \'processedMediaIdAr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_bg',
+                    'value' => 'CHtml::value($data, \'processedMediaIdBg.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ca',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_cs',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_da',
+                    'value' => 'CHtml::value($data, \'processedMediaIdDa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_en_gb',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnGb.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_en_us',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnUs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_el',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fil',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFil.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hu',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_id',
+                    'value' => 'CHtml::value($data, \'processedMediaId.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_iw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIw.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_it',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ja',
+                    'value' => 'CHtml::value($data, \'processedMediaIdJa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ko',
+                    'value' => 'CHtml::value($data, \'processedMediaIdKo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lv',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_nl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_no',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_br',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtBr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_pt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ro',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ru',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_th',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_tr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_uk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdUk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_vi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdVi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_cn',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_tw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhTw.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
@@ -2937,11 +5947,6 @@ $this->widget('TbGridView',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_fa',
-                    'value' => 'CHtml::value($data, \'processedMediaIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
                     'name' => 'processed_media_id_hi',
                     'value' => 'CHtml::value($data, \'processedMediaIdHi.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
@@ -2957,11 +5962,6 @@ $this->widget('TbGridView',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_cn',
-                    'value' => 'CHtml::value($data, \'processedMediaIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
@@ -2969,14 +5969,6 @@ $this->widget('TbGridView',
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
@@ -3008,14 +6000,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -3023,44 +6007,490 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'name' => 'text_doc_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'textDocQaStateIdEn.itemLabel\')',
+                    'name' => 'text_doc_qa_state_id',
+                    'value' => 'CHtml::value($data, \'textDocQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'text_doc_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'textDocQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'text_doc_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'textDocQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'text_doc_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'textDocQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'text_doc_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'textDocQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'text_doc_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'textDocQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'text_doc_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'textDocQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'text_doc_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'textDocQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(TextDocQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'name' => 'processed_media_id_zh',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ar',
+                    'value' => 'CHtml::value($data, \'processedMediaIdAr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_bg',
+                    'value' => 'CHtml::value($data, \'processedMediaIdBg.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ca',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_cs',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_da',
+                    'value' => 'CHtml::value($data, \'processedMediaIdDa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_en_gb',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnGb.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_en_us',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnUs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_el',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fil',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFil.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hu',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_id',
+                    'value' => 'CHtml::value($data, \'processedMediaId.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_iw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIw.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_it',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ja',
+                    'value' => 'CHtml::value($data, \'processedMediaIdJa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ko',
+                    'value' => 'CHtml::value($data, \'processedMediaIdKo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lv',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_nl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_no',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_br',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtBr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_pt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ro',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ru',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_th',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_tr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_uk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdUk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_vi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdVi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_cn',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_tw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhTw.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -3170,14 +6600,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -3202,14 +6624,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -3220,6 +6634,302 @@ $this->widget('TbGridView',
                     'name' => 'tool_qa_state_id',
                     'value' => 'CHtml::value($data, \'toolQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(ToolQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             */
             array(
@@ -3333,14 +7043,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -3365,14 +7067,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -3382,11 +7076,6 @@ $this->widget('TbGridView',
             array(
                     'name' => 'processed_media_id_es',
                     'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_fa',
-                    'value' => 'CHtml::value($data, \'processedMediaIdFa.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
@@ -3405,54 +7094,495 @@ $this->widget('TbGridView',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_cn',
-                    'value' => 'CHtml::value($data, \'processedMediaIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'vector_graphic_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'vectorGraphicQaStateIdEn.itemLabel\')',
+                    'name' => 'vector_graphic_qa_state_id',
+                    'value' => 'CHtml::value($data, \'vectorGraphicQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(VectorGraphicQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'vector_graphic_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'vectorGraphicQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VectorGraphicQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'vector_graphic_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'vectorGraphicQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VectorGraphicQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'vector_graphic_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'vectorGraphicQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VectorGraphicQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'vector_graphic_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'vectorGraphicQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VectorGraphicQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'vector_graphic_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'vectorGraphicQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VectorGraphicQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'vector_graphic_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'vectorGraphicQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VectorGraphicQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'vector_graphic_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'vectorGraphicQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VectorGraphicQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'name' => 'processed_media_id_zh',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ar',
+                    'value' => 'CHtml::value($data, \'processedMediaIdAr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_bg',
+                    'value' => 'CHtml::value($data, \'processedMediaIdBg.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ca',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_cs',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_da',
+                    'value' => 'CHtml::value($data, \'processedMediaIdDa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_en_gb',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnGb.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_en_us',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnUs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_el',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fil',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFil.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hu',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_id',
+                    'value' => 'CHtml::value($data, \'processedMediaId.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_iw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIw.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_it',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ja',
+                    'value' => 'CHtml::value($data, \'processedMediaIdJa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ko',
+                    'value' => 'CHtml::value($data, \'processedMediaIdKo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lv',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_nl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_no',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_br',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtBr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_pt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ro',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ru',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_th',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_tr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_uk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdUk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_vi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdVi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_cn',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_tw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhTw.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -3581,11 +7711,6 @@ $this->widget('TbGridView',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_fa',
-                    'value' => 'CHtml::value($data, \'processedMediaIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
                     'name' => 'processed_media_id_hi',
                     'value' => 'CHtml::value($data, \'processedMediaIdHi.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
@@ -3601,11 +7726,6 @@ $this->widget('TbGridView',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'processed_media_id_cn',
-                    'value' => 'CHtml::value($data, \'processedMediaIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
                     'name' => 'processed_media_id_de',
                     'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
@@ -3613,14 +7733,6 @@ $this->widget('TbGridView',
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_es',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'slug_fa',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
                         //'placement' => 'right',
@@ -3652,14 +7764,6 @@ $this->widget('TbGridView',
                 ),
             array(
                     'class' => 'TbEditableColumn',
-                    'name' => 'slug_cn',
-                    'editable' => array(
-                        'url' => $this->createUrl('/node/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
                         'url' => $this->createUrl('/node/editableSaver'),
@@ -3667,44 +7771,490 @@ $this->widget('TbGridView',
                     )
                 ),
             array(
-                    'name' => 'video_file_qa_state_id_en',
-                    'value' => 'CHtml::value($data, \'videoFileQaStateIdEn.itemLabel\')',
+                    'name' => 'video_file_qa_state_id',
+                    'value' => 'CHtml::value($data, \'videoFileQaState.itemLabel\')',
                     'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
-                    'name' => 'video_file_qa_state_id_es',
-                    'value' => 'CHtml::value($data, \'videoFileQaStateIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'video_file_qa_state_id_fa',
-                    'value' => 'CHtml::value($data, \'videoFileQaStateIdFa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'video_file_qa_state_id_hi',
-                    'value' => 'CHtml::value($data, \'videoFileQaStateIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'video_file_qa_state_id_pt',
-                    'value' => 'CHtml::value($data, \'videoFileQaStateIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'video_file_qa_state_id_sv',
-                    'value' => 'CHtml::value($data, \'videoFileQaStateIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'video_file_qa_state_id_cn',
-                    'value' => 'CHtml::value($data, \'videoFileQaStateIdCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
                 ),
             array(
-                    'name' => 'video_file_qa_state_id_de',
-                    'value' => 'CHtml::value($data, \'videoFileQaStateIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(VideoFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/node/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'name' => 'processed_media_id_zh',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ar',
+                    'value' => 'CHtml::value($data, \'processedMediaIdAr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_bg',
+                    'value' => 'CHtml::value($data, \'processedMediaIdBg.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ca',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_cs',
+                    'value' => 'CHtml::value($data, \'processedMediaIdCs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_da',
+                    'value' => 'CHtml::value($data, \'processedMediaIdDa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_en_gb',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnGb.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_en_us',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEnUs.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_el',
+                    'value' => 'CHtml::value($data, \'processedMediaIdEl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fil',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFil.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_fr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdFr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_hu',
+                    'value' => 'CHtml::value($data, \'processedMediaIdHu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_id',
+                    'value' => 'CHtml::value($data, \'processedMediaId.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_iw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIw.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_it',
+                    'value' => 'CHtml::value($data, \'processedMediaIdIt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ja',
+                    'value' => 'CHtml::value($data, \'processedMediaIdJa.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ko',
+                    'value' => 'CHtml::value($data, \'processedMediaIdKo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_lv',
+                    'value' => 'CHtml::value($data, \'processedMediaIdLv.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_nl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_no',
+                    'value' => 'CHtml::value($data, \'processedMediaIdNo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_br',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtBr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_pt_pt',
+                    'value' => 'CHtml::value($data, \'processedMediaIdPtPt.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ro',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRo.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_ru',
+                    'value' => 'CHtml::value($data, \'processedMediaIdRu.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sl',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSl.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_sr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdSr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_th',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTh.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_tr',
+                    'value' => 'CHtml::value($data, \'processedMediaIdTr.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_uk',
+                    'value' => 'CHtml::value($data, \'processedMediaIdUk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_vi',
+                    'value' => 'CHtml::value($data, \'processedMediaIdVi.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_cn',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhCn.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'processed_media_id_zh_tw',
+                    'value' => 'CHtml::value($data, \'processedMediaIdZhTw.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(

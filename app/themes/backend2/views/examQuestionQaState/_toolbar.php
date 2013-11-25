@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'examQuestions - ExamQuestion', 'url' => array('//examQuestion/admin')), array('label' => 'examQuestions1 - ExamQuestion', 'url' => array('//examQuestion/admin')), array('label' => 'examQuestions2 - ExamQuestion', 'url' => array('//examQuestion/admin')), array('label' => 'examQuestions3 - ExamQuestion', 'url' => array('//examQuestion/admin')), array('label' => 'examQuestions4 - ExamQuestion', 'url' => array('//examQuestion/admin')), array('label' => 'examQuestions5 - ExamQuestion', 'url' => array('//examQuestion/admin')), array('label' => 'examQuestions6 - ExamQuestion', 'url' => array('//examQuestion/admin')), array('label' => 'examQuestions7 - ExamQuestion', 'url' => array('//examQuestion/admin'))
+                        'items' => array(array('label' => 'examQuestions - ExamQuestion', 'url' => array('//examQuestion/admin'))
                         )
                     ),
                 ),
