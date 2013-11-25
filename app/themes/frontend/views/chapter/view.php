@@ -1,6 +1,6 @@
 <?php
 //$this->breadcrumbs[Yii::t('crud', 'Chapters')] = array('index');
-//$this->breadcrumbs[] = $model->title;
+$this->breadcrumbs[] = $model->title;
 
 $sections = $this->chapterSections($model);
 
