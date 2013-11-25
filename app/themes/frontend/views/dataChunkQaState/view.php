@@ -1,8 +1,7 @@
 <?php
-$this->breadcrumbs[Yii::t('model', 'Data Chunk Qa States')] = array('admin');
-$this->breadcrumbs[] = $model->id;
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 ?>
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <!--<h1>
     

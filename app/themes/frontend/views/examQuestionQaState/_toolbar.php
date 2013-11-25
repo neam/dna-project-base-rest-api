@@ -13,6 +13,7 @@
                     "icon" => "icon-edit",
                     "url" => array("add")
                 ));
+                break;
             case "view":
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Manage"),
