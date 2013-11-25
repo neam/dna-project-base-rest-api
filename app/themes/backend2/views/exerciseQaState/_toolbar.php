@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'exercises - Exercise', 'url' => array('//exercise/admin')), array('label' => 'exercises1 - Exercise', 'url' => array('//exercise/admin')), array('label' => 'exercises2 - Exercise', 'url' => array('//exercise/admin')), array('label' => 'exercises3 - Exercise', 'url' => array('//exercise/admin')), array('label' => 'exercises4 - Exercise', 'url' => array('//exercise/admin')), array('label' => 'exercises5 - Exercise', 'url' => array('//exercise/admin')), array('label' => 'exercises6 - Exercise', 'url' => array('//exercise/admin')), array('label' => 'exercises7 - Exercise', 'url' => array('//exercise/admin'))
+                        'items' => array(array('label' => 'exercises - Exercise', 'url' => array('//exercise/admin'))
                         )
                     ),
                 ),

@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'poFiles - PoFile', 'url' => array('//poFile/admin')), array('label' => 'poFiles1 - PoFile', 'url' => array('//poFile/admin')), array('label' => 'poFiles2 - PoFile', 'url' => array('//poFile/admin')), array('label' => 'poFiles3 - PoFile', 'url' => array('//poFile/admin')), array('label' => 'poFiles4 - PoFile', 'url' => array('//poFile/admin')), array('label' => 'poFiles5 - PoFile', 'url' => array('//poFile/admin')), array('label' => 'poFiles6 - PoFile', 'url' => array('//poFile/admin')), array('label' => 'poFiles7 - PoFile', 'url' => array('//poFile/admin'))
+                        'items' => array(array('label' => 'poFiles - PoFile', 'url' => array('//poFile/admin'))
                         )
                     ),
                 ),

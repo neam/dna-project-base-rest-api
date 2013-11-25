@@ -42,13 +42,6 @@
  *
  * Relations of table "chapter_qa_state" available as properties of the model:
  * @property Chapter[] $chapters
- * @property Chapter[] $chapters1
- * @property Chapter[] $chapters2
- * @property Chapter[] $chapters3
- * @property Chapter[] $chapters4
- * @property Chapter[] $chapters5
- * @property Chapter[] $chapters6
- * @property Chapter[] $chapters7
  */
 abstract class BaseChapterQaState extends ActiveRecord
 {
@@ -95,14 +88,7 @@ abstract class BaseChapterQaState extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'chapters' => array(self::HAS_MANY, 'Chapter', 'chapter_qa_state_id_en'),
-                'chapters1' => array(self::HAS_MANY, 'Chapter', 'chapter_qa_state_id_cn'),
-                'chapters2' => array(self::HAS_MANY, 'Chapter', 'chapter_qa_state_id_de'),
-                'chapters3' => array(self::HAS_MANY, 'Chapter', 'chapter_qa_state_id_es'),
-                'chapters4' => array(self::HAS_MANY, 'Chapter', 'chapter_qa_state_id_fa'),
-                'chapters5' => array(self::HAS_MANY, 'Chapter', 'chapter_qa_state_id_hi'),
-                'chapters6' => array(self::HAS_MANY, 'Chapter', 'chapter_qa_state_id_pt'),
-                'chapters7' => array(self::HAS_MANY, 'Chapter', 'chapter_qa_state_id_sv'),
+                'chapters' => array(self::HAS_MANY, 'Chapter', 'chapter_qa_state_id'),
             )
         );
     }

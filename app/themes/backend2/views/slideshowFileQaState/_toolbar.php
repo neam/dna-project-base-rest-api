@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'slideshowFiles - SlideshowFile', 'url' => array('//slideshowFile/admin')), array('label' => 'slideshowFiles1 - SlideshowFile', 'url' => array('//slideshowFile/admin')), array('label' => 'slideshowFiles2 - SlideshowFile', 'url' => array('//slideshowFile/admin')), array('label' => 'slideshowFiles3 - SlideshowFile', 'url' => array('//slideshowFile/admin')), array('label' => 'slideshowFiles4 - SlideshowFile', 'url' => array('//slideshowFile/admin')), array('label' => 'slideshowFiles5 - SlideshowFile', 'url' => array('//slideshowFile/admin')), array('label' => 'slideshowFiles6 - SlideshowFile', 'url' => array('//slideshowFile/admin')), array('label' => 'slideshowFiles7 - SlideshowFile', 'url' => array('//slideshowFile/admin'))
+                        'items' => array(array('label' => 'slideshowFiles - SlideshowFile', 'url' => array('//slideshowFile/admin'))
                         )
                     ),
                 ),

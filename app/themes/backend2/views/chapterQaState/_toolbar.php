@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'chapters - Chapter', 'url' => array('//chapter/admin')), array('label' => 'chapters1 - Chapter', 'url' => array('//chapter/admin')), array('label' => 'chapters2 - Chapter', 'url' => array('//chapter/admin')), array('label' => 'chapters3 - Chapter', 'url' => array('//chapter/admin')), array('label' => 'chapters4 - Chapter', 'url' => array('//chapter/admin')), array('label' => 'chapters5 - Chapter', 'url' => array('//chapter/admin')), array('label' => 'chapters6 - Chapter', 'url' => array('//chapter/admin')), array('label' => 'chapters7 - Chapter', 'url' => array('//chapter/admin'))
+                        'items' => array(array('label' => 'chapters - Chapter', 'url' => array('//chapter/admin'))
                         )
                     ),
                 ),

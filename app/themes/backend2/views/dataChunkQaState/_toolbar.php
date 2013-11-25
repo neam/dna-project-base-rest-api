@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'dataChunks - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'dataChunks1 - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'dataChunks2 - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'dataChunks3 - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'dataChunks4 - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'dataChunks5 - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'dataChunks6 - DataChunk', 'url' => array('//dataChunk/admin')), array('label' => 'dataChunks7 - DataChunk', 'url' => array('//dataChunk/admin'))
+                        'items' => array(array('label' => 'dataChunks - DataChunk', 'url' => array('//dataChunk/admin'))
                         )
                     ),
                 ),

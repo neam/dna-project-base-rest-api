@@ -33,13 +33,6 @@
  *
  * Relations of table "video_file_qa_state" available as properties of the model:
  * @property VideoFile[] $videoFiles
- * @property VideoFile[] $videoFiles1
- * @property VideoFile[] $videoFiles2
- * @property VideoFile[] $videoFiles3
- * @property VideoFile[] $videoFiles4
- * @property VideoFile[] $videoFiles5
- * @property VideoFile[] $videoFiles6
- * @property VideoFile[] $videoFiles7
  */
 abstract class BaseVideoFileQaState extends ActiveRecord
 {
@@ -86,14 +79,7 @@ abstract class BaseVideoFileQaState extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_en'),
-                'videoFiles1' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_cn'),
-                'videoFiles2' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_de'),
-                'videoFiles3' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_es'),
-                'videoFiles4' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_fa'),
-                'videoFiles5' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_hi'),
-                'videoFiles6' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_pt'),
-                'videoFiles7' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id_sv'),
+                'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'video_file_qa_state_id'),
             )
         );
     }

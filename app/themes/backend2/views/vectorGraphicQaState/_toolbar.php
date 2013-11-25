@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'vectorGraphics - VectorGraphic', 'url' => array('//vectorGraphic/admin')), array('label' => 'vectorGraphics1 - VectorGraphic', 'url' => array('//vectorGraphic/admin')), array('label' => 'vectorGraphics2 - VectorGraphic', 'url' => array('//vectorGraphic/admin')), array('label' => 'vectorGraphics3 - VectorGraphic', 'url' => array('//vectorGraphic/admin')), array('label' => 'vectorGraphics4 - VectorGraphic', 'url' => array('//vectorGraphic/admin')), array('label' => 'vectorGraphics5 - VectorGraphic', 'url' => array('//vectorGraphic/admin')), array('label' => 'vectorGraphics6 - VectorGraphic', 'url' => array('//vectorGraphic/admin')), array('label' => 'vectorGraphics7 - VectorGraphic', 'url' => array('//vectorGraphic/admin'))
+                        'items' => array(array('label' => 'vectorGraphics - VectorGraphic', 'url' => array('//vectorGraphic/admin'))
                         )
                     ),
                 ),

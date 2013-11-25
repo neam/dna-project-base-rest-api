@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'videoFiles - VideoFile', 'url' => array('//videoFile/admin')), array('label' => 'videoFiles1 - VideoFile', 'url' => array('//videoFile/admin')), array('label' => 'videoFiles2 - VideoFile', 'url' => array('//videoFile/admin')), array('label' => 'videoFiles3 - VideoFile', 'url' => array('//videoFile/admin')), array('label' => 'videoFiles4 - VideoFile', 'url' => array('//videoFile/admin')), array('label' => 'videoFiles5 - VideoFile', 'url' => array('//videoFile/admin')), array('label' => 'videoFiles6 - VideoFile', 'url' => array('//videoFile/admin')), array('label' => 'videoFiles7 - VideoFile', 'url' => array('//videoFile/admin'))
+                        'items' => array(array('label' => 'videoFiles - VideoFile', 'url' => array('//videoFile/admin'))
                         )
                     ),
                 ),
