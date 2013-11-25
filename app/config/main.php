@@ -21,7 +21,7 @@ require('languages.php');
 // main application configuration
 $mainConfig = array(
     'basePath'   => $applicationDirectory,
-    'name'       => 'Company Inc.',
+    'name'       => 'Phundament',
     'theme'      => 'frontend', // theme is copied eg. from vendor/p3bootstrap
     'language'   => 'en', // default language, see also components.langHandler
     'preload'    => array(
@@ -31,21 +31,22 @@ $mainConfig = array(
     ),
     'aliases'    => array(
         // composer
-        'root'                                 => $applicationDirectory . '/..',
-        'webroot'                              => $applicationDirectory . '/../www',
-        'vendor'                               => $applicationDirectory . '/../vendor',
+        'root'                                  => $applicationDirectory . '/..',
+        'webroot'                               => $applicationDirectory . '/../www',
+        'vendor'                                => $applicationDirectory . '/../vendor',
         // componentns
-        'bootstrap'                            => 'vendor.clevertech.yiibooster.src',
+        'bootstrap'                             => 'vendor.clevertech.yiibooster.src',
         // p3widgets
-        'jsonEditorView'                       => 'vendor.phundament.p3extensions.widgets.jsonEditorView',
-        'ckeditor'                             => 'vendor.phundament.p3extensions.widgets.ckeditor',
+        'jsonEditorView'                        => 'vendor.phundament.p3extensions.widgets.jsonEditorView',
+        'ckeditor'                              => 'vendor.phundament.p3extensions.widgets.ckeditor',
         // p3media
-        'jquery-file-upload'                   => 'vendor.phundament.jquery-file-upload',
-        'jquery-file-upload-widget'            => 'vendor.phundament.p3extensions.widgets.jquery-file-upload',
+        'jquery-file-upload'                    => 'vendor.phundament.jquery-file-upload',
+        'jquery-file-upload-widget'             => 'vendor.phundament.p3extensions.widgets.jquery-file-upload',
         // fixing 'hardcoded aliases' from extension (note: you have to use the full path)
-        'application.modules.user.views.asset' => 'vendor.mishamx.yii-user.views.asset',
-        'application.modules.user.components'  => 'vendor.mishamx.yii-user.components',
-        'gii-template-collection'              => 'vendor.phundament.gii-template-collection',
+        'application.modules.user.views.asset'  => 'vendor.mishamx.yii-user.views.asset',
+        'application.modules.user.components'   => 'vendor.mishamx.yii-user.components',
+        'gii-template-collection'               => 'vendor.phundament.gii-template-collection',
+        'application.extensions.introjs.assets' => 'vendor.moein7tl.yii-introjs.introjs.assets',
         'GtcRelation'                          => 'vendor.schmunk42.relation.widgets.GtcRelation',
     ),
     // autoloading model and component classes
@@ -63,10 +64,10 @@ $mainConfig = array(
         'vendor.phundament.p3pages.models.*', // Meta description and keywords (P3Media)
         'vendor.phundament.p3media.models.*', // Meta description and keywords (P3Media)
         'vendor.phundament.p3extensions.widgets.ckeditor.*', // shared classes
+        'vendor.schmunk42.relation.widgets.*', //Include For p3media for media meta update.
         // imports for components from packages, which do not support composer autoloading
         'vendor.mishamx.yii-user.models.*', // User Model
         'vendor.crisu83.yii-rights.components.*', // RWebUser
-        'vendor.yiiext.fancybox-widget.*', // Fancybox Widget
         'vendor.clevertech.yiibooster.src.widgets.*', //
         'vendor.anggiaj.eselect2.*',
         'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior',
@@ -76,6 +77,9 @@ $mainConfig = array(
         'vendor.bwoester.yii-event-interceptor.*',
         'vendor.gusnips.yii-translate.TranslateModule',
         'application.helpers.*',
+        // widgets
+        'vendor.moein7tl.yii-introjs.introjs.*',
+        'vendor.yiiext.fancybox-widget.*',
     ),
     /*
     'behaviors'  => array(
@@ -102,7 +106,8 @@ $mainConfig = array(
                     'CWidget'           => 'Basic HTML Widget',
                     'TbCarousel'        => 'Bootstrap Carousel',
                     'EFancyboxWidget'   => 'Fancy Box',
-                    'P3ReferenceWidget' => 'Widget Copy'
+                    'P3ReferenceWidget' => 'Widget Copy',
+                    'IntroJs'           => 'IntroJS'
                     // use eg. $> php composer.phar require yiiext/swf-object-widget to get the
                     // widget source; import widget class or set an alias.
                     #'ESwfObjectWidget' => 'SWF Object',
