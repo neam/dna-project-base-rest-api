@@ -35,10 +35,12 @@ class Account extends BaseAccount
     {
         return array_merge(
             parent::rules()
-        /* , array(
-          array('column1, column2', 'rule1'),
-          array('column3', 'rule2'),
-          ) */
+            , array(
+                array('username', 'unique', 'message' => Yii::t('app', 'Username already exists.')),
+                array('email', 'unique', 'message' => Yii::t('app', 'Email address already exists.')),
+                array('email', 'email'),
+                array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => Yii::t('app', 'Incorrect symbols (A-z0-9).')),
+            )
         );
     }
 
