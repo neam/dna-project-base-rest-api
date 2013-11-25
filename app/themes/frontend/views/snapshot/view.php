@@ -2,44 +2,52 @@
 $this->breadcrumbs[Yii::t('model', 'Snapshots')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
-<h1>
-
-    <?php echo Yii::t('model', 'Snapshot'); ?>
-    <small>
-        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
-    </small>
-
-</h1>
-
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<!--<h1>
+    
+    <?php echo Yii::t('model','Snapshot'); ?>
+    <small>
+        <?php echo Yii::t('model','View')?> #<?php echo $model->id ?>
+    </small>
+    
+</h1>-->
+
+<?php if (Yii::app()->user->checkAccess('Snapshot.*')): ?>
+    <div class="admin-container hide">
+        <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+    </div>
+<?php endif; ?>
+
+<?php $this->renderPartial("_view", array("data" => $model)); ?>
+<!--
 <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-<br/>
+    <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
 <?php echo CHtml::encode($model->version); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('cloned_from_id')); ?>:</b>
 <?php echo CHtml::encode($model->cloned_from_id); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('vizabi_state')); ?>:</b>
 <?php echo CHtml::encode($model->vizabi_state); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('embed_override')); ?>:</b>
 <?php echo CHtml::encode($model->embed_override); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('tool_id')); ?>:</b>
 <?php echo CHtml::encode($model->tool_id); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('_title')); ?>:</b>
 <?php echo CHtml::encode($model->_title); ?>
-<br/>
+<br />
 
 <?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en')); ?>:</b>
@@ -131,377 +139,5 @@ $this->breadcrumbs[] = $model->id;
 <br />
 
     */
-?>
-
-<div class="row">
-    <div class="span7">
-        <h2>
-            <?php echo Yii::t('model', 'Data') ?>
-            <small>
-                <?php echo $model->itemLabel ?>            </small>
-        </h2>
-
-        <?php
-        $this->widget(
-            'TbDetailView',
-            array(
-                'data' => $model,
-                'attributes' => array(
-                    array(
-                        'name' => 'id',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'id',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'version',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'version',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'cloned_from_id',
-                        'value' => ($model->clonedFrom !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
-                                    array('//snapshot/view', 'id' => $model->clonedFrom->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//snapshot/update', 'id' => $model->clonedFrom->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'vizabi_state',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'vizabi_state',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'embed_override',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'embed_override',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'tool_id',
-                        'value' => ($model->tool !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->tool->itemLabel,
-                                    array('//tool/view', 'id' => $model->tool->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//tool/update', 'id' => $model->tool->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => '_title',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => '_title',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_en',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_en',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => '_about',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => '_about',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'thumbnail_media_id',
-                        'value' => ($model->thumbnailMedia !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->thumbnailMedia->itemLabel,
-                                    array('//p3Media/view', 'id' => $model->thumbnailMedia->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//p3Media/update', 'id' => $model->thumbnailMedia->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'created',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'created',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'modified',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'modified',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'owner_id',
-                        'value' => ($model->owner !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
-                                    array('//users/view', 'id' => $model->owner->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//users/update', 'id' => $model->owner->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'node_id',
-                        'value' => ($model->node !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
-                                    array('//node/view', 'id' => $model->node->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//node/update', 'id' => $model->node->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'slug_es',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_es',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_fa',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_fa',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_hi',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_hi',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_pt',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_pt',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_sv',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_sv',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_cn',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_cn',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'slug_de',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_de',
-                                    'url' => $this->createUrl('/snapshot/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'snapshot_qa_state_id_en',
-                        'value' => ($model->snapshotQaStateIdEn !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdEn->itemLabel,
-                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdEn->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdEn->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'snapshot_qa_state_id_es',
-                        'value' => ($model->snapshotQaStateIdEs !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdEs->itemLabel,
-                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdEs->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdEs->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'snapshot_qa_state_id_fa',
-                        'value' => ($model->snapshotQaStateIdFa !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdFa->itemLabel,
-                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdFa->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdFa->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'snapshot_qa_state_id_hi',
-                        'value' => ($model->snapshotQaStateIdHi !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdHi->itemLabel,
-                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdHi->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdHi->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'snapshot_qa_state_id_pt',
-                        'value' => ($model->snapshotQaStateIdPt !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdPt->itemLabel,
-                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdPt->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdPt->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'snapshot_qa_state_id_sv',
-                        'value' => ($model->snapshotQaStateIdSv !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdSv->itemLabel,
-                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdSv->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdSv->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'snapshot_qa_state_id_cn',
-                        'value' => ($model->snapshotQaStateIdCn !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdCn->itemLabel,
-                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdCn->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdCn->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                    array(
-                        'name' => 'snapshot_qa_state_id_de',
-                        'value' => ($model->snapshotQaStateIdDe !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaStateIdDe->itemLabel,
-                                    array('//snapshotQaState/view', 'id' => $model->snapshotQaStateIdDe->id),
-                                    array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//snapshotQaState/update', 'id' => $model->snapshotQaStateIdDe->id),
-                                    array('class' => '')) : 'n/a',
-                        'type' => 'html',
-                    ),
-                ),
-            )); ?>
-    </div>
-
-    <div class="span5">
-        <?php $this->renderPartial('_view-relations', array('model' => $model)); ?>    </div>
-</div>
+    ?>
+-->

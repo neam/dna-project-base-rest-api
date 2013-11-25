@@ -1,9 +1,7 @@
 <div class="">
-    <!--
     <p class="alert">
         <?php echo Yii::t('model', 'Fields with <span class="required">*</span> are required.'); ?>
     </p>
-    -->
     <?php
 
     $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(

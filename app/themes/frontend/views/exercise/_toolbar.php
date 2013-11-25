@@ -4,20 +4,19 @@
         switch ($this->action->id) {
             case "index":
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Manage"),
-                    "icon" => "icon-list-alt",
-                    "url" => array("exercise/admin")
+                    "label" => Yii::t("model", "Manage"),
+                    "icon" => "icon-edit",
+                    "url" => array("admin")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Add"),
-                    "icon" => "icon-plus",
-                    "url" => array("exercise/add")
+                    "label" => Yii::t("model", "Add"),
+                    "icon" => "icon-edit",
+                    "url" => array("add")
                 ));
-                break;
             case "view":
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Manage"),
-                    "icon" => "icon-list-alt",
+                    "label" => Yii::t("model", "Manage"),
+                    "icon" => "icon-edit",
                     "url" => array("admin")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
@@ -29,11 +28,6 @@
                     "label" => Yii::t("model", "Update"),
                     "icon" => "icon-edit",
                     "url" => array("update", "id" => $model->{$model->tableSchema->primaryKey})
-                ));
-                $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("crud", "Create"),
-                    "icon" => "icon-plus",
-                    "url" => array("create")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Delete"),

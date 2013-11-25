@@ -2,18 +2,15 @@
 $this->breadcrumbs[Yii::t('model', 'Exercises')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-
-<?php $this->renderPartial("/_item/elements/flowbar", compact("model")); ?>
-
+<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
-
 <!--<h1>
-
-    <?php echo Yii::t('model', 'Exercise'); ?>
+    
+    <?php echo Yii::t('model','Exercise'); ?>
     <small>
-        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
+        <?php echo Yii::t('model','View')?> #<?php echo $model->id ?>
     </small>
-
+    
 </h1>-->
 
 <?php if (Yii::app()->user->checkAccess('Exercise.*')): ?>
@@ -23,35 +20,34 @@ $this->breadcrumbs[] = $model->id;
 <?php endif; ?>
 
 <?php $this->renderPartial("_view", array("data" => $model)); ?>
-
 <!--
 <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
-<br/>
+    <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
 <?php echo CHtml::encode($model->version); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('cloned_from_id')); ?>:</b>
 <?php echo CHtml::encode($model->cloned_from_id); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('_title')); ?>:</b>
 <?php echo CHtml::encode($model->_title); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en')); ?>:</b>
 <?php echo CHtml::encode($model->slug_en); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('_question')); ?>:</b>
 <?php echo CHtml::encode($model->_question); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('_description')); ?>:</b>
 <?php echo CHtml::encode($model->_description); ?>
-<br/>
+<br />
 
 <?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_media_id')); ?>:</b>
@@ -139,5 +135,5 @@ $this->breadcrumbs[] = $model->id;
 <br />
 
     */
-?>
+    ?>
 -->
