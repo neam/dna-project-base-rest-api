@@ -1,7 +1,7 @@
 Phundament
 ==========
 
-**Version 3-0.21.0-dev**
+**Version 3-0.22.0**
 
 
 What is Phundament?
@@ -60,7 +60,7 @@ Demo
 ----
 
  * Try a test-drive at the [Demo Page](http://demo.phundament.com/3.0-dev)
-   * Login with `editor` / `editor` or register by e-mail.
+   * Login with `admin` / `admin`. **The demo website will be resetted every 6 hours.**
 
 
 Resources
@@ -71,6 +71,9 @@ Resources
 
 [![Latest Unstable Version](https://poser.pugx.org/phundament/app/v/unstable.png)](https://packagist.org/packages/phundament/app)
 [![Build Status](https://travis-ci.org/phundament/app.png?branch=develop)](https://travis-ci.org/phundament/app)
+
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/phundament/app/badges/quality-score.png?s=4d1ce01151a4e82df75b563e7ccf0001cc227bd1)](https://scrutinizer-ci.com/g/phundament/app/)
+[![Dependencies Status](https://depending.in/phundament/app.png)](http://depending.in/phundament/app)
 
 ### Fundamentals
  *  [Documentation](https://github.com/phundament/app/wiki/)

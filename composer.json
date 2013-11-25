@@ -121,10 +121,6 @@
         },
         {
             "type":"git",
-            "url":"https://github.com/schmunk42/status-behavior.git"
-        },
-        {
-            "type":"git",
             "url":"https://github.com/Quexer69/yii.translate.git"
         },
         {
@@ -149,15 +145,16 @@
         "malyshev/yii-debug-toolbar":"@dev",
         "mikehaertl/packagecompressor": "dev-develop",
         "mishamx/yii-user":"@dev",
+        "moein7tl/yii-introjs":"@dev",
         "nordsoftware/yii-emailer": "1.*",
         "phundament/backend-theme":"@dev",
         "phundament/jquery-file-upload": "@dev",
-        "phundament/p3admin":"dev-master as 0.16.0",
-        "phundament/p3extensions":"dev-develop as 0.17.0",
-        "phundament/p3bootstrap":"dev-develop as 0.22.0",
-        "phundament/p3pages":"dev-release/0.17.0 as 0.17.0",
+        "phundament/p3admin":"0.16.0",
+        "phundament/p3extensions":"0.17.0",
+        "phundament/p3bootstrap":"0.22.0",
+        "phundament/p3pages":"dev-master as 0.17.0",
         "phundament/p3media":"dev-awaiting-prs",
-        "phundament/p3widgets":"dev-develop as 0.16.0",
+        "phundament/p3widgets":"0.16.0",
         "schmunk42/ckeditor-configurator":"@dev",
         "schmunk42/multi-theme":"0.1.*",
         "schmunk42/web-user-behavior":"0.1.*",
@@ -187,11 +184,8 @@
         "schmunk42/yii-sakila-crud": "@dev",
         "schmunk42/relation": "1.*",
         "yiisoft/yii":"1.1.14",
-        "yiiext/status-behavior":"dev-master as 0.6-dev",
-        "schmunk42/access":"@dev",
-        "schmunk42/adjacency-list-behavior":"@dev",
         "nordsoftware/yii-utils": "@dev",
-        "mrclay/minify": "2.1.*"
+        "mikehaertl/translatable": "~1.1.0"
     },
     "require-dev":{
         "cloudhead/less.js":"1.3.*",
