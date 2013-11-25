@@ -30,6 +30,7 @@ $this->renderPartial('//gridRelation/_modal_form', array(
     'fromType' => 'Chapter',
     'fromLabel' => 'chapter',
     'fromId' => $model->id,
+    'type' => 'edge',
 ));
 ?>
 

@@ -30,5 +30,6 @@ $this->renderPartial('//gridRelation/_modal_form', array(
     'fromType' => 'SlideshowFile',
     'fromLabel' => 'slideshow',
     'fromId' => $model->id,
+    'type' => 'edge',
 ));
 ?>

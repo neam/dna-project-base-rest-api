@@ -15,38 +15,34 @@ $input = $this->widget(
 echo $form->customRow($model, 'tool_id', $input);
 ?>
 
-<?php
-$formId = 'snapshot-tool_id-' . \uniqid() . '-form';
-?>
-
 <div class="control-group">
     <div class="controls">
         <?php
         echo $this->widget('bootstrap.widgets.TbButton', array(
-            'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Tool'))),
-            'icon' => 'icon-plus',
-            'htmlOptions' => array(
-                'data-toggle' => 'modal',
-                'data-target' => '#' . $formId . '-modal',
-            ),
-        ), true);
-        ?>                </div>
+                'label' => Yii::t('app', 'Add Tool'),
+                'icon' => 'icon-plus',
+                'htmlOptions' => array(
+                    'data-toggle' => 'modal',
+                    'data-target' => '#addrelation-snapshot-tool-modal',
+                ),
+            ), true);
+        ?>
+    </div>
 </div>
-
-<?php
-$this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/tool/_modal_form', array(
-    'formId' => $formId,
-    'inputSelector' => '#Snapshot_tool_id',
-    'model' => new Tool,
-    'pk' => 'id',
-    'field' => 'itemLabel',
-));
-$this->endClip();
-?>
 
 <?php if ($model->getAttributeHint("tool")): ?>
     <p class="alert alert-info help-block">
         <?php echo $model->getAttributeHint("tool"); ?>
     </p>
 <?php endif; ?>
+
+<?php
+$this->renderPartial('//gridRelation/_modal_form', array(
+        'toType' => 'Tool',
+        'toLabel' => 'tool',
+        'fromType' => 'Snapshot',
+        'fromId' => $model->id,
+        'type' => 'input',
+        'inputId' => 'tool_id',
+    ));
+?>

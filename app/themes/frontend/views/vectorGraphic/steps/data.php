@@ -30,5 +30,6 @@ $this->renderPartial('//gridRelation/_modal_form', array(
     'fromType' => 'VectorGraphic',
     'fromLabel' => 'vector graphic',
     'fromId' => $model->id,
+    'type' => 'edge',
 ));
 ?>

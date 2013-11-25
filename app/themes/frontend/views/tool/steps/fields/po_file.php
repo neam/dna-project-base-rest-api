@@ -15,37 +15,34 @@ $input = $this->widget(
 echo $form->customRow($model, 'po_file_id', $input);
 ?>
 
-<?php
-$formId = 'snapshot-tool_id-' . \uniqid() . '-form';
-?>
-
 <div class="control-group">
     <div class="controls">
         <?php
         echo $this->widget('bootstrap.widgets.TbButton', array(
-            'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Po File'))),
-            'icon' => 'icon-plus',
-            'htmlOptions' => array(
-                'data-toggle' => 'modal',
-                'data-target' => '#' . $formId . '-modal',
-            ),
-        ), true);
+                'label' => Yii::t('app', 'Add Po File'),
+                'icon' => 'icon-plus',
+                'htmlOptions' => array(
+                    'data-toggle' => 'modal',
+                    'data-target' => '#addrelation-tool-pofile-modal',
+                ),
+            ), true);
         ?>
     </div>
 </div>
 
-<?php
-$this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('/poFile/_modal_form', array(
-    'formId' => $formId,
-    'inputSelector' => '#Tool_po_file_id',
-    'model' => new PoFile,
-    'pk' => 'id',
-    'field' => 'itemLabel',
-));
-$this->endClip();
-?>
+<?php if ($model->getAttributeHint("po_file_id")): ?>
+    <p class="alert alert-info help-block">
+        <?php echo $model->getAttributeHint("po_file_id"); ?>
+    </p>
+<?php endif; ?>
 
-<p class="alert alert-info help-block">
-    <?php echo $model->getAttributeHint("po_file_id"); ?>
-</p>
+<?php
+$this->renderPartial('//gridRelation/_modal_form', array(
+        'toType' => 'PoFile',
+        'toLabel' => 'po file',
+        'fromType' => 'Tool',
+        'fromId' => $model->id,
+        'type' => 'input',
+        'inputId' => 'po_file_id',
+    ));
+?>
