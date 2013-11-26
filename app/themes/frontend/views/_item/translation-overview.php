@@ -66,7 +66,7 @@ $this->breadcrumbs[] = $actionCaption;
                             'bootstrap.widgets.TbProgress',
                             array(
                                 'type' => 'success', // 'info', 'success' or 'danger'
-                                'percent' => $model->calculateValidationProgress('into_' . $language . '-total_progress'),
+                                'percent' => $model->calculateValidationProgress('translate_into_' . $language),
                             )
                         );
 
