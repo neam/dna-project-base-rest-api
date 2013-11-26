@@ -39,13 +39,13 @@ class Exercise extends BaseExercise
         return array_merge(
             parent::relations(),
             array(
-                'materials' => array(self::HAS_MANY, 'VideoFile', array('id' => 'node_id'), 'through' => 'outNodes'),
+                'materials' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
+                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
             )
         );
     }
 
     public $thumbnail;
-    public $materials;
 
     public function rules()
     {
@@ -124,17 +124,17 @@ class Exercise extends BaseExercise
                 'description_' . $this->source_language,
                 'thumbnail_media_id',
             ),
-            /*
             'materials' => array(
                 'materials',
             ),
+            /*
             'learning_objectives' => array(
                 'learning_objectives',
             ),
+            */
             'related' => array(
                 'related',
             ),
-            */
         );
     }
 
@@ -144,6 +144,7 @@ class Exercise extends BaseExercise
             'info' => Yii::t('app', 'Info'),
             'materials' => Yii::t('app', 'Materials'),
             'learning_objectives' => Yii::t('app', 'Learning Objectives'),
+            'materials' => Yii::t('app', 'Materials'),
             'related' => Yii::t('app', 'Related'),
         );
     }

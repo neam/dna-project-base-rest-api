@@ -8,7 +8,7 @@
                 'icon' => 'icon-plus',
                 'htmlOptions' => array(
                     'data-toggle' => 'modal',
-                    'data-target' => '#addrelation-chapter--modal',
+                    'data-target' => '#addrelation-examquestion--modal',
                 ),
             ),
             true

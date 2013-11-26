@@ -25,7 +25,7 @@
 </div>
 
 <p class="alert alert-info help-block">
-    <?php echo $model->getAttributeHint("material"); ?>
+    <?php echo $model->getAttributeHint("materials"); ?>
 </p>
 
 <?php

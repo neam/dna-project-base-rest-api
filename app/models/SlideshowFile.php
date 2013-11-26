@@ -37,6 +37,7 @@ class SlideshowFile extends BaseSlideshowFile
             parent::relations(),
             array(
                 'datachunks' => array(self::HAS_MANY, 'DataChunk', array('id' => 'node_id'), 'through' => 'outNodes'),
+                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
             )
         );
     }
@@ -189,6 +190,9 @@ class SlideshowFile extends BaseSlideshowFile
             'data' => array(
                 'datachunks',
             ),
+            'related' => array(
+                'related',
+            ),
         );
     }
 
@@ -198,6 +202,7 @@ class SlideshowFile extends BaseSlideshowFile
             'info' => Yii::t('app', 'Info'),
             'file' => Yii::t('app', 'File'),
             'data' => Yii::t('app', 'Data'),
+            'related' => Yii::t('app', 'Related'),
         );
     }
 

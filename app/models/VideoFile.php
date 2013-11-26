@@ -37,7 +37,9 @@ class VideoFile extends BaseVideoFile
     {
         return array_merge(
             parent::relations(),
-            array()
+            array(
+                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
+            )
         );
     }
 
@@ -126,6 +128,9 @@ class VideoFile extends BaseVideoFile
                 'subtitles_' . $this->source_language,
                 'subtitles_import_media_id',
             ),
+            'related' => array(
+                'related',
+            ),
         );
     }
 
@@ -135,6 +140,7 @@ class VideoFile extends BaseVideoFile
             'info' => Yii::t('app', 'Info'),
             'files' => Yii::t('app', 'Files'),
             'subtitles' => Yii::t('app', 'Subtitles'),
+            'related' => Yii::t('app', 'Related'),
         );
     }
 

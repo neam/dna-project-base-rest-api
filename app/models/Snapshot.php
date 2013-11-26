@@ -40,7 +40,7 @@ class Snapshot extends BaseSnapshot
             array(
                 'parentChapters' => array(self::HAS_MANY, 'Chapter', array('id' => 'node_id'), 'through' => 'inNodes'),
                 'tools' => array(self::HAS_MANY, 'Tool', array('id' => 'node_id'), 'through' => 'outNodes'),
-                'related' => array(self::HAS_MANY, 'Snapshot', array('id' => 'node_id'), 'through' => 'outNodes'),
+                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
             )
         );
     }
@@ -122,6 +122,9 @@ class Snapshot extends BaseSnapshot
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
                 'about_' . $this->source_language,
+            ),
+            'related' => array(
+                'related',
             ),
         );
     }
