@@ -269,16 +269,11 @@ trait ItemController
 
         // If fromId is set, we assume this is a new Item which will be related:
         if (isset($_GET["fromId"]) && is_numeric($_GET["fromId"])) {
-            $fromModel = $_GET["fromModel"];
-            $fromId = $_GET["fromId"];
-            $to_node_id = $item->node_id;
-
-            $_model = $fromModel::model()->findByPk($fromId);
-            $from_node_id = $_model->node()->id;
-
-            $this->addEdge($from_node_id, $to_node_id);
-
             if (isset($_GET["returnUrl"])) {
+                $from_node_id = $_model->node()->id;
+                $to_node_id = $item->node_id;
+                $this->addEdge($from_node_id, $to_node_id);
+
                 $this->redirect($_GET['returnUrl']);
             }
             header("Content-type: application/json");
