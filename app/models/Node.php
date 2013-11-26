@@ -66,8 +66,6 @@ class Node extends BaseNode
                      'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'node_id'),
                      'dataSources' => array(self::HAS_MANY, 'DataSource', 'node_id'),
                      'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'node_id'),
-                     'edges' => array(self::HAS_MANY, 'Edge', 'from_node_id'),
-                     'edges1' => array(self::HAS_MANY, 'Edge', 'to_node_id'),
                      'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'node_id'),
                      'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'node_id'),
                      'exercises' => array(self::HAS_MANY, 'Exercise', 'node_id'),
@@ -83,6 +81,9 @@ class Node extends BaseNode
                      'tools' => array(self::HAS_MANY, 'Tool', 'node_id'),
                      'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'node_id'),
                      'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'node_id'),
+                     'edges' => array(self::HAS_MANY, 'Edge', 'from_node_id'),
+                     'edges1' => array(self::HAS_MANY, 'Edge', 'to_node_id'),
+                     'nodes' => array(self::HAS_MANY, 'Node', 'id'),
                  ) as $candidateRelation => $relation) {
 
             if (count($this->$candidateRelation) == 1) {
@@ -91,7 +92,8 @@ class Node extends BaseNode
             }
 
         }
-
+        var_dump ( $this);
+        exit;
         throw new CException("This node does not have any parent item");
 
     }
