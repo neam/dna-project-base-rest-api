@@ -15,7 +15,25 @@ trait ItemTrait
         $statusRules['preview'] = array(implode(', ', $statusRequirements['preview']), 'required', 'on' => 'preview,public');
         $statusRules['public'] = array(implode(', ', $statusRequirements['public']), 'required', 'on' => 'public');
 
+        // Manual fields that are required
+        $statusRules[] = array('status', 'validStatusPreview', 'on' => 'status_preview');
+        $statusRules[] = array('status', 'validStatusPublic', 'on' => 'status_public');
+
         return $statusRules;
+    }
+
+    public function validStatusPreview($attribute, $params)
+    {
+        if ($this->qaState()->previewing_welcome != 1) {
+            $this->addError($attribute, Yii::t('app', 'Not marked as testable'));
+        }
+    }
+
+    public function validStatusPublic($attribute, $params)
+    {
+        if ($this->qaState()->candidate_for_public_status != 1) {
+            $this->addError($attribute, Yii::t('app', 'Not marked as candidate'));
+        }
     }
 
     public function flowStepRules()

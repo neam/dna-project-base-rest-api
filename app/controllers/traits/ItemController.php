@@ -265,6 +265,7 @@ trait ItemController
         if (!$item->save()) {
             throw new SaveException($item);
         }
+        $item->refreshQaState();
         $message = "{$this->modelClass} Added";
 
         // If fromId is set, we assume this is a new Item which will be related:
@@ -375,6 +376,7 @@ trait ItemController
         if (!$qaState->save()) {
             throw new SaveException($qaState);
         }
+        $model->refreshQaState();
 
         // redirect
         if (isset($_GET['returnUrl'])) {
@@ -415,6 +417,7 @@ trait ItemController
         if (!$qaState->save()) {
             throw new SaveException($qaState);
         }
+        $model->refreshQaState();
 
         // redirect
         if (isset($_GET['returnUrl'])) {

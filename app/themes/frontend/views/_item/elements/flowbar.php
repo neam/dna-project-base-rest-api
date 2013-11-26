@@ -25,7 +25,7 @@
         <h1>
             <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
             <small>Version: <?php echo $model->version; ?></small>
-            <small>Status: Y</small>
+            <small>Status: <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?></small>
             <div class="btn-group pull-right">
 
                 <?php
