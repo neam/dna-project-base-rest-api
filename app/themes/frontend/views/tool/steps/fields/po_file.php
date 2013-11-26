@@ -15,10 +15,10 @@ $input = $this->widget(
 echo $form->customRow($model, 'po_file_id', $input);
 ?>
 
-<div class="control-group">
-    <div class="controls">
-        <?php
-        echo $this->widget('bootstrap.widgets.TbButton', array(
+    <div class="control-group">
+        <div class="controls">
+            <?php
+            echo $this->widget('bootstrap.widgets.TbButton', array(
                 'label' => Yii::t('app', 'Add Po File'),
                 'icon' => 'icon-plus',
                 'htmlOptions' => array(
@@ -26,9 +26,9 @@ echo $form->customRow($model, 'po_file_id', $input);
                     'data-target' => '#addrelation-tool-pofile-modal',
                 ),
             ), true);
-        ?>
+            ?>
+        </div>
     </div>
-</div>
 
 <?php if ($model->getAttributeHint("po_file_id")): ?>
     <p class="alert alert-info help-block">
@@ -37,12 +37,10 @@ echo $form->customRow($model, 'po_file_id', $input);
 <?php endif; ?>
 
 <?php
-$this->renderPartial('//gridRelation/_modal_form', array(
-        'toType' => 'PoFile',
-        'toLabel' => 'po file',
-        'fromType' => 'Tool',
-        'fromId' => $model->id,
-        'type' => 'input',
-        'inputId' => 'po_file_id',
-    ));
+$this->renderPartial('//gridRelation/_modal_form_single', array(
+    'model' => $model,
+    'toType' => 'PoFile',
+    'toLabel' => 'po file',
+    'inputId' => 'po_file_id',
+));
 ?>

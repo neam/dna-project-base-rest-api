@@ -26,11 +26,9 @@
 
 <?php
 $this->renderPartial('//gridRelation/_modal_form', array(
+    'model' => $model,
     'toType' => 'Snapshot',
     'toLabel' => 'visualization',
-    'fromType' => 'Chapter',
-    'fromLabel' => 'chapter',
-    'fromId' => $model->id,
     'type' => 'edge',
 ));
 ?>

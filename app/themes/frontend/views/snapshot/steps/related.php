@@ -8,7 +8,7 @@
                 'icon' => 'icon-plus',
                 'htmlOptions' => array(
                     'data-toggle' => 'modal',
-                    'data-target' => '#addrelation-chapter--modal',
+                    'data-target' => '#addrelation-snapshot--modal',
                 ),
             ),
             true
@@ -32,11 +32,9 @@
 $this->renderPartial(
     '//gridRelation/_modal_form',
     array(
+        'model' => $model,
         'toType' => '',
         'toLabel' => 'related item',
-        'fromType' => 'Chapter',
-        'fromLabel' => 'chapter',
-        'fromId' => $model->id,
         'type' => 'edge',
     )
 );

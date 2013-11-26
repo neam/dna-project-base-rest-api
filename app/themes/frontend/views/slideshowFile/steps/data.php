@@ -26,11 +26,9 @@
 
 <?php
 $this->renderPartial('//gridRelation/_modal_form', array(
+    'model' => $model,
     'toType' => 'DataChunk',
     'toLabel' => 'data',
-    'fromType' => 'SlideshowFile',
-    'fromLabel' => 'slideshow',
-    'fromId' => $model->id,
     'type' => 'edge',
 ));
 ?>

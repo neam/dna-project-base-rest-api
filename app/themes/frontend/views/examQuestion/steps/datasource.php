@@ -37,12 +37,10 @@ echo $form->customRow($model, 'data_source_id', $input);
 <?php endif; ?>
 
 <?php
-$this->renderPartial('//gridRelation/_modal_form', array(
+$this->renderPartial('//gridRelation/_modal_form_single', array(
+    'model' => $model,
     'toType' => 'DataSource',
     'toLabel' => 'data source',
-    'fromType' => 'ExamQuestion',
-    'fromId' => $model->id,
-    'type' => 'input',
     'inputId' => 'data_source_id',
 ));
 ?>
