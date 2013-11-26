@@ -2,7 +2,7 @@
     <div class="controls">
         <?php
         echo $this->widget('bootstrap.widgets.TbButton', array(
-            'label' => Yii::t('app', 'Add snapshot'),
+            'label' => Yii::t('app', 'Add visualization'),
             'icon' => 'icon-plus',
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
@@ -14,6 +14,7 @@
         $this->renderPartial('//gridRelation/_relation_list', array(
             'relation' => 'snapshots',
             'model' => $model,
+            'label' => 'visualizations',
         ));
         ?>
     </div>
@@ -26,7 +27,7 @@
 <?php
 $this->renderPartial('//gridRelation/_modal_form', array(
     'toType' => 'Snapshot',
-    'toLabel' => 'snapshot',
+    'toLabel' => 'visualization',
     'fromType' => 'Chapter',
     'fromLabel' => 'chapter',
     'fromId' => $model->id,

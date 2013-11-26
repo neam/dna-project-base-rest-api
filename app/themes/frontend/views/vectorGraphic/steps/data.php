@@ -2,7 +2,7 @@
     <div class="controls">
         <?php
         echo $this->widget('bootstrap.widgets.TbButton', array(
-            'label' => Yii::t('app', 'Add data chunk'),
+            'label' => Yii::t('app', 'Add data'),
             'icon' => 'icon-plus',
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
@@ -14,6 +14,7 @@
         $this->renderPartial('//gridRelation/_relation_list', array(
             'relation' => 'dataChunks',
             'model' => $model,
+            'label' => 'data',
         ));
         ?>
     </div>
@@ -26,7 +27,7 @@
 <?php
 $this->renderPartial('//gridRelation/_modal_form', array(
     'toType' => 'DataChunk',
-    'toLabel' => 'data chunk',
+    'toLabel' => 'data',
     'fromType' => 'VectorGraphic',
     'fromLabel' => 'vector graphic',
     'fromId' => $model->id,

@@ -14,6 +14,7 @@
         $this->renderPartial('//gridRelation/_relation_list', array(
             'relation' => 'exercises',
             'model' => $model,
+            'label' => 'exercises',
         ));
         ?>
     </div>

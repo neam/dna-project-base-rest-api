@@ -4,7 +4,7 @@
         echo $this->widget(
             'bootstrap.widgets.TbButton',
             array(
-                'label' => Yii::t('app', 'Add related'),
+                'label' => Yii::t('app', 'Add related item'),
                 'icon' => 'icon-plus',
                 'htmlOptions' => array(
                     'data-toggle' => 'modal',
@@ -18,6 +18,7 @@
         $this->renderPartial('//gridRelation/_relation_list', array(
             'relation' => 'related',
             'model' => $model,
+            'label' => 'related items',
         ));
         ?>
     </div>
@@ -32,7 +33,7 @@ $this->renderPartial(
     '//gridRelation/_modal_form',
     array(
         'toType' => '',
-        'toLabel' => 'related item',
+        'toLabel' => 'related items',
         'fromType' => 'Chapter',
         'fromLabel' => 'chapter',
         'fromId' => $model->id,
