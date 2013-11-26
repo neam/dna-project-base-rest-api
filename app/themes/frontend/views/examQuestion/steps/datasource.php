@@ -3,7 +3,7 @@ $input = $this->widget(
     '\GtcRelation',
     array(
         'model' => $model,
-        'relation' => 'data',
+        'relation' => 'sourceNode',
         'fields' => 'itemLabel',
         'allowEmpty' => true,
         'style' => 'dropdownlist',
