@@ -3,6 +3,8 @@
     echo $form->textAreaRow($model, 'about_' . $this->workflowData["translateInto"], array('rows' => 6, 'cols' => 50, 'class' => 'span8'));
 } ?>
 
-<p class="alert alert-info help-block">
-    <?php echo $model->getAttributeHint("about"); ?>
-</p>
+<?php if ($model->getAttributeHint("about")): ?>
+    <p class="alert alert-info help-block">
+        <?php echo $model->getAttributeHint("about"); ?>
+    </p>
+<?php endif; ?>
