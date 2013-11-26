@@ -12,7 +12,7 @@
         ?>
         <?php
         $this->renderPartial('//gridRelation/_relation_list', array(
-            'relation' => 'dataChunks',
+            'relation' => 'datachunks',
             'model' => $model,
             'label' => 'data',
         ));
@@ -21,12 +21,13 @@
 </div>
 
 <p class="alert alert-info help-block">
-    <?php echo $model->getAttributeHint("dataChunks"); ?>
+    <?php echo $model->getAttributeHint("datachunks"); ?>
 </p>
 
 <?php
 $this->renderPartial('//gridRelation/_modal_form', array(
     'model' => $model,
+    'relation' => 'datachunks',
     'toType' => 'DataChunk',
     'toLabel' => 'data',
     'type' => 'edge',

@@ -11,7 +11,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
             $.each($("input[name='modalGrid']:checked"), function () {
                 vals.push($(this).val());
             });
-            var jsondata = ({'<?php echo $fromType; ?>': {'fromId': '<?php echo $model->id; ?>', 'edges_to_add': vals}});
+            var jsondata = ({'<?php echo $fromType; ?>': {'relation':'<?php echo $relation; ?>','fromId': '<?php echo $model->id; ?>', 'edges_to_add': vals}});
             return jsondata;
         }
         function relationComplete() {

@@ -27,6 +27,7 @@
 <?php
 $this->renderPartial('//gridRelation/_modal_form', array(
     'model' => $model,
+    'relation' => 'exercises',
     'toType' => 'Exercise',
     'toLabel' => 'exercise',
     'type' => 'edge',

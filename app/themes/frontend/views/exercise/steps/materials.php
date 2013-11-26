@@ -33,6 +33,7 @@ $this->renderPartial(
     '//gridRelation/_modal_form',
     array(
         'model' => $model,
+        'relation' => 'materials',
         'toType' => '',
         'toLabel' => 'material',
         'type' => 'edge',

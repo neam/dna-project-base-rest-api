@@ -27,6 +27,7 @@
 <?php
 $this->renderPartial('//gridRelation/_modal_form', array(
     'model' => $model,
+    'relation' => 'videos',
     'toType' => 'VideoFile',
     'toLabel' => 'video',
     'type' => 'edge',
