@@ -27,7 +27,7 @@ $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $label));
                 <?php
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Delete relation"),
-                    "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $realItem->id, "returnUrl" => Yii::app()->request->url),
+                    "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $realItem->node_id, "returnUrl" => Yii::app()->request->url),
                     "size" => "small",
                     "type" => "danger"
                 ));
