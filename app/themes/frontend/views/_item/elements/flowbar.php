@@ -35,7 +35,7 @@
                         'label' => Yii::t('model', 'Go!'),
                         'icon' => 'icon-play',
                         'type' => '',
-                        'url' => array('go', 'id' => $model->{$model->tableSchema->primaryKey}),
+                        'url' => array('node/go', 'id' => $model->node()->id),
                         'htmlOptions' => array(
                             'target' => '_blank',
                         ),
