@@ -36,6 +36,7 @@
 
                     $relArray[] = [
                         "id" => $item->id,
+                        "node_id" => $item->node_id,
                         "thumb_url" => $thumb_url,
                         "type" => get_class($item),
                         "title" => $edge_title['title']
