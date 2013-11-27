@@ -118,7 +118,7 @@
                         "label" => Yii::t("crud", "Evaluate"),
                         "type" => $this->action->id == "evaluate" ? "inverse" : null,
                         "icon" => "icon-comment" . ($this->action->id == "evaluate" ? " icon-white" : null),
-                        "url" => array("evaluate", "id" => $model->{$model->tableSchema->primaryKey})
+                        "url" => array("evaluate", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->firstFlowStep($model))
                     ));
                     $this->widget("bootstrap.widgets.TbButton", array(
                         "label" => Yii::t("model", "Review"),

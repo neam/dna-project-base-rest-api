@@ -394,10 +394,18 @@ trait ItemController
 
     }
 
-    public function actionEvaluate($id)
+    /**
+     * Evaluate workflow
+     * @param $id
+     * @param $step
+     */
+    public function actionEvaluate($id, $step)
     {
+        $this->scenario = "evaluate-step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/evaluate', array('model' => $model));
+        $this->populateWorkflowData($model, "evaluate", Yii::t('app', 'Evaluate'));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/evaluate', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
     /**

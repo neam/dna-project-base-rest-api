@@ -1,154 +1,86 @@
 <?php
-$workflowCaption = Yii::t('app', 'Other actions');
-$actionCaption = Yii::t('app', 'Evaluate');
+
+$workflowCaption = $this->workflowData["caption"];
+$translateInto = $this->workflowData["translateInto"];
 
 $this->setPageTitle(
     Yii::t('model', $this->modelClass)
     . ' - '
-    . $actionCaption
+    . $workflowCaption
 );
 
 $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = $actionCaption;
+$this->breadcrumbs[] = $workflowCaption;
+$this->breadcrumbs[] = $stepCaption;
+
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    'id' => 'item-form',
+    'enableAjaxValidation' => true,
+    'enableClientValidation' => true,
+    'type' => 'horizontal',
+)); ?>
 
-<div class="row-fluid">
-    <div class="span12">
+<input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
 
-        <h1>
-            <?php echo $workflowCaption; ?>
-            - <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
-            <small>vX</small>
+<?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form", "translateInto")); ?>
 
-            <div class="btn-group">
-
-                <?php
-                $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("model", "Preview"),
-                    "icon" => "icon-eye-open",
-                    "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey})
-                ));
-                ?>
-
-            </div>
-
-        </h1>
-
-    </div>
-</div>
-
-<?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
-<br/>
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)); ?>
 
 <div class="row-fluid">
     <div class="span3">
 
+        <br/>
+
         <div class="row-fluid">
-            <div class="span12 well well-white">
-                <?php echo $this->renderPartial('/_item/elements/progress', compact("model", "execution")); ?>
+            <div class="span12">
+                <?php echo $this->renderPartial('/_item/elements/progress', compact("model", "execution", "translateInto")); ?>
             </div>
         </div>
 
+        <hr/>
+
+        <!--
         <div class="row-fluid">
             <div class="span12 well well-white">
                 <?php echo $this->renderPartial('/_item/elements/actions', compact("model", "execution")); ?>
             </div>
         </div>
+        -->
 
     </div>
     <div class="span9">
-
-        <?php
-        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-            'id' => 'item-form',
-            'enableAjaxValidation' => true,
-            'enableClientValidation' => true,
-            'type' => 'horizontal',
-        ));
-        echo $form->errorSummary($model);
-        ?>
-
-
+        <?php echo $form->errorSummary($model); ?>
         <div class="row-fluid">
             <div class="span9">
-
-                <h2><?php print $actionCaption; ?>
+                <h2><?php print $stepCaption; ?>
                     <small></small>
                 </h2>
-
             </div>
             <div class="span3">
-
                 <div class="btn-toolbar pull-right">
+                    <div class="btn-group">
+
+
+                    </div>
                 </div>
-
-            </div>
-        </div>
-        <div class="row control-group">
-            <div class="span1">Title:</div>
-            <div class="span2"><?php echo $model->attributes["title_en"]; ?></div>
-            <div class="span2">
-                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-                    'type' => 'primary',
-                    'toggle' => 'radio',
-                    'buttons' => array(
-                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
-                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
-                    ),
-                )); ?>
-            </div>
-            <div class="span1">Comment:</div>
-            <div class="span4">
-                <textarea rows="6" cols="50" class="span8" name="Chapter[title_comment]"
-                          id="Chapter_title_comment"></textarea>
-                <span class="help-inline error" id="Chapter_title_comment_em_" style="display: none"></span>
             </div>
         </div>
 
-        <div class="row control-group">
-            <div class="span1">Slug:</div>
-            <div class="span2"><?php echo $model->attributes["slug_en"]; ?></div>
-            <div class="span2">
-                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-                    'type' => 'primary',
-                    'toggle' => 'radio',
-                    'buttons' => array(
-                        array('label' => 'Approve', 'htmlOptions' => array('class' => 'btn-success')),
-                        array('label' => 'Reject', 'htmlOptions' => array('class' => 'btn-danger')),
-                    ),
-                )); ?>
-            </div>
-            <div class="span1">Comment:</div>
-            <div class="span4">
-                <textarea rows="6" cols="50" class="span8" name="Chapter[title_comment]"
-                          id="Chapter_title_comment"></textarea>
-                <span class="help-inline error" id="Chapter_title_comment_em_" style="display: none"></span>
-            </div>
-        </div>
+        <div id="commentSection"> test test </div>
 
-        <div class="form-actions">
-            <?php
-            echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-                    'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('chapter/admin'),
-                    'class' => 'btn'
-                )
-            );
-            echo ' ';
-            echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-                    'class' => 'btn btn-primary'
-                )
-            );
-            ?>    </div>
-
-        <div class="alert alert-info">
-            Hint: Lorem ipsum
-        </div>
+        <?php $this->renderPartial('evaluate/' . $step, compact("model", "form")); ?>
 
         <?php $this->endWidget() ?>
 
     </div>
 
 </div>
+
+<?php foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
+    if (strpos($key, "modal:") === 0) {
+        echo $clip;
+    }
+} ?>
