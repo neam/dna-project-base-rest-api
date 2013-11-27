@@ -96,7 +96,7 @@
                         'label' => Yii::t('model', 'Undo'),
                         'url' => Yii::app()->request->url,
                         'htmlOptions' => array(
-                            'class' => 'btn-dirtyforms'
+                            'class' => 'btn-dirtyforms',
                         ),
                     )); ?>
                 </div>

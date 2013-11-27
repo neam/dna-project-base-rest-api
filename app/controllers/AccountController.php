@@ -111,7 +111,8 @@ class AccountController extends Controller
             if ($model->validate()
                 && $model->profiles->validate()
                 && $model->save()
-                && $model->profiles->save()) {
+                && $model->profiles->save())
+            {
                 setFlash(TbAlert::TYPE_SUCCESS, t('app', 'Your account information has been updated.'));
                 $this->refresh();
             }
