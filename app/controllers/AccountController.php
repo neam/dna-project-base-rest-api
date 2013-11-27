@@ -104,7 +104,7 @@ class AccountController extends Controller
         $id = user()->id;
         $model = $this->loadModel($id); // Account
 
-        if (isset($_POST['Profiles'], $_POST['Users'])) {
+        if (!request()->isAjaxRequest && isset($_POST['Profiles'], $_POST['Users'])) {
             $model->attributes = $_POST['Users'];
             $model->profiles->attributes = $_POST['Profiles'];
 
