@@ -126,6 +126,7 @@ class DataModel
                 'DataChunk' => array('title', 'about'),
                 'DataSource' => array('title', 'about'),
                 'DownloadLink' => array('title'),
+                'Edge' => array('title'),
                 'ExamQuestion' => array('question'),
                 'ExamQuestionAlternative' => array('markup'),
                 'Exercise' => array('title', 'question', 'description'),
