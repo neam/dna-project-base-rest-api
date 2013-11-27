@@ -8,6 +8,16 @@
     <meta name="keywords"
           content="<?php echo (P3Page::getActivePage()) ? P3Page::getActivePage()->t('keywords') : '' ?>">
     <meta name="author" content="">
+
+    <style>
+
+        /* Hide edit-markup until shown */
+
+        .admin-container.hide {
+            display: none;
+        }
+
+    </style>
 </head>
 
 <body>
