@@ -87,11 +87,20 @@
         <?php echo $form->textFieldRow($model, 'lives_in', array('maxlength' => 255, 'class' => 'span8')); ?>
 
         <div class="form-actions">
-            <?php
-            echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-                'class' => 'btn btn-primary pull-right'
-            ));
-            ?>
+            <div class="btn-toolbar pull-right">
+                <div class="btn-group">
+                    <?php echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+                        'class' => 'btn btn-primary btn-dirtyforms',
+                    )); ?>
+                    <?php $this->widget("bootstrap.widgets.TbButton", array(
+                        'label' => Yii::t('model', 'Undo'),
+                        'url' => Yii::app()->request->url,
+                        'htmlOptions' => array(
+                            'class' => 'btn-dirtyforms'
+                        ),
+                    )); ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -264,5 +264,3 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
         </div>
     </div>
 </div>
-
-<?php Html::jsDirtyForms(); ?>

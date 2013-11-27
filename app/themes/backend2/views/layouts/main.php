@@ -28,6 +28,8 @@
     ); // set last param to `true` for development
     $cs->registerCssFile($css . "/backend.css");
     $cs->registerCssFile($css . "/gcms.css");
+
+    Html::jsDirtyForms();
     ?>
 </head>
 

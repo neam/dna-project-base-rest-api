@@ -28,6 +28,8 @@
         $forceCopy); // forceCopy
     $cs->registerCssFile($css . '/p3.css');
     $cs->registerCssFile($css . '/gcms.css');
+
+    Html::jsDirtyForms();
     ?>
 </head>
 

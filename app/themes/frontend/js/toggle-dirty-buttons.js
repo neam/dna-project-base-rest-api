@@ -1,7 +1,7 @@
 (function() {
     var $form = $('form'),
-        $buttons = $('.btn-action'),
-        $linkButtons = $('a.btn-action');
+        $buttons = $('.btn-dirtyforms'),
+        $linkButtons = $('a.btn-dirtyforms');
 
     /**
      * Hides the buttons.

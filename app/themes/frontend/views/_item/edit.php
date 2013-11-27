@@ -72,14 +72,14 @@ $this->breadcrumbs[] = $stepCaption;
                                 break;
                             default:
                                 echo CHtml::submitButton(Yii::t('model', 'Save changes'), array(
-                                    'class' => 'btn btn-primary btn-action',
+                                    'class' => 'btn btn-primary btn-dirtyforms',
                                     'name' => 'save-changes',
                                 ));
                                 $this->widget("bootstrap.widgets.TbButton", array(
                                     'label' => Yii::t('model', 'Reset'),
                                     'url' => Yii::app()->request->url,
                                     'htmlOptions' => array(
-                                        'class' => 'btn-action'
+                                        'class' => 'btn-dirtyforms'
                                     ),
                                 ));
                         }
@@ -92,8 +92,6 @@ $this->breadcrumbs[] = $stepCaption;
         <?php $this->renderPartial('steps/' . $step, compact("model", "form")); ?>
 
         <?php $this->endWidget() ?>
-
-        <?php Html::jsDirtyForms(); ?>
 
     </div>
 
