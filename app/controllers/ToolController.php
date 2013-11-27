@@ -128,8 +128,8 @@ class ToolController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('Tool'); // classname of model to be updated
+        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
+        $es = new TbEditableSaver('Tool'); // classname of model to be updated
         $es->update();
     }
 

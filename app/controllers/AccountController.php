@@ -199,8 +199,8 @@ class AccountController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('Account'); // classname of model to be updated
+        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
+        $es = new TbEditableSaver('Account'); // classname of model to be updated
         $es->update();
     }
 

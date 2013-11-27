@@ -128,8 +128,8 @@ class SlideshowFileController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('SlideshowFile'); // classname of model to be updated
+        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
+        $es = new TbEditableSaver('SlideshowFile'); // classname of model to be updated
         $es->update();
     }
 
