@@ -107,6 +107,12 @@ $gcmsConfig = array(
                 ),
             ),
         ),
+        'user' => array(
+            'controllerMap' => array(
+                'activation' => 'GMActivationController',
+                'registration' => 'GMRegistrationController',
+            ),
+        )
     ),
     'components' => array(
         'urlManager' => array(
