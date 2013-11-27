@@ -192,7 +192,7 @@
                 </div>
             </div>
 
-        <?php elseif ($this->action->id != "preview" && $this->action->id != "view"): ?>
+        <?php elseif ($this->action->id != "preview" && $this->action->id != "view" && $this->action->id != "index"): ?>
 
             <div class="well well-small">
                 <div class="row-fluid">
