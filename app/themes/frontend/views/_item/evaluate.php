@@ -14,6 +14,9 @@ $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'i
 $this->breadcrumbs[] = $workflowCaption;
 $this->breadcrumbs[] = $stepCaption;
 
+// Include jquery.comments
+Html::assetsJqueryComments();
+
 ?>
 
 <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -70,6 +73,8 @@ $this->breadcrumbs[] = $stepCaption;
         </div>
 
         <div id="commentSection"> test test </div>
+
+        <?php Html::initJqueryComments(); ?>
 
         <?php $this->renderPartial('evaluate/' . $step, compact("model", "form")); ?>
 

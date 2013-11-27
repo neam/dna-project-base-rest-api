@@ -14,4 +14,34 @@ class Html extends TbHtml
         app()->clientScript->registerScript('registerDirtyForms', "$('form').dirtyForms();", CClientScript::POS_END);
         publishJs('/themes/frontend/js/toggle-dirty-buttons.js', CClientScript::POS_END); // show action buttons when form is dirty
     }
+
+    /**
+     * Registers the assets for jquery comments
+     */
+    public static function assetsJqueryComments()
+    {
+
+        $cs = Yii::app()->clientScript;
+        $forceCopy = defined('DEV') && DEV && !empty($_GET['refresh_assets']) ? true : false;
+        $assets = Yii::app()->assetManager->publish(
+            Yii::app()->theme->basePath . '/assets/jquery.comments/',
+            true, // hash by name
+            -1, // level
+            $forceCopy); // forceCopy
+        $cs->registerCssFile($assets . '/css/jquery.comment.css', CClientScript::POS_HEAD);
+        $cs->registerScriptFile($assets . '/js/jquery.comment.js', CClientScript::POS_END);
+
+    }
+
+    public static function initJqueryComments($selector = "#commentSection")
+    {
+        app()->clientScript->registerScript('initJqueryComments', '$(document).ready(function () {
+    $("' . $selector . '").comments({
+        getCommentsUrl: "/JqComment/GetComments",
+        postCommentUrl: "/JqComment/PostComment",
+        deleteCommentUrl: "/JqComment/DeleteComment",
+    });
+});', CClientScript::POS_END);
+    }
+
 }
