@@ -262,6 +262,11 @@ trait ItemController
     public function actionAdd()
     {
         $item = new $this->modelClass();
+        if (isset($_REQUEST["title"]) && $this->title){
+            $title = (isset($_REQUEST["title"])) ? $_REQUEST["title"] : "";
+            $item->title = $title;
+            $item->title_en = $title;
+        }
         if (!$item->save()) {
             throw new SaveException($item);
         }

@@ -2,8 +2,9 @@
 
 class ExamQuestionAlternativeController extends Controller
 {
-    #public $layout='//layouts/column2';
 
+    use ItemController;
+    public $modelClass = "ExamQuestionAlternative";
     public $defaultAction = "admin";
     public $scenario = "crud";
 
@@ -16,7 +17,7 @@ class ExamQuestionAlternativeController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array(
                 'allow',
                 'actions' => array(
@@ -35,7 +36,7 @@ class ExamQuestionAlternativeController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)
