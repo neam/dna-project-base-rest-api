@@ -1,3 +1,8 @@
+<?php
+//tmp - this should be bundled with vizabi instead
+Yii::app()->bootstrap->registerPackage('select2');
+?>
+
 <?php $this->renderPartial('_view', array('data' => $model)); ?>
 
 <?php
