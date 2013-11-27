@@ -2,6 +2,11 @@
 
 class DownloadLinkController extends Controller
 {
+
+    use ItemController;
+
+    public $modelClass = "DownloadLink";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
