@@ -23,7 +23,7 @@
     <div class="span12">
 
         <h1>
-            <?php echo(empty($model->title) ? Yii::t('model', $this->modelClass) . " #" . $model->id : $model->title); ?>
+            <?php echo $model->itemLabel; ?>
             <small>Version: <?php echo $model->version; ?></small>
             <small>Status: <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?></small>
             <div class="pull-right">
