@@ -1,6 +1,6 @@
 <?php
 
-class m131115_094800_rootUserAuthItems extends CDbMigration
+class m131127_094800_rootUserAuthItems extends CDbMigration
 {
 
     public function up()
