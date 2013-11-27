@@ -90,6 +90,14 @@ $gcmsConfig = array(
                         ),
                         'type' => 'jpg',
                     ),
+                    'related-thumb' => array(
+                        'name' => 'Related Panel Thumbnail',
+                        'commands' => array(
+                            'resize' => array(200, 200, 2),
+                            'quality' => '100',
+                        ),
+                        'type' => 'jpg',
+                    ),
                     'original-public-webm' => array(
                         //'name'         => 'Original File Public',
                         'originalFile' => true,
