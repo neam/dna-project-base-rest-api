@@ -263,10 +263,8 @@ trait ItemController
     public function actionAdd()
     {
         $item = new $this->modelClass();
-        if (isset($_REQUEST["title"]) && $this->title) {
-            $title = (isset($_REQUEST["title"])) ? $_REQUEST["title"] : "";
-            $item->title = $title;
-            $item->title_en = $title;
+        if (isset($_POST["newitemtitle"])) {
+            $item->_title = $_POST["newitemtitle"];
         }
         if (!$item->save()) {
             throw new SaveException($item);
@@ -275,21 +273,24 @@ trait ItemController
         $message = "{$this->modelClass} Added";
 
         // If fromId is set, we assume this is a new Item which will be related:
-        if (isset($_GET["fromId"]) && is_numeric($_GET["fromId"])) {
-            if (isset($_GET["returnUrl"])) {
-                $from_node_id = $_model->node()->id;
+        if (isset($_POST["from_node_id"]) && is_numeric($_POST["from_node_id"])) {
+            if (isset($_POST["addEdge"]) && $_POST["addEdge"]=="true" && $_POST["from_node_id"]) {
                 $to_node_id = $item->node_id;
+                $from_node_id = $_POST["from_node_id"];
                 $this->addEdge($from_node_id, $to_node_id);
-
-                $this->redirect($_GET['returnUrl']);
             }
-            header("Content-type: application/json");
-            $result = new StdClass();
-            $result->id = $item->id;
-            $result->title = $item->itemLabel;
-            echo json_encode($result);
-            exit;
-            return;
+            if (isset($_POST["returnUrl"])) {
+                $this->redirect($_POST['returnUrl']);
+                exit;
+            } else {
+                header("Content-type: application/json");
+                $result = new StdClass();
+                $result->id = $item->id;
+                $result->node_id = $item->node_id;
+                $result->title = $item->itemLabel;
+                echo json_encode($result);
+                exit;
+            }
         }
         Yii::app()->user->setFlash('success', $message);
         $this->redirect(array('continueAuthoring', 'id' => $item->id));
@@ -758,6 +759,7 @@ trait ItemController
         if (!$edge->save()) {
             throw new SaveException($edge);
         }
+        return true;
     }
 
     // Asks $_POST if a value isn't part of "Model"
