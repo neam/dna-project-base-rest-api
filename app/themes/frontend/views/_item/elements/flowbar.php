@@ -53,7 +53,7 @@
                         'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
                         'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey}),
                     ));
-                    if ($this->action->id == 'preview') {
+                    if ($this->action->id == 'preview' || $this->action->id == 'index') {
                         $this->widget('bootstrap.widgets.TbButton', array(
                             'label' => Yii::t('model', 'View'),
                             'icon' => 'icon-eye-open',
