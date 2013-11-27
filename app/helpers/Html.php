@@ -14,4 +14,17 @@ class Html extends TbHtml
         app()->clientScript->registerScript('registerDirtyForms', "$('form').dirtyForms();", CClientScript::POS_END);
         publishJs('/themes/frontend/js/toggle-dirty-buttons.js', CClientScript::POS_END); // show action buttons when form is dirty
     }
+
+    /**
+     * Registers the SlugIt jQuery plugin.
+     * @param array $fields the from and to IDs (e.g. array('#from' => '#to').
+     * @param string $separator the separator. Defaults to '-'.
+     */
+    public static function jsSlugIt($fields = array(), $separator = '-')
+    {
+        publishJs('/themes/frontend/js/vendor/jquery.slugit.js', CClientScript::POS_HEAD);
+        foreach ($fields as $from => $to) {
+            app()->clientScript->registerScript('slugIt_' . $from, "$('$from').slugIt({output: '$to', separator: '$separator'});", CClientScript::POS_END);
+        }
+    }
 }
