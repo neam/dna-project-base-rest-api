@@ -17,18 +17,14 @@ if (is_array($relatedNodes)) {
 
             $thumb_url = $url . "/p3media/file/image?preset=related-thumb&id=" . $item->thumbnail_media_id;
 
-            $edge_title = Yii::app()->db->createCommand()
-                ->select("title")
-                ->from("edge")
-                ->where("from_node_id=$model->node_id AND to_node_id=$item->node_id")
-                ->queryRow();
+            $edge = Edge::model()->findByAttributes(array("from_node_id" => $model->node_id, "to_node_id" => $item->node_id));
 
             $relArray[] = [
                 "id" => $item->id,
                 "node_id" => $item->node_id,
                 "thumb_url" => $thumb_url,
                 "type" => get_class($item),
-                "title" => $edge_title['title']
+                "title" => $edge->title,
             ];
         }
     }
