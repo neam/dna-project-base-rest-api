@@ -138,14 +138,37 @@
                         "icon" => "icon-globe" . ($this->action->id == "translationOverview" ? " icon-white" : null),
                         "url" => array("translationOverview", "id" => $model->{$model->tableSchema->primaryKey})
                     ));
-                    /*
-                    $this->widget("bootstrap.widgets.TbButton", array(
-                        "label" => Yii::t("model", "Publish"),
-                        "type" => $this->action->id == "publish" ? "inverse" : null,
-                        "icon" => "icon-thumbs-up" . ($this->action->id == "publish" ? " icon-white" : null),
-                        "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
-                    ));
-                    */
+
+                    ?>
+                </div>
+                <div class="btn-group">
+                    <?php
+
+                    if (in_array($model->qaState()->status, array("public"))) {
+                        $this->widget("bootstrap.widgets.TbButton", array(
+                            "label" => Yii::t("model", "Unpublish"),
+                            "icon" => "icon-thumbs-down",
+                            "url" => array("unpublish", "id" => $model->{$model->tableSchema->primaryKey})
+                        ));
+                    } elseif ($model->qaStateBehavior()->validStatus('public')) {
+                        $this->widget("bootstrap.widgets.TbButton", array(
+                            "label" => Yii::t("model", "Publish"),
+                            "icon" => "icon-thumbs-up",
+                            "url" => array("publish", "id" => $model->{$model->tableSchema->primaryKey})
+                        ));
+                    } else {
+                        $this->widget("bootstrap.widgets.TbButton", array(
+                            "label" => Yii::t("model", "Publish"),
+                            "disabled" => true,
+                            "icon" => "icon-thumbs-up",
+                        ));
+                    }
+
+                    ?>
+                </div>
+                <div class="btn-group">
+                    <?php
+
                     $this->widget("bootstrap.widgets.TbButton", array(
                         "label" => Yii::t("model", "Clone"),
                         "type" => $this->action->id == "clone" ? "inverse" : null,

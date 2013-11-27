@@ -118,6 +118,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'publish',
+                    'unpublish',
                 ),
                 'roles' => array(
                     'Item.Publish'
@@ -453,8 +454,52 @@ trait ItemController
 
     public function actionPublish($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/publish', array('model' => $model));
+        //$model = $this->saveAndContinueOnSuccess($id);
+
+        $model = $this->loadModel($id);
+        if (!$model->qaStateBehavior()->validStatus('public')) {
+            throw new CException("This item does not validate for public status");
+        }
+
+        $qaState = $model->qaState();
+
+        // save status change
+        $qaState->status = 'public';
+        if (!$qaState->save()) {
+            throw new SaveException($qaState);
+        }
+        $model->refreshQaState();
+
+        // redirect
+        if (isset($_GET['returnUrl'])) {
+            $this->redirect($_GET['returnUrl']);
+        } else {
+            $this->redirect(array('continueAuthoring', 'id' => $model->id));
+        }
+
+    }
+
+    public function actionUnpublish($id)
+    {
+        //$model = $this->saveAndContinueOnSuccess($id);
+
+        $model = $this->loadModel($id);
+        $qaState = $model->qaState();
+
+        // save status change
+        $qaState->status = null;
+        if (!$qaState->save()) {
+            throw new SaveException($qaState);
+        }
+        $model->refreshQaState();
+
+        // redirect
+        if (isset($_GET['returnUrl'])) {
+            $this->redirect($_GET['returnUrl']);
+        } else {
+            $this->redirect(array('continueAuthoring', 'id' => $model->id));
+        }
+
     }
 
     public function actionCancel($id)
