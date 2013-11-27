@@ -146,8 +146,8 @@ class NodeController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('Node'); // classname of model to be updated
+        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
+        $es = new TbEditableSaver('Node'); // classname of model to be updated
         $es->update();
     }
 
