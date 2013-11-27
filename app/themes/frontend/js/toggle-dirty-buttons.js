@@ -26,6 +26,22 @@
         }
     });
 
+    // Look for dirty CKEditor fields
+    CKEDITOR.on('instanceReady', function() {
+        // Get CKEditors
+        Object.keys(CKEDITOR.instances).forEach(function(key) {
+            var editor = CKEDITOR.instances[key];
+
+            editor.document.on('keyup', function() {
+                if ($form.isDirty()) {
+                    enableButtons();
+                } else {
+                    disableButtons();
+                }
+            });
+        });
+    });
+
     // Prevent disabled link buttons from being clicked
     $linkButtons.on('click', function(e) {
         if ($(this).attr('disabled')) {

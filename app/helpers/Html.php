@@ -10,7 +10,8 @@ class Html extends TbHtml
     public static function jsDirtyForms()
     {
         publishJs('/themes/frontend/js/vendor/jquery.dirtyforms.js', CClientScript::POS_HEAD);
-        app()->clientScript->registerScript('registerAreYouSure', "$('form').dirtyForms();", CClientScript::POS_END);
+        publishJs('/themes/frontend/js/dirty-forms-ckeditor.js', CClientScript::POS_HEAD);
+        app()->clientScript->registerScript('registerDirtyForms', "$('form').dirtyForms();", CClientScript::POS_END);
         publishJs('/themes/frontend/js/toggle-dirty-buttons.js', CClientScript::POS_END); // show action buttons when form is dirty
     }
 }
