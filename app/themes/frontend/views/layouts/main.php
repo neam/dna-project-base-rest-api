@@ -29,7 +29,7 @@
     $cs->registerCssFile($css . '/p3.css');
     $cs->registerCssFile($css . '/gcms.css');
 
-    Html::jsDirtyForms();
+    //Html::jsDirtyForms();
     ?>
 </head>
 
