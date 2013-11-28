@@ -124,6 +124,7 @@ class DataModel
         return array(
             'attributes' => array(
                 'Chapter' => array('title', 'about', 'teachers_guide'),
+                'Comment' => array('comment'), // Note: Currently set in Comment.php instead of through here
                 'DataChunk' => array('title', 'about'),
                 'DataSource' => array('title', 'about'),
                 'DownloadLink' => array('title'),

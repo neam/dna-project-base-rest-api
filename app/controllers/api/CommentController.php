@@ -36,20 +36,28 @@ class CommentController extends AppRestController
     }
 
     /**
-     * @fake stub
+     *
      */
     public function actionJqcCreate()
     {
-        $comment = $_REQUEST['comment'];
-        $response = array(
-            "Id" => "foo-comment-id",
-            "Author" => "asdfa sdfasf",
-            "Comment" => $comment,
-            "Date" => "bar",
-            "CanDelete" => true,
-            "CanReply" => true,
-        );
-        $this->sendResponse(200, $response);
+        $comment = new Comment;
+        $comment->_comment = $_REQUEST['comment'];
+        if (isset($_REQUEST['parentId'])) {
+            $comment->parent_id = $_REQUEST['parentId'];
+        }
+
+        if (!$comment->save()) {
+            throw new SaveException($comment);
+        }
+
+        $comment->refresh();
+
+        $attributes = $comment->jqcAttributes();
+
+        $attributes['CanReply'] = true;
+        $attributes['CanDelete'] = Yii::app()->user->id == $comment->author_user_id;
+
+        $this->sendResponse(200, $attributes);
     }
 
     /**
