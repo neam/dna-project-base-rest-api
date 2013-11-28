@@ -49,6 +49,11 @@ $gcmsConfig = array(
         // yii graphviz
         'yii-graphviz' => 'vendor.ascendro.yii-graphviz',
         // fix hard-coded aliases
+        'ext.wrest' => 'vendor.weavora.wrest',
+        'ext.wrest.WRestController' => 'vendor.weavora.wrest.WRestController',
+        'ext.wrest.WHttpRequest' => 'vendor.weavora.wrest.WHttpRequest',
+        'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
+        'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
         'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode'
     ),
     'import' => array(
@@ -58,6 +63,8 @@ $gcmsConfig = array(
         'vendor.motin.yii-owner-behavior.OwnerBehavior',
         'qa-state.behaviors.QaStateBehavior',
         'relational-graph-db.behaviors.RelationalGraphDbBehavior',
+        'vendor.weavora.wrest.*',
+        'vendor.weavora.wrest.actions.*',
         'application.behaviors.EzcWorkflowBehavior',
         'application.workflows.custom.*',
         'application.workflows.*',
@@ -120,6 +127,12 @@ $gcmsConfig = array(
             'showScriptName' => false,
             'rules' => array(
                 '/' => 'site/index',
+                //rest url patterns
+                array('api/<model>/delete', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'DELETE'),
+                array('api/<model>/update', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'PUT'),
+                array('api/<model>/list', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),
+                array('api/<model>/get', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'GET'),
+                array('api/<model>/create', 'pattern' => 'api/<model:\w+>', 'verb' => 'POST'),
             ),
         ),
         'db' => array(
