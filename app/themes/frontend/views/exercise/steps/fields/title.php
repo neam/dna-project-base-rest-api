@@ -1,6 +1,9 @@
 <?php echo $form->textFieldRow($model, 'title_' . $model->source_language, array(
-    'maxlength' => 255,
     'id' => 'slugit-from-1',
+    'maxlength' => 255,
+    'labelOptions' => array(
+        'label' => Html::attributeLabelWithTooltip($model, 'title_' . $model->source_language, 'title'),
+    ),
 )); ?>
 
 <?php if ($this->workflowData["translateInto"]) {
@@ -9,7 +12,3 @@
         'id' => 'slugit-from-2',
     ));
 } ?>
-
-<p class="alert alert-info help-block">
-    <?php echo $model->getAttributeHint('title'); ?>
-</p>
