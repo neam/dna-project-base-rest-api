@@ -22,7 +22,7 @@ class DataSource extends BaseDataSource
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return (string) !empty($this->title) ? $this->title : "DataSource #" . $this->id;
     }
 
     public function rules()
