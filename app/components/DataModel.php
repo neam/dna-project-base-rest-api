@@ -10,6 +10,7 @@ class DataModel
             // Contents
             'Changeset' => 'changeset',
             'Chapter' => 'chapter',
+            'Comment' => 'comment',
             'DataChunk' => 'data_chunk',
             'DataSource' => 'data_source',
             'DownloadLink' => 'download_link',
