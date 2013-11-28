@@ -27,4 +27,38 @@ class CommentController extends AppRestController
         );
     }
 
+    /**
+     * @fake stub
+     */
+    public function actionList()
+    {
+        $this->sendResponse(200, array());
+    }
+
+    /**
+     * @fake stub
+     */
+    public function actionCreate()
+    {
+        $comment = $_REQUEST['comment'];
+        $response = array(
+            "Id" => "foo-comment-id",
+            "Author" => "asdfa sdfasf",
+            "Comment" => $comment,
+            "Date" => "bar",
+            "CanDelete" => true,
+            "CanReply" => true,
+        );
+        $this->sendResponse(200, $response);
+    }
+
+    /**
+     * @fake stub
+     */
+    public function actionDelete()
+    {
+        $response = "foo-comment-id";
+        $this->sendResponse(200, $response);
+    }
+
 }
