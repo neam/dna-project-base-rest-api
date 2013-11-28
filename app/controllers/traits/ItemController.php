@@ -262,23 +262,35 @@ trait ItemController
 
     public function actionAdd()
     {
-        $item = new $this->modelClass();
-        if (isset($_POST["newitemtitle"])) {
-            $item->_title = $_POST["newitemtitle"];
-        }
-        if (!$item->save()) {
-            throw new SaveException($item);
-        }
-        $item->refreshQaState();
-        $message = "{$this->modelClass} Added";
-
-        // If fromId is set, we assume this is a new Item which will be related:
         if (isset($_POST["from_node_id"]) && is_numeric($_POST["from_node_id"])) {
+            // Check if it's the (this) type or specified:
+            if (isset($_POST["toType"])){
+                $item = new $_POST["toType"]();
+            } else {
+                $item = new $this->modelClass();
+            }
+            // Set title, if specified:
+            if (isset($_POST["newitemtitle"])) {
+                try {
+                    $item->_title = $_POST["newitemtitle"];
+                } catch(Exception $e) {
+                    // no title for this type
+                }
+            }
+            // Save!
+            if (!$item->save()) {
+                throw new SaveException($item);
+            }
+            $item->refreshQaState();
+            $message = "{$this->modelClass} Added";
+
+            // Add edge if specified:
             if (isset($_POST["addEdge"]) && $_POST["addEdge"]=="true" && $_POST["from_node_id"]) {
                 $to_node_id = $item->node_id;
                 $from_node_id = $_POST["from_node_id"];
                 $this->addEdge($from_node_id, $to_node_id);
             }
+            // Return:
             if (isset($_POST["returnUrl"])) {
                 $this->redirect($_POST['returnUrl']);
                 exit;
@@ -292,6 +304,18 @@ trait ItemController
                 exit;
             }
         }
+
+        $item = new $this->modelClass();
+        if (isset($_POST["newitemtitle"])) {
+            $item->_title = $_POST["newitemtitle"];
+        }
+        if (!$item->save()) {
+            throw new SaveException($item);
+        }
+        $item->refreshQaState();
+        $message = "{$this->modelClass} Added";
+
+        // If fromId is set, we assume this is a new Item which will be related:
         Yii::app()->user->setFlash('success', $message);
         $this->redirect(array('continueAuthoring', 'id' => $item->id));
     }
