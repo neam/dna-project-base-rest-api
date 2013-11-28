@@ -46,9 +46,9 @@ class Html extends TbHtml
 
         app()->clientScript->registerScript('initJqueryComments', '$(document).ready(function () {
     $("' . $selector . '").comments({
-        getCommentsUrl: "' . Yii::app()->request->baseUrl . '/api/comment/list",
-        postCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/create",
-        deleteCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/delete",
+        getCommentsUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcList",
+        postCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcCreate",
+        deleteCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcDelete",
         localization: ' . json_encode($localization) . '
     });
 });', CClientScript::POS_END);

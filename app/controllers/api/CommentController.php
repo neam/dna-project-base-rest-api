@@ -30,7 +30,7 @@ class CommentController extends AppRestController
     /**
      * @fake stub
      */
-    public function actionList()
+    public function actionJqcList()
     {
         $this->sendResponse(200, array());
     }
@@ -38,7 +38,7 @@ class CommentController extends AppRestController
     /**
      * @fake stub
      */
-    public function actionCreate()
+    public function actionJqcCreate()
     {
         $comment = $_REQUEST['comment'];
         $response = array(
@@ -55,7 +55,7 @@ class CommentController extends AppRestController
     /**
      * @fake stub
      */
-    public function actionDelete()
+    public function actionJqcDelete()
     {
         $response = "foo-comment-id";
         $this->sendResponse(200, $response);
