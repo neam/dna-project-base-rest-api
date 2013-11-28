@@ -15,9 +15,9 @@
  * @property string $node_id
  *
  * Relations of table "exam_question_alternative" available as properties of the model:
- * @property Users $owner
  * @property ExamQuestion $examQuestion
  * @property Node $node
+ * @property Users $owner
  */
 abstract class BaseExamQuestionAlternative extends ActiveRecord
 {
@@ -66,9 +66,9 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
             )
         );
     }
