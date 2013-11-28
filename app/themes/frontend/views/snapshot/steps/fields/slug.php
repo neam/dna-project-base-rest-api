@@ -1,18 +1,19 @@
+<?php /** @var Snapshot $model */ ?>
+
 <?php echo $form->textFieldRow($model, 'slug_' . $model->source_language, array(
-    'maxlength' => 255,
     'id' => 'slugit-to-1',
+    'maxlength' => 255,
+    'labelOptions' => array(
+        'label' => Html::attributeLabelWithTooltip($model, 'slug_' . $model->source_language, 'title'),
+    ),
 )); ?>
 
-<?php if ($this->workflowData["translateInto"]) {
-    echo $form->textFieldRow($model, 'slug_' . $this->workflowData["translateInto"], array(
-        'maxlength' => 255,
+<?php if ($this->workflowData['translateInto']) {
+    echo $form->textFieldRow($model, 'slug_' . $this->workflowData['translateInto'], array(
         'id' => 'slugit-to-2',
+        'maxlength' => 255,
     ));
 } ?>
-
-<p class="alert alert-info help-block">
-    <?php echo $model->getAttributeHint("slug"); ?>
-</p>
 
 <?php Html::jsSlugIt(array(
     '#slugit-from-1' => '#slugit-to-1',
