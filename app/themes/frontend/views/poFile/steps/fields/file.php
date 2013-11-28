@@ -47,44 +47,36 @@ $input = $this->widget(
         'htmlOptions' => array(
             'checkAll' => 'all'
         ),
-    )
-    , true);
-echo $form->customRow($model, 'original_media_id', $input);
+    ), true);
 ?>
 
-<?php
-$formId = 'pofile-original_media_id-' . \uniqid() . '-form';
-?>
+<?php echo $form->customRow($model, 'original_media_id', $input, array(
+    'labelOptions' => array(
+        'label' => Html::attributeLabelWithTooltip($model, 'original_media_id', 'file'),
+    ),
+)); ?>
+
+<?php $formId = 'pofile-original_media_id-' . \uniqid() . '-form'; ?>
 
 <div class="control-group">
     <div class="controls">
-        <?php
-        echo $this->widget('bootstrap.widgets.TbButton', array(
+        <?php echo $this->widget('bootstrap.widgets.TbButton', array(
             'label' => Yii::t('app', 'Upload'),
             'icon' => 'icon-plus',
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
                 'data-target' => '#' . $formId . '-modal',
             ),
-        ), true);
-        ?>
+        ), true); ?>
     </div>
 </div>
 
-<?php
-$this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('//p3Media/_modal_form', array(
+<?php $this->beginClip('modal:' . $formId . '-modal'); ?>
+<?php $this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#PoFile_original_media_id',
     'model' => new P3Media,
     'pk' => 'id',
     'field' => 'itemLabel',
-));
-$this->endClip();
-?>
-
-<?php if ($model->getAttributeHint("file")): ?>
-    <p class="alert alert-info help-block">
-        <?php echo $model->getAttributeHint("file"); ?>
-    </p>
-<?php endif; ?>
+)); ?>
+<?php $this->endClip(); ?>
