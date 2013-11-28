@@ -1,8 +1,15 @@
-<?php echo $form->textFieldRow($model, 'title_' . $model->source_language, array('maxlength' => 255)); ?>
+<?php echo $form->textFieldRow($model, 'title_' . $model->source_language, array(
+    'maxlength' => 255,
+    'id' => 'slugit-from-1',
+)); ?>
+
 <?php if ($this->workflowData["translateInto"]) {
-    echo $form->textFieldRow($model, 'title_' . $this->workflowData["translateInto"], array('maxlength' => 255));
+    echo $form->textFieldRow($model, 'title_' . $this->workflowData["translateInto"], array(
+        'maxlength' => 255,
+        'id' => 'slugit-from-2',
+    ));
 } ?>
 
 <p class="alert alert-info help-block">
-    <?php echo $model->getAttributeHint("title"); ?>
+    <?php echo $model->getAttributeHint('title'); ?>
 </p>

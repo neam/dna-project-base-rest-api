@@ -2,12 +2,14 @@
     'maxlength' => 255,
     'id' => 'slugit-from-1',
 )); ?>
+
 <?php if ($this->workflowData["translateInto"]) {
     echo $form->textFieldRow($model, 'title_' . $this->workflowData["translateInto"], array(
         'maxlength' => 255,
         'id' => 'slugit-from-2',
     ));
 } ?>
+
 <?php if ($model->getAttributeHint("title")): ?>
     <p class="alert alert-info help-block">
         <?php echo $model->getAttributeHint("title"); ?>
