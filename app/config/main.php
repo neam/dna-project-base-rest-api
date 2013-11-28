@@ -68,6 +68,7 @@ $mainConfig = array(
         // imports for components from packages, which do not support composer autoloading
         'vendor.mishamx.yii-user.models.*', // User Model
         'vendor.crisu83.yii-rights.components.*', // RWebUser
+        'vendor.clevertech.yiibooster.src.helpers.*', //
         'vendor.clevertech.yiibooster.src.widgets.*', //
         'vendor.anggiaj.eselect2.*',
         'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior',

@@ -15,7 +15,7 @@ $this->breadcrumbs[] = $workflowCaption;
 $this->breadcrumbs[] = $stepCaption;
 ?>
 
-<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+<?php $form = $this->beginWidget('GMActiveForm', array(
     'id' => 'item-form',
     'enableAjaxValidation' => true,
     'enableClientValidation' => true,

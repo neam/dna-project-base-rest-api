@@ -27,4 +27,35 @@ class Html extends TbHtml
             app()->clientScript->registerScript('slugIt_' . $from, "$('$from').slugIt({output: '$to', separator: '$separator'});", CClientScript::POS_END);
         }
     }
+
+    /**
+   	 * Generates a tooltip. (This overrides the currently faulty TbHtml::tooltip() method.)
+   	 * @param string $label the tooltip link label text.
+   	 * @param mixed $url the link url.
+   	 * @param string $content the tooltip content text.
+   	 * @param array $htmlOptions additional HTML attributes.
+   	 * @return string the generated tooltip.
+   	 */
+    public static function tooltip($label, $url, $content, $htmlOptions = array())
+    {
+        $htmlOptions['data-toggle'] = 'tooltip'; // this option is missing from TbHtml::tooltip()
+        return parent::tooltip($label, $url, $content, $htmlOptions);
+    }
+
+    /**
+     * Creates a custom label for an ActiveRecord field with an attribute hint tooltip.
+     * @param ActiveRecord $model the model.
+     * @param string $attribute the model attribute.
+     * @param string $hintAttribute the attribute hint (if different). Defaults to $attribute.
+     * @return string the label HTMl.
+     */
+    public static function attributeLabelWithTooltip(ActiveRecord $model, $attribute, $hintAttribute = '')
+    {
+        $hintAttribute = !empty($hintAttribute) ? $hintAttribute : $attribute;
+        $label = $model->getAttributeLabel($attribute);
+        $tooltip = $model->getAttributeHint($hintAttribute)
+            ? ' ' . Html::tooltip('?', '#', $model->getAttributeHint($hintAttribute))
+            : '';
+        return $label . $tooltip;
+    }
 }

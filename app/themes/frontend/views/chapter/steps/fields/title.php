@@ -4,8 +4,11 @@
 ?>
 
 <?php echo $form->textFieldRow($model, 'title_' . $model->source_language, array(
-    'maxlength' => 255,
     'id' => 'slugit-from-1',
+    'maxlength' => 255,
+    'labelOptions' => array(
+        'label' => Html::attributeLabelWithTooltip($model, 'title_' . $model->source_language, 'title'),
+    ),
 )); ?>
 
 <?php if ($this->workflowData["translateInto"]) {
@@ -15,15 +18,12 @@
     ));
 } ?>
 
-<?php if ($model->getAttributeHint("title")): ?>
-    <p class="alert alert-info help-block">
-        <?php echo $model->getAttributeHint("title"); ?>
-    </p>
-<?php endif; ?>
-
 <?php echo $form->textFieldRow($model, 'slug_' . $model->source_language, array(
     'maxlength' => 255,
     'id' => 'slugit-to-1',
+    'labelOptions' => array(
+        'label' => Html::attributeLabelWithTooltip($model, 'slug_' . $model->source_language, 'slug'),
+    ),
 )); ?>
 
 <?php if ($this->workflowData["translateInto"]) {
@@ -32,12 +32,6 @@
         'id' => 'slugit-to-2',
     ));
 } ?>
-
-<?php if ($model->getAttributeHint("slug")): ?>
-    <p class="alert alert-info help-block">
-        <?php echo $model->getAttributeHint("slug"); ?>
-    </p>
-<?php endif; ?>
 
 <?php Html::jsSlugIt(array(
     '#slugit-from-1' => '#slugit-to-1',

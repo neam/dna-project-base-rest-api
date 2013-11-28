@@ -81,7 +81,11 @@ $input = $this->widget(
         ),
     )
     , true);
-echo $form->customRow($model, $attribute, $input);
+echo $form->customRow($model, $attribute, $input, array(
+    'labelOptions' => array(
+        'label' => Html::attributeLabelWithTooltip($model, $attribute),
+    ),
+));
 ?>
 
 <?php
@@ -114,9 +118,3 @@ $this->renderPartial('//p3Media/_modal_form', array(
 ));
 $this->endClip();
 ?>
-
-<?php if ($model->getAttributeHint($attribute)): ?>
-    <p class="alert alert-info help-block">
-        <?php echo $model->getAttributeHint($attribute); ?>
-    </p>
-<?php endif; ?>
