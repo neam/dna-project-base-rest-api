@@ -61,12 +61,15 @@ class CommentController extends AppRestController
     }
 
     /**
-     * @fake stub
+     *
      */
     public function actionJqcDelete()
     {
-        $response = "foo-comment-id";
-        $this->sendResponse(200, $response);
+        $comment = Comment::model()->findByPk($_REQUEST['commentId']);
+        if (!$comment->delete()) {
+            throw new SaveException($comment);
+        }
+        $this->sendResponse(200, $_REQUEST['commentId']);
     }
 
 }
