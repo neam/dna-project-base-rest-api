@@ -35,11 +35,21 @@ class Html extends TbHtml
 
     public static function initJqueryComments($selector = "#commentSection")
     {
+
+        $localization = array(
+            "headerText" => Yii::t('evalute', 'Comments'),
+            "commentPlaceHolderText" => Yii::t('evalute', 'Add a comment...'),
+            "sendButtonText" => Yii::t('evalute', 'Send'),
+            "replyButtonText" => Yii::t('evalute', 'Reply'),
+            "deleteButtonText" => Yii::t('evalute', 'Delete'),
+        );
+
         app()->clientScript->registerScript('initJqueryComments', '$(document).ready(function () {
     $("' . $selector . '").comments({
         getCommentsUrl: "' . Yii::app()->request->baseUrl . '/api/comment/list",
         postCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/create",
         deleteCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/delete",
+        localization: ' . json_encode($localization) . '
     });
 });', CClientScript::POS_END);
     }
