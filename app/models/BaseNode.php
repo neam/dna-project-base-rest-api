@@ -89,7 +89,6 @@ abstract class BaseNode extends ActiveRecord
                 'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'node_id'),
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'node_id'),
                 'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'node_id'),
-                'nodes' => array(self::HAS_MANY, 'Node', 'id'),
                 'pages' => array(self::HAS_MANY, 'Page', 'node_id'),
                 'poFiles' => array(self::HAS_MANY, 'PoFile', 'node_id'),
                 'sections' => array(self::HAS_MANY, 'Section', 'node_id'),

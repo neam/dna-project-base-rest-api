@@ -82,7 +82,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
     </div>
     <div class="span9">
 
-        <?php $this->renderPartial("/_item/elements/flowbar", compact("model")); ?>
+        <?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption")); ?>
 
         <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
         <!--<h1><?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small></h1>-->
@@ -100,6 +100,12 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
                     <div class="page-header">
                         <h1><?= $section["title"] ?></h1>
+                        <?php if (isset($section["model"])): ?>
+
+                            <?php $this->widget('ModelCommentsWidget', array('model' => $section["model"], 'attribute' => 'title')); ?>
+
+                        <?php endif; ?>
+
                     </div>
 
                     <?php if (isset($section["subsections"])): ?>
@@ -108,6 +114,11 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                             <div class="view">
 
                                 <h2><?= $subsection["title"] ?></h2>
+                                <?php if (isset($subsection["model"])): ?>
+
+                                    <?php $this->widget('ModelCommentsWidget', array('model' => $subsection["model"], 'attribute' => 'title')); ?>
+
+                                <?php endif; ?>
 
                                 <?php
                                 if (isset($subsection["model"])) {

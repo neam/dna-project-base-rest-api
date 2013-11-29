@@ -106,7 +106,6 @@
  * Relations of table "slideshow_file" available as properties of the model:
  * @property Exercise[] $exercises
  * @property SectionContent[] $sectionContents
- * @property P3Media $processedMediaIdZhTw
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -151,6 +150,7 @@
  * @property P3Media $processedMediaIdVi
  * @property P3Media $processedMediaIdZh
  * @property P3Media $processedMediaIdZhCn
+ * @property P3Media $processedMediaIdZhTw
  * @property SlideshowFile $clonedFrom
  * @property SlideshowFile[] $slideshowFiles
  * @property Users $owner
@@ -205,7 +205,6 @@ abstract class BaseSlideshowFile extends ActiveRecord
             parent::relations(), array(
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'slideshow_file_id'),
                 'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'slideshow_file_id'),
-                'processedMediaIdZhTw' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_tw'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
                 'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
@@ -250,6 +249,7 @@ abstract class BaseSlideshowFile extends ActiveRecord
                 'processedMediaIdVi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_vi'),
                 'processedMediaIdZh' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh'),
                 'processedMediaIdZhCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_cn'),
+                'processedMediaIdZhTw' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_tw'),
                 'clonedFrom' => array(self::BELONGS_TO, 'SlideshowFile', 'cloned_from_id'),
                 'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'cloned_from_id'),
                 'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),

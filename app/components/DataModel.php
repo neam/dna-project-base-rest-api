@@ -10,6 +10,7 @@ class DataModel
             // Contents
             'Changeset' => 'changeset',
             'Chapter' => 'chapter',
+            'Comment' => 'comment',
             'DataChunk' => 'data_chunk',
             'DataSource' => 'data_source',
             'DownloadLink' => 'download_link',
@@ -84,6 +85,15 @@ class DataModel
 
     }
 
+    static public function restModels()
+    {
+
+        return array(
+            'Comment' => 'comment',
+        );
+
+    }
+
     static public function internalModels()
     {
 
@@ -123,6 +133,7 @@ class DataModel
         return array(
             'attributes' => array(
                 'Chapter' => array('title', 'about', 'teachers_guide'),
+                'Comment' => array('comment'), // Note: Currently set in Comment.php instead of through here
                 'DataChunk' => array('title', 'about'),
                 'DataSource' => array('title', 'about'),
                 'DownloadLink' => array('title'),

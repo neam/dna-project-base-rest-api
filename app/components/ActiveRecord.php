@@ -36,6 +36,13 @@ class ActiveRecord extends CActiveRecord
             );
         }
 
+        $restModels = DataModel::restModels();
+        if (isset($restModels[get_class($this)])) {
+            $behaviors['rest-model-behavior'] = array(
+                'class' => 'WRestModelBehavior',
+            );
+        }
+
         // List of model attributes to translate using yii-i18n-attribute-messages
         $i18nAttributeMessages = DataModel::i18nAttributeMessages();
         $i18nAttributeMessagesMap = $i18nAttributeMessages['attributes'];

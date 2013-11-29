@@ -60,6 +60,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/thomaspark/bootswatch" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twitter/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/waalzer/app-demo-data" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/weavora/wrest" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiiext/fancybox-widget" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiiext/lipsum-widget" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiiext/migrate-command" />
@@ -134,6 +135,7 @@
           <root url="file://$MODULE_DIR$/vendor/schmunk42/giic" />
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phppowerpoint" />
           <root url="file://$MODULE_DIR$/vendor/crisu83/yii-rights" />
+          <root url="file://$MODULE_DIR$/vendor/weavora/wrest" />
           <root url="file://$MODULE_DIR$/vendor/twitter/bootstrap" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/web-user-behavior" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
@@ -199,6 +201,7 @@
           <root url="file://$MODULE_DIR$/vendor/schmunk42/giic" />
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phppowerpoint" />
           <root url="file://$MODULE_DIR$/vendor/crisu83/yii-rights" />
+          <root url="file://$MODULE_DIR$/vendor/weavora/wrest" />
           <root url="file://$MODULE_DIR$/vendor/twitter/bootstrap" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/web-user-behavior" />
           <root url="file://$MODULE_DIR$/vendor/composer" />

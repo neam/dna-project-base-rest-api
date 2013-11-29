@@ -29,51 +29,55 @@
             <?php echo $model->itemLabel; ?><small><?php if ($this->action->id !== 'index') echo $model->itemDescriptionTooltip(); ?></small>
             <small>Version: <?php echo $model->version; ?></small>
             <small>Status: <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?></small>
-            <div class="pull-right">
-                <div class="btn-group">
+            <?php if ($this->action->id != 'evaluate'): ?>
 
-                    <?php
+                <div class="pull-right">
+                    <div class="btn-group">
 
-                    $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('model', 'Go!'),
-                        'icon' => 'icon-play',
-                        'type' => '',
-                        'url' => array('node/go', 'id' => $model->node()->id),
-                        'htmlOptions' => array(
-                            'target' => '_blank',
-                        ),
-                    ));
+                        <?php
 
-                    ?>
-
-                </div>
-                <div class='btn-group'>
-
-                    <?php
-                    $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('model', 'Edit'),
-                        'icon' => 'icon-edit',
-                        'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
-                        'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey}),
-                    ));
-                    if ($this->action->id == 'preview' || $this->action->id == 'index') {
                         $this->widget('bootstrap.widgets.TbButton', array(
-                            'label' => Yii::t('model', 'View'),
-                            'icon' => 'icon-eye-open',
-                            'type' => $this->action->id != 'view' ? '' : 'inverse',
-                            'url' => array('view', 'id' => $model->{$model->tableSchema->primaryKey}),
+                            'label' => Yii::t('model', 'Go!'),
+                            'icon' => 'icon-play',
+                            'type' => '',
+                            'url' => array('node/go', 'id' => $model->node()->id),
+                            'htmlOptions' => array(
+                                'target' => '_blank',
+                            ),
                         ));
-                    } else {
+
+                        ?>
+
+                    </div>
+                    <div class='btn-group'>
+
+                        <?php
                         $this->widget('bootstrap.widgets.TbButton', array(
-                            'label' => Yii::t('model', 'Preview'),
-                            'icon' => 'icon-eye-open',
-                            'type' => $this->action->id != 'preview' ? '' : 'inverse',
-                            'url' => array('preview', 'id' => $model->{$model->tableSchema->primaryKey}, 'editingUrl' => $this->action->id == 'view' ? null : Yii::app()->request->url),
+                            'label' => Yii::t('model', 'Edit'),
+                            'icon' => 'icon-edit',
+                            'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
+                            'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey}),
                         ));
-                    }
-                    ?>
+                        if ($this->action->id == 'preview' || $this->action->id == 'index') {
+                            $this->widget('bootstrap.widgets.TbButton', array(
+                                'label' => Yii::t('model', 'View'),
+                                'icon' => 'icon-eye-open',
+                                'type' => $this->action->id != 'view' ? '' : 'inverse',
+                                'url' => array('view', 'id' => $model->{$model->tableSchema->primaryKey}),
+                            ));
+                        } else {
+                            $this->widget('bootstrap.widgets.TbButton', array(
+                                'label' => Yii::t('model', 'Preview'),
+                                'icon' => 'icon-eye-open',
+                                'type' => $this->action->id != 'preview' ? '' : 'inverse',
+                                'url' => array('preview', 'id' => $model->{$model->tableSchema->primaryKey}, 'editingUrl' => $this->action->id == 'view' ? null : Yii::app()->request->url),
+                            ));
+                        }
+                        ?>
+                    </div>
                 </div>
-            </div>
+
+            <?php endif; ?>
 
         </h1>
 
@@ -121,7 +125,7 @@
                         "label" => Yii::t("crud", "Evaluate"),
                         "type" => $this->action->id == "evaluate" ? "inverse" : null,
                         "icon" => "icon-comment" . ($this->action->id == "evaluate" ? " icon-white" : null),
-                        "url" => array("evaluate", "id" => $model->{$model->tableSchema->primaryKey})
+                        "url" => array("evaluate", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->firstFlowStep($model))
                     ));
                     $this->widget("bootstrap.widgets.TbButton", array(
                         "label" => Yii::t("model", "Review"),

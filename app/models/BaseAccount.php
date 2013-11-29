@@ -17,6 +17,7 @@
  * Relations of table "users" available as properties of the model:
  * @property Changeset[] $changesets
  * @property Chapter[] $chapters
+ * @property Comment[] $comments
  * @property DataChunk[] $dataChunks
  * @property DataSource[] $dataSources
  * @property DownloadLink[] $downloadLinks
@@ -85,6 +86,7 @@ abstract class BaseAccount extends ActiveRecord
             parent::relations(), array(
                 'changesets' => array(self::HAS_MANY, 'Changeset', 'user_id'),
                 'chapters' => array(self::HAS_MANY, 'Chapter', 'owner_id'),
+                'comments' => array(self::HAS_MANY, 'Comment', 'author_user_id'),
                 'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'owner_id'),
                 'dataSources' => array(self::HAS_MANY, 'DataSource', 'owner_id'),
                 'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'owner_id'),
