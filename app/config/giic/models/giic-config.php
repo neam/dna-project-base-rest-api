@@ -2,12 +2,13 @@
 // GIIC CONFIG FILE
 // ----------------
 
-$baseModels = DataModel::crudModels();
+$crudModels = DataModel::crudModels();
+$restModels = DataModel::restModels();
 $qaModels = DataModel::qaModels();
 $qaStateModels = DataModel::qaStateModels();
 
 // merge
-$models = array_merge($baseModels, $qaModels, $qaStateModels);
+$models = array_merge($crudModels, $restModels, $qaModels, $qaStateModels);
 
 // init actions
 $actions = array();
