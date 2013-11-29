@@ -37,11 +37,11 @@ class Html extends TbHtml
     {
 
         $localization = array(
-            "headerText" => Yii::t('evalute', 'Comments'),
-            "commentPlaceHolderText" => Yii::t('evalute', 'Add a comment...'),
-            "sendButtonText" => Yii::t('evalute', 'Send'),
-            "replyButtonText" => Yii::t('evalute', 'Reply'),
-            "deleteButtonText" => Yii::t('evalute', 'Delete'),
+            "headerText" => Yii::t('evaluate', 'Comments'),
+            "commentPlaceHolderText" => Yii::t('evaluate', 'Add a comment...'),
+            "sendButtonText" => Yii::t('evaluate', 'Send'),
+            "replyButtonText" => Yii::t('evaluate', 'Reply'),
+            "deleteButtonText" => Yii::t('evaluate', 'Delete'),
         );
 
         app()->clientScript->registerScript('initJqueryComments', '$(document).ready(function () {
