@@ -33,7 +33,7 @@ class Html extends TbHtml
 
     }
 
-    public static function initJqueryComments($selector = "#commentSection")
+    public static function initJqueryComments($selector = "#commentSection", $context = array())
     {
 
         $localization = array(
@@ -46,9 +46,9 @@ class Html extends TbHtml
 
         app()->clientScript->registerScript('initJqueryComments', '$(document).ready(function () {
     $("' . $selector . '").comments({
-        getCommentsUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcList?limit=1000",
-        postCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcCreate",
-        deleteCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcDelete",
+        getCommentsUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcList?limit=1000&' . http_build_query($context) . '",
+        postCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcCreate?' . http_build_query($context) . '",
+        deleteCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcDelete?' . http_build_query($context) . '",
         localization: ' . json_encode($localization) . '
     });
 });', CClientScript::POS_END);
