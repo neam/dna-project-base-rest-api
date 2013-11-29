@@ -65,6 +65,7 @@ $gcmsConfig = array(
         'relational-graph-db.behaviors.RelationalGraphDbBehavior',
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
+        'vendor.weavora.wrest.behaviors.*',
         'application.behaviors.EzcWorkflowBehavior',
         'application.workflows.custom.*',
         'application.workflows.*',

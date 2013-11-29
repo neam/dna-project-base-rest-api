@@ -85,6 +85,15 @@ class DataModel
 
     }
 
+    static public function restModels()
+    {
+
+        return array(
+            'Comment' => 'comment',
+        );
+
+    }
+
     static public function internalModels()
     {
 
