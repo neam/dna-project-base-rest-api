@@ -1,8 +1,6 @@
 <?php
-#$relation = "originalMedia";
-#$attribute = "original_media_id";
-$relation = "processedMediaIdEn";
-$attribute = "processed_media_id";
+$relation = "originalMedia";
+$attribute = "original_media_id";
 $step = "files";
 $mimeTypes = array('video/webm');
 
