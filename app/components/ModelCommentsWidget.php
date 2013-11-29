@@ -35,7 +35,7 @@ class ModelCommentsWidget extends CWidget
         <div class="modal-body">
 
             <div id="<?php echo $modalId; ?>-commentSection"> test test</div>
-            <?php Html::initJqueryComments("#$modalId-commentSection", array("context_model" => get_class($this->model), "context_id" => $this->model->id, "context_field" => "about")); ?>
+            <?php Html::initJqueryComments("#$modalId-commentSection", array("context_model" => get_class($this->model), "context_id" => $this->model->id, "context_attribute" => "about")); ?>
 
             <?php
             ?>

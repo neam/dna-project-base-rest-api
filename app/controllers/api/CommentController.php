@@ -103,6 +103,15 @@ class CommentController extends AppRestController
         if (isset($_REQUEST['parentId'])) {
             $comment->parent_id = $_REQUEST['parentId'];
         }
+        if (isset($_REQUEST['context_model'])) {
+            $comment->context_model = $_REQUEST['context_model'];
+        }
+        if (isset($_REQUEST['context_id'])) {
+            $comment->context_id = $_REQUEST['context_id'];
+        }
+        if (isset($_REQUEST['context_attribute'])) {
+            $comment->context_attribute = $_REQUEST['context_attribute'];
+        }
 
         if (!$comment->save()) {
             throw new SaveException($comment);
