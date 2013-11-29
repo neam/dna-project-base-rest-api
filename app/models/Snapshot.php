@@ -17,6 +17,7 @@ class Snapshot extends BaseSnapshot
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'This is a link to a snapshot of a tool for visualy exploration of data. The Snapshot illustrates something described in the title and the about text.');
         return parent::init();
     }
 

@@ -2,6 +2,8 @@
 
 trait ItemTrait
 {
+    public $itemDescription;
+
     /**
      * @return array Status-dependent validation rules
      */

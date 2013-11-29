@@ -17,6 +17,7 @@ class Exercise extends BaseExercise
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', ' An exercises is a task for students, like a quiz, a group assignments or homework. The activity it describes could be anything from having students drawing a populaiotn on the school jard or instructions for students to teach their parents about global develoopment.');
         return parent::init();
     }
 

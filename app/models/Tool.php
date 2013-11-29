@@ -17,6 +17,7 @@ class Tool extends BaseTool
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'For developers to publish versions of new visualization tools. to show up in preview mode.');
         return parent::init();
     }
 

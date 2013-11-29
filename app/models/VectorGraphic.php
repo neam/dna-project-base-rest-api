@@ -17,6 +17,7 @@ class VectorGraphic extends BaseVectorGraphic
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'The only reason to upload static viz, are those originateing from illustrator files or similar. Most downloadable pdf-files originated from a Textdoc or Slideshow, but some need to be created from SVG-files by hand, like the static bubble charts with labels for all countries.');
         return parent::init();
     }
 

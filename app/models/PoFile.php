@@ -17,6 +17,7 @@ class PoFile extends BasePoFile
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'For developers to manage GUI string po-files.');
         return parent::init();
     }
 

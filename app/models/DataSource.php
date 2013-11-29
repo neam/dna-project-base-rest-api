@@ -17,6 +17,7 @@ class DataSource extends BaseDataSource
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'A data source is refering to a provider of data, which may be an individual, an institution, Wikipedia, a governmental body, UNICEF, a company or whoever produced the data.');
         return parent::init();
     }
 

@@ -17,6 +17,7 @@ class DataChunk extends BaseDataChunk
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'Data huge body of statistical data can be splitted in many ways. Most chunks are automaticaly geenrated from our database, but some needs to be uploaded manualy.');
         return parent::init();
     }
 

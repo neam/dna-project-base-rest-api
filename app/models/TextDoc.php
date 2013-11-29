@@ -17,6 +17,7 @@ class TextDoc extends BaseTextDoc
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'Textdocs may be selfcontained exercises or arbitrary text that is related to something else.');
         return parent::init();
     }
 

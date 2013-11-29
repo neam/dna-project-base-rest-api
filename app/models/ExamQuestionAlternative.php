@@ -19,6 +19,7 @@ class ExamQuestionAlternative extends BaseExamQuestionAlternative
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'For testing if students remember the facts in a chapter, video or exercise.');
         return parent::init();
     }
 

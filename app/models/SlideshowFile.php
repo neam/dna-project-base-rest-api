@@ -17,6 +17,7 @@ class SlideshowFile extends BaseSlideshowFile
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'All slideshows ar of this Blueprint, while some just support a specific vide, while others may be selfcontained exercises.');
         return parent::init();
     }
 
