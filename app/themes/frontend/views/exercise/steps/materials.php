@@ -2,19 +2,15 @@
 
 <div class="control-group">
     <div class="controls">
-        <?php echo $this->widget(
-            'bootstrap.widgets.TbButton',
-            array(
-                'label' => Yii::t('app', 'Add material'),
-                'icon' => 'icon-plus',
-                'htmlOptions' => array(
-                    'data-toggle' => 'modal',
-                    'data-target' => '#addrelation-exercise--modal',
-                ),
+        <?php echo $this->widget('bootstrap.widgets.TbButton', array(
+            'label' => Yii::t('app', 'Add material'),
+            'icon' => 'icon-plus',
+            'htmlOptions' => array(
+                'data-toggle' => 'modal',
+                'data-target' => '#addrelation-exercise--modal',
             ),
-            true
-        ); ?>
-        <?php echo Html::tooltip('?', '#', $model->getAttributeHint('materials')); ?>
+        ), true); ?>
+        <?php echo Html::attributeHintTooltip($model, 'materials'); ?>
         <?php $this->renderPartial('//gridRelation/_relation_list', array(
             'relation' => 'materials',
             'model' => $model,
