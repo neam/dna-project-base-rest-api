@@ -54,8 +54,10 @@ var select2opts = {
     //escapeMarkup: function(m) { return m; }
 };
 
-$("#{$modelClass}_{$attribute}").data('select2opts', select2opts);
-$("#{$modelClass}_{$attribute}").select2($("#{$modelClass}_{$attribute}").data('select2opts'));
+//$("#{$modelClass}_{$attribute}").data('select2opts', select2opts);
+//$("#{$modelClass}_{$attribute}").select2($("#{$modelClass}_{$attribute}").data('select2opts'));
+$("#{$modelClass}_{$attribute}_{$model->source_language}").data('select2opts', select2opts);
+$("#{$modelClass}_{$attribute}_{$model->source_language}").select2($("#{$modelClass}_{$attribute}_{$model->source_language}").data('select2opts'));
 
 EOF;
 
