@@ -44,7 +44,7 @@ class Html extends TbHtml
             "deleteButtonText" => Yii::t('evaluate', 'Delete'),
         );
 
-        app()->clientScript->registerScript('initJqueryComments', '$(document).ready(function () {
+        app()->clientScript->registerScript('initJqueryComments-' . $selector, '$(document).ready(function () {
     $("' . $selector . '").comments({
         getCommentsUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcList?limit=1000&' . http_build_query($context) . '",
         postCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcCreate?' . http_build_query($context) . '",
