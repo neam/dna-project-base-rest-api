@@ -64,11 +64,25 @@ class CommentController extends AppRestController
 
         $command->join('users account', 'account.id = comment.author_user_id');
 
+        $command->params = array();
         /*
         $command->params = array(
             ':node_id' => $node_id,
         );
         */
+
+        if (isset($_REQUEST['context_model'])) {
+            $command->andWhere("context_model = :context_model");
+            $command->params[":context_model"] = $_REQUEST['context_model'];
+        }
+        if (isset($_REQUEST['context_id'])) {
+            $command->andWhere("context_id = :context_id");
+            $command->params[":context_id"] = $_REQUEST['context_id'];
+        }
+        if (isset($_REQUEST['context_attribute'])) {
+            $command->andWhere("context_attribute = :context_attribute");
+            $command->params[":context_attribute"] = $_REQUEST['context_attribute'];
+        }
 
         $formatResults = function ($records, $columns) use ($comment) {
 
@@ -86,7 +100,7 @@ class CommentController extends AppRestController
             return $rs;
         };
 
-        //var_dump($command->text);
+        //print_r($command->text);print_r($command->params);
         $records = $command->queryAll();
 
         $this->sendResponse(200, $formatResults($records, $columns));
