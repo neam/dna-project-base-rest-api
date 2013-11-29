@@ -1,6 +1,6 @@
 <?php
 
-class ModelCommentsWidget extends CWidget
+class ModalCommentsWidget extends CWidget
 {
     public $model;
     public $attribute;

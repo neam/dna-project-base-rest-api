@@ -102,7 +102,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                         <h1><?= $section["title"] ?></h1>
                         <?php if (isset($section["model"])): ?>
 
-                            <?php $this->widget('ModelCommentsWidget', array('model' => $section["model"], 'attribute' => 'title')); ?>
+                            <?php $this->widget('ModalCommentsWidget', array('model' => $section["model"], 'attribute' => 'title')); ?>
 
                         <?php endif; ?>
 
@@ -116,7 +116,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                                 <h2><?= $subsection["title"] ?></h2>
                                 <?php if (isset($subsection["model"])): ?>
 
-                                    <?php $this->widget('ModelCommentsWidget', array('model' => $subsection["model"], 'attribute' => 'title')); ?>
+                                    <?php $this->widget('ModalCommentsWidget', array('model' => $subsection["model"], 'attribute' => 'title')); ?>
 
                                 <?php endif; ?>
 
