@@ -1,3 +1,5 @@
+<?php /** @var VideoFile $model */ ?>
+
 <style>
 
     .select2-container .select2-choice {
@@ -65,64 +67,50 @@ $criteria->addCondition("t.type = 'file'");
 $criteria->limit = 100;
 $criteria->order = "t.created_at DESC";
 
-$input = $this->widget(
-    '\GtcRelation',
-    array(
-        'model' => $model,
-        'relation' => 'subtitlesImportMedia',
-        'fields' => 'itemLabel',
-        'criteria' => $criteria,
-        'allowEmpty' => $noneLabel,
-        'style' => 'dropdownlist',
-        'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
-    )
-    , true);
-echo $form->customRow($model, 'subtitles_import_media_id', $input);
+$input = $this->widget('\GtcRelation', array(
+    'model' => $model,
+    'relation' => 'subtitlesImportMedia',
+    'fields' => 'itemLabel',
+    'criteria' => $criteria,
+    'allowEmpty' => $noneLabel,
+    'style' => 'dropdownlist',
+    'htmlOptions' => array(
+        'checkAll' => 'all'
+    ),
+), true);
 ?>
 
-<?php
-$formId = 'videofile-subtitles_import_media_id-' . \uniqid() . '-form';
-?>
+<?php echo $form->customRow($model, 'subtitles_import_media_id', $input, array(
+    'labelOptions' => array(
+        'label' => Html::attributeLabelWithTooltip($model, 'subtitles_import_media_id'),
+    ),
+)); ?>
+
+<?php $formId = 'videofile-subtitles_import_media_id-' . \uniqid() . '-form'; ?>
 
 <div class="control-group">
     <div class="controls">
-        <?php
-        echo $this->widget('bootstrap.widgets.TbButton', array(
+        <?php echo $this->widget('bootstrap.widgets.TbButton', array(
             'label' => Yii::t('app', 'Upload'),
             'icon' => 'icon-plus',
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
                 'data-target' => '#' . $formId . '-modal',
             ),
-        ), true);
-        ?>
-        <?php
-        echo CHtml::submitButton(Yii::t('model', 'Import'), array(
-                'class' => 'btn btn-primary',
-                'name' => 'import',
-            )
-        );
-        ?>
+        ), true); ?>
+        <?php echo CHtml::submitButton(Yii::t('model', 'Import'), array(
+            'class' => 'btn btn-primary',
+            'name' => 'import',
+        )); ?>
     </div>
 </div>
 
-<?php
-$this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('//p3Media/_modal_form', array(
+<?php $this->beginClip('modal:' . $formId . '-modal'); ?>
+<?php $this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => '#VideoFile_subtitles_import_media_id',
     'model' => new P3Media,
     'pk' => 'id',
     'field' => 'itemLabel',
-));
-$this->endClip();
-?>
-
-
-<?php if ($model->getAttributeHint("subtitles_import_media_id")): ?>
-    <p class="alert alert-info help-block">
-        <?php echo $model->getAttributeHint("subtitles_import_media_id"); ?>
-    </p>
-<?php endif; ?>
+)); ?>
+<?php $this->endClip(); ?>
