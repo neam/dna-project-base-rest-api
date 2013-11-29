@@ -10,7 +10,7 @@
                 'data-target' => '#addrelation-exercise--modal',
             ),
         ), true); ?>
-        <?php echo Html::attributeHintTooltip($model, 'related'); ?>
+        <?php echo Html::hintTooltip($model->getAttributeHint('related')); ?>
         <?php $this->renderPartial('//gridRelation/_relation_list', array(
             'relation' => 'related',
             'model' => $model,

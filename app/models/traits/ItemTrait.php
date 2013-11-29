@@ -2,7 +2,6 @@
 
 trait ItemTrait
 {
-
     /**
      * @return array Status-dependent validation rules
      */

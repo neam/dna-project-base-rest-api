@@ -6,8 +6,9 @@ Yii::import('Chapter.*');
 
 class Chapter extends BaseChapter
 {
-
     use ItemTrait;
+
+    public $itemDescription;
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
@@ -17,6 +18,7 @@ class Chapter extends BaseChapter
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'A Chapter is a collection of related teaching material, useful to make a phenomena understandable. The video introduces the phenomena and the teachers guide suggest an effective way to convey this knowledge to students.');
         return parent::init();
     }
 

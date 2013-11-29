@@ -1,3 +1,5 @@
+<?php /** @var ActiveRecord $model */ ?>
+
 <style>
 
     .flowbar .well .row-fluid div {
@@ -24,6 +26,9 @@
 
         <h1>
             <?php echo $model->itemLabel; ?>
+            <small><?php echo Html::hintTooltip($model->getItemDescription(), array(
+                'placement' => TbHtml::TOOLTIP_PLACEMENT_BOTTOM,
+            )); ?></small>
             <small>Version: <?php echo $model->version; ?></small>
             <small>Status: <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?></small>
             <div class="pull-right">

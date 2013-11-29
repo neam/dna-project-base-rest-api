@@ -54,19 +54,20 @@ class Html extends TbHtml
         $hintAttribute = !empty($hintAttribute) ? $hintAttribute : $attribute;
         $label = $model->getAttributeLabel($attribute);
         $tooltip = $model->getAttributeHint($hintAttribute)
-            ? ' ' . Html::attributeHintTooltip($model, $hintAttribute)
+            ? ' ' . Html::hintTooltip($model->getAttributeHint($hintAttribute))
             : '';
         return $label . $tooltip;
     }
 
     /**
      * Creates a tooltip for a model attribute hint.
-     * @param ActiveRecord $model the model.
-     * @param string $attribute the hint attribute.
+     * @param string $content the tooltip content.
      * @return string the tooltip HTML.
      */
-    public static function attributeHintTooltip(ActiveRecord $model, $attribute)
+    public static function hintTooltip($content, $htmlOptions = array())
     {
-        return Html::tooltip(TbHtml::icon(TbHtml::ICON_QUESTION_SIGN), '#', $model->getAttributeHint($attribute));
+        return isset($content)
+            ? Html::tooltip(TbHtml::icon(TbHtml::ICON_QUESTION_SIGN), '#', $content, $htmlOptions)
+            : '';
     }
 }

@@ -10,7 +10,7 @@
                 'data-target' => '#addrelation-vectorgraphic-datachunk-modal',
             ),
         ), true); ?>
-        <?php echo Html::attributeHintTooltip($model, 'datachunks'); ?>
+        <?php echo Html::hintTooltip($model->getAttributeHint('datachunks')); ?>
         <?php $this->renderPartial('//gridRelation/_relation_list', array(
             'relation' => 'datachunks',
             'model' => $model,
