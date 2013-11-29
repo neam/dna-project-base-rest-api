@@ -14,7 +14,7 @@ class ModelCommentsWidget extends CWidget
             'bootstrap.widgets.TbButton',
             array(
                 'label' => Yii::t('app', 'Comments'),
-                'icon' => 'icon-plus',
+                'icon' => 'icon-comment',
                 'htmlOptions' => array(
                     'data-toggle' => 'modal',
                     'data-target' => '#' . $modalId,
