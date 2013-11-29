@@ -40,6 +40,7 @@ class Exercise extends BaseExercise
         return array_merge(
             parent::relations(),
             array(
+                'parentChapters' => array(self::HAS_MANY, 'Chapter', array('id' => 'node_id'), 'through' => 'inNodes'),
                 'materials' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
                 'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
             )
