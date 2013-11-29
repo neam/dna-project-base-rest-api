@@ -46,7 +46,7 @@ class Html extends TbHtml
 
         app()->clientScript->registerScript('initJqueryComments', '$(document).ready(function () {
     $("' . $selector . '").comments({
-        getCommentsUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcList",
+        getCommentsUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcList?limit=1000",
         postCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcCreate",
         deleteCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcDelete",
         localization: ' . json_encode($localization) . '
