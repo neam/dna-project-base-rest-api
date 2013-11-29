@@ -66,15 +66,30 @@ class Comment extends BaseComment
      */
     public function jqcAttributes()
     {
+        $selectedAttributes = array(
+            "comment.id" => $this->id,
+            "account.username" => $this->authorUser->username,
+            "comment._comment" => $this->_comment,
+            "comment.parent_id" => $this->parent_id,
+            "comment.created" => $this->created,
+        );
+        return self::convertToJqcAttributes($selectedAttributes);
+    }
+
+    static public function convertToJqcAttributes($selectedAttributes)
+    {
+
         $locale = CLocale::getInstance(Yii::app()->language);
-        $createdDate = $locale->getDateFormatter()->formatDateTime($this->created, 'medium', 'medium');
+        $createdDate = $locale->getDateFormatter()->formatDateTime($selectedAttributes["comment.created"], 'medium', 'medium');
+
         return array(
-            "Id" => $this->id,
-            "Author" => $this->authorUser->username,
-            "Comment" => $this->comment,
-            "ParentId" => $this->parent_id,
+            "Id" => $selectedAttributes["comment.id"],
+            "Author" => $selectedAttributes["account.username"],
+            "Comment" => $selectedAttributes["comment._comment"],
+            "ParentId" => $selectedAttributes["comment.parent_id"],
             "Date" => $createdDate,
         );
+
     }
 
 }

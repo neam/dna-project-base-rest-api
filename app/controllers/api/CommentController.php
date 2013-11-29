@@ -32,7 +32,65 @@ class CommentController extends AppRestController
      */
     public function actionJqcList()
     {
-        $this->sendResponse(200, array());
+
+        // Get common criteria used for pagination
+        $c = $this->getListCriteria();
+
+        // Collect som metadata about table schema
+        $comment = new Comment();
+        //$account = new Account();
+        $columns = array(
+            "comment" => array_keys($comment->attributes),
+            "account" => array("username"), //array_keys($account->attributes),
+        );
+
+        // Start building the sql-command
+        $command = Yii::app()->db->createCommand()
+            ->limit($c->limit)
+            ->offset($c->offset)
+            ->order($c->order);
+
+        $command->order("created ASC");
+
+        $select = U::prefixed_table_fields_wildcard('comment', 'comment', $columns['comment'])
+            . "," . U::prefixed_table_fields_wildcard('account', 'account', $columns['account']);
+
+        // Prevent double-escaping ("The method will automatically quote the column names unless a column contains some parenthesis (which means the column contains a DB expression).")
+        $select .= ", (-1) AS foo";
+
+        $command->select($select);
+
+        $command->from('comment');
+
+        $command->join('users account', 'account.id = comment.author_user_id');
+
+        /*
+        $command->params = array(
+            ':node_id' => $node_id,
+        );
+        */
+
+        $formatResults = function ($records, $columns) use ($comment) {
+
+            //var_dump(compact("records"));
+            $rs = array();
+            if ($records) {
+                foreach ($records as $r) {
+                    $attributes = Comment::convertToJqcAttributes($r);
+                    $attributes['CanReply'] = true;
+                    $attributes['CanDelete'] = Yii::app()->user->id == $r["comment.author_user_id"];
+                    $rs[] = $attributes;
+                }
+            }
+            //var_dump(compact("rs"));
+            return $rs;
+        };
+
+        //var_dump($command->text);
+        $records = $command->queryAll();
+
+        $this->sendResponse(200, $formatResults($records, $columns));
+
     }
 
     /**
