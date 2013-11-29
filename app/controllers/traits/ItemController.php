@@ -446,7 +446,7 @@ trait ItemController
     public function actionPreview($id)
     {
         $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preview', array('model' => $model));
+        $this->render('/_item/preview', array('model' => $model, 'workflowCaption' => Yii::t('app', 'Preview')));
     }
 
     public function actionReview($id)
