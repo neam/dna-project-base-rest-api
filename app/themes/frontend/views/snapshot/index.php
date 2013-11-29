@@ -11,7 +11,7 @@ if (!isset($this->menu) || $this->menu === array()) {
     );
 }
 ?>
-    <h1><?php echo Yii::t('model', 'Snapshots'); ?></h1>
+    <h1><?php echo Yii::t('model', 'Snapshots'); ?> <small><?php echo Snapshot::model()->itemDescriptionTooltip(); ?></small></h1>
 
 <?php $this->renderPartial("_toolbar"); ?>
 <?php

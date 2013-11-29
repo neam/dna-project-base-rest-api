@@ -1,4 +1,5 @@
-<?php /** @var ActiveRecord $model */ ?>
+<?php /** @var ActiveRecord|ItemTrait $model */ ?>
+<?php /** @var Controller $this */ ?>
 
 <style>
 
@@ -25,10 +26,7 @@
     <div class="span12">
 
         <h1>
-            <?php echo $model->itemLabel; ?>
-            <small><?php echo Html::hintTooltip($model->getItemDescription(), array(
-                'placement' => TbHtml::TOOLTIP_PLACEMENT_BOTTOM,
-            )); ?></small>
+            <?php echo $model->itemLabel; ?><small><?php if ($this->action->id !== 'index') echo $model->itemDescriptionTooltip(); ?></small>
             <small>Version: <?php echo $model->version; ?></small>
             <small>Status: <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?></small>
             <div class="pull-right">

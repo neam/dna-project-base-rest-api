@@ -130,13 +130,4 @@ class ActiveRecord extends CActiveRecord
         $labels = DataModel::modelLabels();
         return $labels[get_class($this)];
     }
-
-    /**
-     * Returns the item description if available.
-     * @return string|null the item description.
-     */
-    public function getItemDescription()
-    {
-        return isset($this->itemDescription) ? $this->itemDescription : null;
-    }
 }

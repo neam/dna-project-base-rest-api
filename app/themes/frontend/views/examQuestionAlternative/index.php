@@ -11,7 +11,7 @@ if (!isset($this->menu) || $this->menu === array()) {
     );
 }
 ?>
-    <h1><?php echo Yii::t('model', 'Exam Question Alternatives'); ?></h1>
+    <h1><?php echo Yii::t('model', 'Exam Question Alternatives'); ?> <small><?php echo ExamQuestionAlternative::model()->itemDescriptionTooltip(); ?></small></h1>
 
 <?php $this->renderPartial("_toolbar"); ?>
 <?php
