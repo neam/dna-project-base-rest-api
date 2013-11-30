@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "99baa84d4837793f3a24ef02126076ad",
+    "hash": "21f295193cbfa1e5dd970f4cad723e28",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -1674,6 +1674,55 @@
             "time": "2013-05-15 08:05:01"
         },
         {
+            "name": "weavora/wrest",
+            "version": "dev-awaiting-prs",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/wrest.git",
+                "reference": "de993b1022f3fbaf86fccd3f2538cc0338b2e1ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/wrest/zipball/de993b1022f3fbaf86fccd3f2538cc0338b2e1ea",
+                "reference": "de993b1022f3fbaf86fccd3f2538cc0338b2e1ea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "."
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Slava Belokurski",
+                    "email": "slavchoo2@gmail.com"
+                },
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "Yii extension to create REST CRUD interfaces (get, list, update, create, delete actions) for your app",
+            "homepage": "https://github.com/weavora/wrest",
+            "keywords": [
+                "api",
+                "rest",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/neam/wrest/tree/awaiting-prs"
+            },
+            "time": "2013-11-30 00:27:23"
+        },
+        {
             "name": "yiiext/fancybox-widget",
             "version": "v0.3",
             "source": {
@@ -2265,6 +2314,7 @@
         "zetacomponents/workflow-database-tiein": 20,
         "zetacomponents/workflow": 20,
         "zetacomponents/database": 20,
+        "weavora/wrest": 20,
         "ascendro/yii-graphviz": 20,
         "mihanentalpo/yii-sql-migration-generator": 20,
         "codemix/hybridauthmanager": 20,

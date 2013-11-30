@@ -129,6 +129,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://github.com/neam/wrest"
+        },
+        {
+            "type":"vcs",
             "url":"https://github.com/motin/gii-template-collection"
         },
         {
@@ -178,6 +182,7 @@
         "zetacomponents/workflow-database-tiein": "dev-awaiting-prs",
         "zetacomponents/workflow": "dev-master",
         "zetacomponents/database": "dev-travis",
+        "weavora/wrest": "dev-awaiting-prs",
         "ascendro/yii-graphviz": "@dev",
         "mihanentalpo/yii-sql-migration-generator": "@dev",
         "codemix/hybridauthmanager": "dev-master",
