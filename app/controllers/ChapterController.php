@@ -105,6 +105,7 @@ class ChapterController extends Controller
                 "title" => Yii::t('app', 'Teacher\'s Guide'),
                 "slug" => 'teachers-guide',
                 "markup" => $chapter->teachers_guide,
+                "attribute" => "teachers_guide",
             );
         }
 

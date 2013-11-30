@@ -100,9 +100,9 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
                     <div class="page-header">
                         <h1><?= $section["title"] ?></h1>
-                        <?php if (isset($section["model"])): ?>
+                        <?php if ($evaluate && isset($section["model"])): ?>
 
-                            <?php $this->widget('ModelCommentsWidget', array('model' => $section["model"], 'attribute' => 'title')); ?>
+                            <?php $this->widget('ModalCommentsWidget', array('model' => $section["model"], 'attribute' => 'title')); ?>
 
                         <?php endif; ?>
 
@@ -114,17 +114,20 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                             <div class="view">
 
                                 <h2><?= $subsection["title"] ?></h2>
-                                <?php if (isset($subsection["model"])): ?>
+                                <?php if ($evaluate && isset($subsection["model"])): ?>
 
-                                    <?php $this->widget('ModelCommentsWidget', array('model' => $subsection["model"], 'attribute' => 'title')); ?>
+                                    <?php $this->widget('ModalCommentsWidget', array('model' => $subsection["model"], 'attribute' => 'title')); ?>
 
                                 <?php endif; ?>
 
                                 <?php
                                 if (isset($subsection["model"])) {
-                                    $this->renderPartial('/' . lcfirst(get_class($subsection["model"])) . '/_view', array("data" => $subsection["model"]));
+                                    $this->renderPartial('/' . lcfirst(get_class($subsection["model"])) . '/_view', array("data" => $subsection["model"], "evaluate" => $evaluate));
                                 } else {
                                     print $subsection["markup"];
+                                    if ($evaluate && isset($subsection["attribute"])) {
+                                        $this->widget('ModalCommentsWidget', array('model' => $model, 'attribute' => $subsection["attribute"]));
+                                    }
                                 }
                                 ?>
 
@@ -134,9 +137,12 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                     <?php else: ?>
                         <?php
                         if (isset($section["model"])) {
-                            $this->renderPartial('/' . lcfirst(get_class($section["model"])) . '/_view', array("data" => $section["model"]));
+                            $this->renderPartial('/' . lcfirst(get_class($section["model"])) . '/_view', array("data" => $section["model"], "evaluate" => $evaluate));
                         } else {
                             print $section["markup"];
+                            if ($evaluate && isset($section["attribute"])) {
+                                $this->widget('ModalCommentsWidget', array('model' => $model, 'attribute' => $section["attribute"]));
+                            }
                         }
                         ?>
                     <?php endif; ?>

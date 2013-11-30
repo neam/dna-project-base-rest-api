@@ -1,6 +1,6 @@
 <?php
 
-class ModelCommentsWidget extends CWidget
+class ModalCommentsWidget extends CWidget
 {
     public $model;
     public $attribute;
@@ -14,7 +14,7 @@ class ModelCommentsWidget extends CWidget
             'bootstrap.widgets.TbButton',
             array(
                 'label' => Yii::t('app', 'Comments'),
-                'icon' => 'icon-plus',
+                'icon' => 'icon-comment',
                 'htmlOptions' => array(
                     'data-toggle' => 'modal',
                     'data-target' => '#' . $modalId,
@@ -30,11 +30,11 @@ class ModelCommentsWidget extends CWidget
             <button type="button" class="close" data-toggle="modal"
                     data-target="#<?php echo $modalId; ?>">×
             </button>
-            <h3><?php echo Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Tool'))); ?></h3>
+            <h3><?php echo Yii::t('app', 'Comments on field') . ": " . $this->model->getAttributeLabel($this->attribute) . " (" . Yii::t('app', $this->model->getModelLabel(), 1) . ")"; ?></h3>
         </div>
         <div class="modal-body">
 
-            <div id="<?php echo $modalId; ?>-commentSection"> test test</div>
+            <div id="<?php echo $modalId; ?>-commentSection"></div>
             <?php Html::initJqueryComments("#$modalId-commentSection", array("context_model" => get_class($this->model), "context_id" => $this->model->id, "context_attribute" => $this->attribute)); ?>
 
             <?php
@@ -43,7 +43,7 @@ class ModelCommentsWidget extends CWidget
         </div>
         <div class="modal-footer">
 
-            <a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $modalId; ?>">Cancel</a>
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#<?php echo $modalId; ?>">Close</a>
             <?php
             ?>
 

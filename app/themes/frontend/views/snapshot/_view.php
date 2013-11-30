@@ -28,7 +28,12 @@ else: ?>
     </div>
 
 <?php
-endif; ?>
+endif;
+?>
+
+<?php if ($evaluate): ?>
+    <?php $this->widget('ModalCommentsWidget', array('model' => $data, 'attribute' => 'vizualization')); ?>
+<?php endif; ?>
 
 <?php if (Yii::app()->user->checkAccess('Snapshot.*')): ?>
     <div class="admin-container hide">

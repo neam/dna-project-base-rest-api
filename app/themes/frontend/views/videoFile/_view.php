@@ -52,6 +52,10 @@
 
     <?php endif; ?>
 
+    <?php if ($evaluate): ?>
+        <?php $this->widget('ModalCommentsWidget', array('model' => $data, 'attribute' => 'clip')); ?>
+    <?php endif; ?>
+
     <?php if (Yii::app()->user->checkAccess('VideoFile.*')): ?>
         <div class="admin-container hide">
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
