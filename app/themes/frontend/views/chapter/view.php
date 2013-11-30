@@ -125,6 +125,9 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                                     $this->renderPartial('/' . lcfirst(get_class($subsection["model"])) . '/_view', array("data" => $subsection["model"]));
                                 } else {
                                     print $subsection["markup"];
+                                    if (isset($subsection["attribute"])) {
+                                        $this->widget('ModalCommentsWidget', array('model' => $model, 'attribute' => $subsection["attribute"]));
+                                    }
                                 }
                                 ?>
 
@@ -137,6 +140,9 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                             $this->renderPartial('/' . lcfirst(get_class($section["model"])) . '/_view', array("data" => $section["model"]));
                         } else {
                             print $section["markup"];
+                            if (isset($section["attribute"])) {
+                                $this->widget('ModalCommentsWidget', array('model' => $model, 'attribute' => $section["attribute"]));
+                            }
                         }
                         ?>
                     <?php endif; ?>
