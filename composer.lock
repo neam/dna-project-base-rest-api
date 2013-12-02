@@ -1679,12 +1679,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/wrest.git",
-                "reference": "de993b1022f3fbaf86fccd3f2538cc0338b2e1ea"
+                "reference": "649cc876f77208bbaf2719a650426f97696b9738"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/wrest/zipball/de993b1022f3fbaf86fccd3f2538cc0338b2e1ea",
-                "reference": "de993b1022f3fbaf86fccd3f2538cc0338b2e1ea",
+                "url": "https://api.github.com/repos/neam/wrest/zipball/649cc876f77208bbaf2719a650426f97696b9738",
+                "reference": "649cc876f77208bbaf2719a650426f97696b9738",
                 "shasum": ""
             },
             "require": {
@@ -1692,22 +1692,17 @@
                 "yiisoft/yii": ">=1.1.0"
             },
             "type": "yii-extension",
-            "autoload": {
-                "classmap": [
-                    "."
-                ]
-            },
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Slava Belokurski",
-                    "email": "slavchoo2@gmail.com"
+                    "name": "Weavora Team",
+                    "email": "hello@weavora.com"
                 },
                 {
-                    "name": "Fredrik Wollsén",
-                    "email": "fredrik@neam.se"
+                    "name": "Contributors",
+                    "homepage": "https://github.com/weavora/wrest/graphs/contributors"
                 }
             ],
             "description": "Yii extension to create REST CRUD interfaces (get, list, update, create, delete actions) for your app",
@@ -1720,7 +1715,7 @@
             "support": {
                 "source": "https://github.com/neam/wrest/tree/awaiting-prs"
             },
-            "time": "2013-11-30 00:27:23"
+            "time": "2013-12-02 15:45:23"
         },
         {
             "name": "yiiext/fancybox-widget",
