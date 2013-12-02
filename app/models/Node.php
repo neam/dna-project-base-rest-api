@@ -105,4 +105,58 @@ class Node extends BaseNode
         ));
     }
 
+    public $_title;
+    public $label;
+    public $node_id;
+    public $test;
+    public function buildSearchSQL($searchString)
+    {
+        $sql = "";
+        $tablequeries = array(
+            array('table_name'=>'chapter', 'label'=>'Chapter','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'data_chunk', 'label'=>'Data Chunk','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'data_source', 'label'=>'Data Source','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'download_link', 'label'=>'Download Link','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'exam_question', 'label'=>'Exam Question','fields'=>array('id','node_id','node_id')),
+            array('table_name'=>'exam_question_alternative', 'label'=>'Exam Question Alternative','fields'=>array('id','node_id','node_id')),
+            array('table_name'=>'exercise', 'label'=>'Exercise','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'html_chunk', 'label'=>'Html Chunk','fields'=>array('id','node_id','node_id')),
+            array('table_name'=>'page', 'label'=>'Page','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'po_file', 'label'=>'Po file','fields'=>array('id','node_id','node_id')),
+            array('table_name'=>'section', 'label'=>'Section','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'section_content', 'label'=>'Section Content','fields'=>array('id','node_id','node_id')),
+            array('table_name'=>'slideshow_file', 'label'=>'Slideshow File','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'snapshot', 'label'=>'Snapshot','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'spreadsheet_file', 'label'=>'Spreadsheet File','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'text_doc', 'label'=>'Text Doc','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'tool', 'label'=>'Tool','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'vector_graphic', 'label'=>'Vector Graphic','fields'=>array('id','node_id','_title')),
+            array('table_name'=>'video_file', 'label'=>'Video File','fields'=>array('id','node_id','_title')),
+        );
+        foreach ($tablequeries as $tablequery){
+            $tname = $tablequery["table_name"];
+            $tlabel = $tablequery["label"];
+            $tfields = $tablequery["fields"];
+
+            $sql .= "SELECT ";
+            foreach ($tfields as $f){
+                $sql .= $tname.".$f, ";
+            }
+            $sql .= " '".$tlabel."' as `label` ";
+            $sql .= "FROM $tname ";
+            if ($searchString){
+                $sql .= "WHERE ";
+                foreach ($tfields as $f){
+                    $sql .= "$tname.$f  LIKE '%$searchString%' OR ";
+                }
+                $sql .= "'".$tlabel."'='$searchString' \r\n";
+            }
+            if (end($tablequeries)!=$tablequery){
+                $sql .= "UNION  \r\n";
+            }
+        }
+        return $sql;
+
+    }
+
 }
