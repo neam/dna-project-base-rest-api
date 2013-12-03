@@ -67,54 +67,45 @@ $criteria->addCondition("t.type = 'file'");
 $criteria->limit = 100;
 $criteria->order = "t.created_at DESC";
 
-$input = $this->widget(
-    '\GtcRelation',
-    array(
-        'model' => $model,
-        'relation' => $relation,
-        'fields' => 'itemLabel',
-        'criteria' => $criteria,
-        'allowEmpty' => $noneLabel,
-        'style' => 'dropdownlist',
-        'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
-    )
-    , true);
-echo $form->customRow($model, $attribute, $input, array(
+$input = $this->widget('\GtcRelation', array(
+    'model' => $model,
+    'relation' => $relation,
+    'fields' => 'itemLabel',
+    'criteria' => $criteria,
+    'allowEmpty' => $noneLabel,
+    'style' => 'dropdownlist',
+    'htmlOptions' => array(
+        'checkAll' => 'all'
+    ),
+), true); ?>
+
+<?php echo $form->customRow($model, $attribute, $input, array(
     'labelOptions' => array(
         'label' => Html::attributeLabelWithTooltip($model, $attribute),
     ),
-));
-?>
+)); ?>
 
-<?php
-$formId = lcfirst($modelClass) . '-' . $attribute . '-' . \uniqid() . '-form';
-?>
+<?php $formId = lcfirst($modelClass) . '-' . $attribute . '-' . \uniqid() . '-form'; ?>
 
 <div class="control-group">
     <div class="controls">
-        <?php
-        echo $this->widget('bootstrap.widgets.TbButton', array(
+        <?php echo $this->widget('bootstrap.widgets.TbButton', array(
             'label' => Yii::t('app', 'Upload'),
             'icon' => 'icon-plus',
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
                 'data-target' => '#' . $formId . '-modal',
             ),
-        ), true);
-        ?>
+        ), true); ?>
     </div>
 </div>
 
-<?php
-$this->beginClip('modal:' . $formId . '-modal');
-$this->renderPartial('//p3Media/_modal_form', array(
+<?php $this->beginClip('modal:' . $formId . '-modal'); ?>
+<?php $this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
     'inputSelector' => "#{$modelClass}_{$attribute}",
     'model' => new P3Media,
     'pk' => 'id',
     'field' => 'itemLabel',
-));
-$this->endClip();
-?>
+)); ?>
+<?php $this->endClip(); ?>
