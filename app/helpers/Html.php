@@ -23,6 +23,7 @@ class Html extends TbHtml
     public static function registerCss()
     {
         $theme = Yii::app()->theme->name;
+        $files = array();
 
         switch ($theme) {
             case self::THEME_FRONTEND:
