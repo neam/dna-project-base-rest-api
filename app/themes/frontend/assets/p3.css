@@ -8262,6 +8262,9 @@ i[class*=" icon-"] {
   display: inline-block;
   line-height: 1em;
 }
+.errorMessage {
+  color: #9d261d;
+}
 /* use composer.phar require thomaspark/bootswatch */
 /* force scrollbars */
 html {
