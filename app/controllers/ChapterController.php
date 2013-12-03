@@ -263,7 +263,15 @@ class ChapterController extends Controller
     public function actionIndex()
     {
         $dataProvider = new CActiveDataProvider('Chapter');
-        $this->render('index', array('dataProvider' => $dataProvider,));
+
+        $model = new Chapter('search');
+        $model->unsetAttributes();
+
+        if (isset($_GET['Chapter'])) {
+            $model->attributes = $_GET['Chapter'];
+        }
+
+        $this->render('index', array('model'=>$model, 'dataProvider' => $dataProvider,));
     }
 
     public function actionAdmin()
