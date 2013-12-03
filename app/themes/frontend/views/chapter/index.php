@@ -69,12 +69,14 @@ $this->widget('TbGridView',
                 'filter' => false,
                 'value' => function($data,$row){
                         echo "<div class=\"btn-group\">";
-                        $this->widget('bootstrap.widgets.TbButton', array(
-                            'label' => Yii::t('model', 'Edit'),
-                            'icon' => 'icon-edit',
-                            'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
-                            'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $data->{$data->tableSchema->primaryKey}),
-                        ));
+                        if (!user()->isGuest) {
+                            $this->widget('bootstrap.widgets.TbButton', array(
+                                'label' => Yii::t('model', 'Edit'),
+                                'icon' => 'icon-edit',
+                                'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
+                                'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $data->{$data->tableSchema->primaryKey}),
+                            ));
+                        }
                         $this->widget('bootstrap.widgets.TbButton', array(
                             'label' => Yii::t('model', 'View'),
                             'icon' => 'icon-eye-open',
