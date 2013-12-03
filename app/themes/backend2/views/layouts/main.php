@@ -14,23 +14,9 @@
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <?php
-    $cs = Yii::app()->getClientScript();
-    $cs->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
-    $cs->registerLinkTag('shortcut icon', NULL, '/favicon.ico', NULL, NULL);
-
-    // CSS files
-    $css = Yii::app()->assetManager->publish(
-        Yii::app()->theme->basePath . '/css',
-        true, // hash by name
-        -1, // level
-        false // forceCopy
-    ); // set last param to `true` for development
-    $cs->registerCssFile($css . "/backend.css");
-    $cs->registerCssFile($css . "/gcms.css");
-
-    Html::jsDirtyForms();
-    ?>
+    <?php Html::registerHeadTags(); ?>
+    <?php Html::registerCss(); ?>
+    <?php Html::jsDirtyForms(); ?>
 </head>
 
 <body id="backend">

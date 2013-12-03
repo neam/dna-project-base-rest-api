@@ -14,23 +14,9 @@
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <?php
-    $cs = Yii::app()->getClientScript();
-    $cs->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
-    $cs->registerLinkTag('shortcut icon', NULL, '/favicon.ico', NULL, NULL);
-
-    // CSS files
-    $forceCopy = defined('DEV') && DEV && !empty($_GET['refresh_assets']) ? true : false;
-    $css = Yii::app()->assetManager->publish(
-        Yii::app()->theme->basePath . '/assets',
-        true, // hash by name
-        -1, // level
-        $forceCopy); // forceCopy
-    $cs->registerCssFile($css . '/p3.css');
-    $cs->registerCssFile($css . '/gcms.css');
-
-    //Html::jsDirtyForms();
-    ?>
+    <?php Html::registerHeadTags(); ?>
+    <?php Html::registerCss(); ?>
+    <?php //Html::jsDirtyForms(); ?>
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="60">
@@ -53,16 +39,11 @@
 
 
 <div id="backend">
-    <?php
-
-    if (Yii::app()->user->checkAccess('Editor')) {
-        $cs->registerCssFile($css . '/backend.css');
+    <?php if (Yii::app()->user->checkAccess('Editor')) {
         $this->renderFile(
             Yii::getPathOfAlias('application.themes.backend2.views.layouts') . DIRECTORY_SEPARATOR . '_navbar.php'
         );
-    }
-
-    ?>
+    } ?>
 </div>
 
 </body>

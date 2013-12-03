@@ -4,6 +4,60 @@ Yii::import('bootstrap.helpers.TbHtml');
 
 class Html extends TbHtml
 {
+    const THEME_FRONTEND = 'frontend';
+    const THEME_BACKEND2 = 'backend2';
+
+    /**
+     * Registers the head tags.
+     */
+    public static function registerHeadTags()
+    {
+        $clientScript = Yii::app()->getClientScript();
+        $clientScript->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
+        $clientScript->registerLinkTag('shortcut icon', null, '/favicon.ico', null, null);
+    }
+
+    /**
+     * Registers the CSS files for the current theme.
+     */
+    public static function registerCss()
+    {
+        $theme = Yii::app()->theme->name;
+
+        switch ($theme) {
+            case self::THEME_FRONTEND:
+                $files = array(
+                    'p3.css',
+                    'backend.css',
+                    'gcms.css',
+                );
+                break;
+
+            case self::THEME_BACKEND2:
+                $files = array(
+                    'backend.css',
+                    'gcms.css',
+                );
+                break;
+        }
+
+        if (!empty($files)) {
+            // Set the CSS path
+            $forceCopy = defined('DEV') && DEV && !empty($_GET['refresh_assets']) ? true : false;
+            $css = Yii::app()->assetManager->publish(
+                Yii::app()->theme->basePath . '/assets',
+                true, // hash by name
+                -1, // level
+                $forceCopy
+            );
+
+            $clientScript = Yii::app()->getClientScript();
+            foreach ($files as $file) {
+                $clientScript->registerCssFile($css . '/' . $file);
+            }
+        }
+    }
+
     /**
      * Registers the Dirty Forms jQuery plugin and binds it to a form element.
      */
