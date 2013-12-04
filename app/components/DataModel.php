@@ -114,6 +114,7 @@ class DataModel
             'ExamQuestion' => 'n==0#ExamQuestion(s)|n==1#ExamQuestion|n>1#ExamQuestions',
             'ExamQuestionAlternative' => 'n==0#ExamQuestionAlternative(s)|n==1#ExamQuestionAlternative|n>1#ExamQuestionAlternatives',
             'Exercise' => 'n==0#Exercise(s)|n==1#Exercise|n>1#Exercises',
+            'HtmlChunk' => 'n==0#HtmlChunk(s)|n==1#HtmlChunk|n>1#HtmlChunks',
             'Node' => 'n==0#Node(s)|n==1#Node|n>1#Nodes',
             'PoFile' => 'n==0#PoFile(s)|n==1#PoFile|n>1#PoFiles',
             'SlideshowFile' => 'n==0#SlideshowFile(s)|n==1#SlideshowFile|n>1#SlideshowFiles',
