@@ -1,6 +1,7 @@
 <?php
 $items = $model->$relation;
 $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $label));
+$fromLabel = Yii::t('app', $model->getModelLabel(), 1);
 ?>
 <h3><?php echo ucfirst(Yii::t("model", $label)); ?></h3>
 <?php if ($items): ?>
@@ -13,6 +14,7 @@ $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $label));
             }
             $itemLabel = $realItem->itemLabel;
             $itemModel = lcfirst(get_class($realItem));
+            $toLabel = Yii::t('app', $realItem->getModelLabel(), 1);
             ?>
             <li>
                 <?php echo $itemLabel; ?>
@@ -26,7 +28,7 @@ $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $label));
                 ?>
                 <?php
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("model", "Delete relation"),
+                    "label" => Yii::t("model", "Remove {$toLabel} from {$fromLabel}"),
                     "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $realItem->node_id, "returnUrl" => Yii::app()->request->url),
                     "size" => "small",
                     "type" => "danger"
