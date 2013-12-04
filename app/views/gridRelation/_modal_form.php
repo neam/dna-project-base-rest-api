@@ -197,22 +197,8 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                 </div>
                 <div class="btn-group span8" style="float:right;">
                     <div class="input-group">
-                        <?php
-                        $this->widget('bootstrap.widgets.TbButtonGroup',
-                            array(
-                                'htmlOptions' => array(
-                                    'class' => 'add-allitems',
-                                ),
-                                'buttons' => array(
-                                    array(
-                                        'label' => 'New ' . $toType,
-                                        'items' => null,
-                                    )
-                                )
-                            )
-                        );
-                        ?>
-                        <input type="text" name="newitemtitle" class="span5" placeholder="<?php echo Yii::t(
+                        <label for="newitemtitle" style="display:inline-block; padding-right:5px;"><?php echo 'New ' . $toType; ?>:</label>
+                        <input type="text" id="newitemtitle" name="newitemtitle" class="span5" placeholder="<?php echo Yii::t(
                             "model",
                             "Optional title"
                         ); ?>">
