@@ -5,7 +5,7 @@
     'rows' => 6,
     'cols' => 50,
     'labelOptions' => array(
-        'label' => Html::attributeLabelWithTooltip($model, 'about_en' . $model->source_language, 'about'),
+        'label' => Html::attributeLabelWithTooltip($model, 'about_' . $model->source_language, 'about'),
     ),
 )); ?>
 
