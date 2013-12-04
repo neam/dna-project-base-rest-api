@@ -4,6 +4,13 @@ $this->breadcrumbs[] = $model->title;
 
 $sections = $this->chapterSections($model);
 
+if (!isset($preview)) {
+    $preview = false;
+}
+if (!isset($evaluate)) {
+    $evaluate = false;
+}
+
 // Deps for smooth scroll
 $cs = Yii::app()->getClientScript();
 $cs->registerCoreScript('jquery');
