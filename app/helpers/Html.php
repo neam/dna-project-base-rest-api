@@ -4,8 +4,12 @@ Yii::import('bootstrap.helpers.TbHtml');
 
 class Html extends TbHtml
 {
+    // App constants.
     const THEME_FRONTEND = 'frontend';
     const THEME_BACKEND2 = 'backend2';
+
+    // HTML class constants.
+    const ITEM_FORM_FIELD_CLASS = 'span9';
 
     /**
      * Registers the head tags.

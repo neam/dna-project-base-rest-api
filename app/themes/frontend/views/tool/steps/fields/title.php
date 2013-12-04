@@ -2,6 +2,7 @@
 
 <?php echo $form->textFieldRow($model, 'title_en', array(
     'id' => 'slugit-from-1',
+    'class' => Html::ITEM_FORM_FIELD_CLASS,
     'maxlength' => 255,
     'labelOptions' => array(
         'label' => Html::attributeLabelWithTooltip($model, 'title_en', 'title'),
@@ -11,12 +12,14 @@
 <?php if ($this->workflowData["translateInto"]) {
     echo $form->textFieldRow($model, 'title_' . $this->workflowData["translateInto"], array(
         'id' => 'slugit-from-2',
+        'class' => Html::ITEM_FORM_FIELD_CLASS,
         'maxlength' => 255,
     ));
 } ?>
 
 <?php echo $form->textFieldRow($model, 'slug_en', array(
     'id' => 'slugit-to-1',
+    'class' => Html::ITEM_FORM_FIELD_CLASS,
     'maxlength' => 255,
     'labelOptions' => array(
         'label' => Html::attributeLabelWithTooltip($model, 'slug_en', 'slug'),
@@ -26,6 +29,7 @@
 <?php if ($this->workflowData['translateInto']) {
     echo $form->textFieldRow($model, 'slug_' . $this->workflowData['translateInto'], array(
         'id' => 'slugit-to-2',
+        'class' => Html::ITEM_FORM_FIELD_CLASS,
         'maxlength' => 255,
     ));
 } ?>
