@@ -52,7 +52,7 @@
 
     <?php endif; ?>
 
-    <?php if ($evaluate): ?>
+    <?php if (isset($evaluate) && $evaluate): ?>
         <?php $this->widget('ModalCommentsWidget', array('model' => $data, 'attribute' => 'clip')); ?>
     <?php endif; ?>
 

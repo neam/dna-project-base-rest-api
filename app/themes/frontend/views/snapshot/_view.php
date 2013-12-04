@@ -31,7 +31,7 @@ else: ?>
 endif;
 ?>
 
-<?php if ($evaluate): ?>
+<?php if (isset($evaluate) && $evaluate): ?>
     <?php $this->widget('ModalCommentsWidget', array('model' => $data, 'attribute' => 'vizualization')); ?>
 <?php endif; ?>
 
