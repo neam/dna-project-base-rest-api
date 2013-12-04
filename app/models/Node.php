@@ -39,6 +39,7 @@ class Node extends BaseNode
                 'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
                 'inEdges' => array(self::HAS_MANY, 'Edge', 'to_node_id'),
                 'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
+                'nodes' => array(self::HAS_MANY, 'Node', 'id'),
             )
         );
     }
