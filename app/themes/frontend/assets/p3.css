@@ -8265,6 +8265,9 @@ i[class*=" icon-"] {
 .errorMessage {
   color: #9d261d;
 }
+.tooltip {
+  font-size: 14px;
+}
 /* use composer.phar require thomaspark/bootswatch */
 /* force scrollbars */
 html {
