@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Ezc Workflows')] = array('index');
 $this->breadcrumbs[] = Yii::t('model', 'Create');
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+
 <?php
 if (!isset($this->menu) || $this->menu === array()) {
     $this->menu = array(

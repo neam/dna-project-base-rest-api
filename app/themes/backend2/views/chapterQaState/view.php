@@ -2,7 +2,6 @@
 $this->breadcrumbs[Yii::t('model', 'Chapter Qa States')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Chapter Qa State'); ?>

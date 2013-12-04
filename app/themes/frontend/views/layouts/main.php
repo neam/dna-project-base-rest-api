@@ -28,6 +28,7 @@
     ) ?>
     <?php $this->widget('bootstrap.widgets.TbAlert'); ?>
     <div class="subwrapper">
+        <?php $this->widget('TbBreadcrumbs', array('links' => $this->breadcrumbs)); ?>
         <?php echo $content; ?>
     </div>
     <hr>

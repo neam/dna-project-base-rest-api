@@ -1,20 +1,3 @@
-<?php
-
-$workflowCaption = $this->workflowData["caption"];
-$translateInto = $this->workflowData["translateInto"];
-
-$this->setPageTitle(
-    Yii::t('model', $this->modelClass)
-    . ' - '
-    . $workflowCaption
-);
-
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
-$this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = $workflowCaption;
-$this->breadcrumbs[] = $stepCaption;
-?>
-
 <?php $form = $this->beginWidget('GMActiveForm', array(
     'id' => 'item-form',
     'enableAjaxValidation' => true,
@@ -25,8 +8,6 @@ $this->breadcrumbs[] = $stepCaption;
 <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
 
 <?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form", "translateInto")); ?>
-
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)); ?>
 
 <div class="row-fluid">
     <div class="span3">

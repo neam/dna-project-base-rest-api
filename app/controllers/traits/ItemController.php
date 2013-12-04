@@ -553,7 +553,23 @@ trait ItemController
         $model = $this->saveAndContinueOnSuccess($id);
         $this->populateWorkflowData($model, "public", Yii::t('app', 'Edit'));
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+
+        $this->setPageTitle(array(
+            Yii::t('model', $this->modelClass),
+            $this->workflowData['caption'],
+        ));
+
+        // Breadcrumbs
+        $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
+        $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
+        $this->breadcrumbs[] = $this->workflowData['caption'];
+        $this->breadcrumbs[] = $stepCaptions[$step];
+        
+        $this->render('/_item/edit', array(
+            'model' => $model,
+            'step' => $step,
+            'stepCaption' => $stepCaptions[$step],
+        ));
     }
 
     public function actionClone($id)

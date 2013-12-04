@@ -1,7 +1,4 @@
 <?php
-//$this->breadcrumbs[Yii::t('crud', 'Chapters')] = array('index');
-$this->breadcrumbs[] = $model->title;
-
 $sections = $this->chapterSections($model);
 
 if (!isset($preview)) {
@@ -91,7 +88,6 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
         <?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption")); ?>
 
-        <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
         <!--<h1><?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small></h1>-->
 
         <?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>

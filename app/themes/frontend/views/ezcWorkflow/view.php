@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Ezc Workflows')] = array('admin');
 $this->breadcrumbs[] = $model->workflow_id;
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+
 <h1>
 
     <?php echo Yii::t('model', 'Ezc Workflow'); ?>

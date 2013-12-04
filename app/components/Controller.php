@@ -21,6 +21,9 @@ class Controller extends CController
      */
     public $breadcrumbs = array();
 
+    /**
+     * Initializes the controller.
+     */
     function init()
     {
         parent::init();
@@ -89,4 +92,25 @@ class Controller extends CController
         return $languages;
     }
 
+    /**
+     * Sets the page title.
+     * @param string|array $title the full title or an array of title fragments.
+     * @param boolean $includeAppName whether to include the app name in the page title. Defaults to false.
+     * @param string $separator the separator character (and whitespace) between items.
+     * @override CController::setPageTitle()
+     */
+    public function setPageTitle($title, $includeAppName = false, $separator = ' - ')
+    {
+        if (is_array($title)) {
+            $value = implode($separator, $title);
+        } else {
+            $value = $title;
+        }
+
+        if ($includeAppName) {
+            $value .= $separator . Yii::app()->name;
+        }
+
+        parent::setPageTitle($value);
+    }
 }

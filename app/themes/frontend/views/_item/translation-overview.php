@@ -13,7 +13,7 @@ $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'i
 $this->breadcrumbs[] = $actionCaption;
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+
 
 <?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form")); ?>
 

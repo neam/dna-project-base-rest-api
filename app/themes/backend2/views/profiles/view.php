@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Profiles')] = array('admin');
 $this->breadcrumbs[] = $model->user_id;
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+
 <h1>
 
     <?php echo Yii::t('model', 'Profiles'); ?>

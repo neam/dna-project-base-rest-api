@@ -8,7 +8,7 @@ $this->setPageTitle(
 $this->breadcrumbs[Yii::t('model', 'Edges')] = array('admin');
 $this->breadcrumbs[] = Yii::t('crud', 'Create');
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+
     <h1>
         <?php echo Yii::t('model', 'Edge'); ?>
         <small><?php echo Yii::t('crud', 'Create'); ?></small>
