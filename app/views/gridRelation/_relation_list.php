@@ -7,7 +7,12 @@ $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $label));
     <ul>
         <?php foreach ($items as $item):
             if (get_class($item) == "Node") {
-                $realItem = $item->item();
+                try {
+                    $realItem = $item->item();
+                } catch (CException $e) {
+                    var_dump("ignoring this exception: ", $e);
+                    continue;
+                }
             } else {
                 $realItem = $item;
             }

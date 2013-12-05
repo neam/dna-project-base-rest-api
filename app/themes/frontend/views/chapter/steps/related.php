@@ -24,5 +24,4 @@
     'relation' => 'related',
     'toType' => '',
     'toLabel' => 'related item',
-    'type' => 'edge',
 )); ?>

@@ -52,7 +52,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
     <div class="modal-body">
         <?php
         if ($allItems) {
-            $allRelated = new Node('search');
+            $allRelated = new GoItem('search');
         } else {
             $allRelated = new $toType('search');
         }
@@ -60,6 +60,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
         $this->widget(
             'bootstrap.widgets.TbExtendedGridView',
             array(
+                'filter' => $allRelated,
                 'id' => strtolower($toType) . 's_to_add',
                 'type' => 'striped bordered',
                 'dataProvider' => $dataProvider,
@@ -70,32 +71,33 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                 'columns' => array(
                     array(
                         'name' => 'id',
-                        'header' => 'Id',
+                        'header' => Yii::t('app', 'Select'),
+                        'filter' => false,
                         'value' => function ($data) {
-                                if (get_class($data) == "Node") {
+                                if (get_class($data) == "GoItem") {
                                     echo CHtml::checkBox("modalGrid", null, array("value" => $data->id));
                                 } else {
                                     echo CHtml::checkBox("modalGrid", null, array("value" => $data->node_id));
                                 }
                             }
                     ),
+                    'id',
                     array(
                         'name' => 'itemLabel',
-                        'value' => function ($data) {
-                                if (get_class($data) == "Node") {
-                                    echo $data->item()->itemLabel;
-                                } else {
-                                    echo $data->itemLabel;
-                                }
-                            }
+                        'filter' => false,
                     ),
-                    //TODO: Visa bara om get_class() == Node
                     array(
-                        'name' => 'type',
-                        'header' => 'type',
+                        'name' => '_title',
+                        'header' => Yii::t('app', 'Title in source language'),
+                    ),
+                    //TODO: Visa bara om $allItems == true
+                    array(
+                        'name' => 'id',
+                        'header' => Yii::t('app', 'Model class'),
+                        'filter' => $allItems ? true : false,
                         'value' => function ($data) {
-                                if (get_class($data) == "Node") {
-                                    echo get_class($data->item());
+                                if (get_class($data) == "GoItem") {
+                                    echo $data->model_class;
                                 } else {
                                     echo get_class($data);
                                 }
