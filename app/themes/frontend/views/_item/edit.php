@@ -3,10 +3,7 @@
 <?php $form = $this->beginWidget('GMActiveForm', array(
     'id' => 'item-form',
     'enableAjaxValidation' => true,
-    'enableClientValidation' => false,
     'clientOptions' => array(
-        'validateOnChange' => true,
-        'validateOnType' => true,
         'validateOnSubmit' => true,
     ),
     'type' => 'horizontal',

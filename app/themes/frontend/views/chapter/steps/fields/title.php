@@ -38,6 +38,7 @@
 } ?>
 
 <?php Html::jsSlugIt(array(
+    // TODO: Handle/rename these IDs properly so that Yii is also able to validate the fields.
     '#slugit-from-1' => '#slugit-to-1',
     '#slugit-from-2' => '#slugit-to-2',
 )); ?>
