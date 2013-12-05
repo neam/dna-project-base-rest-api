@@ -1,8 +1,16 @@
+<?php /** @var GMActiveForm $form */ ?>
+
 <?php $form = $this->beginWidget('GMActiveForm', array(
     'id' => 'item-form',
     'enableAjaxValidation' => true,
-    'enableClientValidation' => true,
+    'enableClientValidation' => false,
+    'clientOptions' => array(
+        'validateOnChange' => true,
+        'validateOnType' => true,
+        'validateOnSubmit' => true,
+    ),
     'type' => 'horizontal',
+    'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
 <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>

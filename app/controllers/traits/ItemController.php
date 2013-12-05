@@ -551,6 +551,9 @@ trait ItemController
     {
         $this->scenario = "step_$step";
         $model = $this->saveAndContinueOnSuccess($id);
+
+        $this->performAjaxValidation($model);
+
         $this->populateWorkflowData($model, "public", Yii::t('app', 'Edit'));
         $stepCaptions = $model->flowStepCaptions();
 
