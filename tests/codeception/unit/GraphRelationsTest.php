@@ -17,7 +17,7 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
     }
 
     // tests
-    public function testChapterExercises()
+    public function testChapterExercisesAndSnapshots()
     {
 
         $chapter = new Chapter();
