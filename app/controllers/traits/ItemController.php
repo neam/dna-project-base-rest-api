@@ -285,10 +285,11 @@ trait ItemController
             $message = "{$this->modelClass} Added";
 
             // Add edge if specified:
-            if (isset($_POST["addEdge"]) && $_POST["addEdge"]=="true" && $_POST["from_node_id"]) {
+            if (isset($_POST["addEdge"]) && $_POST["addEdge"]=="true" && $_POST["from_node_id"] && $_POST["relation"]) {
                 $to_node_id = $item->node_id;
                 $from_node_id = $_POST["from_node_id"];
-                $this->addEdge($from_node_id, $to_node_id);
+                $relation = $_POST["relation"];
+                $this->addEdge($from_node_id, $to_node_id, $relation);
             }
             // Return:
             if (isset($_POST["returnUrl"])) {
@@ -322,10 +323,11 @@ trait ItemController
 
     public function actionAddEdges()
     {
-        if (isset($_POST[$this->modelClass]["fromId"]) && isset($_POST[$this->modelClass]["edges_to_add"])) {
+        if (isset($_POST[$this->modelClass]["fromId"]) && isset($_POST[$this->modelClass]["edges_to_add"]) && isset($_POST[$this->modelClass]["relation"])) {
             $this->addEdges(
                 $_POST[$this->modelClass]["fromId"],
-                $_POST[$this->modelClass]["edges_to_add"]
+                $_POST[$this->modelClass]["edges_to_add"],
+                $_POST[$this->modelClass]["relation"]
             );
         }
         exit;
@@ -788,21 +790,22 @@ trait ItemController
     }
 
     // $fromid = [item] id, $toid = [node] id ! important
-    private function addEdges($fromid, $toids)
+    private function addEdges($fromid, $toids, $relation)
     {
         $from_model = $this->loadModel($fromid);
         $from_node_id = $from_model->node()->id;
 
         foreach ($toids as $to_node_id) {
-            $this->addEdge($from_node_id, $to_node_id);
+            $this->addEdge($from_node_id, $to_node_id, $relation);
         }
     }
 
-    private function addEdge($from_node_id, $to_node_id)
+    private function addEdge($from_node_id, $to_node_id, $relation)
     {
         $edge = new Edge();
         $edge->from_node_id = $from_node_id;
         $edge->to_node_id = $to_node_id;
+        $edge->relation = $relation;
 
         if (!$edge->save()) {
             throw new SaveException($edge);
