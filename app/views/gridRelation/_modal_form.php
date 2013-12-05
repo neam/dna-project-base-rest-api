@@ -51,25 +51,15 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
     </div>
     <div class="modal-body">
         <?php
-
-        $allRelated = new Node('search');
-        $rawData = Yii::app()->db->createCommand($allRelated->buildSearchSQL("exercise"))->queryAll();
-        $dataProvider = new CArrayDataProvider($rawData, array(
-            'id' => 'user',
-            'sort' => array(
-                'attributes' => array(
-                    'id', 'node_id', 'title',
-                ),
-            ),
-            'pagination' => array(
-                'pageSize' => 10,
-            ),
-        ));
-
+        if ($allItems) {
+            $allRelated = new Node('search');
+        } else {
+            $allRelated = new $toType('search');
+        }
+        $dataProvider = $allRelated->search();
         $this->widget(
             'bootstrap.widgets.TbExtendedGridView',
             array(
-                'filter' => $allRelated,
                 'id' => strtolower($toType) . 's_to_add',
                 'type' => 'striped bordered',
                 'dataProvider' => $dataProvider,
@@ -78,9 +68,39 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                     'displayFirstAndLast' => true,
                 ),
                 'columns' => array(
-                    'node_id',
-                    '_title',
-                    'label',
+                    array(
+                        'name' => 'id',
+                        'header' => 'Id',
+                        'value' => function ($data) {
+                                if (get_class($data) == "Node") {
+                                    echo CHtml::checkBox("modalGrid", null, array("value" => $data->id));
+                                } else {
+                                    echo CHtml::checkBox("modalGrid", null, array("value" => $data->node_id));
+                                }
+                            }
+                    ),
+                    array(
+                        'name' => 'itemLabel',
+                        'value' => function ($data) {
+                                if (get_class($data) == "Node") {
+                                    echo $data->item()->itemLabel;
+                                } else {
+                                    echo $data->itemLabel;
+                                }
+                            }
+                    ),
+                    //TODO: Visa bara om get_class() == Node
+                    array(
+                        'name' => 'type',
+                        'header' => 'type',
+                        'value' => function ($data) {
+                                if (get_class($data) == "Node") {
+                                    echo get_class($data->item());
+                                } else {
+                                    echo get_class($data);
+                                }
+                            }
+                    ),
                 )
             )
         );
