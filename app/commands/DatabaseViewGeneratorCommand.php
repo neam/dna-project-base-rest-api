@@ -53,10 +53,77 @@ WHERE
 
     }
 
-    public function actionGoItems()
+    public function actionGoItem()
     {
 
+        $sql = "SELECT \n";
+        $sql .= "   node.id,\n";
 
+        if (false) {
+            foreach (DataModel::goItemModels() as $modelClass => $table) {
+
+                $sql .= "   `$table`.`id` AS `$modelClass.id`,\n";
+                if ($this->_checkTableAndColumnExists($table, "_title")) {
+                    $sql .= "   `$table`.`_title` AS `$modelClass._title`,\n";
+                }
+
+            }
+        }
+
+        $sql .= "   CASE\n";
+
+        foreach (DataModel::goItemModels() as $modelClass => $table) {
+            if ($this->_checkTableAndColumnExists($table, "_title")) {
+                $sql .= "       WHEN $table.id IS NOT NULL THEN $table._title\n";
+            }
+        }
+
+        $sql .= "       ELSE NULL\n";
+        $sql .= "END AS _title,\n";
+
+        $sql .= "   CASE\n";
+
+        foreach (DataModel::goItemModels() as $modelClass => $table) {
+            $sql .= "       WHEN $table.id IS NOT NULL THEN '$modelClass'\n";
+        }
+
+        $sql .= "       ELSE NULL\n";
+        $sql .= "END AS model_class\n";
+
+        $sql .= "FROM node\n";
+
+        foreach (DataModel::goItemModels() as $modelClass => $table) {
+            $sql .= "       LEFT JOIN $table ON $table.node_id = node.id\n";
+        }
+
+        $viewName = "go_item";
+
+        $viewSql = "CREATE OR REPLACE VIEW go_item AS $sql";
+
+        echo "\n";
+        echo $viewSql;
+        echo "\n";
+
+        $selectResult = Yii::app()->db->createCommand($sql . " LIMIT 2")->queryAll();
+        Yii::app()->db->createCommand($viewSql)->execute();
+        $selectViewResult = Yii::app()->db->createCommand("SELECT * FROM $viewName LIMIT 2")->queryAll();
+        var_dump(compact("selectResult", "selectViewResult"));
+
+        $selectExistingGoItemsResult = Yii::app()->db->createCommand("SELECT * FROM $viewName WHERE model_class IS NOT NULL LIMIT 2")->queryAll();
+
+        var_dump(compact("selectExistingGoItemsResult"));
+    }
+
+    /**
+     * @param $model
+     * @param $column
+     * @return bool
+     */
+    protected function _checkTableAndColumnExists($table, $column)
+    {
+        $tables = Yii::app()->db->schema->getTables();
+        // The column does not exist if the table does not exist
+        return isset($tables[$table]) && (isset($tables[$table]->columns[$column]));
     }
 
 }
