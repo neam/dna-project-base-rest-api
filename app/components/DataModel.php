@@ -60,7 +60,9 @@ class DataModel
             'Profiles' => 'profiles',
             // Translations
             'Message' => 'Message',
-            'SourceMessage' => 'SourceMessage'
+            'SourceMessage' => 'SourceMessage',
+            // Database views
+            'NodeWithExerciseOrSnapshot' => 'node_with_exercise_or_snapshot',
         );
 
     }
