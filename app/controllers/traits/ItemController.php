@@ -396,7 +396,7 @@ trait ItemController
         $model = $this->saveAndContinueOnSuccess($id);
         $this->populateWorkflowData($model, "preview", Yii::t('app', 'Prepare for testing'));
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'workflowCaption' => Yii::t('app', 'Prepare for testing'), 'stepCaption' => $stepCaptions[$step]));
     }
 
     public function actionMakeTestable($id)
@@ -445,7 +445,7 @@ trait ItemController
         $model = $this->saveAndContinueOnSuccess($id);
         $this->populateWorkflowData($model, "public", Yii::t('app', 'Prepare for publishing'));
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'workflowCaption' => Yii::t('app', 'Prepare for publishing'), 'stepCaption' => $stepCaptions[$step]));
     }
 
     public function actionMakeCandidate($id)
