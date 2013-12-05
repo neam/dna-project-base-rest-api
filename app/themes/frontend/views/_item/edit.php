@@ -7,7 +7,7 @@
 
 <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
 
-<?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form", "translateInto")); ?>
+<?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
 
 <div class="row-fluid">
     <div class="span3">

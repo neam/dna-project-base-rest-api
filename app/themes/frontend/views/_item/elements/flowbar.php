@@ -205,7 +205,7 @@
                 <div class="row-fluid">
                     <div class="span4">
                         <h3>
-                            <?php echo $workflowCaption; ?>
+                            <?php echo $this->workflowData["caption"]; ?>
                         </h3>
                     </div>
                     <div class="span5">
