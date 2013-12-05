@@ -63,6 +63,7 @@ class DataModel
             'SourceMessage' => 'SourceMessage',
             // Database views
             'NodeWithExerciseOrSnapshot' => 'node_with_exercise_or_snapshot',
+            'GoItem' => 'go_item',
         );
 
     }
