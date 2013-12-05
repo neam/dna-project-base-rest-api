@@ -84,13 +84,6 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
     public function testQueryNodesWithItemAttributes()
     {
 
-        foreach (DataModel::goItemModels() as $model => $table) {
-
-        }
-        foreach (DataModel::graphModels() as $model => $table) {
-
-        }
-
         $sql = "
 SELECT
     node.id,
@@ -122,21 +115,15 @@ LIMIT 3
 
         $result = Yii::app()->db->createCommand($sql)->queryAll();
 
-        var_dump($result);
-        die();
-
+        $this->assertNotEmpty($result);
 
     }
 
-    public function testFindNodesWithItems()
+    public function testFindGoItemsThroughDatabaseView()
     {
 
-
-    }
-
-    public function testDataProviderWithNodesAndItems()
-    {
-
+        $goItems = GoItem::model()->findAll();
+        $this->assertNotEmpty(count($goItems));
 
     }
 
