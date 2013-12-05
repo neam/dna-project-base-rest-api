@@ -2,58 +2,13 @@
 
 <div class='row'>
     <div class='span4'>
-        <label><?php echo CHtml::encode($model->getAttributeLabel('picture_media_id')); ?></label>
-        <img src='http://placehold.it/400x400' style='border: 1px solid black; width: 100%;'>
         <?php
-            /*
-            $relation = 'thumbnailMedia';
-            $attribute = 'thumbnail_media_id';
+            $relation = 'pictureMedia';
+            $attribute = 'picture_media_id';
             $step = 'profile';
             $mimeTypes = array('image/jpeg', 'image/png');
             $this->renderPartial('//p3Media/_select', compact('model', 'form', 'relation', 'attribute', 'step', 'mimeTypes'));
-            */
         ?>
-        <a>Change</a>
-        <!--
-        <?php
-        $input = $this->widget('\GtcRelation', array(
-            'model' => $model,
-            'relation' => 'pictureMedia',
-            'fields' => 'itemLabel',
-            'allowEmpty' => true,
-            'style' => 'dropdownlist',
-            'htmlOptions' => array(
-                'checkAll' => 'all'
-            ),
-        ), true); ?>
-        <?php echo $form->customRow($model, 'picture_media_id', $input); ?>
-        <?php $formId = 'profiles-picture_media_id-' . \uniqid() . '-form'; ?>
-
-        <div class='control-group'>
-            <div class='controls'>
-                <?php
-                echo $this->widget('bootstrap.widgets.TbButton', array(
-                    'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
-                    'icon' => 'icon-plus',
-                    'htmlOptions' => array(
-                        'data-toggle' => 'modal',
-                        'data-target' => '#' . $formId . '-modal',
-                    ),
-                ), true);
-                ?>                </div>
-        </div>
-        -->
-
-        <?php $this->beginClip('modal:' . $formId . '-modal'); ?>
-        <?php $this->renderPartial('//p3Media/_modal_form', array(
-            'formId' => $formId,
-            'inputSelector' => '#Profiles_picture_media_id',
-            'model' => new P3Media,
-            'pk' => 'id',
-            'field' => 'itemLabel',
-        )); ?>
-        <?php $this->endClip(); ?>
-
     </div>
     <div class='span4'>
         <?php echo $form->textFieldRow($model, 'first_name', array('maxlength' => 255, 'class' => 'span4')); ?>
