@@ -57,7 +57,16 @@ WHERE
     {
 
         $sql = "SELECT \n";
-        $sql .= "   node.id,\n";
+        $sql .= "   node.id as node_id,\n";
+
+        $sql .= "   CASE\n";
+        foreach (DataModel::goItemModels() as $modelClass => $table) {
+            if ($this->_checkTableAndColumnExists($table, "id")) {
+                $sql .= "       WHEN $table.id IS NOT NULL THEN $table.id\n";
+            }
+        }
+        $sql .= "       ELSE NULL\n";
+        $sql .= "END AS id,\n";
 
         if (false) {
             foreach (DataModel::goItemModels() as $modelClass => $table) {
