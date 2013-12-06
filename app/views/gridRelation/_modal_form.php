@@ -10,6 +10,15 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
     <script>
         var selectedType = null;
         $(document).ready(function () {
+            // Enables checkbox click from whole tr row:
+            $('.grid-view').on('click', 'td', function(e){
+                //var cb = $(this).parent().find('input[type=checkbox]');
+                var cb = $(this).parent().find('input').get(0);
+                if(e.target != cb)
+                {
+                    cb.checked = !cb.checked;
+                }
+            });
             // Set input value when clicking "Create new" relation, to the corresponding type
             $('.modal .add-allitems ul').on('click', 'a', function (e) {
                 e.preventDefault();

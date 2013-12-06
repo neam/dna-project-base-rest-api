@@ -6,7 +6,16 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
 ?>
     <script>
         $(document).ready(function () {
-            // Fix enter press for "creat new":
+            // Enables checkbox click from whole tr row:
+            $('.grid-view').on('click', 'td', function(e){
+                //var cb = $(this).parent().find('input[type=checkbox]');
+                var cb = $(this).parent().find('input').get(0);
+                if(e.target != cb)
+                {
+                    cb.checked = !cb.checked;
+                }
+            });
+            // Handle enter press for "create new":
             $('.modal input[name=newitemtitle]').keypress(function (e) {
                 if (e.which == 13) {
                     e.preventDefault();
