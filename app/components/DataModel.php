@@ -3,6 +3,30 @@
 class DataModel
 {
 
+    /**
+     * Model classes that represent top level visitable items through the go-page
+     * @return array
+     */
+    static public function goItemModels()
+    {
+
+        return array(
+            'Chapter' => 'chapter',
+            'DataChunk' => 'data_chunk',
+            'DataSource' => 'data_source',
+            'ExamQuestion' => 'exam_question',
+            'Exercise' => 'exercise',
+            'PoFile' => 'po_file',
+            'SlideshowFile' => 'slideshow_file',
+            'Snapshot' => 'snapshot',
+            'TextDoc' => 'text_doc',
+            'Tool' => 'tool',
+            'VectorGraphic' => 'vector_graphic',
+            'VideoFile' => 'video_file',
+        );
+
+    }
+
     static public function crudModels()
     {
 
@@ -36,7 +60,9 @@ class DataModel
             'Profiles' => 'profiles',
             // Translations
             'Message' => 'Message',
-            'SourceMessage' => 'SourceMessage'
+            'SourceMessage' => 'SourceMessage',
+            // Database views
+            'GoItem' => 'go_item',
         );
 
     }

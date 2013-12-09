@@ -10,6 +10,14 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
     <script>
         var selectedType = null;
         $(document).ready(function () {
+            // Enables checkbox click from whole tr row:
+            $('#<?php echo $modalId; ?>').on('click', 'td', function(e){
+                var cb = $(this).parent().find('input').get(0);
+                if(e.target != cb)
+                {
+                    cb.checked = !cb.checked;
+                }
+            });
             // Set input value when clicking "Create new" relation, to the corresponding type
             $('.modal .add-allitems ul').on('click', 'a', function (e) {
                 e.preventDefault();
@@ -43,23 +51,23 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
 
     <div class="modal-header">
         <button type="button" class="close" data-toggle="modal" data-target="#<?php echo $modalId; ?>">×</button>
-        <h3><?php echo Yii::t(
-                'crud',
-                '{model}',
-                array('{model}' => Yii::t('crud', 'Choose ' . $toLabel . ' to add'))
-            ); ?></h3>
+        <h3><?php echo Yii::t('crud','{model}',array('{model}' => Yii::t('crud', 'Choose ' . $toLabel . ' to add'))); ?></h3>
     </div>
     <div class="modal-body">
         <?php
-        if ($allItems) {
-            $allRelated = new Node('search');
-        } else {
-            $allRelated = new $toType('search');
+        $allRelated = new GoItem('search');
+        $allRelated->unsetAttributes();
+        if (!$allItems) {
+            $allRelated->setAttribute("model_class",$toType);
+        }
+        if (isset($_GET["GoItem"])) {
+            $allRelated->attributes = $_GET["GoItem"];
         }
         $dataProvider = $allRelated->search();
         $this->widget(
             'bootstrap.widgets.TbExtendedGridView',
             array(
+                'filter' => $allRelated,
                 'id' => strtolower($toType) . 's_to_add',
                 'type' => 'striped bordered',
                 'dataProvider' => $dataProvider,
@@ -69,37 +77,25 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                 ),
                 'columns' => array(
                     array(
-                        'name' => 'id',
-                        'header' => 'Id',
+                        'header' => Yii::t('app', 'Select'),
+                        'filter' => false,
                         'value' => function ($data) {
-                                if (get_class($data) == "Node") {
-                                    echo CHtml::checkBox("modalGrid", null, array("value" => $data->id));
-                                } else {
-                                    echo CHtml::checkBox("modalGrid", null, array("value" => $data->node_id));
-                                }
+                                echo CHtml::checkBox("modalGrid", null, array("value" => $data->node_id));
                             }
                     ),
+                    'id',
                     array(
                         'name' => 'itemLabel',
-                        'value' => function ($data) {
-                                if (get_class($data) == "Node") {
-                                    echo $data->item()->itemLabel;
-                                } else {
-                                    echo $data->itemLabel;
-                                }
-                            }
+                        'filter' => false,
                     ),
-                    //TODO: Visa bara om get_class() == Node
                     array(
-                        'name' => 'type',
-                        'header' => 'type',
-                        'value' => function ($data) {
-                                if (get_class($data) == "Node") {
-                                    echo get_class($data->item());
-                                } else {
-                                    echo get_class($data);
-                                }
-                            }
+                        'name' => '_title',
+                        'header' => Yii::t('app', 'Title in source language'),
+                    ),
+                    //TODO: Visa bara om $allItems == true
+                    array(
+                        'name' => 'model_class',
+                        'header' => Yii::t('app', 'Model class'),
                     ),
                 )
             )

@@ -8,7 +8,12 @@ $fromLabel = Yii::t('app', $model->getModelLabel(), 1);
     <ul>
         <?php foreach ($items as $item):
             if (get_class($item) == "Node") {
-                $realItem = $item->item();
+                try {
+                    $realItem = $item->item();
+                } catch (CException $e) {
+                    var_dump("ignoring this exception: ", $e);
+                    continue;
+                }
             } else {
                 $realItem = $item;
             }
