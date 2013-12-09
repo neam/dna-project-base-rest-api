@@ -109,12 +109,12 @@ class Html extends TbHtml
      * @param string $hintAttribute the attribute hint (if different). Defaults to $attribute.
      * @return string the label HTMl.
      */
-    public static function attributeLabelWithTooltip(ActiveRecord $model, $attribute, $hintAttribute = '')
+    public static function attributeLabelWithTooltip(ActiveRecord $model, $attribute, $hintAttribute = '', $htmlOptions = array())
     {
         $hintAttribute = !empty($hintAttribute) ? $hintAttribute : $attribute;
         $label = $model->getAttributeLabel($attribute);
         $tooltip = $model->getAttributeHint($hintAttribute)
-            ? ' ' . Html::hintTooltip($model->getAttributeHint($hintAttribute))
+            ? ' ' . Html::hintTooltip($model->getAttributeHint($hintAttribute), $htmlOptions)
             : '';
         return $label . $tooltip;
     }
