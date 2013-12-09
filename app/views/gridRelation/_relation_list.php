@@ -34,7 +34,7 @@ $fromLabel = Yii::t('app', $model->getModelLabel(), 1);
                 <?php
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Remove {$toLabel} from {$fromLabel}"),
-                    "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $realItem->node_id, "returnUrl" => Yii::app()->request->url),
+                    "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $realItem->node_id,  "relation" => $relation, "returnUrl" => Yii::app()->request->url),
                     "size" => "small",
                     "type" => "danger"
                 ));

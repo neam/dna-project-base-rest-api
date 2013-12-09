@@ -337,11 +337,13 @@ trait ItemController
     {
         $from = $_GET["from"];
         $to = $_GET["to"];
+        $relation = $_GET["relation"];
         $del = Edge::model()->deleteAll(
-            'from_node_id=:from_node_id AND to_node_id=:to_node_id',
+            'from_node_id=:from_node_id AND to_node_id=:to_node_id AND relation=:relation',
             array(
                 ':from_node_id' => $from,
                 ':to_node_id' => $to,
+                ':relation' => $relation,
             )
         );
         if ($del) {
