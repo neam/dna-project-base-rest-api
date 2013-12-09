@@ -40,8 +40,8 @@ class ExamQuestion extends BaseExamQuestion
         return array_merge(
             parent::relations(),
             array(
-                'datasource' => array(self::HAS_MANY, 'DataSource', array('id' => 'node_id'), 'through' => 'outNodes'),
-                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
+                'datasource' => array(self::HAS_MANY, 'DataSource', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'datasources')),
+                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'related')),
             )
         );
     }

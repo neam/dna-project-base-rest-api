@@ -39,7 +39,7 @@ class VectorGraphic extends BaseVectorGraphic
         return array_merge(
             parent::relations(),
             array(
-                'datachunks' => array(self::HAS_MANY, 'DataChunk', array('id' => 'node_id'), 'through' => 'outNodes'),
+                'datachunks' => array(self::HAS_MANY, 'DataChunk', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'datachunks')),
             )
         );
     }
