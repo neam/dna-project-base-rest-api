@@ -27,6 +27,10 @@ class DataModel
 
     }
 
+    /**
+     * Model classes that will have CRUD generated through gii/giic
+     * @return array
+     */
     static public function crudModels()
     {
 
@@ -67,6 +71,10 @@ class DataModel
 
     }
 
+    /**
+     * Model classes that will use the yii-qa-state extensions
+     * @return array
+     */
     static public function qaModels()
     {
 
@@ -91,6 +99,10 @@ class DataModel
 
     }
 
+    /**
+     * The corresponding qa state models used by yii-qa-state
+     * @return array
+     */
     static public function qaStateModels()
     {
 
@@ -102,6 +114,10 @@ class DataModel
 
     }
 
+    /**
+     * Model classes that have a Node relation and thus can be related to each other freely
+     * @return array
+     */
     static public function graphModels()
     {
 
@@ -111,6 +127,10 @@ class DataModel
 
     }
 
+    /**
+     * Model classes that use the wrest extension
+     * @return array
+     */
     static public function restModels()
     {
 
@@ -120,6 +140,11 @@ class DataModel
 
     }
 
+    /**
+     * Model classes that are generated internally and is never expected to be created
+     * manually by a creation form
+     * @return array
+     */
     static public function internalModels()
     {
 
@@ -131,6 +156,10 @@ class DataModel
 
     }
 
+    /**
+     * Frontend UI labels for the models
+     * @return array
+     */
     static public function modelLabels()
     {
         return array(
