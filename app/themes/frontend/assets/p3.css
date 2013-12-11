@@ -8268,6 +8268,12 @@ i[class*=" icon-"] {
 .tooltip {
   font-size: 14px;
 }
+span.required {
+  color: #999999;
+}
+.control-group.error span.required {
+  color: #9d261d;
+}
 /* use composer.phar require thomaspark/bootswatch */
 /* force scrollbars */
 html {
