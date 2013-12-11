@@ -10,6 +10,7 @@ class SiteController extends Controller
                 'allow',
                 'actions' => array(
                     'giiscript',
+                    'sandbox',
                 ),
                 'roles' => array('Developer'),
             ),
@@ -71,6 +72,14 @@ class SiteController extends Controller
     public function actionGiiscript()
     {
         $this->render('giiscript');
+    }
+
+    /**
+     * View used for developers to try out simple things
+     */
+    public function actionSandbox()
+    {
+        $this->render('sandbox');
     }
 
     /**
