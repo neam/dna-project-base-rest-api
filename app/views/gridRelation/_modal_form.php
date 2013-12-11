@@ -11,10 +11,9 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
         var selectedType = null;
         $(document).ready(function () {
             // Enables checkbox click from whole tr row:
-            $('#<?php echo $modalId; ?>').on('click', 'td', function(e){
+            $('#<?php echo $modalId; ?>').on('click', 'td', function (e) {
                 var cb = $(this).parent().find('input').get(0);
-                if(e.target != cb)
-                {
+                if (e.target != cb) {
                     cb.checked = !cb.checked;
                 }
             });
@@ -51,14 +50,14 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
 
     <div class="modal-header">
         <button type="button" class="close" data-toggle="modal" data-target="#<?php echo $modalId; ?>">×</button>
-        <h3><?php echo Yii::t('crud','{model}',array('{model}' => Yii::t('crud', 'Choose ' . $toLabel . ' to add'))); ?></h3>
+        <h3><?php echo Yii::t('crud', '{model}', array('{model}' => Yii::t('crud', 'Choose ' . $toLabel . ' to add'))); ?></h3>
     </div>
     <div class="modal-body">
         <?php
         $allRelated = new GoItem('search');
         $allRelated->unsetAttributes();
         if (!$allItems) {
-            $allRelated->setAttribute("model_class",$toType);
+            $allRelated->setAttribute("model_class", $toType);
         }
         if (isset($_GET["GoItem"])) {
             $allRelated->attributes = $_GET["GoItem"];
@@ -92,10 +91,11 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                         'name' => '_title',
                         'header' => Yii::t('app', 'Title in source language'),
                     ),
-                    //TODO: Visa bara om $allItems == true
                     array(
+                        'visible' => ($allItems) ? 1 : 0,
                         'name' => 'model_class',
-                        'header' => Yii::t('app', 'Model class'),
+                        'header' => Yii::t('app', 'Content type'),
+                        'filter' => CHtml::activeDropDownList($allRelated, 'model_class', array_combine(array_keys(DataModel::goItemModels()),array_keys(DataModel::goItemModels())), array('prompt'=>'All')),
                     ),
                 )
             )
@@ -194,10 +194,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                 <div class="btn-group span8" style="float:right;">
                     <div class="input-group">
                         <label for="newitemtitle" style="display:inline-block; padding-right:5px;"><?php echo 'New ' . $toType; ?>:</label>
-                        <input type="text" id="newitemtitle" name="newitemtitle" class="span5" placeholder="<?php echo Yii::t(
-                            "model",
-                            "Optional title"
-                        ); ?>">
+                        <input type="text" id="newitemtitle" name="newitemtitle" class="span5" placeholder="<?php echo Yii::t("model", "Optional title"); ?>">
                         <?php
                         echo CHtml::ajaxButton(
                             Yii::t("model", "Create"),
