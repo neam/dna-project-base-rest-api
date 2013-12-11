@@ -3,6 +3,33 @@
 class SiteController extends Controller
 {
 
+    public function accessRules()
+    {
+        return array(
+            array(
+                'allow',
+                'actions' => array(
+                    'giiscript',
+                ),
+                'roles' => array('Developer'),
+            ),
+            array(
+                'allow',
+                'actions' => array(
+                    'index',
+                    'error',
+                    'contact',
+                    'logout',
+                ),
+                'users' => array('*'),
+            ),
+            array(
+                'deny',
+                'users' => array('*'),
+            ),
+        );
+    }
+
     /**
      * Declares class-based actions.
      */
