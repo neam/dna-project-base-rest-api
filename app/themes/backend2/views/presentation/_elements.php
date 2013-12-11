@@ -7,16 +7,16 @@
 
             <?php echo $form->textFieldRow($model, 'title_en', array(
                 'maxlength' => 255,
-                'id' => 'slugit-from-1',
+                'class' => 'slugit-from-1',
             )); ?>
 
             <?php echo $form->textFieldRow($model, 'slug', array(
                 'maxlength' => 255,
-                'id' => 'slugit-to-1',
+                'class' => 'slugit-to-1',
             )); ?>
 
             <?php Html::jsSlugIt(array(
-                '#slugit-from-1' => '#slugit-to-1',
+                '.slugit-from-1' => '.slugit-to-1',
             )); ?>
 
             <?php echo $form->textFieldRow($model, 'about', array('maxlength' => 255)); ?>
