@@ -126,6 +126,9 @@ EOD;
             $role->addChild('P3admin.Default.Settings');
             $role->addChild('P3media.Default.*');
             $role->addChild('P3media.P3MediaTranslation.*');
+            $role->addChild('P3pages.P3Page.*');
+            $role->addChild('P3pages.P3PageTranslation.*');
+            $role->addChild('P3widgets.Default.*');
 
             $role = $auth->createRole($prefix . 'Previewer');
             $role->addChild($prefix . 'Item.Preview');
