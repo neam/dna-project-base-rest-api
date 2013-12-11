@@ -35,6 +35,8 @@ $roles = array_keys(Yii::app()->authManager->getAuthItems(2, $model->id));
 
     <?php foreach (DataModel::qaModels() as $modelClass => $table): ?>
 
+        <?php if ($table=="exam_question_alternative") continue; ?>
+
         <?php if (Yii::app()->user->checkAccess('Item.Add')): ?>
 
             <?php
@@ -53,6 +55,8 @@ $roles = array_keys(Yii::app()->authManager->getAuthItems(2, $model->id));
     <hr>
 
     <?php foreach (DataModel::qaModels() as $modelClass => $table): ?>
+
+        <?php if ($table=="exam_question_alternative") continue; ?>
 
         <?php if (Yii::app()->user->checkAccess('Item.Add')): ?>
 
