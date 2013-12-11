@@ -20,6 +20,7 @@ class AccountController extends Controller
             array(
                 'allow',
                 'actions' => array(
+                    'admin',
                     'toggleRole',
                 ),
                 'roles' => array('Administrator'),
@@ -33,7 +34,6 @@ class AccountController extends Controller
                     'update',
                     'editableSaver',
                     'editableCreator',
-                    'admin',
                     'delete',
                 ),
                 'roles' => array('Account.*'),
