@@ -43,6 +43,13 @@ class Profiles extends BaseProfiles
         );
     }
 
+    public function relations()
+    {
+        return array_merge(parent::relations(), array(
+            'account' => array(self::BELONGS_TO, 'Account', 'user_id'),
+        ));
+    }
+
     public function search()
     {
         return new CActiveDataProvider(get_class($this), array(

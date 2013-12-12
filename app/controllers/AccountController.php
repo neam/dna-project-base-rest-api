@@ -105,8 +105,10 @@ class AccountController extends Controller
         $model = $this->loadModel($id); // Account
         $roles = $model->getAuthItems();
 
-        if (!request()->isAjaxRequest && isset($_POST['Profiles'], $_POST['Users'])) {
-            $model->attributes = $_POST['Users'];
+        $this->performAjaxValidation($model);
+
+        if (!request()->isAjaxRequest && isset($_POST['Profiles'], $_POST['Account'])) {
+            $model->attributes = $_POST['Account'];
             $model->profiles->attributes = $_POST['Profiles'];
 
             if ($model->validate()
@@ -299,7 +301,7 @@ class AccountController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'account-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'profiles-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

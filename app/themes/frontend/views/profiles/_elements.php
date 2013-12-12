@@ -13,10 +13,10 @@
     <div class="span8">
         <?php echo $form->textFieldRow($model, 'first_name', array('maxlength' => 255, 'class' => 'span9')); ?>
         <?php echo $form->textFieldRow($model, 'last_name', array('maxlength' => 255, 'class' => 'span9')); ?>
-        <?php echo $form->textFieldRow($model->user, 'username', array('maxlength' => 255, 'class' => 'span9')); ?>
-        <label><?php echo CHtml::encode($model->user->getAttributeLabel('password')); ?></label>
+        <?php echo $form->textFieldRow($model->account, 'username', array('maxlength' => 255, 'class' => 'span9')); ?>
+        <label><?php echo CHtml::encode($model->account->getAttributeLabel('password')); ?></label>
         <?php print CHtml::link('Change password', array('user/profile/changepassword', 'returnUrl' => Yii::app()->request->url), array('class' => 'btn uneditable-input')); ?>
-        <?php echo $form->textFieldRow($model->user, 'email', array('maxlength' => 255, 'class' => 'span9')); ?>
+        <?php echo $form->textFieldRow($model->account, 'email', array('maxlength' => 255, 'class' => 'span9')); ?>
         <?php echo $form->toggleButtonRow($model, 'others_may_contact_me'); ?>
         <?php //echo $form->checkBoxRow($model, 'others_may_contact_me'); ?>
         <?php echo $form->textFieldRow($model, 'website', array('maxlength' => 255, 'class' => 'span9')); ?>

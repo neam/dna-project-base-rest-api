@@ -8,7 +8,11 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
 <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id' => 'profiles-form',
     'enableAjaxValidation' => true,
-    'enableClientValidation' => true,
+    'clientOptions' => array(
+        'validateOnChange' => true,
+        'validateOnType' => false,
+        'validateOnSubmit' => true,
+    ),
     'type' => 'vertical',
 )); ?>
     <div class="row">

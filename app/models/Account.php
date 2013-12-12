@@ -37,15 +37,13 @@ class Account extends BaseAccount
 
     public function rules()
     {
-        return array_merge(
-            parent::rules()
-            , array(
-                array('username', 'unique', 'message' => Yii::t('app', 'Username already exists.')),
-                array('email', 'unique', 'message' => Yii::t('app', 'Email address already exists.')),
-                array('email', 'email'),
-                array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => Yii::t('app', 'Incorrect symbols (A-z0-9).')),
-            )
-        );
+        return array_merge(parent::rules(), array(
+            array('username, email', 'required'),
+            array('username', 'unique', 'allowEmpty' => false, 'message' => Yii::t('app', 'Username already exists.')),
+            array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => Yii::t('app', 'Incorrect symbols (A-z0-9).')),
+            array('email', 'unique', 'message' => Yii::t('app', 'Email address already exists.')),
+            array('email', 'email'),
+        ));
     }
 
     public function search()
