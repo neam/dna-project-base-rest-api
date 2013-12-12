@@ -105,7 +105,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
         <div class="row">
             <div class="span9">
                 <div class="row-fluid">
-                    <div class="span12" style="height: 480px; overflow: scroll;">
+                    <div class="span12" style="height: 480px; overflow-y: scroll;">
                         <h2>
                             <?php echo Yii::t('account', 'Info'); ?>
                             <?php if (false): ?>
@@ -126,11 +126,23 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                                 echo $clip;
                             }
                         } ?>
-                        <h2><?php echo Yii::t('account', 'Languages'); ?></h2>
-                        <?php print Yii::t('account', 'Which languages are you able to translate into? Check all that apply.'); ?>
-                        <?php $this->widget('frontend.widgets.cantranslateselector.CanTranslateSelector', array(
-                            'userId' => $model->id,
-                        )); ?>
+
+                        <div class="row-fluid">
+                            <div class="span8 pull-right">
+                                <?php echo TbHtml::dropDownListControlGroup('language[0]', $model->profiles->getTranslatableLanguage(0), Html::getLanguages(), array(
+                                    'label' => Yii::t('app', 'Language #1'),
+                                    'class' => 'span9',
+                                )); ?>
+                                <?php echo TbHtml::dropDownListControlGroup('language[1]', $model->profiles->getTranslatableLanguage(1), Html::getLanguages(), array(
+                                    'label' => Yii::t('app', 'Language #2'),
+                                    'class' => 'span9',
+                                )); ?>
+                                <?php echo TbHtml::dropDownListControlGroup('language[2]', $model->profiles->getTranslatableLanguage(2), Html::getLanguages(), array(
+                                    'label' => Yii::t('app', 'Language #3'),
+                                    'class' => 'span9',
+                                )); ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row-fluid">
