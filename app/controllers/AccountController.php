@@ -103,6 +103,7 @@ class AccountController extends Controller
     {
         $id = user()->id;
         $model = $this->loadModel($id); // Account
+        $roles = $model->getAuthItems();
 
         if (!request()->isAjaxRequest && isset($_POST['Profiles'], $_POST['Users'])) {
             $model->attributes = $_POST['Users'];
@@ -120,6 +121,7 @@ class AccountController extends Controller
 
         $this->render('profile', array(
             'model' => $model,
+            'roles' => $roles,
         ));
     }
 

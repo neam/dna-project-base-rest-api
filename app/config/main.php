@@ -47,7 +47,10 @@ $mainConfig = array(
         'application.modules.user.components'   => 'vendor.mishamx.yii-user.components',
         'gii-template-collection'               => 'vendor.phundament.gii-template-collection',
         'application.extensions.introjs.assets' => 'vendor.moein7tl.yii-introjs.introjs.assets',
-        'GtcRelation'                          => 'vendor.schmunk42.relation.widgets.GtcRelation',
+        'GtcRelation'                           => 'vendor.schmunk42.relation.widgets.GtcRelation',
+        // themes
+        'frontend'                              => 'application.themes.frontend',
+        'backend2'                              => 'application.themes.backend2',
     ),
     // autoloading model and component classes
     'import'     => array(

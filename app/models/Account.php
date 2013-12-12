@@ -6,6 +6,10 @@ Yii::import('Account.*');
 
 class Account extends BaseAccount
 {
+    // Auth item types
+    const AUTH_ITEM_TYPE_OPERATION  = 0;
+    const AUTH_ITEM_TYPE_TASK       = 1;
+    const AUTH_ITEM_TYPE_ROLE       = 2;
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
@@ -51,4 +55,13 @@ class Account extends BaseAccount
         ));
     }
 
+    /**
+     * Returns the auth items.
+     * @param integer $type the item type (0: operation, 1: task, 2: role). Defaults to 2 (role).
+     * @return array the auth items.
+     */
+    public function getAuthItems($type = self::AUTH_ITEM_TYPE_ROLE)
+    {
+        return array_keys(Yii::app()->authManager->getAuthItems($type, $this->id));
+    }
 }
