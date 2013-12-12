@@ -105,17 +105,13 @@ class AccountController extends Controller
         $model = $this->loadModel($id); // Account
         $roles = $model->getAuthItems();
 
-        $this->performAjaxValidation($model);
+        $this->performAjaxValidation(array($model, $model->profiles));
 
         if (!request()->isAjaxRequest && isset($_POST['Profiles'], $_POST['Account'])) {
             $model->attributes = $_POST['Account'];
             $model->profiles->attributes = $_POST['Profiles'];
 
-            if ($model->validate()
-                && $model->profiles->validate()
-                && $model->save()
-                && $model->profiles->save())
-            {
+            if ($model->save() && $model->profiles->save()) {
                 setFlash(TbAlert::TYPE_SUCCESS, t('app', 'Your account information has been updated.'));
                 $this->refresh();
             }

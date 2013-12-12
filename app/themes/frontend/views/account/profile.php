@@ -114,7 +114,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                                 )); ?>
                             <?php endif; ?>
                         </h2>
-                        <?php echo $form->errorSummary($model); ?>
+                        <?php echo $form->errorSummary(array($model, $model->profiles)); ?>
                         <?php $this->renderPartial('/profiles/_elements', array(
                             'model' => $model->profiles,
                             'form' => $form,
