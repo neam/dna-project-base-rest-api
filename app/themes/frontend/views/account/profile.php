@@ -126,23 +126,6 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                                 echo $clip;
                             }
                         } ?>
-
-                        <div class="row-fluid">
-                            <div class="span8 pull-right">
-                                <?php echo TbHtml::dropDownListControlGroup('language[0]', $model->profiles->getTranslatableLanguage(0), Html::getLanguages(), array(
-                                    'label' => Yii::t('app', 'Language #1'),
-                                    'class' => 'span9',
-                                )); ?>
-                                <?php echo TbHtml::dropDownListControlGroup('language[1]', $model->profiles->getTranslatableLanguage(1), Html::getLanguages(), array(
-                                    'label' => Yii::t('app', 'Language #2'),
-                                    'class' => 'span9',
-                                )); ?>
-                                <?php echo TbHtml::dropDownListControlGroup('language[2]', $model->profiles->getTranslatableLanguage(2), Html::getLanguages(), array(
-                                    'label' => Yii::t('app', 'Language #3'),
-                                    'class' => 'span9',
-                                )); ?>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="row-fluid">

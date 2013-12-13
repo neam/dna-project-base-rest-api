@@ -75,7 +75,7 @@ $input = $this->widget('\GtcRelation', array(
     'allowEmpty' => $noneLabel,
     'style' => 'dropdownlist',
     'htmlOptions' => array(
-        'checkAll' => 'all'
+        'checkAll' => 'all',
     ),
 ), true); ?>
 
@@ -89,6 +89,7 @@ $input = $this->widget('\GtcRelation', array(
 
 <div class="control-group">
     <div class="controls">
+        <br>
         <?php echo $this->widget('bootstrap.widgets.TbButton', array(
             'label' => Yii::t('app', 'Upload'),
             'icon' => 'icon-plus',
