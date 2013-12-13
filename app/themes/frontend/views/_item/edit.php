@@ -4,7 +4,7 @@
     'id' => 'item-form',
     'enableAjaxValidation' => true,
     'clientOptions' => array(
-        'validateOnSubmit' => true,
+        //'validateOnSubmit' => true,
     ),
     'type' => 'horizontal',
     'htmlOptions' => array('enctype' => 'multipart/form-data'),
