@@ -95,4 +95,27 @@ class Profiles extends BaseProfiles
             return false;
         }
     }
+
+    /**
+     * Returns a list of languages the user can translate into.
+     * @return array
+     */
+    public function getTranslatableLanguages()
+    {
+        $languages = array();
+
+        foreach (Html::getLanguages() as $code => $language) {
+            if ($this->canTranslate($code)) {
+                $languages[] = $code;
+            }
+        }
+
+        return $languages;
+    }
+
+    public function getTranslatableLanguage($index)
+    {
+        $translatableLanguages = $this->getTranslatableLanguages();
+        return isset($translatableLanguages[$index]) ? $translatableLanguages[$index] : null;
+    }
 }

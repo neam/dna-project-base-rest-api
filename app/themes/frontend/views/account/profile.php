@@ -105,7 +105,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
         <div class="row">
             <div class="span9">
                 <div class="row-fluid">
-                    <div class="span12" style="height: 480px; overflow: scroll;">
+                    <div class="span12" style="height: 480px; overflow-y: scroll;">
                         <h2>
                             <?php echo Yii::t('account', 'Info'); ?>
                             <?php if (false): ?>
@@ -126,11 +126,6 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                                 echo $clip;
                             }
                         } ?>
-                        <h2><?php echo Yii::t('account', 'Languages'); ?></h2>
-                        <?php print Yii::t('account', 'Which languages are you able to translate into? Check all that apply.'); ?>
-                        <?php $this->widget('frontend.widgets.cantranslateselector.CanTranslateSelector', array(
-                            'userId' => $model->id,
-                        )); ?>
                     </div>
                 </div>
                 <div class="row-fluid">
