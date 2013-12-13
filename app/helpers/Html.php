@@ -31,6 +31,7 @@ class Html extends TbHtml
 
         switch ($theme) {
             case self::THEME_FRONTEND:
+                $path = "assets";
                 $files = array(
                     'p3.css',
                     'backend.css',
@@ -39,6 +40,7 @@ class Html extends TbHtml
                 break;
 
             case self::THEME_BACKEND2:
+                $path = "css";
                 $files = array(
                     'backend.css',
                     'gcms.css',
@@ -50,7 +52,7 @@ class Html extends TbHtml
             // Set the CSS path
             $forceCopy = defined('DEV') && DEV && !empty($_GET['refresh_assets']) ? true : false;
             $css = Yii::app()->assetManager->publish(
-                Yii::app()->theme->basePath . '/assets',
+                Yii::app()->theme->basePath . '/' . $path,
                 true, // hash by name
                 -1, // level
                 $forceCopy
