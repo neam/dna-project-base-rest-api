@@ -1055,12 +1055,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/p3media.git",
-                "reference": "ca4bda851fe2883accdac478709628a0d92eb320"
+                "reference": "88e3e3952eb457545d24e0f0f2acc85a333702d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/p3media/zipball/ca4bda851fe2883accdac478709628a0d92eb320",
-                "reference": "ca4bda851fe2883accdac478709628a0d92eb320",
+                "url": "https://api.github.com/repos/motin/p3media/zipball/88e3e3952eb457545d24e0f0f2acc85a333702d8",
+                "reference": "88e3e3952eb457545d24e0f0f2acc85a333702d8",
                 "shasum": ""
             },
             "require": {
@@ -1104,7 +1104,7 @@
             "support": {
                 "source": "https://github.com/motin/p3media/tree/awaiting-prs"
             },
-            "time": "2013-12-11 20:48:15"
+            "time": "2013-12-13 13:16:40"
         },
         {
             "name": "phundament/p3pages",
