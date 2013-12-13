@@ -3,7 +3,7 @@
     <?php if (!is_null($data->processed_media_id_en)): ?>
 
         <?php
-        $videoMedia = P3Media::model()->findByPk($data->processed_media_id_en); // Currently we hard-code to use the english movie file
+        $videoMedia = P3Media::model()->findByPk($data->original_media_id); // Currently we hard-code to use the original movie file instead of any processed media
         $videoUrl = $videoMedia->createUrl('original-public-webm');
         $subtitleUrl = $this->createUrl('videoFile/subtitles', array('id' => $data->id));
         ?>
@@ -47,7 +47,7 @@
     <?php else: ?>
 
         <div class="alert">
-            <?php echo Yii::t('app', 'No processed media file available'); ?>
+            <?php echo Yii::t('app', 'No media file available'); ?>
         </div>
 
     <?php endif; ?>
