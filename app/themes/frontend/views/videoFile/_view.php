@@ -20,8 +20,8 @@
         ?>
 
         <video width="604" height="340" controls="controls"><!-- Not used preload="none" -->
-            <source type="video/webm" src="<?php echo $videoUrl; ?>">
-            <track src="<?php echo $subtitleUrl; ?>" kind="subtitles"
+            <source type="video/webm" src="<?php echo CHtml::encode($videoUrl); ?>">
+            <track src="<?php echo CHtml::encode($subtitleUrl); ?>" kind="subtitles"
                    srclang="<?php echo substr(Yii::app()->language, 0, 2); ?>" default>
             </track>
             <object width="604" height="346" type="application/x-shockwave-flash"
