@@ -68,4 +68,27 @@ class Profiles extends BaseProfiles
             'criteria' => $this->searchCriteria(),
         ));
     }
+
+    /**
+     * Returns the languages the user is able to translate into.
+     * @param boolean $asString whether to return a string. Defaults to false (returns an array).
+     * @return array|string the languages.
+     */
+    public function getLanguages($asString = false)
+    {
+        $languagesAvailable = Html::getLanguages();
+        $languages = array();
+
+        if (isset($this->language1)) $languages[$this->language1] = $languagesAvailable[$this->language1];
+        if (isset($this->language2)) $languages[$this->language2] = $languagesAvailable[$this->language2];
+        if (isset($this->language3)) $languages[$this->language3] = $languagesAvailable[$this->language3];
+        if (isset($this->language4)) $languages[$this->language4] = $languagesAvailable[$this->language4];
+        if (isset($this->language5)) $languages[$this->language5] = $languagesAvailable[$this->language5];
+
+        if ($asString) {
+            return implode(', ', $languages);
+        } else {
+            return $languages;
+        }
+    }
 }
