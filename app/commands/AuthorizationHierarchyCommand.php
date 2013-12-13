@@ -42,6 +42,7 @@ EOD;
         $developerRole = $auth->createRole('Developer');
         $developerRole->addChild('Super Administrator');
 
+        // These operations are defined in phundament components
         $auth->createOperation('P3media.Import.*');
         $auth->createOperation('P3media.Import.scan');
         $auth->createOperation('P3media.P3Media.*');
@@ -56,7 +57,6 @@ EOD;
         $auth->createOperation('P3pages.P3PageTranslation.*');
         $auth->createOperation('P3widgets.Default.*');
         $auth->createOperation('Translate.*');
-
 
         foreach (array('GapminderSchool', 'DollarStreet', 'IgnoranceProject', 'HumanNumbers', '') as $project) {
 
@@ -76,11 +76,14 @@ EOD;
             $auth->createOperation($prefix . 'Item.ProofRead', 'Review and improve language');
             $auth->createOperation($prefix . 'Item.Translate', 'Translate to languages that you added to our profile.');
             $auth->createOperation($prefix . 'Item.Publish', 'Make public for the first time, or when replacing a previous version.');
-            $auth->createOperation($prefix . 'Item.Edit', 'Look at all fields, no obvious goal');
+            $editOperation = $auth->createOperation($prefix . 'Item.Edit', 'Look at all fields, no obvious goal');
             $auth->createOperation($prefix . 'Item.Clone', 'Creates a new itemVersion with incremented version number and goes to "edit" workFlow. If the original is in PUBLIC after achieving publishableFlag == true, suggest workFlow PrepPublish');
             $auth->createOperation($prefix . 'Item.Remove', 'Removed means there\'s something wrong with the content so it should not be used in any language any time');
             $auth->createOperation($prefix . 'Item.Replace', 'Replaced, means it\'s OK to fall back to, in case translation is missing for new version');
             $auth->createOperation($prefix . 'Item.Go', 'Displays the item and it\'s related items');
+
+            // Upload access is necessary for Item.Edit
+            $editOperation->addChild('P3media.Import.*'); // Upload
 
             // Actions under special circumstances are called tasks - if a user may perform the task then the user may perform the task's associated operations
 
@@ -118,17 +121,6 @@ EOD;
             $role->addChild($prefix . 'Item.ReplaceOwn');
             $role->addChild($prefix . 'Item.RemoveNonPublic');
             $role->addChild($prefix . 'Item.ReplaceNonPublic');
-            $role->addChild('P3media.Import.*');
-            $role->addChild('P3media.Import.scan');
-            $role->addChild('P3media.P3Media.*');
-            $role->addChild('P3media.P3Media.View');
-            $role->addChild('P3admin.Default.Index');
-            $role->addChild('P3admin.Default.Settings');
-            $role->addChild('P3media.Default.*');
-            $role->addChild('P3media.P3MediaTranslation.*');
-            $role->addChild('P3pages.P3Page.*');
-            $role->addChild('P3pages.P3PageTranslation.*');
-            $role->addChild('P3widgets.Default.*');
 
             $role = $auth->createRole($prefix . 'Previewer');
             $role->addChild($prefix . 'Item.Preview');
