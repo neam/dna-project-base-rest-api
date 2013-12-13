@@ -192,8 +192,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                 </p>
             </div> */ ?>
 
-                <h2><?php echo Yii::t('account', 'Badges'); ?></h2>
-                <p>TODO</p>
+                <!--<h2><?php /*echo Yii::t('account', 'Badges'); */?></h2>-->
             </div>
         </div>
     </div>
