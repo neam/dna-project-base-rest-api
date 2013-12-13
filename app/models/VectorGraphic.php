@@ -129,7 +129,7 @@ class VectorGraphic extends BaseVectorGraphic
                 'slug_en' => Yii::t('model', 'English Nice link'),
                 'about' => Yii::t('model', 'About'),
                 'about_en' => Yii::t('model', 'About (English)'),
-                'original_media_id' => Yii::t('model', 'File'),
+                'original_media_id' => Yii::t('model', 'File (svg)'),
                 'datachunks' => Yii::t('model', 'Data'),
             )
         );

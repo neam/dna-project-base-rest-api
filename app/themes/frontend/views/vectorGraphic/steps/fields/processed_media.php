@@ -2,7 +2,7 @@
 $relation = "processedMediaId" . ucfirst($model->source_language);
 $attribute = "processed_media_id_" . $model->source_language;
 $step = "file";
-$mimeTypes = array('application/vnd.ms-powerpoint');
+$mimeTypes = array('image/svg+xml');
 
 $this->renderPartial('//p3Media/_select', compact("model", "form", "relation", "attribute", "step", "mimeTypes"));
 
