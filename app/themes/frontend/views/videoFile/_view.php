@@ -1,6 +1,6 @@
 <div class="view">
 
-    <?php if (!is_null($data->processed_media_id_en)): ?>
+    <?php if (!is_null($data->original_media_id)): ?>
 
         <?php
         $videoMedia = P3Media::model()->findByPk($data->original_media_id); // Currently we hard-code to use the original movie file instead of any processed media
