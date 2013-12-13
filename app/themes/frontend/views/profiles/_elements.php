@@ -14,14 +14,17 @@
             <?php echo TbHtml::dropDownListControlGroup('language[0]', $model->getTranslatableLanguage(0), Html::getLanguages(), array(
                 'label' => Yii::t('app', 'Language #1'),
                 'class' => 'span12',
+                'empty' => Yii::t('app', '- None -'),
             )); ?>
             <?php echo TbHtml::dropDownListControlGroup('language[1]', $model->getTranslatableLanguage(1), Html::getLanguages(), array(
                 'label' => Yii::t('app', 'Language #2'),
                 'class' => 'span12',
+                'empty' => Yii::t('app', '- None -'),
             )); ?>
             <?php echo TbHtml::dropDownListControlGroup('language[2]', $model->getTranslatableLanguage(2), Html::getLanguages(), array(
                 'label' => Yii::t('app', 'Language #3'),
                 'class' => 'span12',
+                'empty' => Yii::t('app', '- None -'),
             )); ?>
         </div>
     </div>
