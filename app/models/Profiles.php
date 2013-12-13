@@ -38,9 +38,21 @@ class Profiles extends BaseProfiles
     {
         return array_merge(
             parent::rules(), array(
+                array('language1', 'required', 'on' => 'update'),
                 array('public_profile, ' . implode(', ', I18nColumnsBehavior::attributeColumns('can_translate_to')), 'safe', 'on' => 'toggle'),
             )
         );
+    }
+
+    public function attributeLabels()
+    {
+        return array_merge(parent::attributeLabels(), array(
+            'language1' => Yii::t('model', 'Language #1'),
+            'language2' => Yii::t('model', 'Language #2'),
+            'language3' => Yii::t('model', 'Language #3'),
+            'language4' => Yii::t('model', 'Language #4'),
+            'language5' => Yii::t('model', 'Language #5'),
+        ));
     }
 
     public function relations()
@@ -55,67 +67,5 @@ class Profiles extends BaseProfiles
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $this->searchCriteria(),
         ));
-    }
-
-    /**
-     * Marks the user to be (un)able to translate content into a given language.
-     * @param string $lang the language code (e.g. 'en').
-     * @param boolean $can can/cannot translate. Defaults to true.
-     * @throws CException if the supplied language code is invalid.
-     */
-    public function setCanTranslate($lang, $can = true)
-    {
-        $model = Profiles::model()->findByPk(user()->id);
-        $attribute = 'can_translate_to_' . $lang;
-
-        /** @var Profiles $model */
-        if ($model->hasAttribute($attribute)) {
-            $model->{$attribute} = $can ? self::CAN_TRANSLATE : self::CANNOT_TRANSLATE;
-            $model->save(false);
-        } else {
-            throw new CException('Invalid language: ' . $lang);
-        }
-    }
-
-    /**
-     * Checks if the user is able to translate content into a given language.
-     * @param string $lang the language code (e.g. 'en').
-     * @return boolean
-     * @throws CException if the supplied language code is invalid.
-     */
-    public function canTranslate($lang)
-    {
-        $model = Profiles::model()->findByPk(user()->id);
-        $attribute = 'can_translate_to_' . $lang;
-
-        /** @var Profiles $model */
-        if ($model->hasAttribute($attribute)) {
-            return ((int) $model->{$attribute} === self::CAN_TRANSLATE) ? true : false;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Returns a list of languages the user can translate into.
-     * @return array
-     */
-    public function getTranslatableLanguages()
-    {
-        $languages = array();
-
-        foreach (Html::getLanguages() as $code => $language) {
-            if ($this->canTranslate($code)) {
-                $languages[] = $code;
-            }
-        }
-
-        return $languages;
-    }
-
-    public function getTranslatableLanguage($index)
-    {
-        $translatableLanguages = $this->getTranslatableLanguages();
-        return isset($translatableLanguages[$index]) ? $translatableLanguages[$index] : null;
     }
 }
