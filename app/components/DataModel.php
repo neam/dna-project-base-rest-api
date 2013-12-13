@@ -225,7 +225,6 @@ class DataModel
                 'Exercise' => array('slug'),
                 'Page' => array('slug'),
                 'PoFile' => array('processed_media_id'),
-                'Profiles' => array('can_translate_to'),
                 'Section' => array('slug'),
                 'SlideshowFile' => array('slug', 'processed_media_id'),
                 'Snapshot' => array('slug'),

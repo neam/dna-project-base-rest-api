@@ -39,7 +39,6 @@ class Profiles extends BaseProfiles
         return array_merge(
             parent::rules(), array(
                 array('language1', 'required', 'on' => 'update'),
-                array('public_profile, ' . implode(', ', I18nColumnsBehavior::attributeColumns('can_translate_to')), 'safe', 'on' => 'toggle'),
             )
         );
     }
