@@ -127,6 +127,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'edit',
+                    'preview',
                 ),
                 'roles' => array(
                     'Item.Edit'
