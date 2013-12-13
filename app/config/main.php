@@ -422,6 +422,7 @@ $mainConfig = array(
                 '^([^/]*)/replace' => 'frontend',
                 '^([^/]*)/translate(.*)' => 'frontend',
                 '^([^/]*)/author(.*)' => 'frontend',
+                '^node/view' => 'backend2',
                 '^site/giiscript' => 'backend2',
                 '^translate/(.*)'            => 'backend2',
                 '^(.*)' => 'frontend',
