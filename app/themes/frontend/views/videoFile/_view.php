@@ -28,7 +28,7 @@
                     data="<?php echo Yii::app()->request->baseUrl; ?>/../components/mediaelement/build/flashmediaelement.swf">
                 <param
                     movie="<?php echo Yii::app()->request->baseUrl; ?>/../components/mediaelement/build/flashmediaelement.swf">
-                <param flashvars="controls=true&amp;amp;file=<?php echo $videoUrl; ?>">
+                <param flashvars="controls=true&amp;amp;file=<?php echo rawurlencode($videoUrl); ?>">
             </object>
         </video>
 
