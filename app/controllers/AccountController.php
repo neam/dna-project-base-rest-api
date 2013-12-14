@@ -107,34 +107,9 @@ class AccountController extends Controller
 
         $this->performAjaxValidation(array($model, $model->profiles));
 
-        if (!request()->isAjaxRequest && isset($_POST['Profiles'], $_POST['Account'], $_POST['language'])) {
-            $canTranslatePrefix = 'can_translate_to_';
-            $languageAttr1 = isset($_POST['language'][0]) ? $canTranslatePrefix . $_POST['language'][0] : null;
-            $languageAttr2 = isset($_POST['language'][1]) ? $canTranslatePrefix . $_POST['language'][1] : null;
-            $languageAttr3 = isset($_POST['language'][2]) ? $canTranslatePrefix . $_POST['language'][2] : null;
-
+        if (!request()->isAjaxRequest && isset($_POST['Profiles'], $_POST['Account'])) {
             $model->attributes = $_POST['Account'];
             $model->profiles->attributes = $_POST['Profiles'];
-
-            // Reset all can_translate_to fields
-            foreach (Html::getLanguages() as $code => $language) {
-                $attribute = $canTranslatePrefix . $code;
-
-                if ($model->profiles->hasAttribute($attribute)) {
-                    $model->profiles->{$attribute} = 0;
-                }
-            }
-
-            // Set can_translate_to fields
-            if (isset($languageAttr1) && $model->profiles->hasAttribute($languageAttr1)) {
-                $model->profiles->{$languageAttr1} = 1;
-            }
-            if (isset($languageAttr2) && $model->profiles->hasAttribute($languageAttr2)) {
-                $model->profiles->{$languageAttr2} = 1;
-            }
-            if (isset($languageAttr3) && $model->profiles->hasAttribute($languageAttr3)) {
-                $model->profiles->{$languageAttr3} = 1;
-            }
 
             if ($model->save() && $model->profiles->save()) {
                 setFlash(TbAlert::TYPE_SUCCESS, t('app', 'Your account information has been updated.'));

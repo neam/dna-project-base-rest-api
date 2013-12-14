@@ -1,4 +1,5 @@
 <?php /** @var Profiles $model */ ?>
+<?php /** @var TbActiveForm $form */ ?>
 
 <div class="row-fluid">
     <div class="span4">
@@ -11,18 +12,15 @@
         ?>
         <h3><?php echo Yii::t('app','Languages'); ?> <?php echo Html::hintTooltip(Yii::t('app', 'Please list the languages you can help us translate into (sorted by proficiency).')); ?></h3>
         <div class="row-fluid">
-            <?php echo TbHtml::dropDownListControlGroup('language[0]', $model->getTranslatableLanguage(0), Html::getLanguages(), array(
-                'label' => Yii::t('app', 'Language #1'),
+            <?php echo $form->dropDownListRow($model, 'language1', Html::getLanguages(), array(
                 'class' => 'span12',
                 'empty' => Yii::t('app', '- None -'),
             )); ?>
-            <?php echo TbHtml::dropDownListControlGroup('language[1]', $model->getTranslatableLanguage(1), Html::getLanguages(), array(
-                'label' => Yii::t('app', 'Language #2'),
+            <?php echo $form->dropDownListRow($model, 'language2', Html::getLanguages(), array(
                 'class' => 'span12',
                 'empty' => Yii::t('app', '- None -'),
             )); ?>
-            <?php echo TbHtml::dropDownListControlGroup('language[2]', $model->getTranslatableLanguage(2), Html::getLanguages(), array(
-                'label' => Yii::t('app', 'Language #3'),
+            <?php echo $form->dropDownListRow($model, 'language3', Html::getLanguages(), array(
                 'class' => 'span12',
                 'empty' => Yii::t('app', '- None -'),
             )); ?>
