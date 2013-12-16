@@ -52,7 +52,7 @@ class ActiveRecord extends CActiveRecord
                 'class' => 'I18nAttributeMessagesBehavior',
                 'translationAttributes' => $i18nAttributeMessagesMap[get_class($this)],
                 'languageSuffixes' => array_keys(Yii::app()->params["languages"]),
-                'messageSourceComponent' => 'writableMessages',
+                'messageSourceComponent' => 'dbMessages',
             );
         }
 
