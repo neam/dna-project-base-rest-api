@@ -130,33 +130,4 @@ trait ItemTrait
 
         return $i18nRules;
     }
-
-    /**
-     * Returns the item description if available.
-     * @return string|null the item description.
-     */
-    public function getItemDescription()
-    {
-        if (isset($this->itemDescription)) {
-            return $this->itemDescription;
-        } else {
-            $model = new $this; // an ActiveRecord class (e.g. Chapter)
-            return $model->itemDescription;
-        }
-    }
-
-    /**
-     * Renders an item description tooltip.
-     * @return string the tooltip HTML.
-     */
-    public function itemDescriptionTooltip()
-    {
-        $itemDescription = $this->getItemDescription();
-
-        return isset($itemDescription)
-            ? Html::hintTooltip($itemDescription, array(
-                'placement' => TbHtml::TOOLTIP_PLACEMENT_BOTTOM,
-            ))
-            : '';
-    }
 }

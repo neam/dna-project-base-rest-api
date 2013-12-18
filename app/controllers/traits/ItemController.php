@@ -922,4 +922,33 @@ trait ItemController
 
     }
 
+    /**
+     * Returns the item description if available.
+     * @return string|null the item description.
+     */
+    public function getItemDescription()
+    {
+        $model = new $this->modelClass;
+
+        if (isset($model->itemDescription)) {
+            return $model->itemDescription;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Renders an item description tooltip.
+     * @return string the tooltip HTML.
+     */
+    public function itemDescriptionTooltip()
+    {
+        $itemDescription = $this->getItemDescription();
+
+        return isset($itemDescription)
+            ? Html::hintTooltip($itemDescription, array(
+                'placement' => TbHtml::TOOLTIP_PLACEMENT_BOTTOM,
+            ))
+            : '';
+    }
 }

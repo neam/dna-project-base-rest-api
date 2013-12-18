@@ -11,7 +11,7 @@ if (!isset($this->menu) || $this->menu === array()) {
     );
 }
 ?>
-    <h1><?php echo Yii::t('model', 'Vector Graphics'); ?> <small><?php echo VectorGraphic::model()->itemDescriptionTooltip(); ?></small></h1>
+    <h1><?php echo Yii::t('model', 'Vector Graphics'); ?> <small><?php echo $this->itemDescriptionTooltip(); ?></small></h1>
 
 <?php $this->renderPartial("_toolbar"); ?>
 <?php

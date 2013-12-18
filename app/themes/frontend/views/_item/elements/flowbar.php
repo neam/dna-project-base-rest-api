@@ -26,7 +26,7 @@
     <div class="span12">
 
         <h1>
-            <?php echo $model->itemLabel; ?><small><?php if ($this->action->id !== 'index') echo $model->itemDescriptionTooltip(); ?></small>
+            <?php echo $model->itemLabel; ?><small><?php if ($this->action->id !== 'index') echo $this->itemDescriptionTooltip(); ?></small>
             <small>Version: <?php echo $model->version; ?></small>
             <small>Status: <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?></small>
             <?php if ($this->action->id != 'evaluate'): ?>
