@@ -83,7 +83,7 @@ class Html extends TbHtml
      */
     public static function jsSlugIt($fields = array(), $separator = '-')
     {
-        publishJs('/themes/frontend/js/vendor/jquery.slugit.js', CClientScript::POS_HEAD);
+        publishJs('/themes/frontend/js/slugit.js', CClientScript::POS_HEAD);
         foreach ($fields as $from => $to) {
             app()->clientScript->registerScript('slugIt_' . $from, "$('$from').slugIt({output: '$to', separator: '$separator'});", CClientScript::POS_END);
             app()->clientScript->registerScript('slugItOnLoad_' . $to, "if ($('$to').length > 0 && $('$to').val().length === 0) $('$from').trigger(jQuery.Event('keypress', {which: $.ui.keyCode.ESCAPE}));", CClientScript::POS_READY);
