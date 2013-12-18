@@ -14,6 +14,7 @@ class GMRegistrationController extends RegistrationController {
         Profile::$regMode = true;
         $model = new GMRegistrationForm;
         $profile = new GMProfile;
+        $profile->language1 = 'sv';
 
         // ajax validator
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'registration-form') {
