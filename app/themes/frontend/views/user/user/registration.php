@@ -1,5 +1,7 @@
 <?php
 /** @var UActiveForm $form */
+/** @var GMProfile $profile */
+/** @var Account $model */
 $this->pageTitle = Yii::app()->name . ' - ' . UserModule::t("Registration");
 $this->breadcrumbs = array(
     UserModule::t("Registration"),
@@ -15,49 +17,19 @@ $this->breadcrumbs = array(
 <?php else: ?>
 
     <div class="form">
-        <?php $form = $this->beginWidget(
-            'UActiveForm',
-            array(
-                'id' => 'registration-form',
-                'enableAjaxValidation' => true,
-                'disableAjaxValidationAttributes' => array('RegistrationForm_verifyCode'),
-                'clientOptions' => array(
-                    'validateOnSubmit' => true,
-                ),
-                'htmlOptions' => array('enctype' => 'multipart/form-data'),
-            )
-        ); ?>
+        <?php $form = $this->beginWidget('TbActiveForm', array(
+            'id' => 'registration-form',
+            'enableAjaxValidation' => true,
+            //'disableAjaxValidationAttributes' => array('RegistrationForm_verifyCode'),
+            'clientOptions' => array(
+                'validateOnSubmit' => true,
+            ),
+            'htmlOptions' => array('enctype' => 'multipart/form-data'),
+        )); ?>
 
         <p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
 
         <?php echo $form->errorSummary(array($model, $profile)); ?>
-
-        <div class="row">
-            <?php echo $form->labelEx($model, 'username'); ?>
-            <?php echo $form->textField($model, 'username'); ?>
-            <?php echo $form->error($model, 'username'); ?>
-        </div>
-
-        <div class="row">
-            <?php echo $form->labelEx($model, 'password'); ?>
-            <?php echo $form->passwordField($model, 'password'); ?>
-            <?php echo $form->error($model, 'password'); ?>
-            <p class="hint">
-                <?php echo UserModule::t("Minimal password length 4 symbols."); ?>
-            </p>
-        </div>
-
-        <div class="row">
-            <?php echo $form->labelEx($model, 'verifyPassword'); ?>
-            <?php echo $form->passwordField($model, 'verifyPassword'); ?>
-            <?php echo $form->error($model, 'verifyPassword'); ?>
-        </div>
-
-        <div class="row">
-            <?php echo $form->labelEx($model, 'email'); ?>
-            <?php echo $form->textField($model, 'email'); ?>
-            <?php echo $form->error($model, 'email'); ?>
-        </div>
 
         <?php
         $profileFields = Profile::getFields();
@@ -87,6 +59,46 @@ $this->breadcrumbs = array(
             }
         }
         ?>
+
+        <div class="row">
+            <?php echo $form->labelEx($model, 'username'); ?>
+            <?php echo $form->textField($model, 'username'); ?>
+            <?php echo $form->error($model, 'username'); ?>
+        </div>
+
+        <div class="row">
+            <?php echo $form->labelEx($model, 'password'); ?>
+            <?php echo $form->passwordField($model, 'password'); ?>
+            <?php echo $form->error($model, 'password'); ?>
+            <p class="hint">
+                <?php echo UserModule::t("Minimal password length 4 symbols."); ?>
+            </p>
+        </div>
+
+        <div class="row">
+            <?php echo $form->labelEx($model, 'verifyPassword'); ?>
+            <?php echo $form->passwordField($model, 'verifyPassword'); ?>
+            <?php echo $form->error($model, 'verifyPassword'); ?>
+        </div>
+
+        <div class="row">
+            <?php echo $form->labelEx($model, 'email'); ?>
+            <?php echo $form->textField($model, 'email'); ?>
+            <?php echo $form->error($model, 'email'); ?>
+        </div>
+
+        <?php $this->widget('frontend.widgets.SelectProfileLanguage.SelectProfileLanguage',array(
+            'model' => $profile,
+            'attributes' => array(
+                'language1',
+                'language2',
+                'language3',
+            ),
+            'form' => $form,
+            'htmlOptions' => array(
+                'block' => true,
+            ),
+        )); ?>
 
         <div class="row">
             <?php echo $form->labelEx($model, 'acceptTerms'); ?>

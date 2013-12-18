@@ -9,9 +9,11 @@ class GMRegistrationController extends RegistrationController {
      */
     public function actionRegistration()
     {
+        // TODO: 1. This method should be refactored. It is too cluttered.
+        // TODO: 2. Use ONE profile class throughout the entire app. Having multiple classes (Profiles, GMProfile) is confusing and creates duplicate code.
         Profile::$regMode = true;
         $model = new GMRegistrationForm;
-        $profile = new Profile;
+        $profile = new GMProfile;
 
         // ajax validator
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'registration-form') {
@@ -24,7 +26,7 @@ class GMRegistrationController extends RegistrationController {
         } else {
             if (isset($_POST['GMRegistrationForm'])) {
                 $model->attributes = $_POST['GMRegistrationForm'];
-                $profile->attributes = ((isset($_POST['Profile']) ? $_POST['Profile'] : array()));
+                $profile->attributes = ((isset($_POST['GMProfile']) ? $_POST['GMProfile'] : array()));
 
                 if ($model->validate() && $profile->validate()) {
                     $soucePassword = $model->password;

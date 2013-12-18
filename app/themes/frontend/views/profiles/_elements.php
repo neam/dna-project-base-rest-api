@@ -12,17 +12,17 @@
         ?>
         <h3><?php echo Yii::t('app','Languages'); ?> <?php echo Html::hintTooltip(Yii::t('app', 'Please list the languages you can help us translate into (sorted by proficiency).')); ?></h3>
         <div class="row-fluid">
-            <?php echo $form->dropDownListRow($model, 'language1', Html::getLanguages(), array(
-                'class' => 'span12',
-                'empty' => Yii::t('app', '- None -'),
-            )); ?>
-            <?php echo $form->dropDownListRow($model, 'language2', Html::getLanguages(), array(
-                'class' => 'span12',
-                'empty' => Yii::t('app', '- None -'),
-            )); ?>
-            <?php echo $form->dropDownListRow($model, 'language3', Html::getLanguages(), array(
-                'class' => 'span12',
-                'empty' => Yii::t('app', '- None -'),
+            <?php $this->widget('frontend.widgets.SelectProfileLanguage.SelectProfileLanguage', array(
+                'model' => $model,
+                'attributes' => array(
+                    'language1',
+                    'language2',
+                    'language3',
+                ),
+                'form' => $form,
+                'htmlOptions' => array(
+                    'class' => 'span12',
+                ),
             )); ?>
         </div>
     </div>
