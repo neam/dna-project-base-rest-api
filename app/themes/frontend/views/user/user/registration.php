@@ -128,3 +128,5 @@ $this->breadcrumbs = array(
         <?php $this->endWidget(); ?>
     </div><!-- form -->
 <?php endif; ?>
+
+<?php publishJs('/themes/frontend/js/suggest-username.js', CClientScript::POS_END); ?>
