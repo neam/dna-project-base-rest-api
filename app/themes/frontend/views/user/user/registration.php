@@ -94,6 +94,9 @@ $this->breadcrumbs = array(
                 'language2',
                 'language3',
             ),
+            'defaultValues' => array(
+                'language1' => 'sv',
+            ),
             'form' => $form,
             'htmlOptions' => array(
                 'block' => true,

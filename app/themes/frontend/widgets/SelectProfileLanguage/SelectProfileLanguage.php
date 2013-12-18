@@ -4,6 +4,7 @@ class SelectProfileLanguage extends CWidget
 {
     public $model;
     public $attributes = array();
+    public $defaultValues = array();
     public $form;
     public $htmlOptions = array();
 
@@ -12,6 +13,7 @@ class SelectProfileLanguage extends CWidget
      */
     public function init()
     {
+        $this->setDefaultValues();
         $this->render('view', array(
             'model' => $this->model,
             'attributes' => $this->attributes,
@@ -31,5 +33,17 @@ class SelectProfileLanguage extends CWidget
         );
 
         return array_merge($htmlOptions, $this->htmlOptions);
+    }
+
+    /**
+     * Sets the default attribute values.
+     */
+    protected function setDefaultValues()
+    {
+        foreach ($this->defaultValues as $attribute => $defaultValue) {
+            if ($this->model->hasAttribute($attribute) && !isset($this->model->{$attribute})) {
+                $this->model->{$attribute} = $defaultValue;
+            }
+        }
     }
 }
