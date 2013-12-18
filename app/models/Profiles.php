@@ -51,6 +51,8 @@ class Profiles extends BaseProfiles
             'language3' => Yii::t('model', 'Language #3'),
             'language4' => Yii::t('model', 'Language #4'),
             'language5' => Yii::t('model', 'Language #5'),
+            'picture_media_id' => Yii::t('model', 'Profile Image'),
+            'website' => Yii::t('model', 'My Website'),
         ));
     }
 
