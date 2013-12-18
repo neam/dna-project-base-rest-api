@@ -17,7 +17,7 @@
 
     // Generate suggestions on keyup
     $($firstNameField).add($lastNameField).on('keyup', function() {
-        if (!usernameModifiedManually || $usernameField.val().length === 0 ) {
+        if (!usernameModifiedManually) {
             suggestUsername();
         }
     });
