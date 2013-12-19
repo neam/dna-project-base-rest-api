@@ -219,7 +219,7 @@ $mainConfig = array(
             'appLayout'    => '//layouts/main',
             'userIdColumn' => 'id',
             'userClass'    => 'User',
-            'cssFile'      => '/themes/backend/css/yii-rights.css'
+            'cssFile'      => '/themes/frontend/assets/yii-rights/styles.css',
             #'install' => true, // Enables the installer.
             #'superuserName' => 'admin'
         ),
@@ -296,7 +296,7 @@ $mainConfig = array(
                         'js/app.js',
                     ),*/
                     'css'      => array(
-                        'p3.css',
+                        'main.css',
                     )
                 ),
             )

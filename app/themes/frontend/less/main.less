@@ -1,0 +1,22 @@
+// Twitter Bootstrap
+@import "../../../../vendor/twitter/bootstrap/less/bootstrap";
+@import "../../../../vendor/twitter/bootstrap/less/responsive";
+@import "../../../../vendor/phundament/lessii/translations/blueprint-bootstrap";
+@import "variables";
+
+// Application
+@import "backend";
+@import "gcms"; // TODO: Refactor styles and delete file.
+@import "forms";
+
+// Miscellaneous
+@import "hacks";
+
+html {
+  overflow-y: scroll;
+}
+
+/* fix responsive images */
+img {
+  height: auto !important;
+}

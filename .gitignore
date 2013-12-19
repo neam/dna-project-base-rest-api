@@ -1,6 +1,7 @@
 /vendor/
 /docs/
 /tests/codeception/_log
+/node_modules/
 
 nbproject
 .DS_Store

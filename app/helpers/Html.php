@@ -31,19 +31,16 @@ class Html extends TbHtml
 
         switch ($theme) {
             case self::THEME_FRONTEND:
-                $path = "assets";
+                $path = 'assets';
                 $files = array(
-                    'p3.css',
-                    'backend.css',
-                    'gcms.css',
+                    'main.css',
                 );
                 break;
 
             case self::THEME_BACKEND2:
-                $path = "css";
+                $path = 'css';
                 $files = array(
-                    'backend.css',
-                    'gcms.css',
+                    'main.css',
                 );
                 break;
         }

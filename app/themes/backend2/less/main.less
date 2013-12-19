@@ -1,20 +1,13 @@
-/**
- * Main less include file
- *
- * This file is copied from p3bootstrap. You have to run
- * php composer.phar install --dev
- * in order to get the files defined in the @import(s) below
- *
- * paths are adjustes to work from ./www/themes/THEMENAME
- */
-
-/* import bootrap */
+// Twitter Bootstrap
 @import "../../../../vendor/twitter/bootstrap/less/bootstrap.less";
 @import "../../../../vendor/twitter/bootstrap/less/responsive.less";
-  /* use bootstrap with blueprint translation (for old extensions) */
 @import "../../../../vendor/phundament/lessii/translations/blueprint-bootstrap.less";
-  /* override variables with local values */
 @import "variables.less";
+
+// Application
+@import "backend-navbar";
+
+// TODO: Clean up and refactor the following styles.
 
 .subwrapper {
   margin-top: 20px;
@@ -243,4 +236,34 @@ input.je-val-input {
       position: relative;
     }
   }
+}
+
+/* Wider higher for modals */
+
+.modal-body
+{
+/*	max-height:80%;*/
+}
+.modal
+{
+/*	height:80%;*/
+	width:70%;
+	margin-left: -35%;
+}
+@media (max-width: 768px) {
+	.modal
+	{
+		width:90%;
+        margin-left: 2%;
+	}
+}
+
+/* Breadcrumb margin fix */
+.container-fluid .breadcrumb {
+	margin-top: 10px!important;
+}
+
+/* Other */
+.well-white {
+    background-color: white;
 }
