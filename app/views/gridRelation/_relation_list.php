@@ -3,8 +3,8 @@ $items = $model->$relation;
 $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $label));
 $fromLabel = Yii::t('app', $model->getModelLabel(), 1);
 ?>
-<h3><?php echo ucfirst(Yii::t("model", $label)); ?></h3>
 <?php if ($items): ?>
+    <h3><?php echo Yii::t("model", "List of ". $label ." in this ". lcfirst($fromLabel)); ?></h3>
     <ul>
         <?php foreach ($items as $item):
             if (get_class($item) == "Node") {
@@ -42,6 +42,4 @@ $fromLabel = Yii::t('app', $model->getModelLabel(), 1);
             </li>
         <?php endforeach; ?>
     </ul>
-<?php else: ?>
-    <div><?php echo Yii::t("model", $noItemsLabel); ?></div>
 <?php endif; ?>
