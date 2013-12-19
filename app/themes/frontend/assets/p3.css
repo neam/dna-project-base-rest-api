@@ -8274,6 +8274,7 @@ span.required {
   line-height: 11px;
   vertical-align: bottom;
 }
+.control-label.error span.required,
 .control-group.error span.required {
   color: #9d261d;
 }
