@@ -160,6 +160,18 @@ function publishJs($file, $position = null)
 }
 
 /**
+ * Publishes and registers a CSS file.
+ * @param string $file the CSS file.
+ * @param string $media
+ */
+function publishCss($file, $media = '')
+{
+    $filePath = Yii::app()->getBasePath() . $file;
+    $cssFile = Yii::app()->getAssetManager()->publish($filePath);
+    Yii::app()->clientScript->registerCssFile($cssFile, $media);
+}
+
+/**
  * Escapes the given string using CHtml::encode().
  * @param $text
  * @return string

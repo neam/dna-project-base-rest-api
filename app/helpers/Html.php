@@ -67,10 +67,23 @@ class Html extends TbHtml
      */
     public static function jsDirtyForms()
     {
+        self::jsFacebox(); // required by Dirty Forms
         publishJs('/themes/frontend/js/vendor/jquery.dirtyforms.js', CClientScript::POS_HEAD);
         publishJs('/themes/frontend/js/dirty-forms-ckeditor.js', CClientScript::POS_HEAD);
-        app()->clientScript->registerScript('registerDirtyForms', "$('form').dirtyForms();", CClientScript::POS_END);
+        app()->clientScript->registerScript('registerDirtyForms', "$('form.dirtyforms').dirtyForms();", CClientScript::POS_END);
         publishJs('/themes/frontend/js/toggle-dirty-buttons.js', CClientScript::POS_END); // show action buttons when form is dirty
+    }
+
+    /**
+     * Registers the Facebox jQuery plugin.
+     */
+    public static function jsFacebox()
+    {
+        publishJs('/themes/frontend/js/vendor/facebox/facebox.js', CClientScript::POS_HEAD);
+        publishCss('/themes/frontend/js/vendor/facebox/assets/facebox.css');
+        $closeImage = app()->baseUrl . '/images/facebox/closelabel.png';
+        $loadingImage = app()->baseUrl . '/images/facebox/loading.gif';
+        app()->clientScript->registerScript('registerFacebox', "$.facebox.settings.closeImage = '{$closeImage}'; $.facebox.settings.loadingImage = '{$loadingImage}'", CClientScript::POS_END);
     }
 
     /**

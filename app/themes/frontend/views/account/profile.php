@@ -14,6 +14,9 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
         'validateOnSubmit' => true,
     ),
     'type' => 'vertical',
+    'htmlOptions' => array(
+        'class' => 'dirtyforms',
+    ),
 )); ?>
     <div class="row">
         <div class="span9">
@@ -33,7 +36,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                         'label' => Yii::t('model', 'Undo'),
                         'url' => Yii::app()->request->url,
                         'htmlOptions' => array(
-                            'class' => 'btn-dirtyforms',
+                            'class' => 'btn-dirtyforms ignoredirty',
                         ),
                     )); ?>
                 </div>
@@ -140,7 +143,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                                     'label' => Yii::t('model', 'Undo'),
                                     'url' => Yii::app()->request->url,
                                     'htmlOptions' => array(
-                                        'class' => 'btn-dirtyforms',
+                                        'class' => 'btn-dirtyforms ignoredirty',
                                     ),
                                 )); ?>
                             </div>

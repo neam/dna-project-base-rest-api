@@ -16,7 +16,7 @@
 
     <?php Html::registerHeadTags(); ?>
     <?php Html::registerCss(); ?>
-    <?php //Html::jsDirtyForms(); ?>
+    <?php Html::jsDirtyForms(); ?>
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="60">

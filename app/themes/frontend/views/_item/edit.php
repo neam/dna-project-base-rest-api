@@ -7,7 +7,10 @@
         //'validateOnSubmit' => true,
     ),
     'type' => 'horizontal',
-    'htmlOptions' => array('enctype' => 'multipart/form-data'),
+    'htmlOptions' => array(
+        'class' => 'dirtyforms',
+        'enctype' => 'multipart/form-data',
+    ),
 )); ?>
 
 <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
@@ -65,7 +68,7 @@
                                     'label' => Yii::t('model', 'Reset'),
                                     'url' => Yii::app()->request->url,
                                     'htmlOptions' => array(
-                                        'class' => 'btn-dirtyforms'
+                                        'class' => 'btn-dirtyforms ignoredirty'
                                     ),
                                 ));
                         }

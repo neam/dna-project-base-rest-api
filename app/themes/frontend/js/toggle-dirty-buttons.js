@@ -1,5 +1,5 @@
 (function() {
-    var $form = $('form'),
+    var $form = $('form.dirtyforms'),
         $buttons = $('.btn-dirtyforms'),
         $linkButtons = $('a.btn-dirtyforms');
 
@@ -52,4 +52,9 @@
     });
 
     disableButtons(); // disable buttons by default
+
+    $.DirtyForms.dialog.fire = function(message, title) {
+        var content = '<div class="row-fluid"><div class="span12"><span class="facebox-title">' + title + '</span><p>' + message + '</p></div></div><div class="row-fluid"><a href="#" class="span6 ignoredirty button medium cancel">Stop</a><a href="#" class="span6 pull-right ignoredirty button medium red continue">Continue</a></div>';
+        $.facebox(content);
+    }
 })();
