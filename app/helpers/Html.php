@@ -40,7 +40,7 @@ class Html extends TbHtml
             case self::THEME_BACKEND2:
                 $path = 'css';
                 $files = array(
-                    'main.css',
+                    'backend.css',
                 );
                 break;
         }
