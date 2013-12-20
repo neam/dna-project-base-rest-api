@@ -94,6 +94,7 @@ $input = $this->widget('\GtcRelation', array(
             'label' => Yii::t('app', 'Upload'),
             'icon' => 'icon-plus',
             'htmlOptions' => array(
+                'class' => 'upload-btn',
                 'data-toggle' => 'modal',
                 'data-target' => '#' . $formId . '-modal',
             ),

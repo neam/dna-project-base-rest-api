@@ -26,6 +26,12 @@
         }
     });
 
+    // Make the form dirty when pressing an upload button (select2)
+    $form.find('.upload-btn').on('click', function() {
+        $form.dirtyForms('setDirty');
+        $form.trigger('change');
+    });
+
     // Look for dirty CKEditor fields
     if (typeof CKEDITOR !== 'undefined') {
         CKEDITOR.on('instanceReady', function() {
