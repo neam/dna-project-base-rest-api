@@ -8,5 +8,6 @@ nbproject
 *.swp
 .vagrant
 /components
+/bower_components
 www/graphs
 .idea/workspace.xml

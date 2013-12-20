@@ -34,7 +34,7 @@ $gcmsConfig = array(
     ),
     'aliases' => array(
         // bower components
-        'bower-components' => 'backend.components',
+        'bower-components' => 'backend.bower_components',
         // i18n
         'i18n-columns' => 'vendor.neam.yii-i18n-columns',
         'i18n-attribute-messages' => 'vendor.neam.yii-i18n-attribute-messages',
