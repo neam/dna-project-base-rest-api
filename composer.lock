@@ -1679,12 +1679,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/wrest.git",
-                "reference": "649cc876f77208bbaf2719a650426f97696b9738"
+                "reference": "e99851193d0cd7b1301e0dcfafaf11f6832496d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/wrest/zipball/649cc876f77208bbaf2719a650426f97696b9738",
-                "reference": "649cc876f77208bbaf2719a650426f97696b9738",
+                "url": "https://api.github.com/repos/neam/wrest/zipball/e99851193d0cd7b1301e0dcfafaf11f6832496d7",
+                "reference": "e99851193d0cd7b1301e0dcfafaf11f6832496d7",
                 "shasum": ""
             },
             "require": {
@@ -1715,7 +1715,7 @@
             "support": {
                 "source": "https://github.com/neam/wrest/tree/awaiting-prs"
             },
-            "time": "2013-12-02 15:45:23"
+            "time": "2013-12-04 01:57:07"
         },
         {
             "name": "yiiext/fancybox-widget",
