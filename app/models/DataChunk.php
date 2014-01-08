@@ -44,7 +44,7 @@ class DataChunk extends BaseDataChunk
             array(
 
                 // Ordinary validation rules
-                array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 66),
+                array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 66),
 
             )
         );
