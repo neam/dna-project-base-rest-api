@@ -66,6 +66,7 @@ $gcmsConfig = array(
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
         'vendor.weavora.wrest.behaviors.*',
+        'application.components.user.*',
         'application.behaviors.EzcWorkflowBehavior',
         'application.workflows.custom.*',
         'application.workflows.*',
@@ -117,8 +118,8 @@ $gcmsConfig = array(
         ),
         'user' => array(
             'controllerMap' => array(
-                'activation' => 'GMActivationController',
-                'registration' => 'GMRegistrationController',
+                'activation' => 'AppActivationController',
+                'registration' => 'AppRegistrationController',
             ),
         )
     ),

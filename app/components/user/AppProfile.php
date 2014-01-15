@@ -1,9 +1,9 @@
 <?php
 
 /**
- * GMProfile class.
+ * AppProfile class.
  */
-class GMProfile extends Profile
+class AppProfile extends Profile
 {
     /**
      * Returns the validation rules.

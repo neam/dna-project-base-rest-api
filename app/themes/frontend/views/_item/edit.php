@@ -1,6 +1,6 @@
-<?php /** @var GMActiveForm $form */ ?>
+<?php /** @var AppActiveForm $form */ ?>
 
-<?php $form = $this->beginWidget('GMActiveForm', array(
+<?php $form = $this->beginWidget('AppActiveForm', array(
     'id' => 'item-form',
     'enableAjaxValidation' => true,
     'clientOptions' => array(

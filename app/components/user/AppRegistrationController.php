@@ -2,7 +2,7 @@
 
 Yii::import('vendor.mishamx.yii-user.controllers.RegistrationController');
 
-class GMRegistrationController extends RegistrationController {
+class AppRegistrationController extends RegistrationController {
     /**
      * Registers a user.
      * @see RegistrationController::actionRegistration()
@@ -10,10 +10,10 @@ class GMRegistrationController extends RegistrationController {
     public function actionRegistration()
     {
         // TODO: 1. This method should be refactored. It is too cluttered.
-        // TODO: 2. Use ONE profile class throughout the entire app. Having multiple classes (Profiles, GMProfile) is confusing and creates duplicate code.
+        // TODO: 2. Use ONE profile class throughout the entire app. Having multiple classes (Profiles, AppProfile) is confusing and creates duplicate code.
         Profile::$regMode = true;
-        $model = new GMRegistrationForm;
-        $profile = new GMProfile;
+        $model = new AppRegistrationForm;
+        $profile = new AppProfile;
         $profile->language1 = 'sv';
 
         // ajax validator

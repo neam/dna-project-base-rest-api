@@ -2,7 +2,7 @@
 
 Yii::import('vendor.mishamx.yii-user.controllers.ActivationController');
 
-class GMActivationController extends ActivationController {
+class AppActivationController extends ActivationController {
     /**
      * Displays the user activation page.
      * @see ActivationController::actionActivation()

@@ -1,6 +1,6 @@
 <?php
 
-class GMActiveForm extends TbActiveForm
+class AppActiveForm extends TbActiveForm
 {
     /**
      * Renders a pre-rendered custom field input row.
