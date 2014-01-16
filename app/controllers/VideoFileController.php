@@ -141,7 +141,7 @@ class VideoFileController extends Controller
             $contents = file_get_contents($fullPath);
 
             // save to post
-            $_POST['VideoFile']['subtitles'] = $contents;
+            $_POST['VideoFile']['_subtitles'] = $contents;
 
             // emulate us hitting the save button
             $_POST['save-changes'] = true;
