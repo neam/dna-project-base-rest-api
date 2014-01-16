@@ -156,7 +156,7 @@ class Html extends TbHtml
             true, // hash by name
             -1, // level
             $forceCopy); // forceCopy
-        $cs->registerCssFile($assets . '/css/jquery.comment.css', CClientScript::POS_HEAD);
+        //$cs->registerCssFile($assets . '/css/jquery.comment.css', CClientScript::POS_HEAD); // TODO: Find out why these styles only work in Safari.
         $cs->registerScriptFile($assets . '/js/jquery.comment.js', CClientScript::POS_END);
 
     }
