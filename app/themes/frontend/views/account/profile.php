@@ -67,6 +67,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
         }
     </style>
     <div class="account-profile-grid">
+        <!--
         <div class="row">
             <div class="span12" style="line-height: 30px;">
                 <div class="pull-left">
@@ -97,14 +98,17 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                         'columns' => $columns,
                     )); ?>
                 </div>
+
                 <div class="pull-left">
                     <?php print Yii::t('account', 'Public profile'); ?>
                 </div>
                 <div class="pull-left" style="margin-left: 30px;">
                     <?php echo CHtml::link(Yii::t("model", "Show public page"), array("publicProfile", "id" => $model->{$model->tableSchema->primaryKey})); ?>
                 </div>
+
             </div>
         </div>
+        -->
         <div class="row">
             <div class="span9">
                 <div class="row-fluid">
