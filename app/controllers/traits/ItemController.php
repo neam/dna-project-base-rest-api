@@ -265,7 +265,7 @@ trait ItemController
     {
         if (isset($_POST["from_node_id"]) && is_numeric($_POST["from_node_id"])) {
             // Check if it's the (this) type or specified:
-            if (isset($_POST["toType"])){
+            if (isset($_POST["toType"])) {
                 $item = new $_POST["toType"]();
             } else {
                 $item = new $this->modelClass();
@@ -274,7 +274,7 @@ trait ItemController
             if (isset($_POST["newitemtitle"])) {
                 try {
                     $item->_title = $_POST["newitemtitle"];
-                } catch(Exception $e) {
+                } catch (Exception $e) {
                     // no title for this type
                 }
             }
@@ -286,7 +286,7 @@ trait ItemController
             $message = "{$this->modelClass} Added";
 
             // Add edge if specified:
-            if (isset($_POST["addEdge"]) && $_POST["addEdge"]=="true" && $_POST["from_node_id"] && $_POST["relation"]) {
+            if (isset($_POST["addEdge"]) && $_POST["addEdge"] == "true" && $_POST["from_node_id"] && $_POST["relation"]) {
                 $to_node_id = $item->node_id;
                 $from_node_id = $_POST["from_node_id"];
                 $relation = $_POST["relation"];
@@ -572,7 +572,7 @@ trait ItemController
         $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
         $this->breadcrumbs[] = $this->workflowData['caption'];
         $this->breadcrumbs[] = $stepCaptions[$step];
-        
+
         $this->render('/_item/edit', array(
             'model' => $model,
             'step' => $step,

@@ -24,7 +24,7 @@ class AppRegistrationForm extends RegistrationForm
             array('email', 'email'),
             array('username', 'unique', 'message' => UserModule::t("This user's name already exists.")),
             array('email', 'unique', 'message' => UserModule::t("This user's email address already exists.")),
-            array('verifyPassword', 'compare', 'compareAttribute'=>'password', 'message' => UserModule::t('Passwords do not match.')),
+            array('verifyPassword', 'compare', 'compareAttribute' => 'password', 'message' => UserModule::t('Passwords do not match.')),
             array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => UserModule::t('Invalid character. Allowed: A-z 0-9.')),
         );
 

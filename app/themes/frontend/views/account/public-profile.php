@@ -41,6 +41,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Public profile');
                 <div class="span12">
                     <h2><?php echo Yii::t('account', 'Photo'); ?></h2>
                     <img src="http://placehold.it/400x400" style="border: 1px solid black; width: 100%;">
+
                     <h2><?php echo Yii::t('account', 'About'); ?></h2>
                     <?php if (empty($model->profiles->about)): ?>
                         <div class="alert alert-info">

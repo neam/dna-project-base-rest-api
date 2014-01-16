@@ -11,15 +11,18 @@ if (!isset($this->menu) || $this->menu === array()) {
     );
 }
 ?>
-<h1><?php echo Yii::t('model', 'Chapters'); ?> <small><?php echo $this->itemDescriptionTooltip(); ?></small></h1>
+<h1><?php echo Yii::t('model', 'Chapters'); ?>
+    <small><?php echo $this->itemDescriptionTooltip(); ?></small>
+</h1>
 <style>
     .grid-view small {
-        display:block;
-        float:left;
-        margin-right:15px;
+        display: block;
+        float: left;
+        margin-right: 15px;
     }
+
     .grid-view h1 {
-        margin:0;
+        margin: 0;
     }
 </style>
 <?php $this->renderPartial("_toolbar"); ?>
@@ -39,11 +42,11 @@ $this->widget('TbGridView',
         'columns' => array(
             array(
                 'name' => '_title',
-                'value' => function($data){
+                'value' => function ($data) {
                         echo "<h1>";
                         echo $data->itemLabel;
-                        echo "<div class=\"group\"><small>Version: ".$data->version."</small>";
-                        echo "<small>Status: ".Yii::t('statuses', $data->qaStateBehavior()->statusLabel) ."</small></div>";
+                        echo "<div class=\"group\"><small>Version: " . $data->version . "</small>";
+                        echo "<small>Status: " . Yii::t('statuses', $data->qaStateBehavior()->statusLabel) . "</small></div>";
                         echo "</h1>";
                     }
             ),
@@ -67,7 +70,7 @@ $this->widget('TbGridView',
             array(
                 'header' => '',
                 'filter' => false,
-                'value' => function($data,$row){
+                'value' => function ($data, $row) {
                         echo "<div class=\"btn-group\">";
                         if (!user()->isGuest) {
                             $this->widget('bootstrap.widgets.TbButton', array(

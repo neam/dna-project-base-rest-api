@@ -90,7 +90,7 @@ $this->breadcrumbs = array(
             <?php echo $form->error($model, 'email'); ?>
         </div>
 
-        <?php $this->widget('frontend.widgets.SelectProfileLanguage.SelectProfileLanguage',array(
+        <?php $this->widget('frontend.widgets.SelectProfileLanguage.SelectProfileLanguage', array(
             'model' => $profile,
             'attributes' => array(
                 'language1',

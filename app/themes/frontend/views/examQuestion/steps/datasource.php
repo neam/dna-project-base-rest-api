@@ -15,18 +15,18 @@
     ),
 )); ?>
 
-<div class="control-group">
-    <div class="controls">
-        <?php echo $this->widget('bootstrap.widgets.TbButton', array(
-            'label' => Yii::t('app', 'Add Data source'),
-            'icon' => 'icon-plus',
-            'htmlOptions' => array(
-                'data-toggle' => 'modal',
-                'data-target' => '#addrelation-examquestion-datasource-modal',
-            ),
-        ), true); ?>
+    <div class="control-group">
+        <div class="controls">
+            <?php echo $this->widget('bootstrap.widgets.TbButton', array(
+                'label' => Yii::t('app', 'Add Data source'),
+                'icon' => 'icon-plus',
+                'htmlOptions' => array(
+                    'data-toggle' => 'modal',
+                    'data-target' => '#addrelation-examquestion-datasource-modal',
+                ),
+            ), true); ?>
+        </div>
     </div>
-</div>
 
 <?php $this->renderPartial('//gridRelation/_modal_form_single', array(
     'model' => $model,

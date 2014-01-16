@@ -10,9 +10,9 @@
 
 <?php if ($this->workflowData["translateInto"]) {
     echo $form->textFieldRow($model, 'title_' . $this->workflowData["translateInto"], array(
-        'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-from-2',
-        'maxlength' => 255,
-    ));
+            'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-from-2',
+            'maxlength' => 255,
+        ));
 } ?>
 
 <?php echo $form->textFieldRow($model, 'slug_en', array(
@@ -25,9 +25,9 @@
 
 <?php if ($this->workflowData['translateInto']) {
     echo $form->textFieldRow($model, 'slug_' . $this->workflowData['translateInto'], array(
-        'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-2',
-        'maxlength' => 255,
-    ));
+            'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-2',
+            'maxlength' => 255,
+        ));
 } ?>
 
 <?php Html::jsSlugIt(array(

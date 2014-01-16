@@ -4,6 +4,7 @@ class SnapshotController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "Snapshot";
 
     public $defaultAction = "admin";

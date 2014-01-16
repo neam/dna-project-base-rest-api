@@ -4,6 +4,7 @@ class ExamQuestionController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "ExamQuestion";
 
     #public $layout='//layouts/column2';

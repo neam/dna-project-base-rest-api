@@ -4,6 +4,7 @@ class TextDocController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "TextDoc";
 
     #public $layout='//layouts/column2';

@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<?php $this->renderPartial( '//gridRelation/_modal_form', array(
+<?php $this->renderPartial('//gridRelation/_modal_form', array(
     'model' => $model,
     'relation' => 'related',
     'toType' => '',

@@ -4,6 +4,7 @@ class HtmlChunkController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "HtmlChunk";
 
     #public $layout='//layouts/column2';

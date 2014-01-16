@@ -9,8 +9,8 @@
 
 <?php if ($this->workflowData['translateInto']) {
     echo $form->textAreaRow($model, 'about_' . $this->workflowData['translateInto'], array(
-        'class' => Html::ITEM_FORM_FIELD_CLASS,
-        'rows' => 6,
-        'cols' => 50,
-    ));
+            'class' => Html::ITEM_FORM_FIELD_CLASS,
+            'rows' => 6,
+            'cols' => 50,
+        ));
 } ?>

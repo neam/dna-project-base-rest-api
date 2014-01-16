@@ -4,6 +4,7 @@ class SlideshowFileController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "SlideshowFile";
 
     #public $layout='//layouts/column2';

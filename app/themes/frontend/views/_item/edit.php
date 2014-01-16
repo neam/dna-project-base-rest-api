@@ -3,8 +3,7 @@
 <?php $form = $this->beginWidget('AppActiveForm', array(
     'id' => 'item-form',
     'enableAjaxValidation' => true,
-    'clientOptions' => array(
-        //'validateOnSubmit' => true,
+    'clientOptions' => array(//'validateOnSubmit' => true,
     ),
     'type' => 'horizontal',
     'htmlOptions' => array(

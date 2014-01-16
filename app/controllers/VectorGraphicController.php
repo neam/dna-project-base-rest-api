@@ -4,6 +4,7 @@ class VectorGraphicController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "VectorGraphic";
 
     #public $layout='//layouts/column2';

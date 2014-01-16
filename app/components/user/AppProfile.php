@@ -10,7 +10,7 @@ class AppProfile extends Profile
      * @return array
      */
     public function rules()
-	{
+    {
         return array_merge(parent::rules(), array(
             array('language1, language2, language3, language4, language5', 'safe'),
         ));

@@ -2,12 +2,13 @@
 
 Yii::import('vendor.mishamx.yii-user.controllers.ActivationController');
 
-class AppActivationController extends ActivationController {
+class AppActivationController extends ActivationController
+{
     /**
      * Displays the user activation page.
      * @see ActivationController::actionActivation()
      */
-    public function actionActivation ()
+    public function actionActivation()
     {
         $email = $_GET['email'];
         $activkey = $_GET['activkey'];

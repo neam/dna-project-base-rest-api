@@ -4,13 +4,14 @@
 <div class="row-fluid">
     <div class="span4">
         <?php
-            $relation = 'pictureMedia';
-            $attribute = 'picture_media_id';
-            $step = 'profile';
-            $mimeTypes = array('image/jpeg', 'image/png');
-            $this->renderPartial('//p3Media/_select', compact('model', 'form', 'relation', 'attribute', 'step', 'mimeTypes'));
+        $relation = 'pictureMedia';
+        $attribute = 'picture_media_id';
+        $step = 'profile';
+        $mimeTypes = array('image/jpeg', 'image/png');
+        $this->renderPartial('//p3Media/_select', compact('model', 'form', 'relation', 'attribute', 'step', 'mimeTypes'));
         ?>
-        <h3><?php echo Yii::t('app','Languages'); ?> <?php echo Html::hintTooltip(Yii::t('app', 'Please list the languages you can help us translate into (sorted by proficiency).')); ?></h3>
+        <h3><?php echo Yii::t('app', 'Languages'); ?> <?php echo Html::hintTooltip(Yii::t('app', 'Please list the languages you can help us translate into (sorted by proficiency).')); ?></h3>
+
         <div class="row-fluid">
             <?php $this->widget('frontend.widgets.SelectProfileLanguage.SelectProfileLanguage', array(
                 'model' => $model,

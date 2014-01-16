@@ -2,7 +2,8 @@
 
 Yii::import('vendor.mishamx.yii-user.controllers.RegistrationController');
 
-class AppRegistrationController extends RegistrationController {
+class AppRegistrationController extends RegistrationController
+{
     /**
      * Registers a user.
      * @see RegistrationController::actionRegistration()
@@ -58,8 +59,9 @@ class AppRegistrationController extends RegistrationController {
 
                         if ((Yii::app()->controller->module->loginNotActiv
                                 || (Yii::app()->controller->module->activeAfterRegister
-                                && Yii::app()->controller->module->sendActivationMail == false))
-                                && Yii::app()->controller->module->autoLogin) {
+                                    && Yii::app()->controller->module->sendActivationMail == false))
+                            && Yii::app()->controller->module->autoLogin
+                        ) {
                             $identity = new UserIdentity($model->username, $soucePassword);
                             $identity->authenticate();
                             Yii::app()->user->login($identity, 0);

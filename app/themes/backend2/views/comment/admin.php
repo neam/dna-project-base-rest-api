@@ -64,12 +64,12 @@ $this->widget('TbGridView',
             array(
                 'name' => 'author_user_id',
                 'value' => 'CHtml::value($data, \'authorUser.itemLabel\')',
-                'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'parent_id',
                 'value' => 'CHtml::value($data, \'comments.itemLabel\')',
-                'filter' => '',//CHtml::listData(Comment::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Comment::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             #'_comment',
             array(

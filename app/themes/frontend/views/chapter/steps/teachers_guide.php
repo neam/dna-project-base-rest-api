@@ -31,14 +31,14 @@
 
 <?php if ($this->workflowData['translateInto']) {
     echo $form->ckEditorRow($model, 'teachers_guide_' . $this->workflowData['translateInto'], array(
-        'rows' => 6,
-        'cols' => 50,
-        'class' => 'span6',
-        'options' => array(
-            'fullpage' => 'js:true',
-            'width' => '640',
-            'resize_maxWidth' => '640',
-            'resize_minWidth' => '320',
-        ),
-    ));
+            'rows' => 6,
+            'cols' => 50,
+            'class' => 'span6',
+            'options' => array(
+                'fullpage' => 'js:true',
+                'width' => '640',
+                'resize_maxWidth' => '640',
+                'resize_minWidth' => '320',
+            ),
+        ));
 } ?>

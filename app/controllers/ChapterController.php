@@ -4,6 +4,7 @@ class ChapterController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "Chapter";
 
     #public $layout='//layouts/column2';
@@ -277,7 +278,7 @@ class ChapterController extends Controller
             $model->attributes = $_GET['Chapter'];
         }
 
-        $this->render('index', array('model'=>$model, 'dataProvider' => $dataProvider,));
+        $this->render('index', array('model' => $model, 'dataProvider' => $dataProvider,));
     }
 
     public function actionAdmin()

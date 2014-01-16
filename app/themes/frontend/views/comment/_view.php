@@ -1,35 +1,35 @@
 <div class="view well well-white">
 
     <div class="admin-container hide">
-            <?php echo CHtml::link('<i class="icon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Comment'))), array('comment/view', 'id' => $data->id), array('class' => 'btn')); ?>
+        <?php echo CHtml::link('<i class="icon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Comment'))), array('comment/view', 'id' => $data->id), array('class' => 'btn')); ?>
     </div>
     <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($data->id), array('comment/view', 'id' => $data->id)); ?>
-    <br />
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('author_user_id')); ?>:</b>
     <?php echo CHtml::encode($data->author_user_id); ?>
-    <br />
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('parent_id')); ?>:</b>
     <?php echo CHtml::encode($data->parent_id); ?>
-    <br />
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('_comment')); ?>:</b>
     <?php echo CHtml::encode($data->_comment); ?>
-    <br />
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('context_model')); ?>:</b>
     <?php echo CHtml::encode($data->context_model); ?>
-    <br />
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('context_id')); ?>:</b>
     <?php echo CHtml::encode($data->context_id); ?>
-    <br />
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('context_attribute')); ?>:</b>
     <?php echo CHtml::encode($data->context_attribute); ?>
-    <br />
+    <br/>
 
     <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('context_translate_into')); ?>:</b>

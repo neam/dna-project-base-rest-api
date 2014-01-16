@@ -21,12 +21,12 @@ Yii::app()->clientScript->registerScript('search', "
     ");
 ?>
 
-<h1>
+    <h1>
 
-    <?php echo Yii::t('model', 'Chapter Qa States'); ?>
-    <small><?php echo Yii::t('crud', 'Manage'); ?></small>
+        <?php echo Yii::t('model', 'Chapter Qa States'); ?>
+        <small><?php echo Yii::t('crud', 'Manage'); ?></small>
 
-</h1>
+    </h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <?php Yii::beginProfile('ChapterQaState.view.grid'); ?>

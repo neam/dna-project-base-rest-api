@@ -4,6 +4,7 @@ class ExamQuestionAlternativeController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "ExamQuestionAlternative";
     public $defaultAction = "admin";
     public $scenario = "crud";

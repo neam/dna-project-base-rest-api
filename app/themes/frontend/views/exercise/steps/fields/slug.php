@@ -1,16 +1,16 @@
 <?php echo $form->textFieldRow($model, 'slug_' . $model->source_language, array(
-    'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-1',
-    'maxlength' => 255,
-    'labelOptions' => array(
-        'label' => Html::attributeLabelWithTooltip($model, 'slug_' . $model->source_language, 'slug'),
-    ),
-)); ?>
+        'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-1',
+        'maxlength' => 255,
+        'labelOptions' => array(
+            'label' => Html::attributeLabelWithTooltip($model, 'slug_' . $model->source_language, 'slug'),
+        ),
+    )); ?>
 
 <?php if ($this->workflowData['translateInto']) {
     echo $form->textFieldRow($model, 'slug_' . $this->workflowData['translateInto'], array(
-        'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-2',
-        'maxlength' => 255,
-    ));
+            'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-2',
+            'maxlength' => 255,
+        ));
 } ?>
 
 <?php Html::jsSlugIt(array(
