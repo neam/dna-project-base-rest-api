@@ -7482,7 +7482,7 @@ i[class*=" icon-"] {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }
-.profile-language-fields span.required {
+.profile-language-fields .required-red span.required {
   color: #9d261d;
 }
 html {
