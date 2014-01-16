@@ -59,5 +59,7 @@ if (!isset($_GET['parent_form'])) {
 </script>
 
 <?php
-$this->widget('jquery-file-upload-widget.EFileUpload');
+$this->widget('jquery-file-upload-widget.EFileUpload', array(
+    'view' => 'application.views.p3Media.fileUpload',
+));
 ?>
