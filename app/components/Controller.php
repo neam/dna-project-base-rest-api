@@ -96,7 +96,7 @@ class Controller extends CController
     /**
      * Sets the page title.
      * @param string|array $title the full title or an array of title fragments.
-     * @param bool'ean $includeAppName whether to include the app name in the page title. Defaults to false.
+     * @param boolean $includeAppName whether to include the app name in the page title. Defaults to false.
      * @param string $separator the separator character (and whitespace) between fragments.
      * @override CController::setPageTitle()
      */
