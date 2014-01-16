@@ -36,7 +36,7 @@ class Comment extends BaseComment
                     'class' => 'I18nAttributeMessagesBehavior',
                     'translationAttributes' => array('comment'),
                     'languageSuffixes' => array_keys(Yii::app()->params["languages"]),
-                    'messageSourceComponent' => 'dbMessages',
+                    'messageSourceComponent' => 'displayedMessages',
                 ),
             )
         );
