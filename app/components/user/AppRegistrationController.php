@@ -28,9 +28,9 @@ class AppRegistrationController extends RegistrationController
         if (Yii::app()->user->id) {
             $this->redirect(Yii::app()->controller->module->profileUrl);
         } else {
-            if (isset($_POST['GMRegistrationForm'])) {
-                $model->attributes = $_POST['GMRegistrationForm'];
-                $profile->attributes = ((isset($_POST['GMProfile']) ? $_POST['GMProfile'] : array()));
+            if (isset($_POST['AppRegistrationForm'])) {
+                $model->attributes = $_POST['AppRegistrationForm'];
+                $profile->attributes = ((isset($_POST['AppProfile']) ? $_POST['AppProfile'] : array()));
 
                 if ($model->validate() && $profile->validate()) {
                     $soucePassword = $model->password;
