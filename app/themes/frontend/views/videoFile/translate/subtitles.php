@@ -49,13 +49,20 @@ $this->widget('TbGridView', array(
                     $sourceMessage = SourceMessage::ensureSourceMessage($category, $message, $language);
 
                     $currentTranslation = Yii::t($category, $message, array(), 'editedMessages', $translateInto);
+                    $currentFallbackTranslation = Yii::t($category, $message, array(), 'displayedMessages', $translateInto);
+
+                    if ($message == $currentFallbackTranslation) {
+                        $emptytext = 'Write {translateIntoLanguage} here';
+                    } else {
+                        $emptytext = 'Write {translateIntoLanguage} here. If left empty, the translation is "{currentFallbackTranslation}"';
+                    }
 
                     $this->widget('TbEditableField', array(
                         'type' => 'text',
                         'text' => $currentTranslation,
                         'model' => $sourceMessage,
                         'attribute' => 'translation',
-                        'emptytext' => Yii::t('app', 'Write {translateIntoLanguage} here', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])),
+                        'emptytext' => Yii::t('app', $emptytext, array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto], '{currentFallbackTranslation}' => $currentFallbackTranslation)),
                         'url' => $this->createUrl('sourceMessage/editableTranslationSaver', array('id' => $sourceMessage->id, 'translateInto' => $translateInto)),
                     ));
 
