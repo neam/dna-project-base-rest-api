@@ -60,6 +60,7 @@
                             'icon' => 'icon-edit',
                             'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
                             'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey}),
+                            'visible' => Yii::app()->user->checkAccess('Item.Edit')
                         ));
                         if ($this->action->id == 'preview' || $this->action->id == 'index') {
                             $this->widget('bootstrap.widgets.TbButton', array(
