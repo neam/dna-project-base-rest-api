@@ -263,7 +263,24 @@ class VideoFileController extends Controller
 
     public function actionIndex()
     {
+        $criteria = new CDbCriteria();
+
+        // Fetch own nodes
+
+
+        if (Yii::app()->user->checkAccess('Item.Translate')) {
+            // Translators should only see videos which are in testable mode or higher
+            $criteria->join = 'INNER JOIN video_file_qa_state qs ON video_file_qa_state_id = qs.id';
+            $criteria->addInCondition('status', array('preview', 'public'));
+        }
+
+
+        if (Yii::app()->user->checkAccess('Administrator')) {
+            $criteria = array();
+        }
+
         $dataProvider = new CActiveDataProvider('VideoFile');
+        $dataProvider->setCriteria($criteria);
         $this->render('index', array('dataProvider' => $dataProvider,));
     }
 
