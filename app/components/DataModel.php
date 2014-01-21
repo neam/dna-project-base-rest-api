@@ -11,14 +11,7 @@ class DataModel
     {
 
         return array(
-            'DataChunk' => 'data_chunk',
-            'DataSource' => 'data_source',
-            'ExamQuestion' => 'exam_question',
-            'SlideshowFile' => 'slideshow_file',
             'Snapshot' => 'snapshot',
-            'TextDoc' => 'text_doc',
-            'Tool' => 'tool',
-            'VectorGraphic' => 'vector_graphic',
             'VideoFile' => 'video_file',
         );
 
@@ -28,8 +21,14 @@ class DataModel
     {
 
         return array(
+            'DataChunk' => 'data_chunk',
+            'DataSource' => 'data_source',
             'Chapter' => 'chapter',
             'Exercise' => 'exercise',
+            'ExamQuestion' => 'exam_question',
+            'SlideshowFile' => 'slideshow_file',
+            'TextDoc' => 'text_doc',
+            'VectorGraphic' => 'vector_graphic',
         );
 
     }
@@ -43,6 +42,7 @@ class DataModel
             'Page' => 'page',
             'Section' => 'section',
             'SectionContent' => 'section_content',
+            'Tool' => 'tool',
         );
 
     }
