@@ -17,7 +17,7 @@ class VideoFile extends BaseVideoFile
 
     public function init()
     {
-        $this->itemDescription = Yii::t('itemDescription', 'There are several types of videos with different purposes: Chapter sumary, Answering questions (title should be a questions) and giving ideas of different ways of doing an exercise.');
+        $this->itemDescription = Yii::t('itemDescription', 'There are several types of videos with different purposes: Chapter summary, answering questions (title should be a questions) and giving ideas of different ways of doing an exercise.');
         return parent::init();
     }
 
