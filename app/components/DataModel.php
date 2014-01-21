@@ -201,7 +201,7 @@ class DataModel
             'TextDoc' => 'n==0#Text doc(s)|n==1#Text doc|n>1#Text docs',
             'Tool' => 'n==0#Tool(s)|n==1#Tool|n>1#Tools',
             'VectorGraphic' => 'n==0#Vector graphic(s)|n==1#Vector graphic|n>1#Vector graphics',
-            'VideoFile' => 'n==0#Video file(s)|n==1#Video file|n>1#Video files',
+            'VideoFile' => 'n==0#Video(s)|n==1#Video|n>1#Videos',
         );
     }
 
