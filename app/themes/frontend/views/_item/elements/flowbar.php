@@ -62,6 +62,12 @@
                             'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey}),
                             'visible' => Yii::app()->user->checkAccess('Item.Edit')
                         ));
+                        $this->widget('bootstrap.widgets.TbButton', array(
+                            'label' => Yii::t('model', 'Translate'),
+                            "icon" => "icon-globe" . ($this->action->id == "translationOverview" ? " icon-white" : null),
+                            "url" => array("translationOverview", "id" => $model->{$model->tableSchema->primaryKey}),
+                            'visible' => Yii::app()->user->checkAccess('Item.Translate') && $this->action->id !== "translationOverview",
+                        ));
                         if ($this->action->id == 'preview' || $this->action->id == 'index') {
                             $this->widget('bootstrap.widgets.TbButton', array(
                                 'label' => Yii::t('model', 'View'),

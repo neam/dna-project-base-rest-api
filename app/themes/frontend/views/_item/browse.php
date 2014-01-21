@@ -80,6 +80,13 @@ $this->widget('TbGridView',
                             ));
                         }
                         $this->widget('bootstrap.widgets.TbButton', array(
+                            'label' => Yii::t('model', 'Translate'),
+                            "type" => $this->action->id == "translationOverview" ? "inverse" : null,
+                            "icon" => "icon-globe" . ($this->action->id == "translationOverview" ? " icon-white" : null),
+                            "url" => array("translationOverview", "id" => $data->{$data->tableSchema->primaryKey}),
+                            'visible' => Yii::app()->user->checkAccess('Item.Translate'),
+                        ));
+                        $this->widget('bootstrap.widgets.TbButton', array(
                             'label' => Yii::t('model', 'View'),
                             'icon' => 'icon-eye-open',
                             'type' => $this->action->id != 'view' ? '' : 'inverse',
