@@ -121,6 +121,8 @@ $gcmsConfig = array(
                 'activation' => 'AppActivationController',
                 'registration' => 'AppRegistrationController',
             ),
+            'returnUrl' => array('/'),
+            'profileUrl' => array('/account/dashboard'),
         )
     ),
     'components' => array(
@@ -195,9 +197,6 @@ $gcmsConfig = array(
             'class' => 'application.components.EzcComponent',
             'tablePrefix' => 'ezc_',
         ),
-        'user' => array(
-            'returnUrl' => array('/'),
-        )
     )
 );
 
