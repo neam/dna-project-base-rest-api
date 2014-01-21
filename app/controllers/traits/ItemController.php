@@ -32,7 +32,7 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
-                    'index',
+                    'browse',
                 ),
                 'roles' => array(
                     (DataModel::isGoModel($this->modelClass) || DataModel::educationalContentModels($this->modelClass) || DataModel::websiteContentModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
@@ -284,6 +284,20 @@ trait ItemController
             return $step;
         }
         return null;
+    }
+
+    public function actionBrowse()
+    {
+        $dataProvider = new CActiveDataProvider($this->modelClass);
+
+        $model = new $this->modelClass('search');
+        $model->unsetAttributes();
+
+        if (isset($_GET[$this->modelClass])) {
+            $model->attributes = $_GET[$this->modelClass];
+        }
+
+        $this->render('/_item/browse', array('model' => $model, 'dataProvider' => $dataProvider,));
     }
 
     public function actionAdd()

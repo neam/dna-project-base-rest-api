@@ -8,7 +8,7 @@ $model = new $modelClass();
         "label" => Yii::t("model", "Browse"),
         "size" => "",
         "icon" => "icon-forward",
-        "url" => array(lcfirst($modelClass) . "/index"),
+        "url" => array(lcfirst($modelClass) . "/browse"),
         "visible" => Yii::app()->user->checkAccess("Item.Browse"),
     ));
     ?>

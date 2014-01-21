@@ -24,14 +24,13 @@ class ChapterController extends Controller
         return array_merge($this->itemAccessRules(), array(
             array('allow',
                 'actions' => array(
-                    'index',
                     'view',
                 ),
                 'users' => array('*'),
             ),
             array('allow',
                 'actions' => array(
-                    'view',
+                    'index',
                     'create',
                     'update',
                     'edit',
