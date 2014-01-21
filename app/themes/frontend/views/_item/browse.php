@@ -71,14 +71,13 @@ $this->widget('TbGridView',
                 'filter' => false,
                 'value' => function ($data, $row) {
                         echo "<div class=\"btn-group\">";
-                        if (!user()->isGuest) {
-                            $this->widget('bootstrap.widgets.TbButton', array(
-                                'label' => Yii::t('model', 'Edit'),
-                                'icon' => 'icon-edit',
-                                'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
-                                'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $data->{$data->tableSchema->primaryKey}),
-                            ));
-                        }
+                        $this->widget('bootstrap.widgets.TbButton', array(
+                            'label' => Yii::t('model', 'Edit'),
+                            'icon' => 'icon-edit',
+                            'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
+                            'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $data->{$data->tableSchema->primaryKey}),
+                            'visible' => Yii::app()->user->checkAccess('Item.Edit'),
+                        ));
                         $this->widget('bootstrap.widgets.TbButton', array(
                             'label' => Yii::t('model', 'Translate'),
                             "type" => $this->action->id == "translationOverview" ? "inverse" : null,
@@ -91,6 +90,7 @@ $this->widget('TbGridView',
                             'icon' => 'icon-eye-open',
                             'type' => $this->action->id != 'view' ? '' : 'inverse',
                             'url' => array('view', 'id' => $data->{$data->tableSchema->primaryKey}),
+                            'visible' => Yii::app()->user->checkAccess('Item.View'),
                         ));
                         $this->widget('bootstrap.widgets.TbButton', array(
                             'label' => Yii::t('model', 'Go!'),
@@ -100,6 +100,7 @@ $this->widget('TbGridView',
                             'htmlOptions' => array(
                                 'target' => '_blank',
                             ),
+                            'visible' => Yii::app()->user->checkAccess('Item.Go'),
                         ));
                         echo "</div>";
                     }

@@ -38,7 +38,6 @@
                     <div class="btn-group">
 
                         <?php
-
                         $this->widget('bootstrap.widgets.TbButton', array(
                             'label' => Yii::t('model', 'Go!'),
                             'icon' => 'icon-play',
@@ -47,6 +46,7 @@
                             'htmlOptions' => array(
                                 'target' => '_blank',
                             ),
+                            'visible' => DataModel::isGoModel($model),
                         ));
 
                         ?>
@@ -60,7 +60,7 @@
                             'icon' => 'icon-edit',
                             'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
                             'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey}),
-                            'visible' => Yii::app()->user->checkAccess('Item.Edit')
+                            'visible' => Yii::app()->user->checkAccess('Item.Edit'),
                         ));
                         $this->widget('bootstrap.widgets.TbButton', array(
                             'label' => Yii::t('model', 'Translate'),
@@ -81,6 +81,7 @@
                                 'icon' => 'icon-eye-open',
                                 'type' => $this->action->id != 'preview' ? '' : 'inverse',
                                 'url' => array('preview', 'id' => $model->{$model->tableSchema->primaryKey}, 'editingUrl' => $this->action->id == 'view' ? null : Yii::app()->request->url),
+                                'visible' => Yii::app()->user->checkAccess('Item.Preview'),
                             ));
                         }
                         ?>
