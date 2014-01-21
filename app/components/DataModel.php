@@ -164,21 +164,21 @@ class DataModel
     {
         return array(
             'Chapter' => 'n==0#Chapter(s)|n==1#Chapter|n>1#Chapters',
-            'DataChunk' => 'n==0#DataChunk(s)|n==1#DataChunk|n>1#DataChunks',
-            'DataSource' => 'n==0#DataSource(s)|n==1#DataSource|n>1#DataSources',
-            'DownloadLink' => 'n==0#DownloadLink(s)|n==1#DownloadLink|n>1#DownloadLinks',
-            'ExamQuestion' => 'n==0#ExamQuestion(s)|n==1#ExamQuestion|n>1#ExamQuestions',
-            'ExamQuestionAlternative' => 'n==0#ExamQuestionAlternative(s)|n==1#ExamQuestionAlternative|n>1#ExamQuestionAlternatives',
+            'DataChunk' => 'n==0#Data chunk(s)|n==1#Data chunk|n>1#Data chunks',
+            'DataSource' => 'n==0#Data source(s)|n==1#Data source|n>1#Data sources',
+            'DownloadLink' => 'n==0#Download link(s)|n==1#Download link|n>1#Download links',
+            'ExamQuestion' => 'n==0#Exam question(s)|n==1#Exam question|n>1#Exam questions',
+            'ExamQuestionAlternative' => 'n==0#Exam question alternative(s)|n==1#Exam question alternative|n>1#Exam question alternatives',
             'Exercise' => 'n==0#Exercise(s)|n==1#Exercise|n>1#Exercises',
-            'HtmlChunk' => 'n==0#HtmlChunk(s)|n==1#HtmlChunk|n>1#HtmlChunks',
+            'HtmlChunk' => 'n==0#Html chunk(s)|n==1#Html chunk|n>1#Html chunks',
             'Node' => 'n==0#Node(s)|n==1#Node|n>1#Nodes',
-            'PoFile' => 'n==0#PoFile(s)|n==1#PoFile|n>1#PoFiles',
-            'SlideshowFile' => 'n==0#SlideshowFile(s)|n==1#SlideshowFile|n>1#SlideshowFiles',
+            'PoFile' => 'n==0#.po-file(s)|n==1#.po-file|n>1#.po-files',
+            'SlideshowFile' => 'n==0#Slideshow file(s)|n==1#Slideshow file|n>1#Slideshow files',
             'Snapshot' => 'n==0#Snapshot(s)|n==1#Snapshot|n>1#Snapshots',
-            'TextDoc' => 'n==0#TextDoc(s)|n==1#TextDoc|n>1#TextDocs',
+            'TextDoc' => 'n==0#Text doc(s)|n==1#Text doc|n>1#Text docs',
             'Tool' => 'n==0#Tool(s)|n==1#Tool|n>1#Tools',
-            'VectorGraphic' => 'n==0#VectorGraphic(s)|n==1#VectorGraphic|n>1#VectorGraphics',
-            'VideoFile' => 'n==0#VideoFile(s)|n==1#VideoFile|n>1#VideoFiles',
+            'VectorGraphic' => 'n==0#Vector graphic(s)|n==1#Vector graphic|n>1#Vector graphics',
+            'VideoFile' => 'n==0#Video file(s)|n==1#Video file|n>1#Video files',
         );
     }
 
