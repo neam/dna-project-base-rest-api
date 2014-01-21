@@ -5,12 +5,11 @@ trait ItemController
 
     public function itemAccessRules()
     {
-        return array(
+        $return = array(
             array('allow',
                 'actions' => array(
                     'continueAuthoring',
                     'nextRequired',
-                    'go',
                     'cancel',
                 ),
                 'users' => array('*'),
@@ -158,6 +157,21 @@ trait ItemController
                 ),
             ),
         );
+
+        // Allow all users to se the "go", "view" and index pages of go items
+        $browseGoItems = array('allow',
+            'actions' => array(
+                'go',
+            )
+        );
+        if (DataModel::isGoModel($this->modelClass)) {
+            $browseGoItems['users'] = array('*');
+        } else {
+            $browseGoItems['roles'] = array('Developer');
+        }
+        $return[] = $browseGoItems;
+
+        return $return;
     }
 
     public function actionContinueAuthoring($id)

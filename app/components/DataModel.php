@@ -251,5 +251,20 @@ class DataModel
         );
     }
 
+    /**
+     * @param $modelClass
+     * @return bool
+     */
+    static function isGoModel($modelOrModelClass)
+    {
+        if (is_object($modelOrModelClass)) {
+            $modelClass = get_class($modelOrModelClass);
+        } else {
+            $modelClass = $modelOrModelClass;
+        }
+        return in_array($modelClass, array_keys(self::goItemModels()));
+    }
+
+
 }
 
