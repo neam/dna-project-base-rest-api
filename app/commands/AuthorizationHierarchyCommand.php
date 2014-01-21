@@ -60,7 +60,7 @@ EOD;
 
         foreach (array('GapminderSchool', 'DollarStreet', 'IgnoranceProject', 'HumanNumbers', '') as $project) {
 
-            $prefix = !empty($project) ? $project . '.' : $project;
+            $prefix = !empty($project) ? $project . '.' : '';
 
             // Atomic actions are called operations
             $auth->createOperation($prefix . 'Item.Browse', 'Browse amongst items');
