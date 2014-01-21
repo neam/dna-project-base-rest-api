@@ -189,6 +189,7 @@ $gcmsConfig = array(
         'authManager' => array(
             'class' => 'vendor.codemix.hybridauthmanager.HybridAuthManager',
             'authFile' => Yii::getPathOfAlias('backend') . '/app/data/auth-gcms.php',
+            'defaultRoles' => array('Authenticated'),
         ),
         'assetManager' => array(
             'class' => 'AssetManager',

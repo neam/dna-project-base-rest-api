@@ -16,6 +16,30 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
+                    'go',
+                ),
+                'roles' => array(
+                    DataModel::isGoModel($this->modelClass) ? 'Item.Go' : 'Developer' // TODO: Refactor this
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'view',
+                ),
+                'roles' => array(
+                    DataModel::isGoModel($this->modelClass) ? 'Item.View' : 'Developer' // TODO: Refactor this
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'index',
+                ),
+                'roles' => array(
+                    DataModel::isGoModel($this->modelClass) ? 'Item.Browse' : 'Developer' // TODO: Refactor this
+                ),
+            ),
+            array('allow',
+                'actions' => array(
                     'add',
                 ),
                 'roles' => array(
@@ -157,19 +181,6 @@ trait ItemController
                 ),
             ),
         );
-
-        // Allow all users to se the "go", "view" and index pages of go items
-        $browseGoItems = array('allow',
-            'actions' => array(
-                'go',
-            )
-        );
-        if (DataModel::isGoModel($this->modelClass)) {
-            $browseGoItems['users'] = array('*');
-        } else {
-            $browseGoItems['roles'] = array('Developer');
-        }
-        $return[] = $browseGoItems;
 
         return $return;
     }

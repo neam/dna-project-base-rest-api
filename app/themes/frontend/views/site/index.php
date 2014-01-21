@@ -41,6 +41,7 @@
             "size" => "",
             "icon" => "icon-forward",
             "url" => array(lcfirst($modelClass) . "/index"),
+            "visible" => Yii::app()->user->checkAccess("Item.Browse"),
         ));
         ?>
     </div>
