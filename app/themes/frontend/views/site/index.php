@@ -23,42 +23,34 @@
     Contents
 </h2>
 -->
-<?php //foreach (DataModel::qaModels() as $modelClass => $table): ?>
-<?php foreach (DataModel::goItemModels() as $modelClass => $table): ?>
+<h2><?php print Yii::t('app', 'Go-items'); ?></h2>
+<?php foreach (DataModel::goItemModels() as $modelClass => $table):
 
-    <?php if ($table == "exam_question_alternative") {
+    if ($table == "exam_question_alternative") {
         continue;
-    } ?>
+    }
+    $this->renderPartial("_item-type-introduction", compact("modelClass"));
 
-    <?php
-    $model = new $modelClass();
-    ?>
+endforeach; ?>
 
-    <div class="pull-right">
-        <?php
-        $this->widget("bootstrap.widgets.TbButton", array(
-            "label" => Yii::t("model", "Browse"),
-            "size" => "",
-            "icon" => "icon-forward",
-            "url" => array(lcfirst($modelClass) . "/index"),
-            "visible" => Yii::app()->user->checkAccess("Item.Browse"),
-        ));
-        ?>
-    </div>
+<h2><?php print Yii::t('app', 'Educational Content'); ?></h2>
 
+<?php foreach (DataModel::educationalContentModels() as $modelClass => $table):
 
-    <h3><?php print Yii::t('model', $model->modelLabel, 2); ?></h3>
+    if ($table == "exam_question_alternative") {
+        continue;
+    }
+    $this->renderPartial("_item-type-introduction", compact("modelClass"));
 
-    <div class="well">
+endforeach; ?>
 
-        <?php
-        echo CHtml::encode($model->itemDescription);
-        ?>
+<h2><?php print Yii::t('app', 'Website Content'); ?></h2>
 
-    </div>
-    <div class="clear"></div>
+<?php foreach (DataModel::websiteContentModels() as $modelClass => $table):
 
-<?php endforeach; ?>
+    if ($table == "exam_question_alternative") {
+        continue;
+    }
+    $this->renderPartial("_item-type-introduction", compact("modelClass"));
 
-<hr>
-
+endforeach; ?>

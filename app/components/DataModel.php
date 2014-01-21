@@ -11,18 +11,38 @@ class DataModel
     {
 
         return array(
-            'Chapter' => 'chapter',
             'DataChunk' => 'data_chunk',
             'DataSource' => 'data_source',
             'ExamQuestion' => 'exam_question',
-            'Exercise' => 'exercise',
-            'PoFile' => 'po_file',
             'SlideshowFile' => 'slideshow_file',
             'Snapshot' => 'snapshot',
             'TextDoc' => 'text_doc',
             'Tool' => 'tool',
             'VectorGraphic' => 'vector_graphic',
             'VideoFile' => 'video_file',
+        );
+
+    }
+
+    static public function educationalContentModels()
+    {
+
+        return array(
+            'Chapter' => 'chapter',
+            'Exercise' => 'exercise',
+        );
+
+    }
+
+    static public function websiteContentModels()
+    {
+
+        return array(
+            'DownloadLink' => 'download_link',
+            'HtmlChunk' => 'html_chunk',
+            'Page' => 'page',
+            'Section' => 'section',
+            'SectionContent' => 'section_content',
         );
 
     }
@@ -172,7 +192,10 @@ class DataModel
             'Exercise' => 'n==0#Exercise(s)|n==1#Exercise|n>1#Exercises',
             'HtmlChunk' => 'n==0#Html chunk(s)|n==1#Html chunk|n>1#Html chunks',
             'Node' => 'n==0#Node(s)|n==1#Node|n>1#Nodes',
+            'Page' => 'n==0#Web page(s)|n==1#Web page|n>1#Web pages',
             'PoFile' => 'n==0#.po-file(s)|n==1#.po-file|n>1#.po-files',
+            'Section' => 'n==0#Web page section(s)|n==1#Web page section|n>1#Web page sections',
+            'SectionContent' => 'n==0#Web page section content(s)|n==1#Web page section content|n>1#Web page section contents',
             'SlideshowFile' => 'n==0#Slideshow file(s)|n==1#Slideshow file|n>1#Slideshow files',
             'Snapshot' => 'n==0#Snapshot(s)|n==1#Snapshot|n>1#Snapshots',
             'TextDoc' => 'n==0#Text doc(s)|n==1#Text doc|n>1#Text docs',
