@@ -166,6 +166,7 @@ class DataModel
             'Chapter' => 'n==0#Chapter(s)|n==1#Chapter|n>1#Chapters',
             'DataChunk' => 'n==0#DataChunk(s)|n==1#DataChunk|n>1#DataChunks',
             'DataSource' => 'n==0#DataSource(s)|n==1#DataSource|n>1#DataSources',
+            'DownloadLink' => 'n==0#DownloadLink(s)|n==1#DownloadLink|n>1#DownloadLinks',
             'ExamQuestion' => 'n==0#ExamQuestion(s)|n==1#ExamQuestion|n>1#ExamQuestions',
             'ExamQuestionAlternative' => 'n==0#ExamQuestionAlternative(s)|n==1#ExamQuestionAlternative|n>1#ExamQuestionAlternatives',
             'Exercise' => 'n==0#Exercise(s)|n==1#Exercise|n>1#Exercises',
