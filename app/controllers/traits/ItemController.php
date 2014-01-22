@@ -297,6 +297,8 @@ trait ItemController
             $model->attributes = $_GET[$this->modelClass];
         }
 
+        $this->populateWorkflowData($model, "browse", Yii::t('app', 'Browse'));
+
         $this->render('/_item/browse', array('model' => $model, 'dataProvider' => $dataProvider,));
     }
 
@@ -607,7 +609,7 @@ trait ItemController
         ));
 
         // Breadcrumbs
-        $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
+        $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
         $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
         $this->breadcrumbs[] = $this->workflowData['caption'];
         $this->breadcrumbs[] = $stepCaptions[$step];
