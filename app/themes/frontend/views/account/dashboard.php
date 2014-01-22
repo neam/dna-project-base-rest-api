@@ -14,6 +14,11 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
+<div class="alert alert-info">
+    <h4>Work in progress</h4>
+    This is where you will see recommended actions for you to take.
+</div>
+
 <?php if (!Yii::app()->user->checkAccess('Item.Translate') && !Yii::app()->user->checkAccess('Item.Edit') && !Yii::app()->user->checkAccess('Item.Add')): ?>
 
     <div class="alert alert-error">

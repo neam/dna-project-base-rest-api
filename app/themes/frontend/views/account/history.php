@@ -15,6 +15,11 @@ $this->breadcrumbs[] = Yii::t('account', 'History');
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
+<div class="alert alert-info">
+    <h4>Work in progress</h4>
+    This is where you will track your changes and contributions over time.
+</div>
+
 <div class="row">
     <div class="span12">
         <b><?php echo CHtml::encode($model->getAttributeLabel('create_at')); ?>:</b>

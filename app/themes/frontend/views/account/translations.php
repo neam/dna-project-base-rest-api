@@ -15,3 +15,8 @@ $this->breadcrumbs[] = Yii::t('account', 'Translations');
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
+<div class="alert alert-info">
+    <h4>Work in progress</h4>
+    This is where you will track your on-going translations.
+</div>
+
