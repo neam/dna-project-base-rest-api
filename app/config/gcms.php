@@ -31,6 +31,8 @@ $gcmsConfig = array(
         'env' => 'development',
     ),
     'preload' => array( //'ezc', // trying out if we can lazy-load this instead of preloading it...
+        // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login
+        'loginReturnUrlTracker'
     ),
     'aliases' => array(
         // bower components
@@ -121,11 +123,13 @@ $gcmsConfig = array(
                 'activation' => 'AppActivationController',
                 'registration' => 'AppRegistrationController',
             ),
-            'returnUrl' => array('/'),
             'profileUrl' => array('/account/dashboard'),
         )
     ),
     'components' => array(
+        'loginReturnUrlTracker' => array(
+            'class' => 'application.components.LoginReturnUrlTracker',
+        ),
         'urlManager' => array(
             'urlFormat' => 'path',
             'showScriptName' => false,
