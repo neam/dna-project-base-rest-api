@@ -188,7 +188,7 @@ class Html extends TbHtml
      */
     public static function getLanguages()
     {
-        return array(
+        $languages = array(
             'en'    => Yii::t('language', 'English'),
             'es'    => Yii::t('language', 'Spanish'),
             'hi'    => Yii::t('language', 'Hindi'),
@@ -233,5 +233,9 @@ class Html extends TbHtml
             'zh_cn' => Yii::t('language', 'Chinese (PRC)'),
             'zh_tw' => Yii::t('language', 'Chinese (Taiwan & Hong Kong)'),
         );
+
+        asort($languages); // sort alphabetically
+
+        return $languages;
     }
 }
