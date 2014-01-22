@@ -35,23 +35,6 @@
             <?php if ($this->action->id != 'evaluate'): ?>
 
                 <div class="pull-right">
-                    <div class="btn-group">
-
-                        <?php
-                        $this->widget('bootstrap.widgets.TbButton', array(
-                            'label' => Yii::t('model', 'Go!'),
-                            'icon' => 'icon-play',
-                            'type' => '',
-                            'url' => array('node/go', 'id' => $model->node()->id),
-                            'htmlOptions' => array(
-                                'target' => '_blank',
-                            ),
-                            'visible' => DataModel::isGoModel($model),
-                        ));
-
-                        ?>
-
-                    </div>
                     <div class='btn-group'>
 
                         <?php
