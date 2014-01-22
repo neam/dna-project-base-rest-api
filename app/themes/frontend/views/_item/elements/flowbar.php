@@ -27,7 +27,7 @@
 
         <h1>
             <?php echo $model->itemLabel; ?>
-            <small><?php if ($this->action->id !== 'index') {
+            <small><?php if ($this->action->id !== 'browse') {
                     echo $this->itemDescriptionTooltip();
                 } ?></small>
             <small>Version: <?php echo $model->version; ?></small>
@@ -68,14 +68,14 @@
                             "url" => array("translationOverview", "id" => $model->{$model->tableSchema->primaryKey}),
                             'visible' => Yii::app()->user->checkAccess('Item.Translate') && $this->action->id !== "translationOverview",
                         ));
-                        if ($this->action->id == 'preview' || $this->action->id == 'index') {
+                        if ($this->action->id == 'browse') {
                             $this->widget('bootstrap.widgets.TbButton', array(
                                 'label' => Yii::t('model', 'View'),
                                 'icon' => 'icon-eye-open',
                                 'type' => $this->action->id != 'view' ? '' : 'inverse',
                                 'url' => array('view', 'id' => $model->{$model->tableSchema->primaryKey}),
                             ));
-                        } else {
+                        } elseif ($this->action->id == 'edit') {
                             $this->widget('bootstrap.widgets.TbButton', array(
                                 'label' => Yii::t('model', 'Preview'),
                                 'icon' => 'icon-eye-open',
@@ -85,6 +85,7 @@
                             ));
                         }
                         ?>
+
                     </div>
                 </div>
 
@@ -94,7 +95,7 @@
 
         <?php
         // When in edit-views we consider ourselves outside any active workflow and instead offer buttons to start workflows
-        if ($this->action->id == "edit"): ?>
+        if ($this->action->id == "edit" || $this->action->id == "browse"): ?>
 
             <div class="btn-toolbar">
                 <div class="btn-group">

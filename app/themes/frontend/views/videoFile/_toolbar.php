@@ -43,5 +43,37 @@
                 ));
                 break;
         }
-        ?>    </div>
+        ?>
+    </div>
+
+    <?php if ($this->action->id == 'browse'): ?>
+        <div class="btn-group">
+            <?php
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'label' => Yii::t('model', 'Filter'),
+                'icon' => 'icon-search',
+                'htmlOptions' => array('class' => 'search-button')
+            ));?>
+        </div>
+
+    <?php endif; ?>
+
 </div>
+
+<?php if ($this->action->id == 'browse'):
+
+    Yii::app()->clientScript->registerScript('filter-form', "
+    $('.search-button').click(function(){
+        $('.search-form').toggle();
+        return false;
+    });
+    ");
+
+    ?>
+
+    <div class="search-form" style="display:none">
+        <?php $this->renderPartial('_filter', array(
+            'model' => $model,
+        )); ?>
+    </div>
+<?php endif; ?>

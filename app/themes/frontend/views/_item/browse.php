@@ -26,42 +26,10 @@ if (!isset($this->menu) || $this->menu === array()) {
 </style>
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
-<?php Yii::beginProfile('Chapter.view.grid'); ?>
 <?php
-
-$this->widget('bootstrap.widgets.TbGroupGridView',
-    array(
-        'filter' => $model,
-        'id' => 'chapter-grid',
-        'dataProvider' => $model->search(),
-        'template' => '{summary}{pager}{items}{pager}',
-        'pager' => array(
-            'class' => 'TbPager',
-            'displayFirstAndLast' => true,
-        ),
-        'extraRowColumns' => array('id'),
-        'extraRowExpression' => function ($data, $row) {
-                $return = $this->renderPartial("/_item/elements/flowbar", array("model" => $data), true);
-                $return .= $this->renderPartial("_view", array("data" => $data), true);
-                return $return;
-            },
-        'extraRowHtmlOptions' => array('style' => 'padding:2em;margin-top:2em;'),
-        'columns' => array(
-            'id',
-            'title',
-            '_title',
-            array(
-                'name' => 'thumbnail_media_id',
-                'filter' => false,
-                'value' => function ($data, $row) {
-                        if ($data->thumbnailMedia instanceof P3Media) {
-                            echo CHtml::link($data->thumbnailMedia->image("select2-thumb"), Yii::app()->controller->createUrl('view', array('id' => $data->id)));
-                        }
-                    },
-            ),
-            'slug',
-        ),
-    )
-);
+$this->widget('zii.widgets.CListView', array(
+    'dataProvider' => $dataProvider,
+    'template' => '{summary}{pager}{items}{pager}',
+    'itemView' => '/_item/_list-item',
+));
 ?>
-<?php Yii::endProfile('Chapter.view.grid'); ?>

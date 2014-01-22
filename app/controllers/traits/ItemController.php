@@ -288,14 +288,14 @@ trait ItemController
 
     public function actionBrowse()
     {
-        $dataProvider = new CActiveDataProvider($this->modelClass);
-
         $model = new $this->modelClass('search');
         $model->unsetAttributes();
 
         if (isset($_GET[$this->modelClass])) {
             $model->attributes = $_GET[$this->modelClass];
         }
+
+        $dataProvider = $model->search();
 
         $this->populateWorkflowData($model, "browse", Yii::t('app', 'Browse'));
 
