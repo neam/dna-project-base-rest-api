@@ -24,7 +24,7 @@ if (!isset($this->menu) || $this->menu === array()) {
         margin: 0;
     }
 </style>
-<?php //$this->renderPartial("_toolbar"); ?>
+<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
 <?php Yii::beginProfile('Chapter.view.grid'); ?>
 <?php

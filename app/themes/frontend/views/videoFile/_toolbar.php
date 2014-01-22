@@ -2,6 +2,7 @@
     <div class="btn-group">
         <?php
         switch ($this->action->id) {
+            case "browse":
             case "index":
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Manage"),
@@ -11,7 +12,7 @@
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Add"),
-                    "icon" => "icon-edit",
+                    "icon" => "icon-plus",
                     "url" => array("add"),
                     "visible" => Yii::app()->user->checkAccess('Item.Add')
                 ));
