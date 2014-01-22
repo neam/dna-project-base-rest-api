@@ -31,6 +31,37 @@
     <?php echo CHtml::encode($data->others_may_contact_me); ?>
     <br/>
 
+    <?php /*
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about')); ?>:</b>
+    <?php echo CHtml::encode($data->about); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('lives_in')); ?>:</b>
+    <?php echo CHtml::encode($data->lives_in); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('language1')); ?>:</b>
+    <?php echo CHtml::encode($data->language1); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('language2')); ?>:</b>
+    <?php echo CHtml::encode($data->language2); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('language3')); ?>:</b>
+    <?php echo CHtml::encode($data->language3); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('language4')); ?>:</b>
+    <?php echo CHtml::encode($data->language4); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('language5')); ?>:</b>
+    <?php echo CHtml::encode($data->language5); ?>
+    <br />
+
+    */
+    ?>
     <?php if (Yii::app()->user->checkAccess('Profiles.*')): ?>
         <div class="admin-container hide">
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Profiles'))), array('profiles/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>

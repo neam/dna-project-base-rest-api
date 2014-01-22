@@ -26,6 +26,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, '_caption'); ?>
+        <?php echo $form->textField($model, '_caption', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'slug_en'); ?>
         <?php echo $form->textField($model, 'slug_en', array('size' => 60, 'maxlength' => 255)); ?>
     </div>

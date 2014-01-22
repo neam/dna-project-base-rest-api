@@ -19,18 +19,25 @@
     <?php echo CHtml::encode($data->weight); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
-    <?php echo CHtml::encode($data->title); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_title')); ?>:</b>
+    <?php echo CHtml::encode($data->_title); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('relation')); ?>:</b>
+    <?php echo CHtml::encode($data->relation); ?>
     <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
     <?php echo CHtml::encode($data->created); ?>
     <br/>
 
+    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('modified')); ?>:</b>
     <?php echo CHtml::encode($data->modified); ?>
-    <br/>
+    <br />
 
+    */
+    ?>
     <?php if (Yii::app()->user->checkAccess('Edge.*')): ?>
         <div class="admin-container hide">
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Edge'))), array('edge/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>

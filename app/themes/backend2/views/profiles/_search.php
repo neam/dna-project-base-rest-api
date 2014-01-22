@@ -50,17 +50,31 @@
         <?php echo $form->textField($model, 'lives_in', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
-    <?php echo $form->dropDownListRow($model, 'language1', Html::getLanguages(), array(
-        'empty' => Yii::t('app', '- None -'),
-    )); ?>
+    <div class="row">
+        <?php echo $form->label($model, 'language1'); ?>
+        <?php echo $form->textField($model, 'language1', array('size' => 10, 'maxlength' => 10)); ?>
+    </div>
 
-    <?php echo $form->dropDownListRow($model, 'language2', Html::getLanguages(), array(
-        'empty' => Yii::t('app', '- None -'),
-    )); ?>
+    <div class="row">
+        <?php echo $form->label($model, 'language2'); ?>
+        <?php echo $form->textField($model, 'language2', array('size' => 10, 'maxlength' => 10)); ?>
+    </div>
 
-    <?php echo $form->dropDownListRow($model, 'language3', Html::getLanguages(), array(
-        'empty' => Yii::t('app', '- None -'),
-    )); ?>
+    <div class="row">
+        <?php echo $form->label($model, 'language3'); ?>
+        <?php echo $form->textField($model, 'language3', array('size' => 10, 'maxlength' => 10)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'language4'); ?>
+        <?php echo $form->textField($model, 'language4', array('size' => 10, 'maxlength' => 10)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'language5'); ?>
+        <?php echo $form->textField($model, 'language5', array('size' => 10, 'maxlength' => 10)); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>

@@ -237,11 +237,11 @@ echo '</h3>' ?>
 </ul>
 
 
-<?php echo '<h3>' . Yii::t('model', 'relation.DataChunks') . '</h3>' ?>
+<?php echo '<h3>' . Yii::t('model', 'relation.Datachunks') . '</h3>' ?>
 <ul>
 
     <?php
-    $records = $model->dataChunks(array('limit' => 250, 'scopes' => ''));
+    $records = $model->datachunks(array('limit' => 250, 'scopes' => ''));
     if (is_array($records)) {
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
@@ -252,6 +252,29 @@ echo '</h3>' ?>
             echo CHtml::link(
                 ' <i class="icon icon-pencil"></i>',
                 array('//dataChunk/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php echo '<h3>' . Yii::t('model', 'relation.Related') . '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->related(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//node/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon icon-pencil"></i>',
+                array('//node/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }

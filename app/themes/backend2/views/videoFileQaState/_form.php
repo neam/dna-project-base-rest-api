@@ -25,7 +25,7 @@
     <div class="form-actions">
         <?php
         echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('videofileqastate/admin'),
+                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('videoFileQaState/admin'),
                 'class' => 'btn'
             )
         );

@@ -9,7 +9,9 @@
 
             <?php echo $form->textFieldRow($model, 'weight'); ?>
 
-            <?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
+            <?php echo $form->textFieldRow($model, '_title', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'relation', array('maxlength' => 255)); ?>
         </div>
     </div>
     <!-- main inputs -->

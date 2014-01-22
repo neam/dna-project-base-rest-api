@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Po Files')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Po File'); ?>

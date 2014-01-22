@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Profiles')] = array('admin');
 $this->breadcrumbs[] = $model->user_id;
 ?>
-
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Profiles'); ?>
@@ -49,6 +49,27 @@ $this->breadcrumbs[] = $model->user_id;
 <b><?php echo CHtml::encode($model->getAttributeLabel('lives_in')); ?>:</b>
 <?php echo CHtml::encode($model->lives_in); ?>
 <br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('language1')); ?>:</b>
+<?php echo CHtml::encode($model->language1); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('language2')); ?>:</b>
+<?php echo CHtml::encode($model->language2); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('language3')); ?>:</b>
+<?php echo CHtml::encode($model->language3); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('language4')); ?>:</b>
+<?php echo CHtml::encode($model->language4); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('language5')); ?>:</b>
+<?php echo CHtml::encode($model->language5); ?>
+<br />
+
     */
 ?>
 
@@ -74,6 +95,14 @@ $this->breadcrumbs[] = $model->user_id;
                                     array('class' => '')) . ' ' . CHtml::link(
                                     '<i class="icon icon-pencil"></i> ',
                                     array('//users/update', 'id' => $model->user->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                        'value' => ($model->account !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->account->itemLabel,
+                                    array('//account/view', 'id' => $model->account->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//account/update', 'id' => $model->account->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -174,6 +203,71 @@ $this->breadcrumbs[] = $model->user_id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'lives_in',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'language1',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'language1',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'language2',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'language2',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'language3',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'language3',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'language4',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'language4',
+                                    'url' => $this->createUrl('/profiles/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'language5',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'language5',
                                     'url' => $this->createUrl('/profiles/editableSaver'),
                                 ),
                                 true

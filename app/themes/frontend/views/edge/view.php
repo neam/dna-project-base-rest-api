@@ -1,13 +1,13 @@
 <?php
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 ?>
 <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
 
 <!--<h1>
     
-    <?php echo Yii::t('model','Edge'); ?>
+    <?php echo Yii::t('model', 'Edge'); ?>
     <small>
-        <?php echo Yii::t('model','View')?> #<?php echo $model->id ?>
+        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
     </small>
     
 </h1>-->
@@ -36,16 +36,23 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->weight); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
-<?php echo CHtml::encode($model->title); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_title')); ?>:</b>
+<?php echo CHtml::encode($model->_title); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('relation')); ?>:</b>
+<?php echo CHtml::encode($model->relation); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
 <br />
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
 <br />
 
+    */
+?>
 -->

@@ -21,7 +21,7 @@ Yii::app()->clientScript->registerScript('search', "
     ");
 ?>
 
-
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
     <h1>
 
         <?php echo Yii::t('model', 'Profiles'); ?>
@@ -55,8 +55,8 @@ $this->widget('TbGridView',
             ),
             array(
                 'name' => 'user_id',
-                'value' => 'CHtml::value($data, \'user.itemLabel\')',
-                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'value' => 'CHtml::value($data, \'account.itemLabel\')',
+                'filter' => '', //CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -112,6 +112,49 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            /*
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'language1',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'language2',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'language3',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'language4',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'language5',
+                'editable' => array(
+                    'url' => $this->createUrl('/profiles/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            */
+
             array(
                 'class' => 'TbButtonColumn',
                 'buttons' => array(

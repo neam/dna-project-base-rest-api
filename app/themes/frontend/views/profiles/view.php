@@ -1,13 +1,13 @@
 <?php
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 ?>
 <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
 
 <!--<h1>
     
-    <?php echo Yii::t('model','Profiles'); ?>
+    <?php echo Yii::t('model', 'Profiles'); ?>
     <small>
-        <?php echo Yii::t('model','View')?> #<?php echo $model->user_id ?>
+        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->user_id ?>
     </small>
     
 </h1>-->
@@ -57,6 +57,26 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->lives_in); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('language1')); ?>:</b>
+<?php echo CHtml::encode($model->language1); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('language2')); ?>:</b>
+<?php echo CHtml::encode($model->language2); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('language3')); ?>:</b>
+<?php echo CHtml::encode($model->language3); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('language4')); ?>:</b>
+<?php echo CHtml::encode($model->language4); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('language5')); ?>:</b>
+<?php echo CHtml::encode($model->language5); ?>
+<br />
+
     */
-    ?>
+?>
 -->

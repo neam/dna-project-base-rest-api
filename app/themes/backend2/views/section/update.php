@@ -11,7 +11,7 @@ $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'i
 $this->breadcrumbs[] = Yii::t('model', 'Update');
 ?>
 
-
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Section'); ?>
@@ -61,7 +61,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'ordinal',
                 'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -69,7 +69,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -77,7 +77,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
                     //'placement' => 'right',
                 )
             ),

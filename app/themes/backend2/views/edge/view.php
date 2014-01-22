@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Edges')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Edge'); ?>
@@ -29,18 +29,25 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->weight); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
-<?php echo CHtml::encode($model->title); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_title')); ?>:</b>
+<?php echo CHtml::encode($model->_title); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('relation')); ?>:</b>
+<?php echo CHtml::encode($model->relation); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
-<br/>
+<br />
 
+    */
+?>
 
 <div class="row">
     <div class="span7">
@@ -105,13 +112,26 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'title',
+                        'name' => '_title',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'title',
+                                    'attribute' => '_title',
+                                    'url' => $this->createUrl('/edge/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'relation',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'relation',
                                     'url' => $this->createUrl('/edge/editableSaver'),
                                 ),
                                 true

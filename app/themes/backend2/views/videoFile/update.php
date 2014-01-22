@@ -11,7 +11,7 @@ $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'i
 $this->breadcrumbs[] = Yii::t('model', 'Update');
 ?>
 
-
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Video File'); ?>
@@ -72,15 +72,23 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'weight',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title',
+                'name' => '_title',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'relation',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -88,7 +96,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -96,7 +104,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -160,15 +168,23 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'weight',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title',
+                'name' => '_title',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'relation',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -176,7 +192,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -184,7 +200,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -242,7 +258,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'ordinal',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -250,7 +266,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -258,7 +274,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -361,6 +377,14 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => '_caption',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'slug_en',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFile/editableSaver'),
@@ -378,15 +402,15 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
                 'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'generate_processed_media',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFile/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'generate_processed_media',
+                    'editable' => array(
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'name' => 'processed_media_id_en',
                     'value' => 'CHtml::value($data, \'processedMediaIdEn.itemLabel\')',
@@ -986,3 +1010,10 @@ $this->widget('TbGridView',
     ));
 ?>
 
+
+<h2>
+    <?php echo Yii::t('model', 'Nodes'); ?>
+    <small>related</small>
+</h2>
+
+This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.
