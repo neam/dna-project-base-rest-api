@@ -10,20 +10,20 @@ if (!isset($this->menu) || $this->menu === array()) {
     );
 }
 ?>
-<h1><?php echo Yii::t('model', $model->modelLabel, 2); ?>
-    <small><?php echo $this->itemDescriptionTooltip(); ?></small>
-</h1>
-<style>
-    .grid-view small {
-        display: block;
-        float: left;
-        margin-right: 15px;
-    }
+    <h1><?php echo Yii::t('model', $model->modelLabel, 2); ?>
+        <small><?php echo $this->itemDescriptionTooltip(); ?></small>
+    </h1>
+    <style>
+        .grid-view small {
+            display: block;
+            float: left;
+            margin-right: 15px;
+        }
 
-    .grid-view h1 {
-        margin: 0;
-    }
-</style>
+        .grid-view h1 {
+            margin: 0;
+        }
+    </style>
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 
 <?php

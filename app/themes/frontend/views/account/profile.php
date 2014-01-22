@@ -72,31 +72,31 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
             <div class="span12" style="line-height: 30px;">
                 <div class="pull-left">
                     <?php $relatedSearchModel = $model->profiles; //getRelatedSearchModel($model, 'profiles');
-                    $columns = array();
-                    $columns[] = array(
-                        'class' => 'TbToggleColumn',
-                        'checkedButtonLabel' => 'Inactivate',
-                        'uncheckedButtonLabel' => 'Activate',
-                        'displayText' => false,
-                        'name' => 'public_profile',
-                        'value' => 'CHtml::value($data,\'public_profile\')',
-                        'filter' => false,
-                        'toggleAction' => 'profiles/toggle'
-                    ); ?>
+    $columns = array();
+    $columns[] = array(
+        'class' => 'TbToggleColumn',
+        'checkedButtonLabel' => 'Inactivate',
+        'uncheckedButtonLabel' => 'Activate',
+        'displayText' => false,
+        'name' => 'public_profile',
+        'value' => 'CHtml::value($data,\'public_profile\')',
+        'filter' => false,
+        'toggleAction' => 'profiles/toggle'
+    ); ?>
                     <?php $this->widget('TbGridView', array(
-                        'id' => 'account-profile-public-profile-toggle-grid',
-                        'type' => TbGridView::TYPE_CONDENSED,
-                        'template' => '{items}',
-                        'dataProvider' => $relatedSearchModel->search(),
-                        'filter' => null,
-                        'enableSorting' => false,
-                        'hideHeader' => true,
-                        'pager' => array(
-                            'class' => 'TbPager',
-                            'displayFirstAndLast' => true,
-                        ),
-                        'columns' => $columns,
-                    )); ?>
+        'id' => 'account-profile-public-profile-toggle-grid',
+        'type' => TbGridView::TYPE_CONDENSED,
+        'template' => '{items}',
+        'dataProvider' => $relatedSearchModel->search(),
+        'filter' => null,
+        'enableSorting' => false,
+        'hideHeader' => true,
+        'pager' => array(
+            'class' => 'TbPager',
+            'displayFirstAndLast' => true,
+        ),
+        'columns' => $columns,
+    )); ?>
                 </div>
 
                 <div class="pull-left">
@@ -178,7 +178,8 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
             <?php else: ?>
                 <?php print implode(', ', $roles); ?>
             <?php
-            endif; ?>
+            endif;
+            ?>
             </p>
             <?php /*
             <div class="span4">
@@ -203,7 +204,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
             </div> */
             ?>
 
-            <!--<h2><?php /*echo Yii::t('account', 'Badges'); */?></h2>-->
+            <!--<h2><?php /*echo Yii::t('account', 'Badges'); */ ?></h2>-->
         </div>
     </div>
 </div>

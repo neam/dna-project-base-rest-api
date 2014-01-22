@@ -67,7 +67,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Public profile');
             </div>
         </div>
         <div class="span3">
-            <!--<h2><?php /*echo Yii::t('account', 'Badges'); */?></h2>-->
+            <!--<h2><?php /*echo Yii::t('account', 'Badges'); */ ?></h2>-->
         </div>
     </div>
 </div>
