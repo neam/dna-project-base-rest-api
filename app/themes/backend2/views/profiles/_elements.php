@@ -55,22 +55,24 @@
             ));
             $this->endClip();
             ?>
+
             <?php echo $form->textFieldRow($model, 'website', array('maxlength' => 255)); ?>
+
             <?php echo $form->textFieldRow($model, 'others_may_contact_me'); ?>
+
             <?php echo $form->textAreaRow($model, 'about', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+
             <?php echo $form->textFieldRow($model, 'lives_in', array('maxlength' => 255)); ?>
-            <?php echo $form->dropDownListRow($model, 'language1', Html::getLanguages(), array(
-                'class' => 'span12',
-                'empty' => Yii::t('app', '- None -'),
-            )); ?>
-            <?php echo $form->dropDownListRow($model, 'language2', Html::getLanguages(), array(
-                'class' => 'span12',
-                'empty' => Yii::t('app', '- None -'),
-            )); ?>
-            <?php echo $form->dropDownListRow($model, 'language3', Html::getLanguages(), array(
-                'class' => 'span12',
-                'empty' => Yii::t('app', '- None -'),
-            )); ?>
+
+            <?php echo $form->textFieldRow($model, 'language1', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'language2', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'language3', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'language4', array('maxlength' => 10)); ?>
+
+            <?php echo $form->textFieldRow($model, 'language5', array('maxlength' => 10)); ?>
         </div>
     </div>
     <!-- main inputs -->

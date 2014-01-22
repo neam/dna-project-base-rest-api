@@ -5,19 +5,11 @@
 
             <?php echo $form->textFieldRow($model, 'version'); ?>
 
-            <?php echo $form->textFieldRow($model, '_title', array(
-                'maxlength' => 255,
-                'class' => 'slugit-from-1',
-            )); ?>
+            <?php echo $form->textFieldRow($model, '_title', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textFieldRow($model, 'slug_en', array(
-                'maxlength' => 255,
-                'class' => 'slugit-to-1',
-            )); ?>
+            <?php echo $form->textFieldRow($model, '_caption', array('maxlength' => 255)); ?>
 
-            <?php Html::jsSlugIt(array(
-                '.slugit-from-1' => '.slugit-to-1',
-            )); ?>
+            <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
 
             <?php echo $form->textAreaRow($model, '_about', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
