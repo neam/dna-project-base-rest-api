@@ -263,24 +263,40 @@ class VideoFileController extends Controller
 
     public function actionIndex()
     {
-        $criteria = new CDbCriteria();
+        $criteria = '';
 
-        // Fetch own nodes
+        // Fetch the videos which user the user is a owner of
+        $ownVideos = Changeset::model()->getOwn(Yii::app()->user->id, 'VideoFile');
 
 
+        // Translators should only see videos which are in testable mode or higher
         if (Yii::app()->user->checkAccess('Item.Translate')) {
-            // Translators should only see videos which are in testable mode or higher
+            $criteria = new CDbCriteria();
             $criteria->join = 'INNER JOIN video_file_qa_state qs ON video_file_qa_state_id = qs.id';
             $criteria->addInCondition('status', array('preview', 'public'));
         }
 
-
+        // Administrators should see everything, and have Item.Translate rights so ignore everything just made
         if (Yii::app()->user->checkAccess('Administrator')) {
-            $criteria = array();
+            $criteria = '';
         }
 
-        $dataProvider = new CActiveDataProvider('VideoFile');
-        $dataProvider->setCriteria($criteria);
+        // Get the videos based on the users rights
+        $accessibleVideos = VideoFile::model()->findAll($criteria);
+
+        $finalResults = array_merge($ownVideos, $accessibleVideos);
+
+        $ids = array();
+        // remove duplicates
+        foreach ($finalResults as $key => $video) {
+            if (in_array($video->id, $ids)) {
+                unset($finalResults[$key]);
+            } else {
+                $ids[] = $video->id;
+            }
+        }
+
+        $dataProvider = new CArrayDataProvider($finalResults);
         $this->render('index', array('dataProvider' => $dataProvider,));
     }
 
