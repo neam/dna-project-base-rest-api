@@ -29,7 +29,7 @@ class CommentController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('17a79fbd.Comment.*'),
+                'roles' => array('Comment.*'),
             ),
             array(
                 'deny',
@@ -124,7 +124,6 @@ class CommentController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('TbEditableSaver');
         $es = new TbEditableSaver('Comment'); // classname of model to be updated
         $es->update();
     }

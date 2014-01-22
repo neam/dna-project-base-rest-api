@@ -28,7 +28,9 @@ class SectionContent extends BaseSectionContent
     public function behaviors()
     {
         return array_merge(
-            parent::behaviors(), array());
+            parent::behaviors(),
+            array()
+        );
     }
 
     public function rules()
@@ -42,10 +44,13 @@ class SectionContent extends BaseSectionContent
         );
     }
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 
