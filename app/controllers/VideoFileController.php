@@ -263,11 +263,7 @@ class VideoFileController extends Controller
 
     public function actionIndex()
     {
-        $criteria = '';
-
-        // Fetch the videos which user the user is a owner of
-        $ownVideos = Changeset::model()->getOwn(Yii::app()->user->id, 'VideoFile');
-
+        $criteria = array();
 
         // Translators should only see videos which are in testable mode or higher
         if (Yii::app()->user->checkAccess('Item.Translate')) {
@@ -278,25 +274,11 @@ class VideoFileController extends Controller
 
         // Administrators should see everything, and have Item.Translate rights so ignore everything just made
         if (Yii::app()->user->checkAccess('Administrator')) {
-            $criteria = '';
+            $criteria = array();
         }
 
-        // Get the videos based on the users rights
-        $accessibleVideos = VideoFile::model()->findAll($criteria);
-
-        $finalResults = array_merge($ownVideos, $accessibleVideos);
-
-        $ids = array();
-        // remove duplicates
-        foreach ($finalResults as $key => $video) {
-            if (in_array($video->id, $ids)) {
-                unset($finalResults[$key]);
-            } else {
-                $ids[] = $video->id;
-            }
-        }
-
-        $dataProvider = new CArrayDataProvider($finalResults);
+        $dataProvider = new CActiveDataProvider('VideoFile');
+        $dataProvider->setCriteria($criteria);
         $this->render('index', array('dataProvider' => $dataProvider,));
     }
 

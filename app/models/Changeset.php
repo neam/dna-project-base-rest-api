@@ -53,31 +53,21 @@ class Changeset extends BaseChangeset
      * Returns the ActiveRecord instances of type $activeRecordClass which the user has ownership on.
      *
      * @param $userId the user-id of the user which changesets will be returned
-     * @param null $activeRecordClass
+     * @param $activeRecordClass
      * @return array|CActiveRecord[]
      */
     public function getOwn($userId, $activeRecordClass)
     {
-        // Get all Changeset instances that the user has made
+        $criteria = $this->getOwnCriteria($userId);
+        return ActiveRecord::model($activeRecordClass)->findAll($criteria);
+    }
+
+    public function getOwnCriteria($userId)
+    {
         $criteria = new CDbCriteria();
-        $criteria->compare('user_id', $userId);
-        /* @var $results Changeset[] */
-        $results = $this->findAll($criteria);
-
-        $resultsOfType = array();
-        $ids = array();
-        foreach ($results as $changeset) {
-            $criteria = new CDbCriteria();
-            $criteria->compare('node_id', $changeset->node_id);
-
-            $ar = ActiveRecord::model($activeRecordClass)->find($criteria);
-            if ($ar !== null && !in_array($ar->id, $ids)) {
-                $resultsOfType[] = $ar;
-                $ids[] = $ar->id;
-            }
-        }
-
-        return $resultsOfType;
+        $criteria->condition = 'node_id IN(SELECT node_id FROM changeset WHERE user_id = :userId)';
+        $criteria->params = array(':userId' => $userId);
+        return $criteria;
     }
 
 }
