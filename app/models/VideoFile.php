@@ -119,6 +119,7 @@ class VideoFile extends BaseVideoFile
             'info' => array(
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
+                'caption_' . $this->source_language,
                 'about_' . $this->source_language,
                 'thumbnail_media_id',
             ),

@@ -229,7 +229,7 @@ class DataModel
                 'TextDoc' => array('title', 'about'),
                 'Tool' => array('title', 'about'),
                 'VectorGraphic' => array('title', 'about'),
-                'VideoFile' => array('title', 'about', 'subtitles'),
+                'VideoFile' => array('title', 'caption', 'about', 'subtitles'),
             ),
         );
     }
