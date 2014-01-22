@@ -124,7 +124,6 @@ class VectorGraphicQaStateController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
         $es = new TbEditableSaver('VectorGraphicQaState'); // classname of model to be updated
         $es->update();
     }

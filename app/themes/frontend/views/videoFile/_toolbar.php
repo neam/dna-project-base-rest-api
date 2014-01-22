@@ -2,19 +2,16 @@
     <div class="btn-group">
         <?php
         switch ($this->action->id) {
-            case "browse":
             case "index":
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Manage"),
                     "icon" => "icon-edit",
-                    "url" => array("admin"),
-                    "visible" => Yii::app()->user->checkAccess('Administrator')
+                    "url" => array("admin")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Add"),
                     "icon" => "icon-plus",
-                    "url" => array("add"),
-                    "visible" => Yii::app()->user->checkAccess('Item.Add')
+                    "url" => array("add")
                 ));
                 break;
             case "view":
@@ -45,35 +42,4 @@
         }
         ?>
     </div>
-
-    <?php if ($this->action->id == 'browse'): ?>
-        <div class="btn-group">
-            <?php
-            $this->widget('bootstrap.widgets.TbButton', array(
-                'label' => Yii::t('model', 'Filter'),
-                'icon' => 'icon-search',
-                'htmlOptions' => array('class' => 'search-button')
-            ));?>
-        </div>
-
-    <?php endif; ?>
-
 </div>
-
-<?php if ($this->action->id == 'browse'):
-
-    Yii::app()->clientScript->registerScript('filter-form', "
-    $('.search-button').click(function(){
-        $('.search-form').toggle();
-        return false;
-    });
-    ");
-
-    ?>
-
-    <div class="search-form" style="display:none">
-        <?php $this->renderPartial('_filter', array(
-            'model' => $model,
-        )); ?>
-    </div>
-<?php endif; ?>

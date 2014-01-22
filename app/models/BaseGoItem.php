@@ -4,6 +4,7 @@
  * This is the model base class for the table "go_item".
  *
  * Columns in table "go_item" available as properties of the model:
+ * @property string $node_id
  * @property string $id
  * @property string $_title
  * @property string $model_class
@@ -27,18 +28,18 @@ abstract class BaseGoItem extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('id, _title, model_class', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('id', 'length', 'max' => 20),
+                array('node_id, id, _title, model_class', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('node_id, id', 'length', 'max' => 20),
                 array('_title', 'length', 'max' => 255),
                 array('model_class', 'length', 'max' => 13),
-                array('id, _title, model_class', 'safe', 'on' => 'search'),
+                array('node_id, id, _title, model_class', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->id;
+        return (string) $this->node_id;
     }
 
     public function behaviors()
@@ -63,6 +64,7 @@ abstract class BaseGoItem extends ActiveRecord
     public function attributeLabels()
     {
         return array(
+            'node_id' => Yii::t('model', 'Node'),
             'id' => Yii::t('model', 'ID'),
             '_title' => Yii::t('model', 'Title'),
             'model_class' => Yii::t('model', 'Model Class'),
@@ -75,6 +77,7 @@ abstract class BaseGoItem extends ActiveRecord
             $criteria = new CDbCriteria;
         }
 
+        $criteria->compare('t.node_id', $this->node_id, true);
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.model_class', $this->model_class, true);

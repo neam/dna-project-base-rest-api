@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Download Links')] = array('index');
 $this->breadcrumbs[] = Yii::t('model', 'Index');
 ?>
-
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <?php
 if (!isset($this->menu) || $this->menu === array()) {
     $this->menu = array(
@@ -11,14 +11,12 @@ if (!isset($this->menu) || $this->menu === array()) {
     );
 }
 ?>
-    <h1><?php echo Yii::t('model', 'Download Links'); ?>
-        <small><?php echo $this->itemDescriptionTooltip(); ?></small>
-    </h1>
+    <h1><?php echo Yii::t('model', 'Download Links'); ?></h1>
 
 <?php $this->renderPartial("_toolbar"); ?>
 <?php
 $this->widget('zii.widgets.CListView', array(
     'dataProvider' => $dataProvider,
-    'itemView' => '/_item/_list-item',
+    'itemView' => '_view',
 ));
 ?>

@@ -21,7 +21,7 @@ Yii::app()->clientScript->registerScript('search', "
     ");
 ?>
 
-
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
     <h1>
 
         <?php echo Yii::t('model', 'Edges'); ?>
@@ -81,7 +81,15 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title',
+                'name' => '_title',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'relation',
                 'editable' => array(
                     'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',

@@ -1,6 +1,7 @@
 <div class="alert alert-info">
     <h4>Welcome to Gapminder Content Management System (CMS)</h4>
-    We are developing new tools for writing, publishing and translating material. This web site is not intended for public use yet, but feel free to snoop around.
+    We are developing new tools for writing, publishing and translating material. This web site is not intended for
+    public use yet, but feel free to snoop around.
 </div>
 
 <h2><?php print Yii::t('app', 'Go-items'); ?></h2>

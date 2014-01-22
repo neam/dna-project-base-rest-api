@@ -1,13 +1,13 @@
 <?php
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 ?>
 <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
 
 <!--<h1>
     
-    <?php echo Yii::t('model','Video File'); ?>
+    <?php echo Yii::t('model', 'Video File'); ?>
     <small>
-        <?php echo Yii::t('model','View')?> #<?php echo $model->id ?>
+        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
     </small>
     
 </h1>-->
@@ -36,6 +36,10 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->_title); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('_caption')); ?>:</b>
+<?php echo CHtml::encode($model->_caption); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en')); ?>:</b>
 <?php echo CHtml::encode($model->slug_en); ?>
 <br />
@@ -44,11 +48,11 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->_about); ?>
 <br />
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->thumbnail_media_id); ?>
 <br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->original_media_id); ?>
 <br />
@@ -426,5 +430,5 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <br />
 
     */
-    ?>
+?>
 -->

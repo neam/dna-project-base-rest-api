@@ -103,7 +103,6 @@ class DataModel
             'DataChunk' => 'data_chunk',
             'DataSource' => 'data_source',
             'ExamQuestion' => 'exam_question',
-            'ExamQuestionAlternative' => 'exam_question_alternative',
             'Exercise' => 'exercise',
             'PoFile' => 'po_file',
             'SlideshowFile' => 'slideshow_file',

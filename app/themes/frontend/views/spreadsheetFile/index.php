@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Spreadsheet Files')] = array('index');
 $this->breadcrumbs[] = Yii::t('model', 'Index');
 ?>
-
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <?php
 if (!isset($this->menu) || $this->menu === array()) {
     $this->menu = array(
@@ -17,6 +17,6 @@ if (!isset($this->menu) || $this->menu === array()) {
 <?php
 $this->widget('zii.widgets.CListView', array(
     'dataProvider' => $dataProvider,
-    'itemView' => '/_item/_list-item',
+    'itemView' => '_view',
 ));
 ?>

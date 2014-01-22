@@ -5,19 +5,9 @@
 
             <?php echo $form->textFieldRow($model, 'version'); ?>
 
-            <?php echo $form->textFieldRow($model, '_title', array(
-                'maxlength' => 255,
-                'class' => 'slugit-from-1',
-            )); ?>
+            <?php echo $form->textFieldRow($model, '_title', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textFieldRow($model, 'slug_en', array(
-                'maxlength' => 255,
-                'class' => 'slugit-to-1',
-            )); ?>
-
-            <?php Html::jsSlugIt(array(
-                '.slugit-from-1' => '.slugit-to-1',
-            )); ?>
+            <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
 
             <?php
             $input = $this->widget(

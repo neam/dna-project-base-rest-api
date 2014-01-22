@@ -55,6 +55,16 @@ class Node extends BaseNode
         );
     }
 
+    public function search($criteria = null)
+    {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
+        return new CActiveDataProvider(get_class($this), array(
+            'criteria' => $this->searchCriteria($criteria),
+        ));
+    }
+
     /**
      * Returns this node's parent item
      */
@@ -93,13 +103,6 @@ class Node extends BaseNode
 
         throw new CException("This node does not have any parent item");
 
-    }
-
-    public function search()
-    {
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
-        ));
     }
 
 }

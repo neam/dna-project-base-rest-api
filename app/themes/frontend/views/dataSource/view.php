@@ -1,13 +1,13 @@
 <?php
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 ?>
 <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
 
 <!--<h1>
     
-    <?php echo Yii::t('model','Data Source'); ?>
+    <?php echo Yii::t('model', 'Data Source'); ?>
     <small>
-        <?php echo Yii::t('model','View')?> #<?php echo $model->id ?>
+        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
     </small>
     
 </h1>-->
@@ -246,5 +246,5 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <br />
 
     */
-    ?>
+?>
 -->

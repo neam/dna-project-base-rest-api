@@ -340,11 +340,11 @@ echo '</h3>' ?>
             echo '<li>';
             echo CHtml::link(
                 '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
-                array('//snapshot/view', 'id' => $relatedModel->id)
+                array('//node/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
                 ' <i class="icon icon-pencil"></i>',
-                array('//snapshot/update', 'id' => $relatedModel->id)
+                array('//node/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }

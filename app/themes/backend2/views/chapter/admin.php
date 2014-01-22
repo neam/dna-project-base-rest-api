@@ -20,12 +20,15 @@ Yii::app()->clientScript->registerScript('search', "
     });
     ");
 ?>
+
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
     <h1>
 
         <?php echo Yii::t('model', 'Chapters'); ?>
         <small><?php echo Yii::t('crud', 'Manage'); ?></small>
 
     </h1>
+
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
 <?php Yii::beginProfile('Chapter.view.grid'); ?>
@@ -49,18 +52,6 @@ $this->widget('TbGridView',
                 'header' => '',
                 'labelExpression' => '$data->itemLabel',
                 'urlExpression' => 'Yii::app()->controller->createUrl("view", array("id" => $data["id"]))'
-            ),
-            array(
-                'class' => 'TbButtonColumn',
-                'header' => 'Workflows',
-                'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Item.Preview")', 'options' => array('title' => Yii::t('app', 'Preview'))),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Item.Edit")', 'options' => array('title' => Yii::t('app', 'Edit'))),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Item.Remove")', 'options' => array('title' => Yii::t('app', 'Remove'))),
-                ),
-                'viewButtonUrl' => 'Yii::app()->controller->createUrl("preview", array("id" => $data->id))',
-                'updateButtonUrl' => 'Yii::app()->controller->createUrl("continueAuthoring", array("id" => $data->id))',
-                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("remove", array("id" => $data->id))',
             ),
             array(
                 'class' => 'TbEditableColumn',

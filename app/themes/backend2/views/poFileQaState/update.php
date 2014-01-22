@@ -11,7 +11,7 @@ $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'i
 $this->breadcrumbs[] = Yii::t('model', 'Update');
 ?>
 
-
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Po File Qa State'); ?>
@@ -61,7 +61,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'version',
                 'editable' => array(
-                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                    'url' => $this->createUrl('/poFile/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -74,7 +74,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'title',
                 'editable' => array(
-                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                    'url' => $this->createUrl('/poFile/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -93,7 +93,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                    'url' => $this->createUrl('/poFile/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -102,7 +102,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'modified',
                     'editable' => array(
-                        'url' => $this->createUrl('/poFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/poFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
