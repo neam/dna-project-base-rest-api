@@ -22,6 +22,9 @@ class LoginReturnUrlTracker extends CApplicationComponent
         if ($action == "user/login") {
             return true;
         }
+        if (strpos($action, "p3media") !== false) {
+            return true;
+        }
 
         // Keep track of the most recently visited valid url
         Yii::app()->user->returnUrl = Yii::app()->request->url;
