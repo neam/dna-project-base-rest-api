@@ -24,7 +24,7 @@ if (!isset($this->menu) || $this->menu === array()) {
             margin: 0;
         }
     </style>
-<?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+<?php $this->renderPartial("/_item/elements/browsebar", array("model" => $model)); ?>
 
 <?php
 $this->widget('zii.widgets.CListView', array(
