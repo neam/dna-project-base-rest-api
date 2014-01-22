@@ -1,4 +1,10 @@
 <?php
+/**
+ * Contains global shorthands for commonly used snippets of code
+ *
+ * Class U
+ */
+
 class U
 {
 
