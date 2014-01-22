@@ -78,14 +78,11 @@ EOD;
             $auth->createOperation($prefix . 'Item.ProofRead', 'Review and improve language');
             $auth->createOperation($prefix . 'Item.Translate', 'Translate to languages that you added to our profile.');
             $auth->createOperation($prefix . 'Item.Publish', 'Make public for the first time, or when replacing a previous version.');
-            $editOperation = $auth->createOperation($prefix . 'Item.Edit', 'Look at all fields, no obvious goal');
+            $auth->createOperation($prefix . 'Item.Edit', 'Look at all fields, no obvious goal');
             $auth->createOperation($prefix . 'Item.Clone', 'Creates a new itemVersion with incremented version number and goes to "edit" workFlow. If the original is in PUBLIC after achieving publishableFlag == true, suggest workFlow PrepPublish');
             $auth->createOperation($prefix . 'Item.Remove', 'Removed means there\'s something wrong with the content so it should not be used in any language any time');
             $auth->createOperation($prefix . 'Item.Replace', 'Replaced, means it\'s OK to fall back to, in case translation is missing for new version');
             $auth->createOperation($prefix . 'Item.Go', 'Displays the item and it\'s related items using the CMS Go interface');
-
-            // Upload access is necessary for Item.Edit
-            $editOperation->addChild('P3media.Import.*'); // Upload
 
             // Actions under special circumstances are called tasks - if a user may perform the task then the user may perform the task's associated operations
 
@@ -113,6 +110,7 @@ EOD;
             $role->addChild($prefix . 'Item.Browse');
             $role->addChild($prefix . 'Item.View');
             $role->addChild($prefix . 'Item.Go');
+            $role->addChild('P3media.Import.*'); // Upload access is necessary for everyone in order to upload their profile picture
 
             $role = $auth->createRole($prefix . 'Creator');
             $role->addChild($prefix . 'Item.Add');
