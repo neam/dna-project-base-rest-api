@@ -11,19 +11,22 @@ class LoginReturnUrlTracker extends CApplicationComponent
 
         // Certain actions should not be returned to after login
         if ($action == "gii") {
-            return true;
+            return;
         }
         if ($action == "site/error") {
-            return true;
+            return;
         }
         if ($action == "user/logout") {
-            return true;
+            return;
         }
         if ($action == "user/login") {
-            return true;
+            return;
         }
         if (strpos($action, "p3media") !== false) {
-            return true;
+            return;
+        }
+        if ($action == "videoFile/subtitles") {
+            return;
         }
 
         // Keep track of the most recently visited valid url

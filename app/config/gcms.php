@@ -123,6 +123,7 @@ $gcmsConfig = array(
                 'activation' => 'AppActivationController',
                 'registration' => 'AppRegistrationController',
             ),
+            'returnUrl' => array('/'), // This is the default return url used if login is done from the front-page
             'profileUrl' => array('/account/dashboard'),
         )
     ),
