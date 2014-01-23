@@ -6987,6 +6987,9 @@ div.form INPUT[type="submit"] .caret {
   line-height: 18px;
   color: #333333;
 }
+ul.breadcrumb {
+  display: none;
+}
 /* Sidenav for Docs
 -------------------------------------------------- */
 .bs-docs-sidenav {
