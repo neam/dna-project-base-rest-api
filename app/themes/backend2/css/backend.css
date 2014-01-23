@@ -6322,10 +6322,7 @@ a.badge:focus {
     overflow: visible !important;
   }
 }
-/* IMPORT YOUR BOOTSTRAP FILES 
-
-@import "../../../twitter/bootstrap/less/bootstrap.less";
-@import "../../../twitter/bootstrap/less/responsive.less";*/
+/* IMPORT YOUR BOOTSTRAP FILES */
 /* TODO: add all spans, and much more */
 #content {
   /*.row;
