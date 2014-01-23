@@ -88,3 +88,6 @@ $this->widget('TbGridView', array(
 
 var_dump($messages_to_translate);
 */
+
+publishJs('/themes/frontend/js/popover-focus-caret.js', CClientScript::POS_END);
+?>
