@@ -53,14 +53,14 @@ WHERE
 
     }
 
-    public function actionGoItem()
+    public function actionItem()
     {
 
         $sql = "SELECT \n";
         $sql .= "   node.id as node_id,\n";
 
         $sql .= "   CASE\n";
-        foreach (DataModel::goItemModels() as $modelClass => $table) {
+        foreach (DataModel::qaModels() as $modelClass => $table) {
             if ($this->_checkTableAndColumnExists($table, "id")) {
                 $sql .= "       WHEN $table.id IS NOT NULL THEN $table.id\n";
             }
@@ -69,7 +69,7 @@ WHERE
         $sql .= "END AS id,\n";
 
         if (false) {
-            foreach (DataModel::goItemModels() as $modelClass => $table) {
+            foreach (DataModel::qaModels() as $modelClass => $table) {
 
                 $sql .= "   `$table`.`id` AS `$modelClass.id`,\n";
                 if ($this->_checkTableAndColumnExists($table, "_title")) {
@@ -81,7 +81,7 @@ WHERE
 
         $sql .= "   CASE\n";
 
-        foreach (DataModel::goItemModels() as $modelClass => $table) {
+        foreach (DataModel::qaModels() as $modelClass => $table) {
             if ($this->_checkTableAndColumnExists($table, "_title")) {
                 $sql .= "       WHEN $table.id IS NOT NULL THEN $table._title\n";
             }
@@ -92,22 +92,42 @@ WHERE
 
         $sql .= "   CASE\n";
 
-        foreach (DataModel::goItemModels() as $modelClass => $table) {
+        foreach (DataModel::qaModels() as $modelClass => $table) {
             $sql .= "       WHEN $table.id IS NOT NULL THEN '$modelClass'\n";
         }
 
         $sql .= "       ELSE NULL\n";
-        $sql .= "END AS model_class\n";
+        $sql .= "END AS model_class,\n";
+
+        $sql .= "   CASE\n";
+
+        foreach (DataModel::goItemModels() as $modelClass => $table) {
+            $sql .= "       WHEN $table.id IS NOT NULL THEN 'go'\n";
+        }
+        foreach (DataModel::educationalItemModels() as $modelClass => $table) {
+            $sql .= "       WHEN $table.id IS NOT NULL THEN 'educational'\n";
+        }
+        foreach (DataModel::websiteContentItemModels() as $modelClass => $table) {
+            $sql .= "       WHEN $table.id IS NOT NULL THEN 'website_content'\n";
+        }
+        /*
+        foreach (DataModel::waffleItemModels() as $modelClass => $table) {
+            $sql .= "       WHEN $table.id IS NOT NULL THEN '$modelClass'\n";
+        }
+        */
+
+        $sql .= "       ELSE NULL\n";
+        $sql .= "END AS item_type\n";
 
         $sql .= "FROM node\n";
 
-        foreach (DataModel::goItemModels() as $modelClass => $table) {
+        foreach (DataModel::qaModels() as $modelClass => $table) {
             $sql .= "       LEFT JOIN $table ON $table.node_id = node.id\n";
         }
 
-        $viewName = "go_item";
+        $viewName = "item";
 
-        $viewSql = "CREATE OR REPLACE VIEW go_item AS $sql";
+        $viewSql = "CREATE OR REPLACE VIEW item AS $sql";
 
         echo "\n";
         echo $viewSql;

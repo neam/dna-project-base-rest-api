@@ -17,13 +17,14 @@ class DataModel
 
     }
 
-    static public function educationalContentModels()
+    static public function educationalItemModels()
     {
 
         return array(
             'Chapter' => 'chapter',
             'Exercise' => 'exercise',
             'ExamQuestion' => 'exam_question',
+            'ExamQuestionAlternative' => 'exam_question_alternative',
             'SlideshowFile' => 'slideshow_file',
             'TextDoc' => 'text_doc',
             'VectorGraphic' => 'vector_graphic',
@@ -33,16 +34,27 @@ class DataModel
 
     }
 
-    static public function websiteContentModels()
+    static public function websiteContentItemModels()
     {
 
         return array(
+            'PoFile' => 'po_file',
             'Page' => 'page',
             'Section' => 'section',
             'SectionContent' => 'section_content',
             'DownloadLink' => 'download_link',
             'HtmlChunk' => 'html_chunk',
             'Tool' => 'tool',
+        );
+
+    }
+
+    static public function waffleItemModels()
+    {
+
+        return array(
+            'Country' => 'country',
+            'Etc' => 'etc',
         );
 
     }
@@ -98,22 +110,11 @@ class DataModel
     static public function qaModels()
     {
 
-        return array(
-            'Chapter' => 'chapter',
-            'DataChunk' => 'data_chunk',
-            'DataSource' => 'data_source',
-            'ExamQuestion' => 'exam_question',
-            'Exercise' => 'exercise',
-            'PoFile' => 'po_file',
-            'SlideshowFile' => 'slideshow_file',
-            'Snapshot' => 'snapshot',
-            'TextDoc' => 'text_doc',
-            'Tool' => 'tool',
-            'VectorGraphic' => 'vector_graphic',
-            'VideoFile' => 'video_file',
-            // Special pages
-            'HtmlChunk' => 'html_chunk',
-            'DownloadLink' => 'download_link',
+        return array_merge(
+            self::goItemModels(),
+            self::educationalItemModels(),
+            self::websiteContentItemModels()
+            //self::waffleItemModels()
         );
 
     }

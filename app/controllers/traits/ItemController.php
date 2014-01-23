@@ -19,7 +19,7 @@ trait ItemController
                     'go',
                 ),
                 'roles' => array(
-                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalContentModels($this->modelClass) || DataModel::websiteContentModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
+                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
                 ),
             ),
             array('allow',
@@ -27,7 +27,7 @@ trait ItemController
                     'view',
                 ),
                 'roles' => array(
-                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalContentModels($this->modelClass) || DataModel::websiteContentModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
+                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
                 ),
             ),
             array('allow',
@@ -35,7 +35,7 @@ trait ItemController
                     'browse',
                 ),
                 'roles' => array(
-                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalContentModels($this->modelClass) || DataModel::websiteContentModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
+                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
                 ),
             ),
             array('allow',
