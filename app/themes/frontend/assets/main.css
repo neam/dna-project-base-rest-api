@@ -7314,6 +7314,19 @@ span.required {
 .control-group.error span.required {
   color: #9d261d;
 }
+.navbar .language-menu .dropdown-menu {
+  height: 495px;
+  overflow-y: scroll;
+}
+.navbar .language-menu .dropdown-menu::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+.navbar .language-menu .dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
 /* adjust content with fixed navbar */
 @media (min-width: 989px) {
   body {
