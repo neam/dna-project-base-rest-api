@@ -1,14 +1,17 @@
 (function() {
     /**
-     * Focuses the caret on the input field and scrolls it to end.
+     * Focuses the caret on the input field and scrolls it to end when switching between browser tabs.
      */
     $(window).blur(function() {
         var $popover = $('.popover.in');
-        var $popoverTextField = $popover.find('input[type="text"]', 'textarea');
-        var originalInput = $popoverTextField.val();
-        var originalInputLength = originalInput.length;
 
-        $popoverTextField[0].setSelectionRange(originalInputLength, originalInputLength);
-        $popoverTextField[0].scrollLeft = $popoverTextField[0].scrollWidth;
+        if ($popover.length > 0) {
+            var $popoverTextField = $popover.find('input[type="text"]', 'textarea'),
+                $textField = $popoverTextField[0],
+                originalInput = $popoverTextField.val();
+
+            $textField.setSelectionRange(originalInput.length, originalInput.length);
+            $textField.scrollLeft = $textField.scrollWidth;
+        }
     });
 })();
