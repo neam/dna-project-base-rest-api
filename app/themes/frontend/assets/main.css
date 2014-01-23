@@ -7314,6 +7314,9 @@ span.required {
 .control-group.error span.required {
   color: #9d261d;
 }
+.select2-container {
+  width: 100%;
+}
 .navbar .language-menu .dropdown-menu {
   height: 495px;
   overflow-y: scroll;
