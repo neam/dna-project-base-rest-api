@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "21f295193cbfa1e5dd970f4cad723e28",
+    "hash": "1bc2867ebfea6cdc3c53a21bad5432f5",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -557,12 +557,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-qa-state.git",
-                "reference": "cf85eab1876015bb15ed7308a52b2189743c37a2"
+                "reference": "8302d7b40ca593ed02ecdb61fc7d288af1ba307a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/cf85eab1876015bb15ed7308a52b2189743c37a2",
-                "reference": "cf85eab1876015bb15ed7308a52b2189743c37a2",
+                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/8302d7b40ca593ed02ecdb61fc7d288af1ba307a",
+                "reference": "8302d7b40ca593ed02ecdb61fc7d288af1ba307a",
                 "shasum": ""
             },
             "require": {
@@ -596,7 +596,7 @@
                 "source": "https://github.com/neam/yii-qa-state/tree/develop",
                 "issues": "https://github.com/neam/yii-qa-state/issues"
             },
-            "time": "2013-11-26 16:10:24"
+            "time": "2014-01-23 12:47:05"
         },
         {
             "name": "neam/yii-relational-graph-db",

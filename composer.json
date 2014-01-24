@@ -170,7 +170,7 @@
         "firstrow/stranslateablebehavior":"@dev",
         "neam/yii-i18n-columns":"0.3.1",
         "neam/yii-i18n-attribute-messages":"dev-develop",
-        "neam/yii-qa-state":"@dev",
+        "neam/yii-qa-state":"dev-develop",
         "neam/yii-relational-graph-db":"@dev",
         "motin/yii-owner-behavior":"*@dev",
         "phpoffice/phpexcel": "1.7.9",
