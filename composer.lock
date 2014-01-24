@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1bc2867ebfea6cdc3c53a21bad5432f5",
+    "hash": "da4a30226437d957907e36d731bfebad",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -1560,6 +1560,40 @@
             "time": "2013-09-19 18:25:06"
         },
         {
+            "name": "sumwai/yii-fixture-helper",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/motin/yii-fixture-helper.git",
+                "reference": "b6d6beba22c96520679aad92006425c3ebf51b77"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/motin/yii-fixture-helper/zipball/b6d6beba22c96520679aad92006425c3ebf51b77",
+                "reference": "b6d6beba22c96520679aad92006425c3ebf51b77",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "."
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Sum-Wai Low"
+                }
+            ],
+            "description": "FixtureHelper is a command application lets you work with your fixtures outside testing.",
+            "support": {
+                "source": "https://github.com/motin/yii-fixture-helper/tree/master"
+            },
+            "time": "2014-01-24 11:49:39"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v4.3.0",
             "source": {
@@ -2302,6 +2336,7 @@
         "neam/yii-qa-state": 20,
         "neam/yii-relational-graph-db": 20,
         "motin/yii-owner-behavior": 20,
+        "sumwai/yii-fixture-helper": 20,
         "phpoffice/phpword": 20,
         "phpoffice/phppowerpoint": 20,
         "schmunk42/giic": 20,

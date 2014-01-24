@@ -109,6 +109,10 @@ $consoleConfig = array(
         'qa-state'    => array(
             'class' => 'qa-state.commands.QaStateCommand',
         ),
+        // fixtureHelper
+		'fixture' => array(
+			'class' => 'vendor.sumwai.yii-fixture-helper.FixtureHelperCommand',
+		),
         // composer callback
         'backend-theme' => array(
             'class'     => 'vendor.phundament.backend-theme.commands.PhBackendThemeCommand',
