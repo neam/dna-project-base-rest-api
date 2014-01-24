@@ -1565,12 +1565,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/yii-fixture-helper.git",
-                "reference": "b6d6beba22c96520679aad92006425c3ebf51b77"
+                "reference": "18478fb13c7704d042d033ffbf73f92508fe35a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/yii-fixture-helper/zipball/b6d6beba22c96520679aad92006425c3ebf51b77",
-                "reference": "b6d6beba22c96520679aad92006425c3ebf51b77",
+                "url": "https://api.github.com/repos/motin/yii-fixture-helper/zipball/18478fb13c7704d042d033ffbf73f92508fe35a9",
+                "reference": "18478fb13c7704d042d033ffbf73f92508fe35a9",
                 "shasum": ""
             },
             "require": {
@@ -1591,7 +1591,7 @@
             "support": {
                 "source": "https://github.com/motin/yii-fixture-helper/tree/master"
             },
-            "time": "2014-01-24 11:49:39"
+            "time": "2014-01-24 13:43:32"
         },
         {
             "name": "swiftmailer/swiftmailer",

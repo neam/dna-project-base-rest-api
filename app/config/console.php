@@ -112,12 +112,18 @@ $consoleConfig = array(
         // fixtureHelper
 		'fixture' => array(
 			'class' => 'vendor.sumwai.yii-fixture-helper.FixtureHelperCommand',
+            'defaultFixturePathAlias' => 'application.fixtures',
 		),
         // composer callback
         'backend-theme' => array(
             'class'     => 'vendor.phundament.backend-theme.commands.PhBackendThemeCommand',
             'themePath' => 'application.themes',
             'themeName' => 'backend2',
+        ),
+    ),
+    'components' => array(
+        'fixture-helper'      => array(
+            'class' => 'vendor.sumwai.yii-fixture-helper.FixtureHelperDbFixtureManager',
         ),
     ),
     'params' => array(
