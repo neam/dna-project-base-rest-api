@@ -22,7 +22,6 @@
  * @property Node $node
  * @property P3Media $fileMedia
  * @property Users $owner
- * @property SectionContent[] $sectionContents
  */
 abstract class BaseDownloadLink extends ActiveRecord
 {
@@ -77,7 +76,6 @@ abstract class BaseDownloadLink extends ActiveRecord
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
                 'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
-                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'download_link_id'),
             )
         );
     }

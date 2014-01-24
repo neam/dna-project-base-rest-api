@@ -96,7 +96,7 @@ class DataModel
             'Message' => 'Message',
             'SourceMessage' => 'SourceMessage',
             // Database views
-            'GoItem' => 'go_item',
+            'Item' => 'item',
         );
 
     }
