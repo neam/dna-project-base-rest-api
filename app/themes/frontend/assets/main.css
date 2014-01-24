@@ -7335,6 +7335,9 @@ span.required {
 .select2-container {
   width: 100%;
 }
+.popover .editableform textarea {
+  height: 80px;
+}
 .navbar .language-menu .dropdown-menu {
   height: 495px;
   overflow-y: scroll;

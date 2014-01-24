@@ -58,7 +58,7 @@ $this->widget('TbGridView', array(
                     }
 
                     $this->widget('TbEditableField', array(
-                        'type' => 'text',
+                        'type' => 'textarea',
                         'text' => $currentTranslation,
                         'model' => $sourceMessage,
                         'attribute' => 'translation',
