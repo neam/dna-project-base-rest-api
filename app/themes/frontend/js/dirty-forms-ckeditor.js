@@ -27,9 +27,11 @@
          * Resets dirtiness for all CKEditors.
          */
         setClean: function() {
-            ckEditors.each(function() {
-                this.resetDirty();
-            });
+            if (typeof ckEditors.each === 'function') {
+                ckEditors.each(function() {
+                    this.resetDirty();
+                });
+            }
         }
     };
 

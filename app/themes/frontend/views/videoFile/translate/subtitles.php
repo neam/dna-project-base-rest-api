@@ -90,4 +90,5 @@ var_dump($messages_to_translate);
 */
 
 publishJs('/themes/frontend/js/popover-focus-caret.js', CClientScript::POS_END);
+publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END);
 ?>
