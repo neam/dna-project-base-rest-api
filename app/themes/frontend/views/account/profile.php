@@ -120,6 +120,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                                 'class' => 'btn btn-primary',
                             )); ?>
                         <?php endif; ?>
+                        <?php echo Html::hintTooltip(Yii::t('app', 'This is your account info.')); ?>
                     </h2>
                     <?php echo $form->errorSummary(array($model, $model->profiles)); ?>
                     <?php $this->renderPartial('/profiles/_elements', array(

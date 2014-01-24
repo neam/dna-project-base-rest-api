@@ -26,3 +26,5 @@
     'toLabel' => 'video',
     'type' => 'edge',
 )); ?>
+
+<?php publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END); ?>
