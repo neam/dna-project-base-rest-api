@@ -21,7 +21,7 @@ abstract class BaseGoItem extends ActiveRecord
 
     public function tableName()
     {
-        return 'go_item';
+        return 'item';
     }
 
     public function rules()
