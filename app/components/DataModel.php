@@ -95,6 +95,8 @@ class DataModel
             // Translations
             'Message' => 'Message',
             'SourceMessage' => 'SourceMessage',
+            // Fixture-based
+            'Action' => 'action',
             // Database views
             'Item' => 'item',
         );
