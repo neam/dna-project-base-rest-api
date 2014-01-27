@@ -24,7 +24,6 @@
  * @property Page[] $pages
  * @property PoFile[] $poFiles
  * @property Section[] $sections
- * @property SectionContent[] $sectionContents
  * @property SlideshowFile[] $slideshowFiles
  * @property Snapshot[] $snapshots
  * @property SpreadsheetFile[] $spreadsheetFiles
@@ -92,7 +91,6 @@ abstract class BaseNode extends ActiveRecord
                 'pages' => array(self::HAS_MANY, 'Page', 'node_id'),
                 'poFiles' => array(self::HAS_MANY, 'PoFile', 'node_id'),
                 'sections' => array(self::HAS_MANY, 'Section', 'node_id'),
-                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'node_id'),
                 'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'node_id'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'node_id'),
                 'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'node_id'),

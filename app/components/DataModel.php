@@ -17,13 +17,14 @@ class DataModel
 
     }
 
-    static public function educationalContentModels()
+    static public function educationalItemModels()
     {
 
         return array(
             'Chapter' => 'chapter',
             'Exercise' => 'exercise',
             'ExamQuestion' => 'exam_question',
+            'ExamQuestionAlternative' => 'exam_question_alternative',
             'SlideshowFile' => 'slideshow_file',
             'TextDoc' => 'text_doc',
             'VectorGraphic' => 'vector_graphic',
@@ -33,16 +34,26 @@ class DataModel
 
     }
 
-    static public function websiteContentModels()
+    static public function websiteContentItemModels()
     {
 
         return array(
+            'PoFile' => 'po_file',
             'Page' => 'page',
             'Section' => 'section',
-            'SectionContent' => 'section_content',
             'DownloadLink' => 'download_link',
             'HtmlChunk' => 'html_chunk',
             'Tool' => 'tool',
+        );
+
+    }
+
+    static public function waffleItemModels()
+    {
+
+        return array(
+            'Country' => 'country',
+            'Etc' => 'etc',
         );
 
     }
@@ -71,7 +82,6 @@ class DataModel
             'Page' => 'page',
             'PoFile' => 'po_file',
             'Section' => 'section',
-            'SectionContent' => 'section_content',
             'SlideshowFile' => 'slideshow_file',
             'Snapshot' => 'snapshot',
             'SpreadsheetFile' => 'spreadsheet_file',
@@ -85,8 +95,10 @@ class DataModel
             // Translations
             'Message' => 'Message',
             'SourceMessage' => 'SourceMessage',
+            // Fixture-based
+            'Action' => 'action',
             // Database views
-            'GoItem' => 'go_item',
+            'Item' => 'item',
         );
 
     }
@@ -98,22 +110,11 @@ class DataModel
     static public function qaModels()
     {
 
-        return array(
-            'Chapter' => 'chapter',
-            'DataChunk' => 'data_chunk',
-            'DataSource' => 'data_source',
-            'ExamQuestion' => 'exam_question',
-            'Exercise' => 'exercise',
-            'PoFile' => 'po_file',
-            'SlideshowFile' => 'slideshow_file',
-            'Snapshot' => 'snapshot',
-            'TextDoc' => 'text_doc',
-            'Tool' => 'tool',
-            'VectorGraphic' => 'vector_graphic',
-            'VideoFile' => 'video_file',
-            // Special pages
-            'HtmlChunk' => 'html_chunk',
-            'DownloadLink' => 'download_link',
+        return array_merge(
+            self::goItemModels(),
+            self::educationalItemModels(),
+            self::websiteContentItemModels()
+            //self::waffleItemModels()
         );
 
     }
@@ -194,7 +195,6 @@ class DataModel
             'Page' => 'n==0#Web page(s)|n==1#Web page|n>1#Web pages',
             'PoFile' => 'n==0#.po-file(s)|n==1#.po-file|n>1#.po-files',
             'Section' => 'n==0#Web page section(s)|n==1#Web page section|n>1#Web page sections',
-            'SectionContent' => 'n==0#Web page section content(s)|n==1#Web page section content|n>1#Web page section contents',
             'SlideshowFile' => 'n==0#Slideshow file(s)|n==1#Slideshow file|n>1#Slideshow files',
             'Snapshot' => 'n==0#Snapshot(s)|n==1#Snapshot|n>1#Snapshots',
             'TextDoc' => 'n==0#Text doc(s)|n==1#Text doc|n>1#Text docs',

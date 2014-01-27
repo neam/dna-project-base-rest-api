@@ -108,7 +108,6 @@
  * @property integer $processed_media_id_zh_tw
  *
  * Relations of table "video_file" available as properties of the model:
- * @property SectionContent[] $sectionContents
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -208,7 +207,6 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'video_file_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
                 'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),

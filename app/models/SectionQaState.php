@@ -1,13 +1,11 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('SectionContent', dirname(__FILE__));
-Yii::import('SectionContent.*');
+Yii::setPathOfAlias('SectionQaState', dirname(__FILE__));
+Yii::import('SectionQaState.*');
 
-class SectionContent extends BaseSectionContent
+class SectionQaState extends BaseSectionQaState
 {
-
-    use ItemTrait;
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
@@ -22,7 +20,7 @@ class SectionContent extends BaseSectionContent
 
     public function getItemLabel()
     {
-        return (string) "Empty Association #" . $this->ordinal;
+        return parent::getItemLabel();
     }
 
     public function behaviors()

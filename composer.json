@@ -129,6 +129,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://github.com/motin/yii-fixture-helper"
+        },
+        {
+            "type":"vcs",
             "url":"https://github.com/neam/wrest"
         },
         {
@@ -170,9 +174,10 @@
         "firstrow/stranslateablebehavior":"@dev",
         "neam/yii-i18n-columns":"0.3.1",
         "neam/yii-i18n-attribute-messages":"dev-develop",
-        "neam/yii-qa-state":"@dev",
+        "neam/yii-qa-state":"dev-develop",
         "neam/yii-relational-graph-db":"@dev",
         "motin/yii-owner-behavior":"*@dev",
+        "sumwai/yii-fixture-helper":"@dev",
         "phpoffice/phpexcel": "1.7.9",
         "phpoffice/phpword": "dev-added-composer-json",
         "phpoffice/phppowerpoint": "dev-master",

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "21f295193cbfa1e5dd970f4cad723e28",
+    "hash": "da4a30226437d957907e36d731bfebad",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -557,12 +557,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-qa-state.git",
-                "reference": "cf85eab1876015bb15ed7308a52b2189743c37a2"
+                "reference": "8302d7b40ca593ed02ecdb61fc7d288af1ba307a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/cf85eab1876015bb15ed7308a52b2189743c37a2",
-                "reference": "cf85eab1876015bb15ed7308a52b2189743c37a2",
+                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/8302d7b40ca593ed02ecdb61fc7d288af1ba307a",
+                "reference": "8302d7b40ca593ed02ecdb61fc7d288af1ba307a",
                 "shasum": ""
             },
             "require": {
@@ -596,7 +596,7 @@
                 "source": "https://github.com/neam/yii-qa-state/tree/develop",
                 "issues": "https://github.com/neam/yii-qa-state/issues"
             },
-            "time": "2013-11-26 16:10:24"
+            "time": "2014-01-23 12:47:05"
         },
         {
             "name": "neam/yii-relational-graph-db",
@@ -1560,6 +1560,40 @@
             "time": "2013-09-19 18:25:06"
         },
         {
+            "name": "sumwai/yii-fixture-helper",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/motin/yii-fixture-helper.git",
+                "reference": "18478fb13c7704d042d033ffbf73f92508fe35a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/motin/yii-fixture-helper/zipball/18478fb13c7704d042d033ffbf73f92508fe35a9",
+                "reference": "18478fb13c7704d042d033ffbf73f92508fe35a9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "."
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Sum-Wai Low"
+                }
+            ],
+            "description": "FixtureHelper is a command application lets you work with your fixtures outside testing.",
+            "support": {
+                "source": "https://github.com/motin/yii-fixture-helper/tree/master"
+            },
+            "time": "2014-01-24 13:43:32"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v4.3.0",
             "source": {
@@ -2302,6 +2336,7 @@
         "neam/yii-qa-state": 20,
         "neam/yii-relational-graph-db": 20,
         "motin/yii-owner-behavior": 20,
+        "sumwai/yii-fixture-helper": 20,
         "phpoffice/phpword": 20,
         "phpoffice/phppowerpoint": 20,
         "schmunk42/giic": 20,

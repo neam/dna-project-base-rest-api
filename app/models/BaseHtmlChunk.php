@@ -20,7 +20,6 @@
  * @property Node $node
  * @property Users $owner
  * @property HtmlChunkQaState $htmlChunkQaState
- * @property SectionContent[] $sectionContents
  */
 abstract class BaseHtmlChunk extends ActiveRecord
 {
@@ -73,7 +72,6 @@ abstract class BaseHtmlChunk extends ActiveRecord
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'htmlChunkQaState' => array(self::BELONGS_TO, 'HtmlChunkQaState', 'html_chunk_qa_state_id'),
-                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'html_chunk_id'),
             )
         );
     }

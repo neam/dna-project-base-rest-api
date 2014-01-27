@@ -23,7 +23,15 @@ class ActiveRecord extends CActiveRecord
         if (isset($qaModels[get_class($this)])) {
             $behaviors['qa-state'] = array(
                 'class' => 'QaStateBehavior',
+                'scenarios' => array(
+                    'draft',
+                    'preview',
+                    'public',
+                ),
             );
+            foreach (Yii::app()->params["languages"] as $language => $label) {
+                $behaviors['qa-state']['scenarios'][] = 'translate_into_' . $language;
+            }
             $behaviors['owner-behavior'] = array(
                 'class' => 'OwnerBehavior',
             );

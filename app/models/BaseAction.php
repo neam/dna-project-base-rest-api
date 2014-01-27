@@ -1,17 +1,16 @@
 <?php
 
 /**
- * This is the model base class for the table "go_item".
+ * This is the model base class for the table "action".
  *
- * Columns in table "go_item" available as properties of the model:
- * @property string $node_id
+ * Columns in table "action" available as properties of the model:
  * @property string $id
- * @property string $_title
- * @property string $model_class
+ * @property string $action
+ * @property string $label
  *
  * There are no model relations.
  */
-abstract class BaseGoItem extends ActiveRecord
+abstract class BaseAction extends ActiveRecord
 {
 
     public static function model($className = __CLASS__)
@@ -21,25 +20,23 @@ abstract class BaseGoItem extends ActiveRecord
 
     public function tableName()
     {
-        return 'item';
+        return 'action';
     }
 
     public function rules()
     {
         return array_merge(
             parent::rules(), array(
-                array('node_id, id, _title, model_class', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('node_id, id', 'length', 'max' => 20),
-                array('_title', 'length', 'max' => 255),
-                array('model_class', 'length', 'max' => 13),
-                array('node_id, id, _title, model_class', 'safe', 'on' => 'search'),
+                array('action, label', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('action, label', 'length', 'max' => 255),
+                array('id, action, label', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->node_id;
+        return (string) $this->action;
     }
 
     public function behaviors()
@@ -64,10 +61,9 @@ abstract class BaseGoItem extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'node_id' => Yii::t('model', 'Node'),
             'id' => Yii::t('model', 'ID'),
-            '_title' => Yii::t('model', 'Title'),
-            'model_class' => Yii::t('model', 'Model Class'),
+            'action' => Yii::t('model', 'Action'),
+            'label' => Yii::t('model', 'Label'),
         );
     }
 
@@ -77,10 +73,9 @@ abstract class BaseGoItem extends ActiveRecord
             $criteria = new CDbCriteria;
         }
 
-        $criteria->compare('t.node_id', $this->node_id, true);
         $criteria->compare('t.id', $this->id, true);
-        $criteria->compare('t._title', $this->_title, true);
-        $criteria->compare('t.model_class', $this->model_class, true);
+        $criteria->compare('t.action', $this->action, true);
+        $criteria->compare('t.label', $this->label, true);
 
 
         return $criteria;
