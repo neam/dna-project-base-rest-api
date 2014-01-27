@@ -17,6 +17,7 @@
             'collapse' => true,
             'fixed' => 'top',
             'items' => array(
+                $this->renderBreadcrumbs(),
                 array(
                     'class' => 'TbMenu',
                     'items' => P3Page::getMenuItems($rootNode)

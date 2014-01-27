@@ -1,4 +1,38 @@
 .navbar {
+  .brand {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  .navbar-breadcrumbs {
+    .pull-left;
+    list-style-type: none;
+    margin: 2px 0;
+
+    li {
+      display: inline-block;
+
+      &:after {
+        content: "\003e";
+        margin: 0 10px;
+      }
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+
+      &.active {
+        color: @black;
+      }
+
+      a {
+        color: @textColor;
+      }
+    }
+  }
+
   .language-menu {
     .dropdown-menu {
       height: 495px;

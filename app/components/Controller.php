@@ -114,4 +114,43 @@ class Controller extends CController
 
         parent::setPageTitle($value);
     }
+
+    /**
+     * Renders the breadcrumbs.
+     * The rendering logic is based on TbBreadcrumbs::run().
+     */
+    public function renderBreadcrumbs()
+    {
+        $breadcrumbs = $this->breadcrumbs;
+
+        ob_start();
+
+        echo CHtml::openTag('ul', array('class' => 'navbar-breadcrumbs'));
+
+		end($breadcrumbs);
+		$lastLink = key($breadcrumbs);
+
+		foreach ($breadcrumbs as $label => $url) {
+			if (is_string($label) || is_array($url)) {
+				echo '<li>';
+				echo strtr('<a href="{url}">{label}</a>', array(
+					'{url}' => CHtml::normalizeUrl($url),
+					'{label}' => CHtml::encode($label),
+				));
+			} else {
+				echo '<li class="active">';
+				echo str_replace('{label}', CHtml::encode($url), '{label}');
+			}
+
+			if ($lastLink !== $label) {
+				echo '';
+			}
+
+			echo '</li>';
+		}
+
+		echo CHtml::closeTag('ul');
+
+        return ob_get_clean();
+    }
 }
