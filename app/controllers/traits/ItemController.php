@@ -326,7 +326,7 @@ trait ItemController
         }
 
         $dataProvider = $model->search();
-        $criteria = $this->getTranslatorCriteria($model);
+        $criteria = $this->getTranslatorCriteria($model->tableName());
         $dataProvider->setCriteria($criteria);
 
         $this->populateWorkflowData($model, "browse", Yii::t('app', 'Browse'));
