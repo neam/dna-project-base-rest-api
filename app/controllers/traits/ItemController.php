@@ -286,6 +286,36 @@ trait ItemController
         return null;
     }
 
+    /**
+     * Returns a CDbCriteria which shows the models in testable-state or higher for translators.
+     *
+     * @param $modelTbl
+     * @param array $defaultCriteria the criteria to return if user has Administrator-role or is not a translator
+     * @return array|\CDbCriteria
+     */
+    public function getTranslatorCriteria($modelTbl, $defaultCriteria = array())
+    {
+        // Administrators should see everything so return early
+        if (Yii::app()->user->checkAccess('Administrator')) {
+            return $defaultCriteria;
+        }
+
+        $criteria = $defaultCriteria;
+
+        // Translators should only see items which are in testable mode or higher
+        if (Yii::app()->user->checkAccess('Item.Translate')) {
+            $criteria = new CDbCriteria();
+
+            $qaStateTbl = $modelTbl . '_qa_state'; // model_table_qa_state
+            $qaStateForeignId = $qaStateTbl . '_id'; // model_table_qa_state_id
+
+            $criteria->join = sprintf('INNER JOIN %s qs ON %s = qs.id', $qaStateTbl, $qaStateForeignId);
+            $criteria->addInCondition('status', array('preview', 'public'));
+        }
+
+        return $criteria;
+    }
+
     public function actionBrowse()
     {
         $model = new $this->modelClass('search');
@@ -295,32 +325,15 @@ trait ItemController
             $model->attributes = $_GET[$this->modelClass];
         }
 
-        $criteria = array();
-
-        // Translators should only see items which are in testable mode or higher
-        if (Yii::app()->user->checkAccess('Item.Translate')) {
-            $criteria = new CDbCriteria();
-
-            $modelTbl = $model->tableName(); // eg model_table
-            $qaStateTbl = $modelTbl . '_qa_state'; // model_table_qa_state
-            $qaStateForeignId = $qaStateTbl . '_id'; // model_table_qa_state_id
-
-            $criteria->join = sprintf('INNER JOIN %s qs ON %s = qs.id', $qaStateTbl, $qaStateForeignId);
-            $criteria->addInCondition('status', array('preview', 'public'));
-        }
-
-        // Administrators should see everything, and have Item.Translate rights so ignore everything just made
-        if (Yii::app()->user->checkAccess('Administrator')) {
-            $criteria = array();
-        }
-
         $dataProvider = $model->search();
+        $criteria = $this->getTranslatorCriteria($model);
         $dataProvider->setCriteria($criteria);
 
         $this->populateWorkflowData($model, "browse", Yii::t('app', 'Browse'));
 
         $this->render('/_item/browse', array('model' => $model, 'dataProvider' => $dataProvider,));
     }
+
 
     public function actionAdd()
     {
