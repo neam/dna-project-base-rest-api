@@ -263,23 +263,8 @@ class VideoFileController extends Controller
 
     public function actionIndex()
     {
-        $criteria = array();
-
-        // Translators should only see videos which are in testable mode or higher
-        if (Yii::app()->user->checkAccess('Item.Translate')) {
-            $criteria = new CDbCriteria();
-            $criteria->join = 'INNER JOIN video_file_qa_state qs ON video_file_qa_state_id = qs.id';
-            $criteria->addInCondition('status', array('preview', 'public'));
-        }
-
-        // Administrators should see everything, and have Item.Translate rights so ignore everything just made
-        if (Yii::app()->user->checkAccess('Administrator')) {
-            $criteria = array();
-        }
-
         $dataProvider = new CActiveDataProvider('VideoFile');
-        $dataProvider->setCriteria($criteria);
-        $this->render('index', array('dataProvider' => $dataProvider,));
+        $this->render('index', array('dataProvider' => $dataProvider));
     }
 
     public function actionAdmin()
