@@ -114,3 +114,5 @@ $input = $this->widget('\GtcRelation', array(
     'field' => 'itemLabel',
 )); ?>
 <?php $this->endClip(); ?>
+
+<?php publishJs('/themes/frontend/js/toggle-subtitle-translation-buttons.js', CClientScript::POS_END); ?>
