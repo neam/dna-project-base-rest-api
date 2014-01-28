@@ -7396,6 +7396,15 @@ span.required {
   border-radius: 4px;
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
+.flowbar {
+  position: fixed;
+  z-index: 10;
+  background-color: #fff;
+  top: 25px;
+}
+.below-flowbar {
+  margin-top: 140px;
+}
 /* adjust content with fixed navbar */
 @media (min-width: 989px) {
   body {

@@ -22,7 +22,7 @@
 
 </style>
 
-<div class="row-fluid flowbar">
+<div class="row flowbar">
     <div class="span12">
 
         <h1>

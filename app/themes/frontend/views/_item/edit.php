@@ -16,7 +16,7 @@
 
 <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
 
-<div class="row-fluid">
+<div class="row-fluid below-flowbar">
     <div class="span3">
 
         <br/>

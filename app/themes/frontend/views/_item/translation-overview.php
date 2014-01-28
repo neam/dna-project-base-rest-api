@@ -17,7 +17,7 @@ $this->breadcrumbs[] = $actionCaption;
 
 <?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption", "form")); ?>
 
-<div class="row-fluid">
+<div class="row-fluid below-flowbar">
     <div class="span12">
 
         <?php
