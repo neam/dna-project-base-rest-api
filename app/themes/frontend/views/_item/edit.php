@@ -47,7 +47,7 @@
                 </h2>
             </div>
             <div class="span3">
-                <div class="btn-toolbar pull-right">
+                <div class="btn-toolbar pull-right buttons-fixed">
                     <div class="btn-group">
                         <?php
                         switch ($this->action->id . "-" . $step) {
