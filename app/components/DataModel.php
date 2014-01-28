@@ -163,8 +163,8 @@ class DataModel
     }
 
     /**
-     * Model classes that are generated internally and is never expected to be created
-     * manually by a creation form
+     * Model classes that are generated internally or by user interaction and
+     * thus never expected to be created manually in the backend
      * @return array
      */
     static public function internalModels()
