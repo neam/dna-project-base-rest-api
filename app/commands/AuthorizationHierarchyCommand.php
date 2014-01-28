@@ -184,6 +184,9 @@ EOD;
         $cruds = array_merge($baseModels, $qaStateModels);
 
         foreach ($cruds as $model => $table) {
+            if ($model == "Item") {
+                continue;
+            }
             foreach (array('*', 'View', 'Update', 'Delete') as $action) {
 
                 $auth->createOperation("{$model}.{$action}");
