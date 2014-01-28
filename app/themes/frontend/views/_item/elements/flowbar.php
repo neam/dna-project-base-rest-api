@@ -291,5 +291,48 @@
 
         <?php endif; ?>
 
+        <?php if (!empty($requiredCounts) && $requiredCounts['remaining'] > 0): ?>
+            <div class="required-counts">
+                <div class="row-fluid">
+                    <div class="span5 offset3">
+                        <span class="missing">
+                            <?php echo Yii::t('app', '* <em id="remaining-count">{remaining}</em> required fields missing.', array(
+                                '{remaining}' => $requiredCounts['remaining'],
+                            )); ?>
+                        </span>
+                        <?php $this->widget('bootstrap.widgets.TbButton', array(
+                            'label' => Yii::t('button', 'Next'),
+                            'type' => TbHtml::BUTTON_COLOR_PRIMARY,
+                            'url' => '#',
+                            'htmlOptions' => array(
+                                'id' => 'next-required',
+                            ),
+                        )); ?>
+                    </div>
+                    <!--
+                    <div class="span4 text-right">
+                        <?php $this->widget('bootstrap.widgets.TbButton', array(
+                            'label' => Yii::t('button', 'Translation Done'),
+                            'type' => TbHtml::BUTTON_COLOR_DEFAULT,
+                            'url' => '#',
+                            'htmlOptions' => array(
+                                'id' => 'translation-done',
+                            ),
+                        )); ?>
+                        <?php $this->widget('bootstrap.widgets.TbButton', array(
+                            'label' => Yii::t('button', 'Cancel'),
+                            'type' => TbHtml::BUTTON_COLOR_DEFAULT,
+                            'url' => '#',
+                            'htmlOptions' => array(
+                                'id' => 'translation-cancel',
+                            ),
+                        )); ?>
+                    </div>
+                    -->
+                </div>
+            </div>
+
+            <?php publishJs('/themes/frontend/js/flowbar-form-controls.js', CClientScript::POS_END); ?>
+        <?php endif; ?>
     </div>
 </div>

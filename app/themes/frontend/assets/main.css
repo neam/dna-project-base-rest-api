@@ -7011,10 +7011,6 @@ ul.breadcrumb {
   display: none;
 }
 .buttons-fixed {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 5px;
-  box-sizing: border-box;
-  padding: 6px;
   position: fixed;
 }
 /* Sidenav for Docs
@@ -7409,8 +7405,18 @@ span.required {
   background-color: #fff;
   top: 25px;
 }
+.flowbar .required-counts {
+  margin: 20px 0;
+}
+.flowbar .required-counts .missing {
+  color: #9d261d;
+  font-size: 16px;
+}
+.flowbar .required-counts .missing em {
+  font-style: normal;
+}
 .below-flowbar {
-  margin-top: 140px;
+  margin-top: 145px;
 }
 /* adjust content with fixed navbar */
 @media (min-width: 989px) {

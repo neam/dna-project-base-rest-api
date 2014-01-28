@@ -641,6 +641,8 @@ trait ItemController
             $this->workflowData['caption'],
         ));
 
+        $requiredCounts = $this->getRequiredCounts($id);
+
         // Breadcrumbs
         $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
         $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
@@ -651,7 +653,49 @@ trait ItemController
             'model' => $model,
             'step' => $step,
             'stepCaption' => $stepCaptions[$step],
+            'requiredCounts' => $requiredCounts,
         ));
+    }
+
+    /**
+     * Returns the total and remaining number of required attributes.
+     * @param integer $id the model ID.
+     * @return array
+     */
+    public function getRequiredCounts($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $_POST = $this->fixPostFromGrid($_POST);
+
+        $requiredCount = array(
+            'total' => 0,
+            'remaining' => 0,
+        );
+
+        if (isset($_POST[$this->modelClass])) {
+            $requiredValidCount = 0;
+
+            foreach ($_POST[$this->modelClass] as $attribute => $value) {
+                $validators = $model->getValidators($attribute);
+
+                foreach ($validators as $validator) {
+                    if ($validator instanceof CRequiredValidator) {
+                        $requiredCount['total'] += 1;
+
+                        $model->{$attribute} = $_POST[$this->modelClass][$attribute];
+
+                        if ($model->validate(array($attribute))) {
+                            $requiredValidCount += 1;
+                        }
+                    }
+                }
+            }
+
+            $requiredCount['remaining'] = $requiredCount['total'] - $requiredValidCount;
+        }
+
+        return $requiredCount;
     }
 
     public function actionClone($id)
@@ -922,7 +966,6 @@ trait ItemController
         Yii::log("_POST: " . print_r($_POST, true), "flow", __METHOD__);
 
         if (isset($_POST[$this->modelClass])) {
-
             $model->attributes = $_POST[$this->modelClass];
 
             // log for dev purposes

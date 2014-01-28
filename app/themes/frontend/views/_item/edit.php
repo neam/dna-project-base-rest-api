@@ -14,7 +14,13 @@
 
 <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
 
-<?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
+<?php
+$requiredCounts = isset($requiredCounts) ? $requiredCounts : array(); // TODO: Ensure $requireCounts is always passed to this view.
+$this->renderPartial('/_item/elements/flowbar', array(
+    'model' => $model,
+    'requiredCounts' => $requiredCounts,
+));
+?>
 
 <div class="row-fluid below-flowbar">
     <div class="span3">
@@ -39,7 +45,7 @@
 
     </div>
     <div class="span9">
-        <?php echo $form->errorSummary($model); ?>
+        <?php //echo $form->errorSummary($model); ?>
         <div class="row-fluid">
             <div class="span9">
                 <h2><?php print $stepCaption; ?>
