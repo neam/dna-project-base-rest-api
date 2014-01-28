@@ -156,6 +156,8 @@ class DataModel
 
         return array(
             'Comment' => 'comment',
+            'Item' => 'item',
+            'VideoFile' => 'video_file',
         );
 
     }
