@@ -128,7 +128,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                                 'class' => 'btn btn-primary',
                             )); ?>
                         <?php endif; ?>
-                        <?php echo Html::hintTooltip(Yii::t('app', 'This is your account info.')); ?>
+                        <?php echo Html::hintTooltip(Yii::t('app', 'This is your public profile that others can see without being logged in.')); ?>
                     </h2>
                     <?php echo $form->errorSummary(array($model, $model->profiles)); ?>
                     <?php $this->renderPartial('/profiles/_elements', array(
