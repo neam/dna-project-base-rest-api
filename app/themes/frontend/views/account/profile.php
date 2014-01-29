@@ -18,29 +18,32 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
         'class' => 'dirtyforms',
     ),
 )); ?>
-<div class="row">
-    <div class="span9">
-        <h1>
-            <?php echo $model->profiles->first_name . ' ' . $model->profiles->last_name; ?>
-            <small><?php echo Yii::t('account', 'Profile') ?> <!--#<?php echo $model->id ?>--></small>
-        </h1>
-        <div class="pull-left">
-            <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-        </div>
-        <div class="btn-toolbar pull-right">
-            <div class="btn-group">
-                <?php echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-                    'class' => 'btn btn-primary btn-dirtyforms',
-                )); ?>
-                <?php $this->widget('bootstrap.widgets.TbButton', array(
-                    'label' => Yii::t('model', 'Undo'),
-                    'url' => Yii::app()->request->url,
-                    'htmlOptions' => array(
-                        'class' => 'btn-dirtyforms ignoredirty',
-                    ),
-                )); ?>
+<div class="profile-bar">
+    <div class="row">
+        <div class="span9">
+            <h1>
+                <?php echo $model->profiles->first_name . ' ' . $model->profiles->last_name; ?>
+                <small><?php echo Yii::t('account', 'Profile') ?> <!--#<?php echo $model->id ?>--></small>
+            </h1>
+            <div class="pull-left">
+                <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+            </div>
+            <div class="btn-toolbar pull-right">
+                <div class="btn-group">
+                    <?php echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+                        'class' => 'btn btn-primary btn-dirtyforms',
+                    )); ?>
+                    <?php $this->widget('bootstrap.widgets.TbButton', array(
+                        'label' => Yii::t('model', 'Undo'),
+                        'url' => Yii::app()->request->url,
+                        'htmlOptions' => array(
+                            'class' => 'btn-dirtyforms ignoredirty',
+                        ),
+                    )); ?>
+                </div>
             </div>
         </div>
+        <div class="span3"></div>
     </div>
 </div>
 <?php if (Yii::app()->user->hasFlash('profileMessage')): ?>
@@ -67,6 +70,11 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
     }
 </style>
 <div class="account-profile-grid">
+    <div class="row">
+        <div class="span12">
+            <?php $this->widget('bootstrap.widgets.TbAlert'); ?>
+        </div>
+    </div>
     <!--
         <div class="row">
             <div class="span12" style="line-height: 30px;">
@@ -112,7 +120,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
     <div class="row">
         <div class="span9">
             <div class="row-fluid">
-                <div class="span12" style="height: 480px; overflow-y: scroll;">
+                <div class="span12">
                     <h2>
                         <?php echo Yii::t('account', 'Info'); ?>
                         <?php if (false): ?>
@@ -134,26 +142,6 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                             echo $clip;
                         }
                     } ?>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span12">
-                    <br>
-
-                    <div class="btn-toolbar pull-right">
-                        <div class="btn-group">
-                            <?php echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-                                'class' => 'btn btn-primary btn-dirtyforms',
-                            )); ?>
-                            <?php $this->widget('bootstrap.widgets.TbButton', array(
-                                'label' => Yii::t('model', 'Undo'),
-                                'url' => Yii::app()->request->url,
-                                'htmlOptions' => array(
-                                    'class' => 'btn-dirtyforms ignoredirty',
-                                ),
-                            )); ?>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

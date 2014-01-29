@@ -7779,6 +7779,19 @@ i[class*=" icon-"] {
 .profile-language-fields .required-red span.required {
   color: #9d261d;
 }
+.profile-bar {
+  background-color: #ffffff;
+  position: fixed;
+  top: 24px;
+  z-index: 20;
+}
+.account-profile-grid {
+  margin-top: 100px;
+  z-index: 10;
+}
+.account-profile-grid .alert {
+  margin: 20px 0 10px;
+}
 html {
   overflow-y: scroll;
 }
