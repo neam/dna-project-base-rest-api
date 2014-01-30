@@ -40,8 +40,12 @@ Yii::app()->clientScript->registerScript('filter-form', "
 ?>
 
 <div class="filter-form" style="display:none">
-    <?php $this->renderPartial('_filter', array(
-        'model' => $model,
-    )); ?>
+    <?php
+    if ($this->getViewFile('_filter')) {
+        $this->renderPartial('_filter', array(
+            'model' => $model,
+        ));
+    }
+    ?>
 </div>
 
