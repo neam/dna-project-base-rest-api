@@ -47,7 +47,7 @@ class Html extends TbHtml
 
         if (!empty($files)) {
             // Set the CSS path
-            $forceCopy = defined('DEV') && DEV && !empty($_GET['refresh_assets']) ? true : false;
+            $forceCopy = (defined('DEV') && DEV) || !empty($_GET['refresh_assets']) ? true : false;
             $css = Yii::app()->assetManager->publish(
                 Yii::app()->theme->basePath . '/' . $path,
                 true, // hash by name
