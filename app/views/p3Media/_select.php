@@ -64,6 +64,8 @@ Yii::app()->clientScript->registerScript('step_' . $step . '-select2-' . $attrib
 $criteria = new CDbCriteria();
 $criteria->addInCondition("mime_type", $mimeTypes);
 $criteria->addCondition("t.type = 'file'");
+$criteria->addCondition("t.access_owner = :userId");
+$criteria->params[':userId'] = Yii::app()->user->id;
 $criteria->limit = 100;
 $criteria->order = "t.created_at DESC";
 
