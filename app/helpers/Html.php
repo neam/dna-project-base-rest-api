@@ -63,6 +63,17 @@ class Html extends TbHtml
     }
 
     /**
+     * Renders the backend navbar.
+     */
+    public static function renderBackendNavbar()
+    {
+        $role = 'Editor'; // required role for rendering backend navbar
+        if (Yii::app()->user->checkAccess($role)) {
+            app()->controller->renderPartial('application.themes.backend2.views.layouts._navbar');
+        }
+    }
+
+    /**
      * Registers the Dirty Forms jQuery plugin and binds it to a form element.
      */
     public static function jsDirtyForms()
