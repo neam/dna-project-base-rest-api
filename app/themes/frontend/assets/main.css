@@ -7792,6 +7792,9 @@ i[class*=" icon-"] {
 .account-profile-grid .alert {
   margin: 20px 0 10px;
 }
+.item-browse .flowbar {
+  position: static;
+}
 html {
   overflow-y: scroll;
 }

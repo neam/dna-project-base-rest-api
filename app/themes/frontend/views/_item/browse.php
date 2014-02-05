@@ -3,13 +3,15 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 $this->breadcrumbs[] = Yii::t('app', 'Browse');
 ?>
 
-<?php
-if (!isset($this->menu) || $this->menu === array()) {
-    $this->menu = array(
-        array('label' => Yii::t('app', 'Create'), 'url' => array('create')),
-    );
-}
-?>
+<div class="item-browse">
+    <?php
+    // TODO: This needs to be refactored.
+    if (!isset($this->menu) || $this->menu === array()) {
+        $this->menu = array(
+            array('label' => Yii::t('app', 'Create'), 'url' => array('create')),
+        );
+    }
+    ?>
     <h1><?php echo Yii::t('model', $model->modelLabel, 2); ?>
         <small><?php echo $this->itemDescriptionTooltip(); ?></small>
     </h1>
@@ -24,12 +26,13 @@ if (!isset($this->menu) || $this->menu === array()) {
             margin: 0;
         }
     </style>
-<?php $this->renderPartial("/_item/elements/browsebar", array("model" => $model)); ?>
+    <?php $this->renderPartial("/_item/elements/browsebar", array("model" => $model)); ?>
 
-<?php
-$this->widget('zii.widgets.CListView', array(
-    'dataProvider' => $dataProvider,
-    'template' => '{summary}{pager}{items}{pager}',
-    'itemView' => '/_item/_list-item',
-));
-?>
+    <?php $this->widget(
+        'zii.widgets.CListView', array(
+            'dataProvider' => $dataProvider,
+            'template' => '{summary}{pager}{items}{pager}',
+            'itemView' => '/_item/_list-item',
+        )
+    ); ?>
+</div>
