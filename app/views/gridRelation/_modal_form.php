@@ -232,6 +232,5 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
         </div>
     </div>
 
-<?php
-$this->endWidget();
-?>
+<?php $this->endWidget(); ?>
+<?php publishJs('/themes/frontend/js/toggle-modal-form-button.js', CClientScript::POS_END); ?>
