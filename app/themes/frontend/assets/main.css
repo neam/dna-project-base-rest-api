@@ -7550,6 +7550,9 @@ i[class*=" icon-"] {
   position: relative;
   top: -1px;
 }
+#facebox .content .button.continue-without-saving {
+  font-size: 11px;
+}
 #facebox .content .button.continue {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -7776,6 +7779,9 @@ i[class*=" icon-"] {
 .commentsBlock .clearFix {
   clear: both;
 }
+.item-browse .flowbar {
+  position: static;
+}
 .profile-language-fields .required-red span.required {
   color: #9d261d;
 }
@@ -7791,9 +7797,6 @@ i[class*=" icon-"] {
 }
 .account-profile-grid .alert {
   margin: 20px 0 10px;
-}
-.item-browse .flowbar {
-  position: static;
 }
 html {
   overflow-y: scroll;
