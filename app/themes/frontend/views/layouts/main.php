@@ -30,7 +30,10 @@
 </div>
 
 <div id="backend">
-    <?php Html::renderBackendNavbar(); ?>
+    <?php
+    // Not including navbar due to responsive-bugs and the fact that we don't use it
+    //Html::renderBackendNavbar();
+    ?>
 </div>
 
 </body>
