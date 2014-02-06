@@ -38,7 +38,6 @@ class Profiles extends BaseProfiles
     {
         return array_merge(
             parent::rules(), array(
-                array('language1', 'required', 'on' => 'update'),
             )
         );
     }
