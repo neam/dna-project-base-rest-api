@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "da4a30226437d957907e36d731bfebad",
+    "hash": "475a1623ef0edd941fd7e06525b8f76f",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -346,22 +346,38 @@
         },
         {
             "name": "mishamx/yii-user",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/phundament/yii-user.git",
-                "reference": "740915a5054ee3de5fb57727db8c8753e03133cb"
+                "url": "https://github.com/Gapminder/yii-user.git",
+                "reference": "3f07386c55369b13b0f844f6e0931664566b0c37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/phundament/yii-user/archive/740915a5054ee3de5fb57727db8c8753e03133cb.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/3f07386c55369b13b0f844f6e0931664566b0c37",
+                "reference": "3f07386c55369b13b0f844f6e0931664566b0c37",
+                "shasum": ""
             },
             "type": "yii-extension",
-            "description": "Yii PHP Framework extension for registration and management users accounts.",
-            "homepage": "https://github.com/phundament/yii-user",
-            "time": "2013-10-01 10:19:48"
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Mikhail Mangushev",
+                    "email": "development@2mx.org"
+                }
+            ],
+            "description": "User management module",
+            "keywords": [
+                "phundament",
+                "user",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/Gapminder/yii-user/tree/develop"
+            },
+            "time": "2014-02-06 14:23:17"
         },
         {
             "name": "moein7tl/yii-introjs",

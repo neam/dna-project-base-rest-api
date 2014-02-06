@@ -23,7 +23,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/mihanentalpo/yii-sql-migration-generator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/packagecompressor" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/translatable" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/mishamx/yii-user" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/moein7tl/yii-introjs" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/motin/yii-owner-behavior" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mrclay/minify" />
@@ -156,7 +155,6 @@
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phpword" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/status-behavior" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3extensions" />
-          <root url="file://$MODULE_DIR$/vendor/mishamx/yii-user" />
           <root url="file://$MODULE_DIR$/vendor/malyshev/yii-debug-toolbar" />
         </CLASSES>
         <SOURCES>
@@ -224,7 +222,6 @@
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phpword" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/status-behavior" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3extensions" />
-          <root url="file://$MODULE_DIR$/vendor/mishamx/yii-user" />
           <root url="file://$MODULE_DIR$/vendor/malyshev/yii-debug-toolbar" />
         </SOURCES>
       </library>

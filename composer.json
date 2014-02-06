@@ -140,6 +140,10 @@
             "url":"https://github.com/motin/gii-template-collection"
         },
         {
+            "type":"vcs",
+            "url":"https://github.com/Gapminder/yii-user"
+        },
+        {
             "type":"composer",
             "url":"http://packages.phundament.com"
         }
@@ -152,7 +156,7 @@
         "gusnips/yii-translate" : "dev-master",
         "malyshev/yii-debug-toolbar":"@dev",
         "mikehaertl/packagecompressor": "dev-develop",
-        "mishamx/yii-user":"@dev",
+        "mishamx/yii-user":"dev-develop",
         "moein7tl/yii-introjs":"@dev",
         "nordsoftware/yii-emailer": "1.*",
         "phundament/backend-theme":"@dev",
