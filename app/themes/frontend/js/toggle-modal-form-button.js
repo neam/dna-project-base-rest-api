@@ -1,6 +1,8 @@
+/**
+ * Toggles the Add Selected button when checking items in modal forms.
+ */
 (function() {
     var $form = $('#item-form'),
-        $checkboxes = $('input[type="checkbox"]'),
         $addSelectedBtn = $('input#add-selected');
 
     $addSelectedBtn.attr('disabled', 'disabled');
@@ -9,5 +11,7 @@
         if ($form.hasClass('dirty')) {
             $addSelectedBtn.removeAttr('disabled');
         }
+
+        $form.dirtyForms('setClean'); // disable dirty forms
     });
 })();
