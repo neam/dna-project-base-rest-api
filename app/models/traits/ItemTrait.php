@@ -158,8 +158,17 @@ trait ItemTrait
             }
         }
 
+        // If there is nothing to translate, then the translation progress should equal 0%
         if (empty($currentlyTranslatableAttributes)) {
-            return array();
+
+            // Add an always invalid status requirement for each language
+            $i18nRules = array();
+            foreach (Yii::app()->params["languages"] as $language => $label) {
+                $i18nRules[] = array('id', 'compare', 'compareValue' => -1, 'on' => 'translate_into_' . $language);
+            }
+
+            return $i18nRules;
+
         }
 
         $i18nRules = array();
