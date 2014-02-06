@@ -312,21 +312,21 @@
                     <!--
                     <div class="span4 text-right">
                         <?php $this->widget('bootstrap.widgets.TbButton', array(
-                            'label' => Yii::t('button', 'Translation Done'),
-                            'type' => TbHtml::BUTTON_COLOR_DEFAULT,
-                            'url' => '#',
-                            'htmlOptions' => array(
-                                'id' => 'translation-done',
-                            ),
-                        )); ?>
+                        'label' => Yii::t('button', 'Translation Done'),
+                        'type' => TbHtml::BUTTON_COLOR_DEFAULT,
+                        'url' => '#',
+                        'htmlOptions' => array(
+                            'id' => 'translation-done',
+                        ),
+                    )); ?>
                         <?php $this->widget('bootstrap.widgets.TbButton', array(
-                            'label' => Yii::t('button', 'Cancel'),
-                            'type' => TbHtml::BUTTON_COLOR_DEFAULT,
-                            'url' => '#',
-                            'htmlOptions' => array(
-                                'id' => 'translation-cancel',
-                            ),
-                        )); ?>
+                        'label' => Yii::t('button', 'Cancel'),
+                        'type' => TbHtml::BUTTON_COLOR_DEFAULT,
+                        'url' => '#',
+                        'htmlOptions' => array(
+                            'id' => 'translation-cancel',
+                        ),
+                    )); ?>
                     </div>
                     -->
                 </div>
