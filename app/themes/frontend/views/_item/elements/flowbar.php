@@ -38,13 +38,15 @@
                     <div class='btn-group'>
 
                         <?php
-                        $this->widget('bootstrap.widgets.TbButton', array(
-                            'label' => Yii::t('model', 'Edit'),
-                            'icon' => 'icon-edit',
-                            'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
-                            'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey}),
-                            'visible' => Yii::app()->user->checkAccess('Item.Edit'),
-                        ));
+                        if ($this->action->id == "edit" || $this->action->id == "browse") {
+                            $this->widget('bootstrap.widgets.TbButton', array(
+                                'label' => Yii::t('model', 'Edit'),
+                                'icon' => 'icon-edit',
+                                'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
+                                'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey}),
+                                'visible' => Yii::app()->user->checkAccess('Item.Edit'),
+                            ));
+                        }
                         if ($this->action->id == 'browse') {
                             $this->widget('bootstrap.widgets.TbButton', array(
                                 'label' => Yii::t('model', 'View'),
