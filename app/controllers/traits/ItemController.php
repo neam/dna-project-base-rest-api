@@ -630,7 +630,11 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
-        $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+        if (Yii::app()->user->checkAccess('Item.Edit')) {
+            $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+        } else {
+            $this->redirect(array('view', 'id' => $model->id);
+        }
     }
 
     /**
