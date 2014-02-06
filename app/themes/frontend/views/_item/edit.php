@@ -55,35 +55,16 @@ $this->renderPartial('/_item/elements/flowbar', array(
             <div class="span3">
                 <div class="btn-toolbar pull-right buttons-fixed">
                     <div class="btn-group">
-                        <?php
-                        switch ($this->action->id . "-" . $step) {
-                            case "translate-subtitles":
-                                $this->widget("bootstrap.widgets.TbButton", array(
-                                    "label" => Yii::t("model", "Load current translations into media player"),
-                                    "url" => Yii::app()->request->url,
-                                    "type" => "primary",
-                                ));
-                                break;
-                            default:
-                                echo CHtml::submitButton(Yii::t('model', 'Save changes'), array(
-                                    'class' => 'btn btn-primary btn-dirtyforms',
-                                    'name' => 'save-changes',
-                                ));
-                                $this->widget("bootstrap.widgets.TbButton", array(
-                                    'label' => Yii::t('model', 'Reset'),
-                                    'url' => Yii::app()->request->url,
-                                    'htmlOptions' => array(
-                                        'class' => 'btn-dirtyforms ignoredirty'
-                                    ),
-                                ));
-                        }
-                        ?>
                     </div>
                 </div>
             </div>
         </div>
 
-        <?php $this->renderPartial('steps/' . $step, compact("model", "form")); ?>
+        <?php $this->renderPartial('steps/' . $step, array(
+            'model' => $model,
+            'form' => $form,
+            'step' => $step,
+        )); ?>
 
         <?php $this->endWidget() ?>
 

@@ -69,3 +69,31 @@
     <?php endif; ?>
 
 </div>
+<br>
+<?php switch ($this->action->id . "-" . $step) {
+    case "translate-subtitles":
+        $this->widget(
+            "bootstrap.widgets.TbButton", array(
+                "label" => Yii::t("model", "Load current translations into media player"),
+                "url" => Yii::app()->request->url,
+                "type" => "primary",
+            )
+        );
+        break;
+    default:
+        echo CHtml::submitButton(
+            Yii::t('model', 'Save changes'), array(
+                'class' => 'btn btn-primary btn-dirtyforms',
+                'name' => 'save-changes',
+            )
+        );
+        $this->widget(
+            "bootstrap.widgets.TbButton", array(
+                'label' => Yii::t('model', 'Reset'),
+                'url' => Yii::app()->request->url,
+                'htmlOptions' => array(
+                    'class' => 'btn-dirtyforms ignoredirty'
+                ),
+            )
+        );
+} ?>
