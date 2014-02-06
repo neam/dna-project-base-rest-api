@@ -435,7 +435,10 @@ trait ItemController
     public function actionDraft($step, $id)
     {
         $this->scenario = "draft-step_$step";
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
@@ -470,7 +473,10 @@ trait ItemController
     public function actionPrepPreshow($step, $id)
     {
         $this->scenario = "preview-step_$step";
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, "preview", Yii::t('app', 'Prepare for testing'));
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
@@ -505,7 +511,10 @@ trait ItemController
     public function actionEvaluate($id, $step)
     {
         $this->scenario = "evaluate-step_$step";
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, "evaluate", Yii::t('app', 'Evaluate'));
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/evaluate', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
@@ -519,7 +528,10 @@ trait ItemController
     public function actionPrepPublish($step, $id)
     {
         $this->scenario = "public-step_$step";
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, "public", Yii::t('app', 'Prepare for publishing'));
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
@@ -629,9 +641,11 @@ trait ItemController
     public function actionEdit($step, $id)
     {
         $this->scenario = "step_$step";
-        $model = $this->saveAndContinueOnSuccess($id);
 
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
         $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
 
         $this->populateWorkflowData($model, "public", Yii::t('app', 'Edit'));
         $stepCaptions = $model->flowStepCaptions();
@@ -817,7 +831,10 @@ trait ItemController
     public function actionTranslate($id, $step, $translateInto)
     {
         $this->scenario = "into_$translateInto-step_$step";
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translate into {translateIntoLanguage}', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])), $translateInto);
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
@@ -954,10 +971,8 @@ trait ItemController
         return $return_array;
     }
 
-    protected function saveAndContinueOnSuccess($id)
+    protected function saveAndContinueOnSuccess($model)
     {
-        $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
 
         $_POST = $this->fixPostFromGrid($_POST);
 
@@ -967,53 +982,7 @@ trait ItemController
 
         if (isset($_POST[$this->modelClass])) {
             $model->attributes = $_POST[$this->modelClass];
-
-            // log for dev purposes
-            Yii::log("model->safeAttributeNames: " . print_r($model->safeAttributeNames, true), "flow", __METHOD__);
-            Yii::log("model->attributes: " . print_r($model->attributes, true), "flow", __METHOD__);
-
-            // refresh qa state (to be sure that we have the most actual state)
-            $model->refreshQaState();
-
-            // start transaction
-            $transaction = Yii::app()->db->beginTransaction();
-
-            try {
-
-                $qsStates = array();
-                $qsStates["before"] = $model->qaState()->attributes;
-
-                // save
-                if (!$model->save()) {
-                    throw new SaveException($model);
-                }
-
-                // refresh qa state
-                $model->refreshQaState();
-                $qsStates["after"] = $model->qaState()->attributes;
-
-                // calculate difference
-                $qsStates["diff"] = array_diff_assoc($qsStates["before"], $qsStates["after"]);
-
-                // log for dev purposes
-                Yii::log("Changeset: " . print_r($qsStates, true), "flow", __METHOD__);
-
-                // save changeset
-                $changeset = new Changeset();
-                $changeset->contents = json_encode($qsStates);
-                $changeset->user_id = Yii::app()->user->id;
-                $changeset->node_id = $model->node()->id;
-                if (!$changeset->save()) {
-                    throw new SaveException($changeset);
-                }
-
-                // commit transaction
-                $transaction->commit();
-
-            } catch (Exception $e) {
-                $model->addError('id', $e->getMessage());
-                $transaction->rollback();
-            }
+            $model->saveWithChangeSet();
         } elseif (isset($_GET[$this->modelClass])) {
             $model->attributes = $_GET[$this->modelClass];
         }

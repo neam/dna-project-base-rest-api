@@ -4,6 +4,56 @@ trait ItemTrait
 {
     public $itemDescription;
 
+    public function saveWithChangeSet()
+    {
+
+        $model = $this;
+
+        // refresh qa state (to be sure that we have the most actual state)
+        $model->refreshQaState();
+
+        // start transaction
+        $transaction = Yii::app()->db->beginTransaction();
+
+        try {
+
+            $qsStates = array();
+            $qsStates["before"] = $model->qaState()->attributes;
+
+            // save
+            if (!$model->save()) {
+                throw new SaveException($model);
+            }
+
+            // refresh qa state
+            $model->refreshQaState();
+            $qsStates["after"] = $model->qaState()->attributes;
+
+            // calculate difference
+            $qsStates["diff"] = array_diff_assoc($qsStates["before"], $qsStates["after"]);
+
+            // log for dev purposes
+            Yii::log("Changeset: " . print_r($qsStates, true), "flow", __METHOD__);
+
+            // save changeset
+            $changeset = new Changeset();
+            $changeset->contents = json_encode($qsStates);
+            $changeset->user_id = Yii::app()->user->id;
+            $changeset->node_id = $model->node()->id;
+            if (!$changeset->save()) {
+                throw new SaveException($changeset);
+            }
+
+            // commit transaction
+            $transaction->commit();
+
+        } catch (Exception $e) {
+            $model->addError('id', $e->getMessage());
+            $transaction->rollback();
+        }
+
+    }
+
     /**
      * @return array Status-dependent validation rules
      */
