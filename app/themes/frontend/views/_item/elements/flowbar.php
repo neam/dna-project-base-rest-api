@@ -38,7 +38,7 @@
                     <div class='btn-group'>
 
                         <?php
-                        if ($this->action->id == "edit" || $this->action->id == "browse") {
+                        if ($this->action->id === "preview" || $this->action->id === "browse") {
                             $this->widget('bootstrap.widgets.TbButton', array(
                                 'label' => Yii::t('model', 'Edit'),
                                 'icon' => 'icon-edit',
