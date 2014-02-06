@@ -128,7 +128,7 @@ class VideoFileController extends Controller
         return $sections;
     }
 
-    public function saveAndContinueOnSuccess($id)
+    public function saveAndContinueOnSuccess($model)
     {
 
         if (isset($_POST['import'])) {
@@ -147,7 +147,7 @@ class VideoFileController extends Controller
             $_POST['save-changes'] = true;
 
         }
-        return $this->parentSaveAndContinueOnSuccess($id);
+        return $this->parentSaveAndContinueOnSuccess($model);
 
     }
 

@@ -560,19 +560,19 @@ trait ItemController
 
     public function actionPreview($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
         $this->render('/_item/preview', array('model' => $model, 'workflowCaption' => Yii::t('app', 'Preview')));
     }
 
     public function actionReview($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
         $this->render('/_item/review', array('model' => $model));
     }
 
     public function actionProofRead($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
         $this->render('/_item/proofread', array('model' => $model));
     }
 
