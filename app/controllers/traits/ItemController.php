@@ -633,7 +633,7 @@ trait ItemController
         if (Yii::app()->user->checkAccess('Item.Edit')) {
             $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
         } else {
-            $this->redirect(array('view', 'id' => $model->id);
+            $this->redirect(array('view', 'id' => $model->id));
         }
     }
 
