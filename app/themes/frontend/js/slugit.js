@@ -19,7 +19,7 @@ jQuery.fn.slugIt = function(options) {
         after: false
     };
 
-    var slugModifiedManually = false;
+    var allowSlugGeneration = false;
 
     var opts = jQuery.extend(defaults, options);
 
@@ -38,16 +38,9 @@ jQuery.fn.slugIt = function(options) {
         chars = jQuery.extend(chars, opts.map);
     }
 
-    // Stop slug generation after manually modifying it
-    jQuery(opts.output).on('keyup', function() {
-        slugModifiedManually = true;
-    });
-
-    // Allow slug generation again if the slug becomes blank
+    // Generate slugs only when the slug field is empty
     jQuery(opts.output).on('change', function() {
-        if (typeof jQuery(opts.output).val === 'function' && jQuery(opts.output).val().length === 0) {
-            slugModifiedManually = false;
-        }
+        allowSlugGeneration = (typeof jQuery(opts.output).val === 'function' && jQuery(opts.output).val().length === 0);
     });
 
     jQuery(this).bind(defaults.events, function() {
@@ -78,7 +71,7 @@ jQuery.fn.slugIt = function(options) {
 
         if (opts.after) slug = opts.after(slug);
 
-        if (!slugModifiedManually) {
+        if (allowSlugGeneration) {
             if (typeof opts.output === 'function') {
                 opts.output(slug)
             } else {
