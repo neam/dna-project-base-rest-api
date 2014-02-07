@@ -7839,9 +7839,6 @@ i[class*=" icon-"] {
   position: static;
 }
 @media (max-width: 979px) {
-  
-}
-@media (max-width: 979px) {
   .navbar-breadcrumbs {
     display: none;
   }
@@ -7858,6 +7855,11 @@ i[class*=" icon-"] {
 @media (min-width: 980px) and (max-width: 1199px) {
   .below-flowbar {
     margin-top: 185px;
+  }
+}
+@media (max-width: 979px) {
+  .account-controller.profile-action .profile-bar {
+    position: static;
   }
 }
 html {
