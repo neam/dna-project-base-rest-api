@@ -19,7 +19,7 @@ jQuery.fn.slugIt = function(options) {
         after: false
     };
 
-    var allowSlugGeneration = false;
+    var allowSlugGeneration = true;
 
     var opts = jQuery.extend(defaults, options);
 
@@ -38,6 +38,11 @@ jQuery.fn.slugIt = function(options) {
         chars = jQuery.extend(chars, opts.map);
     }
 
+    // Initially, disable slug generation if a slug already exists
+    if (typeof jQuery(opts.output).val() !== 'undefined' && jQuery(opts.output).val().length > 0) {
+        allowSlugGeneration = false;
+    }
+
     // Generate slugs only when the slug field is empty
     jQuery(opts.output).on('change', function() {
         allowSlugGeneration = (typeof jQuery(opts.output).val === 'function' && jQuery(opts.output).val().length === 0);
@@ -52,10 +57,10 @@ jQuery.fn.slugIt = function(options) {
         var slug = '';
         for (var i = 0; i < text.length; i++) {
             if (chars[text.charAt(i)]) {
-                slug += chars[text.charAt(i)]
+                slug += chars[text.charAt(i)];
             }
             else {
-                slug += text.charAt(i)
+                slug += text.charAt(i);
             }
         }
 
@@ -73,7 +78,7 @@ jQuery.fn.slugIt = function(options) {
 
         if (allowSlugGeneration) {
             if (typeof opts.output === 'function') {
-                opts.output(slug)
+                opts.output(slug);
             } else {
                 jQuery(opts.output).val(slug);         // input or textarea
                 jQuery(opts.output).html(slug);        // other dom elements
