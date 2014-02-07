@@ -7444,9 +7444,7 @@ span.required {
 }
 /* TODO: temp fix from https://github.com/twitter/bootstrap/issues/4550#issuecomment-10398831 */
 @media (max-width: 988px) {
-  .dropdown ul.dropdown-menu {
-    display: block;
-  }
+  
 }
 .btn [class^="icon-"],
 .nav [class^="icon-"],
