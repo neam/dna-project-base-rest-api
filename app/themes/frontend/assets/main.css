@@ -7015,6 +7015,7 @@ ul.breadcrumb {
 }
 .buttons-fixed {
   position: fixed;
+  z-index: 10;
 }
 /* Sidenav for Docs
 -------------------------------------------------- */
@@ -7403,6 +7404,12 @@ span.required {
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 .flowbar {
+  -webkit-border-bottom-left-radius: 15px;
+  -moz-border-radius-bottomleft: 15px;
+  border-bottom-left-radius: 15px;
+  -webkit-border-bottom-right-radius: 15px;
+  -moz-border-radius-bottomright: 15px;
+  border-bottom-right-radius: 15px;
   background-color: #fff;
   position: fixed;
   top: 25px;
@@ -7830,6 +7837,28 @@ i[class*=" icon-"] {
 }
 .videofile-view .flowbar {
   position: static;
+}
+@media (max-width: 979px) {
+  
+}
+@media (max-width: 979px) {
+  .navbar-breadcrumbs {
+    display: none;
+  }
+  .flowbar {
+    position: static;
+  }
+  .below-flowbar {
+    margin-top: 0;
+  }
+  .below-flowbar .buttons-fixed {
+    position: static;
+  }
+}
+@media (min-width: 980px) and (max-width: 1199px) {
+  .below-flowbar {
+    margin-top: 185px;
+  }
 }
 html {
   overflow-y: scroll;
