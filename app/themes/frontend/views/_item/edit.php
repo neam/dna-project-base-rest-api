@@ -55,6 +55,17 @@ $this->renderPartial('/_item/elements/flowbar', array(
             <div class="span3">
                 <div class="btn-toolbar pull-right buttons-fixed">
                     <div class="btn-group">
+                        <?php echo CHtml::submitButton(Yii::t('model', 'Save changes'), array(
+                            'class' => 'btn btn-primary btn-dirtyforms',
+                            'name' => 'save-changes',
+                        )); ?>
+                        <?php $this->widget("bootstrap.widgets.TbButton", array(
+                            'label' => Yii::t('model', 'Reset'),
+                            'url' => Yii::app()->request->url,
+                            'htmlOptions' => array(
+                                'class' => 'btn-dirtyforms ignoredirty',
+                            ),
+                        )); ?>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,9 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
     </div>
 <?php endif; ?>
 
-<?php $this->renderPartial("_view", array("data" => $model)); ?>
+<?php $this->renderPartial('_view', array(
+    'data' => $model,
+)); ?>
 <!--
 <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
