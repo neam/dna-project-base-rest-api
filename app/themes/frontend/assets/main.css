@@ -7801,41 +7801,41 @@ i[class*=" icon-"] {
 .commentsBlock .clearFix {
   clear: both;
 }
-.item-browse .items .item {
+.item-controller.browse-action .items .item {
   margin-bottom: 20px;
 }
-.item-browse .items .item:last-child {
+.item-controller.browse-action .items .item:last-child {
   margin-bottom: 0;
 }
-.item-browse .items .item .btn-toolbar .btn-group {
+.item-controller.browse-action .items .item .btn-toolbar .btn-group {
   margin-bottom: 5px;
 }
-.item-browse .items .item .btn-toolbar .btn-group:last-child {
+.item-controller.browse-action .items .item .btn-toolbar .btn-group:last-child {
   margin-left: 0;
 }
-.item-browse .items .item .flowbar {
+.item-controller.browse-action .items .item .flowbar {
   position: static;
 }
-.item-browse .items .item .below-flowbar {
+.item-controller.browse-action .items .item .below-flowbar {
   margin: 0;
 }
-.profile-language-fields .required-red span.required {
+.account-controller.profile-action .profile-language-fields .required-red span.required {
   color: #9d261d;
 }
-.profile-bar {
+.account-controller.profile-action .profile-bar {
   background-color: #ffffff;
   position: fixed;
   top: 24px;
   z-index: 20;
 }
-.account-profile-grid {
+.account-controller.profile-action .account-profile-grid {
   margin-top: 100px;
   z-index: 10;
 }
-.account-profile-grid .alert {
+.account-controller.profile-action .account-profile-grid .alert {
   margin: 20px 0 10px;
 }
-.videofile-view .flowbar {
+.videofile-controller.view-action .flowbar {
   position: static;
 }
 @media (max-width: 979px) {

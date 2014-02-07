@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 ?>
-<div class="videofile-view">
+<div class="videofile-controller view-action">
     <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
     <!--<h1>
         <?php echo Yii::t('model', 'Video File'); ?>

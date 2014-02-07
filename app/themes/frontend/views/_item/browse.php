@@ -3,7 +3,7 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 $this->breadcrumbs[] = Yii::t('app', 'Browse');
 ?>
 
-<div class="item-browse">
+<div class="item-controller browse-action">
     <?php
     // TODO: Create a method for setting the menu items, and remove this if statement.
     if (!isset($this->menu) || $this->menu === array()) {
