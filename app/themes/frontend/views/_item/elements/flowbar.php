@@ -1,75 +1,48 @@
 <?php /** @var ActiveRecord|ItemTrait $model */ ?>
 <?php /** @var Controller $this */ ?>
 
-<style>
-
-    .flowbar .well .row-fluid div {
-        line-height: 40px;
-    }
-
-    .flowbar .well h3, .flowbar .well h4 {
-        margin: 0;
-    }
-
-    .flowbar .well {
-        padding-top: 13px;
-    }
-
-    .required-missing {
-        line-height: 40px;
-        color: red;
-    }
-
-</style>
-
 <div class="row flowbar">
     <div class="span12">
-
         <h1>
             <?php echo $model->itemLabel; ?>
-            <small><?php if ($this->action->id !== 'browse') {
+            <small>
+                <?php if ($this->action->id !== 'browse') {
                     echo $this->itemDescriptionTooltip();
-                } ?></small>
-            <small>Version: <?php echo $model->version; ?></small>
-            <small>Status: <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?></small>
+                } ?>
+            </small>
+            <small><?php echo Yii::t('app', 'Version') ?>: <?php echo $model->version; ?></small>
+            <small><?php echo Yii::t('app', 'Status'); ?>: <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?></small>
             <?php if ($this->action->id != 'evaluate'): ?>
-
                 <div class="pull-right">
                     <div class='btn-group'>
-
-                        <?php
-                        if ($this->action->id === "preview" || $this->action->id === "browse") {
-                            $this->widget('bootstrap.widgets.TbButton', array(
-                                'label' => Yii::t('model', 'Edit'),
-                                'icon' => 'icon-edit',
-                                'type' => $this->action->id != 'edit' ? 'primary' : 'inverse',
-                                'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey}),
-                                'visible' => Yii::app()->user->checkAccess('Item.Edit'),
-                            ));
-                        }
-                        if ($this->action->id == 'browse') {
-                            $this->widget('bootstrap.widgets.TbButton', array(
+                        <?php if ($this->action->id === 'browse'): ?>
+                            <?php $this->widget('bootstrap.widgets.TbButton', array(
                                 'label' => Yii::t('model', 'View'),
                                 'icon' => 'icon-eye-open',
-                                'type' => $this->action->id != 'view' ? '' : 'inverse',
+                                'type' => $this->action->id !== 'view' ? '' : 'inverse',
                                 'url' => array('view', 'id' => $model->{$model->tableSchema->primaryKey}),
-                            ));
-                        } elseif ($this->action->id == 'edit') {
-                            $this->widget('bootstrap.widgets.TbButton', array(
+                            )); ?>
+                        <?php endif; ?>
+                        <?php if ($this->action->id === "preview" || $this->action->id === "browse"): ?>
+                            <?php $this->widget('bootstrap.widgets.TbButton', array(
+                                'label' => Yii::t('model', 'Edit'),
+                                'icon' => 'icon-edit',
+                                'type' => $this->action->id !== 'edit' ? 'primary' : 'inverse',
+                                'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey}),
+                                'visible' => Yii::app()->user->checkAccess('Item.Edit'),
+                            )); ?>
+                        <?php elseif ($this->action->id === 'edit'): ?>
+                            <?php $this->widget('bootstrap.widgets.TbButton', array(
                                 'label' => Yii::t('model', 'Preview'),
                                 'icon' => 'icon-eye-open',
-                                'type' => $this->action->id != 'preview' ? '' : 'inverse',
-                                'url' => array('preview', 'id' => $model->{$model->tableSchema->primaryKey}, 'editingUrl' => $this->action->id == 'view' ? null : Yii::app()->request->url),
+                                'type' => $this->action->id !== 'preview' ? '' : 'inverse',
+                                'url' => array('preview', 'id' => $model->{$model->tableSchema->primaryKey}, 'editingUrl' => $this->action->id === 'view' ? null : Yii::app()->request->url),
                                 'visible' => Yii::app()->user->checkAccess('Item.Preview'),
-                            ));
-                        }
-                        ?>
-
+                            )); ?>
+                        <?php endif; ?>
                     </div>
                 </div>
-
             <?php endif; ?>
-
         </h1>
 
         <?php

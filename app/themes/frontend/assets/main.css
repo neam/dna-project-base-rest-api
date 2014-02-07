@@ -7400,10 +7400,10 @@ span.required {
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 .flowbar {
-  position: fixed;
-  z-index: 10;
   background-color: #fff;
+  position: fixed;
   top: 25px;
+  z-index: 10;
 }
 .flowbar .required-counts {
   margin: 20px 0;
@@ -7415,8 +7415,22 @@ span.required {
 .flowbar .required-counts .missing em {
   font-style: normal;
 }
+.flowbar .well {
+  padding-top: 13px;
+}
+.flowbar .well h3,
+.flowbar .well h4 {
+  margin: 0;
+}
+.flowbar .well .row-fluid div {
+  line-height: 40px;
+}
 .below-flowbar {
   margin-top: 145px;
+}
+.required-missing {
+  line-height: 40px;
+  color: red;
 }
 /* adjust content with fixed navbar */
 @media (min-width: 989px) {
@@ -7779,8 +7793,23 @@ i[class*=" icon-"] {
 .commentsBlock .clearFix {
   clear: both;
 }
-.item-browse .flowbar {
+.item-browse .items .item {
+  margin-bottom: 20px;
+}
+.item-browse .items .item:last-child {
+  margin-bottom: 0;
+}
+.item-browse .items .item .btn-toolbar .btn-group {
+  margin-bottom: 5px;
+}
+.item-browse .items .item .btn-toolbar .btn-group:last-child {
+  margin-left: 0;
+}
+.item-browse .items .item .flowbar {
   position: static;
+}
+.item-browse .items .item .below-flowbar {
+  margin: 0;
 }
 .profile-language-fields .required-red span.required {
   color: #9d261d;
