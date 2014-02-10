@@ -7819,6 +7819,9 @@ i[class*=" icon-"] {
 .item-controller.browse-action .items .item .below-flowbar {
   margin: 0;
 }
+.account-controller.dashboard-action .add-content .btn-large {
+  margin-bottom: 10px;
+}
 .account-controller.profile-action .profile-language-fields .required-red span.required {
   color: #9d261d;
 }
