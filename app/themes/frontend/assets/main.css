@@ -7838,6 +7838,9 @@ i[class*=" icon-"] {
 .videofile-controller.view-action .flowbar {
   position: static;
 }
+.videofile-controller .mejs-video.mejs-container-fullscreen .mejs-captions-text {
+  font-size: 2.5em;
+}
 @media (max-width: 979px) {
   .navbar-breadcrumbs {
     display: none;
