@@ -24,7 +24,7 @@ class ExamQuestion extends BaseExamQuestion
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return 'Exam question #' . $this->id;
     }
 
     public function behaviors()

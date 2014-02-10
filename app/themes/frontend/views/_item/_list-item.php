@@ -5,7 +5,7 @@
     <div class="below-flowbar">
         <div class="row">
             <div class="span3">
-                <?php if ($data->thumbnailMedia instanceof P3Media): ?>
+                <?php if (isset($data->thumbnailMedia) && $data->thumbnailMedia instanceof P3Media): ?>
                     <?php echo CHtml::link($data->thumbnailMedia->image('select2-thumb'), Yii::app()->controller->createUrl('view', array('id' => $data->id))); ?>
                 <?php else: ?>
                     <div class="alert">
