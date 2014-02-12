@@ -350,12 +350,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "3f07386c55369b13b0f844f6e0931664566b0c37"
+                "reference": "1ea2e1f6e96a323e276b19b6812b406ed2651e6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/3f07386c55369b13b0f844f6e0931664566b0c37",
-                "reference": "3f07386c55369b13b0f844f6e0931664566b0c37",
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/1ea2e1f6e96a323e276b19b6812b406ed2651e6a",
+                "reference": "1ea2e1f6e96a323e276b19b6812b406ed2651e6a",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -377,7 +377,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-02-06 14:23:17"
+            "time": "2014-02-12 12:17:56"
         },
         {
             "name": "moein7tl/yii-introjs",
