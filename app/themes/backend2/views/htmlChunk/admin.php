@@ -1,40 +1,60 @@
 <?php
-$this->breadcrumbs[] = Yii::t('crud', 'Html Chunks');
+$this->setPageTitle(
+    Yii::t('model', 'Html Chunks')
+    . ' - '
+    . Yii::t('crud', 'Manage')
+);
 
-
+$this->breadcrumbs[] = Yii::t('model', 'Html Chunks');
 Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-$('.search-form').toggle();
-return false;
-});
-$('.search-form form').submit(function(){
-$.fn.yiiGridView.update('html-chunk-grid', {
-data: $(this).serialize()
-});
-return false;
-});
-");
+    $('.search-button').click(function(){
+        $('.search-form').toggle();
+        return false;
+    });
+    $('.search-form form').submit(function(){
+        $.fn.yiiGridView.update(
+            'html-chunk-grid',
+            {data: $(this).serialize()}
+        );
+        return false;
+    });
+    ");
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
-<h1>
-    <?php echo Yii::t('crud', 'Html Chunks'); ?>
-    <small><?php echo Yii::t('crud', 'Manage'); ?></small>
-</h1>
+    <h1>
+
+        <?php echo Yii::t('model', 'Html Chunks'); ?>
+        <small><?php echo Yii::t('crud', 'Manage'); ?></small>
+
+    </h1>
+
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<?php $this->widget('TbGridView',
+<?php Yii::beginProfile('HtmlChunk.view.grid'); ?>
+
+
+<?php
+$this->widget('TbGridView',
     array(
         'id' => 'html-chunk-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
+        #'responsiveTable' => true,
+        'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
             'class' => 'TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'CLinkColumn',
+                'header' => '',
+                'labelExpression' => '$data->itemLabel',
+                'urlExpression' => 'Yii::app()->controller->createUrl("view", array("id" => $data["id"]))'
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'id',
                 'editable' => array(
                     'url' => $this->createUrl('/htmlChunk/editableSaver'),
@@ -42,7 +62,21 @@ return false;
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'htmlChunks.itemLabel\')',
+                'filter' => '', //CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            #'_markup',
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
                     'url' => $this->createUrl('/htmlChunk/editableSaver'),
@@ -50,7 +84,7 @@ return false;
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
                     'url' => $this->createUrl('/htmlChunk/editableSaver'),
@@ -58,10 +92,34 @@ return false;
                 )
             ),
             array(
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'node_id',
+                'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'html_chunk_qa_state_id',
+                'value' => 'CHtml::value($data, \'htmlChunkQaState.itemLabel\')',
+                'filter' => '', //CHtml::listData(HtmlChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+
+            array(
                 'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
+                'buttons' => array(
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("HtmlChunk.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("HtmlChunk.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("HtmlChunk.Delete")'),
+                ),
+                'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
+                'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
+                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("delete", array("id" => $data->id))',
             ),
         )
-    )); ?>
+    )
+);
+?>
+<?php Yii::endProfile('HtmlChunk.view.grid'); ?>

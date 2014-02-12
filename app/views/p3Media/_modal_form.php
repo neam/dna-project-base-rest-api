@@ -23,6 +23,12 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                 $("#<?php echo $formId; ?>-modal").modal("hide");
                 $("<?php echo $inputSelector; ?>")
                     .append($("<option>", {value: p3_media_id, selected: "selected"}).text('<?php echo Yii::t('crud', 'Uploaded file'); ?>'));
+
+                if ($("<?php echo $inputSelector; ?>").data('select2opts')) {
+                    $("<?php echo $inputSelector; ?>").select2();
+                    $("<?php echo $inputSelector; ?>").select2($("<?php echo $inputSelector; ?>").data('select2opts'));
+                }
+
             });
 
         });
@@ -41,7 +47,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">Close</a>
+        <a href="#" class="btn" data-toggle="modal"
+           data-target="#<?php echo $formId; ?>-modal"><?php print Yii::t('app', 'Close'); ?></a>
     </div>
 
 <?php

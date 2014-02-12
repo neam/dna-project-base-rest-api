@@ -8,27 +8,139 @@ document, if you're experiencing problems.
 Upgrade Guide
 -------------
 
-### Upgrading from v0.20.x
+### Upgrading from 0.21.x
 
-```
-p3widgets   0.12.0
-p3pages     0.12.0
-p3media     0.12.0
-p3bootstrap 0.15.0
-p3admin     0.13.0
-```
+> Note: Version 0.22 introduced major database schema changes for p3media/widgets/pages.
+But you can revert these changes and migrate down if you want to. The affected tables will only be renamed.
+
+#### `main-local.php`
+
+This file has to be created, either by the webapp command or by renaming your current `local.php`. [Issue 93](https://github.com/phundament/app/issues/93)
+
+#### `main.php`
+
+##### aliases
+
+        'bootstrap' => 'vendor.clevertech.yiibooster.src',
+        'vendor.phundament.p3extensions.widgets.ckeditor.*', // shared classes
+        'vendor.sammaye.auditrail2.models.*',
+        'vendor.clevertech.yiibooster.src.widgets.*', // Bootstrap UI
+
+##### aliases
+
+         'bootstrap' => array(
+            'class' => 'vendor.clevertech.yiibooster.src.components.Bootstrap', // assuming you extracted bootstrap under extensions
+            'coreCss' => true, // whether to register the Bootstrap core CSS (bootstrap.min.css), defaults to true
+            'responsiveCss' => false, // whether to register the Bootstrap responsive CSS (bootstrap-responsive.min.css), default to false
+            'fontAwesomeCss' => true, // whether to register the Bootstrap responsive CSS (bootstrap-responsive.min.css), default to false
+
+#### `console.php`
+
+        'auditrail'      => 'vendor.sammaye.auditrail2.migrations',
+
+#### `index.php`
+
+    require_once(dirname(__FILE__).'/../vendor/autoload.php');
+    
+#### Database
+
+    app/yiic migrate
+
+#### API and model attributes updates
+
+* nameId => name_id
+* t('seoUrl') => url_param
+* parent => getParent    
+* P3MetaDataBehavior::SUPERUSER_ROLE => PhAccessBehavior::SUPERUSER_ROLE
+* P3Page::getActivePage()->t('description') => P3Page::getActivePage()->description
+* P3Page::getActivePage()->p3PageMeta->checkAccessCreate => P3Page::getActivePage()->access_append
+* P3Media.mimeType => P3Media.mime_type
+
+
+### Upgrading from 0.15.x-0.20.x
+
+
+#### `composer.json`
+
+        "yiisoft/yii":"1.1.14",
+
+        "phundament/backend-theme":"@dev",
+        "phundament/jquery-file-upload": "@dev",
+        "phundament/p3admin":"dev-master as 0.16.0",
+        "phundament/p3extensions":"dev-develop as 0.17.0",
+        "phundament/p3bootstrap":"dev-develop as 0.22.0",
+        "phundament/p3pages":"dev-release/0.17.0 as 0.17.0",
+        "phundament/p3media":"dev-develop as 0.16.0",
+        "phundament/p3widgets":"dev-develop as 0.16.0",
+
+
+#### `console.php`
+
+##### migration modules
+
+        'auditrail' => 'vendor.sammaye.auditrail2.migrations',
+
+##### composer callbacks
+
+        'backend-theme' => array(
+            'class'           => 'vendor.phundament.backend-theme.commands.PhBackendThemeCommand',
+            'themePath'       => 'application.themes',
+        ),
+
+
+#### `main.php`
+
+##### aliases
+
+        'bootstrap' => 'vendor.clevertech.yiibooster.src',
+
+##### imports        
+        
+        'vendor.phundament.p3extensions.widgets.ckeditor.*', // shared classes
+        'vendor.sammaye.auditrail2.models.*',
+        'vendor.clevertech.yiibooster.src.widgets.*', // Bootstrap UI
+
+##### copmponents
+
+         'bootstrap' => array(
+            'class' => 'vendor.clevertech.yiibooster.src.components.Bootstrap', // assuming you extracted bootstrap under extensions
+            'coreCss' => true, // whether to register the Bootstrap core CSS (bootstrap.min.css), defaults to true
+            'responsiveCss' => false, // whether to register the Bootstrap responsive CSS (bootstrap-responsive.min.css), default to false
+            'fontAwesomeCss' => true, // whether to register the Bootstrap responsive CSS (bootstrap-responsive.min.css), default to false
+
+##### params
+
+        'languages' => array(
+            'de_de' => 'Deutschland',
+            'de_at' => 'Österreich',
+            'de_ch' => 'Schweiz',
+        ),
+
+> Note: Also set console application language
+
+
+#### `index.php`
+
+    require_once(dirname(__FILE__).'/../vendor/autoload.php');
+
+
+#### Database
+
+    app/yiic migrate
+
+
+#### Model attributes
+
+Replace/rename the attributes in your application.
+
+* nameId => name_id
+* t('seoUrl') => url_param
+* parent => getParent
+
 
 See `config/main.php` in [DIFF from 0.20.6 to 0.21.0-dev](https://github.com/phundament/app/compare/933052f2c8d424aa388a0c4f7355e17d7e1d8ce7...a23288ba1860a262dcc880562c5bc4cb8d557032)
 
-### Upgrading from v0.16.x
-
-tbd
-
-### Upgrading from v0.15.x
-
-tbd
-
-### Upgrading from v0.14.x
+### Upgrading from 0.14.x
 
  * update your copy of `app/themes/frontend/views/layouts/_menu.php`
    * see `vendor/phundament/themes/p3bootstrap/layouts/_menu.php`
@@ -37,14 +149,14 @@ tbd
 `composer.json`
  * for applications which should not be updated, edit the version constraint for `"phundament/p3extensions": "0.8.*"` 
 
-### Upgrading from v0.13.x
+### Upgrading from 0.13.x
 
 `config/main.php`
  * Define a `vendor` and a `root` alias (see [here](https://github.com/phundament/app/blob/f589475f5a4d57c9c938b8130a6f0e154c2732be/app/config/main.php#L26) 
    for a root alias example)
  * Use only `vendor` alias, not `application.vendor` anymore.
 
-### Upgrading from v0.12.x
+### Upgrading from 0.12.x
 
 `composer.json`
 
@@ -52,7 +164,7 @@ tbd
         
         "minimum-stability": "dev",
 
-### Upgrading from v0.11.x
+### Upgrading from 0.11.x
 
 `composer.json`
 
@@ -80,7 +192,7 @@ tbd
 
 `blueimp/jquery-file-upload` replaces the former fork from `phundament/jquery-file-upload`.
 
-### Upgrading from v0.10.x
+### Upgrading from 0.10.x
 
 Shell
 
@@ -123,7 +235,7 @@ Shell
             'cssFile' => '/themes/backend/css/yii-rights.css'
         ),        
 
-### Upgrading from v0.9.x
+### Upgrading from 0.9.x
 
 `composer.json`
 
@@ -143,7 +255,7 @@ Shell
 Legacy package repository for 0.9.x versions: `http://packages.phundament.com/0.9/`
 
 
-### Upgrading from v0.8.x
+### Upgrading from 0.8.x
 
 #### config/console.php
 
@@ -151,7 +263,7 @@ Legacy package repository for 0.9.x versions: `http://packages.phundament.com/0.
 
      'phundament/p3admin-install' => array('yiic', 'p3webapp', 'create', realpath(dirname(__FILE__) . '/..'), 'git', '--interactive=0'),
      
-### Upgrading from v0.7.x
+### Upgrading from 0.7.x
 
 #### config/main.php
 

@@ -14,9 +14,10 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 ));
 ?>
 
+
     <div class="modal-header">
         <button type="button" class="close" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">×</button>
-        <h3><?php echo Yii::t('crud', 'Create {model}', array('{model}' => Yii::t('crud', 'Video File'))); ?></h3>
+        <h3><?php echo Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Video File'))); ?></h3>
     </div>
     <div class="modal-body">
 

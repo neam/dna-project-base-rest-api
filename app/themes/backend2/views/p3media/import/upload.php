@@ -13,12 +13,12 @@ if (!isset($_GET['parent_form'])) {
         <?php echo Yii::t('app', 'Click Start upload'); ?>
     </li>
     <li>
-        <?php echo Yii::t('app', 'When upload has been completed, click Save to return to the previous form'); ?>
+        <?php echo Yii::t('app', 'When upload has been completed, click Close to return to the previous form'); ?>
     </li>
 </ol>
 
 <style type="text/css">
-        /* Some CSS hacks to clarify upload form */
+    /* Some CSS hacks to clarify upload form */
     #fileupload form {
         margin-bottom: 0;
     }

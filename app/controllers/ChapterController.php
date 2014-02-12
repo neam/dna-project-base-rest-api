@@ -2,6 +2,10 @@
 
 class ChapterController extends Controller
 {
+
+    use ItemController;
+    public $modelClass = "Chapter";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,18 +20,20 @@ class ChapterController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array('allow',
                 'actions' => array(
+                    'index',
                     'view',
                 ),
                 'users' => array('*'),
             ),
             array('allow',
                 'actions' => array(
-                    'index',
+                    'view',
                     'create',
                     'update',
+                    'edit',
                     'editableSaver',
                     'editableCreator',
                     'admin',
@@ -39,7 +45,7 @@ class ChapterController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)
@@ -63,6 +69,84 @@ class ChapterController extends Controller
             $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
         }
         return true;
+    }
+
+    protected function chapterSections($chapter)
+    {
+
+        $sections = array();
+
+        // video
+        if ($chapter->videos) {
+            $sections[] = array(
+                "menu_label" => $chapter->videos[0]->itemLabel,
+                "title" => $chapter->videos[0]->itemLabel,
+                "slug" => $chapter->videos[0]->slug,
+                "model" => $chapter->videos[0],
+            );
+        }
+
+        // snapshots
+        if ($chapter->snapshots) {
+            foreach ($chapter->snapshots as $relatedModel) {
+                $sections[] = array(
+                    "menu_label" => $relatedModel->itemLabel,
+                    "title" => $relatedModel->itemLabel,
+                    "slug" => $relatedModel->slug,
+                    "model" => $relatedModel,
+                );
+            }
+        }
+
+        // teachers guide
+        if (!empty($chapter->teachers_guide)) {
+            $sections[] = array(
+                "menu_label" => Yii::t('app', 'Teacher\'s Guide'),
+                "title" => Yii::t('app', 'Teacher\'s Guide'),
+                "slug" => 'teachers-guide',
+                "markup" => $chapter->teachers_guide,
+            );
+        }
+
+        // exercises
+        if ($chapter->exercises) {
+            $subsections = array();
+            foreach ($chapter->exercises as $relatedModel) {
+                $subsections[] = array(
+                    "menu_label" => $relatedModel->itemLabel,
+                    "title" => $relatedModel->itemLabel,
+                    "slug" => $relatedModel->slug,
+                    "model" => $relatedModel,
+                );
+            }
+            $sections[] = array(
+                "menu_label" => Yii::t('app', 'Exercises'),
+                "title" => Yii::t('app', 'Exercises'),
+                "slug" => 'exercises',
+                "subsections" => $subsections,
+            );
+        }
+
+        // slideshow
+        // todo
+
+        // test
+        // todo
+
+        // data
+        // todo
+
+        // faq
+        // not in the data model currently
+
+        // credits
+        // todo
+
+        // feedback
+        // not in the data model currently
+
+        return $sections;
+
     }
 
     public function actionView($id)
@@ -128,8 +212,8 @@ class ChapterController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('Chapter'); // classname of model to be updated
+        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
+        $es = new TbEditableSaver('Chapter'); // classname of model to be updated
         $es->update();
     }
 
@@ -171,7 +255,7 @@ class ChapterController extends Controller
                 }
             }
         } else {
-            throw new CHttpException(400, Yii::t('crud', 'Invalid request. Please do not repeat this request again.'));
+            throw new CHttpException(400, Yii::t('model', 'Invalid request. Please do not repeat this request again.'));
         }
     }
 
@@ -197,7 +281,7 @@ class ChapterController extends Controller
     {
         $model = Chapter::model()->findByPk($id);
         if ($model === null) {
-            throw new CHttpException(404, Yii::t('crud', 'The requested page does not exist.'));
+            throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
         return $model;
     }
@@ -236,10 +320,26 @@ class ChapterController extends Controller
             throw new CException("Currently works with HAS_MANY relations only");
         }
 
-        $className = $relation->className;
-        $related = new $className('search');
-        $related->unsetAttributes();
-        $related->{$relation->foreignKey} = $model->primaryKey;
+        if (isset($relation->through)) {
+
+            if (!($md->relations[$relation->through] instanceof CBelongsToRelation)) {
+                throw new CException("Currently works with HAS_MANY relations, optionally through a BELONGS_TO relation, only");
+            }
+
+            $fk = $relation->foreignKey;
+            $_ = array_keys($fk);
+            $throughPk = $_[0];
+            $throughField = $fk[$throughPk];
+            $className = $relation->className;
+            $related = new $className('search');
+            $related->unsetAttributes();
+            $related->{$throughField} = $model->{$relation->through}->{$throughPk};
+        } else {
+            $className = $relation->className;
+            $related = new $className('search');
+            $related->unsetAttributes();
+            $related->{$relation->foreignKey} = $model->primaryKey;
+        }
 
         if (isset($_GET[$className])) {
             $related->attributes = $_GET[$className];
@@ -247,6 +347,5 @@ class ChapterController extends Controller
 
         return $related;
     }
-
 
 }

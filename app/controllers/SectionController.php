@@ -80,26 +80,26 @@ class SectionController extends Controller
             if (isset($_POST['Section']['HtmlChunk'])) {
                 $model->setRelationRecords('htmlChunks', $_POST['Section']['HtmlChunk']);
             }
-            if (isset($_POST['Section']['VizView'])) {
-                $model->setRelationRecords('vizViews', $_POST['Section']['VizView']);
+            if (isset($_POST['Section']['Snapshot'])) {
+                $model->setRelationRecords('snapshots', $_POST['Section']['Snapshot']);
             }
             if (isset($_POST['Section']['VideoFile'])) {
                 $model->setRelationRecords('videoFiles', $_POST['Section']['VideoFile']);
             }
-            if (isset($_POST['Section']['TeachersGuide'])) {
-                $model->setRelationRecords('teachersGuides', $_POST['Section']['TeachersGuide']);
-            }
             if (isset($_POST['Section']['Exercise'])) {
                 $model->setRelationRecords('exercises', $_POST['Section']['Exercise']);
             }
-            if (isset($_POST['Section']['Presentation'])) {
-                $model->setRelationRecords('presentations', $_POST['Section']['Presentation']);
+            if (isset($_POST['Section']['SlideshowFIle'])) {
+                $model->setRelationRecords('slideshoFiles', $_POST['Section']['SlideshowFIle']);
             }
             if (isset($_POST['Section']['DataChunk'])) {
                 $model->setRelationRecords('dataChunks', $_POST['Section']['DataChunk']);
             }
             if (isset($_POST['Section']['DownloadLink'])) {
                 $model->setRelationRecords('downloadLinks', $_POST['Section']['DownloadLink']);
+            }
+            if (isset($_POST['Section']['ExamQuestion'])) {
+                $model->setRelationRecords('examQuestions', $_POST['Section']['ExamQuestion']);
             }
             try {
                 if ($model->save()) {
@@ -134,30 +134,25 @@ class SectionController extends Controller
             } else {
                 $model->setRelationRecords('htmlChunks', array());
             }
-            if (isset($_POST['Section']['VizView'])) {
-                $model->setRelationRecords('vizViews', $_POST['Section']['VizView']);
+            if (isset($_POST['Section']['Snapshot'])) {
+                $model->setRelationRecords('snapshots', $_POST['Section']['Snapshot']);
             } else {
-                $model->setRelationRecords('vizViews', array());
+                $model->setRelationRecords('snapshots', array());
             }
             if (isset($_POST['Section']['VideoFile'])) {
                 $model->setRelationRecords('videoFiles', $_POST['Section']['VideoFile']);
             } else {
                 $model->setRelationRecords('videoFiles', array());
             }
-            if (isset($_POST['Section']['TeachersGuide'])) {
-                $model->setRelationRecords('teachersGuides', $_POST['Section']['TeachersGuide']);
-            } else {
-                $model->setRelationRecords('teachersGuides', array());
-            }
             if (isset($_POST['Section']['Exercise'])) {
                 $model->setRelationRecords('exercises', $_POST['Section']['Exercise']);
             } else {
                 $model->setRelationRecords('exercises', array());
             }
-            if (isset($_POST['Section']['Presentation'])) {
-                $model->setRelationRecords('presentations', $_POST['Section']['Presentation']);
+            if (isset($_POST['Section']['SlideshowFIle'])) {
+                $model->setRelationRecords('slideshoFiles', $_POST['Section']['SlideshowFIle']);
             } else {
-                $model->setRelationRecords('presentations', array());
+                $model->setRelationRecords('slideshoFiles', array());
             }
             if (isset($_POST['Section']['DataChunk'])) {
                 $model->setRelationRecords('dataChunks', $_POST['Section']['DataChunk']);
@@ -168,6 +163,11 @@ class SectionController extends Controller
                 $model->setRelationRecords('downloadLinks', $_POST['Section']['DownloadLink']);
             } else {
                 $model->setRelationRecords('downloadLinks', array());
+            }
+            if (isset($_POST['Section']['ExamQuestion'])) {
+                $model->setRelationRecords('examQuestions', $_POST['Section']['ExamQuestion']);
+            } else {
+                $model->setRelationRecords('examQuestions', array());
             }
 
             try {
@@ -188,8 +188,8 @@ class SectionController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('Section'); // classname of model to be updated
+        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
+        $es = new TbEditableSaver('Section'); // classname of model to be updated
         $es->update();
     }
 
@@ -231,7 +231,7 @@ class SectionController extends Controller
                 }
             }
         } else {
-            throw new CHttpException(400, Yii::t('crud', 'Invalid request. Please do not repeat this request again.'));
+            throw new CHttpException(400, Yii::t('model', 'Invalid request. Please do not repeat this request again.'));
         }
     }
 
@@ -257,7 +257,7 @@ class SectionController extends Controller
     {
         $model = Section::model()->findByPk($id);
         if ($model === null) {
-            throw new CHttpException(404, Yii::t('crud', 'The requested page does not exist.'));
+            throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
         return $model;
     }
@@ -296,10 +296,26 @@ class SectionController extends Controller
             throw new CException("Currently works with HAS_MANY relations only");
         }
 
-        $className = $relation->className;
-        $related = new $className('search');
-        $related->unsetAttributes();
-        $related->{$relation->foreignKey} = $model->primaryKey;
+        if (isset($relation->through)) {
+
+            if (!($md->relations[$relation->through] instanceof CBelongsToRelation)) {
+                throw new CException("Currently works with HAS_MANY relations, optionally through a BELONGS_TO relation, only");
+            }
+
+            $fk = $relation->foreignKey;
+            $_ = array_keys($fk);
+            $throughPk = $_[0];
+            $throughField = $fk[$throughPk];
+            $className = $relation->className;
+            $related = new $className('search');
+            $related->unsetAttributes();
+            $related->{$throughField} = $model->{$relation->through}->{$throughPk};
+        } else {
+            $className = $relation->className;
+            $related = new $className('search');
+            $related->unsetAttributes();
+            $related->{$relation->foreignKey} = $model->primaryKey;
+        }
 
         if (isset($_GET[$className])) {
             $related->attributes = $_GET[$className];
@@ -307,6 +323,5 @@ class SectionController extends Controller
 
         return $related;
     }
-
 
 }

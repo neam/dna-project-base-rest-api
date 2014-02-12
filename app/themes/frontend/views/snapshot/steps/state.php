@@ -1,0 +1,8 @@
+<?php
+
+$this->renderPartial("steps/fields/vizabi_state", compact("form", "model"));
+
+$this->renderPartial("steps/fields/tool", compact("form", "model"));
+
+$this->renderPartial("steps/fields/embed_override", compact("form", "model"));
+

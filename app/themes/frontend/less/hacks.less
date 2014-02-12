@@ -12,3 +12,11 @@
     display: block;
   }
 }
+
+// fix for fontawesome from yiibooster
+// we're removing the icon backgrounds, since we're using yiibooster.registerFontawesomeCss in main config
+.btn [class^="icon-"], .nav [class^="icon-"], i[class*="icon-"], .btn [class*=" icon-"], .nav [class*=" icon-"], i[class*=" icon-"] {
+  background-image: none;
+  display: inline-block;
+  line-height: 1em;
+}

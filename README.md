@@ -1,7 +1,7 @@
 Phundament
 ==========
 
-**Version 3-0.21.0-dev**
+**Version 3-0.22.0**
 
 
 What is Phundament?
@@ -18,13 +18,13 @@ Quick-Start
 -----------
 
 ### Step 1
-   A) If you have [composer already installed](http://getcomposer.org/doc/00-intro.md#installation-nix)
+   Option A) If you have [composer already installed](http://getcomposer.org/doc/00-intro.md#installation-nix)
    
 ```
 composer.phar create-project --prefer-dist phundament/app my-app
 ```
    
-   B) [Download](https://github.com/phundament/app/tags), extract, enter the app root folder
+   Option B) [Download](https://github.com/phundament/app/tags), extract, enter the app root folder
       and start the installation process with
 ```
 php composer.phar create-project --prefer-dist
@@ -60,7 +60,7 @@ Demo
 ----
 
  * Try a test-drive at the [Demo Page](http://demo.phundament.com/3.0-dev)
-   * Login with `editor` / `editor` or register by e-mail.
+   * Login with `admin` / `admin`. **The demo website will be resetted every 6 hours.**
 
 
 Resources
@@ -68,8 +68,12 @@ Resources
 
 [![Latest Stable Version](https://poser.pugx.org/phundament/app/v/stable.png)](https://packagist.org/packages/phundament/app)
 [![Total Downloads](https://poser.pugx.org/phundament/app/downloads.png)](https://packagist.org/packages/phundament/app)
+
 [![Latest Unstable Version](https://poser.pugx.org/phundament/app/v/unstable.png)](https://packagist.org/packages/phundament/app)
-[![Build Status](https://travis-ci.org/phundament/app.png?branch=master)](https://travis-ci.org/phundament/app) 
+[![Build Status](https://travis-ci.org/phundament/app.png?branch=develop)](https://travis-ci.org/phundament/app)
+
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/phundament/app/badges/quality-score.png?s=4d1ce01151a4e82df75b563e7ccf0001cc227bd1)](https://scrutinizer-ci.com/g/phundament/app/)
+[![Dependencies Status](https://depending.in/phundament/app.png)](http://depending.in/phundament/app)
 
 ### Fundamentals
  *  [Documentation](https://github.com/phundament/app/wiki/)

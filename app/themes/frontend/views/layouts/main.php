@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     <meta name="description"
-          content="<?php echo (P3Page::getActivePage()) ? P3Page::getActivePage()->t('description') : '' ?>">
+          content="<?php echo (P3Page::getActivePage()) ? P3Page::getActivePage()->description : '' ?>">
     <meta name="keywords"
-          content="<?php echo (P3Page::getActivePage()) ? P3Page::getActivePage()->t('keywords') : '' ?>">
+          content="<?php echo (P3Page::getActivePage()) ? P3Page::getActivePage()->keywords : '' ?>">
     <meta name="author" content="">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -20,23 +20,27 @@
     $cs->registerLinkTag('shortcut icon', NULL, '/favicon.ico', NULL, NULL);
 
     // CSS files
+    $forceCopy = defined('DEV') && DEV && !empty($_GET['refresh_assets']) ? true : false;
     $css = Yii::app()->assetManager->publish(
         Yii::app()->theme->basePath . '/assets',
         true, // hash by name
         -1, // level
-        false); // forceCopy
+        $forceCopy); // forceCopy
     $cs->registerCssFile($css . '/p3.css');
-    $cs->registerCssFile($css . '/gscms.css');
+    $cs->registerCssFile($css . '/gcms.css');
+
+    Html::jsDirtyForms();
     ?>
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="60">
 
-<?php $this->renderFile(
-    Yii::getPathOfAlias('application.themes.frontend.views.layouts') . DIRECTORY_SEPARATOR . '_menu.php'
-) ?>
 
 <div class="container">
+    <?php $this->renderFile(
+        Yii::getPathOfAlias('application.themes.frontend.views.layouts') . DIRECTORY_SEPARATOR . '_menu.php'
+    ) ?>
+    <?php $this->widget('bootstrap.widgets.TbAlert'); ?>
     <div class="subwrapper">
         <?php echo $content; ?>
     </div>

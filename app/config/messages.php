@@ -27,6 +27,8 @@ return array(
         '/migrations',
         '/web/js',
         '/extensions',
+        '/runtime',
+        '/config',
         '/tests',
     ),
 );

@@ -4,14 +4,20 @@
 
         <?php
         $videoMedia = P3Media::model()->findByPk($data->processed_media_id_en); // Currently we hard-code to use the english movie file
-        $videoUrl = $videoMedia->createUrl('original-public');
+        $videoUrl = $videoMedia->createUrl('original-public-webm');
         $subtitleUrl = $this->createUrl('videoFile/subtitles', array('id' => $data->id));
         ?>
 
-        <link rel="stylesheet"
-              href="<?php echo Yii::app()->request->baseUrl; ?>/../components/mediaelement/build/mediaelementplayer.min.css"/>
-        <script type="text/javascript"
-                src="<?php echo Yii::app()->request->baseUrl; ?>/../components/mediaelement/build/mediaelement-and-player.min.js"></script>
+        <?php
+        $cs = Yii::app()->clientScript;
+        $am = Yii::app()->assetManager;
+        Yii::app()->params["bowerAssets"] = $am->publish(
+            Yii::getPathOfAlias('bower-components'),
+            true // hash by name
+        );
+        $cs->registerScriptFile(Yii::app()->params["bowerAssets"] . '/mediaelement/build/mediaelement-and-player.min.js');
+        $cs->registerCssFile(Yii::app()->params["bowerAssets"] . '/mediaelement/build/mediaelementplayer.min.css');
+        ?>
 
         <video width="604" height="340" controls="controls"><!-- Not used preload="none" -->
             <source type="video/webm" src="<?php echo $videoUrl; ?>">
@@ -47,8 +53,14 @@
     <?php endif; ?>
 
     <?php if (Yii::app()->user->checkAccess('VideoFile.*')): ?>
-        <div class="admin-container show">
-            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('crud', 'Update {model}', array('{model}' => Yii::t('crud', 'Video File'))), array('videoFile/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+        <div class="admin-container hide">
+            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if (Yii::app()->user->checkAccess('Developer')): ?>
+        <div class="admin-container hide">
+            <h3>Developer access</h3>
+            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
 

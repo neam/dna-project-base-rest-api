@@ -1,48 +1,45 @@
 <?php
-$this->breadcrumbs[Yii::t('crud', 'Sections')] = array('admin');
+$this->setPageTitle(
+    Yii::t('model', 'Section')
+    . ' - '
+    . Yii::t('model', 'Update')
+    . ': '
+    . $model->getItemLabel()
+);
+$this->breadcrumbs[Yii::t('model', 'Sections')] = array('admin');
 $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-$this->breadcrumbs[] = Yii::t('crud', 'Update');
+$this->breadcrumbs[] = Yii::t('model', 'Update');
 ?>
+
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 <h1>
-    <?php echo Yii::t('crud', 'Section') ?>
-    <small><?php echo Yii::t('crud', 'Update') ?> #<?php echo $model->id ?></small>
+
+    <?php echo Yii::t('model', 'Section'); ?>
+    <small>
+        <?php echo Yii::t('model', 'Update') ?> #<?php echo $model->id ?>
+    </small>
+
 </h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<?php
-$this->renderPartial('_form', array(
-    'model' => $model));
-?>
 
 <?php
-
-/*
-Code example to include an editable detail view:
-
-<h2>
-    <?php echo Yii::t('crud','Editable Detail View')?></h2>
-
-<?php
-$this->widget('EditableDetailView', array(
-    'data' => $model,
-    'url' => $this->createUrl('editableSaver'),
-));
-?>
-
-*/
+$this->renderPartial('_form', array('model' => $model));
 ?>
 
 
 
 <h2>
-    <?php echo Yii::t('crud', 'Section Contents'); ?> </h2>
+    <?php echo Yii::t('model', 'Section Contents'); ?>
+    <small>sectionContents</small>
+</h2>
+
 
 <div class="btn-group">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(// TODO
-            #array('label'=>Yii::t('crud','Create'), 'icon'=>'icon-plus', 'url' => array('sectionContent/create','SectionContent' => array('section_id'=>$model->id), 'returnUrl' => Yii::app()->request->url), array('class'=>''))
+        'buttons' => array(
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('section_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
     ?></div>
@@ -53,7 +50,7 @@ $this->widget('TbGridView',
     array(
         'id' => 'sectionContent-grid',
         'dataProvider' => $relatedSearchModel->search(),
-        'filter' => count($model->sectionContents) > 1 ? $relatedSearchModel : null,
+        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->sectionContents) > 1 ? $relatedSearchModel : null,
         'pager' => array(
             'class' => 'TbPager',
             'displayFirstAndLast' => true,
@@ -61,7 +58,7 @@ $this->widget('TbGridView',
         'columns' => array(
             'id',
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'ordinal',
                 'editable' => array(
                     'url' => $this->createUrl('/section/editableSaver'),
@@ -69,7 +66,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
                     'url' => $this->createUrl('/section/editableSaver'),
@@ -77,7 +74,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
                     'url' => $this->createUrl('/section/editableSaver'),
@@ -86,45 +83,50 @@ $this->widget('TbGridView',
             ),
             array(
                 'name' => 'html_chunk_id',
-                'value' => 'CHtml::value($data,\'htmlChunk.itemLabel\')',
-                'filter' => CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'value' => 'CHtml::value($data, \'htmlChunk.itemLabel\')',
+                'filter' => '', //CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'viz_view_id',
-                'value' => 'CHtml::value($data,\'vizView.itemLabel\')',
-                'filter' => CHtml::listData(VizView::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'name' => 'snapshot_id',
+                'value' => 'CHtml::value($data, \'snapshot.itemLabel\')',
+                'filter' => '', //CHtml::listData(Snapshot::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'video_file_id',
-                'value' => 'CHtml::value($data,\'videoFile.itemLabel\')',
-                'filter' => CHtml::listData(VideoFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'value' => 'CHtml::value($data, \'videoFile.itemLabel\')',
+                'filter' => '', //CHtml::listData(VideoFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'teachers_guide_id',
-                'value' => 'CHtml::value($data,\'teachersGuide.itemLabel\')',
-                'filter' => CHtml::listData(TeachersGuide::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'name' => 'exercise_id',
+                'value' => 'CHtml::value($data, \'exercise.itemLabel\')',
+                'filter' => '', //CHtml::listData(Exercise::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
-                        'name'=>'exercise_id',
-                        'value'=>'CHtml::value($data,\'exercise.itemLabel\')',
-                                'filter'=>CHtml::listData(Exercise::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
-                                ),
+                    'name' => 'slideshow_file_id',
+                    'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
-                        'name'=>'presentation_id',
-                        'value'=>'CHtml::value($data,\'presentation.itemLabel\')',
-                                'filter'=>CHtml::listData(Presentation::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
-                                ),
+                    'name' => 'data_chunk_id',
+                    'value' => 'CHtml::value($data, \'dataChunk.itemLabel\')',
+                    'filter' => '',//CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
-                        'name'=>'data_chunk_id',
-                        'value'=>'CHtml::value($data,\'dataChunk.itemLabel\')',
-                                'filter'=>CHtml::listData(DataChunk::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
-                                ),
+                    'name' => 'download_link_id',
+                    'value' => 'CHtml::value($data, \'downloadLink.itemLabel\')',
+                    'filter' => '',//CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
-                        'name'=>'download_link_id',
-                        'value'=>'CHtml::value($data,\'downloadLink.itemLabel\')',
-                                'filter'=>CHtml::listData(DownloadLink::model()->findAll(array('limit'=>1000)), 'id', 'itemLabel'),
-                                ),
+                    'name' => 'exam_question_id',
+                    'value' => 'CHtml::value($data, \'examQuestion.itemLabel\')',
+                    'filter' => '',//CHtml::listData(ExamQuestion::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'node_id',
+                    'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             */
             array(
                 'class' => 'TbButtonColumn',
@@ -139,7 +141,8 @@ $this->widget('TbGridView',
 <div class='well'>
     <div class='row'>
         <div class='span3'><?php
-            echo '<h3>HtmlChunks ';
+            echo '<h3>';
+            echo Yii::t('model', 'relation.HtmlChunks') . ' ';
             $this->widget(
                 'bootstrap.widgets.TbButtonGroup',
                 array(
@@ -148,7 +151,7 @@ $this->widget('TbGridView',
                     'buttons' => array(
                         array(
                             'icon' => 'icon-list-alt',
-                            'url' => array('/htmlChunk/admin')
+                            'url' => array('/htmlChunk/admin', 'HtmlChunk' => array('section_content(section_id, html_chunk_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
                     )
@@ -177,7 +180,8 @@ $this->widget('TbGridView',
 <div class='well'>
     <div class='row'>
         <div class='span3'><?php
-            echo '<h3>VizViews ';
+            echo '<h3>';
+            echo Yii::t('model', 'relation.Snapshots') . ' ';
             $this->widget(
                 'bootstrap.widgets.TbButtonGroup',
                 array(
@@ -186,7 +190,7 @@ $this->widget('TbGridView',
                     'buttons' => array(
                         array(
                             'icon' => 'icon-list-alt',
-                            'url' => array('/vizView/admin')
+                            'url' => array('/snapshot/admin', 'Snapshot' => array('section_content(section_id, snapshot_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
                     )
@@ -196,13 +200,13 @@ $this->widget('TbGridView',
         <div class='span8'>
             <?php
             echo '<span class=label>CManyManyRelation</span>';
-            if (is_array($model->vizViews)) {
+            if (is_array($model->snapshots)) {
 
                 echo CHtml::openTag('ul');
-                foreach ($model->vizViews as $relatedModel) {
+                foreach ($model->snapshots as $relatedModel) {
 
                     echo '<li>';
-                    echo CHtml::link($relatedModel->itemLabel, array('vizView/view', 'id' => $relatedModel->id), array('class' => ''));
+                    echo CHtml::link($relatedModel->itemLabel, array('snapshot/view', 'id' => $relatedModel->id), array('class' => ''));
 
                     echo '</li>';
                 }
@@ -215,7 +219,8 @@ $this->widget('TbGridView',
 <div class='well'>
     <div class='row'>
         <div class='span3'><?php
-            echo '<h3>VideoFiles ';
+            echo '<h3>';
+            echo Yii::t('model', 'relation.VideoFiles') . ' ';
             $this->widget(
                 'bootstrap.widgets.TbButtonGroup',
                 array(
@@ -224,7 +229,7 @@ $this->widget('TbGridView',
                     'buttons' => array(
                         array(
                             'icon' => 'icon-list-alt',
-                            'url' => array('/videoFile/admin')
+                            'url' => array('/videoFile/admin', 'VideoFile' => array('section_content(section_id, video_file_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
                     )
@@ -253,7 +258,8 @@ $this->widget('TbGridView',
 <div class='well'>
     <div class='row'>
         <div class='span3'><?php
-            echo '<h3>TeachersGuides ';
+            echo '<h3>';
+            echo Yii::t('model', 'relation.Exercises') . ' ';
             $this->widget(
                 'bootstrap.widgets.TbButtonGroup',
                 array(
@@ -262,45 +268,7 @@ $this->widget('TbGridView',
                     'buttons' => array(
                         array(
                             'icon' => 'icon-list-alt',
-                            'url' => array('/teachersGuide/admin')
-                        ),
-
-                    )
-                )
-            );
-            echo '</h3>' ?></div>
-        <div class='span8'>
-            <?php
-            echo '<span class=label>CManyManyRelation</span>';
-            if (is_array($model->teachersGuides)) {
-
-                echo CHtml::openTag('ul');
-                foreach ($model->teachersGuides as $relatedModel) {
-
-                    echo '<li>';
-                    echo CHtml::link($relatedModel->itemLabel, array('teachersGuide/view', 'id' => $relatedModel->id), array('class' => ''));
-
-                    echo '</li>';
-                }
-                echo CHtml::closeTag('ul');
-            }
-            ?></div>
-    </div>
-    <!-- row -->
-</div> <!-- well -->
-<div class='well'>
-    <div class='row'>
-        <div class='span3'><?php
-            echo '<h3>Exercises ';
-            $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
-                array(
-                    'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-                    'size' => 'mini',
-                    'buttons' => array(
-                        array(
-                            'icon' => 'icon-list-alt',
-                            'url' => array('/exercise/admin')
+                            'url' => array('/exercise/admin', 'Exercise' => array('section_content(section_id, exercise_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
                     )
@@ -329,7 +297,8 @@ $this->widget('TbGridView',
 <div class='well'>
     <div class='row'>
         <div class='span3'><?php
-            echo '<h3>Presentations ';
+            echo '<h3>';
+            echo Yii::t('model', 'relation.SlideshoFiles') . ' ';
             $this->widget(
                 'bootstrap.widgets.TbButtonGroup',
                 array(
@@ -338,7 +307,7 @@ $this->widget('TbGridView',
                     'buttons' => array(
                         array(
                             'icon' => 'icon-list-alt',
-                            'url' => array('/presentation/admin')
+                            'url' => array('/slideshowFIle/admin', 'SlideshowFIle' => array('section_content(section_id, slideshow_file_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
                     )
@@ -348,13 +317,13 @@ $this->widget('TbGridView',
         <div class='span8'>
             <?php
             echo '<span class=label>CManyManyRelation</span>';
-            if (is_array($model->presentations)) {
+            if (is_array($model->slideshoFiles)) {
 
                 echo CHtml::openTag('ul');
-                foreach ($model->presentations as $relatedModel) {
+                foreach ($model->slideshoFiles as $relatedModel) {
 
                     echo '<li>';
-                    echo CHtml::link($relatedModel->itemLabel, array('presentation/view', 'id' => $relatedModel->id), array('class' => ''));
+                    echo CHtml::link($relatedModel->itemLabel, array('slideshowFIle/view', 'id' => $relatedModel->id), array('class' => ''));
 
                     echo '</li>';
                 }
@@ -367,7 +336,8 @@ $this->widget('TbGridView',
 <div class='well'>
     <div class='row'>
         <div class='span3'><?php
-            echo '<h3>DataChunks ';
+            echo '<h3>';
+            echo Yii::t('model', 'relation.DataChunks') . ' ';
             $this->widget(
                 'bootstrap.widgets.TbButtonGroup',
                 array(
@@ -376,7 +346,7 @@ $this->widget('TbGridView',
                     'buttons' => array(
                         array(
                             'icon' => 'icon-list-alt',
-                            'url' => array('/dataChunk/admin')
+                            'url' => array('/dataChunk/admin', 'DataChunk' => array('section_content(section_id, data_chunk_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
                     )
@@ -405,7 +375,8 @@ $this->widget('TbGridView',
 <div class='well'>
     <div class='row'>
         <div class='span3'><?php
-            echo '<h3>DownloadLinks ';
+            echo '<h3>';
+            echo Yii::t('model', 'relation.DownloadLinks') . ' ';
             $this->widget(
                 'bootstrap.widgets.TbButtonGroup',
                 array(
@@ -414,7 +385,7 @@ $this->widget('TbGridView',
                     'buttons' => array(
                         array(
                             'icon' => 'icon-list-alt',
-                            'url' => array('/downloadLink/admin')
+                            'url' => array('/downloadLink/admin', 'DownloadLink' => array('section_content(section_id, download_link_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
                     )
@@ -431,6 +402,45 @@ $this->widget('TbGridView',
 
                     echo '<li>';
                     echo CHtml::link($relatedModel->itemLabel, array('downloadLink/view', 'id' => $relatedModel->id), array('class' => ''));
+
+                    echo '</li>';
+                }
+                echo CHtml::closeTag('ul');
+            }
+            ?></div>
+    </div>
+    <!-- row -->
+</div> <!-- well -->
+<div class='well'>
+    <div class='row'>
+        <div class='span3'><?php
+            echo '<h3>';
+            echo Yii::t('model', 'relation.ExamQuestions') . ' ';
+            $this->widget(
+                'bootstrap.widgets.TbButtonGroup',
+                array(
+                    'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+                    'size' => 'mini',
+                    'buttons' => array(
+                        array(
+                            'icon' => 'icon-list-alt',
+                            'url' => array('/examQuestion/admin', 'ExamQuestion' => array('section_content(section_id, exam_question_id)' => $model->{$model->tableSchema->primaryKey}))
+                        ),
+
+                    )
+                )
+            );
+            echo '</h3>' ?></div>
+        <div class='span8'>
+            <?php
+            echo '<span class=label>CManyManyRelation</span>';
+            if (is_array($model->examQuestions)) {
+
+                echo CHtml::openTag('ul');
+                foreach ($model->examQuestions as $relatedModel) {
+
+                    echo '<li>';
+                    echo CHtml::link($relatedModel->itemLabel, array('examQuestion/view', 'id' => $relatedModel->id), array('class' => ''));
 
                     echo '</li>';
                 }

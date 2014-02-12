@@ -2,6 +2,11 @@
 
 class ExerciseController extends Controller
 {
+
+    use ItemController;
+
+    public $modelClass = "Exercise";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,14 +21,20 @@ class ExerciseController extends Controller
 
     public function accessRules()
     {
-        return array(
-            array(
-                'allow',
+        return array_merge($this->itemAccessRules(), array(
+            array('allow',
                 'actions' => array(
                     'index',
                     'view',
+                ),
+                'users' => array('*'),
+            ),
+            array('allow',
+                'actions' => array(
+                    'view',
                     'create',
                     'update',
+                    'edit',
                     'editableSaver',
                     'editableCreator',
                     'admin',
@@ -35,7 +46,7 @@ class ExerciseController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)
@@ -124,8 +135,8 @@ class ExerciseController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('Exercise'); // classname of model to be updated
+        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
+        $es = new TbEditableSaver('Exercise'); // classname of model to be updated
         $es->update();
     }
 
@@ -167,7 +178,7 @@ class ExerciseController extends Controller
                 }
             }
         } else {
-            throw new CHttpException(400, Yii::t('crud', 'Invalid request. Please do not repeat this request again.'));
+            throw new CHttpException(400, Yii::t('model', 'Invalid request. Please do not repeat this request again.'));
         }
     }
 
@@ -193,7 +204,7 @@ class ExerciseController extends Controller
     {
         $model = Exercise::model()->findByPk($id);
         if ($model === null) {
-            throw new CHttpException(404, Yii::t('crud', 'The requested page does not exist.'));
+            throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
         return $model;
     }
@@ -232,10 +243,26 @@ class ExerciseController extends Controller
             throw new CException("Currently works with HAS_MANY relations only");
         }
 
-        $className = $relation->className;
-        $related = new $className('search');
-        $related->unsetAttributes();
-        $related->{$relation->foreignKey} = $model->primaryKey;
+        if (isset($relation->through)) {
+
+            if (!($md->relations[$relation->through] instanceof CBelongsToRelation)) {
+                throw new CException("Currently works with HAS_MANY relations, optionally through a BELONGS_TO relation, only");
+            }
+
+            $fk = $relation->foreignKey;
+            $_ = array_keys($fk);
+            $throughPk = $_[0];
+            $throughField = $fk[$throughPk];
+            $className = $relation->className;
+            $related = new $className('search');
+            $related->unsetAttributes();
+            $related->{$throughField} = $model->{$relation->through}->{$throughPk};
+        } else {
+            $className = $relation->className;
+            $related = new $className('search');
+            $related->unsetAttributes();
+            $related->{$relation->foreignKey} = $model->primaryKey;
+        }
 
         if (isset($_GET[$className])) {
             $related->attributes = $_GET[$className];
@@ -243,6 +270,5 @@ class ExerciseController extends Controller
 
         return $related;
     }
-
 
 }

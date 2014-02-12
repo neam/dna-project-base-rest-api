@@ -12,33 +12,24 @@ $webappCommand = array(
     'yiic',
     'webapp',
     'create',
-    realpath(dirname(__FILE__) . '/../../'),
+    realpath(dirname(__FILE__) . '/../'),
     'git',
     '--interactive=' . (getenv('PHUNDAMENT_TEST') ? '0' : '1')
 );
 
-// gets merged automatically if available
-$localConsoleConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'console-local.php';
-
-// merge compnents and modules from main config
-$mainConfig = require('main.php');
+$applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
 
 $consoleConfig = array(
-    'aliases' => array_merge($mainConfig['aliases'], array(
-        'vendor'  => dirname(__FILE__) . '/../../vendor',
-        'webroot' => dirname(__FILE__) . '/../../www',
+    'aliases' => array(
+        'vendor'  => $applicationDirectory . '/../vendor',
+        'webroot' => $applicationDirectory . '/../www',
         'gii-template-collection'              => 'vendor.phundament.gii-template-collection', // TODO
-    )),
+    ),
     'basePath'   => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name'       => 'Phundament Console Application',
-    'import' => array_merge($mainConfig['import'], array(
+    'import' => array(
         'application.commands.components.*',
-    )),
-    'components' => CMap::mergeArray(
-        $mainConfig['components'],
-        array()
     ),
-    'modules'    => $mainConfig['modules'],
     'commandMap' => array(
         // dev command
         'database'      => array(
@@ -62,6 +53,8 @@ $consoleConfig = array(
                 'p3widgets'             => 'vendor.phundament.p3widgets.migrations',
                 'p3media'               => 'vendor.phundament.p3media.migrations',
                 'ckeditor-configurator' => 'vendor.schmunk42.ckeditor-configurator.migrations',
+                'translate'             => 'vendor.gusnips.yii-translate.migrations',
+                'auditrail2'            => 'vendor.sammaye.auditrail2.migrations',
             ),
             // you can customize the modules migrations subdirectory which is used when you are using yii module config
             'migrationSubPath'      => 'migrations',
@@ -105,9 +98,16 @@ $consoleConfig = array(
         'webapp'        => array(
             'class' => 'application.commands.P3WebAppCommand',
         ),
-	// translate command
+        // translate commands
         'i18n-columns'    => array(
             'class' => 'i18n-columns.commands.I18nColumnsCommand',
+        ),
+        'i18n-attribute-messages'    => array(
+            'class' => 'i18n-attribute-messages.commands.I18nAttributeMessagesCommand',
+        ),
+        // qa-state command
+        'qa-state'    => array(
+            'class' => 'qa-state.commands.QaStateCommand',
         ),
         // composer callback
         'backend-theme' => array(
@@ -116,7 +116,7 @@ $consoleConfig = array(
             'themeName' => 'backend2',
         ),
     ),
-    'params'     => array(
+    'params' => array(
         'composer.callbacks' => array(
             // command and args for Yii command runner
             'yiisoft/yii-install'              => $webappCommand,
@@ -140,12 +140,39 @@ $consoleConfig = array(
             #                                      ),
             #'post-update'                      => array('yiic', 'migrate', '--interactive=1'),
         ),
-    )
+    ),
 );
 
-// return merged config, from highest to lowest precedence: console-local, console
-if (is_file($localConsoleConfigFile)) {
-    return CMap::mergeArray($consoleConfig, require($localConsoleConfigFile));
-} else {
-    return $consoleConfig;
+// config files
+$main    = require($applicationDirectory . '/config/main.php');
+$local   = array();
+$env     = array();
+
+// include local & env
+$localFileName = $applicationDirectory . '/config/main-local.php';
+if (is_file($localFileName)) {
+    $local       = require($localFileName);
+    $envFileName = $applicationDirectory . '/config/env-' . $main['params']['env'] . '.php';
+    if (is_file($envFileName)) {
+        $env = require($envFileName);
+    }
 }
+
+$webConfig = CMap::mergeArray($main, $env, $local);
+
+// create base console config from web configuration
+$config = array(
+    'name'       => $webConfig['name'],
+    'language'   => $webConfig['language'],
+    'basePath'   => $webConfig['basePath'],
+    'aliases'    => $webConfig['aliases'],
+    'import'     => $webConfig['import'],
+    'components' => $webConfig['components'],
+    'modules'    => $webConfig['modules'],
+    'params'     => $webConfig['params'],
+);
+
+// apply console config
+$config = CMap::mergeArray($config, $consoleConfig);
+
+return $config;

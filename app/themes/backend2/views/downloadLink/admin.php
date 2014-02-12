@@ -1,40 +1,60 @@
 <?php
-$this->breadcrumbs[] = Yii::t('crud', 'Download Links');
+$this->setPageTitle(
+    Yii::t('model', 'Download Links')
+    . ' - '
+    . Yii::t('crud', 'Manage')
+);
 
-
+$this->breadcrumbs[] = Yii::t('model', 'Download Links');
 Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-$('.search-form').toggle();
-return false;
-});
-$('.search-form form').submit(function(){
-$.fn.yiiGridView.update('download-link-grid', {
-data: $(this).serialize()
-});
-return false;
-});
-");
+    $('.search-button').click(function(){
+        $('.search-form').toggle();
+        return false;
+    });
+    $('.search-form form').submit(function(){
+        $.fn.yiiGridView.update(
+            'download-link-grid',
+            {data: $(this).serialize()}
+        );
+        return false;
+    });
+    ");
 ?>
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
-<h1>
-    <?php echo Yii::t('crud', 'Download Links'); ?>
-    <small><?php echo Yii::t('crud', 'Manage'); ?></small>
-</h1>
+    <h1>
+
+        <?php echo Yii::t('model', 'Download Links'); ?>
+        <small><?php echo Yii::t('crud', 'Manage'); ?></small>
+
+    </h1>
+
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<?php $this->widget('TbGridView',
+<?php Yii::beginProfile('DownloadLink.view.grid'); ?>
+
+
+<?php
+$this->widget('TbGridView',
     array(
         'id' => 'download-link-grid',
         'dataProvider' => $model->search(),
         'filter' => $model,
+        #'responsiveTable' => true,
+        'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
             'class' => 'TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'CLinkColumn',
+                'header' => '',
+                'labelExpression' => '$data->itemLabel',
+                'urlExpression' => 'Yii::app()->controller->createUrl("view", array("id" => $data["id"]))'
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'id',
                 'editable' => array(
                     'url' => $this->createUrl('/downloadLink/editableSaver'),
@@ -42,20 +62,33 @@ return false;
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_en',
+                'class' => 'TbEditableColumn',
+                'name' => 'version',
                 'editable' => array(
                     'url' => $this->createUrl('/downloadLink/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             array(
-                'name' => 'p3_media_id',
-                'value' => 'CHtml::value($data,\'p3Media.itemLabel\')',
-                'filter' => CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'downloadLinks.itemLabel\')',
+                'filter' => '', //CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
+                'name' => '_title',
+                'editable' => array(
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'file_media_id',
+                'value' => 'CHtml::value($data, \'fileMedia.itemLabel\')',
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
                     'url' => $this->createUrl('/downloadLink/editableSaver'),
@@ -63,7 +96,7 @@ return false;
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
+                'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
                     'url' => $this->createUrl('/downloadLink/editableSaver'),
@@ -71,68 +104,36 @@ return false;
                 )
             ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_es',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_fa',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_hi',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
+                'name' => 'node_id',
+                'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_pt',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_sv',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_cn',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'editable.EditableColumn',
-                'name' => 'title_de',
-                'editable' => array(
-                    'url' => $this->createUrl('/downloadLink/editableSaver'),
-                    //'placement' => 'right',
-                )
+                'name' => 'download_link_qa_state_id',
+                'value' => 'CHtml::value($data, \'downloadLinkQaState.itemLabel\')',
+                'filter' => '',//CHtml::listData(DownloadLinkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             */
+
             array(
                 'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('delete', array('id' => \$data->id))",
+                'buttons' => array(
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("DownloadLink.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("DownloadLink.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("DownloadLink.Delete")'),
+                ),
+                'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
+                'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
+                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("delete", array("id" => $data->id))',
             ),
         )
-    )); ?>
+    )
+);
+?>
+<?php Yii::endProfile('DownloadLink.view.grid'); ?>

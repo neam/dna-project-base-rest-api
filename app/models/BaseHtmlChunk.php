@@ -5,18 +5,21 @@
  *
  * Columns in table "html_chunk" available as properties of the model:
  * @property string $id
- * @property string $markup_en
+ * @property integer $version
+ * @property string $cloned_from_id
+ * @property string $_markup
  * @property string $created
  * @property string $modified
- * @property string $markup_es
- * @property string $markup_fa
- * @property string $markup_hi
- * @property string $markup_pt
- * @property string $markup_sv
- * @property string $markup_cn
- * @property string $markup_de
+ * @property integer $owner_id
+ * @property string $node_id
+ * @property string $html_chunk_qa_state_id
  *
  * Relations of table "html_chunk" available as properties of the model:
+ * @property HtmlChunkQaState $htmlChunkQaState
+ * @property HtmlChunk $clonedFrom
+ * @property HtmlChunk[] $htmlChunks
+ * @property Node $node
+ * @property Users $owner
  * @property SectionContent[] $sectionContents
  */
 abstract class BaseHtmlChunk extends ActiveRecord
@@ -36,16 +39,18 @@ abstract class BaseHtmlChunk extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'safe'),
-                array('id, markup_en, created, modified, markup_es, markup_fa, markup_hi, markup_pt, markup_sv, markup_cn, markup_de', 'safe', 'on' => 'search'),
+                array('version, cloned_from_id, _markup, created, modified, owner_id, node_id, html_chunk_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, owner_id', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id, node_id, html_chunk_qa_state_id', 'length', 'max' => 20),
+                array('_markup, created, modified', 'safe'),
+                array('id, version, cloned_from_id, _markup, created, modified, owner_id, node_id, html_chunk_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->markup_en;
+        return (string) $this->cloned_from_id;
     }
 
     public function behaviors()
@@ -53,7 +58,7 @@ abstract class BaseHtmlChunk extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -61,49 +66,52 @@ abstract class BaseHtmlChunk extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'html_chunk_id'),
+        return array_merge(
+            parent::relations(), array(
+                'htmlChunkQaState' => array(self::BELONGS_TO, 'HtmlChunkQaState', 'html_chunk_qa_state_id'),
+                'clonedFrom' => array(self::BELONGS_TO, 'HtmlChunk', 'cloned_from_id'),
+                'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'cloned_from_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'html_chunk_id'),
+            )
         );
     }
 
     public function attributeLabels()
     {
         return array(
-            'id' => Yii::t('crud', 'ID'),
-            'markup_en' => Yii::t('crud', 'Markup En'),
-            'created' => Yii::t('crud', 'Created'),
-            'modified' => Yii::t('crud', 'Modified'),
-            'markup_es' => Yii::t('crud', 'Markup Es'),
-            'markup_fa' => Yii::t('crud', 'Markup Fa'),
-            'markup_hi' => Yii::t('crud', 'Markup Hi'),
-            'markup_pt' => Yii::t('crud', 'Markup Pt'),
-            'markup_sv' => Yii::t('crud', 'Markup Sv'),
-            'markup_cn' => Yii::t('crud', 'Markup Cn'),
-            'markup_de' => Yii::t('crud', 'Markup De'),
+            'id' => Yii::t('model', 'ID'),
+            'version' => Yii::t('model', 'Version'),
+            'cloned_from_id' => Yii::t('model', 'Cloned From'),
+            '_markup' => Yii::t('model', 'Markup'),
+            'created' => Yii::t('model', 'Created'),
+            'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
+            'node_id' => Yii::t('model', 'Node'),
+            'html_chunk_qa_state_id' => Yii::t('model', 'Html Chunk Qa State'),
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
         }
 
         $criteria->compare('t.id', $this->id, true);
-        $criteria->compare('t.markup_en', $this->markup_en, true);
+        $criteria->compare('t.version', $this->version);
+        $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
+        $criteria->compare('t._markup', $this->_markup, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
-        $criteria->compare('t.markup_es', $this->markup_es, true);
-        $criteria->compare('t.markup_fa', $this->markup_fa, true);
-        $criteria->compare('t.markup_hi', $this->markup_hi, true);
-        $criteria->compare('t.markup_pt', $this->markup_pt, true);
-        $criteria->compare('t.markup_sv', $this->markup_sv, true);
-        $criteria->compare('t.markup_cn', $this->markup_cn, true);
-        $criteria->compare('t.markup_de', $this->markup_de, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
+        $criteria->compare('t.node_id', $this->node_id);
+        $criteria->compare('t.html_chunk_qa_state_id', $this->html_chunk_qa_state_id);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

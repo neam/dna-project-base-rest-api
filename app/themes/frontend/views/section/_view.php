@@ -9,7 +9,8 @@
 
         <?php endforeach; ?>
 
-    <?php else:
+    <?php
+    else:
         ?>
         <div class="alert">
             <?php echo Yii::t('app', 'Section contains no sectionContents'); ?>
@@ -19,7 +20,7 @@
     ?>
 
     <?php if (Yii::app()->user->checkAccess('Section.*')): ?>
-        <div class="admin-container show">
+        <div class="admin-container hide">
             <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('crud', 'Update {model}', array('{model}' => Yii::t('crud', 'Section'))), array('section/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>

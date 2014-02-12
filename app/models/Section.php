@@ -26,20 +26,22 @@ class Section extends BaseSection
     public function behaviors()
     {
         return array_merge(
-            parent::behaviors(), array());
+            parent::behaviors(),
+            array()
+        );
     }
 
     public function relations()
     {
         return array_merge(parent::relations(), array(
             'htmlChunks' => array(self::MANY_MANY, 'HtmlChunk', 'section_content(section_id, html_chunk_id)'),
-            'vizViews' => array(self::MANY_MANY, 'VizView', 'section_content(section_id, viz_view_id)'),
+            'snapshots' => array(self::MANY_MANY, 'Snapshot', 'section_content(section_id, snapshot_id)'),
             'videoFiles' => array(self::MANY_MANY, 'VideoFile', 'section_content(section_id, video_file_id)'),
-            'teachersGuides' => array(self::MANY_MANY, 'TeachersGuide', 'section_content(section_id, teachers_guide_id)'),
             'exercises' => array(self::MANY_MANY, 'Exercise', 'section_content(section_id, exercise_id)'),
-            'presentations' => array(self::MANY_MANY, 'Presentation', 'section_content(section_id, presentation_id)'),
+            'slideshoFiles' => array(self::MANY_MANY, 'SlideshowFIle', 'section_content(section_id, slideshow_file_id)'),
             'dataChunks' => array(self::MANY_MANY, 'DataChunk', 'section_content(section_id, data_chunk_id)'),
             'downloadLinks' => array(self::MANY_MANY, 'DownloadLink', 'section_content(section_id, download_link_id)'),
+            'examQuestions' => array(self::MANY_MANY, 'ExamQuestion', 'section_content(section_id, exam_question_id)'),
         ));
     }
 
@@ -52,6 +54,13 @@ class Section extends BaseSection
           array('column3', 'rule2'),
           ) */
         );
+    }
+
+    public function search()
+    {
+        return new CActiveDataProvider(get_class($this), array(
+            'criteria' => $this->searchCriteria(),
+        ));
     }
 
 }

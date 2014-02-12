@@ -2,6 +2,8 @@
 //$this->breadcrumbs[Yii::t('crud', 'Chapters')] = array('index');
 $this->breadcrumbs[] = $model->title;
 
+$sections = $this->chapterSections($model);
+
 // Deps for smooth scroll
 $cs = Yii::app()->getClientScript();
 $cs->registerCoreScript('jquery');
@@ -58,20 +60,21 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
     });
 </script>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span3 bs-docs-sidebar">
-        <?php if (!empty($model->sections)): ?>
+        <?php if (!empty($sections)): ?>
             <ul class="nav nav-list bs-docs-sidenav affix">
 
                 <?php
-                foreach ($model->sections as $i => $foreignobj) {
+                foreach ($sections as $i => $section) {
                     echo CHtml::openTag('li', array('class' => $i == 0 ? 'active' : null));
-                    echo CHtml::link('<i class="icon-chevron-right"></i> ' . $foreignobj->menu_label, '#' . $foreignobj->slug);
+                    echo CHtml::link('<i class="icon-chevron-right"></i> ' . $section["menu_label"], '#' . $section["slug"]);
                     echo CHtml::closeTag('li');
                 }
                 ?>
             </ul>
-        <?php else:
+        <?php
+        else:
             echo Yii::t('app', 'Chapter contains no sections');
         endif;
         ?>
@@ -79,33 +82,60 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
     </div>
     <div class="span9">
 
+        <?php $this->renderPartial("/_item/elements/flowbar", compact("model")); ?>
+
         <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
         <!--<h1><?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small></h1>-->
 
         <?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>
-            <div class="admin-container show">
+            <div class="admin-container hide">
                 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
             </div>
         <?php endif; ?>
 
-        <?php if (!empty($model->sections)): ?>
-            <?php foreach ($model->sections as $foreignobj): ?>
+        <?php if (!empty($sections)): ?>
+            <?php foreach ($sections as $section): ?>
 
-                <section id="<?= $foreignobj->slug ?>">
+                <section id="<?= $section["slug"] ?>">
 
                     <div class="page-header">
-                        <h1><?= $foreignobj->title ?></h1>
+                        <h1><?= $section["title"] ?></h1>
                     </div>
 
-                    <?php
-                    $this->renderPartial('/section/_view', array("data" => $foreignobj));
-                    ?>
+                    <?php if (isset($section["subsections"])): ?>
+                        <?php foreach ($section["subsections"] as $subsection): ?>
+
+                            <div class="view">
+
+                                <h2><?= $subsection["title"] ?></h2>
+
+                                <?php
+                                if (isset($subsection["model"])) {
+                                    $this->renderPartial('/' . lcfirst(get_class($subsection["model"])) . '/_view', array("data" => $subsection["model"]));
+                                } else {
+                                    print $subsection["markup"];
+                                }
+                                ?>
+
+                            </div>
+                        <?php endforeach; ?>
+
+                    <?php else: ?>
+                        <?php
+                        if (isset($section["model"])) {
+                            $this->renderPartial('/' . lcfirst(get_class($section["model"])) . '/_view', array("data" => $section["model"]));
+                        } else {
+                            print $section["markup"];
+                        }
+                        ?>
+                    <?php endif; ?>
 
                 </section>
 
             <?php endforeach; ?>
 
-        <?php else:
+        <?php
+        else:
             ?>
             <div class="alert">
                 <?php echo Yii::t('app', 'Chapter contains no sections'); ?>

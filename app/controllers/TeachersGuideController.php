@@ -124,8 +124,8 @@ class TeachersGuideController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('TeachersGuide'); // classname of model to be updated
+        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
+        $es = new TbEditableSaver('TeachersGuide'); // classname of model to be updated
         $es->update();
     }
 
@@ -167,7 +167,7 @@ class TeachersGuideController extends Controller
                 }
             }
         } else {
-            throw new CHttpException(400, Yii::t('crud', 'Invalid request. Please do not repeat this request again.'));
+            throw new CHttpException(400, Yii::t('model', 'Invalid request. Please do not repeat this request again.'));
         }
     }
 
@@ -193,7 +193,7 @@ class TeachersGuideController extends Controller
     {
         $model = TeachersGuide::model()->findByPk($id);
         if ($model === null) {
-            throw new CHttpException(404, Yii::t('crud', 'The requested page does not exist.'));
+            throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
         return $model;
     }
@@ -243,6 +243,5 @@ class TeachersGuideController extends Controller
 
         return $related;
     }
-
 
 }

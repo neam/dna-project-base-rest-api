@@ -22,12 +22,14 @@
     // CSS files
     $css = Yii::app()->assetManager->publish(
         Yii::app()->theme->basePath . '/css',
-        false,
-        -1,
-        true
+        true, // hash by name
+        -1, // level
+        false // forceCopy
     ); // set last param to `true` for development
     $cs->registerCssFile($css . "/backend.css");
-    $cs->registerCssFile($css . "/gscms.css");
+    $cs->registerCssFile($css . "/gcms.css");
+
+    Html::jsDirtyForms();
     ?>
 </head>
 

@@ -9,7 +9,16 @@
         init$gii();
         var model = $('select[name="model"]').val();
         $gii('#FullCrudCode_model').val(model).keyup();
-        $gii('#FullCrudCode_textEditor').val('html5Editor');
+
+        // Define default options
+        $gii('#FullCrudCode_textEditor').val('texteditor');
+        if (model == 'ExamQuestion' ||
+            model == 'ExamQuestionAlternative' ||
+            model == 'HtmlChunk') {
+            $gii('#FullCrudCode_textEditor').val('html5Editor');
+        }
+        $gii('#FullCrudCode_internalModels').val('EzcExecution,Node'.split(','));
+
         $gii('input[name="preview"]').click();
         setTimeout(function () {
             init$gii();
@@ -73,18 +82,24 @@ echo CHtml::dropDownList('model', null, array(
     'DataChunk' => 'DataChunk',
     'DataSource' => 'DataSource',
     'DownloadLink' => 'DownloadLink',
+    'ExamQuestion' => 'ExamQuestion',
+    'ExamQuestionAlternative' => 'ExamQuestionAlternative',
     'Exercise' => 'Exercise',
     'HtmlChunk' => 'HtmlChunk',
-    'Presentation' => 'Presentation',
+    'PoFile' => 'PoFile',
     'Section' => 'Section',
     'SectionContent' => 'SectionContent',
     'SlideshowFile' => 'SlideshowFile',
+    'Snapshot' => 'Snapshot',
     'SpreadsheetFile' => 'SpreadsheetFile',
     'TeachersGuide' => 'TeachersGuide',
+    'TextDoc' => 'TextDoc',
+    'Tool' => 'Tool',
+    'VectorGraphic' => 'VectorGraphic',
     'VideoFile' => 'VideoFile',
-    'VizView' => 'VizView',
-    'WordFile' => 'WordFile',
+    'EzcWorkflow' => 'EzcWorkflow',
 ));
+
 ?>
 
 <p>

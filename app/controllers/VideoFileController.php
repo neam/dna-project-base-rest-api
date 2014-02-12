@@ -2,6 +2,13 @@
 
 class VideoFileController extends Controller
 {
+
+    use ItemController {
+        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    }
+
+    public $modelClass = "VideoFile";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,20 +23,26 @@ class VideoFileController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array('allow',
                 'actions' => array(
                     'subtitles',
                 ),
                 'users' => array('*'),
             ),
-            array(
-                'allow',
+            array('allow',
                 'actions' => array(
                     'index',
                     'view',
+                ),
+                'users' => array('@'),
+            ),
+            array('allow',
+                'actions' => array(
+                    'view',
                     'create',
                     'update',
+                    'edit',
                     'editableSaver',
                     'editableCreator',
                     'admin',
@@ -41,7 +54,34 @@ class VideoFileController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
+    }
+
+    protected function listenForEdges($id)
+    {
+        if (isset($_POST[$this->modelClass]["exercises_to_add"])) {
+            $this->addEdges($id, $_POST[$this->modelClass]["exercises_to_add"], 'Exercise');
+        } else {
+            if (isset($_POST[$this->modelClass]["exercises_to_remove"])) {
+                $this->removeEdges($_POST[$this->modelClass]["exercises_to_remove"]);
+            } else {
+                if (isset($_POST[$this->modelClass]["snapshots_to_add"])) {
+                    $this->addEdges($id, $_POST[$this->modelClass]["snapshots_to_add"], 'Snapshot');
+                } else {
+                    if (isset($_POST[$this->modelClass]["snapshots_to_remove"])) {
+                        $this->removeEdges($_POST[$this->modelClass]["snapshots_to_remove"]);
+                    } else {
+                        if (isset($_POST[$this->modelClass]["videos_to_add"])) {
+                            $this->addEdges($id, $_POST[$this->modelClass]["videos_to_add"], 'VideoFile');
+                        } else {
+                            if (isset($_POST[$this->modelClass]["videos_to_remove"])) {
+                                $this->removeEdges($_POST[$this->modelClass]["videos_to_remove"]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public function beforeAction($action)
@@ -71,10 +111,45 @@ class VideoFileController extends Controller
     {
         $model = $this->loadModel($id);
 
-        echo $model->subtitles;
+        $subtitles = $model->getParsedSubtitles();
+
+        foreach ($subtitles as $subtitle) {
+            echo "{$subtitle->id}\n";
+            echo "{$subtitle->timestamp}\n";
+            echo Yii::t("video-{$model->id}-subtitles", $subtitle->sourceMessage, array(), 'dbMessages', Yii::app()->language) . "\n";
+            echo "\n";
+        }
+
         exit;
     }
 
+    protected function videofileSections($videofile)
+    {
+        return $sections;
+    }
+
+    public function saveAndContinueOnSuccess($id)
+    {
+
+        if (isset($_POST['import'])) {
+
+            // get file path
+            $p3media = P3Media::model()->findByPk($_POST['VideoFile']['subtitles_import_media_id']);
+            $fullPath = $p3media->fullPath;
+
+            // read contents of file
+            $contents = file_get_contents($fullPath);
+
+            // save to post
+            $_POST['VideoFile']['subtitles'] = $contents;
+
+            // emulate us hitting the save button
+            $_POST['save-changes'] = true;
+
+        }
+        return $this->parentSaveAndContinueOnSuccess($id);
+
+    }
 
     public function actionView($id)
     {
@@ -87,7 +162,7 @@ class VideoFileController extends Controller
         $model = new VideoFile;
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'video-file-form');
+        $this->performAjaxValidation($model, 'videofile-form');
 
         if (isset($_POST['VideoFile'])) {
             $model->attributes = $_POST['VideoFile'];
@@ -115,7 +190,7 @@ class VideoFileController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'video-file-form');
+        $this->performAjaxValidation($model, 'videofile-form');
 
         if (isset($_POST['VideoFile'])) {
             $model->attributes = $_POST['VideoFile'];
@@ -139,8 +214,8 @@ class VideoFileController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('EditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new EditableSaver('VideoFile'); // classname of model to be updated
+        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
+        $es = new TbEditableSaver('VideoFile'); // classname of model to be updated
         $es->update();
     }
 
@@ -182,7 +257,7 @@ class VideoFileController extends Controller
                 }
             }
         } else {
-            throw new CHttpException(400, Yii::t('crud', 'Invalid request. Please do not repeat this request again.'));
+            throw new CHttpException(400, Yii::t('model', 'Invalid request. Please do not repeat this request again.'));
         }
     }
 
@@ -208,14 +283,14 @@ class VideoFileController extends Controller
     {
         $model = VideoFile::model()->findByPk($id);
         if ($model === null) {
-            throw new CHttpException(404, Yii::t('crud', 'The requested page does not exist.'));
+            throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
         return $model;
     }
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'video-file-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'videofile-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
@@ -247,10 +322,26 @@ class VideoFileController extends Controller
             throw new CException("Currently works with HAS_MANY relations only");
         }
 
-        $className = $relation->className;
-        $related = new $className('search');
-        $related->unsetAttributes();
-        $related->{$relation->foreignKey} = $model->primaryKey;
+        if (isset($relation->through)) {
+
+            if (!($md->relations[$relation->through] instanceof CBelongsToRelation)) {
+                throw new CException("Currently works with HAS_MANY relations, optionally through a BELONGS_TO relation, only");
+            }
+
+            $fk = $relation->foreignKey;
+            $_ = array_keys($fk);
+            $throughPk = $_[0];
+            $throughField = $fk[$throughPk];
+            $className = $relation->className;
+            $related = new $className('search');
+            $related->unsetAttributes();
+            $related->{$throughField} = $model->{$relation->through}->{$throughPk};
+        } else {
+            $className = $relation->className;
+            $related = new $className('search');
+            $related->unsetAttributes();
+            $related->{$relation->foreignKey} = $model->primaryKey;
+        }
 
         if (isset($_GET[$className])) {
             $related->attributes = $_GET[$className];
@@ -258,6 +349,5 @@ class VideoFileController extends Controller
 
         return $related;
     }
-
 
 }

@@ -5,20 +5,23 @@
  *
  * Columns in table "download_link" available as properties of the model:
  * @property string $id
- * @property string $title_en
- * @property integer $p3_media_id
+ * @property integer $version
+ * @property string $cloned_from_id
+ * @property string $_title
+ * @property integer $file_media_id
  * @property string $created
  * @property string $modified
- * @property string $title_es
- * @property string $title_fa
- * @property string $title_hi
- * @property string $title_pt
- * @property string $title_sv
- * @property string $title_cn
- * @property string $title_de
+ * @property integer $owner_id
+ * @property string $node_id
+ * @property string $download_link_qa_state_id
  *
  * Relations of table "download_link" available as properties of the model:
- * @property P3Media $p3Media
+ * @property DownloadLinkQaState $downloadLinkQaState
+ * @property DownloadLink $clonedFrom
+ * @property DownloadLink[] $downloadLinks
+ * @property Node $node
+ * @property P3Media $fileMedia
+ * @property Users $owner
  * @property SectionContent[] $sectionContents
  */
 abstract class BaseDownloadLink extends ActiveRecord
@@ -38,18 +41,19 @@ abstract class BaseDownloadLink extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title_en, p3_media_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('p3_media_id', 'numerical', 'integerOnly' => true),
-                array('title_en, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'length', 'max' => 255),
+                array('version, cloned_from_id, _title, file_media_id, created, modified, owner_id, node_id, download_link_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, file_media_id, owner_id', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id, node_id, download_link_qa_state_id', 'length', 'max' => 20),
+                array('_title', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, title_en, p3_media_id, created, modified, title_es, title_fa, title_hi, title_pt, title_sv, title_cn, title_de', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, file_media_id, created, modified, owner_id, node_id, download_link_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->title_en;
+        return (string) $this->cloned_from_id;
     }
 
     public function behaviors()
@@ -57,7 +61,7 @@ abstract class BaseDownloadLink extends ActiveRecord
         return array_merge(
             parent::behaviors(), array(
                 'savedRelated' => array(
-                    'class' => 'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior'
+                    'class' => '\GtcSaveRelationsBehavior'
                 )
             )
         );
@@ -65,52 +69,55 @@ abstract class BaseDownloadLink extends ActiveRecord
 
     public function relations()
     {
-        return array(
-            'p3Media' => array(self::BELONGS_TO, 'P3Media', 'p3_media_id'),
-            'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'download_link_id'),
+        return array_merge(
+            parent::relations(), array(
+                'downloadLinkQaState' => array(self::BELONGS_TO, 'DownloadLinkQaState', 'download_link_qa_state_id'),
+                'clonedFrom' => array(self::BELONGS_TO, 'DownloadLink', 'cloned_from_id'),
+                'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'cloned_from_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
+                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'download_link_id'),
+            )
         );
     }
 
     public function attributeLabels()
     {
         return array(
-            'id' => Yii::t('crud', 'ID'),
-            'title_en' => Yii::t('crud', 'Title En'),
-            'p3_media_id' => Yii::t('crud', 'P3 Media'),
-            'created' => Yii::t('crud', 'Created'),
-            'modified' => Yii::t('crud', 'Modified'),
-            'title_es' => Yii::t('crud', 'Title Es'),
-            'title_fa' => Yii::t('crud', 'Title Fa'),
-            'title_hi' => Yii::t('crud', 'Title Hi'),
-            'title_pt' => Yii::t('crud', 'Title Pt'),
-            'title_sv' => Yii::t('crud', 'Title Sv'),
-            'title_cn' => Yii::t('crud', 'Title Cn'),
-            'title_de' => Yii::t('crud', 'Title De'),
+            'id' => Yii::t('model', 'ID'),
+            'version' => Yii::t('model', 'Version'),
+            'cloned_from_id' => Yii::t('model', 'Cloned From'),
+            '_title' => Yii::t('model', 'Title'),
+            'file_media_id' => Yii::t('model', 'File Media'),
+            'created' => Yii::t('model', 'Created'),
+            'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
+            'node_id' => Yii::t('model', 'Node'),
+            'download_link_qa_state_id' => Yii::t('model', 'Download Link Qa State'),
         );
     }
 
-    public function search($criteria = null)
+    public function searchCriteria($criteria = null)
     {
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
         }
 
         $criteria->compare('t.id', $this->id, true);
-        $criteria->compare('t.title_en', $this->title_en, true);
-        $criteria->compare('t.p3_media_id', $this->p3_media_id);
+        $criteria->compare('t.version', $this->version);
+        $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
+        $criteria->compare('t._title', $this->_title, true);
+        $criteria->compare('t.file_media_id', $this->file_media_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
-        $criteria->compare('t.title_es', $this->title_es, true);
-        $criteria->compare('t.title_fa', $this->title_fa, true);
-        $criteria->compare('t.title_hi', $this->title_hi, true);
-        $criteria->compare('t.title_pt', $this->title_pt, true);
-        $criteria->compare('t.title_sv', $this->title_sv, true);
-        $criteria->compare('t.title_cn', $this->title_cn, true);
-        $criteria->compare('t.title_de', $this->title_de, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
+        $criteria->compare('t.node_id', $this->node_id);
+        $criteria->compare('t.download_link_qa_state_id', $this->download_link_qa_state_id);
 
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $criteria,
-        ));
+
+        return $criteria;
+
     }
 
 }

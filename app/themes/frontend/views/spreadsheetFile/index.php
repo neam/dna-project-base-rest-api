@@ -1,7 +1,9 @@
 <?php
-$this->breadcrumbs['Spreadsheet Files'] = array('index');
-$this->breadcrumbs[] = Yii::t('app', 'Index');
-
+$this->breadcrumbs[Yii::t('model', 'Spreadsheet Files')] = array('index');
+$this->breadcrumbs[] = Yii::t('model', 'Index');
+?>
+<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php
 if (!isset($this->menu) || $this->menu === array()) {
     $this->menu = array(
         array('label' => Yii::t('app', 'Create'), 'url' => array('create')),
@@ -9,10 +11,12 @@ if (!isset($this->menu) || $this->menu === array()) {
     );
 }
 ?>
+    <h1><?php echo Yii::t('model', 'Spreadsheet Files'); ?></h1>
 
-<h1>Spreadsheet Files</h1>
-
-<?php $this->widget('zii.widgets.CListView', array(
+<?php $this->renderPartial("_toolbar"); ?>
+<?php
+$this->widget('zii.widgets.CListView', array(
     'dataProvider' => $dataProvider,
     'itemView' => '_view',
-)); ?>
+));
+?>
