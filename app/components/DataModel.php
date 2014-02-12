@@ -3,6 +3,15 @@
 class DataModel
 {
 
+    static public function sharableItemModels()
+    {
+
+        return array(
+            'Snapshot' => 'snapshot',
+        );
+
+    }
+
     /**
      * Model classes that represent top level visitable items through the go-page
      * @return array
@@ -44,6 +53,7 @@ class DataModel
             'DownloadLink' => 'download_link',
             'HtmlChunk' => 'html_chunk',
             'Tool' => 'tool',
+            'GuiSection' => 'gui_section',
         );
 
     }
@@ -52,8 +62,13 @@ class DataModel
     {
 
         return array(
-            'Country' => 'country',
-            'Etc' => 'etc',
+            'WaffleCategory' => 'waffle_category',
+            'WaffleIndicator' => 'waffle_indicator',
+            'WaffleRole' => 'waffle_role',
+            'WaffleTag' => 'waffle_tag',
+            'WaffleUnit' => 'waffle_unit',
+            'WaffleCountry' => 'waffle_country',
+            'WaffleGeography' => 'waffle_geography',
         );
 
     }
@@ -113,8 +128,8 @@ class DataModel
         return array_merge(
             self::goItemModels(),
             self::educationalItemModels(),
-            self::websiteContentItemModels()
-            //self::waffleItemModels()
+            self::websiteContentItemModels(),
+            self::waffleItemModels()
         );
 
     }

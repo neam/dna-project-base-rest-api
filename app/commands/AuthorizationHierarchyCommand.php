@@ -206,4 +206,48 @@ EOD;
         var_dump($auth->getAuthAssignments(1));
 
     }
+
+    public function actionGoogleSpreadsheetPermissionsMatrixColumnsAndRows()
+    {
+        /*
+        foreach (DataModel::qaModels() as $model => $table) {
+            echo "$model\n";
+        }
+DataModel::goItemModels()
+DataModel::educationalItemModels()
+DataModel::websiteContentItemModels()
+DataModel::waffleItemModels()
+        */
+
+        echo "\t";
+
+        foreach (Metadata::anonymousRoles() as $role) {
+            echo "$role\t";
+        }
+
+        // RoleInProject
+        foreach (Metadata::projects() as $project) {
+            foreach (Metadata::projectRoles() as $projectRole) {
+                echo "$project.$projectRole\t";
+            }
+        }
+
+        foreach (Metadata::superAdministratorRoles() as $role) {
+            echo "$role\t";
+        }
+
+        echo "\n";
+
+        // ItemTypeAction X Participation
+        foreach (Metadata::itemActions() as $action => $table) {
+            foreach (Metadata::itemTypes() as $itemType => $itemModels) {
+                //foreach (array("All", "Own") as $participation) {
+                echo "$action {$itemType}s\n";
+                //}
+            }
+
+        }
+
+    }
+
 }
