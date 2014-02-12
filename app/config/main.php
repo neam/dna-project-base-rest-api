@@ -226,7 +226,6 @@ $mainConfig = array(
         'user'                 => array(
             'class'                => 'vendor.mishamx.yii-user.UserModule',
             'activeAfterRegister'  => false,
-            'customMessageCatalog' => 'UserModule.user', // disable fallback catalog
         ),
         'translate'            => array(
             'class' => 'vendor.gusnips.yii-translate.TranslateModule',
