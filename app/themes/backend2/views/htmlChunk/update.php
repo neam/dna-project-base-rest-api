@@ -11,7 +11,7 @@ $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'i
 $this->breadcrumbs[] = Yii::t('model', 'Update');
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Html Chunk'); ?>
@@ -36,7 +36,7 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('from_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -132,7 +132,7 @@ This relation is specified through another relation, which in turn is not a BELO
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('to_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -228,7 +228,7 @@ This relation is specified through another relation, which in turn is not a BELO
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('htmlChunk/create', 'HtmlChunk' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -307,7 +307,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('html_chunk_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))

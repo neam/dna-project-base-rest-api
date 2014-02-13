@@ -26,7 +26,7 @@
         <div class="row-fluid">
             <div class="span10 content-container">
                 <div class="row-fluid">
-                    <?php $this->widget('TbBreadcrumbs', array('links' => $this->breadcrumbs)); ?>
+                    <?php $this->widget('\TbBreadcrumb', array('links' => $this->breadcrumbs)); ?>
                     <?php echo $content; ?>
                 </div>
             </div>

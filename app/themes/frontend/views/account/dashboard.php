@@ -28,10 +28,10 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                 <?php if ($table == "exam_question_alternative") {
                     continue;
                 } ?>
-                <?php $this->widget("bootstrap.widgets.TbButton", array(
+                <?php $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Create $modelClass"),
                     "size" => "large",
-                    "icon" => "icon-plus",
+                    "icon" => "glyphicon-plus",
                     "url" => array(lcfirst($modelClass) . "/add")
                 )); ?>
             <?php endforeach; ?>

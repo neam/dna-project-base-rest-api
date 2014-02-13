@@ -26,7 +26,7 @@
     }
 
     $this->widget(
-        'TbMenu',
+        'TbNav',
         array(
             'type' => 'list',
             'items' => array_merge(

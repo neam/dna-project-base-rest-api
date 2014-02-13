@@ -3,13 +3,13 @@
 
         <div class="form-horizontal">
 
-            <?php echo $form->textFieldRow($model, 'title_en', array('maxlength' => 255)); ?>
+            <?php echo $form->textFieldControlGroup($model, 'title_en', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
+            <?php echo $form->textFieldControlGroup($model, 'slug_en', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textAreaRow($model, 'about_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+            <?php echo $form->textAreaRow($model, 'about_en', array('ControlGroups' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
-            <?php echo $form->textAreaRow($model, 'embed_template', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+            <?php echo $form->textAreaRow($model, 'embed_template', array('ControlGroups' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
             <?php
             $input = $this->widget(
@@ -25,7 +25,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'po_file_id', $input);
+            echo $form->customControlGroup($model, 'po_file_id', $input);
             ?>
 
         </div>

@@ -1,7 +1,7 @@
 <div class="wide form">
 
     <?php
-    $form = $this->beginWidget('TbActiveForm', array(
+    $form = $this->beginWidget('\TbActiveForm', array(
         'action' => Yii::app()->createUrl($this->route),
         'method' => 'get',
     )); ?>
@@ -32,12 +32,12 @@
 
     <div class="row pull-left">
         <?php echo $form->label($model, '_about'); ?>
-        <?php echo $form->textArea($model, '_about', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->textArea($model, '_about', array('ControlGroups' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row pull-left">
         <?php echo $form->label($model, '_subtitles'); ?>
-        <?php echo $form->textArea($model, '_subtitles', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->textArea($model, '_subtitles', array('ControlGroups' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row pull-left">

@@ -6,7 +6,7 @@ $this->breadcrumbs[$model->username] = array('account/profile', 'id' => $model->
 $this->breadcrumbs[] = Yii::t('account', 'Profile');
 ?>
 <div class="account-controller profile-action">
-    <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    <?php $form = $this->beginWidget('\TbActiveForm', array(
         'id' => 'profiles-form',
         'enableAjaxValidation' => true,
         'clientOptions' => array(
@@ -14,7 +14,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
             'validateOnType' => false,
             'validateOnSubmit' => true,
         ),
-        'type' => 'vertical',
+        'layout' => TbHtml::FORM_LAYOUT_VERTICAL,
         'htmlOptions' => array(
             'class' => 'dirtyforms',
         ),
@@ -34,7 +34,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                         <?php echo CHtml::submitButton(Yii::t('model', 'Save'), array(
                             'class' => 'btn btn-primary btn-dirtyforms',
                         )); ?>
-                        <?php $this->widget('bootstrap.widgets.TbButton', array(
+                        <?php $this->widget('\TbButton', array(
                             'label' => Yii::t('model', 'Undo'),
                             'url' => Yii::app()->request->url,
                             'htmlOptions' => array(
@@ -73,7 +73,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
     <div class="account-profile-grid">
         <div class="row">
             <div class="span12">
-                <?php $this->widget('bootstrap.widgets.TbAlert'); ?>
+                <?php $this->widget('\TbAlert'); ?>
             </div>
         </div>
         <!--
@@ -82,7 +82,9 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                     <div class="pull-left">
                         <?php $relatedSearchModel = $model->profiles; //getRelatedSearchModel($model, 'profiles');
         $columns = array();
-        $columns[] = array(
+
+        // todo: add support for toggle column
+        /*$columns[] = array(
             'class' => 'TbToggleColumn',
             'checkedButtonLabel' => 'Inactivate',
             'uncheckedButtonLabel' => 'Activate',
@@ -91,18 +93,18 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
             'value' => 'CHtml::value($data,\'public_profile\')',
             'filter' => false,
             'toggleAction' => 'profiles/toggle'
-        ); ?>
-                        <?php $this->widget('TbGridView', array(
+        );*/ ?>
+        <?php $this->widget('\TbGridView', array(
             'id' => 'account-profile-public-profile-toggle-grid',
-            'type' => TbGridView::TYPE_CONDENSED,
+            'type' => TbHtml::GRID_TYPE_CONDENSED,
             'template' => '{items}',
             'dataProvider' => $relatedSearchModel->search(),
             'filter' => null,
             'enableSorting' => false,
             'hideHeader' => true,
             'pager' => array(
-                'class' => 'TbPager',
-                'displayFirstAndLast' => true,
+                'class' => '\TbPager',
+                'hideFirstAndLast' => false,
             ),
             'columns' => $columns,
         )); ?>

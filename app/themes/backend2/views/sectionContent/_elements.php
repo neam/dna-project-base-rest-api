@@ -27,7 +27,7 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Section'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
@@ -76,7 +76,7 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Html Chunk'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
@@ -123,7 +123,7 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Snapshot'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
@@ -170,7 +170,7 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Video File'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
@@ -217,7 +217,7 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Exercise'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
@@ -264,7 +264,7 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Slideshow File'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
@@ -311,7 +311,7 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Data Chunk'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
@@ -358,7 +358,7 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Download Link'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
@@ -405,7 +405,7 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Exam Question'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(

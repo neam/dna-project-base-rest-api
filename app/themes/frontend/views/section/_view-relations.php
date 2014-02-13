@@ -8,17 +8,17 @@
 echo '<h3>';
 echo Yii::t('model', 'relation.SectionContents') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///sectionContent/admin', 'SectionContent' => array('section_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///sectionContent/create',
                     'SectionContent' => array('section_id' => $model->{$model->tableSchema->primaryKey})
@@ -55,13 +55,13 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.HtmlChunks') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///htmlChunk/admin', 'HtmlChunk' => array('section_content(section_id, html_chunk_id)' => $model->{$model->tableSchema->primaryKey}))
             ),
 
@@ -95,13 +95,13 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Snapshots') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///snapshot/admin', 'Snapshot' => array('section_content(section_id, snapshot_id)' => $model->{$model->tableSchema->primaryKey}))
             ),
 
@@ -135,13 +135,13 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.VideoFiles') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///videoFile/admin', 'VideoFile' => array('section_content(section_id, video_file_id)' => $model->{$model->tableSchema->primaryKey}))
             ),
 
@@ -175,13 +175,13 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Exercises') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///exercise/admin', 'Exercise' => array('section_content(section_id, exercise_id)' => $model->{$model->tableSchema->primaryKey}))
             ),
 
@@ -215,13 +215,13 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.SlideshoFiles') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///slideshowFIle/admin', 'SlideshowFIle' => array('section_content(section_id, slideshow_file_id)' => $model->{$model->tableSchema->primaryKey}))
             ),
 
@@ -255,13 +255,13 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.DataChunks') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///dataChunk/admin', 'DataChunk' => array('section_content(section_id, data_chunk_id)' => $model->{$model->tableSchema->primaryKey}))
             ),
 
@@ -295,13 +295,13 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.DownloadLinks') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///downloadLink/admin', 'DownloadLink' => array('section_content(section_id, download_link_id)' => $model->{$model->tableSchema->primaryKey}))
             ),
 
@@ -335,13 +335,13 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.ExamQuestions') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///examQuestion/admin', 'ExamQuestion' => array('section_content(section_id, exam_question_id)' => $model->{$model->tableSchema->primaryKey}))
             ),
 

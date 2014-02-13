@@ -5,20 +5,18 @@ module.exports = function(grunt) {
         less: {
             dev: {
                 files: {
-                    "app/themes/frontend/assets/main.css": "app/themes/frontend/less/main.less",
-                    "app/themes/backend2/css/backend.css": "app/themes/backend2/less/main.less"
+                    "app/themes/frontend/assets/main.css": "app/themes/frontend/less/main.less"
                 }
             }
         },
         watch: {
             styles: {
                 files: [
-                    'app/themes/frontend/less/**/*.less',
-                    'app/themes/backend2/less/**/*.less'
+                    'app/themes/frontend/less/**/*.less'
                 ],
                 tasks: ['less'],
                 options: {
-                    nospawn: true
+                    spawn: false
                 }
             }
         }

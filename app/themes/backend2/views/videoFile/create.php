@@ -8,7 +8,7 @@ $this->setPageTitle(
 $this->breadcrumbs[Yii::t('model', 'Video Files')] = array('admin');
 $this->breadcrumbs[] = Yii::t('crud', 'Create');
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
     <h1>
         <?php echo Yii::t('model', 'Video File'); ?>
         <small><?php echo Yii::t('crud', 'Create'); ?></small>

@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Snapshots')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Snapshot'); ?>

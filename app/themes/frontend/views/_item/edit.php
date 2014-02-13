@@ -5,7 +5,7 @@
     'enableAjaxValidation' => true,
     'clientOptions' => array( //'validateOnSubmit' => true,
     ),
-    'type' => 'horizontal',
+    'layout' => TbHtml::FORM_LAYOUT_HORIZONTAL,
     'htmlOptions' => array(
         'class' => 'dirtyforms',
         'enctype' => 'multipart/form-data',
@@ -59,7 +59,7 @@ $this->renderPartial('/_item/elements/flowbar', array(
                             'class' => 'btn btn-primary btn-dirtyforms',
                             'name' => 'save-changes',
                         )); ?>
-                        <?php $this->widget("bootstrap.widgets.TbButton", array(
+                        <?php $this->widget("\TbButton", array(
                             'label' => Yii::t('model', 'Reset'),
                             'url' => Yii::app()->request->url,
                             'htmlOptions' => array(

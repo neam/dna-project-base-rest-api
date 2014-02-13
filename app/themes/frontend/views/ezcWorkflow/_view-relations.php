@@ -6,17 +6,17 @@
 echo '<h3>';
 echo Yii::t('model', 'relation.EzcExecutions') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///ezcExecution/admin', 'EzcExecution' => array('workflow_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///ezcExecution/create',
                     'EzcExecution' => array('workflow_id' => $model->{$model->tableSchema->primaryKey})

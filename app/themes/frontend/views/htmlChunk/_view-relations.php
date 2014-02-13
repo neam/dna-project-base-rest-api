@@ -100,17 +100,17 @@
 echo '<h3>';
 echo Yii::t('model', 'relation.HtmlChunks') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///htmlChunk/admin', 'HtmlChunk' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///htmlChunk/create',
                     'HtmlChunk' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey})
@@ -147,17 +147,17 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.SectionContents') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///sectionContent/admin', 'SectionContent' => array('html_chunk_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///sectionContent/create',
                     'SectionContent' => array('html_chunk_id' => $model->{$model->tableSchema->primaryKey})

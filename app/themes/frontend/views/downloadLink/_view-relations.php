@@ -100,17 +100,17 @@
 echo '<h3>';
 echo Yii::t('model', 'relation.DownloadLinks') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///downloadLink/admin', 'DownloadLink' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///downloadLink/create',
                     'DownloadLink' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey})
@@ -147,17 +147,17 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.SectionContents') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///sectionContent/admin', 'SectionContent' => array('download_link_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///sectionContent/create',
                     'SectionContent' => array('download_link_id' => $model->{$model->tableSchema->primaryKey})

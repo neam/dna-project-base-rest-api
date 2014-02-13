@@ -1,7 +1,5 @@
 <?php
 
-Yii::import('bootstrap.helpers.TbHtml');
-
 class Html extends TbHtml
 {
     // App constants.

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "443d7eaf65ae60b6be5d8f0650f80956",
+    "hash": "f04cb9952dfbb4f098f8704e6f3618d1",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -188,16 +188,16 @@
         },
         {
             "name": "crisu83/yiistrap",
-            "version": "1.3.0",
+            "version": "dev-bs3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "3b0a4a3e2e1603bcc029cef9d9b197c3f913916b"
+                "reference": "57eb2def942e9308898db6c2e3350ce685392b49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/3b0a4a3e2e1603bcc029cef9d9b197c3f913916b",
-                "reference": "3b0a4a3e2e1603bcc029cef9d9b197c3f913916b",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/57eb2def942e9308898db6c2e3350ce685392b49",
+                "reference": "57eb2def942e9308898db6c2e3350ce685392b49",
                 "shasum": ""
             },
             "require-dev": {
@@ -241,7 +241,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2014-02-12 14:32:07"
+            "time": "2014-02-13 12:19:45"
         },
         {
             "name": "firstrow/stranslateablebehavior",
@@ -2358,15 +2358,15 @@
         },
         {
             "name": "twitter/bootstrap",
-            "version": "v2.3.2",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "b4c4072679943773a7582daa63f545ba818fa627"
+                "reference": "6d03173a1aad98e75f7d33e65b411c519176c59a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/twbs/bootstrap/archive/b4c4072679943773a7582daa63f545ba818fa627.zip",
+                "url": "https://github.com/twbs/bootstrap/archive/6d03173a1aad98e75f7d33e65b411c519176c59a.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -2392,6 +2392,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "crisu83/yii-rights": 20,
+        "crisu83/yiistrap": 20,
         "gusnips/yii-translate": 20,
         "malyshev/yii-debug-toolbar": 20,
         "mikehaertl/packagecompressor": 20,

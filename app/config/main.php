@@ -27,7 +27,7 @@ $mainConfig = array(
     'preload'    => array(
         'log',
         'langHandler',
-        'bootstrap',
+        //'bootstrap',
     ),
     'aliases'    => array(
         // composer
@@ -35,7 +35,7 @@ $mainConfig = array(
         'webroot'                               => $applicationDirectory . '/../www',
         'vendor'                                => $applicationDirectory . '/../vendor',
         // componentns
-        'bootstrap'                            => 'vendor.clevertech.yiibooster.src',
+        //'bootstrap'                            => 'vendor.clevertech.yiibooster.src',
         'yiistrap'                              => 'vendor.crisu83.yiistrap',
         // p3widgets
         'jsonEditorView'                        => 'vendor.phundament.p3extensions.widgets.jsonEditorView',
@@ -52,6 +52,7 @@ $mainConfig = array(
         // themes
         'frontend'                              => 'application.themes.frontend',
         'backend2'                              => 'application.themes.backend2',
+        'app'                                   => 'application',
     ),
     // autoloading model and component classes
     'import'     => array(
@@ -72,8 +73,8 @@ $mainConfig = array(
         // imports for components from packages, which do not support composer autoloading
         'vendor.mishamx.yii-user.models.*', // User Model
         'vendor.crisu83.yii-rights.components.*', // RWebUser
-        'vendor.clevertech.yiibooster.src.helpers.*', //
-        'vendor.clevertech.yiibooster.src.widgets.*', //
+        //'vendor.clevertech.yiibooster.src.helpers.*', //
+        //'vendor.clevertech.yiibooster.src.widgets.*', //
         'vendor.anggiaj.eselect2.*',
         'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior',
         'vendor.schmunk42.relation.widgets.GtcRelation',
@@ -82,6 +83,7 @@ $mainConfig = array(
         'vendor.bwoester.yii-event-interceptor.*',
         'vendor.gusnips.yii-translate.TranslateModule',
         'application.helpers.*',
+        'application.widgets.*',
         // widgets
         'vendor.moein7tl.yii-introjs.introjs.*',
         'vendor.yiiext.fancybox-widget.*',
@@ -251,7 +253,7 @@ $mainConfig = array(
             'plugins'        => array(),
         ),
         'yiistrap' => array(
-            'class' => 'TbApi',
+            'class' => '\TbApi',
         ),
         'cache'         => array(
             'class' => 'CDummyCache',

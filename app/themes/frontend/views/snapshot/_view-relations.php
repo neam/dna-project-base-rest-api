@@ -100,17 +100,17 @@
 echo '<h3>';
 echo Yii::t('model', 'relation.DataSources') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///dataSource/admin', 'DataSource' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///dataSource/create',
                     'DataSource' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey})
@@ -147,17 +147,17 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.ExamQuestions') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///examQuestion/admin', 'ExamQuestion' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///examQuestion/create',
                     'ExamQuestion' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey})
@@ -194,17 +194,17 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.SectionContents') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///sectionContent/admin', 'SectionContent' => array('snapshot_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///sectionContent/create',
                     'SectionContent' => array('snapshot_id' => $model->{$model->tableSchema->primaryKey})
@@ -241,17 +241,17 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Snapshots') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///snapshot/admin', 'Snapshot' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///snapshot/create',
                     'Snapshot' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey})

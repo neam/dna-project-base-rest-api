@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Sections')] = array('index');
 $this->breadcrumbs[] = Yii::t('model', 'Index');
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <?php
 if (!isset($this->menu) || $this->menu === array()) {
     $this->menu = array(

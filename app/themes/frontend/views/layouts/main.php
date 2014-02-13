@@ -21,7 +21,7 @@
 
 <div class="container">
     <?php $this->renderPartial('application.themes.frontend.views.layouts._menu'); ?>
-    <?php $this->widget('bootstrap.widgets.TbAlert'); ?>
+    <?php $this->widget('\TbAlert'); ?>
     <div class="subwrapper">
         <?php echo $content; ?>
     </div>
@@ -35,6 +35,8 @@
     //Html::renderBackendNavbar();
     ?>
 </div>
+
+<?php Yii::app()->yiistrap->registerAllScripts(); ?>
 
 </body>
 </html>

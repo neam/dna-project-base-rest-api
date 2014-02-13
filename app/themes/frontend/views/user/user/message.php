@@ -15,16 +15,16 @@
 <div class="row">
     <div class="span12">
         <?php if ($activated): ?>
-            <?php $this->widget('bootstrap.widgets.TbButton', array(
+            <?php $this->widget('\TbButton', array(
                 'label' => Yii::t('activation', 'Go to your dashboard'),
                 'size' => 'large',
-                'icon' => 'icon-home',
+                'icon' => 'glyphicon-home',
                 'url' => array('/account/dashboard'),
             )); ?>
-            <?php $this->widget('bootstrap.widgets.TbButton', array(
+            <?php $this->widget('\TbButton', array(
                 'label' => Yii::t('activation', 'Complete your profile'),
                 'size' => 'large',
-                'icon' => 'icon-user',
+                'icon' => 'glyphicon-user',
                 'url' => array('/account/profile'),
             )); ?>
         <?php endif; ?>

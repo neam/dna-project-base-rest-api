@@ -6,7 +6,7 @@
 
 $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $formId . "-modal"));
 
-$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+$form = $this->beginWidget('\TbActiveForm', array(
     'id' => $formId,
     'enableAjaxValidation' => true,
     'enableClientValidation' => true,
