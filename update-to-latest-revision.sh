@@ -3,6 +3,12 @@ npm install
 bower install --allow-root
 php composer.phar install
 rm -r www/assets/*
+chown -R www-data:www-data app/data/
+chown -R www-data:www-data app/runtime/
+chown -R www-data:www-data www/assets/
+chmod -R g+rw app/data/
+chmod -R g+rw app/runtime/
+chmod -R g+rw www/assets/
 app/yiic migrate
 app/yiic authorizationhierarchy reset
 app/yiic authorizationhierarchy build
