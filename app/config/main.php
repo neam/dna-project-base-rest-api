@@ -35,7 +35,8 @@ $mainConfig = array(
         'webroot'                               => $applicationDirectory . '/../www',
         'vendor'                                => $applicationDirectory . '/../vendor',
         // componentns
-        'bootstrap'                             => 'vendor.clevertech.yiibooster.src',
+        'bootstrap'                            => 'vendor.clevertech.yiibooster.src',
+        'yiistrap'                              => 'vendor.crisu83.yiistrap',
         // p3widgets
         'jsonEditorView'                        => 'vendor.phundament.p3extensions.widgets.jsonEditorView',
         'ckeditor'                              => 'vendor.phundament.p3extensions.widgets.ckeditor',
@@ -239,8 +240,8 @@ $mainConfig = array(
             'defaultRoles' => array('Authenticated', 'Guest'),
             // see correspoing business rules, note: superusers always get checkAcess == true
         ),
-        'bootstrap'     => array(
-            'class'          => 'vendor.clevertech.yiibooster.src.components.Bootstrap',
+        'yiibooster'     => array(
+            'class'          => 'yiibooster.src.components.Bootstrap',
             'coreCss'        => true, // whether to register any CSS at all, defaults to true
             'bootstrapCss'   => false, // use csutom css from theme
             'responsiveCss'  => false, // use csutom css from theme
@@ -248,6 +249,9 @@ $mainConfig = array(
             'fontAwesomeCss' => true,
             // whether to register the Bootstrap responsive CSS (bootstrap-responsive.min.css), default to false
             'plugins'        => array(),
+        ),
+        'yiistrap' => array(
+            'class' => 'TbApi',
         ),
         'cache'         => array(
             'class' => 'CDummyCache',
