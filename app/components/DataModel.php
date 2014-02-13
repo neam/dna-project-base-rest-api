@@ -53,7 +53,7 @@ class DataModel
             'DownloadLink' => 'download_link',
             'HtmlChunk' => 'html_chunk',
             'Tool' => 'tool',
-            'GuiSection' => 'gui_section',
+            //'GuiSection' => 'gui_section',
         );
 
     }
