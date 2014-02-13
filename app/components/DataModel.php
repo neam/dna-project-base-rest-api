@@ -61,6 +61,7 @@ class DataModel
     static public function waffleItemModels()
     {
 
+	return array();
         return array(
             'WaffleCategory' => 'waffle_category',
             'WaffleIndicator' => 'waffle_indicator',
