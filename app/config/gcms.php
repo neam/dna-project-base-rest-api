@@ -26,6 +26,7 @@ Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
 $gcmsConfig = array(
     'name' => 'Gapminder CMS',
     'language' => 'en', // default language, see also components.langHandler
+    'theme' => 'gapminder',
     'sourceLanguage' => 'en', // source code language
     'params' => array(
         'env' => 'development',

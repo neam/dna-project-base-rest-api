@@ -242,6 +242,7 @@ $mainConfig = array(
             'defaultRoles' => array('Authenticated', 'Guest'),
             // see correspoing business rules, note: superusers always get checkAcess == true
         ),
+        /*
         'yiibooster'     => array(
             'class'          => 'yiibooster.src.components.Bootstrap',
             'coreCss'        => true, // whether to register any CSS at all, defaults to true
@@ -252,8 +253,10 @@ $mainConfig = array(
             // whether to register the Bootstrap responsive CSS (bootstrap-responsive.min.css), default to false
             'plugins'        => array(),
         ),
+        */
         'yiistrap' => array(
             'class' => '\TbApi',
+            'assetsPath' => 'vendor.twitter.bootstrap.dist',
         ),
         'cache'         => array(
             'class' => 'CDummyCache',
@@ -297,9 +300,9 @@ $mainConfig = array(
                         'jquery',
                         'fancybox',
                     ),
-                    /*'js'      => array(
-                        'js/app.js',
-                    ),*/
+                    //'js'      => array(
+                    //    'js/app.js',
+                    //),
                     'css'      => array(
                         'main.css',
                     )
@@ -392,15 +395,15 @@ $mainConfig = array(
             'basePath' => $applicationDirectory . '/themes',
             'baseUrl'  => $baseUrl . '/themes',
             'rules'    => array(
-                // frontend
-                '^p3pages/default/page'      => 'frontend',
-                '^user/default/index'        => 'frontend',
-                '^user/login/(.*)'           => 'frontend',
-                '^user/profile/(.*)'         => 'frontend',
-                '^user/registration/(.*)'    => 'frontend',
-                '^user/recovery/(.*)'        => 'frontend',
-                '^user/activation/(.*)'      => 'frontend',
-                '^account/admin' => 'frontend',
+                // gapminder
+                '^p3pages/default/page'      => 'gapminder',
+                '^user/default/index'        => 'gapminder',
+                '^user/login/(.*)'           => 'gapminder',
+                '^user/profile/(.*)'         => 'gapminder',
+                '^user/registration/(.*)'    => 'gapminder',
+                '^user/recovery/(.*)'        => 'gapminder',
+                '^user/activation/(.*)'      => 'gapminder',
+                '^account/admin'             => 'gapminder',
                 // backend
                 '^user/(.*)'                 => 'backend2',
                 '^rights/(.*)'               => 'backend2',
@@ -410,27 +413,27 @@ $mainConfig = array(
                 '^([^/]*)/update' => 'backend2',
                 '^([^/]*)/admin' => 'backend2',
                 '^([^/]*)/create' => 'backend2',
-                '^([^/]*)/continueAuthoring' => 'frontend',
-                '^([^/]*)/draft' => 'frontend',
-                '^([^/]*)/prepPreshow' => 'frontend',
-                '^([^/]*)/preshow' => 'frontend',
-                '^([^/]*)/evaluate' => 'frontend',
-                '^([^/]*)/prepPublish' => 'frontend',
-                '^([^/]*)/preview' => 'frontend',
-                '^([^/]*)/review' => 'frontend',
-                '^([^/]*)/proofRead' => 'frontend',
-                '^([^/]*)/translate' => 'frontend',
-                '^([^/]*)/publish' => 'frontend',
-                '^([^/]*)/edit' => 'frontend',
-                '^([^/]*)/clone' => 'frontend',
-                '^([^/]*)/remove' => 'frontend',
-                '^([^/]*)/replace' => 'frontend',
-                '^([^/]*)/translate(.*)' => 'frontend',
-                '^([^/]*)/author(.*)' => 'frontend',
+                '^([^/]*)/continueAuthoring' => 'gapminder',
+                '^([^/]*)/draft' => 'gapminder',
+                '^([^/]*)/prepPreshow' => 'gapminder',
+                '^([^/]*)/preshow' => 'gapminder',
+                '^([^/]*)/evaluate' => 'gapminder',
+                '^([^/]*)/prepPublish' => 'gapminder',
+                '^([^/]*)/preview' => 'gapminder',
+                '^([^/]*)/review' => 'gapminder',
+                '^([^/]*)/proofRead' => 'gapminder',
+                '^([^/]*)/translate' => 'gapminder',
+                '^([^/]*)/publish' => 'gapminder',
+                '^([^/]*)/edit' => 'gapminder',
+                '^([^/]*)/clone' => 'gapminder',
+                '^([^/]*)/remove' => 'gapminder',
+                '^([^/]*)/replace' => 'gapminder',
+                '^([^/]*)/translate(.*)' => 'gapminder',
+                '^([^/]*)/author(.*)' => 'gapminder',
                 '^node/view' => 'backend2',
                 '^site/giiscript' => 'backend2',
                 '^translate/(.*)'            => 'backend2',
-                '^(.*)' => 'frontend',
+                '^(.*)' => 'gapminder',
             )
         ),
         'urlManager'    => array(

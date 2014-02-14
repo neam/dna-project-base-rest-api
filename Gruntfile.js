@@ -1,19 +1,22 @@
 // The wrapper function
 module.exports = function(grunt) {
+
+    // Load plugins
+    require('load-grunt-tasks')(grunt);
+
+
     // Project and task configuration
     grunt.initConfig({
         less: {
-            dev: {
+            theme: {
                 files: {
-                    "app/themes/frontend/assets/main.css": "app/themes/frontend/less/main.less"
+                    "app/themes/gapminder/assets/main.css": "app/themes/gapminder/less/main.less"
                 }
             }
         },
         watch: {
             styles: {
-                files: [
-                    'app/themes/frontend/less/**/*.less'
-                ],
+                files: ['app/themes/gapminder/less/**/*.less' ],
                 tasks: ['less'],
                 options: {
                     spawn: false
@@ -22,10 +25,6 @@ module.exports = function(grunt) {
         }
     });
 
-    // Load plugins
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-
     // Define tasks
-    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('default', []);
 };
