@@ -46,3 +46,10 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
         </div>
     <?php endif; ?>
 </div>
+
+<?php
+$this->widget('zii.widgets.CListView', array(
+    'dataProvider' => $dataProvider,
+    'itemView' => '_dashboard-action',
+));
+?>
