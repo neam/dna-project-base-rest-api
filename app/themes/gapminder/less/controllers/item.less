@@ -3,9 +3,54 @@
 
   }
 
-  .below-flowbar {
+  .flowbar-container {
     .row;
-    margin-top: 145px;
+
+    .flowbar {
+      .make-md-column(12);
+
+      .flowbar-inner {
+        background-color: @white;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        position: fixed;
+        top: 25px;
+        z-index: 10;
+
+        .required-counts {
+          margin: 20px 0;
+
+          .missing {
+            color: @red;
+            font-size: 16px;
+
+            em {
+              font-style: normal;
+            }
+          }
+        }
+
+        .well {
+          padding-top: 13px;
+
+          h3,
+          h4 {
+            margin: 0;
+          }
+
+          .row-fluid {
+            div {
+              line-height: 40px;
+            }
+          }
+        }
+      }
+    }
+
+    .below-flowbar {
+      .row;
+      margin-top: 145px;
+    }
   }
 
   .list-item {
@@ -22,6 +67,25 @@
 
   .item-details {
     .make-md-column(9);
+
+    .item-details-head {
+      .row;
+      margin-bottom: 20px;
+
+      .details-title-container {
+        .make-md-column(9);
+
+        .details-title {
+          font-size: 30px;
+          line-height: 1;
+          margin: 0;
+        }
+      }
+
+      .details-actions {
+        .make-md-column(3);
+      }
+    }
   }
 
   .item-progress {
