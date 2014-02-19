@@ -15,8 +15,12 @@ class TbButton extends CWidget
     public $type;
 
     /**
+     * @var string the button color.
+     */
+    public $color = TbHtml::BUTTON_COLOR_DEFAULT;
+
+    /**
      * @var string the button size.
-     * Valid values are 'large', 'small' and 'mini'.
      */
     public $size;
 
@@ -103,7 +107,7 @@ class TbButton extends CWidget
         if (!$this->visible) {
             return;
         }
-        foreach (array('size', 'icon', 'url', 'block', 'toggle', 'loadingText', 'completeText', 'items', 'ajaxOptions') as $attribute) {
+        foreach (array('color', 'size', 'icon', 'url', 'block', 'toggle', 'loadingText', 'completeText', 'items', 'ajaxOptions') as $attribute) {
             $this->htmlOptions[$attribute] = $this->$attribute;
         }
         $this->htmlOptions['menuOptions'] = $this->dropdownOptions;

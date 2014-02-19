@@ -1,8 +1,120 @@
 .item-controller {
-  .action-edit {
+  .item-header {
+    .make-row();
+    margin-bottom: 10px;
+    margin-top: 10px;
 
+    .header-text {
+      .make-md-column(6);
+
+      .header-title {
+        margin: 0;
+      }
+    }
+
+    .header-actions {
+      .make-md-column(6);
+      text-align: right;
+    }
   }
 
+  &.browse-action {
+    .browsebar {
+      .browsebar-actions {
+        .btn-toolbar;
+      }
+    }
+
+    .item-content {
+      .make-row();
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    .item-thumb {
+      .make-md-column(3);
+
+      .no-thumb {
+        .alert;
+        .alert-info;
+      }
+    }
+
+    .item-actions {
+      .make-md-column(9);
+
+      .action-buttons {
+        .btn-toolbar;
+        margin: -5px 0 0 -5px;
+
+        .btn-group {
+          margin: 5px 0 0 5px;
+        }
+      }
+    }
+  }
+
+  &.edit-action {
+    .item-content {
+      .make-row();
+    }
+
+    .item-progress {
+      .make-md-column(3);
+
+      .progress-item {
+        .make-row();
+
+        .item-bar {
+          .make-md-column(6);
+        }
+
+        .item-action {
+          .make-md-column(6);
+
+          .btn {
+            text-align: left;
+            padding: 0 4px;
+          }
+        }
+      }
+    }
+
+    .item-form {
+      .make-md-column(9);
+
+      .form-title {
+        margin-top: 0;
+      }
+    }
+  }
+
+  /*
+  .flowbar-container {
+    .make-row();
+  }
+
+  .flowbar {
+    .make-md-column(12);
+    background-color: #fff;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: fixed;
+    margin-top: -10px;
+    top: @navbar-height;
+    z-index: 10;
+  }
+
+  .flowbar-title {
+    .make-row();
+  }
+
+  .after-flowbar {
+    margin-top: 145px;
+  }
+  */
+
+  /*
   .flowbar-container {
     .row;
 
@@ -46,69 +158,6 @@
         }
       }
     }
-
-    .below-flowbar {
-      .row;
-      margin-top: 145px;
-    }
   }
-
-  .list-item {
-
-  }
-
-  .item-flowbar {
-
-  }
-
-  .item-content {
-    .row;
-  }
-
-  .item-details {
-    .make-md-column(9);
-
-    .item-details-head {
-      .row;
-      margin-bottom: 20px;
-
-      .details-title-container {
-        .make-md-column(9);
-
-        .details-title {
-          font-size: 30px;
-          line-height: 1;
-          margin: 0;
-        }
-      }
-
-      .details-actions {
-        .make-md-column(3);
-      }
-    }
-  }
-
-  .item-progress {
-    .make-md-column(3);
-
-    .progress-item {
-      .row;
-
-      .progress-bar-container {
-        .make-md-column(4);
-      }
-
-      .progress-actions {
-        .make-md-column(7);
-      }
-    }
-  }
-
-  .item-thumb {
-    .make-md-column(3);
-  }
-
-  .item-actions {
-    .make-md-column(9);
-  }
+  */
 }

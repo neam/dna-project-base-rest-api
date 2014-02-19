@@ -1,4 +1,4 @@
-<div class="btn-toolbar">
+<div class="action-buttons">
     <div class="btn-group">
         <?php
 

@@ -1,6 +1,7 @@
-<?php // TODO: Refactor this view. ?>
-<?php /** @var Snapshot $model */ ?>
-
+<?php
+// todo: fix this view (and refactor it)
+/* @var Snapshot $model */
+?>
 <div class="control-group">
     <div class="controls">
         <?php echo $this->widget('\TbButton', array(

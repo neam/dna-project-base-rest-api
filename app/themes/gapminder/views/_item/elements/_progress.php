@@ -1,7 +1,7 @@
-<?php // TODO: Refactor this view. ?>
-<?php /* @var $this ChapterController */ ?>
-
 <?php
+// TODO: Refactor this view.
+/* @var $this ChapterController */
+
 $steps = $model->flowSteps();
 $stepCaptions = $model->flowStepCaptions();
 ?>
@@ -48,6 +48,4 @@ foreach ($this->workflowData["stepActions"] as $action) {
 
     </div>
 </div>
-
-        */
-?>
+*/ ?>

@@ -1,73 +1,56 @@
-<?php // TODO: Refactor this view. ?>
-<?php /** @var AppActiveForm $form */ ?>
-
-<div class="item-controller">
-    <?php $form = $this->beginWidget('AppActiveForm', array(
-        'id' => 'item-form',
-        'enableAjaxValidation' => true,
-        'clientOptions' => array( //'validateOnSubmit' => true,
-        ),
-        'layout' => TbHtml::FORM_LAYOUT_HORIZONTAL,
-        'htmlOptions' => array(
-            'class' => 'dirtyforms',
-            'enctype' => 'multipart/form-data',
-        ),
-    )); ?>
+<?php
+/* @var Controller|ItemController $this */
+/* @var ActiveRecord|ItemTrait $model */
+/* @var AppActiveForm $form */
+/* @var string $stepCaption */
+?>
+<div class="item-controller edit-action">
+    <?php $form = $this->beginWidget(
+        'AppActiveForm',
+        array(
+            'id' => 'item-form',
+            'enableAjaxValidation' => true,
+            'clientOptions' => array( //'validateOnSubmit' => true,
+            ),
+            'htmlOptions' => array(
+                'class' => 'dirtyforms',
+                'enctype' => 'multipart/form-data',
+            ),
+        )
+    ); ?>
     <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
-    <div class="flowbar-container">
-        <?php
-        $requiredCounts = isset($requiredCounts) ? $requiredCounts : array(); // TODO: Ensure $requireCounts is always passed to this view.
-        $this->renderPartial('/_item/elements/flowbar', array(
-            'model' => $model,
-            'requiredCounts' => $requiredCounts,
-        ));
-        ?>
-        <div class="below-flowbar">
+    <?php $this->renderPartial('/_item/edit/_flowbar', compact('model', 'requiredCounts')); ?>
+    <div class="after-flowbar">
+        <div class="item-content">
             <div class="item-progress">
-                <?php echo $this->renderPartial('/_item/elements/progress', compact("model", "execution", "translateInto")); ?>
-                <hr/>
-                <!--
+                <?php foreach ($this->workflowData["stepActions"] as $action): ?>
+                    <?php $this->renderPartial("/_item/edit/_progress-item", $action); ?>
+                <?php endforeach; ?>
+                <?php /*
+                // todo: remove if unused
                 <div class="well well-white">
                     <?php echo $this->renderPartial('/_item/elements/actions', compact("model", "execution")); ?>
                 </div>
-                -->
+                */ ?>
             </div>
-            <div class="item-details">
-                <?php //echo $form->errorSummary($model); ?>
-                <div class="item-details-head">
-                    <div class="details-title-container">
-                        <h2 class="details-title"><?php print $stepCaption; ?></h2>
-                    </div>
-                    <div class="details-actions">
-                        <div class="btn-toolbar pull-right buttons-fixed">
-                            <div class="btn-group">
-                                <?php echo CHtml::submitButton(Yii::t('model', 'Save changes'), array(
-                                    'class' => 'btn btn-primary btn-dirtyforms',
-                                    'name' => 'save-changes',
-                                )); ?>
-                                <?php $this->widget("\TbButton", array(
-                                    'label' => Yii::t('model', 'Reset'),
-                                    'url' => Yii::app()->request->url,
-                                    'htmlOptions' => array(
-                                        'class' => 'btn-dirtyforms ignoredirty',
-                                    ),
-                                )); ?>
-                            </div>
-                        </div>
-                    </div>
+            <div class="item-form">
+                <h2 class="form-title"><?php echo $stepCaption; ?></h2>
+                <div class="form-content">
+                    <?php $this->renderPartial('steps/' . $step, array(
+                        'model' => $model,
+                        'form' => $form,
+                        'step' => $step,
+                    )); ?>
                 </div>
-                <?php $this->renderPartial('steps/' . $step, array(
-                    'model' => $model,
-                    'form' => $form,
-                    'step' => $step,
-                )); ?>
-                <?php $this->endWidget() ?>
             </div>
         </div>
     </div>
-    <?php foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
+    <?php $this->endWidget() ?>
+    <?php
+    // todo: figure out what this actually does
+    /*foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
         if (strpos($key, "modal:") === 0) {
             echo $clip;
         }
-    } ?>
+    }*/ ?>
 </div>

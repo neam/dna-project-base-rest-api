@@ -12,16 +12,16 @@
             <?php endif; ?>
         </div>
     <?php endif; ?>
-    <div class="progress-bar-container">
+    <div class="item-bar">
         <?php $this->widget(
             '\TbProgress',
             array(
-                'type' => 'success', // 'info', 'success' or 'danger'
+                'type' => 'success',
                 'percent' => $progress,
             )
         ); ?>
     </div>
-    <div class="progress-actions">
+    <div class="item-actions">
         <?php
         // TODO: Move logic to controller.
         $action = array($editAction, "id" => $model->{$model->tableSchema->primaryKey}, "step" => $step);
@@ -30,7 +30,7 @@
         }
         $this->widget("\TbButton", array(
             "label" => Yii::t("model", $caption),
-            "type" => $_GET['step'] == $step ? "inverse" : null,
+            "color" => $_GET['step'] == $step ? 'inverse' : TbHtml::BUTTON_COLOR_DEFAULT,
             "size" => TbHtml::BUTTON_SIZE_XS,
             'block' => true,
             "icon" => "glyphicon-edit" . ($this->action->id == $action ? " icon-white" : null),
