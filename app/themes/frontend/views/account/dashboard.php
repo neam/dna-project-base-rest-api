@@ -1,3 +1,4 @@
+<?php /** @var AccountController $this */ ?>
 <?php
 //$this->breadcrumbs[] = Yii::t('model', 'Users');
 //$this->breadcrumbs[$model->username] = array('account/profile', 'id' => $model->id);
@@ -40,9 +41,15 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
     <?php if (Yii::app()->user->checkAccess('Item.Translate')): ?>
         <div class="translate-content">
             <h2><?php echo Yii::t('dashboard', 'Translate content'); ?></h2>
-            <div class="alert alert-error">
-                Translation tasks TODO list here
-            </div>
+
+            <?php
+            $this->widget('zii.widgets.CListView', array(
+                'dataProvider' => $dataProvider,
+                'itemView' => '_dashboard-action',
+            ));
+            ?>
+
         </div>
     <?php endif; ?>
 </div>
+
