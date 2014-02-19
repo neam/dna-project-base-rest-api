@@ -90,26 +90,31 @@ class AccountController extends Controller
         $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
 
+        // Tmp
+        $lang1 = "es";
+        $lang2 = "pt";
+        $lang3 = "de";
+
         // Dashboard items query
-        $virtualDashboardActionTableSql = "SELECT 0 as id, 'TranslateIntoPrimaryLanguage' AS action,
+        $virtualDashboardActionTableSql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoPrimaryLanguage' AS action,
 translate_into_{$lang1}_validation_progress AS progress,
 0 AS relevance
-FROM `item` i,users user INNER JOIN profiles profile WHERE user.id = :user_id AND profile.language1 IS NOT NULL
+FROM `item` i,users user INNER JOIN profiles profile WHERE user.id = :user_id AND profile.language1 IS NOT NULL AND i.id IS NOT NULL
 
 UNION ALL
-SELECT 0 as id, 'TranslateIntoSecondaryLanguage' AS action,
+SELECT i.id as id, i.model_class, i._title, 'TranslateIntoSecondaryLanguage' AS action,
 translate_into_{$lang2}_validation_progress AS progress,
 0 AS relevance
-FROM `item` i,users user INNER JOIN profiles profile WHERE user.id = :user_id AND profile.language2 IS NOT NULL
+FROM `item` i,users user INNER JOIN profiles profile WHERE user.id = :user_id AND profile.language2 IS NOT NULL AND i.id IS NOT NULL
 
 UNION ALL
-SELECT 0 as id, 'TranslateIntoTertiaryLanguage' AS action,
+SELECT i.id as id, i.model_class, i._title, 'TranslateIntoTertiaryLanguage' AS action,
 translate_into_{$lang3}_validation_progress AS progress,
 0 AS relevance
-FROM `item` i,users user INNER JOIN profiles profile WHERE user.id = :user_id AND profile.language3 IS NOT NULL
+FROM `item` i,users user INNER JOIN profiles profile WHERE user.id = :user_id AND profile.language3 IS NOT NULL AND i.id IS NOT NULL
 
 UNION ALL
-SELECT 0 as id, 'SupplyProfileLanguages' AS action, CASE
+SELECT 0 as id, '' as model_class, '' as _title, 'SupplyProfileLanguages' AS action, CASE
        WHEN profile.language1 IS NOT NULL THEN 33
        WHEN COALESCE(profile.language1,profile.language2) IS NOT NULL THEN 66
        WHEN COALESCE(profile.language1,profile.language2, profile.language3) IS NOT NULL THEN 100
