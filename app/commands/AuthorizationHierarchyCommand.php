@@ -93,18 +93,6 @@ EOD;
             $task = $auth->createTask($prefix . 'Item.ReplaceOwn', 'Replace an item created by the user himself', $bizRule);
             $task->addChild($prefix . 'Item.Replace');
 
-            // Status-dependent
-            $bizRule = 'return $params["post"]->version->status == "Public";';
-            $task = $auth->createTask($prefix . 'Item.RemovePublic', 'Remove an item that is public', $bizRule);
-            $task->addChild($prefix . 'Item.Remove');
-            $task = $auth->createTask($prefix . 'Item.ReplacePublic', 'Remove an item that is public', $bizRule);
-            $task->addChild($prefix . 'Item.Replace');
-            $bizRule = 'return $params["post"]->version->status != "Public";';
-            $task = $auth->createTask($prefix . 'Item.RemoveNonPublic', 'Remove an item that is not public', $bizRule);
-            $task->addChild($prefix . 'Item.Remove');
-            $task = $auth->createTask($prefix . 'Item.ReplaceNonPublic', 'Remove an item that is not public', $bizRule);
-            $task->addChild($prefix . 'Item.Replace');
-
             // Roles has the right to perform one or many tasks and operations
             $role = $auth->createRole($prefix . 'Authenticated');
             $role->addChild($prefix . 'Item.Browse');
@@ -112,7 +100,7 @@ EOD;
             $role->addChild($prefix . 'Item.Go');
             $role->addChild('P3media.Import.*'); // Upload access is necessary for everyone in order to upload their profile picture
 
-            $role = $auth->createRole($prefix . 'Creator');
+            $role = $auth->createRole($prefix . 'Editor');
             $role->addChild($prefix . 'Item.Add');
             $role->addChild($prefix . 'Item.Draft');
             $role->addChild($prefix . 'Item.AddEdge');
@@ -127,20 +115,25 @@ EOD;
             $role->addChild($prefix . 'Item.RemoveNonPublic');
             $role->addChild($prefix . 'Item.ReplaceNonPublic');
 
-            $role = $auth->createRole($prefix . 'Previewer');
-            $role->addChild($prefix . 'Item.Preview');
+            $role = $auth->createRole($prefix . 'Reviewer');
+            $role->addChild($prefix . 'Evaluator');
+            $role->addChild($prefix . 'Approver');
+            $role->addChild($prefix . 'Proofreader');
 
             $role = $auth->createRole($prefix . 'Evaluator');
             $role->addChild($prefix . 'Item.Evaluate');
 
             $role = $auth->createRole($prefix . 'Approver');
-            $role->addChild($prefix . 'Item.Review');
+            $role->addChild($prefix . 'Item.Approve');
 
             $role = $auth->createRole($prefix . 'Proofreader');
             $role->addChild($prefix . 'Item.ProofRead');
 
             $role = $auth->createRole($prefix . 'Translator');
             $role->addChild($prefix . 'Item.Translate');
+            $role->addChild($prefix . 'Item.TranslateIntoLanguage1');
+            $role->addChild($prefix . 'Item.TranslateIntoLanguage2');
+            $role->addChild($prefix . 'Item.TranslateIntoLanguage3');
 
             $role = $auth->createRole($prefix . 'Publisher');
             $role->addChild($prefix . 'Item.Publish');
