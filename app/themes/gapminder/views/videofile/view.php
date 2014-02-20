@@ -62,8 +62,9 @@
             </div>
         </div>
     <?php endif; ?>
-    <?php $this->renderPartial('_view', array('data' => $model)); ?>
-    <?php /*
+    <div class="after-flowbar">
+        <?php $this->renderPartial('_view', array('data' => $model)); ?>
+        <?php /*
     <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
         <br />
@@ -473,4 +474,5 @@
     <?php echo CHtml::encode($model->processed_media_id_zh_tw); ?>
     <br />
     */ ?>
+    </div>
 </div>
