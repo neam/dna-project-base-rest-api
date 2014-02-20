@@ -19,7 +19,7 @@ class VideoPlayer extends CWidget
     public function run()
     {
         parent::run();
-        $this->_registerPlayerJs();
+        $this->_registerJs();
         $this->render('view', array(
             'videoUrl' => $this->videoUrl,
             'subtitleUrl' => $this->subtitleUrl,
@@ -85,7 +85,7 @@ class VideoPlayer extends CWidget
     /**
      * Registers the video player JS.
      */
-    protected function _registerPlayerJs()
+    protected function _registerJs()
     {
         $js = <<<EOF
 $(document).ready(function () {
