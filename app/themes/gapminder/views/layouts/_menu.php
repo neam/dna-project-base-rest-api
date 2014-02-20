@@ -1,3 +1,4 @@
+<?php /* @var Controller $this */ ?>
 <div class="layout-navbar">
     <?php
     Yii::import('p3pages.modules.*');
@@ -17,7 +18,7 @@
             'collapse' => true,
             'display' => TbHtml::NAVBAR_DISPLAY_FIXEDTOP,
             'items' => array(
-                //$this->renderBreadcrumbs(),
+                $this->renderBreadcrumbs(),
                 array(
                     'class' => '\TbNav',
                     'items' => P3Page::getMenuItems($rootNode)
