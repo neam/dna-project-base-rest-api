@@ -205,4 +205,27 @@ class VideoFile extends BaseVideoFile
         return $parsed;
     }
 
+    /**
+     * Returns the video URL.
+     * @return string|null
+     */
+    public function getVideoUrl()
+    {
+        $videoMedia = P3Media::model()->findByPk($this->original_media_id); // Currently we hard-code to use the original movie file instead of any processed media
+
+        if (isset($videoMedia)) {
+            return $videoMedia->createUrl('original-public-webm');
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Returns the subtitle URL.
+     * @return string
+     */
+    public function getSubtitleUrl()
+    {
+        return app()->controller->createUrl('videoFile/subtitles', array('id' => $this->id));
+    }
 }
