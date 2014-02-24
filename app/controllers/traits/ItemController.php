@@ -688,7 +688,7 @@ trait ItemController
         if ($model instanceof ActiveRecord) {
             $classes[] = strtolower(get_class($model)) . '-controller';
         }
-        $classes[] = $this->action->id . '-action';
+        $classes[] = strtolower($this->action->id) . '-action';
         return implode(' ', $classes);
     }
 
