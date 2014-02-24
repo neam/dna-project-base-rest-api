@@ -1,3 +1,4 @@
+<?php // TODO: Fix and refactor this view. ?>
 <?php
 $fromType = get_class($model);
 $modalId = "addrelation-" . strtolower($fromType) . "-" . strtolower($toType) . "-modal";

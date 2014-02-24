@@ -648,6 +648,7 @@ trait ItemController
 
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
+
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
 
@@ -673,6 +674,22 @@ trait ItemController
             'stepCaption' => $stepCaptions[$step],
             'requiredCounts' => $requiredCounts,
         ));
+    }
+
+    /**
+     * Returns the controller and action CSS classes for the current controller and action.
+     * @param ActiveRecord $model the model.
+     * @return string the CSS classes.
+     */
+    public function getCssClasses($model)
+    {
+        $classes = array();
+        $classes[] = 'item-controller';
+        if ($model instanceof ActiveRecord) {
+            $classes[] = strtolower(get_class($model)) . '-controller';
+        }
+        $classes[] = $this->action->id . '-action';
+        return implode(' ', $classes);
     }
 
     /**

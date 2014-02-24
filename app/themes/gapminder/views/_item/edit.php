@@ -3,8 +3,9 @@
 /* @var ActiveRecord|ItemTrait $model */
 /* @var AppActiveForm $form */
 /* @var string $stepCaption */
+/* @var string $controllerCssClass */
 ?>
-<div class="item-controller edit-action">
+<div class="<?php echo $this->getCssClasses($model); ?>">
     <?php $form = $this->beginWidget(
         'AppActiveForm',
         array(
