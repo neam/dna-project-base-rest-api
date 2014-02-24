@@ -1,4 +1,4 @@
-<div class="snapshot-controller view-action">
+<div class="<?php echo $this->getCssClasses($model); ?>">
     <?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
     <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
 

@@ -3,7 +3,7 @@
 /* @var VideoFileController|ItemController $this */
 ?>
 <?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
-<div class="videofile-controller view-action">
+<div class="<?php echo $this->getCssClasses($model); ?>">
     <?php $this->renderPartial('/_item/elements/flowbar', compact('model')); ?>
     <?php /*
     <h1>

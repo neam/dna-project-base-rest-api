@@ -3,7 +3,7 @@
 /* @var Chapter|ItemTrait $model */
 /* @var ActiveRecord[]|ItemTrait[] $sections */
 ?>
-<div class="chapter-controller view-action">
+<div class="<?php echo $this->getCssClasses($model); ?>">
     <?php // TODO: Refactor jQuery Smooth Scroll registration. ?>
     <?php $cs = Yii::app()->getClientScript(); ?>
     <?php $cs->registerCoreScript('jquery'); ?>

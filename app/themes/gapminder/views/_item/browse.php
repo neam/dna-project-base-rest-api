@@ -15,7 +15,7 @@ if (empty($this->menu)) {
 }
 */
 ?>
-<div class="item-controller browse-action">
+<div class="<?php echo $this->getCssClasses($model); ?>">
     <h1 class="page-title">
         <?php echo Yii::t('model', $model->modelLabel, 2); ?>
         <small><?php echo $this->itemDescriptionTooltip(); ?></small>
