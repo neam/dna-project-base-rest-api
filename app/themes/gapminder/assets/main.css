@@ -6734,7 +6734,7 @@ td.visible-print {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
-.snapshot-controller .action-view .map {
+.snapshot-controller .view-action .map {
   overflow: hidden;
 }
 .flowbar {
