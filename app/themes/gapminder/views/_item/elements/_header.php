@@ -3,16 +3,18 @@
 /* @var ActiveRecord|ItemTrait $model */
 ?>
 <div class="item-header">
-    <?php echo $model->itemLabel; ?>
-    <?php if ($this->action->id !== 'browse'): ?>
-        <small class="header-icon"><?php echo $this->itemDescriptionTooltip(); ?></small>
-    <?php endif; ?>
-    <small class="header-version">
-        <?php echo Yii::t('app', 'Version') ?>: <?php echo $model->version; ?>
-    </small>
-    <small class="header-status">
-        <?php echo Yii::t('app', 'Status'); ?>: <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?>
-    </small>
+    <div class="header-text">
+        <?php echo $model->itemLabel; ?>
+        <?php if ($this->action->id !== 'browse'): ?>
+            <small class="header-icon"><?php echo $this->itemDescriptionTooltip(); ?></small>
+        <?php endif; ?>
+        <small class="header-version">
+            <?php echo Yii::t('app', 'Version') ?>: <?php echo $model->version; ?>
+        </small>
+        <small class="header-status">
+            <?php echo Yii::t('app', 'Status'); ?>: <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?>
+        </small>
+    </div>
     <?php if ($this->action->id !== 'evaluate'): ?>
         <div class="header-actions">
             <div class="btn-group">
