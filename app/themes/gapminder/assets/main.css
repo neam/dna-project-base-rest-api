@@ -6376,55 +6376,6 @@ td.visible-print {
     width: 75%;
   }
 }
-.examquestion-controller.view-action .exam-question-details .exam-question-attribute {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.examquestion-controller.view-action .exam-question-details .exam-question-attribute:before,
-.examquestion-controller.view-action .exam-question-details .exam-question-attribute:after {
-  content: " ";
-  display: table;
-}
-.examquestion-controller.view-action .exam-question-details .exam-question-attribute:after {
-  clear: both;
-}
-.examquestion-controller.view-action .exam-question-details .exam-question-attribute:before,
-.examquestion-controller.view-action .exam-question-details .exam-question-attribute:after {
-  content: " ";
-  display: table;
-}
-.examquestion-controller.view-action .exam-question-details .exam-question-attribute:after {
-  clear: both;
-}
-.examquestion-controller.view-action .exam-question-details .exam-question-attribute .attribute-label,
-.examquestion-controller.view-action .exam-question-details .exam-question-attribute .attribute-value {
-  padding: 8px 15px;
-}
-.examquestion-controller.view-action .exam-question-details .exam-question-attribute .attribute-label {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-weight: bold;
-}
-@media (min-width: 992px) {
-  .examquestion-controller.view-action .exam-question-details .exam-question-attribute .attribute-label {
-    float: left;
-    width: 25%;
-  }
-}
-.examquestion-controller.view-action .exam-question-details .exam-question-attribute .attribute-value {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .examquestion-controller.view-action .exam-question-details .exam-question-attribute .attribute-value {
-    float: left;
-    width: 75%;
-  }
-}
 .examquestion-controller.edit-action .related-text {
   padding: 15px;
   margin-bottom: 20px;
@@ -7029,6 +6980,55 @@ td.visible-print {
 }
 .after-flowbar {
   margin-top: 190px;
+}
+.item-details .item-attribute {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.item-details .item-attribute:before,
+.item-details .item-attribute:after {
+  content: " ";
+  display: table;
+}
+.item-details .item-attribute:after {
+  clear: both;
+}
+.item-details .item-attribute:before,
+.item-details .item-attribute:after {
+  content: " ";
+  display: table;
+}
+.item-details .item-attribute:after {
+  clear: both;
+}
+.item-details .item-attribute .attribute-label,
+.item-details .item-attribute .attribute-value {
+  padding: 8px 15px;
+}
+.item-details .item-attribute .attribute-label {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-weight: bold;
+}
+@media (min-width: 992px) {
+  .item-details .item-attribute .attribute-label {
+    float: left;
+    width: 25%;
+  }
+}
+.item-details .item-attribute .attribute-value {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-details .item-attribute .attribute-value {
+    float: left;
+    width: 75%;
+  }
 }
 .list-view .list-head,
 .list-view .list-foot {
