@@ -2,17 +2,37 @@
 
 class TbButton extends CWidget
 {
+    // Button callback types.
+    const BUTTON_LINK = 'link';
+    const BUTTON_BUTTON = 'button';
+    const BUTTON_SUBMIT = 'submit';
+    const BUTTON_SUBMITLINK = 'submitLink';
+    const BUTTON_RESET = 'reset';
+    const BUTTON_AJAXLINK = 'ajaxLink';
+    const BUTTON_AJAXBUTTON = 'ajaxButton';
+    const BUTTON_AJAXSUBMIT = 'ajaxSubmit';
+    const BUTTON_INPUTBUTTON = 'inputButton';
+    const BUTTON_INPUTSUBMIT = 'inputSubmit';
+
+    // Button types.
+    const TYPE_PRIMARY = 'primary';
+    const TYPE_INFO = 'info';
+    const TYPE_SUCCESS = 'success';
+    const TYPE_WARNING = 'warning';
+    const TYPE_DANGER = 'danger';
+    const TYPE_INVERSE = 'inverse';
+    const TYPE_LINK = 'link';
+
+    // Button sizes.
+    const SIZE_MINI = 'mini';
+    const SIZE_SMALL = 'small';
+    const SIZE_LARGE = 'large';
+
     /**
      * @var string the button callback types.
      * Valid values are 'link', 'button', 'submit', 'submitLink', 'reset', 'ajaxLink', 'ajaxButton' and 'ajaxSubmit'.
      */
     public $buttonType = TbHtml::BUTTON_TYPE_LINK;
-
-    /**
-     * @var string the button type.
-     * Valid values are 'primary', 'info', 'success', 'warning', 'danger' and 'inverse'.
-     */
-    public $type;
 
     /**
      * @var string the button color.

@@ -15,13 +15,16 @@
             // todo: move this somewhere else
             $validationScenario = $this->workflowData["validationScenario"];
             $invalidFields = $model->calculateInvalidFields($validationScenario);
-            $nextStep = $this->nextFlowStep("$validationScenario-", $model);
             ?>
             <?php if ($invalidFields > 0): ?>
                 <span class="missing-text"><?php echo Yii::t('model', '* {invalidFields} required missing', array('{invalidFields}' => $invalidFields)); ?></span>
+
+                <?php $nextStep = $this->nextFlowStep("$validationScenario-", $model); ?>
+
                 <?php if ($invalidFields > 0 && empty($nextStep)): ?>
                     <?php throw new CException("The item's validation rules for $validationScenario are out of sync. Make sure that the step-based validation rules match those of the overall $validationScenario validation scenarios"); ?>
                 <?php endif; ?>
+
                 <?php if ($_GET['step'] != $nextStep): ?>
                     <div class="btn-group">
                         <?php echo CHtml::submitButton(
@@ -59,7 +62,7 @@
                             "\TbButton",
                             array(
                                 "label" => $action["label"],
-                                "type" => "success",
+                                "color" => "success",
                                 "url" => array($action["action"], "id" => $model->{$model->tableSchema->primaryKey})
                             )
                         ); ?>

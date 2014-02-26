@@ -6417,80 +6417,6 @@ td.visible-print {
 .examquestion-controller.edit-action .related-text .alert-link {
   color: #245269;
 }
-.item-controller {
-  /*
-  .flowbar-container {
-    .make-row();
-  }
-
-  .flowbar {
-    .make-md-column(12);
-    background-color: #fff;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    position: fixed;
-    margin-top: -10px;
-    top: @navbar-height;
-    z-index: 10;
-  }
-
-  .flowbar-title {
-    .make-row();
-  }
-
-  .after-flowbar {
-    margin-top: 145px;
-  }
-  */
-
-  /*
-  .flowbar-container {
-    .row;
-
-    .flowbar {
-      .make-md-column(12);
-
-      .flowbar-inner {
-        background-color: @white;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-        position: fixed;
-        top: 25px;
-        z-index: 10;
-
-        .required-counts {
-          margin: 20px 0;
-
-          .missing {
-            color: @red;
-            font-size: 16px;
-
-            em {
-              font-style: normal;
-            }
-          }
-        }
-
-        .well {
-          padding-top: 13px;
-
-          h3,
-          h4 {
-            margin: 0;
-          }
-
-          .row-fluid {
-            div {
-              line-height: 40px;
-            }
-          }
-        }
-      }
-    }
-  }
-  */
-
-}
 .item-controller .item-header {
   margin-left: -15px;
   margin-right: -15px;
@@ -6685,100 +6611,148 @@ td.visible-print {
 .item-controller.browse-action .item-actions .action-buttons .btn-group {
   margin: 5px 0 0 5px;
 }
-.item-controller.edit-action .item-content {
+.item-controller .item-content {
   margin-left: -15px;
   margin-right: -15px;
 }
-.item-controller.edit-action .item-content:before,
-.item-controller.edit-action .item-content:after {
+.item-controller .item-content:before,
+.item-controller .item-content:after {
   content: " ";
   display: table;
 }
-.item-controller.edit-action .item-content:after {
+.item-controller .item-content:after {
   clear: both;
 }
-.item-controller.edit-action .item-content:before,
-.item-controller.edit-action .item-content:after {
+.item-controller .item-content:before,
+.item-controller .item-content:after {
   content: " ";
   display: table;
 }
-.item-controller.edit-action .item-content:after {
+.item-controller .item-content:after {
   clear: both;
 }
-.item-controller.edit-action .item-progress {
+.item-controller .item-progress {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .item-controller.edit-action .item-progress {
+  .item-controller .item-progress {
     float: left;
     width: 25%;
   }
 }
-.item-controller.edit-action .item-progress .progress-item {
+.item-controller .item-progress .progress-item {
   margin-left: -15px;
   margin-right: -15px;
 }
-.item-controller.edit-action .item-progress .progress-item:before,
-.item-controller.edit-action .item-progress .progress-item:after {
+.item-controller .item-progress .progress-item:before,
+.item-controller .item-progress .progress-item:after {
   content: " ";
   display: table;
 }
-.item-controller.edit-action .item-progress .progress-item:after {
+.item-controller .item-progress .progress-item:after {
   clear: both;
 }
-.item-controller.edit-action .item-progress .progress-item:before,
-.item-controller.edit-action .item-progress .progress-item:after {
+.item-controller .item-progress .progress-item:before,
+.item-controller .item-progress .progress-item:after {
   content: " ";
   display: table;
 }
-.item-controller.edit-action .item-progress .progress-item:after {
+.item-controller .item-progress .progress-item:after {
   clear: both;
 }
-.item-controller.edit-action .item-progress .progress-item .item-bar {
+.item-controller .item-progress .progress-item .item-bar {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .item-controller.edit-action .item-progress .progress-item .item-bar {
+  .item-controller .item-progress .progress-item .item-bar {
     float: left;
     width: 50%;
   }
 }
-.item-controller.edit-action .item-progress .progress-item .item-action {
+.item-controller .item-progress .progress-item .item-action {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .item-controller.edit-action .item-progress .progress-item .item-action {
+  .item-controller .item-progress .progress-item .item-action {
     float: left;
     width: 50%;
   }
 }
-.item-controller.edit-action .item-progress .progress-item .item-action .btn {
-  text-align: left;
+.item-controller .item-progress .progress-item .item-action .btn {
   padding: 0 4px;
+  text-align: left;
 }
-.item-controller.edit-action .item-form {
+.item-controller .item-form {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .item-controller.edit-action .item-form {
+  .item-controller .item-form {
     float: left;
     width: 75%;
   }
 }
-.item-controller.edit-action .item-form .form-title {
+.item-controller .item-form .form-title {
   margin-top: 0;
+}
+.item-controller.translationoverview-action .language-content {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.item-controller.translationoverview-action .language-content:before,
+.item-controller.translationoverview-action .language-content:after {
+  content: " ";
+  display: table;
+}
+.item-controller.translationoverview-action .language-content:after {
+  clear: both;
+}
+.item-controller.translationoverview-action .language-content:before,
+.item-controller.translationoverview-action .language-content:after {
+  content: " ";
+  display: table;
+}
+.item-controller.translationoverview-action .language-content:after {
+  clear: both;
+}
+.item-controller.translationoverview-action .language-actions {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller.translationoverview-action .language-actions {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.item-controller.translationoverview-action .language-actions .btn {
+  padding: 0 4px;
+  text-align: left;
+}
+.item-controller.translationoverview-action .language-progress {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller.translationoverview-action .language-progress {
+    float: left;
+    width: 66.66666666666666%;
+  }
 }
 .site-controller .item-type-introduction .intro-head:before,
 .site-controller .item-type-introduction .intro-head:after {

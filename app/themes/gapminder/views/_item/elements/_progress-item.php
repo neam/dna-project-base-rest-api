@@ -16,7 +16,7 @@
         <?php $this->widget(
             '\TbProgress',
             array(
-                'type' => 'success',
+                'type' => TbHtml::PROGRESS_COLOR_SUCCESS,
                 'percent' => $progress,
             )
         ); ?>
@@ -30,7 +30,7 @@
         }
         $this->widget("\TbButton", array(
             "label" => Yii::t("model", $caption),
-            "color" => $_GET['step'] == $step ? 'inverse' : TbHtml::BUTTON_COLOR_DEFAULT,
+            "type" => $_GET['step'] == $step ? 'inverse' : TbHtml::BUTTON_COLOR_DEFAULT,
             "size" => TbHtml::BUTTON_SIZE_XS,
             'block' => true,
             "icon" => "glyphicon-edit" . ($this->action->id == $action ? " icon-white" : null),
