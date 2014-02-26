@@ -83,7 +83,6 @@ class Node extends BaseNode
                      'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'node_id'),
                      'poFiles' => array(self::HAS_MANY, 'PoFile', 'node_id'),
                      'sections' => array(self::HAS_MANY, 'Section', 'node_id'),
-                     'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'node_id'),
                      'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'node_id'),
                      'snapshots' => array(self::HAS_MANY, 'Snapshot', 'node_id'),
                      'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'node_id'),
