@@ -94,15 +94,19 @@ $input = $this->widget('\GtcRelation', array(
 <div class="control-group">
     <div class="controls">
         <br>
-        <?php echo $this->widget('\TbButton', array(
-            'label' => Yii::t('app', 'Upload'),
-            'icon' => 'icon-plus',
-            'htmlOptions' => array(
-                'class' => 'upload-btn',
-                'data-toggle' => 'modal',
-                'data-target' => '#' . $formId . '-modal',
+        <?php echo $this->widget(
+            '\TbButton',
+            array(
+                'label' => Yii::t('app', 'Upload'),
+                'icon' => TbHtml::ICON_PLUS,
+                'htmlOptions' => array(
+                    'class' => 'upload-btn',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#' . $formId . '-modal',
+                ),
             ),
-        ), true); ?>
+            true
+        ); ?>
     </div>
 </div>
 
