@@ -17,7 +17,7 @@ $this->breadcrumbs = array(
 <?php else: ?>
 
     <div class="form">
-        <?php $form = $this->beginWidget('TbActiveForm', array(
+        <?php $form = $this->beginWidget('\TbActiveForm', array(
             'id' => 'registration-form',
             'enableAjaxValidation' => true,
             //'disableAjaxValidationAttributes' => array('RegistrationForm_verifyCode'),
@@ -47,7 +47,7 @@ $this->breadcrumbs = array(
                     } elseif ($field->range) {
                         echo $form->dropDownList($profile, $field->varname, Profile::range($field->range));
                     } elseif ($field->field_type == "TEXT") {
-                        echo $form->textArea($profile, $field->varname, array('rows' => 6, 'cols' => 50));
+                        echo $form->textArea($profile, $field->varname, array('ControlGroups' => 6, 'cols' => 50));
                     } else {
                         echo $form->textField(
                             $profile,

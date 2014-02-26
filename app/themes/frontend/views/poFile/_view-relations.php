@@ -100,17 +100,17 @@
 echo '<h3>';
 echo Yii::t('model', 'relation.PoFiles') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///poFile/admin', 'PoFile' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///poFile/create',
                     'PoFile' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey})
@@ -147,17 +147,17 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Tools') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///tool/admin', 'Tool' => array('po_file_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///tool/create',
                     'Tool' => array('po_file_id' => $model->{$model->tableSchema->primaryKey})

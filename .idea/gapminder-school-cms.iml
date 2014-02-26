@@ -143,6 +143,7 @@
           <root url="file://$MODULE_DIR$/vendor/schmunk42/web-user-behavior" />
           <root url="file://$MODULE_DIR$/vendor/twitter/bootstrap" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-generated-database-contents" />
+          <root url="file://$MODULE_DIR$/vendor/crisu83/yiistrap" />
           <root url="file://$MODULE_DIR$/vendor/motin/yii-owner-behavior" />
           <root url="file://$MODULE_DIR$/vendor/codemix/hybridauthmanager" />
           <root url="file://$MODULE_DIR$/vendor/phundament/jquery-file-upload" />
@@ -210,6 +211,7 @@
           <root url="file://$MODULE_DIR$/vendor/schmunk42/web-user-behavior" />
           <root url="file://$MODULE_DIR$/vendor/twitter/bootstrap" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-generated-database-contents" />
+          <root url="file://$MODULE_DIR$/vendor/crisu83/yiistrap" />
           <root url="file://$MODULE_DIR$/vendor/motin/yii-owner-behavior" />
           <root url="file://$MODULE_DIR$/vendor/codemix/hybridauthmanager" />
           <root url="file://$MODULE_DIR$/vendor/phundament/jquery-file-upload" />

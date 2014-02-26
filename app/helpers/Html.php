@@ -1,7 +1,5 @@
 <?php
 
-Yii::import('bootstrap.helpers.TbHtml');
-
 class Html extends TbHtml
 {
     // App constants.
@@ -27,8 +25,8 @@ class Html extends TbHtml
     public static function registerCss()
     {
         $theme = Yii::app()->theme->name;
-        $files = array();
 
+        // todo: refactor this.
         switch ($theme) {
             case self::THEME_FRONTEND:
                 $path = 'assets';
@@ -42,6 +40,11 @@ class Html extends TbHtml
                 $files = array(
                     'backend.css',
                 );
+                break;
+
+            default:
+                $path = 'assets';
+                $files = array('main.css');
                 break;
         }
 

@@ -33,7 +33,7 @@ $this->renderPartial('_form', array('model' => $model));
     <?php echo Yii::t('model', 'Presentations'); ?> </h2>
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('presentation/create', 'Presentation' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -185,7 +185,7 @@ $this->widget('TbGridView',
     <?php echo Yii::t('model', 'Section Contents'); ?> </h2>
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('presentation_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))

@@ -26,9 +26,9 @@ $this->breadcrumbs[] = $actionCaption;
             <div class="btn-group">
 
                 <?php
-                $this->widget("bootstrap.widgets.TbButton", array(
+                $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Preview"),
-                    "icon" => "icon-eye-open",
+                    "icon" => "glyphicon-eye-open",
                     "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 ?>
@@ -62,11 +62,11 @@ $this->breadcrumbs[] = $actionCaption;
     <div class="span9">
 
         <?php
-        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+        $form = $this->beginWidget('\TbActiveForm', array(
             'id' => 'item-form',
             'enableAjaxValidation' => true,
             'enableClientValidation' => true,
-            'type' => 'horizontal',
+            'layout' => TbHtml::FORM_LAYOUT_HORIZONTAL,
         ));
         echo $form->errorSummary($model);
         ?>
@@ -92,7 +92,7 @@ $this->breadcrumbs[] = $actionCaption;
             <div class="span1">Title:</div>
             <div class="span4"><?php echo $model->attributes["title_en"]; ?></div>
             <div class="span2">
-                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                <?php $this->widget('\TbButtonGroup', array(
                     'type' => 'primary',
                     'toggle' => 'radio',
                     'buttons' => array(
@@ -106,7 +106,7 @@ $this->breadcrumbs[] = $actionCaption;
             <div class="span1">Slug:</div>
             <div class="span4"><?php echo $model->attributes["slug_en"]; ?></div>
             <div class="span2">
-                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                <?php $this->widget('\TbButtonGroup', array(
                     'type' => 'primary',
                     'toggle' => 'radio',
                     'buttons' => array(
@@ -120,7 +120,7 @@ $this->breadcrumbs[] = $actionCaption;
             <div class="span1">Thumbnail:</div>
             <div class="span4"><?php echo $model->attributes["thumbnail_media_id"]; ?></div>
             <div class="span2">
-                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                <?php $this->widget('\TbButtonGroup', array(
                     'type' => 'primary',
                     'toggle' => 'radio',
                     'buttons' => array(
@@ -134,7 +134,7 @@ $this->breadcrumbs[] = $actionCaption;
             <div class="span1">About:</div>
             <div class="span4"><?php echo $model->attributes["about_en"]; ?></div>
             <div class="span2">
-                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                <?php $this->widget('\TbButtonGroup', array(
                     'type' => 'primary',
                     'toggle' => 'radio',
                     'buttons' => array(
@@ -148,7 +148,7 @@ $this->breadcrumbs[] = $actionCaption;
             <div class="span1">Tags:</div>
             <div class="span4"></div>
             <div class="span2">
-                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                <?php $this->widget('\TbButtonGroup', array(
                     'type' => 'primary',
                     'toggle' => 'radio',
                     'buttons' => array(
@@ -165,7 +165,7 @@ $this->breadcrumbs[] = $actionCaption;
                 <div>Video 2</div>
             </div>
             <div class="span2">
-                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                <?php $this->widget('\TbButtonGroup', array(
                     'type' => 'primary',
                     'toggle' => 'radio',
                     'buttons' => array(
@@ -179,7 +179,7 @@ $this->breadcrumbs[] = $actionCaption;
             <div class="span1">Teachers guide:</div>
             <div class="span4">xxx</div>
             <div class="span2">
-                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                <?php $this->widget('\TbButtonGroup', array(
                     'type' => 'primary',
                     'toggle' => 'radio',
                     'buttons' => array(
@@ -196,7 +196,7 @@ $this->breadcrumbs[] = $actionCaption;
                 <div>Exercise 2</div>
             </div>
             <div class="span2">
-                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                <?php $this->widget('\TbButtonGroup', array(
                     'type' => 'primary',
                     'toggle' => 'radio',
                     'buttons' => array(
@@ -213,7 +213,7 @@ $this->breadcrumbs[] = $actionCaption;
                 <div>Snapshot 2</div>
             </div>
             <div class="span2">
-                <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+                <?php $this->widget('\TbButtonGroup', array(
                     'type' => 'primary',
                     'toggle' => 'radio',
                     'buttons' => array(

@@ -33,7 +33,7 @@ $this->renderPartial('_form', array('model' => $model));
     <?php echo Yii::t('model', 'Ezc Executions'); ?> </h2>
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('ezcExecution/create', 'EzcExecution' => array('workflow_id' => $model->execution_id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))

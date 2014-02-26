@@ -32,8 +32,8 @@ $modelClass = get_class($model);
 
 <?php
 
-Yii::app()->bootstrap->registerAssetCss('../select2/select2.css');
-Yii::app()->bootstrap->registerAssetJs('../select2/select2.js');
+//Yii::app()->bootstrap->registerAssetCss('../select2/select2.css');
+//Yii::app()->bootstrap->registerAssetJs('../select2/select2.js');
 
 $baseUrl = Yii::app()->request->baseUrl;
 
@@ -81,18 +81,20 @@ $input = $this->widget('\GtcRelation', array(
     ),
 ), true); ?>
 
-<?php echo $form->customRow($model, $attribute, $input, array(
+<?php
+// todo: add support for custom rows or fix this some other way.
+/*echo $form->customRow($model, $attribute, $input, array(
     'labelOptions' => array(
         'label' => Html::attributeLabelWithTooltip($model, $attribute),
     ),
-)); ?>
+));*/ ?>
 
 <?php $formId = lcfirst($modelClass) . '-' . $attribute . '-' . \uniqid() . '-form'; ?>
 
 <div class="control-group">
     <div class="controls">
         <br>
-        <?php echo $this->widget('bootstrap.widgets.TbButton', array(
+        <?php echo $this->widget('\TbButton', array(
             'label' => Yii::t('app', 'Upload'),
             'icon' => 'icon-plus',
             'htmlOptions' => array(

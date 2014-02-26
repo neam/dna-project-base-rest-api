@@ -2,7 +2,7 @@
 $fromType = get_class($model);
 $modalId = "addrelation-" . strtolower($fromType) . "-" . strtolower($toType) . "-modal";
 $allItems = ($toType == '') ? true : false;
-$this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
+$this->beginWidget('\TbModal', array('id' => $modalId));
 ?>
     <script>
         $(document).ready(function () {
@@ -65,8 +65,10 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
             $allRelated->attributes = $_GET["GoItem"];
         }
         $dataProvider = $allRelated->search();
+        // todo: add support for the extended grid view
+        /*
         $this->widget(
-            'bootstrap.widgets.TbExtendedGridView',
+            '\TbExtendedGridView',
             array(
                 'filter' => $allRelated,
                 'id' => strtolower($toType) . 's_to_add',
@@ -96,6 +98,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                 )
             )
         );
+        */
         ?>
     </div>
     <div class="modal-footer">

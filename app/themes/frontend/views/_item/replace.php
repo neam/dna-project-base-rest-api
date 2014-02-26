@@ -26,9 +26,9 @@ $this->breadcrumbs[] = $actionCaption;
             <div class="btn-group">
 
                 <?php
-                $this->widget("bootstrap.widgets.TbButton", array(
+                $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Preview"),
-                    "icon" => "icon-eye-open",
+                    "icon" => "glyphicon-eye-open",
                     "url" => array("preview", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 ?>
@@ -56,11 +56,11 @@ $this->breadcrumbs[] = $actionCaption;
     <div class="span9">
 
         <?php
-        $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+        $form = $this->beginWidget('\TbActiveForm', array(
             'id' => 'item-form',
             'enableAjaxValidation' => true,
             'enableClientValidation' => true,
-            'type' => 'horizontal',
+            'layout' => TbHtml::FORM_LAYOUT_HORIZONTAL,
         ));
         echo $form->errorSummary($model);
         ?>

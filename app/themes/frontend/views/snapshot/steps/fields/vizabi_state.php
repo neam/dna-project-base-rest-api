@@ -1,6 +1,6 @@
 <?php /** @var Snapshot $model */ ?>
 
-<?php echo $form->textAreaRow($model, 'vizabi_state', array(
+<?php echo $form->textAreaControlGroup($model, 'vizabi_state', array(
     'class' => Html::ITEM_FORM_FIELD_CLASS,
     'rows' => 6,
     'cols' => 50,

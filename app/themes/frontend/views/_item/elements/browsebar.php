@@ -2,15 +2,15 @@
 
     <div class="btn-group">
         <?php
-        $this->widget("bootstrap.widgets.TbButton", array(
+        $this->widget("\TbButton", array(
             "label" => Yii::t("model", "Manage"),
-            "icon" => "icon-edit",
+            "icon" => "glyphicon-edit",
             "url" => array("admin"),
             "visible" => Yii::app()->user->checkAccess('Administrator')
         ));
-        $this->widget("bootstrap.widgets.TbButton", array(
+        $this->widget("\TbButton", array(
             "label" => Yii::t("model", "Add"),
-            "icon" => "icon-plus",
+            "icon" => "glyphicon-plus",
             "url" => array("add"),
             "visible" => Yii::app()->user->checkAccess('Item.Add')
         ));
@@ -19,9 +19,9 @@
 
     <div class="btn-group">
         <?php
-        $this->widget('bootstrap.widgets.TbButton', array(
+        $this->widget('\TbButton', array(
             'label' => Yii::t('model', 'Filter'),
-            'icon' => 'icon-search',
+            'icon' => 'glyphicon-search',
             'htmlOptions' => array('class' => 'filter-button')
         ));?>
     </div>

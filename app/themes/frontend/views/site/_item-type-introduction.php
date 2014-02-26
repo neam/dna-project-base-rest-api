@@ -4,10 +4,10 @@ $model = new $modelClass();
 
 <div class="pull-right">
     <?php
-    $this->widget("bootstrap.widgets.TbButton", array(
+    $this->widget("\TbButton", array(
         "label" => Yii::t("model", "Browse"),
         "size" => "",
-        "icon" => "icon-forward",
+        "icon" => "glyphicon-forward",
         "url" => array(lcfirst($modelClass) . "/browse"),
         "visible" => Yii::app()->user->checkAccess("Item.Browse"),
     ));

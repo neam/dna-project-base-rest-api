@@ -11,7 +11,7 @@ $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'i
 $this->breadcrumbs[] = Yii::t('model', 'Update');
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Account'); ?>
@@ -36,7 +36,7 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('changeset/create', 'Changeset' => array('user_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -105,7 +105,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('chapter/create', 'Chapter' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -544,7 +544,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('comment/create', 'Comment' => array('author_user_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -639,7 +639,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('dataChunk/create', 'DataChunk' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -1078,7 +1078,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('dataSource/create', 'DataSource' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -1529,7 +1529,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('downloadLink/create', 'DownloadLink' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -1622,7 +1622,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('examQuestion/create', 'ExamQuestion' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -2052,7 +2052,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('examQuestionAlternative/create', 'ExamQuestionAlternative' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -2134,7 +2134,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -2585,7 +2585,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('htmlChunk/create', 'HtmlChunk' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -2664,7 +2664,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('page/create', 'Page' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -3092,7 +3092,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('poFile/create', 'PoFile' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -3399,7 +3399,7 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.Profiles') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
@@ -3449,7 +3449,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('slideshowFile/create', 'SlideshowFile' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -4110,7 +4110,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -4555,7 +4555,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('spreadsheetFile/create', 'SpreadsheetFile' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -4871,7 +4871,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('textDoc/create', 'TextDoc' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -5532,7 +5532,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('tool/create', 'Tool' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -5971,7 +5971,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('vectorGraphic/create', 'VectorGraphic' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -6624,7 +6624,7 @@ $this->widget('TbGridView',
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('videoFile/create', 'VideoFile' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))

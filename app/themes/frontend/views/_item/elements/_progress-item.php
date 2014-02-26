@@ -5,7 +5,7 @@
             $validationScenario = $this->workflowData["validationScenario"];
             $invalidFields = $model->calculateInvalidFields($validationScenario . "-step_" . $step);
             if ($invalidFields > 0): ?>
-                <div class="pull-left"><span class="required"><i class="icon-asterisk"
+                <div class="pull-left"><span class="required"><i class="glyphicon-asterisk"
                                                                  title="<?php print $invalidFields; ?>"></i></span>
                 </div>
             <?php endif; ?>
@@ -15,7 +15,7 @@
 
         <?php
         $this->widget(
-            'bootstrap.widgets.TbProgress',
+            '\TbProgress',
             array(
                 'type' => 'success', // 'info', 'success' or 'danger'
                 'percent' => $progress,
@@ -30,11 +30,11 @@
         if (!is_null($translateInto)) {
             $action["translateInto"] = $translateInto;
         }
-        $this->widget("bootstrap.widgets.TbButton", array(
+        $this->widget("\TbButton", array(
             "label" => Yii::t("model", $caption),
             "type" => $_GET['step'] == $step ? "inverse" : null,
             "size" => "small",
-            "icon" => "icon-edit" . ($this->action->id == $action ? " icon-white" : null),
+            "icon" => "glyphicon-edit" . ($this->action->id == $action ? " icon-white" : null),
             "url" => $action,
         ));
         ?>

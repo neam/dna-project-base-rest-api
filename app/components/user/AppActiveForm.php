@@ -12,9 +12,8 @@ class AppActiveForm extends TbActiveForm
      *
      * @return string the generated row
      */
-    public function customRow($model, $attribute, $input, $htmlOptions = array())
+    public function customControlGroup($model, $attribute, $input, $htmlOptions = array())
     {
-        $htmlOptions['input'] = $input;
-        return $this->inputRow(TbInput::TYPE_CUSTOM, $model, $attribute, null, $htmlOptions);
+        return TbHtml::customActiveControlGroup($input, $model, $attribute, $htmlOptions);
     }
 }

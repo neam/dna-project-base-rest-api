@@ -72,7 +72,7 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                 <?php
                 foreach ($sections as $i => $section) {
                     echo CHtml::openTag('li', array('class' => $i == 0 ? 'active' : null));
-                    echo CHtml::link('<i class="icon-chevron-right"></i> ' . $section["menu_label"], '#' . $section["slug"]);
+                    echo CHtml::link('<i class="glyphicon-chevron-right"></i> ' . $section["menu_label"], '#' . $section["slug"]);
                     echo CHtml::closeTag('li');
                 }
                 ?>

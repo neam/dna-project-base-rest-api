@@ -23,7 +23,7 @@ class VectorGraphic extends BaseVectorGraphic
 
     public function getItemLabel()
     {
-        return (string) isset($this->_title) ? $this->title : 'Vector graphic #' . $this->id;
+        return (string) isset($this->_title) ? $this->title : 'Vector Graphic #' . $this->id;
     }
 
     public function behaviors()

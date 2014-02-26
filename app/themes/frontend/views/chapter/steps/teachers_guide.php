@@ -1,7 +1,7 @@
 <?php /** @var Chapter $model */ ?>
 
 <?php if (false) {
-    echo $form->html5EditorRow($model, 'teachers_guide_en', array(
+    echo $form->html5EditorControlGroup($model, 'teachers_guide_en', array(
         'rows' => 6,
         'cols' => 50,
         'class' => 'span6',
@@ -14,7 +14,7 @@
     ));
 } ?>
 
-<?php echo $form->ckEditorRow($model, 'teachers_guide_en', array(
+<?php echo $form->ckEditorControlGroup($model, 'teachers_guide_en', array(
     'rows' => 6,
     'cols' => 50,
     'class' => 'span6',
@@ -30,7 +30,7 @@
 )); ?>
 
 <?php if ($this->workflowData['translateInto']) {
-    echo $form->ckEditorRow($model, 'teachers_guide_' . $this->workflowData['translateInto'], array(
+    echo $form->ckEditorControlGroup($model, 'teachers_guide_' . $this->workflowData['translateInto'], array(
         'rows' => 6,
         'cols' => 50,
         'class' => 'span6',

@@ -8,7 +8,7 @@
 echo '<h3>';
 echo Yii::t('model', 'relation.Changesets') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -55,7 +55,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Chapters') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -102,7 +102,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.DataChunks') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -149,7 +149,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.DataSources') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -196,7 +196,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.DownloadLinks') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -243,7 +243,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Edges') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -290,7 +290,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Edges1') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -337,7 +337,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.ExamQuestions') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -384,7 +384,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.ExamQuestions1') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -431,7 +431,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.ExamQuestionAlternatives') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -478,7 +478,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Exercises') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -525,7 +525,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.HtmlChunks') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -572,7 +572,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Pages') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -619,7 +619,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.PoFiles') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -666,7 +666,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Sections') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -713,7 +713,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.SectionContents') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -760,7 +760,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.SlideshowFiles') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -807,7 +807,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Snapshots') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -854,7 +854,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.SpreadsheetFiles') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -901,7 +901,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.TextDocs') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -948,7 +948,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.Tools') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -995,7 +995,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.VectorGraphics') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -1042,7 +1042,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.VideoFiles') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -1089,7 +1089,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.OutEdges') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
@@ -1159,7 +1159,7 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'relation.InEdges') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',

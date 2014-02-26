@@ -2,9 +2,9 @@
 
 <div class="control-group">
     <div class="controls">
-        <?php echo $this->widget('bootstrap.widgets.TbButton', array(
+        <?php echo $this->widget('\TbButton', array(
             'label' => Yii::t('app', 'Add exercise'),
-            'icon' => 'icon-plus',
+            'icon' => 'glyphicon-plus',
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
                 'data-target' => '#addrelation-chapter-exercise-modal',

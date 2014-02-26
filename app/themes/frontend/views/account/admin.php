@@ -35,6 +35,8 @@ Yii::app()->clientScript->registerScript('search', "
 
 <?php
 $roleColumns = array(
+    // todo: fix toggle column
+    /*
     array(
         'class' => 'TbToggleColumn',
         'displayText' => false,
@@ -125,6 +127,7 @@ $roleColumns = array(
         'filter' => false,
         'toggleAction' => 'account/toggleRole',
     ),
+    */
 );
 
 $columns = array_merge(array(
@@ -144,6 +147,8 @@ $columns = array_merge(array(
         )
     ),
     */
+    // todo: fix editable column
+    /*
     array(
         'class' => 'TbEditableColumn',
         'name' => 'username',
@@ -152,6 +157,7 @@ $columns = array_merge(array(
             //'placement' => 'right',
         )
     ),
+    */
     /*array(
         'class' => 'TbEditableColumn',
         'name' => 'password',
@@ -160,6 +166,8 @@ $columns = array_merge(array(
             //'placement' => 'right',
         )
     ),*/
+    // todo: fix editable column
+    /*
     array(
         'class' => 'TbEditableColumn',
         'name' => 'email',
@@ -168,6 +176,7 @@ $columns = array_merge(array(
             //'placement' => 'right',
         )
     ),
+    */
     /*array(
         'class' => 'TbEditableColumn',
         'name' => 'activkey',
@@ -186,6 +195,8 @@ $columns = array_merge(array(
         )
     ),
     */
+    // todo: fix editable column
+    /*
     array(
         'class' => 'TbEditableColumn',
         'name' => 'status',
@@ -194,8 +205,10 @@ $columns = array_merge(array(
             //'placement' => 'right',
         )
     )
+    */
 ), $roleColumns, array(
-
+    // todo: fix editable column
+    /*
     array(
         'class' => 'TbEditableColumn',
         'name' => 'create_at',
@@ -204,6 +217,7 @@ $columns = array_merge(array(
             //'placement' => 'right',
         )
     ),
+    */
     /*
     array(
         'class' => 'TbEditableColumn',
@@ -216,7 +230,7 @@ $columns = array_merge(array(
     */
 
     array(
-        'class' => 'TbButtonColumn',
+        'class' => '\TbButtonColumn',
         'buttons' => array(
             'view' => array('visible' => 'Yii::app()->user->checkAccess("Account.View")'),
             'update' => array('visible' => 'Yii::app()->user->checkAccess("Account.Update")'),
@@ -230,7 +244,7 @@ $columns = array_merge(array(
 ?>
 
 <?php
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'account-grid',
         'dataProvider' => $model->search(),
@@ -238,8 +252,8 @@ $this->widget('TbGridView',
         #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
-            'class' => 'TbPager',
-            'displayFirstAndLast' => true,
+            'class' => '\TbPager',
+            'hideFirstAndLast' => false,
         ),
         'columns' => $columns,
     )

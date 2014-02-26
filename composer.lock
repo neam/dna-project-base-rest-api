@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "475a1623ef0edd941fd7e06525b8f76f",
+    "hash": "f04cb9952dfbb4f098f8704e6f3618d1",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -185,6 +185,63 @@
             ],
             "description": "Yii Rights module",
             "time": "2013-10-11 09:20:14"
+        },
+        {
+            "name": "crisu83/yiistrap",
+            "version": "dev-bs3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Crisu83/yiistrap.git",
+                "reference": "57eb2def942e9308898db6c2e3350ce685392b49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/57eb2def942e9308898db6c2e3350ce685392b49",
+                "reference": "57eb2def942e9308898db6c2e3350ce685392b49",
+                "shasum": ""
+            },
+            "require-dev": {
+                "codeception/codeception": "@stable",
+                "crisu83/yii-composer": ">=1.0.0",
+                "yiisoft/yii": ">=1.1.13"
+            },
+            "type": "library",
+            "extra": {
+                "yii-install-writable": [
+                    "tests/_log"
+                ]
+            },
+            "autoload": {
+                "classmap": [
+                    "behaviors/",
+                    "components/",
+                    "form/",
+                    "helpers/",
+                    "widgets/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christoffer Niska",
+                    "email": "christoffer.niska@gmail.com",
+                    "homepage": "http://www.cniska.net/"
+                },
+                {
+                    "name": "Antonio Ramirez",
+                    "email": "ramirez.cobos@gmail.com",
+                    "homepage": "http://www.ramirezcobos.com/"
+                }
+            ],
+            "description": "Twitter Bootstrap for the Yii PHP framework.",
+            "keywords": [
+                "bootstrap",
+                "yii"
+            ],
+            "time": "2014-02-13 12:19:45"
         },
         {
             "name": "firstrow/stranslateablebehavior",
@@ -2301,15 +2358,15 @@
         },
         {
             "name": "twitter/bootstrap",
-            "version": "v2.3.2",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "b4c4072679943773a7582daa63f545ba818fa627"
+                "reference": "6d03173a1aad98e75f7d33e65b411c519176c59a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/twbs/bootstrap/archive/b4c4072679943773a7582daa63f545ba818fa627.zip",
+                "url": "https://github.com/twbs/bootstrap/archive/6d03173a1aad98e75f7d33e65b411c519176c59a.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -2335,6 +2392,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "crisu83/yii-rights": 20,
+        "crisu83/yiistrap": 20,
         "gusnips/yii-translate": 20,
         "malyshev/yii-debug-toolbar": 20,
         "mikehaertl/packagecompressor": 20,

@@ -13,7 +13,7 @@
     }
 
     $this->widget(
-        'TbNavbar',
+        'bootstrap.widgets.TbNavbar',
         array(
             'fluid' => true,
             'fixed' => 'bottom',

@@ -11,7 +11,7 @@ $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'i
 $this->breadcrumbs[] = Yii::t('model', 'Update');
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Section'); ?>
@@ -36,7 +36,7 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('section_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -144,7 +144,7 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.HtmlChunks') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
@@ -183,7 +183,7 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.Snapshots') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
@@ -222,7 +222,7 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.VideoFiles') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
@@ -261,7 +261,7 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.Exercises') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
@@ -300,7 +300,7 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.SlideshoFiles') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
@@ -339,7 +339,7 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.DataChunks') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
@@ -378,7 +378,7 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.DownloadLinks') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
@@ -417,7 +417,7 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.ExamQuestions') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',

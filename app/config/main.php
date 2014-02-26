@@ -27,7 +27,7 @@ $mainConfig = array(
     'preload'    => array(
         'log',
         'langHandler',
-        'bootstrap',
+        //'bootstrap',
     ),
     'aliases'    => array(
         // composer
@@ -35,7 +35,8 @@ $mainConfig = array(
         'webroot'                               => $applicationDirectory . '/../www',
         'vendor'                                => $applicationDirectory . '/../vendor',
         // componentns
-        'bootstrap'                             => 'vendor.clevertech.yiibooster.src',
+        //'bootstrap'                            => 'vendor.clevertech.yiibooster.src',
+        'yiistrap'                              => 'vendor.crisu83.yiistrap',
         // p3widgets
         'jsonEditorView'                        => 'vendor.phundament.p3extensions.widgets.jsonEditorView',
         'ckeditor'                              => 'vendor.phundament.p3extensions.widgets.ckeditor',
@@ -51,6 +52,7 @@ $mainConfig = array(
         // themes
         'frontend'                              => 'application.themes.frontend',
         'backend2'                              => 'application.themes.backend2',
+        'app'                                   => 'application',
     ),
     // autoloading model and component classes
     'import'     => array(
@@ -71,8 +73,8 @@ $mainConfig = array(
         // imports for components from packages, which do not support composer autoloading
         'vendor.mishamx.yii-user.models.*', // User Model
         'vendor.crisu83.yii-rights.components.*', // RWebUser
-        'vendor.clevertech.yiibooster.src.helpers.*', //
-        'vendor.clevertech.yiibooster.src.widgets.*', //
+        //'vendor.clevertech.yiibooster.src.helpers.*', //
+        //'vendor.clevertech.yiibooster.src.widgets.*', //
         'vendor.anggiaj.eselect2.*',
         'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior',
         'vendor.schmunk42.relation.widgets.GtcRelation',
@@ -81,6 +83,7 @@ $mainConfig = array(
         'vendor.bwoester.yii-event-interceptor.*',
         'vendor.gusnips.yii-translate.TranslateModule',
         'application.helpers.*',
+        'application.widgets.*',
         // widgets
         'vendor.moein7tl.yii-introjs.introjs.*',
         'vendor.yiiext.fancybox-widget.*',
@@ -239,8 +242,9 @@ $mainConfig = array(
             'defaultRoles' => array('Authenticated', 'Guest'),
             // see correspoing business rules, note: superusers always get checkAcess == true
         ),
-        'bootstrap'     => array(
-            'class'          => 'vendor.clevertech.yiibooster.src.components.Bootstrap',
+        /*
+        'yiibooster'     => array(
+            'class'          => 'yiibooster.src.components.Bootstrap',
             'coreCss'        => true, // whether to register any CSS at all, defaults to true
             'bootstrapCss'   => false, // use csutom css from theme
             'responsiveCss'  => false, // use csutom css from theme
@@ -248,6 +252,11 @@ $mainConfig = array(
             'fontAwesomeCss' => true,
             // whether to register the Bootstrap responsive CSS (bootstrap-responsive.min.css), default to false
             'plugins'        => array(),
+        ),
+        */
+        'yiistrap' => array(
+            'class' => '\TbApi',
+            'assetsPath' => 'vendor.twitter.bootstrap.dist',
         ),
         'cache'         => array(
             'class' => 'CDummyCache',
@@ -291,9 +300,9 @@ $mainConfig = array(
                         'jquery',
                         'fancybox',
                     ),
-                    /*'js'      => array(
-                        'js/app.js',
-                    ),*/
+                    //'js'      => array(
+                    //    'js/app.js',
+                    //),
                     'css'      => array(
                         'main.css',
                     )
@@ -386,15 +395,15 @@ $mainConfig = array(
             'basePath' => $applicationDirectory . '/themes',
             'baseUrl'  => $baseUrl . '/themes',
             'rules'    => array(
-                // frontend
-                '^p3pages/default/page'      => 'frontend',
-                '^user/default/index'        => 'frontend',
-                '^user/login/(.*)'           => 'frontend',
-                '^user/profile/(.*)'         => 'frontend',
-                '^user/registration/(.*)'    => 'frontend',
-                '^user/recovery/(.*)'        => 'frontend',
-                '^user/activation/(.*)'      => 'frontend',
-                '^account/admin' => 'frontend',
+                // gapminder
+                '^p3pages/default/page'      => 'gapminder',
+                '^user/default/index'        => 'gapminder',
+                '^user/login/(.*)'           => 'gapminder',
+                '^user/profile/(.*)'         => 'gapminder',
+                '^user/registration/(.*)'    => 'gapminder',
+                '^user/recovery/(.*)'        => 'gapminder',
+                '^user/activation/(.*)'      => 'gapminder',
+                '^account/admin'             => 'gapminder',
                 // backend
                 '^user/(.*)'                 => 'backend2',
                 '^rights/(.*)'               => 'backend2',
@@ -404,27 +413,27 @@ $mainConfig = array(
                 '^([^/]*)/update' => 'backend2',
                 '^([^/]*)/admin' => 'backend2',
                 '^([^/]*)/create' => 'backend2',
-                '^([^/]*)/continueAuthoring' => 'frontend',
-                '^([^/]*)/draft' => 'frontend',
-                '^([^/]*)/prepPreshow' => 'frontend',
-                '^([^/]*)/preshow' => 'frontend',
-                '^([^/]*)/evaluate' => 'frontend',
-                '^([^/]*)/prepPublish' => 'frontend',
-                '^([^/]*)/preview' => 'frontend',
-                '^([^/]*)/review' => 'frontend',
-                '^([^/]*)/proofRead' => 'frontend',
-                '^([^/]*)/translate' => 'frontend',
-                '^([^/]*)/publish' => 'frontend',
-                '^([^/]*)/edit' => 'frontend',
-                '^([^/]*)/clone' => 'frontend',
-                '^([^/]*)/remove' => 'frontend',
-                '^([^/]*)/replace' => 'frontend',
-                '^([^/]*)/translate(.*)' => 'frontend',
-                '^([^/]*)/author(.*)' => 'frontend',
+                '^([^/]*)/continueAuthoring' => 'gapminder',
+                '^([^/]*)/draft' => 'gapminder',
+                '^([^/]*)/prepPreshow' => 'gapminder',
+                '^([^/]*)/preshow' => 'gapminder',
+                '^([^/]*)/evaluate' => 'gapminder',
+                '^([^/]*)/prepPublish' => 'gapminder',
+                '^([^/]*)/preview' => 'gapminder',
+                '^([^/]*)/review' => 'gapminder',
+                '^([^/]*)/proofRead' => 'gapminder',
+                '^([^/]*)/translate' => 'gapminder',
+                '^([^/]*)/publish' => 'gapminder',
+                '^([^/]*)/edit' => 'gapminder',
+                '^([^/]*)/clone' => 'gapminder',
+                '^([^/]*)/remove' => 'gapminder',
+                '^([^/]*)/replace' => 'gapminder',
+                '^([^/]*)/translate(.*)' => 'gapminder',
+                '^([^/]*)/author(.*)' => 'gapminder',
                 '^node/view' => 'backend2',
                 '^site/giiscript' => 'backend2',
                 '^translate/(.*)'            => 'backend2',
-                '^(.*)' => 'frontend',
+                '^(.*)' => 'gapminder',
             )
         ),
         'urlManager'    => array(

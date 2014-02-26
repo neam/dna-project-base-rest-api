@@ -23,7 +23,7 @@ class TextDoc extends BaseTextDoc
 
     public function getItemLabel()
     {
-        return (string) isset($this->_title) ? $this->_title : 'Text doc #' . $this->id;
+        return (string) isset($this->_title) ? $this->_title : 'Text Doc #' . $this->id;
     }
 
     public function behaviors()

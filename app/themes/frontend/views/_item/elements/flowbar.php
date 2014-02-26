@@ -16,25 +16,25 @@
                 <div class="pull-right">
                     <div class='btn-group'>
                         <?php if ($this->action->id === 'browse'): ?>
-                            <?php $this->widget('bootstrap.widgets.TbButton', array(
+                            <?php $this->widget('\TbButton', array(
                                 'label' => Yii::t('model', 'View'),
-                                'icon' => 'icon-eye-open',
+                                'icon' => 'glyphicon-eye-open',
                                 'type' => $this->action->id !== 'view' ? '' : 'inverse',
                                 'url' => array('view', 'id' => $model->{$model->tableSchema->primaryKey}),
                             )); ?>
                         <?php endif; ?>
                         <?php if ($this->action->id === "preview" || $this->action->id === "browse"): ?>
-                            <?php $this->widget('bootstrap.widgets.TbButton', array(
+                            <?php $this->widget('\TbButton', array(
                                 'label' => Yii::t('model', 'Edit'),
-                                'icon' => 'icon-edit',
+                                'icon' => 'glyphicon-edit',
                                 'type' => $this->action->id !== 'edit' ? 'primary' : 'inverse',
                                 'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey}),
                                 'visible' => Yii::app()->user->checkAccess('Item.Edit'),
                             )); ?>
                         <?php elseif ($this->action->id === 'edit'): ?>
-                            <?php $this->widget('bootstrap.widgets.TbButton', array(
+                            <?php $this->widget('\TbButton', array(
                                 'label' => Yii::t('model', 'Preview'),
-                                'icon' => 'icon-eye-open',
+                                'icon' => 'glyphicon-eye-open',
                                 'type' => $this->action->id !== 'preview' ? '' : 'inverse',
                                 'url' => array('preview', 'id' => $model->{$model->tableSchema->primaryKey}, 'editingUrl' => $this->action->id === 'view' ? null : Yii::app()->request->url),
                                 'visible' => Yii::app()->user->checkAccess('Item.Preview'),
@@ -105,13 +105,13 @@
 
                                 foreach ($this->workflowData["flagTriggerActions"] as $action):
                                     if ($action["requiredProgress"] < 100) {
-                                        $this->widget("bootstrap.widgets.TbButton", array(
+                                        $this->widget("\TbButton", array(
                                             "label" => $action["label"],
                                             "type" => "",
                                             "disabled" => true,
                                         ));
                                     } else {
-                                        $this->widget("bootstrap.widgets.TbButton", array(
+                                        $this->widget("\TbButton", array(
                                             "label" => $action["label"],
                                             "type" => "success",
                                             "url" => array($action["action"], "id" => $model->{$model->tableSchema->primaryKey})
@@ -126,7 +126,7 @@
                             <div class="btn-group">
 
                                 <?php
-                                $this->widget("bootstrap.widgets.TbButton", array(
+                                $this->widget("\TbButton", array(
                                     "label" => Yii::t("model", "Cancel"),
                                     "url" => array("cancel", "id" => $model->{$model->tableSchema->primaryKey})
                                 ));
@@ -151,7 +151,7 @@
                                 '{remaining}' => $requiredCounts['remaining'],
                             )); ?>
                         </span>
-                        <?php $this->widget('bootstrap.widgets.TbButton', array(
+                        <?php $this->widget('\TbButton', array(
                             'label' => Yii::t('button', 'Next'),
                             'type' => TbHtml::BUTTON_COLOR_PRIMARY,
                             'url' => '#',
@@ -162,7 +162,7 @@
                     </div>
                     <!--
                     <div class="span4 text-right">
-                        <?php $this->widget('bootstrap.widgets.TbButton', array(
+                        <?php $this->widget('\TbButton', array(
                         'label' => Yii::t('button', 'Translation Done'),
                         'type' => TbHtml::BUTTON_COLOR_DEFAULT,
                         'url' => '#',
@@ -170,7 +170,7 @@
                             'id' => 'translation-done',
                         ),
                     )); ?>
-                        <?php $this->widget('bootstrap.widgets.TbButton', array(
+                        <?php $this->widget('\TbButton', array(
                         'label' => Yii::t('button', 'Cancel'),
                         'type' => TbHtml::BUTTON_COLOR_DEFAULT,
                         'url' => '#',
