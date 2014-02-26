@@ -4,7 +4,7 @@
 ?>
 <?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
-    <?php $this->renderPartial('/_item/elements/flowbar', compact('model')); ?>
+    <?php $this->renderPartial('/_item/evaluate/_flowbar', compact('model')); ?>
     <?php /*
     <h1>
         <?php echo Yii::t('model', 'Video File'); ?>
