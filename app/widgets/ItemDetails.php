@@ -42,23 +42,37 @@ class ItemDetails extends CWidget
      * Returns the value of the given attribute.
      * @param string $attribute
      * @return string
+     * @throws CException if the model attribute does not exist.
      */
     public function getAttributeValue($attribute)
     {
-        return ($this->model->hasAttribute($attribute))
-            ? e($this->model->{$attribute})
-            : '';
+        if ($this->model->hasAttribute($attribute)) {
+            return e($this->model->{$attribute});
+        } else {
+            throw new CException(
+                Yii::t('error', 'Invalid model attribute: {attribute}', array(
+                    '{attribute}' => $attribute,
+                ))
+            );
+        }
     }
 
     /**
      * Returns the label of the given attribute.
      * @param string $attribute
      * @return string
+     * @throws CException if the model attribute does not exist.
      */
     public function getAttributeLabel($attribute)
     {
-        return ($this->model->hasAttribute($attribute))
-            ? e($this->model->getAttributeLabel($attribute))
-            : '';
+        if ($this->model->hasAttribute($attribute)) {
+            return e($this->model->getAttributeLabel($attribute));
+        } else {
+            throw new CException(
+                Yii::t('error', 'Invalid model attribute: {attribute}', array(
+                    '{attribute}' => $attribute,
+                ))
+            );
+        }
     }
 }
