@@ -202,43 +202,27 @@ EOD;
 
     public function actionGoogleSpreadsheetPermissionsMatrixColumnsAndRows()
     {
-        /*
-        foreach (DataModel::qaModels() as $model => $table) {
-            echo "$model\n";
-        }
-DataModel::goItemModels()
-DataModel::educationalItemModels()
-DataModel::websiteContentItemModels()
-DataModel::waffleItemModels()
-        */
-
         echo "\t";
 
-        foreach (Metadata::anonymousRoles() as $role) {
+        foreach (Metadata::developerRoles() as $role) {
             echo "$role\t";
         }
 
-        // RoleInProject
-        foreach (Metadata::projects() as $project) {
-            foreach (Metadata::projectRoles() as $projectRole) {
-                echo "$project.$projectRole\t";
-            }
+        foreach (Metadata::roleTypes() as $roleType) {
+            echo "$roleType\t";
         }
 
-        foreach (Metadata::superAdministratorRoles() as $role) {
+        foreach (Metadata::contextLessRoles() as $role) {
             echo "$role\t";
         }
 
         echo "\n";
 
-        // ItemTypeAction X Participation
-        foreach (Metadata::itemActions() as $action => $table) {
-            foreach (Metadata::itemTypes() as $itemType => $itemModels) {
-                //foreach (array("All", "Own") as $participation) {
-                echo "$action {$itemType}s\n";
-                //}
-            }
-
+        foreach (Metadata::itemVisibilityOperations() as $operation => $description) {
+            echo "$operation\n";
+        }
+        foreach (Metadata::itemInteractionOperations() as $operation => $description) {
+            echo "$operation\n";
         }
 
     }
