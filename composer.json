@@ -36,30 +36,6 @@
             }
         },
         {
-            "type": "package",
-            "package": {
-                "name": "ascendro/yii-graphviz",
-                "version": "@dev",
-                "source": {
-                    "url": "https://github.com/ascendro/yii-graphviz.git",
-                    "type": "git",
-                    "reference": "707993b53083cc746b6b7969c9b8f9529e099e1b"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "mihanentalpo/yii-sql-migration-generator",
-                "version": "@dev",
-                "source": {
-                    "url": "https://github.com/MihanEntalpo/yii-sql-migration-generator.git",
-                    "type": "git",
-                    "reference": "5a0b93a4f0ac9ace6a4e7e1d92dc0980bba17cee"
-                }
-            }
-        },
-        {
             "type": "vcs",
             "url": "https://github.com/motin/p3media"
         },
@@ -105,23 +81,11 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/motin/WorkflowDatabaseTiein"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/codemix/hybridauthmanager"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/schmunk42/packagecompressor.git"
         },
         {
             "type":"git",
             "url":"https://github.com/schmunk42/yii-rights.git"
-        },
-        {
-            "type":"git",
-            "url":"https://github.com/Quexer69/yii.translate.git"
         },
         {
             "type":"vcs",
@@ -149,34 +113,25 @@
         }
     ],
     "minimum-stability":"stable",
+    "comments-about-certain-required-deps": {
+        "crisu83/yii-rights": "Used for RWebUser in user component only",
+        "neam/yii-relational-graph-db":"Not a real plugin yet, but a placeholder to which to move node/edge-related functionality"
+    },
     "require":{
         "php":">=5.4.0",
-        "clevertech/yiibooster":"2.*",
         "crisu83/yii-rights":"@dev",
         "crisu83/yiistrap":"dev-bs3",
-        "gusnips/yii-translate" : "dev-master",
-        "malyshev/yii-debug-toolbar":"@dev",
-        "mikehaertl/packagecompressor": "dev-develop",
         "mishamx/yii-user":"dev-develop",
-        "moein7tl/yii-introjs":"@dev",
-        "nordsoftware/yii-emailer": "1.*",
-        "phundament/backend-theme":"@dev",
         "phundament/jquery-file-upload": "@dev",
         "phundament/p3admin":"0.16.0",
         "phundament/p3extensions":"0.17.0",
-        "phundament/p3bootstrap":"0.22.0",
         "phundament/p3pages":"dev-master as 0.17.0",
         "phundament/p3media":"dev-awaiting-prs",
         "phundament/p3widgets":"0.16.0",
         "schmunk42/ckeditor-configurator":"@dev",
         "schmunk42/multi-theme":"0.1.*",
         "schmunk42/web-user-behavior":"0.1.*",
-        "waalzer/app-demo-data": "@dev",
-        "yiiext/fancybox-widget":"0.*",
-        "yiiext/lipsum-widget":"0.*",
-        "yiiext/migrate-command":"dev-master#35f315b as 0.7.2.1",
         "kswedberg/jquery-smooth-scroll":"1.4.10",
-        "firstrow/stranslateablebehavior":"@dev",
         "neam/yii-i18n-columns":"0.3.1",
         "neam/yii-i18n-attribute-messages":"dev-develop",
         "neam/yii-qa-state":"dev-develop",
@@ -186,31 +141,18 @@
         "phpoffice/phpexcel": "1.7.9",
         "phpoffice/phpword": "dev-added-composer-json",
         "phpoffice/phppowerpoint": "dev-master",
-        "schmunk42/giic": "dev-master",
-        "thomaspark/bootswatch": "2.3.*",
-		"anggiaj/eselect2": "dev-master",
-        "zetacomponents/workflow-database-tiein": "dev-awaiting-prs",
-        "zetacomponents/workflow": "dev-master",
-        "zetacomponents/database": "dev-travis",
         "weavora/wrest": "dev-awaiting-prs",
-        "ascendro/yii-graphviz": "@dev",
-        "mihanentalpo/yii-sql-migration-generator": "@dev",
         "codemix/hybridauthmanager": "dev-master",
-        "schmunk42/yii-sakila-crud": "@dev",
         "schmunk42/relation": "1.*",
         "yiisoft/yii":"1.1.14",
-        "nordsoftware/yii-utils": "@dev",
-        "mikehaertl/translatable": "~1.1.0"
+        "mikehaertl/translatable": "~1.1.0",
+        "twitter/bootstrap":"3.0.*"
     },
     "require-dev":{
-        "cloudhead/less.js":"1.3.*",
-        "crisu83/yii-less":"2.0.2",
-        "phundament/gii-template-collection":"dev-gcms",
-        "phundament/lessii":"@dev",
-        "schmunk42/database-command":"0.8.*",
-        "schmunk42/giic":"@dev",
-        "thomaspark/bootswatch":"2.3.*",
-        "twitter/bootstrap":"3.0.*"
+        "phundament/backend-theme":"@dev",
+        "phundament/p3bootstrap":"0.22.0",
+        "schmunk42/giic": "dev-master",
+        "phundament/gii-template-collection":"dev-gcms"
     },
     "autoload":{
         "psr-0":{

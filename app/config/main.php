@@ -261,6 +261,8 @@ $mainConfig = array(
         'cache'         => array(
             'class' => 'CDummyCache',
         ),
+        /*
+         * Commented out since it is a part of Phundament we currently don't use
         'clientScript'  => array(
             'class'              => 'vendor.mikehaertl.packagecompressor.PackageCompressor',
             'coreScriptPosition' => 0, // HEAD
@@ -309,6 +311,7 @@ $mainConfig = array(
                 ),
             )
         ),
+        */
         'db'            => array(
             'tablePrefix'      => '',
             // SQLite
