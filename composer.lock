@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "809a2a56f31745d1a30f0986f1703b5d",
+    "hash": "3752406dd28029d26a74e409b9ec9df5",
     "packages": [
         {
             "name": "bwoester/yii-event-interceptor",
@@ -137,6 +137,24 @@
                 "issues": "https://github.com/codemix/hybridauthmanager/issues"
             },
             "time": "2013-08-22 19:12:29"
+        },
+        {
+            "name": "crisu83/yii-rights",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/yii-rights.git",
+                "reference": "4f2ccb66378e1e5bf37deae34635fe68bf057faa"
+            },
+            "type": "library",
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de"
+                }
+            ],
+            "description": "Yii Rights module",
+            "time": "2013-10-11 09:20:14"
         },
         {
             "name": "crisu83/yiistrap",
@@ -452,6 +470,50 @@
                 "issues": "https://github.com/neam/yii-qa-state/issues"
             },
             "time": "2014-01-23 12:47:05"
+        },
+        {
+            "name": "neam/yii-relational-graph-db",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-relational-graph-db.git",
+                "reference": "d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-relational-graph-db/zipball/d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6",
+                "reference": "d2a7d4c5c0f284de8c67ac7156a6c7f8129e44a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "behaviors/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "Ability to relate any items within a relational database with each other, using the concept of nodes and edges.",
+            "homepage": "https://github.com/neam/yii-relational-graph-db",
+            "keywords": [
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/neam/yii-relational-graph-db/tree/develop",
+                "issues": "https://github.com/neam/yii-relational-graph-db/issues"
+            },
+            "time": "2013-10-28 16:48:19"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -1486,6 +1548,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "crisu83/yii-rights": 20,
         "crisu83/yiistrap": 20,
         "mishamx/yii-user": 20,
         "phundament/jquery-file-upload": 20,
@@ -1494,6 +1557,7 @@
         "schmunk42/ckeditor-configurator": 20,
         "neam/yii-i18n-attribute-messages": 20,
         "neam/yii-qa-state": 20,
+        "neam/yii-relational-graph-db": 20,
         "motin/yii-owner-behavior": 20,
         "sumwai/yii-fixture-helper": 20,
         "phpoffice/phpword": 20,

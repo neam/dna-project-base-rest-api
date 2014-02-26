@@ -10,6 +10,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/codemix/hybridauthmanager" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/crisu83/yii-auth" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/crisu83/yii-rights" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/crisu83/yiistrap" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kswedberg/jquery-smooth-scroll" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/translatable" />
@@ -18,6 +19,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/neam/yii-i18n-attribute-messages" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/neam/yii-i18n-columns" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/neam/yii-relational-graph-db" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/phpexcel" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/phppowerpoint" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/phpword" />
@@ -49,12 +51,12 @@
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
-          <root url="phar://$MODULE_DIR$/vendor-old/neam/yii-i18n-attribute-messages/codecept.phar" />
+          <root url="phar://$MODULE_DIR$/vendor/neam/yii-i18n-attribute-messages/codecept.phar" />
           <root url="phar://$MODULE_DIR$/codecept.phar" />
           <root url="phar://$MODULE_DIR$/composer.phar" />
         </CLASSES>
         <SOURCES>
-          <root url="phar://$MODULE_DIR$/vendor-old/neam/yii-i18n-attribute-messages/codecept.phar" />
+          <root url="phar://$MODULE_DIR$/vendor/neam/yii-i18n-attribute-messages/codecept.phar" />
           <root url="phar://$MODULE_DIR$/codecept.phar" />
           <root url="phar://$MODULE_DIR$/composer.phar" />
         </SOURCES>
@@ -65,6 +67,7 @@
       <library name="PHP">
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/mikehaertl/translatable" />
+          <root url="file://$MODULE_DIR$/vendor/neam/yii-relational-graph-db" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
           <root url="file://$MODULE_DIR$/vendor/sammaye/auditrail2" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3bootstrap" />
@@ -78,6 +81,7 @@
           <root url="file://$MODULE_DIR$/vendor/schmunk42/access" />
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phppowerpoint" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-i18n-attribute-messages" />
+          <root url="file://$MODULE_DIR$/vendor/crisu83/yii-rights" />
           <root url="file://$MODULE_DIR$/vendor/kswedberg/jquery-smooth-scroll" />
           <root url="file://$MODULE_DIR$/vendor/twitter/bootstrap" />
           <root url="file://$MODULE_DIR$/vendor/weavora/wrest" />
@@ -105,6 +109,7 @@
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/mikehaertl/translatable" />
+          <root url="file://$MODULE_DIR$/vendor/neam/yii-relational-graph-db" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
           <root url="file://$MODULE_DIR$/vendor/sammaye/auditrail2" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3bootstrap" />
@@ -118,6 +123,7 @@
           <root url="file://$MODULE_DIR$/vendor/schmunk42/access" />
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phppowerpoint" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-i18n-attribute-messages" />
+          <root url="file://$MODULE_DIR$/vendor/crisu83/yii-rights" />
           <root url="file://$MODULE_DIR$/vendor/kswedberg/jquery-smooth-scroll" />
           <root url="file://$MODULE_DIR$/vendor/twitter/bootstrap" />
           <root url="file://$MODULE_DIR$/vendor/weavora/wrest" />

@@ -36,30 +36,6 @@
             }
         },
         {
-            "type": "package",
-            "package": {
-                "name": "ascendro/yii-graphviz",
-                "version": "@dev",
-                "source": {
-                    "url": "https://github.com/ascendro/yii-graphviz.git",
-                    "type": "git",
-                    "reference": "707993b53083cc746b6b7969c9b8f9529e099e1b"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "mihanentalpo/yii-sql-migration-generator",
-                "version": "@dev",
-                "source": {
-                    "url": "https://github.com/MihanEntalpo/yii-sql-migration-generator.git",
-                    "type": "git",
-                    "reference": "5a0b93a4f0ac9ace6a4e7e1d92dc0980bba17cee"
-                }
-            }
-        },
-        {
             "type": "vcs",
             "url": "https://github.com/motin/p3media"
         },
@@ -105,23 +81,11 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/motin/WorkflowDatabaseTiein"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/codemix/hybridauthmanager"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/schmunk42/packagecompressor.git"
         },
         {
             "type":"git",
             "url":"https://github.com/schmunk42/yii-rights.git"
-        },
-        {
-            "type":"git",
-            "url":"https://github.com/Quexer69/yii.translate.git"
         },
         {
             "type":"vcs",
@@ -149,8 +113,13 @@
         }
     ],
     "minimum-stability":"stable",
+    "comments-about-certain-required-deps": {
+        "crisu83/yii-rights": "Used for RWebUser in user component only",
+        "neam/yii-relational-graph-db":"Not a real plugin yet, but a placeholder to which to move node/edge-related functionality"
+    },
     "require":{
         "php":">=5.4.0",
+        "crisu83/yii-rights":"@dev",
         "crisu83/yiistrap":"dev-bs3",
         "mishamx/yii-user":"dev-develop",
         "phundament/jquery-file-upload": "@dev",
@@ -166,6 +135,7 @@
         "neam/yii-i18n-columns":"0.3.1",
         "neam/yii-i18n-attribute-messages":"dev-develop",
         "neam/yii-qa-state":"dev-develop",
+        "neam/yii-relational-graph-db":"@dev",
         "motin/yii-owner-behavior":"*@dev",
         "sumwai/yii-fixture-helper":"@dev",
         "phpoffice/phpexcel": "1.7.9",
