@@ -112,13 +112,6 @@
             "url" => array("remove", "id" => $model->{$model->tableSchema->primaryKey}),
             "visible" => Yii::app()->user->checkAccess('Item.Remove'),
         ));
-        $this->widget("\TbButton", array(
-            "label" => Yii::t("model", "Replace"),
-            'color' => $this->action->id == "replace" ? "inverse" : null,
-            "icon" => "glyphicon-random" . ($this->action->id == "replace" ? " icon-white" : null),
-            "url" => array("replace", "id" => $model->{$model->tableSchema->primaryKey}),
-            "visible" => Yii::app()->user->checkAccess('Item.Replace'),
-        ));
 
         ?>
     </div>
