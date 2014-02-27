@@ -61,7 +61,7 @@ $this->breadcrumbs[] = $actionCaption;
                             '\TbProgress',
                             array(
                                 'type' => 'success', // 'info', 'success' or 'danger'
-                                'percent' => $model->calculateValidationProgress('translate_into_' . $language),
+                                'percent' => $model->edited()->calculateValidationProgress('translate_into_' . $language),
                             )
                         );
 

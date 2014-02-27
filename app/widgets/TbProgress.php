@@ -5,6 +5,7 @@ class TbProgress extends CWidget
     /**
      * @var string the bar color. Valid values are 'info', 'success', and 'danger'.
      */
+    // todo: rename to color
     public $type;
 
     /**

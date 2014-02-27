@@ -18,7 +18,7 @@ class Snapshot extends BaseSnapshot
     public function init()
     {
         $this->itemDescription = Yii::t('itemDescription', 'This shows a visualization of a specific kind and state. It is a link to a snapshot of a tool for visually exploration of data. The Snapshot illustrates something described in the title and the about text.');
-        return parent::init();
+        parent::init();
     }
 
     public function getItemLabel()
@@ -62,7 +62,10 @@ class Snapshot extends BaseSnapshot
 
             )
         );
-        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        Yii::log("model->statusRequirementsRules(): " . print_r($this->statusRequirementsRules(), true), "info", __METHOD__);
+        Yii::log("model->flowStepRules(): " . print_r($this->flowStepRules(), true), "info", __METHOD__);
+        Yii::log("model->i18nRules(): " . print_r($this->i18nRules(), true), "info", __METHOD__);
+        Yii::log("model->rules(): " . print_r($return, true), "info", __METHOD__);
         return $return;
     }
 

@@ -281,6 +281,9 @@ trait ItemController
     protected function firstFlowStep($item)
     {
         foreach ($item->flowSteps() as $step => $fields) {
+            if (!$this->isStepTranslatable($item, $fields)) {
+                continue;
+            }
             return $step;
         }
         return null;
@@ -929,10 +932,15 @@ trait ItemController
         $stepCaptions = $item->flowStepCaptions();
         foreach ($item->flowSteps() as $step => $fields) {
 
-            if ($this->action->id != "edit") {
-                $stepProgress = $item->calculateValidationProgress("step_" . $step);
+            if ($this->action->id == "translate" && $translateInto !== null) {
+                if (!$this->isStepTranslatable($item, $fields)) {
+                    continue;
+                }
+                $stepProgress = $item->edited()->calculateValidationProgress('into_' . $translateInto . "-step_" . $step);
+            } elseif ($this->action->id == "edit") {
+                $stepProgress = $item->edited()->calculateValidationProgress("step_$step-total_progress");
             } else {
-                $stepProgress = $item->calculateValidationProgress("step_$step-total_progress");
+                $stepProgress = $item->edited()->calculateValidationProgress("step_" . $step);
             }
 
             $stepActions[] = array(
@@ -949,6 +957,26 @@ trait ItemController
         $this->workflowData["stepActions"] = $stepActions;
         $this->workflowData["flagTriggerActions"] = $flagTriggerActions;
 
+    }
+
+    /**
+     * @param $item
+     * @param $fields
+     * @return bool
+     */
+    public function isStepTranslatable($item, $fields)
+    {
+        $currentlyTranslatableAttributes = $item->getCurrentlyTranslatableAttributes();
+
+        $numTranslatableAttributes = count($fields);
+        foreach ($fields as $field) {
+            $sourceLanguageContentAttribute = str_replace('_' . $item->source_language, '', $field);
+            if (!in_array($sourceLanguageContentAttribute, $currentlyTranslatableAttributes)) {
+                $numTranslatableAttributes--;
+            }
+        }
+
+        return $numTranslatableAttributes > 0;
     }
 
     // $fromid = [item] id, $toid = [node] id ! important

@@ -122,15 +122,11 @@ trait ItemTrait
 
     }
 
-    /**
-     * Translations are required if their source content counterpart is a string with some contents
-     * @return array
-     */
-    public function i18nRules()
+    public function getCurrentlyTranslatableAttributes()
     {
-        $behaviors = $this->behaviors();
-
         $currentlyTranslatableAttributes = array();
+
+        $behaviors = $this->behaviors();
 
         // i18n-attribute-messages
         if (isset($behaviors['i18n-attribute-messages'])) {
@@ -158,6 +154,20 @@ trait ItemTrait
             }
         }
 
+        return $currentlyTranslatableAttributes;
+    }
+
+    /**
+     * Translations are required if their source content counterpart is a string with some contents
+     * @return array
+     */
+    public function i18nRules()
+    {
+        $currentlyTranslatableAttributes = $this->getCurrentlyTranslatableAttributes();
+
+        //Yii::log("behaviors: " . print_r($behaviors, true), "info", __METHOD__);
+        //Yii::log("currentlyTranslatableAttributes: " . print_r($currentlyTranslatableAttributes, true), "info", __METHOD__);
+
         // If there is nothing to translate, then the translation progress should equal 0%
         if (empty($currentlyTranslatableAttributes)) {
 
@@ -165,10 +175,13 @@ trait ItemTrait
             $i18nRules = array();
             foreach (Yii::app()->params["languages"] as $language => $label) {
                 $i18nRules[] = array('id', 'compare', 'compareValue' => -1, 'on' => 'translate_into_' . $language);
+
+                foreach ($this->flowSteps() as $step => $fields) {
+                    $i18nRules[] = array('id', 'compare', 'compareValue' => -1, 'on' => "into_$language-step_$step");
+                }
             }
 
             return $i18nRules;
-
         }
 
         $i18nRules = array();
@@ -182,6 +195,7 @@ trait ItemTrait
                 foreach (Yii::app()->params["languages"] as $lang => $label) {
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "into_$lang-step_$step");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "into_$lang-step_$step");
+                    $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "into_$lang-step_$step");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "translate_into_$lang");
                 }
             }
