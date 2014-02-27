@@ -854,16 +854,11 @@ trait ItemController
         $this->scenario = "into_$translateInto-step_$step";
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
-        $subtitles = $model->getParsedSubtitles();
-        if (!empty($subtitles)) {
-            $this->performAjaxValidation($model);
-            $this->saveAndContinueOnSuccess($model);
-            $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translate into {translateIntoLanguage}', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])), $translateInto);
-            $stepCaptions = $model->flowStepCaptions();
-            $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
-        } else {
-            throw new CHttpException(404, Yii::t('error', 'No subtitles found.'));
-        }
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
+        $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translate into {translateIntoLanguage}', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])), $translateInto);
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
     public $workflowData = array();
