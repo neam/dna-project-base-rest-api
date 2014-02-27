@@ -2,7 +2,7 @@
 $I = new WebGuy($scenario);
 $I->wantTo('sign in and sign out');
 
-Codeception\Module\WebHelper::login($I, 'admin', 'admin');
+Codeception\Module\WebHelper::login($I, 'admin', YII_ADMIN_PASSWORD);
 
 $I->see('Logout','#backend-navbar .dropdown-menu li a');
 $I->see('admin', '#backend-navbar');
