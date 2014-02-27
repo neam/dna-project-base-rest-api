@@ -1,5 +1,5 @@
 <?php /* @var Controller $this */ ?>
-<div class="layout-navbar">
+<div id="frontend-navbar" class="layout-navbar">
     <?php
     Yii::import('p3pages.modules.*');
 
