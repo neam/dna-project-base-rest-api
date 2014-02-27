@@ -1,7 +1,16 @@
 <?php
 
-// config files
 $dir = realpath(dirname(__FILE__).'/..').'/';
+
+// register composer autoloader
+require_once(dirname(__FILE__).'/../vendor/autoload.php');
+
+//define("YII_DEBUG", true);
+
+// load Yii
+require_once($dir.'vendor/yiisoft/yii/framework/yii.php');
+
+// config files
 $main   = require($dir.'app/config/main.php');
 $local  = require($dir.'app/config/main-local.php');
 $env    = require($dir.'app/config/env-test.php');
@@ -9,12 +18,6 @@ $env    = require($dir.'app/config/env-test.php');
 // define YII_DEBUG in config files
 if (defined('YII_DEBUG') && YII_DEBUG)
     error_reporting(E_ALL | E_STRICT);
-
-// register composer autoloader
-require_once(dirname(__FILE__).'/../vendor/autoload.php');
-
-// load Yii
-require_once($dir.'vendor/yiisoft/yii/framework/yii.php');
 
 // merge configurations
 $config = CMap::mergeArray($main,$env,$local);

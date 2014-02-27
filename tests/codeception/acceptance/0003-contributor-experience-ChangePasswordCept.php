@@ -2,6 +2,8 @@
 $I = new WebGuy($scenario);
 $I->wantTo('change password');
 
+/*
+
 // Login
 
 Codeception\Module\WebHelper::login($I, 'editor', 'editor');
@@ -17,3 +19,5 @@ $I->fillField('UserChangePassword[verifyPassword]','editor');
 $I->click('.form INPUT[type=submit]');
 $I->see('Your profile');
 $I->see('New password is saved.');
+
+*/
