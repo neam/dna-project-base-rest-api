@@ -92,7 +92,11 @@ class AppRegistrationController extends RegistrationController
                 }
             }
 
-            $this->render('/user/registration', array('model' => $model, 'profile' => $profile));
+            $this->render('/user/registration', array(
+                'model' => $model,
+                'profile' => $profile,
+                'profileFields' => Profile::getFields(),
+            ));
         }
     }
 }
