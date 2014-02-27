@@ -2,6 +2,7 @@
 /* @var Controller|ItemController $this */
 /* @var ActiveRecord|ItemTrait $model */
 /* @var AppActiveForm $form */
+/* @var string $step */
 /* @var string $stepCaption */
 /* @var string $controllerCssClass */
 ?>
