@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3752406dd28029d26a74e409b9ec9df5",
+    "hash": "44b95e031cddaa844e5645e94362c05c",
     "packages": [
         {
             "name": "bwoester/yii-event-interceptor",
@@ -162,12 +162,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "3c9264f63e81f283529ec9e06e359838135e4e7e"
+                "reference": "57eb2def942e9308898db6c2e3350ce685392b49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/3c9264f63e81f283529ec9e06e359838135e4e7e",
-                "reference": "3c9264f63e81f283529ec9e06e359838135e4e7e",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/57eb2def942e9308898db6c2e3350ce685392b49",
+                "reference": "57eb2def942e9308898db6c2e3350ce685392b49",
                 "shasum": ""
             },
             "require-dev": {
@@ -211,7 +211,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2014-02-14 15:02:45"
+            "time": "2014-02-13 12:19:45"
         },
         {
             "name": "kswedberg/jquery-smooth-scroll",
@@ -580,17 +580,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PHPPowerPoint.git",
-                "reference": "e6cdeb57ac164a5ec62645e893a2b1c87a714bda"
+                "reference": "1ed4c9b7bf7cac6d5225154370ff83785289d0c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PHPPowerPoint/zipball/e6cdeb57ac164a5ec62645e893a2b1c87a714bda",
-                "reference": "e6cdeb57ac164a5ec62645e893a2b1c87a714bda",
+                "url": "https://api.github.com/repos/PHPOffice/PHPPowerPoint/zipball/1ed4c9b7bf7cac6d5225154370ff83785289d0c4",
+                "reference": "1ed4c9b7bf7cac6d5225154370ff83785289d0c4",
                 "shasum": ""
-            },
-            "require": {
-                "ext-xml": "*",
-                "php": ">=5.2.0"
             },
             "type": "library",
             "autoload": {
@@ -598,34 +594,11 @@
                     "PHPPowerPoint": "Classes/"
                 }
             },
-            "license": [
-                "LGPL"
-            ],
-            "authors": [
-                {
-                    "name": "Mark Baker"
-                },
-                {
-                    "name": "Franck Lefevre",
-                    "homepage": "http://blog.rootslabs.net"
-                }
-            ],
-            "description": "PHPPowerPoint - Read, Create and Write Presentations documents in PHP",
-            "homepage": "http://phpoffice.github.io",
-            "keywords": [
-                "LibreOffice",
-                "PHP",
-                "PowerPoint",
-                "odp",
-                "ppt",
-                "pptx",
-                "presentations"
-            ],
             "support": {
                 "source": "https://github.com/PHPOffice/PHPPowerPoint/tree/master",
                 "issues": "https://github.com/PHPOffice/PHPPowerPoint/issues"
             },
-            "time": "2013-12-13 10:46:08"
+            "time": "2013-01-12 20:47:02"
         },
         {
             "name": "phpoffice/phpword",
@@ -798,12 +771,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/p3media.git",
-                "reference": "4a20441f805d36cebde699f0fa78b17ac741c4fe"
+                "reference": "88e3e3952eb457545d24e0f0f2acc85a333702d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/p3media/zipball/4a20441f805d36cebde699f0fa78b17ac741c4fe",
-                "reference": "4a20441f805d36cebde699f0fa78b17ac741c4fe",
+                "url": "https://api.github.com/repos/motin/p3media/zipball/88e3e3952eb457545d24e0f0f2acc85a333702d8",
+                "reference": "88e3e3952eb457545d24e0f0f2acc85a333702d8",
                 "shasum": ""
             },
             "require": {
@@ -847,7 +820,7 @@
             "support": {
                 "source": "https://github.com/motin/p3media/tree/awaiting-prs"
             },
-            "time": "2013-12-16 11:56:54"
+            "time": "2013-12-13 13:16:40"
         },
         {
             "name": "phundament/p3pages",
@@ -855,12 +828,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3pages.git",
-                "reference": "0.17.2"
+                "reference": "3e337a4611d59b88e9d4fd1d56667af3d6b66e02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/0.17.2",
-                "reference": "0.17.2",
+                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/3e337a4611d59b88e9d4fd1d56667af3d6b66e02",
+                "reference": "3e337a4611d59b88e9d4fd1d56667af3d6b66e02",
                 "shasum": ""
             },
             "require": {
@@ -901,10 +874,10 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3pages/tree/0.17.2",
+                "source": "https://github.com/schmunk42/p3pages/tree/master",
                 "issues": "https://github.com/schmunk42/p3pages/issues"
             },
-            "time": "2014-02-24 16:15:21"
+            "time": "2013-11-25 09:10:37"
         },
         {
             "name": "phundament/p3widgets",
@@ -1021,7 +994,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record access check implementation",
@@ -1052,7 +1025,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
@@ -1105,12 +1078,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/multi-theme.git",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a"
+                "reference": "0.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/f9fcd89e8620be03340cd1d6125ae2522b71719a",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a",
+                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/0.1.1",
+                "reference": "0.1.1",
                 "shasum": ""
             },
             "require": {
@@ -1126,7 +1099,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Theme-Manager class, switch themes by regular expressions on controller routes.",
@@ -1282,12 +1255,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/wrest.git",
-                "reference": "40a644bb74ef2013b2e68d74653b02411144f801"
+                "reference": "e99851193d0cd7b1301e0dcfafaf11f6832496d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/wrest/zipball/40a644bb74ef2013b2e68d74653b02411144f801",
-                "reference": "40a644bb74ef2013b2e68d74653b02411144f801",
+                "url": "https://api.github.com/repos/neam/wrest/zipball/e99851193d0cd7b1301e0dcfafaf11f6832496d7",
+                "reference": "e99851193d0cd7b1301e0dcfafaf11f6832496d7",
                 "shasum": ""
             },
             "require": {
@@ -1318,7 +1291,7 @@
             "support": {
                 "source": "https://github.com/neam/wrest/tree/awaiting-prs"
             },
-            "time": "2014-01-28 21:26:50"
+            "time": "2013-12-04 01:57:07"
         },
         {
             "name": "yiiext/status-behavior",
@@ -1364,12 +1337,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii-backend-theme.git",
-                "reference": "8631a672ec0c2a050805f6d1795705ed8cbddc79"
+                "reference": "763279b60ee3dcc62ff54e29fe20e4695b11a554"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/8631a672ec0c2a050805f6d1795705ed8cbddc79",
-                "reference": "8631a672ec0c2a050805f6d1795705ed8cbddc79",
+                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/763279b60ee3dcc62ff54e29fe20e4695b11a554",
+                "reference": "763279b60ee3dcc62ff54e29fe20e4695b11a554",
                 "shasum": ""
             },
             "require": {
@@ -1402,7 +1375,7 @@
                 "theme",
                 "yii"
             ],
-            "time": "2013-11-21 02:07:14"
+            "time": "2013-10-25 17:29:47"
         },
         {
             "name": "phundament/gii-template-collection",
@@ -1503,12 +1476,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/giic.git",
-                "reference": "29f3bc567b4ce2c1a550bf99d65dc5ae36046051"
+                "reference": "c0e433e262d56785c03c7bc69fcd704c2a052e6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/giic/zipball/29f3bc567b4ce2c1a550bf99d65dc5ae36046051",
-                "reference": "29f3bc567b4ce2c1a550bf99d65dc5ae36046051",
+                "url": "https://api.github.com/repos/schmunk42/giic/zipball/c0e433e262d56785c03c7bc69fcd704c2a052e6d",
+                "reference": "c0e433e262d56785c03c7bc69fcd704c2a052e6d",
                 "shasum": ""
             },
             "require": {
@@ -1535,7 +1508,7 @@
                 "gii",
                 "yii"
             ],
-            "time": "2014-02-14 16:15:49"
+            "time": "2013-10-23 23:26:49"
         }
     ],
     "aliases": [
