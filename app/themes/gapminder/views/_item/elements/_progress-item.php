@@ -30,7 +30,7 @@
         }
         $this->widget("\TbButton", array(
             "label" => Yii::t("model", $caption),
-            "type" => $_GET['step'] == $step ? 'inverse' : TbHtml::BUTTON_COLOR_DEFAULT,
+            "color" => $_GET['step'] == $step ? 'inverse' : TbHtml::BUTTON_COLOR_DEFAULT,
             "size" => TbHtml::BUTTON_SIZE_XS,
             'block' => true,
             "icon" => "glyphicon-edit" . ($this->action->id == $action ? " icon-white" : null),

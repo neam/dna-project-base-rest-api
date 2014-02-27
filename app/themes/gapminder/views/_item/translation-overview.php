@@ -42,7 +42,7 @@ $this->breadcrumbs[] = $actionCaption;
                     <?php
                     $this->widget("\TbButton", array(
                         "label" => $label,
-                        "type" => $this->action->id == $action ? "inverse" : null,
+                        "color" => $this->action->id == $action ? "inverse" : null,
                         "size" => TbHtml::BUTTON_SIZE_XS,
                         "icon" => "glyphicon-" . $options['icon'] . ($this->action->id == $action ? " icon-white" : null),
                         "url" => array($action, "id" => $model->{$model->tableSchema->primaryKey}, 'step' => $step, 'translateInto' => $language),

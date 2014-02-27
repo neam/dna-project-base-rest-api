@@ -6448,7 +6448,7 @@ td.visible-print {
 @media (min-width: 992px) {
   .item-controller .item-header .header-text {
     float: left;
-    width: 50%;
+    width: 66.66666666666666%;
   }
 }
 .item-controller .item-header .header-text .header-title {
@@ -6469,7 +6469,7 @@ td.visible-print {
 @media (min-width: 992px) {
   .item-controller .item-header .header-actions {
     float: left;
-    width: 50%;
+    width: 33.33333333333333%;
   }
 }
 .item-controller.browse-action .browsebar .browsebar-actions:before,
