@@ -331,6 +331,7 @@ $mainConfig = array(
             'connectionString' => 'sqlite:' . $applicationDirectory . '/data/test.db',
         ),
         'errorHandler'  => array(
+            'class' => 'vendor.crisu83.yii-sentry.components.SentryErrorHandler',
             // use 'site/error' action to display errors
             'errorAction' => 'site/error',
         ),
@@ -385,6 +386,12 @@ $mainConfig = array(
         'messages'      => array(
             'class' => 'CDbMessageSource',
             //'onMissingTranslation'  => configured in env-development.php,
+        ),
+        'sentry' => array(
+            'class' => 'vendor.crisu83.yii-sentry.components.SentryClient',
+            'dns' => null,
+            'enabledEnvironment' => array('production', 'staging'),
+            'environment' => null, // set in the environment config file
         ),
         'translate'     => array(
             'class'                  => 'vendor.gusnips.yii-translate.components.MPTranslate',

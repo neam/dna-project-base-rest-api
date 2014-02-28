@@ -32,8 +32,8 @@ $gcmsConfig = array(
         'env' => 'development',
     ),
     'preload' => array( //'ezc', // trying out if we can lazy-load this instead of preloading it...
-        // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login
-        'loginReturnUrlTracker'
+                        // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login
+                        'loginReturnUrlTracker'
     ),
     'aliases' => array(
         // bower components
@@ -203,6 +203,11 @@ $gcmsConfig = array(
         'ezc' => array(
             'class' => 'application.components.EzcComponent',
             'tablePrefix' => 'ezc_',
+        ),
+        'sentry' => array(
+            'dns' => 'https://f04403a913c647c88aa97bb1a3261f48:1096055a3e5840e59f84409db2d8e159@app.getsentry.com/20208',
+            'enabledEnvironments' => array('stage.cms.gapminder.org', 'cms.gapminder.org'),
+            'environment' => ENV,
         ),
     )
 );

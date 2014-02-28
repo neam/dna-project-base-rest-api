@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "44b95e031cddaa844e5645e94362c05c",
+    "hash": "64011d7b08d78f120129d56f35860bc9",
     "packages": [
         {
             "name": "bwoester/yii-event-interceptor",
@@ -157,17 +157,64 @@
             "time": "2013-10-11 09:20:14"
         },
         {
+            "name": "crisu83/yii-sentry",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Crisu83/yii-sentry.git",
+                "reference": "466f817bc4f2333de5b61c041a12298751e24fd8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Crisu83/yii-sentry/zipball/466f817bc4f2333de5b61c041a12298751e24fd8",
+                "reference": "466f817bc4f2333de5b61c041a12298751e24fd8",
+                "shasum": ""
+            },
+            "require": {
+                "raven/raven": "0.8.*"
+            },
+            "require-dev": {
+                "yiisoft/yii": ">=1.1.14"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "components/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christoffer Niska",
+                    "email": "christoffer.niska@gmail.com",
+                    "homepage": "http://www.cniska.net/"
+                }
+            ],
+            "description": "Sentry for the Yii PHP framework.",
+            "keywords": [
+                "error",
+                "exception",
+                "log",
+                "sentry",
+                "yii"
+            ],
+            "time": "2014-02-10 13:59:17"
+        },
+        {
             "name": "crisu83/yiistrap",
             "version": "dev-bs3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "2bbb8dda54e9719d945690e89162d3fdede2da2b"
+                "reference": "57eb2def942e9308898db6c2e3350ce685392b49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/2bbb8dda54e9719d945690e89162d3fdede2da2b",
-                "reference": "2bbb8dda54e9719d945690e89162d3fdede2da2b",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/57eb2def942e9308898db6c2e3350ce685392b49",
+                "reference": "57eb2def942e9308898db6c2e3350ce685392b49",
                 "shasum": ""
             },
             "require-dev": {
@@ -211,7 +258,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2014-02-26 15:05:03"
+            "time": "2014-02-13 12:19:45"
         },
         {
             "name": "kswedberg/jquery-smooth-scroll",
@@ -266,12 +313,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "5d5272a8197701ba19ece344142ba6e8cd41370e"
+                "reference": "1ea2e1f6e96a323e276b19b6812b406ed2651e6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/5d5272a8197701ba19ece344142ba6e8cd41370e",
-                "reference": "5d5272a8197701ba19ece344142ba6e8cd41370e",
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/1ea2e1f6e96a323e276b19b6812b406ed2651e6a",
+                "reference": "1ea2e1f6e96a323e276b19b6812b406ed2651e6a",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -293,7 +340,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-02-27 14:15:03"
+            "time": "2014-02-12 12:17:56"
         },
         {
             "name": "motin/yii-owner-behavior",
@@ -341,12 +388,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-i18n-attribute-messages.git",
-                "reference": "af55612123ce82c949b99b1ed1838f4c47a14f1a"
+                "reference": "cac7f7951ec7cd3ea460ffe2a6397d6dc7b5db68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-i18n-attribute-messages/zipball/af55612123ce82c949b99b1ed1838f4c47a14f1a",
-                "reference": "af55612123ce82c949b99b1ed1838f4c47a14f1a",
+                "url": "https://api.github.com/repos/neam/yii-i18n-attribute-messages/zipball/cac7f7951ec7cd3ea460ffe2a6397d6dc7b5db68",
+                "reference": "cac7f7951ec7cd3ea460ffe2a6397d6dc7b5db68",
                 "shasum": ""
             },
             "require": {
@@ -374,7 +421,7 @@
                 "source": "https://github.com/neam/yii-i18n-attribute-messages/tree/develop",
                 "issues": "https://github.com/neam/yii-i18n-attribute-messages/issues"
             },
-            "time": "2014-02-27 12:11:42"
+            "time": "2013-12-16 08:00:50"
         },
         {
             "name": "neam/yii-i18n-columns",
@@ -580,17 +627,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PHPPowerPoint.git",
-                "reference": "e6cdeb57ac164a5ec62645e893a2b1c87a714bda"
+                "reference": "1ed4c9b7bf7cac6d5225154370ff83785289d0c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PHPPowerPoint/zipball/e6cdeb57ac164a5ec62645e893a2b1c87a714bda",
-                "reference": "e6cdeb57ac164a5ec62645e893a2b1c87a714bda",
+                "url": "https://api.github.com/repos/PHPOffice/PHPPowerPoint/zipball/1ed4c9b7bf7cac6d5225154370ff83785289d0c4",
+                "reference": "1ed4c9b7bf7cac6d5225154370ff83785289d0c4",
                 "shasum": ""
-            },
-            "require": {
-                "ext-xml": "*",
-                "php": ">=5.2.0"
             },
             "type": "library",
             "autoload": {
@@ -598,34 +641,11 @@
                     "PHPPowerPoint": "Classes/"
                 }
             },
-            "license": [
-                "LGPL"
-            ],
-            "authors": [
-                {
-                    "name": "Mark Baker"
-                },
-                {
-                    "name": "Franck Lefevre",
-                    "homepage": "http://blog.rootslabs.net"
-                }
-            ],
-            "description": "PHPPowerPoint - Read, Create and Write Presentations documents in PHP",
-            "homepage": "http://phpoffice.github.io",
-            "keywords": [
-                "LibreOffice",
-                "PHP",
-                "PowerPoint",
-                "odp",
-                "ppt",
-                "pptx",
-                "presentations"
-            ],
             "support": {
                 "source": "https://github.com/PHPOffice/PHPPowerPoint/tree/master",
                 "issues": "https://github.com/PHPOffice/PHPPowerPoint/issues"
             },
-            "time": "2013-12-13 10:46:08"
+            "time": "2013-01-12 20:47:02"
         },
         {
             "name": "phpoffice/phpword",
@@ -798,12 +818,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/p3media.git",
-                "reference": "4a20441f805d36cebde699f0fa78b17ac741c4fe"
+                "reference": "88e3e3952eb457545d24e0f0f2acc85a333702d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/p3media/zipball/4a20441f805d36cebde699f0fa78b17ac741c4fe",
-                "reference": "4a20441f805d36cebde699f0fa78b17ac741c4fe",
+                "url": "https://api.github.com/repos/motin/p3media/zipball/88e3e3952eb457545d24e0f0f2acc85a333702d8",
+                "reference": "88e3e3952eb457545d24e0f0f2acc85a333702d8",
                 "shasum": ""
             },
             "require": {
@@ -847,7 +867,7 @@
             "support": {
                 "source": "https://github.com/motin/p3media/tree/awaiting-prs"
             },
-            "time": "2013-12-16 11:56:54"
+            "time": "2013-12-13 13:16:40"
         },
         {
             "name": "phundament/p3pages",
@@ -855,12 +875,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3pages.git",
-                "reference": "0.17.2"
+                "reference": "3e337a4611d59b88e9d4fd1d56667af3d6b66e02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/0.17.2",
-                "reference": "0.17.2",
+                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/3e337a4611d59b88e9d4fd1d56667af3d6b66e02",
+                "reference": "3e337a4611d59b88e9d4fd1d56667af3d6b66e02",
                 "shasum": ""
             },
             "require": {
@@ -901,10 +921,10 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3pages/tree/0.17.2",
+                "source": "https://github.com/schmunk42/p3pages/tree/master",
                 "issues": "https://github.com/schmunk42/p3pages/issues"
             },
-            "time": "2014-02-24 16:15:21"
+            "time": "2013-11-25 09:10:37"
         },
         {
             "name": "phundament/p3widgets",
@@ -961,6 +981,58 @@
                 "issues": "https://github.com/schmunk42/p3widgets/issues"
             },
             "time": "2013-11-21 01:04:04"
+        },
+        {
+            "name": "raven/raven",
+            "version": "0.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/getsentry/raven-php.git",
+                "reference": "d4b741736125f2b892e07903cd40450b53479290"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/getsentry/raven-php/zipball/d4b741736125f2b892e07903cd40450b53479290",
+                "reference": "d4b741736125f2b892e07903cd40450b53479290",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "bin": [
+                "bin/raven"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.7.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Raven_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "David Cramer",
+                    "email": "dcramer@gmail.com"
+                }
+            ],
+            "description": "A PHP client for Sentry (http://getsentry.com)",
+            "homepage": "http://getsentry.com",
+            "keywords": [
+                "log",
+                "logging"
+            ],
+            "time": "2013-12-03 10:27:59"
         },
         {
             "name": "sammaye/auditrail2",
@@ -1282,12 +1354,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/wrest.git",
-                "reference": "40a644bb74ef2013b2e68d74653b02411144f801"
+                "reference": "e99851193d0cd7b1301e0dcfafaf11f6832496d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/wrest/zipball/40a644bb74ef2013b2e68d74653b02411144f801",
-                "reference": "40a644bb74ef2013b2e68d74653b02411144f801",
+                "url": "https://api.github.com/repos/neam/wrest/zipball/e99851193d0cd7b1301e0dcfafaf11f6832496d7",
+                "reference": "e99851193d0cd7b1301e0dcfafaf11f6832496d7",
                 "shasum": ""
             },
             "require": {
@@ -1318,7 +1390,7 @@
             "support": {
                 "source": "https://github.com/neam/wrest/tree/awaiting-prs"
             },
-            "time": "2014-01-28 21:26:50"
+            "time": "2013-12-04 01:57:07"
         },
         {
             "name": "yiiext/status-behavior",
@@ -1364,12 +1436,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii-backend-theme.git",
-                "reference": "8631a672ec0c2a050805f6d1795705ed8cbddc79"
+                "reference": "763279b60ee3dcc62ff54e29fe20e4695b11a554"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/8631a672ec0c2a050805f6d1795705ed8cbddc79",
-                "reference": "8631a672ec0c2a050805f6d1795705ed8cbddc79",
+                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/763279b60ee3dcc62ff54e29fe20e4695b11a554",
+                "reference": "763279b60ee3dcc62ff54e29fe20e4695b11a554",
                 "shasum": ""
             },
             "require": {
@@ -1402,7 +1474,7 @@
                 "theme",
                 "yii"
             ],
-            "time": "2013-11-21 02:07:14"
+            "time": "2013-10-25 17:29:47"
         },
         {
             "name": "phundament/gii-template-collection",
@@ -1503,12 +1575,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/giic.git",
-                "reference": "29f3bc567b4ce2c1a550bf99d65dc5ae36046051"
+                "reference": "c0e433e262d56785c03c7bc69fcd704c2a052e6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/giic/zipball/29f3bc567b4ce2c1a550bf99d65dc5ae36046051",
-                "reference": "29f3bc567b4ce2c1a550bf99d65dc5ae36046051",
+                "url": "https://api.github.com/repos/schmunk42/giic/zipball/c0e433e262d56785c03c7bc69fcd704c2a052e6d",
+                "reference": "c0e433e262d56785c03c7bc69fcd704c2a052e6d",
                 "shasum": ""
             },
             "require": {
@@ -1535,7 +1607,7 @@
                 "gii",
                 "yii"
             ],
-            "time": "2014-02-14 16:15:49"
+            "time": "2013-10-23 23:26:49"
         }
     ],
     "aliases": [

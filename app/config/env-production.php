@@ -15,6 +15,9 @@ return array(
                 ),
             ),
         ),
+        'sentry' => array(
+            'environment' => 'production',
+        ),
     ),
     'params'     => array(
         #'adminEmail' => 'webmaster@h17n.de', // this is used in contact page
