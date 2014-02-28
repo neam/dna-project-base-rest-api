@@ -62,10 +62,10 @@ class Snapshot extends BaseSnapshot
 
             )
         );
-        Yii::log("model->statusRequirementsRules(): " . print_r($this->statusRequirementsRules(), true), "info", __METHOD__);
-        Yii::log("model->flowStepRules(): " . print_r($this->flowStepRules(), true), "info", __METHOD__);
-        Yii::log("model->i18nRules(): " . print_r($this->i18nRules(), true), "info", __METHOD__);
-        Yii::log("model->rules(): " . print_r($return, true), "info", __METHOD__);
+        Yii::log("model->statusRequirementsRules(): " . print_r($this->statusRequirementsRules(), true), "trace", __METHOD__);
+        Yii::log("model->flowStepRules(): " . print_r($this->flowStepRules(), true), "trace", __METHOD__);
+        Yii::log("model->i18nRules(): " . print_r($this->i18nRules(), true), "trace", __METHOD__);
+        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
     }
 

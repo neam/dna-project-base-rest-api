@@ -42,7 +42,7 @@
             $this->widget('\TbButton', array(
                 'label' => Yii::t('model', 'Load current translations into media player'),
                 'url' => Yii::app()->request->url,
-                'type' => 'primary',
+                'color' => 'primary',
             ));
             break;
 
