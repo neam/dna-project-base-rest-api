@@ -334,7 +334,13 @@ trait ItemController
 
         $this->populateWorkflowData($model, "browse", Yii::t('app', 'Browse'));
 
-        $this->render('/_item/browse', array('model' => $model, 'dataProvider' => $dataProvider,));
+        $this->render(
+            '/_item/browse',
+            array(
+                'model' => $model,
+                'dataProvider' => $dataProvider,
+            )
+        );
     }
 
 

@@ -53,7 +53,6 @@
                             "\TbButton",
                             array(
                                 "label" => $action["label"],
-                                "type" => "",
                                 "disabled" => true,
                             )
                         ); ?>
