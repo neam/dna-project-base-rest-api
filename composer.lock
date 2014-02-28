@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3752406dd28029d26a74e409b9ec9df5",
+    "hash": "44b95e031cddaa844e5645e94362c05c",
     "packages": [
         {
             "name": "bwoester/yii-event-interceptor",
@@ -162,12 +162,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "3c9264f63e81f283529ec9e06e359838135e4e7e"
+                "reference": "2bbb8dda54e9719d945690e89162d3fdede2da2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/3c9264f63e81f283529ec9e06e359838135e4e7e",
-                "reference": "3c9264f63e81f283529ec9e06e359838135e4e7e",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/2bbb8dda54e9719d945690e89162d3fdede2da2b",
+                "reference": "2bbb8dda54e9719d945690e89162d3fdede2da2b",
                 "shasum": ""
             },
             "require-dev": {
@@ -211,7 +211,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2014-02-14 15:02:45"
+            "time": "2014-02-26 15:05:03"
         },
         {
             "name": "kswedberg/jquery-smooth-scroll",
@@ -266,12 +266,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "1ea2e1f6e96a323e276b19b6812b406ed2651e6a"
+                "reference": "5d5272a8197701ba19ece344142ba6e8cd41370e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/1ea2e1f6e96a323e276b19b6812b406ed2651e6a",
-                "reference": "1ea2e1f6e96a323e276b19b6812b406ed2651e6a",
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/5d5272a8197701ba19ece344142ba6e8cd41370e",
+                "reference": "5d5272a8197701ba19ece344142ba6e8cd41370e",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -293,7 +293,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-02-12 12:17:56"
+            "time": "2014-02-27 14:15:03"
         },
         {
             "name": "motin/yii-owner-behavior",
@@ -1021,7 +1021,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record access check implementation",
@@ -1052,7 +1052,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
@@ -1105,12 +1105,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/multi-theme.git",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a"
+                "reference": "0.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/f9fcd89e8620be03340cd1d6125ae2522b71719a",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a",
+                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/0.1.1",
+                "reference": "0.1.1",
                 "shasum": ""
             },
             "require": {
@@ -1126,7 +1126,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Theme-Manager class, switch themes by regular expressions on controller routes.",
