@@ -390,7 +390,7 @@ $mainConfig = array(
         'sentry' => array(
             'class' => 'vendor.crisu83.yii-sentry.components.SentryClient',
             'dns' => null,
-            'enabledEnvironment' => array('production', 'staging'),
+            'enabledEnvironments' => array('production', 'staging'),
             'environment' => null, // set in the environment config file
         ),
         'translate'     => array(
