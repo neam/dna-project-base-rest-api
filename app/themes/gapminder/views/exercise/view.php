@@ -38,7 +38,7 @@
                         '\TbButton',
                         array(
                             'label' => Yii::t('model', 'Delete'),
-                            'type' => 'danger',
+                            'color' => TbHtml::BUTTON_COLOR_DANGER,
                             'icon' => 'glyphicon-remove icon-white',
                             'htmlOptions' => array(
                                 'submit' => array(

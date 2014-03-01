@@ -28,7 +28,7 @@ $fromLabel = Yii::t('app', $model->getModelLabel(), 1);
                     "label" => Yii::t("model", "Edit"),
                     "url" => array($itemModel . "/continueAuthoring", "id" => $realItem->{$realItem->tableSchema->primaryKey}, "returnUrl" => Yii::app()->request->url),
                     "size" => "small",
-                    "type" => "primary"
+                    "color" => TbHtml::BUTTON_COLOR_PRIMARY,
                 ));
                 ?>
                 <?php
@@ -36,7 +36,7 @@ $fromLabel = Yii::t('app', $model->getModelLabel(), 1);
                     "label" => Yii::t("model", "Remove {$toLabel} from {$fromLabel}"),
                     "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $realItem->node_id,  "relation" => $relation, "returnUrl" => Yii::app()->request->url),
                     "size" => "small",
-                    "type" => "danger"
+                    "color" => TbHtml::BUTTON_COLOR_DANGER,
                 ));
                 ?>
             </li>

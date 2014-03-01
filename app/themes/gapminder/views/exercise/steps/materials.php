@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<?php /*$this->renderPartial(
+<?php $this->renderPartial(
     '//gridRelation/_modal_form',
     array(
         'model' => $model,
@@ -42,4 +42,4 @@
         'toLabel' => 'material',
         'type' => 'edge',
     )
-); */?>
+); ?>
