@@ -30,7 +30,9 @@ class VideoFile extends BaseVideoFile
     {
         return array_merge(
             parent::behaviors(),
-            array()
+            array(
+                'goBehavior' => 'app.behaviors.GoActiveRecordBehavior',
+            )
         );
     }
 

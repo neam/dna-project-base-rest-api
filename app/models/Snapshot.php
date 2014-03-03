@@ -30,7 +30,9 @@ class Snapshot extends BaseSnapshot
     {
         return array_merge(
             parent::behaviors(),
-            array()
+            array(
+                'goBehavior' => 'app.behaviors.GoActiveRecordBehavior',
+            )
         );
     }
 

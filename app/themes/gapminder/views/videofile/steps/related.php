@@ -18,15 +18,55 @@
 
     </div>
 
-    TODO: select2
 
-    <?php echo $this->widget(
-        '\TbButton',
+    <?php
+    // TODO: This could propably be refactored
+    /** @var CDbCriteria $relatedCriteria */
+    $relatedCriteria = GoItem::model()->searchCriteria();
+    $relatedCriteria->addNotInCondition('node_id', $model->getRelatedNodeIds());
+    $relatedCriteria->addCondition('node_id != :model_node_id');
+    $relatedCriteria->params[':model_node_id'] = $model->node_id;
+    $select2 = $this->widget(
+        'vendor.crisu83.yiistrap-widgets.widgets.TbSelect2',
         array(
-            'label' => Yii::t('app', 'Add related item'),
-            'icon' => TbHtml::ICON_PLUS,
+            'name' => 'add-related-edges',
+            'data' => CHtml::listData(
+                    GoItem::model()->findAll($relatedCriteria),
+                    'node_id',
+                    function($item) {
+                        if (isset($item->_title)) {
+                            return $item->_title;
+                        }
+                        return $item->model_class . ' #' . $item->id;
+                    }
+                ),
+            'htmlOptions' => array(
+                'multiple' => 'multiple',
+            ),
+        )
+    );
+
+    echo TbHtml::ajaxButton(
+        Yii::t('videoFile', 'Add related item'),
+        $this->createUrl('addEdges'),
+        array(
+            'type' => 'POST',
+            'data' => "js: {
+                '" . get_class($model) . "': {
+                    'fromId': {$model->id},
+                    'relation': 'related',
+                    'edges_to_add': $('#{$select2->resolveId()}').select2('val')
+                }
+            }",
+            'success' => "js:function() {
+                location.reload(true);
+            }"
         ),
-        true
-    ); ?>
+        array(
+            'icon' => TbHtml::ICON_PLUS,
+        )
+    );
+
+    ?>
 
 </div>
