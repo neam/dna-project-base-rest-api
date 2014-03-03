@@ -7120,3 +7120,7 @@ td.visible-print {
 .list-view .list-foot {
   margin-bottom: 20px;
 }
+.select2-container.form-control {
+  border: none;
+  padding: 0;
+}

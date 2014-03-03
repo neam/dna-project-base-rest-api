@@ -209,6 +209,13 @@ $gcmsConfig = array(
             'enabledEnvironments' => array('stage.cms.gapminder.org', 'cms.gapminder.org'),
             'environment' => ENV,
         ),
+        'widgetFactory' => array(
+            'widgets' => array(
+                'TbSelect2' => array(
+                    'assetPath' => dirname(__DIR__) . '/../vendor/crisu83/yiistrap-widgets/lib/select2',
+                ),
+            ),
+        ),
     )
 );
 
