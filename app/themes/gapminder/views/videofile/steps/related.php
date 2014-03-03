@@ -1,7 +1,7 @@
 <?php
 // todo: fix this view (and refactor it)
-/* @var Snapshot $model */
-/* @var SnapshotController $this */
+/* @var VideoFile $model */
+/* @var VideoFileController $this */
 ?>
 <div class="control-group">
     <div class="controls">
