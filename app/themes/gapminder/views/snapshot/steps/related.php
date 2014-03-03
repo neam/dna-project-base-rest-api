@@ -18,7 +18,22 @@
 
     </div>
 
-    TODO: select2
+    <?php
+    $relatedCriteria = GoItem::model()->searchCriteria();
+    echo $form->select2(
+        $model,
+        'related',
+        CHtml::listData(
+            GoItem::model()->findAll($relatedCriteria),
+            'node_id',
+            function($item) {
+                if (isset($item->_title)) {
+                    return $item->_title;
+                }
+                return $item->model_class . ' #' . $item->id;
+            }
+        )
+    ); ?>
 
     <?php echo $this->widget(
         '\TbButton',
