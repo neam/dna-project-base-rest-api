@@ -1,18 +1,21 @@
 <?php
-// TODO: Refactor this view.
-if (!$this->workflowData['translateInto']) {
-    $this->renderPartial('steps/fields/subtitles', compact('form', 'model'));
-    $this->renderPartial('steps/fields/subtitles_import', compact('form', 'model'));
-} else {
-    $currentLang = Yii::app()->language;
-    Yii::app()->language = $this->workflowData['translateInto'];
-
-    $this->renderPartial('/videoFile/_view', array(
+/* @var VideoFileController $this */
+/* @var VideoFile|ItemTrait $model */
+/* @var AppActiveForm $form */
+?>
+<?php if (!$this->workflowData['translateInto']): ?>
+    <?php $this->renderPartial('steps/fields/subtitles', compact('form', 'model')); ?>
+    <?php $this->renderPartial('steps/fields/subtitles_import', compact('form', 'model')); ?>
+<?php else: ?>
+    <?php $currentLang = Yii::app()->language; ?>
+    <?php Yii::app()->language = $this->workflowData['translateInto']; ?>
+    <?php $this->renderPartial('/videoFile/_view', array(
         'data' => $model,
         'step' => $step,
-    ));
-
-    Yii::app()->language = $currentLang;
-    $this->renderPartial('translate/subtitles', compact('form', 'model'));
-}
-?>
+    )); ?>
+    <?php Yii::app()->language = $currentLang; ?>
+    <?php $this->renderPartial('translate/subtitles', array(
+        'model' => $model,
+        'form' => $form,
+    )); ?>
+<?php endif; ?>

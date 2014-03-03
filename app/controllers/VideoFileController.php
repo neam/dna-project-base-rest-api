@@ -119,6 +119,21 @@ class VideoFileController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
         $subtitles = $model->getParsedSubtitles();
+        if (isset($_POST['SourceMessage']) && !empty($_POST['SourceMessage'])) {
+            foreach ($_POST['SourceMessage'] as $id => $translation) {
+                $message = Message::model()->findByAttributes(array(
+                    'id' => $id,
+                    'language' => $translateInto,
+                ));
+                if (!isset($message)) {
+                    $message = new Message();
+                    $message->id = $id;
+                    $message->language = $translateInto;
+                }
+                $message->translation = $translation;
+                $message->save();
+            }
+        }
         if (!empty($subtitles)) {
             $this->performAjaxValidation($model);
             $this->saveAndContinueOnSuccess($model);
@@ -135,7 +150,11 @@ class VideoFileController extends Controller
             $stepCaptions = $model->flowStepCaptions();
             $this->render(
                 '/_item/edit',
-                array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step])
+                array(
+                    'model' => $model,
+                    'step' => $step,
+                    'stepCaption' => $stepCaptions[$step],
+                )
             );
         } else {
             throw new CHttpException(404, Yii::t('error', 'No subtitles found.'));

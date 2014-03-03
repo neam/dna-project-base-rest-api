@@ -1,15 +1,15 @@
 <?php
-/* @var VideoFile|ItemTrait $model */
 /* @var VideoFileController|ItemController $this */
+/* @var VideoFile|ItemTrait $model */
+/* @var AppActiveForm $form*/
 ?>
 <?php $messages_to_translate = $model->getParsedSubtitles(); ?>
 <?php $translateInto = $this->workflowData['translateInto']; ?>
-
 <?php $dataProvider = new CArrayDataProvider(array_values($messages_to_translate), array(
     'id' => 'user',
     'sort' => array(
         'attributes' => array(
-            'id', 'username', 'email',
+            'id', 'timestamp', 'sourceMessage',
         ),
     ),
     'pagination' => array(
@@ -31,7 +31,7 @@
             'id',
             array(
                 'name' => 'Subtitle',
-                'value' => function ($data) use ($translateInto) {
+                'value' => function($data) use ($translateInto) {
                         echo $data->timestamp;
                         echo '<br>';
                         echo $data->sourceMessage;
@@ -40,7 +40,13 @@
             ),
             array(
                 'name' => 'Translation',
-                'value' => function ($data) use ($model, $translateInto) {
+                'value' => function($data) use ($model, $form, $translateInto) {
+                        // TODO: Clean up.
+                        $sourceMessage = SourceMessage::ensureSourceMessage($model->getTranslationCategory(), $data->sourceMessage, $translateInto);
+                        $currentFallbackTranslation = Yii::t($model->getTranslationCategory(), $data->sourceMessage, array(), 'displayedMessages', $translateInto);
+                        echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentFallbackTranslation);
+
+                        /*
                         $category = "video-{$model->id}-subtitles";
                         $message = $data->sourceMessage;
                         $language = $translateInto;
@@ -74,7 +80,7 @@
                                 ),
                             )
                         );
-
+                        */
                     },
                 //'filter' => CHtml::listData($model->getMissingTranslations('category'), 'category', 'category'),
             ),
@@ -88,7 +94,6 @@
         <li><?php echo Yii::t('subtitles_foo', $message_to_translate['sourceMessage']); ?></li>
     <?php endforeach; ?>
 </ul>
-*/
-?>
+*/ ?>
 <?php publishJs('/themes/frontend/js/popover-focus-caret.js', CClientScript::POS_END); ?>
-<?php publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END); ?>
+<?php //publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END); ?>
