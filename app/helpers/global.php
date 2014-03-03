@@ -180,6 +180,26 @@ function publishCss($file, $media = '')
 }
 
 /**
+ * Registers an asset package.
+ * @param string $name the package name.
+ * @param string $basePath the base path for the assets.
+ * @param array $css the CSS files to register.
+ * @param array $js the JavaScript files to register.
+ * @param array $js the package dependencies (e.g. jquery).
+ */
+function registerPackage($name, $basePath, $css = array(), $js = array(), $depends = array())
+{
+    $package['basePath'] = $basePath;
+    $package['css'] = $css;
+    $package['js'] = $js;
+    $package['depends'] = $depends;
+
+    Yii::app()->clientScript
+        ->addPackage($name, $package)
+        ->registerPackage($name);
+}
+
+/**
  * Escapes the given string using CHtml::encode().
  * @param $text
  * @return string

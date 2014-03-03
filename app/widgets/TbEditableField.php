@@ -557,7 +557,8 @@ class TbEditableField extends CWidget
 	 */
 	public function registerAssets()
 	{
-		$this->packageRegistry->registerPackage('x-editable');
+        // TODO: Fix assets.
+        registerPackage('x-editable', 'application.themes.gapminder.assets.bootstrap-editable', array('css/bootstrap-editable.css'), array('js/bootstrap-editable.js'), array('jquery', 'bootstrap.js'));
 
 		if ($this->type == 'date' || $this->type == 'combodate') {
 			/** @var $widget TbDatePicker */
