@@ -30,4 +30,17 @@ class AppActiveForm extends TbActiveForm
             $data
         );
     }
+
+    public function select2($model, $attribute, $data = array(), $htmlOptions = array())
+    {
+        $this->registerValidators($model, $attribute, $htmlOptions);
+        $htmlOptions = $this->processControlGroupOptions($model, $attribute, $htmlOptions);
+        return Html::activeSelect2($model, $attribute, $data, $htmlOptions);
+    }
+
+    public function select2ControlGroup($model, $attribute, $data = array(), $htmlOptions = array())
+    {
+        $htmlOptions = $this->processControlGroupOptions($model, $attribute, $htmlOptions);
+        return Html::activeSelect2ControlGroup($model, $attribute, $data, $htmlOptions);
+    }
 }

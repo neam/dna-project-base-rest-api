@@ -87,6 +87,7 @@ $mainConfig = array(
         // widgets
         'vendor.moein7tl.yii-introjs.introjs.*',
         'vendor.yiiext.fancybox-widget.*',
+        'vendor.crisu83.yiistrap-widgets.widgets.*'
     ),
     /*
     'behaviors'  => array(
