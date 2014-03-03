@@ -206,6 +206,37 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
+     * Returns related P3Media.
+     * @return P3Media[]
+     */
+    public function getRelatedVideos()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->addInCondition('mime_type', array('video/webm'));
+        $criteria->addCondition('t.type = :type');
+        $criteria->addCondition('t.access_owner = :userId');
+        $criteria->limit = 100;
+        $criteria->order = 't.created_at DESC';
+        $criteria->params[':userId'] = Yii::app()->user->id;
+        $criteria->params[':type'] = 'file';
+        //dumpd(P3Media::model()->findAll($criteria));
+        return P3Media::model()->findAll($criteria);
+    }
+
+    /**
+     * Returns related video options.
+     * @return array
+     */
+    public function getRelatedVideoOptions()
+    {
+        return TbHtml::listData(
+            $this->getRelatedVideos(),
+            'id',
+            'original_name'
+        );
+    }
+
+    /**
      * Returns the video URL.
      * @return string|null
      */
