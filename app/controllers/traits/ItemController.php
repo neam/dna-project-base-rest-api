@@ -187,11 +187,9 @@ trait ItemController
 
     public function actionContinueAuthoring($id)
     {
-
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
         $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
-
     }
 
     /**
@@ -280,10 +278,8 @@ trait ItemController
 
     protected function firstFlowStep($item)
     {
+        // TODO: Change when this breaks something
         foreach ($item->flowSteps() as $step => $fields) {
-            if (!$this->isStepTranslatable($item, $fields)) {
-                continue;
-            }
             return $step;
         }
         return null;
