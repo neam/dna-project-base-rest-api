@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('DataChunkQaState', dirname(__FILE__));
-Yii::import('DataChunkQaState.*');
+Yii::setPathOfAlias('WaffleTag', dirname(__FILE__));
+Yii::import('WaffleTag.*');
 
-class DataChunkQaState extends BaseDataChunkQaState
+class WaffleTag extends BaseWaffleTag
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
@@ -42,13 +42,10 @@ class DataChunkQaState extends BaseDataChunkQaState
         );
     }
 
-    public function search($criteria = null)
+    public function search()
     {
-        if (is_null($criteria)) {
-            $criteria = new CDbCriteria;
-        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria($criteria),
+            'criteria' => $this->searchCriteria(),
         ));
     }
 

@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('PoFileQaState', dirname(__FILE__));
-Yii::import('PoFileQaState.*');
+Yii::setPathOfAlias('DataArticleQaState', dirname(__FILE__));
+Yii::import('DataArticleQaState.*');
 
-class PoFileQaState extends BasePoFileQaState
+class DataArticleQaState extends BaseDataArticleQaState
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
@@ -42,13 +42,10 @@ class PoFileQaState extends BasePoFileQaState
         );
     }
 
-    public function search($criteria = null)
+    public function search()
     {
-        if (is_null($criteria)) {
-            $criteria = new CDbCriteria;
-        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria($criteria),
+            'criteria' => $this->searchCriteria(),
         ));
     }
 

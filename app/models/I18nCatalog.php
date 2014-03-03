@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('PoFile', dirname(__FILE__));
-Yii::import('PoFile.*');
+Yii::setPathOfAlias('I18nCatalog', dirname(__FILE__));
+Yii::import('I18nCatalog.*');
 
-class PoFile extends BasePoFile
+class I18nCatalog extends BaseI18nCatalog
 {
     use ItemTrait;
 
@@ -22,7 +22,7 @@ class PoFile extends BasePoFile
 
     public function getItemLabel()
     {
-        return (string) !empty($this->title) ? $this->title : "PoFile #" . $this->id;
+        return (string) !empty($this->title) ? $this->title : "I18nCatalog #" . $this->id;
     }
 
     public function behaviors()
@@ -32,17 +32,6 @@ class PoFile extends BasePoFile
             array()
         );
     }
-
-    public function relations()
-    {
-        return array_merge(
-            parent::relations(),
-            array()
-        );
-    }
-
-    public $original_media_id;
-    public $processed_media_id;
 
     public function rules()
     {

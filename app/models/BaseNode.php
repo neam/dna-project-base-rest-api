@@ -11,7 +11,7 @@
  * Relations of table "node" available as properties of the model:
  * @property Changeset[] $changesets
  * @property Chapter[] $chapters
- * @property DataChunk[] $dataChunks
+ * @property DataArticle[] $dataArticles
  * @property DataSource[] $dataSources
  * @property DownloadLink[] $downloadLinks
  * @property Edge[] $edges
@@ -22,7 +22,6 @@
  * @property Exercise[] $exercises
  * @property HtmlChunk[] $htmlChunks
  * @property Page[] $pages
- * @property PoFile[] $poFiles
  * @property Section[] $sections
  * @property SlideshowFile[] $slideshowFiles
  * @property Snapshot[] $snapshots
@@ -78,7 +77,7 @@ abstract class BaseNode extends ActiveRecord
             parent::relations(), array(
                 'changesets' => array(self::HAS_MANY, 'Changeset', 'node_id'),
                 'chapters' => array(self::HAS_MANY, 'Chapter', 'node_id'),
-                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'node_id'),
+                'dataArticles' => array(self::HAS_MANY, 'DataArticle', 'node_id'),
                 'dataSources' => array(self::HAS_MANY, 'DataSource', 'node_id'),
                 'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'node_id'),
                 'edges' => array(self::HAS_MANY, 'Edge', 'from_node_id'),
@@ -89,7 +88,6 @@ abstract class BaseNode extends ActiveRecord
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'node_id'),
                 'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'node_id'),
                 'pages' => array(self::HAS_MANY, 'Page', 'node_id'),
-                'poFiles' => array(self::HAS_MANY, 'PoFile', 'node_id'),
                 'sections' => array(self::HAS_MANY, 'Section', 'node_id'),
                 'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'node_id'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'node_id'),

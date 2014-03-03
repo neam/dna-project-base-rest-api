@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('DataChunk', dirname(__FILE__));
-Yii::import('DataChunk.*');
+Yii::setPathOfAlias('DataArticle', dirname(__FILE__));
+Yii::import('DataArticle.*');
 
-class DataChunk extends BaseDataChunk
+class DataArticle extends BaseDataArticle
 {
 
     use ItemTrait;
@@ -23,7 +23,7 @@ class DataChunk extends BaseDataChunk
 
     public function getItemLabel()
     {
-        return (string) !empty($this->title) ? $this->title : "DataChunk #" . $this->id;
+        return (string) !empty($this->title) ? $this->title : "DataArticle #" . $this->id;
     }
 
     public function behaviors()

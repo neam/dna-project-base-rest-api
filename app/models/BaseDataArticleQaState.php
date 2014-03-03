@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model base class for the table "data_chunk_qa_state".
+ * This is the model base class for the table "data_article_qa_state".
  *
- * Columns in table "data_chunk_qa_state" available as properties of the model:
+ * Columns in table "data_article_qa_state" available as properties of the model:
  * @property string $id
  * @property string $status
  * @property integer $draft_validation_progress
@@ -75,10 +75,10 @@
  * @property integer $title_en_proofed
  * @property integer $about_en_proofed
  *
- * Relations of table "data_chunk_qa_state" available as properties of the model:
- * @property DataChunk[] $dataChunks
+ * Relations of table "data_article_qa_state" available as properties of the model:
+ * @property DataArticle[] $dataArticles
  */
-abstract class BaseDataChunkQaState extends ActiveRecord
+abstract class BaseDataArticleQaState extends ActiveRecord
 {
 
     public static function model($className = __CLASS__)
@@ -88,7 +88,7 @@ abstract class BaseDataChunkQaState extends ActiveRecord
 
     public function tableName()
     {
-        return 'data_chunk_qa_state';
+        return 'data_article_qa_state';
     }
 
     public function rules()
@@ -123,7 +123,7 @@ abstract class BaseDataChunkQaState extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'data_chunk_qa_state_id'),
+                'dataArticles' => array(self::HAS_MANY, 'DataArticle', 'data_article_qa_state_id'),
             )
         );
     }

@@ -8,7 +8,6 @@
  * @property string $page_id
  * @property string $_title
  * @property string $slug_en
- * @property integer $ordinal
  * @property string $_menu_label
  * @property string $created
  * @property string $modified
@@ -58,9 +57,9 @@
  * @property string $section_qa_state_id
  *
  * Relations of table "section" available as properties of the model:
- * @property SectionQaState $sectionQaState
  * @property Node $node
  * @property Page $page
+ * @property SectionQaState $sectionQaState
  */
 abstract class BaseSection extends ActiveRecord
 {
@@ -80,12 +79,11 @@ abstract class BaseSection extends ActiveRecord
         return array_merge(
             parent::rules(), array(
                 array('page_id', 'required'),
-                array('_title, slug_en, ordinal, _menu_label, created, modified, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, section_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('ordinal', 'numerical', 'integerOnly' => true),
+                array('_title, slug_en, _menu_label, created, modified, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, section_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('page_id, node_id, section_qa_state_id', 'length', 'max' => 20),
                 array('_title, slug_en, _menu_label, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, page_id, _title, slug_en, ordinal, _menu_label, created, modified, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, section_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, page_id, _title, slug_en, _menu_label, created, modified, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, section_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -110,9 +108,9 @@ abstract class BaseSection extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'sectionQaState' => array(self::BELONGS_TO, 'SectionQaState', 'section_qa_state_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'page' => array(self::BELONGS_TO, 'Page', 'page_id'),
+                'sectionQaState' => array(self::BELONGS_TO, 'SectionQaState', 'section_qa_state_id'),
             )
         );
     }
@@ -124,7 +122,6 @@ abstract class BaseSection extends ActiveRecord
             'page_id' => Yii::t('model', 'Page'),
             '_title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
-            'ordinal' => Yii::t('model', 'Ordinal'),
             '_menu_label' => Yii::t('model', 'Menu Label'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
@@ -185,7 +182,6 @@ abstract class BaseSection extends ActiveRecord
         $criteria->compare('t.page_id', $this->page_id);
         $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
-        $criteria->compare('t.ordinal', $this->ordinal);
         $criteria->compare('t._menu_label', $this->_menu_label, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);

@@ -104,7 +104,6 @@
  * @property integer $processed_media_id_zh_tw
  *
  * Relations of table "slideshow_file" available as properties of the model:
- * @property Exercise[] $exercises
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -202,7 +201,6 @@ abstract class BaseSlideshowFile extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'exercises' => array(self::HAS_MANY, 'Exercise', 'slideshow_file_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
                 'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),

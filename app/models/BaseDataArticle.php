@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model base class for the table "data_chunk".
+ * This is the model base class for the table "data_article".
  *
- * Columns in table "data_chunk" available as properties of the model:
+ * Columns in table "data_article" available as properties of the model:
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
@@ -21,7 +21,7 @@
  * @property string $slug_pt
  * @property string $slug_sv
  * @property string $slug_de
- * @property string $data_chunk_qa_state_id
+ * @property string $data_article_qa_state_id
  * @property string $slug_zh
  * @property string $slug_ar
  * @property string $slug_bg
@@ -60,15 +60,15 @@
  * @property string $slug_zh_cn
  * @property string $slug_zh_tw
  *
- * Relations of table "data_chunk" available as properties of the model:
- * @property DataChunkQaState $dataChunkQaState
- * @property DataChunk $clonedFrom
- * @property DataChunk[] $dataChunks
+ * Relations of table "data_article" available as properties of the model:
+ * @property DataArticleQaState $dataArticleQaState
+ * @property DataArticle $clonedFrom
+ * @property DataArticle[] $dataArticles
  * @property Node $node
  * @property P3Media $fileMedia
  * @property Users $owner
  */
-abstract class BaseDataChunk extends ActiveRecord
+abstract class BaseDataArticle extends ActiveRecord
 {
 
     public static function model($className = __CLASS__)
@@ -78,19 +78,19 @@ abstract class BaseDataChunk extends ActiveRecord
 
     public function tableName()
     {
-        return 'data_chunk';
+        return 'data_article';
     }
 
     public function rules()
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, data_chunk_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, data_article_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, file_media_id, owner_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, node_id, data_chunk_qa_state_id', 'length', 'max' => 20),
+                array('cloned_from_id, node_id, data_article_qa_state_id', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
                 array('_about, metadata, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, data_chunk_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, file_media_id, metadata, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, data_article_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -115,9 +115,9 @@ abstract class BaseDataChunk extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'dataChunkQaState' => array(self::BELONGS_TO, 'DataChunkQaState', 'data_chunk_qa_state_id'),
-                'clonedFrom' => array(self::BELONGS_TO, 'DataChunk', 'cloned_from_id'),
-                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'cloned_from_id'),
+                'dataArticleQaState' => array(self::BELONGS_TO, 'DataArticleQaState', 'data_article_qa_state_id'),
+                'clonedFrom' => array(self::BELONGS_TO, 'DataArticle', 'cloned_from_id'),
+                'dataArticles' => array(self::HAS_MANY, 'DataArticle', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
                 'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
@@ -145,7 +145,7 @@ abstract class BaseDataChunk extends ActiveRecord
             'slug_pt' => Yii::t('model', 'Slug Pt'),
             'slug_sv' => Yii::t('model', 'Slug Sv'),
             'slug_de' => Yii::t('model', 'Slug De'),
-            'data_chunk_qa_state_id' => Yii::t('model', 'Data Chunk Qa State'),
+            'data_article_qa_state_id' => Yii::t('model', 'Data Article Qa State'),
             'slug_zh' => Yii::t('model', 'Slug Zh'),
             'slug_ar' => Yii::t('model', 'Slug Ar'),
             'slug_bg' => Yii::t('model', 'Slug Bg'),
@@ -209,7 +209,7 @@ abstract class BaseDataChunk extends ActiveRecord
         $criteria->compare('t.slug_pt', $this->slug_pt, true);
         $criteria->compare('t.slug_sv', $this->slug_sv, true);
         $criteria->compare('t.slug_de', $this->slug_de, true);
-        $criteria->compare('t.data_chunk_qa_state_id', $this->data_chunk_qa_state_id);
+        $criteria->compare('t.data_article_qa_state_id', $this->data_article_qa_state_id);
         $criteria->compare('t.slug_zh', $this->slug_zh, true);
         $criteria->compare('t.slug_ar', $this->slug_ar, true);
         $criteria->compare('t.slug_bg', $this->slug_bg, true);

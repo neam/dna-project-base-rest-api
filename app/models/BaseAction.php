@@ -53,8 +53,7 @@ abstract class BaseAction extends ActiveRecord
     public function relations()
     {
         return array_merge(
-            parent::relations(), array(
-            )
+            parent::relations(), array()
         );
     }
 

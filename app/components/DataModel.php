@@ -3,15 +3,6 @@
 class DataModel
 {
 
-    static public function sharableItemModels()
-    {
-
-        return array(
-            'Snapshot' => 'snapshot',
-        );
-
-    }
-
     /**
      * Model classes that represent top level visitable items through the go-page
      * @return array
@@ -37,8 +28,19 @@ class DataModel
             'SlideshowFile' => 'slideshow_file',
             'TextDoc' => 'text_doc',
             'VectorGraphic' => 'vector_graphic',
-            'DataChunk' => 'data_chunk',
+            'DataArticle' => 'data_article',
             'DataSource' => 'data_source',
+        );
+
+    }
+
+    static public function internalItemModels()
+    {
+
+        return array(
+            'I18nCatalog' => 'i18n_catalog',
+            'Tool' => 'tool',
+            'GuiSection' => 'gui_section',
         );
 
     }
@@ -47,13 +49,11 @@ class DataModel
     {
 
         return array(
-            'PoFile' => 'po_file',
+            'Menu' => 'menu',
             'Page' => 'page',
             'Section' => 'section',
             'DownloadLink' => 'download_link',
             'HtmlChunk' => 'html_chunk',
-            'Tool' => 'tool',
-            //'GuiSection' => 'gui_section',
         );
 
     }
@@ -61,15 +61,26 @@ class DataModel
     static public function waffleItemModels()
     {
 
-	return array();
         return array(
+            'Waffle' => 'waffle',
             'WaffleCategory' => 'waffle_category',
+            'WaffleCategoryElement' => 'waffle_category_element',
             'WaffleIndicator' => 'waffle_indicator',
-            'WaffleRole' => 'waffle_role',
-            'WaffleTag' => 'waffle_tag',
             'WaffleUnit' => 'waffle_unit',
-            'WaffleCountry' => 'waffle_country',
-            'WaffleGeography' => 'waffle_geography',
+            'WaffleTag' => 'waffle_tag',
+            'WaffleDataSource' => 'waffle_data_source'
+            //'WaffleRole' => 'waffle_role',
+        );
+
+    }
+
+    static public function memberItemModels()
+    {
+
+        return array(
+            'Account' => 'account',
+            'Profile' => 'profile',
+            'Group' => 'group',
         );
 
     }
@@ -81,40 +92,27 @@ class DataModel
     static public function crudModels()
     {
 
-        return array(
-            // Contents
-            'Changeset' => 'changeset',
-            'Chapter' => 'chapter',
-            'Comment' => 'comment',
-            'DataChunk' => 'data_chunk',
-            'DataSource' => 'data_source',
-            'DownloadLink' => 'download_link',
-            'ExamQuestion' => 'exam_question',
-            'ExamQuestionAlternative' => 'exam_question_alternative',
-            'Exercise' => 'exercise',
-            'HtmlChunk' => 'html_chunk',
-            'Node' => 'node',
-            'Edge' => 'edge',
-            'Page' => 'page',
-            'PoFile' => 'po_file',
-            'Section' => 'section',
-            'SlideshowFile' => 'slideshow_file',
-            'Snapshot' => 'snapshot',
-            'SpreadsheetFile' => 'spreadsheet_file',
-            'TextDoc' => 'text_doc',
-            'Tool' => 'tool',
-            'VectorGraphic' => 'vector_graphic',
-            'VideoFile' => 'video_file',
-            // User management
-            'Account' => 'users',
-            'Profiles' => 'profiles',
-            // Translations
-            'Message' => 'Message',
-            'SourceMessage' => 'SourceMessage',
-            // Fixture-based
-            'Action' => 'action',
-            // Database views
-            'Item' => 'item',
+        return array_merge(
+            self::goItemModels(),
+            self::educationalItemModels(),
+            self::internalItemModels(),
+            self::websiteContentItemModels(),
+            self::waffleItemModels(),
+            self::memberItemModels(),
+            array(
+                // Misc
+                'Changeset' => 'changeset',
+                'Comment' => 'comment',
+                'Node' => 'node',
+                'Edge' => 'edge',
+                // Translations
+                'Message' => 'Message',
+                'SourceMessage' => 'SourceMessage',
+                // Fixture-based
+                'Action' => 'action',
+                // Database views
+                'Item' => 'item',
+            )
         );
 
     }
@@ -129,6 +127,7 @@ class DataModel
         return array_merge(
             self::goItemModels(),
             self::educationalItemModels(),
+            self::internalItemModels(),
             self::websiteContentItemModels(),
             self::waffleItemModels()
         );
@@ -157,9 +156,7 @@ class DataModel
     static public function graphModels()
     {
 
-        return array_merge(self::qaModels(), array(
-            'ExamQuestionAlternative' => 'exam_question_alternative',
-        ));
+        return array_merge(self::qaModels(), array());
 
     }
 
@@ -170,10 +167,14 @@ class DataModel
     static public function restModels()
     {
 
-        return array(
-            'Comment' => 'comment',
-            'Item' => 'item',
-            'VideoFile' => 'video_file',
+        return array_merge(
+            self::goItemModels(),
+            self::educationalItemModels(),
+            self::waffleItemModels(),
+            array(
+                'Comment' => 'comment',
+                'Item' => 'item',
+            )
         );
 
     }
@@ -186,11 +187,14 @@ class DataModel
     static public function internalModels()
     {
 
-        return array_merge(array(
-            "Node" => "node",
-            "EzcExecution" => "ezc_execution",
-            "Users" => "users",
-        ), self::qaStateModels());
+        return array_merge(
+            self::qaStateModels(),
+            array(
+                "Node" => "node",
+                "EzcExecution" => "ezc_execution",
+                "Users" => "users",
+            )
+        );
 
     }
 
@@ -202,7 +206,7 @@ class DataModel
     {
         return array(
             'Chapter' => 'n==0#Chapter(s)|n==1#Chapter|n>1#Chapters',
-            'DataChunk' => 'n==0#Data chunk(s)|n==1#Data chunk|n>1#Data chunks',
+            'DataArticle' => 'n==0#Data article(s)|n==1#Data article|n>1#Data articles',
             'DataSource' => 'n==0#Data source(s)|n==1#Data source|n>1#Data sources',
             'DownloadLink' => 'n==0#Download link(s)|n==1#Download link|n>1#Download links',
             'ExamQuestion' => 'n==0#Exam question(s)|n==1#Exam question|n>1#Exam questions',
@@ -211,7 +215,7 @@ class DataModel
             'HtmlChunk' => 'n==0#Html chunk(s)|n==1#Html chunk|n>1#Html chunks',
             'Node' => 'n==0#Node(s)|n==1#Node|n>1#Nodes',
             'Page' => 'n==0#Web page(s)|n==1#Web page|n>1#Web pages',
-            'PoFile' => 'n==0#.po-file(s)|n==1#.po-file|n>1#.po-files',
+            'I18nCatalog' => 'n==0#I18n catalog(s)|n==1#I18n catalog|n>1#I18n catalogs',
             'Section' => 'n==0#Web page section(s)|n==1#Web page section|n>1#Web page sections',
             'SlideshowFile' => 'n==0#Slideshow file(s)|n==1#Slideshow file|n>1#Slideshow files',
             'Snapshot' => 'n==0#Snapshot(s)|n==1#Snapshot|n>1#Snapshots',
@@ -231,7 +235,7 @@ class DataModel
             'attributes' => array(
                 'Chapter' => array('title', 'about', 'teachers_guide'),
                 'Comment' => array('comment'), // Note: Currently set in Comment.php instead of through here
-                'DataChunk' => array('title', 'about'),
+                'DataArticle' => array('title', 'about'),
                 'DataSource' => array('title', 'about'),
                 'DownloadLink' => array('title'),
                 'Edge' => array('title'),
@@ -260,12 +264,12 @@ class DataModel
         return array(
             'attributes' => array(
                 'Chapter' => array('slug'),
-                'DataChunk' => array('slug'),
+                'DataArticle' => array('slug'),
                 'DataSource' => array('slug'),
                 'ExamQuestion' => array('slug'),
                 'Exercise' => array('slug'),
                 'Page' => array('slug'),
-                'PoFile' => array('processed_media_id'),
+                'I18nCatalog' => array('processed_media_id'),
                 'Section' => array('slug'),
                 'SlideshowFile' => array('slug', 'processed_media_id'),
                 'Snapshot' => array('slug'),
@@ -277,11 +281,11 @@ class DataModel
             ),
             'relations' => array(
                 'Chapter' => array('chapterQaState' => 'chapter_qa_state_id'),
-                'DataChunk' => array('dataChunkQaState' => 'data_chunk_qa_state_id'),
+                'DataArticle' => array('dataArticleQaState' => 'data_article_qa_state_id'),
                 'DataSource' => array('dataSourceQaState' => 'data_source_qa_state_id'),
                 'ExamQuestion' => array('examQuestionQaState' => 'exam_question_qa_state_id'),
                 'Exercise' => array('exerciseQaState' => 'exercise_qa_state_id'),
-                'PoFile' => array('processedMedia' => 'processed_media_id', 'poFileQaState' => 'po_file_qa_state_id'),
+                'I18nCatalog' => array('processedMedia' => 'processed_media_id', 'i18nCatalogQaState' => 'i18n_catalog_qa_state_id'),
                 'SlideshowFile' => array('processedMedia' => 'processed_media_id', 'slideshowFileQaState' => 'slideshow_file_qa_state_id'),
                 'Snapshot' => array('snapshotQaState' => 'snapshot_qa_state_id'),
                 'SpreadsheetFile' => array('processedMedia' => 'processed_media_id'),

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model base class for the table "po_file_qa_state".
+ * This is the model base class for the table "i18n_catalog_qa_state".
  *
- * Columns in table "po_file_qa_state" available as properties of the model:
+ * Columns in table "i18n_catalog_qa_state" available as properties of the model:
  * @property string $id
  * @property string $status
  * @property integer $draft_validation_progress
@@ -71,10 +71,10 @@
  * @property integer $translate_into_zh_cn_validation_progress
  * @property integer $translate_into_zh_tw_validation_progress
  *
- * Relations of table "po_file_qa_state" available as properties of the model:
- * @property PoFile[] $poFiles
+ * Relations of table "i18n_catalog_qa_state" available as properties of the model:
+ * @property I18nCatalog[] $i18nCatalogs
  */
-abstract class BasePoFileQaState extends ActiveRecord
+abstract class BaseI18nCatalogQaState extends ActiveRecord
 {
 
     public static function model($className = __CLASS__)
@@ -84,7 +84,7 @@ abstract class BasePoFileQaState extends ActiveRecord
 
     public function tableName()
     {
-        return 'po_file_qa_state';
+        return 'i18n_catalog_qa_state';
     }
 
     public function rules()
@@ -119,7 +119,7 @@ abstract class BasePoFileQaState extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'poFiles' => array(self::HAS_MANY, 'PoFile', 'po_file_qa_state_id'),
+                'i18nCatalogs' => array(self::HAS_MANY, 'I18nCatalog', 'i18n_catalog_qa_state_id'),
             )
         );
     }
