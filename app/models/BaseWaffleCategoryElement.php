@@ -6,16 +6,16 @@
  * Columns in table "waffle_category_element" available as properties of the model:
  * @property string $id
  * @property integer $version
+ * @property string $cloned_from_id
  * @property string $ref
  * @property string $_name
  * @property string $_short_name
  * @property string $waffle_category_id
  * @property string $created
  * @property string $modified
- * @property string $waffle_category_element_id
  *
  * Relations of table "waffle_category_element" available as properties of the model:
- * @property WaffleCategoryElement $waffleCategoryElement
+ * @property WaffleCategoryElement $clonedFrom
  * @property WaffleCategoryElement[] $waffleCategoryElements
  * @property WaffleCategory $waffleCategory
  */
@@ -36,20 +36,19 @@ abstract class BaseWaffleCategoryElement extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('waffle_category_element_id', 'required'),
-                array('version, ref, _name, _short_name, waffle_category_id, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, ref, _name, _short_name, waffle_category_id, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id, waffle_category_id', 'length', 'max' => 20),
                 array('ref, _name, _short_name', 'length', 'max' => 255),
-                array('waffle_category_id, waffle_category_element_id', 'length', 'max' => 20),
                 array('created, modified', 'safe'),
-                array('id, version, ref, _name, _short_name, waffle_category_id, created, modified, waffle_category_element_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, ref, _name, _short_name, waffle_category_id, created, modified', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->ref;
+        return (string) $this->cloned_from_id;
     }
 
     public function behaviors()
@@ -67,8 +66,8 @@ abstract class BaseWaffleCategoryElement extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'waffleCategoryElement' => array(self::BELONGS_TO, 'WaffleCategoryElement', 'waffle_category_element_id'),
-                'waffleCategoryElements' => array(self::HAS_MANY, 'WaffleCategoryElement', 'waffle_category_element_id'),
+                'clonedFrom' => array(self::BELONGS_TO, 'WaffleCategoryElement', 'cloned_from_id'),
+                'waffleCategoryElements' => array(self::HAS_MANY, 'WaffleCategoryElement', 'cloned_from_id'),
                 'waffleCategory' => array(self::BELONGS_TO, 'WaffleCategory', 'waffle_category_id'),
             )
         );
@@ -79,13 +78,13 @@ abstract class BaseWaffleCategoryElement extends ActiveRecord
         return array(
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
+            'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'ref' => Yii::t('model', 'Ref'),
             '_name' => Yii::t('model', 'Name'),
             '_short_name' => Yii::t('model', 'Short Name'),
             'waffle_category_id' => Yii::t('model', 'Waffle Category'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
-            'waffle_category_element_id' => Yii::t('model', 'Waffle Category Element'),
         );
     }
 
@@ -97,13 +96,13 @@ abstract class BaseWaffleCategoryElement extends ActiveRecord
 
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
+        $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.ref', $this->ref, true);
         $criteria->compare('t._name', $this->_name, true);
         $criteria->compare('t._short_name', $this->_short_name, true);
         $criteria->compare('t.waffle_category_id', $this->waffle_category_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
-        $criteria->compare('t.waffle_category_element_id', $this->waffle_category_element_id);
 
 
         return $criteria;

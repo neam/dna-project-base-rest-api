@@ -6,6 +6,7 @@
  * Columns in table "waffle_tag" available as properties of the model:
  * @property string $id
  * @property integer $version
+ * @property string $cloned_from_id
  * @property string $ref
  * @property string $_name
  * @property string $_short_name
@@ -13,10 +14,9 @@
  * @property string $waffle_id
  * @property string $created
  * @property string $modified
- * @property string $waffle_tag_id
  *
  * Relations of table "waffle_tag" available as properties of the model:
- * @property WaffleTag $waffleTag
+ * @property WaffleTag $clonedFrom
  * @property WaffleTag[] $waffleTags
  * @property Waffle $waffle
  */
@@ -37,20 +37,19 @@ abstract class BaseWaffleTag extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('waffle_tag_id', 'required'),
-                array('version, ref, _name, _short_name, _description, waffle_id, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id, waffle_id', 'length', 'max' => 20),
                 array('ref, _name, _short_name', 'length', 'max' => 255),
-                array('waffle_id, waffle_tag_id', 'length', 'max' => 20),
                 array('_description, created, modified', 'safe'),
-                array('id, version, ref, _name, _short_name, _description, waffle_id, created, modified, waffle_tag_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->ref;
+        return (string) $this->cloned_from_id;
     }
 
     public function behaviors()
@@ -68,8 +67,8 @@ abstract class BaseWaffleTag extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'waffleTag' => array(self::BELONGS_TO, 'WaffleTag', 'waffle_tag_id'),
-                'waffleTags' => array(self::HAS_MANY, 'WaffleTag', 'waffle_tag_id'),
+                'clonedFrom' => array(self::BELONGS_TO, 'WaffleTag', 'cloned_from_id'),
+                'waffleTags' => array(self::HAS_MANY, 'WaffleTag', 'cloned_from_id'),
                 'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
             )
         );
@@ -80,6 +79,7 @@ abstract class BaseWaffleTag extends ActiveRecord
         return array(
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
+            'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'ref' => Yii::t('model', 'Ref'),
             '_name' => Yii::t('model', 'Name'),
             '_short_name' => Yii::t('model', 'Short Name'),
@@ -87,7 +87,6 @@ abstract class BaseWaffleTag extends ActiveRecord
             'waffle_id' => Yii::t('model', 'Waffle'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
-            'waffle_tag_id' => Yii::t('model', 'Waffle Tag'),
         );
     }
 
@@ -99,6 +98,7 @@ abstract class BaseWaffleTag extends ActiveRecord
 
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
+        $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.ref', $this->ref, true);
         $criteria->compare('t._name', $this->_name, true);
         $criteria->compare('t._short_name', $this->_short_name, true);
@@ -106,7 +106,6 @@ abstract class BaseWaffleTag extends ActiveRecord
         $criteria->compare('t.waffle_id', $this->waffle_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
-        $criteria->compare('t.waffle_tag_id', $this->waffle_tag_id);
 
 
         return $criteria;
