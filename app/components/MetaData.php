@@ -75,6 +75,7 @@ class Metadata
         return array(
             "GoItem" => DataModel::goItemModels(),
             "EducationalItem" => DataModel::educationalItemModels(),
+            "InternalItem" => DataModel::internalItemModels(),
             "WebsiteContentItem" => DataModel::websiteContentItemModels(),
             "WaffleItem" => DataModel::waffleItemModels(),
             "DollarStreetItem" => array(),
