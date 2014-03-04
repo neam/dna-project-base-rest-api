@@ -211,36 +211,36 @@ class VideoFile extends BaseVideoFile
      * Returns related video P3Media.
      * @return P3Media[]
      */
-    public function getRelatedVideos()
+    public function getVideos()
     {
-        return $this->getRelatedP3Media(array('video/webm'));
+        return $this->getP3Media(array('video/webm'));
     }
 
     /**
      * Returns related thumbnail P3Media.
      * @return P3Media[]
      */
-    public function getRelatedThumbnails()
+    public function getThumbnails()
     {
-        return $this->getRelatedP3Media(array('image/jpeg', 'image/png'));
+        return $this->getP3Media(array('image/jpeg', 'image/png'));
     }
 
     /**
      * Returns related video options.
      * @return array
      */
-    public function getRelatedVideoOptions()
+    public function getVideoOptions()
     {
-        return $this->getRelatedOptions($this->getRelatedVideos());
+        return $this->getOptions($this->getVideos());
     }
 
     /**
      * Returns related thumbnail options.
      * @return array
      */
-    public function getRelatedThumbnailOptions()
+    public function getThumbnailOptions()
     {
-        return $this->getRelatedOptions($this->getRelatedThumbnails());
+        return $this->getOptions($this->getThumbnails());
     }
 
     /**
@@ -249,7 +249,7 @@ class VideoFile extends BaseVideoFile
      * @param string $type P3Media.type
      * @return P3Media[]
      */
-    public function getRelatedP3Media(array $mimeType, $type = 'file')
+    public function getP3Media(array $mimeType, $type = 'file')
     {
         $criteria = new CDbCriteria();
         $criteria->addInCondition('mime_type', $mimeType);
@@ -267,7 +267,7 @@ class VideoFile extends BaseVideoFile
      * @param P3Media[] $data
      * @return array
      */
-    public function getRelatedOptions($data)
+    public function getOptions($data)
     {
         return TbHtml::listData(
             $data,

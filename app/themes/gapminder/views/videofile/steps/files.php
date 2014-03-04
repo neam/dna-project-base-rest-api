@@ -3,7 +3,7 @@
 /* @var VideoFile|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php echo $form->select2ControlGroup($model, 'original_media_id', $model->getRelatedVideoOptions()); ?>
+<?php echo $form->select2ControlGroup($model, 'original_media_id', $model->getVideoOptions()); ?>
 <?php echo TbHtml::button(
     Yii::t('app', 'Upload'),
     array(

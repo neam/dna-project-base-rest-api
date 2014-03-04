@@ -2,7 +2,7 @@
 /* @var VideoFileController|ItemController $this */
 /* @var VideoFile|ItemTrait $model */
 ?>
-<?php echo $form->select2ControlGroup($model, 'thumbnail_media_id', $model->getRelatedThumbnailOptions()); ?>
+<?php echo $form->select2ControlGroup($model, 'thumbnail_media_id', $model->getThumbnailOptions()); ?>
 <?php echo TbHtml::button(
     Yii::t('app', 'Upload'),
     array(
