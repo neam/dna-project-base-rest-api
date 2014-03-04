@@ -25,6 +25,7 @@
  * @property ExamQuestionAlternative[] $examQuestionAlternatives
  * @property Exercise[] $exercises
  * @property GroupHasAccount[] $groupHasAccounts
+ * @property GuiSection[] $guiSections
  * @property HtmlChunk[] $htmlChunks
  * @property I18nCatalog[] $i18nCatalogs
  * @property Menu[] $menus
@@ -104,6 +105,7 @@ abstract class BaseAccount extends ActiveRecord
                 'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'owner_id'),
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'owner_id'),
                 'groupHasAccounts' => array(self::HAS_MANY, 'GroupHasAccount', 'account_id'),
+                'guiSections' => array(self::HAS_MANY, 'GuiSection', 'owner_id'),
                 'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'owner_id'),
                 'i18nCatalogs' => array(self::HAS_MANY, 'I18nCatalog', 'owner_id'),
                 'menus' => array(self::HAS_MANY, 'Menu', 'owner_id'),

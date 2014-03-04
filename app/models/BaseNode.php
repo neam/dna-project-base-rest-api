@@ -20,6 +20,7 @@
  * @property ExamQuestion[] $examQuestions1
  * @property ExamQuestionAlternative[] $examQuestionAlternatives
  * @property Exercise[] $exercises
+ * @property GuiSection[] $guiSections
  * @property HtmlChunk[] $htmlChunks
  * @property I18nCatalog[] $i18nCatalogs
  * @property Menu[] $menus
@@ -96,6 +97,7 @@ abstract class BaseNode extends ActiveRecord
                 'examQuestions1' => array(self::HAS_MANY, 'ExamQuestion', 'source_node_id'),
                 'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'node_id'),
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'node_id'),
+                'guiSections' => array(self::HAS_MANY, 'GuiSection', 'node_id'),
                 'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'node_id'),
                 'i18nCatalogs' => array(self::HAS_MANY, 'I18nCatalog', 'node_id'),
                 'menus' => array(self::HAS_MANY, 'Menu', 'node_id'),
