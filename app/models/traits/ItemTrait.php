@@ -150,7 +150,7 @@ trait ItemTrait
             foreach ($behaviors['i18n-columns']['translationAttributes'] as $translationAttribute) {
 
                 $sourceLanguageContentAttribute = $translationAttribute . "_" . $this->source_language;
-                $valid = !is_null($this->$sourceLanguageContentAttribute);
+                $valid = isset($this->$sourceLanguageContentAttribute) && !is_null($this->$sourceLanguageContentAttribute);
                 if ($valid) {
                     $currentlyTranslatableAttributes[] = $translationAttribute;
                 }
