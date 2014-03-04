@@ -24,7 +24,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/phppowerpoint" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/phpword" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/backend-theme" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/gii-template-collection" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/jquery-file-upload" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/p3admin" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/p3bootstrap" />
@@ -103,7 +102,6 @@
           <root url="file://$MODULE_DIR$/vendor/phundament/p3admin" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/migrate-command" />
           <root url="file://$MODULE_DIR$/vendor/phundament/backend-theme" />
-          <root url="file://$MODULE_DIR$/vendor/phundament/gii-template-collection" />
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phpword" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/status-behavior" />
           <root url="file://$MODULE_DIR$/vendor/mishamx/yii-user" />
@@ -146,7 +144,6 @@
           <root url="file://$MODULE_DIR$/vendor/phundament/p3admin" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/migrate-command" />
           <root url="file://$MODULE_DIR$/vendor/phundament/backend-theme" />
-          <root url="file://$MODULE_DIR$/vendor/phundament/gii-template-collection" />
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phpword" />
           <root url="file://$MODULE_DIR$/vendor/yiiext/status-behavior" />
           <root url="file://$MODULE_DIR$/vendor/mishamx/yii-user" />
