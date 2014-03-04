@@ -120,6 +120,8 @@ $gcmsConfig = array(
             ),
         ),
         'user' => array(
+            'tableUsers' => 'account',
+            'tableProfiles' => 'profile',
             'controllerMap' => array(
                 'activation' => 'AppActivationController',
                 'registration' => 'AppRegistrationController',
