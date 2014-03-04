@@ -13,8 +13,11 @@
  * @property string $waffle_id
  * @property string $created
  * @property string $modified
+ * @property string $waffle_indicator_id
  *
  * Relations of table "waffle_indicator" available as properties of the model:
+ * @property WaffleIndicator $waffleIndicator
+ * @property WaffleIndicator[] $waffleIndicators
  * @property Waffle $waffle
  */
 abstract class BaseWaffleIndicator extends ActiveRecord
@@ -34,12 +37,13 @@ abstract class BaseWaffleIndicator extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
+                array('waffle_indicator_id', 'required'),
                 array('version, ref, _name, _short_name, _description, waffle_id, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
-                array('ref, _name, _short_name, created, modified', 'length', 'max' => 255),
-                array('waffle_id', 'length', 'max' => 20),
-                array('_description', 'safe'),
-                array('id, version, ref, _name, _short_name, _description, waffle_id, created, modified', 'safe', 'on' => 'search'),
+                array('ref, _name, _short_name', 'length', 'max' => 255),
+                array('waffle_id, waffle_indicator_id', 'length', 'max' => 20),
+                array('_description, created, modified', 'safe'),
+                array('id, version, ref, _name, _short_name, _description, waffle_id, created, modified, waffle_indicator_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -64,6 +68,8 @@ abstract class BaseWaffleIndicator extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'waffleIndicator' => array(self::BELONGS_TO, 'WaffleIndicator', 'waffle_indicator_id'),
+                'waffleIndicators' => array(self::HAS_MANY, 'WaffleIndicator', 'waffle_indicator_id'),
                 'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
             )
         );
@@ -81,6 +87,7 @@ abstract class BaseWaffleIndicator extends ActiveRecord
             'waffle_id' => Yii::t('model', 'Waffle'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'waffle_indicator_id' => Yii::t('model', 'Waffle Indicator'),
         );
     }
 
@@ -99,6 +106,7 @@ abstract class BaseWaffleIndicator extends ActiveRecord
         $criteria->compare('t.waffle_id', $this->waffle_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.waffle_indicator_id', $this->waffle_indicator_id);
 
 
         return $criteria;

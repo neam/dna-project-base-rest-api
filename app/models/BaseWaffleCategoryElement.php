@@ -12,8 +12,11 @@
  * @property string $waffle_category_id
  * @property string $created
  * @property string $modified
+ * @property string $waffle_category_element_id
  *
  * Relations of table "waffle_category_element" available as properties of the model:
+ * @property WaffleCategoryElement $waffleCategoryElement
+ * @property WaffleCategoryElement[] $waffleCategoryElements
  * @property WaffleCategory $waffleCategory
  */
 abstract class BaseWaffleCategoryElement extends ActiveRecord
@@ -33,11 +36,13 @@ abstract class BaseWaffleCategoryElement extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
+                array('waffle_category_element_id', 'required'),
                 array('version, ref, _name, _short_name, waffle_category_id, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
-                array('ref, _name, _short_name, created, modified', 'length', 'max' => 255),
-                array('waffle_category_id', 'length', 'max' => 20),
-                array('id, version, ref, _name, _short_name, waffle_category_id, created, modified', 'safe', 'on' => 'search'),
+                array('ref, _name, _short_name', 'length', 'max' => 255),
+                array('waffle_category_id, waffle_category_element_id', 'length', 'max' => 20),
+                array('created, modified', 'safe'),
+                array('id, version, ref, _name, _short_name, waffle_category_id, created, modified, waffle_category_element_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -62,6 +67,8 @@ abstract class BaseWaffleCategoryElement extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'waffleCategoryElement' => array(self::BELONGS_TO, 'WaffleCategoryElement', 'waffle_category_element_id'),
+                'waffleCategoryElements' => array(self::HAS_MANY, 'WaffleCategoryElement', 'waffle_category_element_id'),
                 'waffleCategory' => array(self::BELONGS_TO, 'WaffleCategory', 'waffle_category_id'),
             )
         );
@@ -78,6 +85,7 @@ abstract class BaseWaffleCategoryElement extends ActiveRecord
             'waffle_category_id' => Yii::t('model', 'Waffle Category'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'waffle_category_element_id' => Yii::t('model', 'Waffle Category Element'),
         );
     }
 
@@ -95,6 +103,7 @@ abstract class BaseWaffleCategoryElement extends ActiveRecord
         $criteria->compare('t.waffle_category_id', $this->waffle_category_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.waffle_category_element_id', $this->waffle_category_element_id);
 
 
         return $criteria;

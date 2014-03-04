@@ -104,6 +104,7 @@
  * @property integer $processed_media_id_zh_tw
  *
  * Relations of table "slideshow_file" available as properties of the model:
+ * @property Account $owner
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -151,7 +152,6 @@
  * @property P3Media $processedMediaIdZhTw
  * @property SlideshowFile $clonedFrom
  * @property SlideshowFile[] $slideshowFiles
- * @property Users $owner
  * @property SlideshowFileQaState $slideshowFileQaState
  */
 abstract class BaseSlideshowFile extends ActiveRecord
@@ -201,6 +201,7 @@ abstract class BaseSlideshowFile extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
                 'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
@@ -248,7 +249,6 @@ abstract class BaseSlideshowFile extends ActiveRecord
                 'processedMediaIdZhTw' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_tw'),
                 'clonedFrom' => array(self::BELONGS_TO, 'SlideshowFile', 'cloned_from_id'),
                 'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'cloned_from_id'),
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'slideshowFileQaState' => array(self::BELONGS_TO, 'SlideshowFileQaState', 'slideshow_file_qa_state_id'),
             )
         );

@@ -65,12 +65,12 @@
  * Relations of table "snapshot" available as properties of the model:
  * @property DataSource[] $dataSources
  * @property ExamQuestion[] $examQuestions
+ * @property Account $owner
  * @property Node $node
  * @property P3Media $thumbnailMedia
  * @property Snapshot $clonedFrom
  * @property Snapshot[] $snapshots
  * @property Tool $tool
- * @property Users $owner
  * @property SnapshotQaState $snapshotQaState
  */
 abstract class BaseSnapshot extends ActiveRecord
@@ -122,12 +122,12 @@ abstract class BaseSnapshot extends ActiveRecord
             parent::relations(), array(
                 'dataSources' => array(self::HAS_MANY, 'DataSource', 'cloned_from_id'),
                 'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'cloned_from_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'cloned_from_id'),
                 'tool' => array(self::BELONGS_TO, 'Tool', 'tool_id'),
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'snapshotQaState' => array(self::BELONGS_TO, 'SnapshotQaState', 'snapshot_qa_state_id'),
             )
         );

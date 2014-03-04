@@ -15,10 +15,10 @@
  * @property string $html_chunk_qa_state_id
  *
  * Relations of table "html_chunk" available as properties of the model:
+ * @property Account $owner
  * @property HtmlChunk $clonedFrom
  * @property HtmlChunk[] $htmlChunks
  * @property Node $node
- * @property Users $owner
  * @property HtmlChunkQaState $htmlChunkQaState
  */
 abstract class BaseHtmlChunk extends ActiveRecord
@@ -67,10 +67,10 @@ abstract class BaseHtmlChunk extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'HtmlChunk', 'cloned_from_id'),
                 'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'htmlChunkQaState' => array(self::BELONGS_TO, 'HtmlChunkQaState', 'html_chunk_qa_state_id'),
             )
         );

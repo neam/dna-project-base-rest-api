@@ -62,12 +62,12 @@
  * @property string $slug_zh_tw
  *
  * Relations of table "data_source" available as properties of the model:
+ * @property Account $owner
  * @property DataSourceQaState $dataSourceQaState
  * @property Snapshot $clonedFrom
  * @property Node $node
  * @property P3Media $logoMedia
  * @property P3Media $miniLogoMedia
- * @property Users $owner
  * @property SpreadsheetFile[] $spreadsheetFiles
  */
 abstract class BaseDataSource extends ActiveRecord
@@ -117,12 +117,12 @@ abstract class BaseDataSource extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'dataSourceQaState' => array(self::BELONGS_TO, 'DataSourceQaState', 'data_source_qa_state_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'logoMedia' => array(self::BELONGS_TO, 'P3Media', 'logo_media_id'),
                 'miniLogoMedia' => array(self::BELONGS_TO, 'P3Media', 'mini_logo_media_id'),
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'data_source_id'),
             )
         );

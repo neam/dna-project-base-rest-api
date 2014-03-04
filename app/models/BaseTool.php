@@ -62,11 +62,11 @@
  *
  * Relations of table "tool" available as properties of the model:
  * @property Snapshot[] $snapshots
+ * @property Account $owner
  * @property Node $node
  * @property I18nCatalog $i18nCatalog
  * @property Tool $clonedFrom
  * @property Tool[] $tools
- * @property Users $owner
  * @property ToolQaState $toolQaState
  */
 abstract class BaseTool extends ActiveRecord
@@ -117,11 +117,11 @@ abstract class BaseTool extends ActiveRecord
         return array_merge(
             parent::relations(), array(
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'tool_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'i18nCatalog' => array(self::BELONGS_TO, 'I18nCatalog', 'i18n_catalog_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Tool', 'cloned_from_id'),
                 'tools' => array(self::HAS_MANY, 'Tool', 'cloned_from_id'),
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'toolQaState' => array(self::BELONGS_TO, 'ToolQaState', 'tool_qa_state_id'),
             )
         );
