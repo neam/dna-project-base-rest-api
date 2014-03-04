@@ -81,6 +81,8 @@ class DataModel
             'Account' => 'account',
             'Profile' => 'profile',
             'Group' => 'group',
+            'GroupHasAccount' => 'group_has_account',
+            'NodeHasGroup' => 'node_has_group',
         );
 
     }
@@ -110,6 +112,7 @@ class DataModel
                 'SourceMessage' => 'SourceMessage',
                 // Fixture-based
                 'Action' => 'action',
+                'Role' => 'role',
                 // Database views
                 'Item' => 'item',
             )
