@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "adfd6b7a0510a771b91922149a709467",
+    "hash": "1c2d7ec250f23c7bc0c4a41809fba7e8",
     "packages": [
         {
             "name": "bwoester/yii-event-interceptor",
@@ -472,16 +472,16 @@
         },
         {
             "name": "neam/yii-i18n-columns",
-            "version": "0.3.1",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-i18n-columns.git",
-                "reference": "0.3.1"
+                "reference": "2e39f0847117cfed0a47e3079899a51b7f519c74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/0.3.1",
-                "reference": "0.3.1",
+                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/2e39f0847117cfed0a47e3079899a51b7f519c74",
+                "reference": "2e39f0847117cfed0a47e3079899a51b7f519c74",
                 "shasum": ""
             },
             "require": {
@@ -513,10 +513,10 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/neam/yii-i18n-columns/tree/master",
+                "source": "https://github.com/neam/yii-i18n-columns/tree/develop",
                 "issues": "https://github.com/neam/yii-i18n-columns/issues"
             },
-            "time": "2013-11-15 09:35:38"
+            "time": "2014-03-04 16:25:48"
         },
         {
             "name": "neam/yii-qa-state",
@@ -1467,6 +1467,25 @@
             "time": "2014-01-28 21:26:50"
         },
         {
+            "name": "yiiext/migrate-command",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiiext/migrate-command.git",
+                "reference": "35f315b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/yiiext/migrate-command/archive/35f315b1fedc40bc9f551758bdb2b7f969d48005.zip",
+                "reference": "35f315b",
+                "shasum": null
+            },
+            "type": "yii-extension",
+            "description": "This is an enhanced version of the Yii Database Migration Tool that adds module support and many more usefull features.",
+            "homepage": "https://github.com/yiiext/migrate-command",
+            "time": "2013-05-09 15:14:47"
+        },
+        {
             "name": "yiiext/status-behavior",
             "version": "0.7",
             "source": {
@@ -1696,6 +1715,12 @@
             "alias_normalized": "0.17.0.0",
             "version": "9999999-dev",
             "package": "phundament/p3pages"
+        },
+        {
+            "alias": "0.7.2.1",
+            "alias_normalized": "0.7.2.1",
+            "version": "9999999-dev",
+            "package": "yiiext/migrate-command"
         }
     ],
     "minimum-stability": "stable",
@@ -1707,6 +1732,8 @@
         "phundament/p3pages": 20,
         "phundament/p3media": 20,
         "schmunk42/ckeditor-configurator": 20,
+        "yiiext/migrate-command": 20,
+        "neam/yii-i18n-columns": 20,
         "neam/yii-i18n-attribute-messages": 20,
         "neam/yii-qa-state": 20,
         "neam/yii-relational-graph-db": 20,
