@@ -37,8 +37,7 @@ class Profiles extends BaseProfiles
     public function rules()
     {
         return array_merge(
-            parent::rules(), array(
-            )
+            parent::rules(), array()
         );
     }
 
@@ -91,11 +90,21 @@ class Profiles extends BaseProfiles
         $languagesAvailable = Html::getLanguages();
         $languages = array();
 
-        if (isset($this->language1)) $languages[$this->language1] = $languagesAvailable[$this->language1];
-        if (isset($this->language2)) $languages[$this->language2] = $languagesAvailable[$this->language2];
-        if (isset($this->language3)) $languages[$this->language3] = $languagesAvailable[$this->language3];
-        if (isset($this->language4)) $languages[$this->language4] = $languagesAvailable[$this->language4];
-        if (isset($this->language5)) $languages[$this->language5] = $languagesAvailable[$this->language5];
+        if (isset($this->language1)) {
+            $languages[$this->language1] = $languagesAvailable[$this->language1];
+        }
+        if (isset($this->language2)) {
+            $languages[$this->language2] = $languagesAvailable[$this->language2];
+        }
+        if (isset($this->language3)) {
+            $languages[$this->language3] = $languagesAvailable[$this->language3];
+        }
+        if (isset($this->language4)) {
+            $languages[$this->language4] = $languagesAvailable[$this->language4];
+        }
+        if (isset($this->language5)) {
+            $languages[$this->language5] = $languagesAvailable[$this->language5];
+        }
 
         if ($asString) {
             return implode(', ', $languages);
