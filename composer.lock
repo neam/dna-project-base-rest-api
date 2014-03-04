@@ -524,12 +524,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-qa-state.git",
-                "reference": "8302d7b40ca593ed02ecdb61fc7d288af1ba307a"
+                "reference": "211d97c60a91a757bc8c21c1ad2acc3b9a6f78ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/8302d7b40ca593ed02ecdb61fc7d288af1ba307a",
-                "reference": "8302d7b40ca593ed02ecdb61fc7d288af1ba307a",
+                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/211d97c60a91a757bc8c21c1ad2acc3b9a6f78ae",
+                "reference": "211d97c60a91a757bc8c21c1ad2acc3b9a6f78ae",
                 "shasum": ""
             },
             "require": {
@@ -563,7 +563,7 @@
                 "source": "https://github.com/neam/yii-qa-state/tree/develop",
                 "issues": "https://github.com/neam/yii-qa-state/issues"
             },
-            "time": "2014-01-23 12:47:05"
+            "time": "2014-03-04 15:07:54"
         },
         {
             "name": "neam/yii-relational-graph-db",
@@ -1167,7 +1167,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record access check implementation",
@@ -1198,7 +1198,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
@@ -1251,12 +1251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/multi-theme.git",
-                "reference": "0.1.1"
+                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/0.1.1",
-                "reference": "0.1.1",
+                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/f9fcd89e8620be03340cd1d6125ae2522b71719a",
+                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a",
                 "shasum": ""
             },
             "require": {
@@ -1272,7 +1272,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Theme-Manager class, switch themes by regular expressions on controller routes.",
@@ -1575,12 +1575,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/gii-template-collection.git",
-                "reference": "a218944d8793f5272cf8f8e6ba8eb0b2a0eebf3d"
+                "reference": "6b0e8cb439df715156a6d14f1dc1f68972a6aa3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/gii-template-collection/zipball/a218944d8793f5272cf8f8e6ba8eb0b2a0eebf3d",
-                "reference": "a218944d8793f5272cf8f8e6ba8eb0b2a0eebf3d",
+                "url": "https://api.github.com/repos/motin/gii-template-collection/zipball/6b0e8cb439df715156a6d14f1dc1f68972a6aa3a",
+                "reference": "6b0e8cb439df715156a6d14f1dc1f68972a6aa3a",
                 "shasum": ""
             },
             "require": {
@@ -1610,7 +1610,7 @@
             "support": {
                 "source": "https://github.com/motin/gii-template-collection/tree/gcms"
             },
-            "time": "2013-11-25 09:55:42"
+            "time": "2014-03-04 15:27:13"
         },
         {
             "name": "phundament/p3bootstrap",
