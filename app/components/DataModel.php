@@ -243,6 +243,7 @@ class DataModel
                 'ExamQuestionAlternative' => array('markup'),
                 'Exercise' => array('title', 'question', 'description'),
                 'HtmlChunk' => array('markup'),
+                'Menu' => array('title'),
                 'Page' => array('title', 'about'),
                 'Section' => array('title', 'menu_label'),
                 'SlideshowFile' => array('title', 'about'),
@@ -252,6 +253,13 @@ class DataModel
                 'Tool' => array('title', 'about'),
                 'VectorGraphic' => array('title', 'about'),
                 'VideoFile' => array('title', 'caption', 'about', 'subtitles'),
+                'Waffle' => array('title'),
+                'WaffleCategory' => array('name', 'short_name', 'description'),
+                'WaffleCategoryElement' => array('name', 'short_name'),
+                'WaffleIndicator' => array('name', 'short_name', 'description'),
+                'WaffleUnit' => array('name', 'short_name', 'description'),
+                'WaffleTag' => array('name', 'short_name', 'description'),
+                'WaffleDataSource' => array('name', 'short_name'),
             ),
         );
     }
@@ -268,6 +276,7 @@ class DataModel
                 'DataSource' => array('slug'),
                 'ExamQuestion' => array('slug'),
                 'Exercise' => array('slug'),
+                'Menu' => array('slug'),
                 'Page' => array('slug'),
                 'Section' => array('slug'),
                 'SlideshowFile' => array('slug', 'processed_media_id'),
@@ -277,6 +286,7 @@ class DataModel
                 'Tool' => array('slug'),
                 'VectorGraphic' => array('slug', 'processed_media_id'),
                 'VideoFile' => array('slug', 'processed_media_id'),
+                'Waffle' => array('slug'),
             ),
             'relations' => array(
                 'Chapter' => array(),
