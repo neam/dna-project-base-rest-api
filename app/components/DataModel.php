@@ -212,7 +212,9 @@ class DataModel
             'ExamQuestion' => 'n==0#Exam question(s)|n==1#Exam question|n>1#Exam questions',
             'ExamQuestionAlternative' => 'n==0#Exam question alternative(s)|n==1#Exam question alternative|n>1#Exam question alternatives',
             'Exercise' => 'n==0#Exercise(s)|n==1#Exercise|n>1#Exercises',
+            'GuiSection' => 'n==0#GUI Section(s)|n==1#GUI Section|n>1#GUI Sections',
             'HtmlChunk' => 'n==0#Html chunk(s)|n==1#Html chunk|n>1#Html chunks',
+            'Menu' => 'n==0#Menu(s)|n==1#Menu|n>1#Menus',
             'Node' => 'n==0#Node(s)|n==1#Node|n>1#Nodes',
             'Page' => 'n==0#Web page(s)|n==1#Web page|n>1#Web pages',
             'I18nCatalog' => 'n==0#I18n catalog(s)|n==1#I18n catalog|n>1#I18n catalogs',
@@ -223,6 +225,13 @@ class DataModel
             'Tool' => 'n==0#Tool(s)|n==1#Tool|n>1#Tools',
             'VectorGraphic' => 'n==0#Vector graphic(s)|n==1#Vector graphic|n>1#Vector graphics',
             'VideoFile' => 'n==0#Video(s)|n==1#Video|n>1#Videos',
+            'Waffle' => 'n==0#Waffle(s)|n==1#Waffle|n>1#Waffles',
+            'WaffleCategory' => 'n==0#Category(s)|n==1#Category|n>1#Categories',
+            'WaffleCategoryElement' => 'n==0#Category element(s)|n==1#Category element|n>1#Category elements',
+            'WaffleIndicator' => 'n==0#Indicator(s)|n==1#Indicator|n>1#Indicators',
+            'WaffleUnit' => 'n==0#Unit(s)|n==1#Unit|n>1#Units',
+            'WaffleTag' => 'n==0#Tag(s)|n==1#Tag|n>1#Tags',
+            'WaffleDataSource' => 'n==0#Data source(s)|n==1#Data source|n>1#Data sources',
         );
     }
 
