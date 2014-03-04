@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model base class for the table "section_qa_state".
+ * This is the model base class for the table "waffle_data_source_qa_state".
  *
- * Columns in table "section_qa_state" available as properties of the model:
+ * Columns in table "waffle_data_source_qa_state" available as properties of the model:
  * @property string $id
  * @property string $status
  * @property integer $draft_validation_progress
@@ -56,17 +56,19 @@
  * @property integer $proofing_progress
  * @property integer $previewing_welcome
  * @property integer $candidate_for_public_status
- * @property integer $title_en_approved
- * @property integer $slug_en_approved
  * @property integer $title_approved
- * @property integer $title_en_proofed
- * @property integer $slug_en_proofed
+ * @property integer $short_name_approved
+ * @property integer $ref_approved
+ * @property integer $name_approved
  * @property integer $title_proofed
+ * @property integer $short_name_proofed
+ * @property integer $ref_proofed
+ * @property integer $name_proofed
  *
- * Relations of table "section_qa_state" available as properties of the model:
- * @property Section[] $sections
+ * Relations of table "waffle_data_source_qa_state" available as properties of the model:
+ * @property WaffleDataSource[] $waffleDataSources
  */
-abstract class BaseSectionQaState extends ActiveRecord
+abstract class BaseWaffleDataSourceQaState extends ActiveRecord
 {
 
     public static function model($className = __CLASS__)
@@ -76,17 +78,17 @@ abstract class BaseSectionQaState extends ActiveRecord
 
     public function tableName()
     {
-        return 'section_qa_state';
+        return 'waffle_data_source_qa_state';
     }
 
     public function rules()
     {
         return array_merge(
             parent::rules(), array(
-                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, previewing_welcome, candidate_for_public_status, title_en_approved, slug_en_approved, title_approved, title_en_proofed, slug_en_proofed, title_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('draft_validation_progress, preview_validation_progress, public_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, previewing_welcome, candidate_for_public_status, title_en_approved, slug_en_approved, title_approved, title_en_proofed, slug_en_proofed, title_proofed', 'numerical', 'integerOnly' => true),
+                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, short_name_approved, ref_approved, name_approved, title_proofed, short_name_proofed, ref_proofed, name_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('draft_validation_progress, preview_validation_progress, public_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, short_name_approved, ref_approved, name_approved, title_proofed, short_name_proofed, ref_proofed, name_proofed', 'numerical', 'integerOnly' => true),
                 array('status', 'length', 'max' => 255),
-                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, previewing_welcome, candidate_for_public_status, title_en_approved, slug_en_approved, title_approved, title_en_proofed, slug_en_proofed, title_proofed', 'safe', 'on' => 'search'),
+                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, short_name_approved, ref_approved, name_approved, title_proofed, short_name_proofed, ref_proofed, name_proofed', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -111,7 +113,7 @@ abstract class BaseSectionQaState extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'sections' => array(self::HAS_MANY, 'Section', 'section_qa_state_id'),
+                'waffleDataSources' => array(self::HAS_MANY, 'WaffleDataSource', 'waffle_data_source_qa_state_id'),
             )
         );
     }
@@ -171,12 +173,14 @@ abstract class BaseSectionQaState extends ActiveRecord
             'proofing_progress' => Yii::t('model', 'Proofing Progress'),
             'previewing_welcome' => Yii::t('model', 'Previewing Welcome'),
             'candidate_for_public_status' => Yii::t('model', 'Candidate For Public Status'),
-            'title_en_approved' => Yii::t('model', 'Title En Approved'),
-            'slug_en_approved' => Yii::t('model', 'Slug En Approved'),
             'title_approved' => Yii::t('model', 'Title Approved'),
-            'title_en_proofed' => Yii::t('model', 'Title En Proofed'),
-            'slug_en_proofed' => Yii::t('model', 'Slug En Proofed'),
+            'short_name_approved' => Yii::t('model', 'Short Name Approved'),
+            'ref_approved' => Yii::t('model', 'Ref Approved'),
+            'name_approved' => Yii::t('model', 'Name Approved'),
             'title_proofed' => Yii::t('model', 'Title Proofed'),
+            'short_name_proofed' => Yii::t('model', 'Short Name Proofed'),
+            'ref_proofed' => Yii::t('model', 'Ref Proofed'),
+            'name_proofed' => Yii::t('model', 'Name Proofed'),
         );
     }
 
@@ -238,12 +242,14 @@ abstract class BaseSectionQaState extends ActiveRecord
         $criteria->compare('t.proofing_progress', $this->proofing_progress);
         $criteria->compare('t.previewing_welcome', $this->previewing_welcome);
         $criteria->compare('t.candidate_for_public_status', $this->candidate_for_public_status);
-        $criteria->compare('t.title_en_approved', $this->title_en_approved);
-        $criteria->compare('t.slug_en_approved', $this->slug_en_approved);
         $criteria->compare('t.title_approved', $this->title_approved);
-        $criteria->compare('t.title_en_proofed', $this->title_en_proofed);
-        $criteria->compare('t.slug_en_proofed', $this->slug_en_proofed);
+        $criteria->compare('t.short_name_approved', $this->short_name_approved);
+        $criteria->compare('t.ref_approved', $this->ref_approved);
+        $criteria->compare('t.name_approved', $this->name_approved);
         $criteria->compare('t.title_proofed', $this->title_proofed);
+        $criteria->compare('t.short_name_proofed', $this->short_name_proofed);
+        $criteria->compare('t.ref_proofed', $this->ref_proofed);
+        $criteria->compare('t.name_proofed', $this->name_proofed);
 
 
         return $criteria;

@@ -10,8 +10,10 @@
  * @property string $created
  * @property string $modified
  * @property string $i18n_catalog_id
+ * @property string $gui_section_qa_state_id
  *
  * Relations of table "gui_section" available as properties of the model:
+ * @property GuiSectionQaState $guiSectionQaState
  * @property I18nCatalog $i18nCatalog
  */
 abstract class BaseGuiSection extends ActiveRecord
@@ -31,11 +33,11 @@ abstract class BaseGuiSection extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title, slug, created, modified, i18n_catalog_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('title, slug, created, modified, i18n_catalog_id, gui_section_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('title, slug', 'length', 'max' => 255),
-                array('i18n_catalog_id', 'length', 'max' => 20),
+                array('i18n_catalog_id, gui_section_qa_state_id', 'length', 'max' => 20),
                 array('created, modified', 'safe'),
-                array('id, title, slug, created, modified, i18n_catalog_id', 'safe', 'on' => 'search'),
+                array('id, title, slug, created, modified, i18n_catalog_id, gui_section_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -60,6 +62,7 @@ abstract class BaseGuiSection extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'guiSectionQaState' => array(self::BELONGS_TO, 'GuiSectionQaState', 'gui_section_qa_state_id'),
                 'i18nCatalog' => array(self::BELONGS_TO, 'I18nCatalog', 'i18n_catalog_id'),
             )
         );
@@ -74,6 +77,7 @@ abstract class BaseGuiSection extends ActiveRecord
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'i18n_catalog_id' => Yii::t('model', 'I18n Catalog'),
+            'gui_section_qa_state_id' => Yii::t('model', 'Gui Section Qa State'),
         );
     }
 
@@ -89,6 +93,7 @@ abstract class BaseGuiSection extends ActiveRecord
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.i18n_catalog_id', $this->i18n_catalog_id);
+        $criteria->compare('t.gui_section_qa_state_id', $this->gui_section_qa_state_id);
 
 
         return $criteria;

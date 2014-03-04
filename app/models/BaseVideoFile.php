@@ -12,9 +12,8 @@
  * @property string $slug_en
  * @property string $_about
  * @property integer $thumbnail_media_id
- * @property integer $original_media_id
- * @property integer $generate_processed_media
- * @property integer $processed_media_id
+ * @property integer $clip_webm_media_id
+ * @property integer $clip_mp4_media_id
  * @property string $_subtitles
  * @property integer $subtitles_import_media_id
  * @property string $created
@@ -66,9 +65,9 @@
  * @property string $slug_zh_tw
  *
  * Relations of table "video_file" available as properties of the model:
+ * @property P3Media $clipWebmMedia
+ * @property P3Media $clipMp4Media
  * @property Node $node
- * @property P3Media $originalMedia
- * @property P3Media $processedMedia
  * @property P3Media $thumbnailMedia
  * @property P3Media $subtitlesImportMedia
  * @property Account $owner
@@ -93,12 +92,12 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, _caption, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id, subtitles_import_media_id, owner_id', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, _title, _caption, slug_en, _about, thumbnail_media_id, clip_webm_media_id, clip_mp4_media_id, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, thumbnail_media_id, clip_webm_media_id, clip_mp4_media_id, subtitles_import_media_id, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, video_file_qa_state_id', 'length', 'max' => 20),
                 array('_title, _caption, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
                 array('_about, _subtitles, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, _caption, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, _caption, slug_en, _about, thumbnail_media_id, clip_webm_media_id, clip_mp4_media_id, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -123,9 +122,9 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'clipWebmMedia' => array(self::BELONGS_TO, 'P3Media', 'clip_webm_media_id'),
+                'clipMp4Media' => array(self::BELONGS_TO, 'P3Media', 'clip_mp4_media_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-                'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
-                'processedMedia' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
                 'subtitlesImportMedia' => array(self::BELONGS_TO, 'P3Media', 'subtitles_import_media_id'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
@@ -147,9 +146,8 @@ abstract class BaseVideoFile extends ActiveRecord
             'slug_en' => Yii::t('model', 'Slug En'),
             '_about' => Yii::t('model', 'About'),
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
-            'original_media_id' => Yii::t('model', 'Original Media'),
-            'generate_processed_media' => Yii::t('model', 'Generate Processed Media'),
-            'processed_media_id' => Yii::t('model', 'Processed Media'),
+            'clip_webm_media_id' => Yii::t('model', 'Clip Webm Media'),
+            'clip_mp4_media_id' => Yii::t('model', 'Clip Mp4 Media'),
             '_subtitles' => Yii::t('model', 'Subtitles'),
             'subtitles_import_media_id' => Yii::t('model', 'Subtitles Import Media'),
             'created' => Yii::t('model', 'Created'),
@@ -216,9 +214,8 @@ abstract class BaseVideoFile extends ActiveRecord
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t._about', $this->_about, true);
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
-        $criteria->compare('t.original_media_id', $this->original_media_id);
-        $criteria->compare('t.generate_processed_media', $this->generate_processed_media);
-        $criteria->compare('t.processed_media_id', $this->processed_media_id);
+        $criteria->compare('t.clip_webm_media_id', $this->clip_webm_media_id);
+        $criteria->compare('t.clip_mp4_media_id', $this->clip_mp4_media_id);
         $criteria->compare('t._subtitles', $this->_subtitles, true);
         $criteria->compare('t.subtitles_import_media_id', $this->subtitles_import_media_id);
         $criteria->compare('t.created', $this->created, true);

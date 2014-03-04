@@ -14,11 +14,13 @@
  * @property string $waffle_id
  * @property string $created
  * @property string $modified
+ * @property string $waffle_tag_qa_state_id
  *
  * Relations of table "waffle_tag" available as properties of the model:
+ * @property WaffleTagQaState $waffleTagQaState
+ * @property Waffle $waffle
  * @property WaffleTag $clonedFrom
  * @property WaffleTag[] $waffleTags
- * @property Waffle $waffle
  */
 abstract class BaseWaffleTag extends ActiveRecord
 {
@@ -37,12 +39,12 @@ abstract class BaseWaffleTag extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified, waffle_tag_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, waffle_id', 'length', 'max' => 20),
+                array('cloned_from_id, waffle_id, waffle_tag_qa_state_id', 'length', 'max' => 20),
                 array('ref, _name, _short_name', 'length', 'max' => 255),
                 array('_description, created, modified', 'safe'),
-                array('id, version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified, waffle_tag_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -67,9 +69,10 @@ abstract class BaseWaffleTag extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'waffleTagQaState' => array(self::BELONGS_TO, 'WaffleTagQaState', 'waffle_tag_qa_state_id'),
+                'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'WaffleTag', 'cloned_from_id'),
                 'waffleTags' => array(self::HAS_MANY, 'WaffleTag', 'cloned_from_id'),
-                'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
             )
         );
     }
@@ -87,6 +90,7 @@ abstract class BaseWaffleTag extends ActiveRecord
             'waffle_id' => Yii::t('model', 'Waffle'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'waffle_tag_qa_state_id' => Yii::t('model', 'Waffle Tag Qa State'),
         );
     }
 
@@ -106,6 +110,7 @@ abstract class BaseWaffleTag extends ActiveRecord
         $criteria->compare('t.waffle_id', $this->waffle_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.waffle_tag_qa_state_id', $this->waffle_tag_qa_state_id);
 
 
         return $criteria;
