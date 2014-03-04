@@ -122,6 +122,10 @@ trait ItemTrait
 
     }
 
+    /**
+     * A currently translatable attribute is an attribute that is to be translated AND has some source contents to translate.
+     * @return array
+     */
     public function getCurrentlyTranslatableAttributes()
     {
         $currentlyTranslatableAttributes = array();
@@ -163,19 +167,21 @@ trait ItemTrait
      */
     public function i18nRules()
     {
+        // Pick the first translatable attribute, if any
+        $behaviors = $this->behaviors();
+        $attribute = (isset($behaviors['i18n-attribute-messages']) ? $behaviors['i18n-attribute-messages']['translationAttributes'][0] :
+            (isset($behaviors['i18n-columns']) ? $behaviors['i18n-columns']['translationAttributes'][0] : false)
+        );
+
+        // Do nothing if there are no attributes to translate at any time for this model
+        if (!$attribute) {
+            return array();
+        }
+
         $currentlyTranslatableAttributes = $this->getCurrentlyTranslatableAttributes();
 
-        //Yii::log("behaviors: " . print_r($behaviors, true), "info", __METHOD__);
-        //Yii::log("currentlyTranslatableAttributes: " . print_r($currentlyTranslatableAttributes, true), "info", __METHOD__);
-
-        // If there is nothing to translate, then the translation progress should equal 0%
+        // If there currently is nothing to translate, then the translation progress should equal 0%
         if (empty($currentlyTranslatableAttributes)) {
-
-            // Pick the first translatable attribute
-            $behaviors = $this->behaviors();
-            $attribute = (isset($behaviors['i18n-attribute-messages']) ? $behaviors['i18n-attribute-messages']['translationAttributes'][0] :
-                (isset($behaviors['i18n-columns']) ? $behaviors['i18n-columns']['translationAttributes'][0] : false)
-            );
 
             // Add an always invalid status requirement for each language upon the first translatable attribute
             $i18nRules = array();
