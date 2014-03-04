@@ -208,21 +208,21 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
-     * Returns related P3Media.
+     * Returns related video P3Media.
      * @return P3Media[]
      */
     public function getRelatedVideos()
     {
-        $criteria = new CDbCriteria();
-        $criteria->addInCondition('mime_type', array('video/webm'));
-        $criteria->addCondition('t.type = :type');
-        $criteria->addCondition('t.access_owner = :userId');
-        $criteria->limit = 100;
-        $criteria->order = 't.created_at DESC';
-        $criteria->params[':userId'] = Yii::app()->user->id;
-        $criteria->params[':type'] = 'file';
-        //dumpd(P3Media::model()->findAll($criteria));
-        return P3Media::model()->findAll($criteria);
+        return $this->getRelatedP3Media(array('video/webm'));
+    }
+
+    /**
+     * Returns related thumbnail P3Media.
+     * @return P3Media[]
+     */
+    public function getRelatedThumbnails()
+    {
+        return $this->getRelatedP3Media(array('image/jpeg', 'image/png'));
     }
 
     /**
@@ -231,8 +231,46 @@ class VideoFile extends BaseVideoFile
      */
     public function getRelatedVideoOptions()
     {
+        return $this->getRelatedOptions($this->getRelatedVideos());
+    }
+
+    /**
+     * Returns related thumbnail options.
+     * @return array
+     */
+    public function getRelatedThumbnailOptions()
+    {
+        return $this->getRelatedOptions($this->getRelatedThumbnails());
+    }
+
+    /**
+     * Returns related P3Media records.
+     * @param array $mimeType
+     * @param string $type P3Media.type
+     * @return P3Media[]
+     */
+    public function getRelatedP3Media(array $mimeType, $type = 'file')
+    {
+        $criteria = new CDbCriteria();
+        $criteria->addInCondition('mime_type', $mimeType);
+        $criteria->addCondition('t.type = :type');
+        $criteria->addCondition('t.access_owner = :userId');
+        $criteria->limit = 100;
+        $criteria->order = 't.created_at DESC';
+        $criteria->params[':userId'] = Yii::app()->user->id;
+        $criteria->params[':type'] = $type;
+        return P3Media::model()->findAll($criteria);
+    }
+
+    /**
+     * Returns related P3Media options.
+     * @param P3Media[] $data
+     * @return array
+     */
+    public function getRelatedOptions($data)
+    {
         return TbHtml::listData(
-            $this->getRelatedVideos(),
+            $data,
             'id',
             'original_name'
         );
