@@ -20,7 +20,7 @@ class Changeset extends BaseChangeset
 
     public function getItemLabel()
     {
-        return "Changeset #".$this->id;
+        return "Changeset #" . $this->id;
     }
 
     public function behaviors()

@@ -68,8 +68,7 @@ class Waffle extends BaseWaffle
             'preview' => array(
                 'slug',
             ),
-            'public' => array(
-            ),
+            'public' => array(),
         );
     }
 

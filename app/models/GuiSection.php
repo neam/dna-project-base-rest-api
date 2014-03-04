@@ -68,8 +68,7 @@ class GuiSection extends BaseGuiSection
             'preview' => array(
                 'slug',
             ),
-            'public' => array(
-            ),
+            'public' => array(),
         );
     }
 

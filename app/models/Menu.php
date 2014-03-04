@@ -69,8 +69,7 @@ class Menu extends BaseMenu
                 'slug',
                 'pages',
             ),
-            'public' => array(
-            ),
+            'public' => array(),
         );
     }
 
