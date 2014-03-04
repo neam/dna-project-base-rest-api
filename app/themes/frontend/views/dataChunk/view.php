@@ -12,7 +12,7 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
     
 </h1>-->
 
-<?php if (Yii::app()->user->checkAccess('DataChunk.*')): ?>
+<?php if (Yii::app()->user->checkAccess('DataArticle.*')): ?>
     <div class="admin-container hide">
         <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
     </div>

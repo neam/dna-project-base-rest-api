@@ -1,6 +1,6 @@
 <?php
-/* @var DataChunkController|ItemController $this */
-/* @var DataChunk|ItemTrait $model */
+/* @var DataArticleController|ItemController $this */
+/* @var DataArticle|ItemTrait $model */
 ?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
     <?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
@@ -12,7 +12,7 @@
             <small><?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?></small>
         </h1>
         */ ?>
-        <?php if (Yii::app()->user->checkAccess('DataChunk.*')): ?>
+        <?php if (Yii::app()->user->checkAccess('DataArticle.*')): ?>
             <div class='admin-container hide'>
                 <div class="btn-toolbar">
                     <div class="btn-group">

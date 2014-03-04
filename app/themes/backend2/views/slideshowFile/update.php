@@ -752,8 +752,8 @@ $this->widget('TbGridView',
                 ),
             array(
                     'name' => 'data_chunk_id',
-                    'value' => 'CHtml::value($data, \'dataChunk.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'value' => 'CHtml::value($data, \'dataArticle.itemLabel\')',
+                    'filter' => '',//CHtml::listData(DataArticle::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'download_link_id',
@@ -1445,7 +1445,7 @@ $this->widget('TbGridView',
 
 <h2>
     <?php echo Yii::t('model', 'Data Chunks'); ?>
-    <small>datachunks</small>
+    <small>dataarticles</small>
 </h2>
 
 This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.

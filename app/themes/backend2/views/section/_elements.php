@@ -175,7 +175,7 @@
         <?php ?>
 
         <h3>
-            <?php echo Yii::t('model', 'dataChunks'); ?>
+            <?php echo Yii::t('model', 'dataArticles'); ?>
         </h3>
         <?php ?>
 

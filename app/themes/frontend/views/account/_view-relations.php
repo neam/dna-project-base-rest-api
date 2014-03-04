@@ -147,7 +147,7 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'relation.DataChunks') . ' ';
+echo Yii::t('model', 'relation.DataArticles') . ' ';
 $this->widget(
     '\TbButtonGroup',
     array(
@@ -156,13 +156,13 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'glyphicon-list-alt',
-                'url' => array('///dataChunk/admin', 'DataChunk' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+                'url' => array('///dataArticle/admin', 'DataArticle' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'glyphicon-plus',
                 'url' => array(
-                    '///dataChunk/create',
-                    'DataChunk' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                    '///dataArticle/create',
+                    'DataArticle' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
                 )
             ),
 
@@ -173,17 +173,17 @@ echo '</h3>' ?>
 <ul>
 
     <?php
-    $records = $model->dataChunks(array('limit' => 250, 'scopes' => ''));
+    $records = $model->dataArticles(array('limit' => 250, 'scopes' => ''));
     if (is_array($records)) {
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
                 '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
-                array('//dataChunk/view', 'id' => $relatedModel->id)
+                array('//dataArticle/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
                 ' <i class="icon icon-pencil"></i>',
-                array('//dataChunk/update', 'id' => $relatedModel->id)
+                array('//dataArticle/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }

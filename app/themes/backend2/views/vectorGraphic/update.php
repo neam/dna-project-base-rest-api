@@ -876,7 +876,7 @@ $this->widget('TbGridView',
 
 <h2>
     <?php echo Yii::t('model', 'Data Chunks'); ?>
-    <small>datachunks</small>
+    <small>dataarticles</small>
 </h2>
 
 This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.

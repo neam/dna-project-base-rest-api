@@ -31,7 +31,7 @@ Yii::app()->clientScript->registerScript('search', "
 
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<?php Yii::beginProfile('DataChunk.view.grid'); ?>
+<?php Yii::beginProfile('DataArticle.view.grid'); ?>
 
 
 <?php
@@ -57,7 +57,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'id',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -65,20 +65,20 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'version',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             array(
                 'name' => 'cloned_from_id',
-                'value' => 'CHtml::value($data, \'dataChunks.itemLabel\')',
-                'filter' => '', //CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'value' => 'CHtml::value($data, \'dataArticles.itemLabel\')',
+                'filter' => '', //CHtml::listData(DataArticle::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
                 'name' => '_title',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -86,7 +86,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_en',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -101,7 +101,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -109,7 +109,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -128,7 +128,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_es',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -136,7 +136,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_hi',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -144,7 +144,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_pt',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -152,7 +152,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_sv',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -160,20 +160,20 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_de',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             array(
                 'name' => 'data_chunk_qa_state_id',
-                'value' => 'CHtml::value($data, \'dataChunkQaState.itemLabel\')',
-                'filter' => '',//CHtml::listData(DataChunkQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'value' => 'CHtml::value($data, \'dataArticleQaState.itemLabel\')',
+                'filter' => '',//CHtml::listData(DataArticleQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_zh',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -181,7 +181,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_ar',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -189,7 +189,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_bg',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -197,7 +197,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_ca',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -205,7 +205,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_cs',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -213,7 +213,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_da',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -221,7 +221,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_en_gb',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -229,7 +229,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_en_us',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -237,7 +237,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_el',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -245,7 +245,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_fi',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -253,7 +253,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_fil',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -261,7 +261,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_fr',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -269,7 +269,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_hr',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -277,7 +277,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_hu',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -285,7 +285,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_id',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -293,7 +293,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_iw',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -301,7 +301,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_it',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -309,7 +309,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_ja',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -317,7 +317,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_ko',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -325,7 +325,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_lt',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -333,7 +333,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_lv',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -341,7 +341,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_nl',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -349,7 +349,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_no',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -357,7 +357,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_pl',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -365,7 +365,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_pt_br',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -373,7 +373,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_pt_pt',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -381,7 +381,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_ro',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -389,7 +389,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_ru',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -397,7 +397,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_sk',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -405,7 +405,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_sl',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -413,7 +413,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_sr',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -421,7 +421,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_th',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -429,7 +429,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_tr',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -437,7 +437,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_uk',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -445,7 +445,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_vi',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -453,7 +453,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_zh_cn',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -461,7 +461,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_zh_tw',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -470,9 +470,9 @@ $this->widget('TbGridView',
             array(
                 'class' => 'TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("DataChunk.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("DataChunk.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("DataChunk.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("DataArticle.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("DataArticle.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("DataArticle.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
@@ -482,4 +482,4 @@ $this->widget('TbGridView',
     )
 );
 ?>
-<?php Yii::endProfile('DataChunk.view.grid'); ?>
+<?php Yii::endProfile('DataArticle.view.grid'); ?>

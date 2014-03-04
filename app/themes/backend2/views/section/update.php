@@ -109,8 +109,8 @@ $this->widget('TbGridView',
                 ),
             array(
                     'name' => 'data_chunk_id',
-                    'value' => 'CHtml::value($data, \'dataChunk.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'value' => 'CHtml::value($data, \'dataArticle.itemLabel\')',
+                    'filter' => '',//CHtml::listData(DataArticle::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'download_link_id',
@@ -337,7 +337,7 @@ $this->widget('TbGridView',
     <div class='row'>
         <div class='span3'><?php
             echo '<h3>';
-            echo Yii::t('model', 'relation.DataChunks') . ' ';
+            echo Yii::t('model', 'relation.DataArticles') . ' ';
             $this->widget(
                 '\TbButtonGroup',
                 array(
@@ -346,7 +346,7 @@ $this->widget('TbGridView',
                     'buttons' => array(
                         array(
                             'icon' => 'icon-list-alt',
-                            'url' => array('/dataChunk/admin', 'DataChunk' => array('section_content(section_id, data_chunk_id)' => $model->{$model->tableSchema->primaryKey}))
+                            'url' => array('/dataArticle/admin', 'DataArticle' => array('section_content(section_id, data_chunk_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
                     )
@@ -356,13 +356,13 @@ $this->widget('TbGridView',
         <div class='span8'>
             <?php
             echo '<span class=label>CManyManyRelation</span>';
-            if (is_array($model->dataChunks)) {
+            if (is_array($model->dataArticles)) {
 
                 echo CHtml::openTag('ul');
-                foreach ($model->dataChunks as $relatedModel) {
+                foreach ($model->dataArticles as $relatedModel) {
 
                     echo '<li>';
-                    echo CHtml::link($relatedModel->itemLabel, array('dataChunk/view', 'id' => $relatedModel->id), array('class' => ''));
+                    echo CHtml::link($relatedModel->itemLabel, array('dataArticle/view', 'id' => $relatedModel->id), array('class' => ''));
 
                     echo '</li>';
                 }

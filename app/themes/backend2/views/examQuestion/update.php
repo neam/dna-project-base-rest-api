@@ -388,8 +388,8 @@ $this->widget('TbGridView',
                 ),
             array(
                     'name' => 'data_chunk_id',
-                    'value' => 'CHtml::value($data, \'dataChunk.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'value' => 'CHtml::value($data, \'dataArticle.itemLabel\')',
+                    'filter' => '',//CHtml::listData(DataArticle::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'download_link_id',

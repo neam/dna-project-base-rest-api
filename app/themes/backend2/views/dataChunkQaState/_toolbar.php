@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'icon-search',
-                        'items' => array(array('label' => 'dataChunks - DataChunk', 'url' => array('//dataChunk/admin'))
+                        'items' => array(array('label' => 'dataArticles - DataArticle', 'url' => array('//dataArticle/admin'))
                         )
                     ),
                 ),

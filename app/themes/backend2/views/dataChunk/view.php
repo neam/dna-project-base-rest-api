@@ -259,7 +259,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'id',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -272,7 +272,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'version',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -281,10 +281,10 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'cloned_from_id',
                         'value' => ($model->clonedFrom !== null) ? CHtml::link(
                                     '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
-                                    array('//dataChunk/view', 'id' => $model->clonedFrom->id),
+                                    array('//dataArticle/view', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) . ' ' . CHtml::link(
                                     '<i class="icon icon-pencil"></i> ',
-                                    array('//dataChunk/update', 'id' => $model->clonedFrom->id),
+                                    array('//dataArticle/update', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -296,7 +296,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => '_title',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -309,7 +309,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_en',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -322,7 +322,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => '_about',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -346,7 +346,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'metadata',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -359,7 +359,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'created',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -372,7 +372,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'modified',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -407,7 +407,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_es',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -420,7 +420,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_hi',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -433,7 +433,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_pt',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -446,7 +446,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_sv',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -459,19 +459,19 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_de',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
                     ),
                     array(
                         'name' => 'data_chunk_qa_state_id',
-                        'value' => ($model->dataChunkQaState !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->dataChunkQaState->itemLabel,
-                                    array('//dataChunkQaState/view', 'id' => $model->dataChunkQaState->id),
+                        'value' => ($model->dataArticleQaState !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->dataArticleQaState->itemLabel,
+                                    array('//dataArticleQaState/view', 'id' => $model->dataArticleQaState->id),
                                     array('class' => '')) . ' ' . CHtml::link(
                                     '<i class="icon icon-pencil"></i> ',
-                                    array('//dataChunkQaState/update', 'id' => $model->dataChunkQaState->id),
+                                    array('//dataArticleQaState/update', 'id' => $model->dataArticleQaState->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -483,7 +483,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_zh',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -496,7 +496,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_ar',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -509,7 +509,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_bg',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -522,7 +522,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_ca',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -535,7 +535,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_cs',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -548,7 +548,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_da',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -561,7 +561,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_en_gb',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -574,7 +574,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_en_us',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -587,7 +587,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_el',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -600,7 +600,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_fi',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -613,7 +613,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_fil',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -626,7 +626,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_fr',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -639,7 +639,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_hr',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -652,7 +652,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_hu',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -665,7 +665,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_id',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -678,7 +678,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_iw',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -691,7 +691,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_it',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -704,7 +704,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_ja',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -717,7 +717,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_ko',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -730,7 +730,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_lt',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -743,7 +743,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_lv',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -756,7 +756,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_nl',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -769,7 +769,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_no',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -782,7 +782,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_pl',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -795,7 +795,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_pt_br',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -808,7 +808,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_pt_pt',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -821,7 +821,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_ro',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -834,7 +834,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_ru',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -847,7 +847,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_sk',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -860,7 +860,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_sl',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -873,7 +873,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_sr',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -886,7 +886,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_th',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -899,7 +899,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_tr',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -912,7 +912,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_uk',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -925,7 +925,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_vi',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -938,7 +938,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_zh_cn',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )
@@ -951,7 +951,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_zh_tw',
-                                    'url' => $this->createUrl('/dataChunk/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticle/editableSaver'),
                                 ),
                                 true
                             )

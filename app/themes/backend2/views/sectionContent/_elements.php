@@ -292,7 +292,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'dataChunk',
+                    'relation' => 'dataArticle',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -324,10 +324,10 @@
 
             <?php
             $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//dataChunk/_modal_form', array(
+            $this->renderPartial('//dataArticle/_modal_form', array(
                 'formId' => $formId,
                 'inputSelector' => '#SectionContent_data_chunk_id',
-                'model' => new DataChunk,
+                'model' => new DataArticle,
                 'pk' => 'id',
                 'field' => 'itemLabel',
             ));

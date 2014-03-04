@@ -237,21 +237,21 @@ echo '</h3>' ?>
 </ul>
 
 
-<?php echo '<h3>' . Yii::t('model', 'relation.Datachunks') . '</h3>' ?>
+<?php echo '<h3>' . Yii::t('model', 'relation.Dataarticles') . '</h3>' ?>
 <ul>
 
     <?php
-    $records = $model->datachunks(array('limit' => 250, 'scopes' => ''));
+    $records = $model->dataarticles(array('limit' => 250, 'scopes' => ''));
     if (is_array($records)) {
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
                 '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
-                array('//dataChunk/view', 'id' => $relatedModel->id)
+                array('//dataArticle/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
                 ' <i class="icon icon-pencil"></i>',
-                array('//dataChunk/update', 'id' => $relatedModel->id)
+                array('//dataArticle/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }
