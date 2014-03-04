@@ -11,6 +11,8 @@
  * @property string $slug_en
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
+ * @property string $node_id
  * @property string $slug_ar
  * @property string $slug_bg
  * @property string $slug_ca
@@ -56,9 +58,11 @@
  * @property string $waffle_qa_state_id
  *
  * Relations of table "waffle" available as properties of the model:
- * @property WaffleQaState $waffleQaState
+ * @property Account $owner
+ * @property Node $node
  * @property Waffle $clonedFrom
  * @property Waffle[] $waffles
+ * @property WaffleQaState $waffleQaState
  * @property WaffleCategory[] $waffleCategories
  * @property WaffleDataSource[] $waffleDataSources
  * @property WaffleIndicator[] $waffleIndicators
@@ -82,12 +86,12 @@ abstract class BaseWaffle extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, created, modified, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, waffle_qa_state_id', 'length', 'max' => 20),
+                array('version, cloned_from_id, _title, slug_en, created, modified, owner_id, node_id, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, owner_id', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id, node_id, waffle_qa_state_id', 'length', 'max' => 20),
                 array('_title, slug_en, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, created, modified, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, created, modified, owner_id, node_id, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -112,9 +116,11 @@ abstract class BaseWaffle extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'waffleQaState' => array(self::BELONGS_TO, 'WaffleQaState', 'waffle_qa_state_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Waffle', 'cloned_from_id'),
                 'waffles' => array(self::HAS_MANY, 'Waffle', 'cloned_from_id'),
+                'waffleQaState' => array(self::BELONGS_TO, 'WaffleQaState', 'waffle_qa_state_id'),
                 'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'waffle_id'),
                 'waffleDataSources' => array(self::HAS_MANY, 'WaffleDataSource', 'waffle_id'),
                 'waffleIndicators' => array(self::HAS_MANY, 'WaffleIndicator', 'waffle_id'),
@@ -134,6 +140,8 @@ abstract class BaseWaffle extends ActiveRecord
             'slug_en' => Yii::t('model', 'Slug En'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
+            'node_id' => Yii::t('model', 'Node'),
             'slug_ar' => Yii::t('model', 'Slug Ar'),
             'slug_bg' => Yii::t('model', 'Slug Bg'),
             'slug_ca' => Yii::t('model', 'Slug Ca'),
@@ -193,6 +201,8 @@ abstract class BaseWaffle extends ActiveRecord
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
+        $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.slug_ar', $this->slug_ar, true);
         $criteria->compare('t.slug_bg', $this->slug_bg, true);
         $criteria->compare('t.slug_ca', $this->slug_ca, true);

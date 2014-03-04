@@ -21,6 +21,8 @@
  * @property ExamQuestionAlternative[] $examQuestionAlternatives
  * @property Exercise[] $exercises
  * @property HtmlChunk[] $htmlChunks
+ * @property I18nCatalog[] $i18nCatalogs
+ * @property Menu[] $menus
  * @property NodeHasGroup[] $nodeHasGroups
  * @property Page[] $pages
  * @property Section[] $sections
@@ -31,6 +33,13 @@
  * @property Tool[] $tools
  * @property VectorGraphic[] $vectorGraphics
  * @property VideoFile[] $videoFiles
+ * @property Waffle[] $waffles
+ * @property WaffleCategory[] $waffleCategories
+ * @property WaffleCategoryElement[] $waffleCategoryElements
+ * @property WaffleDataSource[] $waffleDataSources
+ * @property WaffleIndicator[] $waffleIndicators
+ * @property WaffleTag[] $waffleTags
+ * @property WaffleUnit[] $waffleUnits
  */
 abstract class BaseNode extends ActiveRecord
 {
@@ -88,6 +97,8 @@ abstract class BaseNode extends ActiveRecord
                 'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'node_id'),
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'node_id'),
                 'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'node_id'),
+                'i18nCatalogs' => array(self::HAS_MANY, 'I18nCatalog', 'node_id'),
+                'menus' => array(self::HAS_MANY, 'Menu', 'node_id'),
                 'nodeHasGroups' => array(self::HAS_MANY, 'NodeHasGroup', 'node_id'),
                 'pages' => array(self::HAS_MANY, 'Page', 'node_id'),
                 'sections' => array(self::HAS_MANY, 'Section', 'node_id'),
@@ -98,6 +109,13 @@ abstract class BaseNode extends ActiveRecord
                 'tools' => array(self::HAS_MANY, 'Tool', 'node_id'),
                 'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'node_id'),
                 'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'node_id'),
+                'waffles' => array(self::HAS_MANY, 'Waffle', 'node_id'),
+                'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'node_id'),
+                'waffleCategoryElements' => array(self::HAS_MANY, 'WaffleCategoryElement', 'node_id'),
+                'waffleDataSources' => array(self::HAS_MANY, 'WaffleDataSource', 'node_id'),
+                'waffleIndicators' => array(self::HAS_MANY, 'WaffleIndicator', 'node_id'),
+                'waffleTags' => array(self::HAS_MANY, 'WaffleTag', 'node_id'),
+                'waffleUnits' => array(self::HAS_MANY, 'WaffleUnit', 'node_id'),
             )
         );
     }

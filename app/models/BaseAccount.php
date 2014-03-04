@@ -27,8 +27,10 @@
  * @property GroupHasAccount[] $groupHasAccounts
  * @property HtmlChunk[] $htmlChunks
  * @property I18nCatalog[] $i18nCatalogs
+ * @property Menu[] $menus
  * @property Page[] $pages
  * @property Profile $profile
+ * @property Section[] $sections
  * @property SlideshowFile[] $slideshowFiles
  * @property Snapshot[] $snapshots
  * @property SpreadsheetFile[] $spreadsheetFiles
@@ -36,6 +38,13 @@
  * @property Tool[] $tools
  * @property VectorGraphic[] $vectorGraphics
  * @property VideoFile[] $videoFiles
+ * @property Waffle[] $waffles
+ * @property WaffleCategory[] $waffleCategories
+ * @property WaffleCategoryElement[] $waffleCategoryElements
+ * @property WaffleDataSource[] $waffleDataSources
+ * @property WaffleIndicator[] $waffleIndicators
+ * @property WaffleTag[] $waffleTags
+ * @property WaffleUnit[] $waffleUnits
  */
 abstract class BaseAccount extends ActiveRecord
 {
@@ -97,8 +106,10 @@ abstract class BaseAccount extends ActiveRecord
                 'groupHasAccounts' => array(self::HAS_MANY, 'GroupHasAccount', 'account_id'),
                 'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'owner_id'),
                 'i18nCatalogs' => array(self::HAS_MANY, 'I18nCatalog', 'owner_id'),
+                'menus' => array(self::HAS_MANY, 'Menu', 'owner_id'),
                 'pages' => array(self::HAS_MANY, 'Page', 'owner_id'),
                 'profile' => array(self::HAS_ONE, 'Profile', 'user_id'),
+                'sections' => array(self::HAS_MANY, 'Section', 'owner_id'),
                 'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'owner_id'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'owner_id'),
                 'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'owner_id'),
@@ -106,6 +117,13 @@ abstract class BaseAccount extends ActiveRecord
                 'tools' => array(self::HAS_MANY, 'Tool', 'owner_id'),
                 'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'owner_id'),
                 'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'owner_id'),
+                'waffles' => array(self::HAS_MANY, 'Waffle', 'owner_id'),
+                'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'owner_id'),
+                'waffleCategoryElements' => array(self::HAS_MANY, 'WaffleCategoryElement', 'owner_id'),
+                'waffleDataSources' => array(self::HAS_MANY, 'WaffleDataSource', 'owner_id'),
+                'waffleIndicators' => array(self::HAS_MANY, 'WaffleIndicator', 'owner_id'),
+                'waffleTags' => array(self::HAS_MANY, 'WaffleTag', 'owner_id'),
+                'waffleUnits' => array(self::HAS_MANY, 'WaffleUnit', 'owner_id'),
             )
         );
     }

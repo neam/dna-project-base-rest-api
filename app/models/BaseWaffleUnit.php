@@ -14,13 +14,17 @@
  * @property string $waffle_id
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
+ * @property string $node_id
  * @property string $waffle_unit_qa_state_id
  *
  * Relations of table "waffle_unit" available as properties of the model:
- * @property WaffleUnitQaState $waffleUnitQaState
+ * @property Account $owner
+ * @property Node $node
  * @property Waffle $waffle
  * @property WaffleUnit $clonedFrom
  * @property WaffleUnit[] $waffleUnits
+ * @property WaffleUnitQaState $waffleUnitQaState
  */
 abstract class BaseWaffleUnit extends ActiveRecord
 {
@@ -39,12 +43,12 @@ abstract class BaseWaffleUnit extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified, waffle_unit_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, waffle_id, waffle_unit_qa_state_id', 'length', 'max' => 20),
+                array('version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified, owner_id, node_id, waffle_unit_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, owner_id', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id, waffle_id, node_id, waffle_unit_qa_state_id', 'length', 'max' => 20),
                 array('ref, _name, _short_name', 'length', 'max' => 255),
                 array('_description, created, modified', 'safe'),
-                array('id, version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified, waffle_unit_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified, owner_id, node_id, waffle_unit_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -69,10 +73,12 @@ abstract class BaseWaffleUnit extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'waffleUnitQaState' => array(self::BELONGS_TO, 'WaffleUnitQaState', 'waffle_unit_qa_state_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'WaffleUnit', 'cloned_from_id'),
                 'waffleUnits' => array(self::HAS_MANY, 'WaffleUnit', 'cloned_from_id'),
+                'waffleUnitQaState' => array(self::BELONGS_TO, 'WaffleUnitQaState', 'waffle_unit_qa_state_id'),
             )
         );
     }
@@ -90,6 +96,8 @@ abstract class BaseWaffleUnit extends ActiveRecord
             'waffle_id' => Yii::t('model', 'Waffle'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
+            'node_id' => Yii::t('model', 'Node'),
             'waffle_unit_qa_state_id' => Yii::t('model', 'Waffle Unit Qa State'),
         );
     }
@@ -110,6 +118,8 @@ abstract class BaseWaffleUnit extends ActiveRecord
         $criteria->compare('t.waffle_id', $this->waffle_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
+        $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.waffle_unit_qa_state_id', $this->waffle_unit_qa_state_id);
 
 
