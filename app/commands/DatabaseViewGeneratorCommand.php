@@ -204,9 +204,9 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
         $selectViewResult = Yii::app()->db->createCommand("SELECT * FROM $viewName LIMIT 2")->queryAll();
         var_dump(compact("selectResult", "selectViewResult"));
 
-        $selectExistingGoItemsResult = Yii::app()->db->createCommand("SELECT * FROM $viewName WHERE model_class IS NOT NULL LIMIT 2")->queryAll();
+        $selectExistingItemsResult = Yii::app()->db->createCommand("SELECT * FROM $viewName WHERE model_class IS NOT NULL LIMIT 2")->queryAll();
 
-        var_dump(compact("selectExistingGoItemsResult"));
+        var_dump(compact("selectExistingItemsResult"));
     }
 
     /**

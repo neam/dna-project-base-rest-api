@@ -21,7 +21,7 @@
     <?php
     // TODO: This could propably be refactored
     /** @var CDbCriteria $relatedCriteria */
-    $relatedCriteria = GoItem::model()->searchCriteria();
+    $relatedCriteria = Item::model()->searchCriteria();
     $relatedCriteria->addNotInCondition('node_id', $model->getRelatedNodeIds());
     $relatedCriteria->addCondition('node_id != :model_node_id');
     $relatedCriteria->params[':model_node_id'] = $model->node_id;
@@ -30,7 +30,7 @@
         array(
             'name' => 'add-related-edges',
             'data' => CHtml::listData(
-                GoItem::model()->findAll($relatedCriteria),
+                Item::model()->findAll($relatedCriteria),
                 'node_id',
                 function($item) {
                     if (isset($item->_title)) {
