@@ -4,4 +4,96 @@
       margin-top: 20px;
     }
   }
+
+  &.profile-action {
+    .flowbar {
+      .flowbar-head {
+        .make-row();
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        .head-title {
+          .make-md-column(6);
+          .pull-left;
+
+          .profile-heading {
+            margin: 0;
+          }
+        }
+
+        .head-actions {
+          .make-md-column(6);
+          .pull-right;
+          text-align: right;
+        }
+      }
+
+      .flowbar-content {
+        .make-row();
+
+        .content-toolbar {
+          .make-md-column(6);
+          .pull-left;
+        }
+
+        .content-actions {
+          .make-md-column(6);
+          .btn-group;
+          .pull-right;
+          text-align: right;
+        }
+      }
+    }
+
+    .after-flowbar {
+      margin-top: 123px;
+    }
+
+    .alerts {
+      .make-row();
+
+      .alerts-content {
+        .make-md-column(12);
+      }
+    }
+
+    .profile {
+      .make-row();
+
+      .profile-content {
+        .make-md-column(9);
+
+        .content-messages {
+          .alert;
+          .alert-success;
+        }
+
+        .content-form {
+          .form-head {
+            .make-row();
+          }
+
+          .form-errors {
+            .make-row();
+          }
+
+          .form-fields {
+            .make-row();
+
+            .fields-left {
+              .make-md-column(6);
+            }
+
+            .fields-right {
+              .make-md-column(6);
+            }
+          }
+        }
+      }
+
+      .profile-sidebar {
+        .make-md-column(3);
+      }
+    }
+  }
 }

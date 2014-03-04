@@ -73,6 +73,15 @@ class Profiles extends BaseProfiles
     }
 
     /**
+     * Returns the full name.
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /**
      * Returns the languages the user is able to translate into.
      * @param boolean $asString whether to return a string. Defaults to false (returns an array).
      * @return array|string the languages.

@@ -161,7 +161,6 @@ FROM users INNER JOIN profiles profile WHERE id = :user_id
     {
         $id = user()->id;
         $model = $this->loadModel($id); // Account
-        $roles = $model->getAuthItems();
 
         $this->performAjaxValidation(array($model, $model->profiles));
 
@@ -170,14 +169,13 @@ FROM users INNER JOIN profiles profile WHERE id = :user_id
             $model->profiles->attributes = $_POST['Profiles'];
 
             if ($model->save() && $model->profiles->save()) {
-                setFlash(TbAlert::TYPE_SUCCESS, t('app', 'Your account information has been updated.'));
+                setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('app', 'Your account information has been updated.'));
                 $this->refresh();
             }
         }
 
         $this->render('profile', array(
             'model' => $model,
-            'roles' => $roles,
         ));
     }
 

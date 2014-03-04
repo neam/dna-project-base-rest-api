@@ -65,4 +65,13 @@ class Account extends BaseAccount
     {
         return array_keys(Yii::app()->authManager->getAuthItems($type, $this->id));
     }
+
+    /**
+     * Returns the roles.
+     * @return array
+     */
+    public function getRoles()
+    {
+        return $this->getAuthItems();
+    }
 }

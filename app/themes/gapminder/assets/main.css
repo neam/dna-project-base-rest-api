@@ -6357,6 +6357,326 @@ td.visible-print {
 .account-controller.admin-action .grid-view {
   margin-top: 20px;
 }
+.account-controller.profile-action .flowbar .flowbar-head {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.account-controller.profile-action .flowbar .flowbar-head:before,
+.account-controller.profile-action .flowbar .flowbar-head:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .flowbar .flowbar-head:after {
+  clear: both;
+}
+.account-controller.profile-action .flowbar .flowbar-head:before,
+.account-controller.profile-action .flowbar .flowbar-head:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .flowbar .flowbar-head:after {
+  clear: both;
+}
+.account-controller.profile-action .flowbar .flowbar-head .head-title {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: left !important;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .flowbar .flowbar-head .head-title {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller.profile-action .flowbar .flowbar-head .head-title .profile-heading {
+  margin: 0;
+}
+.account-controller.profile-action .flowbar .flowbar-head .head-actions {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: right !important;
+  text-align: right;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .flowbar .flowbar-head .head-actions {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller.profile-action .flowbar .flowbar-content {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller.profile-action .flowbar .flowbar-content:before,
+.account-controller.profile-action .flowbar .flowbar-content:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .flowbar .flowbar-content:after {
+  clear: both;
+}
+.account-controller.profile-action .flowbar .flowbar-content:before,
+.account-controller.profile-action .flowbar .flowbar-content:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .flowbar .flowbar-content:after {
+  clear: both;
+}
+.account-controller.profile-action .flowbar .flowbar-content .content-toolbar {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: left !important;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .flowbar .flowbar-content .content-toolbar {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller.profile-action .flowbar .flowbar-content .content-actions {
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  float: right !important;
+  text-align: right;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .flowbar .flowbar-content .content-actions {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn {
+  position: relative;
+  float: left;
+}
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:hover,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:focus,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:active,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn.active {
+  z-index: 2;
+}
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:focus {
+  outline: none;
+}
+.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn + .btn,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn + .btn-group,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn-group + .btn,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn-group + .btn-group {
+  margin-left: -1px;
+}
+.account-controller.profile-action .after-flowbar {
+  margin-top: 123px;
+}
+.account-controller.profile-action .alerts {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller.profile-action .alerts:before,
+.account-controller.profile-action .alerts:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .alerts:after {
+  clear: both;
+}
+.account-controller.profile-action .alerts:before,
+.account-controller.profile-action .alerts:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .alerts:after {
+  clear: both;
+}
+.account-controller.profile-action .alerts .alerts-content {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .alerts .alerts-content {
+    float: left;
+    width: 100%;
+  }
+}
+.account-controller.profile-action .profile {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller.profile-action .profile:before,
+.account-controller.profile-action .profile:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile:after {
+  clear: both;
+}
+.account-controller.profile-action .profile:before,
+.account-controller.profile-action .profile:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile:after {
+  clear: both;
+}
+.account-controller.profile-action .profile .profile-content {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile .profile-content {
+    float: left;
+    width: 75%;
+  }
+}
+.account-controller.profile-action .profile .profile-content .content-messages {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #3c763d;
+  background-image: -webkit-linear-gradient(top, #dff0d8 0%, #c8e5bc 100%);
+  background-image: linear-gradient(to bottom, #dff0d8 0%, #c8e5bc 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdff0d8', endColorstr='#ffc8e5bc', GradientType=0);
+  border-color: #b2dba1;
+}
+.account-controller.profile-action .profile .profile-content .content-messages h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.account-controller.profile-action .profile .profile-content .content-messages .alert-link {
+  font-weight: bold;
+}
+.account-controller.profile-action .profile .profile-content .content-messages > p,
+.account-controller.profile-action .profile .profile-content .content-messages > ul {
+  margin-bottom: 0;
+}
+.account-controller.profile-action .profile .profile-content .content-messages > p + p {
+  margin-top: 5px;
+}
+.account-controller.profile-action .profile .profile-content .content-messages hr {
+  border-top-color: #c9e2b3;
+}
+.account-controller.profile-action .profile .profile-content .content-messages .alert-link {
+  color: #2b542c;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-head {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-head:before,
+.account-controller.profile-action .profile .profile-content .content-form .form-head:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-head:after {
+  clear: both;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-head:before,
+.account-controller.profile-action .profile .profile-content .content-form .form-head:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-head:after {
+  clear: both;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-errors {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-errors:before,
+.account-controller.profile-action .profile .profile-content .content-form .form-errors:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-errors:after {
+  clear: both;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-errors:before,
+.account-controller.profile-action .profile .profile-content .content-form .form-errors:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-errors:after {
+  clear: both;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-fields {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-fields:before,
+.account-controller.profile-action .profile .profile-content .content-form .form-fields:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-fields:after {
+  clear: both;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-fields:before,
+.account-controller.profile-action .profile .profile-content .content-form .form-fields:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-fields:after {
+  clear: both;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-fields .fields-left {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile .profile-content .content-form .form-fields .fields-left {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-fields .fields-right {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile .profile-content .content-form .form-fields .fields-right {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller.profile-action .profile .profile-sidebar {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile .profile-sidebar {
+    float: left;
+    width: 25%;
+  }
+}
 .chapter-controller.view-action .chapter-content {
   margin-left: -15px;
   margin-right: -15px;
