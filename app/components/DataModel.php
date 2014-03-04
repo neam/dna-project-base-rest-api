@@ -294,7 +294,7 @@ class DataModel
                 'TextDoc' => array('slug', 'processed_media_id'),
                 'Tool' => array('slug'),
                 'VectorGraphic' => array('slug', 'processed_media_id'),
-                'VideoFile' => array('slug', 'processed_media_id'),
+                'VideoFile' => array('slug'),
                 'Waffle' => array('slug'),
             ),
             'relations' => array(
