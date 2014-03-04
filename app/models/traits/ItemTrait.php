@@ -171,16 +171,23 @@ trait ItemTrait
         // If there is nothing to translate, then the translation progress should equal 0%
         if (empty($currentlyTranslatableAttributes)) {
 
-            // Add an always invalid status requirement for each language
+            // Pick the first translatable attribute
+            $behaviors = $this->behaviors();
+            $attribute = (isset($behaviors['i18n-attribute-messages']) ? $behaviors['i18n-attribute-messages']['translationAttributes'][0] :
+                (isset($behaviors['i18n-columns']) ? $behaviors['i18n-columns']['translationAttributes'][0] : false)
+            );
+
+            // Add an always invalid status requirement for each language upon the first translatable attribute
             $i18nRules = array();
             foreach (Yii::app()->params["languages"] as $language => $label) {
-                $i18nRules[] = array('id', 'compare', 'compareValue' => -1, 'on' => 'translate_into_' . $language);
+                $i18nRules[] = array($attribute, 'compare', 'compareValue' => -1, 'on' => 'translate_into_' . $language);
 
                 foreach ($this->flowSteps() as $step => $fields) {
-                    $i18nRules[] = array('id', 'compare', 'compareValue' => -1, 'on' => "into_$language-step_$step");
+                    $i18nRules[] = array($attribute, 'compare', 'compareValue' => -1, 'on' => "into_$language-step_$step");
                 }
             }
 
+            // The result of the above is that there is at least one attribute in each language scenario, and that attribute does not validate, thus translation progress equals 0% as wanted
             return $i18nRules;
         }
 
