@@ -98,7 +98,7 @@
                     </span>
                     <?php $this->widget('\TbButton', array(
                         'label' => Yii::t('button', 'Next'),
-                        'type' => TbHtml::BUTTON_COLOR_PRIMARY,
+                        'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                         'url' => '#',
                         'htmlOptions' => array(
                             'id' => 'next-required',
@@ -107,7 +107,7 @@
                 </div>
                 <?php $this->widget('\TbButton', array(
                     'label' => Yii::t('button', 'Translation Done'),
-                    'type' => TbHtml::BUTTON_COLOR_DEFAULT,
+                    'color' => TbHtml::BUTTON_COLOR_DEFAULT,
                     'url' => '#',
                     'htmlOptions' => array(
                         'id' => 'translation-done',
@@ -115,7 +115,7 @@
                 )); ?>
                     <?php $this->widget('\TbButton', array(
                     'label' => Yii::t('button', 'Cancel'),
-                    'type' => TbHtml::BUTTON_COLOR_DEFAULT,
+                    'color' => TbHtml::BUTTON_COLOR_DEFAULT,
                     'url' => '#',
                     'htmlOptions' => array(
                         'id' => 'translation-cancel',

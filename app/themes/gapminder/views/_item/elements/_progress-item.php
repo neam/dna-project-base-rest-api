@@ -16,7 +16,7 @@
         <?php $this->widget(
             '\TbProgress',
             array(
-                'type' => TbHtml::PROGRESS_COLOR_SUCCESS,
+                'color' => TbHtml::PROGRESS_COLOR_SUCCESS,
                 'percent' => $progress,
             )
         ); ?>

@@ -5,8 +5,7 @@ class TbProgress extends CWidget
     /**
      * @var string the bar color. Valid values are 'info', 'success', and 'danger'.
      */
-    // todo: rename to color
-    public $type;
+    public $color;
 
     /**
      * @var boolean indicates whether the bar is striped.
@@ -36,7 +35,7 @@ class TbProgress extends CWidget
         foreach (array('striped', 'animated') as $attribute) {
             $this->htmlOptions[$attribute] = $this->$attribute;
         }
-        $this->htmlOptions['color'] = $this->type;
+        $this->htmlOptions['color'] = $this->color;
         echo TbHtml::progressBar($this->percent, $this->htmlOptions);
     }
 } 

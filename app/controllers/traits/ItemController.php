@@ -934,15 +934,18 @@ trait ItemController
         $stepCaptions = $item->flowStepCaptions();
         foreach ($item->flowSteps() as $step => $fields) {
 
+            // todo: do this some other way
+            $model = $item->asa('i18n-attribute-messages') !== null ? $item->edited() : $item;
+
             if ($this->action->id == "translate" && $translateInto !== null) {
                 if (!$this->isStepTranslatable($item, $fields)) {
                     continue;
                 }
-                $stepProgress = $item->edited()->calculateValidationProgress('into_' . $translateInto . "-step_" . $step);
+                $stepProgress = $model->calculateValidationProgress('into_' . $translateInto . "-step_" . $step);
             } elseif ($this->action->id == "edit") {
-                $stepProgress = $item->edited()->calculateValidationProgress("step_$step-total_progress");
+                $stepProgress = $model->calculateValidationProgress("step_$step-total_progress");
             } else {
-                $stepProgress = $item->edited()->calculateValidationProgress("step_" . $step);
+                $stepProgress = $model->calculateValidationProgress("step_" . $step);
             }
 
             $stepActions[] = array(

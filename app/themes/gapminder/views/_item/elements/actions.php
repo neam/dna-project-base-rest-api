@@ -43,7 +43,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                     $this->widget(
                         '\TbProgress',
                         array(
-                            'type' => 'success', // 'info', 'success' or 'danger'
+                            'color' => 'success', // 'info', 'success' or 'danger'
                             'percent' => $model->qaState()->draft_validation_progress,
                         )
                     );
@@ -70,7 +70,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                     $this->widget(
                         '\TbProgress',
                         array(
-                            'type' => 'success', // 'info', 'success' or 'danger'
+                            'color' => 'success', // 'info', 'success' or 'danger'
                             'percent' => $model->qaState()->preview_validation_progress,
                         )
                     );
@@ -97,7 +97,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                     $this->widget(
                         '\TbProgress',
                         array(
-                            'type' => 'success', // 'info', 'success' or 'danger'
+                            'color' => 'success', // 'info', 'success' or 'danger'
                             'percent' => $model->qaState()->public_validation_progress,
                         )
                     );
@@ -147,7 +147,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                     $this->widget(
                         '\TbProgress',
                         array(
-                            'type' => 'success', // 'info', 'success' or 'danger'
+                            'color' => 'success', // 'info', 'success' or 'danger'
                             'percent' => $evaluationProgress,
                         )
                     );
@@ -174,7 +174,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                     $this->widget(
                         '\TbProgress',
                         array(
-                            'type' => 'success', // 'info', 'success' or 'danger'
+                            'color' => 'success', // 'info', 'success' or 'danger'
                             'percent' => $model->qaState()->approval_progress,
                         )
                     );
@@ -201,7 +201,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                     $this->widget(
                         '\TbProgress',
                         array(
-                            'type' => 'success', // 'info', 'success' or 'danger'
+                            'color' => 'success', // 'info', 'success' or 'danger'
                             'percent' => $model->qaState()->proofing_progress,
                         )
                     );
@@ -231,7 +231,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                     $this->widget(
                         '\TbProgress',
                         array(
-                            'type' => 'success', // 'info', 'success' or 'danger'
+                            'color' => 'success', // 'info', 'success' or 'danger'
                             'percent' => $model->qaState()->preview_validation_progress,
                         )
                     );
@@ -258,7 +258,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                     $this->widget(
                         '\TbProgress',
                         array(
-                            'type' => 'success', // 'info', 'success' or 'danger'
+                            'color' => 'success', // 'info', 'success' or 'danger'
                             'percent' => $publishingProgress,
                         )
                     );
@@ -288,7 +288,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                     $this->widget(
                         '\TbProgress',
                         array(
-                            'type' => 'success', // 'info', 'success' or 'danger'
+                            'color' => 'success', // 'info', 'success' or 'danger'
                             'percent' => $translationProgress,
                         )
                     );
@@ -382,7 +382,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
     '\TbButton',
     array(
         'label' => 'Other actions',
-        'type' => '',
+        'color' => '',
         'size' => '',
         'htmlOptions' => array(
             'class' => 'span12',

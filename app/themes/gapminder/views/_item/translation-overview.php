@@ -56,12 +56,13 @@ $this->breadcrumbs[] = $actionCaption;
                     <?php
 
                     try {
-
+                        // todo: fix this some other way
+                        $model = $model->asa('i18n-attribute-messages') !== null ? $model->edited() : $model;
                         $this->widget(
                             '\TbProgress',
                             array(
-                                'type' => 'success', // 'info', 'success' or 'danger'
-                                'percent' => $model->edited()->calculateValidationProgress('translate_into_' . $language),
+                                'color' => 'success', // 'info', 'success' or 'danger'
+                                'percent' => $model->calculateValidationProgress('translate_into_' . $language),
                             )
                         );
 

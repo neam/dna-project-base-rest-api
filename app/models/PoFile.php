@@ -6,7 +6,6 @@ Yii::import('PoFile.*');
 
 class PoFile extends BasePoFile
 {
-
     use ItemTrait;
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
@@ -18,7 +17,7 @@ class PoFile extends BasePoFile
     public function init()
     {
         $this->itemDescription = Yii::t('itemDescription', 'For developers to manage GUI string po-files.');
-        return parent::init();
+        parent::init();
     }
 
     public function getItemLabel()

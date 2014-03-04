@@ -12,7 +12,7 @@
     <div class="item-bar">
         <?php $this->widget(
             '\TbProgress',
-            array('type' => TbHtml::PROGRESS_COLOR_SUCCESS, 'percent' => $progress)
+            array('color' => TbHtml::PROGRESS_COLOR_SUCCESS, 'percent' => $progress)
         ); ?>
     </div>
     <div class="item-action">

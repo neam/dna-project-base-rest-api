@@ -30,7 +30,7 @@
         '\TbButton',
         array(
             'label' => Yii::t('button', 'Translation Done'),
-            'type' => TbHtml::BUTTON_COLOR_DEFAULT,
+            'color' => TbHtml::BUTTON_COLOR_DEFAULT,
             'url' => '#',
             'htmlOptions' => array(
                 'id' => 'translation-done',
@@ -41,7 +41,7 @@
         '\TbButton',
         array(
             'label' => Yii::t('button', 'Cancel'),
-            'type' => TbHtml::BUTTON_COLOR_DEFAULT,
+            'color' => TbHtml::BUTTON_COLOR_DEFAULT,
             'url' => '#',
             'htmlOptions' => array(
                 'id' => 'translation-cancel',
