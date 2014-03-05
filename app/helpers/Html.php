@@ -229,6 +229,7 @@ class Html extends TbHtml
      */
     public static function hintTooltip($content, $htmlOptions = array())
     {
+        $htmlOptions['class'] = 'hint-tooltip';
         return isset($content)
             ? Html::tooltip(TbHtml::icon(TbHtml::ICON_QUESTION_SIGN), '#', $content, $htmlOptions)
             : '';
