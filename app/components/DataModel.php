@@ -195,7 +195,7 @@ class DataModel
             array(
                 "Node" => "node",
                 "EzcExecution" => "ezc_execution",
-                "Users" => "users",
+                "Account" => "account",
             )
         );
 
