@@ -1,5 +1,5 @@
 <?php
-/* @var Account $model */
+/** @var Account $model */
 ?>
 <div class="flowbar">
     <div class="flowbar-head">
