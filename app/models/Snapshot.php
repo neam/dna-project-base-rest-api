@@ -58,9 +58,9 @@ class Snapshot extends BaseSnapshot
             array(
 
                 // Ordinary validation rules
-                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
+                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable'),
                 array('about_' . $this->source_language . '', 'length', 'min' => 10, 'max' => 200),
-                array('vizabi_state', 'validateVizabiState', 'on' => 'public'),
+                array('vizabi_state', 'validateVizabiState', 'on' => 'publishable'),
 
             )
         );
@@ -105,10 +105,10 @@ class Snapshot extends BaseSnapshot
             'draft' => array(
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'vizabi_state',
             ),
-            'public' => array(),
+            'publishable' => array(),
         );
     }
 

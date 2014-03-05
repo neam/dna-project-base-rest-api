@@ -57,12 +57,12 @@ class Chapter extends BaseChapter
             $this->i18nRules(),
             array(
                 // Ordinary validation rules
-                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
+                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
-                array('videos', 'validateVideo', 'on' => 'public'),
+                array('videos', 'validateVideo', 'on' => 'publishable'),
                 //array('teachers_guide', 'length', 'min' => 150, 'max' => 400), // currently not keeping constraints on html fields until further notice
-                array('exercises', 'validateExercises', 'on' => 'public'),
-                array('snapshots', 'validateSnapshots', 'on' => 'public'),
+                array('exercises', 'validateExercises', 'on' => 'publishable'),
+                array('snapshots', 'validateSnapshots', 'on' => 'publishable'),
                 array('credits', 'length', 'min' => 1, 'max' => 200),
             )
         );
@@ -110,8 +110,8 @@ class Chapter extends BaseChapter
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(),
-            'public' => array(
+            'reviewable' => array(),
+            'publishable' => array(
                 'about_' . $this->source_language,
                 'thumbnail_media_id',
                 'teachers_guide_' . $this->source_language,

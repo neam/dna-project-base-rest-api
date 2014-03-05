@@ -83,10 +83,10 @@ class Section extends BaseSection
             'draft' => array(
                 'title_' . $this->source_language,
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'slug_' . $this->source_language,
             ),
-            'public' => array(),
+            'publishable' => array(),
         );
     }
 

@@ -58,8 +58,8 @@ class HtmlChunk extends BaseHtmlChunk
             'draft' => array(
                 'markup_' . $this->source_language,
             ),
-            'preview' => array(),
-            'public' => array(),
+            'reviewable' => array(),
+            'publishable' => array(),
         );
     }
 

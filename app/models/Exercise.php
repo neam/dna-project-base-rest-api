@@ -61,8 +61,8 @@ class Exercise extends BaseExercise
                 // Ordinary validation rules
                 array('question_' . $this->source_language, 'length', 'min' => 25, 'max' => 200),
                 array('description_' . $this->source_language, 'length', 'min' => 100, 'max' => 400),
-                array('thumbnail', 'validateThumbnail', 'on' => 'public'),
-                array('materials', 'validateMaterials', 'on' => 'public'),
+                array('thumbnail', 'validateThumbnail', 'on' => 'publishable'),
+                array('materials', 'validateMaterials', 'on' => 'publishable'),
 
             )
         );
@@ -102,8 +102,8 @@ class Exercise extends BaseExercise
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(),
-            'public' => array(
+            'reviewable' => array(),
+            'publishable' => array(
                 'question_' . $this->source_language,
                 'description_' . $this->source_language,
                 'thumbnail_media_id',

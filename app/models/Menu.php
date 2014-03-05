@@ -65,11 +65,11 @@ class Menu extends BaseMenu
             'draft' => array(
                 'title',
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'slug',
                 'pages',
             ),
-            'public' => array(),
+            'publishable' => array(),
         );
     }
 
