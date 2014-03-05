@@ -1,5 +1,7 @@
 <?php
 
+use Alchemy\Zippy\Zippy;
+
 class VideoFileController extends Controller
 {
 
@@ -27,6 +29,7 @@ class VideoFileController extends Controller
             array('allow',
                 'actions' => array(
                     'subtitles',
+                    'downloadSubtitles',
                 ),
                 'users' => array('*'),
             ),
@@ -334,6 +337,11 @@ class VideoFileController extends Controller
         $this->render('admin', array('model' => $model,));
     }
 
+    /**
+     * @param $id
+     * @return VideoFile
+     * @throws CHttpException
+     */
     public function loadModel($id)
     {
         $model = VideoFile::model()->findByPk($id);
@@ -403,6 +411,49 @@ class VideoFileController extends Controller
         }
 
         return $related;
+    }
+
+    /**
+     * Action for downloading all video subtitles as a zip file.
+     * @param int $id model id.
+     * @throws CException if the zip archive cannot be created.
+     */
+    public function actionDownloadSubtitles($id)
+    {
+        $model = $this->loadModel($id);
+
+        $runtimePath = Yii::app()->getRuntimePath();
+        $hash = sha1(microtime(true));
+        $basePath = "$runtimePath/video_subtitles_{$model->id}_$hash";
+
+        if (!mkdir($basePath)) {
+            throw new CException('Failed to create temporary directory for subtitles.');
+        }
+
+        $paths = array();
+
+        $fileName = "subtitles.srt";
+        $path = "$basePath/{$fileName}";
+        file_put_contents($path, $model->_subtitles);
+        $paths[$fileName] = $path;
+
+        foreach (Yii::app()->params['languages'] as $locale => $name) {
+            $fileName = "subtitles_$locale.srt";
+            $path = "$basePath/{$fileName}";
+            $attribute = "subtitles_$locale";
+            if (!empty($model->$attribute)) {
+                file_put_contents($path, $model->$attribute);
+                $paths[$fileName] = $path;
+            }
+        }
+
+        $fileName = "srt.zip";
+        $filePath = "$basePath/$fileName";
+
+        $zip = Zippy::load();
+        $zip->create($filePath, $paths);
+
+        Yii::app()->request->sendFile($fileName, file_get_contents($filePath));
     }
 
 }

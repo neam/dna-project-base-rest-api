@@ -68,6 +68,7 @@ $input = $this->widget(
         <?php echo $this->widget('\TbButton', array(
             'label' => Yii::t('app', 'Upload'),
             'icon' => 'glyphicon-plus',
+            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
                 'data-target' => '#' . $formId . '-modal',
