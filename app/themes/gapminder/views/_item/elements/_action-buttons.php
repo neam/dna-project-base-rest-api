@@ -70,14 +70,15 @@
     <div class="btn-group">
         <?php
 
-        if (in_array($model->qaState()->status, array("public"))) {
+        // TODO: Make Group-dependent
+        if (false) {
             $this->widget("\TbButton", array(
                 "label" => Yii::t("model", "Unpublish"),
                 "icon" => "glyphicon-thumbs-down",
                 "url" => array("unpublish", "id" => $model->{$model->tableSchema->primaryKey}),
                 "visible" => Yii::app()->user->checkAccess('Item.Publish'),
             ));
-        } elseif ($model->qaStateBehavior()->validStatus('public')) {
+        } elseif ($model->qaStateBehavior()->validStatus('publishable')) {
             $this->widget("\TbButton", array(
                 "label" => Yii::t("model", "Publish"),
                 "icon" => "glyphicon-thumbs-up",
