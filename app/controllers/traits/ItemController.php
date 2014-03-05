@@ -121,7 +121,7 @@ trait ItemController
                     'proofRead',
                 ),
                 'roles' => array(
-                    'Item.ProofRead'
+                    'Item.Proofread'
                 ),
             ),
             array('allow',
@@ -570,7 +570,7 @@ trait ItemController
         $this->render('/_item/review', array('model' => $model));
     }
 
-    public function actionProofRead($id)
+    public function actionProofread($id)
     {
         $model = $this->loadModel($id);
         $this->render('/_item/proofread', array('model' => $model));

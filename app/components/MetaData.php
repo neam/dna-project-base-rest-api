@@ -33,7 +33,7 @@ class Metadata
             'Browse' => 'Browse amongst items',
             'View' => 'View items',
             'PrepareForReview' => 'Prepare item for review, by stepping through fields required for IN_REVIEW',
-            //'Review' => 'Preview, Evaluate, ProofRead',
+            //'Review' => 'Preview, Evaluate, Proofread',
             'Preview' => 'Preview the current content',
             'Evaluate' => 'Evaluating an item in Preview-mode by grading and commenting on it\'s fields or the total itemVersion',
             'Proofread' => 'Review and improve language',
