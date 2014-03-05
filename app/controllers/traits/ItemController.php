@@ -199,11 +199,11 @@ trait ItemController
             return;
         }
         */
-        if (($model->qaState()->preview_validation_progress < 100 || !$model->qaState()->allow_review) && !is_null($step = $this->nextFlowStep("preview-", $model))) {
+        if (($model->qaState()->reviewable_validation_progress < 100 || !$model->qaState()->allow_review) && !is_null($step = $this->nextFlowStep("preview-", $model))) {
             $this->redirect(array('prepPreshow', 'id' => $model->id, 'step' => $step));
             return;
         }
-        if (($model->qaState()->public_validation_progress < 100 || !$model->qaState()->allow_publishing) && !is_null($step = $this->nextFlowStep("public-", $model))) {
+        if (($model->qaState()->publishable_validation_progress < 100 || !$model->qaState()->allow_publish) && !is_null($step = $this->nextFlowStep("public-", $model))) {
             $this->redirect(array('prepPublish', 'id' => $model->id, 'step' => $step));
             return;
         }
@@ -231,11 +231,11 @@ trait ItemController
             $this->redirect(array('translate', 'id' => $model->id));
             return;
         }
-        if ($model->qaState()->translations_preview_validation_progress < 100) {
+        if ($model->qaState()->translations_reviewable_validation_progress < 100) {
             $this->redirect(array('translate', 'id' => $model->id));
             return;
         }
-        if ($model->qaState()->translations_public_validation_progress < 100) {
+        if ($model->qaState()->translations_publishable_validation_progress < 100) {
             $this->redirect(array('translate', 'id' => $model->id));
             return;
         }
@@ -540,7 +540,7 @@ trait ItemController
         $qaState = $model->qaState();
 
         // save state change
-        $qaState->allow_publishing = 1;
+        $qaState->allow_publish = 1;
         if (!$qaState->save()) {
             throw new SaveException($qaState);
         }

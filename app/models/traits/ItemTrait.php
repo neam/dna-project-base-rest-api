@@ -82,7 +82,7 @@ trait ItemTrait
 
     public function validStatusPublic($attribute, $params)
     {
-        if ($this->qaState()->allow_publishing != 1) {
+        if ($this->qaState()->allow_publish != 1) {
             $this->addError($attribute, Yii::t('app', 'Not marked as candidate'));
         }
     }

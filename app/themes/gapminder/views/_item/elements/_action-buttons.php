@@ -21,7 +21,7 @@
                 "visible" => Yii::app()->user->checkAccess('Item.PrepPreshow'),
             ));
         }
-        if (!$model->qaState()->allow_publishing) {
+        if (!$model->qaState()->allow_publish) {
             $this->widget("\TbButton", array(
                 "label" => Yii::t("crud", "Prepare for publishing"),
                 'color' => $this->action->id == "prepPublish" ? "inverse" : null,

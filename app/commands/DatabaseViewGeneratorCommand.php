@@ -21,8 +21,9 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
      *      id
      *      _title
      *      status
-     *      preview_validation_progress
-     *      public_validation_progress
+     *      draft_validation_progress
+     *      reviewable_validation_progress
+     *      publishable_validation_progress
      *      approval_progress
      *      proofing_progress
      *      translate_into_{$language}_validation_progress
@@ -77,29 +78,41 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
         $sql .= "       ELSE NULL\n";
         $sql .= "END AS status,\n";
 
-        // preview_validation_progress
+        // draft_validation_progress
         $sql .= "   CASE\n";
 
         foreach (DataModel::qaModels() as $modelClass => $table) {
-            if ($this->_checkTableAndColumnExists($table . "_qa_state", "preview_validation_progress")) {
-                $sql .= "       WHEN {$table}_qa_state.preview_validation_progress IS NOT NULL THEN {$table}_qa_state.preview_validation_progress\n";
+            if ($this->_checkTableAndColumnExists($table . "_qa_state", "draft_validation_progress")) {
+                $sql .= "       WHEN {$table}_qa_state.draft_validation_progress IS NOT NULL THEN {$table}_qa_state.draft_validation_progress\n";
             }
         }
 
         $sql .= "       ELSE NULL\n";
-        $sql .= "END AS preview_validation_progress,\n";
+        $sql .= "END AS draft_validation_progress,\n";
 
-        // public_validation_progress
+        // reviewable_validation_progress
         $sql .= "   CASE\n";
 
         foreach (DataModel::qaModels() as $modelClass => $table) {
-            if ($this->_checkTableAndColumnExists($table . "_qa_state", "public_validation_progress")) {
-                $sql .= "       WHEN {$table}_qa_state.public_validation_progress IS NOT NULL THEN {$table}_qa_state.public_validation_progress\n";
+            if ($this->_checkTableAndColumnExists($table . "_qa_state", "reviewable_validation_progress")) {
+                $sql .= "       WHEN {$table}_qa_state.reviewable_validation_progress IS NOT NULL THEN {$table}_qa_state.reviewable_validation_progress\n";
             }
         }
 
         $sql .= "       ELSE NULL\n";
-        $sql .= "END AS public_validation_progress,\n";
+        $sql .= "END AS reviewable_validation_progress,\n";
+
+        // publishable_validation_progress
+        $sql .= "   CASE\n";
+
+        foreach (DataModel::qaModels() as $modelClass => $table) {
+            if ($this->_checkTableAndColumnExists($table . "_qa_state", "publishable_validation_progress")) {
+                $sql .= "       WHEN {$table}_qa_state.publishable_validation_progress IS NOT NULL THEN {$table}_qa_state.publishable_validation_progress\n";
+            }
+        }
+
+        $sql .= "       ELSE NULL\n";
+        $sql .= "END AS publishable_validation_progress,\n";
 
         // approval_progress
         $sql .= "   CASE\n";
