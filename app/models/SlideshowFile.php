@@ -23,7 +23,7 @@ class SlideshowFile extends BaseSlideshowFile
 
     public function getItemLabel()
     {
-        return 'Slideshow File #' . $this->id;
+        return (string) !empty($this->title) ? $this->title : "SlideshowFile #" . $this->id;
     }
 
     public function behaviors()
