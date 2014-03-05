@@ -5681,6 +5681,11 @@ $this->widget('\TbGridView',
                     'value' => 'CHtml::value($data, \'processedMediaIdZhTw.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
+            array(
+                    'name' => 'spreadsheet_file_qa_state_id',
+                    'value' => 'CHtml::value($data, \'spreadsheetFileQaState.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SpreadsheetFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             */
             array(
                 'class' => '\TbButtonColumn',
@@ -7966,6 +7971,11 @@ $this->widget('\TbGridView',
                 )
             ),
             array(
+                'name' => 'json_import_media_id',
+                'value' => 'CHtml::value($data, \'jsonImportMedia.itemLabel\')',
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
@@ -7981,12 +7991,12 @@ $this->widget('\TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            array(
-                'name' => 'node_id',
-                'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
             /*
+            array(
+                    'name' => 'node_id',
+                    'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_ar',

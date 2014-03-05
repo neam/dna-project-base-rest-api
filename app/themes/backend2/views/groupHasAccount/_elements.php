@@ -3,52 +3,7 @@
 
         <div class="form-horizontal">
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'account',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'account_id', $input);
-            ?>
-
-            <?php
-            $formId = 'group-has-account-account_id-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('\TbButton', array(
-                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Account'))),
-                        'icon' => 'glyphicon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//account/_modal_form', array(
-                'formId' => $formId,
-                'inputSelector' => '#GroupHasAccount_account_id',
-                'model' => new Account,
-                'pk' => 'id',
-                'field' => 'itemLabel',
-            ));
-            $this->endClip();
-            ?>
+            <?php echo $form->textFieldRow($model, 'account_id'); ?>
 
             <?php
             $input = $this->widget(

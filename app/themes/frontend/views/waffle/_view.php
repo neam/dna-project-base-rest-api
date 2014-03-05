@@ -23,15 +23,19 @@
     <?php echo CHtml::encode($data->slug_en); ?>
     <br/>
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('json_import_media_id')); ?>:</b>
+    <?php echo CHtml::encode($data->json_import_media_id); ?>
+    <br/>
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
     <?php echo CHtml::encode($data->created); ?>
     <br/>
 
+    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('modified')); ?>:</b>
     <?php echo CHtml::encode($data->modified); ?>
-    <br/>
+    <br />
 
-    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('owner_id')); ?>:</b>
     <?php echo CHtml::encode($data->owner_id); ?>
     <br />

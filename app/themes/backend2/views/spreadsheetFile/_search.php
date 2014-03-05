@@ -275,6 +275,11 @@
         <?php echo $form->textField($model, 'processed_media_id_zh_tw'); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->label($model, 'spreadsheet_file_qa_state_id'); ?>
+        <?php echo $form->textField($model, 'spreadsheet_file_qa_state_id', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>

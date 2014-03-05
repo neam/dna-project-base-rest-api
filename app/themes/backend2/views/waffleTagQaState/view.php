@@ -25,12 +25,12 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->draft_validation_progress); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('preview_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->preview_validation_progress); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('reviewable_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->reviewable_validation_progress); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('public_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->public_validation_progress); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('publishable_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->publishable_validation_progress); ?>
 <br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_en_validation_progress')); ?>:</b>
@@ -214,12 +214,12 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->proofing_progress); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('previewing_welcome')); ?>:</b>
-<?php echo CHtml::encode($model->previewing_welcome); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('allow_review')); ?>:</b>
+<?php echo CHtml::encode($model->allow_review); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('candidate_for_public_status')); ?>:</b>
-<?php echo CHtml::encode($model->candidate_for_public_status); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('allow_publish')); ?>:</b>
+<?php echo CHtml::encode($model->allow_publish); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
@@ -311,26 +311,26 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'preview_validation_progress',
+                        'name' => 'reviewable_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'preview_validation_progress',
+                                    'attribute' => 'reviewable_validation_progress',
                                     'url' => $this->createUrl('/waffleTagQaState/editableSaver'),
                                 ),
                                 true
                             )
                     ),
                     array(
-                        'name' => 'public_validation_progress',
+                        'name' => 'publishable_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'public_validation_progress',
+                                    'attribute' => 'publishable_validation_progress',
                                     'url' => $this->createUrl('/waffleTagQaState/editableSaver'),
                                 ),
                                 true
@@ -922,26 +922,26 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'previewing_welcome',
+                        'name' => 'allow_review',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'previewing_welcome',
+                                    'attribute' => 'allow_review',
                                     'url' => $this->createUrl('/waffleTagQaState/editableSaver'),
                                 ),
                                 true
                             )
                     ),
                     array(
-                        'name' => 'candidate_for_public_status',
+                        'name' => 'allow_publish',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'candidate_for_public_status',
+                                    'attribute' => 'allow_publish',
                                     'url' => $this->createUrl('/waffleTagQaState/editableSaver'),
                                 ),
                                 true

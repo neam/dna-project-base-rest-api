@@ -5,25 +5,11 @@
 
             <?php echo $form->textFieldRow($model, 'status', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textFieldRow($model, 'translations_draft_validation_progress'); ?>
-
-            <?php echo $form->textFieldRow($model, 'translations_preview_validation_progress'); ?>
-
-            <?php echo $form->textFieldRow($model, 'translations_public_validation_progress'); ?>
-
-            <?php echo $form->textFieldRow($model, 'translations_approval_progress'); ?>
-
-            <?php echo $form->textFieldRow($model, 'translations_proofing_progress'); ?>
-
             <?php echo $form->textFieldRow($model, 'draft_validation_progress'); ?>
 
-            <?php echo $form->textFieldRow($model, 'slug_approved'); ?>
+            <?php echo $form->textFieldRow($model, 'reviewable_validation_progress'); ?>
 
-            <?php echo $form->textFieldRow($model, 'preview_validation_progress'); ?>
-
-            <?php echo $form->textFieldRow($model, 'slug_proofed'); ?>
-
-            <?php echo $form->textFieldRow($model, 'public_validation_progress'); ?>
+            <?php echo $form->textFieldRow($model, 'publishable_validation_progress'); ?>
 
             <?php echo $form->textFieldRow($model, 'translate_into_en_validation_progress'); ?>
 
@@ -107,17 +93,17 @@
 
             <?php echo $form->textFieldRow($model, 'translate_into_zh_validation_progress'); ?>
 
+            <?php echo $form->textFieldRow($model, 'translate_into_zh_cn_validation_progress'); ?>
+
+            <?php echo $form->textFieldRow($model, 'translate_into_zh_tw_validation_progress'); ?>
+
             <?php echo $form->textFieldRow($model, 'approval_progress'); ?>
 
             <?php echo $form->textFieldRow($model, 'proofing_progress'); ?>
 
-            <?php echo $form->textFieldRow($model, 'translate_into_zh_cn_validation_progress'); ?>
+            <?php echo $form->textFieldRow($model, 'allow_review'); ?>
 
-            <?php echo $form->textFieldRow($model, 'previewing_welcome'); ?>
-
-            <?php echo $form->textFieldRow($model, 'translate_into_zh_tw_validation_progress'); ?>
-
-            <?php echo $form->textFieldRow($model, 'candidate_for_public_status'); ?>
+            <?php echo $form->textFieldRow($model, 'allow_publish'); ?>
 
             <?php echo $form->textFieldRow($model, 'title_en_approved'); ?>
 

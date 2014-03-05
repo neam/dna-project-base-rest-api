@@ -16,63 +16,18 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'translations_draft_validation_progress'); ?>
-        <?php echo $form->textField($model, 'translations_draft_validation_progress'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'translations_preview_validation_progress'); ?>
-        <?php echo $form->textField($model, 'translations_preview_validation_progress'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'translations_public_validation_progress'); ?>
-        <?php echo $form->textField($model, 'translations_public_validation_progress'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'translations_approval_progress'); ?>
-        <?php echo $form->textField($model, 'translations_approval_progress'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'translations_proofing_progress'); ?>
-        <?php echo $form->textField($model, 'translations_proofing_progress'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'slug_approved'); ?>
-        <?php echo $form->checkBox($model, 'slug_approved'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'link_approved'); ?>
-        <?php echo $form->checkBox($model, 'link_approved'); ?>
-    </div>
-
-    <div class="row">
         <?php echo $form->label($model, 'draft_validation_progress'); ?>
         <?php echo $form->textField($model, 'draft_validation_progress'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'slug_proofed'); ?>
-        <?php echo $form->checkBox($model, 'slug_proofed'); ?>
+        <?php echo $form->label($model, 'reviewable_validation_progress'); ?>
+        <?php echo $form->textField($model, 'reviewable_validation_progress'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'preview_validation_progress'); ?>
-        <?php echo $form->textField($model, 'preview_validation_progress'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'link_proofed'); ?>
-        <?php echo $form->checkBox($model, 'link_proofed'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'public_validation_progress'); ?>
-        <?php echo $form->textField($model, 'public_validation_progress'); ?>
+        <?php echo $form->label($model, 'publishable_validation_progress'); ?>
+        <?php echo $form->textField($model, 'publishable_validation_progress'); ?>
     </div>
 
     <div class="row">
@@ -301,13 +256,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'previewing_welcome'); ?>
-        <?php echo $form->checkBox($model, 'previewing_welcome'); ?>
+        <?php echo $form->label($model, 'allow_review'); ?>
+        <?php echo $form->checkBox($model, 'allow_review'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'candidate_for_public_status'); ?>
-        <?php echo $form->checkBox($model, 'candidate_for_public_status'); ?>
+        <?php echo $form->label($model, 'allow_publish'); ?>
+        <?php echo $form->checkBox($model, 'allow_publish'); ?>
     </div>
 
     <div class="row">

@@ -15,12 +15,12 @@
     <?php echo CHtml::encode($data->draft_validation_progress); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('preview_validation_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->preview_validation_progress); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('reviewable_validation_progress')); ?>:</b>
+    <?php echo CHtml::encode($data->reviewable_validation_progress); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('public_validation_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->public_validation_progress); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('publishable_validation_progress')); ?>:</b>
+    <?php echo CHtml::encode($data->publishable_validation_progress); ?>
     <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_en_validation_progress')); ?>:</b>
@@ -204,12 +204,12 @@
     <?php echo CHtml::encode($data->proofing_progress); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('previewing_welcome')); ?>:</b>
-    <?php echo CHtml::encode($data->previewing_welcome); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('allow_review')); ?>:</b>
+    <?php echo CHtml::encode($data->allow_review); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('candidate_for_public_status')); ?>:</b>
-    <?php echo CHtml::encode($data->candidate_for_public_status); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('allow_publish')); ?>:</b>
+    <?php echo CHtml::encode($data->allow_publish); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('title_approved')); ?>:</b>

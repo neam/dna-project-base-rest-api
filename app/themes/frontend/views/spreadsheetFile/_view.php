@@ -220,6 +220,10 @@
     <?php echo CHtml::encode($data->processed_media_id_zh_tw); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('spreadsheet_file_qa_state_id')); ?>:</b>
+    <?php echo CHtml::encode($data->spreadsheet_file_qa_state_id); ?>
+    <br />
+
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('SpreadsheetFile.*')): ?>

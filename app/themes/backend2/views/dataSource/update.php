@@ -308,7 +308,7 @@ $this->widget('\TbGridView',
             array(
                     'name' => 'owner_id',
                     'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -524,6 +524,11 @@ $this->widget('\TbGridView',
                     'name' => 'processed_media_id_zh_tw',
                     'value' => 'CHtml::value($data, \'processedMediaIdZhTw.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'spreadsheet_file_qa_state_id',
+                    'value' => 'CHtml::value($data, \'spreadsheetFileQaState.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SpreadsheetFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(

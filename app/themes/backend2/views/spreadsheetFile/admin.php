@@ -35,7 +35,7 @@ Yii::app()->clientScript->registerScript('search', "
 
 
 <?php
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'spreadsheet-file-grid',
         'dataProvider' => $model->search(),
@@ -43,7 +43,7 @@ $this->widget('TbGridView',
         #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -125,7 +125,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'owner_id',
                 'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'node_id',
@@ -342,10 +342,15 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'processedMediaIdZhTw.itemLabel\')',
                 'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
+            array(
+                'name' => 'spreadsheet_file_qa_state_id',
+                'value' => 'CHtml::value($data, \'spreadsheetFileQaState.itemLabel\')',
+                'filter' => '',//CHtml::listData(SpreadsheetFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
             */
 
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'buttons' => array(
                     'view' => array('visible' => 'Yii::app()->user->checkAccess("SpreadsheetFile.View")'),
                     'update' => array('visible' => 'Yii::app()->user->checkAccess("SpreadsheetFile.Update")'),

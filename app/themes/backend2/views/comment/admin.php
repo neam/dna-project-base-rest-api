@@ -126,9 +126,9 @@ $this->widget('\TbGridView',
             array(
                 'class' => '\TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Comment.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Comment.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Comment.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Comment.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Comment.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Comment.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',

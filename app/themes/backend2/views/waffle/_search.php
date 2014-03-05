@@ -31,6 +31,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'json_import_media_id'); ?>
+        <?php echo $form->textField($model, 'json_import_media_id'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'created'); ?>
         <?php echo $form->textField($model, 'created'); ?>
     </div>

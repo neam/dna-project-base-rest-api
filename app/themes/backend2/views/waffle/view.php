@@ -33,15 +33,19 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->slug_en); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('json_import_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->json_import_media_id); ?>
+<br/>
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
-<br/>
+<br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>:</b>
 <?php echo CHtml::encode($model->owner_id); ?>
 <br />
@@ -301,6 +305,17 @@ $this->breadcrumbs[] = $model->id;
                                 ),
                                 true
                             )
+                    ),
+                    array(
+                        'name' => 'json_import_media_id',
+                        'value' => ($model->jsonImportMedia !== null) ? CHtml::link(
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->jsonImportMedia->itemLabel,
+                                    array('//p3Media/view', 'id' => $model->jsonImportMedia->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//p3Media/update', 'id' => $model->jsonImportMedia->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                     array(
                         'name' => 'created',

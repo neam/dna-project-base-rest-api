@@ -79,7 +79,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'preview_validation_progress',
+                'name' => 'reviewable_validation_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
                     //'placement' => 'right',
@@ -87,7 +87,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'public_validation_progress',
+                'name' => 'publishable_validation_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
                     //'placement' => 'right',
@@ -424,6 +424,22 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'translate_into_zh_cn_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_zh_tw_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'approval_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
@@ -440,7 +456,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'translate_into_zh_cn_validation_progress',
+                'name' => 'allow_review',
                 'editable' => array(
                     'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
                     //'placement' => 'right',
@@ -448,23 +464,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'previewing_welcome',
-                'editable' => array(
-                    'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'translate_into_zh_tw_validation_progress',
-                'editable' => array(
-                    'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'candidate_for_public_status',
+                'name' => 'allow_publish',
                 'editable' => array(
                     'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
                     //'placement' => 'right',

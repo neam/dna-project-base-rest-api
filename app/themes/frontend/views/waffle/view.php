@@ -40,15 +40,19 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->slug_en); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('json_import_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->json_import_media_id); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
 <br />
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
 <br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>:</b>
 <?php echo CHtml::encode($model->owner_id); ?>
 <br />

@@ -3,52 +3,7 @@
 
         <div class="form-horizontal">
 
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'authorUser',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'author_user_id', $input);
-            ?>
-
-            <?php
-            $formId = 'comment-author_user_id-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('\TbButton', array(
-                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Account'))),
-                        'icon' => 'glyphicon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//account/_modal_form', array(
-                'formId' => $formId,
-                'inputSelector' => '#Comment_author_user_id',
-                'model' => new Account,
-                'pk' => 'id',
-                'field' => 'itemLabel',
-            ));
-            $this->endClip();
-            ?>
+            <?php echo $form->textFieldRow($model, 'author_user_id'); ?>
 
             <?php echo $form->textAreaRow($model, '_comment', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 

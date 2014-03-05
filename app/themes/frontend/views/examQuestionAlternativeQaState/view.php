@@ -32,12 +32,12 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->draft_validation_progress); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('preview_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->preview_validation_progress); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('reviewable_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->reviewable_validation_progress); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('public_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->public_validation_progress); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('publishable_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->publishable_validation_progress); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_en_validation_progress')); ?>:</b>
@@ -221,12 +221,12 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->proofing_progress); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('previewing_welcome')); ?>:</b>
-<?php echo CHtml::encode($model->previewing_welcome); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('allow_review')); ?>:</b>
+<?php echo CHtml::encode($model->allow_review); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('candidate_for_public_status')); ?>:</b>
-<?php echo CHtml::encode($model->candidate_for_public_status); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('allow_publish')); ?>:</b>
+<?php echo CHtml::encode($model->allow_publish); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('markup_en_approved')); ?>:</b>

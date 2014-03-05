@@ -21,13 +21,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'preview_validation_progress'); ?>
-        <?php echo $form->textField($model, 'preview_validation_progress'); ?>
+        <?php echo $form->label($model, 'reviewable_validation_progress'); ?>
+        <?php echo $form->textField($model, 'reviewable_validation_progress'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'public_validation_progress'); ?>
-        <?php echo $form->textField($model, 'public_validation_progress'); ?>
+        <?php echo $form->label($model, 'publishable_validation_progress'); ?>
+        <?php echo $form->textField($model, 'publishable_validation_progress'); ?>
     </div>
 
     <div class="row">
@@ -256,13 +256,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'previewing_welcome'); ?>
-        <?php echo $form->checkBox($model, 'previewing_welcome'); ?>
+        <?php echo $form->label($model, 'allow_review'); ?>
+        <?php echo $form->checkBox($model, 'allow_review'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'candidate_for_public_status'); ?>
-        <?php echo $form->checkBox($model, 'candidate_for_public_status'); ?>
+        <?php echo $form->label($model, 'allow_publish'); ?>
+        <?php echo $form->checkBox($model, 'allow_publish'); ?>
     </div>
 
     <div class="row">

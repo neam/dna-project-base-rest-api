@@ -21,59 +21,27 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->status); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('translations_draft_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->translations_draft_validation_progress); ?>
-<br/>
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('translations_preview_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->translations_preview_validation_progress); ?>
-<br/>
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('translations_public_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->translations_public_validation_progress); ?>
-<br/>
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('translations_approval_progress')); ?>:</b>
-<?php echo CHtml::encode($model->translations_approval_progress); ?>
-<br/>
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('translations_proofing_progress')); ?>:</b>
-<?php echo CHtml::encode($model->translations_proofing_progress); ?>
-<br/>
-
-<?php /*
-<b><?php echo CHtml::encode($model->getAttributeLabel('file_approved')); ?>:</b>
-<?php echo CHtml::encode($model->file_approved); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('draft_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->draft_validation_progress); ?>
-<br />
+<br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('file_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->file_proofed); ?>
-<br />
+<b><?php echo CHtml::encode($model->getAttributeLabel('reviewable_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->reviewable_validation_progress); ?>
+<br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('preview_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->preview_validation_progress); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('draft_saved')); ?>:</b>
-<?php echo CHtml::encode($model->draft_saved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('public_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->public_validation_progress); ?>
-<br />
+<b><?php echo CHtml::encode($model->getAttributeLabel('publishable_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->publishable_validation_progress); ?>
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_en_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translate_into_en_validation_progress); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_ar_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translate_into_ar_validation_progress); ?>
-<br />
+<br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_bg_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translate_into_bg_validation_progress); ?>
 <br />
@@ -222,10 +190,6 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->translate_into_uk_validation_progress); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
-<?php echo CHtml::encode($model->approval_progress); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_vi_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translate_into_vi_validation_progress); ?>
 <br />
@@ -238,32 +202,24 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->translate_into_zh_tw_validation_progress); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('proofing_progress')); ?>:</b>
-<?php echo CHtml::encode($model->proofing_progress); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translate_into_zh_validation_progress); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('previewing_welcome')); ?>:</b>
-<?php echo CHtml::encode($model->previewing_welcome); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('proofing_progress')); ?>:</b>
+<?php echo CHtml::encode($model->proofing_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
+<?php echo CHtml::encode($model->approval_progress); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id_approved')); ?>:</b>
 <?php echo CHtml::encode($model->original_media_id_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('candidate_for_public_status')); ?>:</b>
-<?php echo CHtml::encode($model->candidate_for_public_status); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('about_approved')); ?>:</b>
 <?php echo CHtml::encode($model->about_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
-<?php echo CHtml::encode($model->title_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('pot_import_media_id_approved')); ?>:</b>
@@ -272,6 +228,18 @@ $this->breadcrumbs[] = $model->id;
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->title_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('allow_review')); ?>:</b>
+<?php echo CHtml::encode($model->allow_review); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('allow_publish')); ?>:</b>
+<?php echo CHtml::encode($model->allow_publish); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
+<?php echo CHtml::encode($model->title_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id_proofed')); ?>:</b>
@@ -330,84 +298,6 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'translations_draft_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translations_draft_validation_progress',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'translations_preview_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translations_preview_validation_progress',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'translations_public_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translations_public_validation_progress',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'translations_approval_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translations_approval_progress',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'translations_proofing_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translations_proofing_progress',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'file_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'file_approved',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
                         'name' => 'draft_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -421,52 +311,26 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'file_proofed',
+                        'name' => 'reviewable_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'file_proofed',
+                                    'attribute' => 'reviewable_validation_progress',
                                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
                                 ),
                                 true
                             )
                     ),
                     array(
-                        'name' => 'preview_validation_progress',
+                        'name' => 'publishable_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'preview_validation_progress',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'draft_saved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'draft_saved',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'public_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'public_validation_progress',
+                                    'attribute' => 'publishable_validation_progress',
                                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
                                 ),
                                 true
@@ -980,19 +844,6 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'approval_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'approval_progress',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
                         'name' => 'translate_into_vi_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1032,19 +883,6 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'proofing_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'proofing_progress',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
                         'name' => 'translate_into_zh_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1058,13 +896,26 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'previewing_welcome',
+                        'name' => 'proofing_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'previewing_welcome',
+                                    'attribute' => 'proofing_progress',
+                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'approval_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'approval_progress',
                                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
                                 ),
                                 true
@@ -1084,19 +935,6 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'candidate_for_public_status',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'candidate_for_public_status',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
                         'name' => 'about_approved',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1104,19 +942,6 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'about_approved',
-                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_approved',
                                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
                                 ),
                                 true
@@ -1143,6 +968,45 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'title_proofed',
+                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'allow_review',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'allow_review',
+                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'allow_publish',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'allow_publish',
+                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'title_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_approved',
                                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
                                 ),
                                 true

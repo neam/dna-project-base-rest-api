@@ -115,9 +115,9 @@ $this->widget('\TbGridView',
             array(
                 'class' => '\TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Edge.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Edge.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Edge.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Edge.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Edge.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Edge.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',

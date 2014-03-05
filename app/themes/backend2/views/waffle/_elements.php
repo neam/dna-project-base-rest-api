@@ -14,7 +14,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'owner',
+                    'relation' => 'jsonImportMedia',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -23,18 +23,18 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'owner_id', $input);
+            echo $form->customRow($model, 'json_import_media_id', $input);
             ?>
 
             <?php
-            $formId = 'waffle-owner_id-' . \uniqid() . '-form';
+            $formId = 'waffle-json_import_media_id-' . \uniqid() . '-form';
             ?>
 
             <div class="control-group">
                 <div class="controls">
                     <?php
                     echo $this->widget('\TbButton', array(
-                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Account'))),
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
                         'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
@@ -46,15 +46,17 @@
 
             <?php
             $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//account/_modal_form', array(
+            $this->renderPartial('//p3Media/_modal_form', array(
                 'formId' => $formId,
-                'inputSelector' => '#Waffle_owner_id',
-                'model' => new Account,
+                'inputSelector' => '#Waffle_json_import_media_id',
+                'model' => new P3Media,
                 'pk' => 'id',
                 'field' => 'itemLabel',
             ));
             $this->endClip();
             ?>
+
+            <?php echo $form->textFieldRow($model, 'owner_id'); ?>
 
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 

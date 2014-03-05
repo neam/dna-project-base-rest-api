@@ -5927,7 +5927,7 @@ $this->widget('\TbGridView',
             array(
                     'name' => 'owner_id',
                     'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'processed_media_id_es',
@@ -6138,6 +6138,11 @@ $this->widget('\TbGridView',
                     'name' => 'processed_media_id_zh_tw',
                     'value' => 'CHtml::value($data, \'processedMediaIdZhTw.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'spreadsheet_file_qa_state_id',
+                    'value' => 'CHtml::value($data, \'spreadsheetFileQaState.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SpreadsheetFileQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             */
             array(
@@ -8424,6 +8429,11 @@ $this->widget('\TbGridView',
                 )
             ),
             array(
+                'name' => 'json_import_media_id',
+                'value' => 'CHtml::value($data, \'jsonImportMedia.itemLabel\')',
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
@@ -8439,12 +8449,12 @@ $this->widget('\TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            array(
-                'name' => 'owner_id',
-                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                'filter' => '', //CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
             /*
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_ar',

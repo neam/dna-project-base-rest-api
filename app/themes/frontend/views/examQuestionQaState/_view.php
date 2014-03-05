@@ -11,59 +11,27 @@
     <?php echo CHtml::encode($data->status); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('translations_draft_validation_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->translations_draft_validation_progress); ?>
-    <br/>
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('translations_preview_validation_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->translations_preview_validation_progress); ?>
-    <br/>
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('translations_public_validation_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->translations_public_validation_progress); ?>
-    <br/>
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('translations_approval_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->translations_approval_progress); ?>
-    <br/>
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('translations_proofing_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->translations_proofing_progress); ?>
-    <br/>
-
-    <?php /*
-    <b><?php echo CHtml::encode($data->getAttributeLabel('source_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->source_approved); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('draft_validation_progress')); ?>:</b>
     <?php echo CHtml::encode($data->draft_validation_progress); ?>
-    <br />
+    <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('source_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->source_proofed); ?>
-    <br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('reviewable_validation_progress')); ?>:</b>
+    <?php echo CHtml::encode($data->reviewable_validation_progress); ?>
+    <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('preview_validation_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->preview_validation_progress); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('draft_saved')); ?>:</b>
-    <?php echo CHtml::encode($data->draft_saved); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('public_validation_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->public_validation_progress); ?>
-    <br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('publishable_validation_progress')); ?>:</b>
+    <?php echo CHtml::encode($data->publishable_validation_progress); ?>
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_en_validation_progress')); ?>:</b>
     <?php echo CHtml::encode($data->translate_into_en_validation_progress); ?>
-    <br />
+    <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_ar_validation_progress')); ?>:</b>
     <?php echo CHtml::encode($data->translate_into_ar_validation_progress); ?>
-    <br />
+    <br/>
 
+    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_bg_validation_progress')); ?>:</b>
     <?php echo CHtml::encode($data->translate_into_bg_validation_progress); ?>
     <br />
@@ -216,36 +184,32 @@
     <?php echo CHtml::encode($data->translate_into_vi_validation_progress); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('approval_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->approval_progress); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_zh_validation_progress')); ?>:</b>
     <?php echo CHtml::encode($data->translate_into_zh_validation_progress); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('proofing_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->proofing_progress); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('previewing_welcome')); ?>:</b>
-    <?php echo CHtml::encode($data->previewing_welcome); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_zh_cn_validation_progress')); ?>:</b>
     <?php echo CHtml::encode($data->translate_into_zh_cn_validation_progress); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('candidate_for_public_status')); ?>:</b>
-    <?php echo CHtml::encode($data->candidate_for_public_status); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('approval_progress')); ?>:</b>
+    <?php echo CHtml::encode($data->approval_progress); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
     <?php echo CHtml::encode($data->translate_into_zh_tw_validation_progress); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_approved); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('proofing_progress')); ?>:</b>
+    <?php echo CHtml::encode($data->proofing_progress); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('allow_review')); ?>:</b>
+    <?php echo CHtml::encode($data->allow_review); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('allow_publish')); ?>:</b>
+    <?php echo CHtml::encode($data->allow_publish); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('slug_en_approved')); ?>:</b>
@@ -256,16 +220,16 @@
     <?php echo CHtml::encode($data->question_en_approved); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('question_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->question_approved); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('source_node_id_approved')); ?>:</b>
     <?php echo CHtml::encode($data->source_node_id_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('alternatives_approved')); ?>:</b>
     <?php echo CHtml::encode($data->alternatives_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('related_approved')); ?>:</b>
@@ -284,8 +248,8 @@
     <?php echo CHtml::encode($data->question_en_proofed); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('question_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->question_proofed); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('question_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->question_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('source_node_id_proofed')); ?>:</b>
@@ -298,6 +262,10 @@
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('related_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->related_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('question_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->question_proofed); ?>
     <br />
 
     */

@@ -1,8 +1,8 @@
 <?php
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 ?>
 <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
-
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <!--<h1>
     
     <?php echo Yii::t('model', 'Spreadsheet File'); ?>
@@ -235,6 +235,10 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_zh_tw')); ?>:</b>
 <?php echo CHtml::encode($model->processed_media_id_zh_tw); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('spreadsheet_file_qa_state_id')); ?>:</b>
+<?php echo CHtml::encode($model->spreadsheet_file_qa_state_id); ?>
 <br />
 
     */

@@ -79,7 +79,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'preview_validation_progress',
+                'name' => 'reviewable_validation_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleCategoryElementQaState/editableSaver'),
                     //'placement' => 'right',
@@ -87,7 +87,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'public_validation_progress',
+                'name' => 'publishable_validation_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleCategoryElementQaState/editableSaver'),
                     //'placement' => 'right',
@@ -456,7 +456,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'previewing_welcome',
+                'name' => 'allow_review',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleCategoryElementQaState/editableSaver'),
                     //'placement' => 'right',
@@ -464,7 +464,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'candidate_for_public_status',
+                'name' => 'allow_publish',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleCategoryElementQaState/editableSaver'),
                     //'placement' => 'right',
