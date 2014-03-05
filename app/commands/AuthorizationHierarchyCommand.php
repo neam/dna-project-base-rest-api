@@ -46,6 +46,7 @@ EOD;
 
         // Bizrule for checking that the item belongs to the group that is sent to checkAccess()
         $belongsToGroupBizrule = 'return TODO;';
+        $belongsToGapminderOrgGroupBizrule = 'return true;';
         $userHasbelongsToGroupBizrule = 'return TODO;';
         // Bizrule for checking that the current user is the owner of the item
         $userIsOwnerBizrule = 'return Yii::app()->user->id==$params["item"]->owner_id;';
@@ -130,6 +131,14 @@ EOD;
         $task = $auth->createTask('GroupItems.Clone');
         $task->addChild('Item.Clone');
 
+        $task = $auth->createTask('OwnItems.Edit');
+        $task->addChild('Item.Edit');
+
+        $task = $auth->createTask('GapminderOrgGroupItems.Browse', null, $belongsToGapminderOrgGroupBizrule);
+        $task->addChild('Item.Browse');
+        $task = $auth->createTask('GapminderOrgGroupItems.View', null, $belongsToGapminderOrgGroupBizrule);
+        $task->addChild('Item.View');
+
         // Phundament-operations necessary to access some Phundament-features
         $auth->createOperation('P3media.Import.*');
         $auth->createOperation('P3media.Import.scan');
@@ -149,9 +158,13 @@ EOD;
         // ROLES & ASSIGNMENTS
 
         $role = $auth->createRole('Anonymous');
+        $role->addChild('GapminderOrgGroupItems.Browse');
+        $role->addChild('GapminderOrgGroupItems.View');
 
-        $role = $auth->createRole('Member');
+        $authenticatedBizRule = 'return !Yii::app()->user->isGuest;';
+        $role = $auth->createRole('Member', null, $authenticatedBizRule);
         $role->addChild('Item.Add');
+        $role->addChild('OwnItems.Edit');
         $role->addChild('OwnItems.Suggest.WithinAnyGroup');
         $role->addChild('P3media.Import.*'); // Upload access is necessary for everyone in order to upload their profile picture
 
@@ -200,6 +213,7 @@ EOD;
         // TODO add assign-tasks
 
         $superAdministratorRole = $auth->createRole('Super Administrator');
+        $superAdministratorRole->addChild('Group Administrator');
         // TODO add Item-operations regardless of Group here
 
         // We can use the developer role temporarily to get access to items while developing (ie add to roles => array('Developer') in access control filter)

@@ -19,7 +19,7 @@ trait ItemController
                     'view',
                 ),
                 'roles' => array(
-                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
+                    'Item.View',
                 ),
             ),
             array('allow',
@@ -27,10 +27,7 @@ trait ItemController
                     'browse',
                 ),
                 'roles' => array(
-                    // go, edu, sharable -> anonymous
-                    // websitecontent -> gapminder.editor
-                    // waffle -> waffle.editor
-                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
+                    'Item.Browse',
                 ),
             ),
             array('allow',
@@ -56,7 +53,7 @@ trait ItemController
                     'deleteEdge',
                 ),
                 'roles' => array(
-                    'Item.DeleteEdge'
+                    'Item.Edit'
                 ),
             ),
             array('allow',
