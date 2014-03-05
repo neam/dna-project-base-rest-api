@@ -81,7 +81,7 @@ $mainConfig = array(
         'vendor.sammaye.auditrail2.models.AuditTrail', //
         'vendor.bwoester.yii-static-events-component.*',
         'vendor.bwoester.yii-event-interceptor.*',
-        'vendor.gusnips.yii-translate.TranslateModule',
+        //'vendor.gusnips.yii-translate.TranslateModule',
         'application.helpers.*',
         'application.widgets.*',
         // widgets
@@ -231,9 +231,11 @@ $mainConfig = array(
             'class'                => 'vendor.mishamx.yii-user.UserModule',
             'activeAfterRegister'  => false,
         ),
+        /*
         'translate'            => array(
             'class' => 'vendor.gusnips.yii-translate.TranslateModule',
         ),
+        */
     ),
     // application components
     'components' => array(
