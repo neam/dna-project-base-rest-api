@@ -12,23 +12,27 @@
             ));
         }
         */
-        if (!$model->qaState()->previewing_welcome) {
+        if (!$model->qaState()->allow_review) {
             $this->widget("\TbButton", array(
-                "label" => Yii::t("crud", "Prepare for testing"),
-                'color' => $this->action->id == "prepPreshow" ? "inverse" : null,
+                "label" => Yii::t("crud", "Prepare for review"),
+                'color' => $this->action->id == "prepareForReview" ? "inverse" : null,
                 "icon" => "glyphicon-pencil" . ($this->action->id == "" ? " icon-white" : null),
-                "url" => array("prepPreshow", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->firstFlowStep($model)),
-                "visible" => Yii::app()->user->checkAccess('Item.PrepPreshow'),
+                "url" => array("prepareForReview", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->firstFlowStep($model)),
+                "visible" => Yii::app()->user->checkAccess('Item.PrepareForReview'),
             ));
+        } else {
+            // TODO: Action to prevent review
         }
         if (!$model->qaState()->allow_publish) {
             $this->widget("\TbButton", array(
                 "label" => Yii::t("crud", "Prepare for publishing"),
-                'color' => $this->action->id == "prepPublish" ? "inverse" : null,
-                "icon" => "glyphicon-pencil" . ($this->action->id == "prepPublish" ? " icon-white" : null),
-                "url" => array("prepPublish", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->firstFlowStep($model)),
-                "visible" => Yii::app()->user->checkAccess('Item.PrepPublish'),
+                'color' => $this->action->id == "prepareForPublishing" ? "inverse" : null,
+                "icon" => "glyphicon-pencil" . ($this->action->id == "prepareForPublishing" ? " icon-white" : null),
+                "url" => array("prepareForPublishing", "id" => $model->{$model->tableSchema->primaryKey}, "step" => $this->firstFlowStep($model)),
+                "visible" => Yii::app()->user->checkAccess('Item.PrepareForPublishing'),
             ));
+        } else {
+            // TODO: Action to prevent publishing
         }
 
         ?>

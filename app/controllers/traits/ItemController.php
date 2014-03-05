@@ -58,19 +58,11 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
-                    'prepPreshow',
-                    'makeCandidate',
+                    'prepareForReview',
+                    'submitForReview',
                 ),
                 'roles' => array(
-                    'Item.PrepPreshow'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
-                    'makeTestable',
-                ),
-                'roles' => array(
-                    'Item.Preshow'
+                    'Item.PrepareForReview'
                 ),
             ),
             array('allow',
@@ -83,10 +75,11 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
-                    'prepPublish',
+                    'prepareForPublishing',
+                    'submitForPublishing',
                 ),
                 'roles' => array(
-                    'Item.PrepPublish'
+                    'Item.PrepareForPublishing'
                 ),
             ),
             array('allow',
@@ -99,26 +92,18 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
-                    'review',
-                ),
-                'roles' => array(
-                    'Item.Review'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
-                    'prepPreshow',
-                ),
-                'roles' => array(
-                    'Item.PrepPreshow'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
                     'proofRead',
                 ),
                 'roles' => array(
                     'Item.Proofread'
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'preview',
+                ),
+                'roles' => array(
+                    'Item.Preview'
                 ),
             ),
             array('allow',
@@ -142,7 +127,6 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'edit',
-                    'preview',
                 ),
                 'roles' => array(
                     'Item.Edit'
@@ -164,14 +148,6 @@ trait ItemController
                     'Item.Remove'
                 ),
             ),
-            array('allow',
-                'actions' => array(
-                    'replace',
-                ),
-                'roles' => array(
-                    'Item.Replace'
-                ),
-            ),
         );
 
         return $return;
@@ -182,79 +158,6 @@ trait ItemController
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
         $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
-    }
-
-    /**
-     * Action that redirects to the next relevant workflow based on the item's qa state
-     * Note: Not currently used
-     * @param $id
-     */
-    public function actionHelpOut($id)
-    {
-
-        $model = $this->loadModel($id);
-        /*
-        if (($model->qaState()->draft_validation_progress < 100 || !$model->qaState()->draft_saved) && !is_null($step = $this->nextFlowStep("draft-", $model))) {
-            $this->redirect(array('draft', 'id' => $model->id, 'step' => $step));
-            return;
-        }
-        */
-        if (($model->qaState()->reviewable_validation_progress < 100 || !$model->qaState()->allow_review) && !is_null($step = $this->nextFlowStep("preview-", $model))) {
-            $this->redirect(array('prepPreshow', 'id' => $model->id, 'step' => $step));
-            return;
-        }
-        if (($model->qaState()->publishable_validation_progress < 100 || !$model->qaState()->allow_publish) && !is_null($step = $this->nextFlowStep("public-", $model))) {
-            $this->redirect(array('prepPublish', 'id' => $model->id, 'step' => $step));
-            return;
-        }
-        if ($model->qaState()->draft_evaluation_progress < 100) {
-            $this->redirect(array('evaluate', 'id' => $model->id));
-            return;
-        }
-        if ($model->qaState()->preview_evaluation_progress < 100) {
-            $this->redirect(array('evaluate', 'id' => $model->id));
-            return;
-        }
-        if ($model->qaState()->public_evaluation_progress < 100) {
-            $this->redirect(array('evaluate', 'id' => $model->id));
-            return;
-        }
-        if ($model->qaState()->approval_progress < 100) {
-            $this->redirect(array('review', 'id' => $model->id));
-            return;
-        }
-        if ($model->qaState()->proofing_progress < 100) {
-            $this->redirect(array('proofRead', 'id' => $model->id));
-            return;
-        }
-        if ($model->qaState()->translations_draft_validation_progress < 100) {
-            $this->redirect(array('translate', 'id' => $model->id));
-            return;
-        }
-        if ($model->qaState()->translations_reviewable_validation_progress < 100) {
-            $this->redirect(array('translate', 'id' => $model->id));
-            return;
-        }
-        if ($model->qaState()->translations_publishable_validation_progress < 100) {
-            $this->redirect(array('translate', 'id' => $model->id));
-            return;
-        }
-        if ($model->qaState()->translations_approval_progress < 100) {
-            $this->redirect(array('translate', 'id' => $model->id));
-            return;
-        }
-        if ($model->qaState()->translations_proofing_progress < 100) {
-            $this->redirect(array('translate', 'id' => $model->id));
-            return;
-        }
-        if ($model->qaState()->status != "public") {
-            $this->redirect(array('publish', 'id' => $model->id));
-            return;
-        }
-
-        $this->actionContinueAuthoring($id);
-        return;
-
     }
 
     protected function nextFlowStep($prefix, $item)
@@ -278,6 +181,8 @@ trait ItemController
     }
 
     /**
+     * TODO: Move away from controller to model or helper
+     *
      * Returns a CDbCriteria which shows the models in testable-state or higher for translators.
      *
      * @param $modelTbl
@@ -293,6 +198,10 @@ trait ItemController
 
         $criteria = $defaultCriteria;
 
+        return $criteria;
+
+        // TODO: Make group-dependent
+
         // Translators should only see items which are in testable mode or higher
         if (Yii::app()->user->checkAccess('Item.Translate')) {
             $criteria = new CDbCriteria();
@@ -301,7 +210,7 @@ trait ItemController
             $qaStateForeignId = $qaStateTbl . '_id'; // model_table_qa_state_id
 
             $criteria->join = sprintf('INNER JOIN %s qs ON %s = qs.id', $qaStateTbl, $qaStateForeignId);
-            $criteria->addInCondition('status', array('preview', 'public'));
+            $criteria->addInCondition('status', array('reviewable', 'publishable'));
         }
 
         return $criteria;
@@ -330,7 +239,6 @@ trait ItemController
             )
         );
     }
-
 
     public function actionAdd()
     {
@@ -440,46 +348,29 @@ trait ItemController
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
-    /*
-    public function actionSaveDraft($id)
-    {
-        $model = $this->loadModel($id);
-        $qaState = $model->qaState();
-
-        // save state change
-        $qaState->draft_saved = 1;
-        if (!$qaState->save()) {
-            throw new SaveException($qaState);
-        }
-
-        // redirect
-        if (isset($_GET['returnUrl'])) {
-            $this->redirect($_GET['returnUrl']);
-        } else {
-            $this->redirect(array('continueAuthoring', 'id' => $model->id));
-        }
-
-    }
-    */
-
     /**
      * Prepare for testing workflow
      * @param $step
      * @param $id
      */
-    public function actionPrepPreshow($step, $id)
+    public function actionPrepareForReview($step, $id)
     {
-        $this->scenario = "preview-step_$step";
+        $this->scenario = "reviewable-step_$step";
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
-        $this->populateWorkflowData($model, "preview", Yii::t('app', 'Prepare for testing'));
+        $this->populateWorkflowData($model, "reviewable", Yii::t('app', 'Prepare for review'));
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
-    public function actionMakeTestable($id)
+    /**
+     * TODO: this action needs to add the item to relevant skill groups as well
+     * @param $id
+     * @throws SaveException
+     */
+    public function actionSubmitForReview($id)
     {
         $model = $this->loadModel($id);
         $qaState = $model->qaState();
@@ -522,19 +413,19 @@ trait ItemController
      * @param $step
      * @param $id
      */
-    public function actionPrepPublish($step, $id)
+    public function actionPrepareForPublishing($step, $id)
     {
-        $this->scenario = "public-step_$step";
+        $this->scenario = "publishable-step_$step";
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
-        $this->populateWorkflowData($model, "public", Yii::t('app', 'Prepare for publishing'));
+        $this->populateWorkflowData($model, "publishable", Yii::t('app', 'Prepare for publishing'));
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
-    public function actionMakeCandidate($id)
+    public function actionSubmitForPublishing($id)
     {
         $model = $this->loadModel($id);
         $qaState = $model->qaState();
@@ -561,34 +452,37 @@ trait ItemController
         $this->render('/_item/preview', array('model' => $model, 'workflowCaption' => Yii::t('app', 'Preview')));
     }
 
-    public function actionReview($id)
-    {
-        $model = $this->loadModel($id);
-        $this->render('/_item/review', array('model' => $model));
-    }
-
     public function actionProofread($id)
     {
         $model = $this->loadModel($id);
         $this->render('/_item/proofread', array('model' => $model));
     }
 
+    /**
+     * TODO: Add saving of changeset
+     * @param $id
+     * @throws CException
+     * @throws SaveException
+     */
     public function actionPublish($id)
     {
         //$model = $this->saveAndContinueOnSuccess($id);
 
         $model = $this->loadModel($id);
-        if (!$model->qaStateBehavior()->validStatus('public')) {
-            throw new CException("This item does not validate for public status");
+        if (!$model->qaStateBehavior()->validStatus('publishable')) {
+            throw new CException("This item does not validate for publishable status");
         }
 
         $qaState = $model->qaState();
 
         // save status change
-        $qaState->status = 'public';
+        throw new CException("TODO: save status change - group dependent");
+        /*
+        $qaState->status = 'publishable';
         if (!$qaState->save()) {
             throw new SaveException($qaState);
         }
+        */
         $model->refreshQaState();
 
         // redirect
@@ -608,10 +502,13 @@ trait ItemController
         $qaState = $model->qaState();
 
         // save status change
+        throw new CException("TODO: save status change - group dependent");
+        /*
         $qaState->status = null;
         if (!$qaState->save()) {
             throw new SaveException($qaState);
         }
+        */
         $model->refreshQaState();
 
         // redirect
@@ -649,7 +546,7 @@ trait ItemController
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
 
-        $this->populateWorkflowData($model, "public", Yii::t('app', 'Edit'));
+        $this->populateWorkflowData($model, "publishable", Yii::t('app', 'Edit'));
         $stepCaptions = $model->flowStepCaptions();
 
         $this->setPageTitle(array(
@@ -741,12 +638,15 @@ trait ItemController
 
         // reset qa states
         $behaviors = $model->behaviors();
-        $translationAttribute = 'video_file_qa_state_id';
-        if (isset($behaviors['i18n-columns']['translationAttributes']) && in_array($translationAttribute, $behaviors['i18n-columns']['translationAttributes'])) {
+        // TODO: Do not hard-code for video file
+        $qaStateAttribute = 'video_file_qa_state_id';
+        if (isset($behaviors['i18n-columns']['translationAttributes']) && in_array($qaStateAttribute, $behaviors['i18n-columns']['translationAttributes'])) {
             foreach (Yii::app()->params["languages"] as $lang => $label) {
-                $translatedAttribute = $translationAttribute . "_" . $lang;
+                $translatedAttribute = $qaStateAttribute . "_" . $lang;
                 $clone->$translatedAttribute = null;
             }
+        } else {
+            $clone->$qaStateAttribute = null;
         }
 
         // mark ancestry
@@ -883,23 +783,23 @@ trait ItemController
 
         } else
         */
-        if ($this->action->id == "prepPreshow") {
+        if ($this->action->id == "prepareForReview") {
             $flagTriggerActions[] = array(
-                'label' => Yii::t('app', 'Make Testable'),
-                'requiredProgress' => $item->calculateValidationProgress('preview'),
-                'action' => 'makeTestable'
+                'label' => Yii::t('app', 'Submit for review'),
+                'requiredProgress' => $item->calculateValidationProgress('reviewable'),
+                'action' => 'submitForReview'
             );
 
-            $editAction = "prepPreshow";
+            $editAction = "prepareForReview";
 
-        } elseif ($this->action->id == "prepPublish") {
+        } elseif ($this->action->id == "prepareForPublishing") {
             $flagTriggerActions[] = array(
-                'label' => Yii::t('app', 'Make Candidate'),
-                'requiredProgress' => $item->calculateValidationProgress('public'),
-                'action' => 'makeCandidate'
+                'label' => Yii::t('app', 'Submit for publishing'),
+                'requiredProgress' => $item->calculateValidationProgress('publishable'),
+                'action' => 'submitForPublishing'
             );
 
-            $editAction = "prepPublish";
+            $editAction = "prepareForPublishing";
 
         } elseif ($this->action->id == "translate") {
 
