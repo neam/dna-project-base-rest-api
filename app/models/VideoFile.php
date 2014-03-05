@@ -240,7 +240,10 @@ class VideoFile extends BaseVideoFile
      */
     public function getVideos()
     {
-        return $this->getP3Media(array('video/webm'));
+        return $this->getP3Media(array(
+            'video/webm',
+            'video/mp4',
+        ));
     }
 
     /**
@@ -249,7 +252,10 @@ class VideoFile extends BaseVideoFile
      */
     public function getThumbnails()
     {
-        return $this->getP3Media(array('image/jpeg', 'image/png'));
+        return $this->getP3Media(array(
+            'image/jpeg',
+            'image/png',
+        ));
     }
 
     /**
