@@ -62,28 +62,28 @@ trait ItemTrait
         $statusRequirements = $this->statusRequirements();
 
         $statusRules = array();
-        $statusRules['draft'] = array(implode(', ', $statusRequirements['draft']), 'required', 'on' => 'draft,preview,public');
-        $statusRules['preview'] = array(implode(', ', $statusRequirements['preview']), 'required', 'on' => 'preview,public');
-        $statusRules['public'] = array(implode(', ', $statusRequirements['public']), 'required', 'on' => 'public');
+        $statusRules['draft'] = array(implode(', ', $statusRequirements['draft']), 'required', 'on' => 'draft,reviewable,publishable');
+        $statusRules['reviewable'] = array(implode(', ', $statusRequirements['reviewable']), 'required', 'on' => 'reviewable,publishable');
+        $statusRules['publishable'] = array(implode(', ', $statusRequirements['publishable']), 'required', 'on' => 'publishable');
 
         // Manual fields that are required
-        $statusRules[] = array('status', 'validStatusPreview', 'on' => 'status_preview');
-        $statusRules[] = array('status', 'validStatusPublic', 'on' => 'status_public');
+        $statusRules[] = array('status', 'validStatusReviewable', 'on' => 'status_reviewable');
+        $statusRules[] = array('status', 'validStatusPublishable', 'on' => 'status_publishable');
 
         return $statusRules;
     }
 
-    public function validStatusPreview($attribute, $params)
+    public function validStatusReviewable($attribute, $params)
     {
-        if ($this->qaState()->previewing_welcome != 1) {
-            $this->addError($attribute, Yii::t('app', 'Not marked as testable'));
+        if ($this->qaState()->allow_review != 1) {
+            $this->addError($attribute, Yii::t('app', 'Reviewing not marked as allowed'));
         }
     }
 
-    public function validStatusPublic($attribute, $params)
+    public function validStatusPublishable($attribute, $params)
     {
-        if ($this->qaState()->candidate_for_public_status != 1) {
-            $this->addError($attribute, Yii::t('app', 'Not marked as candidate'));
+        if ($this->qaState()->allow_publish != 1) {
+            $this->addError($attribute, Yii::t('app', 'Publishing not marked as allowed'));
         }
     }
 
@@ -100,15 +100,15 @@ trait ItemTrait
 
             foreach ($fields as $field) {
                 $onStatuses = array();
-                $flowStepRules[] = array($field, 'safe', 'on' => implode("-step_$step,", array('draft', 'preview', 'public')) . "-step_$step,step_$step");
+                $flowStepRules[] = array($field, 'safe', 'on' => implode("-step_$step,", array('draft', 'reviewable', 'publishable')) . "-step_$step,step_$step");
                 if (in_array($field, $statusRequirements['draft'])) {
-                    $onStatuses = array('draft', 'preview', 'public');
+                    $onStatuses = array('draft', 'reviewable', 'publishable');
                 }
-                if (in_array($field, $statusRequirements['preview'])) {
-                    $onStatuses = array('preview', 'public');
+                if (in_array($field, $statusRequirements['reviewable'])) {
+                    $onStatuses = array('reviewable', 'publishable');
                 }
-                if (in_array($field, $statusRequirements['public'])) {
-                    $onStatuses = array('public');
+                if (in_array($field, $statusRequirements['publishable'])) {
+                    $onStatuses = array('publishable');
                 }
                 if (!empty($onStatuses)) {
                     $flowStepRules[] = array($field, 'required', 'on' => implode("-step_$step,", $onStatuses) . "-step_$step,step_$step");

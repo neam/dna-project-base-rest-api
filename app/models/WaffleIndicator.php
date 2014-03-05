@@ -66,10 +66,10 @@ class WaffleIndicator extends BaseWaffleIndicator
             'draft' => array(
                 'title',
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'short_name',
             ),
-            'public' => array(
+            'publishable' => array(
                 'ref',
             ),
         );

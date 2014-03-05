@@ -164,12 +164,12 @@ class SpreadsheetFile extends BaseSpreadsheetFile
             'draft' => array(
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'title_' . $this->source_language,
                 'original_media_id',
                 'processed_media_id_' . $this->source_language,
             ),
-            'public' => array(),
+            'publishable' => array(),
         );
     }
 

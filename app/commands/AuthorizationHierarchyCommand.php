@@ -99,7 +99,7 @@ EOD;
         $auth->createOperation('Item.Preview');
         $auth->createOperation('Item.Evaluate');
         $auth->createOperation('Item.Proofread');
-        $auth->createOperation('Item.PrepPublish');
+        $auth->createOperation('Item.PrepareForPublishing');
         $auth->createOperation('Item.Approve');
         $auth->createOperation('Item.Translate');
         $auth->createOperation('Item.TranslateUnrestricted');
@@ -118,8 +118,8 @@ EOD;
         $task->addChild('Item.Evaluate');
         $task = $auth->createTask('GroupItems.Proofread');
         $task->addChild('Item.Proofread');
-        $task = $auth->createTask('GroupItems.PrepPublish');
-        $task->addChild('Item.PrepPublish');
+        $task = $auth->createTask('GroupItems.PrepareForPublishing');
+        $task->addChild('Item.PrepareForPublishing');
         $task = $auth->createTask('GroupItems.Approve');
         $task->addChild('Item.Approve');
         $task = $auth->createTask('GroupItems.Translate');
@@ -195,7 +195,7 @@ EOD;
 
         $role = $auth->createRole('Group Editor');
         $role->addChild('GroupItems.PrepareForReview');
-        $role->addChild('GroupItems.PrepPublish');
+        $role->addChild('GroupItems.PrepareForPublishing');
         $role->addChild('GroupItems.Edit');
 
         $role = $auth->createRole('Group Publisher');

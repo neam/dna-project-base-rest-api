@@ -64,8 +64,8 @@ class Tool extends BaseTool
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(),
-            'public' => array(),
+            'reviewable' => array(),
+            'publishable' => array(),
         );
     }
 

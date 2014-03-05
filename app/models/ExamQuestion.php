@@ -57,7 +57,7 @@ class ExamQuestion extends BaseExamQuestion
             array(
                 array('slug', 'required', 'on' => 'draft,preview,public'),
                 array('question', 'required', 'on' => 'preview,public'),
-                array('source_node_id', 'required', 'on' => 'public'),
+                array('source_node_id', 'required', 'on' => 'publishable'),
 
                 // Ordinary validation rules
                 //array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
@@ -77,10 +77,10 @@ class ExamQuestion extends BaseExamQuestion
             'draft' => array(
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'question_' . $this->source_language,
             ),
-            'public' => array(
+            'publishable' => array(
                 'source_node_id',
                 'alternatives',
                 'related',

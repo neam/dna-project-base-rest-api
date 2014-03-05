@@ -65,10 +65,10 @@ class Waffle extends BaseWaffle
             'draft' => array(
                 'title',
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'slug',
             ),
-            'public' => array(),
+            'publishable' => array(),
         );
     }
 

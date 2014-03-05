@@ -55,11 +55,11 @@ class VideoFile extends BaseVideoFile
             $this->i18nRules(),
             array(
                 // Ordinary validation rules
-                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
-                array('clip_webm_media_id', 'validateVideoWebm', 'on' => 'public'),
-                array('clip_mp4_media_id', 'validateVideoMp4', 'on' => 'public'),
+                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable'),
+                array('clip_webm_media_id', 'validateVideoWebm', 'on' => 'publishable'),
+                array('clip_mp4_media_id', 'validateVideoMp4', 'on' => 'publishable'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
-                array('subtitles_' . $this->source_language, 'validateSubtitles', 'on' => 'public'),
+                array('subtitles_' . $this->source_language, 'validateSubtitles', 'on' => 'publishable'),
             )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
@@ -108,10 +108,10 @@ class VideoFile extends BaseVideoFile
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(
+            'reviewable' => array(
                 $this->getMediaIdAttribute(),
             ),
-            'public' => array(
+            'publishable' => array(
                 'about_' . $this->source_language,
             ),
         );

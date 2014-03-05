@@ -44,7 +44,7 @@ class I18nCatalog extends BaseI18nCatalog
 
                 array('title', 'length', 'min' => 10, 'max' => 200),
                 array('about', 'length', 'min' => 3, 'max' => 400),
-                array('pot_import_media_id', 'validateFile', 'on' => 'public'),
+                array('pot_import_media_id', 'validateFile', 'on' => 'publishable'),
 
             )
         );
@@ -77,8 +77,8 @@ class I18nCatalog extends BaseI18nCatalog
                 'title',
                 'original_media_id',
             ),
-            'preview' => array(),
-            'public' => array(
+            'reviewable' => array(),
+            'publishable' => array(
                 'about',
             ),
         );

@@ -72,10 +72,10 @@ class DataArticle extends BaseDataArticle
             'draft' => array(
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'title_' . $this->source_language,
             ),
-            'public' => array(
+            'publishable' => array(
                 'about_' . $this->source_language,
             ),
         );

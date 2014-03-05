@@ -66,10 +66,10 @@ class WaffleDataSource extends BaseWaffleDataSource
             'draft' => array(
                 'title',
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'short_name',
             ),
-            'public' => array(
+            'publishable' => array(
                 'ref',
             ),
         );

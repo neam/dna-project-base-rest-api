@@ -7,13 +7,13 @@
 <?php
 //var_dump($model->getAttributes(), $model->qaState()->getAttributes());
 
-$validationProgress = ($model->qaState()->draft_validation_progress + $model->qaState()->preview_validation_progress + $model->qaState()->public_validation_progress) / 3;
+$validationProgress = ($model->qaState()->draft_validation_progress + $model->qaState()->reviewable_validation_progress + $model->qaState()->publishable_validation_progress) / 3;
 $evaluationProgress = 0; //($model->qaState()->draft_evaluation_progress + $model->qaState()->preview_evaluation_progress + $model->qaState()->public_evaluation_progress) / 3;
 $publishingProgress = ($validationProgress + $evaluationProgress + $model->qaState()->approval_progress + $model->qaState()->proofing_progress) / 5;
-$translationProgress = ($model->qaState()->translations_draft_validation_progress + $model->qaState()->translations_preview_validation_progress + $model->qaState()->translations_public_validation_progress + $model->qaState()->translations_approval_progress + $model->qaState()->translations_proofing_progress) / 5;
+$translationProgress = ($model->qaState()->translations_draft_validation_progress + $model->qaState()->translations_reviewable_validation_progress + $model->qaState()->translations_publishable_validation_progress + $model->qaState()->translations_approval_progress + $model->qaState()->translations_proofing_progress) / 5;
 
 $requiredFieldsCount = count($model->qaStateBehavior()->qaAttributes("public"));
-$requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $model->qaState()->public_validation_progress / 100);
+$requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $model->qaState()->publishable_validation_progress / 100);
 
 ?>
 
@@ -71,7 +71,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                         '\TbProgress',
                         array(
                             'color' => 'success', // 'info', 'success' or 'danger'
-                            'percent' => $model->qaState()->preview_validation_progress,
+                            'percent' => $model->qaState()->reviewable_validation_progress,
                         )
                     );
                     ?>
@@ -98,7 +98,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                         '\TbProgress',
                         array(
                             'color' => 'success', // 'info', 'success' or 'danger'
-                            'percent' => $model->qaState()->public_validation_progress,
+                            'percent' => $model->qaState()->publishable_validation_progress,
                         )
                     );
                     ?>
@@ -232,7 +232,7 @@ $requiredFieldsMissing = $requiredFieldsCount - round($requiredFieldsCount * $mo
                         '\TbProgress',
                         array(
                             'color' => 'success', // 'info', 'success' or 'danger'
-                            'percent' => $model->qaState()->preview_validation_progress,
+                            'percent' => $model->qaState()->reviewable_validation_progress,
                         )
                     );
                     ?>

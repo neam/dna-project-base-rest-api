@@ -66,10 +66,10 @@ class WaffleTag extends BaseWaffleTag
             'draft' => array(
                 'title',
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'short_name',
             ),
-            'public' => array(
+            'publishable' => array(
                 'ref',
             ),
         );
