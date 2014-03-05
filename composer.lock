@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "168e9c2e2668d4609d3b62d62142d37f",
+    "hash": "bb2cb6e4d84ced1dba50726c793ec60a",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1640,6 +1640,50 @@
             "time": "2013-03-10 23:22:14"
         },
         {
+            "name": "sepia/po-parser",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/raulferras/PHP-po-parser.git",
+                "reference": "191f21701ecb107221775b36d3a21e7d3a4cf7a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/raulferras/PHP-po-parser/zipball/191f21701ecb107221775b36d3a21e7d3a4cf7a5",
+                "reference": "191f21701ecb107221775b36d3a21e7d3a4cf7a5",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Sepia": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raúl Ferràs",
+                    "email": "raul.ferras@gmail.com",
+                    "role": "developer"
+                }
+            ],
+            "description": "PO file parser for PHP.",
+            "homepage": "https://github.com/raulferras/PHP-po-parser",
+            "keywords": [
+                "gettext",
+                "i10n",
+                "i18n",
+                "po"
+            ],
+            "time": "2014-01-23 20:08:57"
+        },
+        {
             "name": "sumwai/yii-fixture-helper",
             "version": "dev-master",
             "source": {
@@ -2164,6 +2208,7 @@
         "sumwai/yii-fixture-helper": 20,
         "phpoffice/phpword": 20,
         "phpoffice/phppowerpoint": 20,
+        "sepia/po-parser": 20,
         "weavora/wrest": 20,
         "codemix/hybridauthmanager": 20,
         "phundament/backend-theme": 20,

@@ -143,6 +143,7 @@
         "phpoffice/phpexcel": "1.7.9",
         "phpoffice/phpword": "dev-added-composer-json",
         "phpoffice/phppowerpoint": "dev-master",
+        "sepia/po-parser": "dev-master",
         "weavora/wrest": "dev-awaiting-prs",
         "codemix/hybridauthmanager": "dev-master",
         "schmunk42/relation": "1.*",

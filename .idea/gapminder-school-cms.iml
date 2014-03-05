@@ -43,6 +43,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/schmunk42/multi-theme" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/schmunk42/relation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/schmunk42/web-user-behavior" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/sepia/po-parser" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sumwai/yii-fixture-helper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/filesystem" />
@@ -80,6 +81,7 @@
           <root url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
           <root url="file://$MODULE_DIR$/vendor/sammaye/auditrail2" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3bootstrap" />
+          <root url="file://$MODULE_DIR$/vendor/sepia/po-parser" />
           <root url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
           <root url="file://$MODULE_DIR$/vendor/bwoester/yii-static-events-component" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/adjacency-list-behavior" />
@@ -129,6 +131,7 @@
           <root url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
           <root url="file://$MODULE_DIR$/vendor/sammaye/auditrail2" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3bootstrap" />
+          <root url="file://$MODULE_DIR$/vendor/sepia/po-parser" />
           <root url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
           <root url="file://$MODULE_DIR$/vendor/bwoester/yii-static-events-component" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/adjacency-list-behavior" />
