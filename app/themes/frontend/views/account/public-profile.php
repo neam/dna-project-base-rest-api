@@ -7,7 +7,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Public profile');
 ?>
 
 <h1>
-    <?php echo $model->profiles->first_name . " " . $model->profiles->last_name; ?>
+    <?php echo $model->profile->first_name . " " . $model->profile->last_name; ?>
     <small><?php echo Yii::t('account', 'Public profile') ?> <!--#<?php echo $model->id ?>--></small>
 </h1>
 <?php //$this->renderPartial("_toolbar", array("model" => $model)); ?>
@@ -43,19 +43,19 @@ $this->breadcrumbs[] = Yii::t('account', 'Public profile');
                     <img src="http://placehold.it/400x400" style="border: 1px solid black; width: 100%;">
 
                     <h2><?php echo Yii::t('account', 'About'); ?></h2>
-                    <?php if (empty($model->profiles->about)): ?>
+                    <?php if (empty($model->profile->about)): ?>
                         <div class="alert alert-info">
                             <?php print Yii::t('profile', 'This user has not written anything about him/herself'); ?>
                         </div>
                     <?php else: ?>
-                        <?php print CHtml::encode($model->profiles->about); ?>
+                        <?php print CHtml::encode($model->profile->about); ?>
                     <?php endif; ?>
                 </div>
             </div>
             <div class="row-fluid">
                 <div class="span12">
                     <h2><?php echo Yii::t('account', 'Languages'); ?></h2>
-                    <?php $languages = $model->profiles->getLanguages(true); ?>
+                    <?php $languages = $model->profile->getLanguages(true); ?>
                     <?php if (!empty($languages)): ?>
                         <?php echo $languages; ?>
                     <?php else: ?>

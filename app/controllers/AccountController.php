@@ -99,19 +99,19 @@ class AccountController extends Controller
         $virtualDashboardActionTableSql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoPrimaryLanguage' AS action,
 translate_into_{$lang1}_validation_progress AS progress,
 0 AS relevance
-FROM `item` i,users user INNER JOIN profiles profile WHERE user.id = :user_id AND profile.language1 IS NOT NULL AND i.id IS NOT NULL
+FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language1 IS NOT NULL AND i.id IS NOT NULL
 
 UNION ALL
 SELECT i.id as id, i.model_class, i._title, 'TranslateIntoSecondaryLanguage' AS action,
 translate_into_{$lang2}_validation_progress AS progress,
 0 AS relevance
-FROM `item` i,users user INNER JOIN profiles profile WHERE user.id = :user_id AND profile.language2 IS NOT NULL AND i.id IS NOT NULL
+FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language2 IS NOT NULL AND i.id IS NOT NULL
 
 UNION ALL
 SELECT i.id as id, i.model_class, i._title, 'TranslateIntoTertiaryLanguage' AS action,
 translate_into_{$lang3}_validation_progress AS progress,
 0 AS relevance
-FROM `item` i,users user INNER JOIN profiles profile WHERE user.id = :user_id AND profile.language3 IS NOT NULL AND i.id IS NOT NULL
+FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language3 IS NOT NULL AND i.id IS NOT NULL
 
 UNION ALL
 SELECT 0 as id, '' as model_class, '' as _title, 'SupplyProfileLanguages' AS action, CASE
@@ -122,7 +122,7 @@ SELECT 0 as id, '' as model_class, '' as _title, 'SupplyProfileLanguages' AS act
    END
 AS progress,
 -9999 AS relevance
-FROM users INNER JOIN profiles profile WHERE id = :user_id
+FROM account INNER JOIN profile profile WHERE id = :user_id
 ";
 
         // if checkaccess Editor
@@ -162,13 +162,13 @@ FROM users INNER JOIN profiles profile WHERE id = :user_id
         $id = user()->id;
         $model = $this->loadModel($id); // Account
 
-        $this->performAjaxValidation(array($model, $model->profiles));
+        $this->performAjaxValidation(array($model, $model->profile));
 
-        if (!request()->isAjaxRequest && isset($_POST['Profiles'], $_POST['Account'])) {
+        if (!request()->isAjaxRequest && isset($_POST['Profile'], $_POST['Account'])) {
             $model->attributes = $_POST['Account'];
-            $model->profiles->attributes = $_POST['Profiles'];
+            $model->profile->attributes = $_POST['Profile'];
 
-            if ($model->save() && $model->profiles->save()) {
+            if ($model->save() && $model->profile->save()) {
                 setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('app', 'Your account information has been updated.'));
                 $this->refresh();
             }
@@ -352,7 +352,7 @@ FROM users INNER JOIN profiles profile WHERE id = :user_id
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'profiles-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'profile-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

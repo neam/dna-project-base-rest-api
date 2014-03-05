@@ -6,7 +6,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Translations');
 
 <h1>
 
-    <?php echo $model->profiles->first_name . " " . $model->profiles->last_name; ?>
+    <?php echo $model->profile->first_name . " " . $model->profile->last_name; ?>
     <small>
         <?php echo Yii::t('account', 'Translations') ?> <!--#<?php echo $model->id ?>-->
     </small>

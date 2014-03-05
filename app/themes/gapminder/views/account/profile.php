@@ -8,7 +8,7 @@
 <?php $this->breadcrumbs[] = Yii::t('account', 'Profile'); ?>
 <div class="account-controller profile-action">
     <?php $form = $this->beginWidget('\AppActiveForm', array(
-        'id' => 'profiles-form',
+        'id' => 'profile-form',
         'enableAjaxValidation' => true,
         'clientOptions' => array(
             'validateOnChange' => true,
@@ -52,13 +52,13 @@
                         </h2>
                     </div>
                     <div class="form-errors">
-                        <?php echo $form->errorSummary(array($model, $model->profiles)); ?>
+                        <?php echo $form->errorSummary(array($model, $model->profile)); ?>
                     </div>
                     <div class="form-fields">
                         <?php $this->renderPartial(
                             'profile/_form-fields',
                             array(
-                                'model' => $model->profiles,
+                                'model' => $model->profile,
                                 'form' => $form,
                             )
                         ); ?>

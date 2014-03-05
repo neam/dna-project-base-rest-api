@@ -7,7 +7,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
 ?>
 <div class="account-controller profile-action">
     <?php $form = $this->beginWidget('\TbActiveForm', array(
-        'id' => 'profiles-form',
+        'id' => 'profile-form',
         'enableAjaxValidation' => true,
         'clientOptions' => array(
             'validateOnChange' => true,
@@ -23,7 +23,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
         <div class="row">
             <div class="span9">
                 <h1>
-                    <?php echo $model->profiles->first_name . ' ' . $model->profiles->last_name; ?>
+                    <?php echo $model->profile->first_name . ' ' . $model->profile->last_name; ?>
                     <small><?php echo Yii::t('account', 'Profile') ?> <!--#<?php echo $model->id ?>--></small>
                 </h1>
                 <div class="pull-left">
@@ -80,7 +80,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
             <div class="row">
                 <div class="span12" style="line-height: 30px;">
                     <div class="pull-left">
-                        <?php $relatedSearchModel = $model->profiles; //getRelatedSearchModel($model, 'profiles');
+                        <?php $relatedSearchModel = $model->profile; //getRelatedSearchModel($model, 'profile');
         $columns = array();
 
         // todo: add support for toggle column
@@ -92,7 +92,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
             'name' => 'public_profile',
             'value' => 'CHtml::value($data,\'public_profile\')',
             'filter' => false,
-            'toggleAction' => 'profiles/toggle'
+            'toggleAction' => 'profile/toggle'
         );*/
         ?>
         <?php $this->widget('\TbGridView', array(
@@ -134,9 +134,9 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
                             <?php endif; ?>
                             <?php echo Html::hintTooltip(Yii::t('app', 'This is your public profile that others can see without being logged in.')); ?>
                         </h2>
-                        <?php echo $form->errorSummary(array($model, $model->profiles)); ?>
-                        <?php $this->renderPartial('/profiles/_elements', array(
-                            'model' => $model->profiles,
+                        <?php echo $form->errorSummary(array($model, $model->profile)); ?>
+                        <?php $this->renderPartial('/profile/_elements', array(
+                            'model' => $model->profile,
                             'form' => $form,
                         )); ?>
 

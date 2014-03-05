@@ -1,4 +1,4 @@
-<?php /** @var Profiles $model */ ?>
+<?php /** @var Profile $model */ ?>
 <?php /** @var AppActiveForm $form */ ?>
 <div class="fields-left">
     <?php
