@@ -251,7 +251,7 @@ $this->breadcrumbs[] = $model->id;
 
         <?php
         $this->widget(
-            'TbDetailView',
+            '\TbDetailView',
             array(
                 'data' => $model,
                 'attributes' => array(
@@ -284,10 +284,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'cloned_from_id',
                         'value' => ($model->clonedFrom !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
                                     array('//snapshot/view', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//snapshot/update', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -334,10 +334,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'logo_media_id',
                         'value' => ($model->logoMedia !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->logoMedia->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->logoMedia->itemLabel,
                                     array('//p3Media/view', 'id' => $model->logoMedia->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//p3Media/update', 'id' => $model->logoMedia->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -345,10 +345,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'mini_logo_media_id',
                         'value' => ($model->miniLogoMedia !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->miniLogoMedia->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->miniLogoMedia->itemLabel,
                                     array('//p3Media/view', 'id' => $model->miniLogoMedia->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//p3Media/update', 'id' => $model->miniLogoMedia->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -395,21 +395,21 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'owner_id',
                         'value' => ($model->owner !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
-                                    array('//users/view', 'id' => $model->owner->id),
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
+                                    array('//account/view', 'id' => $model->owner->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//users/update', 'id' => $model->owner->id),
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//account/update', 'id' => $model->owner->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->node->itemLabel,
                                     array('//node/view', 'id' => $model->node->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//node/update', 'id' => $model->node->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -482,10 +482,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'data_source_qa_state_id',
                         'value' => ($model->dataSourceQaState !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->dataSourceQaState->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->dataSourceQaState->itemLabel,
                                     array('//dataSourceQaState/view', 'id' => $model->dataSourceQaState->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//dataSourceQaState/update', 'id' => $model->dataSourceQaState->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',

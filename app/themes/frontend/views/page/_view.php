@@ -212,6 +212,10 @@
     <?php echo CHtml::encode($data->slug_zh_tw); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('page_qa_state_id')); ?>:</b>
+    <?php echo CHtml::encode($data->page_qa_state_id); ?>
+    <br />
+
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('Page.*')): ?>

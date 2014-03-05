@@ -37,11 +37,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//changeset/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//changeset/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -84,11 +84,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//chapter/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//chapter/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -131,11 +131,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//comment/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//comment/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -178,11 +178,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//dataArticle/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//dataArticle/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -225,11 +225,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//dataSource/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//dataSource/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -272,11 +272,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//downloadLink/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//downloadLink/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -319,11 +319,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//examQuestion/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//examQuestion/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -366,11 +366,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//examQuestionAlternative/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//examQuestionAlternative/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -413,12 +413,106 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//exercise/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//exercise/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.GroupHasAccounts') . ' ';
+$this->widget(
+    '\TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'glyphicon-list-alt',
+                'url' => array('///groupHasAccount/admin', 'GroupHasAccount' => array('account_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'glyphicon-plus',
+                'url' => array(
+                    '///groupHasAccount/create',
+                    'GroupHasAccount' => array('account_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->groupHasAccounts(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//groupHasAccount/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//groupHasAccount/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.GuiSections') . ' ';
+$this->widget(
+    '\TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'glyphicon-list-alt',
+                'url' => array('///guiSection/admin', 'GuiSection' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'glyphicon-plus',
+                'url' => array(
+                    '///guiSection/create',
+                    'GuiSection' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->guiSections(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//guiSection/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//guiSection/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }
@@ -460,12 +554,106 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//htmlChunk/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//htmlChunk/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.I18nCatalogs') . ' ';
+$this->widget(
+    '\TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'glyphicon-list-alt',
+                'url' => array('///i18nCatalog/admin', 'I18nCatalog' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'glyphicon-plus',
+                'url' => array(
+                    '///i18nCatalog/create',
+                    'I18nCatalog' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->i18nCatalogs(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//i18nCatalog/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//i18nCatalog/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.Menus') . ' ';
+$this->widget(
+    '\TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'glyphicon-list-alt',
+                'url' => array('///menu/admin', 'Menu' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'glyphicon-plus',
+                'url' => array(
+                    '///menu/create',
+                    'Menu' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->menus(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//menu/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//menu/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }
@@ -507,11 +695,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//page/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//page/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -523,7 +711,7 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'relation.PoFiles') . ' ';
+echo Yii::t('model', 'relation.Profile') . ' ';
 $this->widget(
     '\TbButtonGroup',
     array(
@@ -532,13 +720,13 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'glyphicon-list-alt',
-                'url' => array('///poFile/admin', 'PoFile' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+                'url' => array('///profile/admin', 'Profile' => array('user_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'glyphicon-plus',
                 'url' => array(
-                    '///poFile/create',
-                    'PoFile' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                    '///profile/create',
+                    'Profile' => array('user_id' => $model->{$model->tableSchema->primaryKey})
                 )
             ),
 
@@ -549,17 +737,17 @@ echo '</h3>' ?>
 <ul>
 
     <?php
-    $records = $model->poFiles(array('limit' => 250, 'scopes' => ''));
+    $records = array($model->profile(array('limit' => 250, 'scopes' => '')));
     if (is_array($records)) {
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
-                array('//poFile/view', 'id' => $relatedModel->id)
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//profile/view', 'user_id' => $relatedModel->user_id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
-                array('//poFile/update', 'id' => $relatedModel->id)
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//profile/update', 'user_id' => $relatedModel->user_id)
             );
             echo '</li>';
         }
@@ -570,7 +758,7 @@ echo '</h3>' ?>
 
 <?php
 echo '<h3>';
-echo Yii::t('model', 'relation.Profiles') . ' ';
+echo Yii::t('model', 'relation.Sections') . ' ';
 $this->widget(
     '\TbButtonGroup',
     array(
@@ -579,13 +767,13 @@ $this->widget(
         'buttons' => array(
             array(
                 'icon' => 'glyphicon-list-alt',
-                'url' => array('///profiles/admin', 'Profiles' => array('user_id' => $model->{$model->tableSchema->primaryKey}))
+                'url' => array('///section/admin', 'Section' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
             ),
             array(
                 'icon' => 'glyphicon-plus',
                 'url' => array(
-                    '///profiles/create',
-                    'Profiles' => array('user_id' => $model->{$model->tableSchema->primaryKey})
+                    '///section/create',
+                    'Section' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
                 )
             ),
 
@@ -596,17 +784,17 @@ echo '</h3>' ?>
 <ul>
 
     <?php
-    $records = array($model->profiles(array('limit' => 250, 'scopes' => '')));
+    $records = $model->sections(array('limit' => 250, 'scopes' => ''));
     if (is_array($records)) {
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
-                array('//profiles/view', 'user_id' => $relatedModel->user_id)
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//section/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
-                array('//profiles/update', 'user_id' => $relatedModel->user_id)
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//section/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }
@@ -648,11 +836,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//slideshowFile/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//slideshowFile/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -695,11 +883,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//snapshot/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//snapshot/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -742,11 +930,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//spreadsheetFile/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//spreadsheetFile/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -789,11 +977,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//textDoc/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//textDoc/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -836,11 +1024,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//tool/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//tool/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -883,11 +1071,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//vectorGraphic/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//vectorGraphic/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -930,12 +1118,341 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//videoFile/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//videoFile/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.Waffles') . ' ';
+$this->widget(
+    '\TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'glyphicon-list-alt',
+                'url' => array('///waffle/admin', 'Waffle' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'glyphicon-plus',
+                'url' => array(
+                    '///waffle/create',
+                    'Waffle' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->waffles(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//waffle/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//waffle/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.WaffleCategories') . ' ';
+$this->widget(
+    '\TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'glyphicon-list-alt',
+                'url' => array('///waffleCategory/admin', 'WaffleCategory' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'glyphicon-plus',
+                'url' => array(
+                    '///waffleCategory/create',
+                    'WaffleCategory' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->waffleCategories(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//waffleCategory/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//waffleCategory/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.WaffleCategoryElements') . ' ';
+$this->widget(
+    '\TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'glyphicon-list-alt',
+                'url' => array('///waffleCategoryElement/admin', 'WaffleCategoryElement' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'glyphicon-plus',
+                'url' => array(
+                    '///waffleCategoryElement/create',
+                    'WaffleCategoryElement' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->waffleCategoryElements(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//waffleCategoryElement/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//waffleCategoryElement/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.WaffleDataSources') . ' ';
+$this->widget(
+    '\TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'glyphicon-list-alt',
+                'url' => array('///waffleDataSource/admin', 'WaffleDataSource' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'glyphicon-plus',
+                'url' => array(
+                    '///waffleDataSource/create',
+                    'WaffleDataSource' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->waffleDataSources(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//waffleDataSource/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//waffleDataSource/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.WaffleIndicators') . ' ';
+$this->widget(
+    '\TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'glyphicon-list-alt',
+                'url' => array('///waffleIndicator/admin', 'WaffleIndicator' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'glyphicon-plus',
+                'url' => array(
+                    '///waffleIndicator/create',
+                    'WaffleIndicator' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->waffleIndicators(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//waffleIndicator/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//waffleIndicator/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.WaffleTags') . ' ';
+$this->widget(
+    '\TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'glyphicon-list-alt',
+                'url' => array('///waffleTag/admin', 'WaffleTag' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'glyphicon-plus',
+                'url' => array(
+                    '///waffleTag/create',
+                    'WaffleTag' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->waffleTags(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//waffleTag/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//waffleTag/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php
+echo '<h3>';
+echo Yii::t('model', 'relation.WaffleUnits') . ' ';
+$this->widget(
+    '\TbButtonGroup',
+    array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'size' => 'mini',
+        'buttons' => array(
+            array(
+                'icon' => 'glyphicon-list-alt',
+                'url' => array('///waffleUnit/admin', 'WaffleUnit' => array('owner_id' => $model->{$model->tableSchema->primaryKey}))
+            ),
+            array(
+                'icon' => 'glyphicon-plus',
+                'url' => array(
+                    '///waffleUnit/create',
+                    'WaffleUnit' => array('owner_id' => $model->{$model->tableSchema->primaryKey})
+                )
+            ),
+
+        )
+    )
+);
+echo '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->waffleUnits(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//waffleUnit/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon glyphicon-pencil"></i>',
+                array('//waffleUnit/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }

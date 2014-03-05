@@ -50,6 +50,10 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->node_id); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('exam_question_alternative_qa_state_id')); ?>:</b>
+<?php echo CHtml::encode($model->exam_question_alternative_qa_state_id); ?>
+<br />
+
     */
 ?>
 
@@ -63,7 +67,7 @@ $this->breadcrumbs[] = $model->id;
 
         <?php
         $this->widget(
-            'TbDetailView',
+            '\TbDetailView',
             array(
                 'data' => $model,
                 'attributes' => array(
@@ -122,10 +126,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'exam_question_id',
                         'value' => ($model->examQuestion !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->examQuestion->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->examQuestion->itemLabel,
                                     array('//examQuestion/view', 'id' => $model->examQuestion->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//examQuestion/update', 'id' => $model->examQuestion->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -159,22 +163,33 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'owner_id',
                         'value' => ($model->owner !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
-                                    array('//users/view', 'id' => $model->owner->id),
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
+                                    array('//account/view', 'id' => $model->owner->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//users/update', 'id' => $model->owner->id),
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//account/update', 'id' => $model->owner->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->node->itemLabel,
                                     array('//node/view', 'id' => $model->node->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//node/update', 'id' => $model->node->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'exam_question_alternative_qa_state_id',
+                        'value' => ($model->examQuestionAlternativeQaState !== null) ? CHtml::link(
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->examQuestionAlternativeQaState->itemLabel,
+                                    array('//examQuestionAlternativeQaState/view', 'id' => $model->examQuestionAlternativeQaState->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//examQuestionAlternativeQaState/update', 'id' => $model->examQuestionAlternativeQaState->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),

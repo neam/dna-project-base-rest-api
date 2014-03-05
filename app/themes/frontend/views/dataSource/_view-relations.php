@@ -13,11 +13,11 @@
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//edge/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//edge/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -36,11 +36,11 @@
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//node/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//node/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -59,11 +59,11 @@
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//edge/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//edge/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -82,11 +82,11 @@
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//node/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//node/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
@@ -129,11 +129,11 @@ echo '</h3>' ?>
         foreach ($records as $i => $relatedModel) {
             echo '<li>';
             echo CHtml::link(
-                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                '<i class="icon glyphicon-arrow-right"></i> ' . $relatedModel->itemLabel,
                 array('//spreadsheetFile/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
-                ' <i class="icon icon-pencil"></i>',
+                ' <i class="icon glyphicon-pencil"></i>',
                 array('//spreadsheetFile/update', 'id' => $relatedModel->id)
             );
             echo '</li>';

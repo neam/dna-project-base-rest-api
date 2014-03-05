@@ -39,7 +39,7 @@
                     <?php
                     echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
-                        'icon' => 'icon-plus',
+                        'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',
@@ -65,7 +65,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'slideshowFile',
+                    'relation' => 'owner',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -74,19 +74,19 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'slideshow_file_id', $input);
+            echo $form->customRow($model, 'owner_id', $input);
             ?>
 
             <?php
-            $formId = 'exercise-slideshow_file_id-' . \uniqid() . '-form';
+            $formId = 'exercise-owner_id-' . \uniqid() . '-form';
             ?>
 
             <div class="control-group">
                 <div class="controls">
                     <?php
                     echo $this->widget('\TbButton', array(
-                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Slideshow File'))),
-                        'icon' => 'icon-plus',
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Account'))),
+                        'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',
@@ -97,17 +97,15 @@
 
             <?php
             $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//slideshowFile/_modal_form', array(
+            $this->renderPartial('//account/_modal_form', array(
                 'formId' => $formId,
-                'inputSelector' => '#Exercise_slideshow_file_id',
-                'model' => new SlideshowFile,
+                'inputSelector' => '#Exercise_owner_id',
+                'model' => new Account,
                 'pk' => 'id',
                 'field' => 'itemLabel',
             ));
             $this->endClip();
             ?>
-
-            <?php echo $form->textFieldRow($model, 'owner_id'); ?>
 
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 

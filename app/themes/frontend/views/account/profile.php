@@ -93,7 +93,8 @@ $this->breadcrumbs[] = Yii::t('account', 'Profile');
             'value' => 'CHtml::value($data,\'public_profile\')',
             'filter' => false,
             'toggleAction' => 'profiles/toggle'
-        );*/ ?>
+        );*/
+        ?>
         <?php $this->widget('\TbGridView', array(
             'id' => 'account-profile-public-profile-toggle-grid',
             'type' => TbHtml::GRID_TYPE_CONDENSED,

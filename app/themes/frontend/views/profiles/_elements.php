@@ -36,7 +36,8 @@
         <?php echo $form->textFieldControlGroup($model->account, 'email', array('maxlength' => 255, 'class' => 'span9')); ?>
         <?php
         // todo: fix toggle button control groups
-        //echo $form->toggleButtonControlGroup($model, 'others_may_contact_me'); ?>
+        //echo $form->toggleButtonControlGroup($model, 'others_may_contact_me');
+        ?>
         <?php //echo $form->checkBoxControlGroup($model, 'others_may_contact_me'); ?>
         <?php echo $form->textFieldControlGroup($model, 'website', array('maxlength' => 255, 'class' => 'span9')); ?>
         <?php echo $form->textAreaControlGroup($model, 'about', array('ControlGroups' => 6, 'cols' => 50, 'class' => 'span9')); ?>

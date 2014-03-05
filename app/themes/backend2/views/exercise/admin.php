@@ -35,7 +35,7 @@ Yii::app()->clientScript->registerScript('search', "
 
 
 <?php
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'exercise-grid',
         'dataProvider' => $model->search(),
@@ -43,7 +43,7 @@ $this->widget('TbGridView',
         #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -105,12 +105,6 @@ $this->widget('TbGridView',
                 'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'slideshow_file_id',
-                'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
-                'filter' => '', //CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            /*
-            array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
@@ -118,6 +112,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
@@ -129,7 +124,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'owner_id',
                 'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'node_id',
@@ -480,7 +475,7 @@ $this->widget('TbGridView',
             */
 
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'buttons' => array(
                     'view' => array('visible' => 'Yii::app()->user->checkAccess("Exercise.View")'),
                     'update' => array('visible' => 'Yii::app()->user->checkAccess("Exercise.Update")'),

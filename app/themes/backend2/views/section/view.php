@@ -17,6 +17,14 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
+<?php echo CHtml::encode($model->version); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('cloned_from_id')); ?>:</b>
+<?php echo CHtml::encode($model->cloned_from_id); ?>
+<br/>
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('page_id')); ?>:</b>
 <?php echo CHtml::encode($model->page_id); ?>
 <br/>
@@ -29,21 +37,21 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->slug_en); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('ordinal')); ?>:</b>
-<?php echo CHtml::encode($model->ordinal); ?>
-<br/>
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('_menu_label')); ?>:</b>
 <?php echo CHtml::encode($model->_menu_label); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
-<br/>
+<br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>:</b>
+<?php echo CHtml::encode($model->owner_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
@@ -218,6 +226,10 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->slug_zh_tw); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('section_qa_state_id')); ?>:</b>
+<?php echo CHtml::encode($model->section_qa_state_id); ?>
+<br />
+
     */
 ?>
 
@@ -231,7 +243,7 @@ $this->breadcrumbs[] = $model->id;
 
         <?php
         $this->widget(
-            'TbDetailView',
+            '\TbDetailView',
             array(
                 'data' => $model,
                 'attributes' => array(
@@ -249,12 +261,36 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'version',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'version',
+                                    'url' => $this->createUrl('/section/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'cloned_from_id',
+                        'value' => ($model->clonedFrom !== null) ? CHtml::link(
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                    array('//section/view', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//section/update', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
                         'name' => 'page_id',
                         'value' => ($model->page !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->page->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->page->itemLabel,
                                     array('//page/view', 'id' => $model->page->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//page/update', 'id' => $model->page->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -280,19 +316,6 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_en',
-                                    'url' => $this->createUrl('/section/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'ordinal',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'ordinal',
                                     'url' => $this->createUrl('/section/editableSaver'),
                                 ),
                                 true
@@ -338,12 +361,23 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'owner_id',
+                        'value' => ($model->owner !== null) ? CHtml::link(
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
+                                    array('//account/view', 'id' => $model->owner->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//account/update', 'id' => $model->owner->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->node->itemLabel,
                                     array('//node/view', 'id' => $model->node->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//node/update', 'id' => $model->node->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -893,6 +927,17 @@ $this->breadcrumbs[] = $model->id;
                                 ),
                                 true
                             )
+                    ),
+                    array(
+                        'name' => 'section_qa_state_id',
+                        'value' => ($model->sectionQaState !== null) ? CHtml::link(
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->sectionQaState->itemLabel,
+                                    array('//sectionQaState/view', 'id' => $model->sectionQaState->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//sectionQaState/update', 'id' => $model->sectionQaState->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                 ),
             )); ?>

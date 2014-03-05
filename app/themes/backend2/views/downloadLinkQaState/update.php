@@ -39,20 +39,20 @@ $this->renderPartial('_form', array('model' => $model));
     <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('downloadLink/create', 'DownloadLink' => array('download_link_qa_state_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('downloadLink/create', 'DownloadLink' => array('download_link_qa_state_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
     ?></div>
 
 <?php
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'downloadLinks');
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'downloadLink-grid',
         'dataProvider' => $relatedSearchModel->search(),
         'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->downloadLinks) > 1 ? $relatedSearchModel : null,
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -102,7 +102,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'owner_id',
                 'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
@@ -112,7 +112,7 @@ $this->widget('TbGridView',
                 ),
             */
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('downloadLink/view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('downloadLink/update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('downloadLink/delete', array('id' => \$data->id))",

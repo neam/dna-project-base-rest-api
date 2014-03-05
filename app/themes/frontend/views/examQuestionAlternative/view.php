@@ -1,8 +1,8 @@
 <?php
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 ?>
 <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
-
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <!--<h1>
     
     <?php echo Yii::t('model', 'Exam Question Alternative'); ?>
@@ -55,6 +55,10 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
 <?php echo CHtml::encode($model->node_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('exam_question_alternative_qa_state_id')); ?>:</b>
+<?php echo CHtml::encode($model->exam_question_alternative_qa_state_id); ?>
 <br />
 
     */

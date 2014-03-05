@@ -1,8 +1,8 @@
 <?php
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 ?>
 <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
-
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <!--<h1>
     
     <?php echo Yii::t('model', 'Tool'); ?>
@@ -49,8 +49,8 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 <br />
 
 <?php /*
-<b><?php echo CHtml::encode($model->getAttributeLabel('po_file_id')); ?>:</b>
-<?php echo CHtml::encode($model->po_file_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('i18n_catalog_id')); ?>:</b>
+<?php echo CHtml::encode($model->i18n_catalog_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>

@@ -1,8 +1,8 @@
 <?php
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 ?>
 <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
-
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <!--<h1>
     
     <?php echo Yii::t('model', 'Section'); ?>
@@ -24,6 +24,14 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
     <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
+<?php echo CHtml::encode($model->version); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('cloned_from_id')); ?>:</b>
+<?php echo CHtml::encode($model->cloned_from_id); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('page_id')); ?>:</b>
 <?php echo CHtml::encode($model->page_id); ?>
 <br />
@@ -36,21 +44,21 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 <?php echo CHtml::encode($model->slug_en); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('ordinal')); ?>:</b>
-<?php echo CHtml::encode($model->ordinal); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('_menu_label')); ?>:</b>
 <?php echo CHtml::encode($model->_menu_label); ?>
 <br />
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
 <br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>:</b>
+<?php echo CHtml::encode($model->owner_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
@@ -223,6 +231,10 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_zh_tw')); ?>:</b>
 <?php echo CHtml::encode($model->slug_zh_tw); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('section_qa_state_id')); ?>:</b>
+<?php echo CHtml::encode($model->section_qa_state_id); ?>
 <br />
 
     */

@@ -59,7 +59,7 @@ $this->breadcrumbs[] = $model->id;
 
         <?php
         $this->widget(
-            'TbDetailView',
+            '\TbDetailView',
             array(
                 'data' => $model,
                 'attributes' => array(
@@ -79,10 +79,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'from_node_id',
                         'value' => ($model->fromNode !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->fromNode->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->fromNode->itemLabel,
                                     array('//node/view', 'id' => $model->fromNode->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//node/update', 'id' => $model->fromNode->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -90,10 +90,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'to_node_id',
                         'value' => ($model->toNode !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->toNode->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->toNode->itemLabel,
                                     array('//node/view', 'id' => $model->toNode->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//node/update', 'id' => $model->toNode->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',

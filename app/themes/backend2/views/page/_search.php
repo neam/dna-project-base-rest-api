@@ -265,6 +265,11 @@
         <?php echo $form->textField($model, 'slug_zh_tw', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->label($model, 'page_qa_state_id'); ?>
+        <?php echo $form->textField($model, 'page_qa_state_id', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>
