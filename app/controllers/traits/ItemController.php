@@ -16,14 +16,6 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
-                    'go',
-                ),
-                'roles' => array(
-                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
-                ),
-            ),
-            array('allow',
-                'actions' => array(
                     'view',
                 ),
                 'roles' => array(
@@ -834,13 +826,6 @@ trait ItemController
     {
         $model = $this->saveAndContinueOnSuccess($id);
         $this->render('/_item/replace', array('model' => $model));
-    }
-
-    public function actionGo($id)
-    {
-        $this->layout = 'go';
-        $model = $this->loadModel($id);
-        $this->render('/_item/go', array('model' => $model));
     }
 
     public function actionTranslationOverview($id)
