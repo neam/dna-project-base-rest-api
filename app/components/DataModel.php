@@ -224,6 +224,7 @@ class DataModel
             'I18nCatalog' => 'n==0#I18n catalog(s)|n==1#I18n catalog|n>1#I18n catalogs',
             'Section' => 'n==0#Web page section(s)|n==1#Web page section|n>1#Web page sections',
             'SlideshowFile' => 'n==0#Slideshow file(s)|n==1#Slideshow file|n>1#Slideshow files',
+            'SpreadsheetFile' => 'n==0#Spreadsheet file(s)|n==1#Spreadsheet file|n>1#Spreadsheet files',
             'Snapshot' => 'n==0#Snapshot(s)|n==1#Snapshot|n>1#Snapshots',
             'TextDoc' => 'n==0#Text doc(s)|n==1#Text doc|n>1#Text docs',
             'Tool' => 'n==0#Tool(s)|n==1#Tool|n>1#Tools',
