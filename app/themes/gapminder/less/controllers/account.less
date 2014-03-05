@@ -69,8 +69,40 @@
         }
 
         .content-form {
+          .radio {
+            padding-left: 0;
+          }
+
+          .profile-picture {
+            .make-row();
+
+            .picture-select {
+              .make-md-column(8);
+            }
+
+            .picture-upload {
+              .make-md-column(4);
+            }
+          }
+
+          .username-and-password {
+            .make-row();
+
+            .username {
+              .make-md-column(6);
+            }
+
+            .password {
+              .make-md-column(6);
+            }
+          }
+
           .form-head {
             .make-row();
+
+            .form-head-content {
+              .make-md-column(12);
+            }
           }
 
           .form-errors {
@@ -79,6 +111,9 @@
 
           .form-fields {
             .make-row();
+
+            .fields-heading {
+            }
 
             .fields-left {
               .make-md-column(6);

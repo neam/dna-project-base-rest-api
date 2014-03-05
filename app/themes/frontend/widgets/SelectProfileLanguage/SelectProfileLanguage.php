@@ -2,10 +2,25 @@
 
 class SelectProfileLanguage extends CWidget
 {
+    /**
+     * @var Profile
+     */
     public $model;
+    /**
+     * @var array
+     */
     public $attributes = array();
+    /**
+     * @var array
+     */
     public $defaultValues = array();
+    /**
+     * @var AppActiveForm|TbActiveForm
+     */
     public $form;
+    /**
+     * @var array
+     */
     public $htmlOptions = array();
 
     /**
@@ -41,7 +56,6 @@ class SelectProfileLanguage extends CWidget
     public function setDefaultValues()
     {
         foreach ($this->defaultValues as $attribute => $defaultValue) {
-            /** @var Profiles $this->model */
             if ($this->model->hasAttribute($attribute) && !isset($this->model->{$attribute})) {
                 $this->model->{$attribute} = $defaultValue;
             }
@@ -69,7 +83,7 @@ class SelectProfileLanguage extends CWidget
 
         ob_start();
         echo $isRequiredAsteriskRed ? TbHtml::openTag('div', array('class' => 'required-red')) : '';
-        echo $this->form->dropDownListControlGroup($this->model, $attribute, Html::getLanguages(), $this->getHtmlOptions());
+        echo $this->form->select2ControlGroup($this->model, $attribute, Html::getLanguages(), $this->getHtmlOptions());
         echo $isRequiredAsteriskRed ? TbHtml::closeTag('div') : '';
         return ob_get_clean();
     }

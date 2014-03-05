@@ -41,15 +41,17 @@
                 <?php endif; ?>
                 <div class="content-form">
                     <div class="form-head">
-                        <h2 class="form-heading">
-                            <?php echo Yii::t('account', 'Info'); ?>
-                            <?php if (false): ?>
-                                <?php echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-                                    'class' => 'btn btn-primary',
-                                )); ?>
-                            <?php endif; ?>
-                            <?php echo Html::hintTooltip(Yii::t('app', 'This is your public profile that others can see without being logged in.')); ?>
-                        </h2>
+                        <div class="form-head-content">
+                            <h2 class="form-heading">
+                                <?php echo Yii::t('account', 'Info'); ?>
+                                <?php if (false): ?>
+                                    <?php echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+                                        'class' => 'btn btn-primary',
+                                    )); ?>
+                                <?php endif; ?>
+                                <?php echo Html::hintTooltip(Yii::t('app', 'This is your public profile that others can see without being logged in.')); ?>
+                            </h2>
+                        </div>
                     </div>
                     <div class="form-errors">
                         <?php echo $form->errorSummary(array($model, $model->profile)); ?>

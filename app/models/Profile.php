@@ -49,7 +49,7 @@ class Profile extends BaseProfile
             'language3' => Yii::t('model', 'Language #3'),
             'language4' => Yii::t('model', 'Language #4'),
             'language5' => Yii::t('model', 'Language #5'),
-            'picture_media_id' => Yii::t('model', 'Profile Image'),
+            'picture_media_id' => Yii::t('model', 'Profile Picture'),
             'website' => Yii::t('model', 'My Website'),
         ));
     }
@@ -111,5 +111,15 @@ class Profile extends BaseProfile
         } else {
             return $languages;
         }
+    }
+
+    public function getPictures()
+    {
+        return $this->getP3Media(array('image/jpeg', 'image/png'));
+    }
+
+    public function getPictureOptions()
+    {
+        return $this->getOptions($this->getPictures());
     }
 }

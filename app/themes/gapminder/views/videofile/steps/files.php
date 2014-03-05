@@ -23,5 +23,3 @@
         'field' => 'itemLabel',
     )
 ); ?>
-<?php $this->beginClip('modal:' . $form->id . '-modal'); ?>
-<?php $this->endClip(); ?>

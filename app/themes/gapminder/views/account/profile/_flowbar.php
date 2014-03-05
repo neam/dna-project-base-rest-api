@@ -15,6 +15,7 @@
                 array(
                     'url' => array('/account/publicProfile', 'id' => $model->{$model->tableSchema->primaryKey}),
                     'color' => TbHtml::BUTTON_COLOR_LINK,
+                    'target' => '_blank',
                 )
             ); ?>
         </div>

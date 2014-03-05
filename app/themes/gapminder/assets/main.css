@@ -6354,6 +6354,13 @@ td.visible-print {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
+.select2-container .select2-choice {
+  height: 34px;
+  line-height: 32px;
+}
+.select2-container .select2-choice .select2-arrow b {
+  background-position-y: 3px;
+}
 .account-controller.admin-action .grid-view {
   margin-top: 20px;
 }
@@ -6581,6 +6588,97 @@ td.visible-print {
 .account-controller.profile-action .profile .profile-content .content-messages .alert-link {
   color: #2b542c;
 }
+.account-controller.profile-action .profile .profile-content .content-form .radio {
+  padding-left: 0;
+}
+.account-controller.profile-action .profile .profile-content .content-form .profile-picture {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller.profile-action .profile .profile-content .content-form .profile-picture:before,
+.account-controller.profile-action .profile .profile-content .content-form .profile-picture:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile .profile-content .content-form .profile-picture:after {
+  clear: both;
+}
+.account-controller.profile-action .profile .profile-content .content-form .profile-picture:before,
+.account-controller.profile-action .profile .profile-content .content-form .profile-picture:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile .profile-content .content-form .profile-picture:after {
+  clear: both;
+}
+.account-controller.profile-action .profile .profile-content .content-form .profile-picture .picture-select {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile .profile-content .content-form .profile-picture .picture-select {
+    float: left;
+    width: 66.66666666666666%;
+  }
+}
+.account-controller.profile-action .profile .profile-content .content-form .profile-picture .picture-upload {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile .profile-content .content-form .profile-picture .picture-upload {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.account-controller.profile-action .profile .profile-content .content-form .username-and-password {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller.profile-action .profile .profile-content .content-form .username-and-password:before,
+.account-controller.profile-action .profile .profile-content .content-form .username-and-password:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile .profile-content .content-form .username-and-password:after {
+  clear: both;
+}
+.account-controller.profile-action .profile .profile-content .content-form .username-and-password:before,
+.account-controller.profile-action .profile .profile-content .content-form .username-and-password:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile .profile-content .content-form .username-and-password:after {
+  clear: both;
+}
+.account-controller.profile-action .profile .profile-content .content-form .username-and-password .username {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile .profile-content .content-form .username-and-password .username {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller.profile-action .profile .profile-content .content-form .username-and-password .password {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile .profile-content .content-form .username-and-password .password {
+    float: left;
+    width: 50%;
+  }
+}
 .account-controller.profile-action .profile .profile-content .content-form .form-head {
   margin-left: -15px;
   margin-right: -15px;
@@ -6600,6 +6698,18 @@ td.visible-print {
 }
 .account-controller.profile-action .profile .profile-content .content-form .form-head:after {
   clear: both;
+}
+.account-controller.profile-action .profile .profile-content .content-form .form-head .form-head-content {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile .profile-content .content-form .form-head .form-head-content {
+    float: left;
+    width: 100%;
+  }
 }
 .account-controller.profile-action .profile .profile-content .content-form .form-errors {
   margin-left: -15px;
