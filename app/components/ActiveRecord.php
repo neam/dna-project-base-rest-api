@@ -25,8 +25,8 @@ class ActiveRecord extends CActiveRecord
                 'class' => 'QaStateBehavior',
                 'scenarios' => array(
                     'draft',
-                    'preview',
-                    'public',
+                    'reviewable',
+                    'publishable',
                 ),
             );
             foreach (Yii::app()->params["languages"] as $language => $label) {

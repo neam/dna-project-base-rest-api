@@ -199,11 +199,11 @@ trait ItemController
             return;
         }
         */
-        if (($model->qaState()->preview_validation_progress < 100 || !$model->qaState()->previewing_welcome) && !is_null($step = $this->nextFlowStep("preview-", $model))) {
+        if (($model->qaState()->preview_validation_progress < 100 || !$model->qaState()->allow_review) && !is_null($step = $this->nextFlowStep("preview-", $model))) {
             $this->redirect(array('prepPreshow', 'id' => $model->id, 'step' => $step));
             return;
         }
-        if (($model->qaState()->public_validation_progress < 100 || !$model->qaState()->candidate_for_public_status) && !is_null($step = $this->nextFlowStep("public-", $model))) {
+        if (($model->qaState()->public_validation_progress < 100 || !$model->qaState()->allow_publishing) && !is_null($step = $this->nextFlowStep("public-", $model))) {
             $this->redirect(array('prepPublish', 'id' => $model->id, 'step' => $step));
             return;
         }
@@ -485,7 +485,7 @@ trait ItemController
         $qaState = $model->qaState();
 
         // save state change
-        $qaState->previewing_welcome = 1;
+        $qaState->allow_review = 1;
         if (!$qaState->save()) {
             throw new SaveException($qaState);
         }
@@ -540,7 +540,7 @@ trait ItemController
         $qaState = $model->qaState();
 
         // save state change
-        $qaState->candidate_for_public_status = 1;
+        $qaState->allow_publishing = 1;
         if (!$qaState->save()) {
             throw new SaveException($qaState);
         }
