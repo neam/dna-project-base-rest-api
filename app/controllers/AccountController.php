@@ -160,9 +160,14 @@ FROM account INNER JOIN profile profile WHERE id = :user_id
     public function actionProfile()
     {
         $id = user()->id;
-        $model = $this->loadModel($id); // Account
 
-        $this->performAjaxValidation(array($model, $model->profile));
+        /** @var Account $model */
+        $model = $this->loadModel($id);
+
+        $this->performAjaxValidation(array(
+            $model,
+            $model->profile,
+        ));
 
         if (!request()->isAjaxRequest && isset($_POST['Profile'], $_POST['Account'])) {
             $model->attributes = $_POST['Account'];
