@@ -7,6 +7,8 @@ Yii::import('SpreadsheetFile.*');
 class SpreadsheetFile extends BaseSpreadsheetFile
 {
 
+    use ItemTrait;
+
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
     {
@@ -15,41 +17,47 @@ class SpreadsheetFile extends BaseSpreadsheetFile
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', '');
         return parent::init();
     }
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return (string) !empty($this->title) ? $this->title : "SpreadsheetFile #" . $this->id;
     }
 
     public function behaviors()
     {
         return array_merge(
-            parent::behaviors(),
+            parent::behaviors(), array());
+    }
+
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(),
             array()
         );
     }
 
     public function rules()
     {
-        return array_merge(
-            parent::rules()
-        /* , array(
-          array('column1, column2', 'rule1'),
-          array('column3', 'rule2'),
-          ) */
-        );
-    }
+        $return = array_merge(
+            parent::rules(),
+            $this->statusRequirementsRules(),
+            $this->flowStepRules(),
+            $this->i18nRules(),
+            array(
 
-    public function search($criteria = null)
-    {
-        if (is_null($criteria)) {
-            $criteria = new CDbCriteria;
-        }
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria($criteria),
-        ));
+                // Ordinary validation rules
+                array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 120),
+                array('dataarticles', 'validateDataArticles'),
+                array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 250),
+
+            )
+        );
+        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        return $return;
     }
 
     public function processOriginal()
@@ -64,7 +72,7 @@ class SpreadsheetFile extends BaseSpreadsheetFile
 
         // TODO save file as processed media for various languages
 
-        //var_dump($PHPExcel);
+        require_once("http://localhost:8080/GapcmsJavaBridge/java/Java.inc");
 
         /** Error reporting */
         error_reporting(E_ALL);
@@ -145,6 +153,99 @@ class SpreadsheetFile extends BaseSpreadsheetFile
         }
 
         return parent::afterSave();
+    }
+
+    /**
+     * Define status-dependent fields
+     * @return array
+     */
+    public function statusRequirements()
+    {
+        return array(
+            'draft' => array(
+                'slug_' . $this->source_language,
+            ),
+            'preview' => array(
+                'title_' . $this->source_language,
+                'original_media_id',
+                'processed_media_id_' . $this->source_language,
+            ),
+            'public' => array(),
+        );
+    }
+
+    /**
+     * Define step-dependent fields
+     * @return array
+     */
+    public function flowSteps()
+    {
+        return array(
+            'info' => array(
+                'title_' . $this->source_language,
+                'slug_' . $this->source_language,
+                'about_' . $this->source_language,
+            ),
+            'file' => array(
+                'original_media_id',
+                'processed_media_id_' . $this->source_language,
+            ),
+            'data' => array(
+                'dataarticles',
+            ),
+            'related' => array(
+                'related',
+            ),
+        );
+    }
+
+    public function flowStepCaptions()
+    {
+        return array(
+            'info' => Yii::t('app', 'Info'),
+            'file' => Yii::t('app', 'File'),
+            'data' => Yii::t('app', 'Data'),
+            'related' => Yii::t('app', 'Related'),
+        );
+    }
+
+    public function attributeLabels()
+    {
+        return array_merge(
+            parent::attributeLabels(), array(
+                'title' => Yii::t('model', 'Title'),
+                'title_en' => Yii::t('model', 'English Title'),
+                'slug' => Yii::t('model', 'Nice link'),
+                'slug_en' => Yii::t('model', 'English Nice link'),
+                'about' => Yii::t('model', 'About'),
+                'about_en' => Yii::t('model', 'About (English)'),
+                'original_media_id' => Yii::t('model', 'File'),
+                'related' => Yii::t('model', 'Related'),
+            )
+        );
+    }
+
+    public function attributeHints()
+    {
+        return array_merge(
+            parent::attributeHints(), array(
+                'title' => Yii::t('model', 'A bundle of slides, with a name.'),
+                'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines'),
+                'about' => Yii::t('model', 'Describe the content. For example: "These are the print outs for the exercise Draw the World Population Trend."'),
+                'original_media_id' => Yii::t('model', 'The file contains the latest numbers.'),
+                'related' => Yii::t('model', 'Users of this slideshow may also be interested in these things.'),
+            )
+        );
+    }
+
+    public function search($criteria = null)
+    {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
+        return new CActiveDataProvider(get_class($this), array(
+            'criteria' => $this->searchCriteria($criteria),
+        ));
     }
 
 }
