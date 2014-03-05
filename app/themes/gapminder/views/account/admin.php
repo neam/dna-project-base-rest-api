@@ -52,6 +52,7 @@
             'filter' => true,
             'toggleAction' => 'account/toggleRole',
         ),
+        /*
         array(
             'class' => 'TbToggleColumn',
             'displayText' => false,
@@ -122,6 +123,7 @@
             'filter' => false,
             'toggleAction' => 'account/toggleRole',
         ),
+        */
     );
 
     $columns = array_merge(array(

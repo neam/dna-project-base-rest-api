@@ -46,7 +46,7 @@
                 "url" => array("history")
             ));
         }
-        if (Yii::app()->user->checkAccess("Administrator")) {
+        if (Yii::app()->user->checkAccess("Super Administrator")) {
         ?>
     </div>
     <div class="btn-group">
