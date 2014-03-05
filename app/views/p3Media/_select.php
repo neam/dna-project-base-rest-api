@@ -79,7 +79,7 @@ $input = $this->widget('\GtcRelation', array(
         'label' => Html::attributeLabelWithTooltip($model, $attribute),
     ),
 )); ?>
-<?php registerPackage('select2', 'application.widgets.assets.select2', array('select2.css'), array('select2.js'), array('jquery')); ?>
+<?php //registerPackage('select2', 'application.widgets.assets.select2', array('select2.css'), array('select2.js'), array('jquery')); ?>
 <?php $formId = lcfirst($modelClass) . '-' . $attribute . '-' . \uniqid() . '-form'; ?>
 <div class="control-group">
     <div class="controls">
