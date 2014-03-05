@@ -2,6 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/vendor/alchemy/zippy" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/belsym/ezcomponents-2009.2.1" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/belsym/ezcomponents-workflow" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bwoester/yii-event-interceptor" />
@@ -12,6 +13,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/crisu83/yii-auth" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/crisu83/yii-rights" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/crisu83/yiistrap" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzle/guzzle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kswedberg/jquery-smooth-scroll" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/translatable" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mishamx/yii-user" />
@@ -31,6 +34,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/p3media" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/p3pages" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phundament/p3widgets" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pimple/pimple" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sammaye/auditrail2" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/schmunk42/access" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/schmunk42/adjacency-list-behavior" />
@@ -40,6 +44,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/schmunk42/relation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/schmunk42/web-user-behavior" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sumwai/yii-fixture-helper" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/process" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twitter/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/weavora/wrest" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiiext/migrate-command" />
@@ -66,14 +73,19 @@
     <orderEntry type="module-library">
       <library name="PHP">
         <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/alchemy/zippy" />
           <root url="file://$MODULE_DIR$/vendor/mikehaertl/translatable" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/filesystem" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-relational-graph-db" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
           <root url="file://$MODULE_DIR$/vendor/sammaye/auditrail2" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3bootstrap" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
           <root url="file://$MODULE_DIR$/vendor/bwoester/yii-static-events-component" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/adjacency-list-behavior" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3widgets" />
+          <root url="file://$MODULE_DIR$/vendor/doctrine/collections" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/guzzle" />
           <root url="file://$MODULE_DIR$/vendor/yiisoft/yii" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/multi-theme" />
           <root url="file://$MODULE_DIR$/vendor/sumwai/yii-fixture-helper" />
@@ -82,6 +94,8 @@
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phppowerpoint" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-i18n-attribute-messages" />
           <root url="file://$MODULE_DIR$/vendor/crisu83/yii-rights" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/process" />
+          <root url="file://$MODULE_DIR$/vendor/pimple/pimple" />
           <root url="file://$MODULE_DIR$/vendor/kswedberg/jquery-smooth-scroll" />
           <root url="file://$MODULE_DIR$/vendor/twitter/bootstrap" />
           <root url="file://$MODULE_DIR$/vendor/weavora/wrest" />
@@ -108,14 +122,19 @@
           <root url="file://$MODULE_DIR$/vendor/phundament/p3extensions" />
         </CLASSES>
         <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/alchemy/zippy" />
           <root url="file://$MODULE_DIR$/vendor/mikehaertl/translatable" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/filesystem" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-relational-graph-db" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-qa-state" />
           <root url="file://$MODULE_DIR$/vendor/sammaye/auditrail2" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3bootstrap" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
           <root url="file://$MODULE_DIR$/vendor/bwoester/yii-static-events-component" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/adjacency-list-behavior" />
           <root url="file://$MODULE_DIR$/vendor/phundament/p3widgets" />
+          <root url="file://$MODULE_DIR$/vendor/doctrine/collections" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/guzzle" />
           <root url="file://$MODULE_DIR$/vendor/yiisoft/yii" />
           <root url="file://$MODULE_DIR$/vendor/schmunk42/multi-theme" />
           <root url="file://$MODULE_DIR$/vendor/sumwai/yii-fixture-helper" />
@@ -124,6 +143,8 @@
           <root url="file://$MODULE_DIR$/vendor/phpoffice/phppowerpoint" />
           <root url="file://$MODULE_DIR$/vendor/neam/yii-i18n-attribute-messages" />
           <root url="file://$MODULE_DIR$/vendor/crisu83/yii-rights" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/process" />
+          <root url="file://$MODULE_DIR$/vendor/pimple/pimple" />
           <root url="file://$MODULE_DIR$/vendor/kswedberg/jquery-smooth-scroll" />
           <root url="file://$MODULE_DIR$/vendor/twitter/bootstrap" />
           <root url="file://$MODULE_DIR$/vendor/weavora/wrest" />
