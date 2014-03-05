@@ -1,7 +1,10 @@
-<?php echo $form->textAreaRow($model, 'vizabi_state', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+<?php /** @var Snapshot $model */ ?>
 
-<?php if ($model->getAttributeHint("vizabi_state")): ?>
-    <p class="alert alert-info help-block">
-        <?php echo $model->getAttributeHint("vizabi_state"); ?>
-    </p>
-<?php endif; ?>
+<?php echo $form->textAreaRow($model, 'vizabi_state', array(
+    'class' => Html::ITEM_FORM_FIELD_CLASS,
+    'rows' => 6,
+    'cols' => 50,
+    'labelOptions' => array(
+        'label' => Html::attributeLabelWithTooltip($model, 'vizabi_state'),
+    ),
+)); ?>

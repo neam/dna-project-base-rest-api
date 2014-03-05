@@ -18,12 +18,13 @@ class ExamQuestion extends BaseExamQuestion
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'For testing if students remember the facts in a chapter, video or exercise.');
         return parent::init();
     }
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return 'Exam question #' . $this->id;
     }
 
     public function behaviors()
@@ -39,8 +40,8 @@ class ExamQuestion extends BaseExamQuestion
         return array_merge(
             parent::relations(),
             array(
-                'datasource' => array(self::HAS_MANY, 'DataSource', array('id' => 'node_id'), 'through' => 'outNodes'),
-                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
+                'datasource' => array(self::HAS_MANY, 'DataSource', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'datasources')),
+                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'related')),
             )
         );
     }
@@ -146,10 +147,13 @@ class ExamQuestion extends BaseExamQuestion
         );
     }
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 

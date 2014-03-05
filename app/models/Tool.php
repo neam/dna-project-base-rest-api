@@ -17,6 +17,7 @@ class Tool extends BaseTool
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'For developers to publish versions of new visualization tools. to show up in preview mode.');
         return parent::init();
     }
 
@@ -127,10 +128,13 @@ class Tool extends BaseTool
         );
     }
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 

@@ -3,6 +3,34 @@
 class SiteController extends Controller
 {
 
+    public function accessRules()
+    {
+        return array(
+            array(
+                'allow',
+                'actions' => array(
+                    'giiscript',
+                    'sandbox',
+                ),
+                'roles' => array('Developer'),
+            ),
+            array(
+                'allow',
+                'actions' => array(
+                    'index',
+                    'error',
+                    'contact',
+                    'logout',
+                ),
+                'users' => array('*'),
+            ),
+            array(
+                'deny',
+                'users' => array('*'),
+            ),
+        );
+    }
+
     /**
      * Declares class-based actions.
      */
@@ -29,12 +57,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        if (!Yii::app()->user->isGuest) {
-            $this->redirect($this->createUrl('account/dashboard'));
-            exit;
-        }
-
-        $this->redirect($this->createUrl('chapter/index'));
+        $this->render('index');
 
     }
 
@@ -44,6 +67,14 @@ class SiteController extends Controller
     public function actionGiiscript()
     {
         $this->render('giiscript');
+    }
+
+    /**
+     * View used for developers to try out simple things
+     */
+    public function actionSandbox()
+    {
+        $this->render('sandbox');
     }
 
     /**

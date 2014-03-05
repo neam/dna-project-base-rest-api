@@ -10,7 +10,7 @@
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Add"),
-                    "icon" => "icon-edit",
+                    "icon" => "icon-plus",
                     "url" => array("add")
                 ));
                 break;
@@ -40,5 +40,6 @@
                 ));
                 break;
         }
-        ?>    </div>
+        ?>
+    </div>
 </div>

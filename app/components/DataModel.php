@@ -3,6 +3,81 @@
 class DataModel
 {
 
+    static public function sharableItemModels()
+    {
+
+        return array(
+            'Snapshot' => 'snapshot',
+        );
+
+    }
+
+    /**
+     * Model classes that represent top level visitable items through the go-page
+     * @return array
+     */
+    static public function goItemModels()
+    {
+
+        return array(
+            'Snapshot' => 'snapshot',
+            'VideoFile' => 'video_file',
+        );
+
+    }
+
+    static public function educationalItemModels()
+    {
+
+        return array(
+            'Chapter' => 'chapter',
+            'Exercise' => 'exercise',
+            'ExamQuestion' => 'exam_question',
+            'ExamQuestionAlternative' => 'exam_question_alternative',
+            'SlideshowFile' => 'slideshow_file',
+            'TextDoc' => 'text_doc',
+            'VectorGraphic' => 'vector_graphic',
+            'DataChunk' => 'data_chunk',
+            'DataSource' => 'data_source',
+        );
+
+    }
+
+    static public function websiteContentItemModels()
+    {
+
+        return array(
+            'PoFile' => 'po_file',
+            'Page' => 'page',
+            'Section' => 'section',
+            'DownloadLink' => 'download_link',
+            'HtmlChunk' => 'html_chunk',
+            'Tool' => 'tool',
+            //'GuiSection' => 'gui_section',
+        );
+
+    }
+
+    static public function waffleItemModels()
+    {
+
+	return array();
+        return array(
+            'WaffleCategory' => 'waffle_category',
+            'WaffleIndicator' => 'waffle_indicator',
+            'WaffleRole' => 'waffle_role',
+            'WaffleTag' => 'waffle_tag',
+            'WaffleUnit' => 'waffle_unit',
+            'WaffleCountry' => 'waffle_country',
+            'WaffleGeography' => 'waffle_geography',
+        );
+
+    }
+
+    /**
+     * Model classes that will have CRUD generated through gii/giic
+     * @return array
+     */
     static public function crudModels()
     {
 
@@ -10,6 +85,7 @@ class DataModel
             // Contents
             'Changeset' => 'changeset',
             'Chapter' => 'chapter',
+            'Comment' => 'comment',
             'DataChunk' => 'data_chunk',
             'DataSource' => 'data_source',
             'DownloadLink' => 'download_link',
@@ -22,7 +98,6 @@ class DataModel
             'Page' => 'page',
             'PoFile' => 'po_file',
             'Section' => 'section',
-            'SectionContent' => 'section_content',
             'SlideshowFile' => 'slideshow_file',
             'Snapshot' => 'snapshot',
             'SpreadsheetFile' => 'spreadsheet_file',
@@ -35,35 +110,35 @@ class DataModel
             'Profiles' => 'profiles',
             // Translations
             'Message' => 'Message',
-            'SourceMessage' => 'SourceMessage'
+            'SourceMessage' => 'SourceMessage',
+            // Fixture-based
+            'Action' => 'action',
+            // Database views
+            'Item' => 'item',
         );
 
     }
 
+    /**
+     * Model classes that will use the yii-qa-state extensions
+     * @return array
+     */
     static public function qaModels()
     {
 
-        return array(
-            'Chapter' => 'chapter',
-            'DataChunk' => 'data_chunk',
-            'DataSource' => 'data_source',
-            'ExamQuestion' => 'exam_question',
-            'ExamQuestionAlternative' => 'exam_question_alternative',
-            'Exercise' => 'exercise',
-            'PoFile' => 'po_file',
-            'SlideshowFile' => 'slideshow_file',
-            'Snapshot' => 'snapshot',
-            'TextDoc' => 'text_doc',
-            'Tool' => 'tool',
-            'VectorGraphic' => 'vector_graphic',
-            'VideoFile' => 'video_file',
-            // Special pages
-            'HtmlChunk' => 'html_chunk',
-            'DownloadLink' => 'download_link',
+        return array_merge(
+            self::goItemModels(),
+            self::educationalItemModels(),
+            self::websiteContentItemModels(),
+            self::waffleItemModels()
         );
 
     }
 
+    /**
+     * The corresponding qa state models used by yii-qa-state
+     * @return array
+     */
     static public function qaStateModels()
     {
 
@@ -75,6 +150,10 @@ class DataModel
 
     }
 
+    /**
+     * Model classes that have a Node relation and thus can be related to each other freely
+     * @return array
+     */
     static public function graphModels()
     {
 
@@ -84,6 +163,26 @@ class DataModel
 
     }
 
+    /**
+     * Model classes that use the wrest extension
+     * @return array
+     */
+    static public function restModels()
+    {
+
+        return array(
+            'Comment' => 'comment',
+            'Item' => 'item',
+            'VideoFile' => 'video_file',
+        );
+
+    }
+
+    /**
+     * Model classes that are generated internally or by user interaction and
+     * thus never expected to be created manually in the backend
+     * @return array
+     */
     static public function internalModels()
     {
 
@@ -95,23 +194,31 @@ class DataModel
 
     }
 
+    /**
+     * Frontend UI labels for the models
+     * @return array
+     */
     static public function modelLabels()
     {
         return array(
             'Chapter' => 'n==0#Chapter(s)|n==1#Chapter|n>1#Chapters',
-            'DataChunk' => 'n==0#DataChunk(s)|n==1#DataChunk|n>1#DataChunks',
-            'DataSource' => 'n==0#DataSource(s)|n==1#DataSource|n>1#DataSources',
-            'ExamQuestion' => 'n==0#ExamQuestion(s)|n==1#ExamQuestion|n>1#ExamQuestions',
-            'ExamQuestionAlternative' => 'n==0#ExamQuestionAlternative(s)|n==1#ExamQuestionAlternative|n>1#ExamQuestionAlternatives',
+            'DataChunk' => 'n==0#Data chunk(s)|n==1#Data chunk|n>1#Data chunks',
+            'DataSource' => 'n==0#Data source(s)|n==1#Data source|n>1#Data sources',
+            'DownloadLink' => 'n==0#Download link(s)|n==1#Download link|n>1#Download links',
+            'ExamQuestion' => 'n==0#Exam question(s)|n==1#Exam question|n>1#Exam questions',
+            'ExamQuestionAlternative' => 'n==0#Exam question alternative(s)|n==1#Exam question alternative|n>1#Exam question alternatives',
             'Exercise' => 'n==0#Exercise(s)|n==1#Exercise|n>1#Exercises',
+            'HtmlChunk' => 'n==0#Html chunk(s)|n==1#Html chunk|n>1#Html chunks',
             'Node' => 'n==0#Node(s)|n==1#Node|n>1#Nodes',
-            'PoFile' => 'n==0#PoFile(s)|n==1#PoFile|n>1#PoFiles',
-            'SlideshowFile' => 'n==0#SlideshowFile(s)|n==1#SlideshowFile|n>1#SlideshowFiles',
+            'Page' => 'n==0#Web page(s)|n==1#Web page|n>1#Web pages',
+            'PoFile' => 'n==0#.po-file(s)|n==1#.po-file|n>1#.po-files',
+            'Section' => 'n==0#Web page section(s)|n==1#Web page section|n>1#Web page sections',
+            'SlideshowFile' => 'n==0#Slideshow file(s)|n==1#Slideshow file|n>1#Slideshow files',
             'Snapshot' => 'n==0#Snapshot(s)|n==1#Snapshot|n>1#Snapshots',
-            'TextDoc' => 'n==0#TextDoc(s)|n==1#TextDoc|n>1#TextDocs',
+            'TextDoc' => 'n==0#Text doc(s)|n==1#Text doc|n>1#Text docs',
             'Tool' => 'n==0#Tool(s)|n==1#Tool|n>1#Tools',
-            'VectorGraphic' => 'n==0#VectorGraphic(s)|n==1#VectorGraphic|n>1#VectorGraphics',
-            'VideoFile' => 'n==0#VideoFile(s)|n==1#VideoFile|n>1#VideoFiles',
+            'VectorGraphic' => 'n==0#Vector graphic(s)|n==1#Vector graphic|n>1#Vector graphics',
+            'VideoFile' => 'n==0#Video(s)|n==1#Video|n>1#Videos',
         );
     }
 
@@ -123,9 +230,11 @@ class DataModel
         return array(
             'attributes' => array(
                 'Chapter' => array('title', 'about', 'teachers_guide'),
+                'Comment' => array('comment'), // Note: Currently set in Comment.php instead of through here
                 'DataChunk' => array('title', 'about'),
                 'DataSource' => array('title', 'about'),
                 'DownloadLink' => array('title'),
+                'Edge' => array('title'),
                 'ExamQuestion' => array('question'),
                 'ExamQuestionAlternative' => array('markup'),
                 'Exercise' => array('title', 'question', 'description'),
@@ -138,7 +247,7 @@ class DataModel
                 'TextDoc' => array('title', 'about'),
                 'Tool' => array('title', 'about'),
                 'VectorGraphic' => array('title', 'about'),
-                'VideoFile' => array('title', 'about', 'subtitles'),
+                'VideoFile' => array('title', 'caption', 'about', 'subtitles'),
             ),
         );
     }
@@ -157,7 +266,6 @@ class DataModel
                 'Exercise' => array('slug'),
                 'Page' => array('slug'),
                 'PoFile' => array('processed_media_id'),
-                'Profiles' => array('can_translate_to'),
                 'Section' => array('slug'),
                 'SlideshowFile' => array('slug', 'processed_media_id'),
                 'Snapshot' => array('slug'),
@@ -183,6 +291,21 @@ class DataModel
             ),
         );
     }
+
+    /**
+     * @param $modelClass
+     * @return bool
+     */
+    static function isGoModel($modelOrModelClass)
+    {
+        if (is_object($modelOrModelClass)) {
+            $modelClass = get_class($modelOrModelClass);
+        } else {
+            $modelClass = $modelOrModelClass;
+        }
+        return in_array($modelClass, array_keys(self::goItemModels()));
+    }
+
 
 }
 

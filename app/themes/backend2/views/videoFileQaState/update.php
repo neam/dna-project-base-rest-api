@@ -61,7 +61,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'version',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -74,7 +74,15 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => '_title',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => '_caption',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -82,7 +90,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_en',
                 'editable' => array(
-                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -92,17 +100,17 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'thumbnailMedia.itemLabel\')',
                 'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
-            array(
-                'name' => 'original_media_id',
-                'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
-                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
             /*
+            array(
+                    'name' => 'original_media_id',
+                    'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'generate_processed_media',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -121,7 +129,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'created',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -129,7 +137,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'modified',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -172,7 +180,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_es',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -180,7 +188,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_hi',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -188,7 +196,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_pt',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -196,7 +204,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_sv',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -204,7 +212,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_de',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -212,7 +220,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_zh',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -220,7 +228,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_ar',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -228,7 +236,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_bg',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -236,7 +244,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_ca',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -244,7 +252,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_cs',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -252,7 +260,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_da',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -260,7 +268,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_en_gb',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -268,7 +276,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_en_us',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -276,7 +284,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_el',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -284,7 +292,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_fi',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -292,7 +300,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_fil',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -300,7 +308,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_fr',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -308,7 +316,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_hr',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -316,7 +324,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_hu',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -324,7 +332,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_id',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -332,7 +340,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_iw',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -340,7 +348,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_it',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -348,7 +356,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_ja',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -356,7 +364,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_ko',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -364,7 +372,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_lt',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -372,7 +380,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_lv',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -380,7 +388,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_nl',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -388,7 +396,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_no',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -396,7 +404,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_pl',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -404,7 +412,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_pt_br',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -412,7 +420,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_pt_pt',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -420,7 +428,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_ro',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -428,7 +436,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_ru',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -436,7 +444,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_sk',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -444,7 +452,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_sl',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -452,7 +460,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_sr',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -460,7 +468,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_th',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -468,7 +476,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_tr',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -476,7 +484,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_uk',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -484,7 +492,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_vi',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -492,7 +500,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_zh_cn',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),
@@ -500,7 +508,7 @@ $this->widget('TbGridView',
                     'class' => 'TbEditableColumn',
                     'name' => 'slug_zh_tw',
                     'editable' => array(
-                        'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                        'url' => $this->createUrl('/videoFile/editableSaver'),
                         //'placement' => 'right',
                     )
                 ),

@@ -1,7 +1,10 @@
-<?php echo $form->textAreaRow($model, 'subtitles_' . $model->source_language, array('rows' => 50, 'cols' => 50, 'class' => 'span8')); ?>
+<?php /** @var VideoFile $model */ ?>
 
-<?php if ($model->getAttributeHint("subtitles")): ?>
-    <p class="alert alert-info help-block">
-        <?php echo $model->getAttributeHint("subtitles"); ?>
-    </p>
-<?php endif; ?>
+<?php echo $form->textAreaRow($model, 'subtitles_' . $model->source_language, array(
+    'class' => Html::ITEM_FORM_FIELD_CLASS,
+    'rows' => 50,
+    'cols' => 50,
+    'labelOptions' => array(
+        'label' => Html::attributeLabelWithTooltip($model, 'subtitles_' . $model->source_language, 'subtitles'),
+    ),
+)); ?>

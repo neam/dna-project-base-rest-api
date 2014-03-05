@@ -19,6 +19,7 @@ class ExamQuestionAlternative extends BaseExamQuestionAlternative
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'For testing if students remember the facts in a chapter, video or exercise.');
         return parent::init();
     }
 
@@ -129,10 +130,13 @@ class ExamQuestionAlternative extends BaseExamQuestionAlternative
         );
     }
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 

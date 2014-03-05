@@ -8,7 +8,8 @@
  * @property string $from_node_id
  * @property string $to_node_id
  * @property integer $weight
- * @property string $title
+ * @property string $_title
+ * @property string $relation
  * @property string $created
  * @property string $modified
  *
@@ -34,12 +35,12 @@ abstract class BaseEdge extends ActiveRecord
         return array_merge(
             parent::rules(), array(
                 array('from_node_id, to_node_id', 'required'),
-                array('weight, title, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('weight, _title, relation, created, modified', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('weight', 'numerical', 'integerOnly' => true),
                 array('from_node_id, to_node_id', 'length', 'max' => 20),
-                array('title', 'length', 'max' => 255),
+                array('_title, relation', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, from_node_id, to_node_id, weight, title, created, modified', 'safe', 'on' => 'search'),
+                array('id, from_node_id, to_node_id, weight, _title, relation, created, modified', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -77,7 +78,8 @@ abstract class BaseEdge extends ActiveRecord
             'from_node_id' => Yii::t('model', 'From Node'),
             'to_node_id' => Yii::t('model', 'To Node'),
             'weight' => Yii::t('model', 'Weight'),
-            'title' => Yii::t('model', 'Title'),
+            '_title' => Yii::t('model', 'Title'),
+            'relation' => Yii::t('model', 'Relation'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
         );
@@ -93,7 +95,8 @@ abstract class BaseEdge extends ActiveRecord
         $criteria->compare('t.from_node_id', $this->from_node_id);
         $criteria->compare('t.to_node_id', $this->to_node_id);
         $criteria->compare('t.weight', $this->weight);
-        $criteria->compare('t.title', $this->title, true);
+        $criteria->compare('t._title', $this->_title, true);
+        $criteria->compare('t.relation', $this->relation, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
 

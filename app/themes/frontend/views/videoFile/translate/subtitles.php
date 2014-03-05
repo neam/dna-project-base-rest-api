@@ -48,14 +48,21 @@ $this->widget('TbGridView', array(
                     $language = $translateInto;
                     $sourceMessage = SourceMessage::ensureSourceMessage($category, $message, $language);
 
-                    $currentTranslation = Yii::t($category, $message, array(), 'writableMessages', $translateInto);
+                    $currentTranslation = Yii::t($category, $message, array(), 'editedMessages', $translateInto);
+                    $currentFallbackTranslation = Yii::t($category, $message, array(), 'displayedMessages', $translateInto);
+
+                    if ($message == $currentFallbackTranslation) {
+                        $emptytext = 'Write {translateIntoLanguage} here';
+                    } else {
+                        $emptytext = 'Write {translateIntoLanguage} here. If left empty, the translation is "{currentFallbackTranslation}"';
+                    }
 
                     $this->widget('TbEditableField', array(
-                        'type' => 'text',
+                        'type' => 'textarea',
                         'text' => $currentTranslation,
                         'model' => $sourceMessage,
                         'attribute' => 'translation',
-                        'emptytext' => Yii::t('app', 'Write {translateIntoLanguage} here', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])),
+                        'emptytext' => Yii::t('app', $emptytext, array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto], '{currentFallbackTranslation}' => $currentFallbackTranslation)),
                         'url' => $this->createUrl('sourceMessage/editableTranslationSaver', array('id' => $sourceMessage->id, 'translateInto' => $translateInto)),
                     ));
 
@@ -81,3 +88,7 @@ $this->widget('TbGridView', array(
 
 var_dump($messages_to_translate);
 */
+
+publishJs('/themes/frontend/js/popover-focus-caret.js', CClientScript::POS_END);
+publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END);
+?>

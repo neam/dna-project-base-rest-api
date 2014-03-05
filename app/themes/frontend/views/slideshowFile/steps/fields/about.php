@@ -1,8 +1,16 @@
-<?php echo $form->textAreaRow($model, 'about_en', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
-<?php if ($this->workflowData["translateInto"]) {
-    echo $form->textAreaRow($model, 'about_' . $this->workflowData["translateInto"], array('rows' => 6, 'cols' => 50, 'class' => 'span8'));
-} ?>
+<?php echo $form->textAreaRow($model, 'about_en', array(
+    'class' => Html::ITEM_FORM_FIELD_CLASS,
+    'rows' => 6,
+    'cols' => 50,
+    'labelOptions' => array(
+        'label' => Html::attributeLabelWithTooltip($model, 'about_en', 'about'),
+    ),
+)); ?>
 
-<p class="alert alert-info help-block">
-    <?php echo $model->getAttributeHint("about"); ?>
-</p>
+<?php if ($this->workflowData['translateInto']) {
+    echo $form->textAreaRow($model, 'about_' . $this->workflowData['translateInto'], array(
+        'class' => Html::ITEM_FORM_FIELD_CLASS,
+        'rows' => 6,
+        'cols' => 50,
+    ));
+} ?>

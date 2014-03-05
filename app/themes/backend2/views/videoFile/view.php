@@ -29,6 +29,10 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->_title); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('_caption')); ?>:</b>
+<?php echo CHtml::encode($model->_caption); ?>
+<br/>
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en')); ?>:</b>
 <?php echo CHtml::encode($model->slug_en); ?>
 <br/>
@@ -37,11 +41,11 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->_about); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->thumbnail_media_id); ?>
-<br/>
+<br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->original_media_id); ?>
 <br />
@@ -480,6 +484,19 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => '_title',
+                                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => '_caption',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => '_caption',
                                     'url' => $this->createUrl('/videoFile/editableSaver'),
                                 ),
                                 true

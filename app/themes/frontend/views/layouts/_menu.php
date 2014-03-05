@@ -17,6 +17,7 @@
             'collapse' => true,
             'fixed' => 'top',
             'items' => array(
+                $this->renderBreadcrumbs(),
                 array(
                     'class' => 'TbMenu',
                     'items' => P3Page::getMenuItems($rootNode)
@@ -24,7 +25,7 @@
                 //'<form class="navbar-search pull-left" action=""><input type="text" class="search-query span2" placeholder="Search"></form>',
                 array(
                     'class' => 'TbMenu',
-                    'htmlOptions' => array('class' => 'pull-right'),
+                    'htmlOptions' => array('class' => 'pull-right language-menu'),
                     'items' => array(
                         array(
                             'label' => Yii::app()->language,

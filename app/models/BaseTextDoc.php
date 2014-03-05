@@ -104,7 +104,6 @@
  * @property integer $processed_media_id_zh_tw
  *
  * Relations of table "text_doc" available as properties of the model:
- * @property P3Media $processedMediaIdZhTw
  * @property Users $owner
  * @property Node $node
  * @property P3Media $originalMedia
@@ -150,6 +149,7 @@
  * @property P3Media $processedMediaIdVi
  * @property P3Media $processedMediaIdZh
  * @property P3Media $processedMediaIdZhCn
+ * @property P3Media $processedMediaIdZhTw
  * @property TextDoc $clonedFrom
  * @property TextDoc[] $textDocs
  * @property TextDocQaState $textDocQaState
@@ -201,7 +201,6 @@ abstract class BaseTextDoc extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'processedMediaIdZhTw' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_tw'),
                 'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
@@ -247,6 +246,7 @@ abstract class BaseTextDoc extends ActiveRecord
                 'processedMediaIdVi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_vi'),
                 'processedMediaIdZh' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh'),
                 'processedMediaIdZhCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_cn'),
+                'processedMediaIdZhTw' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_tw'),
                 'clonedFrom' => array(self::BELONGS_TO, 'TextDoc', 'cloned_from_id'),
                 'textDocs' => array(self::HAS_MANY, 'TextDoc', 'cloned_from_id'),
                 'textDocQaState' => array(self::BELONGS_TO, 'TextDocQaState', 'text_doc_qa_state_id'),

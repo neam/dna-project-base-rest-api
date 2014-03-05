@@ -21,6 +21,9 @@ class Controller extends CController
      */
     public $breadcrumbs = array();
 
+    /**
+     * Initializes the controller.
+     */
     function init()
     {
         parent::init();
@@ -77,16 +80,77 @@ class Controller extends CController
         }
     }
 
-    static public function getLanguageMenuItems(){
+    static public function getLanguageMenuItems()
+    {
         $languages = array();
-        foreach(Yii::app()->params['languages'] AS $code => $name) {
+        foreach (Yii::app()->params['languages'] AS $code => $name) {
             $languages[] = array(
                 'label' => $name,
-                'url'   => array_merge(array(''), $_GET, array('lang' => $code)),
+                'url' => array_merge(array(''), $_GET, array('lang' => $code)),
                 'active' => ($code == Yii::app()->language)
             );
         }
         return $languages;
     }
 
+    /**
+     * Sets the page title.
+     * @param string|array $title the full title or an array of title fragments.
+     * @param boolean $includeAppName whether to include the app name in the page title. Defaults to false.
+     * @param string $separator the separator character (and whitespace) between fragments.
+     * @override CController::setPageTitle()
+     */
+    public function setPageTitle($title, $includeAppName = false, $separator = ' - ')
+    {
+        if (is_array($title)) {
+            $value = implode($separator, $title);
+        } else {
+            $value = $title;
+        }
+
+        if ($includeAppName) {
+            $value .= $separator . Yii::app()->name;
+        }
+
+        parent::setPageTitle($value);
+    }
+
+    /**
+     * Renders the breadcrumbs.
+     * The rendering logic is based on TbBreadcrumbs::run().
+     */
+    public function renderBreadcrumbs()
+    {
+        $breadcrumbs = $this->breadcrumbs;
+
+        ob_start();
+
+        echo CHtml::openTag('ul', array('class' => 'navbar-breadcrumbs'));
+
+		end($breadcrumbs);
+		$lastLink = key($breadcrumbs);
+
+		foreach ($breadcrumbs as $label => $url) {
+			if (is_string($label) || is_array($url)) {
+				echo '<li>';
+				echo strtr('<a href="{url}">{label}</a>', array(
+					'{url}' => CHtml::normalizeUrl($url),
+					'{label}' => CHtml::encode($label),
+				));
+			} else {
+				echo '<li class="active">';
+				echo str_replace('{label}', CHtml::encode($url), '{label}');
+			}
+
+			if ($lastLink !== $label) {
+				echo '';
+			}
+
+			echo '</li>';
+		}
+
+		echo CHtml::closeTag('ul');
+
+        return ob_get_clean();
+    }
 }

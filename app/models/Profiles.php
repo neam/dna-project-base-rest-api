@@ -38,54 +38,60 @@ class Profiles extends BaseProfiles
     {
         return array_merge(
             parent::rules(), array(
-                array('public_profile, ' . implode(', ', I18nColumnsBehavior::attributeColumns('can_translate_to')), 'safe', 'on' => 'toggle'),
             )
         );
     }
 
-    public function search()
+    public function attributeLabels()
     {
+        return array_merge(parent::attributeLabels(), array(
+            'language1' => Yii::t('model', 'Language #1'),
+            'language2' => Yii::t('model', 'Language #2'),
+            'language3' => Yii::t('model', 'Language #3'),
+            'language4' => Yii::t('model', 'Language #4'),
+            'language5' => Yii::t('model', 'Language #5'),
+            'picture_media_id' => Yii::t('model', 'Profile Image'),
+            'website' => Yii::t('model', 'My Website'),
+        ));
+    }
+
+    public function relations()
+    {
+        return array_merge(parent::relations(), array(
+            'account' => array(self::BELONGS_TO, 'Account', 'user_id'),
+        ));
+    }
+
+    public function search($criteria = null)
+    {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 
     /**
-     * Marks the user to be (un)able to translate content into a given language.
-     * @param string $lang the language code (e.g. 'en').
-     * @param boolean $can can/cannot translate. Defaults to true.
-     * @throws CException if the supplied language code is invalid.
+     * Returns the languages the user is able to translate into.
+     * @param boolean $asString whether to return a string. Defaults to false (returns an array).
+     * @return array|string the languages.
      */
-    public function setCanTranslate($lang, $can = true)
+    public function getLanguages($asString = false)
     {
-        $model = Profiles::model()->findByPk(user()->id);
-        $attribute = 'can_translate_to_' . $lang;
+        $languagesAvailable = Html::getLanguages();
+        $languages = array();
 
-        /** @var Profiles $model */
-        if ($model->hasAttribute($attribute)) {
-            $model->{$attribute} = $can ? self::CAN_TRANSLATE : self::CANNOT_TRANSLATE;
-            $model->save(false);
+        if (isset($this->language1)) $languages[$this->language1] = $languagesAvailable[$this->language1];
+        if (isset($this->language2)) $languages[$this->language2] = $languagesAvailable[$this->language2];
+        if (isset($this->language3)) $languages[$this->language3] = $languagesAvailable[$this->language3];
+        if (isset($this->language4)) $languages[$this->language4] = $languagesAvailable[$this->language4];
+        if (isset($this->language5)) $languages[$this->language5] = $languagesAvailable[$this->language5];
+
+        if ($asString) {
+            return implode(', ', $languages);
         } else {
-            throw new CException('Invalid language: ' . $lang);
-        }
-    }
-
-    /**
-     * Checks if the user is able to translate content into a given language.
-     * @param string $lang the language code (e.g. 'en').
-     * @return boolean
-     * @throws CException if the supplied language code is invalid.
-     */
-    public function canTranslate($lang)
-    {
-        $model = Profiles::model()->findByPk(user()->id);
-        $attribute = 'can_translate_to_' . $lang;
-
-        /** @var Profiles $model */
-        if ($model->hasAttribute($attribute)) {
-            return ((int) $model->{$attribute} === self::CAN_TRANSLATE) ? true : false;
-        } else {
-            return false;
+            return $languages;
         }
     }
 }

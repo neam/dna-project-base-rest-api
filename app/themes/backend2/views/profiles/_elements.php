@@ -64,91 +64,15 @@
 
             <?php echo $form->textFieldRow($model, 'lives_in', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textFieldRow($model, 'can_translate_to_en'); ?>
+            <?php echo $form->textFieldRow($model, 'language1', array('maxlength' => 10)); ?>
 
-            <?php echo $form->textFieldRow($model, 'can_translate_to_es'); ?>
+            <?php echo $form->textFieldRow($model, 'language2', array('maxlength' => 10)); ?>
 
-            <?php echo $form->textFieldRow($model, 'can_translate_to_hi'); ?>
+            <?php echo $form->textFieldRow($model, 'language3', array('maxlength' => 10)); ?>
 
-            <?php echo $form->textFieldRow($model, 'can_translate_to_pt'); ?>
+            <?php echo $form->textFieldRow($model, 'language4', array('maxlength' => 10)); ?>
 
-            <?php echo $form->textFieldRow($model, 'can_translate_to_sv'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_de'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_zh'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_ar'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_bg'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_ca'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_cs'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_da'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_en_gb'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_en_us'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_el'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_fi'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_fil'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_fr'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_hr'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_hu'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_id'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_iw'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_it'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_ja'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_ko'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_lt'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_lv'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_nl'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_no'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_pl'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_pt_br'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_pt_pt'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_ro'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_ru'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_sk'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_sl'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_sr'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_th'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_tr'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_uk'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_vi'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_zh_cn'); ?>
-
-            <?php echo $form->textFieldRow($model, 'can_translate_to_zh_tw'); ?>
+            <?php echo $form->textFieldRow($model, 'language5', array('maxlength' => 10)); ?>
         </div>
     </div>
     <!-- main inputs -->

@@ -72,15 +72,23 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'weight',
                 'editable' => array(
-                    'url' => $this->createUrl('/textDoc/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title',
+                'name' => '_title',
                 'editable' => array(
-                    'url' => $this->createUrl('/textDoc/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'relation',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -88,7 +96,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/textDoc/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -96,7 +104,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/textDoc/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -160,15 +168,23 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'weight',
                 'editable' => array(
-                    'url' => $this->createUrl('/textDoc/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title',
+                'name' => '_title',
                 'editable' => array(
-                    'url' => $this->createUrl('/textDoc/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'relation',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -176,7 +192,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/textDoc/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -184,7 +200,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/textDoc/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),

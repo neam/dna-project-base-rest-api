@@ -31,10 +31,12 @@ $gcmsConfig = array(
         'env' => 'development',
     ),
     'preload' => array( //'ezc', // trying out if we can lazy-load this instead of preloading it...
+        // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login
+        'loginReturnUrlTracker'
     ),
     'aliases' => array(
         // bower components
-        'bower-components' => 'backend.components',
+        'bower-components' => 'backend.bower_components',
         // i18n
         'i18n-columns' => 'vendor.neam.yii-i18n-columns',
         'i18n-attribute-messages' => 'vendor.neam.yii-i18n-attribute-messages',
@@ -49,6 +51,11 @@ $gcmsConfig = array(
         // yii graphviz
         'yii-graphviz' => 'vendor.ascendro.yii-graphviz',
         // fix hard-coded aliases
+        'ext.wrest' => 'vendor.weavora.wrest',
+        'ext.wrest.WRestController' => 'vendor.weavora.wrest.WRestController',
+        'ext.wrest.WHttpRequest' => 'vendor.weavora.wrest.WHttpRequest',
+        'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
+        'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
         'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode'
     ),
     'import' => array(
@@ -58,6 +65,10 @@ $gcmsConfig = array(
         'vendor.motin.yii-owner-behavior.OwnerBehavior',
         'qa-state.behaviors.QaStateBehavior',
         'relational-graph-db.behaviors.RelationalGraphDbBehavior',
+        'vendor.weavora.wrest.*',
+        'vendor.weavora.wrest.actions.*',
+        'vendor.weavora.wrest.behaviors.*',
+        'application.components.user.*',
         'application.behaviors.EzcWorkflowBehavior',
         'application.workflows.custom.*',
         'application.workflows.*',
@@ -109,17 +120,28 @@ $gcmsConfig = array(
         ),
         'user' => array(
             'controllerMap' => array(
-                'activation' => 'GMActivationController',
-                'registration' => 'GMRegistrationController',
+                'activation' => 'AppActivationController',
+                'registration' => 'AppRegistrationController',
             ),
+            'returnUrl' => array('/'), // This is the default return url used if login is done from the front-page
+            'profileUrl' => array('/account/dashboard'),
         )
     ),
     'components' => array(
+        'loginReturnUrlTracker' => array(
+            'class' => 'application.components.LoginReturnUrlTracker',
+        ),
         'urlManager' => array(
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
                 '/' => 'site/index',
+                //rest url patterns
+                array('api/<model>/delete', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'DELETE'),
+                array('api/<model>/update', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'PUT'),
+                array('api/<model>/list', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),
+                array('api/<model>/get', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'GET'),
+                array('api/<model>/create', 'pattern' => 'api/<model:\w+>', 'verb' => 'POST'),
             ),
         ),
         'db' => array(
@@ -147,12 +169,12 @@ $gcmsConfig = array(
             'class' => 'CPhpMessageSource',
         ),
         // Db messages - component 1 - used for output in views
-        'dbMessages' => array(
+        'displayedMessages' => array(
             'class' => 'CDbMessageSource',
-            //'onMissingTranslation' => array('MissingTranslationHandler', 'returnFallbackTranslation'),
+            'onMissingTranslation' => array('MissingTranslationHandler', 'returnSourceLanguageContents'),
         ),
         // Db messages - component 2 - used for input forms through virtual attributes
-        'writableMessages' => array(
+        'editedMessages' => array(
             'class' => 'CDbMessageSource',
             'onMissingTranslation' => array('MissingTranslationHandler', 'returnNull'),
         ),
@@ -172,6 +194,7 @@ $gcmsConfig = array(
         'authManager' => array(
             'class' => 'vendor.codemix.hybridauthmanager.HybridAuthManager',
             'authFile' => Yii::getPathOfAlias('backend') . '/app/data/auth-gcms.php',
+            'defaultRoles' => array('Authenticated'),
         ),
         'assetManager' => array(
             'class' => 'AssetManager',
@@ -180,9 +203,6 @@ $gcmsConfig = array(
             'class' => 'application.components.EzcComponent',
             'tablePrefix' => 'ezc_',
         ),
-        'user' => array(
-            'returnUrl' => array('/'),
-        )
     )
 );
 

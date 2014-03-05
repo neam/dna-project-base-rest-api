@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "99baa84d4837793f3a24ef02126076ad",
+    "hash": "475a1623ef0edd941fd7e06525b8f76f",
     "packages": [
         {
             "name": "anggiaj/eselect2",
@@ -346,22 +346,38 @@
         },
         {
             "name": "mishamx/yii-user",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/phundament/yii-user.git",
-                "reference": "740915a5054ee3de5fb57727db8c8753e03133cb"
+                "url": "https://github.com/Gapminder/yii-user.git",
+                "reference": "1ea2e1f6e96a323e276b19b6812b406ed2651e6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/phundament/yii-user/archive/740915a5054ee3de5fb57727db8c8753e03133cb.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/1ea2e1f6e96a323e276b19b6812b406ed2651e6a",
+                "reference": "1ea2e1f6e96a323e276b19b6812b406ed2651e6a",
+                "shasum": ""
             },
             "type": "yii-extension",
-            "description": "Yii PHP Framework extension for registration and management users accounts.",
-            "homepage": "https://github.com/phundament/yii-user",
-            "time": "2013-10-01 10:19:48"
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Mikhail Mangushev",
+                    "email": "development@2mx.org"
+                }
+            ],
+            "description": "User management module",
+            "keywords": [
+                "phundament",
+                "user",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/Gapminder/yii-user/tree/develop"
+            },
+            "time": "2014-02-12 12:17:56"
         },
         {
             "name": "moein7tl/yii-introjs",
@@ -468,12 +484,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-i18n-attribute-messages.git",
-                "reference": "413edf9d73d56890d0243cd4d0e1bd29114b5cc9"
+                "reference": "cac7f7951ec7cd3ea460ffe2a6397d6dc7b5db68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-i18n-attribute-messages/zipball/413edf9d73d56890d0243cd4d0e1bd29114b5cc9",
-                "reference": "413edf9d73d56890d0243cd4d0e1bd29114b5cc9",
+                "url": "https://api.github.com/repos/neam/yii-i18n-attribute-messages/zipball/cac7f7951ec7cd3ea460ffe2a6397d6dc7b5db68",
+                "reference": "cac7f7951ec7cd3ea460ffe2a6397d6dc7b5db68",
                 "shasum": ""
             },
             "require": {
@@ -501,7 +517,7 @@
                 "source": "https://github.com/neam/yii-i18n-attribute-messages/tree/develop",
                 "issues": "https://github.com/neam/yii-i18n-attribute-messages/issues"
             },
-            "time": "2013-11-20 16:18:11"
+            "time": "2013-12-16 08:00:50"
         },
         {
             "name": "neam/yii-i18n-columns",
@@ -557,12 +573,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-qa-state.git",
-                "reference": "cf85eab1876015bb15ed7308a52b2189743c37a2"
+                "reference": "8302d7b40ca593ed02ecdb61fc7d288af1ba307a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/cf85eab1876015bb15ed7308a52b2189743c37a2",
-                "reference": "cf85eab1876015bb15ed7308a52b2189743c37a2",
+                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/8302d7b40ca593ed02ecdb61fc7d288af1ba307a",
+                "reference": "8302d7b40ca593ed02ecdb61fc7d288af1ba307a",
                 "shasum": ""
             },
             "require": {
@@ -596,7 +612,7 @@
                 "source": "https://github.com/neam/yii-qa-state/tree/develop",
                 "issues": "https://github.com/neam/yii-qa-state/issues"
             },
-            "time": "2013-11-26 16:10:24"
+            "time": "2014-01-23 12:47:05"
         },
         {
             "name": "neam/yii-relational-graph-db",
@@ -1055,12 +1071,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/p3media.git",
-                "reference": "6cd4bb83c38b2daf1b0871734b3785b5aad288b1"
+                "reference": "88e3e3952eb457545d24e0f0f2acc85a333702d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/p3media/zipball/6cd4bb83c38b2daf1b0871734b3785b5aad288b1",
-                "reference": "6cd4bb83c38b2daf1b0871734b3785b5aad288b1",
+                "url": "https://api.github.com/repos/motin/p3media/zipball/88e3e3952eb457545d24e0f0f2acc85a333702d8",
+                "reference": "88e3e3952eb457545d24e0f0f2acc85a333702d8",
                 "shasum": ""
             },
             "require": {
@@ -1104,7 +1120,7 @@
             "support": {
                 "source": "https://github.com/motin/p3media/tree/awaiting-prs"
             },
-            "time": "2013-11-25 10:11:15"
+            "time": "2013-12-13 13:16:40"
         },
         {
             "name": "phundament/p3pages",
@@ -1560,6 +1576,40 @@
             "time": "2013-09-19 18:25:06"
         },
         {
+            "name": "sumwai/yii-fixture-helper",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/motin/yii-fixture-helper.git",
+                "reference": "18478fb13c7704d042d033ffbf73f92508fe35a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/motin/yii-fixture-helper/zipball/18478fb13c7704d042d033ffbf73f92508fe35a9",
+                "reference": "18478fb13c7704d042d033ffbf73f92508fe35a9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "."
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Sum-Wai Low"
+                }
+            ],
+            "description": "FixtureHelper is a command application lets you work with your fixtures outside testing.",
+            "support": {
+                "source": "https://github.com/motin/yii-fixture-helper/tree/master"
+            },
+            "time": "2014-01-24 13:43:32"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v4.3.0",
             "source": {
@@ -1672,6 +1722,50 @@
                 "issues": "https://github.com/waalzer/app-demo-data/issues"
             },
             "time": "2013-05-15 08:05:01"
+        },
+        {
+            "name": "weavora/wrest",
+            "version": "dev-awaiting-prs",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/wrest.git",
+                "reference": "e99851193d0cd7b1301e0dcfafaf11f6832496d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/wrest/zipball/e99851193d0cd7b1301e0dcfafaf11f6832496d7",
+                "reference": "e99851193d0cd7b1301e0dcfafaf11f6832496d7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Weavora Team",
+                    "email": "hello@weavora.com"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/weavora/wrest/graphs/contributors"
+                }
+            ],
+            "description": "Yii extension to create REST CRUD interfaces (get, list, update, create, delete actions) for your app",
+            "homepage": "https://github.com/weavora/wrest",
+            "keywords": [
+                "api",
+                "rest",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/neam/wrest/tree/awaiting-prs"
+            },
+            "time": "2013-12-04 01:57:07"
         },
         {
             "name": "yiiext/fancybox-widget",
@@ -2258,6 +2352,7 @@
         "neam/yii-qa-state": 20,
         "neam/yii-relational-graph-db": 20,
         "motin/yii-owner-behavior": 20,
+        "sumwai/yii-fixture-helper": 20,
         "phpoffice/phpword": 20,
         "phpoffice/phppowerpoint": 20,
         "schmunk42/giic": 20,
@@ -2265,6 +2360,7 @@
         "zetacomponents/workflow-database-tiein": 20,
         "zetacomponents/workflow": 20,
         "zetacomponents/database": 20,
+        "weavora/wrest": 20,
         "ascendro/yii-graphviz": 20,
         "mihanentalpo/yii-sql-migration-generator": 20,
         "codemix/hybridauthmanager": 20,

@@ -17,12 +17,13 @@ class VectorGraphic extends BaseVectorGraphic
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'The only reason to upload static viz, are those originateing from illustrator files or similar. Most downloadable pdf-files originated from a Textdoc or Slideshow, but some need to be created from SVG-files by hand, like the static bubble charts with labels for all countries.');
         return parent::init();
     }
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return (string) isset($this->_title) ? $this->title : 'Vector graphic #' . $this->id;
     }
 
     public function behaviors()
@@ -38,7 +39,7 @@ class VectorGraphic extends BaseVectorGraphic
         return array_merge(
             parent::relations(),
             array(
-                'datachunks' => array(self::HAS_MANY, 'DataChunk', array('id' => 'node_id'), 'through' => 'outNodes'),
+                'datachunks' => array(self::HAS_MANY, 'DataChunk', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'datachunks')),
             )
         );
     }
@@ -128,7 +129,7 @@ class VectorGraphic extends BaseVectorGraphic
                 'slug_en' => Yii::t('model', 'English Nice link'),
                 'about' => Yii::t('model', 'About'),
                 'about_en' => Yii::t('model', 'About (English)'),
-                'original_media_id' => Yii::t('model', 'File'),
+                'original_media_id' => Yii::t('model', 'File (svg)'),
                 'datachunks' => Yii::t('model', 'Data'),
             )
         );
@@ -147,10 +148,13 @@ class VectorGraphic extends BaseVectorGraphic
         );
     }
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 

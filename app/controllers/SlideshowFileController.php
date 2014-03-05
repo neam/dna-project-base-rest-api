@@ -4,6 +4,7 @@ class SlideshowFileController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "SlideshowFile";
 
     #public $layout='//layouts/column2';
@@ -204,7 +205,7 @@ class SlideshowFileController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'slideshow-file-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'item-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

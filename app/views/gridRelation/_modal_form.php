@@ -2,69 +2,71 @@
 $fromType = get_class($model);
 $modalId = "addrelation-" . strtolower($fromType) . "-" . strtolower($toType) . "-modal";
 $allItems = ($toType == '') ? true : false;
+if ($allItems) {
+    $toType = 'chapter';
+} // Even if there's no specific type (related items), we need a specified controller to post to
 $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
 ?>
-<?php if ($type == "edge"): ?>
     <script>
+        var selectedType = null;
+        $(document).ready(function () {
+            // Enables checkbox click from whole tr row:
+            $('#<?php echo $modalId; ?>').on('click', 'td', function (e) {
+                var cb = $(this).parent().find('input').get(0);
+                if (e.target != cb) {
+                    cb.checked = !cb.checked;
+                }
+            });
+            // Set input value when clicking "Create new" relation, to the corresponding type
+            $('.modal .add-allitems ul').on('click', 'a', function (e) {
+                e.preventDefault();
+                var selectedText = $(this).text();
+                selectedType = selectedText;
+                $(this).parents('.btn-group').find('.dropdown-toggle').html('New ' + selectedText + ' <span class="caret"></span>');
+            });
+            $('.modal input[name=newitemtitle]').keypress(function (e) {
+                if (e.which == 13) {
+                    e.preventDefault();
+                    $('.modal input[name=create-new]').trigger('click');
+                    return false;
+                }
+            });
+        });
+        function getSelectedType() {
+            return selectedType;
+        }
         function getMyData() {
             var vals = new Array();
             $.each($("input[name='modalGrid']:checked"), function () {
                 vals.push($(this).val());
             });
-            var jsondata = ({'<?php echo $fromType; ?>': {'relation':'<?php echo $relation; ?>','fromId': '<?php echo $model->id; ?>', 'edges_to_add': vals}});
+            var jsondata = ({'<?php echo $fromType; ?>': {'relation': '<?php echo $relation; ?>', 'fromId': '<?php echo $model->id; ?>', 'edges_to_add': vals}});
             return jsondata;
         }
         function relationComplete() {
             location.reload();
         }
     </script>
-<?php elseif ($type == 'input'): ?>
-    <script>
-        $(document).ready(function () {
-            $('.modal input[type=checkbox]').change(function () {
-                $('.modal input[type=checkbox]').attr('checked', false);
-                this.checked = true;
-            });
-        });
-        function getMyData() {
-            setInput($("input[name='modalGrid']:checked").val());
-        }
-        function setInput(v) {
-            if (typeof v == 'object') {
-                //1. Append new <option>
-                $("select[name='<?php echo $fromType; ?>[<?php echo $inputId; ?>]']").append("<option value='" + v.id + "' selected='selected'>" + v.title + "</option>");
-            }
-            else {
-                // Select <option> that has the same value as the checkbox
-                $("input[name='<?php echo $fromType; ?>[<?php echo $inputId; ?>]'], select[name='<?php echo $fromType; ?>[<?php echo $inputId; ?>]']").val(v);
-            }
-            //relationComplete();
-        }
-        function relationComplete() {
-            $('.modal button.close').trigger('click');
-        }
-    </script>
-<?php endif; ?>
 
     <div class="modal-header">
         <button type="button" class="close" data-toggle="modal" data-target="#<?php echo $modalId; ?>">×</button>
-        <h3><?php echo Yii::t(
-                'crud',
-                '{model}',
-                array('{model}' => Yii::t('crud', 'Choose ' . $toLabel . ' to add'))
-            ); ?></h3>
+        <h3><?php echo Yii::t('crud', '{model}', array('{model}' => Yii::t('crud', 'Choose ' . $toLabel . ' to add'))); ?></h3>
     </div>
     <div class="modal-body">
         <?php
-        if ($allItems) {
-            $allRelated = new Node('search');
-        } else {
-            $allRelated = new $toType('search');
+        $allRelated = new GoItem('search');
+        $allRelated->unsetAttributes();
+        if (!$allItems) {
+            $allRelated->setAttribute("model_class", $toType);
+        }
+        if (isset($_GET["GoItem"])) {
+            $allRelated->attributes = $_GET["GoItem"];
         }
         $dataProvider = $allRelated->search();
         $this->widget(
             'bootstrap.widgets.TbExtendedGridView',
             array(
+                'filter' => $allRelated,
                 'id' => strtolower($toType) . 's_to_add',
                 'type' => 'striped bordered',
                 'dataProvider' => $dataProvider,
@@ -74,37 +76,26 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                 ),
                 'columns' => array(
                     array(
-                        'name' => 'id',
-                        'header' => 'Id',
+                        'header' => Yii::t('app', 'Select'),
+                        'filter' => false,
                         'value' => function ($data) {
-                                if (get_class($data) == "Node") {
-                                    echo CHtml::checkBox("modalGrid", null, array("value" => $data->id));
-                                } else {
-                                    echo CHtml::checkBox("modalGrid", null, array("value" => $data->node_id));
-                                }
+                                echo CHtml::checkBox("modalGrid", null, array("value" => $data->node_id));
                             }
                     ),
+                    'id',
                     array(
                         'name' => 'itemLabel',
-                        'value' => function ($data) {
-                                if (get_class($data) == "Node") {
-                                    echo $data->item()->itemLabel;
-                                } else {
-                                    echo $data->itemLabel;
-                                }
-                            }
+                        'filter' => false,
                     ),
-                    //TODO: Visa bara om get_class() == Node
                     array(
-                        'name' => 'type',
-                        'header' => 'type',
-                        'value' => function ($data) {
-                                if (get_class($data) == "Node") {
-                                    echo get_class($data->item());
-                                } else {
-                                    echo get_class($data);
-                                }
-                            }
+                        'name' => '_title',
+                        'header' => Yii::t('app', 'Title in source language'),
+                    ),
+                    array(
+                        'visible' => ($allItems) ? 1 : 0,
+                        'name' => 'model_class',
+                        'header' => Yii::t('app', 'Content type'),
+                        'filter' => CHtml::activeDropDownList($allRelated, 'model_class', array_combine(array_keys(DataModel::goItemModels()),array_keys(DataModel::goItemModels())), array('prompt'=>'All')),
                     ),
                 )
             )
@@ -112,30 +103,9 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
         ?>
     </div>
     <div class="modal-footer">
-        <?php
-        // If (allItems) (==related), visa bara "add selected", och den ska ha special-ajax
-        // Else, (==vanlig en-typs-relate)
-        ?>
-        <?php if ($allItems): ?>
-            <div class="btn-group">
-                <?php
-                echo CHtml::ajaxSubmitButton(
-                    Yii::t('model', 'Add selected'),
-                    array("addEdges", "id" => $model->id),
-                    array(
-                        'data' => 'js:getMyData()',
-                        'type' => 'POST',
-                        'success' => 'function(html){ relationComplete(); }'
-                    ),
-                    array(
-                        'class' => 'btn btn-primary',
-                        'name' => 'add-selected',
-                    )
-                );
-                ?>
-            </div>
-        <?php else: ?>
-                <div class="btn-group">
+        <div class="row">
+            <?php if ($allItems): ?>
+                <div class="btn-group span3">
                     <?php
                     echo CHtml::ajaxSubmitButton(
                         Yii::t('model', 'Add selected'),
@@ -152,33 +122,115 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                     );
                     ?>
                 </div>
-                <div class="btn-group">
-                    <?php
-                    $this->widget(
-                        "bootstrap.widgets.TbButton",
-                        array(
-                            "label" => Yii::t("model", "Create new " . $toLabel),
-                            "url" => array(
-                                "/" . $toType . "/add/",
-                                "fromId" => $model->id,
-                                "toModel" => $toType,
-                                "fromModel" => $fromType,
-                                "returnUrl" => Yii::app()->request->url,
+
+                <div class="btn-group span9" style="float:right;">
+                    <div class="input-group">
+                        <?php
+                        $items = array();
+                        foreach (DataModel::qaModels() as $key => $qaModel) {
+                            $items[] = array('label' => $key, 'url' => '#');
+                        }
+                        $this->widget('bootstrap.widgets.TbButtonGroup',
+                            array(
+                                'htmlOptions' => array(
+                                    'class' => 'add-allitems',
+                                ),
+                                'buttons' => array(
+                                    array(
+                                        'label' => 'New',
+                                        'items' => $items,
+                                    )
+                                )
                             )
+                        );
+                        ?>
+                        <input type="text" name="newitemtitle" class="span5" placeholder="<?php echo Yii::t(
+                            "model",
+                            "Optional title"
+                        ); ?>">
+                        <?php
+                        echo CHtml::ajaxButton(
+                            Yii::t("model", "Create"),
+                            array(
+                                "/" . $toType . "/add/",
+                            ),
+                            array(
+                                'data' => 'js:{
+                                            "newitemtitle":$("input[name=newitemtitle]").val(),
+                                            "relation":"' . $relation . '",
+                                            "toType":getSelectedType(),
+                                            "from_node_id":"' . $model->node_id . '",
+                                            "addEdge":"true",
+                                        }',
+                                'type' => 'POST',
+                                'success' => 'function(html){ relationComplete(); }'
+                            ),
+                            array(
+                                'class' => 'btn btn-primary small',
+                                'name' => 'create-new',
+                            )
+                        );
+                        ?>
+                    </div>
+                </div>
+            <?php else: ?>
+                <div class="btn-group span3">
+                    <?php
+                    echo CHtml::ajaxSubmitButton(
+                        Yii::t('model', 'Add selected'),
+                        array("addEdges", "id" => $model->id),
+                        array(
+                            'data' => 'js:getMyData()',
+                            'type' => 'POST',
+                            'success' => 'function(html){ relationComplete(); }'
+                        ),
+                        array(
+                            'class' => 'btn btn-primary',
+                            'name' => 'add-selected',
                         )
                     );
                     ?>
                 </div>
-        <?php endif; ?>
-        <div class="btn-group">
-            <a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $modalId; ?>"><?php print Yii::t(
-                    'app',
-                    'Close'
-                );
-                ?></a>
+                <div class="btn-group span8" style="float:right;">
+                    <div class="input-group">
+                        <label for="newitemtitle" style="display:inline-block; padding-right:5px;"><?php echo 'New ' . $toType; ?>:</label>
+                        <input type="text" id="newitemtitle" name="newitemtitle" class="span5" placeholder="<?php echo Yii::t("model", "Optional title"); ?>">
+                        <?php
+                        echo CHtml::ajaxButton(
+                            Yii::t("model", "Create"),
+                            array(
+                                "/" . $toType . "/add/",
+                            ),
+                            array(
+                                'data' => 'js:{
+                                    "newitemtitle":$("input[name=newitemtitle]").val(),
+                                    "relation":"' . $relation . '",
+                                    "from_node_id":"' . $model->node_id . '",
+                                    "addEdge":"true",
+                                }',
+                                'type' => 'POST',
+                                'success' => 'function(html){ relationComplete(); }'
+                            ),
+                            array(
+                                'class' => 'btn btn-primary',
+                                'name' => 'create-new',
+                            )
+                        );
+                        ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="row">
+            <div class="btn-group" style="margin-top:8px;">
+                <a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $modalId; ?>"><?php print Yii::t(
+                        'app',
+                        'Close'
+                    );
+                    ?></a>
+            </div>
         </div>
     </div>
 
-<?php
-$this->endWidget();
-?>
+<?php $this->endWidget(); ?>
+<?php publishJs('/themes/frontend/js/toggle-modal-form-button.js', CClientScript::POS_END); ?>

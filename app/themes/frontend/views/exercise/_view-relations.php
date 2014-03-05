@@ -190,6 +190,29 @@ echo '</h3>' ?>
 </ul>
 
 
+<?php echo '<h3>' . Yii::t('model', 'relation.ParentChapters') . '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->parentChapters(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//chapter/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon icon-pencil"></i>',
+                array('//chapter/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
 <?php echo '<h3>' . Yii::t('model', 'relation.Materials') . '</h3>' ?>
 <ul>
 
@@ -200,11 +223,34 @@ echo '</h3>' ?>
             echo '<li>';
             echo CHtml::link(
                 '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
-                array('//videoFile/view', 'id' => $relatedModel->id)
+                array('//node/view', 'id' => $relatedModel->id)
             );
             echo CHtml::link(
                 ' <i class="icon icon-pencil"></i>',
-                array('//videoFile/update', 'id' => $relatedModel->id)
+                array('//node/update', 'id' => $relatedModel->id)
+            );
+            echo '</li>';
+        }
+    }
+    ?>
+</ul>
+
+
+<?php echo '<h3>' . Yii::t('model', 'relation.Related') . '</h3>' ?>
+<ul>
+
+    <?php
+    $records = $model->related(array('limit' => 250, 'scopes' => ''));
+    if (is_array($records)) {
+        foreach ($records as $i => $relatedModel) {
+            echo '<li>';
+            echo CHtml::link(
+                '<i class="icon icon-arrow-right"></i> ' . $relatedModel->itemLabel,
+                array('//node/view', 'id' => $relatedModel->id)
+            );
+            echo CHtml::link(
+                ' <i class="icon icon-pencil"></i>',
+                array('//node/update', 'id' => $relatedModel->id)
             );
             echo '</li>';
         }

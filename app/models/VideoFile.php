@@ -17,6 +17,7 @@ class VideoFile extends BaseVideoFile
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'There are several types of videos with different purposes: Chapter summary, answering questions (title should be a questions) and giving ideas of different ways of doing an exercise.');
         return parent::init();
     }
 
@@ -38,7 +39,7 @@ class VideoFile extends BaseVideoFile
         return array_merge(
             parent::relations(),
             array(
-                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
+                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'related')),
             )
         );
     }
@@ -118,6 +119,7 @@ class VideoFile extends BaseVideoFile
             'info' => array(
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
+                'caption_' . $this->source_language,
                 'about_' . $this->source_language,
                 'thumbnail_media_id',
             ),
@@ -171,16 +173,19 @@ class VideoFile extends BaseVideoFile
                 'thumbnail_media_id' => Yii::t('model', 'This is the small image representing the video in lists and also the start screen as the film is loading. It shows an iconic snapshot from the film, with the crucial graphics focused to help users recognize it later. Preferably a closeup of the high res films visualization with a human touch.'),
                 'original_media_id' => Yii::t('model', 'The film needs to be .webm file.'),
                 'subtitles' => Yii::t('model', 'The subtitles srt file contents'),
-                'subtitles_import_media_id' => Yii::t('model', 'Here you can upload and import an existing subtitles file in srt file format. <b>Warning:</b> Clicking import will replace the current subtitles with the contents of the srt file.'),
+                'subtitles_import_media_id' => Yii::t('model', 'Here you can upload and import an existing subtitles file in srt file format. Warning: Clicking import will replace the current subtitles with the contents of the srt file.'),
                 'related' => Yii::t('model', 'After watching this video you may also be interested in these Items. If the video is on a chapter page, the chapter is assumed to related to these items as well.'),
             )
         );
     }
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 

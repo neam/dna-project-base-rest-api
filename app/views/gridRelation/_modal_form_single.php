@@ -6,6 +6,24 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
 ?>
     <script>
         $(document).ready(function () {
+            // Enables checkbox click from whole tr row:
+            $('#<?php echo $modalId; ?>').on('click', 'td', function(e){
+                var cb = $(this).parent().find('input').get(0);
+                if(e.target != cb)
+                {
+                    $('.modal input[type=checkbox]').attr('checked', false);
+                    cb.checked = !cb.checked;
+                }
+            });
+            // Handle enter press for "create new":
+            $('.modal input[name=newitemtitle]').keypress(function (e) {
+                if (e.which == 13) {
+                    e.preventDefault();
+                    $('.modal input[name=create-new]').trigger('click');
+                    return false;
+                }
+            });
+            // Function for making sure only 1 checkbox is marked:
             $('.modal input[type=checkbox]').change(function () {
                 $('.modal input[type=checkbox]').attr('checked', false);
                 this.checked = true;
@@ -40,11 +58,17 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
     </div>
     <div class="modal-body">
         <?php
-        $allRelated = new $toType('search');
+        $allRelated = new GoItem('search');
+        $allRelated->unsetAttributes();
+        $allRelated->setAttribute("model_class",$toType);
+        if (isset($_GET["GoItem"])) {
+            $allRelated->attributes = $_GET["GoItem"];
+        }
         $dataProvider = $allRelated->search();
         $this->widget(
             'bootstrap.widgets.TbExtendedGridView',
             array(
+                'filter' => $allRelated,
                 'id' => strtolower($toType) . 's_to_add',
                 'type' => 'striped bordered',
                 'dataProvider' => $dataProvider,
@@ -54,37 +78,20 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                 ),
                 'columns' => array(
                     array(
-                        'name' => 'id',
-                        'header' => 'Id',
+                        'header' => Yii::t('app', 'Select'),
+                        'filter' => false,
                         'value' => function ($data) {
-                                if (get_class($data) == "Node") {
-                                    echo CHtml::checkBox("modalGrid", null, array("value" => $data->item()->id));
-                                } else {
-                                    echo CHtml::checkBox("modalGrid", null, array("value" => $data->id));
-                                }
+                                echo CHtml::checkBox("modalGrid", null, array("value" => $data->id));
                             }
                     ),
+                    'id',
                     array(
                         'name' => 'itemLabel',
-                        'value' => function ($data) {
-                                if (get_class($data) == "Node") {
-                                    echo $data->item()->itemLabel;
-                                } else {
-                                    echo $data->itemLabel;
-                                }
-                            }
+                        'filter' => false,
                     ),
-                    //TODO: Visa bara om get_class() == Node
                     array(
-                        'name' => 'type',
-                        'header' => 'type',
-                        'value' => function ($data) {
-                                if (get_class($data) == "Node") {
-                                    echo get_class($data->item());
-                                } else {
-                                    echo get_class($data);
-                                }
-                            }
+                        'name' => '_title',
+                        'header' => Yii::t('app', 'Title in source language'),
                     ),
                 )
             )
@@ -111,25 +118,30 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
         </div>
         <div class="btn-group">
             <?php
-            $this->widget(
-                "bootstrap.widgets.TbButton",
+            echo CHtml::ajaxButton(
+                Yii::t("model", "Create new " . $toLabel),
                 array(
-                    "label" => Yii::t("model", "Create new " . $toLabel),
-                    'htmlOptions' => array(
-                        'ajax' => array(
-                            'type' => 'POST',
-                            'url' => array(
-                                "/" . $toType . "/add/",
-                                "fromId" => $model->id,
-                                "toModel" => $toType,
-                                "fromModel" => $fromType,
-                            ),
-                            'success' => 'function(data) { setInput(data); }',
-                        ),
-                    )
+                    "/" . $toType . "/add/",
+                ),
+                array(
+                    'data' => 'js:{
+                                "newitemtitle":$("input[name=newitemtitle]").val(),
+                                "from_node_id":"' . $model->node_id . '",
+                            }',
+                    'type' => 'POST',
+                    'success' => 'function(data) { setInput(data); }',
+                ),
+                array(
+                    'class' => 'btn btn-primary',
+                    'name' => 'create-new',
                 )
             );
             ?>
+            <input type="text" name="newitemtitle" class="span6" placeholder="<?php echo Yii::t(
+                "model",
+                "Optional title"
+            ); ?>">
+
         </div>
         <div class="btn-group">
             <a href="#" class="btn" data - toggle = "modal" data - target = "#<?php echo $modalId; ?>"

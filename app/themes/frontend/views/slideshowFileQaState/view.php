@@ -1,13 +1,13 @@
 <?php
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 ?>
 <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+
 <!--<h1>
     
-    <?php echo Yii::t('model','Slideshow File Qa State'); ?>
+    <?php echo Yii::t('model', 'Slideshow File Qa State'); ?>
     <small>
-        <?php echo Yii::t('model','View')?> #<?php echo $model->id ?>
+        <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
     </small>
     
 </h1>-->
@@ -102,5 +102,5 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <br />
 
     */
-    ?>
+?>
 -->

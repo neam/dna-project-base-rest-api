@@ -2,6 +2,57 @@
 
 trait ItemTrait
 {
+    public $itemDescription;
+
+    public function saveWithChangeSet()
+    {
+
+        $model = $this;
+
+        // refresh qa state (to be sure that we have the most actual state)
+        $model->refreshQaState();
+
+        // start transaction
+        $transaction = Yii::app()->db->beginTransaction();
+
+        try {
+
+            $qsStates = array();
+            $qsStates["before"] = $model->qaState()->attributes;
+
+            // save
+            if (!$model->save()) {
+                throw new SaveException($model);
+            }
+
+            // refresh qa state
+            $model->refreshQaState();
+            $qsStates["after"] = $model->qaState()->attributes;
+
+            // calculate difference
+            $qsStates["diff"] = array_diff_assoc($qsStates["before"], $qsStates["after"]);
+
+            // log for dev purposes
+            Yii::log("Changeset: " . print_r($qsStates, true), "flow", __METHOD__);
+
+            // save changeset
+            $changeset = new Changeset();
+            $changeset->contents = json_encode($qsStates);
+            $changeset->user_id = Yii::app()->user->id;
+            $changeset->node_id = $model->node()->id;
+            if (!$changeset->save()) {
+                throw new SaveException($changeset);
+            }
+
+            // commit transaction
+            $transaction->commit();
+
+        } catch (Exception $e) {
+            $model->addError('id', $e->getMessage());
+            $transaction->rollback();
+        }
+
+    }
 
     /**
      * @return array Status-dependent validation rules
@@ -107,8 +158,17 @@ trait ItemTrait
             }
         }
 
+        // If there is nothing to translate, then the translation progress should equal 0%
         if (empty($currentlyTranslatableAttributes)) {
-            return array();
+
+            // Add an always invalid status requirement for each language
+            $i18nRules = array();
+            foreach (Yii::app()->params["languages"] as $language => $label) {
+                $i18nRules[] = array('id', 'compare', 'compareValue' => -1, 'on' => 'translate_into_' . $language);
+            }
+
+            return $i18nRules;
+
         }
 
         $i18nRules = array();
@@ -129,5 +189,4 @@ trait ItemTrait
 
         return $i18nRules;
     }
-
-} 
+}

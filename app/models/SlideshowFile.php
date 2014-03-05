@@ -17,12 +17,13 @@ class SlideshowFile extends BaseSlideshowFile
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'All slideshows ar of this Blueprint, while some just support a specific vide, while others may be selfcontained exercises.');
         return parent::init();
     }
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return 'Slideshow file #' . $this->id;
     }
 
     public function behaviors()
@@ -36,8 +37,8 @@ class SlideshowFile extends BaseSlideshowFile
         return array_merge(
             parent::relations(),
             array(
-                'datachunks' => array(self::HAS_MANY, 'DataChunk', array('id' => 'node_id'), 'through' => 'outNodes'),
-                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
+                'datachunks' => array(self::HAS_MANY, 'DataChunk', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'datachunks')),
+                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'related')),
             )
         );
     }
@@ -237,10 +238,13 @@ class SlideshowFile extends BaseSlideshowFile
         );
     }
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 

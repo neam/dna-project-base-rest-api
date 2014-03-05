@@ -65,7 +65,6 @@
  * @property Node $sourceNode
  * @property Users $owner
  * @property ExamQuestionAlternative[] $examQuestionAlternatives
- * @property SectionContent[] $sectionContents
  */
 abstract class BaseExamQuestion extends ActiveRecord
 {
@@ -120,7 +119,6 @@ abstract class BaseExamQuestion extends ActiveRecord
                 'sourceNode' => array(self::BELONGS_TO, 'Node', 'source_node_id'),
                 'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'exam_question_id'),
-                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'exam_question_id'),
             )
         );
     }

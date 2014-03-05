@@ -17,12 +17,13 @@ class TextDoc extends BaseTextDoc
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'Textdocs may be selfcontained exercises or arbitrary text that is related to something else.');
         return parent::init();
     }
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return (string) isset($this->_title) ? $this->_title : 'Text doc #' . $this->id;
     }
 
     public function behaviors()
@@ -185,10 +186,13 @@ class TextDoc extends BaseTextDoc
         );
     }
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 

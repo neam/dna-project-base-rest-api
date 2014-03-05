@@ -3,7 +3,7 @@ $this->breadcrumbs[] = Yii::t('model', 'Users');
 $this->breadcrumbs[$model->username] = array('account/profile', 'id' => $model->id);
 $this->breadcrumbs[] = Yii::t('account', 'History');
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+
 <h1>
 
     <?php echo $model->profiles->first_name . " " . $model->profiles->last_name; ?>
@@ -14,6 +14,11 @@ $this->breadcrumbs[] = Yii::t('account', 'History');
 </h1>
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
+
+<div class="alert alert-info">
+    <h4>Work in progress</h4>
+    This is where you will track your changes and contributions over time.
+</div>
 
 <div class="row">
     <div class="span12">

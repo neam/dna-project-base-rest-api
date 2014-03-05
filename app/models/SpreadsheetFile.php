@@ -26,7 +26,9 @@ class SpreadsheetFile extends BaseSpreadsheetFile
     public function behaviors()
     {
         return array_merge(
-            parent::behaviors(), array());
+            parent::behaviors(),
+            array()
+        );
     }
 
     public function rules()
@@ -38,6 +40,16 @@ class SpreadsheetFile extends BaseSpreadsheetFile
           array('column3', 'rule2'),
           ) */
         );
+    }
+
+    public function search($criteria = null)
+    {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
+        return new CActiveDataProvider(get_class($this), array(
+            'criteria' => $this->searchCriteria($criteria),
+        ));
     }
 
     public function processOriginal()
@@ -134,13 +146,6 @@ class SpreadsheetFile extends BaseSpreadsheetFile
         }
 
         return parent::afterSave();
-    }
-
-    public function search()
-    {
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
-        ));
     }
 
 }

@@ -25,7 +25,7 @@
     <div class="form-actions">
         <?php
         echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('spreadsheetfile/admin'),
+                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('spreadsheetFile/admin'),
                 'class' => 'btn'
             )
         );

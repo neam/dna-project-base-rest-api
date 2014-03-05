@@ -4,6 +4,7 @@ class ChapterController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "Chapter";
 
     #public $layout='//layouts/column2';
@@ -23,17 +24,15 @@ class ChapterController extends Controller
         return array_merge($this->itemAccessRules(), array(
             array('allow',
                 'actions' => array(
-                    'index',
                     'view',
                 ),
                 'users' => array('*'),
             ),
             array('allow',
                 'actions' => array(
-                    'view',
+                    'index',
                     'create',
                     'update',
-                    'edit',
                     'editableSaver',
                     'editableCreator',
                     'admin',
@@ -105,6 +104,7 @@ class ChapterController extends Controller
                 "title" => Yii::t('app', 'Teacher\'s Guide'),
                 "slug" => 'teachers-guide',
                 "markup" => $chapter->teachers_guide,
+                "attribute" => "teachers_guide",
             );
         }
 
@@ -152,7 +152,13 @@ class ChapterController extends Controller
     public function actionView($id)
     {
         $model = $this->loadModel($id);
-        $this->render('view', array('model' => $model,));
+
+        $this->breadcrumbs[Yii::t('breadcrumbs', 'Chapters')] = array('index');
+        $this->breadcrumbs[] = $model->title;
+
+        $this->render('view', array(
+            'model' => $model,
+        ));
     }
 
     public function actionCreate()
@@ -212,7 +218,6 @@ class ChapterController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
         $es = new TbEditableSaver('Chapter'); // classname of model to be updated
         $es->update();
     }
@@ -262,7 +267,15 @@ class ChapterController extends Controller
     public function actionIndex()
     {
         $dataProvider = new CActiveDataProvider('Chapter');
-        $this->render('index', array('dataProvider' => $dataProvider,));
+
+        $model = new Chapter('search');
+        $model->unsetAttributes();
+
+        if (isset($_GET['Chapter'])) {
+            $model->attributes = $_GET['Chapter'];
+        }
+
+        $this->render('index', array('model' => $model, 'dataProvider' => $dataProvider,));
     }
 
     public function actionAdmin()
@@ -288,7 +301,7 @@ class ChapterController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'chapter-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'item-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

@@ -4,6 +4,7 @@ class ExamQuestionAlternativeController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "ExamQuestionAlternative";
     public $defaultAction = "admin";
     public $scenario = "crud";
@@ -201,7 +202,7 @@ class ExamQuestionAlternativeController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'exam-question-alternative-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'item-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

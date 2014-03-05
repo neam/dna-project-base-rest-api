@@ -39,6 +39,7 @@ class Node extends BaseNode
                 'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
                 'inEdges' => array(self::HAS_MANY, 'Edge', 'to_node_id'),
                 'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
+                'nodes' => array(self::HAS_MANY, 'Node', 'id'),
             )
         );
     }
@@ -52,6 +53,16 @@ class Node extends BaseNode
           array('column3', 'rule2'),
           ) */
         );
+    }
+
+    public function search($criteria = null)
+    {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
+        return new CActiveDataProvider(get_class($this), array(
+            'criteria' => $this->searchCriteria($criteria),
+        ));
     }
 
     /**
@@ -81,9 +92,6 @@ class Node extends BaseNode
                      'tools' => array(self::HAS_MANY, 'Tool', 'node_id'),
                      'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'node_id'),
                      'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'node_id'),
-                     'edges' => array(self::HAS_MANY, 'Edge', 'from_node_id'),
-                     'edges1' => array(self::HAS_MANY, 'Edge', 'to_node_id'),
-                     'nodes' => array(self::HAS_MANY, 'Node', 'id'),
                  ) as $candidateRelation => $relation) {
 
             if (count($this->$candidateRelation) == 1) {
@@ -92,17 +100,9 @@ class Node extends BaseNode
             }
 
         }
-        var_dump ( $this);
-        exit;
+
         throw new CException("This node does not have any parent item");
 
-    }
-
-    public function search()
-    {
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
-        ));
     }
 
 }

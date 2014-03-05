@@ -6,12 +6,14 @@
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Manage"),
                     "icon" => "icon-edit",
-                    "url" => array("admin")
+                    "url" => array("admin"),
+                    "visible" => Yii::app()->user->checkAccess("VideoFile.*")
                 ));
                 $this->widget("bootstrap.widgets.TbButton", array(
                     "label" => Yii::t("model", "Add"),
-                    "icon" => "icon-edit",
-                    "url" => array("add")
+                    "icon" => "icon-plus",
+                    "url" => array("add"),
+                    "visible" => Yii::app()->user->checkAccess("Item.Add")
                 ));
                 break;
             case "view":
@@ -40,5 +42,6 @@
                 ));
                 break;
         }
-        ?>    </div>
+        ?>
+    </div>
 </div>

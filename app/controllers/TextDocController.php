@@ -4,6 +4,7 @@ class TextDocController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "TextDoc";
 
     #public $layout='//layouts/column2';
@@ -204,7 +205,7 @@ class TextDocController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'text-doc-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'item-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

@@ -1,35 +1,30 @@
+<?php /** @var Chapter $model */ ?>
+
 <div class="control-group">
     <div class="controls">
-        <?php
-        echo $this->widget('bootstrap.widgets.TbButton', array(
+        <?php echo $this->widget('bootstrap.widgets.TbButton', array(
             'label' => Yii::t('app', 'Add video'),
             'icon' => 'icon-plus',
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
                 'data-target' => '#addrelation-chapter-videofile-modal',
             ),
-        ), true);
-        ?>
-        <?php
-        $this->renderPartial('//gridRelation/_relation_list', array(
+        ), true); ?>
+        <?php echo Html::hintTooltip($model->getAttributeHint('video')); ?>
+        <?php $this->renderPartial('//gridRelation/_relation_list', array(
             'relation' => 'videos',
             'model' => $model,
             'label' => 'videos',
-        ));
-        ?>
+        )); ?>
     </div>
 </div>
 
-<p class="alert alert-info help-block">
-    <?php echo $model->getAttributeHint("video"); ?>
-</p>
-
-<?php
-$this->renderPartial('//gridRelation/_modal_form', array(
+<?php $this->renderPartial('//gridRelation/_modal_form', array(
     'model' => $model,
     'relation' => 'videos',
     'toType' => 'VideoFile',
     'toLabel' => 'video',
     'type' => 'edge',
-));
-?>
+)); ?>
+
+<?php publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END); ?>

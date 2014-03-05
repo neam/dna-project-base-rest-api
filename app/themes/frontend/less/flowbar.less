@@ -1,0 +1,45 @@
+.flowbar {
+  .border-bottom-left-radius(15px);
+  .border-bottom-right-radius(15px);
+  background-color: #fff;
+  position: fixed;
+  top: 25px;
+  z-index: 10;
+
+  .required-counts {
+    margin: 20px 0;
+
+    .missing {
+      color: @red;
+      font-size: 16px;
+
+      em {
+        font-style: normal;
+      }
+    }
+  }
+
+  .well {
+    padding-top: 13px;
+
+    h3,
+    h4 {
+      margin: 0;
+    }
+
+    .row-fluid {
+      div {
+        line-height: 40px;
+      }
+    }
+  }
+}
+
+.below-flowbar {
+  margin-top: 145px;
+}
+
+.required-missing {
+    line-height: 40px;
+    color: red; // TODO: Use a predefined LESS color variable.
+}

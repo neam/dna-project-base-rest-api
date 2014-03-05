@@ -34,6 +34,7 @@ class VideoFileController extends Controller
                 'actions' => array(
                     'index',
                     'view',
+                    'edit',
                 ),
                 'users' => array('@'),
             ),
@@ -42,7 +43,6 @@ class VideoFileController extends Controller
                     'view',
                     'create',
                     'update',
-                    'edit',
                     'editableSaver',
                     'editableCreator',
                     'admin',
@@ -116,7 +116,7 @@ class VideoFileController extends Controller
         foreach ($subtitles as $subtitle) {
             echo "{$subtitle->id}\n";
             echo "{$subtitle->timestamp}\n";
-            echo Yii::t("video-{$model->id}-subtitles", $subtitle->sourceMessage, array(), 'dbMessages', Yii::app()->language) . "\n";
+            echo Yii::t("video-{$model->id}-subtitles", $subtitle->sourceMessage, array(), 'displayedMessages', Yii::app()->language) . "\n";
             echo "\n";
         }
 
@@ -128,7 +128,7 @@ class VideoFileController extends Controller
         return $sections;
     }
 
-    public function saveAndContinueOnSuccess($id)
+    public function saveAndContinueOnSuccess($model)
     {
 
         if (isset($_POST['import'])) {
@@ -141,13 +141,13 @@ class VideoFileController extends Controller
             $contents = file_get_contents($fullPath);
 
             // save to post
-            $_POST['VideoFile']['subtitles'] = $contents;
+            $_POST['VideoFile']['_subtitles'] = $contents;
 
             // emulate us hitting the save button
             $_POST['save-changes'] = true;
 
         }
-        return $this->parentSaveAndContinueOnSuccess($id);
+        return $this->parentSaveAndContinueOnSuccess($model);
 
     }
 
@@ -264,7 +264,9 @@ class VideoFileController extends Controller
     public function actionIndex()
     {
         $dataProvider = new CActiveDataProvider('VideoFile');
-        $this->render('index', array('dataProvider' => $dataProvider,));
+        $criteria = $this->getTranslatorCriteria(VideoFile::model()->tableName());
+        $dataProvider->setCriteria($criteria);
+        $this->render('index', array('dataProvider' => $dataProvider));
     }
 
     public function actionAdmin()
@@ -290,7 +292,7 @@ class VideoFileController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'videofile-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'item-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

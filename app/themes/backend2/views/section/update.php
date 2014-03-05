@@ -61,7 +61,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'ordinal',
                 'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -69,7 +69,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -77,7 +77,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
+                    'url' => $this->createUrl('/sectionContent/editableSaver'),
                     //'placement' => 'right',
                 )
             ),

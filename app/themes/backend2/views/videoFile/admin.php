@@ -84,6 +84,14 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => '_caption',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFile/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'slug_en',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFile/editableSaver'),
@@ -101,6 +109,7 @@ $this->widget('TbGridView',
                 'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
                 'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
+            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'generate_processed_media',
@@ -109,7 +118,6 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            /*
             array(
                 'name' => 'processed_media_id_en',
                 'value' => 'CHtml::value($data, \'processedMediaIdEn.itemLabel\')',

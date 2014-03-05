@@ -5,15 +5,38 @@ trait ItemController
 
     public function itemAccessRules()
     {
-        return array(
+        $return = array(
             array('allow',
                 'actions' => array(
                     'continueAuthoring',
                     'nextRequired',
-                    'go',
                     'cancel',
                 ),
                 'users' => array('*'),
+            ),
+            array('allow',
+                'actions' => array(
+                    'go',
+                ),
+                'roles' => array(
+                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'view',
+                ),
+                'roles' => array(
+                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
+                ),
+            ),
+            array('allow',
+                'actions' => array(
+                    'browse',
+                ),
+                'roles' => array(
+                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
+                ),
             ),
             array('allow',
                 'actions' => array(
@@ -118,6 +141,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'publish',
+                    'unpublish',
                 ),
                 'roles' => array(
                     'Item.Publish'
@@ -126,6 +150,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'edit',
+                    'preview',
                 ),
                 'roles' => array(
                     'Item.Edit'
@@ -156,6 +181,8 @@ trait ItemController
                 ),
             ),
         );
+
+        return $return;
     }
 
     public function actionContinueAuthoring($id)
@@ -259,13 +286,104 @@ trait ItemController
         return null;
     }
 
+    /**
+     * Returns a CDbCriteria which shows the models in testable-state or higher for translators.
+     *
+     * @param $modelTbl
+     * @param array $defaultCriteria the criteria to return if user has Administrator-role or is not a translator
+     * @return array|\CDbCriteria
+     */
+    public function getTranslatorCriteria($modelTbl, $defaultCriteria = array())
+    {
+        // Administrators should see everything so return early
+        if (Yii::app()->user->checkAccess('Administrator')) {
+            return $defaultCriteria;
+        }
+
+        $criteria = $defaultCriteria;
+
+        // Translators should only see items which are in testable mode or higher
+        if (Yii::app()->user->checkAccess('Item.Translate')) {
+            $criteria = new CDbCriteria();
+
+            $qaStateTbl = $modelTbl . '_qa_state'; // model_table_qa_state
+            $qaStateForeignId = $qaStateTbl . '_id'; // model_table_qa_state_id
+
+            $criteria->join = sprintf('INNER JOIN %s qs ON %s = qs.id', $qaStateTbl, $qaStateForeignId);
+            $criteria->addInCondition('status', array('preview', 'public'));
+        }
+
+        return $criteria;
+    }
+
+    public function actionBrowse()
+    {
+        $model = new $this->modelClass('search');
+        $model->unsetAttributes();
+
+        if (isset($_GET[$this->modelClass])) {
+            $model->attributes = $_GET[$this->modelClass];
+        }
+
+        $dataProvider = $model->search();
+        $criteria = $this->getTranslatorCriteria($model->tableName());
+        $dataProvider->setCriteria($criteria);
+
+        $this->populateWorkflowData($model, "browse", Yii::t('app', 'Browse'));
+
+        $this->render('/_item/browse', array('model' => $model, 'dataProvider' => $dataProvider,));
+    }
+
+
     public function actionAdd()
     {
+        if (isset($_POST["from_node_id"]) && is_numeric($_POST["from_node_id"])) {
+            // Check if it's the (this) type or specified:
+            if (isset($_POST["toType"])) {
+                $item = new $_POST["toType"]();
+            } else {
+                $item = new $this->modelClass();
+            }
+            // Set title, if specified:
+            if (isset($_POST["newitemtitle"])) {
+                try {
+                    $item->_title = $_POST["newitemtitle"];
+                } catch (Exception $e) {
+                    // no title for this type
+                }
+            }
+            // Save!
+            if (!$item->save()) {
+                throw new SaveException($item);
+            }
+            $item->refreshQaState();
+            $message = "{$this->modelClass} Added";
+
+            // Add edge if specified:
+            if (isset($_POST["addEdge"]) && $_POST["addEdge"] == "true" && $_POST["from_node_id"] && $_POST["relation"]) {
+                $to_node_id = $item->node_id;
+                $from_node_id = $_POST["from_node_id"];
+                $relation = $_POST["relation"];
+                $this->addEdge($from_node_id, $to_node_id, $relation);
+            }
+            // Return:
+            if (isset($_POST["returnUrl"])) {
+                $this->redirect($_POST['returnUrl']);
+                exit;
+            } else {
+                header("Content-type: application/json");
+                $result = new StdClass();
+                $result->id = $item->id;
+                $result->node_id = $item->node_id;
+                $result->title = $item->itemLabel;
+                echo json_encode($result);
+                exit;
+            }
+        }
+
         $item = new $this->modelClass();
-        if (isset($_REQUEST["title"]) && $this->title){
-            $title = (isset($_REQUEST["title"])) ? $_REQUEST["title"] : "";
-            $item->title = $title;
-            $item->title_en = $title;
+        if (isset($_POST["newitemtitle"])) {
+            $item->_title = $_POST["newitemtitle"];
         }
         if (!$item->save()) {
             throw new SaveException($item);
@@ -274,32 +392,17 @@ trait ItemController
         $message = "{$this->modelClass} Added";
 
         // If fromId is set, we assume this is a new Item which will be related:
-        if (isset($_GET["fromId"]) && is_numeric($_GET["fromId"])) {
-            if (isset($_GET["returnUrl"])) {
-                $from_node_id = $_model->node()->id;
-                $to_node_id = $item->node_id;
-                $this->addEdge($from_node_id, $to_node_id);
-
-                $this->redirect($_GET['returnUrl']);
-            }
-            header("Content-type: application/json");
-            $result = new StdClass();
-            $result->id = $item->id;
-            $result->title = $item->itemLabel;
-            echo json_encode($result);
-            exit;
-            return;
-        }
         Yii::app()->user->setFlash('success', $message);
         $this->redirect(array('continueAuthoring', 'id' => $item->id));
     }
 
     public function actionAddEdges()
     {
-        if (isset($_POST[$this->modelClass]["fromId"]) && isset($_POST[$this->modelClass]["edges_to_add"])) {
+        if (isset($_POST[$this->modelClass]["fromId"]) && isset($_POST[$this->modelClass]["edges_to_add"]) && isset($_POST[$this->modelClass]["relation"])) {
             $this->addEdges(
                 $_POST[$this->modelClass]["fromId"],
-                $_POST[$this->modelClass]["edges_to_add"]
+                $_POST[$this->modelClass]["edges_to_add"],
+                $_POST[$this->modelClass]["relation"]
             );
         }
         exit;
@@ -309,11 +412,13 @@ trait ItemController
     {
         $from = $_GET["from"];
         $to = $_GET["to"];
+        $relation = $_GET["relation"];
         $del = Edge::model()->deleteAll(
-            'from_node_id=:from_node_id AND to_node_id=:to_node_id',
+            'from_node_id=:from_node_id AND to_node_id=:to_node_id AND relation=:relation',
             array(
                 ':from_node_id' => $from,
                 ':to_node_id' => $to,
+                ':relation' => $relation,
             )
         );
         if ($del) {
@@ -330,7 +435,10 @@ trait ItemController
     public function actionDraft($step, $id)
     {
         $this->scenario = "draft-step_$step";
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
@@ -365,7 +473,10 @@ trait ItemController
     public function actionPrepPreshow($step, $id)
     {
         $this->scenario = "preview-step_$step";
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, "preview", Yii::t('app', 'Prepare for testing'));
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
@@ -392,10 +503,21 @@ trait ItemController
 
     }
 
-    public function actionEvaluate($id)
+    /**
+     * Evaluate workflow
+     * @param $id
+     * @param $step
+     */
+    public function actionEvaluate($id, $step)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/evaluate', array('model' => $model));
+        $this->scenario = "evaluate-step_$step";
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
+        $this->populateWorkflowData($model, "evaluate", Yii::t('app', 'Evaluate'));
+        $stepCaptions = $model->flowStepCaptions();
+        $this->render('/_item/evaluate', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
     }
 
     /**
@@ -406,7 +528,10 @@ trait ItemController
     public function actionPrepPublish($step, $id)
     {
         $this->scenario = "public-step_$step";
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, "public", Yii::t('app', 'Prepare for publishing'));
         $stepCaptions = $model->flowStepCaptions();
         $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
@@ -435,33 +560,81 @@ trait ItemController
 
     public function actionPreview($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/preview', array('model' => $model));
+        $model = $this->loadModel($id);
+        $this->render('/_item/preview', array('model' => $model, 'workflowCaption' => Yii::t('app', 'Preview')));
     }
 
     public function actionReview($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
         $this->render('/_item/review', array('model' => $model));
     }
 
     public function actionProofRead($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
+        $model = $this->loadModel($id);
         $this->render('/_item/proofread', array('model' => $model));
     }
 
     public function actionPublish($id)
     {
-        $model = $this->saveAndContinueOnSuccess($id);
-        $this->render('/_item/publish', array('model' => $model));
+        //$model = $this->saveAndContinueOnSuccess($id);
+
+        $model = $this->loadModel($id);
+        if (!$model->qaStateBehavior()->validStatus('public')) {
+            throw new CException("This item does not validate for public status");
+        }
+
+        $qaState = $model->qaState();
+
+        // save status change
+        $qaState->status = 'public';
+        if (!$qaState->save()) {
+            throw new SaveException($qaState);
+        }
+        $model->refreshQaState();
+
+        // redirect
+        if (isset($_GET['returnUrl'])) {
+            $this->redirect($_GET['returnUrl']);
+        } else {
+            $this->redirect(array('continueAuthoring', 'id' => $model->id));
+        }
+
+    }
+
+    public function actionUnpublish($id)
+    {
+        //$model = $this->saveAndContinueOnSuccess($id);
+
+        $model = $this->loadModel($id);
+        $qaState = $model->qaState();
+
+        // save status change
+        $qaState->status = null;
+        if (!$qaState->save()) {
+            throw new SaveException($qaState);
+        }
+        $model->refreshQaState();
+
+        // redirect
+        if (isset($_GET['returnUrl'])) {
+            $this->redirect($_GET['returnUrl']);
+        } else {
+            $this->redirect(array('continueAuthoring', 'id' => $model->id));
+        }
+
     }
 
     public function actionCancel($id)
     {
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
-        $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+        if (Yii::app()->user->checkAccess('Item.Edit')) {
+            $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+        } else {
+            $this->redirect(array('view', 'id' => $model->id));
+        }
     }
 
     /**
@@ -472,10 +645,75 @@ trait ItemController
     public function actionEdit($step, $id)
     {
         $this->scenario = "step_$step";
-        $model = $this->saveAndContinueOnSuccess($id);
+
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
+
         $this->populateWorkflowData($model, "public", Yii::t('app', 'Edit'));
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+
+        $this->setPageTitle(array(
+            Yii::t('model', $this->modelClass),
+            $this->workflowData['caption'],
+        ));
+
+        $requiredCounts = $this->getRequiredCounts($id);
+
+        // Breadcrumbs
+        $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
+        $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
+        $this->breadcrumbs[] = $this->workflowData['caption'];
+        $this->breadcrumbs[] = $stepCaptions[$step];
+
+        $this->render('/_item/edit', array(
+            'model' => $model,
+            'step' => $step,
+            'stepCaption' => $stepCaptions[$step],
+            'requiredCounts' => $requiredCounts,
+        ));
+    }
+
+    /**
+     * Returns the total and remaining number of required attributes.
+     * @param integer $id the model ID.
+     * @return array
+     */
+    public function getRequiredCounts($id)
+    {
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $_POST = $this->fixPostFromGrid($_POST);
+
+        $requiredCount = array(
+            'total' => 0,
+            'remaining' => 0,
+        );
+
+        if (isset($_POST[$this->modelClass])) {
+            $requiredValidCount = 0;
+
+            foreach ($_POST[$this->modelClass] as $attribute => $value) {
+                $validators = $model->getValidators($attribute);
+
+                foreach ($validators as $validator) {
+                    if ($validator instanceof CRequiredValidator) {
+                        $requiredCount['total'] += 1;
+
+                        $model->{$attribute} = $_POST[$this->modelClass][$attribute];
+
+                        if ($model->validate(array($attribute))) {
+                            $requiredValidCount += 1;
+                        }
+                    }
+                }
+            }
+
+            $requiredCount['remaining'] = $requiredCount['total'] - $requiredValidCount;
+        }
+
+        return $requiredCount;
     }
 
     public function actionClone($id)
@@ -597,10 +835,18 @@ trait ItemController
     public function actionTranslate($id, $step, $translateInto)
     {
         $this->scenario = "into_$translateInto-step_$step";
-        $model = $this->saveAndContinueOnSuccess($id);
-        $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translate into {translateIntoLanguage}', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])), $translateInto);
-        $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $subtitles = $model->getParsedSubtitles();
+        if (!empty($subtitles)) {
+            $this->performAjaxValidation($model);
+            $this->saveAndContinueOnSuccess($model);
+            $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translate into {translateIntoLanguage}', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])), $translateInto);
+            $stepCaptions = $model->flowStepCaptions();
+            $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+        } else {
+            throw new CHttpException(404, Yii::t('error', 'No subtitles found.'));
+        }
     }
 
     public $workflowData = array();
@@ -694,25 +940,27 @@ trait ItemController
     }
 
     // $fromid = [item] id, $toid = [node] id ! important
-    private function addEdges($fromid, $toids)
+    private function addEdges($fromid, $toids, $relation)
     {
         $from_model = $this->loadModel($fromid);
         $from_node_id = $from_model->node()->id;
 
         foreach ($toids as $to_node_id) {
-            $this->addEdge($from_node_id, $to_node_id);
+            $this->addEdge($from_node_id, $to_node_id, $relation);
         }
     }
 
-    private function addEdge($from_node_id, $to_node_id)
+    private function addEdge($from_node_id, $to_node_id, $relation)
     {
         $edge = new Edge();
         $edge->from_node_id = $from_node_id;
         $edge->to_node_id = $to_node_id;
+        $edge->relation = $relation;
 
         if (!$edge->save()) {
             throw new SaveException($edge);
         }
+        return true;
     }
 
     // Asks $_POST if a value isn't part of "Model"
@@ -732,10 +980,8 @@ trait ItemController
         return $return_array;
     }
 
-    protected function saveAndContinueOnSuccess($id)
+    protected function saveAndContinueOnSuccess($model)
     {
-        $model = $this->loadModel($id);
-        $model->scenario = $this->scenario;
 
         $_POST = $this->fixPostFromGrid($_POST);
 
@@ -744,55 +990,8 @@ trait ItemController
         Yii::log("_POST: " . print_r($_POST, true), "flow", __METHOD__);
 
         if (isset($_POST[$this->modelClass])) {
-
             $model->attributes = $_POST[$this->modelClass];
-
-            // log for dev purposes
-            Yii::log("model->safeAttributeNames: " . print_r($model->safeAttributeNames, true), "flow", __METHOD__);
-            Yii::log("model->attributes: " . print_r($model->attributes, true), "flow", __METHOD__);
-
-            // refresh qa state (to be sure that we have the most actual state)
-            $model->refreshQaState();
-
-            // start transaction
-            $transaction = Yii::app()->db->beginTransaction();
-
-            try {
-
-                $qsStates = array();
-                $qsStates["before"] = $model->qaState()->attributes;
-
-                // save
-                if (!$model->save()) {
-                    throw new SaveException($model);
-                }
-
-                // refresh qa state
-                $model->refreshQaState();
-                $qsStates["after"] = $model->qaState()->attributes;
-
-                // calculate difference
-                $qsStates["diff"] = array_diff_assoc($qsStates["before"], $qsStates["after"]);
-
-                // log for dev purposes
-                Yii::log("Changeset: " . print_r($qsStates, true), "flow", __METHOD__);
-
-                // save changeset
-                $changeset = new Changeset();
-                $changeset->contents = json_encode($qsStates);
-                $changeset->user_id = Yii::app()->user->id;
-                $changeset->node_id = $model->node()->id;
-                if (!$changeset->save()) {
-                    throw new SaveException($changeset);
-                }
-
-                // commit transaction
-                $transaction->commit();
-
-            } catch (Exception $e) {
-                $model->addError('id', $e->getMessage());
-                $transaction->rollback();
-            }
+            $model->saveWithChangeSet();
         } elseif (isset($_GET[$this->modelClass])) {
             $model->attributes = $_GET[$this->modelClass];
         }
@@ -818,4 +1017,33 @@ trait ItemController
 
     }
 
+    /**
+     * Returns the item description if available.
+     * @return string|null the item description.
+     */
+    public function getItemDescription()
+    {
+        $model = new $this->modelClass;
+
+        if (isset($model->itemDescription)) {
+            return $model->itemDescription;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Renders an item description tooltip.
+     * @return string the tooltip HTML.
+     */
+    public function itemDescriptionTooltip()
+    {
+        $itemDescription = $this->getItemDescription();
+
+        return isset($itemDescription)
+            ? Html::hintTooltip($itemDescription, array(
+                'placement' => TbHtml::TOOLTIP_PLACEMENT_BOTTOM,
+            ))
+            : '';
+    }
 }

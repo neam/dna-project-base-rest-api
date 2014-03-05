@@ -23,7 +23,15 @@ class ActiveRecord extends CActiveRecord
         if (isset($qaModels[get_class($this)])) {
             $behaviors['qa-state'] = array(
                 'class' => 'QaStateBehavior',
+                'scenarios' => array(
+                    'draft',
+                    'preview',
+                    'public',
+                ),
             );
+            foreach (Yii::app()->params["languages"] as $language => $label) {
+                $behaviors['qa-state']['scenarios'][] = 'translate_into_' . $language;
+            }
             $behaviors['owner-behavior'] = array(
                 'class' => 'OwnerBehavior',
             );
@@ -36,6 +44,13 @@ class ActiveRecord extends CActiveRecord
             );
         }
 
+        $restModels = DataModel::restModels();
+        if (isset($restModels[get_class($this)])) {
+            $behaviors['rest-model-behavior'] = array(
+                'class' => 'WRestModelBehavior',
+            );
+        }
+
         // List of model attributes to translate using yii-i18n-attribute-messages
         $i18nAttributeMessages = DataModel::i18nAttributeMessages();
         $i18nAttributeMessagesMap = $i18nAttributeMessages['attributes'];
@@ -45,7 +60,7 @@ class ActiveRecord extends CActiveRecord
                 'class' => 'I18nAttributeMessagesBehavior',
                 'translationAttributes' => $i18nAttributeMessagesMap[get_class($this)],
                 'languageSuffixes' => array_keys(Yii::app()->params["languages"]),
-                'messageSourceComponent' => 'writableMessages',
+                'messageSourceComponent' => 'editedMessages',
             );
         }
 
@@ -130,5 +145,4 @@ class ActiveRecord extends CActiveRecord
         $labels = DataModel::modelLabels();
         return $labels[get_class($this)];
     }
-
 }

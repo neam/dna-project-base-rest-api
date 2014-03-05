@@ -50,176 +50,24 @@ $this->breadcrumbs[] = $model->user_id;
 <?php echo CHtml::encode($model->lives_in); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_en')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_en); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('language1')); ?>:</b>
+<?php echo CHtml::encode($model->language1); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_es')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_es); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('language2')); ?>:</b>
+<?php echo CHtml::encode($model->language2); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_hi')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_hi); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('language3')); ?>:</b>
+<?php echo CHtml::encode($model->language3); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_pt')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_pt); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('language4')); ?>:</b>
+<?php echo CHtml::encode($model->language4); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_sv')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_sv); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_de')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_de); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_zh')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_zh); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_ar')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_ar); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_bg')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_bg); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_ca')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_ca); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_cs')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_cs); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_da')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_da); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_en_gb')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_en_gb); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_en_us')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_en_us); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_el')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_el); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_fi')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_fi); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_fil')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_fil); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_fr')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_fr); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_hr')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_hr); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_hu')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_hu); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_id')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_id); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_iw')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_iw); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_it')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_it); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_ja')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_ja); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_ko')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_ko); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_lt')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_lt); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_lv')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_lv); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_nl')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_nl); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_no')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_no); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_pl')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_pl); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_pt_br')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_pt_br); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_pt_pt')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_pt_pt); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_ro')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_ro); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_ru')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_ru); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_sk')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_sk); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_sl')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_sl); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_sr')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_sr); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_th')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_th); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_tr')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_tr); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_uk')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_uk); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_vi')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_vi); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_zh_cn')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_zh_cn); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('can_translate_to_zh_tw')); ?>:</b>
-<?php echo CHtml::encode($model->can_translate_to_zh_tw); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('language5')); ?>:</b>
+<?php echo CHtml::encode($model->language5); ?>
 <br />
 
     */
@@ -247,6 +95,14 @@ $this->breadcrumbs[] = $model->user_id;
                                     array('class' => '')) . ' ' . CHtml::link(
                                     '<i class="icon icon-pencil"></i> ',
                                     array('//users/update', 'id' => $model->user->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                        'value' => ($model->account !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->account->itemLabel,
+                                    array('//account/view', 'id' => $model->account->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon icon-pencil"></i> ',
+                                    array('//account/update', 'id' => $model->account->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -353,559 +209,65 @@ $this->breadcrumbs[] = $model->user_id;
                             )
                     ),
                     array(
-                        'name' => 'can_translate_to_en',
+                        'name' => 'language1',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'can_translate_to_en',
+                                    'attribute' => 'language1',
                                     'url' => $this->createUrl('/profiles/editableSaver'),
                                 ),
                                 true
                             )
                     ),
                     array(
-                        'name' => 'can_translate_to_es',
+                        'name' => 'language2',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'can_translate_to_es',
+                                    'attribute' => 'language2',
                                     'url' => $this->createUrl('/profiles/editableSaver'),
                                 ),
                                 true
                             )
                     ),
                     array(
-                        'name' => 'can_translate_to_hi',
+                        'name' => 'language3',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'can_translate_to_hi',
+                                    'attribute' => 'language3',
                                     'url' => $this->createUrl('/profiles/editableSaver'),
                                 ),
                                 true
                             )
                     ),
                     array(
-                        'name' => 'can_translate_to_pt',
+                        'name' => 'language4',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'can_translate_to_pt',
+                                    'attribute' => 'language4',
                                     'url' => $this->createUrl('/profiles/editableSaver'),
                                 ),
                                 true
                             )
                     ),
                     array(
-                        'name' => 'can_translate_to_sv',
+                        'name' => 'language5',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'can_translate_to_sv',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_de',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_de',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_zh',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_zh',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_ar',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_ar',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_bg',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_bg',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_ca',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_ca',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_cs',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_cs',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_da',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_da',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_en_gb',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_en_gb',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_en_us',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_en_us',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_el',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_el',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_fi',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_fi',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_fil',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_fil',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_fr',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_fr',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_hr',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_hr',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_hu',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_hu',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_id',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_id',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_iw',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_iw',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_it',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_it',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_ja',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_ja',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_ko',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_ko',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_lt',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_lt',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_lv',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_lv',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_nl',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_nl',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_no',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_no',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_pl',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_pl',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_pt_br',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_pt_br',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_pt_pt',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_pt_pt',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_ro',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_ro',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_ru',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_ru',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_sk',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_sk',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_sl',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_sl',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_sr',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_sr',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_th',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_th',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_tr',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_tr',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_uk',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_uk',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_vi',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_vi',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_zh_cn',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_zh_cn',
-                                    'url' => $this->createUrl('/profiles/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'can_translate_to_zh_tw',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'can_translate_to_zh_tw',
+                                    'attribute' => 'language5',
                                     'url' => $this->createUrl('/profiles/editableSaver'),
                                 ),
                                 true

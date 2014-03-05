@@ -7,6 +7,8 @@ Yii::import('Page.*');
 class Page extends BasePage
 {
 
+    use ItemTrait;
+
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
     {
@@ -33,20 +35,59 @@ class Page extends BasePage
 
     public function rules()
     {
-        return array_merge(
-            parent::rules()
-        /* , array(
-          array('column1, column2', 'rule1'),
-          array('column3', 'rule2'),
-          ) */
+        $return = array_merge(
+            parent::rules(),
+            $this->statusRequirementsRules(),
+            $this->flowStepRules(),
+            $this->i18nRules(),
+            array(
+                // Ordinary validation rules
+                array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 200),
+            )
+        );
+        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        return $return;
+    }
+
+    public function search($criteria = null)
+    {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
+        return new CActiveDataProvider(get_class($this), array(
+            'criteria' => $this->searchCriteria($criteria),
+        ));
+    }
+
+    /**
+     * Define status-dependent fields
+     * @return array
+     */
+    public function statusRequirements()
+    {
+        return array(
+            'draft' => array(
+                'title_' . $this->source_language,
+            ),
+            'preview' => array(
+                'slug_' . $this->source_language,
+            ),
+            'public' => array(),
         );
     }
 
-    public function search()
+    /**
+     * Define step-dependent fields
+     * @return array
+     */
+    public function flowSteps()
     {
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
-        ));
+        return array(
+            'info' => array(
+                'title_' . $this->source_language,
+                'slug_' . $this->source_language,
+            ),
+        );
     }
 
 }

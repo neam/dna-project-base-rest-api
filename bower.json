@@ -1,0 +1,19 @@
+{
+  "name": "gapminder-cms",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Gapminder/gapminder-school-cms",
+  "description": "Gapminder CMS",
+  "main": "www/themes/frontend/css/style.css",
+  "license": "tbd",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mediaelement": "~2.13.1"
+  }
+}

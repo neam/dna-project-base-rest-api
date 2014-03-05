@@ -26,8 +26,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'title'); ?>
-        <?php echo $form->textField($model, 'title', array('size' => 60, 'maxlength' => 255)); ?>
+        <?php echo $form->label($model, '_title'); ?>
+        <?php echo $form->textField($model, '_title', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'relation'); ?>
+        <?php echo $form->textField($model, 'relation', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
     <div class="row">

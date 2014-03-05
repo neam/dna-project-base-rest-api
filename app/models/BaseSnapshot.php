@@ -65,7 +65,6 @@
  * Relations of table "snapshot" available as properties of the model:
  * @property DataSource[] $dataSources
  * @property ExamQuestion[] $examQuestions
- * @property SectionContent[] $sectionContents
  * @property Node $node
  * @property P3Media $thumbnailMedia
  * @property Snapshot $clonedFrom
@@ -123,7 +122,6 @@ abstract class BaseSnapshot extends ActiveRecord
             parent::relations(), array(
                 'dataSources' => array(self::HAS_MANY, 'DataSource', 'cloned_from_id'),
                 'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'cloned_from_id'),
-                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'snapshot_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),

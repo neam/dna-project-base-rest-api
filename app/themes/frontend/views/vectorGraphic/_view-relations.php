@@ -143,11 +143,11 @@ echo '</h3>' ?>
 </ul>
 
 
-<?php echo '<h3>' . Yii::t('model', 'relation.DataChunks') . '</h3>' ?>
+<?php echo '<h3>' . Yii::t('model', 'relation.Datachunks') . '</h3>' ?>
 <ul>
 
     <?php
-    $records = $model->dataChunks(array('limit' => 250, 'scopes' => ''));
+    $records = $model->datachunks(array('limit' => 250, 'scopes' => ''));
     if (is_array($records)) {
         foreach ($records as $i => $relatedModel) {
             echo '<li>';

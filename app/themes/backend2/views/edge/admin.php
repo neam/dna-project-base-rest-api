@@ -81,7 +81,15 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title',
+                'name' => '_title',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'relation',
                 'editable' => array(
                     'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',

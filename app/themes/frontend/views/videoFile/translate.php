@@ -6,7 +6,7 @@ $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array(
 );
 $this->breadcrumbs[] = Yii::t('crud', 'Translate');
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+
 <h1>
     <?php echo Yii::t('crud', 'Video File') ?>
     <small><?php echo Yii::t('crud', 'Translate Video File to ' . Yii::app()->language) ?>

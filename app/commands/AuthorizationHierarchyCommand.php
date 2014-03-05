@@ -42,11 +42,29 @@ EOD;
         $developerRole = $auth->createRole('Developer');
         $developerRole->addChild('Super Administrator');
 
+        // These operations are defined in phundament components
+        $auth->createOperation('P3media.Import.*');
+        $auth->createOperation('P3media.Import.scan');
+        $auth->createOperation('P3media.P3Media.*');
+        $auth->createOperation('P3media.P3Media.View');
+        $auth->createOperation('P3admin.Default.Index');
+        $auth->createOperation('P3admin.Default.Settings');
+        $auth->createOperation('P3media.Default.*');
+        $auth->createOperation('P3media.P3MediaTranslation.*');
+        $auth->createOperation('Admin');
+        $auth->createOperation('Editor');
+        $auth->createOperation('P3pages.P3Page.*');
+        $auth->createOperation('P3pages.P3PageTranslation.*');
+        $auth->createOperation('P3widgets.Default.*');
+        $auth->createOperation('Translate.*');
+
         foreach (array('GapminderSchool', 'DollarStreet', 'IgnoranceProject', 'HumanNumbers', '') as $project) {
 
-            $prefix = !empty($project) ? $project . '.' : $project;
+            $prefix = !empty($project) ? $project . '.' : '';
 
             // Atomic actions are called operations
+            $auth->createOperation($prefix . 'Item.Browse', 'Browse amongst items');
+            $auth->createOperation($prefix . 'Item.View', 'View items');
             $auth->createOperation($prefix . 'Item.Add', 'Adds a temporary empty item to the database');
             $auth->createOperation($prefix . 'Item.Draft', 'Completes a temporary item by stepping through fields required for DRAFT  ');
             $auth->createOperation($prefix . 'Item.AddEdge', 'Add a relation');
@@ -64,7 +82,7 @@ EOD;
             $auth->createOperation($prefix . 'Item.Clone', 'Creates a new itemVersion with incremented version number and goes to "edit" workFlow. If the original is in PUBLIC after achieving publishableFlag == true, suggest workFlow PrepPublish');
             $auth->createOperation($prefix . 'Item.Remove', 'Removed means there\'s something wrong with the content so it should not be used in any language any time');
             $auth->createOperation($prefix . 'Item.Replace', 'Replaced, means it\'s OK to fall back to, in case translation is missing for new version');
-            $auth->createOperation($prefix . 'Item.Go', 'Displays the item and it\'s related items');
+            $auth->createOperation($prefix . 'Item.Go', 'Displays the item and it\'s related items using the CMS Go interface');
 
             // Actions under special circumstances are called tasks - if a user may perform the task then the user may perform the task's associated operations
 
@@ -88,6 +106,12 @@ EOD;
             $task->addChild($prefix . 'Item.Replace');
 
             // Roles has the right to perform one or many tasks and operations
+            $role = $auth->createRole($prefix . 'Authenticated');
+            $role->addChild($prefix . 'Item.Browse');
+            $role->addChild($prefix . 'Item.View');
+            $role->addChild($prefix . 'Item.Go');
+            $role->addChild('P3media.Import.*'); // Upload access is necessary for everyone in order to upload their profile picture
+
             $role = $auth->createRole($prefix . 'Creator');
             $role->addChild($prefix . 'Item.Add');
             $role->addChild($prefix . 'Item.Draft');
@@ -138,33 +162,19 @@ EOD;
         }
 
         // Temporary dev items that gives access to phundament-specific actions. Assigned to Developer role until properly sorted into hierarchy
-        $auth->createOperation('P3media.Import.*');
         $developerRole->addChild('P3media.Import.*');
-        $auth->createOperation('P3media.Import.scan');
         $developerRole->addChild('P3media.Import.scan');
-        $auth->createOperation('P3media.P3Media.*');
         $developerRole->addChild('P3media.P3Media.*');
-        $auth->createOperation('P3media.P3Media.View');
         $developerRole->addChild('P3media.P3Media.View');
-        $auth->createOperation('P3admin.Default.Index');
-        $developerRole->addChild('P3admin.Default.Index');
-        $auth->createOperation('P3admin.Default.Settings');
-        $developerRole->addChild('P3admin.Default.Settings');
-        $auth->createOperation('P3media.Default.*');
         $developerRole->addChild('P3media.Default.*');
-        $auth->createOperation('P3media.P3MediaTranslation.*');
         $developerRole->addChild('P3media.P3MediaTranslation.*');
-        $auth->createOperation('Admin');
+        $developerRole->addChild('P3admin.Default.Index');
+        $developerRole->addChild('P3admin.Default.Settings');
         $developerRole->addChild('Admin');
-        $auth->createOperation('Editor');
         $developerRole->addChild('Editor');
-        $auth->createOperation('P3pages.P3Page.*');
         $developerRole->addChild('P3pages.P3Page.*');
-        $auth->createOperation('P3pages.P3PageTranslation.*');
         $developerRole->addChild('P3pages.P3PageTranslation.*');
-        $auth->createOperation('P3widgets.Default.*');
         $developerRole->addChild('P3widgets.Default.*');
-        $auth->createOperation('Translate.*');
         $developerRole->addChild('Translate.*');
 
         $baseModels = DataModel::crudModels();
@@ -174,6 +184,9 @@ EOD;
         $cruds = array_merge($baseModels, $qaStateModels);
 
         foreach ($cruds as $model => $table) {
+            if ($model == "Item") {
+                continue;
+            }
             foreach (array('*', 'View', 'Update', 'Delete') as $action) {
 
                 $auth->createOperation("{$model}.{$action}");
@@ -193,4 +206,48 @@ EOD;
         var_dump($auth->getAuthAssignments(1));
 
     }
+
+    public function actionGoogleSpreadsheetPermissionsMatrixColumnsAndRows()
+    {
+        /*
+        foreach (DataModel::qaModels() as $model => $table) {
+            echo "$model\n";
+        }
+DataModel::goItemModels()
+DataModel::educationalItemModels()
+DataModel::websiteContentItemModels()
+DataModel::waffleItemModels()
+        */
+
+        echo "\t";
+
+        foreach (Metadata::anonymousRoles() as $role) {
+            echo "$role\t";
+        }
+
+        // RoleInProject
+        foreach (Metadata::projects() as $project) {
+            foreach (Metadata::projectRoles() as $projectRole) {
+                echo "$project.$projectRole\t";
+            }
+        }
+
+        foreach (Metadata::superAdministratorRoles() as $role) {
+            echo "$role\t";
+        }
+
+        echo "\n";
+
+        // ItemTypeAction X Participation
+        foreach (Metadata::itemActions() as $action => $table) {
+            foreach (Metadata::itemTypes() as $itemType => $itemModels) {
+                //foreach (array("All", "Own") as $participation) {
+                echo "$action {$itemType}s\n";
+                //}
+            }
+
+        }
+
+    }
+
 }

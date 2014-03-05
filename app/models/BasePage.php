@@ -56,8 +56,10 @@
  * @property string $slug_vi
  * @property string $slug_zh_cn
  * @property string $slug_zh_tw
+ * @property string $page_qa_state_id
  *
  * Relations of table "page" available as properties of the model:
+ * @property PageQaState $pageQaState
  * @property Node $node
  * @property Page $clonedFrom
  * @property Page[] $pages
@@ -81,12 +83,12 @@ abstract class BasePage extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, slug_en, _about, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, page_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, owner_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, node_id', 'length', 'max' => 20),
+                array('cloned_from_id, node_id, page_qa_state_id', 'length', 'max' => 20),
                 array('_title, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
                 array('_about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, page_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -111,6 +113,7 @@ abstract class BasePage extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'pageQaState' => array(self::BELONGS_TO, 'PageQaState', 'page_qa_state_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Page', 'cloned_from_id'),
                 'pages' => array(self::HAS_MANY, 'Page', 'cloned_from_id'),
@@ -175,6 +178,7 @@ abstract class BasePage extends ActiveRecord
             'slug_vi' => Yii::t('model', 'Slug Vi'),
             'slug_zh_cn' => Yii::t('model', 'Slug Zh Cn'),
             'slug_zh_tw' => Yii::t('model', 'Slug Zh Tw'),
+            'page_qa_state_id' => Yii::t('model', 'Page Qa State'),
         );
     }
 
@@ -236,6 +240,7 @@ abstract class BasePage extends ActiveRecord
         $criteria->compare('t.slug_vi', $this->slug_vi, true);
         $criteria->compare('t.slug_zh_cn', $this->slug_zh_cn, true);
         $criteria->compare('t.slug_zh_tw', $this->slug_zh_tw, true);
+        $criteria->compare('t.page_qa_state_id', $this->page_qa_state_id);
 
 
         return $criteria;

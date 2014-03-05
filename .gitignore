@@ -1,11 +1,13 @@
 /vendor/
 /docs/
 /tests/codeception/_log
+/node_modules/
 
 nbproject
 .DS_Store
 *.swp
 .vagrant
 /components
+/bower_components
 www/graphs
 .idea/workspace.xml

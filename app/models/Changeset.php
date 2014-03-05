@@ -42,11 +42,35 @@ class Changeset extends BaseChangeset
         );
     }
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
+    }
+
+    /**
+     * Returns the ActiveRecord instances of type $activeRecordClass which the user has ownership on.
+     *
+     * @param $userId the user-id of the user which changesets will be returned
+     * @param $activeRecordClass
+     * @return array|CActiveRecord[]
+     */
+    public function getOwn($userId, $activeRecordClass)
+    {
+        $criteria = $this->getOwnCriteria($userId);
+        return ActiveRecord::model($activeRecordClass)->findAll($criteria);
+    }
+
+    public function getOwnCriteria($userId)
+    {
+        $criteria = new CDbCriteria();
+        $criteria->condition = 'node_id IN(SELECT node_id FROM changeset WHERE user_id = :userId)';
+        $criteria->params = array(':userId' => $userId);
+        return $criteria;
     }
 
 }

@@ -69,7 +69,6 @@
  * @property P3Media $thumbnailMedia
  * @property SlideshowFile $slideshowFile
  * @property Users $owner
- * @property SectionContent[] $sectionContents
  */
 abstract class BaseExercise extends ActiveRecord
 {
@@ -125,7 +124,6 @@ abstract class BaseExercise extends ActiveRecord
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
                 'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
                 'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
-                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'exercise_id'),
             )
         );
     }

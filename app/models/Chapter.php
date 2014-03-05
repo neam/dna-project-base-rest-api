@@ -6,7 +6,6 @@ Yii::import('Chapter.*');
 
 class Chapter extends BaseChapter
 {
-
     use ItemTrait;
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
@@ -17,6 +16,7 @@ class Chapter extends BaseChapter
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'A Chapter is a collection of related teaching material, useful to make a phenomena understandable. The video introduces the phenomena and the teachers guide suggest an effective way to convey this knowledge to students.');
         return parent::init();
     }
 
@@ -38,10 +38,10 @@ class Chapter extends BaseChapter
         return array_merge(
             parent::relations(),
             array(
-                'videos' => array(self::HAS_MANY, 'VideoFile', array('id' => 'node_id'), 'through' => 'outNodes'),
-                'exercises' => array(self::HAS_MANY, 'Exercise', array('id' => 'node_id'), 'through' => 'outNodes'),
-                'snapshots' => array(self::HAS_MANY, 'Snapshot', array('id' => 'node_id'), 'through' => 'outNodes'),
-                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
+                'videos' => array(self::HAS_MANY, 'VideoFile', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'videos')),
+                'exercises' => array(self::HAS_MANY, 'Exercise', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'exercises')),
+                'snapshots' => array(self::HAS_MANY, 'Snapshot', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'snapshots')),
+                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'related')),
             )
         );
     }
@@ -217,10 +217,13 @@ class Chapter extends BaseChapter
         );
     }
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 

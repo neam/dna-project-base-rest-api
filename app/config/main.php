@@ -47,7 +47,10 @@ $mainConfig = array(
         'application.modules.user.components'   => 'vendor.mishamx.yii-user.components',
         'gii-template-collection'               => 'vendor.phundament.gii-template-collection',
         'application.extensions.introjs.assets' => 'vendor.moein7tl.yii-introjs.introjs.assets',
-        'GtcRelation'                          => 'vendor.schmunk42.relation.widgets.GtcRelation',
+        'GtcRelation'                           => 'vendor.schmunk42.relation.widgets.GtcRelation',
+        // themes
+        'frontend'                              => 'application.themes.frontend',
+        'backend2'                              => 'application.themes.backend2',
     ),
     // autoloading model and component classes
     'import'     => array(
@@ -68,6 +71,7 @@ $mainConfig = array(
         // imports for components from packages, which do not support composer autoloading
         'vendor.mishamx.yii-user.models.*', // User Model
         'vendor.crisu83.yii-rights.components.*', // RWebUser
+        'vendor.clevertech.yiibooster.src.helpers.*', //
         'vendor.clevertech.yiibooster.src.widgets.*', //
         'vendor.anggiaj.eselect2.*',
         'vendor.schmunk42.relation.behaviors.GtcSaveRelationsBehavior',
@@ -215,14 +219,13 @@ $mainConfig = array(
             'appLayout'    => '//layouts/main',
             'userIdColumn' => 'id',
             'userClass'    => 'User',
-            'cssFile'      => '/themes/backend/css/yii-rights.css'
+            'cssFile'      => '/themes/frontend/assets/yii-rights/styles.css',
             #'install' => true, // Enables the installer.
             #'superuserName' => 'admin'
         ),
         'user'                 => array(
             'class'                => 'vendor.mishamx.yii-user.UserModule',
             'activeAfterRegister'  => false,
-            'customMessageCatalog' => 'UserModule.user', // disable fallback catalog
         ),
         'translate'            => array(
             'class' => 'vendor.gusnips.yii-translate.TranslateModule',
@@ -292,7 +295,7 @@ $mainConfig = array(
                         'js/app.js',
                     ),*/
                     'css'      => array(
-                        'p3.css',
+                        'main.css',
                     )
                 ),
             )
@@ -418,6 +421,7 @@ $mainConfig = array(
                 '^([^/]*)/replace' => 'frontend',
                 '^([^/]*)/translate(.*)' => 'frontend',
                 '^([^/]*)/author(.*)' => 'frontend',
+                '^node/view' => 'backend2',
                 '^site/giiscript' => 'backend2',
                 '^translate/(.*)'            => 'backend2',
                 '^(.*)' => 'frontend',

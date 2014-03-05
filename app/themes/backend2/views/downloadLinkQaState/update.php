@@ -61,7 +61,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'version',
                 'editable' => array(
-                    'url' => $this->createUrl('/downloadLinkQaState/editableSaver'),
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -74,7 +74,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => '_title',
                 'editable' => array(
-                    'url' => $this->createUrl('/downloadLinkQaState/editableSaver'),
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -87,7 +87,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/downloadLinkQaState/editableSaver'),
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -95,7 +95,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/downloadLinkQaState/editableSaver'),
+                    'url' => $this->createUrl('/downloadLink/editableSaver'),
                     //'placement' => 'right',
                 )
             ),

@@ -2,6 +2,11 @@
 
 class DownloadLinkController extends Controller
 {
+
+    use ItemController;
+
+    public $modelClass = "DownloadLink";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -200,7 +205,7 @@ class DownloadLinkController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'download-link-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'item-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

@@ -154,9 +154,29 @@ function js($url, $position = null)
  */
 function publishJs($file, $position = null)
 {
+    $hashByName = true;
+    $level = -1;
+    $forceCopy = (defined('DEV') && DEV) || !empty($_GET['refresh_assets']) ? true : false;
+
     $filePath = Yii::app()->getBasePath() . $file;
-    $jsFile = Yii::app()->getAssetManager()->publish($filePath);
+    $jsFile = Yii::app()->getAssetManager()->publish($filePath, $hashByName, $level, $forceCopy);
     Yii::app()->clientScript->registerScriptFile($jsFile, $position);
+}
+
+/**
+ * Publishes and registers a CSS file.
+ * @param string $file the CSS file.
+ * @param string $media
+ */
+function publishCss($file, $media = '')
+{
+    $hashByName = true;
+    $level = -1;
+    $forceCopy = (defined('DEV') && DEV) || !empty($_GET['refresh_assets']) ? true : false;
+
+    $filePath = Yii::app()->getBasePath() . $file;
+    $cssFile = Yii::app()->getAssetManager()->publish($filePath, $hashByName, $level, $forceCopy);
+    Yii::app()->clientScript->registerCssFile($cssFile, $media);
 }
 
 /**

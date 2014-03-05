@@ -17,6 +17,7 @@ class DataChunk extends BaseDataChunk
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'Data huge body of statistical data can be splitted in many ways. Most chunks are automaticaly geenrated from our database, but some needs to be uploaded manualy.');
         return parent::init();
     }
 
@@ -43,7 +44,7 @@ class DataChunk extends BaseDataChunk
             array(
 
                 // Ordinary validation rules
-                array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 66),
+                array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 66),
 
             )
         );
@@ -117,7 +118,7 @@ class DataChunk extends BaseDataChunk
                 'slug_en' => Yii::t('model', 'English Nice link'),
                 'about' => Yii::t('model', 'About'),
                 'about_en' => Yii::t('model', 'About English'),
-                'file' => Yii::t('model', 'File'),
+                'file_media_id' => Yii::t('model', 'File (Spreadsheet xls, xlsx, csv)'),
                 'metadata' => Yii::t('model', 'Metadata'),
                 'metadata_en' => Yii::t('model', 'Metadata English'),
             )
@@ -131,17 +132,20 @@ class DataChunk extends BaseDataChunk
                 'title' => Yii::t('model', 'A piece of data with a name. For example: "UN States, GDP per capita"'),
                 'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines'),
                 'about' => Yii::t('model', 'This describes the data mentioning the indicator, the geography and time range.'),
-                'file' => Yii::t('model', 'The file contains the latest numbers.'),
+                'file_media_id' => Yii::t('model', 'The file contains the latest numbers.'),
                 'metadata' => Yii::t('model', 'Enumerates what portions of the file that comes from what source and rougly summarizes how the data was combined.'),
             )
         );
     }
 
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 

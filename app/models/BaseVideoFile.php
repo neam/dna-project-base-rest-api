@@ -8,6 +8,7 @@
  * @property integer $version
  * @property string $cloned_from_id
  * @property string $_title
+ * @property string $_caption
  * @property string $slug_en
  * @property string $_about
  * @property integer $thumbnail_media_id
@@ -107,8 +108,6 @@
  * @property integer $processed_media_id_zh_tw
  *
  * Relations of table "video_file" available as properties of the model:
- * @property SectionContent[] $sectionContents
- * @property P3Media $processedMediaIdZhTw
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -153,6 +152,7 @@
  * @property P3Media $processedMediaIdVi
  * @property P3Media $processedMediaIdZh
  * @property P3Media $processedMediaIdZhCn
+ * @property P3Media $processedMediaIdZhTw
  * @property P3Media $thumbnailMedia
  * @property P3Media $subtitlesImportMedia
  * @property Users $owner
@@ -177,12 +177,12 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, _caption, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, subtitles_import_media_id, owner_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, video_file_qa_state_id', 'length', 'max' => 20),
-                array('_title, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
+                array('_title, _caption, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
                 array('_about, _subtitles, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, _caption, slug_en, _about, thumbnail_media_id, original_media_id, generate_processed_media, processed_media_id_en, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -207,8 +207,6 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'video_file_id'),
-                'processedMediaIdZhTw' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_tw'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
                 'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
@@ -253,6 +251,7 @@ abstract class BaseVideoFile extends ActiveRecord
                 'processedMediaIdVi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_vi'),
                 'processedMediaIdZh' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh'),
                 'processedMediaIdZhCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_cn'),
+                'processedMediaIdZhTw' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_tw'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
                 'subtitlesImportMedia' => array(self::BELONGS_TO, 'P3Media', 'subtitles_import_media_id'),
                 'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
@@ -270,6 +269,7 @@ abstract class BaseVideoFile extends ActiveRecord
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
             '_title' => Yii::t('model', 'Title'),
+            '_caption' => Yii::t('model', 'Caption'),
             'slug_en' => Yii::t('model', 'Slug En'),
             '_about' => Yii::t('model', 'About'),
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
@@ -380,6 +380,7 @@ abstract class BaseVideoFile extends ActiveRecord
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t._title', $this->_title, true);
+        $criteria->compare('t._caption', $this->_caption, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t._about', $this->_about, true);
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);

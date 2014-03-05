@@ -13,11 +13,13 @@
  * @property string $modified
  * @property integer $owner_id
  * @property string $node_id
+ * @property string $exam_question_alternative_qa_state_id
  *
  * Relations of table "exam_question_alternative" available as properties of the model:
- * @property Users $owner
+ * @property ExamQuestionAlternativeQaState $examQuestionAlternativeQaState
  * @property ExamQuestion $examQuestion
  * @property Node $node
+ * @property Users $owner
  */
 abstract class BaseExamQuestionAlternative extends ActiveRecord
 {
@@ -36,12 +38,12 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('slug, _markup, correct, exam_question_id, created, modified, owner_id, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('slug, _markup, correct, exam_question_id, created, modified, owner_id, node_id, exam_question_alternative_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('correct, owner_id', 'numerical', 'integerOnly' => true),
                 array('slug', 'length', 'max' => 255),
-                array('exam_question_id, node_id', 'length', 'max' => 20),
+                array('exam_question_id, node_id, exam_question_alternative_qa_state_id', 'length', 'max' => 20),
                 array('_markup, created, modified', 'safe'),
-                array('id, slug, _markup, correct, exam_question_id, created, modified, owner_id, node_id', 'safe', 'on' => 'search'),
+                array('id, slug, _markup, correct, exam_question_id, created, modified, owner_id, node_id, exam_question_alternative_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -66,9 +68,10 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
+                'examQuestionAlternativeQaState' => array(self::BELONGS_TO, 'ExamQuestionAlternativeQaState', 'exam_question_alternative_qa_state_id'),
                 'examQuestion' => array(self::BELONGS_TO, 'ExamQuestion', 'exam_question_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
             )
         );
     }
@@ -85,6 +88,7 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
             'modified' => Yii::t('model', 'Modified'),
             'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
+            'exam_question_alternative_qa_state_id' => Yii::t('model', 'Exam Question Alternative Qa State'),
         );
     }
 
@@ -103,6 +107,7 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
+        $criteria->compare('t.exam_question_alternative_qa_state_id', $this->exam_question_alternative_qa_state_id);
 
 
         return $criteria;

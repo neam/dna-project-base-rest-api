@@ -23,8 +23,10 @@
 <body>
 
 <div id="go-page-container" class="container" style="height: 100%; width: 100%">
-    <div id="banner" style="height: 16px; width: 100%; z-index: 1000; color: rgb(253, 253, 253); background-color: rgb(255, 153, 0); font-family: 'Arial Rounded MT Bold', sans-serif; font-size: 12pt; padding: 10px 0px 10px 0px;">
-        <a href="http://www.gapminder.org" style=" text-decoration: none; color: inherit; padding: 10px 0px 10px 10px;">GAPMINDER</a></div>
+    <div id="banner"
+         style="height: 16px; width: 100%; z-index: 1000; color: rgb(253, 253, 253); background-color: rgb(255, 153, 0); font-family: 'Arial Rounded MT Bold', sans-serif; font-size: 12pt; padding: 10px 0px 10px 0px;">
+        <a href="http://www.gapminder.org" style=" text-decoration: none; color: inherit; padding: 10px 0px 10px 10px;">GAPMINDER</a>
+    </div>
     <div id="go-page-content" style="height: 100%; width: 100%;">
         <?php echo $content; ?>
     </div>

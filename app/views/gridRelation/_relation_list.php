@@ -1,18 +1,25 @@
 <?php
 $items = $model->$relation;
 $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $label));
+$fromLabel = Yii::t('app', $model->getModelLabel(), 1);
 ?>
-<h3><?php echo ucfirst(Yii::t("model", $label)); ?></h3>
 <?php if ($items): ?>
+    <h3><?php echo Yii::t("model", "List of ". $label ." in this ". lcfirst($fromLabel)); ?></h3>
     <ul>
         <?php foreach ($items as $item):
             if (get_class($item) == "Node") {
-                $realItem = $item->item();
+                try {
+                    $realItem = $item->item();
+                } catch (CException $e) {
+                    var_dump("ignoring this exception: ", $e);
+                    continue;
+                }
             } else {
                 $realItem = $item;
             }
             $itemLabel = $realItem->itemLabel;
             $itemModel = lcfirst(get_class($realItem));
+            $toLabel = Yii::t('app', $realItem->getModelLabel(), 1);
             ?>
             <li>
                 <?php echo $itemLabel; ?>
@@ -26,8 +33,8 @@ $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $label));
                 ?>
                 <?php
                 $this->widget("bootstrap.widgets.TbButton", array(
-                    "label" => Yii::t("model", "Delete relation"),
-                    "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $realItem->node_id, "returnUrl" => Yii::app()->request->url),
+                    "label" => Yii::t("model", "Remove {$toLabel} from {$fromLabel}"),
+                    "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $realItem->node_id,  "relation" => $relation, "returnUrl" => Yii::app()->request->url),
                     "size" => "small",
                     "type" => "danger"
                 ));
@@ -35,6 +42,4 @@ $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $label));
             </li>
         <?php endforeach; ?>
     </ul>
-<?php else: ?>
-    <div><?php echo Yii::t("model", $noItemsLabel); ?></div>
 <?php endif; ?>

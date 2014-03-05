@@ -17,6 +17,7 @@ class Exercise extends BaseExercise
 
     public function init()
     {
+        $this->itemDescription = Yii::t('itemDescription', 'An exercise is a task for students, like a quiz, a group assignments or homework. The activity it describes could be anything from having students drawing a populaiotn on the school jard or instructions for students to teach their parents about global develoopment.');
         return parent::init();
     }
 
@@ -39,8 +40,9 @@ class Exercise extends BaseExercise
         return array_merge(
             parent::relations(),
             array(
-                'materials' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
-                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes'),
+                'parentChapters' => array(self::HAS_MANY, 'Chapter', array('id' => 'node_id'), 'through' => 'inNodes'),
+                'materials' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'materials')),
+                'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'related')),
             )
         );
     }
@@ -183,10 +185,13 @@ class Exercise extends BaseExercise
         );
     }
 
-    public function search()
+    public function search($criteria = null)
     {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
         return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria(),
+            'criteria' => $this->searchCriteria($criteria),
         ));
     }
 

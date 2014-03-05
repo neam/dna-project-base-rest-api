@@ -61,7 +61,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'version',
                 'editable' => array(
-                    'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -75,7 +75,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -83,7 +83,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/htmlChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/htmlChunk/editableSaver'),
                     //'placement' => 'right',
                 )
             ),

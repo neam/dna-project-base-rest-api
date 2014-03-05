@@ -60,7 +60,6 @@
  * @property integer $processed_media_id_zh_tw
  *
  * Relations of table "spreadsheet_file" available as properties of the model:
- * @property P3Media $processedMediaIdZhTw
  * @property DataSource $dataSource
  * @property Node $node
  * @property P3Media $originalMedia
@@ -106,6 +105,7 @@
  * @property P3Media $processedMediaIdVi
  * @property P3Media $processedMediaIdZh
  * @property P3Media $processedMediaIdZhCn
+ * @property P3Media $processedMediaIdZhTw
  * @property SpreadsheetFile $clonedFrom
  * @property SpreadsheetFile[] $spreadsheetFiles
  * @property Users $owner
@@ -157,7 +157,6 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'processedMediaIdZhTw' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_tw'),
                 'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
@@ -203,6 +202,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
                 'processedMediaIdVi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_vi'),
                 'processedMediaIdZh' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh'),
                 'processedMediaIdZhCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_cn'),
+                'processedMediaIdZhTw' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_tw'),
                 'clonedFrom' => array(self::BELONGS_TO, 'SpreadsheetFile', 'cloned_from_id'),
                 'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'cloned_from_id'),
                 'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),

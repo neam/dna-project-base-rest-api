@@ -4,6 +4,7 @@ class SnapshotController extends Controller
 {
 
     use ItemController;
+
     public $modelClass = "Snapshot";
 
     public $defaultAction = "admin";
@@ -242,7 +243,7 @@ class SnapshotController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'snapshot-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'item-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

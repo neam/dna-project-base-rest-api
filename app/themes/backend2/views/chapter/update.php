@@ -72,15 +72,23 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'weight',
                 'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title',
+                'name' => '_title',
                 'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'relation',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -88,7 +96,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -96,7 +104,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -160,15 +168,23 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'weight',
                 'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title',
+                'name' => '_title',
                 'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'relation',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -176,7 +192,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -184,7 +200,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/chapter/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -659,6 +675,12 @@ This relation is specified through another relation, which in turn is not a BELO
 <h2>
     <?php echo Yii::t('model', 'Snapshots'); ?>
     <small>snapshots</small>
+</h2>
+
+This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.
+<h2>
+    <?php echo Yii::t('model', 'Nodes'); ?>
+    <small>related</small>
 </h2>
 
 This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.

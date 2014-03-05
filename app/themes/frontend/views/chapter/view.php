@@ -1,8 +1,12 @@
 <?php
-//$this->breadcrumbs[Yii::t('crud', 'Chapters')] = array('index');
-$this->breadcrumbs[] = $model->title;
-
 $sections = $this->chapterSections($model);
+
+if (!isset($preview)) {
+    $preview = false;
+}
+if (!isset($evaluate)) {
+    $evaluate = false;
+}
 
 // Deps for smooth scroll
 $cs = Yii::app()->getClientScript();
@@ -82,9 +86,8 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
     </div>
     <div class="span9">
 
-        <?php $this->renderPartial("/_item/elements/flowbar", compact("model")); ?>
+        <?php $this->renderPartial("/_item/elements/flowbar", compact("model", "workflowCaption")); ?>
 
-        <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
         <!--<h1><?php echo Yii::t('crud', 'Chapter') ?> <small><?php echo CHtml::encode($model->title); ?></small></h1>-->
 
         <?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>
@@ -100,6 +103,12 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
 
                     <div class="page-header">
                         <h1><?= $section["title"] ?></h1>
+                        <?php if ($evaluate && isset($section["model"])): ?>
+
+                            <?php $this->widget('ModalCommentsWidget', array('model' => $section["model"], 'attribute' => 'title')); ?>
+
+                        <?php endif; ?>
+
                     </div>
 
                     <?php if (isset($section["subsections"])): ?>
@@ -108,12 +117,20 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                             <div class="view">
 
                                 <h2><?= $subsection["title"] ?></h2>
+                                <?php if ($evaluate && isset($subsection["model"])): ?>
+
+                                    <?php $this->widget('ModalCommentsWidget', array('model' => $subsection["model"], 'attribute' => 'title')); ?>
+
+                                <?php endif; ?>
 
                                 <?php
                                 if (isset($subsection["model"])) {
-                                    $this->renderPartial('/' . lcfirst(get_class($subsection["model"])) . '/_view', array("data" => $subsection["model"]));
+                                    $this->renderPartial('/' . lcfirst(get_class($subsection["model"])) . '/_view', array("data" => $subsection["model"], "evaluate" => $evaluate));
                                 } else {
                                     print $subsection["markup"];
+                                    if ($evaluate && isset($subsection["attribute"])) {
+                                        $this->widget('ModalCommentsWidget', array('model' => $model, 'attribute' => $subsection["attribute"]));
+                                    }
                                 }
                                 ?>
 
@@ -123,9 +140,12 @@ $cs->registerScriptFile($smootScrollJs, CClientScript::POS_HEAD);
                     <?php else: ?>
                         <?php
                         if (isset($section["model"])) {
-                            $this->renderPartial('/' . lcfirst(get_class($section["model"])) . '/_view', array("data" => $section["model"]));
+                            $this->renderPartial('/' . lcfirst(get_class($section["model"])) . '/_view', array("data" => $section["model"], "evaluate" => $evaluate));
                         } else {
                             print $section["markup"];
+                            if ($evaluate && isset($section["attribute"])) {
+                                $this->widget('ModalCommentsWidget', array('model' => $model, 'attribute' => $section["attribute"]));
+                            }
                         }
                         ?>
                     <?php endif; ?>
