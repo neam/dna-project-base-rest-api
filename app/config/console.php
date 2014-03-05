@@ -53,7 +53,7 @@ $consoleConfig = array(
                 'p3widgets'             => 'vendor.phundament.p3widgets.migrations',
                 'p3media'               => 'vendor.phundament.p3media.migrations',
                 'ckeditor-configurator' => 'vendor.schmunk42.ckeditor-configurator.migrations',
-                'translate'             => 'vendor.gusnips.yii-translate.migrations',
+                //'translate'             => 'vendor.gusnips.yii-translate.migrations',
                 'auditrail2'            => 'vendor.sammaye.auditrail2.migrations',
             ),
             // you can customize the modules migrations subdirectory which is used when you are using yii module config

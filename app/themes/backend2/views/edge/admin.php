@@ -35,7 +35,7 @@ Yii::app()->clientScript->registerScript('search', "
 
 
 <?php
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'edge-grid',
         'dataProvider' => $model->search(),
@@ -43,7 +43,7 @@ $this->widget('TbGridView',
         #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -113,11 +113,11 @@ $this->widget('TbGridView',
             ),
 
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Edge.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Edge.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Edge.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Edge.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Edge.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Edge.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',

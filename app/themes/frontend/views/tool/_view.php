@@ -32,8 +32,8 @@
     <br/>
 
     <?php /*
-    <b><?php echo CHtml::encode($data->getAttributeLabel('po_file_id')); ?>:</b>
-    <?php echo CHtml::encode($data->po_file_id); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('i18n_catalog_id')); ?>:</b>
+    <?php echo CHtml::encode($data->i18n_catalog_id); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>

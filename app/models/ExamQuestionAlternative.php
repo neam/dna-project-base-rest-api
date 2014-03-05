@@ -123,9 +123,9 @@ class ExamQuestionAlternative extends BaseExamQuestionAlternative
         return array_merge(
             parent::attributeHints(),
             array(
-                'slug' => Yii::t('model',''),
-                'markup' => Yii::t('model',''),
-                'correct' => Yii::t('model',''),
+                'slug' => Yii::t('model', ''),
+                'markup' => Yii::t('model', ''),
+                'correct' => Yii::t('model', ''),
             )
         );
     }

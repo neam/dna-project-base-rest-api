@@ -5,47 +5,47 @@
             case "create":
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Manage"),
-                    "icon" => "icon-list-alt",
+                    "icon" => "glyphicon-list-alt",
                     "url" => array("admin")
                 ));
                 break;
             case "admin":
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Add"),
-                    "icon" => "icon-plus",
+                    "icon" => "glyphicon-plus",
                     "url" => array("add")
                 ));
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Create"),
-                    "icon" => "icon-plus",
+                    "icon" => "glyphicon-plus",
                     "url" => array("create")
                 ));
                 break;
             case "view":
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Manage"),
-                    "icon" => "icon-list-alt",
+                    "icon" => "glyphicon-list-alt",
                     "url" => array("admin")
                 ));
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Edit"),
-                    "icon" => "icon-edit",
+                    "icon" => "glyphicon-edit",
                     "url" => array("continueAuthoring", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Update"),
-                    "icon" => "icon-edit",
+                    "icon" => "glyphicon-edit",
                     "url" => array("update", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Create"),
-                    "icon" => "icon-plus",
+                    "icon" => "glyphicon-plus",
                     "url" => array("create")
                 ));
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Delete"),
                     "type" => "danger",
-                    "icon" => "icon-remove icon-white",
+                    "icon" => "glyphicon-remove icon-white",
                     "htmlOptions" => array(
                         "submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
                         "confirm" => Yii::t("model", "Do you want to delete this item?"))
@@ -54,18 +54,18 @@
             case "update":
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Manage"),
-                    "icon" => "icon-list-alt",
+                    "icon" => "glyphicon-list-alt",
                     "url" => array("admin")
                 ));
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "View"),
-                    "icon" => "icon-eye-open",
+                    "icon" => "glyphicon-eye-open",
                     "url" => array("view", "id" => $model->{$model->tableSchema->primaryKey})
                 ));
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Delete"),
                     "type" => "danger",
-                    "icon" => "icon-remove icon-white",
+                    "icon" => "glyphicon-remove icon-white",
                     "htmlOptions" => array(
                         "submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
                         "confirm" => Yii::t("model", "Do you want to delete this item?"))
@@ -78,7 +78,7 @@
             <?php
             $this->widget('\TbButton', array(
                 'label' => Yii::t('model', 'Search'),
-                'icon' => 'icon-search',
+                'icon' => 'glyphicon-search',
                 'htmlOptions' => array('class' => 'search-button')
             ));?>
         </div>
@@ -90,8 +90,8 @@
                 'buttons' => array(
                     array(
                         'label' => Yii::t('model', 'Relations'),
-                        'icon' => 'icon-search',
-                        'items' => array(array('label' => 'outEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'outNodes - Node', 'url' => array('//node/admin')), array('label' => 'inEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'inNodes - Node', 'url' => array('//node/admin')), array('label' => 'examQuestionQaState - ExamQuestionQaState', 'url' => array('//examQuestionQaState/admin')), array('label' => 'clonedFrom - Snapshot', 'url' => array('//snapshot/admin')), array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'sourceNode - Node', 'url' => array('//node/admin')), array('label' => 'owner - Users', 'url' => array('//users/admin')), array('label' => 'examQuestionAlternatives - ExamQuestionAlternative', 'url' => array('//examQuestionAlternative/admin')), array('label' => 'sectionContents - SectionContent', 'url' => array('//sectionContent/admin')), array('label' => 'datasource - DataSource', 'url' => array('//dataSource/admin')), array('label' => 'related - Node', 'url' => array('//node/admin'))
+                        'icon' => 'glyphicon-search',
+                        'items' => array(array('label' => 'outEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'outNodes - Node', 'url' => array('//node/admin')), array('label' => 'inEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'inNodes - Node', 'url' => array('//node/admin')), array('label' => 'owner - Account', 'url' => array('//account/admin')), array('label' => 'examQuestionQaState - ExamQuestionQaState', 'url' => array('//examQuestionQaState/admin')), array('label' => 'clonedFrom - Snapshot', 'url' => array('//snapshot/admin')), array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'sourceNode - Node', 'url' => array('//node/admin')), array('label' => 'examQuestionAlternatives - ExamQuestionAlternative', 'url' => array('//examQuestionAlternative/admin')), array('label' => 'datasource - DataSource', 'url' => array('//dataSource/admin')), array('label' => 'related - Node', 'url' => array('//node/admin'))
                         )
                     ),
                 ),

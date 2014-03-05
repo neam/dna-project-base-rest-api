@@ -39,7 +39,7 @@ $this->renderPartial('_form', array('model' => $model));
     <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('from_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('edge/create', 'Edge' => array('from_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
 
@@ -47,13 +47,13 @@ $this->renderPartial('_form', array('model' => $model));
 
 <?php
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'outEdges');
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'edge-grid',
         'dataProvider' => $relatedSearchModel->search(),
         'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->outEdges) > 1 ? $relatedSearchModel : null,
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -109,7 +109,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('edge/view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('edge/update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('edge/delete', array('id' => \$data->id))",
@@ -135,7 +135,7 @@ This relation is specified through another relation, which in turn is not a BELO
     <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('to_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('edge/create', 'Edge' => array('to_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
 
@@ -143,13 +143,13 @@ This relation is specified through another relation, which in turn is not a BELO
 
 <?php
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'inEdges');
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'edge-grid',
         'dataProvider' => $relatedSearchModel->search(),
         'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->inEdges) > 1 ? $relatedSearchModel : null,
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -205,7 +205,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('edge/view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('edge/update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('edge/delete', array('id' => \$data->id))",
@@ -231,20 +231,20 @@ This relation is specified through another relation, which in turn is not a BELO
     <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('tool_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('snapshot/create', 'Snapshot' => array('tool_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
     ?></div>
 
 <?php
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'snapshots');
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'snapshot-grid',
         'dataProvider' => $relatedSearchModel->search(),
         'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->snapshots) > 1 ? $relatedSearchModel : null,
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -306,7 +306,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'owner_id',
                     'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -656,7 +656,7 @@ $this->widget('TbGridView',
                 ),
             */
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('snapshot/view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('snapshot/update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('snapshot/delete', array('id' => \$data->id))",
@@ -676,20 +676,20 @@ $this->widget('TbGridView',
     <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('tool/create', 'Tool' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('tool/create', 'Tool' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
     ?></div>
 
 <?php
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'tools');
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'tool-grid',
         'dataProvider' => $relatedSearchModel->search(),
         'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->tools) > 1 ? $relatedSearchModel : null,
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -721,9 +721,9 @@ $this->widget('TbGridView',
             #'_about',
             #'embed_template',
             array(
-                'name' => 'po_file_id',
-                'value' => 'CHtml::value($data, \'poFile.itemLabel\')',
-                'filter' => '', //CHtml::listData(PoFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'name' => 'i18n_catalog_id',
+                'value' => 'CHtml::value($data, \'i18nCatalog.itemLabel\')',
+                'filter' => '', //CHtml::listData(I18nCatalog::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
@@ -745,7 +745,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'owner_id',
                     'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -1095,7 +1095,7 @@ $this->widget('TbGridView',
                 ),
             */
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('tool/view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('tool/update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('tool/delete', array('id' => \$data->id))",

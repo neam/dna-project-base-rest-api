@@ -129,7 +129,6 @@ class DownloadLinkController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
         $es = new TbEditableSaver('DownloadLink'); // classname of model to be updated
         $es->update();
     }

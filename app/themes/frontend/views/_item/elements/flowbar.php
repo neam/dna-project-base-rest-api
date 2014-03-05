@@ -11,7 +11,8 @@
                 } ?>
             </small>
             <small><?php echo Yii::t('app', 'Version') ?>: <?php echo $model->version; ?></small>
-            <small><?php echo Yii::t('app', 'Status'); ?>: <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?></small>
+            <small><?php echo Yii::t('app', 'Status'); ?>
+                : <?php echo Yii::t('statuses', $model->qaStateBehavior()->statusLabel); ?></small>
             <?php if ($this->action->id != 'evaluate'): ?>
                 <div class="pull-right">
                     <div class='btn-group'>

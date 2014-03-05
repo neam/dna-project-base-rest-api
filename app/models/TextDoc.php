@@ -44,7 +44,7 @@ class TextDoc extends BaseTextDoc
                 // Ordinary validation rules
                 array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 120),
                 array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 250),
-                
+
             )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);

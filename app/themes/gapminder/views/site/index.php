@@ -31,9 +31,24 @@
     </div>
 
     <div class="content-section section-website">
+        <h2><?php print Yii::t('app', 'Internally managed content'); ?></h2>
+        <?php foreach (DataModel::internalItemModels() as $modelClass => $table): ?>
+            <?php $this->renderPartial("_item-type-introduction", compact("modelClass")); ?>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="content-section section-website">
         <h2><?php print Yii::t('app', 'Website content'); ?></h2>
         <?php foreach (DataModel::websiteContentItemModels() as $modelClass => $table): ?>
             <?php $this->renderPartial("_item-type-introduction", compact("modelClass")); ?>
         <?php endforeach; ?>
     </div>
+
+    <div class="content-section section-website">
+        <h2><?php print Yii::t('app', 'Waffle content'); ?></h2>
+        <?php foreach (DataModel::waffleItemModels() as $modelClass => $table): ?>
+            <?php $this->renderPartial("_item-type-introduction", compact("modelClass")); ?>
+        <?php endforeach; ?>
+    </div>
+
 </div>

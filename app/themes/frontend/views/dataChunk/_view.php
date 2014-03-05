@@ -1,10 +1,10 @@
 <div class="view well well-white">
 
     <div class="admin-container hide">
-        <?php echo CHtml::link('<i class="glyphicon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Data Chunk'))), array('dataChunk/view', 'id' => $data->id), array('class' => 'btn')); ?>
+        <?php echo CHtml::link('<i class="glyphicon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Data Chunk'))), array('dataArticle/view', 'id' => $data->id), array('class' => 'btn')); ?>
     </div>
     <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-    <?php echo CHtml::link(CHtml::encode($data->id), array('dataChunk/view', 'id' => $data->id)); ?>
+    <?php echo CHtml::link(CHtml::encode($data->id), array('dataArticle/view', 'id' => $data->id)); ?>
     <br/>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('version')); ?>:</b>
@@ -226,15 +226,15 @@
 
     */
     ?>
-    <?php if (Yii::app()->user->checkAccess('DataChunk.*')): ?>
+    <?php if (Yii::app()->user->checkAccess('DataArticle.*')): ?>
         <div class="admin-container hide">
-            <?php echo CHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Data Chunk'))), array('dataChunk/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            <?php echo CHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Data Chunk'))), array('dataArticle/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
     <?php if (Yii::app()->user->checkAccess('Developer')): ?>
         <div class="admin-container hide">
             <h3>Developer access</h3>
-            <?php echo CHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Data Chunk'))), array('dataChunk/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            <?php echo CHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Data Chunk'))), array('dataArticle/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
 

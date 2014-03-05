@@ -1,10 +1,10 @@
 <?php
 
-class DataChunkController extends Controller
+class DataArticleController extends Controller
 {
     use ItemController;
 
-    public $modelClass = "DataChunk";
+    public $modelClass = "DataArticle";
 
     #public $layout='//layouts/column2';
 
@@ -33,7 +33,7 @@ class DataChunkController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('DataChunk.*'),
+                'roles' => array('DataArticle.*'),
             ),
             array(
                 'deny',
@@ -47,7 +47,7 @@ class DataChunkController extends Controller
         parent::beforeAction($action);
         // map identifcationColumn to id
         if (!isset($_GET['id']) && isset($_GET['id'])) {
-            $model = DataChunk::model()->find(
+            $model = DataArticle::model()->find(
                 'id = :id',
                 array(
                     ':id' => $_GET['id']
@@ -73,13 +73,13 @@ class DataChunkController extends Controller
 
     public function actionCreate()
     {
-        $model = new DataChunk;
+        $model = new DataArticle;
         $model->scenario = $this->scenario;
 
         $this->performAjaxValidation($model, 'data-chunk-form');
 
-        if (isset($_POST['DataChunk'])) {
-            $model->attributes = $_POST['DataChunk'];
+        if (isset($_POST['DataArticle'])) {
+            $model->attributes = $_POST['DataArticle'];
 
             try {
                 if ($model->save()) {
@@ -92,8 +92,8 @@ class DataChunkController extends Controller
             } catch (Exception $e) {
                 $model->addError('id', $e->getMessage());
             }
-        } elseif (isset($_GET['DataChunk'])) {
-            $model->attributes = $_GET['DataChunk'];
+        } elseif (isset($_GET['DataArticle'])) {
+            $model->attributes = $_GET['DataArticle'];
         }
 
         $this->render('create', array('model' => $model));
@@ -106,8 +106,8 @@ class DataChunkController extends Controller
 
         $this->performAjaxValidation($model, 'data-chunk-form');
 
-        if (isset($_POST['DataChunk'])) {
-            $model->attributes = $_POST['DataChunk'];
+        if (isset($_POST['DataArticle'])) {
+            $model->attributes = $_POST['DataArticle'];
 
 
             try {
@@ -129,15 +129,15 @@ class DataChunkController extends Controller
     public function actionEditableSaver()
     {
         Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
-        $es = new TbEditableSaver('DataChunk'); // classname of model to be updated
+        $es = new TbEditableSaver('DataArticle'); // classname of model to be updated
         $es->update();
     }
 
     public function actionEditableCreator()
     {
-        if (isset($_POST['DataChunk'])) {
-            $model = new DataChunk;
-            $model->attributes = $_POST['DataChunk'];
+        if (isset($_POST['DataArticle'])) {
+            $model = new DataArticle;
+            $model->attributes = $_POST['DataArticle'];
             if ($model->save()) {
                 echo CJSON::encode($model->getAttributes());
             } else {
@@ -177,17 +177,17 @@ class DataChunkController extends Controller
 
     public function actionIndex()
     {
-        $dataProvider = new CActiveDataProvider('DataChunk');
+        $dataProvider = new CActiveDataProvider('DataArticle');
         $this->render('index', array('dataProvider' => $dataProvider,));
     }
 
     public function actionAdmin()
     {
-        $model = new DataChunk('search');
+        $model = new DataArticle('search');
         $model->unsetAttributes();
 
-        if (isset($_GET['DataChunk'])) {
-            $model->attributes = $_GET['DataChunk'];
+        if (isset($_GET['DataArticle'])) {
+            $model->attributes = $_GET['DataArticle'];
         }
 
         $this->render('admin', array('model' => $model,));
@@ -195,7 +195,7 @@ class DataChunkController extends Controller
 
     public function loadModel($id)
     {
-        $model = DataChunk::model()->findByPk($id);
+        $model = DataArticle::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }

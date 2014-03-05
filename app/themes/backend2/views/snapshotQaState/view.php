@@ -21,45 +21,233 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->status); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('draft_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->draft_validation_progress); ?>
-<br/>
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('preview_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->preview_validation_progress); ?>
-<br/>
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('public_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->public_validation_progress); ?>
-<br/>
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
-<?php echo CHtml::encode($model->approval_progress); ?>
-<br/>
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('proofing_progress')); ?>:</b>
-<?php echo CHtml::encode($model->proofing_progress); ?>
-<br/>
-
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('translations_draft_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translations_draft_validation_progress); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('translations_preview_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translations_preview_validation_progress); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('translations_public_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translations_public_validation_progress); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('translations_approval_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translations_approval_progress); ?>
-<br />
+<br/>
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('translations_proofing_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translations_proofing_progress); ?>
+<br/>
+
+<?php /*
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_approved')); ?>:</b>
+<?php echo CHtml::encode($model->slug_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('link_approved')); ?>:</b>
+<?php echo CHtml::encode($model->link_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('draft_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->draft_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->slug_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('preview_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->preview_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('link_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->link_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('public_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->public_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_en_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_en_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_ar_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_ar_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_bg_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_bg_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_ca_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_ca_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_cs_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_cs_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_da_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_da_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_de_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_de_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_en_gb_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_en_gb_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_en_us_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_en_us_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_el_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_el_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_es_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_es_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_fi_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_fi_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_fil_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_fil_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_fr_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_fr_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_hi_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_hi_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_hr_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_hr_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_hu_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_hu_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_id_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_id_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_iw_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_iw_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_it_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_it_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_ja_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_ja_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_ko_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_ko_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_lt_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_lt_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_lv_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_lv_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_nl_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_nl_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_no_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_no_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_pl_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_pl_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_pt_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_pt_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_pt_br_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_pt_br_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_pt_pt_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_pt_pt_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_ro_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_ro_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_ru_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_ru_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_sk_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_sk_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_sl_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_sl_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_sr_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_sr_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_sv_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_sv_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_th_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_th_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_tr_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_tr_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_uk_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_uk_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_vi_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_vi_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_zh_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_cn_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_zh_cn_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
+<?php echo CHtml::encode($model->approval_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('proofing_progress')); ?>:</b>
+<?php echo CHtml::encode($model->proofing_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_zh_tw_validation_progress); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('previewing_welcome')); ?>:</b>
@@ -70,20 +258,36 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->candidate_for_public_status); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_approved')); ?>:</b>
-<?php echo CHtml::encode($model->slug_approved); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_en_approved')); ?>:</b>
+<?php echo CHtml::encode($model->slug_en_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('link_approved')); ?>:</b>
-<?php echo CHtml::encode($model->link_approved); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('vizabi_state_approved')); ?>:</b>
+<?php echo CHtml::encode($model->vizabi_state_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->slug_proofed); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_media_id_approved')); ?>:</b>
+<?php echo CHtml::encode($model->thumbnail_media_id_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('link_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->link_proofed); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
+<?php echo CHtml::encode($model->title_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->slug_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('vizabi_state_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->vizabi_state_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_media_id_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->thumbnail_media_id_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->title_proofed); ?>
 <br />
 
     */
@@ -99,7 +303,7 @@ $this->breadcrumbs[] = $model->id;
 
         <?php
         $this->widget(
-            'TbDetailView',
+            '\TbDetailView',
             array(
                 'data' => $model,
                 'attributes' => array(
@@ -124,71 +328,6 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'status',
-                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'draft_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'draft_validation_progress',
-                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'preview_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'preview_validation_progress',
-                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'public_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'public_validation_progress',
-                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'approval_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'approval_progress',
-                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'proofing_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'proofing_progress',
                                     'url' => $this->createUrl('/snapshotQaState/editableSaver'),
                                 ),
                                 true
@@ -260,32 +399,6 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'previewing_welcome',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'previewing_welcome',
-                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'candidate_for_public_status',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'candidate_for_public_status',
-                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
                         'name' => 'slug_approved',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -312,6 +425,19 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'draft_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'draft_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
                         'name' => 'slug_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -325,6 +451,19 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'preview_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'preview_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
                         'name' => 'link_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -332,6 +471,734 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'link_proofed',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'public_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'public_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_en_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_en_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_ar_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_ar_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_bg_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_bg_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_ca_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_ca_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_cs_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_cs_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_da_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_da_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_de_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_de_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_en_gb_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_en_gb_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_en_us_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_en_us_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_el_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_el_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_es_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_es_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_fi_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_fi_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_fil_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_fil_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_fr_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_fr_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_hi_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_hi_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_hr_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_hr_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_hu_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_hu_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_id_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_id_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_iw_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_iw_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_it_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_it_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_ja_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_ja_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_ko_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_ko_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_lt_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_lt_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_lv_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_lv_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_nl_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_nl_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_no_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_no_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_pl_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_pl_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_pt_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_pt_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_pt_br_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_pt_br_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_pt_pt_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_pt_pt_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_ro_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_ro_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_ru_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_ru_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_sk_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_sk_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_sl_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_sl_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_sr_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_sr_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_sv_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_sv_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_th_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_th_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_tr_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_tr_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_uk_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_uk_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_vi_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_vi_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_zh_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_zh_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_zh_cn_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_zh_cn_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'approval_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'approval_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'proofing_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'proofing_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'translate_into_zh_tw_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_zh_tw_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'previewing_welcome',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'previewing_welcome',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'candidate_for_public_status',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'candidate_for_public_status',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'slug_en_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_en_approved',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'vizabi_state_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'vizabi_state_approved',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'thumbnail_media_id_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'thumbnail_media_id_approved',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'title_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_approved',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'slug_en_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_en_proofed',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'vizabi_state_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'vizabi_state_proofed',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'thumbnail_media_id_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'thumbnail_media_id_proofed',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'title_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_proofed',
                                     'url' => $this->createUrl('/snapshotQaState/editableSaver'),
                                 ),
                                 true

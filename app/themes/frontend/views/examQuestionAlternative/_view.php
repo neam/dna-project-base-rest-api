@@ -40,6 +40,10 @@
     <?php echo CHtml::encode($data->node_id); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('exam_question_alternative_qa_state_id')); ?>:</b>
+    <?php echo CHtml::encode($data->exam_question_alternative_qa_state_id); ?>
+    <br />
+
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('ExamQuestionAlternative.*')): ?>

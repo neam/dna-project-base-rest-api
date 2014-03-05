@@ -16,18 +16,10 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
-                    'go',
-                ),
-                'roles' => array(
-                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
-                ),
-            ),
-            array('allow',
-                'actions' => array(
                     'view',
                 ),
                 'roles' => array(
-                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
+                    'Item.View',
                 ),
             ),
             array('allow',
@@ -35,7 +27,7 @@ trait ItemController
                     'browse',
                 ),
                 'roles' => array(
-                    (DataModel::isGoModel($this->modelClass) || DataModel::educationalItemModels($this->modelClass) || DataModel::websiteContentItemModels($this->modelClass)) ? 'Item.Go' : 'Developer' // TODO: Refactor this
+                    'Item.Browse',
                 ),
             ),
             array('allow',
@@ -61,7 +53,7 @@ trait ItemController
                     'deleteEdge',
                 ),
                 'roles' => array(
-                    'Item.DeleteEdge'
+                    'Item.Edit'
                 ),
             ),
             array('allow',
@@ -126,7 +118,7 @@ trait ItemController
                     'proofRead',
                 ),
                 'roles' => array(
-                    'Item.ProofRead'
+                    'Item.Proofread'
                 ),
             ),
             array('allow',
@@ -575,7 +567,7 @@ trait ItemController
         $this->render('/_item/review', array('model' => $model));
     }
 
-    public function actionProofRead($id)
+    public function actionProofread($id)
     {
         $model = $this->loadModel($id);
         $this->render('/_item/proofread', array('model' => $model));
@@ -831,13 +823,6 @@ trait ItemController
     {
         $model = $this->saveAndContinueOnSuccess($id);
         $this->render('/_item/replace', array('model' => $model));
-    }
-
-    public function actionGo($id)
-    {
-        $this->layout = 'go';
-        $model = $this->loadModel($id);
-        $this->render('/_item/go', array('model' => $model));
     }
 
     public function actionTranslationOverview($id)

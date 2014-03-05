@@ -50,6 +50,11 @@
         <?php echo $form->textField($model, 'node_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->label($model, 'exam_question_alternative_qa_state_id'); ?>
+        <?php echo $form->textField($model, 'exam_question_alternative_qa_state_id', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>

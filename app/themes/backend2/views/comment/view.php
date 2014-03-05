@@ -67,7 +67,7 @@ $this->breadcrumbs[] = $model->id;
 
         <?php
         $this->widget(
-            'TbDetailView',
+            '\TbDetailView',
             array(
                 'data' => $model,
                 'attributes' => array(
@@ -87,21 +87,21 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'author_user_id',
                         'value' => ($model->authorUser !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->authorUser->itemLabel,
-                                    array('//users/view', 'id' => $model->authorUser->id),
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->authorUser->itemLabel,
+                                    array('//account/view', 'id' => $model->authorUser->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//users/update', 'id' => $model->authorUser->id),
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//account/update', 'id' => $model->authorUser->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'parent_id',
                         'value' => ($model->parent !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->parent->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->parent->itemLabel,
                                     array('//comment/view', 'id' => $model->parent->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//comment/update', 'id' => $model->parent->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',

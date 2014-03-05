@@ -74,7 +74,7 @@ class Node extends BaseNode
         // Figure out parent item
         foreach (array(
                      'chapters' => array(self::HAS_MANY, 'Chapter', 'node_id'),
-                     'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'node_id'),
+                     'dataArticles' => array(self::HAS_MANY, 'DataArticle', 'node_id'),
                      'dataSources' => array(self::HAS_MANY, 'DataSource', 'node_id'),
                      'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'node_id'),
                      'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'node_id'),

@@ -36,10 +36,6 @@
     <?php echo CHtml::encode($data->thumbnail_media_id); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slideshow_file_id')); ?>:</b>
-    <?php echo CHtml::encode($data->slideshow_file_id); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
     <?php echo CHtml::encode($data->created); ?>
     <br />

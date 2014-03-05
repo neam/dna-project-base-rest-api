@@ -1,11 +1,11 @@
 <?php
-/* @var DataChunkController|ItemController $this */
-/* @var DataChunk|ItemTrait $data */
+/* @var DataArticleController|ItemController $this */
+/* @var DataArticle|ItemTrait $data */
 ?>
 <div class="admin-container hide">
     <?php echo CHtml::link(
         '<i class="glyphicon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Data Chunk'))),
-        array('dataChunk/view', 'id' => $data->id), array('class' => 'btn')
+        array('dataArticle/view', 'id' => $data->id), array('class' => 'btn')
     ); ?>
 </div>
 <?php $this->widget(
@@ -216,11 +216,11 @@
 <?php echo CHtml::encode($data->slug_zh_tw); ?>
 <br />
 */ ?>
-<?php if (Yii::app()->user->checkAccess('DataChunk.*')): ?>
+<?php if (Yii::app()->user->checkAccess('DataArticle.*')): ?>
     <div class="admin-container hide">
         <?php echo CHtml::link(
             '<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Data Chunk'))),
-            array('dataChunk/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')
+            array('dataArticle/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')
         ); ?>
     </div>
 <?php endif; ?>
@@ -229,7 +229,7 @@
         <h3><?php Yii::t('app', 'Developer access'); ?></h3>
         <?php echo CHtml::link(
             '<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Data Chunk'))),
-            array('dataChunk/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')
+            array('dataArticle/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')
         ); ?>
     </div>
 <?php endif; ?>

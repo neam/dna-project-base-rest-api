@@ -92,8 +92,8 @@ class SectionController extends Controller
             if (isset($_POST['Section']['SlideshowFIle'])) {
                 $model->setRelationRecords('slideshoFiles', $_POST['Section']['SlideshowFIle']);
             }
-            if (isset($_POST['Section']['DataChunk'])) {
-                $model->setRelationRecords('dataChunks', $_POST['Section']['DataChunk']);
+            if (isset($_POST['Section']['DataArticle'])) {
+                $model->setRelationRecords('dataArticles', $_POST['Section']['DataArticle']);
             }
             if (isset($_POST['Section']['DownloadLink'])) {
                 $model->setRelationRecords('downloadLinks', $_POST['Section']['DownloadLink']);
@@ -154,10 +154,10 @@ class SectionController extends Controller
             } else {
                 $model->setRelationRecords('slideshoFiles', array());
             }
-            if (isset($_POST['Section']['DataChunk'])) {
-                $model->setRelationRecords('dataChunks', $_POST['Section']['DataChunk']);
+            if (isset($_POST['Section']['DataArticle'])) {
+                $model->setRelationRecords('dataArticles', $_POST['Section']['DataArticle']);
             } else {
-                $model->setRelationRecords('dataChunks', array());
+                $model->setRelationRecords('dataArticles', array());
             }
             if (isset($_POST['Section']['DownloadLink'])) {
                 $model->setRelationRecords('downloadLinks', $_POST['Section']['DownloadLink']);

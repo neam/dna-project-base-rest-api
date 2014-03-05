@@ -104,7 +104,7 @@
  * @property integer $processed_media_id_zh_tw
  *
  * Relations of table "text_doc" available as properties of the model:
- * @property Users $owner
+ * @property Account $owner
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -201,7 +201,7 @@ abstract class BaseTextDoc extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
                 'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),

@@ -35,7 +35,7 @@ Yii::app()->clientScript->registerScript('search', "
 
 
 <?php
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'comment-grid',
         'dataProvider' => $model->search(),
@@ -43,7 +43,7 @@ $this->widget('TbGridView',
         #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -64,7 +64,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'author_user_id',
                 'value' => 'CHtml::value($data, \'authorUser.itemLabel\')',
-                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'parent_id',
@@ -124,11 +124,11 @@ $this->widget('TbGridView',
             */
 
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("Comment.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("Comment.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("Comment.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Comment.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Comment.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("17a79fbd.Comment.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',

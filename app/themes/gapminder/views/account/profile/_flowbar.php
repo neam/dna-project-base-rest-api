@@ -5,7 +5,7 @@
     <div class="flowbar-head">
         <div class="head-title">
             <h1 class="profile-heading">
-                <?php echo $model->profiles->fullName; ?>
+                <?php echo $model->profile->fullName; ?>
                 <small><?php echo Yii::t('account', 'Profile') ?> <!--#<?php echo $model->id ?>--></small>
             </h1>
         </div>

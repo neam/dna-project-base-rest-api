@@ -59,11 +59,11 @@
  * @property string $slug_zh_tw
  *
  * Relations of table "exam_question" available as properties of the model:
+ * @property Account $owner
  * @property ExamQuestionQaState $examQuestionQaState
  * @property Snapshot $clonedFrom
  * @property Node $node
  * @property Node $sourceNode
- * @property Users $owner
  * @property ExamQuestionAlternative[] $examQuestionAlternatives
  */
 abstract class BaseExamQuestion extends ActiveRecord
@@ -113,11 +113,11 @@ abstract class BaseExamQuestion extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'examQuestionQaState' => array(self::BELONGS_TO, 'ExamQuestionQaState', 'exam_question_qa_state_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Snapshot', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'sourceNode' => array(self::BELONGS_TO, 'Node', 'source_node_id'),
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
                 'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'exam_question_id'),
             )
         );

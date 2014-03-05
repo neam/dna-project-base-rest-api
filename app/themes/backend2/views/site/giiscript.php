@@ -79,7 +79,7 @@
 <?php
 echo CHtml::dropDownList('model', null, array(
     'Chapter' => 'Chapter',
-    'DataChunk' => 'DataChunk',
+    'DataArticle' => 'DataArticle',
     'DataSource' => 'DataSource',
     'DownloadLink' => 'DownloadLink',
     'ExamQuestion' => 'ExamQuestion',

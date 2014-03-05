@@ -18,7 +18,7 @@
         <?php $this->renderPartial('/slideshowFile/_view', array('data' => $data->slideshowFile)); ?>
     <?php
     elseif (!is_null($data->data_chunk_id)): ?>
-        <?php $this->renderPartial('/dataChunk/_view', array('data' => $data->dataChunk)); ?>
+        <?php $this->renderPartial('/dataArticle/_view', array('data' => $data->dataArticle)); ?>
     <?php
     elseif (!is_null($data->download_link_id)): ?>
         <?php $this->renderPartial('/downloadLink/_view', array('data' => $data->downloadLink)); ?>

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "adfd6b7a0510a771b91922149a709467",
+    "hash": "874414d6b2c9e1ad0ab64c9cde8d7cec",
     "packages": [
         {
             "name": "bwoester/yii-event-interceptor",
@@ -472,16 +472,16 @@
         },
         {
             "name": "neam/yii-i18n-columns",
-            "version": "0.3.1",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-i18n-columns.git",
-                "reference": "0.3.1"
+                "reference": "2e39f0847117cfed0a47e3079899a51b7f519c74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/0.3.1",
-                "reference": "0.3.1",
+                "url": "https://api.github.com/repos/neam/yii-i18n-columns/zipball/2e39f0847117cfed0a47e3079899a51b7f519c74",
+                "reference": "2e39f0847117cfed0a47e3079899a51b7f519c74",
                 "shasum": ""
             },
             "require": {
@@ -513,10 +513,10 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/neam/yii-i18n-columns/tree/master",
+                "source": "https://github.com/neam/yii-i18n-columns/tree/develop",
                 "issues": "https://github.com/neam/yii-i18n-columns/issues"
             },
-            "time": "2013-11-15 09:35:38"
+            "time": "2014-03-04 16:25:48"
         },
         {
             "name": "neam/yii-qa-state",
@@ -524,12 +524,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-qa-state.git",
-                "reference": "8302d7b40ca593ed02ecdb61fc7d288af1ba307a"
+                "reference": "211d97c60a91a757bc8c21c1ad2acc3b9a6f78ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/8302d7b40ca593ed02ecdb61fc7d288af1ba307a",
-                "reference": "8302d7b40ca593ed02ecdb61fc7d288af1ba307a",
+                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/211d97c60a91a757bc8c21c1ad2acc3b9a6f78ae",
+                "reference": "211d97c60a91a757bc8c21c1ad2acc3b9a6f78ae",
                 "shasum": ""
             },
             "require": {
@@ -563,7 +563,7 @@
                 "source": "https://github.com/neam/yii-qa-state/tree/develop",
                 "issues": "https://github.com/neam/yii-qa-state/issues"
             },
-            "time": "2014-01-23 12:47:05"
+            "time": "2014-03-04 15:07:54"
         },
         {
             "name": "neam/yii-relational-graph-db",
@@ -1167,7 +1167,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record access check implementation",
@@ -1198,7 +1198,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
@@ -1251,12 +1251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/multi-theme.git",
-                "reference": "0.1.1"
+                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/0.1.1",
-                "reference": "0.1.1",
+                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/f9fcd89e8620be03340cd1d6125ae2522b71719a",
+                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a",
                 "shasum": ""
             },
             "require": {
@@ -1272,7 +1272,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Theme-Manager class, switch themes by regular expressions on controller routes.",
@@ -1467,6 +1467,25 @@
             "time": "2014-01-28 21:26:50"
         },
         {
+            "name": "yiiext/migrate-command",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiiext/migrate-command.git",
+                "reference": "35f315b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/yiiext/migrate-command/archive/35f315b1fedc40bc9f551758bdb2b7f969d48005.zip",
+                "reference": "35f315b",
+                "shasum": null
+            },
+            "type": "yii-extension",
+            "description": "This is an enhanced version of the Yii Database Migration Tool that adds module support and many more usefull features.",
+            "homepage": "https://github.com/yiiext/migrate-command",
+            "time": "2013-05-09 15:14:47"
+        },
+        {
             "name": "yiiext/status-behavior",
             "version": "0.7",
             "source": {
@@ -1552,16 +1571,16 @@
         },
         {
             "name": "phundament/gii-template-collection",
-            "version": "dev-gcms",
+            "version": "dev-gcms-yiistrap",
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/gii-template-collection.git",
-                "reference": "a218944d8793f5272cf8f8e6ba8eb0b2a0eebf3d"
+                "reference": "0d14b2349bb98997b3fca5a9be459b1e1942321a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/gii-template-collection/zipball/a218944d8793f5272cf8f8e6ba8eb0b2a0eebf3d",
-                "reference": "a218944d8793f5272cf8f8e6ba8eb0b2a0eebf3d",
+                "url": "https://api.github.com/repos/motin/gii-template-collection/zipball/0d14b2349bb98997b3fca5a9be459b1e1942321a",
+                "reference": "0d14b2349bb98997b3fca5a9be459b1e1942321a",
                 "shasum": ""
             },
             "require": {
@@ -1589,9 +1608,9 @@
                 "package"
             ],
             "support": {
-                "source": "https://github.com/motin/gii-template-collection/tree/gcms"
+                "source": "https://github.com/motin/gii-template-collection/tree/gcms-yiistrap"
             },
-            "time": "2013-11-25 09:55:42"
+            "time": "2014-03-04 20:00:02"
         },
         {
             "name": "phundament/p3bootstrap",
@@ -1696,6 +1715,12 @@
             "alias_normalized": "0.17.0.0",
             "version": "9999999-dev",
             "package": "phundament/p3pages"
+        },
+        {
+            "alias": "0.7.2.1",
+            "alias_normalized": "0.7.2.1",
+            "version": "9999999-dev",
+            "package": "yiiext/migrate-command"
         }
     ],
     "minimum-stability": "stable",
@@ -1707,6 +1732,8 @@
         "phundament/p3pages": 20,
         "phundament/p3media": 20,
         "schmunk42/ckeditor-configurator": 20,
+        "yiiext/migrate-command": 20,
+        "neam/yii-i18n-columns": 20,
         "neam/yii-i18n-attribute-messages": 20,
         "neam/yii-qa-state": 20,
         "neam/yii-relational-graph-db": 20,

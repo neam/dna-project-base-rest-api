@@ -9,6 +9,13 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
 {
 
     /**
+     * If we should be verbose
+     *
+     * @var bool
+     */
+    private $_verbose = false;
+
+    /**
      * item
      *      node_id
      *      id
@@ -24,8 +31,12 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
      *      created
      *      modified
      */
-    public function actionItem()
+    public function actionItem($verbose = false)
     {
+
+        if (!empty($verbose)) {
+            $this->_verbose = true;
+        }
 
         $sql = "SELECT \n";
 
@@ -195,18 +206,26 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
 
         $viewSql = "CREATE OR REPLACE VIEW item AS $sql";
 
-        echo "\n";
-        echo $viewSql;
-        echo "\n";
+        if ($this->_verbose) {
+            echo "\n";
+            echo $viewSql;
+            echo "\n";
+        }
 
         $selectResult = Yii::app()->db->createCommand($sql . " LIMIT 2")->queryAll();
         Yii::app()->db->createCommand($viewSql)->execute();
         $selectViewResult = Yii::app()->db->createCommand("SELECT * FROM $viewName LIMIT 2")->queryAll();
-        var_dump(compact("selectResult", "selectViewResult"));
 
-        $selectExistingGoItemsResult = Yii::app()->db->createCommand("SELECT * FROM $viewName WHERE model_class IS NOT NULL LIMIT 2")->queryAll();
+        if ($this->_verbose) {
+            var_dump(compact("selectResult", "selectViewResult"));
+        }
 
-        var_dump(compact("selectExistingGoItemsResult"));
+        $selectExistingItemsResult = Yii::app()->db->createCommand("SELECT * FROM $viewName WHERE model_class IS NOT NULL LIMIT 2")->queryAll();
+
+        if ($this->_verbose) {
+            var_dump(compact("selectExistingItemsResult"));
+        }
+
     }
 
     /**

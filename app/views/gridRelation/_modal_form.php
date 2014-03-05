@@ -55,13 +55,13 @@ $this->beginWidget('\TbModal', array('id' => $modalId));
     </div>
     <div class="modal-body">
         <?php
-        $allRelated = new GoItem('search');
+        $allRelated = new Item('search');
         $allRelated->unsetAttributes();
         if (!$allItems) {
             $allRelated->setAttribute("model_class", $toType);
         }
-        if (isset($_GET["GoItem"])) {
-            $allRelated->attributes = $_GET["GoItem"];
+        if (isset($_GET["Item"])) {
+            $allRelated->attributes = $_GET["Item"];
         }
         $dataProvider = $allRelated->search();
         // todo: add support for the extended grid view

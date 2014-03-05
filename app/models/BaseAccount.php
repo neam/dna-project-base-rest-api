@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model base class for the table "users".
+ * This is the model base class for the table "account".
  *
- * Columns in table "users" available as properties of the model:
+ * Columns in table "account" available as properties of the model:
  * @property integer $id
  * @property string $username
  * @property string $password
@@ -14,20 +14,24 @@
  * @property string $create_at
  * @property string $lastvisit_at
  *
- * Relations of table "users" available as properties of the model:
+ * Relations of table "account" available as properties of the model:
  * @property Changeset[] $changesets
  * @property Chapter[] $chapters
  * @property Comment[] $comments
- * @property DataChunk[] $dataChunks
+ * @property DataArticle[] $dataArticles
  * @property DataSource[] $dataSources
  * @property DownloadLink[] $downloadLinks
  * @property ExamQuestion[] $examQuestions
  * @property ExamQuestionAlternative[] $examQuestionAlternatives
  * @property Exercise[] $exercises
+ * @property GroupHasAccount[] $groupHasAccounts
+ * @property GuiSection[] $guiSections
  * @property HtmlChunk[] $htmlChunks
+ * @property I18nCatalog[] $i18nCatalogs
+ * @property Menu[] $menus
  * @property Page[] $pages
- * @property PoFile[] $poFiles
- * @property Profiles $profiles
+ * @property Profile $profile
+ * @property Section[] $sections
  * @property SlideshowFile[] $slideshowFiles
  * @property Snapshot[] $snapshots
  * @property SpreadsheetFile[] $spreadsheetFiles
@@ -35,6 +39,13 @@
  * @property Tool[] $tools
  * @property VectorGraphic[] $vectorGraphics
  * @property VideoFile[] $videoFiles
+ * @property Waffle[] $waffles
+ * @property WaffleCategory[] $waffleCategories
+ * @property WaffleCategoryElement[] $waffleCategoryElements
+ * @property WaffleDataSource[] $waffleDataSources
+ * @property WaffleIndicator[] $waffleIndicators
+ * @property WaffleTag[] $waffleTags
+ * @property WaffleUnit[] $waffleUnits
  */
 abstract class BaseAccount extends ActiveRecord
 {
@@ -46,7 +57,7 @@ abstract class BaseAccount extends ActiveRecord
 
     public function tableName()
     {
-        return 'users';
+        return 'account';
     }
 
     public function rules()
@@ -87,16 +98,20 @@ abstract class BaseAccount extends ActiveRecord
                 'changesets' => array(self::HAS_MANY, 'Changeset', 'user_id'),
                 'chapters' => array(self::HAS_MANY, 'Chapter', 'owner_id'),
                 'comments' => array(self::HAS_MANY, 'Comment', 'author_user_id'),
-                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'owner_id'),
+                'dataArticles' => array(self::HAS_MANY, 'DataArticle', 'owner_id'),
                 'dataSources' => array(self::HAS_MANY, 'DataSource', 'owner_id'),
                 'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'owner_id'),
                 'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'owner_id'),
                 'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'owner_id'),
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'owner_id'),
+                'groupHasAccounts' => array(self::HAS_MANY, 'GroupHasAccount', 'account_id'),
+                'guiSections' => array(self::HAS_MANY, 'GuiSection', 'owner_id'),
                 'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'owner_id'),
+                'i18nCatalogs' => array(self::HAS_MANY, 'I18nCatalog', 'owner_id'),
+                'menus' => array(self::HAS_MANY, 'Menu', 'owner_id'),
                 'pages' => array(self::HAS_MANY, 'Page', 'owner_id'),
-                'poFiles' => array(self::HAS_MANY, 'PoFile', 'owner_id'),
-                'profiles' => array(self::HAS_ONE, 'Profiles', 'user_id'),
+                'profile' => array(self::HAS_ONE, 'Profile', 'user_id'),
+                'sections' => array(self::HAS_MANY, 'Section', 'owner_id'),
                 'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'owner_id'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'owner_id'),
                 'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'owner_id'),
@@ -104,6 +119,13 @@ abstract class BaseAccount extends ActiveRecord
                 'tools' => array(self::HAS_MANY, 'Tool', 'owner_id'),
                 'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'owner_id'),
                 'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'owner_id'),
+                'waffles' => array(self::HAS_MANY, 'Waffle', 'owner_id'),
+                'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'owner_id'),
+                'waffleCategoryElements' => array(self::HAS_MANY, 'WaffleCategoryElement', 'owner_id'),
+                'waffleDataSources' => array(self::HAS_MANY, 'WaffleDataSource', 'owner_id'),
+                'waffleIndicators' => array(self::HAS_MANY, 'WaffleIndicator', 'owner_id'),
+                'waffleTags' => array(self::HAS_MANY, 'WaffleTag', 'owner_id'),
+                'waffleUnits' => array(self::HAS_MANY, 'WaffleUnit', 'owner_id'),
             )
         );
     }

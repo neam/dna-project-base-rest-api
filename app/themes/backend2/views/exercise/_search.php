@@ -46,11 +46,6 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'slideshow_file_id'); ?>
-        <?php echo $form->textField($model, 'slideshow_file_id', array('size' => 20, 'maxlength' => 20)); ?>
-    </div>
-
-    <div class="row">
         <?php echo $form->label($model, 'created'); ?>
         <?php echo $form->textField($model, 'created'); ?>
     </div>

@@ -120,6 +120,8 @@ $gcmsConfig = array(
             ),
         ),
         'user' => array(
+            'tableUsers' => 'account',
+            'tableProfiles' => 'profile',
             'controllerMap' => array(
                 'activation' => 'AppActivationController',
                 'registration' => 'AppRegistrationController',
@@ -195,7 +197,7 @@ $gcmsConfig = array(
         'authManager' => array(
             'class' => 'vendor.codemix.hybridauthmanager.HybridAuthManager',
             'authFile' => Yii::getPathOfAlias('backend') . '/app/data/auth-gcms.php',
-            'defaultRoles' => array('Authenticated'),
+            'defaultRoles' => array('Anonymous', 'Member'),
         ),
         'assetManager' => array(
             'class' => 'AssetManager',

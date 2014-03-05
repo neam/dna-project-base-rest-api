@@ -1,6 +1,6 @@
 <?php
-/* @var DataChunkController|ItemController $this */
-/* @var DataChunk|ItemTrait $model */
+/* @var DataArticleController|ItemController $this */
+/* @var DataArticle|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
 <?php echo $form->textFieldControlGroup(

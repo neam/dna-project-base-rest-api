@@ -6,14 +6,12 @@
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Manage"),
                     "icon" => "glyphicon-edit",
-                    "url" => array("admin"),
-                    "visible" => Yii::app()->user->checkAccess("VideoFile.*")
+                    "url" => array("admin")
                 ));
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Add"),
                     "icon" => "glyphicon-plus",
-                    "url" => array("add"),
-                    "visible" => Yii::app()->user->checkAccess("Item.Add")
+                    "url" => array("add")
                 ));
                 break;
             case "view":
@@ -42,6 +40,5 @@
                 ));
                 break;
         }
-        ?>
-    </div>
+        ?>    </div>
 </div>

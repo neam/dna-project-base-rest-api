@@ -12,16 +12,16 @@
                 'icon' => TbHtml::ICON_PLUS,
                 'htmlOptions' => array(
                     'data-toggle' => 'modal',
-                    'data-target' => '#addrelation-slideshowfile-datachunk-modal',
+                    'data-target' => '#addrelation-slideshowfile-dataarticle-modal',
                 ),
             ),
             true
         ); ?>
-        <?php echo Html::hintTooltip($model->getAttributeHint('datachunks')); ?>
+        <?php echo Html::hintTooltip($model->getAttributeHint('dataarticles')); ?>
         <?php $this->renderPartial(
             '//gridRelation/_relation_list',
             array(
-                'relation' => 'datachunks',
+                'relation' => 'dataarticles',
                 'model' => $model,
                 'label' => 'data',
             )
@@ -33,8 +33,8 @@
     '//gridRelation/_modal_form',
     array(
         'model' => $model,
-        'relation' => 'datachunks',
-        'toType' => 'DataChunk',
+        'relation' => 'dataarticles',
+        'toType' => 'DataArticle',
         'toLabel' => 'data',
         'type' => 'edge',
     )

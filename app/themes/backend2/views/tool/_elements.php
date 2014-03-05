@@ -18,7 +18,7 @@
                 '\GtcRelation',
                 array(
                     'model' => $model,
-                    'relation' => 'poFile',
+                    'relation' => 'i18nCatalog',
                     'fields' => 'itemLabel',
                     'allowEmpty' => true,
                     'style' => 'dropdownlist',
@@ -27,19 +27,19 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'po_file_id', $input);
+            echo $form->customRow($model, 'i18n_catalog_id', $input);
             ?>
 
             <?php
-            $formId = 'tool-po_file_id-' . \uniqid() . '-form';
+            $formId = 'tool-i18n_catalog_id-' . \uniqid() . '-form';
             ?>
 
             <div class="control-group">
                 <div class="controls">
                     <?php
                     echo $this->widget('\TbButton', array(
-                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Po File'))),
-                        'icon' => 'icon-plus',
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'I18n Catalog'))),
+                        'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',
@@ -50,17 +50,62 @@
 
             <?php
             $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//poFile/_modal_form', array(
+            $this->renderPartial('//i18nCatalog/_modal_form', array(
                 'formId' => $formId,
-                'inputSelector' => '#Tool_po_file_id',
-                'model' => new PoFile,
+                'inputSelector' => '#Tool_i18n_catalog_id',
+                'model' => new I18nCatalog,
                 'pk' => 'id',
                 'field' => 'itemLabel',
             ));
             $this->endClip();
             ?>
 
-            <?php echo $form->textFieldRow($model, 'owner_id'); ?>
+            <?php
+            $input = $this->widget(
+                '\GtcRelation',
+                array(
+                    'model' => $model,
+                    'relation' => 'owner',
+                    'fields' => 'itemLabel',
+                    'allowEmpty' => true,
+                    'style' => 'dropdownlist',
+                    'htmlOptions' => array(
+                        'checkAll' => 'all'
+                    ),
+                )
+                , true);
+            echo $form->customRow($model, 'owner_id', $input);
+            ?>
+
+            <?php
+            $formId = 'tool-owner_id-' . \uniqid() . '-form';
+            ?>
+
+            <div class="control-group">
+                <div class="controls">
+                    <?php
+                    echo $this->widget('\TbButton', array(
+                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Account'))),
+                        'icon' => 'glyphicon-plus',
+                        'htmlOptions' => array(
+                            'data-toggle' => 'modal',
+                            'data-target' => '#' . $formId . '-modal',
+                        ),
+                    ), true);
+                    ?>                </div>
+            </div>
+
+            <?php
+            $this->beginClip('modal:' . $formId . '-modal');
+            $this->renderPartial('//account/_modal_form', array(
+                'formId' => $formId,
+                'inputSelector' => '#Tool_owner_id',
+                'model' => new Account,
+                'pk' => 'id',
+                'field' => 'itemLabel',
+            ));
+            $this->endClip();
+            ?>
 
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 

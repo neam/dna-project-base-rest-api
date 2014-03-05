@@ -40,7 +40,7 @@ class HtmlChunk extends BaseHtmlChunk
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
-            array(// Ordinary validation rules
+            array( // Ordinary validation rules
 
             )
         );

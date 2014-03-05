@@ -1,6 +1,6 @@
 <?php
 
-class DataChunkQaStateController extends Controller
+class DataArticleQaStateController extends Controller
 {
     #public $layout='//layouts/column2';
 
@@ -29,7 +29,7 @@ class DataChunkQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('DataChunkQaState.*'),
+                'roles' => array('DataArticleQaState.*'),
             ),
             array(
                 'deny',
@@ -43,7 +43,7 @@ class DataChunkQaStateController extends Controller
         parent::beforeAction($action);
         // map identifcationColumn to id
         if (!isset($_GET['id']) && isset($_GET['id'])) {
-            $model = DataChunkQaState::model()->find(
+            $model = DataArticleQaState::model()->find(
                 'id = :id',
                 array(
                     ':id' => $_GET['id']
@@ -69,13 +69,13 @@ class DataChunkQaStateController extends Controller
 
     public function actionCreate()
     {
-        $model = new DataChunkQaState;
+        $model = new DataArticleQaState;
         $model->scenario = $this->scenario;
 
         $this->performAjaxValidation($model, 'data-chunk-qa-state-form');
 
-        if (isset($_POST['DataChunkQaState'])) {
-            $model->attributes = $_POST['DataChunkQaState'];
+        if (isset($_POST['DataArticleQaState'])) {
+            $model->attributes = $_POST['DataArticleQaState'];
 
             try {
                 if ($model->save()) {
@@ -88,8 +88,8 @@ class DataChunkQaStateController extends Controller
             } catch (Exception $e) {
                 $model->addError('id', $e->getMessage());
             }
-        } elseif (isset($_GET['DataChunkQaState'])) {
-            $model->attributes = $_GET['DataChunkQaState'];
+        } elseif (isset($_GET['DataArticleQaState'])) {
+            $model->attributes = $_GET['DataArticleQaState'];
         }
 
         $this->render('create', array('model' => $model));
@@ -102,8 +102,8 @@ class DataChunkQaStateController extends Controller
 
         $this->performAjaxValidation($model, 'data-chunk-qa-state-form');
 
-        if (isset($_POST['DataChunkQaState'])) {
-            $model->attributes = $_POST['DataChunkQaState'];
+        if (isset($_POST['DataArticleQaState'])) {
+            $model->attributes = $_POST['DataArticleQaState'];
 
 
             try {
@@ -124,15 +124,15 @@ class DataChunkQaStateController extends Controller
 
     public function actionEditableSaver()
     {
-        $es = new TbEditableSaver('DataChunkQaState'); // classname of model to be updated
+        $es = new TbEditableSaver('DataArticleQaState'); // classname of model to be updated
         $es->update();
     }
 
     public function actionEditableCreator()
     {
-        if (isset($_POST['DataChunkQaState'])) {
-            $model = new DataChunkQaState;
-            $model->attributes = $_POST['DataChunkQaState'];
+        if (isset($_POST['DataArticleQaState'])) {
+            $model = new DataArticleQaState;
+            $model->attributes = $_POST['DataArticleQaState'];
             if ($model->save()) {
                 echo CJSON::encode($model->getAttributes());
             } else {
@@ -172,17 +172,17 @@ class DataChunkQaStateController extends Controller
 
     public function actionIndex()
     {
-        $dataProvider = new CActiveDataProvider('DataChunkQaState');
+        $dataProvider = new CActiveDataProvider('DataArticleQaState');
         $this->render('index', array('dataProvider' => $dataProvider,));
     }
 
     public function actionAdmin()
     {
-        $model = new DataChunkQaState('search');
+        $model = new DataArticleQaState('search');
         $model->unsetAttributes();
 
-        if (isset($_GET['DataChunkQaState'])) {
-            $model->attributes = $_GET['DataChunkQaState'];
+        if (isset($_GET['DataArticleQaState'])) {
+            $model->attributes = $_GET['DataArticleQaState'];
         }
 
         $this->render('admin', array('model' => $model,));
@@ -190,7 +190,7 @@ class DataChunkQaStateController extends Controller
 
     public function loadModel($id)
     {
-        $model = DataChunkQaState::model()->findByPk($id);
+        $model = DataArticleQaState::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }

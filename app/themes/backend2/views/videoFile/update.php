@@ -39,7 +39,7 @@ $this->renderPartial('_form', array('model' => $model));
     <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('from_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('edge/create', 'Edge' => array('from_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
 
@@ -47,13 +47,13 @@ $this->renderPartial('_form', array('model' => $model));
 
 <?php
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'outEdges');
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'edge-grid',
         'dataProvider' => $relatedSearchModel->search(),
         'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->outEdges) > 1 ? $relatedSearchModel : null,
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -109,7 +109,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('edge/view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('edge/update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('edge/delete', array('id' => \$data->id))",
@@ -135,7 +135,7 @@ This relation is specified through another relation, which in turn is not a BELO
     <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('edge/create', 'Edge' => array('to_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('edge/create', 'Edge' => array('to_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
 
@@ -143,13 +143,13 @@ This relation is specified through another relation, which in turn is not a BELO
 
 <?php
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'inEdges');
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'edge-grid',
         'dataProvider' => $relatedSearchModel->search(),
         'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->inEdges) > 1 ? $relatedSearchModel : null,
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -205,7 +205,7 @@ $this->widget('TbGridView',
                 )
             ),
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('edge/view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('edge/update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('edge/delete', array('id' => \$data->id))",
@@ -222,116 +222,6 @@ $this->widget('TbGridView',
 
 This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.
 <h2>
-    <?php echo Yii::t('model', 'Section Contents'); ?>
-    <small>sectionContents</small>
-</h2>
-
-
-<div class="btn-group">
-    <?php $this->widget('\TbButtonGroup', array(
-        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-        'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('video_file_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
-        ),
-    ));
-    ?></div>
-
-<?php
-$relatedSearchModel = $this->getRelatedSearchModel($model, 'sectionContents');
-$this->widget('TbGridView',
-    array(
-        'id' => 'sectionContent-grid',
-        'dataProvider' => $relatedSearchModel->search(),
-        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->sectionContents) > 1 ? $relatedSearchModel : null,
-        'pager' => array(
-            'class' => 'TbPager',
-            'displayFirstAndLast' => true,
-        ),
-        'columns' => array(
-            'id',
-            array(
-                'name' => 'section_id',
-                'value' => 'CHtml::value($data, \'section.itemLabel\')',
-                'filter' => '', //CHtml::listData(Section::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'ordinal',
-                'editable' => array(
-                    'url' => $this->createUrl('/sectionContent/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'created',
-                'editable' => array(
-                    'url' => $this->createUrl('/sectionContent/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'modified',
-                'editable' => array(
-                    'url' => $this->createUrl('/sectionContent/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'name' => 'html_chunk_id',
-                'value' => 'CHtml::value($data, \'htmlChunk.itemLabel\')',
-                'filter' => '', //CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'name' => 'snapshot_id',
-                'value' => 'CHtml::value($data, \'snapshot.itemLabel\')',
-                'filter' => '', //CHtml::listData(Snapshot::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
-                'name' => 'exercise_id',
-                'value' => 'CHtml::value($data, \'exercise.itemLabel\')',
-                'filter' => '', //CHtml::listData(Exercise::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            /*
-            array(
-                    'name' => 'slideshow_file_id',
-                    'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'data_chunk_id',
-                    'value' => 'CHtml::value($data, \'dataChunk.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'download_link_id',
-                    'value' => 'CHtml::value($data, \'downloadLink.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'exam_question_id',
-                    'value' => 'CHtml::value($data, \'examQuestion.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestion::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'node_id',
-                    'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            */
-            array(
-                'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('sectionContent/view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('sectionContent/update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('sectionContent/delete', array('id' => \$data->id))",
-            ),
-        ),
-    ));
-?>
-
-
-<h2>
     <?php echo Yii::t('model', 'Video Files'); ?>
     <small>videoFiles</small>
 </h2>
@@ -341,20 +231,20 @@ $this->widget('TbGridView',
     <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('videoFile/create', 'VideoFile' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('videoFile/create', 'VideoFile' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
     ?></div>
 
 <?php
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'videoFiles');
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'videoFile-grid',
         'dataProvider' => $relatedSearchModel->search(),
         'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->videoFiles) > 1 ? $relatedSearchModel : null,
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -398,22 +288,14 @@ $this->widget('TbGridView',
                 'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'original_media_id',
-                'value' => 'CHtml::value($data, \'originalMedia.itemLabel\')',
+                'name' => 'clip_webm_media_id',
+                'value' => 'CHtml::value($data, \'clipWebmMedia.itemLabel\')',
                 'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
-                    'class' => 'TbEditableColumn',
-                    'name' => 'generate_processed_media',
-                    'editable' => array(
-                        'url' => $this->createUrl('/videoFile/editableSaver'),
-                        //'placement' => 'right',
-                    )
-                ),
-            array(
-                    'name' => 'processed_media_id_en',
-                    'value' => 'CHtml::value($data, \'processedMediaIdEn.itemLabel\')',
+                    'name' => 'clip_mp4_media_id',
+                    'value' => 'CHtml::value($data, \'clipMp4Media.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             #'_subtitles',
@@ -441,37 +323,12 @@ $this->widget('TbGridView',
             array(
                     'name' => 'owner_id',
                     'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_es',
-                    'value' => 'CHtml::value($data, \'processedMediaIdEs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_hi',
-                    'value' => 'CHtml::value($data, \'processedMediaIdHi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_pt',
-                    'value' => 'CHtml::value($data, \'processedMediaIdPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_sv',
-                    'value' => 'CHtml::value($data, \'processedMediaIdSv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_de',
-                    'value' => 'CHtml::value($data, \'processedMediaIdDe.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'class' => 'TbEditableColumn',
@@ -814,194 +671,9 @@ $this->widget('TbGridView',
                         //'placement' => 'right',
                     )
                 ),
-            array(
-                    'name' => 'processed_media_id_zh',
-                    'value' => 'CHtml::value($data, \'processedMediaIdZh.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_ar',
-                    'value' => 'CHtml::value($data, \'processedMediaIdAr.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_bg',
-                    'value' => 'CHtml::value($data, \'processedMediaIdBg.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_ca',
-                    'value' => 'CHtml::value($data, \'processedMediaIdCa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_cs',
-                    'value' => 'CHtml::value($data, \'processedMediaIdCs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_da',
-                    'value' => 'CHtml::value($data, \'processedMediaIdDa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_en_gb',
-                    'value' => 'CHtml::value($data, \'processedMediaIdEnGb.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_en_us',
-                    'value' => 'CHtml::value($data, \'processedMediaIdEnUs.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_el',
-                    'value' => 'CHtml::value($data, \'processedMediaIdEl.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_fi',
-                    'value' => 'CHtml::value($data, \'processedMediaIdFi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_fil',
-                    'value' => 'CHtml::value($data, \'processedMediaIdFil.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_fr',
-                    'value' => 'CHtml::value($data, \'processedMediaIdFr.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_hr',
-                    'value' => 'CHtml::value($data, \'processedMediaIdHr.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_hu',
-                    'value' => 'CHtml::value($data, \'processedMediaIdHu.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_id',
-                    'value' => 'CHtml::value($data, \'processedMediaId.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_iw',
-                    'value' => 'CHtml::value($data, \'processedMediaIdIw.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_it',
-                    'value' => 'CHtml::value($data, \'processedMediaIdIt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_ja',
-                    'value' => 'CHtml::value($data, \'processedMediaIdJa.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_ko',
-                    'value' => 'CHtml::value($data, \'processedMediaIdKo.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_lt',
-                    'value' => 'CHtml::value($data, \'processedMediaIdLt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_lv',
-                    'value' => 'CHtml::value($data, \'processedMediaIdLv.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_nl',
-                    'value' => 'CHtml::value($data, \'processedMediaIdNl.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_no',
-                    'value' => 'CHtml::value($data, \'processedMediaIdNo.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_pl',
-                    'value' => 'CHtml::value($data, \'processedMediaIdPl.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_pt_br',
-                    'value' => 'CHtml::value($data, \'processedMediaIdPtBr.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_pt_pt',
-                    'value' => 'CHtml::value($data, \'processedMediaIdPtPt.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_ro',
-                    'value' => 'CHtml::value($data, \'processedMediaIdRo.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_ru',
-                    'value' => 'CHtml::value($data, \'processedMediaIdRu.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_sk',
-                    'value' => 'CHtml::value($data, \'processedMediaIdSk.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_sl',
-                    'value' => 'CHtml::value($data, \'processedMediaIdSl.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_sr',
-                    'value' => 'CHtml::value($data, \'processedMediaIdSr.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_th',
-                    'value' => 'CHtml::value($data, \'processedMediaIdTh.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_tr',
-                    'value' => 'CHtml::value($data, \'processedMediaIdTr.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_uk',
-                    'value' => 'CHtml::value($data, \'processedMediaIdUk.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_vi',
-                    'value' => 'CHtml::value($data, \'processedMediaIdVi.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_zh_cn',
-                    'value' => 'CHtml::value($data, \'processedMediaIdZhCn.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'processed_media_id_zh_tw',
-                    'value' => 'CHtml::value($data, \'processedMediaIdZhTw.itemLabel\')',
-                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
             */
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('videoFile/view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('videoFile/update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('videoFile/delete', array('id' => \$data->id))",

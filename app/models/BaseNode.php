@@ -11,7 +11,7 @@
  * Relations of table "node" available as properties of the model:
  * @property Changeset[] $changesets
  * @property Chapter[] $chapters
- * @property DataChunk[] $dataChunks
+ * @property DataArticle[] $dataArticles
  * @property DataSource[] $dataSources
  * @property DownloadLink[] $downloadLinks
  * @property Edge[] $edges
@@ -20,9 +20,12 @@
  * @property ExamQuestion[] $examQuestions1
  * @property ExamQuestionAlternative[] $examQuestionAlternatives
  * @property Exercise[] $exercises
+ * @property GuiSection[] $guiSections
  * @property HtmlChunk[] $htmlChunks
+ * @property I18nCatalog[] $i18nCatalogs
+ * @property Menu[] $menus
+ * @property NodeHasGroup[] $nodeHasGroups
  * @property Page[] $pages
- * @property PoFile[] $poFiles
  * @property Section[] $sections
  * @property SlideshowFile[] $slideshowFiles
  * @property Snapshot[] $snapshots
@@ -31,6 +34,13 @@
  * @property Tool[] $tools
  * @property VectorGraphic[] $vectorGraphics
  * @property VideoFile[] $videoFiles
+ * @property Waffle[] $waffles
+ * @property WaffleCategory[] $waffleCategories
+ * @property WaffleCategoryElement[] $waffleCategoryElements
+ * @property WaffleDataSource[] $waffleDataSources
+ * @property WaffleIndicator[] $waffleIndicators
+ * @property WaffleTag[] $waffleTags
+ * @property WaffleUnit[] $waffleUnits
  */
 abstract class BaseNode extends ActiveRecord
 {
@@ -78,7 +88,7 @@ abstract class BaseNode extends ActiveRecord
             parent::relations(), array(
                 'changesets' => array(self::HAS_MANY, 'Changeset', 'node_id'),
                 'chapters' => array(self::HAS_MANY, 'Chapter', 'node_id'),
-                'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'node_id'),
+                'dataArticles' => array(self::HAS_MANY, 'DataArticle', 'node_id'),
                 'dataSources' => array(self::HAS_MANY, 'DataSource', 'node_id'),
                 'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'node_id'),
                 'edges' => array(self::HAS_MANY, 'Edge', 'from_node_id'),
@@ -87,9 +97,12 @@ abstract class BaseNode extends ActiveRecord
                 'examQuestions1' => array(self::HAS_MANY, 'ExamQuestion', 'source_node_id'),
                 'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'node_id'),
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'node_id'),
+                'guiSections' => array(self::HAS_MANY, 'GuiSection', 'node_id'),
                 'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'node_id'),
+                'i18nCatalogs' => array(self::HAS_MANY, 'I18nCatalog', 'node_id'),
+                'menus' => array(self::HAS_MANY, 'Menu', 'node_id'),
+                'nodeHasGroups' => array(self::HAS_MANY, 'NodeHasGroup', 'node_id'),
                 'pages' => array(self::HAS_MANY, 'Page', 'node_id'),
-                'poFiles' => array(self::HAS_MANY, 'PoFile', 'node_id'),
                 'sections' => array(self::HAS_MANY, 'Section', 'node_id'),
                 'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'node_id'),
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'node_id'),
@@ -98,6 +111,13 @@ abstract class BaseNode extends ActiveRecord
                 'tools' => array(self::HAS_MANY, 'Tool', 'node_id'),
                 'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'node_id'),
                 'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'node_id'),
+                'waffles' => array(self::HAS_MANY, 'Waffle', 'node_id'),
+                'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'node_id'),
+                'waffleCategoryElements' => array(self::HAS_MANY, 'WaffleCategoryElement', 'node_id'),
+                'waffleDataSources' => array(self::HAS_MANY, 'WaffleDataSource', 'node_id'),
+                'waffleIndicators' => array(self::HAS_MANY, 'WaffleIndicator', 'node_id'),
+                'waffleTags' => array(self::HAS_MANY, 'WaffleTag', 'node_id'),
+                'waffleUnits' => array(self::HAS_MANY, 'WaffleUnit', 'node_id'),
             )
         );
     }
