@@ -51,7 +51,6 @@ class SpreadsheetFile extends BaseSpreadsheetFile
 
                 // Ordinary validation rules
                 array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 120),
-                array('dataarticles', 'validateDataArticles'),
                 array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 250),
 
             )
