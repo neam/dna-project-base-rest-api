@@ -227,4 +227,21 @@ class Chapter extends BaseChapter
         ));
     }
 
+    /**
+     * Returns thumbnails.
+     * @return P3Media[]
+     */
+    public function getThumbnails()
+    {
+        return $this->getP3Media(array('image/jpeg', 'image/png'));
+    }
+
+    /**
+     * Returns thumbnail options.
+     * @return array
+     */
+    public function getThumbnailOptions()
+    {
+        return $this->getOptions($this->getThumbnails());
+    }
 }
