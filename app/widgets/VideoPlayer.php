@@ -5,13 +5,18 @@
  */
 class VideoPlayer extends CWidget
 {
-    public $videoUrl;
-    public $subtitleUrl;
+    /**
+     * @var VideoFile
+     */
+    public $videoFile;
     public $srcLang;
 
     public function init()
     {
         parent::init();
+        if (!$this->videoFile instanceof VideoFile) {
+            throw new CException(Yii::t('error', 'The passed model is not a VideoFile.'));
+        }
         $this->_initSrcLang();
         $this->_registerAssets();
     }
@@ -21,8 +26,6 @@ class VideoPlayer extends CWidget
         parent::run();
         $this->_registerJs();
         $this->render('view', array(
-            'videoUrl' => $this->videoUrl,
-            'subtitleUrl' => $this->subtitleUrl,
             'playerUrl' => $this->getPlayerUrl(),
             'srcLang' => $this->srcLang,
         ));
@@ -43,7 +46,34 @@ class VideoPlayer extends CWidget
      */
     public function getRawVideoUrl()
     {
-        return rawurlencode($this->videoUrl);
+        return rawurlencode($this->videoFile->getVideoUrl());
+    }
+
+    /**
+     * Returns the video URL.
+     * @return string
+     */
+    public function getVideoUrl()
+    {
+        return e($this->videoFile->getVideoUrl());
+    }
+
+    /**
+     * Returns the subtitle URL.
+     * @return string
+     */
+    public function getSubtitleUrl()
+    {
+        return e($this->videoFile->getSubtitleUrl());
+    }
+
+    /**
+     * Returns the mime type.
+     * @return string
+     */
+    public function getMimeType()
+    {
+        return e($this->videoFile->getMimeType());
     }
 
     /**
@@ -52,8 +82,8 @@ class VideoPlayer extends CWidget
      */
     public function videoExists()
     {
-        // TODO: Improve this check.
-        return !empty($this->videoUrl);
+        $videoUrl = $this->getVideoUrl();
+        return !empty($videoUrl);
     }
 
     /**

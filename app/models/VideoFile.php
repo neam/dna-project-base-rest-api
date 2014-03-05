@@ -166,8 +166,8 @@ class VideoFile extends BaseVideoFile
                 'about' => Yii::t('model', 'About'),
                 'about_en' => Yii::t('model', 'About (English)'),
                 'thumbnail_media_id' => Yii::t('model', 'Thumbnail'),
-                'clip_webm_media_id' => Yii::t('model', 'Film file'),
-                'clip_mp4_media_id' => Yii::t('model', 'Film file'),
+                'clip_webm_media_id' => Yii::t('model', 'Video file'),
+                'clip_mp4_media_id' => Yii::t('model', 'Video file'),
                 'subtitles' => Yii::t('model', 'Subtitles'),
             )
         );
@@ -179,7 +179,7 @@ class VideoFile extends BaseVideoFile
             parent::attributeHints(), array(
                 'title' => Yii::t('model', 'Descriptive language including the words that people would use to search for this video. The title can not be longer than what fits in a headline of a Google search-result snippet.'),
                 'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "where_population_increase_future" url to the video with populations on the map.'),
-                'about' => Yii::t('model', 'Describing the videos content. We avoid the word "and" in about texts and titles, as it\'s often become boring enumerations of details instead of figuring out what is the whole.'),
+                'about' => Yii::t('model', 'Describing the videos content. We avoid the word "and" r about texts and titles, as it\'s often become boring enumerations of details instead of figuring out what is the whole.'),
                 'thumbnail_media_id' => Yii::t('model', 'This is the small image representing the video in lists and also the start screen as the film is loading. It shows an iconic snapshot from the film, with the crucial graphics focused to help users recognize it later. Preferably a closeup of the high res films visualization with a human touch.'),
                 'clip_webm_media_id' => Yii::t('model', 'The film needs to be an .webm file.'),
                 'clip_mp4_media_id' => Yii::t('model', 'The film needs to be an .mp4 file.'),
@@ -188,6 +188,16 @@ class VideoFile extends BaseVideoFile
                 'related' => Yii::t('model', 'After watching this video you may also be interested in these Items. If the video is on a chapter page, the chapter is assumed to related to these items as well.'),
             )
         );
+    }
+
+    public function search($criteria = null)
+    {
+        if (is_null($criteria)) {
+            $criteria = new CDbCriteria;
+        }
+        return new CActiveDataProvider(get_class($this), array(
+            'criteria' => $this->searchCriteria($criteria),
+        ));
     }
 
     /**
@@ -208,14 +218,14 @@ class VideoFile extends BaseVideoFile
         return isset($this->clip_webm_media_id) ? 'clip_webm_media_id' : 'clip_mp4_media_id';
     }
 
-    public function search($criteria = null)
+    /**
+     * Returns the video mime type.
+     * @return string|null
+     */
+    public function getMimeType()
     {
-        if (is_null($criteria)) {
-            $criteria = new CDbCriteria;
-        }
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria($criteria),
-        ));
+        $media = P3Media::model()->findByPk($this->getMediaId());
+        return $media instanceof P3Media ? $media->mime_type : null;
     }
 
     public function getParsedSubtitles()
@@ -315,6 +325,7 @@ class VideoFile extends BaseVideoFile
      */
     public function getVideoUrl()
     {
+        /** @var P3Media $videoMedia */
         $videoMedia = P3Media::model()->findByPk($this->getMediaId()); // Currently we hard-code to use the original movie file instead of any processed media
 
         if (isset($videoMedia)) {

@@ -3,14 +3,7 @@
 /* @var VideoFile $data */
 ?>
 <div class="view">
-    <?php $this->widget(
-        'VideoPlayer',
-        array(
-            'videoUrl' => $data->getVideoUrl(),
-            'subtitleUrl' => $data->getSubtitleUrl(),
-        )
-    ); ?>
-
+    <?php $this->widget('VideoPlayer', array('videoFile' => $data)); ?>
     <?php if (isset($evaluate) && $evaluate): ?>
         <?php $this->widget(
             'ModalCommentsWidget',

@@ -5,9 +5,9 @@
 ?>
 <?php echo $form->select2ControlGroup($model, $model->getMediaIdAttribute(), $model->getVideoOptions()); ?>
 <?php echo TbHtml::button(
-    Yii::t('app', 'Upload'),
+    Yii::t('app', 'Upload new'),
     array(
-        'icon' => TbHtml::ICON_PLUS,
+        'icon' => TbHtml::ICON_CLOUD_UPLOAD,
         'class' => 'upload-btn',
         'data-toggle' => 'modal',
         'data-target' => '#' . $form->id . '-modal',
