@@ -12,15 +12,13 @@
         'data-target' => '#' . $form->id . '-modal',
     )
 ); ?>
-<?php $this->beginClip('modal:' . $form->id . '-modal'); ?>
-    <?php $this->renderPartial(
-        '//p3Media/_modal_form',
-        array(
-            'formId' => $form->id,
-            'inputSelector' => "#VideoFile_original_media_id",
-            'model' => new P3Media(),
-            'pk' => 'id',
-            'field' => 'itemLabel',
-        )
-    ); ?>
-<?php $this->endClip(); ?>
+<?php $this->renderPartial(
+    '//p3Media/_modal_form',
+    array(
+        'formId' => $form->id,
+        'inputSelector' => '#VideoFile_' . $model->getMediaIdAttribute(),
+        'model' => new P3Media(),
+        'pk' => 'id',
+        'field' => 'itemLabel',
+    )
+); ?>

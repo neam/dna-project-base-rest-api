@@ -7267,6 +7267,9 @@ td.visible-print {
 .snapshot-controller .view-action .map {
   overflow: hidden;
 }
+.videofile-controller.edit-action .after-flowbar {
+  margin-top: 218px;
+}
 .flowbar {
   background-image: -webkit-linear-gradient(top, #ffffff 90%, rgba(255, 255, 255, 0) 100%);
   background-image: linear-gradient(to bottom, #ffffff 90%, rgba(255, 255, 255, 0) 100%);

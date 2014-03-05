@@ -3,7 +3,7 @@
 /* @var VideoFile|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php echo $form->select2ControlGroup($model, 'original_media_id', $model->getVideoOptions()); ?>
+<?php echo $form->select2ControlGroup($model, $model->getMediaIdAttribute(), $model->getVideoOptions()); ?>
 <?php echo TbHtml::button(
     Yii::t('app', 'Upload'),
     array(
@@ -17,7 +17,7 @@
     '//p3Media/_modal_form',
     array(
         'formId' => $form->id,
-        'inputSelector' => "#VideoFile_original_media_id",
+        'inputSelector' => '#VideoFile_' . $model->getMediaIdAttribute(),
         'model' => new P3Media(),
         'pk' => 'id',
         'field' => 'itemLabel',

@@ -56,7 +56,8 @@ class VideoFile extends BaseVideoFile
             array(
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
-                array('original_media_id', 'validateClip', 'on' => 'public'),
+                array('clip_webm_media_id', 'validateVideoWebm', 'on' => 'public'),
+                array('clip_mp4_media_id', 'validateVideoMp4', 'on' => 'public'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
                 array('subtitles_' . $this->source_language, 'validateSubtitles', 'on' => 'public'),
             )
@@ -70,9 +71,14 @@ class VideoFile extends BaseVideoFile
         return !is_null($this->thumbnail_media_id);
     }
 
-    public function validateClip()
+    public function validateVideoWebm()
     {
-        return !is_null($this->original_media_id);
+        return !is_null($this->clip_webm_media_id);
+    }
+
+    public function validateVideoMp4()
+    {
+        return !is_null($this->clip_mp4_media_id);
     }
 
     public function validateSubtitles()
@@ -103,7 +109,7 @@ class VideoFile extends BaseVideoFile
                 'slug_' . $this->source_language,
             ),
             'preview' => array(
-                'original_media_id',
+                $this->getMediaIdAttribute(),
             ),
             'public' => array(
                 'about_' . $this->source_language,
@@ -126,7 +132,8 @@ class VideoFile extends BaseVideoFile
                 'thumbnail_media_id',
             ),
             'files' => array(
-                'original_media_id',
+                'clip_webm_media_id',
+                // TODO: Add clip_mp4_media_id
             ),
             'subtitles' => array(
                 'subtitles_' . $this->source_language,
@@ -159,7 +166,8 @@ class VideoFile extends BaseVideoFile
                 'about' => Yii::t('model', 'About'),
                 'about_en' => Yii::t('model', 'About (English)'),
                 'thumbnail_media_id' => Yii::t('model', 'Thumbnail'),
-                'original_media_id' => Yii::t('model', 'Film file'),
+                'clip_webm_media_id' => Yii::t('model', 'Film file'),
+                'clip_mp4_media_id' => Yii::t('model', 'Film file'),
                 'subtitles' => Yii::t('model', 'Subtitles'),
             )
         );
@@ -173,12 +181,31 @@ class VideoFile extends BaseVideoFile
                 'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "where_population_increase_future" url to the video with populations on the map.'),
                 'about' => Yii::t('model', 'Describing the videos content. We avoid the word "and" in about texts and titles, as it\'s often become boring enumerations of details instead of figuring out what is the whole.'),
                 'thumbnail_media_id' => Yii::t('model', 'This is the small image representing the video in lists and also the start screen as the film is loading. It shows an iconic snapshot from the film, with the crucial graphics focused to help users recognize it later. Preferably a closeup of the high res films visualization with a human touch.'),
-                'original_media_id' => Yii::t('model', 'The film needs to be .webm file.'),
+                'clip_webm_media_id' => Yii::t('model', 'The film needs to be an .webm file.'),
+                'clip_mp4_media_id' => Yii::t('model', 'The film needs to be an .mp4 file.'),
                 'subtitles' => Yii::t('model', 'The subtitles srt file contents'),
                 'subtitles_import_media_id' => Yii::t('model', 'Here you can upload and import an existing subtitles file in srt file format. Warning: Clicking import will replace the current subtitles with the contents of the srt file.'),
                 'related' => Yii::t('model', 'After watching this video you may also be interested in these Items. If the video is on a chapter page, the chapter is assumed to related to these items as well.'),
             )
         );
+    }
+
+    /**
+     * Returns the media ID.
+     * @return integer
+     */
+    public function getMediaId()
+    {
+        return !empty($this->clip_webm_media_id) ? $this->clip_webm_media_id : $this->clip_mp4_media_id;
+    }
+
+    /**
+     * Returns the media ID attribute name ('clip_webm_media_id' or 'clip_mp4_media_id').
+     * @return string
+     */
+    public function getMediaIdAttribute()
+    {
+        return isset($this->clip_webm_media_id) ? 'clip_webm_media_id' : 'clip_mp4_media_id';
     }
 
     public function search($criteria = null)
@@ -282,7 +309,7 @@ class VideoFile extends BaseVideoFile
      */
     public function getVideoUrl()
     {
-        $videoMedia = P3Media::model()->findByPk($this->original_media_id); // Currently we hard-code to use the original movie file instead of any processed media
+        $videoMedia = P3Media::model()->findByPk($this->getMediaId()); // Currently we hard-code to use the original movie file instead of any processed media
 
         if (isset($videoMedia)) {
             return $videoMedia->createUrl('original-public-webm');
