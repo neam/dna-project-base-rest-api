@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1c2d7ec250f23c7bc0c4a41809fba7e8",
+    "hash": "874414d6b2c9e1ad0ab64c9cde8d7cec",
     "packages": [
         {
             "name": "bwoester/yii-event-interceptor",
@@ -1571,16 +1571,16 @@
         },
         {
             "name": "phundament/gii-template-collection",
-            "version": "dev-gcms",
+            "version": "dev-gcms-yiistrap",
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/gii-template-collection.git",
-                "reference": "6b0e8cb439df715156a6d14f1dc1f68972a6aa3a"
+                "reference": "0d14b2349bb98997b3fca5a9be459b1e1942321a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/gii-template-collection/zipball/6b0e8cb439df715156a6d14f1dc1f68972a6aa3a",
-                "reference": "6b0e8cb439df715156a6d14f1dc1f68972a6aa3a",
+                "url": "https://api.github.com/repos/motin/gii-template-collection/zipball/0d14b2349bb98997b3fca5a9be459b1e1942321a",
+                "reference": "0d14b2349bb98997b3fca5a9be459b1e1942321a",
                 "shasum": ""
             },
             "require": {
@@ -1608,9 +1608,9 @@
                 "package"
             ],
             "support": {
-                "source": "https://github.com/motin/gii-template-collection/tree/gcms"
+                "source": "https://github.com/motin/gii-template-collection/tree/gcms-yiistrap"
             },
-            "time": "2014-03-04 15:27:13"
+            "time": "2014-03-04 20:00:02"
         },
         {
             "name": "phundament/p3bootstrap",

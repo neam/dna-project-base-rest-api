@@ -155,7 +155,7 @@
         "phundament/backend-theme":"@dev",
         "phundament/p3bootstrap":"0.22.0",
         "schmunk42/giic": "dev-master",
-        "phundament/gii-template-collection":"dev-gcms"
+        "phundament/gii-template-collection":"dev-gcms-yiistrap"
     },
     "autoload":{
         "psr-0":{
