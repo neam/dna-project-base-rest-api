@@ -49,10 +49,10 @@
     </div>
     <?php $this->endWidget() ?>
     <?php
-    // todo: figure out what this actually does
-    /*foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
+    // Include previously rendered content for modals. These needs to be rendered outside the <form> since they contain form elements of their own
+    foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
         if (strpos($key, "modal:") === 0) {
             echo $clip;
         }
-    }*/ ?>
+    } ?>
 </div>
