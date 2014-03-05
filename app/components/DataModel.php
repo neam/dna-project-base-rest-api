@@ -26,6 +26,7 @@ class DataModel
             'ExamQuestion' => 'exam_question',
             'ExamQuestionAlternative' => 'exam_question_alternative',
             'SlideshowFile' => 'slideshow_file',
+            'SpreadsheetFile' => 'spreadsheet_file',
             'TextDoc' => 'text_doc',
             'VectorGraphic' => 'vector_graphic',
             'DataArticle' => 'data_article',
