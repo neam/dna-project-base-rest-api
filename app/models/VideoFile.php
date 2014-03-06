@@ -329,7 +329,9 @@ class VideoFile extends BaseVideoFile
         $videoMedia = P3Media::model()->findByPk($this->getMediaId()); // Currently we hard-code to use the original movie file instead of any processed media
 
         if (isset($videoMedia)) {
-            return $videoMedia->createUrl('original-public-webm');
+            return ($this->getMimeType() === 'video/webm')
+                ? $videoMedia->createUrl('original-public-webm')
+                : $videoMedia->createUrl('original-public');
         } else {
             return null;
         }
