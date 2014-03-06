@@ -1,3 +1,4 @@
+set -x
 git pull --rebase
 npm install
 bower install --allow-root
