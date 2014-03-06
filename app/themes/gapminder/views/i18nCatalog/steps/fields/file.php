@@ -44,7 +44,7 @@ $input = $this->widget(
     '\GtcRelation',
     array(
         'model' => $model,
-        'relation' => 'originalMedia',
+        'relation' => 'potImportMedia',
         'fields' => 'itemLabel',
         'criteria' => $criteria,
         'allowEmpty' => $noneLabel,
