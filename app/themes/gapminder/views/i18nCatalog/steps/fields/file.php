@@ -27,8 +27,8 @@ var select2opts = {
     //escapeMarkup: function(m) { return m; }
 };
 
-//$("#PoFile_original_media_id").data('select2opts', select2opts);
-//$("#PoFile_original_media_id").select2($("#PoFile_original_media_id").data('select2opts'));
+//$("#PoFile_pot_import_media_id").data('select2opts', select2opts);
+//$("#PoFile_pot_import_media_id").select2($("#PoFile_pot_import_media_id").data('select2opts'));
 
 EOF;
 
@@ -55,13 +55,13 @@ $input = $this->widget(
     ), true);
 ?>
 
-<?php echo $form->customControlGroup($model, 'original_media_id', $input, array(
+<?php echo $form->customControlGroup($model, 'pot_import_media_id', $input, array(
     'labelOptions' => array(
-        'label' => Html::attributeLabelWithTooltip($model, 'original_media_id', 'file'),
+        'label' => Html::attributeLabelWithTooltip($model, 'pot_import_media_id', 'file'),
     ),
 )); ?>
 
-<?php $formId = 'pofile-original_media_id-' . \uniqid() . '-form'; ?>
+<?php $formId = 'pofile-pot_import_media_id-' . \uniqid() . '-form'; ?>
 
 <div class="control-group">
     <div class="controls">
@@ -80,7 +80,7 @@ $input = $this->widget(
 <?php $this->beginClip('modal:' . $formId . '-modal'); ?>
 <?php $this->renderPartial('//p3Media/_modal_form', array(
     'formId' => $formId,
-    'inputSelector' => '#PoFile_original_media_id',
+    'inputSelector' => '#PoFile_pot_import_media_id',
     'model' => new P3Media,
     'pk' => 'id',
     'field' => 'itemLabel',

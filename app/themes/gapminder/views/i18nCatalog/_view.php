@@ -18,8 +18,7 @@
             'cloned_from_id',
             'title',
             'about',
-            'original_media_id',
-            'processed_media_id_en',
+            'pot_import_media_id',
         ),
     )
 ); ?>

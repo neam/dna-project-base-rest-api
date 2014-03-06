@@ -2,6 +2,10 @@
 
 class I18nCatalogController extends Controller
 {
+    use ItemController;
+
+    public $modelClass = "I18nCatalog";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,7 +20,7 @@ class I18nCatalogController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array(
                 'allow',
                 'actions' => array(
@@ -35,7 +39,7 @@ class I18nCatalogController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)

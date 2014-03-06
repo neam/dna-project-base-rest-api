@@ -77,12 +77,8 @@
         <?php echo CHtml::encode($model->about); ?>
         <br />
 
-        <b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id')); ?>:</b>
-        <?php echo CHtml::encode($model->original_media_id); ?>
-        <br />
-
-        <b><?php echo CHtml::encode($model->getAttributeLabel('processed_media_id_en')); ?>:</b>
-        <?php echo CHtml::encode($model->processed_media_id_en); ?>
+        <b><?php echo CHtml::encode($model->getAttributeLabel('pot_import_media_id')); ?>:</b>
+        <?php echo CHtml::encode($model->pot_import_media_id); ?>
         <br />
 
         <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>

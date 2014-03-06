@@ -54,7 +54,7 @@ class I18nCatalog extends BaseI18nCatalog
 
     public function validateFile()
     {
-        return !is_null($this->original_media_id);
+        return !is_null($this->pot_import_media_id);
     }
 
     /**
@@ -75,7 +75,7 @@ class I18nCatalog extends BaseI18nCatalog
         return array(
             'draft' => array(
                 'title',
-                'original_media_id',
+                'pot_import_media_id',
             ),
             'reviewable' => array(),
             'publishable' => array(
@@ -94,7 +94,7 @@ class I18nCatalog extends BaseI18nCatalog
             'file' => array(
                 'title',
                 'about',
-                'original_media_id',
+                'pot_import_media_id',
             ),
         );
     }
