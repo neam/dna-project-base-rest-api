@@ -52,9 +52,11 @@ class I18nCatalog extends BaseI18nCatalog
         return $return;
     }
 
-    public function validateFile()
+    public function validateFile($attribute)
     {
-        return !is_null($this->pot_import_media_id);
+        if (is_null($this->pot_import_media_id)) {
+            $this->addError($attribute, Yii::t('app', '!validateFile'));
+        }
     }
 
     /**
@@ -63,7 +65,8 @@ class I18nCatalog extends BaseI18nCatalog
      */
     public function htmlLength()
     {
-        return true;
+        if (false) {
+        }
     }
 
     /**

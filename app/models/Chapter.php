@@ -70,24 +70,32 @@ class Chapter extends BaseChapter
         return $return;
     }
 
-    public function validateThumbnail()
+    public function validateThumbnail($attribute)
     {
-        return !is_null($this->thumbnail_media_id);
+        if (!is_null($this->thumbnail_media_id)) {
+            $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
+        }
     }
 
-    public function validateVideo()
+    public function validateVideo($attribute)
     {
-        return count($this->videos) == 1;
+        if (count($this->videos) == 1) {
+            $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
+        }
     }
 
-    public function validateExercises()
+    public function validateExercises($attribute)
     {
-        return count($this->exercises) > 0;
+        if (count($this->exercises) > 0) {
+            $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
+        }
     }
 
-    public function validateSnapshots()
+    public function validateSnapshots($attribute)
     {
-        return count($this->snapshots) > 0;
+        if (count($this->snapshots) > 0) {
+            $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
+        }
     }
 
     /**
@@ -96,7 +104,8 @@ class Chapter extends BaseChapter
      */
     public function htmlLength()
     {
-        return true;
+        if (false) {
+        }
     }
 
     /**
