@@ -35,16 +35,30 @@ class I18nCatalog extends BaseI18nCatalog
 
     public function rules()
     {
+
+        // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
+        $attribute = "po_contents";
+        $manualI18nRules = array();
+        foreach (Yii::app()->params["languages"] as $language => $label) {
+            $manualI18nRules[] = array($attribute, 'validatePoContentsTranslation', 'on' => 'translate_into_' . $language);
+
+            foreach ($this->flowSteps() as $step => $fields) {
+                $manualI18nRules[] = array($attribute, 'validatePoContentsTranslation', 'on' => "into_$language-step_$step");
+            }
+        }
+
         $return = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
+            $manualI18nRules,
             array(
 
                 array('title', 'length', 'min' => 10, 'max' => 200),
                 array('about', 'length', 'min' => 3, 'max' => 400),
                 array('pot_import_media_id', 'validateFile', 'on' => 'publishable'),
+                array('po_contents', 'validatePoContents', 'on' => 'publishable'),
 
             )
         );
@@ -56,6 +70,20 @@ class I18nCatalog extends BaseI18nCatalog
     {
         if (is_null($this->pot_import_media_id)) {
             $this->addError($attribute, Yii::t('app', '!validateFile'));
+        }
+    }
+
+    public function validatePoContents($attribute)
+    {
+        if (is_null($this->po_contents)) {
+            $this->addError($attribute, Yii::t('app', '!validatePoContents'));
+        }
+    }
+
+    public function validatePoContentsTranslation($attribute)
+    {
+        if (false) {
+            $this->addError($attribute, Yii::t('app', 'TODO: Po Contents translation validation'));
         }
     }
 
