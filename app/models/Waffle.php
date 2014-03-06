@@ -35,14 +35,29 @@ class Waffle extends BaseWaffle
 
     public function rules()
     {
+
+        // Add i18n validation rules manually for the related item translations
+        $attribute = "po_contents";
+        $manualI18nRules = array();
+        foreach (Yii::app()->params["languages"] as $language => $label) {
+            $manualI18nRules[] = array($attribute, 'validateWaffleTranslation', 'on' => 'translate_into_' . $language);
+
+            foreach ($this->flowSteps() as $step => $fields) {
+                $manualI18nRules[] = array($attribute, 'validateWaffleTranslation', 'on' => "into_$language-step_$step");
+            }
+        }
+
         $return = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
+            $manualI18nRules,
             array(
 
                 array('title', 'length', 'min' => 3, 'max' => 200),
+                array('about', 'length', 'min' => 3, 'max' => 400),
+                array('json_import_media_id', 'validateFile', 'on' => 'publishable'),
 
             )
         );
@@ -50,9 +65,18 @@ class Waffle extends BaseWaffle
         return $return;
     }
 
-    public function validateFile()
+    public function validateFile($attribute)
     {
-        return !is_null($this->original_media_id);
+        if (is_null($this->json_import_media_id)) {
+            $this->addError($attribute, Yii::t('app', '!validateFile'));
+        }
+    }
+
+    public function validateWaffleTranslation($attribute)
+    {
+        if (true) {
+            $this->addError($attribute, Yii::t('app', 'TODO: Waffle translation validation'));
+        }
     }
 
     /**
@@ -83,6 +107,9 @@ class Waffle extends BaseWaffle
                 'title',
                 'slug',
             ),
+            'import' => array(
+                'json_import_media_id',
+            ),
         );
     }
 
@@ -90,6 +117,7 @@ class Waffle extends BaseWaffle
     {
         return array(
             'info' => Yii::t('app', 'Info'),
+            'import' => Yii::t('app', 'Import'),
         );
     }
 
