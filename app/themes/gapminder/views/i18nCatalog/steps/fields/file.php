@@ -37,6 +37,7 @@ Yii::app()->clientScript->registerScript('step_file-select2', $select2js);
 $criteria = new CDbCriteria();
 $criteria->addCondition("mime_type IN ('text/x-po','text/plain')");
 $criteria->addCondition("t.type = 'file'");
+$criteria->addCondition("t.original_name LIKE '%.po%'");
 $criteria->limit = 100;
 $criteria->order = "t.created_at DESC";
 

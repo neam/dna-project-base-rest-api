@@ -106,7 +106,6 @@ class I18nCatalog extends BaseI18nCatalog
         return array(
             'draft' => array(
                 'title',
-                'pot_import_media_id',
             ),
             'reviewable' => array(),
             'publishable' => array(
@@ -122,9 +121,15 @@ class I18nCatalog extends BaseI18nCatalog
     public function flowSteps()
     {
         return array(
-            'file' => array(
+            'info' => array(
                 'title',
                 'about',
+            ),
+            'i18n' => array(
+                'i18n_category',
+                'po_contents',
+            ),
+            'import' => array(
                 'pot_import_media_id',
             ),
         );
@@ -133,7 +138,9 @@ class I18nCatalog extends BaseI18nCatalog
     public function flowStepCaptions()
     {
         return array(
-            'file' => Yii::t('app', 'File'),
+            'info' => Yii::t('app', 'Info'),
+            'i18n' => Yii::t('app', 'I18n'),
+            'import' => Yii::t('app', 'Import'),
         );
     }
 
