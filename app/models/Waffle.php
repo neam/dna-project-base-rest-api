@@ -56,7 +56,6 @@ class Waffle extends BaseWaffle
             array(
 
                 array('title', 'length', 'min' => 3, 'max' => 200),
-                array('about', 'length', 'min' => 3, 'max' => 400),
                 array('json_import_media_id', 'validateFile', 'on' => 'publishable'),
 
             )
