@@ -82,7 +82,7 @@ class I18nCatalog extends BaseI18nCatalog
 
     public function validatePoContentsTranslation($attribute)
     {
-        if (false) {
+        if (true) {
             $this->addError($attribute, Yii::t('app', 'TODO: Po Contents translation validation'));
         }
     }
