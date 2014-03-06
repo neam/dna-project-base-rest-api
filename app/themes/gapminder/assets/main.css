@@ -7270,6 +7270,50 @@ td.visible-print {
 .videofile-controller.edit-action .after-flowbar {
   margin-top: 218px;
 }
+.videofile-controller.edit-action .video-field {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.videofile-controller.edit-action .video-field:before,
+.videofile-controller.edit-action .video-field:after {
+  content: " ";
+  display: table;
+}
+.videofile-controller.edit-action .video-field:after {
+  clear: both;
+}
+.videofile-controller.edit-action .video-field:before,
+.videofile-controller.edit-action .video-field:after {
+  content: " ";
+  display: table;
+}
+.videofile-controller.edit-action .video-field:after {
+  clear: both;
+}
+.videofile-controller.edit-action .video-field .field-select {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .videofile-controller.edit-action .video-field .field-select {
+    float: left;
+    width: 66.66666666666666%;
+  }
+}
+.videofile-controller.edit-action .video-field .field-upload {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .videofile-controller.edit-action .video-field .field-upload {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
 .flowbar {
   background-image: -webkit-linear-gradient(top, #ffffff 90%, rgba(255, 255, 255, 0) 100%);
   background-image: linear-gradient(to bottom, #ffffff 90%, rgba(255, 255, 255, 0) 100%);

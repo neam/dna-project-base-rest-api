@@ -338,6 +338,25 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
+     * Returns the video URL for a P3Media file.
+     * @param integer $p3MediaId
+     * @return string|null
+     */
+    public function getVideoUrlForP3Media($p3MediaId)
+    {
+        $p3Media = P3Media::model()->findByPk($p3MediaId);
+        $url = null;
+
+        if (isset($p3Media)) {
+            $url = ($p3Media->mime_type === 'video/webm')
+                ? $p3Media->createUrl('original-public-webm')
+                : $p3Media->createUrl('original-public');
+        }
+
+        return $url;
+    }
+
+    /**
      * Returns the translation category for the current model.
      * @return string
      */

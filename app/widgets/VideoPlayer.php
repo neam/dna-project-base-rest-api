@@ -9,6 +9,13 @@ class VideoPlayer extends CWidget
      * @var VideoFile
      */
     public $videoFile;
+    /**
+     * @var P3Media[]
+     */
+    public $p3MediaFiles = array();
+    /**
+     * @var string
+     */
     public $srcLang;
 
     public function init()
@@ -17,6 +24,7 @@ class VideoPlayer extends CWidget
         if (!$this->videoFile instanceof VideoFile) {
             throw new CException(Yii::t('error', 'The passed model is not a VideoFile.'));
         }
+        $this->p3MediaFiles = $this->getP3MediaFiles();
         $this->_initSrcLang();
         $this->_registerAssets();
     }
@@ -28,7 +36,17 @@ class VideoPlayer extends CWidget
         $this->render('view', array(
             'playerUrl' => $this->getPlayerUrl(),
             'srcLang' => $this->srcLang,
+            'p3MediaFiles' => $this->p3MediaFiles,
         ));
+    }
+
+    /**
+     * Returns P3Media files.
+     * @return P3Media[]
+     */
+    public function getP3MediaFiles()
+    {
+        return $this->videoFile->getVideos();
     }
 
     /**
@@ -50,12 +68,13 @@ class VideoPlayer extends CWidget
     }
 
     /**
-     * Returns the video URL.
-     * @return string
+     * Returns the video URL for a P3Media file.
+     * @param integer $p3MediaId
+     * @return null|string
      */
-    public function getVideoUrl()
+    public function getVideoUrl($p3MediaId)
     {
-        return e($this->videoFile->getVideoUrl());
+        return $this->videoFile->getVideoUrlForP3Media($p3MediaId);
     }
 
     /**
@@ -77,13 +96,12 @@ class VideoPlayer extends CWidget
     }
 
     /**
-     * Checks if the video exists.
+     * Checks if a video exists.
      * @return boolean
      */
     public function videoExists()
     {
-        $videoUrl = $this->getVideoUrl();
-        return !empty($videoUrl);
+        return !empty($this->p3MediaFiles);
     }
 
     /**
