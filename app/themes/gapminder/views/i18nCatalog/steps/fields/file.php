@@ -63,7 +63,6 @@ EOF;
                 Yii::t('model', 'Import'),
                 array(
                     'block' => true,
-                    'disabled' => true, // TODO: Remove when the submit logic has been implemented.
                     'class' => 'btn btn-primary',
                     'name' => 'import',
                 )
