@@ -910,9 +910,13 @@ trait ItemController
         return $return_array;
     }
 
+    /**
+     * Saves a model and
+     * @param $model
+     * @return mixed
+     */
     protected function saveAndContinueOnSuccess($model)
     {
-
         $_POST = $this->fixPostFromGrid($_POST);
 
         // log for dev purposes

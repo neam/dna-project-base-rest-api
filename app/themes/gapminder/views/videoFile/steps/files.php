@@ -3,23 +3,63 @@
 /* @var VideoFile|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php echo $form->select2ControlGroup($model, $model->getMediaIdAttribute(), $model->getVideoOptions()); ?>
-<?php echo TbHtml::button(
-    Yii::t('app', 'Upload new'),
-    array(
-        'icon' => TbHtml::ICON_CLOUD_UPLOAD,
-        'class' => 'upload-btn',
-        'data-toggle' => 'modal',
-        'data-target' => '#' . $form->id . '-modal',
-    )
-); ?>
-<?php $this->renderPartial(
-    '//p3Media/_modal_form',
-    array(
-        'formId' => $form->id,
-        'inputSelector' => '#VideoFile_' . $model->getMediaIdAttribute(),
-        'model' => new P3Media(),
-        'pk' => 'id',
-        'field' => 'itemLabel',
-    )
-); ?>
+<div class="video-field">
+    <div class="field-select">
+        <?php echo $form->select2ControlGroup($model, 'clip_webm_media_id', $model->getVideoOptions(VideoFile::MIME_TYPE_VIDEO_WEBM)); ?>
+    </div>
+    <div class="field-upload">
+        <div class="form-group">
+            <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+            <?php echo TbHtml::button(
+                Yii::t('app', 'Upload new'),
+                array(
+                    'icon' => TbHtml::ICON_CLOUD_UPLOAD,
+                    'block' => true,
+                    'class' => 'upload-btn',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#' . $form->id . '-modal',
+                )
+            ); ?>
+            <?php $this->renderPartial(
+                '//p3Media/_modal_form',
+                array(
+                    'formId' => $form->id,
+                    'inputSelector' => '#VideoFile_clip_webm_media_id',
+                    'model' => new P3Media(),
+                    'pk' => 'id',
+                    'field' => 'itemLabel',
+                )
+            ); ?>
+        </div>
+    </div>
+</div>
+<div class="video-field">
+    <div class="field-select">
+        <?php echo $form->select2ControlGroup($model, 'clip_mp4_media_id', $model->getVideoOptions(VideoFile::MIME_TYPE_VIDEO_MP4)); ?>
+    </div>
+    <div class="field-upload">
+        <div class="form-group">
+            <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+            <?php echo TbHtml::button(
+                Yii::t('app', 'Upload new'),
+                array(
+                    'icon' => TbHtml::ICON_CLOUD_UPLOAD,
+                    'block' => true,
+                    'class' => 'upload-btn',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#' . $form->id . '-modal',
+                )
+            ); ?>
+            <?php $this->renderPartial(
+                '//p3Media/_modal_form',
+                array(
+                    'formId' => $form->id,
+                    'inputSelector' => '#VideoFile_clip_mp4_media_id',
+                    'model' => new P3Media(),
+                    'pk' => 'id',
+                    'field' => 'itemLabel',
+                )
+            ); ?>
+        </div>
+    </div>
+</div>

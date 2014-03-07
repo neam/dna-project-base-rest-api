@@ -6,8 +6,10 @@ Yii::import('VideoFile.*');
 
 class VideoFile extends BaseVideoFile
 {
-
     use ItemTrait;
+
+    const MIME_TYPE_VIDEO_WEBM = 'video/webm';
+    const MIME_TYPE_VIDEO_MP4 = 'video/mp4';
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
@@ -166,8 +168,8 @@ class VideoFile extends BaseVideoFile
                 'about' => Yii::t('model', 'About'),
                 'about_en' => Yii::t('model', 'About (English)'),
                 'thumbnail_media_id' => Yii::t('model', 'Thumbnail'),
-                'clip_webm_media_id' => Yii::t('model', 'Video file'),
-                'clip_mp4_media_id' => Yii::t('model', 'Video file'),
+                'clip_webm_media_id' => Yii::t('model', 'Video File (.webm)'),
+                'clip_mp4_media_id' => Yii::t('model', 'Video File (.mp4)'),
                 'subtitles' => Yii::t('model', 'Subtitles'),
             )
         );
@@ -248,12 +250,26 @@ class VideoFile extends BaseVideoFile
      * Returns related video P3Media.
      * @return P3Media[]
      */
-    public function getVideos()
+    public function getAllVideos()
     {
         return $this->getP3Media(array(
             'video/webm',
             'video/mp4',
         ));
+    }
+
+    /**
+     * Returns videos by mime type.
+     * @param string|array $mimeType mime type or an array of mime types.
+     * @return P3Media[]
+     */
+    public function getVideosByMimeType($mimeType)
+    {
+        if (is_string($mimeType)) {
+            $mimeType = array($mimeType);
+        }
+
+        return $this->getP3Media($mimeType);
     }
 
     /**
@@ -270,11 +286,16 @@ class VideoFile extends BaseVideoFile
 
     /**
      * Returns related video options.
+     * @param string|array $mimeType mime type or an array of mime types.
      * @return array
      */
-    public function getVideoOptions()
+    public function getVideoOptions($mimeType)
     {
-        return $this->getOptions($this->getVideos());
+        if (is_string($mimeType)) {
+            $mimeType = array($mimeType);
+        }
+
+        return $this->getOptions($this->getVideosByMimeType($mimeType));
     }
 
     /**

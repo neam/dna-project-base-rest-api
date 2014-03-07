@@ -46,7 +46,7 @@ class VideoPlayer extends CWidget
      */
     public function getP3MediaFiles()
     {
-        return $this->videoFile->getVideos();
+        return $this->videoFile->getAllVideos();
     }
 
     /**

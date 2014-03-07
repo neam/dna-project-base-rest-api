@@ -7299,7 +7299,7 @@ td.visible-print {
 @media (min-width: 992px) {
   .videofile-controller.edit-action .video-field .field-select {
     float: left;
-    width: 66.66666666666666%;
+    width: 75%;
   }
 }
 .videofile-controller.edit-action .video-field .field-upload {
@@ -7311,7 +7311,7 @@ td.visible-print {
 @media (min-width: 992px) {
   .videofile-controller.edit-action .video-field .field-upload {
     float: left;
-    width: 33.33333333333333%;
+    width: 25%;
   }
 }
 .flowbar {
