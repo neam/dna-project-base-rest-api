@@ -52,7 +52,7 @@ EOF;
     </div>
     <div class="field-import">
         <div class="form-group">
-            <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+            <label class="control-label"><?php echo Yii::t('app', '&nbsp;'); ?></label>
             <?php echo TbHtml::submitButton(
                 Yii::t('model', 'Import'),
                 array(

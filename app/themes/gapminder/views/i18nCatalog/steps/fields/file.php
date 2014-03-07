@@ -1,18 +1,13 @@
 <?php
-/* @var PoFileController|ItemController $this */
-/* @var PoFile|ItemTrait $model */
+/* @var I18nCatalogController|ItemController $this */
+/* @var I18nCatalog|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php // TODO: Fix and refactor this view. ?>
-<?php //Yii::app()->bootstrap->registerAssetCss('../select2/select2.css'); ?>
-<?php //Yii::app()->bootstrap->registerAssetJs('../select2/select2.js'); ?>
-
+<?php // TODO: Remove unused code. ?>
 <?php
 $baseUrl = Yii::app()->request->baseUrl;
-
 $noneLabel = Yii::t('app', 'None');
 $chooseBelowLabel = Yii::t('app', 'Click to choose existing or upload new below');
-
 $select2js = <<<EOF
 
 function format(state) {
@@ -33,57 +28,48 @@ var select2opts = {
 EOF;
 
 Yii::app()->clientScript->registerScript('step_file-select2', $select2js);
-
-$criteria = new CDbCriteria();
-$criteria->addCondition("mime_type IN ('text/x-po','text/plain')");
-$criteria->addCondition("t.type = 'file'");
-$criteria->addCondition("t.original_name LIKE '%.po%'");
-$criteria->limit = 100;
-$criteria->order = "t.created_at DESC";
-
-$input = $this->widget(
-    '\GtcRelation',
-    array(
-        'model' => $model,
-        'relation' => 'potImportMedia',
-        'fields' => 'itemLabel',
-        'criteria' => $criteria,
-        'allowEmpty' => $noneLabel,
-        'style' => 'dropdownlist',
-        'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
-    ), true);
 ?>
-
-<?php echo $form->customControlGroup($model, 'pot_import_media_id', $input, array(
-    'labelOptions' => array(
-        'label' => Html::attributeLabelWithTooltip($model, 'pot_import_media_id', 'file'),
-    ),
-)); ?>
-
-<?php $formId = 'pofile-pot_import_media_id-' . \uniqid() . '-form'; ?>
-
-<div class="control-group">
-    <div class="controls">
-        <?php echo $this->widget('\TbButton', array(
-            'label' => Yii::t('app', 'Upload'),
-            'icon' => 'glyphicon-plus',
-            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-            'htmlOptions' => array(
-                'data-toggle' => 'modal',
-                'data-target' => '#' . $formId . '-modal',
-            ),
-        ), true); ?>
+<div class="file-field">
+    <div class="field-select">
+        <?php echo $form->select2ControlGroup($model, 'pot_import_media_id', $model->getPoOptions()); ?>
+    </div>
+    <div class="field-upload">
+        <div class="form-group">
+            <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+            <?php echo TbHtml::button(
+                Yii::t('app', 'Upload new'),
+                array(
+                    'icon' => TbHtml::ICON_CLOUD_UPLOAD,
+                    'block' => true,
+                    'class' => 'upload-btn',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#' . $form->id . '-modal',
+                )
+            ); ?>
+            <?php $this->renderPartial(
+                '//p3Media/_modal_form',
+                array(
+                    'formId' => $form->id,
+                    'inputSelector' => '#PoFile_pot_import_media_id',
+                    'model' => new P3Media(),
+                    'pk' => 'id',
+                    'field' => 'itemLabel',
+                )
+            ); ?>
+        </div>
+    </div>
+    <div class="field-import">
+        <div class="form-group">
+            <label class="control-label"><?php echo Yii::t('app', '&nbsp;'); ?></label>
+            <?php echo TbHtml::submitButton(
+                Yii::t('model', 'Import'),
+                array(
+                    'block' => true,
+                    'disabled' => true, // TODO: Remove when the submit logic has been implemented.
+                    'class' => 'btn btn-primary',
+                    'name' => 'import',
+                )
+            ); ?>
+        </div>
     </div>
 </div>
-
-<?php $this->beginClip('modal:' . $formId . '-modal'); ?>
-<?php $this->renderPartial('//p3Media/_modal_form', array(
-    'formId' => $formId,
-    'inputSelector' => '#PoFile_pot_import_media_id',
-    'model' => new P3Media,
-    'pk' => 'id',
-    'field' => 'itemLabel',
-)); ?>
-<?php $this->endClip(); ?>
