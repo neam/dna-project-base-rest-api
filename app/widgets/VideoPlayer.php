@@ -87,15 +87,6 @@ class VideoPlayer extends CWidget
     }
 
     /**
-     * Returns the mime type.
-     * @return string
-     */
-    public function getMimeType()
-    {
-        return e($this->videoFile->getMimeType());
-    }
-
-    /**
      * Checks if a video exists.
      * @return boolean
      */
