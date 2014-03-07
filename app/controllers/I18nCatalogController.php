@@ -72,22 +72,18 @@ class I18nCatalogController extends Controller
 
         if (isset($_POST['import'])) {
 
-            throw new CException("TODO");
-
-            /*
             // get file path
-            $p3media = P3Media::model()->findByPk($_POST['VideoFile']['subtitles_import_media_id']);
+            $p3media = P3Media::model()->findByPk($_POST['I18nCatalog']['pot_import_media_id']);
             $fullPath = $p3media->fullPath;
 
             // read contents of file
             $contents = file_get_contents($fullPath);
 
             // save to post
-            $_POST['VideoFile']['_subtitles'] = $contents;
+            $_POST['I18nCatalog']['po_contents'] = $contents;
 
             // emulate us hitting the save button
             $_POST['save-changes'] = true;
-            */
 
         }
         return $this->parentSaveAndContinueOnSuccess($model);
