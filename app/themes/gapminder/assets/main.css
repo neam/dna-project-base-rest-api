@@ -7127,6 +7127,62 @@ td.visible-print {
 .item-controller.browse-action .item-actions .action-buttons .btn-group {
   margin: 5px 0 0 5px;
 }
+.item-controller.edit-action .file-field {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.item-controller.edit-action .file-field:before,
+.item-controller.edit-action .file-field:after {
+  content: " ";
+  display: table;
+}
+.item-controller.edit-action .file-field:after {
+  clear: both;
+}
+.item-controller.edit-action .file-field:before,
+.item-controller.edit-action .file-field:after {
+  content: " ";
+  display: table;
+}
+.item-controller.edit-action .file-field:after {
+  clear: both;
+}
+.item-controller.edit-action .file-field .field-select {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller.edit-action .file-field .field-select {
+    float: left;
+    width: 66.66666666666666%;
+  }
+}
+.item-controller.edit-action .file-field .field-upload {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller.edit-action .file-field .field-upload {
+    float: left;
+    width: 16.666666666666664%;
+  }
+}
+.item-controller.edit-action .file-field .field-import {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller.edit-action .file-field .field-import {
+    float: left;
+    width: 16.666666666666664%;
+  }
+}
 .item-controller .item-content {
   margin-left: -15px;
   margin-right: -15px;

@@ -1,11 +1,9 @@
 <?php
-/* @var PoFileController|ItemController $this */
-/* @var PoFile|ItemTrait $model */
+/* @var WaffleController|ItemController $this */
+/* @var Waffle|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php // TODO: Fix and refactor this view. ?>
-<?php //Yii::app()->bootstrap->registerAssetCss('../select2/select2.css'); ?>
-<?php //Yii::app()->bootstrap->registerAssetJs('../select2/select2.js'); ?>
+<?php // TODO: Remove unused code. ?>
 
 <?php
 $baseUrl = Yii::app()->request->baseUrl;
@@ -31,59 +29,48 @@ var select2opts = {
 //$("#PoFile_json_import_media_id").select2($("#PoFile_json_import_media_id").data('select2opts'));
 
 EOF;
-
-Yii::app()->clientScript->registerScript('step_file-select2', $select2js);
-
-$criteria = new CDbCriteria();
-$criteria->addCondition("mime_type IN ('application/json')");
-$criteria->addCondition("t.type = 'file'");
-$criteria->addCondition("t.original_name LIKE '%.json%'");
-$criteria->limit = 100;
-$criteria->order = "t.created_at DESC";
-
-$input = $this->widget(
-    '\GtcRelation',
-    array(
-        'model' => $model,
-        'relation' => 'jsonImportMedia',
-        'fields' => 'itemLabel',
-        'criteria' => $criteria,
-        'allowEmpty' => $noneLabel,
-        'style' => 'dropdownlist',
-        'htmlOptions' => array(
-            'checkAll' => 'all'
-        ),
-    ), true);
 ?>
-
-<?php echo $form->customControlGroup($model, 'json_import_media_id', $input, array(
-    'labelOptions' => array(
-        'label' => Html::attributeLabelWithTooltip($model, 'json_import_media_id', 'file'),
-    ),
-)); ?>
-
-<?php $formId = 'pofile-json_import_media_id-' . \uniqid() . '-form'; ?>
-
-<div class="control-group">
-    <div class="controls">
-        <?php echo $this->widget('\TbButton', array(
-            'label' => Yii::t('app', 'Upload'),
-            'icon' => 'glyphicon-plus',
-            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-            'htmlOptions' => array(
-                'data-toggle' => 'modal',
-                'data-target' => '#' . $formId . '-modal',
-            ),
-        ), true); ?>
+<div class="file-field">
+    <div class="field-select">
+        <?php echo $form->select2ControlGroup($model, 'json_import_media_id', $model->getJsonFileOptions()); ?>
+    </div>
+    <div class="field-upload">
+        <div class="form-group">
+            <label class="control-label"><?php echo Yii::t('app', '&nbsp;'); ?></label>
+            <?php echo TbHtml::button(
+                Yii::t('app', 'Upload new'),
+                array(
+                    'icon' => TbHtml::ICON_CLOUD_UPLOAD,
+                    'block' => true,
+                    'class' => 'upload-btn',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#' . $form->id . '-modal',
+                )
+            ); ?>
+            <?php $this->renderPartial(
+                '//p3Media/_modal_form',
+                array(
+                    'formId' => $form->id,
+                    'inputSelector' => '#PoFile_json_import_media_id',
+                    'model' => new P3Media(),
+                    'pk' => 'id',
+                    'field' => 'itemLabel',
+                )
+            ); ?>
+        </div>
+    </div>
+    <div class="field-import">
+        <div class="form-group">
+            <label class="control-label"><?php echo Yii::t('app', '&nbsp;'); ?></label>
+            <?php echo TbHtml::submitButton(
+                Yii::t('model', 'Import'),
+                array(
+                    'block' => true,
+                    'disabled' => true, // TODO: Remove when the submit logic has been implemented.
+                    'class' => 'btn btn-primary',
+                    'name' => 'import',
+                )
+            ); ?>
+        </div>
     </div>
 </div>
-
-<?php $this->beginClip('modal:' . $formId . '-modal'); ?>
-<?php $this->renderPartial('//p3Media/_modal_form', array(
-    'formId' => $formId,
-    'inputSelector' => '#PoFile_json_import_media_id',
-    'model' => new P3Media,
-    'pk' => 'id',
-    'field' => 'itemLabel',
-)); ?>
-<?php $this->endClip(); ?>

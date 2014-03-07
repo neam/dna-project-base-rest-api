@@ -26,8 +26,6 @@ var select2opts = {
 //$("#PoFile_pot_import_media_id").select2($("#PoFile_pot_import_media_id").data('select2opts'));
 
 EOF;
-
-Yii::app()->clientScript->registerScript('step_file-select2', $select2js);
 ?>
 <div class="file-field">
     <div class="field-select">

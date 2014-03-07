@@ -28,9 +28,7 @@ $("#VideoFile_subtitles_import_media_id").data('select2opts', select2opts);
 $("#VideoFile_subtitles_import_media_id").select2($("#VideoFile_subtitles_import_media_id").data('select2opts'));
 
 EOF;
-
 ?>
-
 <div class="upload-field">
     <div class="field-select">
         <?php echo $form->select2ControlGroup($model, 'subtitles_import_media_id', $model->getSubtitleOptions()); ?>

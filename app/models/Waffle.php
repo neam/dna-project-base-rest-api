@@ -150,4 +150,27 @@ class Waffle extends BaseWaffle
         ));
     }
 
+    /**
+     * Returns the JSON files.
+     * @return P3Media[]
+     */
+    public function getJsonFiles()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->addCondition("mime_type IN ('application/json','text/plain')"); // TODO: Fix JSON file mime type when uploading.
+        $criteria->addCondition("t.type = 'file'");
+        $criteria->addCondition("t.original_name LIKE '%.json%'");
+        $criteria->limit = 100;
+        $criteria->order = "t.created_at DESC";
+        return P3Media::model()->findAll($criteria);
+    }
+
+    /**
+     * Returns the JSON file options.
+     * @return array
+     */
+    public function getJsonFileOptions()
+    {
+        return $this->getOptions($this->getJsonFiles());
+    }
 }
