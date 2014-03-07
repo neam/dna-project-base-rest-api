@@ -7314,6 +7314,62 @@ td.visible-print {
     width: 25%;
   }
 }
+.videofile-controller.edit-action .upload-field {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.videofile-controller.edit-action .upload-field:before,
+.videofile-controller.edit-action .upload-field:after {
+  content: " ";
+  display: table;
+}
+.videofile-controller.edit-action .upload-field:after {
+  clear: both;
+}
+.videofile-controller.edit-action .upload-field:before,
+.videofile-controller.edit-action .upload-field:after {
+  content: " ";
+  display: table;
+}
+.videofile-controller.edit-action .upload-field:after {
+  clear: both;
+}
+.videofile-controller.edit-action .upload-field .field-select {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .videofile-controller.edit-action .upload-field .field-select {
+    float: left;
+    width: 66.66666666666666%;
+  }
+}
+.videofile-controller.edit-action .upload-field .field-import {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .videofile-controller.edit-action .upload-field .field-import {
+    float: left;
+    width: 16.666666666666664%;
+  }
+}
+.videofile-controller.edit-action .upload-field .field-upload {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .videofile-controller.edit-action .upload-field .field-upload {
+    float: left;
+    width: 16.666666666666664%;
+  }
+}
 .flowbar {
   background-image: -webkit-linear-gradient(top, #ffffff 90%, rgba(255, 255, 255, 0) 100%);
   background-image: linear-gradient(to bottom, #ffffff 90%, rgba(255, 255, 255, 0) 100%);

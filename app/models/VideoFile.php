@@ -339,6 +339,34 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
+     * Returns subtitle files.
+     * @return P3Media[]
+     */
+    public function getSubtitles()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->addCondition('mime_type = :mimeType');
+        $criteria->addCondition('t.type = :type');
+        $criteria->addCondition('t.access_owner = :userId');
+        $criteria->addCondition("t.original_name LIKE '%.srt'");
+        $criteria->limit = 100;
+        $criteria->order = 't.created_at DESC';
+        $criteria->params[':userId'] = Yii::app()->user->id;
+        $criteria->params[':type'] = 'file';
+        $criteria->params[':mimeType'] = 'text/plain';
+        return P3Media::model()->findAll($criteria);
+    }
+
+    /**
+     * Returns subtitles options.
+     * @return array
+     */
+    public function getSubtitleOptions()
+    {
+        return $this->getOptions($this->getSubtitles());
+    }
+
+    /**
      * Returns related P3Media records.
      * @param array $mimeType
      * @param string $type P3Media.type

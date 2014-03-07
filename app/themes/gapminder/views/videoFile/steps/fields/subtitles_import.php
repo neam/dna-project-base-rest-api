@@ -1,42 +1,10 @@
 <?php
 /** @var VideoFile|ItemTrait $model */
-// TODO: Refactor this view.
+/** @var AppActiveForm|TbActiveForm $form */
+// TODO: Remove unused code.
 ?>
 
-<style>
-
-    .select2-container .select2-choice {
-        display: block;
-        height: 130px;
-        min-width: 200px;
-        max-width: 400px;
-    }
-
-    .select2-result-selectable {
-        height: 120px;
-        overflow-y: auto;
-    }
-
-    .select2-results {
-        max-height: 320px;
-    }
-
-    .select2-thumb {
-        margin-top: 8px;
-        margin-bottom: 4px;
-    }
-
-    .select2-text {
-        margin-bottom: 8px;
-    }
-
-</style>
-
 <?php
-
-//Yii::app()->bootstrap->registerAssetCss('../select2/select2.css');
-//Yii::app()->bootstrap->registerAssetJs('../select2/select2.js');
-
 $baseUrl = Yii::app()->request->baseUrl;
 
 $noneLabel = Yii::t('app', 'None');
@@ -61,61 +29,51 @@ $("#VideoFile_subtitles_import_media_id").select2($("#VideoFile_subtitles_import
 
 EOF;
 
-Yii::app()->clientScript->registerScript('step_thumbnail-select2', $select2js);
-
-$criteria = new CDbCriteria();
-$criteria->addCondition("mime_type IN ('text/plain')");
-$criteria->addCondition("t.original_name LIKE '%.srt'");
-$criteria->addCondition("t.type = 'file'");
-$criteria->limit = 100;
-$criteria->order = "t.created_at DESC";
-
-$input = $this->widget('\GtcRelation', array(
-    'model' => $model,
-    'relation' => 'subtitlesImportMedia',
-    'fields' => 'itemLabel',
-    'criteria' => $criteria,
-    'allowEmpty' => $noneLabel,
-    'style' => 'dropdownlist',
-    'htmlOptions' => array(
-        'checkAll' => 'all'
-    ),
-), true);
 ?>
 
-<?php echo $form->customControlGroup($model, 'subtitles_import_media_id', $input, array(
-    'labelOptions' => array(
-        'label' => Html::attributeLabelWithTooltip($model, 'subtitles_import_media_id'),
-    ),
-)); ?>
-
-<?php $formId = 'videofile-subtitles_import_media_id-' . \uniqid() . '-form'; ?>
-
-<div class="control-group">
-    <div class="controls">
-        <?php echo $this->widget('\TbButton', array(
-            'label' => Yii::t('app', 'Upload'),
-            'icon' => 'glyphicon-plus',
-            'htmlOptions' => array(
-                'data-toggle' => 'modal',
-                'data-target' => '#' . $formId . '-modal',
-            ),
-        ), true); ?>
-        <?php echo CHtml::submitButton(Yii::t('model', 'Import'), array(
-            'class' => 'btn btn-primary',
-            'name' => 'import',
-        )); ?>
+<div class="upload-field">
+    <div class="field-select">
+        <?php echo $form->select2ControlGroup($model, 'subtitles_import_media_id', $model->getSubtitleOptions()); ?>
+    </div>
+    <div class="field-upload">
+        <div class="form-group">
+            <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+            <?php echo TbHtml::button(
+                Yii::t('app', 'Upload new'),
+                array(
+                    'icon' => TbHtml::ICON_CLOUD_UPLOAD,
+                    'block' => true,
+                    'class' => 'upload-btn',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#' . $form->id . '-modal',
+                )
+            ); ?>
+        </div>
+    </div>
+    <div class="field-import">
+        <div class="form-group">
+            <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+            <?php echo TbHtml::submitButton(
+                Yii::t('model', 'Import'),
+                array(
+                    'block' => true,
+                    'class' => 'btn btn-primary',
+                    'name' => 'import',
+                )
+            ); ?>
+        </div>
     </div>
 </div>
 
-<?php $this->beginClip('modal:' . $formId . '-modal'); ?>
-<?php $this->renderPartial('//p3Media/_modal_form', array(
-    'formId' => $formId,
-    'inputSelector' => '#VideoFile_subtitles_import_media_id',
-    'model' => new P3Media,
-    'pk' => 'id',
-    'field' => 'itemLabel',
-)); ?>
-<?php $this->endClip(); ?>
+<?php $this->renderPartial(
+    '//p3Media/_modal_form',
+    array(
+        'formId' => $form->id,
+        'inputSelector' => '#VideoFile_subtitles_import_media_id',
+        'model' => new P3Media(),
+        'pk' => 'id',
+        'field' => 'itemLabel',
+    )
+); ?>
 
 <?php publishJs('/themes/frontend/js/toggle-subtitle-translation-buttons.js', CClientScript::POS_END); ?>
