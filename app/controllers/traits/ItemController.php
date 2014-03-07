@@ -919,7 +919,8 @@ trait ItemController
     {
         $_POST = $this->fixPostFromGrid($_POST);
 
-        // log for dev purposes
+        // Log for dev purposes
+        /** @var ActiveRecord|ItemTrait $model */
         Yii::log("model->scenario: " . print_r($model->scenario, true), "flow", __METHOD__);
         Yii::log("_POST: " . print_r($_POST, true), "flow", __METHOD__);
 

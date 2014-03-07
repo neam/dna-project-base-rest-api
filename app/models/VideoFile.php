@@ -247,6 +247,37 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
+     * Returns the P3Media IDs for the uploaded videos.
+     * @return array
+     */
+    public function getP3MediaIds()
+    {
+        $ids = array();
+
+        if (isset($this->clip_webm_media_id)) {
+            $ids[] = (int) $this->clip_webm_media_id;
+        }
+
+        if (isset($this->clip_mp4_media_id)) {
+            $ids[] = (int) $this->clip_mp4_media_id;
+        }
+
+        return $ids;
+    }
+
+    /**
+     * Returns the uploaded video files.
+     * @return P3Media[]
+     */
+    public function getUploadedVideos()
+    {
+        $p3MediaIds = $this->getP3MediaIds();
+        $criteria = new CDbCriteria();
+        $criteria->addInCondition('t.id', $p3MediaIds);
+        return P3Media::model()->findAll($criteria);
+    }
+
+    /**
      * Returns related video P3Media.
      * @return P3Media[]
      */

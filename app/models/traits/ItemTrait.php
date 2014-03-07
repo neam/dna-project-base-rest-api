@@ -6,13 +6,14 @@ trait ItemTrait
 
     public function saveWithChangeSet()
     {
-
+        /** @var ActiveRecord|QaStateBehavior $model */
         $model = $this;
 
-        // refresh qa state (to be sure that we have the most actual state)
+        // Refresh qa state (to be sure that we have the most actual state)
         $model->refreshQaState();
 
-        // start transaction
+        // Start transaction
+        /** @var CDbTransaction $transaction */
         $transaction = Yii::app()->db->beginTransaction();
 
         try {
