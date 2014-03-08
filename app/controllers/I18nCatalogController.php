@@ -2,7 +2,9 @@
 
 class I18nCatalogController extends Controller
 {
-    use ItemController;
+    use ItemController {
+        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    }
 
     public $modelClass = "I18nCatalog";
 
@@ -63,6 +65,29 @@ class I18nCatalogController extends Controller
             $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
         }
         return true;
+    }
+
+    public function saveAndContinueOnSuccess($model)
+    {
+
+        if (isset($_POST['import'])) {
+
+            // get file path
+            $p3media = P3Media::model()->findByPk($_POST['I18nCatalog']['pot_import_media_id']);
+            $fullPath = $p3media->fullPath;
+
+            // read contents of file
+            $contents = file_get_contents($fullPath);
+
+            // save to post
+            $_POST['I18nCatalog']['po_contents'] = $contents;
+
+            // emulate us hitting the save button
+            $_POST['save-changes'] = true;
+
+        }
+        return $this->parentSaveAndContinueOnSuccess($model);
+
     }
 
     public function actionView($id)
