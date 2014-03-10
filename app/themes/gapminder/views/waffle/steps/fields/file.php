@@ -51,7 +51,7 @@ EOF;
                 '//p3Media/_modal_form',
                 array(
                     'formId' => $form->id,
-                    'inputSelector' => '#PoFile_json_import_media_id',
+                    'inputSelector' => '#Waffle_json_import_media_id',
                     'model' => new P3Media(),
                     'pk' => 'id',
                     'field' => 'itemLabel',

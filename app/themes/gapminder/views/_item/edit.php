@@ -23,6 +23,11 @@
     <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
     <?php $this->renderPartial('/_item/edit/_flowbar', compact('model', 'requiredCounts')); ?>
     <div class="after-flowbar">
+        <div class="alerts">
+            <div class="alerts-content">
+                <?php $this->widget('\TbAlert'); ?>
+            </div>
+        </div>
         <div class="item-content">
             <div class="item-progress">
                 <?php foreach ($this->workflowData["stepActions"] as $action): ?>
@@ -47,7 +52,7 @@
             </div>
         </div>
     </div>
-    <?php $this->endWidget() ?>
+    <?php $this->endWidget(); ?>
     <?php
     // Include previously rendered content for modals. These needs to be rendered outside the <form> since they contain form elements of their own
     foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly

@@ -2,7 +2,7 @@
 $actions = array();
 $id = 1;
 
-foreach (Actions::itemActions() as $action => $label) {
+foreach (array_merge(MetaData::itemVisibilityOperations(),MetaData::itemInteractionOperations()) as $action => $label) {
 
     $actions['Action_' . $id] = array(
         'id' => $id,

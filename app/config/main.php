@@ -510,8 +510,9 @@ $mainConfig = array(
     // application-level parameters that can be accessed
     // using Yii::app()->params['paramName']
     'params'     => array(
-        // this is used in contact page
-        'adminEmail'           => 'webmaster@example.com',
+        // this is used in contact page (and by yii-user module)
+        'adminEmail'           => 'user@example.com',
+        'signupSender'         => 'signup@gapminder.org',
         'languages'            => $languages,
         'ext.ckeditor.options' => array(
             'type'                            => 'fckeditor',
