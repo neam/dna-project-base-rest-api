@@ -16,7 +16,7 @@
     '//p3Media/_modal_form',
     array(
         'formId' => $form->id,
-        'inputSelector' => '#VideoFile_' . $model->getMediaIdAttribute(),
+        'inputSelector' => '#VideoFile_thumbnail_media_id',
         'model' => new P3Media(),
         'pk' => 'id',
         'field' => 'itemLabel',
