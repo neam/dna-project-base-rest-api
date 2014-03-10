@@ -11,4 +11,3 @@ nbproject
 /bower_components
 www/graphs
 .idea/workspace.xml
-app/config/main-local.php
