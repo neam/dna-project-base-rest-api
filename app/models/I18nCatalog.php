@@ -76,9 +76,11 @@ class I18nCatalog extends BaseI18nCatalog
     public function validatePoContents($attribute)
     {
 
-        $entries = $this->parsePoContents();
-        if (!$entries) {
-            $this->addError($attribute, Yii::t('app', 'Could not parse po contents'));
+        if (!is_null($this->pot_import_media_id)) {
+            $entries = $this->parsePoContents();
+            if (!$entries) {
+                $this->addError($attribute, Yii::t('app', 'Could not parse po contents'));
+            }
         }
 
     }
