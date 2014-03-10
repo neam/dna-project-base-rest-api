@@ -160,7 +160,8 @@ class VideoFileController extends Controller
                 )
             );
         } else {
-            throw new CHttpException(404, Yii::t('error', 'No subtitles found.'));
+            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_ERROR, Yii::t('app', 'Subtitles are missing.'));
+            $this->redirect(array('/videoFile/edit/info/' . $id, 'translateInto' => $translateInto)); // TODO: Fix URL generation.
         }
     }
 
