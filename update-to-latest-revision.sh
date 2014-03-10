@@ -16,4 +16,5 @@ app/yiic migrate
 app/yiic authorizationhierarchy reset
 app/yiic authorizationhierarchy build
 app/yiic databaseviewgenerator item
+app/yiic fixture load
 echo "Script finished. Don't forget to synchronize the db schema using MySQL Workbench"
