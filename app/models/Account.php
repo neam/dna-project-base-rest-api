@@ -11,7 +11,7 @@ class Account extends BaseAccount
     const AUTH_ITEM_TYPE_TASK = 1;
     const AUTH_ITEM_TYPE_ROLE = 2;
 
-    // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
+    // Add your model-specific methods here. This file will not be overridden by gtc except you force it.
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -34,6 +34,15 @@ class Account extends BaseAccount
             array()
         );
     }
+
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(),
+            array()
+        );
+    }
+
 
     public function rules()
     {

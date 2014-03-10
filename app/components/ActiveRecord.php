@@ -82,6 +82,11 @@ class ActiveRecord extends CActiveRecord
             $behaviors['i18n-columns']['multilingualRelations'] = $i18nColumnsMultilingualRelationsMap[get_class($this)];
         }
 
+        $behaviors['active-record-access'] = array(
+            'class' => 'application.behaviors.ActiveRecordAccessBehavior',
+            'findRestrictions' => array('view', 'translate', 'review'),
+        );
+
         return array_merge(parent::behaviors(), $behaviors);
     }
 

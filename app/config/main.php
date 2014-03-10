@@ -218,6 +218,7 @@ $mainConfig = array(
                 )
             ),
         ),
+        /*
         'rights'               => array(
             'class'        => 'vendor.crisu83.yii-rights.RightsModule',
             'appLayout'    => '//layouts/main',
@@ -227,6 +228,7 @@ $mainConfig = array(
             #'install' => true, // Enables the installer.
             #'superuserName' => 'admin'
         ),
+        */
         'user'                 => array(
             'class'                => 'vendor.mishamx.yii-user.UserModule',
             'activeAfterRegister'  => false,

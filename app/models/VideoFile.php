@@ -453,4 +453,97 @@ class VideoFile extends BaseVideoFile
     {
         return app()->controller->createUrl('videoFile/subtitles', array('id' => $this->id));
     }
+
+    const ROLE_TRANSLATOR = 1;
+    const ROLE_REVIEWER = 2;
+
+    /**
+     * Checks access for viewing this record.
+     */
+    public function checkAccessView()
+    {
+        if (Yii::app()->user->isAdmin) {
+            return true;
+        } elseif (true/* and user belongs to the same group as this record */) {
+            return true; // todo: return criteria
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Checks access for translating this record.
+     */
+    public function checkAccessTranslate()
+    {
+        // Only check translators
+        if (!Yii::app()->user->hasRole('Translator')) {
+            return true;
+        }
+
+        if (Yii::app()->user->isAdmin) {
+            return true;
+        } elseif (Yii::app()->user->hasRole('Translator')) {
+            return $this->createRoleAccessCriteria(self::ROLE_TRANSLATOR);
+        } else {
+            return $this->createOwnerAccessCriteria();
+        }
+    }
+
+    /**
+     * Checks access for reviewing this record.
+     */
+    public function checkAccessReview()
+    {
+        // Only check reviewers
+        if (!Yii::app()->user->hasRole('Reviewer')) {
+            return true;
+        }
+
+        if (Yii::app()->user->isAdmin) {
+            return true;
+        } elseif (Yii::app()->user->hasRole('Reviewer')) {
+            return $this->createRoleAccessCriteria(self::ROLE_REVIEWER);
+        } else {
+            return $this->createOwnerAccessCriteria();
+        }
+    }
+
+    /**
+     * @param int $roleId
+     * @return CDbCriteria
+     */
+    protected function createRoleAccessCriteria($roleId)
+    {
+        $criteria = new CDbCriteria();
+
+        $criteria->join = implode(
+            ' ',
+            array(
+            "JOIN node_has_group AS nhg ON (nhg.node_id = t.node_id)",
+            "JOIN group_has_account AS gha ON (gha.group_id = nhg.group_id AND role_id = :roleId)",
+            )
+        );
+        $criteria->params[':roleId'] = $roleId;
+
+        if (isset($_GET['id'])) {
+            $criteria->addCondition('t.id = :id');
+            $criteria->params[':id'] = $_GET['id'];
+        }
+
+        return $criteria;
+    }
+
+    /**
+     * @return CDbCriteria
+     */
+    protected function createOwnerAccessCriteria()
+    {
+        $criteria = new CDbCriteria();
+
+        $criteria->addCondition("t.owner_id = :accountId");
+        $criteria->params[':accountId'] = !Yii::app()->user->isGuest ? Yii::app()->user->id : -1;
+
+        return $criteria;
+    }
 }

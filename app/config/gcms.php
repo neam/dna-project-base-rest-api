@@ -211,6 +211,9 @@ $gcmsConfig = array(
             'enabledEnvironments' => array('stage.cms.gapminder.org', 'cms.gapminder.org'),
             'environment' => ENV,
         ),
+        'user' => array(
+            'class' => 'application.components.WebUser',
+        ),
         'widgetFactory' => array(
             'widgets' => array(
                 'TbSelect2' => array(
