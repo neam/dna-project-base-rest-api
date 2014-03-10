@@ -80,8 +80,7 @@ class AppRegistrationController extends RegistrationController
                                 Yii::app()->user->setFlash('registration',
                                     UserModule::t("Thank you for your registration. Please check your email or login."));
                             } else {
-                                Yii::app()->user->setFlash('registration',
-                                    UserModule::t("Thank you for your registration. Please check your email."));
+                                $this->redirect('/user/registration/registrationSuccess');
                             }
 
                             $this->refresh();
@@ -98,5 +97,13 @@ class AppRegistrationController extends RegistrationController
                 'profileFields' => Profile::getFields(),
             ));
         }
+    }
+
+    /**
+     * Renders the registration success page.
+     */
+    public function actionRegistrationSuccess()
+    {
+        $this->render('//user/registration-success');
     }
 }
