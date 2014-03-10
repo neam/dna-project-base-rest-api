@@ -82,10 +82,25 @@ class ActiveRecord extends CActiveRecord
             $behaviors['i18n-columns']['multilingualRelations'] = $i18nColumnsMultilingualRelationsMap[get_class($this)];
         }
 
-        $behaviors['active-record-access'] = array(
-            'class' => 'application.behaviors.ActiveRecordAccessBehavior',
-            'findRestrictions' => array('view', 'translate', 'review'),
-        );
+        $crudModels = DataModel::crudModels();
+
+        if (isset($crudModels[get_class($this)])) {
+            $behaviors['active-record-access'] = array(
+                'class' => 'application.behaviors.ActiveRecordAccessBehavior',
+                'findRestrictions' => array(),
+            );
+
+            $roleAccessRestrictionMap = array(
+                'Translator' => 'translate',
+                'Reviewer' => 'review',
+            );
+
+            foreach ($roleAccessRestrictionMap as $roleName => $restriction) {
+                if (Yii::app()->user->hasRole($roleName)) {
+                    $behaviors['active-record-access']['findRestrictions'][] = $restriction;
+                }
+            }
+        }
 
         return array_merge(parent::behaviors(), $behaviors);
     }
@@ -183,5 +198,71 @@ class ActiveRecord extends CActiveRecord
             'id',
             'original_name'
         );
+    }
+
+    const ROLE_TRANSLATOR = 1;
+    const ROLE_REVIEWER = 2;
+
+    /**
+     * Checks access for translating this record.
+     */
+    public function checkAccessTranslate()
+    {
+        if (Yii::app()->user->isAdmin) {
+            return true;
+        } else {
+            return $this->createGroupAccessCriteria(self::ROLE_TRANSLATOR);
+        }
+    }
+
+    /**
+     * Checks access for reviewing this record.
+     */
+    public function checkAccessReview()
+    {
+        if (Yii::app()->user->isAdmin) {
+            return true;
+        } else {
+            return $this->createGroupAccessCriteria(self::ROLE_REVIEWER);
+        }
+    }
+
+    /**
+     * @param int $roleId
+     * @return CDbCriteria
+     */
+    protected function createGroupAccessCriteria($roleId)
+    {
+        $criteria = new CDbCriteria();
+
+        $criteria->join = implode(
+            ' ',
+            array(
+                "INNER JOIN node_has_group AS nhg ON (nhg.node_id = t.node_id)",
+                "INNER JOIN group_has_account AS gha ON (gha.group_id = nhg.group_id AND role_id = :roleId)",
+                "LEFT JOIN account AS a ON (a.id = t.owner_id)",
+            )
+        );
+        $criteria->params[':roleId'] = $roleId;
+
+        if (isset($_GET['id'])) {
+            $criteria->addCondition('t.id = :id');
+            $criteria->params[':id'] = $_GET['id'];
+        }
+
+        return $criteria;
+    }
+
+    /**
+     * @return CDbCriteria
+     */
+    protected function createOwnerAccessCriteria()
+    {
+        $criteria = new CDbCriteria();
+
+        $criteria->addCondition("t.owner_id = :accountId");
+        $criteria->params[':accountId'] = !Yii::app()->user->isGuest ? Yii::app()->user->id : -1;
+
+        return $criteria;
     }
 }
