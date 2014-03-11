@@ -248,4 +248,24 @@ class SlideshowFile extends BaseSlideshowFile
         ));
     }
 
+    /**
+     * Returns the SlideShow P3Media files.
+     * @return P3Media[]
+     */
+    public function getSlideshowFiles()
+    {
+        return $this->getP3Media(array(
+            'application/vnd.ms-powerpoint',
+            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        ));
+    }
+
+    /**
+     * Returns the SlideShow file options.
+     * @return array
+     */
+    public function getSlideshowFileOptions()
+    {
+        return $this->getOptions($this->getSlideshowFiles());
+    }
 }
