@@ -6847,6 +6847,12 @@ td.visible-print {
     width: 75%;
   }
 }
+.chapter-controller.edit-action .after-flowbar {
+  margin-top: 217px;
+}
+.chapter-controller.translate-action .after-flowbar {
+  margin-top: 237px;
+}
 .examquestion-controller.edit-action .related-text {
   padding: 15px;
   margin-bottom: 20px;
@@ -6903,6 +6909,12 @@ td.visible-print {
 }
 .examquestion-controller.edit-action .related-text .alert-link {
   color: #245269;
+}
+.exercise-controller.edit-action .after-flowbar {
+  margin-top: 217px;
+}
+.exercise-controller.translate-action {
+  margin-top: 237px;
 }
 .i18ncatalog-controller.edit-action .file-field {
   margin-left: -15px;
@@ -7455,6 +7467,12 @@ td.visible-print {
 .site-controller .item-type-introduction .intro-description blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
+}
+.slideshowfile-controller.edit-action .after-flowbar {
+  margin-top: 217px;
+}
+.slideshowfile-controller.translate-action .after-flowbar {
+  margin-top: 237px;
 }
 .snapshot-controller .view-action .map {
   overflow: hidden;
