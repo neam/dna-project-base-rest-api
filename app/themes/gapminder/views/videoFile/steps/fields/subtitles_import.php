@@ -29,11 +29,11 @@ $("#VideoFile_subtitles_import_media_id").select2($("#VideoFile_subtitles_import
 
 EOF;
 ?>
-<div class="upload-field">
-    <div class="field-select">
+<div class="file-field-3cols">
+    <div class="field-column">
         <?php echo $form->select2ControlGroup($model, 'subtitles_import_media_id', $model->getSubtitleOptions()); ?>
     </div>
-    <div class="field-upload">
+    <div class="field-column">
         <div class="form-group">
             <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
             <?php echo TbHtml::button(
@@ -48,7 +48,7 @@ EOF;
             ); ?>
         </div>
     </div>
-    <div class="field-import">
+    <div class="field-column">
         <div class="form-group">
             <label class="control-label"><?php echo Yii::t('app', '&nbsp;'); ?></label>
             <?php echo TbHtml::submitButton(
@@ -62,7 +62,6 @@ EOF;
         </div>
     </div>
 </div>
-
 <?php $this->renderPartial(
     '//p3Media/_modal_form',
     array(
@@ -73,5 +72,4 @@ EOF;
         'field' => 'itemLabel',
     )
 ); ?>
-
 <?php publishJs('/themes/frontend/js/toggle-subtitle-translation-buttons.js', CClientScript::POS_END); ?>

@@ -249,7 +249,7 @@ class SlideshowFile extends BaseSlideshowFile
     }
 
     /**
-     * Returns the SlideShow P3Media files.
+     * Returns the SlideshowFile P3Media files.
      * @return P3Media[]
      */
     public function getSlideshowFiles()
@@ -261,7 +261,7 @@ class SlideshowFile extends BaseSlideshowFile
     }
 
     /**
-     * Returns the SlideShow file options.
+     * Returns the SlideshowFile options.
      * @return array
      */
     public function getSlideshowFileOptions()
