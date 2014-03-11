@@ -82,14 +82,6 @@ class ActiveRecord extends CActiveRecord
             $behaviors['i18n-columns']['multilingualRelations'] = $i18nColumnsMultilingualRelationsMap[get_class($this)];
         }
 
-        $crudModels = DataModel::crudModels();
-
-        if (isset($crudModels[get_class($this)])) {
-            $behaviors['active-record-access'] = array(
-                'class' => 'application.behaviors.ActiveRecordAccessBehavior',
-            );
-        }
-
         return array_merge(parent::behaviors(), $behaviors);
     }
 
@@ -188,42 +180,131 @@ class ActiveRecord extends CActiveRecord
         );
     }
 
+    // ----------------------------------------
+    // Logic for access restriction
+    // ----------------------------------------
+
     /**
-     * Checks access for finding this record.
+     * @inheritDoc
      */
-    public function checkAccessFind()
+    public function find($condition = '', $params = array())
     {
-        if (Yii::app()->user->isAdmin) {
-            return true;
-        } else {
-            return $this->createGroupAccessCriteria();
-        }
+        return parent::find($this->applyAccessCriteria($condition, $params));
     }
 
     /**
-     * @return CDbCriteria
+     * @inheritDoc
      */
-    protected function createGroupAccessCriteria()
+    public function findByPk($pk, $condition = '', $params = array())
     {
-        $criteria = new CDbCriteria();
+        return parent::findByPk($pk, $this->applyAccessCriteria($condition, $params));
+    }
 
-        if (!Yii::app()->user->isGuest) {
-            $criteria->join = implode(
-                ' ',
-                array(
-                    "INNER JOIN node_has_group AS nhg ON (nhg.node_id = t.node_id)",
-                    "INNER JOIN group_has_account AS gha ON (gha.group_id = nhg.group_id AND role_id = :roleId)",
-                    "LEFT JOIN account AS a ON (a.id = t.owner_id)",
-                )
-            );
-            $criteria->params[':roleId'] = 1; // translator
+    /**
+     * @inheritDoc
+     */
+    public function findByAttributes($attributes, $condition = '', $params = array())
+    {
+        return parent::findByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findBySql($sql, $params = array())
+    {
+        return parent::find($this->applyAccessCriteria($sql, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAll($condition = '', $params = array())
+    {
+        return parent::findAll($this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAllByPk($pk, $condition = '', $params = array())
+    {
+        return parent::findAllByPk($pk, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAllByAttributes($attributes, $condition = '', $params = array())
+    {
+        return parent::findAllByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAllBySql($sql, $params = array())
+    {
+        return parent::findAll($this->applyAccessCriteria($sql, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function count($condition = '', $params = array())
+    {
+        return parent::count($this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function countByAttributes($attributes, $condition = '', $params = array())
+    {
+        return parent::countByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function countBySql($sql, $params = array())
+    {
+        return parent::count($this->applyAccessCriteria($sql, $params));
+    }
+
+    /**
+     * Applies the access restrictions to the given criteria.
+     *
+     * @param CDbCriteria|string $criteria
+     * @param array $params
+     *
+     * @return CDbCriteria|string
+     */
+    protected function applyAccessCriteria($criteria = '', array $params = array())
+    {
+        // Normalize the criteria (this must ALWAYS be done as we override the find and count methods).
+        if (!$criteria instanceof CDbCriteria) {
+            $criteria = new CDbCriteria(array('condition' => $criteria, 'params' => $params));
         }
 
-        // When finding a single model we will have its id in the get-query.
-        if (isset($_GET['id'])) {
-            $criteria->addCondition('t.id = :id');
-            $criteria->params[':id'] = $_GET['id'];
+        // Check whether to apply the access criteria to this model from the data model.
+        if (!isset(DataModel::accessRestrictedModels()[get_class($this)])) {
+            return $criteria;
         }
+
+        // Apply all the necessary joins to check for group based access.
+        $criteria->join = implode(
+            ' ',
+            array(
+                "INNER JOIN `node_has_group` AS `nhg` ON (`nhg`.`node_id` = `t`.`node_id`)",
+                "INNER JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `role_id` = :roleId)",
+                "LEFT JOIN `account` AS a ON (`a`.`id` = `t`.`owner_id`)",
+            )
+        );
+
+        // todo: make this role dynamic
+        // Provide parameters for the joins above.
+        $criteria->params[':roleId'] = 1; // translator
 
         return $criteria;
     }
