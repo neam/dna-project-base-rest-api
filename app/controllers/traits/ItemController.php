@@ -2,6 +2,7 @@
 
 trait ItemController
 {
+    public $workflowData = array();
 
     public function itemAccessRules()
     {
@@ -734,10 +735,10 @@ trait ItemController
     }
 
     /**
-     * Translate workflow
-     * @param $id
-     * @param $step
-     * @param $translateInto
+     * Initiates the translation workflow.
+     * @param integer $id the item ID.
+     * @param string $step the step identifier.
+     * @param string $translateInto the target language code.
      */
     public function actionTranslate($id, $step, $translateInto)
     {
@@ -746,12 +747,20 @@ trait ItemController
         $model->scenario = $this->scenario;
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
-        $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translate into {translateIntoLanguage}', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])), $translateInto);
+        $this->populateWorkflowData($model, 'translate', Yii::t('app', 'Translate into {translateIntoLanguage}', array(
+            '{translateIntoLanguage}' => Yii::app()->params['languages'][$translateInto],
+        )), $translateInto);
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
-    }
 
-    public $workflowData = array();
+        $this->render(
+            '/_item/edit',
+            array(
+                'model' => $model,
+                'step' => $step,
+                'stepCaption' => $stepCaptions[$step],
+            )
+        );
+    }
 
     /**
      * Returns actions based on the current qa state TODO: and access rules
