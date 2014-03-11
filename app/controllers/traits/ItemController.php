@@ -172,12 +172,23 @@ trait ItemController
         return null;
     }
 
+    /**
+     * Returns the first workflow step of the given item.
+     * @param ItemTrait|ActiveRecord $item
+     * @return string|null
+     */
     protected function firstFlowStep($item)
     {
-        // TODO: Change when this breaks something
+        // Return the step defined in the model class (if it has been set).
+        if (isset($item->firstFlowStep)) {
+            return $item->firstFlowStep;
+        }
+
+        // Return the first index in the steps array.
         foreach ($item->flowSteps() as $step => $fields) {
             return $step;
         }
+
         return null;
     }
 
