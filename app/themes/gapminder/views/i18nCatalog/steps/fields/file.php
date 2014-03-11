@@ -48,7 +48,7 @@ EOF;
                 '//p3Media/_modal_form',
                 array(
                     'formId' => $form->id,
-                    'inputSelector' => '#PoFile_pot_import_media_id',
+                    'inputSelector' => '#I18nCatalog_pot_import_media_id',
                     'model' => new P3Media(),
                     'pk' => 'id',
                     'field' => 'itemLabel',
