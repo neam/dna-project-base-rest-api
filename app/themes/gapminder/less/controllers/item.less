@@ -33,6 +33,71 @@
     }
   }
 
+  .item-content {
+    .make-row();
+  }
+
+  .item-progress {
+    .make-md-column(3);
+
+    .progress-item {
+      .make-row();
+
+      .item-bar {
+        .make-md-column(6);
+      }
+
+      .item-action {
+        .make-md-column(6);
+
+        .btn {
+          padding: 0 4px;
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  .item-form {
+    .make-md-column(9);
+
+    .form-title {
+      margin-top: 0;
+    }
+  }
+
+  .file-field-2cols {
+    .make-row();
+
+    .field-column {
+      &:first-child {
+        .make-md-column(9);
+      }
+
+      &:nth-child(2) {
+        .make-md-column(3);
+      }
+    }
+  }
+
+  .file-field-3cols {
+    .make-row();
+
+    .field-column {
+      &:first-child {
+        .make-md-column(8);
+      }
+
+      &:nth-child(2) {
+        .make-md-column(2);
+      }
+
+      &:nth-child(3) {
+        .make-md-column(2);
+      }
+    }
+  }
+
   &.browse-action {
     .browsebar {
       .browsebar-actions {
@@ -70,54 +135,6 @@
   }
 
   &.edit-action {
-    .file-field {
-      .make-row();
-
-      .field-select {
-        .make-md-column(8);
-      }
-
-      .field-upload {
-        .make-md-column(2);
-      }
-
-      .field-import {
-        .make-md-column(2);
-      }
-    }
-  }
-
-  .item-content {
-    .make-row();
-  }
-
-  .item-progress {
-    .make-md-column(3);
-
-    .progress-item {
-      .make-row();
-
-      .item-bar {
-        .make-md-column(6);
-      }
-
-      .item-action {
-        .make-md-column(6);
-
-        .btn {
-          padding: 0 4px;
-          text-align: left;
-        }
-      }
-    }
-  }
-
-  .item-form {
-    .make-md-column(9);
-
-    .form-title {
-      margin-top: 0;
-    }
   }
 
   &.translationoverview-action {

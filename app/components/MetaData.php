@@ -64,7 +64,7 @@ class Metadata
 
     }
 
-    static public function developerRoles()
+    static public function contextLessSuperRoles()
     {
         return array(
             "Developer",
@@ -72,7 +72,7 @@ class Metadata
         );
     }
 
-    static public function roleTypes()
+    static public function groupBasedRoles()
     {
 
         return array(
@@ -89,16 +89,7 @@ class Metadata
 
     }
 
-    static public function roleContexts()
-    {
-
-        return array(
-            "Group",
-        );
-
-    }
-
-    static public function contextLessRoles()
+    static public function contextLessDefaultRoles()
     {
         return array(
             "Member",

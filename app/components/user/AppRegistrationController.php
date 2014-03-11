@@ -44,6 +44,9 @@ class AppRegistrationController extends RegistrationController
                         $profile->user_id = $model->id;
                         $profile->save();
 
+                        // Automatically assign the Group Translator role to new members
+                        Yii::app()->authManager->assign('Group Translator', $model->id);
+
                         if (Yii::app()->controller->module->sendActivationMail) {
                             $activation_url = $this->createAbsoluteUrl(
                                 '/user/activation/activation',

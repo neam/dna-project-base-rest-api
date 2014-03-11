@@ -196,4 +196,25 @@ class TextDoc extends BaseTextDoc
         ));
     }
 
+    /**
+     * Returns the TextDoc P3Media files.
+     * @return P3Media[]
+     */
+    public function getTextDocs()
+    {
+        return $this->getP3Media(array(
+            'application/msword',
+            'application/vnd.ms-powerpoint',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        ));
+    }
+
+    /**
+     * Returns the TextDoc options.
+     * @return array
+     */
+    public function getTextDocOptions()
+    {
+        return $this->getOptions($this->getTextDocs());
+    }
 }

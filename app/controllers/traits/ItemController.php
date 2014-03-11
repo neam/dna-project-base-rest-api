@@ -2,6 +2,7 @@
 
 trait ItemController
 {
+    public $workflowData = array();
 
     public function itemAccessRules()
     {
@@ -171,12 +172,23 @@ trait ItemController
         return null;
     }
 
+    /**
+     * Returns the first workflow step of the given item.
+     * @param ItemTrait|ActiveRecord $item
+     * @return string|null
+     */
     protected function firstFlowStep($item)
     {
-        // TODO: Change when this breaks something
+        // Return the step defined in the model class (if it has been set).
+        if (isset($item->firstFlowStep)) {
+            return $item->firstFlowStep;
+        }
+
+        // Return the first index in the steps array.
         foreach ($item->flowSteps() as $step => $fields) {
             return $step;
         }
+
         return null;
     }
 
@@ -734,10 +746,10 @@ trait ItemController
     }
 
     /**
-     * Translate workflow
-     * @param $id
-     * @param $step
-     * @param $translateInto
+     * Initiates the translation workflow.
+     * @param integer $id the item ID.
+     * @param string $step the step identifier.
+     * @param string $translateInto the target language code.
      */
     public function actionTranslate($id, $step, $translateInto)
     {
@@ -746,12 +758,20 @@ trait ItemController
         $model->scenario = $this->scenario;
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
-        $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translate into {translateIntoLanguage}', array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])), $translateInto);
+        $this->populateWorkflowData($model, 'translate', Yii::t('app', 'Translate into {translateIntoLanguage}', array(
+            '{translateIntoLanguage}' => Yii::app()->params['languages'][$translateInto],
+        )), $translateInto);
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
-    }
 
-    public $workflowData = array();
+        $this->render(
+            '/_item/edit',
+            array(
+                'model' => $model,
+                'step' => $step,
+                'stepCaption' => $stepCaptions[$step],
+            )
+        );
+    }
 
     /**
      * Returns actions based on the current qa state TODO: and access rules

@@ -6847,6 +6847,12 @@ td.visible-print {
     width: 75%;
   }
 }
+.chapter-controller.edit-action .after-flowbar {
+  margin-top: 217px;
+}
+.chapter-controller.translate-action .after-flowbar {
+  margin-top: 237px;
+}
 .examquestion-controller.edit-action .related-text {
   padding: 15px;
   margin-bottom: 20px;
@@ -6904,61 +6910,11 @@ td.visible-print {
 .examquestion-controller.edit-action .related-text .alert-link {
   color: #245269;
 }
-.i18ncatalog-controller.edit-action .file-field {
-  margin-left: -15px;
-  margin-right: -15px;
+.exercise-controller.edit-action .after-flowbar {
+  margin-top: 217px;
 }
-.i18ncatalog-controller.edit-action .file-field:before,
-.i18ncatalog-controller.edit-action .file-field:after {
-  content: " ";
-  display: table;
-}
-.i18ncatalog-controller.edit-action .file-field:after {
-  clear: both;
-}
-.i18ncatalog-controller.edit-action .file-field:before,
-.i18ncatalog-controller.edit-action .file-field:after {
-  content: " ";
-  display: table;
-}
-.i18ncatalog-controller.edit-action .file-field:after {
-  clear: both;
-}
-.i18ncatalog-controller.edit-action .file-field .field-select {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .i18ncatalog-controller.edit-action .file-field .field-select {
-    float: left;
-    width: 66.66666666666666%;
-  }
-}
-.i18ncatalog-controller.edit-action .file-field .field-upload {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .i18ncatalog-controller.edit-action .file-field .field-upload {
-    float: left;
-    width: 16.666666666666664%;
-  }
-}
-.i18ncatalog-controller.edit-action .file-field .field-import {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .i18ncatalog-controller.edit-action .file-field .field-import {
-    float: left;
-    width: 16.666666666666664%;
-  }
+.exercise-controller.translate-action {
+  margin-top: 237px;
 }
 .item-controller .alerts {
   margin-left: -15px;
@@ -7050,6 +7006,201 @@ td.visible-print {
   .item-controller .item-header .header-actions {
     float: left;
     width: 33.33333333333333%;
+  }
+}
+.item-controller .item-content {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.item-controller .item-content:before,
+.item-controller .item-content:after {
+  content: " ";
+  display: table;
+}
+.item-controller .item-content:after {
+  clear: both;
+}
+.item-controller .item-content:before,
+.item-controller .item-content:after {
+  content: " ";
+  display: table;
+}
+.item-controller .item-content:after {
+  clear: both;
+}
+.item-controller .item-progress {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller .item-progress {
+    float: left;
+    width: 25%;
+  }
+}
+.item-controller .item-progress .progress-item {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.item-controller .item-progress .progress-item:before,
+.item-controller .item-progress .progress-item:after {
+  content: " ";
+  display: table;
+}
+.item-controller .item-progress .progress-item:after {
+  clear: both;
+}
+.item-controller .item-progress .progress-item:before,
+.item-controller .item-progress .progress-item:after {
+  content: " ";
+  display: table;
+}
+.item-controller .item-progress .progress-item:after {
+  clear: both;
+}
+.item-controller .item-progress .progress-item .item-bar {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller .item-progress .progress-item .item-bar {
+    float: left;
+    width: 50%;
+  }
+}
+.item-controller .item-progress .progress-item .item-action {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller .item-progress .progress-item .item-action {
+    float: left;
+    width: 50%;
+  }
+}
+.item-controller .item-progress .progress-item .item-action .btn {
+  padding: 0 4px;
+  text-align: left;
+}
+.item-controller .item-form {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller .item-form {
+    float: left;
+    width: 75%;
+  }
+}
+.item-controller .item-form .form-title {
+  margin-top: 0;
+}
+.item-controller .file-field-2cols {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.item-controller .file-field-2cols:before,
+.item-controller .file-field-2cols:after {
+  content: " ";
+  display: table;
+}
+.item-controller .file-field-2cols:after {
+  clear: both;
+}
+.item-controller .file-field-2cols:before,
+.item-controller .file-field-2cols:after {
+  content: " ";
+  display: table;
+}
+.item-controller .file-field-2cols:after {
+  clear: both;
+}
+.item-controller .file-field-2cols .field-column:first-child {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller .file-field-2cols .field-column:first-child {
+    float: left;
+    width: 75%;
+  }
+}
+.item-controller .file-field-2cols .field-column:nth-child(2) {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller .file-field-2cols .field-column:nth-child(2) {
+    float: left;
+    width: 25%;
+  }
+}
+.item-controller .file-field-3cols {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.item-controller .file-field-3cols:before,
+.item-controller .file-field-3cols:after {
+  content: " ";
+  display: table;
+}
+.item-controller .file-field-3cols:after {
+  clear: both;
+}
+.item-controller .file-field-3cols:before,
+.item-controller .file-field-3cols:after {
+  content: " ";
+  display: table;
+}
+.item-controller .file-field-3cols:after {
+  clear: both;
+}
+.item-controller .file-field-3cols .field-column:first-child {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller .file-field-3cols .field-column:first-child {
+    float: left;
+    width: 66.66666666666666%;
+  }
+}
+.item-controller .file-field-3cols .field-column:nth-child(2) {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller .file-field-3cols .field-column:nth-child(2) {
+    float: left;
+    width: 16.666666666666664%;
+  }
+}
+.item-controller .file-field-3cols .field-column:nth-child(3) {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller .file-field-3cols .field-column:nth-child(3) {
+    float: left;
+    width: 16.666666666666664%;
   }
 }
 .item-controller.browse-action .browsebar .browsebar-actions:before,
@@ -7207,157 +7358,6 @@ td.visible-print {
 .item-controller.browse-action .item-actions .action-buttons .btn-group {
   margin: 5px 0 0 5px;
 }
-.item-controller.edit-action .file-field {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.item-controller.edit-action .file-field:before,
-.item-controller.edit-action .file-field:after {
-  content: " ";
-  display: table;
-}
-.item-controller.edit-action .file-field:after {
-  clear: both;
-}
-.item-controller.edit-action .file-field:before,
-.item-controller.edit-action .file-field:after {
-  content: " ";
-  display: table;
-}
-.item-controller.edit-action .file-field:after {
-  clear: both;
-}
-.item-controller.edit-action .file-field .field-select {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .item-controller.edit-action .file-field .field-select {
-    float: left;
-    width: 66.66666666666666%;
-  }
-}
-.item-controller.edit-action .file-field .field-upload {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .item-controller.edit-action .file-field .field-upload {
-    float: left;
-    width: 16.666666666666664%;
-  }
-}
-.item-controller.edit-action .file-field .field-import {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .item-controller.edit-action .file-field .field-import {
-    float: left;
-    width: 16.666666666666664%;
-  }
-}
-.item-controller .item-content {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.item-controller .item-content:before,
-.item-controller .item-content:after {
-  content: " ";
-  display: table;
-}
-.item-controller .item-content:after {
-  clear: both;
-}
-.item-controller .item-content:before,
-.item-controller .item-content:after {
-  content: " ";
-  display: table;
-}
-.item-controller .item-content:after {
-  clear: both;
-}
-.item-controller .item-progress {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .item-controller .item-progress {
-    float: left;
-    width: 25%;
-  }
-}
-.item-controller .item-progress .progress-item {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.item-controller .item-progress .progress-item:before,
-.item-controller .item-progress .progress-item:after {
-  content: " ";
-  display: table;
-}
-.item-controller .item-progress .progress-item:after {
-  clear: both;
-}
-.item-controller .item-progress .progress-item:before,
-.item-controller .item-progress .progress-item:after {
-  content: " ";
-  display: table;
-}
-.item-controller .item-progress .progress-item:after {
-  clear: both;
-}
-.item-controller .item-progress .progress-item .item-bar {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .item-controller .item-progress .progress-item .item-bar {
-    float: left;
-    width: 50%;
-  }
-}
-.item-controller .item-progress .progress-item .item-action {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .item-controller .item-progress .progress-item .item-action {
-    float: left;
-    width: 50%;
-  }
-}
-.item-controller .item-progress .progress-item .item-action .btn {
-  padding: 0 4px;
-  text-align: left;
-}
-.item-controller .item-form {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .item-controller .item-form {
-    float: left;
-    width: 75%;
-  }
-}
-.item-controller .item-form .form-title {
-  margin-top: 0;
-}
 .item-controller.translationoverview-action .language-content {
   margin-left: -15px;
   margin-right: -15px;
@@ -7456,111 +7456,17 @@ td.visible-print {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
+.slideshowfile-controller.edit-action .after-flowbar {
+  margin-top: 217px;
+}
+.slideshowfile-controller.translate-action .after-flowbar {
+  margin-top: 237px;
+}
 .snapshot-controller .view-action .map {
   overflow: hidden;
 }
 .videofile-controller.edit-action .after-flowbar {
   margin-top: 218px;
-}
-.videofile-controller.edit-action .video-field {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.videofile-controller.edit-action .video-field:before,
-.videofile-controller.edit-action .video-field:after {
-  content: " ";
-  display: table;
-}
-.videofile-controller.edit-action .video-field:after {
-  clear: both;
-}
-.videofile-controller.edit-action .video-field:before,
-.videofile-controller.edit-action .video-field:after {
-  content: " ";
-  display: table;
-}
-.videofile-controller.edit-action .video-field:after {
-  clear: both;
-}
-.videofile-controller.edit-action .video-field .field-select {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .videofile-controller.edit-action .video-field .field-select {
-    float: left;
-    width: 75%;
-  }
-}
-.videofile-controller.edit-action .video-field .field-upload {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .videofile-controller.edit-action .video-field .field-upload {
-    float: left;
-    width: 25%;
-  }
-}
-.videofile-controller.edit-action .upload-field {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.videofile-controller.edit-action .upload-field:before,
-.videofile-controller.edit-action .upload-field:after {
-  content: " ";
-  display: table;
-}
-.videofile-controller.edit-action .upload-field:after {
-  clear: both;
-}
-.videofile-controller.edit-action .upload-field:before,
-.videofile-controller.edit-action .upload-field:after {
-  content: " ";
-  display: table;
-}
-.videofile-controller.edit-action .upload-field:after {
-  clear: both;
-}
-.videofile-controller.edit-action .upload-field .field-select {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .videofile-controller.edit-action .upload-field .field-select {
-    float: left;
-    width: 66.66666666666666%;
-  }
-}
-.videofile-controller.edit-action .upload-field .field-import {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .videofile-controller.edit-action .upload-field .field-import {
-    float: left;
-    width: 16.666666666666664%;
-  }
-}
-.videofile-controller.edit-action .upload-field .field-upload {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .videofile-controller.edit-action .upload-field .field-upload {
-    float: left;
-    width: 16.666666666666664%;
-  }
 }
 .alert.alert-error {
   background-color: #f2dede;

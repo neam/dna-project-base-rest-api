@@ -3,11 +3,11 @@
 /* @var VideoFile|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<div class="video-field">
-    <div class="field-select">
+<div class="file-field-2cols">
+    <div class="field-column">
         <?php echo $form->select2ControlGroup($model, 'clip_webm_media_id', $model->getVideoOptions(VideoFile::MIME_TYPE_VIDEO_WEBM)); ?>
     </div>
-    <div class="field-upload">
+    <div class="field-column">
         <div class="form-group">
             <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
             <?php echo TbHtml::button(
@@ -33,11 +33,11 @@
         </div>
     </div>
 </div>
-<div class="video-field">
-    <div class="field-select">
+<div class="file-field-2cols">
+    <div class="field-column">
         <?php echo $form->select2ControlGroup($model, 'clip_mp4_media_id', $model->getVideoOptions(VideoFile::MIME_TYPE_VIDEO_MP4)); ?>
     </div>
-    <div class="field-upload">
+    <div class="field-column">
         <div class="form-group">
             <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
             <?php echo TbHtml::button(

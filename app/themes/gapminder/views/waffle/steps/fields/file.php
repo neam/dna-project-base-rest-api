@@ -30,11 +30,11 @@ var select2opts = {
 
 EOF;
 ?>
-<div class="file-field">
-    <div class="field-select">
+<div class="file-field-3cols">
+    <div class="field-column">
         <?php echo $form->select2ControlGroup($model, 'json_import_media_id', $model->getJsonFileOptions()); ?>
     </div>
-    <div class="field-upload">
+    <div class="field-column">
         <div class="form-group">
             <label class="control-label"><?php echo Yii::t('app', '&nbsp;'); ?></label>
             <?php echo TbHtml::button(
@@ -59,7 +59,7 @@ EOF;
             ); ?>
         </div>
     </div>
-    <div class="field-import">
+    <div class="field-column">
         <div class="form-group">
             <label class="control-label"><?php echo Yii::t('app', '&nbsp;'); ?></label>
             <?php echo TbHtml::submitButton(

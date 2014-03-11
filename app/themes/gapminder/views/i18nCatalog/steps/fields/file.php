@@ -27,11 +27,11 @@ var select2opts = {
 
 EOF;
 ?>
-<div class="file-field">
-    <div class="field-select">
+<div class="file-field-3cols">
+    <div class="field-column">
         <?php echo $form->select2ControlGroup($model, 'pot_import_media_id', $model->getPoOptions()); ?>
     </div>
-    <div class="field-upload">
+    <div class="field-column">
         <div class="form-group">
             <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
             <?php echo TbHtml::button(
@@ -48,7 +48,7 @@ EOF;
                 '//p3Media/_modal_form',
                 array(
                     'formId' => $form->id,
-                    'inputSelector' => '#PoFile_pot_import_media_id',
+                    'inputSelector' => '#I18nCatalog_pot_import_media_id',
                     'model' => new P3Media(),
                     'pk' => 'id',
                     'field' => 'itemLabel',
@@ -56,7 +56,7 @@ EOF;
             ); ?>
         </div>
     </div>
-    <div class="field-import">
+    <div class="field-column">
         <div class="form-group">
             <label class="control-label"><?php echo Yii::t('app', '&nbsp;'); ?></label>
             <?php echo TbHtml::submitButton(
