@@ -2,7 +2,9 @@
 
 class WaffleController extends Controller
 {
-    use ItemController;
+    use ItemController {
+        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    }
 
     public $modelClass = "Waffle";
 
@@ -40,6 +42,18 @@ class WaffleController extends Controller
                 'users' => array('*'),
             ),
         ));
+    }
+
+    public function saveAndContinueOnSuccess($model)
+    {
+
+        if (isset($_POST['import'])) {
+
+            throw new CException("TODO");
+
+        }
+        return $this->parentSaveAndContinueOnSuccess($model);
+
     }
 
     public function beforeAction($action)
