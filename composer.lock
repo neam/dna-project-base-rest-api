@@ -794,12 +794,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-qa-state.git",
-                "reference": "fc9f5290b4766820ce27c2745515706e0453e767"
+                "reference": "a17371bdbf2047ef3ef005f6764cb1185c2b83cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/fc9f5290b4766820ce27c2745515706e0453e767",
-                "reference": "fc9f5290b4766820ce27c2745515706e0453e767",
+                "url": "https://api.github.com/repos/neam/yii-qa-state/zipball/a17371bdbf2047ef3ef005f6764cb1185c2b83cc",
+                "reference": "a17371bdbf2047ef3ef005f6764cb1185c2b83cc",
                 "shasum": ""
             },
             "require": {
@@ -833,7 +833,7 @@
                 "source": "https://github.com/neam/yii-qa-state/tree/develop",
                 "issues": "https://github.com/neam/yii-qa-state/issues"
             },
-            "time": "2014-03-05 15:34:34"
+            "time": "2014-03-12 09:15:48"
         },
         {
             "name": "neam/yii-relational-graph-db",
