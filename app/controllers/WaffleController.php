@@ -63,14 +63,12 @@ class WaffleController extends Controller
 
             } catch (Exception $e) {
 
-                $this->addError('json_import_media_id', $e->getMessage());
+                $model->addError('json_import_media_id', $e->getMessage());
 
             }
 
             // emulate us hitting the save button (so that json_import_media_id is saved and changeset is created etc)
             $_POST['save-changes'] = true;
-
-            throw new CException("TODO");
 
         }
         return $this->parentSaveAndContinueOnSuccess($model);
