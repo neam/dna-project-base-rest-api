@@ -59,10 +59,10 @@
  * @property string $page_qa_state_id
  *
  * Relations of table "page" available as properties of the model:
- * @property Account $owner
  * @property Node $node
  * @property Page $clonedFrom
  * @property Page[] $pages
+ * @property Account $owner
  * @property PageQaState $pageQaState
  * @property Section[] $sections
  */
@@ -113,10 +113,10 @@ abstract class BasePage extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Page', 'cloned_from_id'),
                 'pages' => array(self::HAS_MANY, 'Page', 'cloned_from_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'pageQaState' => array(self::BELONGS_TO, 'PageQaState', 'page_qa_state_id'),
                 'sections' => array(self::HAS_MANY, 'Section', 'page_id'),
             )
