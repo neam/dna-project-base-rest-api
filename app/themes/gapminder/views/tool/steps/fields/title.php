@@ -10,8 +10,8 @@
         'label' => Html::attributeLabelWithTooltip($model, 'title_en', 'title'),
     ),
 )); ?>
-<?php if ($this->workflowData["translateInto"]) {
-    echo $form->textFieldControlGroup($model, 'title_' . $this->workflowData["translateInto"], array(
+<?php if ($this->workflowData['translateInto']) {
+    echo $form->textFieldControlGroup($model, 'title_' . $this->workflowData['translateInto'], array(
         'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-from-2',
         'maxlength' => 255,
     ));

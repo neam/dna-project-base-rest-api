@@ -1,6 +1,6 @@
 <?php
-/* @var PoFileController|ItemController $this */
-/* @var PoFile|ItemTrait $data */
+/* @var I18nCatalogController|ItemController $this */
+/* @var I18nCatalog|ItemTrait $model */
 ?>
 <div class="admin-container hide">
     <?php echo TbHtml::link(
