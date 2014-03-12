@@ -78,6 +78,125 @@ class Waffle extends BaseWaffle
         }
     }
 
+    public function importFromWaffleJson($waffleJson)
+    {
+        // only allow for existing waffles
+        if (empty($this->id)) {
+            throw new CException("Waffle json-based import only viable with existing Waffles");
+        }
+
+        // json decode
+        $waffle = json_decode($waffleJson);
+
+        // start transaction
+        $transaction = Yii::app()->db->beginTransaction();
+
+        try {
+
+            // Waffle attributes
+            $this->_title = $waffle->info->title;
+            $this->slug_en = $waffle->info->id;
+            /*
+             * TODO: add to data model:
+            $this->_short_title = $waffle->info->short_title;
+            $this->_description = $waffle->info->description;
+            */
+            if (!$this->save()) {
+                throw new SaveException($this);
+            }
+
+            // waffleCategories
+            if (count($this->waffleCategories) > 0) {
+                throw new CException("Waffle already has at least one WaffleCategory. Waffle json-based import only supported for empty Waffles");
+            }
+            foreach ($waffle->definitions->categories as $category) {
+                $model = new WaffleCategory();
+                $model->ref = $category->id;
+                $model->_name = $category->name;
+                $model->_description = isset($category->description) ? $category->description : null;
+                $model->waffle_id = $this->id;
+                if (!$model->save()) {
+                    throw new SaveException($model);
+                }
+                $waffleCategory = $model;
+                foreach ($category->things as $thing) {
+                    $model = new WaffleCategoryElement();
+                    $model->ref = $thing->id;
+                    $model->_name = $thing->name;
+                    $model->waffle_category_id = $waffleCategory->id;
+                    if (!$model->save()) {
+                        throw new SaveException($model);
+                    }
+                }
+            }
+
+            // waffleIndicators
+            if (count($this->waffleIndicators) > 0) {
+                throw new CException("Waffle already has at least one WaffleIndicator. Waffle json-based import only supported for empty Waffles");
+            }
+            foreach ($waffle->definitions->indicators as $indicator) {
+                $model = new WaffleIndicator();
+                $model->ref = $indicator->id;
+                $model->_name = $indicator->name;
+                $model->waffle_id = $this->id;
+                if (!$model->save()) {
+                    throw new SaveException($model);
+                }
+            }
+
+            // waffleUnits
+            if (count($this->waffleUnits) > 0) {
+                throw new CException("Waffle already has at least one WaffleUnit. Waffle json-based import only supported for empty Waffles");
+            }
+            foreach ($waffle->definitions->units as $unit) {
+                $model = new WaffleUnit();
+                $model->ref = $unit->id;
+                $model->_name = $unit->name;
+                $model->_description = isset($unit->description) ? $unit->description : null;
+                $model->waffle_id = $this->id;
+                if (!$model->save()) {
+                    throw new SaveException($model);
+                }
+            }
+
+            // waffleTags
+            if (count($this->waffleTags) > 0) {
+                throw new CException("Waffle already has at least one WaffleTag. Waffle json-based import only supported for empty Waffles");
+            }
+            foreach ($waffle->definitions->tags as $tag) {
+                $model = new WaffleTag();
+                $model->ref = $tag->id;
+                $model->_name = $tag->name;
+                $model->_description = $tag->description;
+                $model->waffle_id = $this->id;
+                if (!$model->save()) {
+                    throw new SaveException($model);
+                }
+            }
+
+            // waffleDataSources
+            if (count($this->waffleDataSources) > 0) {
+                throw new CException("Waffle already has at least one WaffleDataSource. Waffle json-based import only supported for empty Waffles");
+            }
+            foreach ($waffle->sources as $dataSource) {
+                $model = new WaffleDataSource();
+                $model->waffle_id = $this->id;
+                throw new CException("TODO");
+                if (!$waffleCategory->save()) {
+                    throw new SaveException($waffleCategory);
+                }
+            }
+
+            // commit transaction
+            $transaction->commit();
+
+        } catch (Exception $e) {
+            $transaction->rollback();
+            throw $e;
+        }
+
+    }
+
     /**
      * Define status-dependent fields
      * @return array

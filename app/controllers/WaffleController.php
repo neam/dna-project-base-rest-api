@@ -2,7 +2,9 @@
 
 class WaffleController extends Controller
 {
-    use ItemController;
+    use ItemController {
+        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    }
 
     public $modelClass = "Waffle";
 
@@ -40,6 +42,37 @@ class WaffleController extends Controller
                 'users' => array('*'),
             ),
         ));
+    }
+
+    public function saveAndContinueOnSuccess($model)
+    {
+
+        if (isset($_POST['import'])) {
+
+            try {
+
+                // get file path
+                $p3media = P3Media::model()->findByPk($_POST['Waffle']['json_import_media_id']);
+                $fullPath = $p3media->fullPath;
+
+                // read contents of file
+                $json = file_get_contents($fullPath);
+
+                // import
+                $model->importFromWaffleJson($json);
+
+            } catch (Exception $e) {
+
+                $model->addError('json_import_media_id', $e->getMessage());
+
+            }
+
+            // emulate us hitting the save button (so that json_import_media_id is saved and changeset is created etc)
+            $_POST['save-changes'] = true;
+
+        }
+        return $this->parentSaveAndContinueOnSuccess($model);
+
     }
 
     public function beforeAction($action)
