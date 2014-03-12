@@ -97,4 +97,11 @@ class Metadata
         );
     }
 
+    static public function groups()
+    {
+        return array(
+            'GapminderOrg',
+        );
+    }
+
 }

@@ -272,15 +272,7 @@ class ActiveRecord extends CActiveRecord
         return parent::count($this->applyAccessCriteria($sql, $params));
     }
 
-    /**
-     * Applies the access restrictions to the given criteria.
-     *
-     * @param CDbCriteria|string $criteria
-     * @param array $params
-     *
-     * @return CDbCriteria|string
-     */
-    protected function applyAccessCriteria($criteria = '', array $params = array())
+    public function applyAccessCriteria($criteria = '', array $params = array())
     {
         // Normalize the criteria (this must ALWAYS be done as we override the find and count methods).
         if (!$criteria instanceof CDbCriteria) {
@@ -292,20 +284,6 @@ class ActiveRecord extends CActiveRecord
             return $criteria;
         }
 
-        // Apply all the necessary joins to check for group based access.
-        $criteria->join = implode(
-            ' ',
-            array(
-                "INNER JOIN `node_has_group` AS `nhg` ON (`nhg`.`node_id` = `t`.`node_id`)",
-                "INNER JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `role_id` = :roleId)",
-                "LEFT JOIN `account` AS a ON (`a`.`id` = `t`.`owner_id`)",
-            )
-        );
-
-        // todo: make this role dynamic
-        // Provide parameters for the joins above.
-        $criteria->params[':roleId'] = 1; // translator
-
-        return $criteria;
+        return PermissionHelper::applyAccessCriteria($criteria, $params);
     }
 }

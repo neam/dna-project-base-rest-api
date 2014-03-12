@@ -12,11 +12,16 @@ class WebUser extends CWebUser
 
     /**
      * @param $roleName
+     *
      * @return bool
      */
     public function hasRole($roleName)
     {
-        return in_array($roleName, $this->getRoles());
+        return PermissionHelper::hasRole(
+            $this->id,
+            PermissionHelper::groupNameToId('GapminderOrg'),
+            PermissionHelper::roleNameToId($roleName)
+        );
     }
 
     /**
