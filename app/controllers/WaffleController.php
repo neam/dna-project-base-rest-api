@@ -49,6 +49,27 @@ class WaffleController extends Controller
 
         if (isset($_POST['import'])) {
 
+            try {
+
+                // get file path
+                $p3media = P3Media::model()->findByPk($_POST['Waffle']['json_import_media_id']);
+                $fullPath = $p3media->fullPath;
+
+                // read contents of file
+                $json = file_get_contents($fullPath);
+
+                // import
+                $model->importFromWaffleJson($json);
+
+            } catch (Exception $e) {
+
+                $this->addError('json_import_media_id', $e->getMessage());
+
+            }
+
+            // emulate us hitting the save button (so that json_import_media_id is saved and changeset is created etc)
+            $_POST['save-changes'] = true;
+
             throw new CException("TODO");
 
         }

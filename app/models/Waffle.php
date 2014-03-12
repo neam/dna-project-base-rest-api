@@ -78,6 +78,38 @@ class Waffle extends BaseWaffle
         }
     }
 
+    public function importFromWaffleJson($json)
+    {
+
+        // json decode
+        $decoded = json_decode($json);
+        var_dump($decoded);
+        die();
+
+        // start transaction
+        $transaction = Yii::app()->db->beginTransaction();
+
+        try {
+
+            /*
+             *  * @property WaffleQaState $waffleQaState
+     * @property WaffleCategory[] $waffleCategories
+     * @property WaffleDataSource[] $waffleDataSources
+     * @property WaffleIndicator[] $waffleIndicators
+     * @property WaffleTag[] $waffleTags
+     * @property WaffleUnit[] $waffleUnits
+             */
+
+            // commit transaction
+            $transaction->commit();
+
+        } catch (Exception $e) {
+            $transaction->rollback();
+            throw $e;
+        }
+
+    }
+
     /**
      * Define status-dependent fields
      * @return array
