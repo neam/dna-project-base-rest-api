@@ -656,12 +656,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/php-po2json.git",
-                "reference": "53fcbaea28d328818cb71821c98877e15462dfef"
+                "reference": "377d0b32714ea31969897397b6a71ab9cda08b1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/php-po2json/zipball/53fcbaea28d328818cb71821c98877e15462dfef",
-                "reference": "53fcbaea28d328818cb71821c98877e15462dfef",
+                "url": "https://api.github.com/repos/neam/php-po2json/zipball/377d0b32714ea31969897397b6a71ab9cda08b1c",
+                "reference": "377d0b32714ea31969897397b6a71ab9cda08b1c",
                 "shasum": ""
             },
             "require": {
@@ -697,7 +697,7 @@
                 "source": "https://github.com/neam/php-po2json/tree/develop",
                 "issues": "https://github.com/neam/php-po2json/issues"
             },
-            "time": "2014-03-12 08:30:46"
+            "time": "2014-03-12 08:42:28"
         },
         {
             "name": "neam/yii-i18n-attribute-messages",
