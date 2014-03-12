@@ -85,7 +85,7 @@ class Tool extends BaseTool
                 'embed_template',
             ),
             'po' => array(
-                'po_file_id',
+                'i18n_catalog_id',
             ),
         );
     }
@@ -138,4 +138,12 @@ class Tool extends BaseTool
         ));
     }
 
+    /**
+     * Returns i18n catalog options.
+     * @return array
+     */
+    public function getCatalogOptions()
+    {
+        return I18nCatalog::model()->getPoOptions();
+    }
 }

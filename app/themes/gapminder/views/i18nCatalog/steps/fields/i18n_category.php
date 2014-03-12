@@ -1,6 +1,6 @@
 <?php
-/* @var PoFileController|ItemController $this */
-/* @var PoFile|ItemTrait $model */
+/* @var I18nCatalogController|ItemController $this */
+/* @var I18nCatalog|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
 <?php echo $form->textFieldControlGroup(

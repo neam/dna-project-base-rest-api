@@ -158,4 +158,23 @@ class VectorGraphic extends BaseVectorGraphic
         ));
     }
 
+    /**
+     * Returns vector graphics.
+     * @return P3Media[]
+     */
+    public function getVectorGraphics()
+    {
+        return $this->getP3Media(array(
+            'image/svg+xml',
+        ));
+    }
+
+    /**
+     * Returns vector graphic options.
+     * @return array
+     */
+    public function getVectorGraphicOptions()
+    {
+        return $this->getOptions($this->getVectorGraphics());
+    }
 }

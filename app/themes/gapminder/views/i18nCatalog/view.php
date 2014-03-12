@@ -1,6 +1,6 @@
 <?php
-/* @var PoFileController|ItemController $this */
-/* @var PoFile|ItemTrait $model */
+/* @var I18nCatalogController|ItemController $this */
+/* @var I18nCatalog|ItemTrait $model */
 ?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
     <?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>

@@ -101,6 +101,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://github.com/neam/php-po2json.git"
+        },
+        {
+            "type":"vcs",
             "url":"https://github.com/motin/gii-template-collection"
         },
         {
@@ -144,6 +148,7 @@
         "phpoffice/phpword": "dev-added-composer-json",
         "phpoffice/phppowerpoint": "dev-master",
         "sepia/po-parser": "dev-master",
+        "neam/php-po2json": "dev-develop",
         "weavora/wrest": "dev-awaiting-prs",
         "codemix/hybridauthmanager": "dev-master",
         "schmunk42/relation": "1.*",

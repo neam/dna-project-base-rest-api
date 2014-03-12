@@ -737,12 +737,22 @@ trait ItemController
         $this->render('/_item/replace', array('model' => $model));
     }
 
+    /**
+     * Renders the translation overview page.
+     * @param integer $id the item ID.
+     */
     public function actionTranslationOverview($id)
     {
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
-        $this->populateWorkflowData($model, "translate", Yii::t('app', 'Translation overview'));
-        $this->render('/_item/translation-overview', array('model' => $model));
+        $this->populateWorkflowData($model, 'translate', Yii::t('app', 'Translation overview'));
+
+        $this->render(
+            '/_item/translation-overview',
+            array(
+                'model' => $model,
+            )
+        );
     }
 
     /**
