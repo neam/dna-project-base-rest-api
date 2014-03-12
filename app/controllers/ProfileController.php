@@ -1,6 +1,6 @@
 <?php
 
-class SpreadsheetFileController extends Controller
+class ProfileController extends Controller
 {
     #public $layout='//layouts/column2';
 
@@ -29,7 +29,7 @@ class SpreadsheetFileController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('SpreadsheetFile.*'),
+                'roles' => array('Profile.*'),
             ),
             array(
                 'deny',
@@ -42,15 +42,15 @@ class SpreadsheetFileController extends Controller
     {
         parent::beforeAction($action);
         // map identifcationColumn to id
-        if (!isset($_GET['id']) && isset($_GET['id'])) {
-            $model = SpreadsheetFile::model()->find(
-                'id = :id',
+        if (!isset($_GET['id']) && isset($_GET['user_id'])) {
+            $model = Profile::model()->find(
+                'user_id = :user_id',
                 array(
-                    ':id' => $_GET['id']
+                    ':user_id' => $_GET['user_id']
                 )
             );
             if ($model !== null) {
-                $_GET['id'] = $model->id;
+                $_GET['id'] = $model->user_id;
             } else {
                 throw new CHttpException(400);
             }
@@ -69,27 +69,27 @@ class SpreadsheetFileController extends Controller
 
     public function actionCreate()
     {
-        $model = new SpreadsheetFile;
+        $model = new Profile;
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'spreadsheet-file-form');
+        $this->performAjaxValidation($model, 'profile-form');
 
-        if (isset($_POST['SpreadsheetFile'])) {
-            $model->attributes = $_POST['SpreadsheetFile'];
+        if (isset($_POST['Profile'])) {
+            $model->attributes = $_POST['Profile'];
 
             try {
                 if ($model->save()) {
                     if (isset($_GET['returnUrl'])) {
                         $this->redirect($_GET['returnUrl']);
                     } else {
-                        $this->redirect(array('view', 'id' => $model->id));
+                        $this->redirect(array('view', 'id' => $model->user_id));
                     }
                 }
             } catch (Exception $e) {
-                $model->addError('id', $e->getMessage());
+                $model->addError('user_id', $e->getMessage());
             }
-        } elseif (isset($_GET['SpreadsheetFile'])) {
-            $model->attributes = $_GET['SpreadsheetFile'];
+        } elseif (isset($_GET['Profile'])) {
+            $model->attributes = $_GET['Profile'];
         }
 
         $this->render('create', array('model' => $model));
@@ -100,10 +100,10 @@ class SpreadsheetFileController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'spreadsheet-file-form');
+        $this->performAjaxValidation($model, 'profile-form');
 
-        if (isset($_POST['SpreadsheetFile'])) {
-            $model->attributes = $_POST['SpreadsheetFile'];
+        if (isset($_POST['Profile'])) {
+            $model->attributes = $_POST['Profile'];
 
 
             try {
@@ -111,11 +111,11 @@ class SpreadsheetFileController extends Controller
                     if (isset($_GET['returnUrl'])) {
                         $this->redirect($_GET['returnUrl']);
                     } else {
-                        $this->redirect(array('update', 'id' => $model->id));
+                        $this->redirect(array('view', 'id' => $model->user_id));
                     }
                 }
             } catch (Exception $e) {
-                $model->addError('id', $e->getMessage());
+                $model->addError('user_id', $e->getMessage());
             }
         }
 
@@ -124,15 +124,15 @@ class SpreadsheetFileController extends Controller
 
     public function actionEditableSaver()
     {
-        $es = new TbEditableSaver('SpreadsheetFile'); // classname of model to be updated
+        $es = new TbEditableSaver('Profile'); // classname of model to be updated
         $es->update();
     }
 
     public function actionEditableCreator()
     {
-        if (isset($_POST['SpreadsheetFile'])) {
-            $model = new SpreadsheetFile;
-            $model->attributes = $_POST['SpreadsheetFile'];
+        if (isset($_POST['Profile'])) {
+            $model = new Profile;
+            $model->attributes = $_POST['Profile'];
             if ($model->save()) {
                 echo CJSON::encode($model->getAttributes());
             } else {
@@ -172,17 +172,17 @@ class SpreadsheetFileController extends Controller
 
     public function actionIndex()
     {
-        $dataProvider = new CActiveDataProvider('SpreadsheetFile');
+        $dataProvider = new CActiveDataProvider('Profile');
         $this->render('index', array('dataProvider' => $dataProvider,));
     }
 
     public function actionAdmin()
     {
-        $model = new SpreadsheetFile('search');
+        $model = new Profile('search');
         $model->unsetAttributes();
 
-        if (isset($_GET['SpreadsheetFile'])) {
-            $model->attributes = $_GET['SpreadsheetFile'];
+        if (isset($_GET['Profile'])) {
+            $model->attributes = $_GET['Profile'];
         }
 
         $this->render('admin', array('model' => $model,));
@@ -190,7 +190,7 @@ class SpreadsheetFileController extends Controller
 
     public function loadModel($id)
     {
-        $model = SpreadsheetFile::model()->findByPk($id);
+        $model = Profile::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
@@ -199,7 +199,7 @@ class SpreadsheetFileController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'spreadsheet-file-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'profile-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
