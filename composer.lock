@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "bb2cb6e4d84ced1dba50726c793ec60a",
+    "hash": "dcb790055557dbc9bd216303bbb11095",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -649,6 +649,55 @@
                 "issues": "https://github.com/motin/yii-owner-behavior/issues"
             },
             "time": "2013-11-20 23:43:48"
+        },
+        {
+            "name": "neam/php-po2json",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/php-po2json.git",
+                "reference": "53fcbaea28d328818cb71821c98877e15462dfef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/php-po2json/zipball/53fcbaea28d328818cb71821c98877e15462dfef",
+                "reference": "53fcbaea28d328818cb71821c98877e15462dfef",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "sepia/po-parser": "dev-master"
+            },
+            "require-dev": {
+                "codeception/codeception": "~1.8.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "."
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "Convert PO files to JSON strings. The result is Jed-compatible. Based on, and using same test fixtures as https://github.com/mikeedwards/po2json",
+            "homepage": "https://github.com/neam/php-po2json",
+            "keywords": [
+                "i18n",
+                "php",
+                "translation"
+            ],
+            "support": {
+                "source": "https://github.com/neam/php-po2json/tree/develop",
+                "issues": "https://github.com/neam/php-po2json/issues"
+            },
+            "time": "2014-03-12 08:30:46"
         },
         {
             "name": "neam/yii-i18n-attribute-messages",
@@ -2209,6 +2258,7 @@
         "phpoffice/phpword": 20,
         "phpoffice/phppowerpoint": 20,
         "sepia/po-parser": 20,
+        "neam/php-po2json": 20,
         "weavora/wrest": 20,
         "codemix/hybridauthmanager": 20,
         "phundament/backend-theme": 20,

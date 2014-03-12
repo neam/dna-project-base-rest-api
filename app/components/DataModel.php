@@ -173,6 +173,7 @@ class DataModel
 
         return array_merge(
             self::goItemModels(),
+            self::internalItemModels(),
             self::educationalItemModels(),
             self::waffleItemModels(),
             array(

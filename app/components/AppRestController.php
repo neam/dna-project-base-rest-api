@@ -40,11 +40,11 @@ class AppRestController extends WRestController
         header('Content-type: ' . $content_type);
     }
 
-    public function sendResponse($status = 200, $bodyParams = array())
+    public function sendResponse($status = 200, $bodyParams = array(), $options = array())
     {
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Headers: Authorization, Origin, Content-Type, Accept");
-        return parent::sendResponse($status, $bodyParams);
+        return parent::sendResponse($status, $bodyParams, $options);
     }
 
     public function runDefaultWrestListAction()
