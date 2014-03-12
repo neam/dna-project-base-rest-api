@@ -138,4 +138,12 @@ class Tool extends BaseTool
         ));
     }
 
+    /**
+     * Returns i18n catalog options.
+     * @return array
+     */
+    public function getCatalogOptions()
+    {
+        return I18nCatalog::model()->getPoOptions();
+    }
 }
