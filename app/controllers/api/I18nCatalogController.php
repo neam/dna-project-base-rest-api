@@ -27,4 +27,13 @@ class I18nCatalogController extends AppRestController
         );
     }
 
+    public function actionPoJson()
+    {
+        $model = $this->getModel();
+        $p3media = $model->potImportMedia;
+        $fullPath = $p3media->fullPath;
+        $result = \neam\po2json\Po2Json::parseFile($fullPath, null, 'jed');
+        $this->sendResponse(200, $result);
+    }
+
 }
