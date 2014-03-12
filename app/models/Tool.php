@@ -85,7 +85,7 @@ class Tool extends BaseTool
                 'embed_template',
             ),
             'po' => array(
-                'po_file_id',
+                'i18n_catalog_id',
             ),
         );
     }
