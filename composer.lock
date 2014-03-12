@@ -705,12 +705,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-i18n-attribute-messages.git",
-                "reference": "af55612123ce82c949b99b1ed1838f4c47a14f1a"
+                "reference": "d1b05e510115574a17f2088ac1d0c57a776f3784"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-i18n-attribute-messages/zipball/af55612123ce82c949b99b1ed1838f4c47a14f1a",
-                "reference": "af55612123ce82c949b99b1ed1838f4c47a14f1a",
+                "url": "https://api.github.com/repos/neam/yii-i18n-attribute-messages/zipball/d1b05e510115574a17f2088ac1d0c57a776f3784",
+                "reference": "d1b05e510115574a17f2088ac1d0c57a776f3784",
                 "shasum": ""
             },
             "require": {
@@ -738,7 +738,7 @@
                 "source": "https://github.com/neam/yii-i18n-attribute-messages/tree/develop",
                 "issues": "https://github.com/neam/yii-i18n-attribute-messages/issues"
             },
-            "time": "2014-02-27 12:11:42"
+            "time": "2014-03-12 23:40:49"
         },
         {
             "name": "neam/yii-i18n-columns",
