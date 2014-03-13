@@ -550,7 +550,7 @@ trait ItemController
      */
     public function actionEdit($step, $id)
     {
-        $this->scenario = "step_$step";
+        $this->scenario = "temporary-step_$step";
 
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
@@ -558,7 +558,7 @@ trait ItemController
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
 
-        $this->populateWorkflowData($model, "publishable", Yii::t('app', 'Edit'));
+        $this->populateWorkflowData($model, "temporary", Yii::t('app', 'Edit'));
         $stepCaptions = $model->flowStepCaptions();
 
         $this->setPageTitle(array(
