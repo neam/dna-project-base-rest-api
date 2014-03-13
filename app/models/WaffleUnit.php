@@ -87,6 +87,7 @@ class WaffleUnit extends BaseWaffleUnit
                 'name',
                 'short_name',
                 'description',
+                'waffle',
             ),
         );
     }
