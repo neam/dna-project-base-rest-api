@@ -64,10 +64,10 @@ class WaffleTag extends BaseWaffleTag
     {
         return array(
             'draft' => array(
-                'name',
+                'name_' . $this->source_language,
             ),
             'reviewable' => array(
-                'short_name',
+                'short_name_' . $this->source_language,
             ),
             'publishable' => array(
                 'ref',
@@ -84,9 +84,9 @@ class WaffleTag extends BaseWaffleTag
         return array(
             'info' => array(
                 'ref',
-                'name',
-                'short_name',
-                'description',
+                'name_' . $this->source_language,
+                'short_name_' . $this->source_language,
+                'description_' . $this->source_language,
                 'waffle',
             ),
         );

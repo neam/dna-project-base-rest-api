@@ -205,10 +205,10 @@ class Waffle extends BaseWaffle
     {
         return array(
             'draft' => array(
-                'title',
+                'title_' . $this->source_language,
             ),
             'reviewable' => array(
-                'slug',
+                'slug_' . $this->source_language,
             ),
             'publishable' => array(),
         );
@@ -222,8 +222,8 @@ class Waffle extends BaseWaffle
     {
         return array(
             'info' => array(
-                'title',
-                'slug',
+                'title_' . $this->source_language,
+                'slug_' . $this->source_language,
             ),
             'import' => array(
                 'json_import_media_id',

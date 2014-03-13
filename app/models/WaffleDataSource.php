@@ -64,10 +64,10 @@ class WaffleDataSource extends BaseWaffleDataSource
     {
         return array(
             'draft' => array(
-                'name',
+                'name_' . $this->source_language,
             ),
             'reviewable' => array(
-                'short_name',
+                'short_name_' . $this->source_language,
             ),
             'publishable' => array(
                 'ref',
@@ -84,8 +84,8 @@ class WaffleDataSource extends BaseWaffleDataSource
         return array(
             'info' => array(
                 'ref',
-                'name',
-                'short_name',
+                'name_' . $this->source_language,
+                'short_name_' . $this->source_language,
                 'link',
                 'waffle',
             ),
