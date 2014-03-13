@@ -87,6 +87,7 @@ class WaffleTag extends BaseWaffleTag
                 'name',
                 'short_name',
                 'description',
+                'waffle',
             ),
         );
     }
