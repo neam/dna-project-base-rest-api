@@ -42,7 +42,7 @@ class DatabaseSchemaCommand extends CConsoleCommand
      * Drops all tables from the database.
      * @param bool $verbose
      */
-    public function actionDropAllTables($verbose = false)
+    public function actionDropAllTablesAndViews($verbose = false)
     {
 
         if (!empty($verbose)) {
@@ -61,7 +61,8 @@ class DatabaseSchemaCommand extends CConsoleCommand
         $this->execute($db, "SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';");
 
         foreach ($tables as $table) {
-            $this->execute($db, "DROP TABLE `{$table->name}`;");
+            $this->execute($db, "DROP TABLE IF EXISTS `{$table->name}`;");
+            $this->execute($db, "DROP VIEW IF EXISTS `{$table->name}`;");
         }
 
         $this->execute($db, "SET SQL_MODE=@OLD_SQL_MODE;");

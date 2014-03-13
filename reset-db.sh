@@ -3,7 +3,7 @@ exit;
 
 set -x;
 
-app/yiic databaseschema --connectionID=db dropAllTables --verbose=0
+app/yiic databaseschema --connectionID=db dropAllTablesAndViews --verbose=0
 app/yiic databaseschema --connectionID=db loadSql --path=db/schema.sql --verbose=0
 app/yiic migrate --connectionID=db --interactive=0 > /dev/null
 export connectionID=db
