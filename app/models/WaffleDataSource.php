@@ -22,7 +22,7 @@ class WaffleDataSource extends BaseWaffleDataSource
 
     public function getItemLabel()
     {
-        return (string) !empty($this->title) ? $this->title : "WaffleDataSource #" . $this->id;
+        return (string) !empty($this->name) ? $this->name : "WaffleDataSource #" . $this->id;
     }
 
     public function behaviors()
@@ -64,7 +64,7 @@ class WaffleDataSource extends BaseWaffleDataSource
     {
         return array(
             'draft' => array(
-                'title',
+                'name',
             ),
             'reviewable' => array(
                 'short_name',
@@ -87,10 +87,11 @@ class WaffleDataSource extends BaseWaffleDataSource
                 'name',
                 'short_name',
                 'link',
+                'waffle',
             ),
             'logo' => array(
-                'image_small',
-                'image_large',
+                'image_small_media_id',
+                'image_large_media_id',
             ),
         );
     }
@@ -111,8 +112,8 @@ class WaffleDataSource extends BaseWaffleDataSource
                 'name' => Yii::t('model', 'Name'),
                 'short_name' => Yii::t('model', 'Short name'),
                 'link' => Yii::t('model', 'Link'),
-                'image_small' => Yii::t('model', 'Mini icon'),
-                'image_large' => Yii::t('model', 'Icon'),
+                'image_small_media_id' => Yii::t('model', 'Mini icon'),
+                'image_large_media_id' => Yii::t('model', 'Icon'),
             )
         );
     }

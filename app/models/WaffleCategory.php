@@ -22,7 +22,7 @@ class WaffleCategory extends BaseWaffleCategory
 
     public function getItemLabel()
     {
-        return (string) !empty($this->title) ? $this->title : "WaffleCategory #" . $this->id;
+        return (string) !empty($this->name) ? $this->name : "WaffleCategory #" . $this->id;
     }
 
     public function behaviors()
@@ -64,7 +64,7 @@ class WaffleCategory extends BaseWaffleCategory
     {
         return array(
             'draft' => array(
-                'title',
+                'name',
             ),
             'reviewable' => array(
                 'short_name',
@@ -87,6 +87,7 @@ class WaffleCategory extends BaseWaffleCategory
                 'name',
                 'short_name',
                 'description',
+                'waffle',
             ),
         );
     }
