@@ -17,4 +17,20 @@ class U
         return implode(", ", $prefixed);
     }
 
+    /**
+     * Short-hand to help query translated records by SQL without involving ActiveRecord
+     * @param $table
+     * @param array $i18n_columns_fields
+     * @param array $i18n_attribute_messages_fields
+     */
+    static function translatedDbCommand(
+        $command,
+        $i18n_columns_fields = array(),
+        $i18n_attribute_messages_fields = array()
+    ) {
+
+        return $command;
+
+    }
+
 }

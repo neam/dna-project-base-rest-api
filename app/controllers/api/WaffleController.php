@@ -27,7 +27,126 @@ class WaffleController extends AppRestController
         );
     }
 
+    /**
+     * @see actionJsonByActiveRecord() the non-optimized version of this method
+     */
     public function actionJson()
+    {
+
+        $model = $this->getModel();
+
+        $response = new stdClass();
+        $response->info = new stdClass();
+        $response->info->title = $model->title;
+        /*
+         * TODO: add to data model:
+        $response->info->short_title = $model->short_title;
+        $response->info->description = $model->description;
+        */
+
+        $response->definitions = new stdClass();
+
+        // waffleCategories
+        $columns = array(
+            "waffle_category" => array("ref", "_name", "_description"),
+            "waffle_category_element" => array("ref", "_name"),
+        );
+        $select = U::prefixed_table_fields_wildcard('waffle_category', 'waffle_category', $columns['waffle_category'])
+            . "," . U::prefixed_table_fields_wildcard('waffle_category_element', 'waffle_category_element', $columns['waffle_category_element']);
+        // Prevent double-escaping ("The method will automatically quote the column names unless a column contains some parenthesis (which means the column contains a DB expression).")
+        $select .= ", (-1) AS foo";
+
+        $command = Yii::app()->db->createCommand()
+            ->select($select)
+            ->from("waffle_category_element")
+            ->join("waffle_category", "waffle_category_element.waffle_category_id = waffle_category.id")
+            ->where("waffle_category.waffle_id = :waffle_id");
+        $command->params = array("waffle_id" => $model->id);
+
+        $formatResults = function ($records) use ($columns) {
+
+            //var_dump(compact("records"));
+            $categories = array();
+            if ($records) {
+                foreach ($records as $r) {
+
+                    if (!isset($categories[$r['waffle_category.ref']])) {
+                        $category = new stdClass();
+                        $category->id = $r['waffle_category.ref'];
+                        $category->name = $r['waffle_category._name'];
+                        $category->description = $r['waffle_category._description'];
+                        $category->things = array();
+                        $categories[$r['waffle_category.ref']] = $category;
+                    }
+
+                    $things =& $categories[$r['waffle_category.ref']]->things;
+
+                    $thing = new stdClass();
+                    $thing->id = $r['waffle_category_element.ref'];
+                    $thing->name = $r['waffle_category_element._name'];
+                    $things[] = $thing;
+
+                }
+            }
+
+            return array_values($categories);
+        };
+
+        //print_r($command->text);print_r($command->params);
+        $translatedCommand = U::translatedDbCommand($command);
+        //print_r($translatedCommand->text);print_r($translatedCommand->params);
+        $records = $translatedCommand->queryAll();
+
+        $response->definitions->categories = $formatResults($records);
+
+        // waffleIndicators
+        $command = Yii::app()->db->createCommand()
+            ->select("ref AS id, _name AS name")
+            ->from("waffle_indicator")
+            ->where("waffle_id = :waffle_id");
+        $command->params = array("waffle_id" => $model->id);
+        $translatedCommand = U::translatedDbCommand($command);
+        $response->definitions->indicators = $translatedCommand->queryAll();
+
+        // waffleUnits
+        $command = Yii::app()->db->createCommand()
+            ->select("ref AS id, _name AS name, _description AS description")
+            ->from("waffle_unit")
+            ->where("waffle_id = :waffle_id");
+        $command->params = array("waffle_id" => $model->id);
+        $translatedCommand = U::translatedDbCommand($command);
+        $response->definitions->units = $translatedCommand->queryAll();
+
+        // waffleTags
+        $command = Yii::app()->db->createCommand()
+            ->select("ref AS id, _name AS name, _description AS description")
+            ->from("waffle_tag")
+            ->where("waffle_id = :waffle_id");
+        $command->params = array("waffle_id" => $model->id);
+        $translatedCommand = U::translatedDbCommand($command);
+        $response->definitions->tags = $translatedCommand->queryAll();
+
+        // waffleDataSources - TODO
+        /*
+        $command = Yii::app()->db->createCommand()
+            ->select("ref AS id, _name, _description")
+            ->from("waffle_data_source")
+            ->where("waffle_id = :waffle_id");
+        $command->params = array("waffle_id" => $model->id);
+        $translatedCommand = U::translatedDbCommand($command);
+        $response->sources = $translatedCommand->queryAll();
+        */
+
+        $this->sendResponse(200, $response);
+
+    }
+
+    /**
+     * Clean but too slow.
+     * @throws CException
+     * @see actionJson() the optimized version of this method
+     */
+    public function actionJsonByActiveRecord()
     {
         $model = $this->getModel();
 
