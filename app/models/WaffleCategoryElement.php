@@ -86,6 +86,7 @@ class WaffleCategoryElement extends BaseWaffleCategoryElement
                 'ref',
                 'name',
                 'short_name',
+                'waffle_category_id',
             ),
         );
     }
