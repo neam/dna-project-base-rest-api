@@ -17,13 +17,13 @@
                     'block' => true,
                     'class' => 'upload-btn',
                     'data-toggle' => 'modal',
-                    'data-target' => '#' . $form->id . '-modal',
+                    'data-target' => '#' . $form->id . '-webm-modal',
                 )
             ); ?>
             <?php $this->renderPartial(
                 '//p3Media/_modal_form',
                 array(
-                    'formId' => $form->id,
+                    'formId' => $form->id . '-webm',
                     'inputSelector' => '#VideoFile_clip_webm_media_id',
                     'model' => new P3Media(),
                     'pk' => 'id',
@@ -47,13 +47,13 @@
                     'block' => true,
                     'class' => 'upload-btn',
                     'data-toggle' => 'modal',
-                    'data-target' => '#' . $form->id . '-modal',
+                    'data-target' => '#' . $form->id . 'mp4-modal',
                 )
             ); ?>
             <?php $this->renderPartial(
                 '//p3Media/_modal_form',
                 array(
-                    'formId' => $form->id,
+                    'formId' => $form->id . '-mp4',
                     'inputSelector' => '#VideoFile_clip_mp4_media_id',
                     'model' => new P3Media(),
                     'pk' => 'id',
