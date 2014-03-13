@@ -259,15 +259,13 @@ class PermissionHelper
         $criteria->join = implode(
             ' ',
             array(
-                // owner join
-                "LEFT JOIN `account` AS a ON (`t`.`owner_id` = :accountId)",
-                // belongs to same group joins
                 "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)",
-                "INNER JOIN `group_has_account` AS `gha` ON (`gha`.`account_id` = :accountId AND `gha`.`group_id` = `nhg`.`group_id`)",
+                "LEFT JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id`)",
             )
         );
 
-        // Provide parameters for the joins above.
+        // Restrict access based on the account id.
+        $criteria->addCondition("(`gha`.`account_id` = :accountId OR `t`.`owner_id` = :accountId)");
         $criteria->params[':accountId'] = Yii::app()->user->id;
 
         return $criteria;
