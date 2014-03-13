@@ -9,11 +9,33 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
 {
 
     /**
+     * @var string database connection component
+     */
+    public $connectionID = "db";
+
+    /**
+     * @var
+     */
+    public $_db;
+
+    /**
      * If we should be verbose
      *
      * @var bool
      */
     private $_verbose = false;
+
+    /**
+     * Write a string to standard output if we're verbose
+     *
+     * @param $string
+     */
+    protected function d($string)
+    {
+        if ($this->_verbose) {
+            print "\033[37m" . $string . "\033[30m";
+        }
+    }
 
     /**
      * item
@@ -38,6 +60,10 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
         if (!empty($verbose)) {
             $this->_verbose = true;
         }
+
+        $this->_db =& Yii::app()->{$this->connectionID};
+
+        $this->d("Connecting to '" . $this->_db->connectionString . "'\n");
 
         $sql = "SELECT \n";
 
@@ -225,15 +251,15 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
             echo "\n";
         }
 
-        $selectResult = Yii::app()->db->createCommand($sql . " LIMIT 2")->queryAll();
-        Yii::app()->db->createCommand($viewSql)->execute();
-        $selectViewResult = Yii::app()->db->createCommand("SELECT * FROM $viewName LIMIT 2")->queryAll();
+        $selectResult = $this->_db->createCommand($sql . " LIMIT 2")->queryAll();
+        $this->_db->createCommand($viewSql)->execute();
+        $selectViewResult = $this->_db->createCommand("SELECT * FROM $viewName LIMIT 2")->queryAll();
 
         if ($this->_verbose) {
             var_dump(compact("selectResult", "selectViewResult"));
         }
 
-        $selectExistingItemsResult = Yii::app()->db->createCommand("SELECT * FROM $viewName WHERE model_class IS NOT NULL LIMIT 2")->queryAll();
+        $selectExistingItemsResult = $this->_db->createCommand("SELECT * FROM $viewName WHERE model_class IS NOT NULL LIMIT 2")->queryAll();
 
         if ($this->_verbose) {
             var_dump(compact("selectExistingItemsResult"));
@@ -248,7 +274,7 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
      */
     protected function _checkTableAndColumnExists($table, $column)
     {
-        $tables = Yii::app()->db->schema->getTables();
+        $tables = $this->_db->schema->getTables();
         // The column does not exist if the table does not exist
         return isset($tables[$table]) && (isset($tables[$table]->columns[$column]));
     }
