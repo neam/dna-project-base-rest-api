@@ -200,7 +200,13 @@ class AccountController extends Controller
     {
         $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
-        $this->render('history', array('model' => $model,));
+
+        $userChangedItems = new Item('search');
+        $userChangedItems->unsetAttributes();
+        $userChangedItems->setAttribute("user_id", Yii::app()->user->id);
+        $dataProvider = $userChangedItems->search();
+
+        $this->render('history', array('model' => $model, 'dataProvider' => $dataProvider));
     }
 
     public function actionPublicProfile($id)
