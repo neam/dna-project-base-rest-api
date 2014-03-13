@@ -26,6 +26,14 @@ class DataSource extends BaseDataSource
         return (string) !empty($this->title) ? $this->title : "DataSource #" . $this->id;
     }
 
+    public function behaviors()
+    {
+        return array_merge(
+            parent::behaviors(),
+            array()
+        );
+    }
+
     public function rules()
     {
         $return = array_merge(
