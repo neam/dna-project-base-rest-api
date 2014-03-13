@@ -64,7 +64,7 @@ class WaffleCategory extends BaseWaffleCategory
     {
         return array(
             'draft' => array(
-                'title',
+                'name',
             ),
             'reviewable' => array(
                 'short_name',
@@ -87,6 +87,7 @@ class WaffleCategory extends BaseWaffleCategory
                 'name',
                 'short_name',
                 'description',
+                'waffle',
             ),
         );
     }
