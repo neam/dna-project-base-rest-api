@@ -22,7 +22,7 @@ class WaffleCategory extends BaseWaffleCategory
 
     public function getItemLabel()
     {
-        return (string) !empty($this->title) ? $this->title : "WaffleCategory #" . $this->id;
+        return (string) !empty($this->name) ? $this->name : "WaffleCategory #" . $this->id;
     }
 
     public function behaviors()
@@ -64,10 +64,10 @@ class WaffleCategory extends BaseWaffleCategory
     {
         return array(
             'draft' => array(
-                'title',
+                'name_' . $this->source_language,
             ),
             'reviewable' => array(
-                'short_name',
+                'short_name_' . $this->source_language,
             ),
             'publishable' => array(
                 'ref',
@@ -84,9 +84,10 @@ class WaffleCategory extends BaseWaffleCategory
         return array(
             'info' => array(
                 'ref',
-                'name',
-                'short_name',
-                'description',
+                'name_' . $this->source_language,
+                'short_name_' . $this->source_language,
+                'description_' . $this->source_language,
+                'waffle',
             ),
         );
     }

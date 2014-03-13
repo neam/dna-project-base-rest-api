@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'glyphicon-search',
-                        'items' => array(array('label' => 'user - Account', 'url' => array('//account/admin')), array('label' => 'pictureMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'account - Account', 'url' => array('//account/admin'))
+                        'items' => array(array('label' => 'pictureMedia - P3Media', 'url' => array('//p3Media/admin')), array('label' => 'user - Account', 'url' => array('//account/admin')), array('label' => 'account - Account', 'url' => array('//account/admin'))
                         )
                     ),
                 ),

@@ -22,7 +22,7 @@ class WaffleTag extends BaseWaffleTag
 
     public function getItemLabel()
     {
-        return (string) !empty($this->title) ? $this->title : "WaffleTag #" . $this->id;
+        return (string) !empty($this->name) ? $this->name : "WaffleTag #" . $this->id;
     }
 
     public function behaviors()
@@ -64,10 +64,10 @@ class WaffleTag extends BaseWaffleTag
     {
         return array(
             'draft' => array(
-                'title',
+                'name_' . $this->source_language,
             ),
             'reviewable' => array(
-                'short_name',
+                'short_name_' . $this->source_language,
             ),
             'publishable' => array(
                 'ref',
@@ -84,9 +84,10 @@ class WaffleTag extends BaseWaffleTag
         return array(
             'info' => array(
                 'ref',
-                'name',
-                'short_name',
-                'description',
+                'name_' . $this->source_language,
+                'short_name_' . $this->source_language,
+                'description_' . $this->source_language,
+                'waffle',
             ),
         );
     }

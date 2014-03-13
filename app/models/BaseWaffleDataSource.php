@@ -21,9 +21,9 @@
  * @property string $waffle_data_source_qa_state_id
  *
  * Relations of table "waffle_data_source" available as properties of the model:
+ * @property Waffle $waffle
  * @property Account $owner
  * @property Node $node
- * @property Waffle $waffle
  * @property P3Media $imageSmallMedia
  * @property P3Media $imageLargeMedia
  * @property WaffleDataSource $clonedFrom
@@ -77,9 +77,9 @@ abstract class BaseWaffleDataSource extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-                'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
                 'imageSmallMedia' => array(self::BELONGS_TO, 'P3Media', 'image_small_media_id'),
                 'imageLargeMedia' => array(self::BELONGS_TO, 'P3Media', 'image_large_media_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'WaffleDataSource', 'cloned_from_id'),

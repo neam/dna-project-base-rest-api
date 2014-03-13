@@ -65,9 +65,9 @@
  * @property string $slug_zh_tw
  *
  * Relations of table "video_file" available as properties of the model:
+ * @property Node $node
  * @property P3Media $clipWebmMedia
  * @property P3Media $clipMp4Media
- * @property Node $node
  * @property P3Media $thumbnailMedia
  * @property P3Media $subtitlesImportMedia
  * @property Account $owner
@@ -122,9 +122,9 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'clipWebmMedia' => array(self::BELONGS_TO, 'P3Media', 'clip_webm_media_id'),
                 'clipMp4Media' => array(self::BELONGS_TO, 'P3Media', 'clip_mp4_media_id'),
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
                 'subtitlesImportMedia' => array(self::BELONGS_TO, 'P3Media', 'subtitles_import_media_id'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),

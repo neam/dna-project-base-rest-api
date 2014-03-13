@@ -19,9 +19,9 @@
  * @property string $waffle_tag_qa_state_id
  *
  * Relations of table "waffle_tag" available as properties of the model:
+ * @property Waffle $waffle
  * @property Account $owner
  * @property Node $node
- * @property Waffle $waffle
  * @property WaffleTag $clonedFrom
  * @property WaffleTag[] $waffleTags
  * @property WaffleTagQaState $waffleTagQaState
@@ -73,9 +73,9 @@ abstract class BaseWaffleTag extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-                'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'WaffleTag', 'cloned_from_id'),
                 'waffleTags' => array(self::HAS_MANY, 'WaffleTag', 'cloned_from_id'),
                 'waffleTagQaState' => array(self::BELONGS_TO, 'WaffleTagQaState', 'waffle_tag_qa_state_id'),

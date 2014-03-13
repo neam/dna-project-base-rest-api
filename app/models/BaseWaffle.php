@@ -59,9 +59,9 @@
  * @property string $waffle_qa_state_id
  *
  * Relations of table "waffle" available as properties of the model:
- * @property P3Media $jsonImportMedia
  * @property Account $owner
  * @property Node $node
+ * @property P3Media $jsonImportMedia
  * @property Waffle $clonedFrom
  * @property Waffle[] $waffles
  * @property WaffleQaState $waffleQaState
@@ -118,9 +118,9 @@ abstract class BaseWaffle extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'jsonImportMedia' => array(self::BELONGS_TO, 'P3Media', 'json_import_media_id'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'jsonImportMedia' => array(self::BELONGS_TO, 'P3Media', 'json_import_media_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Waffle', 'cloned_from_id'),
                 'waffles' => array(self::HAS_MANY, 'Waffle', 'cloned_from_id'),
                 'waffleQaState' => array(self::BELONGS_TO, 'WaffleQaState', 'waffle_qa_state_id'),

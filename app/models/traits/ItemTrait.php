@@ -101,7 +101,7 @@ trait ItemTrait
 
             foreach ($fields as $field) {
                 $onStatuses = array();
-                $flowStepRules[] = array($field, 'safe', 'on' => implode("-step_$step,", array('draft', 'reviewable', 'publishable')) . "-step_$step,step_$step");
+                $flowStepRules[] = array($field, 'safe', 'on' => implode("-step_$step,", array('temporary', 'draft', 'reviewable', 'publishable')) . "-step_$step,step_$step");
                 if (in_array($field, $statusRequirements['draft'])) {
                     $onStatuses = array('draft', 'reviewable', 'publishable');
                 }

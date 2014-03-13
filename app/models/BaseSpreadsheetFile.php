@@ -61,7 +61,6 @@
  * @property string $spreadsheet_file_qa_state_id
  *
  * Relations of table "spreadsheet_file" available as properties of the model:
- * @property SpreadsheetFileQaState $spreadsheetFileQaState
  * @property DataSource $dataSource
  * @property Node $node
  * @property P3Media $originalMedia
@@ -111,6 +110,7 @@
  * @property SpreadsheetFile $clonedFrom
  * @property SpreadsheetFile[] $spreadsheetFiles
  * @property Account $owner
+ * @property SpreadsheetFileQaState $spreadsheetFileQaState
  */
 abstract class BaseSpreadsheetFile extends ActiveRecord
 {
@@ -159,7 +159,6 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'spreadsheetFileQaState' => array(self::BELONGS_TO, 'SpreadsheetFileQaState', 'spreadsheet_file_qa_state_id'),
                 'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
@@ -209,6 +208,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
                 'clonedFrom' => array(self::BELONGS_TO, 'SpreadsheetFile', 'cloned_from_id'),
                 'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'cloned_from_id'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'spreadsheetFileQaState' => array(self::BELONGS_TO, 'SpreadsheetFileQaState', 'spreadsheet_file_qa_state_id'),
             )
         );
     }

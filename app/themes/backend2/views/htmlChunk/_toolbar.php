@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'glyphicon-search',
-                        'items' => array(array('label' => 'outEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'outNodes - Node', 'url' => array('//node/admin')), array('label' => 'inEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'inNodes - Node', 'url' => array('//node/admin')), array('label' => 'owner - Account', 'url' => array('//account/admin')), array('label' => 'clonedFrom - HtmlChunk', 'url' => array('//htmlChunk/admin')), array('label' => 'htmlChunks - HtmlChunk', 'url' => array('//htmlChunk/admin')), array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'htmlChunkQaState - HtmlChunkQaState', 'url' => array('//htmlChunkQaState/admin'))
+                        'items' => array(array('label' => 'outEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'outNodes - Node', 'url' => array('//node/admin')), array('label' => 'inEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'inNodes - Node', 'url' => array('//node/admin')), array('label' => 'clonedFrom - HtmlChunk', 'url' => array('//htmlChunk/admin')), array('label' => 'htmlChunks - HtmlChunk', 'url' => array('//htmlChunk/admin')), array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'owner - Account', 'url' => array('//account/admin')), array('label' => 'htmlChunkQaState - HtmlChunkQaState', 'url' => array('//htmlChunkQaState/admin'))
                         )
                     ),
                 ),

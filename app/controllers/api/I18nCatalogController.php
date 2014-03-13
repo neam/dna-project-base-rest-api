@@ -27,12 +27,15 @@ class I18nCatalogController extends AppRestController
         );
     }
 
-    public function actionPoJson()
+    /**
+     * @param string $format 'raw' or 'jed'
+     */
+    public function actionPoJson($format = 'raw')
     {
         $model = $this->getModel();
         $p3media = $model->potImportMedia;
         $fullPath = $p3media->fullPath;
-        $result = \neam\po2json\Po2Json::parseFile($fullPath, null, 'jed');
+        $result = \neam\po2json\Po2Json::parseFile($fullPath, null, $format);
         $this->sendResponse(200, $result);
     }
 

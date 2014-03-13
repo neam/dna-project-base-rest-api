@@ -20,15 +20,24 @@ $this->breadcrumbs[] = Yii::t('account', 'History');
     This is where you will track your changes and contributions over time.
 </div>
 
-<div class="row">
-    <div class="span12">
-        <b><?php echo CHtml::encode($model->getAttributeLabel('create_at')); ?>:</b>
-        <?php echo CHtml::encode($model->create_at); ?>
-        <br/>
+<h2><?php echo Yii::t('history', 'Contribution history'); ?></h2>
 
-        <b><?php echo CHtml::encode($model->getAttributeLabel('lastvisit_at')); ?>:</b>
-        <?php echo CHtml::encode($model->lastvisit_at); ?>
-        <br/>
-    </div>
-</div>
+<?php
+$this->widget('zii.widgets.CListView', array(
+    'dataProvider' => $dataProvider,
+    'itemView' => '_history-item',
+));
+?>
+
+<h2><?php echo Yii::t('history', 'Sign-up'); ?></h2>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('create_at')); ?>:</b>
+<?php echo CHtml::encode($model->create_at); ?>
+<br/>
+
+<h2><?php echo Yii::t('history', 'Last visit'); ?></h2>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('lastvisit_at')); ?>:</b>
+<?php echo CHtml::encode($model->lastvisit_at); ?>
+<br/>
 

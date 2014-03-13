@@ -20,9 +20,9 @@
  *
  * Relations of table "i18n_catalog" available as properties of the model:
  * @property GuiSection[] $guiSections
- * @property Node $node
  * @property I18nCatalog $clonedFrom
  * @property I18nCatalog[] $i18nCatalogs
+ * @property Node $node
  * @property P3Media $potImportMedia
  * @property Account $owner
  * @property I18nCatalogQaState $i18nCatalogQaState
@@ -76,9 +76,9 @@ abstract class BaseI18nCatalog extends ActiveRecord
         return array_merge(
             parent::relations(), array(
                 'guiSections' => array(self::HAS_MANY, 'GuiSection', 'i18n_catalog_id'),
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'I18nCatalog', 'cloned_from_id'),
                 'i18nCatalogs' => array(self::HAS_MANY, 'I18nCatalog', 'cloned_from_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'potImportMedia' => array(self::BELONGS_TO, 'P3Media', 'pot_import_media_id'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'i18nCatalogQaState' => array(self::BELONGS_TO, 'I18nCatalogQaState', 'i18n_catalog_qa_state_id'),

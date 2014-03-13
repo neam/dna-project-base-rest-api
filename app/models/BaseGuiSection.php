@@ -16,8 +16,8 @@
  *
  * Relations of table "gui_section" available as properties of the model:
  * @property Account $owner
- * @property Node $node
  * @property I18nCatalog $i18nCatalog
+ * @property Node $node
  * @property GuiSectionQaState $guiSectionQaState
  */
 abstract class BaseGuiSection extends ActiveRecord
@@ -68,8 +68,8 @@ abstract class BaseGuiSection extends ActiveRecord
         return array_merge(
             parent::relations(), array(
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'i18nCatalog' => array(self::BELONGS_TO, 'I18nCatalog', 'i18n_catalog_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'guiSectionQaState' => array(self::BELONGS_TO, 'GuiSectionQaState', 'gui_section_qa_state_id'),
             )
         );

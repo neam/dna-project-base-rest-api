@@ -91,40 +91,49 @@ class AccountController extends Controller
         $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
 
-        // Tmp
-        $lang1 = "es";
-        $lang2 = "pt";
-        $lang3 = "de";
+        $lang1 = $model->profile->language1;
+        $lang2 = $model->profile->language2;
+        $lang3 = $model->profile->language3;
+
+        $lang1Sql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoPrimaryLanguage' AS action,
+                    translate_into_{$lang1}_validation_progress AS progress,
+                    0 AS relevance
+                    FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language1 IS NOT NULL AND i.id IS NOT NULL";
+
+        $lang2Sql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoSecondaryLanguage' AS action,
+                    translate_into_{$lang2}_validation_progress AS progress,
+                    0 AS relevance
+                    FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language2 IS NOT NULL AND i.id IS NOT NULL";
+
+        $lang3Sql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoTertiaryLanguage' AS action,
+                    translate_into_{$lang3}_validation_progress AS progress,
+                    0 AS relevance
+                    FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language3 IS NOT NULL AND i.id IS NOT NULL";
+
+        $fillProfileLanguageSql = "SELECT 0 as id, '' as model_class, '' as _title, 'SupplyProfileLanguages' AS action, CASE
+                           WHEN (profile.language1 IS NOT NULL OR profile.language2 IS NOT NULL OR profile.language2 IS NOT NULL) THEN 100
+                           ELSE 0
+                       END
+                    AS progress,
+                    9999 AS relevance
+                    FROM account INNER JOIN profile ON account.id = profile.user_id AND account.id = :user_id";
+
+        $sqls = array();
+        if (is_null($lang1) && is_null($lang2) && is_null($lang3)) {
+            $sqls[] = $fillProfileLanguageSql;
+        }
+        if (!is_null($lang1)) {
+            $sqls[] = $lang1Sql;
+        }
+        if (!is_null($lang2)) {
+            $sqls[] = $lang2Sql;
+        }
+        if (!is_null($lang3)) {
+            $sqls[] = $lang3Sql;
+        }
 
         // Dashboard items query
-        $virtualDashboardActionTableSql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoPrimaryLanguage' AS action,
-translate_into_{$lang1}_validation_progress AS progress,
-0 AS relevance
-FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language1 IS NOT NULL AND i.id IS NOT NULL
-
-UNION ALL
-SELECT i.id as id, i.model_class, i._title, 'TranslateIntoSecondaryLanguage' AS action,
-translate_into_{$lang2}_validation_progress AS progress,
-0 AS relevance
-FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language2 IS NOT NULL AND i.id IS NOT NULL
-
-UNION ALL
-SELECT i.id as id, i.model_class, i._title, 'TranslateIntoTertiaryLanguage' AS action,
-translate_into_{$lang3}_validation_progress AS progress,
-0 AS relevance
-FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language3 IS NOT NULL AND i.id IS NOT NULL
-
-UNION ALL
-SELECT 0 as id, '' as model_class, '' as _title, 'SupplyProfileLanguages' AS action, CASE
-       WHEN profile.language1 IS NOT NULL THEN 33
-       WHEN COALESCE(profile.language1,profile.language2) IS NOT NULL THEN 66
-       WHEN COALESCE(profile.language1,profile.language2, profile.language3) IS NOT NULL THEN 100
-       ELSE 0
-   END
-AS progress,
--9999 AS relevance
-FROM account INNER JOIN profile profile WHERE id = :user_id
-";
+        $virtualDashboardActionTableSql = implode("\nUNION ALL\n", $sqls);
 
         // if checkaccess Editor
         //where status IS NOT Null
@@ -140,7 +149,10 @@ FROM account INNER JOIN profile profile WHERE id = :user_id
             'totalItemCount' => $countCommand->queryScalar(),
             'sort' => array(
                 'attributes' => array(
-                    'id', 'username', 'email',
+                    'relevance, progress',
+                ),
+                'defaultOrder' => array(
+                    'relevance, progress ASC',
                 ),
             ),
             'pagination' => array(
@@ -189,7 +201,13 @@ FROM account INNER JOIN profile profile WHERE id = :user_id
     {
         $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
-        $this->render('history', array('model' => $model,));
+
+        $userChangedItems = new Item('search');
+        $userChangedItems->unsetAttributes();
+        $userChangedItems->setAttribute("user_id", Yii::app()->user->id);
+        $dataProvider = $userChangedItems->search();
+
+        $this->render('history', array('model' => $model, 'dataProvider' => $dataProvider));
     }
 
     public function actionPublicProfile($id)

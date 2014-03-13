@@ -26,6 +26,14 @@ class DataSource extends BaseDataSource
         return (string) !empty($this->title) ? $this->title : "DataSource #" . $this->id;
     }
 
+    public function behaviors()
+    {
+        return array_merge(
+            parent::behaviors(),
+            array()
+        );
+    }
+
     public function rules()
     {
         $return = array_merge(
@@ -42,16 +50,6 @@ class DataSource extends BaseDataSource
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
-    }
-
-    public function i18nRules()
-    {
-        $i18nRules = array();
-        foreach (Yii::app()->params["languages"] as $lang => $label) {
-            $i18nRules[] = array('title_' . $lang . ', slug_' . $lang . ', about_' . $lang, 'safe', 'on' => 'into_' . $lang . '-step_info');
-            $i18nRules[] = array('title_' . $this->source_language . ', slug_' . $this->source_language . ', about_' . $this->source_language, 'safe', 'on' => 'into_' . $lang . '-step_info');
-        }
-        return $i18nRules;
     }
 
     /**
