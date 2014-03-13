@@ -1,6 +1,6 @@
 set -x;
 
-php -S localhost:31415 -t www/ > /dev/null 2>&1 & echo $! > test-php.pid
+./_start-local-server.sh
 
 ./_test.sh
 
