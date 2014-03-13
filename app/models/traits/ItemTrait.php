@@ -56,6 +56,18 @@ trait ItemTrait
     }
 
     /**
+     * Checks if the item has a group.
+     * @return boolean
+     */
+    public function hasGroup()
+    {
+        return PermissionHelper::nodeHasGroup(array(
+            'node_id' => $this->node_id,
+            'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+        ));
+    }
+
+    /**
      * @return array Status-dependent validation rules
      */
     public function statusRequirementsRules()

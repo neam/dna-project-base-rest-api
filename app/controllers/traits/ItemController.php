@@ -135,6 +135,15 @@ trait ItemController
             ),
             array('allow',
                 'actions' => array(
+                    'addToGroup',
+                    'removeFromGroup',
+                ),
+                'roles' => array(
+                    'Item.Edit',
+                ),
+            ),
+            array('allow',
+                'actions' => array(
                     'clone',
                 ),
                 'roles' => array(
@@ -580,6 +589,28 @@ trait ItemController
             'stepCaption' => $stepCaptions[$step],
             'requiredCounts' => $requiredCounts,
         ));
+    }
+
+    /**
+     * Adds an item to a group.
+     * @param integer $node_id
+     * @param string $returnUrl
+     */
+    public function actionAddToGroup($node_id, $returnUrl)
+    {
+        PermissionHelper::addNodeToGroup($node_id, 'GapminderOrg');
+        $this->redirect($returnUrl);
+    }
+
+    /**
+     * Removes an item from a group.
+     * @param integer $node_id
+     * @param string $returnUrl
+     */
+    public function actionRemoveFromGroup($node_id, $returnUrl)
+    {
+        PermissionHelper::removeNodeFromGroup($node_id, 'GapminderOrg');
+        $this->redirect($returnUrl);
     }
 
     /**

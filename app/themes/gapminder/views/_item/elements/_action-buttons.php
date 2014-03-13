@@ -1,3 +1,7 @@
+<?php
+/** @var ItemController $this */
+/** @var ItemTrait|ActiveRecord $model */
+?>
 <div class="action-buttons">
     <div class="btn-group">
         <?php
@@ -37,6 +41,35 @@
 
         ?>
     </div>
+    <?php if (Yii::app()->user->checkAccess('Item.Edit')): ?>
+        <div class="btn-group">
+            <?php if ($model->hasGroup()): ?>
+                <?php echo TbHtml::linkButton(
+                    Yii::t('app', 'Remove from group'),
+                    array(
+                        'icon' => TbHtml::ICON_USER,
+                        'url' => array(
+                            'removeFromGroup',
+                            'node_id' => $model->node_id,
+                            'returnUrl' => TbHtml::encode(Yii::app()->request->url),
+                        ),
+                    )
+                ); ?>
+            <?php else: ?>
+                <?php echo TbHtml::linkButton(
+                    Yii::t('app', 'Add to group'),
+                    array(
+                        'icon' => TbHtml::ICON_USER,
+                        'url' => array(
+                            'addToGroup',
+                            'node_id' => $model->node_id,
+                            'returnUrl' => TbHtml::encode(Yii::app()->request->url),
+                        ),
+                    )
+                ); ?>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
     <div class="btn-group">
         <?php
 
