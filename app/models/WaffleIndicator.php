@@ -87,6 +87,7 @@ class WaffleIndicator extends BaseWaffleIndicator
                 'name',
                 'short_name',
                 'description',
+                'waffle',
             ),
         );
     }
