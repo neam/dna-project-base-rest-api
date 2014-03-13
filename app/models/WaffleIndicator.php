@@ -22,7 +22,7 @@ class WaffleIndicator extends BaseWaffleIndicator
 
     public function getItemLabel()
     {
-        return (string) !empty($this->title) ? $this->title : "WaffleIndicator #" . $this->id;
+        return (string) !empty($this->name) ? $this->name : "WaffleIndicator #" . $this->id;
     }
 
     public function behaviors()
@@ -64,7 +64,7 @@ class WaffleIndicator extends BaseWaffleIndicator
     {
         return array(
             'draft' => array(
-                'title',
+                'name',
             ),
             'reviewable' => array(
                 'short_name',

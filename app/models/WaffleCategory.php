@@ -22,7 +22,7 @@ class WaffleCategory extends BaseWaffleCategory
 
     public function getItemLabel()
     {
-        return (string) !empty($this->title) ? $this->title : "WaffleCategory #" . $this->id;
+        return (string) !empty($this->name) ? $this->name : "WaffleCategory #" . $this->id;
     }
 
     public function behaviors()

@@ -22,7 +22,7 @@ class WaffleUnit extends BaseWaffleUnit
 
     public function getItemLabel()
     {
-        return (string) !empty($this->title) ? $this->title : "WaffleUnit #" . $this->id;
+        return (string) !empty($this->name) ? $this->name : "WaffleUnit #" . $this->id;
     }
 
     public function behaviors()
@@ -64,7 +64,7 @@ class WaffleUnit extends BaseWaffleUnit
     {
         return array(
             'draft' => array(
-                'title',
+                'name',
             ),
             'reviewable' => array(
                 'short_name',
