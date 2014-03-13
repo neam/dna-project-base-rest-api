@@ -139,6 +139,20 @@ class DataModel
     }
 
     /**
+     * Model classes that have restricted access.
+     * @return array
+     */
+    static public function accessRestrictedModels()
+    {
+        return array_merge(
+            self::goItemModels(),
+            self::educationalItemModels(),
+            self::websiteContentItemModels(),
+            self::waffleItemModels()
+        );
+    }
+
+    /**
      * The corresponding qa state models used by yii-qa-state
      * @return array
      */

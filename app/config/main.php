@@ -241,8 +241,8 @@ $mainConfig = array(
     ),
     // application components
     'components' => array(
-        'authManager'   => array(
-            'class'        => 'RDbAuthManager',
+        'authManager' => array(
+            'class' => 'RDbAuthManager',
             // Provides support authorization item sorting.
             'defaultRoles' => array('Authenticated', 'Guest'),
             // see correspoing business rules, note: superusers always get checkAcess == true

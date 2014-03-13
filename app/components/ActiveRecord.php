@@ -83,11 +83,6 @@ class ActiveRecord extends CActiveRecord
             $behaviors['i18n-columns']['multilingualRelations'] = $i18nColumnsMultilingualRelationsMap[get_class($this)];
         }
 
-        $behaviors['active-record-access'] = array(
-            'class' => 'application.behaviors.ActiveRecordAccessBehavior',
-            'findRestrictions' => array('view', 'translate', 'review'),
-        );
-
         return array_merge(parent::behaviors(), $behaviors);
     }
 
@@ -184,5 +179,112 @@ class ActiveRecord extends CActiveRecord
             'id',
             'original_name'
         );
+    }
+
+    // ----------------------------------------
+    // Logic for access restriction
+    // ----------------------------------------
+
+    /**
+     * @inheritDoc
+     */
+    public function find($condition = '', $params = array())
+    {
+        return parent::find($this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findByPk($pk, $condition = '', $params = array())
+    {
+        return parent::findByPk($pk, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findByAttributes($attributes, $condition = '', $params = array())
+    {
+        return parent::findByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findBySql($sql, $params = array())
+    {
+        return parent::find($this->applyAccessCriteria($sql, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAll($condition = '', $params = array())
+    {
+        return parent::findAll($this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAllByPk($pk, $condition = '', $params = array())
+    {
+        return parent::findAllByPk($pk, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAllByAttributes($attributes, $condition = '', $params = array())
+    {
+        return parent::findAllByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAllBySql($sql, $params = array())
+    {
+        return parent::findAll($this->applyAccessCriteria($sql, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function count($condition = '', $params = array())
+    {
+        return parent::count($this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function countByAttributes($attributes, $condition = '', $params = array())
+    {
+        return parent::countByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function countBySql($sql, $params = array())
+    {
+        return parent::count($this->applyAccessCriteria($sql, $params));
+    }
+
+    public function applyAccessCriteria($criteria = '', array $params = array())
+    {
+        // Normalize the criteria (this must ALWAYS be done as we override the find and count methods).
+        if (!$criteria instanceof CDbCriteria) {
+            $criteria = new CDbCriteria(array('condition' => $criteria, 'params' => $params));
+        }
+
+        // Check whether to apply the access criteria to this model from the data model.
+        if (!isset(DataModel::accessRestrictedModels()[get_class($this)])) {
+            return $criteria;
+        }
+
+        return PermissionHelper::applyAccessCriteria($criteria, $params);
     }
 }

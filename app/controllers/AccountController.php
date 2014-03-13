@@ -11,6 +11,7 @@ class AccountController extends Controller
     {
         return array(
             'accessControl',
+            'ajaxOnly + toggleRole',
         );
     }
 
@@ -347,17 +348,23 @@ class AccountController extends Controller
     /**
      * Toggles a role for a given user.
      * @param integer $id the user ID.
+     * @param string $attribute the role name.
      */
-    public function actionToggleRole($id)
+    public function actionToggleRole($id, $attribute)
     {
-        if (isset($_GET['attribute'])) {
-            $attribute = $_GET['attribute'];
+        // todo: make dynamic
+        $group = 'GapminderOrg';
 
-            if (Yii::app()->authManager->isAssigned($attribute, $id)) {
-                Yii::app()->authManager->revoke($attribute, $id);
-            } else {
-                Yii::app()->authManager->assign($attribute, $id);
-            }
+        $attributes = array(
+            'account_id' => $id,
+            'group_id' => PermissionHelper::groupNameToId($group),
+            'role_id' => PermissionHelper::roleNameToId($attribute),
+        );
+
+        if (!PermissionHelper::groupHasAccount($attributes)) {
+            PermissionHelper::addAccountToGroup($id, $group, $attribute);
+        } else {
+            PermissionHelper::removeAccountFromGroup($id, $group, $attribute);
         }
     }
 

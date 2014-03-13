@@ -31,7 +31,35 @@
     </h1>
     <?php $this->renderPartial('_toolbar', array('model' => $model)); ?>
     <?php Yii::beginProfile('Account.view.grid'); ?>
-    <?php $roleColumns = array(
+
+    <?php
+    $roles = array_merge(
+        MetaData::contextLessSuperRoles(),
+        MetaData::groupBasedRoles()
+    );
+
+    $roleColumns = array();
+    foreach (PermissionHelper::getRoles() as $roleName => $roleId) {
+        $roleColumns[] = array(
+            'class' => 'TbToggleColumn',
+            'displayText' => false,
+            'name' => $roleName,
+            'value' => function ($data) use ($roleName, $roleId) {
+                return PermissionHelper::groupHasAccount(
+                    array(
+                        'account_id' => $data->id,
+                        'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+                        'role_id' => $roleId,
+                    )
+                );
+            },
+            'filter' => true,
+            'toggleAction' => 'account/toggleRole',
+        );
+    }
+    ?>
+
+    <?php /*$roleColumns = array(
         array(
             'class' => 'TbToggleColumn',
             'displayText' => false,
@@ -52,7 +80,6 @@
             'filter' => true,
             'toggleAction' => 'account/toggleRole',
         ),
-        /*
         array(
             'class' => 'TbToggleColumn',
             'displayText' => false,
@@ -123,8 +150,8 @@
             'filter' => false,
             'toggleAction' => 'account/toggleRole',
         ),
-        */
     );
+    */
 
     $columns = array_merge(array(
         array(
@@ -225,7 +252,8 @@
         ),
     ));
     ?>
-    <?php $this->widget('TbGridView',
+    <?php $this->widget(
+        'TbGridView',
         array(
             'id' => 'account-grid',
             'dataProvider' => $model->search(),
