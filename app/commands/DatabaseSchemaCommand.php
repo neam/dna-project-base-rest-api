@@ -11,7 +11,7 @@ class DatabaseSchemaCommand extends CConsoleCommand
     /**
      * @var string database connection component
      */
-    public $dbConnection = "db";
+    public $connectionID = "db";
 
     /**
      * If we should be verbose
@@ -49,7 +49,7 @@ class DatabaseSchemaCommand extends CConsoleCommand
             $this->_verbose = true;
         }
 
-        $db =& Yii::app()->{$this->dbConnection};
+        $db =& Yii::app()->{$this->connectionID};
 
         $this->d("Connecting to '" . $db->connectionString . "'\n");
 
@@ -77,7 +77,7 @@ class DatabaseSchemaCommand extends CConsoleCommand
             $this->_verbose = true;
         }
 
-        $db =& Yii::app()->{$this->dbConnection};
+        $db =& Yii::app()->{$this->connectionID};
 
         $sql = file_get_contents($path);
 
