@@ -136,11 +136,11 @@ LIMIT 3
 
     }
 
-    public function testFindGoItemsThroughDatabaseView()
+    public function testFindItemsThroughDatabaseView()
     {
 
-        $goItems = GoItem::model()->findAll();
-        $this->assertNotEmpty(count($goItems));
+        $items = Item::model()->findAll();
+        $this->assertNotEmpty(count($items));
 
     }
 
