@@ -26,7 +26,6 @@
                 Yii::t('model', 'Dashboard'),
                 array(
                     'color' => $this->action->id === 'dashboard' ? TbHtml::BUTTON_COLOR_INVERSE : null,
-                    'disabled' => true, // TODO: Remove line when the dashboard view has been implemented.
                     'icon' => TbHtml::ICON_TH_LARGE,
                     'url' => array('dashboard'),
                 )
