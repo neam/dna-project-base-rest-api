@@ -40,11 +40,6 @@ class WaffleController extends AppRestController
         $response->info->description = $model->description;
         */
         $response->definitions = new stdClass();
-        foreach ($model->waffleDataSources as $dataSource) {
-            $translatedDataSource = new stdClass();
-            throw new CException("TODO");
-            $response->sources[] = $translatedDataSource;
-        }
 
         // waffleCategories
         $response->definitions->categories = array();
