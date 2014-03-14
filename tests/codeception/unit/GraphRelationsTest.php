@@ -38,20 +38,27 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
     {
 
         $chapter = new Chapter();
-        $chapter->save();
+        if (!$chapter->save()) {
+            throw new SaveException($chapter);
+        }
 
         $this->assertTrue(!is_null($chapter->node()->id));
 
         $exercise = new Exercise();
         $exercise->_title = "An exercise title";
-        $exercise->save();
+        if (!$exercise->save()) {
+            throw new SaveException($exercise);
+        }
 
         $this->assertTrue(!is_null($exercise->node()->id));
 
         $edge = new Edge();
         $edge->from_node_id = $chapter->node()->id;
         $edge->to_node_id = $exercise->node()->id;
-        $edge->save();
+        $edge->relation = 'exercises';
+        if (!$edge->save()) {
+            throw new SaveException($edge);
+        }
 
         $this->assertEquals(1, count($chapter->node()->outEdges));
         $this->assertEquals(1, count($exercise->node()->inEdges));
@@ -69,14 +76,19 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
 
         $snapshot = new Snapshot();
         $snapshot->_title = "A snapshot title";
-        $snapshot->save();
+        if (!$snapshot->save()) {
+            throw new SaveException($snapshot);
+        }
 
         $this->assertTrue(!is_null($snapshot->node()->id));
 
         $edge = new Edge();
         $edge->from_node_id = $chapter->node()->id;
         $edge->to_node_id = $snapshot->node()->id;
-        $edge->save();
+        $edge->relation = 'snapshots';
+        if (!$edge->save()) {
+            throw new SaveException($edge);
+        }
 
         $chapter->node()->refresh();
         $chapter->refresh();
