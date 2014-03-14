@@ -19,12 +19,12 @@
  * @property string $waffle_category_qa_state_id
  *
  * Relations of table "waffle_category" available as properties of the model:
- * @property Account $owner
- * @property Node $node
+ * @property WaffleCategoryQaState $waffleCategoryQaState
  * @property Waffle $waffle
  * @property WaffleCategory $clonedFrom
  * @property WaffleCategory[] $waffleCategories
- * @property WaffleCategoryQaState $waffleCategoryQaState
+ * @property Account $owner
+ * @property Node $node
  * @property WaffleCategoryThing[] $waffleCategoryThings
  */
 abstract class BaseWaffleCategory extends ActiveRecord
@@ -74,12 +74,12 @@ abstract class BaseWaffleCategory extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'waffleCategoryQaState' => array(self::BELONGS_TO, 'WaffleCategoryQaState', 'waffle_category_qa_state_id'),
                 'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'WaffleCategory', 'cloned_from_id'),
                 'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'cloned_from_id'),
-                'waffleCategoryQaState' => array(self::BELONGS_TO, 'WaffleCategoryQaState', 'waffle_category_qa_state_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'waffleCategoryThings' => array(self::HAS_MANY, 'WaffleCategoryThing', 'waffle_category_id'),
             )
         );

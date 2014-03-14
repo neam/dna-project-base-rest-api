@@ -18,12 +18,12 @@
  * @property string $waffle_category_thing_qa_state_id
  *
  * Relations of table "waffle_category_thing" available as properties of the model:
- * @property Account $owner
- * @property Node $node
+ * @property WaffleCategoryThingQaState $waffleCategoryThingQaState
  * @property WaffleCategory $waffleCategory
  * @property WaffleCategoryThing $clonedFrom
  * @property WaffleCategoryThing[] $waffleCategoryThings
- * @property WaffleCategoryThingQaState $waffleCategoryThingQaState
+ * @property Account $owner
+ * @property Node $node
  */
 abstract class BaseWaffleCategoryThing extends ActiveRecord
 {
@@ -72,12 +72,12 @@ abstract class BaseWaffleCategoryThing extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'waffleCategoryThingQaState' => array(self::BELONGS_TO, 'WaffleCategoryThingQaState', 'waffle_category_thing_qa_state_id'),
                 'waffleCategory' => array(self::BELONGS_TO, 'WaffleCategory', 'waffle_category_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'WaffleCategoryThing', 'cloned_from_id'),
                 'waffleCategoryThings' => array(self::HAS_MANY, 'WaffleCategoryThing', 'cloned_from_id'),
-                'waffleCategoryThingQaState' => array(self::BELONGS_TO, 'WaffleCategoryThingQaState', 'waffle_category_thing_qa_state_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             )
         );
     }
@@ -96,7 +96,7 @@ abstract class BaseWaffleCategoryThing extends ActiveRecord
             'modified' => Yii::t('model', 'Modified'),
             'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
-            'waffle_category_thing_qa_state_id' => Yii::t('model', 'Waffle Category Element Qa State'),
+            'waffle_category_thing_qa_state_id' => Yii::t('model', 'Waffle Category Thing Qa State'),
         );
     }
 

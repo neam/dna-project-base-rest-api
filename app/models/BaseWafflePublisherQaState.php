@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model base class for the table "waffle_qa_state".
+ * This is the model base class for the table "waffle_publisher_qa_state".
  *
- * Columns in table "waffle_qa_state" available as properties of the model:
+ * Columns in table "waffle_publisher_qa_state" available as properties of the model:
  * @property string $id
  * @property string $status
  * @property integer $draft_validation_progress
@@ -56,23 +56,15 @@
  * @property integer $proofing_progress
  * @property integer $allow_review
  * @property integer $allow_publish
- * @property integer $title_approved
- * @property integer $slug_approved
- * @property integer $title_proofed
- * @property integer $slug_proofed
- * @property integer $title_en_approved
- * @property integer $slug_en_approved
- * @property integer $json_import_media_id_approved
- * @property integer $po_contents_approved
- * @property integer $title_en_proofed
- * @property integer $slug_en_proofed
- * @property integer $json_import_media_id_proofed
- * @property integer $po_contents_proofed
+ * @property integer $name_en_approved
+ * @property integer $ref_approved
+ * @property integer $name_en_proofed
+ * @property integer $ref_proofed
  *
- * Relations of table "waffle_qa_state" available as properties of the model:
- * @property Waffle[] $waffles
+ * Relations of table "waffle_publisher_qa_state" available as properties of the model:
+ * @property WafflePublisher[] $wafflePublishers
  */
-abstract class BaseWaffleQaState extends ActiveRecord
+abstract class BaseWafflePublisherQaState extends ActiveRecord
 {
 
     public static function model($className = __CLASS__)
@@ -82,17 +74,17 @@ abstract class BaseWaffleQaState extends ActiveRecord
 
     public function tableName()
     {
-        return 'waffle_qa_state';
+        return 'waffle_publisher_qa_state';
     }
 
     public function rules()
     {
         return array_merge(
             parent::rules(), array(
-                array('status, draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, title_approved, slug_approved, title_proofed, slug_proofed, title_en_approved, slug_en_approved, json_import_media_id_approved, po_contents_approved, title_en_proofed, slug_en_proofed, json_import_media_id_proofed, po_contents_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, title_approved, slug_approved, title_proofed, slug_proofed, title_en_approved, slug_en_approved, json_import_media_id_approved, po_contents_approved, title_en_proofed, slug_en_proofed, json_import_media_id_proofed, po_contents_proofed', 'numerical', 'integerOnly' => true),
+                array('status, draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, name_en_approved, ref_approved, name_en_proofed, ref_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, name_en_approved, ref_approved, name_en_proofed, ref_proofed', 'numerical', 'integerOnly' => true),
                 array('status', 'length', 'max' => 255),
-                array('id, status, draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, title_approved, slug_approved, title_proofed, slug_proofed, title_en_approved, slug_en_approved, json_import_media_id_approved, po_contents_approved, title_en_proofed, slug_en_proofed, json_import_media_id_proofed, po_contents_proofed', 'safe', 'on' => 'search'),
+                array('id, status, draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, name_en_approved, ref_approved, name_en_proofed, ref_proofed', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -117,7 +109,7 @@ abstract class BaseWaffleQaState extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'waffles' => array(self::HAS_MANY, 'Waffle', 'waffle_qa_state_id'),
+                'wafflePublishers' => array(self::HAS_MANY, 'WafflePublisher', 'waffle_publisher_qa_state_id'),
             )
         );
     }
@@ -177,18 +169,10 @@ abstract class BaseWaffleQaState extends ActiveRecord
             'proofing_progress' => Yii::t('model', 'Proofing Progress'),
             'allow_review' => Yii::t('model', 'Allow Review'),
             'allow_publish' => Yii::t('model', 'Allow Publish'),
-            'title_approved' => Yii::t('model', 'Title Approved'),
-            'slug_approved' => Yii::t('model', 'Slug Approved'),
-            'title_proofed' => Yii::t('model', 'Title Proofed'),
-            'slug_proofed' => Yii::t('model', 'Slug Proofed'),
-            'title_en_approved' => Yii::t('model', 'Title En Approved'),
-            'slug_en_approved' => Yii::t('model', 'Slug En Approved'),
-            'json_import_media_id_approved' => Yii::t('model', 'Json Import Media Id Approved'),
-            'po_contents_approved' => Yii::t('model', 'Po Contents Approved'),
-            'title_en_proofed' => Yii::t('model', 'Title En Proofed'),
-            'slug_en_proofed' => Yii::t('model', 'Slug En Proofed'),
-            'json_import_media_id_proofed' => Yii::t('model', 'Json Import Media Id Proofed'),
-            'po_contents_proofed' => Yii::t('model', 'Po Contents Proofed'),
+            'name_en_approved' => Yii::t('model', 'Name En Approved'),
+            'ref_approved' => Yii::t('model', 'Ref Approved'),
+            'name_en_proofed' => Yii::t('model', 'Name En Proofed'),
+            'ref_proofed' => Yii::t('model', 'Ref Proofed'),
         );
     }
 
@@ -250,18 +234,10 @@ abstract class BaseWaffleQaState extends ActiveRecord
         $criteria->compare('t.proofing_progress', $this->proofing_progress);
         $criteria->compare('t.allow_review', $this->allow_review);
         $criteria->compare('t.allow_publish', $this->allow_publish);
-        $criteria->compare('t.title_approved', $this->title_approved);
-        $criteria->compare('t.slug_approved', $this->slug_approved);
-        $criteria->compare('t.title_proofed', $this->title_proofed);
-        $criteria->compare('t.slug_proofed', $this->slug_proofed);
-        $criteria->compare('t.title_en_approved', $this->title_en_approved);
-        $criteria->compare('t.slug_en_approved', $this->slug_en_approved);
-        $criteria->compare('t.json_import_media_id_approved', $this->json_import_media_id_approved);
-        $criteria->compare('t.po_contents_approved', $this->po_contents_approved);
-        $criteria->compare('t.title_en_proofed', $this->title_en_proofed);
-        $criteria->compare('t.slug_en_proofed', $this->slug_en_proofed);
-        $criteria->compare('t.json_import_media_id_proofed', $this->json_import_media_id_proofed);
-        $criteria->compare('t.po_contents_proofed', $this->po_contents_proofed);
+        $criteria->compare('t.name_en_approved', $this->name_en_approved);
+        $criteria->compare('t.ref_approved', $this->ref_approved);
+        $criteria->compare('t.name_en_proofed', $this->name_en_proofed);
+        $criteria->compare('t.ref_proofed', $this->ref_proofed);
 
 
         return $criteria;

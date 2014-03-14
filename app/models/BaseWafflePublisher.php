@@ -17,15 +17,17 @@
  * @property string $modified
  * @property integer $owner_id
  * @property string $node_id
+ * @property string $waffle_publisher_qa_state_id
  *
  * Relations of table "waffle_publisher" available as properties of the model:
  * @property Waffle[] $waffles
+ * @property WafflePublisherQaState $wafflePublisherQaState
+ * @property Account $owner
+ * @property Node $node
  * @property P3Media $imageSmallMedia
  * @property P3Media $imageLargeMedia
  * @property WafflePublisher $clonedFrom
  * @property WafflePublisher[] $wafflePublishers
- * @property Account $owner
- * @property Node $node
  */
 abstract class BaseWafflePublisher extends ActiveRecord
 {
@@ -44,12 +46,12 @@ abstract class BaseWafflePublisher extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, ref, _name, _description, url, image_small_media_id, image_large_media_id, created, modified, owner_id, node_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, ref, _name, _description, url, image_small_media_id, image_large_media_id, created, modified, owner_id, node_id, waffle_publisher_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, image_small_media_id, image_large_media_id, owner_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, node_id', 'length', 'max' => 20),
+                array('cloned_from_id, node_id, waffle_publisher_qa_state_id', 'length', 'max' => 20),
                 array('ref, _name, _description, url', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, version, cloned_from_id, ref, _name, _description, url, image_small_media_id, image_large_media_id, created, modified, owner_id, node_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, ref, _name, _description, url, image_small_media_id, image_large_media_id, created, modified, owner_id, node_id, waffle_publisher_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -75,12 +77,13 @@ abstract class BaseWafflePublisher extends ActiveRecord
         return array_merge(
             parent::relations(), array(
                 'waffles' => array(self::HAS_MANY, 'Waffle', 'waffle_publisher_id'),
+                'wafflePublisherQaState' => array(self::BELONGS_TO, 'WafflePublisherQaState', 'waffle_publisher_qa_state_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'imageSmallMedia' => array(self::BELONGS_TO, 'P3Media', 'image_small_media_id'),
                 'imageLargeMedia' => array(self::BELONGS_TO, 'P3Media', 'image_large_media_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'WafflePublisher', 'cloned_from_id'),
                 'wafflePublishers' => array(self::HAS_MANY, 'WafflePublisher', 'cloned_from_id'),
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             )
         );
     }
@@ -101,6 +104,7 @@ abstract class BaseWafflePublisher extends ActiveRecord
             'modified' => Yii::t('model', 'Modified'),
             'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
+            'waffle_publisher_qa_state_id' => Yii::t('model', 'Waffle Publisher Qa State'),
         );
     }
 
@@ -123,6 +127,7 @@ abstract class BaseWafflePublisher extends ActiveRecord
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
+        $criteria->compare('t.waffle_publisher_qa_state_id', $this->waffle_publisher_qa_state_id);
 
 
         return $criteria;
