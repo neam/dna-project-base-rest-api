@@ -99,8 +99,8 @@ class WebGuy extends \Codeception\AbstractGuy
      *
      * ``` php
      * <?php
-     * $I->sendAjaxPostRequest('/updateSettings', array('notifications' => true); // POST
-     * $I->sendAjaxGetRequest('/updateSettings', array('notifications' => true); // GET
+     * $I->sendAjaxPostRequest('/updateSettings', array('notifications' => true)); // POST
+     * $I->sendAjaxGetRequest('/updateSettings', array('notifications' => true)); // GET
      *
      * ```
      *
@@ -136,6 +136,40 @@ class WebGuy extends \Codeception\AbstractGuy
      */
     public function sendAjaxGetRequest($uri, $params = null) {
         $this->scenario->addStep(new \Codeception\Step\Action('sendAjaxGetRequest', func_get_args()));
+        if ($this->scenario->running()) {
+            $result = $this->scenario->runStep();
+            return new Maybe($result);
+        }
+        return new Maybe();
+    }
+
+ 
+    /**
+     * This method is generated.
+     * Documentation taken from corresponding module.
+     * ----------------------------------------------
+     *
+     * If your page triggers an ajax request, you can perform it manually.
+     * This action sends an ajax request with specified method and params.
+     *
+     * Example:
+     *
+     * You need to perform an ajax request specifying the HTTP method.
+     *
+     * ``` php
+     * <?php
+     * $I->sendAjaxRequest('PUT', /posts/7', array('title' => 'new title');
+     *
+     * ```
+     *
+     * @param $method
+     * @param $uri
+     * @param $params
+     * @see Codeception\Module\PhpBrowser::sendAjaxRequest()
+     * @return \Codeception\Maybe
+     */
+    public function sendAjaxRequest($method, $uri, $params = null) {
+        $this->scenario->addStep(new \Codeception\Step\Action('sendAjaxRequest', func_get_args()));
         if ($this->scenario->running()) {
             $result = $this->scenario->runStep();
             return new Maybe($result);
@@ -271,8 +305,8 @@ class WebGuy extends \Codeception\AbstractGuy
      * ?>
      * ```
      *
-     * Not recommended this command too be used on regular basis.
-     * If Codeception lacks important Guzzle Client methods implement then and submit patches.
+     * It is not recommended to use this command on a regular basis.
+     * If Codeception lacks important Guzzle Client methods, implement them and submit patches.
      *
      * @param callable $function
      * @see Codeception\Module\PhpBrowser::executeInGuzzle()
@@ -280,6 +314,130 @@ class WebGuy extends \Codeception\AbstractGuy
      */
     public function executeInGuzzle($function) {
         $this->scenario->addStep(new \Codeception\Step\Action('executeInGuzzle', func_get_args()));
+        if ($this->scenario->running()) {
+            $result = $this->scenario->runStep();
+            return new Maybe($result);
+        }
+        return new Maybe();
+    }
+
+ 
+    /**
+     * This method is generated.
+     * Documentation taken from corresponding module.
+     * ----------------------------------------------
+     *
+     * Assert if the specified checkbox is checked.
+     * Use css selector or xpath to match.
+     *
+     * Example:
+     *
+     * ``` php
+     * <?php
+     * $I->seeCheckboxIsChecked('#agree'); // I suppose user agreed to terms
+     * $I->seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user agreed to terms, If there is only one checkbox in form.
+     * $I->seeCheckboxIsChecked('//form/input[@type=checkbox and @name=agree]');
+     * ?>
+     * ```
+     *
+     * @param $checkbox
+    * Conditional Assertion: Test won't be stopped on fail
+     * @see Codeception\Module\PhpBrowser::seeCheckboxIsChecked()
+     * @return \Codeception\Maybe
+     */
+    public function canSeeCheckboxIsChecked($checkbox) {
+        $this->scenario->addStep(new \Codeception\Step\ConditionalAssertion('seeCheckboxIsChecked', func_get_args()));
+        if ($this->scenario->running()) {
+            $result = $this->scenario->runStep();
+            return new Maybe($result);
+        }
+        return new Maybe();
+    }
+    /**
+     * This method is generated.
+     * Documentation taken from corresponding module.
+     * ----------------------------------------------
+     *
+     * Assert if the specified checkbox is checked.
+     * Use css selector or xpath to match.
+     *
+     * Example:
+     *
+     * ``` php
+     * <?php
+     * $I->seeCheckboxIsChecked('#agree'); // I suppose user agreed to terms
+     * $I->seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user agreed to terms, If there is only one checkbox in form.
+     * $I->seeCheckboxIsChecked('//form/input[@type=checkbox and @name=agree]');
+     * ?>
+     * ```
+     *
+     * @param $checkbox
+     * @see Codeception\Module\PhpBrowser::seeCheckboxIsChecked()
+     * @return \Codeception\Maybe
+     */
+    public function seeCheckboxIsChecked($checkbox) {
+        $this->scenario->addStep(new \Codeception\Step\Assertion('seeCheckboxIsChecked', func_get_args()));
+        if ($this->scenario->running()) {
+            $result = $this->scenario->runStep();
+            return new Maybe($result);
+        }
+        return new Maybe();
+    }
+
+ 
+    /**
+     * This method is generated.
+     * Documentation taken from corresponding module.
+     * ----------------------------------------------
+     *
+     * Assert if the specified checkbox is unchecked.
+     * Use css selector or xpath to match.
+     *
+     * Example:
+     *
+     * ``` php
+     * <?php
+     * $I->dontSeeCheckboxIsChecked('#agree'); // I suppose user didn't agree to terms
+     * $I->seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user didn't check the first checkbox in form.
+     * ?>
+     * ```
+     *
+     * @param $checkbox
+    * Conditional Assertion: Test won't be stopped on fail
+     * @see Codeception\Module\PhpBrowser::dontSeeCheckboxIsChecked()
+     * @return \Codeception\Maybe
+     */
+    public function cantSeeCheckboxIsChecked($checkbox) {
+        $this->scenario->addStep(new \Codeception\Step\ConditionalAssertion('dontSeeCheckboxIsChecked', func_get_args()));
+        if ($this->scenario->running()) {
+            $result = $this->scenario->runStep();
+            return new Maybe($result);
+        }
+        return new Maybe();
+    }
+    /**
+     * This method is generated.
+     * Documentation taken from corresponding module.
+     * ----------------------------------------------
+     *
+     * Assert if the specified checkbox is unchecked.
+     * Use css selector or xpath to match.
+     *
+     * Example:
+     *
+     * ``` php
+     * <?php
+     * $I->dontSeeCheckboxIsChecked('#agree'); // I suppose user didn't agree to terms
+     * $I->seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user didn't check the first checkbox in form.
+     * ?>
+     * ```
+     *
+     * @param $checkbox
+     * @see Codeception\Module\PhpBrowser::dontSeeCheckboxIsChecked()
+     * @return \Codeception\Maybe
+     */
+    public function dontSeeCheckboxIsChecked($checkbox) {
+        $this->scenario->addStep(new \Codeception\Step\Assertion('dontSeeCheckboxIsChecked', func_get_args()));
         if ($this->scenario->running()) {
             $result = $this->scenario->runStep();
             return new Maybe($result);
@@ -348,21 +506,10 @@ class WebGuy extends \Codeception\AbstractGuy
      * Documentation taken from corresponding module.
      * ----------------------------------------------
      *
-     * Check if current page doesn't contain the text specified.
-     * Specify the css selector to match only specific region.
+     * @param string $text
+     * @param string $selector
      *
-     * Examples:
-     *
-     * ```php
-     * <?php
-     * $I->dontSee('Login'); // I can suppose user is already logged in
-     * $I->dontSee('Sign Up','h1'); // I can suppose it's not a signup page
-     * $I->dontSee('Sign Up','//body/h1'); // with XPath
-     * ?>
-     * ```
-     *
-     * @param $text
-     * @param null $selector
+     * @return void
     * Conditional Assertion: Test won't be stopped on fail
      * @see Codeception\Util\Mink::dontSee()
      * @return \Codeception\Maybe
@@ -380,21 +527,10 @@ class WebGuy extends \Codeception\AbstractGuy
      * Documentation taken from corresponding module.
      * ----------------------------------------------
      *
-     * Check if current page doesn't contain the text specified.
-     * Specify the css selector to match only specific region.
+     * @param string $text
+     * @param string $selector
      *
-     * Examples:
-     *
-     * ```php
-     * <?php
-     * $I->dontSee('Login'); // I can suppose user is already logged in
-     * $I->dontSee('Sign Up','h1'); // I can suppose it's not a signup page
-     * $I->dontSee('Sign Up','//body/h1'); // with XPath
-     * ?>
-     * ```
-     *
-     * @param $text
-     * @param null $selector
+     * @return void
      * @see Codeception\Util\Mink::dontSee()
      * @return \Codeception\Maybe
      */
@@ -1609,130 +1745,6 @@ class WebGuy extends \Codeception\AbstractGuy
      * Documentation taken from corresponding module.
      * ----------------------------------------------
      *
-     * Assert if the specified checkbox is checked.
-     * Use css selector or xpath to match.
-     *
-     * Example:
-     *
-     * ``` php
-     * <?php
-     * $I->seeCheckboxIsChecked('#agree'); // I suppose user agreed to terms
-     * $I->seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user agreed to terms, If there is only one checkbox in form.
-     * $I->seeCheckboxIsChecked('//form/input[@type=checkbox and @name=agree]');
-     * ?>
-     * ```
-     *
-     * @param $checkbox
-    * Conditional Assertion: Test won't be stopped on fail
-     * @see Codeception\Util\Mink::seeCheckboxIsChecked()
-     * @return \Codeception\Maybe
-     */
-    public function canSeeCheckboxIsChecked($checkbox) {
-        $this->scenario->addStep(new \Codeception\Step\ConditionalAssertion('seeCheckboxIsChecked', func_get_args()));
-        if ($this->scenario->running()) {
-            $result = $this->scenario->runStep();
-            return new Maybe($result);
-        }
-        return new Maybe();
-    }
-    /**
-     * This method is generated.
-     * Documentation taken from corresponding module.
-     * ----------------------------------------------
-     *
-     * Assert if the specified checkbox is checked.
-     * Use css selector or xpath to match.
-     *
-     * Example:
-     *
-     * ``` php
-     * <?php
-     * $I->seeCheckboxIsChecked('#agree'); // I suppose user agreed to terms
-     * $I->seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user agreed to terms, If there is only one checkbox in form.
-     * $I->seeCheckboxIsChecked('//form/input[@type=checkbox and @name=agree]');
-     * ?>
-     * ```
-     *
-     * @param $checkbox
-     * @see Codeception\Util\Mink::seeCheckboxIsChecked()
-     * @return \Codeception\Maybe
-     */
-    public function seeCheckboxIsChecked($checkbox) {
-        $this->scenario->addStep(new \Codeception\Step\Assertion('seeCheckboxIsChecked', func_get_args()));
-        if ($this->scenario->running()) {
-            $result = $this->scenario->runStep();
-            return new Maybe($result);
-        }
-        return new Maybe();
-    }
-
- 
-    /**
-     * This method is generated.
-     * Documentation taken from corresponding module.
-     * ----------------------------------------------
-     *
-     * Assert if the specified checkbox is unchecked.
-     * Use css selector or xpath to match.
-     *
-     * Example:
-     *
-     * ``` php
-     * <?php
-     * $I->dontSeeCheckboxIsChecked('#agree'); // I suppose user didn't agree to terms
-     * $I->seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user didn't check the first checkbox in form.
-     * ?>
-     * ```
-     *
-     * @param $checkbox
-    * Conditional Assertion: Test won't be stopped on fail
-     * @see Codeception\Util\Mink::dontSeeCheckboxIsChecked()
-     * @return \Codeception\Maybe
-     */
-    public function cantSeeCheckboxIsChecked($checkbox) {
-        $this->scenario->addStep(new \Codeception\Step\ConditionalAssertion('dontSeeCheckboxIsChecked', func_get_args()));
-        if ($this->scenario->running()) {
-            $result = $this->scenario->runStep();
-            return new Maybe($result);
-        }
-        return new Maybe();
-    }
-    /**
-     * This method is generated.
-     * Documentation taken from corresponding module.
-     * ----------------------------------------------
-     *
-     * Assert if the specified checkbox is unchecked.
-     * Use css selector or xpath to match.
-     *
-     * Example:
-     *
-     * ``` php
-     * <?php
-     * $I->dontSeeCheckboxIsChecked('#agree'); // I suppose user didn't agree to terms
-     * $I->seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user didn't check the first checkbox in form.
-     * ?>
-     * ```
-     *
-     * @param $checkbox
-     * @see Codeception\Util\Mink::dontSeeCheckboxIsChecked()
-     * @return \Codeception\Maybe
-     */
-    public function dontSeeCheckboxIsChecked($checkbox) {
-        $this->scenario->addStep(new \Codeception\Step\Assertion('dontSeeCheckboxIsChecked', func_get_args()));
-        if ($this->scenario->running()) {
-            $result = $this->scenario->runStep();
-            return new Maybe($result);
-        }
-        return new Maybe();
-    }
-
- 
-    /**
-     * This method is generated.
-     * Documentation taken from corresponding module.
-     * ----------------------------------------------
-     *
      * Checks that an input field or textarea contains value.
      * Field is matched either by label or CSS or Xpath
      *
@@ -2034,11 +2046,11 @@ class WebGuy extends \Codeception\AbstractGuy
      * ----------------------------------------------
      *
      *
-     * @see Codeception\Module\WebHelper::login()
+     * @see Codeception\Module::getName()
      * @return \Codeception\Maybe
      */
-    public function login($I, $username, $password) {
-        $this->scenario->addStep(new \Codeception\Step\Action('login', func_get_args()));
+    public function getName() {
+        $this->scenario->addStep(new \Codeception\Step\Action('getName', func_get_args()));
         if ($this->scenario->running()) {
             $result = $this->scenario->runStep();
             return new Maybe($result);

@@ -1,8 +1,8 @@
 <?php
-$I = new WebGuy($scenario);
+$I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('sign in');
 
-Codeception\Module\WebHelper::login($I, 'admin', 'admin');
+$I->login('admin', 'admin');
 
 $I->click('Logout'); //todo: fix context
 $I->see('Login','.nav li a');
