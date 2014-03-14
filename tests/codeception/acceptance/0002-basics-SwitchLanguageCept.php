@@ -5,6 +5,8 @@ $I->wantTo('switch language');
 // Switch language to german
 
 $I->amOnPage('?r=site/index&lang=en');
-$I->see('en','.dropdown-toggle');
-$I->click('Deutsch','#frontend-navbar');
-$I->see('de','.dropdown-toggle');
+$I->seeLink('en', '.dropdown-toggle');
+$I->click('en');
+$I->seeLink('Deutsch', '.dropdown-menu');
+$I->click('Deutsch');
+$I->seeLink('de', '.dropdown-toggle');

@@ -1,9 +1,11 @@
 <?php
-$I = new WebGuy($scenario);
+$I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('sign in');
 
-Codeception\Module\WebHelper::login($I, 'admin', 'admin');
+$I->login('admin', 'admin');
 
-$I->click('Logout'); //todo: fix context
-$I->see('Login','.nav li a');
-$I->dontSee('Dashboard'); //,'.dropdown-menu li a' - todo: fix context
+$I->seeLink('Admin');
+$I->click('Admin');
+$I->seeLink('Logout');
+$I->click('Logout');
+$I->seeLink('Login', '.nav li a');

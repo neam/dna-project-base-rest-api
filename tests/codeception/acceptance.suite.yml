@@ -11,8 +11,26 @@
 class_name: WebGuy
 modules:
     enabled:
-        - PhpBrowser
+        - WebDriver
         - WebHelper
     config:
-        PhpBrowser:
+        WebDriver:
             url: 'http://localhost:31415/index-test.php'
+            browser: 'chrome'
+
+env:
+    chrome:
+         modules:
+            config:
+                WebDriver:
+                    browser: 'chrome'
+    firefox:
+         modules:
+            config:
+                WebDriver:
+                    browser: 'firefox'
+    phantomjs:
+         modules:
+            config:
+                WebDriver:
+                    browser: 'phantomjs'
