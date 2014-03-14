@@ -274,6 +274,7 @@ class DataModel
                 'ExamQuestionAlternative' => array('markup'),
                 'Exercise' => array('title', 'question', 'description'),
                 'HtmlChunk' => array('markup'),
+                'I18nCatalog' => array('po_contents'),
                 'Menu' => array('title'),
                 'Page' => array('title', 'about'),
                 'Section' => array('title', 'menu_label'),

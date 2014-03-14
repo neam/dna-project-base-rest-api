@@ -129,7 +129,9 @@ class I18nCatalog extends BaseI18nCatalog
             'draft' => array(
                 'title',
             ),
-            'reviewable' => array(),
+            'reviewable' => array(
+                'po_contents_' . $this->source_language,
+            ),
             'publishable' => array(
                 'about',
             ),
@@ -149,7 +151,7 @@ class I18nCatalog extends BaseI18nCatalog
             ),
             'i18n' => array(
                 'i18n_category',
-                'po_contents',
+                'po_contents_' . $this->source_language,
             ),
             'import' => array(
                 'pot_import_media_id',
