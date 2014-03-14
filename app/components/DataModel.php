@@ -283,13 +283,14 @@ class DataModel
                 'Tool' => array('title', 'about'),
                 'VectorGraphic' => array('title', 'about'),
                 'VideoFile' => array('title', 'caption', 'about', 'subtitles'),
-                'Waffle' => array('title'),
+                'Waffle' => array('title', 'short_title', 'description'),
                 'WaffleCategory' => array('name', 'short_name', 'description'),
                 'WaffleCategoryThing' => array('name', 'short_name'),
                 'WaffleIndicator' => array('name', 'short_name', 'description'),
                 'WaffleUnit' => array('name', 'short_name', 'description'),
                 'WaffleTag' => array('name', 'short_name', 'description'),
                 'WaffleDataSource' => array('name', 'short_name'),
+                'WafflePublisher' => array('name', 'description'),
             ),
         );
     }
