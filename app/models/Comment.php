@@ -27,18 +27,7 @@ class Comment extends BaseComment
     {
         return array_merge(
             parent::behaviors(),
-            array(
-                'author-owner-behavior' => array(
-                    'class' => 'OwnerBehavior',
-                    'ownerColumn' => 'author_user_id',
-                ),
-                'i18n-attribute-messages' => array(
-                    'class' => 'I18nAttributeMessagesBehavior',
-                    'translationAttributes' => array('comment'),
-                    'languageSuffixes' => array_keys(Yii::app()->params["languages"]),
-                    'messageSourceComponent' => 'displayedMessages',
-                ),
-            )
+            array()
         );
     }
 
