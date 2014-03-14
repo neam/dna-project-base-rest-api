@@ -232,8 +232,13 @@ class Waffle extends BaseWaffle
             ),
             'reviewable' => array(
                 'slug_' . $this->source_language,
+                'short_title_' . $this->source_language,
             ),
-            'publishable' => array(),
+            'publishable' => array(
+                'license',
+                'license_link',
+                'waffle_publisher_id',
+            ),
         );
     }
 
@@ -247,6 +252,18 @@ class Waffle extends BaseWaffle
             'info' => array(
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
+                'short_title_' . $this->source_language,
+                'description_' . $this->source_language,
+                'link',
+                'publishing_date',
+                'url',
+                'license',
+                'license_link',
+                'waffle_publisher_id',
+            ),
+            'logo' => array(
+                'image_small_media_id',
+                'image_large_media_id',
             ),
             'import' => array(
                 'json_import_media_id',
@@ -258,6 +275,7 @@ class Waffle extends BaseWaffle
     {
         return array(
             'info' => Yii::t('app', 'Info'),
+            'logo' => Yii::t('app', 'Logo'),
             'import' => Yii::t('app', 'Import'),
         );
     }

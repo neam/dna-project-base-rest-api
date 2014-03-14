@@ -253,6 +253,7 @@ class DataModel
             'WaffleUnit' => 'n==0#Unit(s)|n==1#Unit|n>1#Units',
             'WaffleTag' => 'n==0#Tag(s)|n==1#Tag|n>1#Tags',
             'WaffleDataSource' => 'n==0#Data source(s)|n==1#Data source|n>1#Data sources',
+            'WafflePublisher' => 'n==0#Publisher(s)|n==1#Publisher|n>1#Publishers',
         );
     }
 
