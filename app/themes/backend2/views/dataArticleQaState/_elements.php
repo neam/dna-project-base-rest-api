@@ -116,6 +116,10 @@
             <?php echo $form->textFieldRow($model, 'title_en_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'about_en_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'title_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'title_proofed'); ?>
         </div>
     </div>
     <!-- main inputs -->

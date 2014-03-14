@@ -44,6 +44,7 @@
  * @property WaffleCategoryThing[] $waffleCategoryThings
  * @property WaffleDataSource[] $waffleDataSources
  * @property WaffleIndicator[] $waffleIndicators
+ * @property WafflePublisher[] $wafflePublishers
  * @property WaffleTag[] $waffleTags
  * @property WaffleUnit[] $waffleUnits
  */
@@ -124,6 +125,7 @@ abstract class BaseAccount extends ActiveRecord
                 'waffleCategoryThings' => array(self::HAS_MANY, 'WaffleCategoryThing', 'owner_id'),
                 'waffleDataSources' => array(self::HAS_MANY, 'WaffleDataSource', 'owner_id'),
                 'waffleIndicators' => array(self::HAS_MANY, 'WaffleIndicator', 'owner_id'),
+                'wafflePublishers' => array(self::HAS_MANY, 'WafflePublisher', 'owner_id'),
                 'waffleTags' => array(self::HAS_MANY, 'WaffleTag', 'owner_id'),
                 'waffleUnits' => array(self::HAS_MANY, 'WaffleUnit', 'owner_id'),
             )

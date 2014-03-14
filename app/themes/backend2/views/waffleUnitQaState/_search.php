@@ -305,6 +305,26 @@
         <?php echo $form->checkBox($model, 'name_proofed'); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->label($model, 'name_en_approved'); ?>
+        <?php echo $form->checkBox($model, 'name_en_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'short_name_en_approved'); ?>
+        <?php echo $form->checkBox($model, 'short_name_en_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'name_en_proofed'); ?>
+        <?php echo $form->checkBox($model, 'name_en_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'short_name_en_proofed'); ?>
+        <?php echo $form->checkBox($model, 'short_name_en_proofed'); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>

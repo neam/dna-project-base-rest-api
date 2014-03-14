@@ -27,7 +27,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'waffle_id', $input);
+            echo $form->customControlGroup($model, 'waffle_id', $input);
             ?>
 
             <?php

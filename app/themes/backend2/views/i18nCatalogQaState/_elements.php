@@ -120,6 +120,10 @@
             <?php echo $form->textFieldRow($model, 'about_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'pot_import_media_id_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'po_contents_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'po_contents_proofed'); ?>
         </div>
     </div>
     <!-- main inputs -->

@@ -11,6 +11,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'version'); ?>
+        <?php echo $form->textField($model, 'version'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'slug'); ?>
         <?php echo $form->textField($model, 'slug', array('size' => 60, 'maxlength' => 255)); ?>
     </div>

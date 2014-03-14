@@ -23,15 +23,55 @@
     <?php echo CHtml::encode($data->slug_en); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('json_import_media_id')); ?>:</b>
-    <?php echo CHtml::encode($data->json_import_media_id); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_short_title')); ?>:</b>
+    <?php echo CHtml::encode($data->_short_title); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
-    <?php echo CHtml::encode($data->created); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_description')); ?>:</b>
+    <?php echo CHtml::encode($data->_description); ?>
     <br/>
 
     <?php /*
+    <b><?php echo CHtml::encode($data->getAttributeLabel('link')); ?>:</b>
+    <?php echo CHtml::encode($data->link); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('publishing_date')); ?>:</b>
+    <?php echo CHtml::encode($data->publishing_date); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('url')); ?>:</b>
+    <?php echo CHtml::encode($data->url); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('license')); ?>:</b>
+    <?php echo CHtml::encode($data->license); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('license_link')); ?>:</b>
+    <?php echo CHtml::encode($data->license_link); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('waffle_publisher_id')); ?>:</b>
+    <?php echo CHtml::encode($data->waffle_publisher_id); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('json_import_media_id')); ?>:</b>
+    <?php echo CHtml::encode($data->json_import_media_id); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('image_small_media_id')); ?>:</b>
+    <?php echo CHtml::encode($data->image_small_media_id); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('image_large_media_id')); ?>:</b>
+    <?php echo CHtml::encode($data->image_large_media_id); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
+    <?php echo CHtml::encode($data->created); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('modified')); ?>:</b>
     <?php echo CHtml::encode($data->modified); ?>
     <br />

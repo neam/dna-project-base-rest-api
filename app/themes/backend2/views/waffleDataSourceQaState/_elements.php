@@ -120,6 +120,14 @@
             <?php echo $form->textFieldRow($model, 'ref_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'name_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'name_en_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'short_name_en_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'name_en_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'short_name_en_proofed'); ?>
         </div>
     </div>
     <!-- main inputs -->

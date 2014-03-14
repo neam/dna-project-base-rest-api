@@ -4405,9 +4405,9 @@ CREATE TABLE IF NOT EXISTS `edge` (
   `relation` VARCHAR(255) NULL,
   `created` DATETIME NULL,
   `modified` DATETIME NULL,
+  PRIMARY KEY (`id`),
   INDEX `fk_node_has_node_node2_idx` (`to_node_id` ASC),
   INDEX `fk_node_has_node_node1_idx` (`from_node_id` ASC),
-  PRIMARY KEY (`id`),
   CONSTRAINT `fk_node_has_node_node1`
     FOREIGN KEY (`from_node_id`)
     REFERENCES `node` (`id`)
@@ -4616,6 +4616,57 @@ COLLATE = utf8_bin;
 
 
 -- -----------------------------------------------------
+-- Table `waffle_publisher`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `waffle_publisher` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `version` INT(11) NOT NULL DEFAULT 1,
+  `cloned_from_id` BIGINT NULL,
+  `ref` VARCHAR(255) NULL,
+  `_name` VARCHAR(255) NULL,
+  `_description` VARCHAR(255) NULL,
+  `url` VARCHAR(255) NULL,
+  `image_small_media_id` INT(11) NULL,
+  `image_large_media_id` INT(11) NULL,
+  `created` DATETIME NULL,
+  `modified` DATETIME NULL,
+  `owner_id` INT(11) NULL,
+  `node_id` BIGINT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_waffle_data_source_p3_media1_idx` (`image_small_media_id` ASC),
+  INDEX `fk_waffle_data_source_p3_media2_idx` (`image_large_media_id` ASC),
+  INDEX `fk_waffle_data_source_waffle_data_source1_idx` (`cloned_from_id` ASC),
+  INDEX `fk_waffle_data_source_account1_idx` (`owner_id` ASC),
+  INDEX `fk_waffle_data_source_node1_idx` (`node_id` ASC),
+  CONSTRAINT `fk_waffle_data_source_p3_media10`
+    FOREIGN KEY (`image_small_media_id`)
+    REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_data_source_p3_media20`
+    FOREIGN KEY (`image_large_media_id`)
+    REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_data_source_waffle_data_source10`
+    FOREIGN KEY (`cloned_from_id`)
+    REFERENCES `waffle_publisher` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_data_source_account10`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `account` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_data_source_node10`
+    FOREIGN KEY (`node_id`)
+    REFERENCES `node` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `waffle`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `waffle` (
@@ -4624,7 +4675,17 @@ CREATE TABLE IF NOT EXISTS `waffle` (
   `cloned_from_id` BIGINT NULL,
   `_title` VARCHAR(255) NULL,
   `slug_en` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `_short_title` VARCHAR(255) NULL,
+  `_description` VARCHAR(255) NULL,
+  `link` VARCHAR(255) NULL,
+  `publishing_date` DATETIME NULL,
+  `url` VARCHAR(255) NULL,
+  `license` VARCHAR(255) NULL,
+  `license_link` VARCHAR(255) NULL,
+  `waffle_publisher_id` BIGINT NULL,
   `json_import_media_id` INT(11) NULL,
+  `image_small_media_id` INT(11) NULL,
+  `image_large_media_id` INT(11) NULL,
   `created` DATETIME NULL,
   `modified` DATETIME NULL,
   `owner_id` INT(11) NULL,
@@ -4678,6 +4739,9 @@ CREATE TABLE IF NOT EXISTS `waffle` (
   INDEX `fk_waffle_account1_idx` (`owner_id` ASC),
   INDEX `fk_waffle_node1_idx` (`node_id` ASC),
   INDEX `fk_waffle_p3_media1_idx` (`json_import_media_id` ASC),
+  INDEX `fk_waffle_p3_media2_idx` (`image_small_media_id` ASC),
+  INDEX `fk_waffle_p3_media3_idx` (`image_large_media_id` ASC),
+  INDEX `fk_waffle_waffle_publisher1_idx` (`waffle_publisher_id` ASC),
   CONSTRAINT `waffle_qa_state_id_fk`
     FOREIGN KEY (`waffle_qa_state_id`)
     REFERENCES `waffle_qa_state` (`id`)
@@ -4701,6 +4765,21 @@ CREATE TABLE IF NOT EXISTS `waffle` (
   CONSTRAINT `fk_waffle_p3_media1`
     FOREIGN KEY (`json_import_media_id`)
     REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_p3_media2`
+    FOREIGN KEY (`image_small_media_id`)
+    REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_p3_media3`
+    FOREIGN KEY (`image_large_media_id`)
+    REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_waffle_publisher1`
+    FOREIGN KEY (`waffle_publisher_id`)
+    REFERENCES `waffle_publisher` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

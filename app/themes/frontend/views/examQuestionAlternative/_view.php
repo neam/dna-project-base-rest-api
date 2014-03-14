@@ -7,6 +7,10 @@
     <?php echo CHtml::link(CHtml::encode($data->id), array('examQuestionAlternative/view', 'id' => $data->id)); ?>
     <br/>
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('version')); ?>:</b>
+    <?php echo CHtml::encode($data->version); ?>
+    <br/>
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('slug')); ?>:</b>
     <?php echo CHtml::encode($data->slug); ?>
     <br/>
@@ -27,11 +31,11 @@
     <?php echo CHtml::encode($data->created); ?>
     <br/>
 
+    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('modified')); ?>:</b>
     <?php echo CHtml::encode($data->modified); ?>
-    <br/>
+    <br />
 
-    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('owner_id')); ?>:</b>
     <?php echo CHtml::encode($data->owner_id); ?>
     <br />

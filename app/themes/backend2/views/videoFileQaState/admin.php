@@ -582,6 +582,38 @@ $this->widget('\TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'clip_mp4_media_id_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'clip_webm_media_id_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'clip_mp4_media_id_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'clip_webm_media_id_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             */
 
             array(

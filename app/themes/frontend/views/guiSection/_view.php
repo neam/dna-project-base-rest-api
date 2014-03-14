@@ -7,6 +7,14 @@
     <?php echo CHtml::link(CHtml::encode($data->id), array('guiSection/view', 'id' => $data->id)); ?>
     <br/>
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('version')); ?>:</b>
+    <?php echo CHtml::encode($data->version); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('cloned_from_id')); ?>:</b>
+    <?php echo CHtml::encode($data->cloned_from_id); ?>
+    <br/>
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
     <?php echo CHtml::encode($data->title); ?>
     <br/>
@@ -23,15 +31,15 @@
     <?php echo CHtml::encode($data->modified); ?>
     <br/>
 
+    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('i18n_catalog_id')); ?>:</b>
     <?php echo CHtml::encode($data->i18n_catalog_id); ?>
-    <br/>
+    <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('owner_id')); ?>:</b>
     <?php echo CHtml::encode($data->owner_id); ?>
-    <br/>
+    <br />
 
-    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('node_id')); ?>:</b>
     <?php echo CHtml::encode($data->node_id); ?>
     <br />

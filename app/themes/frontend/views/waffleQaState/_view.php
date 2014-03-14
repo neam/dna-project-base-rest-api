@@ -228,6 +228,38 @@
     <?php echo CHtml::encode($data->slug_proofed); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('title_en_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->title_en_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_en_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_en_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('json_import_media_id_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->json_import_media_id_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->po_contents_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('title_en_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->title_en_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_en_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_en_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('json_import_media_id_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->json_import_media_id_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->po_contents_proofed); ?>
+    <br />
+
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('WaffleQaState.*')): ?>

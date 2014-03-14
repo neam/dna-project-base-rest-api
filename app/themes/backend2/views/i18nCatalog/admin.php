@@ -91,7 +91,7 @@ $this->widget('\TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'po_contents',
+            #'_po_contents',
             array(
                 'name' => 'pot_import_media_id',
                 'value' => 'CHtml::value($data, \'potImportMedia.itemLabel\')',

@@ -245,6 +245,38 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->slug_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_en_approved')); ?>:</b>
+<?php echo CHtml::encode($model->title_en_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_en_approved')); ?>:</b>
+<?php echo CHtml::encode($model->slug_en_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('json_import_media_id_approved')); ?>:</b>
+<?php echo CHtml::encode($model->json_import_media_id_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_approved')); ?>:</b>
+<?php echo CHtml::encode($model->po_contents_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->title_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->slug_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('json_import_media_id_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->json_import_media_id_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->po_contents_proofed); ?>
+<br />
+
     */
 ?>
 -->

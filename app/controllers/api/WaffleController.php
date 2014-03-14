@@ -36,13 +36,37 @@ class WaffleController extends AppRestController
         $model = $this->getModel();
 
         $response = new stdClass();
+
+        // waffle info
         $response->info = new stdClass();
         $response->info->title = $model->title;
-        /*
-         * TODO: add to data model:
         $response->info->short_title = $model->short_title;
         $response->info->description = $model->description;
+        /*
+         * TODO: get p3 media:
+        $response->info->image_small = $model->;
+        $response->info->image_large = $model->;
         */
+        $response->info->link = $model->link;
+        $response->info->publishing_date = $model->publishing_date;
+        $response->info->url = $model->url;
+        $response->info->license = $model->license;
+        $response->info->license_link = $model->license_link;
+
+        // waffle info publisher
+        $response->info->publisher = new stdClass();
+
+        if (!is_null($model->waffle_publisher_id)) {
+            $response->info->publisher->id = $model->wafflePublisher->ref;
+            $response->info->publisher->name = $model->wafflePublisher->name;
+            $response->info->publisher->description = $model->wafflePublisher->description;
+            $response->info->publisher->url = $model->wafflePublisher->url;
+            /*
+             * TODO: get p3 media:
+            $response->info->publisher->image_small = $model->wafflePublisher->;
+            $response->info->publisher->image_large = $model->wafflePublisher->;
+            */
+        }
 
         $response->definitions = new stdClass();
 
@@ -151,13 +175,38 @@ class WaffleController extends AppRestController
         $model = $this->getModel();
 
         $response = new stdClass();
+
+        // waffle info
         $response->info = new stdClass();
         $response->info->title = $model->title;
-        /*
-         * TODO: add to data model:
         $response->info->short_title = $model->short_title;
         $response->info->description = $model->description;
+        /*
+         * TODO: get p3 media:
+        $response->info->image_small = $model->;
+        $response->info->image_large = $model->;
         */
+        $response->info->link = $model->link;
+        $response->info->publishing_date = $model->publishing_date;
+        $response->info->url = $model->url;
+        $response->info->license = $model->license;
+        $response->info->license_link = $model->license_link;
+
+        // waffle info publisher
+        $response->info->publisher = new stdClass();
+
+        if (!is_null($model->waffle_publisher_id)) {
+            $response->info->publisher->id = $model->wafflePublisher->ref;
+            $response->info->publisher->name = $model->wafflePublisher->name;
+            $response->info->publisher->description = $model->wafflePublisher->description;
+            $response->info->publisher->url = $model->wafflePublisher->url;
+            /*
+             * TODO: get p3 media:
+            $response->info->publisher->image_small = $model->wafflePublisher->;
+            $response->info->publisher->image_large = $model->wafflePublisher->;
+            */
+        }
+
         $response->definitions = new stdClass();
 
         // waffleCategories

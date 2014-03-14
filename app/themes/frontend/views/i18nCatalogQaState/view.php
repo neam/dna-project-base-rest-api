@@ -261,6 +261,14 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->pot_import_media_id_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_approved')); ?>:</b>
+<?php echo CHtml::encode($model->po_contents_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->po_contents_proofed); ?>
+<br />
+
     */
 ?>
 -->

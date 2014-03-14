@@ -534,6 +534,38 @@ $this->widget('\TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'name_en_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleCategoryQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'short_name_en_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleCategoryQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'name_en_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleCategoryQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'short_name_en_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleCategoryQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             */
 
             array(

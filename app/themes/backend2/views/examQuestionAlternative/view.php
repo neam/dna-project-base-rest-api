@@ -17,6 +17,10 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
+<?php echo CHtml::encode($model->version); ?>
+<br/>
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug')); ?>:</b>
 <?php echo CHtml::encode($model->slug); ?>
 <br/>
@@ -37,11 +41,11 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->created); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
-<br/>
+<br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>:</b>
 <?php echo CHtml::encode($model->owner_id); ?>
 <br />
@@ -79,6 +83,19 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'id',
+                                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'version',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'version',
                                     'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
                                 ),
                                 true

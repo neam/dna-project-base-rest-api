@@ -69,7 +69,8 @@ class DataModel
             'WaffleIndicator' => 'waffle_indicator',
             'WaffleUnit' => 'waffle_unit',
             'WaffleTag' => 'waffle_tag',
-            'WaffleDataSource' => 'waffle_data_source'
+            'WaffleDataSource' => 'waffle_data_source',
+            'WafflePublisher' => 'waffle_publisher',
             //'WaffleRole' => 'waffle_role',
         );
 
@@ -252,6 +253,7 @@ class DataModel
             'WaffleUnit' => 'n==0#Unit(s)|n==1#Unit|n>1#Units',
             'WaffleTag' => 'n==0#Tag(s)|n==1#Tag|n>1#Tags',
             'WaffleDataSource' => 'n==0#Data source(s)|n==1#Data source|n>1#Data sources',
+            'WafflePublisher' => 'n==0#Publisher(s)|n==1#Publisher|n>1#Publishers',
         );
     }
 
@@ -282,13 +284,14 @@ class DataModel
                 'Tool' => array('title', 'about'),
                 'VectorGraphic' => array('title', 'about'),
                 'VideoFile' => array('title', 'caption', 'about', 'subtitles'),
-                'Waffle' => array('title'),
+                'Waffle' => array('title', 'short_title', 'description'),
                 'WaffleCategory' => array('name', 'short_name', 'description'),
                 'WaffleCategoryThing' => array('name', 'short_name'),
                 'WaffleIndicator' => array('name', 'short_name', 'description'),
                 'WaffleUnit' => array('name', 'short_name', 'description'),
                 'WaffleTag' => array('name', 'short_name', 'description'),
                 'WaffleDataSource' => array('name', 'short_name'),
+                'WafflePublisher' => array('name', 'description'),
             ),
         );
     }

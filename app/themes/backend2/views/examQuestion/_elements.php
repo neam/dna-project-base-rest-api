@@ -19,7 +19,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'cloned_from_id', $input);
+            echo $form->customControlGroup($model, 'cloned_from_id', $input);
             ?>
 
             <?php

@@ -2075,6 +2075,14 @@ $this->widget('\TbGridView',
             'id',
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'slug',
                 'editable' => array(
                     'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
@@ -2111,12 +2119,12 @@ $this->widget('\TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            array(
-                'name' => 'node_id',
-                'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
             /*
+            array(
+                    'name' => 'node_id',
+                    'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
                     'name' => 'exam_question_alternative_qa_state_id',
                     'value' => 'CHtml::value($data, \'examQuestionAlternativeQaState.itemLabel\')',
@@ -2675,6 +2683,19 @@ $this->widget('\TbGridView',
             'id',
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/guiSection/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'guiSections.itemLabel\')',
+                'filter' => '', //CHtml::listData(GuiSection::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'title',
                 'editable' => array(
                     'url' => $this->createUrl('/guiSection/editableSaver'),
@@ -2710,16 +2731,18 @@ $this->widget('\TbGridView',
                 'value' => 'CHtml::value($data, \'i18nCatalog.itemLabel\')',
                 'filter' => '', //CHtml::listData(I18nCatalog::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
+            /*
             array(
-                'name' => 'node_id',
-                'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
+                    'name' => 'node_id',
+                    'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
-                'name' => 'gui_section_qa_state_id',
-                'value' => 'CHtml::value($data, \'guiSectionQaState.itemLabel\')',
-                'filter' => '', //CHtml::listData(GuiSectionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
+                    'name' => 'gui_section_qa_state_id',
+                    'value' => 'CHtml::value($data, \'guiSectionQaState.itemLabel\')',
+                    'filter' => '',//CHtml::listData(GuiSectionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            */
             array(
                 'class' => '\TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('guiSection/view', array('id' => \$data->id))",
@@ -2868,7 +2891,7 @@ $this->widget('\TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            #'po_contents',
+            #'_po_contents',
             array(
                 'name' => 'pot_import_media_id',
                 'value' => 'CHtml::value($data, \'potImportMedia.itemLabel\')',
@@ -7971,13 +7994,8 @@ $this->widget('\TbGridView',
                 )
             ),
             array(
-                'name' => 'json_import_media_id',
-                'value' => 'CHtml::value($data, \'jsonImportMedia.itemLabel\')',
-                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
-            array(
                 'class' => 'TbEditableColumn',
-                'name' => 'created',
+                'name' => '_short_title',
                 'editable' => array(
                     'url' => $this->createUrl('/waffle/editableSaver'),
                     //'placement' => 'right',
@@ -7985,13 +8003,89 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'modified',
+                'name' => '_description',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffle/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'link',
                 'editable' => array(
                     'url' => $this->createUrl('/waffle/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'publishing_date',
+                    'editable' => array(
+                        'url' => $this->createUrl('/waffle/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'url',
+                    'editable' => array(
+                        'url' => $this->createUrl('/waffle/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'license',
+                    'editable' => array(
+                        'url' => $this->createUrl('/waffle/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'license_link',
+                    'editable' => array(
+                        'url' => $this->createUrl('/waffle/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'name' => 'waffle_publisher_id',
+                    'value' => 'CHtml::value($data, \'wafflePublisher.itemLabel\')',
+                    'filter' => '',//CHtml::listData(WafflePublisher::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'json_import_media_id',
+                    'value' => 'CHtml::value($data, \'jsonImportMedia.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'image_small_media_id',
+                    'value' => 'CHtml::value($data, \'imageSmallMedia.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'image_large_media_id',
+                    'value' => 'CHtml::value($data, \'imageLargeMedia.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'created',
+                    'editable' => array(
+                        'url' => $this->createUrl('/waffle/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'modified',
+                    'editable' => array(
+                        'url' => $this->createUrl('/waffle/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
@@ -8461,7 +8555,7 @@ $this->widget('\TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Waffle Category Elements'); ?>
+    <?php echo Yii::t('model', 'Waffle Category Things'); ?>
     <small>waffleCategoryThings</small>
 </h2>
 
@@ -8800,6 +8894,128 @@ $this->widget('\TbGridView',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('waffleIndicator/view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('waffleIndicator/update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('waffleIndicator/delete', array('id' => \$data->id))",
+            ),
+        ),
+    ));
+?>
+
+
+<h2>
+    <?php echo Yii::t('model', 'Waffle Publishers'); ?>
+    <small>wafflePublishers</small>
+</h2>
+
+
+<div class="btn-group">
+    <?php $this->widget('\TbButtonGroup', array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'buttons' => array(
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('wafflePublisher/create', 'WafflePublisher' => array('owner_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+        ),
+    ));
+    ?></div>
+
+<?php
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'wafflePublishers');
+$this->widget('\TbGridView',
+    array(
+        'id' => 'wafflePublisher-grid',
+        'dataProvider' => $relatedSearchModel->search(),
+        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->wafflePublishers) > 1 ? $relatedSearchModel : null,
+        'pager' => array(
+            'class' => '\TbPager',
+            'displayFirstAndLast' => true,
+        ),
+        'columns' => array(
+            'id',
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/wafflePublisher/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'wafflePublishers.itemLabel\')',
+                'filter' => '', //CHtml::listData(WafflePublisher::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'ref',
+                'editable' => array(
+                    'url' => $this->createUrl('/wafflePublisher/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => '_name',
+                'editable' => array(
+                    'url' => $this->createUrl('/wafflePublisher/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => '_description',
+                'editable' => array(
+                    'url' => $this->createUrl('/wafflePublisher/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'url',
+                'editable' => array(
+                    'url' => $this->createUrl('/wafflePublisher/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'image_small_media_id',
+                'value' => 'CHtml::value($data, \'imageSmallMedia.itemLabel\')',
+                'filter' => '', //CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            /*
+            array(
+                    'name' => 'image_large_media_id',
+                    'value' => 'CHtml::value($data, \'imageLargeMedia.itemLabel\')',
+                    'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'created',
+                    'editable' => array(
+                        'url' => $this->createUrl('/wafflePublisher/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'modified',
+                    'editable' => array(
+                        'url' => $this->createUrl('/wafflePublisher/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'name' => 'node_id',
+                    'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            array(
+                    'name' => 'waffle_publisher_qa_state_id',
+                    'value' => 'CHtml::value($data, \'wafflePublisherQaState.itemLabel\')',
+                    'filter' => '',//CHtml::listData(WafflePublisherQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            */
+            array(
+                'class' => '\TbButtonColumn',
+                'viewButtonUrl' => "Yii::app()->controller->createUrl('wafflePublisher/view', array('id' => \$data->id))",
+                'updateButtonUrl' => "Yii::app()->controller->createUrl('wafflePublisher/update', array('id' => \$data->id))",
+                'deleteButtonUrl' => "Yii::app()->controller->createUrl('wafflePublisher/delete', array('id' => \$data->id))",
             ),
         ),
     ));
