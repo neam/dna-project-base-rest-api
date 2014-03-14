@@ -69,7 +69,8 @@ class DataModel
             'WaffleIndicator' => 'waffle_indicator',
             'WaffleUnit' => 'waffle_unit',
             'WaffleTag' => 'waffle_tag',
-            'WaffleDataSource' => 'waffle_data_source'
+            'WaffleDataSource' => 'waffle_data_source',
+            'WafflePublisher' => 'waffle_publisher',
             //'WaffleRole' => 'waffle_role',
         );
 
