@@ -247,7 +247,7 @@ class DataModel
             'VideoFile' => 'n==0#Video(s)|n==1#Video|n>1#Videos',
             'Waffle' => 'n==0#Waffle(s)|n==1#Waffle|n>1#Waffles',
             'WaffleCategory' => 'n==0#Category(s)|n==1#Category|n>1#Categories',
-            'WaffleCategoryThing' => 'n==0#Category element(s)|n==1#Category element|n>1#Category elements',
+            'WaffleCategoryThing' => 'n==0#Category thing(s)|n==1#Category thing|n>1#Category things',
             'WaffleIndicator' => 'n==0#Indicator(s)|n==1#Indicator|n>1#Indicators',
             'WaffleUnit' => 'n==0#Unit(s)|n==1#Unit|n>1#Units',
             'WaffleTag' => 'n==0#Tag(s)|n==1#Tag|n>1#Tags',
