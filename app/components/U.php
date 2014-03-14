@@ -33,4 +33,12 @@ class U
 
     }
 
+    static function arAttributes($ars) {
+        $return = array();
+        foreach ($ars as $ar) {
+            $return[] = $ar->attributes;
+        }
+        return $return;
+    }
+
 }
