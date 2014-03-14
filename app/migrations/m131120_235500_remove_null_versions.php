@@ -6,7 +6,7 @@ class m131120_235500_remove_null_versions extends EDbMigration
     {
         $qaModels = DataModel::qaModels();
         foreach ($qaModels as $modelClass => $table) {
-            $this->execute("UPDATE $table SET version = 1 WHERE version IS NULL");
+            $this->execute("UPDATE $table SET version = 1 WHERE version IS NULL OR version = 0");
         }
 
     }

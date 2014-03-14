@@ -15,4 +15,3 @@ modules:
             dsn: 'mysql:host=127.0.0.1;dbname=gscms_test'
             user: 'gcms_test'
             password: 'gcms_test'
-            dump: tests/codeception/_data/Dump20140304.sql

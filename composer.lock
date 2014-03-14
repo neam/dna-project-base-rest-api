@@ -581,12 +581,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "5d5272a8197701ba19ece344142ba6e8cd41370e"
+                "reference": "a3685a532ecf1b6f88f985058b8083ffce73087d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/5d5272a8197701ba19ece344142ba6e8cd41370e",
-                "reference": "5d5272a8197701ba19ece344142ba6e8cd41370e",
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/a3685a532ecf1b6f88f985058b8083ffce73087d",
+                "reference": "a3685a532ecf1b6f88f985058b8083ffce73087d",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -608,7 +608,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-02-27 14:15:03"
+            "time": "2014-03-13 17:22:00"
         },
         {
             "name": "motin/yii-owner-behavior",

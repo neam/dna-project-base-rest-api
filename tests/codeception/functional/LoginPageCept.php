@@ -10,4 +10,4 @@ Codeception\Module\TestHelper::login($I, 'admin', 'admin');
 $I->click('Logout');
 $I->see('Login', 'ul.nav');
 
-$I->dontSee('Settings');
+$I->dontSee('Logout');
