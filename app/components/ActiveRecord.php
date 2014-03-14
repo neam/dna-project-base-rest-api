@@ -273,6 +273,11 @@ class ActiveRecord extends CActiveRecord
         return parent::count($this->applyAccessCriteria($sql, $params));
     }
 
+    /**
+     * @var boolean whether or not this model instance should use access restrictions
+     */
+    public $accessRestricted;
+
     public function applyAccessCriteria($criteria = '', array $params = array())
     {
         // Normalize the criteria (this must ALWAYS be done as we override the find and count methods).
@@ -281,7 +286,11 @@ class ActiveRecord extends CActiveRecord
         }
 
         // Check whether to apply the access criteria to this model from the data model.
-        if (!isset(DataModel::accessRestrictedModels()[get_class($this)])) {
+        if (is_null($this->accessRestricted)) {
+            $this->accessRestricted = isset(DataModel::accessRestrictedModels()[get_class($this)]);
+        }
+
+        if (!$this->accessRestricted) {
             return $criteria;
         }
 

@@ -44,11 +44,15 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
 
         $this->assertTrue(!is_null($chapter->node()->id));
 
+        $chapter->accessRestricted = false; // Turn of access restrictions for this test
+
         $exercise = new Exercise();
         $exercise->_title = "An exercise title";
         if (!$exercise->save()) {
             throw new SaveException($exercise);
         }
+
+        $exercise->accessRestricted = false; // Turn of access restrictions for this test
 
         $this->assertTrue(!is_null($exercise->node()->id));
 
@@ -79,6 +83,8 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
         if (!$snapshot->save()) {
             throw new SaveException($snapshot);
         }
+
+        $snapshot->accessRestricted = false; // Turn of access restrictions for this test
 
         $this->assertTrue(!is_null($snapshot->node()->id));
 
