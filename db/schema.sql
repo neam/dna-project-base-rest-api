@@ -99,6 +99,10 @@ CREATE TABLE IF NOT EXISTS `waffle_unit_qa_state` (
   `short_name_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -614,6 +618,8 @@ CREATE TABLE IF NOT EXISTS `i18n_catalog_qa_state` (
   `original_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
   `about_proofed` TINYINT(1) NULL DEFAULT NULL,
   `pot_import_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `po_contents_approved` TINYINT(1) NULL DEFAULT NULL,
+  `po_contents_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -1328,6 +1334,8 @@ CREATE TABLE IF NOT EXISTS `data_article_qa_state` (
   `slug_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `about_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `title_approved` TINYINT(1) NULL DEFAULT NULL,
+  `title_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -1489,6 +1497,8 @@ CREATE TABLE IF NOT EXISTS `data_source_qa_state` (
   `slug_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `about_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `title_approved` TINYINT(1) NULL DEFAULT NULL,
+  `title_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -1505,7 +1515,7 @@ CREATE TABLE IF NOT EXISTS `i18n_catalog` (
   `title` VARCHAR(255) NULL,
   `about` TEXT NULL,
   `i18n_category` VARCHAR(255) NULL,
-  `po_contents` TEXT NULL,
+  `_po_contents` TEXT NULL,
   `pot_import_media_id` INT(11) NULL,
   `created` DATETIME NULL,
   `modified` DATETIME NULL,
@@ -2816,6 +2826,10 @@ CREATE TABLE IF NOT EXISTS `video_file_qa_state` (
   `thumbnail_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
   `subtitles_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `clip_mp4_media_id_approved` TINYINT(1) NULL DEFAULT NULL,
+  `clip_webm_media_id_approved` TINYINT(1) NULL DEFAULT NULL,
+  `clip_mp4_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `clip_webm_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -4609,6 +4623,80 @@ CREATE TABLE IF NOT EXISTS `waffle_qa_state` (
   `slug_approved` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
   `slug_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `title_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `slug_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `json_import_media_id_approved` TINYINT(1) NULL DEFAULT NULL,
+  `po_contents_approved` TINYINT(1) NULL DEFAULT NULL,
+  `title_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `slug_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `json_import_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `po_contents_proofed` TINYINT(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `waffle_publisher_qa_state`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `waffle_publisher_qa_state` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `status` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `draft_validation_progress` INT(11) NULL DEFAULT NULL,
+  `reviewable_validation_progress` INT(11) NULL DEFAULT NULL,
+  `publishable_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_en_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ar_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_bg_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ca_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_cs_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_da_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_de_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_en_gb_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_en_us_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_el_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_es_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_fi_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_fil_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_fr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_hi_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_hr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_hu_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_id_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_iw_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_it_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ja_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ko_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_lt_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_lv_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_nl_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_no_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pl_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pt_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pt_br_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pt_pt_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ro_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ru_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sk_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sl_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sv_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_th_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_tr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_uk_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_vi_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_zh_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_zh_cn_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_zh_tw_validation_progress` INT(11) NULL DEFAULT NULL,
+  `approval_progress` INT(11) NULL DEFAULT NULL,
+  `proofing_progress` INT(11) NULL DEFAULT NULL,
+  `allow_review` TINYINT(1) NULL DEFAULT NULL,
+  `allow_publish` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `ref_approved` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -4632,15 +4720,32 @@ CREATE TABLE IF NOT EXISTS `waffle_publisher` (
   `modified` DATETIME NULL,
   `owner_id` INT(11) NULL,
   `node_id` BIGINT NULL,
+  `waffle_publisher_qa_state_id` BIGINT(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_waffle_data_source_p3_media1_idx` (`image_small_media_id` ASC),
   INDEX `fk_waffle_data_source_p3_media2_idx` (`image_large_media_id` ASC),
   INDEX `fk_waffle_data_source_waffle_data_source1_idx` (`cloned_from_id` ASC),
   INDEX `fk_waffle_data_source_account1_idx` (`owner_id` ASC),
   INDEX `fk_waffle_data_source_node1_idx` (`node_id` ASC),
+  INDEX `waffle_publisher_qa_state_id_fk` (`waffle_publisher_qa_state_id` ASC),
   CONSTRAINT `fk_waffle_data_source_p3_media10`
     FOREIGN KEY (`image_small_media_id`)
     REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `waffle_publisher_qa_state_id_fk`
+    FOREIGN KEY (`waffle_publisher_qa_state_id`)
+    REFERENCES `waffle_publisher_qa_state` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE SET NULL,
+  CONSTRAINT `fk_waffle_data_source_account10`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `account` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_data_source_node10`
+    FOREIGN KEY (`node_id`)
+    REFERENCES `node` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_waffle_data_source_p3_media20`
@@ -4651,16 +4756,6 @@ CREATE TABLE IF NOT EXISTS `waffle_publisher` (
   CONSTRAINT `fk_waffle_data_source_waffle_data_source10`
     FOREIGN KEY (`cloned_from_id`)
     REFERENCES `waffle_publisher` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_waffle_data_source_account10`
-    FOREIGN KEY (`owner_id`)
-    REFERENCES `account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_waffle_data_source_node10`
-    FOREIGN KEY (`node_id`)
-    REFERENCES `node` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -4933,6 +5028,10 @@ CREATE TABLE IF NOT EXISTS `waffle_category_qa_state` (
   `short_name_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -5054,6 +5153,10 @@ CREATE TABLE IF NOT EXISTS `waffle_data_source_qa_state` (
   `short_name_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -5124,6 +5227,10 @@ CREATE TABLE IF NOT EXISTS `waffle_indicator_qa_state` (
   `short_name_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -5245,6 +5352,10 @@ CREATE TABLE IF NOT EXISTS `waffle_category_thing_qa_state` (
   `short_name_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -5430,6 +5541,10 @@ CREATE TABLE IF NOT EXISTS `waffle_tag_qa_state` (
   `short_name_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `short_name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
