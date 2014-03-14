@@ -152,18 +152,21 @@ class ActiveRecord extends CActiveRecord
      * Returns related P3Media records.
      * @param array $mimeType
      * @param string $type P3Media.type
+     * @param boolean $getOwnedOnly only retrieves records where the user owns the file. Defaults to false.
      * @return P3Media[]
      */
-    public function getP3Media(array $mimeType, $type = 'file')
+    public function getP3Media(array $mimeType, $type = 'file', $getOwnedOnly = false)
     {
         $criteria = new CDbCriteria();
         $criteria->addInCondition('mime_type', $mimeType);
         $criteria->addCondition('t.type = :type');
-        $criteria->addCondition('t.access_owner = :userId');
         $criteria->limit = 100;
         $criteria->order = 't.created_at DESC';
-        $criteria->params[':userId'] = Yii::app()->user->id;
         $criteria->params[':type'] = $type;
+        if ($getOwnedOnly) {
+            $criteria->addCondition('t.access_owner = :userId');
+            $criteria->params[':userId'] = Yii::app()->user->id;
+        }
         return P3Media::model()->findAll($criteria);
     }
 

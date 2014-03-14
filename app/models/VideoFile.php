@@ -367,25 +367,6 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
-     * Returns related P3Media records.
-     * @param array $mimeType
-     * @param string $type P3Media.type
-     * @return P3Media[]
-     */
-    public function getP3Media(array $mimeType, $type = 'file')
-    {
-        $criteria = new CDbCriteria();
-        $criteria->addInCondition('mime_type', $mimeType);
-        $criteria->addCondition('t.type = :type');
-        $criteria->addCondition('t.access_owner = :userId');
-        $criteria->limit = 100;
-        $criteria->order = 't.created_at DESC';
-        $criteria->params[':userId'] = Yii::app()->user->id;
-        $criteria->params[':type'] = $type;
-        return P3Media::model()->findAll($criteria);
-    }
-
-    /**
      * Returns related P3Media options.
      * @param P3Media[] $data
      * @return array

@@ -115,7 +115,7 @@ class Profile extends BaseProfile
 
     public function getPictures()
     {
-        return $this->getP3Media(array('image/jpeg', 'image/png'));
+        return $this->getP3Media(array('image/jpeg', 'image/png'), 'file', true);
     }
 
     public function getPictureOptions()
