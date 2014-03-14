@@ -59,6 +59,19 @@ $this->widget('\TbGridView',
             'id',
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/guiSection/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'guiSections.itemLabel\')',
+                'filter' => '', //CHtml::listData(GuiSection::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'title',
                 'editable' => array(
                     'url' => $this->createUrl('/guiSection/editableSaver'),
@@ -94,16 +107,18 @@ $this->widget('\TbGridView',
                 'value' => 'CHtml::value($data, \'i18nCatalog.itemLabel\')',
                 'filter' => '', //CHtml::listData(I18nCatalog::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
+            /*
             array(
-                'name' => 'owner_id',
-                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                'filter' => '', //CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
-                'name' => 'node_id',
-                'value' => 'CHtml::value($data, \'node.itemLabel\')',
-                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
+                    'name' => 'node_id',
+                    'value' => 'CHtml::value($data, \'node.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
+            */
             array(
                 'class' => '\TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('guiSection/view', array('id' => \$data->id))",

@@ -112,6 +112,22 @@
             <?php echo $form->textFieldRow($model, 'title_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'title_en_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'slug_en_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'json_import_media_id_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'po_contents_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'title_en_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'slug_en_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'json_import_media_id_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'po_contents_proofed'); ?>
         </div>
     </div>
     <!-- main inputs -->

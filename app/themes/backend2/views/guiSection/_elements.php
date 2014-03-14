@@ -3,6 +3,8 @@
 
         <div class="form-horizontal">
 
+            <?php echo $form->textFieldRow($model, 'version'); ?>
+
             <?php echo $form->textFieldRow($model, 'title', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug', array('maxlength' => 255)); ?>
@@ -21,7 +23,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'i18n_catalog_id', $input);
+            echo $form->customControlGroup($model, 'i18n_catalog_id', $input);
             ?>
 
             <?php

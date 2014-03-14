@@ -254,6 +254,22 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->name_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('name_en_approved')); ?>:</b>
+<?php echo CHtml::encode($model->name_en_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('short_name_en_approved')); ?>:</b>
+<?php echo CHtml::encode($model->short_name_en_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('name_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->name_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('short_name_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->short_name_en_proofed); ?>
+<br />
+
     */
 ?>
 
@@ -1046,6 +1062,58 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'name_proofed',
+                                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'name_en_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'name_en_approved',
+                                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'short_name_en_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'short_name_en_approved',
+                                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'name_en_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'name_en_proofed',
+                                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'short_name_en_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'short_name_en_proofed',
                                     'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
                                 ),
                                 true

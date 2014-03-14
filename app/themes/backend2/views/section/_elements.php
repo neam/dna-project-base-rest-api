@@ -19,7 +19,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'page_id', $input);
+            echo $form->customControlGroup($model, 'page_id', $input);
             ?>
 
             <?php

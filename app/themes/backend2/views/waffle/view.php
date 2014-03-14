@@ -33,15 +33,55 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->slug_en); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('json_import_media_id')); ?>:</b>
-<?php echo CHtml::encode($model->json_import_media_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_short_title')); ?>:</b>
+<?php echo CHtml::encode($model->_short_title); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
-<?php echo CHtml::encode($model->created); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_description')); ?>:</b>
+<?php echo CHtml::encode($model->_description); ?>
 <br/>
 
 <?php /*
+<b><?php echo CHtml::encode($model->getAttributeLabel('link')); ?>:</b>
+<?php echo CHtml::encode($model->link); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('publishing_date')); ?>:</b>
+<?php echo CHtml::encode($model->publishing_date); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('url')); ?>:</b>
+<?php echo CHtml::encode($model->url); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('license')); ?>:</b>
+<?php echo CHtml::encode($model->license); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('license_link')); ?>:</b>
+<?php echo CHtml::encode($model->license_link); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('waffle_publisher_id')); ?>:</b>
+<?php echo CHtml::encode($model->waffle_publisher_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('json_import_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->json_import_media_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('image_small_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->image_small_media_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('image_large_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->image_large_media_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
+<?php echo CHtml::encode($model->created); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
 <br />
@@ -307,6 +347,108 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => '_short_title',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => '_short_title',
+                                    'url' => $this->createUrl('/waffle/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => '_description',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => '_description',
+                                    'url' => $this->createUrl('/waffle/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'link',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'link',
+                                    'url' => $this->createUrl('/waffle/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'publishing_date',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'publishing_date',
+                                    'url' => $this->createUrl('/waffle/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'url',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'url',
+                                    'url' => $this->createUrl('/waffle/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'license',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'license',
+                                    'url' => $this->createUrl('/waffle/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'license_link',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'license_link',
+                                    'url' => $this->createUrl('/waffle/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'waffle_publisher_id',
+                        'value' => ($model->wafflePublisher !== null) ? CHtml::link(
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->wafflePublisher->itemLabel,
+                                    array('//wafflePublisher/view', 'id' => $model->wafflePublisher->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//wafflePublisher/update', 'id' => $model->wafflePublisher->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
                         'name' => 'json_import_media_id',
                         'value' => ($model->jsonImportMedia !== null) ? CHtml::link(
                                     '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->jsonImportMedia->itemLabel,
@@ -314,6 +456,28 @@ $this->breadcrumbs[] = $model->id;
                                     array('class' => '')) . ' ' . CHtml::link(
                                     '<i class="icon glyphicon-pencil"></i> ',
                                     array('//p3Media/update', 'id' => $model->jsonImportMedia->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'image_small_media_id',
+                        'value' => ($model->imageSmallMedia !== null) ? CHtml::link(
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->imageSmallMedia->itemLabel,
+                                    array('//p3Media/view', 'id' => $model->imageSmallMedia->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//p3Media/update', 'id' => $model->imageSmallMedia->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'image_large_media_id',
+                        'value' => ($model->imageLargeMedia !== null) ? CHtml::link(
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->imageLargeMedia->itemLabel,
+                                    array('//p3Media/view', 'id' => $model->imageLargeMedia->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//p3Media/update', 'id' => $model->imageLargeMedia->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),

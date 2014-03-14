@@ -244,6 +244,14 @@
     <?php echo CHtml::encode($data->pot_import_media_id_proofed); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->po_contents_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->po_contents_proofed); ?>
+    <br />
+
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('I18nCatalogQaState.*')): ?>

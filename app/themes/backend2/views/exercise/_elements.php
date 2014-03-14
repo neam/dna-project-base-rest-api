@@ -27,7 +27,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'thumbnail_media_id', $input);
+            echo $form->customControlGroup($model, 'thumbnail_media_id', $input);
             ?>
 
             <?php

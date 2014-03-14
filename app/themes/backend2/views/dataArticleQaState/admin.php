@@ -518,6 +518,22 @@ $this->widget('\TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
             */
 
             array(

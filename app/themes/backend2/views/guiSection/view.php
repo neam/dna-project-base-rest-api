@@ -17,6 +17,14 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
+<?php echo CHtml::encode($model->version); ?>
+<br/>
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('cloned_from_id')); ?>:</b>
+<?php echo CHtml::encode($model->cloned_from_id); ?>
+<br/>
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
 <?php echo CHtml::encode($model->title); ?>
 <br/>
@@ -33,15 +41,15 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->modified); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('i18n_catalog_id')); ?>:</b>
 <?php echo CHtml::encode($model->i18n_catalog_id); ?>
-<br/>
+<br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>:</b>
 <?php echo CHtml::encode($model->owner_id); ?>
-<br/>
+<br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
 <?php echo CHtml::encode($model->node_id); ?>
 <br />
@@ -79,6 +87,30 @@ $this->breadcrumbs[] = $model->id;
                                 ),
                                 true
                             )
+                    ),
+                    array(
+                        'name' => 'version',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'version',
+                                    'url' => $this->createUrl('/guiSection/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'cloned_from_id',
+                        'value' => ($model->clonedFrom !== null) ? CHtml::link(
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                    array('//guiSection/view', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) . ' ' . CHtml::link(
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//guiSection/update', 'id' => $model->clonedFrom->id),
+                                    array('class' => '')) : 'n/a',
+                        'type' => 'html',
                     ),
                     array(
                         'name' => 'title',

@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'glyphicon-search',
-                        'items' => array(array('label' => 'parent - Comment', 'url' => array('//comment/admin')), array('label' => 'comments - Comment', 'url' => array('//comment/admin')), array('label' => 'authorUser - Account', 'url' => array('//account/admin'))
+                        'items' => array(array('label' => 'authorUser - Account', 'url' => array('//account/admin')), array('label' => 'parent - Comment', 'url' => array('//comment/admin')), array('label' => 'comments - Comment', 'url' => array('//comment/admin'))
                         )
                     ),
                 ),

@@ -59,6 +59,14 @@ $this->widget('\TbGridView',
             'id',
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'slug',
                 'editable' => array(
                     'url' => $this->createUrl('/examQuestionAlternative/editableSaver'),
@@ -95,12 +103,12 @@ $this->widget('\TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            array(
-                'name' => 'owner_id',
-                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                'filter' => '', //CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-            ),
             /*
+            array(
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',

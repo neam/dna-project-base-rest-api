@@ -19,7 +19,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'cloned_from_id', $input);
+            echo $form->customControlGroup($model, 'cloned_from_id', $input);
             ?>
 
             <?php
@@ -72,7 +72,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'logo_media_id', $input);
+            echo $form->customControlGroup($model, 'logo_media_id', $input);
             ?>
 
             <?php
@@ -119,7 +119,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'mini_logo_media_id', $input);
+            echo $form->customControlGroup($model, 'mini_logo_media_id', $input);
             ?>
 
             <?php

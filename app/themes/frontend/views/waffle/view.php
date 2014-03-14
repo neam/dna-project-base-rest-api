@@ -40,15 +40,55 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->slug_en); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('_short_title')); ?>:</b>
+<?php echo CHtml::encode($model->_short_title); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('_description')); ?>:</b>
+<?php echo CHtml::encode($model->_description); ?>
+<br />
+
+<?php /*
+<b><?php echo CHtml::encode($model->getAttributeLabel('link')); ?>:</b>
+<?php echo CHtml::encode($model->link); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('publishing_date')); ?>:</b>
+<?php echo CHtml::encode($model->publishing_date); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('url')); ?>:</b>
+<?php echo CHtml::encode($model->url); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('license')); ?>:</b>
+<?php echo CHtml::encode($model->license); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('license_link')); ?>:</b>
+<?php echo CHtml::encode($model->license_link); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('waffle_publisher_id')); ?>:</b>
+<?php echo CHtml::encode($model->waffle_publisher_id); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('json_import_media_id')); ?>:</b>
 <?php echo CHtml::encode($model->json_import_media_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('image_small_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->image_small_media_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('image_large_media_id')); ?>:</b>
+<?php echo CHtml::encode($model->image_large_media_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
 <?php echo CHtml::encode($model->created); ?>
 <br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
 <br />

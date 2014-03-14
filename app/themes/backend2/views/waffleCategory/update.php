@@ -332,7 +332,7 @@ $this->widget('\TbGridView',
 
 
 <h2>
-    <?php echo Yii::t('model', 'Waffle Category Elements'); ?>
+    <?php echo Yii::t('model', 'Waffle Category Things'); ?>
     <small>waffleCategoryThings</small>
 </h2>
 

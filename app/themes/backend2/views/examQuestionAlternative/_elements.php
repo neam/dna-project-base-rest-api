@@ -3,6 +3,8 @@
 
         <div class="form-horizontal">
 
+            <?php echo $form->textFieldRow($model, 'version'); ?>
+
             <?php echo $form->textFieldRow($model, 'slug', array('maxlength' => 255)); ?>
 
             <?php echo $form->html5EditorRow($model, '_markup', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
@@ -28,7 +30,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'exam_question_id', $input);
+            echo $form->customControlGroup($model, 'exam_question_id', $input);
             ?>
 
             <?php

@@ -31,8 +31,58 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, '_short_title'); ?>
+        <?php echo $form->textField($model, '_short_title', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, '_description'); ?>
+        <?php echo $form->textField($model, '_description', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'link'); ?>
+        <?php echo $form->textField($model, 'link', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'publishing_date'); ?>
+        <?php echo $form->textField($model, 'publishing_date'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'url'); ?>
+        <?php echo $form->textField($model, 'url', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'license'); ?>
+        <?php echo $form->textField($model, 'license', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'license_link'); ?>
+        <?php echo $form->textField($model, 'license_link', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'waffle_publisher_id'); ?>
+        <?php echo $form->textField($model, 'waffle_publisher_id', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'json_import_media_id'); ?>
         <?php echo $form->textField($model, 'json_import_media_id'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'image_small_media_id'); ?>
+        <?php echo $form->textField($model, 'image_small_media_id'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'image_large_media_id'); ?>
+        <?php echo $form->textField($model, 'image_large_media_id'); ?>
     </div>
 
     <div class="row">

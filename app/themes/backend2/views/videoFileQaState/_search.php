@@ -335,6 +335,26 @@
         <?php echo $form->checkBox($model, 'title_proofed'); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->label($model, 'clip_mp4_media_id_approved'); ?>
+        <?php echo $form->checkBox($model, 'clip_mp4_media_id_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'clip_webm_media_id_approved'); ?>
+        <?php echo $form->checkBox($model, 'clip_webm_media_id_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'clip_mp4_media_id_proofed'); ?>
+        <?php echo $form->checkBox($model, 'clip_mp4_media_id_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'clip_webm_media_id_proofed'); ?>
+        <?php echo $form->checkBox($model, 'clip_webm_media_id_proofed'); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>
