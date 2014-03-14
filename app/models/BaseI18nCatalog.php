@@ -10,7 +10,7 @@
  * @property string $title
  * @property string $about
  * @property string $i18n_category
- * @property string $po_contents
+ * @property string $_po_contents
  * @property integer $pot_import_media_id
  * @property string $created
  * @property string $modified
@@ -45,12 +45,12 @@ abstract class BaseI18nCatalog extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, title, about, i18n_category, po_contents, pot_import_media_id, created, modified, owner_id, node_id, i18n_catalog_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, title, about, i18n_category, _po_contents, pot_import_media_id, created, modified, owner_id, node_id, i18n_catalog_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, pot_import_media_id, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, i18n_catalog_qa_state_id', 'length', 'max' => 20),
                 array('title, i18n_category', 'length', 'max' => 255),
-                array('about, po_contents, created, modified', 'safe'),
-                array('id, version, cloned_from_id, title, about, i18n_category, po_contents, pot_import_media_id, created, modified, owner_id, node_id, i18n_catalog_qa_state_id', 'safe', 'on' => 'search'),
+                array('about, _po_contents, created, modified', 'safe'),
+                array('id, version, cloned_from_id, title, about, i18n_category, _po_contents, pot_import_media_id, created, modified, owner_id, node_id, i18n_catalog_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -96,7 +96,7 @@ abstract class BaseI18nCatalog extends ActiveRecord
             'title' => Yii::t('model', 'Title'),
             'about' => Yii::t('model', 'About'),
             'i18n_category' => Yii::t('model', 'I18n Category'),
-            'po_contents' => Yii::t('model', 'Po Contents'),
+            '_po_contents' => Yii::t('model', 'Po Contents'),
             'pot_import_media_id' => Yii::t('model', 'Pot Import Media'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
@@ -118,7 +118,7 @@ abstract class BaseI18nCatalog extends ActiveRecord
         $criteria->compare('t.title', $this->title, true);
         $criteria->compare('t.about', $this->about, true);
         $criteria->compare('t.i18n_category', $this->i18n_category, true);
-        $criteria->compare('t.po_contents', $this->po_contents, true);
+        $criteria->compare('t._po_contents', $this->_po_contents, true);
         $criteria->compare('t.pot_import_media_id', $this->pot_import_media_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
