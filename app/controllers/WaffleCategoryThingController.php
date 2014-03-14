@@ -1,7 +1,11 @@
 <?php
 
-class WaffleCategoryElementQaStateController extends Controller
+class WaffleCategoryThingController extends Controller
 {
+    use ItemController;
+
+    public $modelClass = "WaffleCategoryThing";
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,7 +20,7 @@ class WaffleCategoryElementQaStateController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array(
                 'allow',
                 'actions' => array(
@@ -29,13 +33,13 @@ class WaffleCategoryElementQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('WaffleCategoryElementQaState.*'),
+                'roles' => array('WaffleCategoryThing.*'),
             ),
             array(
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)
@@ -43,7 +47,7 @@ class WaffleCategoryElementQaStateController extends Controller
         parent::beforeAction($action);
         // map identifcationColumn to id
         if (!isset($_GET['id']) && isset($_GET['id'])) {
-            $model = WaffleCategoryElementQaState::model()->find(
+            $model = WaffleCategoryThing::model()->find(
                 'id = :id',
                 array(
                     ':id' => $_GET['id']
@@ -69,13 +73,13 @@ class WaffleCategoryElementQaStateController extends Controller
 
     public function actionCreate()
     {
-        $model = new WaffleCategoryElementQaState;
+        $model = new WaffleCategoryThing;
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'waffle-category-element-qa-state-form');
+        $this->performAjaxValidation($model, 'waffle-category-element-form');
 
-        if (isset($_POST['WaffleCategoryElementQaState'])) {
-            $model->attributes = $_POST['WaffleCategoryElementQaState'];
+        if (isset($_POST['WaffleCategoryThing'])) {
+            $model->attributes = $_POST['WaffleCategoryThing'];
 
             try {
                 if ($model->save()) {
@@ -88,8 +92,8 @@ class WaffleCategoryElementQaStateController extends Controller
             } catch (Exception $e) {
                 $model->addError('id', $e->getMessage());
             }
-        } elseif (isset($_GET['WaffleCategoryElementQaState'])) {
-            $model->attributes = $_GET['WaffleCategoryElementQaState'];
+        } elseif (isset($_GET['WaffleCategoryThing'])) {
+            $model->attributes = $_GET['WaffleCategoryThing'];
         }
 
         $this->render('create', array('model' => $model));
@@ -100,10 +104,10 @@ class WaffleCategoryElementQaStateController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'waffle-category-element-qa-state-form');
+        $this->performAjaxValidation($model, 'waffle-category-element-form');
 
-        if (isset($_POST['WaffleCategoryElementQaState'])) {
-            $model->attributes = $_POST['WaffleCategoryElementQaState'];
+        if (isset($_POST['WaffleCategoryThing'])) {
+            $model->attributes = $_POST['WaffleCategoryThing'];
 
 
             try {
@@ -124,15 +128,15 @@ class WaffleCategoryElementQaStateController extends Controller
 
     public function actionEditableSaver()
     {
-        $es = new TbEditableSaver('WaffleCategoryElementQaState'); // classname of model to be updated
+        $es = new TbEditableSaver('WaffleCategoryThing'); // classname of model to be updated
         $es->update();
     }
 
     public function actionEditableCreator()
     {
-        if (isset($_POST['WaffleCategoryElementQaState'])) {
-            $model = new WaffleCategoryElementQaState;
-            $model->attributes = $_POST['WaffleCategoryElementQaState'];
+        if (isset($_POST['WaffleCategoryThing'])) {
+            $model = new WaffleCategoryThing;
+            $model->attributes = $_POST['WaffleCategoryThing'];
             if ($model->save()) {
                 echo CJSON::encode($model->getAttributes());
             } else {
@@ -172,17 +176,17 @@ class WaffleCategoryElementQaStateController extends Controller
 
     public function actionIndex()
     {
-        $dataProvider = new CActiveDataProvider('WaffleCategoryElementQaState');
+        $dataProvider = new CActiveDataProvider('WaffleCategoryThing');
         $this->render('index', array('dataProvider' => $dataProvider,));
     }
 
     public function actionAdmin()
     {
-        $model = new WaffleCategoryElementQaState('search');
+        $model = new WaffleCategoryThing('search');
         $model->unsetAttributes();
 
-        if (isset($_GET['WaffleCategoryElementQaState'])) {
-            $model->attributes = $_GET['WaffleCategoryElementQaState'];
+        if (isset($_GET['WaffleCategoryThing'])) {
+            $model->attributes = $_GET['WaffleCategoryThing'];
         }
 
         $this->render('admin', array('model' => $model,));
@@ -190,7 +194,7 @@ class WaffleCategoryElementQaStateController extends Controller
 
     public function loadModel($id)
     {
-        $model = WaffleCategoryElementQaState::model()->findByPk($id);
+        $model = WaffleCategoryThing::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
@@ -199,7 +203,7 @@ class WaffleCategoryElementQaStateController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'waffle-category-element-qa-state-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'waffle-category-element-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

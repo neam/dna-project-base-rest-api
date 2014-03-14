@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'glyphicon-search',
-                        'items' => array(array('label' => 'waffleCategoryElements - WaffleCategoryElement', 'url' => array('//waffleCategoryElement/admin'))
+                        'items' => array(array('label' => 'waffleCategoryThings - WaffleCategoryThing', 'url' => array('//waffleCategoryThing/admin'))
                         )
                     ),
                 ),

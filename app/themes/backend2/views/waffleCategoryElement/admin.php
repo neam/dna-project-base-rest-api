@@ -31,7 +31,7 @@ Yii::app()->clientScript->registerScript('search', "
 
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<?php Yii::beginProfile('WaffleCategoryElement.view.grid'); ?>
+<?php Yii::beginProfile('WaffleCategoryThing.view.grid'); ?>
 
 
 <?php
@@ -57,7 +57,7 @@ $this->widget('\TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'id',
                 'editable' => array(
-                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -65,20 +65,20 @@ $this->widget('\TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'version',
                 'editable' => array(
-                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             array(
                 'name' => 'cloned_from_id',
-                'value' => 'CHtml::value($data, \'waffleCategoryElements.itemLabel\')',
-                'filter' => '', //CHtml::listData(WaffleCategoryElement::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'value' => 'CHtml::value($data, \'waffleCategoryThings.itemLabel\')',
+                'filter' => '', //CHtml::listData(WaffleCategoryThing::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'ref',
                 'editable' => array(
-                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -86,7 +86,7 @@ $this->widget('\TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => '_name',
                 'editable' => array(
-                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -94,7 +94,7 @@ $this->widget('\TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => '_short_name',
                 'editable' => array(
-                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -107,7 +107,7 @@ $this->widget('\TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -116,7 +116,7 @@ $this->widget('\TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -131,18 +131,18 @@ $this->widget('\TbGridView',
                 'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'waffle_category_element_qa_state_id',
-                'value' => 'CHtml::value($data, \'waffleCategoryElementQaState.itemLabel\')',
-                'filter' => '',//CHtml::listData(WaffleCategoryElementQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'name' => 'waffle_category_thing_qa_state_id',
+                'value' => 'CHtml::value($data, \'waffleCategoryThingQaState.itemLabel\')',
+                'filter' => '',//CHtml::listData(WaffleCategoryThingQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             */
 
             array(
                 'class' => '\TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("WaffleCategoryElement.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("WaffleCategoryElement.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("WaffleCategoryElement.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("WaffleCategoryThing.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("WaffleCategoryThing.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("WaffleCategoryThing.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
@@ -152,4 +152,4 @@ $this->widget('\TbGridView',
     )
 );
 ?>
-<?php Yii::endProfile('WaffleCategoryElement.view.grid'); ?>
+<?php Yii::endProfile('WaffleCategoryThing.view.grid'); ?>

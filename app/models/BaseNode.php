@@ -36,7 +36,7 @@
  * @property VideoFile[] $videoFiles
  * @property Waffle[] $waffles
  * @property WaffleCategory[] $waffleCategories
- * @property WaffleCategoryElement[] $waffleCategoryElements
+ * @property WaffleCategoryThing[] $waffleCategoryThings
  * @property WaffleDataSource[] $waffleDataSources
  * @property WaffleIndicator[] $waffleIndicators
  * @property WaffleTag[] $waffleTags
@@ -113,7 +113,7 @@ abstract class BaseNode extends ActiveRecord
                 'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'node_id'),
                 'waffles' => array(self::HAS_MANY, 'Waffle', 'node_id'),
                 'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'node_id'),
-                'waffleCategoryElements' => array(self::HAS_MANY, 'WaffleCategoryElement', 'node_id'),
+                'waffleCategoryThings' => array(self::HAS_MANY, 'WaffleCategoryThing', 'node_id'),
                 'waffleDataSources' => array(self::HAS_MANY, 'WaffleDataSource', 'node_id'),
                 'waffleIndicators' => array(self::HAS_MANY, 'WaffleIndicator', 'node_id'),
                 'waffleTags' => array(self::HAS_MANY, 'WaffleTag', 'node_id'),

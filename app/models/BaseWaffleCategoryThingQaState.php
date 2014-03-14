@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model base class for the table "waffle_category_element_qa_state".
+ * This is the model base class for the table "waffle_category_thing_qa_state".
  *
- * Columns in table "waffle_category_element_qa_state" available as properties of the model:
+ * Columns in table "waffle_category_thing_qa_state" available as properties of the model:
  * @property string $id
  * @property string $status
  * @property integer $draft_validation_progress
@@ -65,10 +65,10 @@
  * @property integer $ref_proofed
  * @property integer $name_proofed
  *
- * Relations of table "waffle_category_element_qa_state" available as properties of the model:
- * @property WaffleCategoryElement[] $waffleCategoryElements
+ * Relations of table "waffle_category_thing_qa_state" available as properties of the model:
+ * @property WaffleCategoryThing[] $waffleCategoryThings
  */
-abstract class BaseWaffleCategoryElementQaState extends ActiveRecord
+abstract class BaseWaffleCategoryThingQaState extends ActiveRecord
 {
 
     public static function model($className = __CLASS__)
@@ -78,7 +78,7 @@ abstract class BaseWaffleCategoryElementQaState extends ActiveRecord
 
     public function tableName()
     {
-        return 'waffle_category_element_qa_state';
+        return 'waffle_category_thing_qa_state';
     }
 
     public function rules()
@@ -113,7 +113,7 @@ abstract class BaseWaffleCategoryElementQaState extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'waffleCategoryElements' => array(self::HAS_MANY, 'WaffleCategoryElement', 'waffle_category_element_qa_state_id'),
+                'waffleCategoryThings' => array(self::HAS_MANY, 'WaffleCategoryThing', 'waffle_category_thing_qa_state_id'),
             )
         );
     }

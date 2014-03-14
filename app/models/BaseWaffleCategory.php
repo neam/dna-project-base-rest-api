@@ -25,7 +25,7 @@
  * @property WaffleCategory $clonedFrom
  * @property WaffleCategory[] $waffleCategories
  * @property WaffleCategoryQaState $waffleCategoryQaState
- * @property WaffleCategoryElement[] $waffleCategoryElements
+ * @property WaffleCategoryThing[] $waffleCategoryThings
  */
 abstract class BaseWaffleCategory extends ActiveRecord
 {
@@ -80,7 +80,7 @@ abstract class BaseWaffleCategory extends ActiveRecord
                 'clonedFrom' => array(self::BELONGS_TO, 'WaffleCategory', 'cloned_from_id'),
                 'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'cloned_from_id'),
                 'waffleCategoryQaState' => array(self::BELONGS_TO, 'WaffleCategoryQaState', 'waffle_category_qa_state_id'),
-                'waffleCategoryElements' => array(self::HAS_MANY, 'WaffleCategoryElement', 'waffle_category_id'),
+                'waffleCategoryThings' => array(self::HAS_MANY, 'WaffleCategoryThing', 'waffle_category_id'),
             )
         );
     }

@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('WaffleCategoryElement', dirname(__FILE__));
-Yii::import('WaffleCategoryElement.*');
+Yii::setPathOfAlias('WaffleCategoryThing', dirname(__FILE__));
+Yii::import('WaffleCategoryThing.*');
 
-class WaffleCategoryElement extends BaseWaffleCategoryElement
+class WaffleCategoryThing extends BaseWaffleCategoryThing
 {
     use ItemTrait;
 
@@ -22,7 +22,7 @@ class WaffleCategoryElement extends BaseWaffleCategoryElement
 
     public function getItemLabel()
     {
-        return (string) !empty($this->name) ? $this->name : "WaffleCategoryElement #" . $this->id;
+        return (string) !empty($this->name) ? $this->name : "WaffleCategoryThing #" . $this->id;
     }
 
     public function behaviors()

@@ -49,17 +49,17 @@ class WaffleController extends AppRestController
         // waffleCategories
         $columns = array(
             "waffle_category" => array("ref", "_name", "_description"),
-            "waffle_category_element" => array("ref", "_name"),
+            "waffle_category_thing" => array("ref", "_name"),
         );
         $select = U::prefixed_table_fields_wildcard('waffle_category', 'waffle_category', $columns['waffle_category'])
-            . "," . U::prefixed_table_fields_wildcard('waffle_category_element', 'waffle_category_element', $columns['waffle_category_element']);
+            . "," . U::prefixed_table_fields_wildcard('waffle_category_thing', 'waffle_category_thing', $columns['waffle_category_thing']);
         // Prevent double-escaping ("The method will automatically quote the column names unless a column contains some parenthesis (which means the column contains a DB expression).")
         $select .= ", (-1) AS foo";
 
         $command = Yii::app()->db->createCommand()
             ->select($select)
-            ->from("waffle_category_element")
-            ->join("waffle_category", "waffle_category_element.waffle_category_id = waffle_category.id")
+            ->from("waffle_category_thing")
+            ->join("waffle_category", "waffle_category_thing.waffle_category_id = waffle_category.id")
             ->where("waffle_category.waffle_id = :waffle_id");
         $command->params = array("waffle_id" => $model->id);
 
@@ -82,8 +82,8 @@ class WaffleController extends AppRestController
                     $things =& $categories[$r['waffle_category.ref']]->things;
 
                     $thing = new stdClass();
-                    $thing->id = $r['waffle_category_element.ref'];
-                    $thing->name = $r['waffle_category_element._name'];
+                    $thing->id = $r['waffle_category_thing.ref'];
+                    $thing->name = $r['waffle_category_thing._name'];
                     $things[] = $thing;
 
                 }
@@ -168,7 +168,7 @@ class WaffleController extends AppRestController
             $translatedCategory->name = $category->name;
             $translatedCategory->description = $category->description;
             $translatedCategory->things = array();
-            foreach ($category->waffleCategoryElements as $categoryElement) {
+            foreach ($category->waffleCategoryThings as $categoryElement) {
                 $translatedCategoryElement = new stdClass();
                 $translatedCategoryElement->id = $categoryElement->ref;
                 $translatedCategoryElement->name = $categoryElement->name;

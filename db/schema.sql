@@ -5103,9 +5103,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `waffle_category_element_qa_state`
+-- Table `waffle_category_thing_qa_state`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `waffle_category_element_qa_state` (
+CREATE TABLE IF NOT EXISTS `waffle_category_thing_qa_state` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `status` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `draft_validation_progress` INT(11) NULL DEFAULT NULL,
@@ -5238,9 +5238,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `waffle_category_element`
+-- Table `waffle_category_thing`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `waffle_category_element` (
+CREATE TABLE IF NOT EXISTS `waffle_category_thing` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `version` INT(11) NOT NULL DEFAULT 1,
   `cloned_from_id` BIGINT NULL,
@@ -5252,34 +5252,34 @@ CREATE TABLE IF NOT EXISTS `waffle_category_element` (
   `modified` DATETIME NULL,
   `owner_id` INT(11) NULL,
   `node_id` BIGINT NULL,
-  `waffle_category_element_qa_state_id` BIGINT(20) NULL DEFAULT NULL,
+  `waffle_category_thing_qa_state_id` BIGINT(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_waffle_category_element_waffle_category1_idx` (`waffle_category_id` ASC),
-  INDEX `fk_waffle_category_element_waffle_category_element1_idx` (`cloned_from_id` ASC),
-  INDEX `waffle_category_element_qa_state_id_fk` (`waffle_category_element_qa_state_id` ASC),
-  INDEX `fk_waffle_category_element_account1_idx` (`owner_id` ASC),
-  INDEX `fk_waffle_category_element_node1_idx` (`node_id` ASC),
-  CONSTRAINT `waffle_category_element_qa_state_id_fk`
-    FOREIGN KEY (`waffle_category_element_qa_state_id`)
-    REFERENCES `waffle_category_element_qa_state` (`id`)
+  INDEX `fk_waffle_category_thing_waffle_category1_idx` (`waffle_category_id` ASC),
+  INDEX `fk_waffle_category_thing_waffle_category_thing1_idx` (`cloned_from_id` ASC),
+  INDEX `waffle_category_thing_qa_state_id_fk` (`waffle_category_thing_qa_state_id` ASC),
+  INDEX `fk_waffle_category_thing_account1_idx` (`owner_id` ASC),
+  INDEX `fk_waffle_category_thing_node1_idx` (`node_id` ASC),
+  CONSTRAINT `waffle_category_thing_qa_state_id_fk`
+    FOREIGN KEY (`waffle_category_thing_qa_state_id`)
+    REFERENCES `waffle_category_thing_qa_state` (`id`)
     ON DELETE SET NULL
     ON UPDATE SET NULL,
-  CONSTRAINT `fk_waffle_category_element_waffle_category1`
+  CONSTRAINT `fk_waffle_category_thing_waffle_category1`
     FOREIGN KEY (`waffle_category_id`)
     REFERENCES `waffle_category` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_waffle_category_element_waffle_category_element1`
+  CONSTRAINT `fk_waffle_category_thing_waffle_category_thing1`
     FOREIGN KEY (`cloned_from_id`)
-    REFERENCES `waffle_category_element` (`id`)
+    REFERENCES `waffle_category_thing` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_waffle_category_element_account1`
+  CONSTRAINT `fk_waffle_category_thing_account1`
     FOREIGN KEY (`owner_id`)
     REFERENCES `account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_waffle_category_element_node1`
+  CONSTRAINT `fk_waffle_category_thing_node1`
     FOREIGN KEY (`node_id`)
     REFERENCES `node` (`id`)
     ON DELETE NO ACTION

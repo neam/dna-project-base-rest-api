@@ -61,8 +61,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'waffle_category_element_qa_state_id'); ?>
-        <?php echo $form->textField($model, 'waffle_category_element_qa_state_id', array('size' => 20, 'maxlength' => 20)); ?>
+        <?php echo $form->label($model, 'waffle_category_thing_qa_state_id'); ?>
+        <?php echo $form->textField($model, 'waffle_category_thing_qa_state_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
 

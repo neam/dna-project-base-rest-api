@@ -50,7 +50,7 @@
             $this->beginClip('modal:' . $formId . '-modal');
             $this->renderPartial('//waffleCategory/_modal_form', array(
                 'formId' => $formId,
-                'inputSelector' => '#WaffleCategoryElement_waffle_category_id',
+                'inputSelector' => '#WaffleCategoryThing_waffle_category_id',
                 'model' => new WaffleCategory,
                 'pk' => 'id',
                 'field' => 'itemLabel',
@@ -62,7 +62,7 @@
 
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 
-            <?php echo $form->textFieldRow($model, 'waffle_category_element_qa_state_id', array('maxlength' => 20)); ?>
+            <?php echo $form->textFieldRow($model, 'waffle_category_thing_qa_state_id', array('maxlength' => 20)); ?>
         </div>
     </div>
     <!-- main inputs -->

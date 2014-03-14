@@ -120,7 +120,7 @@ class Waffle extends BaseWaffle
                 }
                 $waffleCategory = $model;
                 foreach ($category->things as $thing) {
-                    $model = new WaffleCategoryElement();
+                    $model = new WaffleCategoryThing();
                     $model->ref = $thing->id;
                     $model->_name = $thing->name;
                     $model->waffle_category_id = $waffleCategory->id;
