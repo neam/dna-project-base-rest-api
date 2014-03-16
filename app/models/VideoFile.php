@@ -447,12 +447,12 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
-     * Returns the translation category for the current model.
+     * Returns the translation category for the current model and attribute.
      * @return string
      */
-    public function getTranslationCategory()
+    public function getTranslationCategory($attribute)
     {
-        return 'video-' . $this->id . '-subtitles';
+        return 'video-' . $this->id . '-' . $attribute;
     }
 
     /**

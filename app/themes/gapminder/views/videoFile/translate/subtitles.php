@@ -31,20 +31,28 @@
             'id',
             array(
                 'name' => 'Subtitle',
-                'value' => function($data) use ($translateInto) {
+                'value' => function ($data) use ($translateInto) {
                         echo $data->timestamp;
                         echo '<br>';
-                        echo $data->sourceMessage;
+                        echo nl2br($data->sourceMessage);
                     },
                 'filter' => true,
             ),
             array(
                 'name' => 'Translation',
-                'value' => function($data) use ($model, $form, $translateInto) {
+                'value' => function ($data) use ($model, $form, $translateInto) {
+
                         // TODO: Clean up.
-                        $sourceMessage = SourceMessage::ensureSourceMessage($model->getTranslationCategory(), $data->sourceMessage, $translateInto);
-                        $currentFallbackTranslation = Yii::t($model->getTranslationCategory(), $data->sourceMessage, array(), 'displayedMessages', $translateInto);
-                        echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentFallbackTranslation);
+
+                        $sourceMessage = SourceMessage::ensureSourceMessage($model->getTranslationCategory('subtitles'), $data->sourceMessage, $translateInto);
+
+                        $currentTranslation = Yii::t($model->getTranslationCategory('subtitles'), $data->sourceMessage, array(), 'editedMessages', $translateInto);
+                        $currentFallbackTranslation = Yii::t($model->getTranslationCategory('subtitles'), $data->sourceMessage, array(), 'displayedMessages', $translateInto);
+
+                        echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentTranslation);
+                        echo Yii::t('app', 'Current fallback for {lang}', array('{lang}' => Yii::app()->language)) . ": ";
+                        echo '<br>';
+                        echo nl2br($currentFallbackTranslation);
 
                         /*
                         $category = "video-{$model->id}-subtitles";
