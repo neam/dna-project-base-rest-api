@@ -28,11 +28,11 @@
             'hideFirstAndLast' => false,
         ),
         'columns' => array(
-            'id',
+            //'id',
             array(
                 'name' => 'Source message',
                 'value' => function ($data) use ($translateInto) {
-                        echo $data->sourceMessage;
+                        echo nl2br($data->sourceMessage);
                     },
                 'filter' => true,
             ),
@@ -48,7 +48,9 @@
                         //var_dump(compact("currentFallbackTranslation", "currentTranslation"));
 
                         echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentTranslation);
-                        echo Yii::t('app', 'Current fallback') . ": " . $currentFallbackTranslation;
+                        echo Yii::t('app', 'Current fallback') . ": ";
+                        echo '<br>';
+                        echo nl2br($currentFallbackTranslation);
 
                     },
                 //'filter' => CHtml::listData($model->getMissingTranslations('category'), 'category', 'category'),
