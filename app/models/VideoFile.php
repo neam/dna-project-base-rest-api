@@ -263,14 +263,36 @@ class VideoFile extends BaseVideoFile
     {
         $subtitle_lines = explode("\r\n", $this->_subtitles);
         $parsed = array();
-        $i = 2;
-        while (isset($subtitle_lines[$i])) {
-            $parsed[$subtitle_lines[$i - 2]] = (object) array(
-                "id" => $subtitle_lines[$i - 2],
-                "timestamp" => $subtitle_lines[$i - 1],
-                "sourceMessage" => $subtitle_lines[$i],
-            );
-            $i = $i + 4;
+        $p = new stdClass();
+        foreach ($subtitle_lines as $subtitle_line) {
+
+            // Check for a single number = the id
+            if (!isset($p->id) && intval($subtitle_line) == $subtitle_line) {
+                $p->id = $subtitle_line;
+            } else {
+
+                // Check for 00:00:29,000 --> 00:00:30,160 style row = the timestamp
+                if (!isset($p->timestamp) && strpos($subtitle_line, '-->') !== false) {
+                    $p->timestamp = $subtitle_line;
+                } else {
+
+                    // Check for the actual source message
+                    if (!empty($subtitle_line)) {
+                        if (!isset($p->sourceMessage)) {
+                            $p->sourceMessage = "";
+                        } else {
+                            $p->sourceMessage .= "\n";
+                        }
+                        $p->sourceMessage .= $subtitle_line;
+                    } else {
+                        $parsed[] = $p;
+                        $p = new stdClass();
+                        continue;
+                    }
+                }
+
+            }
+
         }
         return $parsed;
     }
