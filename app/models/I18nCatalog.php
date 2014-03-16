@@ -122,15 +122,74 @@ class I18nCatalog extends BaseI18nCatalog
 
     }
 
+    /**
+     * Converts the parsed po entries to source messages in choiceformat (if plural_form entry) for translation
+     * @return array
+     * @throws CException
+     */
     public function getParsedPoContentsForTranslation()
     {
         $entries = $this->parsePoContents();
         $parsedForTranslation = array();
+
         $i = 1;
-        foreach ($entries as $k => $entry) {
+
+        //$intoLocale = CLocale::getInstance($translateInto);
+        //var_dump($sourceLocale->pluralRules, $intoLocale->pluralRules);
+
+        foreach ($entries as $translationKey => $t) {
+
             $pft = new stdClass();
             $pft->id = $i;
-            $pft->sourceMessage = "foo";
+
+            $entry = array();
+            if (isset($t["msgid_plural"])) {
+                $entry[0] = isset($t["msgid_plural"]) ? $t["msgid_plural"][0] : null;
+                $entry[1] = $t["msgstr"][0];
+                isset($t["msgstr"][1]) ? ($entry[2] = $t["msgstr"][1]) : null;
+                isset($t["msgstr"][2]) ? ($entry[3] = $t["msgstr"][2]) : null;
+            } else {
+                $entry[0] = null;
+                $entry[1] = implode("", $t["msgstr"]);
+            }
+
+            // msg id json format
+            if ($t["msgid"][0] == '' && isset($t["msgid"][1])) {
+                array_shift($t["msgid"]);
+                $msgid = implode("", $t["msgid"]);
+            } else {
+                $msgid = implode("", $t["msgid"]);
+            }
+
+            // source message key based on msd id and context
+            if (isset($t["msgctxt"][0])) {
+                $key = $t["msgctxt"][0] . "\x04" . $msgid;
+            } else {
+                $key = $msgid;
+            }
+
+            // convert to choice format if necessary
+            if (isset($t["msgid_plural"])) {
+                $sourceLocale = CLocale::getInstance($this->source_language);
+                // Po format only supports two plural forms as source message (?) so we hard-code it for two plural forms
+                $pft->sourceMessage = $sourceLocale->pluralRules[0] . "#" . $msgid . "|" . $sourceLocale->pluralRules[1] . "#" . $entry[0];
+            } else {
+                $pft->sourceMessage = $key;
+            }
+
+            /*
+            // do not include fuzzy messages if not wanted
+            if (!empty($t["fuzzy"])) {
+                if (!$fuzzy) {
+                    continue;
+                } else {
+                    // todo
+                    // if (!fuzzy || options . fuzzy) {result}[translationKey] = [t . msgid_plural ? t . msgid_plural : null] . concat(t . msgstr);
+                    throw new \CException("TODO");
+                }
+            }
+            */
+
             $parsedForTranslation[] = $pft;
             $i++;
         }
