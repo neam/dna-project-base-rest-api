@@ -32,14 +32,17 @@
             array(
                 'name' => 'Source message',
                 'value' => function ($data) use ($translateInto) {
+                        echo '<div class="well">';
                         echo nl2br($data->sourceMessage);
-                        echo "<br>";
+                        echo '</div>';
                         echo Yii::t('app', 'Reference') . ": ";
                         echo "<br>";
                         echo "<small>" . implode("<br>", $data->reference) . "</small>";
                         if (isset($data->context)) {
                             echo "<br>";
-                            echo Yii::t('app', 'Context') . ": " . $data->context;
+                            echo Yii::t('app', 'Context') . ": ";
+                            echo "<br>";
+                            echo "<small>" . $data->context . "</small>";
                             echo "<br>";
                             echo Yii::t('app', 'Warning: Multiple contexts within I18n Catalogs are not supported');
                         }
