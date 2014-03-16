@@ -141,6 +141,8 @@ class I18nCatalog extends BaseI18nCatalog
 
             $pft = new stdClass();
             $pft->id = $i;
+            $pft->reference = $t['reference'];
+            $pft->fuzzy = isset($t['fuzzy']) ? $t['fuzzy'] : null;
 
             $entry = array();
             if (isset($t["msgid_plural"])) {
@@ -161,11 +163,9 @@ class I18nCatalog extends BaseI18nCatalog
                 $msgid = implode("", $t["msgid"]);
             }
 
-            // source message key based on msd id and context
+            // source message context as metadata
             if (isset($t["msgctxt"][0])) {
-                $key = $t["msgctxt"][0] . "\x04" . $msgid;
-            } else {
-                $key = $msgid;
+                $pft->context = implode("", $t["msgctxt"]);
             }
 
             // convert to choice format if necessary
@@ -174,7 +174,7 @@ class I18nCatalog extends BaseI18nCatalog
                 // Po format only supports two plural forms as source message (?) so we hard-code it for two plural forms
                 $pft->sourceMessage = $sourceLocale->pluralRules[0] . "#" . $msgid . "|" . $sourceLocale->pluralRules[1] . "#" . $entry[0];
             } else {
-                $pft->sourceMessage = $key;
+                $pft->sourceMessage = $msgid;
             }
 
             /*
