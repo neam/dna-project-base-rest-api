@@ -32,9 +32,25 @@
             array(
                 'name' => 'Source message',
                 'value' => function ($data) use ($translateInto) {
-                        echo '<div class="well">';
-                        echo nl2br($data->sourceMessage);
-                        echo '</div>';
+                        if ($data->plural_forms) {
+                            $intoLocale = CLocale::getInstance($translateInto);
+                            $ct = explode("|", $data->sourceMessage);
+                            foreach ($intoLocale->pluralRules as $k => $pluralRule) {
+                                echo $pluralRule . ":<br/>";
+                                if (isset($ct[$k])) {
+                                    $_ = explode("#", $ct[$k], 2);
+                                    echo '<div class="well">';
+                                    echo nl2br($_[1]);
+                                    echo '</div>';
+                                } else {
+                                    echo Yii::t('app', 'No source message for this plural form');
+                                }
+                            }
+                        } else {
+                            echo '<div class="well">';
+                            echo nl2br($data->sourceMessage);
+                            echo '</div>';
+                        }
                         echo Yii::t('app', 'Reference') . ": ";
                         echo "<br>";
                         echo "<small>" . implode("<br>", $data->reference) . "</small>";
@@ -60,7 +76,16 @@
 
                         //var_dump(compact("currentFallbackTranslation", "currentTranslation"));
 
-                        echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentTranslation);
+                        if ($data->plural_forms) {
+                            $intoLocale = CLocale::getInstance($translateInto);
+                            foreach ($intoLocale->pluralRules as $k => $pluralRule) {
+                                $ct = explode("|", $currentTranslation);
+                                echo $pluralRule . ":<br/>";
+                                echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}][$k]", isset($ct[$k]) ? $ct[$k] : "");
+                            }
+                        } else {
+                            echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentTranslation);
+                        }
                         echo Yii::t('app', 'Current fallback for {lang}', array('{lang}' => Yii::app()->language)) . ": ";
                         echo '<br>';
                         echo nl2br($currentFallbackTranslation);

@@ -173,8 +173,10 @@ class I18nCatalog extends BaseI18nCatalog
                 $sourceLocale = CLocale::getInstance($this->source_language);
                 // Po format only supports two plural forms as source message (?) so we hard-code it for two plural forms
                 $pft->sourceMessage = $sourceLocale->pluralRules[0] . "#" . $msgid . "|" . $sourceLocale->pluralRules[1] . "#" . $entry[0];
+                $pft->plural_forms = true;
             } else {
                 $pft->sourceMessage = $msgid;
+                $pft->plural_forms = false;
             }
 
             /*
