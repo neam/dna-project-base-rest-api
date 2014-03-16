@@ -47,6 +47,9 @@ class I18nCatalog extends BaseI18nCatalog
             }
         }
 
+        // Necessary to be able to set po_contents_{en} from the import step (po_contents_{en} is in i18n step, so this validation rule is not automatically generated)
+        $manualI18nRules[] = array($attribute . '_' . $this->source_language, 'safe', 'on' => implode("-step_import,", array('temporary', 'draft', 'reviewable', 'publishable')) . "-step_import,step_import");
+
         $return = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),

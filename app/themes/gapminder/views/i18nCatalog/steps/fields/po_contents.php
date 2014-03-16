@@ -5,7 +5,7 @@
 ?>
 <?php echo $form->textAreaControlGroup(
     $model,
-    'po_contents',
+    'po_contents_' . $model->source_language,
     array(
         'class' => Html::ITEM_FORM_FIELD_CLASS,
         'rows' => 6,

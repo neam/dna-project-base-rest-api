@@ -135,7 +135,7 @@ class I18nCatalogController extends Controller
             $contents = file_get_contents($fullPath);
 
             // save to post
-            $_POST['I18nCatalog']['po_contents'] = $contents;
+            $_POST['I18nCatalog']['po_contents_' . $model->source_language] = $contents;
 
             // emulate us hitting the save button
             $_POST['save-changes'] = true;
