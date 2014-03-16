@@ -57,7 +57,7 @@ class I18nCatalog extends BaseI18nCatalog
 
                 array('title', 'length', 'min' => 10, 'max' => 200),
                 array('about', 'length', 'min' => 3, 'max' => 400),
-                array('pot_import_media_id', 'validateFile', 'on' => 'publishable'),
+                array('pot_import_media_id', 'validateFile', 'on' => implode("-step_import,", array('temporary', 'draft', 'reviewable', 'publishable')) . "-step_import,step_import"),
                 array('po_contents', 'validatePoContents', 'on' => 'publishable'),
 
             )
