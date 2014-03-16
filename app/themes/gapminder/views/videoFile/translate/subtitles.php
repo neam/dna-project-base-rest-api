@@ -1,7 +1,7 @@
 <?php
 /* @var VideoFileController|ItemController $this */
 /* @var VideoFile|ItemTrait $model */
-/* @var AppActiveForm $form*/
+/* @var AppActiveForm $form */
 ?>
 <?php $messages_to_translate = $model->getParsedSubtitles(); ?>
 <?php $translateInto = $this->workflowData['translateInto']; ?>
@@ -94,6 +94,7 @@
         <li><?php echo Yii::t('subtitles_foo', $message_to_translate['sourceMessage']); ?></li>
     <?php endforeach; ?>
 </ul>
-*/ ?>
+*/
+?>
 <?php publishJs('/themes/frontend/js/popover-focus-caret.js', CClientScript::POS_END); ?>
 <?php //publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END); ?>
