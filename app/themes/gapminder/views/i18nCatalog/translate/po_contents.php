@@ -78,10 +78,18 @@
 
                         if ($data->plural_forms) {
                             $intoLocale = CLocale::getInstance($translateInto);
+                            $ct = explode("|", $currentTranslation);
                             foreach ($intoLocale->pluralRules as $k => $pluralRule) {
-                                $ct = explode("|", $currentTranslation);
+
+                                if (isset($ct[$k])) {
+                                    $_ = explode("#", $ct[$k], 2);
+                                    $currentTranslation = $_[1];
+                                } else {
+                                    $currentTranslation = "";
+                                }
+
                                 echo $pluralRule . ":<br/>";
-                                echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}][$k]", isset($ct[$k]) ? $ct[$k] : "");
+                                echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}][$k]", $currentTranslation);
                             }
                         } else {
                             echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentTranslation);
