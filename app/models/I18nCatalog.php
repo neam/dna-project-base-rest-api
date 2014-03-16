@@ -119,6 +119,21 @@ class I18nCatalog extends BaseI18nCatalog
 
     }
 
+    public function getParsedPoContentsForTranslation()
+    {
+        $entries = $this->parsePoContents();
+        $parsedForTranslation = array();
+        $i = 1;
+        foreach ($entries as $k => $entry) {
+            $pft = new stdClass();
+            $pft->id = $i;
+            $pft->sourceMessage = "foo";
+            $parsedForTranslation[] = $pft;
+            $i++;
+        }
+        return $parsedForTranslation;
+    }
+
     /**
      * Define status-dependent fields
      * @return array
@@ -223,4 +238,14 @@ class I18nCatalog extends BaseI18nCatalog
     {
         return $this->getOptions($this->getPoFiles());
     }
+
+    /**
+     * Returns the translation category for the current model and attribute.
+     * @return string
+     */
+    public function getTranslationCategory($attribute)
+    {
+        return 'i18n_catalog-' . $this->id . '-' . $attribute;
+    }
+
 }
