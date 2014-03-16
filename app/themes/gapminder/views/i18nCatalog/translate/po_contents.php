@@ -58,7 +58,7 @@
                         //var_dump(compact("currentFallbackTranslation", "currentTranslation"));
 
                         echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentTranslation);
-                        echo Yii::t('app', 'Current fallback') . ": ";
+                        echo Yii::t('app', 'Current fallback for {lang}', array('{lang}' => Yii::app()->language)) . ": ";
                         echo '<br>';
                         echo nl2br($currentFallbackTranslation);
 
