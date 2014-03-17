@@ -69,7 +69,6 @@
 
                         $sourceMessage = SourceMessage::ensureSourceMessage($model->getTranslationCategory('po_contents'), $data->sourceMessage, $translateInto);
 
-                        $currentFallbackTranslation = Yii::t($model->getTranslationCategory('po_contents'), $data->sourceMessage, array(), 'displayedMessages', $translateInto);
                         $currentTranslation = Yii::t($model->getTranslationCategory('po_contents'), $data->sourceMessage, array(), 'editedMessages', $translateInto);
 
                         //var_dump(compact("currentFallbackTranslation", "currentTranslation"));
@@ -83,10 +82,12 @@
                         } else {
                             echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentTranslation);
                         }
-                        echo Yii::t('app', 'Current fallback for {lang}', array('{lang}' => Yii::app()->language)) . ": ";
-                        echo '<br>';
-                        echo nl2br($currentFallbackTranslation);
-
+                        if (is_null($currentTranslation)) {
+                            $currentFallbackTranslation = Yii::t($model->getTranslationCategory('po_contents'), $data->sourceMessage, array(), 'displayedMessages', $translateInto);
+                            echo Yii::t('app', 'Current fallback for {lang}', array('{lang}' => Yii::app()->language)) . ": ";
+                            echo '<br>';
+                            echo nl2br($currentFallbackTranslation);
+                        }
                     },
                 //'filter' => CHtml::listData($model->getMissingTranslations('category'), 'category', 'category'),
             ),

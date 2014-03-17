@@ -47,12 +47,15 @@
                         $sourceMessage = SourceMessage::ensureSourceMessage($model->getTranslationCategory('subtitles'), $data->sourceMessage, $translateInto);
 
                         $currentTranslation = Yii::t($model->getTranslationCategory('subtitles'), $data->sourceMessage, array(), 'editedMessages', $translateInto);
-                        $currentFallbackTranslation = Yii::t($model->getTranslationCategory('subtitles'), $data->sourceMessage, array(), 'displayedMessages', $translateInto);
 
                         echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentTranslation);
-                        echo Yii::t('app', 'Current fallback for {lang}', array('{lang}' => Yii::app()->language)) . ": ";
-                        echo '<br>';
-                        echo nl2br($currentFallbackTranslation);
+
+                        if (is_null($currentTranslation)) {
+                            $currentFallbackTranslation = Yii::t($model->getTranslationCategory('subtitles'), $data->sourceMessage, array(), 'displayedMessages', $translateInto);
+                            echo Yii::t('app', 'Current fallback for {lang}', array('{lang}' => Yii::app()->language)) . ": ";
+                            echo '<br>';
+                            echo nl2br($currentFallbackTranslation);
+                        }
 
                         /*
                         $category = "video-{$model->id}-subtitles";
