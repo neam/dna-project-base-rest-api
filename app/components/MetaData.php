@@ -172,7 +172,7 @@ class Metadata
             'PoFileQaState.*' => array('group' => $group, 'role' => 'TODO'),
             'Presentation.*' => array('group' => $group, 'role' => 'TODO'),
             'Profile.*' => array('group' => $group, 'role' => 'TODO'),
-            'Profiles.*' => array('group' => $group, 'role' => 'TODO'), // TODO: Should references to this be replaced with 'Profile.*'?
+            'Profiles.*' => array('group' => $group, 'role' => 'TODO'), // TODO: Should references to 'Profiles.*' be replaced with 'Profile.*'?
             'Role.*' => array('group' => $group, 'role' => 'TODO'),
             'Section.*' => array('group' => $group, 'role' => 'TODO'),
             'SectionContent.*' => array('group' => $group, 'role' => 'TODO'),
