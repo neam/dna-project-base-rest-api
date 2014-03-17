@@ -25,7 +25,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'original_media_id', $input);
+            echo $form->customControlGroup($model, 'original_media_id', $input);
             ?>
 
             <?php
@@ -74,7 +74,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_en', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_en', $input);
             ?>
 
             <?php
@@ -125,7 +125,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_es', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_es', $input);
             ?>
 
             <?php
@@ -172,7 +172,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_hi', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_hi', $input);
             ?>
 
             <?php
@@ -219,7 +219,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_pt', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_pt', $input);
             ?>
 
             <?php
@@ -266,7 +266,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_sv', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_sv', $input);
             ?>
 
             <?php
@@ -313,7 +313,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_de', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_de', $input);
             ?>
 
             <?php
@@ -446,7 +446,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_zh', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_zh', $input);
             ?>
 
             <?php
@@ -493,7 +493,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_ar', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_ar', $input);
             ?>
 
             <?php
@@ -540,7 +540,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_bg', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_bg', $input);
             ?>
 
             <?php
@@ -587,7 +587,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_ca', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_ca', $input);
             ?>
 
             <?php
@@ -634,7 +634,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_cs', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_cs', $input);
             ?>
 
             <?php
@@ -681,7 +681,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_da', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_da', $input);
             ?>
 
             <?php
@@ -728,7 +728,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_en_gb', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_en_gb', $input);
             ?>
 
             <?php
@@ -775,7 +775,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_en_us', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_en_us', $input);
             ?>
 
             <?php
@@ -822,7 +822,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_el', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_el', $input);
             ?>
 
             <?php
@@ -869,7 +869,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_fi', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_fi', $input);
             ?>
 
             <?php
@@ -916,7 +916,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_fil', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_fil', $input);
             ?>
 
             <?php
@@ -963,7 +963,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_fr', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_fr', $input);
             ?>
 
             <?php
@@ -1010,7 +1010,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_hr', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_hr', $input);
             ?>
 
             <?php
@@ -1057,7 +1057,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_hu', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_hu', $input);
             ?>
 
             <?php
@@ -1104,7 +1104,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_id', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_id', $input);
             ?>
 
             <?php
@@ -1151,7 +1151,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_iw', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_iw', $input);
             ?>
 
             <?php
@@ -1198,7 +1198,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_it', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_it', $input);
             ?>
 
             <?php
@@ -1245,7 +1245,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_ja', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_ja', $input);
             ?>
 
             <?php
@@ -1292,7 +1292,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_ko', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_ko', $input);
             ?>
 
             <?php
@@ -1339,7 +1339,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_lt', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_lt', $input);
             ?>
 
             <?php
@@ -1386,7 +1386,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_lv', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_lv', $input);
             ?>
 
             <?php
@@ -1433,7 +1433,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_nl', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_nl', $input);
             ?>
 
             <?php
@@ -1480,7 +1480,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_no', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_no', $input);
             ?>
 
             <?php
@@ -1527,7 +1527,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_pl', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_pl', $input);
             ?>
 
             <?php
@@ -1574,7 +1574,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_pt_br', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_pt_br', $input);
             ?>
 
             <?php
@@ -1621,7 +1621,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_pt_pt', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_pt_pt', $input);
             ?>
 
             <?php
@@ -1668,7 +1668,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_ro', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_ro', $input);
             ?>
 
             <?php
@@ -1715,7 +1715,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_ru', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_ru', $input);
             ?>
 
             <?php
@@ -1762,7 +1762,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_sk', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_sk', $input);
             ?>
 
             <?php
@@ -1809,7 +1809,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_sl', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_sl', $input);
             ?>
 
             <?php
@@ -1856,7 +1856,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_sr', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_sr', $input);
             ?>
 
             <?php
@@ -1903,7 +1903,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_th', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_th', $input);
             ?>
 
             <?php
@@ -1950,7 +1950,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_tr', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_tr', $input);
             ?>
 
             <?php
@@ -1997,7 +1997,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_uk', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_uk', $input);
             ?>
 
             <?php
@@ -2044,7 +2044,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_vi', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_vi', $input);
             ?>
 
             <?php
@@ -2091,7 +2091,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_zh_cn', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_zh_cn', $input);
             ?>
 
             <?php
@@ -2138,7 +2138,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'processed_media_id_zh_tw', $input);
+            echo $form->customControlGroup($model, 'processed_media_id_zh_tw', $input);
             ?>
 
             <?php

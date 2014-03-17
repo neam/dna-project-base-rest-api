@@ -160,7 +160,7 @@ class VideoFileController extends Controller
                 )
             );
         } else {
-            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_ERROR, Yii::t('app', 'Subtitles are missing.'));
+            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_ERROR, Yii::t('app', 'Subtitles are missing or could not be parsed.'));
             $this->redirect(array('/videoFile/edit/info/' . $id, 'translateInto' => $translateInto)); // TODO: Fix URL generation.
         }
     }

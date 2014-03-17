@@ -5,6 +5,7 @@
  *
  * Columns in table "exam_question_alternative" available as properties of the model:
  * @property string $id
+ * @property integer $version
  * @property string $slug
  * @property string $_markup
  * @property integer $correct
@@ -38,12 +39,12 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('slug, _markup, correct, exam_question_id, created, modified, owner_id, node_id, exam_question_alternative_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('correct, owner_id', 'numerical', 'integerOnly' => true),
+                array('version, slug, _markup, correct, exam_question_id, created, modified, owner_id, node_id, exam_question_alternative_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, correct, owner_id', 'numerical', 'integerOnly' => true),
                 array('slug', 'length', 'max' => 255),
                 array('exam_question_id, node_id, exam_question_alternative_qa_state_id', 'length', 'max' => 20),
                 array('_markup, created, modified', 'safe'),
-                array('id, slug, _markup, correct, exam_question_id, created, modified, owner_id, node_id, exam_question_alternative_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, version, slug, _markup, correct, exam_question_id, created, modified, owner_id, node_id, exam_question_alternative_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -80,6 +81,7 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
     {
         return array(
             'id' => Yii::t('model', 'ID'),
+            'version' => Yii::t('model', 'Version'),
             'slug' => Yii::t('model', 'Slug'),
             '_markup' => Yii::t('model', 'Markup'),
             'correct' => Yii::t('model', 'Correct'),
@@ -99,6 +101,7 @@ abstract class BaseExamQuestionAlternative extends ActiveRecord
         }
 
         $criteria->compare('t.id', $this->id, true);
+        $criteria->compare('t.version', $this->version);
         $criteria->compare('t.slug', $this->slug, true);
         $criteria->compare('t._markup', $this->_markup, true);
         $criteria->compare('t.correct', $this->correct);

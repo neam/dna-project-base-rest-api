@@ -21,7 +21,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'group_id', $input);
+            echo $form->customControlGroup($model, 'group_id', $input);
             ?>
 
             <?php

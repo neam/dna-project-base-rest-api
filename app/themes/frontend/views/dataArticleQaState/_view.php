@@ -236,6 +236,14 @@
     <?php echo CHtml::encode($data->about_en_proofed); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('title_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->title_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('title_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->title_proofed); ?>
+    <br />
+
     */
     ?>
     <?php if (Yii::app()->user->checkAccess('DataArticleQaState.*')): ?>

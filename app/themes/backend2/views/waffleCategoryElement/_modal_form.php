@@ -1,5 +1,5 @@
 <?php
-/* @var $this WaffleCategoryElementController */
+/* @var $this WaffleCategoryThingController */
 /* @var $inputSelector jQuery selector to the select-input of the parent form */
 /* @var $pk The primary key field added object */
 /* @var $field The field of the newly added object to be used as the key/label of the parent form select-input */
@@ -22,7 +22,7 @@ $form = $this->beginWidget('\TbActiveForm', array(
     <div class="modal-body">
 
         <?php
-        $this->renderPartial('/waffleCategoryElement/_elements', array(
+        $this->renderPartial('/waffleCategoryThing/_elements', array(
             'model' => $model,
             'form' => $form,
         ));
@@ -32,7 +32,7 @@ $form = $this->beginWidget('\TbActiveForm', array(
     <div class="modal-footer">
         <a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">Cancel</a>
         <?php
-        echo CHtml::ajaxSubmitButton('Save', CHtml::normalizeUrl(array('waffleCategoryElement/editableCreator', 'render' => true)), array(
+        echo CHtml::ajaxSubmitButton('Save', CHtml::normalizeUrl(array('waffleCategoryThing/editableCreator', 'render' => true)), array(
             'dataType' => 'json',
             'type' => 'post',
             'success' => 'function(data, config) {

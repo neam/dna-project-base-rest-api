@@ -36,30 +36,54 @@ class WaffleController extends AppRestController
         $model = $this->getModel();
 
         $response = new stdClass();
+
+        // waffle info
         $response->info = new stdClass();
         $response->info->title = $model->title;
-        /*
-         * TODO: add to data model:
         $response->info->short_title = $model->short_title;
         $response->info->description = $model->description;
+        /*
+         * TODO: get p3 media:
+        $response->info->image_small = $model->;
+        $response->info->image_large = $model->;
         */
+        $response->info->link = $model->link;
+        $response->info->publishing_date = $model->publishing_date;
+        $response->info->url = $model->url;
+        $response->info->license = $model->license;
+        $response->info->license_link = $model->license_link;
+
+        // waffle info publisher
+        $response->info->publisher = new stdClass();
+
+        if (!is_null($model->waffle_publisher_id)) {
+            $response->info->publisher->id = $model->wafflePublisher->ref;
+            $response->info->publisher->name = $model->wafflePublisher->name;
+            $response->info->publisher->description = $model->wafflePublisher->description;
+            $response->info->publisher->url = $model->wafflePublisher->url;
+            /*
+             * TODO: get p3 media:
+            $response->info->publisher->image_small = $model->wafflePublisher->;
+            $response->info->publisher->image_large = $model->wafflePublisher->;
+            */
+        }
 
         $response->definitions = new stdClass();
 
         // waffleCategories
         $columns = array(
             "waffle_category" => array("ref", "_name", "_description"),
-            "waffle_category_element" => array("ref", "_name"),
+            "waffle_category_thing" => array("ref", "_name"),
         );
         $select = U::prefixed_table_fields_wildcard('waffle_category', 'waffle_category', $columns['waffle_category'])
-            . "," . U::prefixed_table_fields_wildcard('waffle_category_element', 'waffle_category_element', $columns['waffle_category_element']);
+            . "," . U::prefixed_table_fields_wildcard('waffle_category_thing', 'waffle_category_thing', $columns['waffle_category_thing']);
         // Prevent double-escaping ("The method will automatically quote the column names unless a column contains some parenthesis (which means the column contains a DB expression).")
         $select .= ", (-1) AS foo";
 
         $command = Yii::app()->db->createCommand()
             ->select($select)
-            ->from("waffle_category_element")
-            ->join("waffle_category", "waffle_category_element.waffle_category_id = waffle_category.id")
+            ->from("waffle_category_thing")
+            ->join("waffle_category", "waffle_category_thing.waffle_category_id = waffle_category.id")
             ->where("waffle_category.waffle_id = :waffle_id");
         $command->params = array("waffle_id" => $model->id);
 
@@ -82,8 +106,8 @@ class WaffleController extends AppRestController
                     $things =& $categories[$r['waffle_category.ref']]->things;
 
                     $thing = new stdClass();
-                    $thing->id = $r['waffle_category_element.ref'];
-                    $thing->name = $r['waffle_category_element._name'];
+                    $thing->id = $r['waffle_category_thing.ref'];
+                    $thing->name = $r['waffle_category_thing._name'];
                     $things[] = $thing;
 
                 }
@@ -151,13 +175,38 @@ class WaffleController extends AppRestController
         $model = $this->getModel();
 
         $response = new stdClass();
+
+        // waffle info
         $response->info = new stdClass();
         $response->info->title = $model->title;
-        /*
-         * TODO: add to data model:
         $response->info->short_title = $model->short_title;
         $response->info->description = $model->description;
+        /*
+         * TODO: get p3 media:
+        $response->info->image_small = $model->;
+        $response->info->image_large = $model->;
         */
+        $response->info->link = $model->link;
+        $response->info->publishing_date = $model->publishing_date;
+        $response->info->url = $model->url;
+        $response->info->license = $model->license;
+        $response->info->license_link = $model->license_link;
+
+        // waffle info publisher
+        $response->info->publisher = new stdClass();
+
+        if (!is_null($model->waffle_publisher_id)) {
+            $response->info->publisher->id = $model->wafflePublisher->ref;
+            $response->info->publisher->name = $model->wafflePublisher->name;
+            $response->info->publisher->description = $model->wafflePublisher->description;
+            $response->info->publisher->url = $model->wafflePublisher->url;
+            /*
+             * TODO: get p3 media:
+            $response->info->publisher->image_small = $model->wafflePublisher->;
+            $response->info->publisher->image_large = $model->wafflePublisher->;
+            */
+        }
+
         $response->definitions = new stdClass();
 
         // waffleCategories
@@ -168,7 +217,7 @@ class WaffleController extends AppRestController
             $translatedCategory->name = $category->name;
             $translatedCategory->description = $category->description;
             $translatedCategory->things = array();
-            foreach ($category->waffleCategoryElements as $categoryElement) {
+            foreach ($category->waffleCategoryThings as $categoryElement) {
                 $translatedCategoryElement = new stdClass();
                 $translatedCategoryElement->id = $categoryElement->ref;
                 $translatedCategoryElement->name = $categoryElement->name;

@@ -50,11 +50,24 @@ class VideoFile extends BaseVideoFile
 
     public function rules()
     {
+
+        // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
+        $attribute = "subtitles";
+        $manualI18nRules = array();
+        foreach (Yii::app()->params["languages"] as $language => $label) {
+            $manualI18nRules[] = array($attribute, 'validateSubtitlesTranslation', 'on' => 'translate_into_' . $language);
+
+            foreach ($this->flowSteps() as $step => $fields) {
+                $manualI18nRules[] = array($attribute, 'validateSubtitlesTranslation', 'on' => "into_$language-step_$step");
+            }
+        }
+
         $return = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
+            $manualI18nRules,
             array(
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable'),
@@ -68,26 +81,41 @@ class VideoFile extends BaseVideoFile
         return $return;
     }
 
-    public function validateThumbnail()
+    public function validateThumbnail($attribute)
     {
-        return !is_null($this->thumbnail_media_id);
+        if (is_null($this->thumbnail_media_id)) {
+            $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
+        }
     }
 
-    public function validateVideoWebm()
+    public function validateVideoWebm($attribute)
     {
-        return !is_null($this->clip_webm_media_id);
+        if (is_null($this->clip_webm_media_id)) {
+            $this->addError($attribute, Yii::t('app', '!validateVideoWebm'));
+        }
     }
 
-    public function validateVideoMp4()
+    public function validateVideoMp4($attribute)
     {
-        return !is_null($this->clip_mp4_media_id);
+        if (is_null($this->clip_mp4_media_id)) {
+            $this->addError($attribute, Yii::t('app', '!validateVideoMp4'));
+        }
     }
 
-    public function validateSubtitles()
+    public function validateSubtitles($attribute)
     {
-        // Should not throw an error
+        // Should not throw an exception or cause an error
         $this->getParsedSubtitles();
-        return !is_null($this->_subtitles);
+
+        if (!is_null($this->_subtitles)) {
+            $this->addError($attribute, Yii::t('app', '!validateSubtitles'));
+        }
+
+    }
+
+    public function validateSubtitlesTranslation($attribute)
+    {
+        // TODO
     }
 
     /**
@@ -96,7 +124,8 @@ class VideoFile extends BaseVideoFile
      */
     public function htmlLength()
     {
-        return true;
+        if (false) {
+        }
     }
 
     /**
@@ -232,16 +261,41 @@ class VideoFile extends BaseVideoFile
 
     public function getParsedSubtitles()
     {
-        $subtitle_lines = explode("\r\n", $this->_subtitles);
+        $subtitle_lines = explode("\n", $this->_subtitles);
+
         $parsed = array();
-        $i = 2;
-        while (isset($subtitle_lines[$i])) {
-            $parsed[$subtitle_lines[$i - 2]] = (object) array(
-                "id" => $subtitle_lines[$i - 2],
-                "timestamp" => $subtitle_lines[$i - 1],
-                "sourceMessage" => $subtitle_lines[$i],
-            );
-            $i = $i + 4;
+        $p = new stdClass();
+        foreach ($subtitle_lines as $subtitle_line) {
+
+            $subtitle_line = trim($subtitle_line, "\r");
+
+            // Check for a single number = the id
+            if (!isset($p->id) && intval($subtitle_line) == $subtitle_line) {
+                $p->id = $subtitle_line;
+            } else {
+
+                // Check for 00:00:29,000 --> 00:00:30,160 style row = the timestamp
+                if (!isset($p->timestamp) && strpos($subtitle_line, '-->') !== false) {
+                    $p->timestamp = $subtitle_line;
+                } else {
+
+                    // Check for the actual source message
+                    if (!empty($subtitle_line)) {
+                        if (!isset($p->sourceMessage)) {
+                            $p->sourceMessage = "";
+                        } else {
+                            $p->sourceMessage .= "\n";
+                        }
+                        $p->sourceMessage .= $subtitle_line;
+                    } else {
+                        $parsed[] = $p;
+                        $p = new stdClass();
+                        continue;
+                    }
+                }
+
+            }
+
         }
         return $parsed;
     }
@@ -418,12 +472,12 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
-     * Returns the translation category for the current model.
+     * Returns the translation category for the current model and attribute.
      * @return string
      */
-    public function getTranslationCategory()
+    public function getTranslationCategory($attribute)
     {
-        return 'video-' . $this->id . '-subtitles';
+        return 'video-' . $this->id . '-' . $attribute;
     }
 
     /**

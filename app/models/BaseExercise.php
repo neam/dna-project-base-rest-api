@@ -61,12 +61,12 @@
  * @property string $slug_zh_tw
  *
  * Relations of table "exercise" available as properties of the model:
+ * @property Account $owner
  * @property ExerciseQaState $exerciseQaState
  * @property Exercise $clonedFrom
  * @property Exercise[] $exercises
  * @property Node $node
  * @property P3Media $thumbnailMedia
- * @property Account $owner
  */
 abstract class BaseExercise extends ActiveRecord
 {
@@ -115,12 +115,12 @@ abstract class BaseExercise extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'exerciseQaState' => array(self::BELONGS_TO, 'ExerciseQaState', 'exercise_qa_state_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Exercise', 'cloned_from_id'),
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
             )
         );
     }

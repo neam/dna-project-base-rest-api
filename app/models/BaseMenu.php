@@ -58,11 +58,11 @@
  * @property string $menu_qa_state_id
  *
  * Relations of table "menu" available as properties of the model:
- * @property Account $owner
+ * @property MenuQaState $menuQaState
  * @property Menu $clonedFrom
  * @property Menu[] $menus
+ * @property Account $owner
  * @property Node $node
- * @property MenuQaState $menuQaState
  */
 abstract class BaseMenu extends ActiveRecord
 {
@@ -111,11 +111,11 @@ abstract class BaseMenu extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'menuQaState' => array(self::BELONGS_TO, 'MenuQaState', 'menu_qa_state_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Menu', 'cloned_from_id'),
                 'menus' => array(self::HAS_MANY, 'Menu', 'cloned_from_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-                'menuQaState' => array(self::BELONGS_TO, 'MenuQaState', 'menu_qa_state_id'),
             )
         );
     }

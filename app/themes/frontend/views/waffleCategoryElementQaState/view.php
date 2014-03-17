@@ -12,7 +12,7 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
     
 </h1>-->
 
-<?php if (Yii::app()->user->checkAccess('WaffleCategoryElementQaState.*')): ?>
+<?php if (Yii::app()->user->checkAccess('WaffleCategoryThingQaState.*')): ?>
     <div class="admin-container hide">
         <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
     </div>

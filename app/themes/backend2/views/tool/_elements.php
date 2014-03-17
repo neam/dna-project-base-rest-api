@@ -27,7 +27,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'i18n_catalog_id', $input);
+            echo $form->customControlGroup($model, 'i18n_catalog_id', $input);
             ?>
 
             <?php

@@ -23,7 +23,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'picture_media_id', $input);
+            echo $form->customControlGroup($model, 'picture_media_id', $input);
             ?>
 
             <?php

@@ -65,11 +65,12 @@ class DataModel
         return array(
             'Waffle' => 'waffle',
             'WaffleCategory' => 'waffle_category',
-            'WaffleCategoryElement' => 'waffle_category_element',
+            'WaffleCategoryThing' => 'waffle_category_thing',
             'WaffleIndicator' => 'waffle_indicator',
             'WaffleUnit' => 'waffle_unit',
             'WaffleTag' => 'waffle_tag',
-            'WaffleDataSource' => 'waffle_data_source'
+            'WaffleDataSource' => 'waffle_data_source',
+            'WafflePublisher' => 'waffle_publisher',
             //'WaffleRole' => 'waffle_role',
         );
 
@@ -247,11 +248,12 @@ class DataModel
             'VideoFile' => 'n==0#Video(s)|n==1#Video|n>1#Videos',
             'Waffle' => 'n==0#Waffle(s)|n==1#Waffle|n>1#Waffles',
             'WaffleCategory' => 'n==0#Category(s)|n==1#Category|n>1#Categories',
-            'WaffleCategoryElement' => 'n==0#Category element(s)|n==1#Category element|n>1#Category elements',
+            'WaffleCategoryThing' => 'n==0#Category thing(s)|n==1#Category thing|n>1#Category things',
             'WaffleIndicator' => 'n==0#Indicator(s)|n==1#Indicator|n>1#Indicators',
             'WaffleUnit' => 'n==0#Unit(s)|n==1#Unit|n>1#Units',
             'WaffleTag' => 'n==0#Tag(s)|n==1#Tag|n>1#Tags',
             'WaffleDataSource' => 'n==0#Data source(s)|n==1#Data source|n>1#Data sources',
+            'WafflePublisher' => 'n==0#Publisher(s)|n==1#Publisher|n>1#Publishers',
         );
     }
 
@@ -263,7 +265,7 @@ class DataModel
         return array(
             'attributes' => array(
                 'Chapter' => array('title', 'about', 'teachers_guide'),
-                'Comment' => array('comment'), // Note: Currently set in Comment.php instead of through here
+                'Comment' => array('comment'),
                 'DataArticle' => array('title', 'about'),
                 'DataSource' => array('title', 'about'),
                 'DownloadLink' => array('title'),
@@ -272,6 +274,7 @@ class DataModel
                 'ExamQuestionAlternative' => array('markup'),
                 'Exercise' => array('title', 'question', 'description'),
                 'HtmlChunk' => array('markup'),
+                'I18nCatalog' => array('po_contents'),
                 'Menu' => array('title'),
                 'Page' => array('title', 'about'),
                 'Section' => array('title', 'menu_label'),
@@ -282,13 +285,14 @@ class DataModel
                 'Tool' => array('title', 'about'),
                 'VectorGraphic' => array('title', 'about'),
                 'VideoFile' => array('title', 'caption', 'about', 'subtitles'),
-                'Waffle' => array('title'),
+                'Waffle' => array('title', 'short_title', 'description'),
                 'WaffleCategory' => array('name', 'short_name', 'description'),
-                'WaffleCategoryElement' => array('name', 'short_name'),
+                'WaffleCategoryThing' => array('name', 'short_name'),
                 'WaffleIndicator' => array('name', 'short_name', 'description'),
                 'WaffleUnit' => array('name', 'short_name', 'description'),
                 'WaffleTag' => array('name', 'short_name', 'description'),
                 'WaffleDataSource' => array('name', 'short_name'),
+                'WafflePublisher' => array('name', 'description'),
             ),
         );
     }

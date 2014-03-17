@@ -58,8 +58,8 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->node_id); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('waffle_category_element_qa_state_id')); ?>:</b>
-<?php echo CHtml::encode($model->waffle_category_element_qa_state_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('waffle_category_thing_qa_state_id')); ?>:</b>
+<?php echo CHtml::encode($model->waffle_category_thing_qa_state_id); ?>
 <br />
 
     */
@@ -87,7 +87,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'id',
-                                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                                 ),
                                 true
                             )
@@ -100,7 +100,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'version',
-                                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                                 ),
                                 true
                             )
@@ -109,10 +109,10 @@ $this->breadcrumbs[] = $model->id;
                         'name' => 'cloned_from_id',
                         'value' => ($model->clonedFrom !== null) ? CHtml::link(
                                     '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
-                                    array('//waffleCategoryElement/view', 'id' => $model->clonedFrom->id),
+                                    array('//waffleCategoryThing/view', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) . ' ' . CHtml::link(
                                     '<i class="icon glyphicon-pencil"></i> ',
-                                    array('//waffleCategoryElement/update', 'id' => $model->clonedFrom->id),
+                                    array('//waffleCategoryThing/update', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -124,7 +124,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'ref',
-                                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                                 ),
                                 true
                             )
@@ -137,7 +137,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => '_name',
-                                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                                 ),
                                 true
                             )
@@ -150,7 +150,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => '_short_name',
-                                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                                 ),
                                 true
                             )
@@ -174,7 +174,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'created',
-                                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                                 ),
                                 true
                             )
@@ -187,7 +187,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'modified',
-                                    'url' => $this->createUrl('/waffleCategoryElement/editableSaver'),
+                                    'url' => $this->createUrl('/waffleCategoryThing/editableSaver'),
                                 ),
                                 true
                             )
@@ -215,13 +215,13 @@ $this->breadcrumbs[] = $model->id;
                         'type' => 'html',
                     ),
                     array(
-                        'name' => 'waffle_category_element_qa_state_id',
-                        'value' => ($model->waffleCategoryElementQaState !== null) ? CHtml::link(
-                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->waffleCategoryElementQaState->itemLabel,
-                                    array('//waffleCategoryElementQaState/view', 'id' => $model->waffleCategoryElementQaState->id),
+                        'name' => 'waffle_category_thing_qa_state_id',
+                        'value' => ($model->waffleCategoryThingQaState !== null) ? CHtml::link(
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->waffleCategoryThingQaState->itemLabel,
+                                    array('//waffleCategoryThingQaState/view', 'id' => $model->waffleCategoryThingQaState->id),
                                     array('class' => '')) . ' ' . CHtml::link(
                                     '<i class="icon glyphicon-pencil"></i> ',
-                                    array('//waffleCategoryElementQaState/update', 'id' => $model->waffleCategoryElementQaState->id),
+                                    array('//waffleCategoryThingQaState/update', 'id' => $model->waffleCategoryThingQaState->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),

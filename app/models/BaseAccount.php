@@ -41,9 +41,10 @@
  * @property VideoFile[] $videoFiles
  * @property Waffle[] $waffles
  * @property WaffleCategory[] $waffleCategories
- * @property WaffleCategoryElement[] $waffleCategoryElements
+ * @property WaffleCategoryThing[] $waffleCategoryThings
  * @property WaffleDataSource[] $waffleDataSources
  * @property WaffleIndicator[] $waffleIndicators
+ * @property WafflePublisher[] $wafflePublishers
  * @property WaffleTag[] $waffleTags
  * @property WaffleUnit[] $waffleUnits
  */
@@ -121,9 +122,10 @@ abstract class BaseAccount extends ActiveRecord
                 'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'owner_id'),
                 'waffles' => array(self::HAS_MANY, 'Waffle', 'owner_id'),
                 'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'owner_id'),
-                'waffleCategoryElements' => array(self::HAS_MANY, 'WaffleCategoryElement', 'owner_id'),
+                'waffleCategoryThings' => array(self::HAS_MANY, 'WaffleCategoryThing', 'owner_id'),
                 'waffleDataSources' => array(self::HAS_MANY, 'WaffleDataSource', 'owner_id'),
                 'waffleIndicators' => array(self::HAS_MANY, 'WaffleIndicator', 'owner_id'),
+                'wafflePublishers' => array(self::HAS_MANY, 'WafflePublisher', 'owner_id'),
                 'waffleTags' => array(self::HAS_MANY, 'WaffleTag', 'owner_id'),
                 'waffleUnits' => array(self::HAS_MANY, 'WaffleUnit', 'owner_id'),
             )

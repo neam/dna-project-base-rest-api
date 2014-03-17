@@ -5,6 +5,8 @@
  *
  * Columns in table "gui_section" available as properties of the model:
  * @property string $id
+ * @property integer $version
+ * @property string $cloned_from_id
  * @property string $title
  * @property string $slug
  * @property string $created
@@ -15,10 +17,12 @@
  * @property string $gui_section_qa_state_id
  *
  * Relations of table "gui_section" available as properties of the model:
- * @property Account $owner
- * @property I18nCatalog $i18nCatalog
- * @property Node $node
  * @property GuiSectionQaState $guiSectionQaState
+ * @property I18nCatalog $i18nCatalog
+ * @property Account $owner
+ * @property Node $node
+ * @property GuiSection $clonedFrom
+ * @property GuiSection[] $guiSections
  */
 abstract class BaseGuiSection extends ActiveRecord
 {
@@ -37,19 +41,19 @@ abstract class BaseGuiSection extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('title, slug, created, modified, i18n_catalog_id, owner_id, node_id, gui_section_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('owner_id', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, title, slug, created, modified, i18n_catalog_id, owner_id, node_id, gui_section_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, owner_id', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id, i18n_catalog_id, node_id, gui_section_qa_state_id', 'length', 'max' => 20),
                 array('title, slug', 'length', 'max' => 255),
-                array('i18n_catalog_id, node_id, gui_section_qa_state_id', 'length', 'max' => 20),
                 array('created, modified', 'safe'),
-                array('id, title, slug, created, modified, i18n_catalog_id, owner_id, node_id, gui_section_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, title, slug, created, modified, i18n_catalog_id, owner_id, node_id, gui_section_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->title;
+        return (string) $this->cloned_from_id;
     }
 
     public function behaviors()
@@ -67,10 +71,12 @@ abstract class BaseGuiSection extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
-                'i18nCatalog' => array(self::BELONGS_TO, 'I18nCatalog', 'i18n_catalog_id'),
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'guiSectionQaState' => array(self::BELONGS_TO, 'GuiSectionQaState', 'gui_section_qa_state_id'),
+                'i18nCatalog' => array(self::BELONGS_TO, 'I18nCatalog', 'i18n_catalog_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'clonedFrom' => array(self::BELONGS_TO, 'GuiSection', 'cloned_from_id'),
+                'guiSections' => array(self::HAS_MANY, 'GuiSection', 'cloned_from_id'),
             )
         );
     }
@@ -79,6 +85,8 @@ abstract class BaseGuiSection extends ActiveRecord
     {
         return array(
             'id' => Yii::t('model', 'ID'),
+            'version' => Yii::t('model', 'Version'),
+            'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'title' => Yii::t('model', 'Title'),
             'slug' => Yii::t('model', 'Slug'),
             'created' => Yii::t('model', 'Created'),
@@ -97,6 +105,8 @@ abstract class BaseGuiSection extends ActiveRecord
         }
 
         $criteria->compare('t.id', $this->id, true);
+        $criteria->compare('t.version', $this->version);
+        $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.title', $this->title, true);
         $criteria->compare('t.slug', $this->slug, true);
         $criteria->compare('t.created', $this->created, true);

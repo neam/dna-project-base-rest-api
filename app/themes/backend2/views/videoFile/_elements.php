@@ -27,7 +27,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'thumbnail_media_id', $input);
+            echo $form->customControlGroup($model, 'thumbnail_media_id', $input);
             ?>
 
             <?php
@@ -74,7 +74,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'clip_webm_media_id', $input);
+            echo $form->customControlGroup($model, 'clip_webm_media_id', $input);
             ?>
 
             <?php
@@ -121,7 +121,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'clip_mp4_media_id', $input);
+            echo $form->customControlGroup($model, 'clip_mp4_media_id', $input);
             ?>
 
             <?php
@@ -170,7 +170,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'subtitles_import_media_id', $input);
+            echo $form->customControlGroup($model, 'subtitles_import_media_id', $input);
             ?>
 
             <?php

@@ -67,6 +67,68 @@ class I18nCatalogController extends Controller
         return true;
     }
 
+    /**
+     * Translate workflow
+     * @param $id
+     * @param $step
+     * @param $translateInto
+     */
+    public function actionTranslate($id, $step, $translateInto)
+    {
+        $this->scenario = "into_$translateInto-step_$step";
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $po_contents = $model->getParsedPoContentsForTranslation();
+        if (isset($_POST['SourceMessage']) && !empty($_POST['SourceMessage'])) {
+
+            foreach ($_POST['SourceMessage'] as $id => $translation) {
+
+                // Handle Plural forms
+                if (is_array($translation)) {
+                    $translation = ChoiceFormatHelper::toString($translation);
+                }
+
+                $message = Message::model()->findByAttributes(array(
+                    'id' => $id,
+                    'language' => $translateInto,
+                ));
+                if (!isset($message)) {
+                    $message = new Message();
+                    $message->id = $id;
+                    $message->language = $translateInto;
+                }
+                $message->translation = $translation;
+                $message->save();
+            }
+        }
+        if (!empty($po_contents)) {
+            $this->performAjaxValidation($model);
+            $this->saveAndContinueOnSuccess($model);
+            $this->populateWorkflowData(
+                $model,
+                "translate",
+                Yii::t(
+                    'app',
+                    'Translate into {translateIntoLanguage}',
+                    array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])
+                ),
+                $translateInto
+            );
+            $stepCaptions = $model->flowStepCaptions();
+            $this->render(
+                '/_item/edit',
+                array(
+                    'model' => $model,
+                    'step' => $step,
+                    'stepCaption' => $stepCaptions[$step],
+                )
+            );
+        } else {
+            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_ERROR, Yii::t('app', 'Subtitles are missing.'));
+            $this->redirect(array('/videoFile/edit/info/' . $id, 'translateInto' => $translateInto)); // TODO: Fix URL generation.
+        }
+    }
+
     public function saveAndContinueOnSuccess($model)
     {
 
@@ -80,7 +142,7 @@ class I18nCatalogController extends Controller
             $contents = file_get_contents($fullPath);
 
             // save to post
-            $_POST['I18nCatalog']['po_contents'] = $contents;
+            $_POST['I18nCatalog']['po_contents_' . $model->source_language] = $contents;
 
             // emulate us hitting the save button
             $_POST['save-changes'] = true;

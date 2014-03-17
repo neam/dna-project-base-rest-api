@@ -12,7 +12,7 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
     
 </h1>-->
 
-<?php if (Yii::app()->user->checkAccess('WaffleCategoryElement.*')): ?>
+<?php if (Yii::app()->user->checkAccess('WaffleCategoryThing.*')): ?>
     <div class="admin-container hide">
         <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
     </div>
@@ -65,8 +65,8 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->node_id); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('waffle_category_element_qa_state_id')); ?>:</b>
-<?php echo CHtml::encode($model->waffle_category_element_qa_state_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('waffle_category_thing_qa_state_id')); ?>:</b>
+<?php echo CHtml::encode($model->waffle_category_thing_qa_state_id); ?>
 <br />
 
     */

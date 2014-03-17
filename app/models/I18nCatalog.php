@@ -47,6 +47,9 @@ class I18nCatalog extends BaseI18nCatalog
             }
         }
 
+        // Necessary to be able to set po_contents_{en} from the import step (po_contents_{en} is in i18n step, so this validation rule is not automatically generated)
+        $manualI18nRules[] = array($attribute . '_' . $this->source_language, 'safe', 'on' => implode("-step_import,", array('temporary', 'draft', 'reviewable', 'publishable')) . "-step_import,step_import");
+
         $return = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),
@@ -57,7 +60,7 @@ class I18nCatalog extends BaseI18nCatalog
 
                 array('title', 'length', 'min' => 10, 'max' => 200),
                 array('about', 'length', 'min' => 3, 'max' => 400),
-                array('pot_import_media_id', 'validateFile', 'on' => 'publishable'),
+                array('pot_import_media_id', 'validateFile', 'on' => implode("-step_import,", array('temporary', 'draft', 'reviewable', 'publishable')) . "-step_import,step_import"),
                 array('po_contents', 'validatePoContents', 'on' => 'publishable'),
 
             )
@@ -76,7 +79,7 @@ class I18nCatalog extends BaseI18nCatalog
     public function validatePoContents($attribute)
     {
 
-        if (!is_null($this->pot_import_media_id)) {
+        if (!is_null($this->po_contents)) {
             $entries = $this->parsePoContents();
             if (!$entries) {
                 $this->addError($attribute, Yii::t('app', 'Could not parse po contents'));
@@ -109,14 +112,85 @@ class I18nCatalog extends BaseI18nCatalog
     {
 
         $poparser = new Sepia\PoParser();
-
-        $p3media = $this->potImportMedia;
-        $fullPath = $p3media->fullPath;
-
-        $entries = $poparser->read($fullPath);
-
+        $entries = $poparser->readVariable($this->po_contents);
         return $entries;
 
+    }
+
+    /**
+     * Converts the parsed po entries to source messages in choiceformat (if plural_form entry) for translation
+     * @return array
+     * @throws CException
+     */
+    public function getParsedPoContentsForTranslation()
+    {
+        $entries = $this->parsePoContents();
+        $parsedForTranslation = array();
+
+        $i = 1;
+
+        //$intoLocale = CLocale::getInstance($translateInto);
+        //var_dump($sourceLocale->pluralRules, $intoLocale->pluralRules);
+
+        foreach ($entries as $translationKey => $t) {
+
+            $pft = new stdClass();
+            $pft->id = $i;
+            $pft->reference = $t['reference'];
+            $pft->fuzzy = isset($t['fuzzy']) ? $t['fuzzy'] : null;
+
+            $entry = array();
+            if (isset($t["msgid_plural"])) {
+                $entry[0] = isset($t["msgid_plural"]) ? $t["msgid_plural"][0] : null;
+                $entry[1] = $t["msgstr"][0];
+                isset($t["msgstr"][1]) ? ($entry[2] = $t["msgstr"][1]) : null;
+                isset($t["msgstr"][2]) ? ($entry[3] = $t["msgstr"][2]) : null;
+            } else {
+                $entry[0] = null;
+                $entry[1] = implode("", $t["msgstr"]);
+            }
+
+            // msg id json format
+            if ($t["msgid"][0] == '' && isset($t["msgid"][1])) {
+                array_shift($t["msgid"]);
+                $msgid = implode("", $t["msgid"]);
+            } else {
+                $msgid = implode("", $t["msgid"]);
+            }
+
+            // source message context as metadata
+            if (isset($t["msgctxt"][0])) {
+                $pft->context = implode("", $t["msgctxt"]);
+            }
+
+            // convert to choice format if necessary
+            if (isset($t["msgid_plural"])) {
+                $sourceLocale = CLocale::getInstance($this->source_language);
+                // Po format only supports two plural forms as source message (?) so we hard-code it for two plural forms
+                $pft->sourceMessage = $sourceLocale->pluralRules[0] . "#" . $msgid . "|" . $sourceLocale->pluralRules[1] . "#" . $entry[0];
+                $pft->plural_forms = true;
+            } else {
+                $pft->sourceMessage = $msgid;
+                $pft->plural_forms = false;
+            }
+
+            /*
+            // do not include fuzzy messages if not wanted
+            if (!empty($t["fuzzy"])) {
+                if (!$fuzzy) {
+                    continue;
+                } else {
+                    // todo
+                    // if (!fuzzy || options . fuzzy) {result}[translationKey] = [t . msgid_plural ? t . msgid_plural : null] . concat(t . msgstr);
+                    throw new \CException("TODO");
+                }
+            }
+            */
+
+            $parsedForTranslation[] = $pft;
+            $i++;
+        }
+        return $parsedForTranslation;
     }
 
     /**
@@ -129,7 +203,9 @@ class I18nCatalog extends BaseI18nCatalog
             'draft' => array(
                 'title',
             ),
-            'reviewable' => array(),
+            'reviewable' => array(
+                'po_contents_' . $this->source_language,
+            ),
             'publishable' => array(
                 'about',
             ),
@@ -149,7 +225,7 @@ class I18nCatalog extends BaseI18nCatalog
             ),
             'i18n' => array(
                 'i18n_category',
-                'po_contents',
+                'po_contents_' . $this->source_language,
             ),
             'import' => array(
                 'pot_import_media_id',
@@ -221,4 +297,14 @@ class I18nCatalog extends BaseI18nCatalog
     {
         return $this->getOptions($this->getPoFiles());
     }
+
+    /**
+     * Returns the translation category for the current model and attribute.
+     * @return string
+     */
+    public function getTranslationCategory($attribute)
+    {
+        return 'i18n_catalog-' . $this->id . '-' . $attribute;
+    }
+
 }

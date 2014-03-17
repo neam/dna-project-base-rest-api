@@ -295,6 +295,16 @@
         <?php echo $form->checkBox($model, 'about_en_proofed'); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->label($model, 'title_approved'); ?>
+        <?php echo $form->checkBox($model, 'title_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'title_proofed'); ?>
+        <?php echo $form->checkBox($model, 'title_proofed'); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>

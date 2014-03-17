@@ -1,6 +1,6 @@
 <?php
 
-class WaffleCategoryElementQaStateController extends Controller
+class WafflePublisherQaStateController extends Controller
 {
     #public $layout='//layouts/column2';
 
@@ -29,7 +29,7 @@ class WaffleCategoryElementQaStateController extends Controller
                     'admin',
                     'delete',
                 ),
-                'roles' => array('WaffleCategoryElementQaState.*'),
+                'roles' => array('WafflePublisherQaState.*'),
             ),
             array(
                 'deny',
@@ -43,7 +43,7 @@ class WaffleCategoryElementQaStateController extends Controller
         parent::beforeAction($action);
         // map identifcationColumn to id
         if (!isset($_GET['id']) && isset($_GET['id'])) {
-            $model = WaffleCategoryElementQaState::model()->find(
+            $model = WafflePublisherQaState::model()->find(
                 'id = :id',
                 array(
                     ':id' => $_GET['id']
@@ -69,13 +69,13 @@ class WaffleCategoryElementQaStateController extends Controller
 
     public function actionCreate()
     {
-        $model = new WaffleCategoryElementQaState;
+        $model = new WafflePublisherQaState;
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'waffle-category-element-qa-state-form');
+        $this->performAjaxValidation($model, 'waffle-publisher-qa-state-form');
 
-        if (isset($_POST['WaffleCategoryElementQaState'])) {
-            $model->attributes = $_POST['WaffleCategoryElementQaState'];
+        if (isset($_POST['WafflePublisherQaState'])) {
+            $model->attributes = $_POST['WafflePublisherQaState'];
 
             try {
                 if ($model->save()) {
@@ -88,8 +88,8 @@ class WaffleCategoryElementQaStateController extends Controller
             } catch (Exception $e) {
                 $model->addError('id', $e->getMessage());
             }
-        } elseif (isset($_GET['WaffleCategoryElementQaState'])) {
-            $model->attributes = $_GET['WaffleCategoryElementQaState'];
+        } elseif (isset($_GET['WafflePublisherQaState'])) {
+            $model->attributes = $_GET['WafflePublisherQaState'];
         }
 
         $this->render('create', array('model' => $model));
@@ -100,10 +100,10 @@ class WaffleCategoryElementQaStateController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $this->performAjaxValidation($model, 'waffle-category-element-qa-state-form');
+        $this->performAjaxValidation($model, 'waffle-publisher-qa-state-form');
 
-        if (isset($_POST['WaffleCategoryElementQaState'])) {
-            $model->attributes = $_POST['WaffleCategoryElementQaState'];
+        if (isset($_POST['WafflePublisherQaState'])) {
+            $model->attributes = $_POST['WafflePublisherQaState'];
 
 
             try {
@@ -124,15 +124,15 @@ class WaffleCategoryElementQaStateController extends Controller
 
     public function actionEditableSaver()
     {
-        $es = new TbEditableSaver('WaffleCategoryElementQaState'); // classname of model to be updated
+        $es = new TbEditableSaver('WafflePublisherQaState'); // classname of model to be updated
         $es->update();
     }
 
     public function actionEditableCreator()
     {
-        if (isset($_POST['WaffleCategoryElementQaState'])) {
-            $model = new WaffleCategoryElementQaState;
-            $model->attributes = $_POST['WaffleCategoryElementQaState'];
+        if (isset($_POST['WafflePublisherQaState'])) {
+            $model = new WafflePublisherQaState;
+            $model->attributes = $_POST['WafflePublisherQaState'];
             if ($model->save()) {
                 echo CJSON::encode($model->getAttributes());
             } else {
@@ -172,17 +172,17 @@ class WaffleCategoryElementQaStateController extends Controller
 
     public function actionIndex()
     {
-        $dataProvider = new CActiveDataProvider('WaffleCategoryElementQaState');
+        $dataProvider = new CActiveDataProvider('WafflePublisherQaState');
         $this->render('index', array('dataProvider' => $dataProvider,));
     }
 
     public function actionAdmin()
     {
-        $model = new WaffleCategoryElementQaState('search');
+        $model = new WafflePublisherQaState('search');
         $model->unsetAttributes();
 
-        if (isset($_GET['WaffleCategoryElementQaState'])) {
-            $model->attributes = $_GET['WaffleCategoryElementQaState'];
+        if (isset($_GET['WafflePublisherQaState'])) {
+            $model->attributes = $_GET['WafflePublisherQaState'];
         }
 
         $this->render('admin', array('model' => $model,));
@@ -190,7 +190,7 @@ class WaffleCategoryElementQaStateController extends Controller
 
     public function loadModel($id)
     {
-        $model = WaffleCategoryElementQaState::model()->findByPk($id);
+        $model = WafflePublisherQaState::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
@@ -199,7 +199,7 @@ class WaffleCategoryElementQaStateController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'waffle-category-element-qa-state-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'waffle-publisher-qa-state-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

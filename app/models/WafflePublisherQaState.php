@@ -1,10 +1,10 @@
 <?php
 
 // auto-loading
-Yii::setPathOfAlias('WaffleCategoryElementQaState', dirname(__FILE__));
-Yii::import('WaffleCategoryElementQaState.*');
+Yii::setPathOfAlias('WafflePublisherQaState', dirname(__FILE__));
+Yii::import('WafflePublisherQaState.*');
 
-class WaffleCategoryElementQaState extends BaseWaffleCategoryElementQaState
+class WafflePublisherQaState extends BaseWafflePublisherQaState
 {
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.

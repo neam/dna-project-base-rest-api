@@ -19,12 +19,12 @@
  * @property string $waffle_indicator_qa_state_id
  *
  * Relations of table "waffle_indicator" available as properties of the model:
+ * @property WaffleIndicatorQaState $waffleIndicatorQaState
  * @property Waffle $waffle
- * @property Account $owner
- * @property Node $node
  * @property WaffleIndicator $clonedFrom
  * @property WaffleIndicator[] $waffleIndicators
- * @property WaffleIndicatorQaState $waffleIndicatorQaState
+ * @property Account $owner
+ * @property Node $node
  */
 abstract class BaseWaffleIndicator extends ActiveRecord
 {
@@ -73,12 +73,12 @@ abstract class BaseWaffleIndicator extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'waffleIndicatorQaState' => array(self::BELONGS_TO, 'WaffleIndicatorQaState', 'waffle_indicator_qa_state_id'),
                 'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'WaffleIndicator', 'cloned_from_id'),
                 'waffleIndicators' => array(self::HAS_MANY, 'WaffleIndicator', 'cloned_from_id'),
-                'waffleIndicatorQaState' => array(self::BELONGS_TO, 'WaffleIndicatorQaState', 'waffle_indicator_qa_state_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             )
         );
     }

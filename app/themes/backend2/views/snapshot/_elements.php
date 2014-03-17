@@ -23,7 +23,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'tool_id', $input);
+            echo $form->customControlGroup($model, 'tool_id', $input);
             ?>
 
             <?php
@@ -76,7 +76,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'thumbnail_media_id', $input);
+            echo $form->customControlGroup($model, 'thumbnail_media_id', $input);
             ?>
 
             <?php

@@ -285,6 +285,46 @@
         <?php echo $form->checkBox($model, 'slug_proofed'); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->label($model, 'title_en_approved'); ?>
+        <?php echo $form->checkBox($model, 'title_en_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'slug_en_approved'); ?>
+        <?php echo $form->checkBox($model, 'slug_en_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'json_import_media_id_approved'); ?>
+        <?php echo $form->checkBox($model, 'json_import_media_id_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'po_contents_approved'); ?>
+        <?php echo $form->checkBox($model, 'po_contents_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'title_en_proofed'); ?>
+        <?php echo $form->checkBox($model, 'title_en_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'slug_en_proofed'); ?>
+        <?php echo $form->checkBox($model, 'slug_en_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'json_import_media_id_proofed'); ?>
+        <?php echo $form->checkBox($model, 'json_import_media_id_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'po_contents_proofed'); ?>
+        <?php echo $form->checkBox($model, 'po_contents_proofed'); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>

@@ -36,8 +36,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'po_contents'); ?>
-        <?php echo $form->textArea($model, 'po_contents', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->label($model, '_po_contents'); ?>
+        <?php echo $form->textArea($model, '_po_contents', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row">

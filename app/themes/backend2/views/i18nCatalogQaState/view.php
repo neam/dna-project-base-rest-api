@@ -254,6 +254,14 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->pot_import_media_id_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_approved')); ?>:</b>
+<?php echo CHtml::encode($model->po_contents_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->po_contents_proofed); ?>
+<br />
+
     */
 ?>
 
@@ -1046,6 +1054,32 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'pot_import_media_id_proofed',
+                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'po_contents_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'po_contents_approved',
+                                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'po_contents_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'po_contents_proofed',
                                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
                                 ),
                                 true

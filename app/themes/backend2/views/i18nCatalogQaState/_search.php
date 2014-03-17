@@ -305,6 +305,16 @@
         <?php echo $form->checkBox($model, 'pot_import_media_id_proofed'); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->label($model, 'po_contents_approved'); ?>
+        <?php echo $form->checkBox($model, 'po_contents_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'po_contents_proofed'); ?>
+        <?php echo $form->checkBox($model, 'po_contents_proofed'); ?>
+    </div>
+
 
     <div class="row buttons">
         <?php echo CHtml::submitButton(Yii::t('crud', 'Search')); ?>

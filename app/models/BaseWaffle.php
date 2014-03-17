@@ -9,7 +9,17 @@
  * @property string $cloned_from_id
  * @property string $_title
  * @property string $slug_en
+ * @property string $_short_title
+ * @property string $_description
+ * @property string $link
+ * @property string $publishing_date
+ * @property string $url
+ * @property string $license
+ * @property string $license_link
+ * @property string $waffle_publisher_id
  * @property integer $json_import_media_id
+ * @property integer $image_small_media_id
+ * @property integer $image_large_media_id
  * @property string $created
  * @property string $modified
  * @property integer $owner_id
@@ -59,6 +69,9 @@
  * @property string $waffle_qa_state_id
  *
  * Relations of table "waffle" available as properties of the model:
+ * @property P3Media $imageSmallMedia
+ * @property P3Media $imageLargeMedia
+ * @property WafflePublisher $wafflePublisher
  * @property Account $owner
  * @property Node $node
  * @property P3Media $jsonImportMedia
@@ -88,12 +101,12 @@ abstract class BaseWaffle extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, json_import_media_id, created, modified, owner_id, node_id, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, json_import_media_id, owner_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, node_id, waffle_qa_state_id', 'length', 'max' => 20),
-                array('_title, slug_en, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
-                array('created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, json_import_media_id, created, modified, owner_id, node_id, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id', 'safe', 'on' => 'search'),
+                array('version, cloned_from_id, _title, slug_en, _short_title, _description, link, publishing_date, url, license, license_link, waffle_publisher_id, json_import_media_id, image_small_media_id, image_large_media_id, created, modified, owner_id, node_id, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, json_import_media_id, image_small_media_id, image_large_media_id, owner_id', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id, waffle_publisher_id, node_id, waffle_qa_state_id', 'length', 'max' => 20),
+                array('_title, slug_en, _short_title, _description, link, url, license, license_link, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
+                array('publishing_date, created, modified', 'safe'),
+                array('id, version, cloned_from_id, _title, slug_en, _short_title, _description, link, publishing_date, url, license, license_link, waffle_publisher_id, json_import_media_id, image_small_media_id, image_large_media_id, created, modified, owner_id, node_id, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -118,6 +131,9 @@ abstract class BaseWaffle extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'imageSmallMedia' => array(self::BELONGS_TO, 'P3Media', 'image_small_media_id'),
+                'imageLargeMedia' => array(self::BELONGS_TO, 'P3Media', 'image_large_media_id'),
+                'wafflePublisher' => array(self::BELONGS_TO, 'WafflePublisher', 'waffle_publisher_id'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'jsonImportMedia' => array(self::BELONGS_TO, 'P3Media', 'json_import_media_id'),
@@ -141,7 +157,17 @@ abstract class BaseWaffle extends ActiveRecord
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
             '_title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
+            '_short_title' => Yii::t('model', 'Short Title'),
+            '_description' => Yii::t('model', 'Description'),
+            'link' => Yii::t('model', 'Link'),
+            'publishing_date' => Yii::t('model', 'Publishing Date'),
+            'url' => Yii::t('model', 'Url'),
+            'license' => Yii::t('model', 'License'),
+            'license_link' => Yii::t('model', 'License Link'),
+            'waffle_publisher_id' => Yii::t('model', 'Waffle Publisher'),
             'json_import_media_id' => Yii::t('model', 'Json Import Media'),
+            'image_small_media_id' => Yii::t('model', 'Image Small Media'),
+            'image_large_media_id' => Yii::t('model', 'Image Large Media'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'owner_id' => Yii::t('model', 'Owner'),
@@ -203,7 +229,17 @@ abstract class BaseWaffle extends ActiveRecord
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
+        $criteria->compare('t._short_title', $this->_short_title, true);
+        $criteria->compare('t._description', $this->_description, true);
+        $criteria->compare('t.link', $this->link, true);
+        $criteria->compare('t.publishing_date', $this->publishing_date, true);
+        $criteria->compare('t.url', $this->url, true);
+        $criteria->compare('t.license', $this->license, true);
+        $criteria->compare('t.license_link', $this->license_link, true);
+        $criteria->compare('t.waffle_publisher_id', $this->waffle_publisher_id);
         $criteria->compare('t.json_import_media_id', $this->json_import_media_id);
+        $criteria->compare('t.image_small_media_id', $this->image_small_media_id);
+        $criteria->compare('t.image_large_media_id', $this->image_large_media_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.owner_id', $this->owner_id);

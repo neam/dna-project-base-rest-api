@@ -61,12 +61,12 @@
  * @property string $slug_zh_tw
  *
  * Relations of table "data_article" available as properties of the model:
+ * @property Account $owner
  * @property DataArticleQaState $dataArticleQaState
  * @property DataArticle $clonedFrom
  * @property DataArticle[] $dataArticles
  * @property Node $node
  * @property P3Media $fileMedia
- * @property Account $owner
  */
 abstract class BaseDataArticle extends ActiveRecord
 {
@@ -115,12 +115,12 @@ abstract class BaseDataArticle extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'dataArticleQaState' => array(self::BELONGS_TO, 'DataArticleQaState', 'data_article_qa_state_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'DataArticle', 'cloned_from_id'),
                 'dataArticles' => array(self::HAS_MANY, 'DataArticle', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
             )
         );
     }

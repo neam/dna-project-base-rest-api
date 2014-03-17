@@ -21,7 +21,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'file_media_id', $input);
+            echo $form->customControlGroup($model, 'file_media_id', $input);
             ?>
 
             <?php

@@ -132,6 +132,14 @@
             <?php echo $form->textFieldRow($model, 'subtitles_en_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'title_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'clip_mp4_media_id_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'clip_webm_media_id_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'clip_mp4_media_id_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'clip_webm_media_id_proofed'); ?>
         </div>
     </div>
     <!-- main inputs -->

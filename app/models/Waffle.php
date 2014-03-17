@@ -96,11 +96,34 @@ class Waffle extends BaseWaffle
             // Waffle attributes
             $this->_title = $waffle->info->title;
             $this->slug_en = $waffle->info->id;
-            /*
-             * TODO: add to data model:
             $this->_short_title = $waffle->info->short_title;
             $this->_description = $waffle->info->description;
+            $this->link = $waffle->info->link;
+            $this->publishing_date = $waffle->info->publishing_date;
+            $this->url = $waffle->info->url;
+            $this->license = $waffle->info->license;
+            $this->license_link = $waffle->info->license_link;
+            /*
+             * TODO: support adding p3 medias through urls
+            $model-> = $waffle->info->image_small;
+            $model-> = $waffle->info->image_large;
             */
+
+            $model = new WafflePublisher();
+            $model->ref = $waffle->info->publisher->id;
+            $model->_name = $waffle->info->publisher->name;
+            $model->_description = $waffle->info->publisher->description;
+            $model->url = $waffle->info->publisher->url;
+            /*
+             * TODO: support adding p3 medias through urls
+            $model-> = $waffle->info->publisher->image_small;
+            $model-> = $waffle->info->publisher->image_large;
+            */
+            if (!$model->save()) {
+                throw new SaveException($model);
+            }
+
+            $this->waffle_publisher_id = $model->id;
             if (!$this->save()) {
                 throw new SaveException($this);
             }
@@ -120,7 +143,7 @@ class Waffle extends BaseWaffle
                 }
                 $waffleCategory = $model;
                 foreach ($category->things as $thing) {
-                    $model = new WaffleCategoryElement();
+                    $model = new WaffleCategoryThing();
                     $model->ref = $thing->id;
                     $model->_name = $thing->name;
                     $model->waffle_category_id = $waffleCategory->id;
@@ -209,8 +232,13 @@ class Waffle extends BaseWaffle
             ),
             'reviewable' => array(
                 'slug_' . $this->source_language,
+                'short_title_' . $this->source_language,
             ),
-            'publishable' => array(),
+            'publishable' => array(
+                'license',
+                'license_link',
+                'waffle_publisher_id',
+            ),
         );
     }
 
@@ -224,6 +252,18 @@ class Waffle extends BaseWaffle
             'info' => array(
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
+                'short_title_' . $this->source_language,
+                'description_' . $this->source_language,
+                'link',
+                'publishing_date',
+                'url',
+                'license',
+                'license_link',
+                'waffle_publisher_id',
+            ),
+            'logo' => array(
+                'image_small_media_id',
+                'image_large_media_id',
             ),
             'import' => array(
                 'json_import_media_id',
@@ -235,6 +275,7 @@ class Waffle extends BaseWaffle
     {
         return array(
             'info' => Yii::t('app', 'Info'),
+            'logo' => Yii::t('app', 'Logo'),
             'import' => Yii::t('app', 'Import'),
         );
     }

@@ -246,6 +246,14 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->about_en_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
+<?php echo CHtml::encode($model->title_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->title_proofed); ?>
+<br />
+
     */
 ?>
 
@@ -1012,6 +1020,32 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'about_en_proofed',
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'title_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_approved',
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'title_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_proofed',
                                     'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
