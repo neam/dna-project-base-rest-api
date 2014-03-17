@@ -261,10 +261,13 @@ class VideoFile extends BaseVideoFile
 
     public function getParsedSubtitles()
     {
-        $subtitle_lines = explode("\r\n", $this->_subtitles);
+        $subtitle_lines = explode("\n", $this->_subtitles);
+
         $parsed = array();
         $p = new stdClass();
         foreach ($subtitle_lines as $subtitle_line) {
+
+            $subtitle_line = trim($subtitle_line, "\r");
 
             // Check for a single number = the id
             if (!isset($p->id) && intval($subtitle_line) == $subtitle_line) {
