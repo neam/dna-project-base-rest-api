@@ -47,7 +47,7 @@
                     'block' => true,
                     'class' => 'upload-btn',
                     'data-toggle' => 'modal',
-                    'data-target' => '#' . $form->id . 'mp4-modal',
+                    'data-target' => '#' . $form->id . '-mp4-modal',
                 )
             ); ?>
             <?php $this->renderPartial(

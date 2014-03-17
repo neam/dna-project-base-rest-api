@@ -1,6 +1,7 @@
-<?php /** @var ActiveRecord|ItemTrait $model */ ?>
-<?php /** @var Controller $this */ ?>
-
+<?php
+/** @var ActiveRecord|ItemTrait $model */
+/** @var Controller|ItemController $this */
+?>
 <div class="row flowbar">
     <div class="span12">
         <h1>
