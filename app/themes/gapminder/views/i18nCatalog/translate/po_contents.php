@@ -33,7 +33,7 @@
                 'name' => 'Source message',
                 'value' => function ($data) use ($model, $translateInto) {
                         if ($data->plural_forms) {
-                            $pluralSourceMessages = ChoiceFormatHelper::toArray($data->sourceMessage);
+                            $pluralSourceMessages = ChoiceFormatHelper::toArray($data->sourceMessage, $model->source_language);
                             foreach ($pluralSourceMessages as $pluralRule => $sourceMessage) {
                                 echo $pluralRule . ":<br/>";
                                 if (!is_null($sourceMessage)) {
@@ -74,7 +74,7 @@
                         //var_dump(compact("currentFallbackTranslation", "currentTranslation"));
 
                         if ($data->plural_forms) {
-                            $pluralTranslations = ChoiceFormatHelper::toArray($currentTranslation);
+                            $pluralTranslations = ChoiceFormatHelper::toArray($currentTranslation, $translateInto);
                             foreach ($pluralTranslations as $pluralRule => $currentTranslation) {
                                 echo $pluralRule . ":<br/>";
                                 echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}][$pluralRule]", $currentTranslation);
