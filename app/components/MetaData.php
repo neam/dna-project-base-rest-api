@@ -104,4 +104,108 @@ class Metadata
         );
     }
 
+    /**
+     * Returns the checkAccess to permissions map.
+     * @return array
+     */
+    static public function checkAccessToPermissionMap()
+    {
+        $group = 'GapminderOrg';
+
+        return array(
+            // Roles and groups
+            'Administrator' => array('group' => $group, 'role' => 'Super Administrator'),
+            'Super Administrator' => array('group' => $group, 'role' => 'Super Administrator'),
+            'Superuser' => array('group' => $group, 'role' => 'Super Administrator'),
+            'Developer' => array('group' => $group, 'role' => 'Developer'),
+            'Group.*' => array('group' => $group, 'role' => 'TODO'), // TODO: Add an appropriate role.
+            'GroupHasAccount.*' => array('group' => $group, 'role' => 'TODO'), // TODO: Add an appropriate role.
+
+            // Item
+            'Item.Edit' => array('group' => $group, 'role' => 'Group Contributor'),
+            'Item.Translate' => array('group' => $group, 'role' => 'Group Translator'),
+            'Item.Preview' => array('group' => $group, 'role' => 'Group Contributor'),
+            'Item.PrepareForReview' => array('group' => $group, 'role' => 'Group Approver'),
+            'Item.PrepareForPublishing' => array('group' => $group, 'role' => 'Group Approver'),
+            'Item.Evaluate' => array('group' => $group, 'role' => 'Group Approver'),
+            'Item.Review' => array('group' => $group, 'role' => 'Group Reviewer'),
+            'Item.Proofread' => array('group' => $group, 'role' => 'Group Translator'),
+            'Item.Browse' => array('group' => $group, 'role' => 'Anonymous'),
+            'Item.Publish' => array('group' => $group, 'role' => 'Group Publisher'),
+            'Item.Replace' => array('group' => $group, 'role' => 'Group Moderator'),
+            'Item.Clone' => array('group' => $group, 'role' => 'Group Contributor'),
+            'Item.Add' => array('group' => $group, 'role' => 'Group Contributor'),
+            'Item.Remove' => array('group' => $group, 'role' => 'Group Contributor'),
+
+            // Models
+            'Account.*' => array('group' => $group, 'role' => 'TODO'),
+            'Action.*' => array('group' => $group, 'role' => 'TODO'),
+            'Changeset.*' => array('group' => $group, 'role' => 'TODO'),
+            'Chapter.*' => array('group' => $group, 'role' => 'TODO'),
+            'ChapterQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'Comment.*' => array('group' => $group, 'role' => 'TODO'),
+            'DataArticle.*' => array('group' => $group, 'role' => 'TODO'),
+            'DataArticleQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'DataSource.*' => array('group' => $group, 'role' => 'TODO'),
+            'DownloadLink.*' => array('group' => $group, 'role' => 'TODO'),
+            'DownloadLinkQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'Edge.*' => array('group' => $group, 'role' => 'TODO'),
+            'GuiSection.*' => array('group' => $group, 'role' => 'TODO'),
+            'GuiSectionQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'ExamQuestion.*' => array('group' => $group, 'role' => 'TODO'),
+            'ExamQuestionAlternative.*' => array('group' => $group, 'role' => 'TODO'),
+            'ExamQuestionAlternativeQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'Exercise.*' => array('group' => $group, 'role' => 'TODO'),
+            'ExerciseQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'EzcWorkflow.*' => array('group' => $group, 'role' => 'TODO'),
+            'HtmlChunk.*' => array('group' => $group, 'role' => 'TODO'),
+            'HtmlChunkQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'I18nCatalog.*' => array('group' => $group, 'role' => 'TODO'),
+            'I18nCatalogQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'Menu.*' => array('group' => $group, 'role' => 'TODO'),
+            'MenuQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'Node.*' => array('group' => $group, 'role' => 'TODO'),
+            'NodeHasGroup.*' => array('group' => $group, 'role' => 'TODO'),
+            'Page.*' => array('group' => $group, 'role' => 'TODO'),
+            'PageQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'PoFile.*' => array('group' => $group, 'role' => 'TODO'),
+            'PoFileQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'Presentation.*' => array('group' => $group, 'role' => 'TODO'),
+            'Profile.*' => array('group' => $group, 'role' => 'TODO'),
+            'Profiles.*' => array('group' => $group, 'role' => 'TODO'), // TODO: Should references to 'Profiles.*' be replaced with 'Profile.*'?
+            'Role.*' => array('group' => $group, 'role' => 'TODO'),
+            'Section.*' => array('group' => $group, 'role' => 'TODO'),
+            'SectionContent.*' => array('group' => $group, 'role' => 'TODO'),
+            'SectionQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'SlideshowFile.*' => array('group' => $group, 'role' => 'TODO'),
+            'SlideshowFileQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'Snapshot.*' => array('group' => $group, 'role' => 'TODO'),
+            'SnapshotQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'SourceMessage.*' => array('group' => $group, 'role' => 'TODO'),
+            'SpreadsheetFile.*' => array('group' => $group, 'role' => 'TODO'),
+            'SpreadsheetFileQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'TextDoc.*' => array('group' => $group, 'role' => 'TODO'),
+            'TextDocQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'Tool.*' => array('group' => $group, 'role' => 'TODO'),
+            'ToolQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'VectorGraphic.*' => array('group' => $group, 'role' => 'TODO'),
+            'VectorGraphicQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'VideoFile.*' => array('group' => $group, 'role' => 'TODO'),
+            'VideoFileQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'Waffle.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleCategory.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleCategoryQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleCategoryElement.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleCategoryElementQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleDataSource.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleDataSourceQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleIndicator.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleIndicatorQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleTag.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleTagQaState.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleUnit.*' => array('group' => $group, 'role' => 'TODO'),
+            'WaffleUnitQaState.*' => array('group' => $group, 'role' => 'TODO'),
+        );
+    }
 }
