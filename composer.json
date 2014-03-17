@@ -112,6 +112,10 @@
             "url":"https://github.com/Gapminder/yii-user"
         },
         {
+            "type":"vcs",
+            "url":"https://github.com/Gapminder/PHP-po-parser"
+        },
+        {
             "type":"composer",
             "url":"http://packages.phundament.com"
         }

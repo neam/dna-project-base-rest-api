@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "dcb790055557dbc9bd216303bbb11095",
+    "hash": "294dbd89947937afd4e93529a282cf27",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1693,17 +1693,18 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/raulferras/PHP-po-parser.git",
-                "reference": "191f21701ecb107221775b36d3a21e7d3a4cf7a5"
+                "url": "https://github.com/Gapminder/PHP-po-parser.git",
+                "reference": "16d1def1f1a2550d3ee8720d7d63474450c43ab4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/raulferras/PHP-po-parser/zipball/191f21701ecb107221775b36d3a21e7d3a4cf7a5",
-                "reference": "191f21701ecb107221775b36d3a21e7d3a4cf7a5",
+                "url": "https://api.github.com/repos/Gapminder/PHP-po-parser/zipball/16d1def1f1a2550d3ee8720d7d63474450c43ab4",
+                "reference": "16d1def1f1a2550d3ee8720d7d63474450c43ab4",
                 "shasum": ""
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*"
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "1.5.*"
             },
             "type": "library",
             "autoload": {
@@ -1711,7 +1712,6 @@
                     "Sepia": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1730,7 +1730,11 @@
                 "i18n",
                 "po"
             ],
-            "time": "2014-01-23 20:08:57"
+            "support": {
+                "issues": "https://github.com/raulferras/PHP-po-parser/issues",
+                "source": "https://github.com/Gapminder/PHP-po-parser/tree/master"
+            },
+            "time": "2014-03-17 04:07:41"
         },
         {
             "name": "sumwai/yii-fixture-helper",
