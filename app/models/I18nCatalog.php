@@ -79,7 +79,7 @@ class I18nCatalog extends BaseI18nCatalog
     public function validatePoContents($attribute)
     {
 
-        if (!is_null($this->pot_import_media_id)) {
+        if (!is_null($this->po_contents)) {
             $entries = $this->parsePoContents();
             if (!$entries) {
                 $this->addError($attribute, Yii::t('app', 'Could not parse po contents'));
@@ -112,12 +112,7 @@ class I18nCatalog extends BaseI18nCatalog
     {
 
         $poparser = new Sepia\PoParser();
-
-        $p3media = $this->potImportMedia;
-        $fullPath = $p3media->fullPath;
-
-        $entries = $poparser->read($fullPath);
-
+        $entries = $poparser->readVariable($this->po_contents);
         return $entries;
 
     }

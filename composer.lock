@@ -608,7 +608,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-03-13 17:22:00"
+            "time": "2014-03-13 22:22:06"
         },
         {
             "name": "motin/yii-owner-behavior",
@@ -656,12 +656,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/php-po2json.git",
-                "reference": "377d0b32714ea31969897397b6a71ab9cda08b1c"
+                "reference": "17bc3006f72619e863706c88132502bd56d2b3ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/php-po2json/zipball/377d0b32714ea31969897397b6a71ab9cda08b1c",
-                "reference": "377d0b32714ea31969897397b6a71ab9cda08b1c",
+                "url": "https://api.github.com/repos/neam/php-po2json/zipball/17bc3006f72619e863706c88132502bd56d2b3ee",
+                "reference": "17bc3006f72619e863706c88132502bd56d2b3ee",
                 "shasum": ""
             },
             "require": {
@@ -697,7 +697,7 @@
                 "source": "https://github.com/neam/php-po2json/tree/develop",
                 "issues": "https://github.com/neam/php-po2json/issues"
             },
-            "time": "2014-03-12 08:42:28"
+            "time": "2014-03-17 04:13:02"
         },
         {
             "name": "neam/yii-i18n-attribute-messages",
