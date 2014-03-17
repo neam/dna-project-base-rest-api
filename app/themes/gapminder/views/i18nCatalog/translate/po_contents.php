@@ -31,16 +31,14 @@
             //'id',
             array(
                 'name' => 'Source message',
-                'value' => function ($data) use ($translateInto) {
+                'value' => function ($data) use ($model, $translateInto) {
                         if ($data->plural_forms) {
-                            $intoLocale = CLocale::getInstance($translateInto);
-                            $ct = explode("|", $data->sourceMessage);
-                            foreach ($intoLocale->pluralRules as $k => $pluralRule) {
+                            $pluralSourceMessages = ChoiceFormatHelper::toArray($data->sourceMessage);
+                            foreach ($pluralSourceMessages as $pluralRule => $sourceMessage) {
                                 echo $pluralRule . ":<br/>";
-                                if (isset($ct[$k])) {
-                                    $_ = explode("#", $ct[$k], 2);
+                                if (!is_null($sourceMessage)) {
                                     echo '<div class="well">';
-                                    echo nl2br($_[1]);
+                                    echo nl2br($sourceMessage);
                                     echo '</div>';
                                 } else {
                                     echo Yii::t('app', 'No source message for this plural form');
@@ -77,19 +75,10 @@
                         //var_dump(compact("currentFallbackTranslation", "currentTranslation"));
 
                         if ($data->plural_forms) {
-                            $intoLocale = CLocale::getInstance($translateInto);
-                            $ct = explode("|", $currentTranslation);
-                            foreach ($intoLocale->pluralRules as $k => $pluralRule) {
-
-                                if (isset($ct[$k])) {
-                                    $_ = explode("#", $ct[$k], 2);
-                                    $currentTranslation = $_[1];
-                                } else {
-                                    $currentTranslation = "";
-                                }
-
+                            $pluralTranslations = ChoiceFormatHelper::toArray($currentTranslation);
+                            foreach ($pluralTranslations as $pluralRule => $currentTranslation) {
                                 echo $pluralRule . ":<br/>";
-                                echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}][$k]", $currentTranslation);
+                                echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}][$pluralRule]", $currentTranslation);
                             }
                         } else {
                             echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentTranslation);

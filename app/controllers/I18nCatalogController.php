@@ -80,17 +80,12 @@ class I18nCatalogController extends Controller
         $model->scenario = $this->scenario;
         $po_contents = $model->getParsedPoContentsForTranslation();
         if (isset($_POST['SourceMessage']) && !empty($_POST['SourceMessage'])) {
-            $intoLocale = CLocale::getInstance($translateInto);
 
             foreach ($_POST['SourceMessage'] as $id => $translation) {
 
                 // Handle Plural forms
                 if (is_array($translation)) {
-                    $_ = array();
-                    foreach ($translation as $k => $t) {
-                        $_[] = $intoLocale->pluralRules[$k] . "#" . $t;
-                    }
-                    $translation = implode("|", $_);
+                    $translation = ChoiceFormatHelper::toString($translation);
                 }
 
                 $message = Message::model()->findByAttributes(array(
