@@ -23,6 +23,8 @@ class AccountController extends Controller
                 'actions' => array(
                     'admin',
                     'toggleRole',
+                    'delete',
+                    'deleteRelations',
                 ),
                 'roles' => array('Super Administrator'),
             ),
@@ -304,12 +306,23 @@ class AccountController extends Controller
         }
     }
 
+    /**
+     * Deletes an account.
+     * @param integer $id the account ID.
+     * @throws CHttpException if unable to delete.
+     */
     public function actionDelete($id)
     {
         if (Yii::app()->request->isPostRequest) {
+            /** @var CDbTransaction $transaction */
+            $transaction = Yii::app()->db->beginTransaction();
+
             try {
+                $this->deleteRelations($id);
                 $this->loadModel($id)->delete();
+                $transaction->commit();
             } catch (Exception $e) {
+                $transaction->rollback();
                 throw new CHttpException(500, $e->getMessage());
             }
 
@@ -323,6 +336,15 @@ class AccountController extends Controller
         } else {
             throw new CHttpException(400, Yii::t('model', 'Invalid request. Please do not repeat this request again.'));
         }
+    }
+
+    /**
+     * Deletes account-related records to satisfy the foreign key constraints.
+     * @param integer $id the account ID.
+     */
+    public function deleteRelations($id)
+    {
+        // TODO: Delete account-related records.
     }
 
     public function actionIndex()
