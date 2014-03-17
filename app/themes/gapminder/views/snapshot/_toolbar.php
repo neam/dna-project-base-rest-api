@@ -33,7 +33,7 @@
                 ));
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Delete"),
-                    "type" => "danger",
+                    "color" => TbHtml::BUTTON_COLOR_DANGER,
                     "icon" => "glyphicon-remove icon-white",
                     "htmlOptions" => array(
                         "submit" => array("delete", "id" => $model->{$model->tableSchema->primaryKey}, "returnUrl" => (Yii::app()->request->getParam("returnUrl")) ? Yii::app()->request->getParam("returnUrl") : $this->createUrl("admin")),
