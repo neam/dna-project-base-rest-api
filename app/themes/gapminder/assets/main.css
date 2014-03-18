@@ -7462,6 +7462,9 @@ td.visible-print {
 .slideshowfile-controller.translate-action .after-flowbar {
   margin-top: 237px;
 }
+.snapshot-controller.edit-action .after-flowbar {
+  margin-top: 218px;
+}
 .snapshot-controller .view-action .map {
   overflow: hidden;
 }
