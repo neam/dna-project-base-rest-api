@@ -81,7 +81,7 @@ class Node extends BaseNode
                      'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'node_id'),
                      'exercises' => array(self::HAS_MANY, 'Exercise', 'node_id'),
                      'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'node_id'),
-                     'poFiles' => array(self::HAS_MANY, 'PoFile', 'node_id'),
+                     'i18nCatalogs' => array(self::HAS_MANY, 'I18nCatalog', 'node_id'),
                      'sections' => array(self::HAS_MANY, 'Section', 'node_id'),
                      'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'node_id'),
                      'snapshots' => array(self::HAS_MANY, 'Snapshot', 'node_id'),
@@ -91,6 +91,7 @@ class Node extends BaseNode
                      'tools' => array(self::HAS_MANY, 'Tool', 'node_id'),
                      'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'node_id'),
                      'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'node_id'),
+                     'waffles' => array(self::HAS_MANY, 'Waffle', 'node_id')
                  ) as $candidateRelation => $relation) {
 
             if (count($this->$candidateRelation) == 1) {
