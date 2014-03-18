@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "294dbd89947937afd4e93529a282cf27",
+    "hash": "b313fec2ee20abc7e7f65a769cb0d9bd",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -270,12 +270,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "4535003aef4ae4e2dd8885c627928f3fd7482d17"
+                "reference": "9045e7531cace008e3c0e030a2a5824c03d8d8fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/4535003aef4ae4e2dd8885c627928f3fd7482d17",
-                "reference": "4535003aef4ae4e2dd8885c627928f3fd7482d17",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/9045e7531cace008e3c0e030a2a5824c03d8d8fe",
+                "reference": "9045e7531cace008e3c0e030a2a5824c03d8d8fe",
                 "shasum": ""
             },
             "require-dev": {
@@ -319,7 +319,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2014-03-04 13:00:13"
+            "time": "2014-03-13 00:01:08"
         },
         {
             "name": "crisu83/yiistrap-widgets",
@@ -581,12 +581,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "a3685a532ecf1b6f88f985058b8083ffce73087d"
+                "reference": "dee2bf794c40d12505af776debb46ee22dbb09e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/a3685a532ecf1b6f88f985058b8083ffce73087d",
-                "reference": "a3685a532ecf1b6f88f985058b8083ffce73087d",
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/dee2bf794c40d12505af776debb46ee22dbb09e6",
+                "reference": "dee2bf794c40d12505af776debb46ee22dbb09e6",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -608,7 +608,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-03-13 22:22:06"
+            "time": "2014-03-18 08:53:01"
         },
         {
             "name": "motin/yii-owner-behavior",
@@ -1219,12 +1219,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3pages.git",
-                "reference": "0.17.2"
+                "reference": "0.17.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/0.17.2",
-                "reference": "0.17.2",
+                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/0.17.3",
+                "reference": "0.17.3",
                 "shasum": ""
             },
             "require": {
@@ -1265,10 +1265,10 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3pages/tree/0.17.2",
+                "source": "https://github.com/schmunk42/p3pages/tree/0.17.3",
                 "issues": "https://github.com/schmunk42/p3pages/issues"
             },
-            "time": "2014-02-24 16:15:21"
+            "time": "2014-03-16 16:21:24"
         },
         {
             "name": "phundament/p3widgets",
@@ -1485,7 +1485,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record access check implementation",
@@ -1516,7 +1516,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
@@ -1569,12 +1569,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/multi-theme.git",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a"
+                "reference": "0.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/f9fcd89e8620be03340cd1d6125ae2522b71719a",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a",
+                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/0.1.1",
+                "reference": "0.1.1",
                 "shasum": ""
             },
             "require": {
@@ -1590,7 +1590,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Theme-Manager class, switch themes by regular expressions on controller routes.",
@@ -2095,12 +2095,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/gii-template-collection.git",
-                "reference": "0d14b2349bb98997b3fca5a9be459b1e1942321a"
+                "reference": "135b7e12bd7fb6f2ec6e72bf8ef3e4e455462642"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/gii-template-collection/zipball/0d14b2349bb98997b3fca5a9be459b1e1942321a",
-                "reference": "0d14b2349bb98997b3fca5a9be459b1e1942321a",
+                "url": "https://api.github.com/repos/motin/gii-template-collection/zipball/135b7e12bd7fb6f2ec6e72bf8ef3e4e455462642",
+                "reference": "135b7e12bd7fb6f2ec6e72bf8ef3e4e455462642",
                 "shasum": ""
             },
             "require": {
@@ -2130,7 +2130,7 @@
             "support": {
                 "source": "https://github.com/motin/gii-template-collection/tree/gcms-yiistrap"
             },
-            "time": "2014-03-04 20:00:02"
+            "time": "2014-03-12 18:27:17"
         },
         {
             "name": "phundament/p3bootstrap",
