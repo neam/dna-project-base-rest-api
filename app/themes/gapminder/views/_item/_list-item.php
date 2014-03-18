@@ -1,9 +1,9 @@
 <?php
-/* @var ActiveRecord|ItemTrait $data */
+/* @var Controller|ItemController $this */
+/* @var ActiveRecord|ItemTrait|QaStateBehavior $data */
 ?>
 <div class="list-item">
-
-        <div class="item-header">
+    <div class="item-header">
         <div class="header-text">
             <h2 class="header-title">
                 <?php echo $data->itemLabel; ?>

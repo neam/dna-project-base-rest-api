@@ -53,11 +53,11 @@
         </div>
     </div>
     <?php $this->endWidget(); ?>
-    <?php
-    // Include previously rendered content for modals. These needs to be rendered outside the <form> since they contain form elements of their own
-    foreach (array_reverse($this->clips->toArray(), true) as $key => $clip) { // Reverse order for recursive modals to render properly
-        if (strpos($key, "modal:") === 0) {
-            echo $clip;
-        }
-    } ?>
+    <?php // Include previously rendered content for modals. ?>
+    <?php // These need to be rendered outside the <form> since they contain form elements of their own. ?>
+    <?php foreach (array_reverse($this->clips->toArray(), true) as $key => $clip): // Reverse order for recursive modals to render properly ?>
+        <?php if (strpos($key, "modal:") === 0): ?>
+            <?php echo $clip; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
 </div>

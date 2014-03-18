@@ -2,19 +2,17 @@
 /* @var Controller|ItemController $this */
 /* @var ActiveRecord|ItemTrait $model */
 /* @var CActiveDataProvider $dataProvider */
-
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
-$this->breadcrumbs[] = Yii::t('app', 'Browse');
-
-/*
+?>
+<?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index'); ?>
+<?php $this->breadcrumbs[] = Yii::t('app', 'Browse'); ?>
+<?php /*
 // TODO: Create a method for setting the menu items, and remove this if statement.
 if (empty($this->menu)) {
     $this->menu = array(
         array('label' => Yii::t('app', 'Create'), 'url' => array('create')),
     );
 }
-*/
-?>
+*/ ?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
     <h1 class="page-title">
         <?php echo Yii::t('model', $model->modelLabel, 2); ?>
