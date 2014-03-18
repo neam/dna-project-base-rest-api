@@ -229,4 +229,26 @@ trait ItemTrait
 
         return $i18nRules;
     }
+
+    /**
+     * Returns an action route.
+     * @param string $action the controller action.
+     * @param string $step
+     * @param string|null $translateInto
+     * @return array
+     */
+    public function getActionRoute($action, $step, $translateInto = null)
+    {
+        $route = array(
+            $action,
+            'id' => $this->{$this->tableSchema->primaryKey},
+            'step' => $step,
+        );
+
+        if (!empty($translateInto)) {
+            $route['translateInto'] = $translateInto;
+        }
+
+        return $route;
+    }
 }
