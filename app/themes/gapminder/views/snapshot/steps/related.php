@@ -7,12 +7,11 @@
     <div class="controls">
         <?php echo Html::hintTooltip($model->getAttributeHint('related')); ?>
 
-        <?php $this->renderPartial(
-            '//gridRelation/_relation_list',
+        <?php $this->widget(
+            '\RelatedItems',
             array(
-                'relation' => 'related',
                 'model' => $model,
-                'label' => 'related items',
+                'relation' => 'related'
             )
         ); ?>
 
@@ -20,8 +19,7 @@
 
     <?php
     // TODO: This could propably be refactored
-    /** @var CDbCriteria $relatedCriteria */
-    $relatedCriteria = Item::model()->searchCriteria();
+    $relatedCriteria = new CDbCriteria();
     $relatedCriteria->addNotInCondition('node_id', $model->getRelatedNodeIds());
     $relatedCriteria->addCondition('node_id != :model_node_id');
     $relatedCriteria->params[':model_node_id'] = $model->node_id;
