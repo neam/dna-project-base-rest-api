@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b313fec2ee20abc7e7f65a769cb0d9bd",
+    "hash": "00000ec2ee20abc7e7f65a769cb0d9bd",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1742,12 +1742,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/yii-fixture-helper.git",
-                "reference": "18478fb13c7704d042d033ffbf73f92508fe35a9"
+                "reference": "57fa2d2c8184aa62b9d0257f28120a5aec8ca9e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/yii-fixture-helper/zipball/18478fb13c7704d042d033ffbf73f92508fe35a9",
-                "reference": "18478fb13c7704d042d033ffbf73f92508fe35a9",
+                "url": "https://api.github.com/repos/motin/yii-fixture-helper/zipball/57fa2d2c8184aa62b9d0257f28120a5aec8ca9e3",
+                "reference": "57fa2d2c8184aa62b9d0257f28120a5aec8ca9e3",
                 "shasum": ""
             },
             "require": {
@@ -1768,7 +1768,7 @@
             "support": {
                 "source": "https://github.com/motin/yii-fixture-helper/tree/master"
             },
-            "time": "2014-01-24 13:43:32"
+            "time": "2014-03-19 16:36:00"
         },
         {
             "name": "symfony/event-dispatcher",
