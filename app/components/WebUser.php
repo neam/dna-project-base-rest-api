@@ -19,8 +19,8 @@ class WebUser extends CWebUser
     {
         return PermissionHelper::hasRole(
             $this->id,
-            PermissionHelper::groupNameToId('GapminderOrg'),
-            PermissionHelper::roleNameToId($roleName)
+            'GapminderOrg',
+            $roleName
         );
     }
 
