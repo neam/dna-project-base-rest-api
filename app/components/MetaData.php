@@ -101,6 +101,7 @@ class Metadata
     {
         return array(
             'GapminderOrg',
+            'GapminderInternal',
         );
     }
 
