@@ -531,7 +531,7 @@ trait ItemController
 
         if (PermissionHelper::groupHasAccount($permissionAttributes)) {
             $model = $this->loadModel($id);
-            $model->changeStatus(null);
+            $model->refreshQaState();
         } else {
             throw new CHttpException(403, Yii::t('error', 'You do not have permission to unpublish items.'));
         }

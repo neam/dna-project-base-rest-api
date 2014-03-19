@@ -126,7 +126,7 @@ class Metadata
             'Item.Translate' => array('group' => $group, 'role' => 'Group Translator'),
             'Item.Preview' => array('group' => $group, 'role' => 'Group Contributor'),
             'Item.PrepareForReview' => array('group' => $group, 'role' => 'Group Approver'),
-            'Item.PrepareForPublishing' => array('group' => $group, 'role' => 'Group Approver'),
+            'Item.PrepareForPublishing' => array('group' => $group, 'role' => 'Group Editor'),
             'Item.Evaluate' => array('group' => $group, 'role' => 'Group Approver'),
             'Item.Review' => array('group' => $group, 'role' => 'Group Reviewer'),
             'Item.Proofread' => array('group' => $group, 'role' => 'Group Translator'),
