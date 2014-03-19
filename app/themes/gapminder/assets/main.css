@@ -7468,6 +7468,9 @@ td.visible-print {
 .snapshot-controller .view-action .map {
   overflow: hidden;
 }
+.tool-controller.edit-action .after-flowbar {
+  margin-top: 218px;
+}
 .videofile-controller.edit-action .after-flowbar {
   margin-top: 218px;
 }

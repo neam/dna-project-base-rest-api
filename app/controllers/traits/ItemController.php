@@ -503,7 +503,7 @@ trait ItemController
                 throw new CException('This item does not validate for the publishable status.');
             }
 
-            $this->changeStatus($model, 'public');
+            $model->changeStatus('public');
         } else {
             throw new CHttpException(403, Yii::t('error', 'You do not have permission to publish items.'));
         }
@@ -531,7 +531,7 @@ trait ItemController
 
         if (PermissionHelper::groupHasAccount($permissionAttributes)) {
             $model = $this->loadModel($id);
-            $this->changeStatus($model, null);
+            $model->changeStatus(null);
         } else {
             throw new CHttpException(403, Yii::t('error', 'You do not have permission to unpublish items.'));
         }
@@ -542,24 +542,6 @@ trait ItemController
         } else {
             $this->redirect(array('continueAuthoring', 'id' => $model->id));
         }
-    }
-
-    /**
-     * Changes a model's QA status.
-     * @param ActiveRecord|ItemTrait $model
-     * @param string $status
-     * @throws SaveException
-     */
-    public function changeStatus($model, $status)
-    {
-        $qaState = $model->qaState();
-        $qaState->status = $status;
-
-        if (!$qaState->save()) {
-            throw new SaveException($qaState);
-        }
-
-        $model->refreshQaState();
     }
 
     public function actionCancel($id)

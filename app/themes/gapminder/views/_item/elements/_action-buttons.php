@@ -45,7 +45,7 @@
                 array(
                     'label' => Yii::t('crud', 'Prepare for publishing'),
                     'color' => $this->action->id === 'prepareForPublishing' ? 'inverse' : null,
-                    'icon' => 'glyphicon-pencil' . ($this->action->id == 'prepareForPublishing' ? ' icon-white' : null),
+                    'icon' => 'glyphicon-pencil' . ($this->action->id === 'prepareForPublishing' ? ' icon-white' : null),
                     'url' => array(
                         'prepareForPublishing',
                         'id' => $model->{$model->tableSchema->primaryKey},

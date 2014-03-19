@@ -86,6 +86,21 @@ trait ItemTrait
         return $statusRules;
     }
 
+    /**
+     * Changes a model's QA status.
+     * @param string $status
+     * @throws SaveException
+     */
+    public function changeStatus($status)
+    {
+        $qaState = $this->qaState();
+        $qaState->status = $status;
+
+        if (!$qaState->save()) {
+            throw new SaveException($qaState);
+        }
+    }
+
     public function validStatusReviewable($attribute, $params)
     {
         if ($this->qaState()->allow_review != 1) {
