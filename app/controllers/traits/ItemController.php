@@ -480,65 +480,86 @@ trait ItemController
     }
 
     /**
-     * TODO: Add saving of changeset
-     * @param $id
+     * Publishes an item.
+     * @param integer $id
      * @throws CException
+     * @throws CHttpException
      * @throws SaveException
      */
     public function actionPublish($id)
     {
-        //$model = $this->saveAndContinueOnSuccess($id);
+        $permissionAttributes = array(
+            'account_id' => Yii::app()->user->id,
+            'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+            'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
+        );
 
-        $model = $this->loadModel($id);
-        if (!$model->qaStateBehavior()->validStatus('publishable')) {
-            throw new CException("This item does not validate for publishable status");
+        if (PermissionHelper::groupHasAccount($permissionAttributes)) {
+            // TODO: Save changeset.
+
+            $model = $this->loadModel($id);
+
+            if (!$model->qaStateBehavior()->validStatus('publishable')) {
+                throw new CException('This item does not validate for the publishable status.');
+            }
+
+            $this->changeStatus($model, 'public');
+        } else {
+            throw new CHttpException(403, Yii::t('error', 'You do not have permission to publish items.'));
         }
 
-        $qaState = $model->qaState();
-
-        // save status change
-        throw new CException("TODO: save status change - group dependent");
-        /*
-        $qaState->status = 'publishable';
-        if (!$qaState->save()) {
-            throw new SaveException($qaState);
-        }
-        */
-        $model->refreshQaState();
-
-        // redirect
+        // Redirect
         if (isset($_GET['returnUrl'])) {
             $this->redirect($_GET['returnUrl']);
         } else {
             $this->redirect(array('continueAuthoring', 'id' => $model->id));
         }
-
     }
 
+    /**
+     * Unpublishes an item.
+     * @param integer $id
+     * @throws CHttpException
+     */
     public function actionUnpublish($id)
     {
-        //$model = $this->saveAndContinueOnSuccess($id);
+        $permissionAttributes = array(
+            'account_id' => Yii::app()->user->id,
+            'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+            'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
+        );
 
-        $model = $this->loadModel($id);
-        $qaState = $model->qaState();
-
-        // save status change
-        throw new CException("TODO: save status change - group dependent");
-        /*
-        $qaState->status = null;
-        if (!$qaState->save()) {
-            throw new SaveException($qaState);
+        if (PermissionHelper::groupHasAccount($permissionAttributes)) {
+            $model = $this->loadModel($id);
+            $this->changeStatus($model, null);
+        } else {
+            throw new CHttpException(403, Yii::t('error', 'You do not have permission to unpublish items.'));
         }
-        */
-        $model->refreshQaState();
 
-        // redirect
+        // Redirect
         if (isset($_GET['returnUrl'])) {
             $this->redirect($_GET['returnUrl']);
         } else {
             $this->redirect(array('continueAuthoring', 'id' => $model->id));
         }
+    }
 
+    /**
+     * Changes a model's QA status.
+     * @param ActiveRecord|ItemTrait $model
+     * @param string $status
+     * @throws SaveException
+     */
+    public function changeStatus($model, $status)
+    {
+        $qaState = $model->qaState();
+        $qaState->status = $status;
+
+        if (!$qaState->save()) {
+            throw new SaveException($qaState);
+        }
+
+        $model->refreshQaState();
     }
 
     public function actionCancel($id)
