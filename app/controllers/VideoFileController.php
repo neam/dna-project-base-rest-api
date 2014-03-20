@@ -37,7 +37,6 @@ class VideoFileController extends Controller
                 'actions' => array(
                     'index',
                     'view',
-                    'edit',
                 ),
                 'users' => array('@'),
             ),

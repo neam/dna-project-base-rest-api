@@ -7358,6 +7358,9 @@ td.visible-print {
 .item-controller.browse-action .item-actions .action-buttons .btn-group {
   margin: 5px 0 0 5px;
 }
+.item-controller.prepareforpublishing-action .after-flowbar {
+  margin-top: 238px;
+}
 .item-controller.translate-action .translate-subtitles .column-subtitle {
   width: 45%;
 }
