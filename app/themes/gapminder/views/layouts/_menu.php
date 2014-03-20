@@ -75,7 +75,7 @@
                                 array(
                                     'label' => Yii::t('app', 'List'),
                                     'icon' => 'list',
-                                    'url' => array('/user'),
+                                    'url' => array('/account/admin'),
                                     'visible' => Yii::app()->user->checkAccess('Superuser')
                                 ),
                                 '---',

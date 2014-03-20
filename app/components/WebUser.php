@@ -36,13 +36,20 @@ class WebUser extends CWebUser
         $map = MetaData::checkAccessToPermissionMap();
 
         if (isset($map[$operation])) {
-            return PermissionHelper::groupHasAccount(
-                array(
-                    'account_id' => $this->id,
-                    'group_id' => PermissionHelper::groupNameToId($map[$operation]['group']),
-                    'role_id' => PermissionHelper::roleNameToId($map[$operation]['role']),
-                )
-            );
+
+            $roles = array();
+            foreach ($map[$operation]['roles'] as $role) {
+                $roles[] = PermissionHelper::roleNameToId($role);
+            }
+
+            $criteria = new CDbCriteria();
+            $criteria->addInCondition('role_id', $roles);
+            $criteria->addCondition('account_id = :userId');
+            $criteria->params[':userId'] = $this->id;
+            $criteria->addCondition('group_id = :groupId'); // TODO: should be inCondition later
+            $criteria->params[':groupId'] = PermissionHelper::groupNameToId($map[$operation]['group']);
+
+            return GroupHasAccount::model()->find($criteria) !== null;
         }
 
         return parent::checkAccess($operation, $params, $allowCaching);
