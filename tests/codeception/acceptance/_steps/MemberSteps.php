@@ -3,6 +3,7 @@ namespace WebGuy;
 
 class MemberSteps extends \WebGuy
 {
+
     function login($username, $password)
     {
         $I = $this;
@@ -19,6 +20,12 @@ class MemberSteps extends \WebGuy
     }
 
     function register()
+    {
+        $I = $this;
+
+    }
+
+    function registerMax()
     {
         $I = $this;
 
