@@ -105,9 +105,11 @@ class VideoFile extends BaseVideoFile
     public function validateSubtitles($attribute)
     {
         // Should not throw an exception or cause an error
-        $this->getParsedSubtitles();
+        if (!isset($this->_subtitles)) {
+            $this->getParsedSubtitles();
+        }
 
-        if (!is_null($this->_subtitles)) {
+        if (is_null($this->_subtitles)) {
             $this->addError($attribute, Yii::t('app', '!validateSubtitles'));
         }
 
@@ -170,7 +172,6 @@ class VideoFile extends BaseVideoFile
             ),
             'subtitles' => array(
                 'subtitles_' . $this->source_language,
-                'subtitles_import_media_id',
             ),
             'related' => array(
                 'related',
