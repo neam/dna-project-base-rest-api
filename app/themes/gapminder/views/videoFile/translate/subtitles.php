@@ -22,6 +22,9 @@
         'id' => 'message-grid',
         'dataProvider' => $dataProvider,
         //'filter' => $model,
+        'htmlOptions' => array(
+            'class' => 'translate-subtitles',
+        ),
         'template' => '{pager}{items}{pager}',
         'pager' => array(
             'class' => '\TbPager',
@@ -31,6 +34,9 @@
             'id',
             array(
                 'name' => 'Subtitle',
+                'htmlOptions' => array(
+                    'class' => 'column-subtitle',
+                ),
                 'value' => function ($data) use ($translateInto) {
                         echo $data->timestamp;
                         echo '<br>';
@@ -40,6 +46,9 @@
             ),
             array(
                 'name' => 'Translation',
+                'htmlOptions' => array(
+                    'class' => 'column-translation',
+                ),
                 'value' => function ($data) use ($model, $form, $translateInto) {
 
                         // TODO: Clean up.
