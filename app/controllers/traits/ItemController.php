@@ -1045,4 +1045,35 @@ trait ItemController
             ))
             : '';
     }
+
+    /**
+     * Checks if the user can edit source language fields.
+     * @return boolean
+     */
+    public function canEditSourceLanguage()
+    {
+        if ($this->action->id === 'translate') {
+            if (Yii::app()->user->isAdmin) {
+                return true;
+            }
+
+            $group = 'GapminderOrg';
+
+            $isEditor = PermissionHelper::groupHasAccount(array(
+                'account_id' => $this->id,
+                'group_id' => PermissionHelper::groupNameToId($group),
+                'role_id' => PermissionHelper::roleNameToId('Group Editor'),
+            ));
+
+            $isTranslator = PermissionHelper::groupHasAccount(array(
+                'account_id' => $this->id,
+                'group_id' => PermissionHelper::groupNameToId($group),
+                'role_id' => PermissionHelper::roleNameToId('Group Translator'),
+            ));
+
+            return $isEditor && !$isTranslator;
+        } else {
+            return true;
+        }
+    }
 }

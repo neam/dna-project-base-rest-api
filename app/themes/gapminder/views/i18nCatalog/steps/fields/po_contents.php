@@ -8,6 +8,7 @@
     'po_contents_' . $model->source_language,
     array(
         'class' => Html::ITEM_FORM_FIELD_CLASS,
+        'disabled' => !$this->canEditSourceLanguage(),
         'rows' => 6,
         'cols' => 50,
         'labelOptions' => array(

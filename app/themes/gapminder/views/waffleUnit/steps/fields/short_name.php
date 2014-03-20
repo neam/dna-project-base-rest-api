@@ -8,13 +8,13 @@
     'short_name_' . $model->source_language,
     array(
         'class' => Html::ITEM_FORM_FIELD_CLASS,
+        'disabled' => !$this->canEditSourceLanguage(),
         'maxlength' => 255,
         'labelOptions' => array(
             'label' => Html::attributeLabelWithTooltip($model, 'short_name_' . $model->source_language, 'short_name'),
         ),
     )
 ); ?>
-
 <?php if ($this->workflowData['translateInto']): ?>
     <?php echo $form->textFieldControlGroup(
         $model,

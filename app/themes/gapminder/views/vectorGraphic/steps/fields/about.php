@@ -8,6 +8,7 @@
     'about_en',
     array(
         'class' => Html::ITEM_FORM_FIELD_CLASS,
+        'disabled' => !$this->canEditSourceLanguage(),
         'rows' => 6,
         'cols' => 50,
         'labelOptions' => array(

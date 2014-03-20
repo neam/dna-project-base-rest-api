@@ -1,10 +1,11 @@
 <?php
 /* @var VideoFileController|ItemController $this */
 /* @var VideoFile $model */
-/* @var AppActiveForm */
+/* @var AppActiveForm|TbActiveForm $form */
 ?>
 <?php echo $form->textFieldControlGroup($model, 'title_' . $model->source_language, array(
     'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-from-1',
+    'disabled' => !$this->canEditSourceLanguage(),
     'maxlength' => 255,
     'label' => Html::attributeLabelWithTooltip($model, 'title_' . $model->source_language, 'title'),
 )); ?>

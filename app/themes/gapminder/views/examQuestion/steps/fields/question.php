@@ -1,13 +1,14 @@
 <?php
 /* @var ExamQuestionController|ItemController $this */
 /* @var ExamQuestion|ItemTrait $model */
-/* @var AppActiveForm $form */
+/* @var AppActiveForm|TbActiveForm $form */
 ?>
 <?php echo $form->textFieldControlGroup(
     $model,
     'question_' . $model->source_language,
     array(
         'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-from-1',
+        'disabled' => !$this->canEditSourceLanguage(),
         'maxlength' => 200,
         'labelOptions' => array(
             'label' => Html::attributeLabelWithTooltip($model, 'question_' . $model->source_language, 'question'),

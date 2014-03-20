@@ -8,6 +8,7 @@
     'title_' . $model->source_language,
     array(
         'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-from-1',
+        'disabled' => !$this->canEditSourceLanguage(),
         'maxlength' => 255,
         'labelOptions' => array(
             'label' => Html::attributeLabelWithTooltip($model, 'title_' . $model->source_language, 'title'),
@@ -29,6 +30,7 @@
     'slug_' . $model->source_language,
     array(
         'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-1',
+        'disabled' => !$this->canEditSourceLanguage(),
         'maxlength' => 255,
         'labelOptions' => array(
             'label' => Html::attributeLabelWithTooltip($model, 'slug_' . $model->source_language, 'slug'),

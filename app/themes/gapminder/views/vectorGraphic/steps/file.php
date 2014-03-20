@@ -35,7 +35,14 @@
 </div>
 <div class="file-field-2cols">
     <div class="field-column">
-        <?php echo $form->select2ControlGroup($model, 'processed_media_id_' . $model->source_language, $model->getVectorGraphicOptions()); ?>
+        <?php echo $form->select2ControlGroup(
+            $model,
+            'processed_media_id_' . $model->source_language,
+            $model->getVectorGraphicOptions(),
+            array(
+                'disabled' => !$this->canEditSourceLanguage(),
+            )
+        ); ?>
     </div>
     <div class="field-column">
         <div class="form-group">
