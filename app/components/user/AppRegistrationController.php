@@ -16,9 +16,6 @@ class AppRegistrationController extends RegistrationController
         $model = new AppRegistrationForm;
         $profile = new AppProfile;
 
-        // Assume that the user's primary language is the currently selected site-language
-        $profile->language1 = Yii::app()->language;
-
         // ajax validator
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'registration-form') {
             echo UActiveForm::validate(array($model, $profile));
