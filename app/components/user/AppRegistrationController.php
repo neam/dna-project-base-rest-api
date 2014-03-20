@@ -82,7 +82,7 @@ class AppRegistrationController extends RegistrationController
                                 Yii::app()->user->setFlash('registration',
                                     UserModule::t("Thank you for your registration. Please check your email or login."));
                             } else {
-                                $this->redirect('/user/registration/registrationSuccess');
+                                $this->redirect(array('/user/registration/registrationSuccess'));
                             }
 
                             $this->refresh();
