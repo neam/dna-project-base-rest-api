@@ -581,12 +581,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "e2ede533a1841cf59260c2c8d58fc17e78f437e2"
+                "reference": "0ef15faae274dc7630c88f79883ecf9839d79765"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/e2ede533a1841cf59260c2c8d58fc17e78f437e2",
-                "reference": "e2ede533a1841cf59260c2c8d58fc17e78f437e2",
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/0ef15faae274dc7630c88f79883ecf9839d79765",
+                "reference": "0ef15faae274dc7630c88f79883ecf9839d79765",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -608,7 +608,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-03-18 09:21:14"
+            "time": "2014-03-20 10:05:58"
         },
         {
             "name": "motin/yii-owner-behavior",
@@ -1485,7 +1485,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record access check implementation",
@@ -1516,7 +1516,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
@@ -1569,12 +1569,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/multi-theme.git",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a"
+                "reference": "0.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/f9fcd89e8620be03340cd1d6125ae2522b71719a",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a",
+                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/0.1.1",
+                "reference": "0.1.1",
                 "shasum": ""
             },
             "require": {
@@ -1590,7 +1590,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Theme-Manager class, switch themes by regular expressions on controller routes.",
