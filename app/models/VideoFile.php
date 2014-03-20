@@ -140,9 +140,10 @@ class VideoFile extends BaseVideoFile
                 'slug_' . $this->source_language,
             ),
             'reviewable' => array(
-                $this->getMediaIdAttribute(),
+                'clip_mp4_media_id',
             ),
             'publishable' => array(
+                'clip_webm_media_id',
                 'about_' . $this->source_language,
             ),
         );
@@ -164,7 +165,7 @@ class VideoFile extends BaseVideoFile
             ),
             'files' => array(
                 'clip_webm_media_id',
-                // TODO: Add clip_mp4_media_id
+                'clip_mp4_media_id',
             ),
             'subtitles' => array(
                 'subtitles_' . $this->source_language,
@@ -238,15 +239,6 @@ class VideoFile extends BaseVideoFile
     public function getMediaId()
     {
         return !empty($this->clip_webm_media_id) ? $this->clip_webm_media_id : $this->clip_mp4_media_id;
-    }
-
-    /**
-     * Returns the media ID attribute name ('clip_webm_media_id' or 'clip_mp4_media_id').
-     * @return string
-     */
-    public function getMediaIdAttribute()
-    {
-        return isset($this->clip_webm_media_id) ? 'clip_webm_media_id' : 'clip_mp4_media_id';
     }
 
     /**
