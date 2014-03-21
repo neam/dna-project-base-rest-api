@@ -46,6 +46,7 @@
                             'icon' => Yii::app()->user->checkAccess('Superuser') ?
                                     'warning-sign' :
                                     'user',
+                            'id' => 'accountMenuLink',
                             'items' => array(
                                 array('label' => Yii::t('app', 'User')),
                                 array(
@@ -83,7 +84,8 @@
                                     'label' => Yii::t('app', 'Logout'),
                                     'icon' => 'lock',
                                     'url' => array('/site/logout'),
-                                    'visible' => !Yii::app()->user->isGuest
+                                    'visible' => !Yii::app()->user->isGuest,
+                                    'id' => 'logoutLink',
                                 ),
                             )
                         ),
@@ -91,7 +93,8 @@
                             'label' => Yii::t('app', 'Login'),
                             'url' => Yii::app()->user->loginUrl,
                             'visible' => Yii::app()->user->isGuest,
-                            'icon' => 'lock'
+                            'icon' => 'lock',
+                            'id' => 'loginLink',
                         ),
                     ),
                 ),

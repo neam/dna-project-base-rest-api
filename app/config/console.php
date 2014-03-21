@@ -121,6 +121,20 @@ $consoleConfig = array(
             'themePath' => 'application.themes',
             'themeName' => 'backend2',
         ),
+        'mysqldump' => array(
+            'class' => 'vendor.crisu83.yii-consoletools.commands.MysqldumpCommand',
+            'basePath' => dirname(__DIR__) . '/..',
+            'dumpPath' => '/tests/codeception/_data',
+            'connectionID' => 'dbTest',
+        ),
+        'generate' => array(
+            'class' => '\crisu83\yii_caviar\GenerateCommand',
+            'enableNamespaces' => false,
+            'defaultTemplate' => 'noNamespaces',
+            'templates' => array(
+                'noNamespaces' => 'vendor.crisu83.yii-caviar.templates.no-namespaces',
+            ),
+        ),
     ),
     'components' => array(
         'fixture-helper'      => array(

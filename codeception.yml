@@ -15,4 +15,6 @@ modules:
             dsn: 'mysql:host=127.0.0.1;dbname=gscms_test'
             user: 'gcms_test'
             password: 'gcms_test'
-            dump: tests/_data/test-dump.sql
+            dump: tests/codeception/_data/dump.sql
+            populate: true
+            cleanup: true
