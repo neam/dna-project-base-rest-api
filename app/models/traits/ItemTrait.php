@@ -266,4 +266,14 @@ trait ItemTrait
 
         return $route;
     }
+
+    /**
+     * Checks an item models access relative to the user.
+     * @param string $operation
+     * @return boolean
+     */
+    public function checkAccess($operation)
+    {
+        return Yii::app()->user->checkAccess(get_class($this) . '.' . $operation, array('id' => $this->{$this->tableSchema->primaryKey}));
+    }
 }

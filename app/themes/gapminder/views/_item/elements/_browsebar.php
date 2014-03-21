@@ -30,7 +30,7 @@ Yii::app()->clientScript->registerScript(
                     "label" => Yii::t("model", "Add"),
                     "icon" => "glyphicon-plus",
                     "url" => array("add"),
-                    "visible" => Yii::app()->user->checkAccess('Item.Add')
+                    "visible" => Yii::app()->user->checkAccess('Add')
                 )
             ); ?>
         </div>

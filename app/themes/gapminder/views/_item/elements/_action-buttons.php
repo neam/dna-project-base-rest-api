@@ -33,7 +33,7 @@
                         'id' => $model->{$model->tableSchema->primaryKey},
                         'step' => $this->firstFlowStep($model),
                     ),
-                    'visible' => Yii::app()->user->checkAccess('Item.PrepareForReview'),
+                    'visible' => $model->checkAccess('PrepareForReview'),
                 )
             ); ?>
         <?php else: ?>
@@ -51,14 +51,14 @@
                         'id' => $model->{$model->tableSchema->primaryKey},
                         'step' => $this->firstFlowStep($model),
                     ),
-                    'visible' => Yii::app()->user->checkAccess('Item.PrepareForPublishing'),
+                    'visible' => $model->checkAccess('PrepareForPublishing'),
                 )
             ); ?>
         <?php else: ?>
             <?php // TODO: Action to prevent publishing. ?>
         <?php endif; ?>
     </div>
-    <?php if (Yii::app()->user->checkAccess('Item.Edit')): ?>
+    <?php if ($model->checkAccess('Edit')): ?>
         <div class="btn-group">
             <?php if ($model->hasGroup()): ?>
                 <?php echo TbHtml::linkButton(
@@ -99,7 +99,7 @@
                     'id' => $model->{$model->tableSchema->primaryKey},
                     'step' => $this->firstFlowStep($model),
                 ),
-                'visible' => Yii::app()->user->checkAccess('Item.Evaluate'),
+                'visible' => $model->checkAccess('Evaluate'),
             )
         ); ?>
         <?php $this->widget(
@@ -112,7 +112,7 @@
                     'review',
                     'id' => $model->{$model->tableSchema->primaryKey},
                 ),
-                'visible' => Yii::app()->user->checkAccess('Item.Review'),
+                'visible' => $model->checkAccess('Review'),
             )
         ); ?>
         <?php $this->widget(
@@ -125,7 +125,7 @@
                     'proofRead',
                     'id' => $model->{$model->tableSchema->primaryKey},
                 ),
-                'visible' => Yii::app()->user->checkAccess('Item.Proofread'),
+                'visible' => $model->checkAccess('Proofread'),
             )
         ); ?>
         <?php $this->widget(
@@ -138,7 +138,7 @@
                     'translationOverview',
                     'id' => $model->{$model->tableSchema->primaryKey},
                 ),
-                'visible' => Yii::app()->user->checkAccess('Item.Translate'),
+                'visible' => $model->checkAccess('Translate'),
             )
         ); ?>
     </div>
@@ -158,7 +158,7 @@
                             'unpublish',
                             'id' => $model->{$model->tableSchema->primaryKey},
                         ),
-                        'visible' => Yii::app()->user->checkAccess('Item.Publish'),
+                        'visible' => $model->checkAccess('Publish'),
                     )
                 ); ?>
             <?php elseif ($model->qaStateBehavior()->validStatus('publishable')): ?>
@@ -171,7 +171,7 @@
                             'publish',
                             'id' => $model->{$model->tableSchema->primaryKey},
                         ),
-                        'visible' => Yii::app()->user->checkAccess('Item.Publish'),
+                        'visible' => $model->checkAccess('Publish'),
                     )
                 ); ?>
             <?php else: ?>
@@ -180,7 +180,7 @@
                     array(
                         'disabled' => true,
                         'icon' => TbHtml::ICON_THUMBS_UP,
-                        'visible' => Yii::app()->user->checkAccess('Item.Publish'),
+                        'visible' => $model->checkAccess('Publish'),
                     )
                 ); ?>
             <?php endif; ?>
@@ -197,7 +197,7 @@
                     'clone',
                     'id' => $model->{$model->tableSchema->primaryKey},
                 ),
-                'visible' => Yii::app()->user->checkAccess('Item.Clone'),
+                'visible' => $model->checkAccess('Clone'),
             )
         ); ?>
         <?php $this->widget(
@@ -209,7 +209,7 @@
                     'remove',
                     'id' => $model->{$model->tableSchema->primaryKey},
                 ),
-                'visible' => Yii::app()->user->checkAccess('Item.Remove'),
+                'visible' => $model->checkAccess('Remove'),
             )
         ); ?>
     </div>

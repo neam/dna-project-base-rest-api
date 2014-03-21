@@ -4,6 +4,11 @@ trait ItemController
 {
     public $workflowData = array();
 
+    public function checkAccess($operation)
+    {
+        return Yii::app()->user->checkAccess($this->modelClass . '.' . $operation);
+    }
+
     public function itemAccessRules()
     {
         $return = array(
@@ -14,149 +19,144 @@ trait ItemController
                     'cancel',
                 ),
                 'users' => array('*'),
+                'expression' => function() {
+                    return $this->checkAccess('View');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'view',
                 ),
-                'roles' => array(
-                    'Item.View',
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('View');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'browse',
                 ),
-                'roles' => array(
-                    'Item.Browse',
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Browse');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'add',
                 ),
-                'roles' => array(
-                    'Item.Add'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Add');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'draft',
                     'saveDraft',
                 ),
-                'roles' => array(
-                    'Item.Draft'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Edit'); // TODO: Replace 'Edit' with the correct operation.
+                },
             ),
             array('allow',
                 'actions' => array(
                     'addEdges',
                     'deleteEdge',
                 ),
-                'roles' => array(
-                    'Item.Edit'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Edit');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'prepareForReview',
                     'submitForReview',
                 ),
-                'roles' => array(
-                    'Item.PrepareForReview'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('PrepareForReview');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'evaluate',
                 ),
-                'roles' => array(
-                    'Item.Evaluate'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Evaluate');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'prepareForPublishing',
                     'submitForPublishing',
                 ),
-                'roles' => array(
-                    'Item.PrepareForPublishing'
+                'expression' => function() {
+                    return $this->checkAccess('PrepareForPublishing');
+                },
+            ),
+            array('allow',
+                'actions' => array(
+                    'proofread',
                 ),
+                'expression' => function() {
+                    return $this->checkAccess('Proofread');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'preview',
                 ),
-                'roles' => array(
-                    'Item.Preview'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
-                    'proofRead',
-                ),
-                'roles' => array(
-                    'Item.Proofread'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
-                    'preview',
-                ),
-                'roles' => array(
-                    'Item.Preview'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Preview');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'translate',
                     'translationOverview',
                 ),
-                'roles' => array(
-                    'Item.Translate'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Translate');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'publish',
                     'unpublish',
                 ),
-                'roles' => array(
-                    'Item.Publish'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Publish');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'edit',
                 ),
-                'roles' => array(
-                    'Item.Edit'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Edit');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'addToGroup',
                     'removeFromGroup',
                 ),
-                'roles' => array(
-                    'Item.Edit',
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Edit');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'clone',
                 ),
-                'roles' => array(
-                    'Item.Clone'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Clone');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'remove',
                 ),
-                'roles' => array(
-                    'Item.Remove'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Remove');
+                },
             ),
         );
 
@@ -565,6 +565,7 @@ trait ItemController
         $this->scenario = "temporary-step_$step";
 
         $model = $this->loadModel($id);
+
         $model->scenario = $this->scenario;
 
         $this->performAjaxValidation($model);

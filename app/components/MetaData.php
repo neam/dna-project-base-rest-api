@@ -106,6 +106,49 @@ class Metadata
     }
 
     /**
+     * Returns the operation to roles map.
+     * @return array
+     */
+    static public function operationToRolesMap()
+    {
+        return array(
+            'Edit' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),
+            'Translate' => array(Role::GROUP_TRANSLATOR),
+            'Preview' => array(Role::GROUP_REVIEWER),
+            'PrepareForReview' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),
+            'PrepareForPublishing' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),
+            'Evaluate' => array(Role::GROUP_REVIEWER),
+            'Review' => array(Role::GROUP_REVIEWER),
+            'Proofread' => array(Role::GROUP_REVIEWER),
+            'Publish' => array(Role::GROUP_PUBLISHER),
+            'Clone' => array(Role::GROUP_EDITOR),
+            'Add' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),
+            'Approve' => array(Role::GROUP_APPROVER),
+            'Remove' => array(Role::GROUP_CONTRIBUTOR), // TODO: One should be able to remove his own items only.
+            'Replace' => array(Role::GROUP_MODERATOR), // TODO: One should be able to remove his own items only.
+            'Browse' => array(Role::ANONYMOUS), // TODO: Everybody has the role in any case.
+            'View' => array(Role::ANONYMOUS), // TODO: Everybody has the role in any case.
+        );
+    }
+
+    /**
+     * Returns the authorized roles for the given operation.
+     * @param string $operation
+     * @return array
+     * @throws CException
+     */
+    static public function operationToRoles($operation)
+    {
+        $map = self::operationToRolesMap();
+
+        if (!isset($map[$operation])) {
+            throw new CException("Unknown operation '$operation'.");
+        }
+
+        return $map[$operation];
+    }
+
+    /**
      * Returns the checkAccess to permissions map.
      * @return array
      */
@@ -119,11 +162,12 @@ class Metadata
             'Super Adminstrator' => array('group' => $group, 'roles' => array(Role::SUPER_ADMINISTRATOR)),
             'Superuser' => array('group' => $group, 'roles' => array(Role::SUPER_ADMINISTRATOR)),
             'Developer' => array('group' => $group, 'roles' => array(Role::DEVELOPER)),
+            'Editor' => array('group' => $group, 'roles' => array(Role::GROUP_EDITOR)),
             'Group.*' => array('group' => $group, 'roles' => array('TODO')), // TODO: Add an appropriate role.
             'GroupHasAccount.*' => array('group' => $group, 'roles' => array('TODO')), // TODO: Add an appropriate role.
 
             // Item
-            'Item.Edit' => array('group' => $group, 'roles' => array(Role::GROUP_EDITOR)),
+            'Item.Edit' => array('group' => $group, 'roles' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR)),
             'Item.Translate' => array('group' => $group, 'roles' => array(Role::GROUP_TRANSLATOR)),
             'Item.Preview' => array('group' => $group, 'roles' => array(Role::GROUP_REVIEWER)),
             'Item.PrepareForReview' => array('group' => $group, 'roles' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR)),

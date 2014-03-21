@@ -38,7 +38,7 @@
                             'continueAuthoring',
                             'id' => $data->{$data->tableSchema->primaryKey}
                         ),
-                        'visible' => Yii::app()->user->checkAccess('Item.Edit'),
+                        'visible' => $data->checkAccess('Edit'),
                     )
                 ); ?>
             </div>

@@ -247,10 +247,11 @@ class PermissionHelper
      * Applies the access restrictions to the given criteria.
      *
      * @param CDbCriteria $criteria
+     * @param array $groupRoles
      *
      * @return CDbCriteria
      */
-    static public function applyAccessCriteria(CDbCriteria $criteria)
+    static public function applyAccessCriteria(CDbCriteria $criteria, array $roleNames)
     {
         // All items should be found only once.
         $criteria->distinct = true;
@@ -260,9 +261,16 @@ class PermissionHelper
             ' ',
             array(
                 "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)",
-                "LEFT JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id`)",
+                "LEFT JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `gha`.role_id IN (:roleIds))",
             )
         );
+
+        $roleIds = array();
+        foreach ($roleNames as $roleName) {
+            $roleIds[] = self::roleNameToId($roleName);
+        }
+
+        $criteria->params[':roleIds'] = implode(',', $roleIds);
 
         // Restrict access based on the account id.
         $criteria->addCondition("(`gha`.`account_id` = :accountId OR `t`.`owner_id` = :accountId)");

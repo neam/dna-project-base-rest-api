@@ -39,7 +39,7 @@
                                 'continueAuthoring',
                                 'id' => $model->{$model->tableSchema->primaryKey}
                             ),
-                            'visible' => Yii::app()->user->checkAccess('Item.Edit'),
+                            'visible' => $model->checkAccess('Edit'),
                         )
                     ); ?>
                 <?php elseif ($this->action->id === 'edit'): ?>
@@ -54,7 +54,7 @@
                                 'id' => $model->{$model->tableSchema->primaryKey},
                                 'editingUrl' => $this->action->id === 'view' ? null : Yii::app()->request->url
                             ),
-                            'visible' => Yii::app()->user->checkAccess('Item.Preview'),
+                            'visible' => $model->checkAccess('Preview'),
                         )
                     ); ?>
                 <?php endif; ?>

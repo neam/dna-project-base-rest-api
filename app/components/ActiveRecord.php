@@ -188,6 +188,9 @@ class ActiveRecord extends CActiveRecord
     // Logic for access restriction
     // ----------------------------------------
 
+    // todo: implement with beforeFind & beforeCount
+    // see this for ideas: https://github.com/codemix/AccessRestrictable/blob/master/src/AccessRestrictable/Behavior.php
+
     /**
      * @inheritDoc
      */
@@ -297,6 +300,8 @@ class ActiveRecord extends CActiveRecord
             return $criteria;
         }
 
-        return PermissionHelper::applyAccessCriteria($criteria, $params);
+        $roleNames = Yii::app()->user->getRoles();
+
+        return PermissionHelper::applyAccessCriteria($criteria, $roleNames);
     }
 }
