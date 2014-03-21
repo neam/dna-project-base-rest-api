@@ -193,6 +193,50 @@ class I18nCatalog extends BaseI18nCatalog
         return $parsedForTranslation;
     }
 
+    public function translatePoJsonMessages($messages, $lang)
+    {
+        $category = $this->getTranslationCategory('po_contents');
+        $return = $messages;
+        foreach ($return as $key => &$entry) {
+
+            // Skip headers entry
+            if (empty($key)) {
+                continue;
+            }
+
+            // The entry has plural forms if the first array element is not null
+            if (!is_null($entry[0])) {
+
+                // The source content first plural form (the singular form) is the $key, the second plural form is the first $entry element
+                $sourceMessage = ChoiceFormatHelper::toString(array($key, $entry[0]), $this->source_language);
+                $message = Yii::t($category, $sourceMessage);
+
+                // The translation should be sent as elements 1->end of array
+                $entry = array($entry[0]);
+                //var_dump($sourceMessage, $message, ChoiceFormatHelper::toArray($message, $lang));
+                $translationChoiceFormatArray = ChoiceFormatHelper::toArray($message, $lang);
+                foreach ($translationChoiceFormatArray as $pluralForm => $translation) {
+                    //var_dump($pluralForm, $translation);
+
+                    // Special fallback - in case the target language has more plural forms than the source language we'll supply the "true" plural form as fallback for the non-existing plural forms
+                    if (is_null($translation)) {
+                        $translation = $translationChoiceFormatArray["true"];
+                    }
+
+                    $entry[] = $translation;
+                }
+
+            } else {
+                $sourceMessage = $key;
+                $message = Yii::t($category, $sourceMessage);
+                // The translation should be sent as element 1
+                $entry[1] = $message;
+            }
+
+        }
+        return $return;
+    }
+
     /**
      * Define status-dependent fields
      * @return array
