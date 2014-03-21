@@ -85,7 +85,7 @@ class I18nCatalogController extends Controller
 
                 // Handle Plural forms
                 if (is_array($translation)) {
-                    $translation = ChoiceFormatHelper::toString($translation);
+                    $translation = ChoiceFormatHelper::toString($translation, $translateInto);
                 }
 
                 $message = Message::model()->findByAttributes(array(

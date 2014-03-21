@@ -3,11 +3,12 @@
 class ChoiceFormatHelper
 {
 
-    static public function toString($messagesArray)
+    static public function toString($messagesArray, $lang)
     {
+        $locale = CLocale::getInstance($lang);
         $_ = array();
-        foreach ($messagesArray as $expression => $t) {
-            $_[] = $expression . "#" . $t;
+        foreach ($messagesArray as $key => $t) {
+            $_[] = $locale->pluralRules[$key] . "#" . $t;
         }
         return implode("|", $_);
     }
