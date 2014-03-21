@@ -22,7 +22,7 @@ class I18nCatalog extends BaseI18nCatalog
 
     public function getItemLabel()
     {
-        return (string) !empty($this->title) ? $this->title : "I18nCatalog #" . $this->id;
+        return (string)!empty($this->title) ? $this->title : "I18nCatalog #" . $this->id;
     }
 
     public function behaviors()
