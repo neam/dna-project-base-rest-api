@@ -127,6 +127,7 @@ $consoleConfig = array(
             'dumpPath' => '/tests/codeception/_data',
             'connectionID' => 'dbTest',
         ),
+        /*
         'generate' => array(
             'class' => '\crisu83\yii_caviar\GenerateCommand',
             'enableNamespaces' => false,
@@ -135,6 +136,7 @@ $consoleConfig = array(
                 'noNamespaces' => 'vendor.crisu83.yii-caviar.templates.no-namespaces',
             ),
         ),
+        */
     ),
     'components' => array(
         'fixture-helper'      => array(

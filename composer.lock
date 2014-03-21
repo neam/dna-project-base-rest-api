@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "2ab16f3db12836c3b532832b82075c26",
+    "hash": "1fe7950537ff671983afc1114b496c8b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -198,39 +198,6 @@
                 "issues": "https://github.com/codemix/hybridauthmanager/issues"
             },
             "time": "2013-08-22 19:12:29"
-        },
-        {
-            "name": "crisu83/yii-caviar",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Crisu83/yii-caviar.git",
-                "reference": "4e81cb251716c37a791f10a9ce229d5a85cba4f3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-caviar/zipball/4e81cb251716c37a791f10a9ce229d5a85cba4f3",
-                "reference": "4e81cb251716c37a791f10a9ce229d5a85cba4f3",
-                "shasum": ""
-            },
-            "type": "yii-extension",
-            "autoload": {
-                "psr-4": {
-                    "crisu83\\yii_caviar\\": "./"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Christoffer Niska",
-                    "email": "ChristofferNiska@gmail.com"
-                }
-            ],
-            "description": "Next generation code generation for Yii.",
-            "time": "2014-03-16 23:42:11"
         },
         {
             "name": "crisu83/yii-consoletools",
@@ -2301,7 +2268,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "crisu83/yii-caviar": 20,
         "crisu83/yiistrap": 20,
         "mishamx/yii-user": 20,
         "phundament/jquery-file-upload": 20,
