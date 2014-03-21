@@ -5,7 +5,7 @@ class WebUser extends CWebUser
     /**
      * @return array
      */
-    public function getRoles($returnIds = false)
+    public function getRoles()
     {
         $ghas = GroupHasAccount::model()->findAllByAttributes(array(
             'account_id' => $this->id,
@@ -17,10 +17,6 @@ class WebUser extends CWebUser
             $roleIds[] = $gha->role_id;
         }
 
-        if ($returnIds) {
-            return $roleIds;
-        }
-
         $roles = PermissionHelper::getRoles();
         $roleMap = array();
         foreach ($roles as $roleName => $roleId) {
@@ -29,7 +25,7 @@ class WebUser extends CWebUser
 
         $roles = array();
         foreach ($roleIds as $roleId) {
-            $roles[] = $roleMap[$roleId];
+            $roles[$roleId] = $roleMap[$roleId];
         }
 
         return $roles;
