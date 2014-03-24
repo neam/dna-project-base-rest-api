@@ -87,7 +87,7 @@ class WaffleController extends AppRestController
         // waffleCategories
         $columns = array(
             "waffle_category" => array("ref", "_name", "_description"),
-            "waffle_category_thing" => array("ref", "_name"),
+            "waffle_category_thing" => array("ref", "_name", "_short_name"),
         );
         $select = U::prefixed_table_fields_wildcard('waffle_category', 'waffle_category', $columns['waffle_category'])
             . "," . U::prefixed_table_fields_wildcard('waffle_category_thing', 'waffle_category_thing', $columns['waffle_category_thing']);
@@ -122,6 +122,7 @@ class WaffleController extends AppRestController
                     $thing = new stdClass();
                     $thing->id = $r['waffle_category_thing.ref'];
                     $thing->name = $r['waffle_category_thing._name'];
+                    $thing->short_name = $r['waffle_category_thing._short_name'];
                     $things[] = $thing;
 
                 }
