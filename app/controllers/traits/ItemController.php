@@ -504,6 +504,7 @@ trait ItemController
             }
 
             $model->changeStatus('public');
+            $model->makeNodeHasGroupVisible();
         } else {
             throw new CHttpException(403, Yii::t('error', 'You do not have permission to publish items.'));
         }
@@ -532,6 +533,7 @@ trait ItemController
         if (PermissionHelper::groupHasAccount($permissionAttributes)) {
             $model = $this->loadModel($id);
             $model->refreshQaState();
+            $model->makeNodeHasGroupHidden();
         } else {
             throw new CHttpException(403, Yii::t('error', 'You do not have permission to unpublish items.'));
         }

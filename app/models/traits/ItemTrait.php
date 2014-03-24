@@ -68,6 +68,40 @@ trait ItemTrait
     }
 
     /**
+     * Make all related NodeHasGroup records visible.
+     */
+    public function makeNodeHasGroupVisible()
+    {
+        if (isset($this->node)) {
+            $nhgs = $this->node->nodeHasGroups;
+
+            if (!empty($nhgs)) {
+                foreach ($nhgs as $nodeHasGroup) {
+                    /** @var NodeHasGroup $nodeHasGroup */
+                    $nodeHasGroup->makeVisible();
+                }
+            }
+        }
+    }
+
+    /**
+     * Make all related NodeHasGroup records hidden.
+     */
+    public function makeNodeHasGroupHidden()
+    {
+        if (isset($this->node)) {
+            $nhgs = $this->node->nodeHasGroups;
+
+            if (!empty($nhgs)) {
+                foreach ($nhgs as $nodeHasGroup) {
+                    /** @var NodeHasGroup $nodeHasGroup */
+                    $nodeHasGroup->makeHidden();
+                }
+            }
+        }
+    }
+
+    /**
      * @return array Status-dependent validation rules
      */
     public function statusRequirementsRules()
