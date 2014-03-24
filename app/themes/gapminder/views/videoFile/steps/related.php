@@ -21,8 +21,8 @@
     <?php
     // TODO: This could propably be refactored
     $relatedCriteria = new CDbCriteria();
-    $relatedCriteria->addNotInCondition('node_id', $model->getRelatedNodeIds());
-    $relatedCriteria->addCondition('node_id != :model_node_id');
+    $relatedCriteria->addNotInCondition('t.node_id', $model->getRelatedNodeIds());
+    $relatedCriteria->addCondition('t.node_id != :model_node_id');
     $relatedCriteria->params[':model_node_id'] = $model->node_id;
     $select2 = $this->widget(
         'vendor.crisu83.yiistrap-widgets.widgets.TbSelect2',
