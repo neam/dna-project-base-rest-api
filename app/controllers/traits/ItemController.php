@@ -224,7 +224,7 @@ trait ItemController
         // TODO: Make group-dependent
 
         // Translators should only see items which are in testable mode or higher
-        if (Yii::app()->user->checkAccess('Item.Translate')) {
+        if (Yii::app()->user->checkAccess('Translate')) {
             $criteria = new CDbCriteria();
 
             $qaStateTbl = $modelTbl . '_qa_state'; // model_table_qa_state
@@ -550,7 +550,7 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
-        if (Yii::app()->user->checkAccess('Item.Edit')) {
+        if ($model->checkAccess('Edit')) {
             $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
         } else {
             $this->redirect(array('view', 'id' => $model->id));
