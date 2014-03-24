@@ -30,12 +30,26 @@ class WaffleController extends AppRestController
     /**
      * @see actionJsonByActiveRecord() the non-optimized version of this method
      */
-    public function actionJson()
+    public function actionJson($lang)
     {
 
         $model = $this->getModel();
 
         $response = new stdClass();
+
+        // waffle metadata
+        $response->file_format = new stdClass();
+        $response->file_format->v = "0.1";
+
+        // waffle i18n metadata
+        $response->i18n = new stdClass();
+        $response->i18n->lang = $lang;
+        $response->i18n->plural_schema = new stdClass();
+        // TODO: Base upon waffle choice format schema attribute
+        $locale = CLocale::getInstance($lang);
+        foreach ($locale->pluralRules as $k => $pluralRule) {
+            $response->i18n->plural_schema->$k = $pluralRule;
+        }
 
         // waffle info
         $response->info = new stdClass();
@@ -170,11 +184,25 @@ class WaffleController extends AppRestController
      * @throws CException
      * @see actionJson() the optimized version of this method
      */
-    public function actionJsonByActiveRecord()
+    public function actionJsonByActiveRecord($lang)
     {
         $model = $this->getModel();
 
         $response = new stdClass();
+
+        // waffle metadata
+        $response->file_format = new stdClass();
+        $response->file_format->v = "0.1";
+
+        // waffle i18n metadata
+        $response->i18n = new stdClass();
+        $response->i18n->lang = $lang;
+        $response->i18n->plural_schema = new stdClass();
+        // TODO: Base upon waffle choice format schema attribute
+        $locale = CLocale::getInstance($lang);
+        foreach ($locale->pluralRules as $k => $pluralRule) {
+            $response->i18n->plural_schema->$k = $pluralRule;
+        }
 
         // waffle info
         $response->info = new stdClass();
