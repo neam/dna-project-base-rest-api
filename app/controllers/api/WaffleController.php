@@ -131,7 +131,7 @@ class WaffleController extends AppRestController
         };
 
         //print_r($command->text);print_r($command->params);
-        $translatedCommand = U::translatedDbCommand($command);
+        $translatedCommand = U::translatedDbCommand($command, $lang, array()); //'name', 'description'
         //print_r($translatedCommand->text);print_r($translatedCommand->params);
         $records = $translatedCommand->queryAll();
 
@@ -139,11 +139,11 @@ class WaffleController extends AppRestController
 
         // waffleIndicators
         $command = Yii::app()->db->createCommand()
-            ->select("ref AS id, _name AS name")
+            ->select("ref AS id")
             ->from("waffle_indicator")
             ->where("waffle_id = :waffle_id");
         $command->params = array("waffle_id" => $model->id);
-        $translatedCommand = U::translatedDbCommand($command);
+        $translatedCommand = U::translatedDbCommand($command, $lang, array('name'));
         $response->definitions->indicators = $translatedCommand->queryAll();
 
         // waffleUnits
@@ -152,7 +152,7 @@ class WaffleController extends AppRestController
             ->from("waffle_unit")
             ->where("waffle_id = :waffle_id");
         $command->params = array("waffle_id" => $model->id);
-        $translatedCommand = U::translatedDbCommand($command);
+        $translatedCommand = U::translatedDbCommand($command, $lang);
         $response->definitions->units = $translatedCommand->queryAll();
 
         // waffleTags
@@ -161,7 +161,7 @@ class WaffleController extends AppRestController
             ->from("waffle_tag")
             ->where("waffle_id = :waffle_id");
         $command->params = array("waffle_id" => $model->id);
-        $translatedCommand = U::translatedDbCommand($command);
+        $translatedCommand = U::translatedDbCommand($command, $lang);
         $response->definitions->tags = $translatedCommand->queryAll();
 
         // waffleDataSources - TODO
