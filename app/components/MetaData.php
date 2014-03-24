@@ -121,7 +121,7 @@ class Metadata
     static public function operationToRolesMap()
     {
         return array(
-            'Edit' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),
+            'Edit' => array(Role::GROUP_EDITOR),
             'Translate' => array(Role::GROUP_TRANSLATOR),
             'Preview' => array(Role::GROUP_REVIEWER),
             'PrepareForReview' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),

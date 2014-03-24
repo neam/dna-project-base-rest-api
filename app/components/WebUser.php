@@ -67,14 +67,16 @@ class WebUser extends CWebUser
         if (isset($modelClass)) {
             $criteria = new CDbCriteria();
 
+            // Add model ID condition
             if (isset($params['id'])) {
                 $criteria->addCondition('t.id = :modelId');
                 $criteria->params[':modelId'] = $params['id'];
             }
 
-            PermissionHelper::applyAccessCriteria($criteria, MetaData::operationToRoles($operation));
+            $criteria = PermissionHelper::applyAccessCriteria($criteria, MetaData::operationToRoles($operation));
+            $result = ActiveRecord::model($modelClass)->findAll($criteria, array('roleNames' => MetaData::operationToRoles($operation)));
 
-            return ActiveRecord::model($modelClass)->findAll($criteria) !== array();
+            return count($result) > 0;
         } else {
             $map = MetaData::operationToRolesMap();
 

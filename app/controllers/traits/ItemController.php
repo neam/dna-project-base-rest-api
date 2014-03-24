@@ -3,12 +3,47 @@
 trait ItemController
 {
     public $workflowData = array();
+    public $modelId;
 
+    /**
+     * Initializes the controller.
+     */
+    public function init()
+    {
+        parent::init();
+
+        // Set the model ID if it has been passed as a GET param.
+        if (isset($_GET['id'])) {
+            $this->modelId = $_GET['id'];
+        }
+    }
+
+    /**
+     * Checks access.
+     * @param string $operation
+     * @return boolean
+     */
     public function checkAccess($operation)
     {
         return Yii::app()->user->checkAccess($this->modelClass . '.' . $operation);
     }
 
+    /**
+     * Checks access by model ID.
+     * @param integer $id the model ID.
+     * @param string $operation the operation.
+     * @return boolean
+     */
+    public function checkAccessById($id, $operation)
+    {
+        $model = ActiveRecord::model($this->modelClass)->findByPk($_GET['id']);
+        return $model->checkAccess($operation);
+    }
+
+    /**
+     * Returns the access rules for items.
+     * @return array
+     */
     public function itemAccessRules()
     {
         $return = array(
@@ -20,7 +55,7 @@ trait ItemController
                 ),
                 'users' => array('*'),
                 'expression' => function() {
-                    return $this->checkAccess('View');
+                    return $this->checkAccessById($this->modelId, 'View');
                 },
             ),
             array('allow',
@@ -28,7 +63,7 @@ trait ItemController
                     'view',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('View');
+                    return $this->checkAccessById($this->modelId, 'View');
                 },
             ),
             array('allow',
@@ -53,7 +88,7 @@ trait ItemController
                     'saveDraft',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Edit'); // TODO: Replace 'Edit' with the correct operation.
+                    return $this->checkAccessById($this->modelId, 'Edit');
                 },
             ),
             array('allow',
@@ -79,7 +114,7 @@ trait ItemController
                     'evaluate',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Evaluate');
+                    return $this->checkAccessById($this->modelId, 'Evaluate');
                 },
             ),
             array('allow',
@@ -88,7 +123,7 @@ trait ItemController
                     'submitForPublishing',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('PrepareForPublishing');
+                    return $this->checkAccessById($this->modelId, 'PrepareForPublishing');
                 },
             ),
             array('allow',
@@ -96,7 +131,7 @@ trait ItemController
                     'proofread',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Proofread');
+                    return $this->checkAccessById($this->modelId, 'Proofread');
                 },
             ),
             array('allow',
@@ -104,7 +139,7 @@ trait ItemController
                     'preview',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Preview');
+                    return $this->checkAccessById($this->modelId, 'Preview');
                 },
             ),
             array('allow',
@@ -113,7 +148,7 @@ trait ItemController
                     'translationOverview',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Translate');
+                    return $this->checkAccessById($this->modelId, 'Translate');
                 },
             ),
             array('allow',
@@ -122,7 +157,7 @@ trait ItemController
                     'unpublish',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Publish');
+                    return $this->checkAccessById($this->modelId, 'Publish');
                 },
             ),
             array('allow',
@@ -130,7 +165,7 @@ trait ItemController
                     'edit',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Edit');
+                    return $this->checkAccessById($this->modelId, 'Edit');
                 },
             ),
             array('allow',
@@ -147,7 +182,7 @@ trait ItemController
                     'clone',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Clone');
+                    return $this->checkAccessById($this->modelId, 'Clone');
                 },
             ),
             array('allow',
@@ -155,7 +190,7 @@ trait ItemController
                     'remove',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Remove');
+                    return $this->checkAccessById($this->modelId, 'Remove');
                 },
             ),
         );
@@ -1018,7 +1053,6 @@ trait ItemController
             }
 
         }
-
     }
 
     /**

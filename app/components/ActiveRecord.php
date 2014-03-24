@@ -300,7 +300,9 @@ class ActiveRecord extends CActiveRecord
             return $criteria;
         }
 
-        $roleNames = Yii::app()->user->getRoles();
+        $roleNames = isset($params['roleNames']) && !empty($params['roleNames'])
+            ? $params['roleNames']
+            : Yii::app()->user->getRoles();
 
         return PermissionHelper::applyAccessCriteria($criteria, $roleNames);
     }
