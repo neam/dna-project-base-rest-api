@@ -57,13 +57,14 @@ trait ItemTrait
 
     /**
      * Checks if the item has a group.
+     * @param string $group
      * @return boolean
      */
-    public function hasGroup()
+    public function belongsToGroup($group)
     {
         return PermissionHelper::nodeHasGroup(array(
             'node_id' => $this->node_id,
-            'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+            'group_id' => PermissionHelper::groupNameToId($group),
         ));
     }
 

@@ -490,7 +490,7 @@ trait ItemController
     {
         $permissionAttributes = array(
             'account_id' => Yii::app()->user->id,
-            'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+            'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
             'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
         );
 
@@ -526,7 +526,7 @@ trait ItemController
     {
         $permissionAttributes = array(
             'account_id' => Yii::app()->user->id,
-            'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+            'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
             'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
         );
 
@@ -600,22 +600,24 @@ trait ItemController
     /**
      * Adds an item to a group.
      * @param integer $node_id
+     * @param string $group
      * @param string $returnUrl
      */
-    public function actionAddToGroup($node_id, $returnUrl)
+    public function actionAddToGroup($node_id, $group, $returnUrl)
     {
-        PermissionHelper::addNodeToGroup($node_id, 'GapminderOrg');
+        PermissionHelper::addNodeToGroup($node_id, $group);
         $this->redirect($returnUrl);
     }
 
     /**
      * Removes an item from a group.
      * @param integer $node_id
+     * @param $group
      * @param string $returnUrl
      */
-    public function actionRemoveFromGroup($node_id, $returnUrl)
+    public function actionRemoveFromGroup($node_id, $group, $returnUrl)
     {
-        PermissionHelper::removeNodeFromGroup($node_id, 'GapminderOrg');
+        PermissionHelper::removeNodeFromGroup($node_id, $group);
         $this->redirect($returnUrl);
     }
 
@@ -1060,7 +1062,7 @@ trait ItemController
                 return true;
             }
 
-            $group = 'GapminderOrg';
+            $group = 'GapminderInternal';
 
             $isEditor = PermissionHelper::groupHasAccount(array(
                 'account_id' => $this->id,

@@ -60,14 +60,15 @@
     </div>
     <?php if ($model->checkAccess('Edit')): ?>
         <div class="btn-group">
-            <?php if ($model->hasGroup()): ?>
+            <?php if ($model->belongsToGroup('GapminderInternal')): ?>
                 <?php echo TbHtml::linkButton(
                     Yii::t('app', 'Remove from group'),
                     array(
-                        'icon' => TbHtml::ICON_USER,
+                        'icon' => TbHtml::ICON_MINUS,
                         'url' => array(
                             'removeFromGroup',
                             'node_id' => $model->node_id,
+                            'group' => 'GapminderInternal',
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
                     )
@@ -76,10 +77,11 @@
                 <?php echo TbHtml::linkButton(
                     Yii::t('app', 'Add to group'),
                     array(
-                        'icon' => TbHtml::ICON_USER,
+                        'icon' => TbHtml::ICON_PLUS,
                         'url' => array(
                             'addToGroup',
                             'node_id' => $model->node_id,
+                            'group' => 'GapminderInternal',
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
                     )
@@ -145,7 +147,7 @@
     <div class="btn-group">
         <?php if (PermissionHelper::groupHasAccount(array(
                 'account_id' => Yii::app()->user->id,
-                'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+                'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
                 'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
         ))): ?>
             <?php if (in_array($model->qaState()->status, array('public'))): // TODO: Refactor this check. ?>

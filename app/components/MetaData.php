@@ -100,8 +100,17 @@ class Metadata
     static public function groups()
     {
         return array(
-            'GapminderOrg',
             'GapminderInternal',
+        );
+    }
+
+    static public function assignableGroupRoles()
+    {
+        return array(
+            'Group Contributor' => 'contributors',
+            'Group Editor' => 'editors',
+            'Group Reviewer' => 'reviewers',
+            'Group Translator' => 'translators'
         );
     }
 
@@ -154,7 +163,7 @@ class Metadata
      */
     static public function checkAccessToPermissionMap()
     {
-        $group = 'GapminderOrg';
+        $group = 'GapminderInternal';
 
         return array(
             // Roles and groups

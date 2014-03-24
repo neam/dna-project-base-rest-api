@@ -9,7 +9,7 @@ class WebUser extends CWebUser
     {
         $ghas = GroupHasAccount::model()->findAllByAttributes(array(
             'account_id' => $this->id,
-            'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+            'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
         ));
 
         $roleIds = array();
@@ -40,7 +40,7 @@ class WebUser extends CWebUser
     {
         return PermissionHelper::hasRole(
             $this->id,
-            'GapminderOrg',
+            'GapminderInternal',
             $roleName
         );
     }
@@ -90,7 +90,7 @@ class WebUser extends CWebUser
                 $criteria->addCondition('account_id = :userId');
                 $criteria->params[':userId'] = $this->id;
                 $criteria->addCondition('group_id = :groupId'); // TODO: Change to addInCondition when more groups have been implemented.
-                $criteria->params[':groupId'] = PermissionHelper::groupNameToId('GapminderOrg');
+                $criteria->params[':groupId'] = PermissionHelper::groupNameToId('GapminderInternal');
 
                 return GroupHasAccount::model()->find($criteria) !== null;
             }

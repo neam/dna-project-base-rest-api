@@ -6,6 +6,8 @@ return array(
     'modules' => array(
         'user' => array(
             'captcha' => array('registration' => false),
+            'sendActivationMail' => false,
+            'loginNotActiv' => true,
         ),
     ),
     'components' => array(

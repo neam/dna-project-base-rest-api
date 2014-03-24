@@ -83,4 +83,19 @@ class Account extends BaseAccount
     {
         return $this->getAuthItems();
     }
+
+    /**
+     * Checks if the item has a group.
+     * @param string $group
+     * @param string $role
+     * @return boolean
+     */
+    public function belongsToGroup($group, $role)
+    {
+        return PermissionHelper::groupHasAccount(array(
+            'account_id' => $this->id,
+            'group_id' => PermissionHelper::groupNameToId($group),
+            'role_id' => PermissionHelper::roleNameToId($role),
+        ));
+    }
 }

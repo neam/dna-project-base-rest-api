@@ -3,6 +3,7 @@ namespace WebGuy;
 
 use HomePage;
 use LoginPage;
+use ProfilePage;
 use RegisterationPage;
 
 class MemberSteps extends \WebGuy
@@ -36,5 +37,21 @@ class MemberSteps extends \WebGuy
             ? $I->checkOption(RegisterationPage::$acceptTermsField)
             : $I->uncheckOption(RegisterationPage::$acceptTermsField);
         $I->click(RegisterationPage::$submitButton);
+    }
+
+    function joinGroup($group)
+    {
+        $I = $this;
+        $I->amOnPage(ProfilePage::$URL);
+        $I->click("#addToGroup_$group");
+        $I->see("Remove from $group", "#removeFromGroup_$group");
+    }
+
+    function leaveGroup($group)
+    {
+        $I = $this;
+        $I->amOnPage(ProfilePage::$URL);
+        $I->click("#removeFromGroup_$group");
+        $I->see("Add to $group", "#addToGroup_$group");
     }
 }

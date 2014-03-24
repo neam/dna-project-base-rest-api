@@ -3,7 +3,7 @@
 class m140318_135058_fix_admin_roles extends EDbMigration
 {
     public $accountId = 1; // admin
-    public $group = 'GapminderOrg';
+    public $group = 'GapminderInternal';
 
 	public function up()
 	{

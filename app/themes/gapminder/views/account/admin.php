@@ -48,7 +48,7 @@
                 return PermissionHelper::groupHasAccount(
                     array(
                         'account_id' => $data->id,
-                        'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+                        'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
                         'role_id' => $roleId,
                     )
                 );
