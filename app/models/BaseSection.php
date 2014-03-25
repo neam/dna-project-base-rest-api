@@ -60,12 +60,12 @@
  * @property string $section_qa_state_id
  *
  * Relations of table "section" available as properties of the model:
- * @property SectionQaState $sectionQaState
+ * @property Account $owner
  * @property Node $node
  * @property Page $page
  * @property Section $clonedFrom
  * @property Section[] $sections
- * @property Account $owner
+ * @property SectionQaState $sectionQaState
  */
 abstract class BaseSection extends ActiveRecord
 {
@@ -115,12 +115,12 @@ abstract class BaseSection extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'sectionQaState' => array(self::BELONGS_TO, 'SectionQaState', 'section_qa_state_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'page' => array(self::BELONGS_TO, 'Page', 'page_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Section', 'cloned_from_id'),
                 'sections' => array(self::HAS_MANY, 'Section', 'cloned_from_id'),
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'sectionQaState' => array(self::BELONGS_TO, 'SectionQaState', 'section_qa_state_id'),
             )
         );
     }

@@ -21,12 +21,12 @@
  * @property string $waffle_category_qa_state_id
  *
  * Relations of table "waffle_category" available as properties of the model:
- * @property WaffleCategoryQaState $waffleCategoryQaState
+ * @property Account $owner
+ * @property Node $node
  * @property Waffle $waffle
  * @property WaffleCategory $clonedFrom
  * @property WaffleCategory[] $waffleCategories
- * @property Account $owner
- * @property Node $node
+ * @property WaffleCategoryQaState $waffleCategoryQaState
  * @property WaffleCategoryThing[] $waffleCategoryThings
  */
 abstract class BaseWaffleCategory extends ActiveRecord
@@ -46,12 +46,12 @@ abstract class BaseWaffleCategory extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified, owner_id, node_id, waffle_category_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, ref, _list_name, _property_name, _possessive, _choice_format, _description, waffle_id, created, modified, owner_id, node_id, waffle_category_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, waffle_id, node_id, waffle_category_qa_state_id', 'length', 'max' => 20),
-                array('ref, _name, _short_name', 'length', 'max' => 255),
-                array('_description, created, modified', 'safe'),
-                array('id, version, cloned_from_id, ref, _name, _short_name, _description, waffle_id, created, modified, owner_id, node_id, waffle_category_qa_state_id', 'safe', 'on' => 'search'),
+                array('ref, _list_name, _property_name, _possessive', 'length', 'max' => 255),
+                array('_choice_format, _description, created, modified', 'safe'),
+                array('id, version, cloned_from_id, ref, _list_name, _property_name, _possessive, _choice_format, _description, waffle_id, created, modified, owner_id, node_id, waffle_category_qa_state_id', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -76,12 +76,12 @@ abstract class BaseWaffleCategory extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'waffleCategoryQaState' => array(self::BELONGS_TO, 'WaffleCategoryQaState', 'waffle_category_qa_state_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'WaffleCategory', 'cloned_from_id'),
                 'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'cloned_from_id'),
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
+                'waffleCategoryQaState' => array(self::BELONGS_TO, 'WaffleCategoryQaState', 'waffle_category_qa_state_id'),
                 'waffleCategoryThings' => array(self::HAS_MANY, 'WaffleCategoryThing', 'waffle_category_id'),
             )
         );
@@ -94,8 +94,10 @@ abstract class BaseWaffleCategory extends ActiveRecord
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'ref' => Yii::t('model', 'Ref'),
-            '_name' => Yii::t('model', 'Name'),
-            '_short_name' => Yii::t('model', 'Short Name'),
+            '_list_name' => Yii::t('model', 'List Name'),
+            '_property_name' => Yii::t('model', 'Property Name'),
+            '_possessive' => Yii::t('model', 'Possessive'),
+            '_choice_format' => Yii::t('model', 'Choice Format'),
             '_description' => Yii::t('model', 'Description'),
             'waffle_id' => Yii::t('model', 'Waffle'),
             'created' => Yii::t('model', 'Created'),
@@ -116,8 +118,10 @@ abstract class BaseWaffleCategory extends ActiveRecord
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.ref', $this->ref, true);
-        $criteria->compare('t._name', $this->_name, true);
-        $criteria->compare('t._short_name', $this->_short_name, true);
+        $criteria->compare('t._list_name', $this->_list_name, true);
+        $criteria->compare('t._property_name', $this->_property_name, true);
+        $criteria->compare('t._possessive', $this->_possessive, true);
+        $criteria->compare('t._choice_format', $this->_choice_format, true);
         $criteria->compare('t._description', $this->_description, true);
         $criteria->compare('t.waffle_id', $this->waffle_id);
         $criteria->compare('t.created', $this->created, true);
