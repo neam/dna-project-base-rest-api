@@ -34,19 +34,8 @@ class U
         $i18n_columns_fields = array()
     ) {
 
+        //var_dump($command->select, $command->join, $command->params);
         foreach ($i18n_attribute_messages_fields as $attr) {
-
-            /*
-            SELECT t1.message AS message, t2.translation AS translation
-            FROM SourceMessage t1, Message t2
-            WHERE t1.id=t2.id AND t1.category=:category AND t2.language=:language.
-            Bound with :category='a-Waffle-title', :language='en_us'
-            */
-
-            /*
-             *
-             *
-             */
 
             $command->leftJoin("SourceMessage sm_{$attr}", "sm_{$attr}.category = :{$attr}_category AND sm_{$attr}.message = _{$attr}");
             $command->leftJoin("Message m_{$attr}", "m_{$attr}.id = sm_{$attr}.id AND m_{$attr}.language = :language");
@@ -54,10 +43,14 @@ class U
             $command->params["{$attr}_category"] = "a-WaffleFoo-{$attr}";
             $command->params["language"] = $lang;
 
-            $command->select .= ", m_{$attr}.translation as $attr";
+            $command->select .= ", COALESCE(m_{$attr}.translation,_{$attr}) as $attr";
         }
 
-//        var_dump($command->select, $command->join, $command->params);        die();
+        // Prevent double-escaping yii bug/workaround
+        $command->select = str_replace("`", "", $command->select);
+
+        //var_dump($command->select, $command->join, $command->params);
+        //die();
 
         foreach ($i18n_columns_fields as $i18n_columns_field) {
             $command->select .= ", {$i18n_columns_field}_{$lang} as $i18n_columns_field";

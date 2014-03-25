@@ -84,6 +84,7 @@ class WaffleController extends AppRestController
 
         $response->definitions = new stdClass();
 
+        /*
         // waffleCategories
         $columns = array(
             "waffle_category" => array("ref", "_list_name", "_property_name", "_possessive", "_choice_format", "_description"),
@@ -92,7 +93,7 @@ class WaffleController extends AppRestController
         $select = U::prefixed_table_fields_wildcard('waffle_category', 'waffle_category', $columns['waffle_category'])
             . "," . U::prefixed_table_fields_wildcard('waffle_category_thing', 'waffle_category_thing', $columns['waffle_category_thing']);
         // Prevent double-escaping ("The method will automatically quote the column names unless a column contains some parenthesis (which means the column contains a DB expression).")
-        $select .= ", (-1) AS foo";
+        $select .= ", (-1) AS prevent_double_escaping_yii_workaround";
 
         $command = Yii::app()->db->createCommand()
             ->select($select)
@@ -140,6 +141,8 @@ class WaffleController extends AppRestController
         $records = $translatedCommand->queryAll();
 
         $response->definitions->categories = $formatResults($records);
+
+        */
 
         // waffleIndicators
         $command = Yii::app()->db->createCommand()
