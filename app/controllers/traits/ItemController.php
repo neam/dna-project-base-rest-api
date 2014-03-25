@@ -36,6 +36,7 @@ trait ItemController
      */
     public function checkAccessById($id, $operation)
     {
+        /** @var ActiveRecord|ItemTrait $model */
         $model = ActiveRecord::model($this->modelClass)->findByPk($_GET['id']);
         return $model->checkAccess($operation);
     }
@@ -63,7 +64,7 @@ trait ItemController
                     'view',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'View');
+                    return Yii::app()->user->checkAccess('View');
                 },
             ),
             array('allow',

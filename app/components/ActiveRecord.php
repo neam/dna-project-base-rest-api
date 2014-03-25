@@ -300,6 +300,16 @@ class ActiveRecord extends CActiveRecord
             return $criteria;
         }
 
+        // Show published items to anonymous users
+        if (Yii::app()->user->isGuest) {
+            $visible = NodeHasGroup::VISIBILITY_VISIBLE;
+
+            $criteria->join = "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)";
+            $criteria->addCondition("(`nhg`.`visibility` = '$visible')");
+
+            return $criteria;
+        }
+
         $roleNames = isset($params['roleNames']) && !empty($params['roleNames'])
             ? $params['roleNames']
             : Yii::app()->user->getRoles();
