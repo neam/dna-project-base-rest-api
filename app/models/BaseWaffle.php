@@ -7,6 +7,7 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
+ * @property string $file_format
  * @property string $_title
  * @property string $slug_en
  * @property string $_short_title

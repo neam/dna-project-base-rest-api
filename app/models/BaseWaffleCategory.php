@@ -8,8 +8,10 @@
  * @property integer $version
  * @property string $cloned_from_id
  * @property string $ref
- * @property string $_name
- * @property string $_short_name
+ * @property string $_list_name
+ * @property string $_property_name
+ * @property string $_possessive
+ * @property string $_choice_format
  * @property string $_description
  * @property string $waffle_id
  * @property string $created
