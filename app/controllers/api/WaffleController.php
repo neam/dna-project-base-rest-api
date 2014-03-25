@@ -38,8 +38,7 @@ class WaffleController extends AppRestController
         $response = new stdClass();
 
         // waffle metadata
-        $response->file_format = new stdClass();
-        $response->file_format->v = "0.1";
+        $response->file_format = (object) json_decode($model->file_format);
 
         // waffle i18n metadata
         $response->i18n = new stdClass();
@@ -195,8 +194,7 @@ class WaffleController extends AppRestController
         $response = new stdClass();
 
         // waffle metadata
-        $response->file_format = new stdClass();
-        $response->file_format->v = "0.1";
+        $response->file_format = (object) json_decode($model->file_format);
 
         // waffle i18n metadata
         $response->i18n = new stdClass();
@@ -207,7 +205,6 @@ class WaffleController extends AppRestController
         foreach ($locale->pluralRules as $k => $pluralRule) {
             $response->i18n->plural_schema->$k = $pluralRule;
         }
-
         // waffle info
         $response->info = new stdClass();
         $response->info->title = $model->title;
