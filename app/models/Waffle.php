@@ -60,7 +60,7 @@ class Waffle extends BaseWaffle
 
             )
         );
-        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        //Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
     }
 
@@ -211,9 +211,11 @@ class Waffle extends BaseWaffle
             }
 
             // commit transaction
+            Yii::log("Commit import transaction", "trace", __METHOD__);
             $transaction->commit();
 
         } catch (Exception $e) {
+            Yii::log("Rolling back import transaction", "trace", __METHOD__);
             $transaction->rollback();
             throw $e;
         }
