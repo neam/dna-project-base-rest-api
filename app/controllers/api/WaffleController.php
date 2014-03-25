@@ -86,7 +86,7 @@ class WaffleController extends AppRestController
 
         // waffleCategories
         $columns = array(
-            "waffle_category" => array("ref", "_name", "_description"),
+            "waffle_category" => array("ref", "_list_name", "_property_name", "_possessive", "_choice_format", "_description"),
             "waffle_category_thing" => array("ref", "_name", "_short_name"),
         );
         $select = U::prefixed_table_fields_wildcard('waffle_category', 'waffle_category', $columns['waffle_category'])
@@ -101,7 +101,7 @@ class WaffleController extends AppRestController
             ->where("waffle_category.waffle_id = :waffle_id");
         $command->params = array("waffle_id" => $model->id);
 
-        $formatResults = function ($records) use ($columns) {
+        $formatResults = function ($records) use ($columns, $lang) {
 
             //var_dump(compact("records"));
             $categories = array();
@@ -111,7 +111,10 @@ class WaffleController extends AppRestController
                     if (!isset($categories[$r['waffle_category.ref']])) {
                         $category = new stdClass();
                         $category->id = $r['waffle_category.ref'];
-                        $category->name = $r['waffle_category._name'];
+                        $category->list_name = $r['waffle_category._list_name'];
+                        $category->property_name = $r['waffle_category._property_name'];
+                        $category->possessive = $r['waffle_category._possessive'];
+                        $category->expanded_choice_format = ChoiceFormatHelper::toArray($r['waffle_category._choice_format'], $lang);
                         $category->description = $r['waffle_category._description'];
                         $category->things = array();
                         $categories[$r['waffle_category.ref']] = $category;
@@ -132,7 +135,7 @@ class WaffleController extends AppRestController
         };
 
         //print_r($command->text);print_r($command->params);
-        $translatedCommand = U::translatedDbCommand($command, $lang, array()); //'name', 'description'
+        $translatedCommand = U::translatedDbCommand($command, $lang, array()); //array('waffle_category'=> array('list_name','property_name','possessive','choice_format', 'description'),'waffle_category_thing'=> array(name', 'description','short_name')),
         //print_r($translatedCommand->text);print_r($translatedCommand->params);
         $records = $translatedCommand->queryAll();
 
