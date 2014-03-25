@@ -61,12 +61,12 @@
  * @property string $slug_zh_tw
  *
  * Relations of table "chapter" available as properties of the model:
+ * @property Account $owner
  * @property ChapterQaState $chapterQaState
  * @property Chapter $clonedFrom
  * @property Chapter[] $chapters
  * @property Node $node
  * @property P3Media $thumbnailMedia
- * @property Account $owner
  */
 abstract class BaseChapter extends ActiveRecord
 {
@@ -115,12 +115,12 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'chapterQaState' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Chapter', 'cloned_from_id'),
                 'chapters' => array(self::HAS_MANY, 'Chapter', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
             )
         );
     }

@@ -16,9 +16,9 @@
  * @property string $modified
  *
  * Relations of table "comment" available as properties of the model:
+ * @property Account $authorUser
  * @property Comment $parent
  * @property Comment[] $comments
- * @property Account $authorUser
  */
 abstract class BaseComment extends ActiveRecord
 {
@@ -69,9 +69,9 @@ abstract class BaseComment extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'authorUser' => array(self::BELONGS_TO, 'Account', 'author_user_id'),
                 'parent' => array(self::BELONGS_TO, 'Comment', 'parent_id'),
                 'comments' => array(self::HAS_MANY, 'Comment', 'parent_id'),
-                'authorUser' => array(self::BELONGS_TO, 'Account', 'author_user_id'),
             )
         );
     }

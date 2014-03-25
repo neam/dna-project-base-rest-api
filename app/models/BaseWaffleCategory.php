@@ -22,8 +22,8 @@
  *
  * Relations of table "waffle_category" available as properties of the model:
  * @property Account $owner
- * @property Node $node
  * @property Waffle $waffle
+ * @property Node $node
  * @property WaffleCategory $clonedFrom
  * @property WaffleCategory[] $waffleCategories
  * @property WaffleCategoryQaState $waffleCategoryQaState
@@ -77,8 +77,8 @@ abstract class BaseWaffleCategory extends ActiveRecord
         return array_merge(
             parent::relations(), array(
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'waffle' => array(self::BELONGS_TO, 'Waffle', 'waffle_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'WaffleCategory', 'cloned_from_id'),
                 'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'cloned_from_id'),
                 'waffleCategoryQaState' => array(self::BELONGS_TO, 'WaffleCategoryQaState', 'waffle_category_qa_state_id'),

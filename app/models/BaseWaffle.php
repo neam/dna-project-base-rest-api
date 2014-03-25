@@ -70,15 +70,15 @@
  * @property string $waffle_qa_state_id
  *
  * Relations of table "waffle" available as properties of the model:
+ * @property WaffleQaState $waffleQaState
+ * @property Waffle $clonedFrom
+ * @property Waffle[] $waffles
  * @property Account $owner
  * @property Node $node
  * @property P3Media $jsonImportMedia
  * @property P3Media $imageSmallMedia
  * @property P3Media $imageLargeMedia
- * @property Waffle $clonedFrom
- * @property Waffle[] $waffles
  * @property WafflePublisher $wafflePublisher
- * @property WaffleQaState $waffleQaState
  * @property WaffleCategory[] $waffleCategories
  * @property WaffleDataSource[] $waffleDataSources
  * @property WaffleIndicator[] $waffleIndicators
@@ -132,15 +132,15 @@ abstract class BaseWaffle extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'waffleQaState' => array(self::BELONGS_TO, 'WaffleQaState', 'waffle_qa_state_id'),
+                'clonedFrom' => array(self::BELONGS_TO, 'Waffle', 'cloned_from_id'),
+                'waffles' => array(self::HAS_MANY, 'Waffle', 'cloned_from_id'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'jsonImportMedia' => array(self::BELONGS_TO, 'P3Media', 'json_import_media_id'),
                 'imageSmallMedia' => array(self::BELONGS_TO, 'P3Media', 'image_small_media_id'),
                 'imageLargeMedia' => array(self::BELONGS_TO, 'P3Media', 'image_large_media_id'),
-                'clonedFrom' => array(self::BELONGS_TO, 'Waffle', 'cloned_from_id'),
-                'waffles' => array(self::HAS_MANY, 'Waffle', 'cloned_from_id'),
                 'wafflePublisher' => array(self::BELONGS_TO, 'WafflePublisher', 'waffle_publisher_id'),
-                'waffleQaState' => array(self::BELONGS_TO, 'WaffleQaState', 'waffle_qa_state_id'),
                 'waffleCategories' => array(self::HAS_MANY, 'WaffleCategory', 'waffle_id'),
                 'waffleDataSources' => array(self::HAS_MANY, 'WaffleDataSource', 'waffle_id'),
                 'waffleIndicators' => array(self::HAS_MANY, 'WaffleIndicator', 'waffle_id'),

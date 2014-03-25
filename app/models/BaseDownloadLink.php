@@ -16,12 +16,12 @@
  * @property string $download_link_qa_state_id
  *
  * Relations of table "download_link" available as properties of the model:
+ * @property Account $owner
  * @property DownloadLinkQaState $downloadLinkQaState
  * @property DownloadLink $clonedFrom
  * @property DownloadLink[] $downloadLinks
  * @property Node $node
  * @property P3Media $fileMedia
- * @property Account $owner
  */
 abstract class BaseDownloadLink extends ActiveRecord
 {
@@ -70,12 +70,12 @@ abstract class BaseDownloadLink extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'downloadLinkQaState' => array(self::BELONGS_TO, 'DownloadLinkQaState', 'download_link_qa_state_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'DownloadLink', 'cloned_from_id'),
                 'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'fileMedia' => array(self::BELONGS_TO, 'P3Media', 'file_media_id'),
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
             )
         );
     }

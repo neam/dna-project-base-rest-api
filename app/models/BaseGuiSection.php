@@ -17,12 +17,12 @@
  * @property string $gui_section_qa_state_id
  *
  * Relations of table "gui_section" available as properties of the model:
+ * @property GuiSectionQaState $guiSectionQaState
+ * @property I18nCatalog $i18nCatalog
  * @property Account $owner
+ * @property Node $node
  * @property GuiSection $clonedFrom
  * @property GuiSection[] $guiSections
- * @property I18nCatalog $i18nCatalog
- * @property Node $node
- * @property GuiSectionQaState $guiSectionQaState
  */
 abstract class BaseGuiSection extends ActiveRecord
 {
@@ -71,12 +71,12 @@ abstract class BaseGuiSection extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'guiSectionQaState' => array(self::BELONGS_TO, 'GuiSectionQaState', 'gui_section_qa_state_id'),
+                'i18nCatalog' => array(self::BELONGS_TO, 'I18nCatalog', 'i18n_catalog_id'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'GuiSection', 'cloned_from_id'),
                 'guiSections' => array(self::HAS_MANY, 'GuiSection', 'cloned_from_id'),
-                'i18nCatalog' => array(self::BELONGS_TO, 'I18nCatalog', 'i18n_catalog_id'),
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-                'guiSectionQaState' => array(self::BELONGS_TO, 'GuiSectionQaState', 'gui_section_qa_state_id'),
             )
         );
     }
