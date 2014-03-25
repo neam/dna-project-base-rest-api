@@ -31,23 +31,31 @@ class U
         $command,
         $lang,
         $i18n_attribute_messages_fields = array(),
-        $i18n_columns_fields = array()
+        $i18n_columns_fields = array(),
+        $prefixAttributesWithTable = true
     ) {
 
+        $table2class = array_flip(DataModel::crudModels());
+
         //var_dump($command->select, $command->join, $command->params);
-        foreach ($i18n_attribute_messages_fields as $attr) {
+        foreach ($i18n_attribute_messages_fields as $table => $fields) {
+            foreach ($fields as $attr) {
 
-            $command->leftJoin("SourceMessage sm_{$attr}", "sm_{$attr}.category = :{$attr}_category AND sm_{$attr}.message = _{$attr}");
-            $command->leftJoin("Message m_{$attr}", "m_{$attr}.id = sm_{$attr}.id AND m_{$attr}.language = :language");
+                $command->leftJoin("SourceMessage sm_{$table}_{$attr}", "sm_{$table}_{$attr}.category = :{$table}_{$attr}_category AND sm_{$table}_{$attr}.message = {$table}._{$attr}");
+                $command->leftJoin("Message m_{$table}_{$attr}", "m_{$table}_{$attr}.id = sm_{$table}_{$attr}.id AND m_{$table}_{$attr}.language = :language");
 
-            $command->params["{$attr}_category"] = "a-WaffleFoo-{$attr}";
-            $command->params["language"] = $lang;
+                $command->params["{$table}_{$attr}_category"] = "a-" . $table2class[$table] . "-{$attr}";
+                $command->params["language"] = $lang;
 
-            $command->select .= ", COALESCE(m_{$attr}.translation,_{$attr}) as $attr";
+                if ($prefixAttributesWithTable) {
+                    $as = "{$table}.{$attr}";
+                } else {
+                    $as = "{$attr}";
+                }
+
+                $command->select .= ", COALESCE(m_{$table}_{$attr}.translation,{$table}._{$attr}) as `$as`";
+            }
         }
-
-        // Prevent double-escaping yii bug/workaround
-        $command->select = str_replace("`", "", $command->select);
 
         //var_dump($command->select, $command->join, $command->params);
         //die();
