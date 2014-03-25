@@ -36,19 +36,27 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->ref); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('_name')); ?>:</b>
-<?php echo CHtml::encode($model->_name); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_list_name')); ?>:</b>
+<?php echo CHtml::encode($model->_list_name); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('_short_name')); ?>:</b>
-<?php echo CHtml::encode($model->_short_name); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_property_name')); ?>:</b>
+<?php echo CHtml::encode($model->_property_name); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('_possessive')); ?>:</b>
+<?php echo CHtml::encode($model->_possessive); ?>
+<br />
+
+<?php /*
+<b><?php echo CHtml::encode($model->getAttributeLabel('_choice_format')); ?>:</b>
+<?php echo CHtml::encode($model->_choice_format); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('_description')); ?>:</b>
 <?php echo CHtml::encode($model->_description); ?>
 <br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('waffle_id')); ?>:</b>
 <?php echo CHtml::encode($model->waffle_id); ?>
 <br />

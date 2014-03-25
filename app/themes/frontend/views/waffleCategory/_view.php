@@ -19,19 +19,27 @@
     <?php echo CHtml::encode($data->ref); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('_name')); ?>:</b>
-    <?php echo CHtml::encode($data->_name); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_list_name')); ?>:</b>
+    <?php echo CHtml::encode($data->_list_name); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('_short_name')); ?>:</b>
-    <?php echo CHtml::encode($data->_short_name); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_property_name')); ?>:</b>
+    <?php echo CHtml::encode($data->_property_name); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('_description')); ?>:</b>
-    <?php echo CHtml::encode($data->_description); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_possessive')); ?>:</b>
+    <?php echo CHtml::encode($data->_possessive); ?>
     <br/>
 
     <?php /*
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_choice_format')); ?>:</b>
+    <?php echo CHtml::encode($data->_choice_format); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('_description')); ?>:</b>
+    <?php echo CHtml::encode($data->_description); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('waffle_id')); ?>:</b>
     <?php echo CHtml::encode($data->waffle_id); ?>
     <br />

@@ -25,6 +25,10 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->cloned_from_id); ?>
 <br/>
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('file_format')); ?>:</b>
+<?php echo CHtml::encode($model->file_format); ?>
+<br/>
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('_title')); ?>:</b>
 <?php echo CHtml::encode($model->_title); ?>
 <br/>
@@ -37,11 +41,11 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->_short_title); ?>
 <br/>
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('_description')); ?>:</b>
 <?php echo CHtml::encode($model->_description); ?>
-<br/>
+<br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('link')); ?>:</b>
 <?php echo CHtml::encode($model->link); ?>
 <br />
@@ -319,6 +323,19 @@ $this->breadcrumbs[] = $model->id;
                                     array('//waffle/update', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
+                    ),
+                    array(
+                        'name' => 'file_format',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'file_format',
+                                    'url' => $this->createUrl('/waffle/editableSaver'),
+                                ),
+                                true
+                            )
                     ),
                     array(
                         'name' => '_title',

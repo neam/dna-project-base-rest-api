@@ -21,6 +21,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'file_format'); ?>
+        <?php echo $form->textField($model, 'file_format', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, '_title'); ?>
         <?php echo $form->textField($model, '_title', array('size' => 60, 'maxlength' => 255)); ?>
     </div>

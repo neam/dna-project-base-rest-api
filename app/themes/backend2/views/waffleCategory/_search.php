@@ -26,13 +26,23 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, '_name'); ?>
-        <?php echo $form->textField($model, '_name', array('size' => 60, 'maxlength' => 255)); ?>
+        <?php echo $form->label($model, '_list_name'); ?>
+        <?php echo $form->textField($model, '_list_name', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, '_short_name'); ?>
-        <?php echo $form->textField($model, '_short_name', array('size' => 60, 'maxlength' => 255)); ?>
+        <?php echo $form->label($model, '_property_name'); ?>
+        <?php echo $form->textField($model, '_property_name', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, '_possessive'); ?>
+        <?php echo $form->textField($model, '_possessive', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, '_choice_format'); ?>
+        <?php echo $form->textArea($model, '_choice_format', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 
     <div class="row">
