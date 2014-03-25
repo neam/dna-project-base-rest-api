@@ -144,17 +144,11 @@ class Metadata
      * Returns the authorized roles for the given operation.
      * @param string $operation
      * @return array
-     * @throws CException
      */
     static public function operationToRoles($operation)
     {
         $map = self::operationToRolesMap();
-
-        if (!isset($map[$operation])) {
-            throw new CException("Unknown operation '$operation'.");
-        }
-
-        return $map[$operation];
+        return isset($map[$operation]) ? $map[$operation] : array();
     }
 
     /**

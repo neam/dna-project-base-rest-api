@@ -51,8 +51,13 @@ class WebUser extends CWebUser
     public function checkAccess($operation, $params = array(), $allowCaching = true)
     {
         // Auto-grant access to admins
-        if ($this->getIsAdmin()) {
+        if ($this->isAdmin) {
             return true;
+        }
+
+        // Handle anonymous users
+        if ($this->isGuest) {
+            return in_array(Role::ANONYMOUS, MetaData::operationToRoles($operation));
         }
 
         if (strpos($operation, '.') !== false) {

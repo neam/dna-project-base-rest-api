@@ -254,10 +254,14 @@ class PermissionHelper
     static public function applyAccessCriteria(CDbCriteria $criteria, array $roleNames)
     {
         $roleIds = array();
+
         foreach ($roleNames as $roleName) {
             $roleIds[] = self::roleNameToId($roleName);
         }
-        $roleIds = implode(', ', $roleIds);
+
+        $roleIds = !empty($roleNames)
+            ? implode(', ', $roleIds)
+            : '-1'; // TODO: Replace with a safe "null" value, or only conditionally add the "IN ($roleIds)" statement to the query.
 
         // All items should be found only once.
         $criteria->distinct = true;

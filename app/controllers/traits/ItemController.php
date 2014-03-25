@@ -71,7 +71,7 @@ trait ItemController
                     'browse',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Browse');
+                    return Yii::app()->user->checkAccess('Browse');
                 },
             ),
             array('allow',
