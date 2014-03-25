@@ -249,6 +249,14 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->thumbnail_media_id_approved); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_approved')); ?>:</b>
+<?php echo CHtml::encode($model->thumbnail_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('materials_approved')); ?>:</b>
+<?php echo CHtml::encode($model->materials_approved); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
 <?php echo CHtml::encode($model->title_approved); ?>
 <br />
@@ -261,16 +269,8 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->slug_en_proofed); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_approved')); ?>:</b>
-<?php echo CHtml::encode($model->thumbnail_approved); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('question_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->question_en_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('materials_approved')); ?>:</b>
-<?php echo CHtml::encode($model->materials_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('description_en_proofed')); ?>:</b>

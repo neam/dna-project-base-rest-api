@@ -84,7 +84,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => '_name',
+                'name' => '_list_name',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleCategory/editableSaver'),
                     //'placement' => 'right',
@@ -92,18 +92,28 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => '_short_name',
+                'name' => '_property_name',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleCategory/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => '_possessive',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleCategory/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            #'_choice_format',
             #'_description',
             array(
                 'name' => 'waffle_id',
                 'value' => 'CHtml::value($data, \'waffle.itemLabel\')',
                 'filter' => '', //CHtml::listData(Waffle::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
+            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
@@ -112,7 +122,6 @@ $this->widget('\TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',

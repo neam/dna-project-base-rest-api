@@ -7,9 +7,13 @@
 
             <?php echo $form->textFieldRow($model, 'ref', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textFieldRow($model, '_name', array('maxlength' => 255)); ?>
+            <?php echo $form->textFieldRow($model, '_list_name', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textFieldRow($model, '_short_name', array('maxlength' => 255)); ?>
+            <?php echo $form->textFieldRow($model, '_property_name', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, '_possessive', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textAreaRow($model, '_choice_format', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
             <?php echo $form->textAreaRow($model, '_description', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 

@@ -115,17 +115,17 @@
 
             <?php echo $form->textFieldRow($model, 'thumbnail_media_id_approved'); ?>
 
+            <?php echo $form->textFieldRow($model, 'thumbnail_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'materials_approved'); ?>
+
             <?php echo $form->textFieldRow($model, 'title_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'title_en_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_en_proofed'); ?>
 
-            <?php echo $form->textFieldRow($model, 'thumbnail_approved'); ?>
-
             <?php echo $form->textFieldRow($model, 'question_en_proofed'); ?>
-
-            <?php echo $form->textFieldRow($model, 'materials_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'description_en_proofed'); ?>
 

@@ -95,11 +95,11 @@
 
             <?php echo $form->textFieldRow($model, 'translate_into_zh_cn_validation_progress'); ?>
 
+            <?php echo $form->textFieldRow($model, 'translate_into_zh_tw_validation_progress'); ?>
+
             <?php echo $form->textFieldRow($model, 'approval_progress'); ?>
 
             <?php echo $form->textFieldRow($model, 'proofing_progress'); ?>
-
-            <?php echo $form->textFieldRow($model, 'translate_into_zh_tw_validation_progress'); ?>
 
             <?php echo $form->textFieldRow($model, 'allow_review'); ?>
 

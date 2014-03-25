@@ -276,6 +276,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'name_approved'); ?>
+        <?php echo $form->checkBox($model, 'name_approved'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'name_en_proofed'); ?>
         <?php echo $form->checkBox($model, 'name_en_proofed'); ?>
     </div>
@@ -283,6 +288,11 @@
     <div class="row">
         <?php echo $form->label($model, 'ref_proofed'); ?>
         <?php echo $form->checkBox($model, 'ref_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'name_proofed'); ?>
+        <?php echo $form->checkBox($model, 'name_proofed'); ?>
     </div>
 
 

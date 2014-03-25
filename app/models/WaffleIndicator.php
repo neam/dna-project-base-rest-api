@@ -47,7 +47,7 @@ class WaffleIndicator extends BaseWaffleIndicator
 
             )
         );
-        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        //Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
     }
 

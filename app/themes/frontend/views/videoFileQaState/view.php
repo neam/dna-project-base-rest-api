@@ -237,16 +237,20 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->slug_en_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id_approved')); ?>:</b>
-<?php echo CHtml::encode($model->original_media_id_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_approved')); ?>:</b>
-<?php echo CHtml::encode($model->about_en_approved); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('clip_mp4_media_id_approved')); ?>:</b>
+<?php echo CHtml::encode($model->clip_mp4_media_id_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_media_id_approved')); ?>:</b>
 <?php echo CHtml::encode($model->thumbnail_media_id_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('clip_webm_media_id_approved')); ?>:</b>
+<?php echo CHtml::encode($model->clip_webm_media_id_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_approved')); ?>:</b>
+<?php echo CHtml::encode($model->about_en_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_en_approved')); ?>:</b>
@@ -257,6 +261,10 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->title_approved); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_approved')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_approved); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->title_en_proofed); ?>
 <br />
@@ -265,40 +273,32 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->slug_en_proofed); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->original_media_id_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->about_en_proofed); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('clip_mp4_media_id_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->clip_mp4_media_id_proofed); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_media_id_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->thumbnail_media_id_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('clip_webm_media_id_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->clip_webm_media_id_proofed); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->about_en_proofed); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->title_proofed); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('clip_mp4_media_id_approved')); ?>:</b>
-<?php echo CHtml::encode($model->clip_mp4_media_id_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('clip_webm_media_id_approved')); ?>:</b>
-<?php echo CHtml::encode($model->clip_webm_media_id_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('clip_mp4_media_id_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->clip_mp4_media_id_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('clip_webm_media_id_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->clip_webm_media_id_proofed); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_proofed); ?>
 <br />
 
     */

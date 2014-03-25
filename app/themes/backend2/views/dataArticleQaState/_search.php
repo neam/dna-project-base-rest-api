@@ -241,6 +241,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'translate_into_zh_tw_validation_progress'); ?>
+        <?php echo $form->textField($model, 'translate_into_zh_tw_validation_progress'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'approval_progress'); ?>
         <?php echo $form->textField($model, 'approval_progress'); ?>
     </div>
@@ -248,11 +253,6 @@
     <div class="row">
         <?php echo $form->label($model, 'proofing_progress'); ?>
         <?php echo $form->textField($model, 'proofing_progress'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'translate_into_zh_tw_validation_progress'); ?>
-        <?php echo $form->textField($model, 'translate_into_zh_tw_validation_progress'); ?>
     </div>
 
     <div class="row">
@@ -281,6 +281,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'title_approved'); ?>
+        <?php echo $form->checkBox($model, 'title_approved'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'slug_en_proofed'); ?>
         <?php echo $form->checkBox($model, 'slug_en_proofed'); ?>
     </div>
@@ -293,11 +298,6 @@
     <div class="row">
         <?php echo $form->label($model, 'about_en_proofed'); ?>
         <?php echo $form->checkBox($model, 'about_en_proofed'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_approved'); ?>
-        <?php echo $form->checkBox($model, 'title_approved'); ?>
     </div>
 
     <div class="row">

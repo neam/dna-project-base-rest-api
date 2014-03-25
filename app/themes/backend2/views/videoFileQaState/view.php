@@ -230,16 +230,20 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->slug_en_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id_approved')); ?>:</b>
-<?php echo CHtml::encode($model->original_media_id_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_approved')); ?>:</b>
-<?php echo CHtml::encode($model->about_en_approved); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('clip_mp4_media_id_approved')); ?>:</b>
+<?php echo CHtml::encode($model->clip_mp4_media_id_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_media_id_approved')); ?>:</b>
 <?php echo CHtml::encode($model->thumbnail_media_id_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('clip_webm_media_id_approved')); ?>:</b>
+<?php echo CHtml::encode($model->clip_webm_media_id_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_approved')); ?>:</b>
+<?php echo CHtml::encode($model->about_en_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_en_approved')); ?>:</b>
@@ -250,6 +254,10 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->title_approved); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_approved')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_approved); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->title_en_proofed); ?>
 <br />
@@ -258,40 +266,32 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->slug_en_proofed); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('original_media_id_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->original_media_id_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->about_en_proofed); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('clip_mp4_media_id_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->clip_mp4_media_id_proofed); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_media_id_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->thumbnail_media_id_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('clip_webm_media_id_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->clip_webm_media_id_proofed); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->about_en_proofed); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->title_proofed); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('clip_mp4_media_id_approved')); ?>:</b>
-<?php echo CHtml::encode($model->clip_mp4_media_id_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('clip_webm_media_id_approved')); ?>:</b>
-<?php echo CHtml::encode($model->clip_webm_media_id_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('clip_mp4_media_id_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->clip_mp4_media_id_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('clip_webm_media_id_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->clip_webm_media_id_proofed); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->subtitles_proofed); ?>
 <br />
 
     */
@@ -1014,26 +1014,13 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'original_media_id_approved',
+                        'name' => 'clip_mp4_media_id_approved',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'original_media_id_approved',
-                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'about_en_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_en_approved',
+                                    'attribute' => 'clip_mp4_media_id_approved',
                                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                                 ),
                                 true
@@ -1047,6 +1034,32 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'thumbnail_media_id_approved',
+                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'clip_webm_media_id_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'clip_webm_media_id_approved',
+                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'about_en_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_en_approved',
                                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                                 ),
                                 true
@@ -1079,6 +1092,19 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'subtitles_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'subtitles_approved',
+                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
                         'name' => 'title_en_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1105,26 +1131,13 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'original_media_id_proofed',
+                        'name' => 'clip_mp4_media_id_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'original_media_id_proofed',
-                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'about_en_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_en_proofed',
+                                    'attribute' => 'clip_mp4_media_id_proofed',
                                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                                 ),
                                 true
@@ -1144,6 +1157,19 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'clip_webm_media_id_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'clip_webm_media_id_proofed',
+                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
                         'name' => 'subtitles_en_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1151,6 +1177,19 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'subtitles_en_proofed',
+                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'about_en_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_en_proofed',
                                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                                 ),
                                 true
@@ -1170,52 +1209,13 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'clip_mp4_media_id_approved',
+                        'name' => 'subtitles_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => 'clip_mp4_media_id_approved',
-                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'clip_webm_media_id_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'clip_webm_media_id_approved',
-                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'clip_mp4_media_id_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'clip_mp4_media_id_proofed',
-                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'clip_webm_media_id_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'clip_webm_media_id_proofed',
+                                    'attribute' => 'subtitles_proofed',
                                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                                 ),
                                 true

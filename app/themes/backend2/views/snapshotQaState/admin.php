@@ -432,6 +432,14 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'translate_into_zh_tw_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'approval_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/snapshotQaState/editableSaver'),
@@ -441,14 +449,6 @@ $this->widget('\TbGridView',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'proofing_progress',
-                'editable' => array(
-                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'translate_into_zh_tw_validation_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/snapshotQaState/editableSaver'),
                     //'placement' => 'right',

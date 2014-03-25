@@ -488,6 +488,14 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'name_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/wafflePublisherQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'name_en_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/wafflePublisherQaState/editableSaver'),
@@ -497,6 +505,14 @@ $this->widget('\TbGridView',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'ref_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/wafflePublisherQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'name_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/wafflePublisherQaState/editableSaver'),
                     //'placement' => 'right',

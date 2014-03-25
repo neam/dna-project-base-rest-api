@@ -105,29 +105,21 @@
 
             <?php echo $form->textFieldRow($model, 'allow_publish'); ?>
 
-            <?php echo $form->textFieldRow($model, 'title_approved'); ?>
-
-            <?php echo $form->textFieldRow($model, 'short_name_approved'); ?>
+            <?php echo $form->textFieldRow($model, 'name_en_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'ref_approved'); ?>
 
-            <?php echo $form->textFieldRow($model, 'name_approved'); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_proofed'); ?>
-
-            <?php echo $form->textFieldRow($model, 'short_name_proofed'); ?>
-
-            <?php echo $form->textFieldRow($model, 'ref_proofed'); ?>
-
-            <?php echo $form->textFieldRow($model, 'name_proofed'); ?>
-
-            <?php echo $form->textFieldRow($model, 'name_en_approved'); ?>
-
             <?php echo $form->textFieldRow($model, 'short_name_en_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'name_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'name_en_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'short_name_en_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'ref_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'name_proofed'); ?>
         </div>
     </div>
     <!-- main inputs -->

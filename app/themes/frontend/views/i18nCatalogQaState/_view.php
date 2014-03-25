@@ -184,6 +184,10 @@
     <?php echo CHtml::encode($data->translate_into_vi_validation_progress); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_zh_validation_progress')); ?>:</b>
+    <?php echo CHtml::encode($data->translate_into_zh_validation_progress); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_zh_cn_validation_progress')); ?>:</b>
     <?php echo CHtml::encode($data->translate_into_zh_cn_validation_progress); ?>
     <br />
@@ -192,32 +196,12 @@
     <?php echo CHtml::encode($data->translate_into_zh_tw_validation_progress); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_zh_validation_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->translate_into_zh_validation_progress); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('proofing_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->proofing_progress); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('approval_progress')); ?>:</b>
     <?php echo CHtml::encode($data->approval_progress); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('original_media_id_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->original_media_id_approved); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->about_approved); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('pot_import_media_id_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->pot_import_media_id_approved); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->title_proofed); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('proofing_progress')); ?>:</b>
+    <?php echo CHtml::encode($data->proofing_progress); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('allow_review')); ?>:</b>
@@ -232,20 +216,28 @@
     <?php echo CHtml::encode($data->title_approved); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('original_media_id_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->original_media_id_proofed); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_en_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->po_contents_en_approved); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->about_proofed); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('pot_import_media_id_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->pot_import_media_id_proofed); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->about_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_approved')); ?>:</b>
     <?php echo CHtml::encode($data->po_contents_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('title_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->title_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_en_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->po_contents_en_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->about_proofed); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_proofed')); ?>:</b>

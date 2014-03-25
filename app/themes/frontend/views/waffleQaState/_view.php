@@ -212,22 +212,6 @@
     <?php echo CHtml::encode($data->allow_publish); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->title_approved); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_approved); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->title_proofed); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_proofed); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('title_en_approved')); ?>:</b>
     <?php echo CHtml::encode($data->title_en_approved); ?>
     <br />
@@ -236,24 +220,72 @@
     <?php echo CHtml::encode($data->slug_en_approved); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('short_title_en_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->short_title_en_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('file_format_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->file_format_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('license_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->license_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('license_link_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->license_link_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('waffle_publisher_id_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->waffle_publisher_id_approved); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('json_import_media_id_approved')); ?>:</b>
     <?php echo CHtml::encode($data->json_import_media_id_approved); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->po_contents_approved); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('title_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->title_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('title_en_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->title_en_proofed); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->po_contents_approved); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('slug_en_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->slug_en_proofed); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('short_title_en_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->short_title_en_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('file_format_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->file_format_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('license_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->license_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('license_link_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->license_link_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('waffle_publisher_id_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->waffle_publisher_id_proofed); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('json_import_media_id_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->json_import_media_id_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('title_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->title_proofed); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_proofed')); ?>:</b>

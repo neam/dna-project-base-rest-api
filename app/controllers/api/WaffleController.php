@@ -30,12 +30,26 @@ class WaffleController extends AppRestController
     /**
      * @see actionJsonByActiveRecord() the non-optimized version of this method
      */
-    public function actionJson()
+    public function actionJson($lang)
     {
 
         $model = $this->getModel();
 
         $response = new stdClass();
+
+        // waffle metadata
+        $response->file_format = new stdClass();
+        $response->file_format->v = "0.1";
+
+        // waffle i18n metadata
+        $response->i18n = new stdClass();
+        $response->i18n->lang = $lang;
+        $response->i18n->plural_schema = new stdClass();
+        // TODO: Base upon waffle choice format schema attribute
+        $locale = CLocale::getInstance($lang);
+        foreach ($locale->pluralRules as $k => $pluralRule) {
+            $response->i18n->plural_schema->$k = $pluralRule;
+        }
 
         // waffle info
         $response->info = new stdClass();
@@ -72,13 +86,13 @@ class WaffleController extends AppRestController
 
         // waffleCategories
         $columns = array(
-            "waffle_category" => array("ref", "_name", "_description"),
-            "waffle_category_thing" => array("ref", "_name"),
+            "waffle_category" => array("ref"),
+            "waffle_category_thing" => array("ref"),
         );
         $select = U::prefixed_table_fields_wildcard('waffle_category', 'waffle_category', $columns['waffle_category'])
             . "," . U::prefixed_table_fields_wildcard('waffle_category_thing', 'waffle_category_thing', $columns['waffle_category_thing']);
         // Prevent double-escaping ("The method will automatically quote the column names unless a column contains some parenthesis (which means the column contains a DB expression).")
-        $select .= ", (-1) AS foo";
+        $select .= ", (-1) AS prevent_double_escaping_yii_workaround";
 
         $command = Yii::app()->db->createCommand()
             ->select($select)
@@ -87,7 +101,7 @@ class WaffleController extends AppRestController
             ->where("waffle_category.waffle_id = :waffle_id");
         $command->params = array("waffle_id" => $model->id);
 
-        $formatResults = function ($records) use ($columns) {
+        $formatResults = function ($records) use ($columns, $lang) {
 
             //var_dump(compact("records"));
             $categories = array();
@@ -97,8 +111,11 @@ class WaffleController extends AppRestController
                     if (!isset($categories[$r['waffle_category.ref']])) {
                         $category = new stdClass();
                         $category->id = $r['waffle_category.ref'];
-                        $category->name = $r['waffle_category._name'];
-                        $category->description = $r['waffle_category._description'];
+                        $category->list_name = $r['waffle_category.list_name'];
+                        $category->property_name = $r['waffle_category.property_name'];
+                        $category->possessive = $r['waffle_category.possessive'];
+                        $category->expanded_choice_format = (object) array_values(ChoiceFormatHelper::toArray($r['waffle_category.choice_format'], $lang));
+                        $category->description = $r['waffle_category.description'];
                         $category->things = array();
                         $categories[$r['waffle_category.ref']] = $category;
                     }
@@ -107,7 +124,8 @@ class WaffleController extends AppRestController
 
                     $thing = new stdClass();
                     $thing->id = $r['waffle_category_thing.ref'];
-                    $thing->name = $r['waffle_category_thing._name'];
+                    $thing->name = $r['waffle_category_thing.name'];
+                    $thing->short_name = $r['waffle_category_thing.short_name'];
                     $things[] = $thing;
 
                 }
@@ -117,7 +135,7 @@ class WaffleController extends AppRestController
         };
 
         //print_r($command->text);print_r($command->params);
-        $translatedCommand = U::translatedDbCommand($command);
+        $translatedCommand = U::translatedDbCommand($command, $lang, array('waffle_category' => array('list_name', 'property_name', 'possessive', 'choice_format', 'description'), 'waffle_category_thing' => array('name', 'short_name')));
         //print_r($translatedCommand->text);print_r($translatedCommand->params);
         $records = $translatedCommand->queryAll();
 
@@ -125,11 +143,11 @@ class WaffleController extends AppRestController
 
         // waffleIndicators
         $command = Yii::app()->db->createCommand()
-            ->select("ref AS id, _name AS name")
+            ->select("ref AS id")
             ->from("waffle_indicator")
             ->where("waffle_id = :waffle_id");
         $command->params = array("waffle_id" => $model->id);
-        $translatedCommand = U::translatedDbCommand($command);
+        $translatedCommand = U::translatedDbCommand($command, $lang, array('waffle_indicator' => array('name')), array(), false);
         $response->definitions->indicators = $translatedCommand->queryAll();
 
         // waffleUnits
@@ -138,7 +156,7 @@ class WaffleController extends AppRestController
             ->from("waffle_unit")
             ->where("waffle_id = :waffle_id");
         $command->params = array("waffle_id" => $model->id);
-        $translatedCommand = U::translatedDbCommand($command);
+        $translatedCommand = U::translatedDbCommand($command, $lang, array('waffle_unit' => array('name', 'description')), array(), false);
         $response->definitions->units = $translatedCommand->queryAll();
 
         // waffleTags
@@ -147,7 +165,7 @@ class WaffleController extends AppRestController
             ->from("waffle_tag")
             ->where("waffle_id = :waffle_id");
         $command->params = array("waffle_id" => $model->id);
-        $translatedCommand = U::translatedDbCommand($command);
+        $translatedCommand = U::translatedDbCommand($command, $lang, array('waffle_tag' => array('name', 'description')), array(), false);
         $response->definitions->tags = $translatedCommand->queryAll();
 
         // waffleDataSources - TODO
@@ -170,11 +188,25 @@ class WaffleController extends AppRestController
      * @throws CException
      * @see actionJson() the optimized version of this method
      */
-    public function actionJsonByActiveRecord()
+    public function actionJsonByActiveRecord($lang)
     {
         $model = $this->getModel();
 
         $response = new stdClass();
+
+        // waffle metadata
+        $response->file_format = new stdClass();
+        $response->file_format->v = "0.1";
+
+        // waffle i18n metadata
+        $response->i18n = new stdClass();
+        $response->i18n->lang = $lang;
+        $response->i18n->plural_schema = new stdClass();
+        // TODO: Base upon waffle choice format schema attribute
+        $locale = CLocale::getInstance($lang);
+        foreach ($locale->pluralRules as $k => $pluralRule) {
+            $response->i18n->plural_schema->$k = $pluralRule;
+        }
 
         // waffle info
         $response->info = new stdClass();

@@ -60,7 +60,7 @@ class Waffle extends BaseWaffle
 
             )
         );
-        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        //Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
     }
 
@@ -94,6 +94,7 @@ class Waffle extends BaseWaffle
         try {
 
             // Waffle attributes
+            $this->file_format = json_encode($waffle->body->file_format);
             $this->_title = $waffle->info->title;
             $this->slug_en = $waffle->info->id;
             $this->_short_title = $waffle->info->short_title;
@@ -135,7 +136,10 @@ class Waffle extends BaseWaffle
             foreach ($waffle->definitions->categories as $category) {
                 $model = new WaffleCategory();
                 $model->ref = $category->id;
-                $model->_name = $category->name;
+                $model->_list_name = isset($category->list_name) ? $category->list_name : null;
+                $model->_property_name = isset($category->property_name) ? $category->property_name : null;
+                $model->_possessive = isset($category->possessive) ? $category->possessive : null;
+                $model->_choice_format = isset($category->choice_format_expanded) ? ChoiceFormatHelper::toString($category->choice_format_expanded, $waffle->i18n->lang) : null;
                 $model->_description = isset($category->description) ? $category->description : null;
                 $model->waffle_id = $this->id;
                 if (!$model->save()) {
@@ -211,9 +215,11 @@ class Waffle extends BaseWaffle
             }
 
             // commit transaction
+            Yii::log("Commit import transaction", "trace", __METHOD__);
             $transaction->commit();
 
         } catch (Exception $e) {
+            Yii::log("Rolling back import transaction", "trace", __METHOD__);
             $transaction->rollback();
             throw $e;
         }
@@ -235,6 +241,7 @@ class Waffle extends BaseWaffle
                 'short_title_' . $this->source_language,
             ),
             'publishable' => array(
+                'file_format',
                 'license',
                 'license_link',
                 'waffle_publisher_id',
@@ -261,6 +268,9 @@ class Waffle extends BaseWaffle
                 'license_link',
                 'waffle_publisher_id',
             ),
+            'metadata' => array(
+                'file_format',
+            ),
             'logo' => array(
                 'image_small_media_id',
                 'image_large_media_id',
@@ -275,6 +285,7 @@ class Waffle extends BaseWaffle
     {
         return array(
             'info' => Yii::t('app', 'Info'),
+            'metadata' => Yii::t('app', 'Metadata'),
             'logo' => Yii::t('app', 'Logo'),
             'import' => Yii::t('app', 'Import'),
         );

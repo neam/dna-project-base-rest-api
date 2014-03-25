@@ -32,6 +32,10 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->cloned_from_id); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('file_format')); ?>:</b>
+<?php echo CHtml::encode($model->file_format); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('_title')); ?>:</b>
 <?php echo CHtml::encode($model->_title); ?>
 <br />
@@ -44,11 +48,11 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->_short_title); ?>
 <br />
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('_description')); ?>:</b>
 <?php echo CHtml::encode($model->_description); ?>
 <br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('link')); ?>:</b>
 <?php echo CHtml::encode($model->link); ?>
 <br />

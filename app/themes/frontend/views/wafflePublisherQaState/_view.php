@@ -220,12 +220,20 @@
     <?php echo CHtml::encode($data->ref_approved); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('name_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->name_approved); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('name_en_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->name_en_proofed); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('ref_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->ref_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('name_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->name_proofed); ?>
     <br />
 
     */
