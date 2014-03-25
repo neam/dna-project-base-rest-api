@@ -278,12 +278,12 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->clip_webm_media_id_proofed); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->about_en_proofed); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->about_en_proofed); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
@@ -1170,19 +1170,6 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'about_en_proofed',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'about_en_proofed',
-                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
                         'name' => 'subtitles_en_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1190,6 +1177,19 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'subtitles_en_proofed',
+                                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'about_en_proofed',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'about_en_proofed',
                                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                                 ),
                                 true

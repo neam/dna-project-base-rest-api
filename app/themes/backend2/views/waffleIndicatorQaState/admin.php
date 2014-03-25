@@ -480,7 +480,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'short_name_en_approved',
+                'name' => 'ref_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
                     //'placement' => 'right',
@@ -488,7 +488,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'ref_approved',
+                'name' => 'short_name_en_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
                     //'placement' => 'right',

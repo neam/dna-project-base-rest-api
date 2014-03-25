@@ -258,12 +258,12 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->title_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_approved')); ?>:</b>
-<?php echo CHtml::encode($model->po_contents_approved); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->title_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_approved')); ?>:</b>
+<?php echo CHtml::encode($model->po_contents_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en_proofed')); ?>:</b>
@@ -1113,19 +1113,6 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'po_contents_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'po_contents_approved',
-                                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
                         'name' => 'title_en_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1133,6 +1120,19 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'title_en_proofed',
+                                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'po_contents_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'po_contents_approved',
                                     'url' => $this->createUrl('/waffleQaState/editableSaver'),
                                 ),
                                 true

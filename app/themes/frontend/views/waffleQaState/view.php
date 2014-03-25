@@ -265,12 +265,12 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->title_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_approved')); ?>:</b>
-<?php echo CHtml::encode($model->po_contents_approved); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->title_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_approved')); ?>:</b>
+<?php echo CHtml::encode($model->po_contents_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en_proofed')); ?>:</b>

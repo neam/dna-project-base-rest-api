@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'glyphicon-search',
-                        'items' => array(array('label' => 'outEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'outNodes - Node', 'url' => array('//node/admin')), array('label' => 'inEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'inNodes - Node', 'url' => array('//node/admin')), array('label' => 'owner - Account', 'url' => array('//account/admin')), array('label' => 'clonedFrom - Menu', 'url' => array('//menu/admin')), array('label' => 'menus - Menu', 'url' => array('//menu/admin')), array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'menuQaState - MenuQaState', 'url' => array('//menuQaState/admin'))
+                        'items' => array(array('label' => 'outEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'outNodes - Node', 'url' => array('//node/admin')), array('label' => 'inEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'inNodes - Node', 'url' => array('//node/admin')), array('label' => 'menuQaState - MenuQaState', 'url' => array('//menuQaState/admin')), array('label' => 'clonedFrom - Menu', 'url' => array('//menu/admin')), array('label' => 'menus - Menu', 'url' => array('//menu/admin')), array('label' => 'owner - Account', 'url' => array('//account/admin')), array('label' => 'node - Node', 'url' => array('//node/admin'))
                         )
                     ),
                 ),

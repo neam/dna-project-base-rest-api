@@ -123,9 +123,9 @@
 
             <?php echo $form->textFieldRow($model, 'title_approved'); ?>
 
-            <?php echo $form->textFieldRow($model, 'po_contents_approved'); ?>
-
             <?php echo $form->textFieldRow($model, 'title_en_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'po_contents_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_en_proofed'); ?>
 

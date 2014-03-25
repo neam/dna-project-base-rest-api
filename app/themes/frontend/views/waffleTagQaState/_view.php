@@ -216,12 +216,12 @@
     <?php echo CHtml::encode($data->name_en_approved); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('short_name_en_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->short_name_en_approved); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('ref_approved')); ?>:</b>
     <?php echo CHtml::encode($data->ref_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('short_name_en_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->short_name_en_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('name_approved')); ?>:</b>

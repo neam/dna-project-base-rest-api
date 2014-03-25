@@ -268,12 +268,12 @@
     <?php echo CHtml::encode($data->clip_webm_media_id_proofed); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_en_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->about_en_proofed); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('subtitles_en_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->subtitles_en_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_en_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->about_en_proofed); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('title_proofed')); ?>:</b>

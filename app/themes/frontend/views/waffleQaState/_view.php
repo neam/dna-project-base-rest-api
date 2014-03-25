@@ -248,12 +248,12 @@
     <?php echo CHtml::encode($data->title_approved); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->po_contents_approved); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('title_en_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->title_en_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->po_contents_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('slug_en_proofed')); ?>:</b>

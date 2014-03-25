@@ -336,13 +336,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'about_en_proofed'); ?>
-        <?php echo $form->checkBox($model, 'about_en_proofed'); ?>
+        <?php echo $form->label($model, 'subtitles_en_proofed'); ?>
+        <?php echo $form->checkBox($model, 'subtitles_en_proofed'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'subtitles_en_proofed'); ?>
-        <?php echo $form->checkBox($model, 'subtitles_en_proofed'); ?>
+        <?php echo $form->label($model, 'about_en_proofed'); ?>
+        <?php echo $form->checkBox($model, 'about_en_proofed'); ?>
     </div>
 
     <div class="row">

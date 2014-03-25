@@ -107,9 +107,9 @@
 
             <?php echo $form->textFieldRow($model, 'name_en_approved'); ?>
 
-            <?php echo $form->textFieldRow($model, 'short_name_en_approved'); ?>
-
             <?php echo $form->textFieldRow($model, 'ref_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'short_name_en_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'name_approved'); ?>
 

@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'glyphicon-search',
-                        'items' => array(array('label' => 'outEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'outNodes - Node', 'url' => array('//node/admin')), array('label' => 'inEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'inNodes - Node', 'url' => array('//node/admin')), array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'clonedFrom - Page', 'url' => array('//page/admin')), array('label' => 'pages - Page', 'url' => array('//page/admin')), array('label' => 'owner - Account', 'url' => array('//account/admin')), array('label' => 'pageQaState - PageQaState', 'url' => array('//pageQaState/admin')), array('label' => 'sections - Section', 'url' => array('//section/admin'))
+                        'items' => array(array('label' => 'outEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'outNodes - Node', 'url' => array('//node/admin')), array('label' => 'inEdges - Edge', 'url' => array('//edge/admin')), array('label' => 'inNodes - Node', 'url' => array('//node/admin')), array('label' => 'pageQaState - PageQaState', 'url' => array('//pageQaState/admin')), array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'clonedFrom - Page', 'url' => array('//page/admin')), array('label' => 'pages - Page', 'url' => array('//page/admin')), array('label' => 'owner - Account', 'url' => array('//account/admin')), array('label' => 'sections - Section', 'url' => array('//section/admin'))
                         )
                     ),
                 ),

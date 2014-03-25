@@ -271,13 +271,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'short_name_en_approved'); ?>
-        <?php echo $form->checkBox($model, 'short_name_en_approved'); ?>
+        <?php echo $form->label($model, 'ref_approved'); ?>
+        <?php echo $form->checkBox($model, 'ref_approved'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'ref_approved'); ?>
-        <?php echo $form->checkBox($model, 'ref_approved'); ?>
+        <?php echo $form->label($model, 'short_name_en_approved'); ?>
+        <?php echo $form->checkBox($model, 'short_name_en_approved'); ?>
     </div>
 
     <div class="row">

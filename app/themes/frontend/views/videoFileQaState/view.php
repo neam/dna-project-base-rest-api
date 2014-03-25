@@ -285,12 +285,12 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->clip_webm_media_id_proofed); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->about_en_proofed); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->subtitles_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('about_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->about_en_proofed); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>

@@ -584,7 +584,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'about_en_proofed',
+                'name' => 'subtitles_en_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -592,7 +592,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'subtitles_en_proofed',
+                'name' => 'about_en_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                     //'placement' => 'right',
