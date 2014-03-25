@@ -94,6 +94,7 @@ class Waffle extends BaseWaffle
         try {
 
             // Waffle attributes
+            $this->file_format = json_encode($waffle->body->file_format);
             $this->_title = $waffle->info->title;
             $this->slug_en = $waffle->info->id;
             $this->_short_title = $waffle->info->short_title;
@@ -135,7 +136,10 @@ class Waffle extends BaseWaffle
             foreach ($waffle->definitions->categories as $category) {
                 $model = new WaffleCategory();
                 $model->ref = $category->id;
-                $model->_name = $category->name;
+                $model->_list_name = isset($category->list_name) ? $category->list_name : null;
+                $model->_property_name = isset($category->property_name) ? $category->property_name : null;
+                $model->_possessive = isset($category->possessive) ? $category->possessive : null;
+                $model->_choice_format = isset($category->choice_format_expanded) ? ChoiceFormatHelper::toString($category->choice_format_expanded, $waffle->i18n->lang) : null;
                 $model->_description = isset($category->description) ? $category->description : null;
                 $model->waffle_id = $this->id;
                 if (!$model->save()) {

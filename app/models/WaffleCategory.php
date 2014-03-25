@@ -42,8 +42,8 @@ class WaffleCategory extends BaseWaffleCategory
             $this->i18nRules(),
             array(
 
-                array('name', 'length', 'min' => 3, 'max' => 200),
-                array('short_name', 'length', 'min' => 3, 'max' => 50),
+                array('list_name', 'length', 'min' => 3, 'max' => 50),
+                array('property_name', 'length', 'min' => 3, 'max' => 50),
 
             )
         );
