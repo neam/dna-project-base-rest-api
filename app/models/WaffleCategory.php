@@ -63,11 +63,12 @@ class WaffleCategory extends BaseWaffleCategory
     public function statusRequirements()
     {
         return array(
-            'draft' => array(
-                'name_' . $this->source_language,
-            ),
+            'draft' => array(),
             'reviewable' => array(
-                'short_name_' . $this->source_language,
+                'list_name_' . $this->source_language,
+                'property_name_' . $this->source_language,
+                'possessive_' . $this->source_language,
+                'choice_format_' . $this->source_language,
             ),
             'publishable' => array(
                 'ref',
@@ -84,8 +85,10 @@ class WaffleCategory extends BaseWaffleCategory
         return array(
             'info' => array(
                 'ref',
-                'name_' . $this->source_language,
-                'short_name_' . $this->source_language,
+                'list_name_' . $this->source_language,
+                'property_name_' . $this->source_language,
+                'possessive_' . $this->source_language,
+                'choice_format_' . $this->source_language,
                 'description_' . $this->source_language,
                 'waffle',
             ),

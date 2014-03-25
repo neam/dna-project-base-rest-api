@@ -235,6 +235,7 @@ class Waffle extends BaseWaffle
                 'short_title_' . $this->source_language,
             ),
             'publishable' => array(
+                'file_format',
                 'license',
                 'license_link',
                 'waffle_publisher_id',
@@ -261,6 +262,9 @@ class Waffle extends BaseWaffle
                 'license_link',
                 'waffle_publisher_id',
             ),
+            'metadata' => array(
+                'file_format',
+            ),
             'logo' => array(
                 'image_small_media_id',
                 'image_large_media_id',
@@ -275,6 +279,7 @@ class Waffle extends BaseWaffle
     {
         return array(
             'info' => Yii::t('app', 'Info'),
+            'metadata' => Yii::t('app', 'Metadata'),
             'logo' => Yii::t('app', 'Logo'),
             'import' => Yii::t('app', 'Import'),
         );
