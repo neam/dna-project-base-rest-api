@@ -52,4 +52,20 @@ class Item extends BaseItem
         ));
     }
 
+    /**
+     * @param $criteria
+     * @return array
+     */
+    public function findAllActualItems($criteria)
+    {
+        $items = array();
+        // TODO: ensure that DataModel::qaModels returns the correct classes
+        foreach (DataModel::qaModels() as $modelClass => $table) {
+            foreach (ActiveRecord::model($modelClass)->findAll($criteria) as $relatedItemCandidate) {
+                $items[] = $relatedItemCandidate;
+            }
+        }
+        return $items;
+    }
+
 }

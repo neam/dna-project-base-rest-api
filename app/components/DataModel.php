@@ -338,10 +338,10 @@ class DataModel
     }
 
     /**
-     * @param $modelClass
+     * @param $modelOrModelClass
      * @return bool
      */
-    static function isGoModel($modelOrModelClass)
+    static public function isGoModel($modelOrModelClass)
     {
         if (is_object($modelOrModelClass)) {
             $modelClass = get_class($modelOrModelClass);
