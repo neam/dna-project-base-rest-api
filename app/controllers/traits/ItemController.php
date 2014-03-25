@@ -37,8 +37,13 @@ trait ItemController
     public function checkAccessById($id, $operation)
     {
         /** @var ActiveRecord|ItemTrait $model */
-        $model = ActiveRecord::model($this->modelClass)->findByPk($_GET['id']);
-        return $model->checkAccess($operation);
+        $model = ActiveRecord::model($this->modelClass)->findByPk($id);
+
+        if ($model instanceof ActiveRecord) {
+            return $model->checkAccess($operation);
+        } else {
+            throw new CHttpException(404, Yii::t('error', "Failed to check access: the $this->modelClass model with ID $id does not exist."));
+        }
     }
 
     /**
@@ -199,11 +204,21 @@ trait ItemController
         return $return;
     }
 
+    /**
+     * Continues the authoring process.
+     * @param integer $id the model ID.
+     */
     public function actionContinueAuthoring($id)
     {
+        /** @var ActiveRecord|ItemTrait $model */
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
-        $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+
+        if ($model->checkAccess('Edit')) {
+            $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+        } else {
+            $this->redirect('/' . lcfirst(get_class($model)) . '/browse'); // TODO: Clean up route.
+        }
     }
 
     protected function nextFlowStep($prefix, $item)
