@@ -27,4 +27,30 @@ class VideoFileController extends AppRestController
         );
     }
 
+    /**
+     */
+    public function actionGet()
+    {
+
+        $model = $this->getModel();
+
+        $response = new stdClass();
+
+        $response->id = $model->id;
+        $response->title = $model->title;
+        $response->slug = $model->slug;
+        $response->caption = $model->caption;
+        $response->about = $model->about;
+        //$response->tags = $model->tags;
+        $response->thumbnail = !is_null($model->thumbnail_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $model->thumbnailMedia->path : null;
+        $response->clipWebm = !is_null($model->clip_webm_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $model->clipWebmMedia->path : null;
+        $response->clipMp4 = !is_null($model->clip_mp4_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $model->clipMp4Media->path : null;
+        //$response->related = $model->related;
+        //$response->overlays = $model->overlays;
+        //$response->dubbing = $model->dubbing;
+
+        $this->sendResponse(200, $response);
+
+    }
+
 }
