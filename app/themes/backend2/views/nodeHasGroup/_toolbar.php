@@ -91,7 +91,7 @@
                     array(
                         'label' => Yii::t('model', 'Relations'),
                         'icon' => 'glyphicon-search',
-                        'items' => array(array('label' => 'node - Node', 'url' => array('//node/admin')), array('label' => 'group - Group', 'url' => array('//group/admin'))
+                        'items' => array(array('label' => 'group - Group', 'url' => array('//group/admin')), array('label' => 'node - Node', 'url' => array('//node/admin'))
                         )
                     ),
                 ),
