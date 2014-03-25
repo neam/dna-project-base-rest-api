@@ -281,6 +281,31 @@ trait ItemTrait
     }
 
     /**
+     * Returns invalid fields.
+     * @param string $scenario
+     * @return array
+     */
+    public function getInvalidFields($scenario)
+    {
+        // Work on a clone to not interfere with existing attributes and validation errors
+        $model = clone $this;
+        $model->scenario = $scenario;
+
+        $attributes = $this->scenarioSpecificAttributes($scenario);
+        $invalidFields = array();
+
+        foreach ($attributes as $attribute) {
+            $valid = $model->validate(array($attribute));
+
+            if (!$valid) {
+                $invalidFields[] = $attribute;
+            }
+        }
+
+        return $invalidFields;
+    }
+
+    /**
      * Returns an action route.
      * @param string $action the controller action.
      * @param string $step

@@ -1,8 +1,11 @@
 <?php
 /* @var Controller|ItemController $this */
-/* @var ActiveRecord|ItemTrait $model */
+/* @var ActiveRecord|ItemTrait|QaStateBehavior $model */
 /* @var AppActiveForm $form */
 ?>
+<?php $validationScenario = $this->workflowData['validationScenario']; ?>
+<?php $invalidFieldCount = $model->calculateInvalidFields($validationScenario); ?>
+<?php $invalidFields = jsonEncode($model->getInvalidFields($validationScenario)); ?>
 <div class="required-workflow">
     <div class="workflow-content">
         <div class="workflow-text">
@@ -10,14 +13,24 @@
                 <?php echo $this->workflowData['caption']; ?>
             </h3>
         </div>
-        <div class="workflow-missing">
+        <div class="workflow-missing" id="workflow-missing" data-model-class='<?php echo get_class($model); ?>' data-missing='<?php echo $invalidFields; ?>'>
             <?php // todo: move this somewhere else ?>
-            <?php $validationScenario = $this->workflowData['validationScenario']; ?>
-            <?php $invalidFields = $model->calculateInvalidFields($validationScenario); ?>
-            <?php if ($invalidFields > 0): ?>
-                <span class="missing-text"><?php echo Yii::t('model', '* {invalidFields} required missing', array('{invalidFields}' => $invalidFields)); ?></span>
+            <?php if ($invalidFieldCount > 0): ?>
+                <span class="missing-text"><?php echo Yii::t('model', '* {invalidFields} required missing', array('{invalidFields}' => $invalidFieldCount)); ?></span>
+                <?php $this->widget(
+                    '\TbButton',
+                    array(
+                        'label' => Yii::t('button', 'Take action'),
+                        'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                        'url' => '#',
+                        'htmlOptions' => array(
+                            'class' => 'required-button',
+                            'id' => 'next-required',
+                        ),
+                    )
+                ); ?>
                 <?php $nextStep = $this->nextFlowStep("$validationScenario-", $model); ?>
-                <?php if ($invalidFields > 0 && empty($nextStep)): ?>
+                <?php if ($invalidFieldCount > 0 && empty($nextStep)): ?>
                     <?php throw new CException("The item's validation rules for $validationScenario are out of sync. Make sure that the step-based validation rules match those of the overall $validationScenario validation scenarios"); ?>
                 <?php endif; ?>
                 <?php if ($_GET['step'] != $nextStep): ?>
@@ -74,3 +87,4 @@
         </div>
     </div>
 </div>
+<?php publishJs('/themes/frontend/js/flowbar-form-controls.js', CClientScript::POS_END); ?>

@@ -53,7 +53,7 @@
         <div class="foot-text">
             <?php
             // TODO: Ensure $requireCounts is always passed to this view.
-            $this->renderPartial('/_item/elements/_required-counts', compact('model', 'requiredCounts'));
+            $this->renderPartial('/_item/elements/_required-counts', compact('model'));
             ?>
         </div>
         <div class="foot-actions">

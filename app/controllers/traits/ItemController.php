@@ -434,7 +434,15 @@ trait ItemController
         $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, "reviewable", Yii::t('app', 'Prepare for review'));
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+
+        $this->render(
+            '/_item/edit',
+            array(
+                'model' => $model,
+                'step' => $step,
+                'stepCaption' => $stepCaptions[$step],
+            )
+        );
     }
 
     /**
