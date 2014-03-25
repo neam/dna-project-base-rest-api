@@ -212,52 +212,52 @@
     <?php echo CHtml::encode($data->allow_publish); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->title_approved); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('list_name_en_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->list_name_en_approved); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('short_name_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->short_name_approved); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('property_name_en_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->property_name_en_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('possessive_en_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->possessive_en_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('choice_format_en_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->choice_format_en_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('ref_approved')); ?>:</b>
     <?php echo CHtml::encode($data->ref_approved); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('name_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->name_approved); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('list_name_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->list_name_approved); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('title_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->title_proofed); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('list_name_en_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->list_name_en_proofed); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('short_name_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->short_name_proofed); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('property_name_en_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->property_name_en_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('possessive_en_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->possessive_en_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('choice_format_en_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->choice_format_en_proofed); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('ref_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->ref_proofed); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('name_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->name_proofed); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('name_en_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->name_en_approved); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('short_name_en_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->short_name_en_approved); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('name_en_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->name_en_proofed); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('short_name_en_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->short_name_en_proofed); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('list_name_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->list_name_proofed); ?>
     <br />
 
     */

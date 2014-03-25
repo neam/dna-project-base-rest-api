@@ -209,28 +209,16 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->translate_into_zh_cn_validation_progress); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_zh_tw_validation_progress); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
 <?php echo CHtml::encode($model->approval_progress); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('proofing_progress')); ?>:</b>
 <?php echo CHtml::encode($model->proofing_progress); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->translate_into_zh_tw_validation_progress); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_en_approved')); ?>:</b>
-<?php echo CHtml::encode($model->title_en_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('file_media_id_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->file_media_id_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_en_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->title_en_proofed); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('allow_review')); ?>:</b>
@@ -245,12 +233,24 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->file_media_id_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->title_proofed); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_en_approved')); ?>:</b>
+<?php echo CHtml::encode($model->title_en_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
 <?php echo CHtml::encode($model->title_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('file_media_id_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->file_media_id_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->title_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->title_proofed); ?>
 <br />
 
     */

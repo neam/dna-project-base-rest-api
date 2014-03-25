@@ -209,12 +209,12 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->translate_into_zh_cn_validation_progress); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
-<?php echo CHtml::encode($model->approval_progress); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translate_into_zh_tw_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
+<?php echo CHtml::encode($model->approval_progress); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('proofing_progress')); ?>:</b>
@@ -249,24 +249,8 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->teachers_guide_en_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('related_approved')); ?>:</b>
-<?php echo CHtml::encode($model->related_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
-<?php echo CHtml::encode($model->title_approved); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('exercises_approved')); ?>:</b>
 <?php echo CHtml::encode($model->exercises_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_en_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->title_en_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_en_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->slug_en_proofed); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('videos_approved')); ?>:</b>
@@ -275,6 +259,22 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('snapshots_approved')); ?>:</b>
 <?php echo CHtml::encode($model->snapshots_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('related_approved')); ?>:</b>
+<?php echo CHtml::encode($model->related_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
+<?php echo CHtml::encode($model->title_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->title_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->slug_en_proofed); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('about_en_proofed')); ?>:</b>

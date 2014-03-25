@@ -202,16 +202,16 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->translate_into_zh_cn_validation_progress); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_zh_tw_validation_progress); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
 <?php echo CHtml::encode($model->approval_progress); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('proofing_progress')); ?>:</b>
 <?php echo CHtml::encode($model->proofing_progress); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->translate_into_zh_tw_validation_progress); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('allow_review')); ?>:</b>
@@ -883,6 +883,19 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'translate_into_zh_tw_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_zh_tw_validation_progress',
+                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
                         'name' => 'approval_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -903,19 +916,6 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'proofing_progress',
-                                    'url' => $this->createUrl('/snapshotQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'translate_into_zh_tw_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translate_into_zh_tw_validation_progress',
                                     'url' => $this->createUrl('/snapshotQaState/editableSaver'),
                                 ),
                                 true

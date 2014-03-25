@@ -232,6 +232,14 @@
     <?php echo CHtml::encode($data->thumbnail_media_id_approved); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('thumbnail_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->thumbnail_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('materials_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->materials_approved); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('title_approved')); ?>:</b>
     <?php echo CHtml::encode($data->title_approved); ?>
     <br />
@@ -244,16 +252,8 @@
     <?php echo CHtml::encode($data->slug_en_proofed); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('thumbnail_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->thumbnail_approved); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('question_en_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->question_en_proofed); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('materials_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->materials_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('description_en_proofed')); ?>:</b>

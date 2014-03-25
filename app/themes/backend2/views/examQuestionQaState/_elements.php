@@ -95,9 +95,9 @@
 
             <?php echo $form->textFieldRow($model, 'translate_into_zh_cn_validation_progress'); ?>
 
-            <?php echo $form->textFieldRow($model, 'approval_progress'); ?>
-
             <?php echo $form->textFieldRow($model, 'translate_into_zh_tw_validation_progress'); ?>
+
+            <?php echo $form->textFieldRow($model, 'approval_progress'); ?>
 
             <?php echo $form->textFieldRow($model, 'proofing_progress'); ?>
 
@@ -107,23 +107,23 @@
 
             <?php echo $form->textFieldRow($model, 'slug_en_approved'); ?>
 
+            <?php echo $form->textFieldRow($model, 'slug_approved'); ?>
+
             <?php echo $form->textFieldRow($model, 'question_en_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'source_node_id_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'alternatives_approved'); ?>
 
-            <?php echo $form->textFieldRow($model, 'slug_approved'); ?>
-
             <?php echo $form->textFieldRow($model, 'related_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'question_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_en_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'question_en_proofed'); ?>
-
-            <?php echo $form->textFieldRow($model, 'question_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'source_node_id_proofed'); ?>
 

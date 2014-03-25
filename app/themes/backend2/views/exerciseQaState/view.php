@@ -242,6 +242,14 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->thumbnail_media_id_approved); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_approved')); ?>:</b>
+<?php echo CHtml::encode($model->thumbnail_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('materials_approved')); ?>:</b>
+<?php echo CHtml::encode($model->materials_approved); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
 <?php echo CHtml::encode($model->title_approved); ?>
 <br />
@@ -254,16 +262,8 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->slug_en_proofed); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('thumbnail_approved')); ?>:</b>
-<?php echo CHtml::encode($model->thumbnail_approved); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('question_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->question_en_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('materials_approved')); ?>:</b>
-<?php echo CHtml::encode($model->materials_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('description_en_proofed')); ?>:</b>
@@ -1045,6 +1045,32 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'thumbnail_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'thumbnail_approved',
+                                    'url' => $this->createUrl('/exerciseQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'materials_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'materials_approved',
+                                    'url' => $this->createUrl('/exerciseQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
                         'name' => 'title_approved',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1084,19 +1110,6 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'thumbnail_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'thumbnail_approved',
-                                    'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
                         'name' => 'question_en_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1104,19 +1117,6 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'question_en_proofed',
-                                    'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'materials_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'materials_approved',
                                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                                 ),
                                 true

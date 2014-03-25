@@ -192,12 +192,12 @@
     <?php echo CHtml::encode($data->translate_into_zh_cn_validation_progress); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('approval_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->approval_progress); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
     <?php echo CHtml::encode($data->translate_into_zh_tw_validation_progress); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('approval_progress')); ?>:</b>
+    <?php echo CHtml::encode($data->approval_progress); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('proofing_progress')); ?>:</b>
@@ -216,6 +216,10 @@
     <?php echo CHtml::encode($data->slug_en_approved); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->slug_approved); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('question_en_approved')); ?>:</b>
     <?php echo CHtml::encode($data->question_en_approved); ?>
     <br />
@@ -228,12 +232,12 @@
     <?php echo CHtml::encode($data->alternatives_approved); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('slug_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->slug_approved); ?>
-    <br />
-
     <b><?php echo CHtml::encode($data->getAttributeLabel('related_approved')); ?>:</b>
     <?php echo CHtml::encode($data->related_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('question_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->question_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('slug_en_proofed')); ?>:</b>
@@ -246,10 +250,6 @@
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('question_en_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->question_en_proofed); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('question_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->question_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('source_node_id_proofed')); ?>:</b>

@@ -416,6 +416,14 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'translate_into_zh_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'translate_into_zh_cn_validation_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
@@ -432,22 +440,6 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'translate_into_zh_validation_progress',
-                'editable' => array(
-                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'proofing_progress',
-                'editable' => array(
-                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
                 'name' => 'approval_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
@@ -456,31 +448,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'original_media_id_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'about_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'pot_import_media_id_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_proofed',
+                'name' => 'proofing_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
                     //'placement' => 'right',
@@ -512,7 +480,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'original_media_id_proofed',
+                'name' => 'po_contents_en_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
                     //'placement' => 'right',
@@ -520,15 +488,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'about_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'pot_import_media_id_proofed',
+                'name' => 'about_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
                     //'placement' => 'right',
@@ -537,6 +497,30 @@ $this->widget('\TbGridView',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'po_contents_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'po_contents_en_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'about_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/i18nCatalogQaState/editableSaver'),
                     //'placement' => 'right',

@@ -109,37 +109,37 @@
 
             <?php echo $form->textFieldRow($model, 'slug_en_approved'); ?>
 
-            <?php echo $form->textFieldRow($model, 'original_media_id_approved'); ?>
-
-            <?php echo $form->textFieldRow($model, 'about_en_approved'); ?>
+            <?php echo $form->textFieldRow($model, 'clip_mp4_media_id_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'thumbnail_media_id_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'clip_webm_media_id_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'about_en_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'subtitles_en_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'title_approved'); ?>
 
+            <?php echo $form->textFieldRow($model, 'subtitles_approved'); ?>
+
             <?php echo $form->textFieldRow($model, 'title_en_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_en_proofed'); ?>
 
-            <?php echo $form->textFieldRow($model, 'original_media_id_proofed'); ?>
-
-            <?php echo $form->textFieldRow($model, 'about_en_proofed'); ?>
+            <?php echo $form->textFieldRow($model, 'clip_mp4_media_id_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'thumbnail_media_id_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'clip_webm_media_id_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'about_en_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'subtitles_en_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'title_proofed'); ?>
 
-            <?php echo $form->textFieldRow($model, 'clip_mp4_media_id_approved'); ?>
-
-            <?php echo $form->textFieldRow($model, 'clip_webm_media_id_approved'); ?>
-
-            <?php echo $form->textFieldRow($model, 'clip_mp4_media_id_proofed'); ?>
-
-            <?php echo $form->textFieldRow($model, 'clip_webm_media_id_proofed'); ?>
+            <?php echo $form->textFieldRow($model, 'subtitles_proofed'); ?>
         </div>
     </div>
     <!-- main inputs -->

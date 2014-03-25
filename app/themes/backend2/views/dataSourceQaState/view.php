@@ -202,16 +202,16 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->translate_into_zh_cn_validation_progress); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
+<?php echo CHtml::encode($model->translate_into_zh_tw_validation_progress); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
 <?php echo CHtml::encode($model->approval_progress); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('proofing_progress')); ?>:</b>
 <?php echo CHtml::encode($model->proofing_progress); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
-<?php echo CHtml::encode($model->translate_into_zh_tw_validation_progress); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('allow_review')); ?>:</b>
@@ -234,6 +234,10 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->about_en_approved); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
+<?php echo CHtml::encode($model->title_approved); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->slug_en_proofed); ?>
 <br />
@@ -244,10 +248,6 @@ $this->breadcrumbs[] = $model->id;
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('about_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->about_en_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
-<?php echo CHtml::encode($model->title_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
@@ -883,6 +883,19 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'translate_into_zh_tw_validation_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'translate_into_zh_tw_validation_progress',
+                                    'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
                         'name' => 'approval_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -903,19 +916,6 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'proofing_progress',
-                                    'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'translate_into_zh_tw_validation_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'translate_into_zh_tw_validation_progress',
                                     'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
                                 ),
                                 true
@@ -987,6 +987,19 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'title_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'title_approved',
+                                    'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
                         'name' => 'slug_en_proofed',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1020,19 +1033,6 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'about_en_proofed',
-                                    'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'title_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'title_approved',
                                     'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
                                 ),
                                 true

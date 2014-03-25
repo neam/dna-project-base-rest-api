@@ -220,16 +220,20 @@
     <?php echo CHtml::encode($data->slug_en_approved); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('original_media_id_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->original_media_id_approved); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_en_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->about_en_approved); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('clip_mp4_media_id_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->clip_mp4_media_id_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('thumbnail_media_id_approved')); ?>:</b>
     <?php echo CHtml::encode($data->thumbnail_media_id_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('clip_webm_media_id_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->clip_webm_media_id_approved); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_en_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->about_en_approved); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('subtitles_en_approved')); ?>:</b>
@@ -240,6 +244,10 @@
     <?php echo CHtml::encode($data->title_approved); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('subtitles_approved')); ?>:</b>
+    <?php echo CHtml::encode($data->subtitles_approved); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('title_en_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->title_en_proofed); ?>
     <br />
@@ -248,16 +256,20 @@
     <?php echo CHtml::encode($data->slug_en_proofed); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('original_media_id_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->original_media_id_proofed); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('about_en_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->about_en_proofed); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('clip_mp4_media_id_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->clip_mp4_media_id_proofed); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('thumbnail_media_id_proofed')); ?>:</b>
     <?php echo CHtml::encode($data->thumbnail_media_id_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('clip_webm_media_id_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->clip_webm_media_id_proofed); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($data->getAttributeLabel('about_en_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->about_en_proofed); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('subtitles_en_proofed')); ?>:</b>
@@ -268,20 +280,8 @@
     <?php echo CHtml::encode($data->title_proofed); ?>
     <br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('clip_mp4_media_id_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->clip_mp4_media_id_approved); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('clip_webm_media_id_approved')); ?>:</b>
-    <?php echo CHtml::encode($data->clip_webm_media_id_approved); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('clip_mp4_media_id_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->clip_mp4_media_id_proofed); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('clip_webm_media_id_proofed')); ?>:</b>
-    <?php echo CHtml::encode($data->clip_webm_media_id_proofed); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('subtitles_proofed')); ?>:</b>
+    <?php echo CHtml::encode($data->subtitles_proofed); ?>
     <br />
 
     */

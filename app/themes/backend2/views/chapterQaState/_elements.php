@@ -95,9 +95,9 @@
 
             <?php echo $form->textFieldRow($model, 'translate_into_zh_cn_validation_progress'); ?>
 
-            <?php echo $form->textFieldRow($model, 'approval_progress'); ?>
-
             <?php echo $form->textFieldRow($model, 'translate_into_zh_tw_validation_progress'); ?>
+
+            <?php echo $form->textFieldRow($model, 'approval_progress'); ?>
 
             <?php echo $form->textFieldRow($model, 'proofing_progress'); ?>
 
@@ -115,19 +115,19 @@
 
             <?php echo $form->textFieldRow($model, 'teachers_guide_en_approved'); ?>
 
-            <?php echo $form->textFieldRow($model, 'related_approved'); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_approved'); ?>
-
             <?php echo $form->textFieldRow($model, 'exercises_approved'); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_en_proofed'); ?>
-
-            <?php echo $form->textFieldRow($model, 'slug_en_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'videos_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'snapshots_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'related_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'title_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'title_en_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'slug_en_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'about_en_proofed'); ?>
 

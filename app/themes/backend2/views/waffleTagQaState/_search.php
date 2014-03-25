@@ -266,13 +266,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'title_approved'); ?>
-        <?php echo $form->checkBox($model, 'title_approved'); ?>
+        <?php echo $form->label($model, 'name_en_approved'); ?>
+        <?php echo $form->checkBox($model, 'name_en_approved'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'short_name_approved'); ?>
-        <?php echo $form->checkBox($model, 'short_name_approved'); ?>
+        <?php echo $form->label($model, 'short_name_en_approved'); ?>
+        <?php echo $form->checkBox($model, 'short_name_en_approved'); ?>
     </div>
 
     <div class="row">
@@ -286,13 +286,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'title_proofed'); ?>
-        <?php echo $form->checkBox($model, 'title_proofed'); ?>
+        <?php echo $form->label($model, 'name_en_proofed'); ?>
+        <?php echo $form->checkBox($model, 'name_en_proofed'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'short_name_proofed'); ?>
-        <?php echo $form->checkBox($model, 'short_name_proofed'); ?>
+        <?php echo $form->label($model, 'short_name_en_proofed'); ?>
+        <?php echo $form->checkBox($model, 'short_name_en_proofed'); ?>
     </div>
 
     <div class="row">
@@ -303,26 +303,6 @@
     <div class="row">
         <?php echo $form->label($model, 'name_proofed'); ?>
         <?php echo $form->checkBox($model, 'name_proofed'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'name_en_approved'); ?>
-        <?php echo $form->checkBox($model, 'name_en_approved'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'short_name_en_approved'); ?>
-        <?php echo $form->checkBox($model, 'short_name_en_approved'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'name_en_proofed'); ?>
-        <?php echo $form->checkBox($model, 'name_en_proofed'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'short_name_en_proofed'); ?>
-        <?php echo $form->checkBox($model, 'short_name_en_proofed'); ?>
     </div>
 
 

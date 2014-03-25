@@ -229,12 +229,12 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->allow_publish); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
-<?php echo CHtml::encode($model->title_approved); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('name_en_approved')); ?>:</b>
+<?php echo CHtml::encode($model->name_en_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('short_name_approved')); ?>:</b>
-<?php echo CHtml::encode($model->short_name_approved); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('short_name_en_approved')); ?>:</b>
+<?php echo CHtml::encode($model->short_name_en_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('ref_approved')); ?>:</b>
@@ -245,12 +245,12 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->name_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->title_proofed); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('name_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->name_en_proofed); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('short_name_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->short_name_proofed); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('short_name_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->short_name_en_proofed); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('ref_proofed')); ?>:</b>
@@ -259,22 +259,6 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('name_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->name_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('name_en_approved')); ?>:</b>
-<?php echo CHtml::encode($model->name_en_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('short_name_en_approved')); ?>:</b>
-<?php echo CHtml::encode($model->short_name_en_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('name_en_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->name_en_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('short_name_en_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->short_name_en_proofed); ?>
 <br />
 
     */

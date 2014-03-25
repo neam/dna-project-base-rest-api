@@ -231,6 +231,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'translate_into_zh_validation_progress'); ?>
+        <?php echo $form->textField($model, 'translate_into_zh_validation_progress'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'translate_into_zh_cn_validation_progress'); ?>
         <?php echo $form->textField($model, 'translate_into_zh_cn_validation_progress'); ?>
     </div>
@@ -241,38 +246,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'translate_into_zh_validation_progress'); ?>
-        <?php echo $form->textField($model, 'translate_into_zh_validation_progress'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'proofing_progress'); ?>
-        <?php echo $form->textField($model, 'proofing_progress'); ?>
-    </div>
-
-    <div class="row">
         <?php echo $form->label($model, 'approval_progress'); ?>
         <?php echo $form->textField($model, 'approval_progress'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'original_media_id_approved'); ?>
-        <?php echo $form->checkBox($model, 'original_media_id_approved'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'about_approved'); ?>
-        <?php echo $form->checkBox($model, 'about_approved'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'pot_import_media_id_approved'); ?>
-        <?php echo $form->checkBox($model, 'pot_import_media_id_approved'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_proofed'); ?>
-        <?php echo $form->checkBox($model, 'title_proofed'); ?>
+        <?php echo $form->label($model, 'proofing_progress'); ?>
+        <?php echo $form->textField($model, 'proofing_progress'); ?>
     </div>
 
     <div class="row">
@@ -291,23 +271,33 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'original_media_id_proofed'); ?>
-        <?php echo $form->checkBox($model, 'original_media_id_proofed'); ?>
+        <?php echo $form->label($model, 'po_contents_en_approved'); ?>
+        <?php echo $form->checkBox($model, 'po_contents_en_approved'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'about_proofed'); ?>
-        <?php echo $form->checkBox($model, 'about_proofed'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'pot_import_media_id_proofed'); ?>
-        <?php echo $form->checkBox($model, 'pot_import_media_id_proofed'); ?>
+        <?php echo $form->label($model, 'about_approved'); ?>
+        <?php echo $form->checkBox($model, 'about_approved'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->label($model, 'po_contents_approved'); ?>
         <?php echo $form->checkBox($model, 'po_contents_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'title_proofed'); ?>
+        <?php echo $form->checkBox($model, 'title_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'po_contents_en_proofed'); ?>
+        <?php echo $form->checkBox($model, 'po_contents_en_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'about_proofed'); ?>
+        <?php echo $form->checkBox($model, 'about_proofed'); ?>
     </div>
 
     <div class="row">
