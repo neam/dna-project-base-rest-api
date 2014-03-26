@@ -294,6 +294,20 @@ class VideoFile extends BaseVideoFile
         return $parsed;
     }
 
+    public function getTranslatedSubtitles($parsedSubtitles)
+    {
+
+        $return = "";
+        foreach ($parsedSubtitles as $subtitle) {
+            $return .= "{$subtitle->id}\n";
+            $return .= "{$subtitle->timestamp}\n";
+            $return .= Yii::t("video-{$model->id}-subtitles", $subtitle->sourceMessage, array(), 'displayedMessages', Yii::app()->language) . "\n";
+            $return .= "\n";
+        }
+        return $return;
+
+    }
+
     /**
      * Returns the P3Media IDs for the uploaded videos.
      * @return array
