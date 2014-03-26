@@ -13,37 +13,26 @@ class AppActivationController extends ActivationController
         $email = $_GET['email'];
         $activkey = $_GET['activkey'];
 
+        // Defaulting to error
+        $level = TbHtml::ALERT_COLOR_ERROR;
+        $flashMsg = Yii::t('accountActivation', 'Incorrect activation URL.');
+
         if ($email && $activkey) {
             $find = User::model()->notsafe()->findByAttributes(array('email' => $email));
 
             if (isset($find) && $find->status) {
-                $this->render('/user/message', array(
-                    'title' => UserModule::t('User activation'),
-                    'content' => UserModule::t('You account is active.'),
-                    'activated' => false,
-                ));
+                $level = TbHtml::ALERT_COLOR_INFO;
+                $flashMsg = Yii::t('accountActivation', 'Your account is active.');
             } elseif (isset($find->activkey) && ($find->activkey == $activkey)) {
                 $find->activkey = UserModule::encrypting(microtime());
                 $find->status = 1;
                 $find->save();
-                $this->render('/user/message', array(
-                    'title' => UserModule::t('Welcome!'),
-                    'content' => UserModule::t('Your account has been activated.'),
-                    'activated' => true,
-                ));
-            } else {
-                $this->render('/user/message', array(
-                    'title' => UserModule::t('User activation'),
-                    'content' => UserModule::t('Incorrect activation URL.'),
-                    'activated' => false,
-                ));
+                $level = TbHtml::ALERT_COLOR_SUCCESS;
+                $flashMsg = Yii::t('accountActivation', '<strong>Welcome!</strong> Your account has been activated.');
             }
-        } else {
-            $this->render('/user/message', array(
-                'title' => UserModule::t('User activation'),
-                'content' => UserModule::t('Incorrect activation URL.'),
-                'activated' => false,
-            ));
         }
+
+        Yii::app()->user->setFlash($level, $flashMsg);
+        $this->redirect(array('/'));
     }
 }
