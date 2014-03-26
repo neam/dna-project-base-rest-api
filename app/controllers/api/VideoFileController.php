@@ -42,6 +42,7 @@ class VideoFileController extends AppRestController
         $response->caption = $model->caption;
         $response->about = $model->about;
         //$response->tags = $model->tags;
+        $response->subtitles = Yii::app()->createAbsoluteUrl('videoFile/subtitles', array('id' => $model->id));
         $response->thumbnail = !is_null($model->thumbnail_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $model->thumbnailMedia->path : null;
         $response->clipWebm = !is_null($model->clip_webm_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $model->clipWebmMedia->path : null;
         $response->clipMp4 = !is_null($model->clip_mp4_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $model->clipMp4Media->path : null;
