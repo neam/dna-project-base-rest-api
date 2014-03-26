@@ -301,7 +301,7 @@ class VideoFile extends BaseVideoFile
         foreach ($parsedSubtitles as $subtitle) {
             $return .= "{$subtitle->id}\n";
             $return .= "{$subtitle->timestamp}\n";
-            $return .= Yii::t("video-{$model->id}-subtitles", $subtitle->sourceMessage, array(), 'displayedMessages', Yii::app()->language) . "\n";
+            $return .= Yii::t("video-{$this->id}-subtitles", $subtitle->sourceMessage, array(), 'displayedMessages', Yii::app()->language) . "\n";
             $return .= "\n";
         }
         return $return;
