@@ -309,6 +309,32 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
+     * The attributes that is returned by the REST api
+     */
+    public function getAllAttributes()
+    {
+
+        $response = new stdClass();
+
+        $response->id = $this->id;
+        $response->title = $this->title;
+        $response->slug = $this->slug;
+        $response->caption = $this->caption;
+        $response->about = $this->about;
+        //$response->tags = $this->tags;
+        $response->subtitles = Yii::app()->createAbsoluteUrl('videoFile/subtitles', array('id' => $this->id));
+        $response->thumbnail = !is_null($this->thumbnail_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $this->thumbnailMedia->path : null;
+        $response->clipWebm = !is_null($this->clip_webm_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $this->clipWebmMedia->path : null;
+        $response->clipMp4 = !is_null($this->clip_mp4_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $this->clipMp4Media->path : null;
+        //$response->related = $this->related;
+        //$response->overlays = $this->overlays;
+        //$response->dubbing = $this->dubbing;
+
+        return $response;
+
+    }
+
+    /**
      * Returns the P3Media IDs for the uploaded videos.
      * @return array
      */
