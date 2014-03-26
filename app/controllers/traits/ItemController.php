@@ -358,14 +358,19 @@ trait ItemController
             }
         }
 
+        /** @var ActiveRecord|ItemTrait|QaStateBehavior $item */
         $item = new $this->modelClass();
+
         if (isset($_POST["newitemtitle"])) {
             $item->_title = $_POST["newitemtitle"];
         }
+
         if (!$item->save()) {
             throw new SaveException($item);
         }
+
         $item->refreshQaState();
+
         $message = "{$this->modelClass} Added";
 
         // If fromId is set, we assume this is a new Item which will be related:
