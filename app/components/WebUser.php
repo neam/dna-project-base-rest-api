@@ -70,6 +70,12 @@ class WebUser extends CWebUser
         }
 
         if (isset($modelClass)) {
+
+            // TODO: fix p3media properly
+            if ($modelClass === 'P3media') {
+                return $operation === 'Import';
+            }
+
             $criteria = new CDbCriteria();
 
             // Add model ID condition
