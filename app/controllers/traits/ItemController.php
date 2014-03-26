@@ -3,7 +3,53 @@
 trait ItemController
 {
     public $workflowData = array();
+    public $modelId;
 
+    /**
+     * Initializes the controller.
+     */
+    public function init()
+    {
+        parent::init();
+
+        // Set the model ID if it has been passed as a GET param.
+        if (isset($_GET['id'])) {
+            $this->modelId = $_GET['id'];
+        }
+    }
+
+    /**
+     * Checks access.
+     * @param string $operation
+     * @return boolean
+     */
+    public function checkAccess($operation)
+    {
+        return Yii::app()->user->checkAccess($this->modelClass . '.' . $operation);
+    }
+
+    /**
+     * Checks access by model ID.
+     * @param integer $id the model ID.
+     * @param string $operation the operation.
+     * @return boolean
+     */
+    public function checkAccessById($id, $operation)
+    {
+        /** @var ActiveRecord|ItemTrait $model */
+        $model = ActiveRecord::model($this->modelClass)->findByPk($id);
+
+        if ($model instanceof ActiveRecord) {
+            return $model->checkAccess($operation);
+        } else {
+            throw new CHttpException(404, Yii::t('error', "Failed to check access: the $this->modelClass model with ID $id does not exist."));
+        }
+    }
+
+    /**
+     * Returns the access rules for items.
+     * @return array
+     */
     public function itemAccessRules()
     {
         $return = array(
@@ -14,160 +60,165 @@ trait ItemController
                     'cancel',
                 ),
                 'users' => array('*'),
+                'expression' => function() {
+                    return $this->checkAccessById($this->modelId, 'View');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'view',
                 ),
-                'roles' => array(
-                    'Item.View',
-                ),
+                'expression' => function() {
+                    return Yii::app()->user->checkAccess('View');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'browse',
                 ),
-                'roles' => array(
-                    'Item.Browse',
-                ),
+                'expression' => function() {
+                    return Yii::app()->user->checkAccess('Browse');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'add',
                 ),
-                'roles' => array(
-                    'Item.Add'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Add');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'draft',
                     'saveDraft',
                 ),
-                'roles' => array(
-                    'Item.Draft'
-                ),
+                'expression' => function() {
+                    return $this->checkAccessById($this->modelId, 'Edit');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'addEdges',
                     'deleteEdge',
                 ),
-                'roles' => array(
-                    'Item.Edit'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Edit');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'prepareForReview',
                     'submitForReview',
                 ),
-                'roles' => array(
-                    'Item.PrepareForReview'
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('PrepareForReview');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'evaluate',
                 ),
-                'roles' => array(
-                    'Item.Evaluate'
-                ),
+                'expression' => function() {
+                    return $this->checkAccessById($this->modelId, 'Evaluate');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'prepareForPublishing',
                     'submitForPublishing',
                 ),
-                'roles' => array(
-                    'Item.PrepareForPublishing'
+                'expression' => function() {
+                    return $this->checkAccessById($this->modelId, 'PrepareForPublishing');
+                },
+            ),
+            array('allow',
+                'actions' => array(
+                    'proofread',
                 ),
+                'expression' => function() {
+                    return $this->checkAccessById($this->modelId, 'Proofread');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'preview',
                 ),
-                'roles' => array(
-                    'Item.Preview'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
-                    'proofRead',
-                ),
-                'roles' => array(
-                    'Item.Proofread'
-                ),
-            ),
-            array('allow',
-                'actions' => array(
-                    'preview',
-                ),
-                'roles' => array(
-                    'Item.Preview'
-                ),
+                'expression' => function() {
+                    return $this->checkAccessById($this->modelId, 'Preview');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'translate',
                     'translationOverview',
                 ),
-                'roles' => array(
-                    'Item.Translate'
-                ),
+                'expression' => function() {
+                    return $this->checkAccessById($this->modelId, 'Translate');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'publish',
                     'unpublish',
                 ),
-                'roles' => array(
-                    'Item.Publish'
-                ),
+                'expression' => function() {
+                    return $this->checkAccessById($this->modelId, 'Publish');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'edit',
                 ),
-                'roles' => array(
-                    'Item.Edit'
-                ),
+                'expression' => function() {
+                    return $this->checkAccessById($this->modelId, 'Edit');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'addToGroup',
                     'removeFromGroup',
                 ),
-                'roles' => array(
-                    'Item.Edit',
-                ),
+                'expression' => function() {
+                    return $this->checkAccess('Edit');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'clone',
                 ),
-                'roles' => array(
-                    'Item.Clone'
-                ),
+                'expression' => function() {
+                    return $this->checkAccessById($this->modelId, 'Clone');
+                },
             ),
             array('allow',
                 'actions' => array(
                     'remove',
                 ),
-                'roles' => array(
-                    'Item.Remove'
-                ),
+                'expression' => function() {
+                    return $this->checkAccessById($this->modelId, 'Remove');
+                },
             ),
         );
 
         return $return;
     }
 
+    /**
+     * Continues the authoring process.
+     * @param integer $id the model ID.
+     */
     public function actionContinueAuthoring($id)
     {
+        /** @var ActiveRecord|ItemTrait $model */
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
-        $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+
+        if ($model->checkAccess('Edit')) {
+            $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+        } else {
+            $this->redirect('/' . lcfirst(get_class($model)) . '/browse'); // TODO: Clean up route.
+        }
     }
 
     protected function nextFlowStep($prefix, $item)
@@ -224,7 +275,7 @@ trait ItemController
         // TODO: Make group-dependent
 
         // Translators should only see items which are in testable mode or higher
-        if (Yii::app()->user->checkAccess('Item.Translate')) {
+        if (Yii::app()->user->checkAccess('Translate')) {
             $criteria = new CDbCriteria();
 
             $qaStateTbl = $modelTbl . '_qa_state'; // model_table_qa_state
@@ -307,14 +358,19 @@ trait ItemController
             }
         }
 
+        /** @var ActiveRecord|ItemTrait|QaStateBehavior $item */
         $item = new $this->modelClass();
+
         if (isset($_POST["newitemtitle"])) {
             $item->_title = $_POST["newitemtitle"];
         }
+
         if (!$item->save()) {
             throw new SaveException($item);
         }
+
         $item->refreshQaState();
+
         $message = "{$this->modelClass} Added";
 
         // If fromId is set, we assume this is a new Item which will be related:
@@ -383,7 +439,15 @@ trait ItemController
         $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, "reviewable", Yii::t('app', 'Prepare for review'));
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+
+        $this->render(
+            '/_item/edit',
+            array(
+                'model' => $model,
+                'step' => $step,
+                'stepCaption' => $stepCaptions[$step],
+            )
+        );
     }
 
     /**
@@ -490,7 +554,7 @@ trait ItemController
     {
         $permissionAttributes = array(
             'account_id' => Yii::app()->user->id,
-            'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+            'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
             'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
         );
 
@@ -504,6 +568,7 @@ trait ItemController
             }
 
             $model->changeStatus('public');
+            $model->makeNodeHasGroupVisible();
         } else {
             throw new CHttpException(403, Yii::t('error', 'You do not have permission to publish items.'));
         }
@@ -525,13 +590,14 @@ trait ItemController
     {
         $permissionAttributes = array(
             'account_id' => Yii::app()->user->id,
-            'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+            'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
             'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
         );
 
         if (PermissionHelper::groupHasAccount($permissionAttributes)) {
             $model = $this->loadModel($id);
             $model->refreshQaState();
+            $model->makeNodeHasGroupHidden();
         } else {
             throw new CHttpException(403, Yii::t('error', 'You do not have permission to unpublish items.'));
         }
@@ -548,7 +614,7 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
-        if (Yii::app()->user->checkAccess('Item.Edit')) {
+        if ($model->checkAccess('Edit')) {
             $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
         } else {
             $this->redirect(array('view', 'id' => $model->id));
@@ -565,6 +631,7 @@ trait ItemController
         $this->scenario = "temporary-step_$step";
 
         $model = $this->loadModel($id);
+
         $model->scenario = $this->scenario;
 
         $this->performAjaxValidation($model);
@@ -597,22 +664,24 @@ trait ItemController
     /**
      * Adds an item to a group.
      * @param integer $node_id
+     * @param string $group
      * @param string $returnUrl
      */
-    public function actionAddToGroup($node_id, $returnUrl)
+    public function actionAddToGroup($node_id, $group, $returnUrl)
     {
-        PermissionHelper::addNodeToGroup($node_id, 'GapminderOrg');
+        PermissionHelper::addNodeToGroup($node_id, $group);
         $this->redirect($returnUrl);
     }
 
     /**
      * Removes an item from a group.
      * @param integer $node_id
+     * @param $group
      * @param string $returnUrl
      */
-    public function actionRemoveFromGroup($node_id, $returnUrl)
+    public function actionRemoveFromGroup($node_id, $group, $returnUrl)
     {
-        PermissionHelper::removeNodeFromGroup($node_id, 'GapminderOrg');
+        PermissionHelper::removeNodeFromGroup($node_id, $group);
         $this->redirect($returnUrl);
     }
 
@@ -1013,7 +1082,6 @@ trait ItemController
             }
 
         }
-
     }
 
     /**
@@ -1057,7 +1125,7 @@ trait ItemController
                 return true;
             }
 
-            $group = 'GapminderOrg';
+            $group = 'GapminderInternal';
 
             $isEditor = PermissionHelper::groupHasAccount(array(
                 'account_id' => $this->id,

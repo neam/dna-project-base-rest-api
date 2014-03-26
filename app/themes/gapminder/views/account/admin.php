@@ -48,7 +48,7 @@
                 return PermissionHelper::groupHasAccount(
                     array(
                         'account_id' => $data->id,
-                        'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+                        'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
                         'role_id' => $roleId,
                     )
                 );
@@ -241,11 +241,6 @@
         */
         array(
             'class' => '\TbButtonColumn',
-            'buttons' => array(
-                'view' => array('visible' => 'Yii::app()->user->checkAccess("Account.View")'),
-                'update' => array('visible' => 'Yii::app()->user->checkAccess("Account.Update")'),
-                'delete' => array('visible' => 'Yii::app()->user->checkAccess("Account.Delete")'),
-            ),
             'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
             'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
             'deleteButtonUrl' => 'Yii::app()->controller->createUrl("delete", array("id" => $data->id))',

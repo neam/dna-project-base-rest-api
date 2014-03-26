@@ -247,11 +247,22 @@ class PermissionHelper
      * Applies the access restrictions to the given criteria.
      *
      * @param CDbCriteria $criteria
+     * @param array $groupRoles
      *
      * @return CDbCriteria
      */
-    static public function applyAccessCriteria(CDbCriteria $criteria)
+    static public function applyAccessCriteria(CDbCriteria $criteria, array $roleNames)
     {
+        $roleIds = array();
+
+        foreach ($roleNames as $roleName) {
+            $roleIds[] = self::roleNameToId($roleName);
+        }
+
+        $roleIds = !empty($roleNames)
+            ? implode(', ', $roleIds)
+            : '-1'; // TODO: Replace with a safe "null" value, or only conditionally add the "IN ($roleIds)" statement to the query.
+
         // All items should be found only once.
         $criteria->distinct = true;
 
@@ -260,7 +271,7 @@ class PermissionHelper
             ' ',
             array(
                 "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)",
-                "LEFT JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id`)",
+                "LEFT JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `gha`.`role_id` IN ($roleIds))", // TODO: Include $roleIds as a criteria param.
             )
         );
 

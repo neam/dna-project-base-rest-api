@@ -1,25 +1,96 @@
 (function() {
     $(document).ready(function() {
-        var fieldSelectors = 'textarea.error, input.error, select.error',
-            remainingCount = $('.error.required').length,
+        var currentIndex = 0,
+            $currentMissingField = null,
             $nextBtn = $('#next-required'),
-            $form = $('form'),
-            $requiredFields = $(fieldSelectors),
-            $remainingCount = $('#remaining-count');
+            $workflowData = $('#workflow-missing'),
+            missingFields = $workflowData.data('missing'),
+            missingFieldsOnPage = [],
+            modelClass = $workflowData.data('model-class');
 
-        // Focus on the next required field
+        init();
+
+        /**
+         * Initializes the script.
+         */
+        function init() {
+            initMissingFields();
+            $currentMissingField = $(getFieldElementId(missingFieldsOnPage[0]));
+        }
+
+        /**
+         * Initializes the missing fields.
+         */
+        function initMissingFields() {
+            missingFields.forEach(function(fieldName) {
+                var fieldId = getFieldElementId(fieldName),
+                    $field = $(fieldId);
+
+                if ($field.length > 0) {
+                    missingFieldsOnPage.push(fieldName)
+                }
+            });
+        }
+
+        /**
+         * Go to the next missing field.
+         */
+        function goToNext() {
+            focusOnField();
+            updateCurrentIndex();
+            updateCurrentField();
+        }
+
+        /**
+         * Returns the field element ID.
+         * @param attribute
+         * @returns {string}
+         */
+        function getFieldElementId(attribute) {
+            return '#' + modelClass + '_' + attribute;
+        }
+
+        /**
+         * Returns the current missing field.
+         * @returns {jQuery|HTMLElement}
+         */
+        function getCurrentMissingField() {
+            return $(getFieldElementId(missingFieldsOnPage[currentIndex]));
+        }
+
+        /**
+         * Focuses on the current field.
+         */
+        function focusOnField() {
+            $currentMissingField[0].focus();
+        }
+
+        /**
+         * Updates the current field index.
+         */
+        function updateCurrentIndex() {
+            var max = missingFieldsOnPage.length - 1;
+
+            if (currentIndex < max) {
+                currentIndex += 1;
+            } else {
+                currentIndex = 0;
+            }
+        }
+
+        /**
+         * Updates the current missing field.
+         */
+        function updateCurrentField() {
+            $currentMissingField = getCurrentMissingField();
+        }
+
+        /**
+         * Register button event handler.
+         */
         $nextBtn.on('click', function(e) {
             e.preventDefault();
-            $requiredFields = $(fieldSelectors);
-            $requiredFields[0].focus();
-        });
-
-        $form.on('change', function() {
-            setTimeout(function() {
-                // Update the remaining count
-                remainingCount = $('.error.required').length;
-                $remainingCount.html(remainingCount);
-            }, 3000); // TODO: Find a better solution to checking if the number of errors has changed after AJAX validation.
+            goToNext();
         });
     });
 })();

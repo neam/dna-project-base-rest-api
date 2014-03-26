@@ -55,6 +55,8 @@ class AccountController extends Controller
                     'translations',
                     'profile',
                     'history',
+                    'addToGroup',
+                    'removeFromGroup',
                 ),
                 'users' => array('@'),
             ),
@@ -375,7 +377,7 @@ class AccountController extends Controller
     public function actionToggleRole($id, $attribute)
     {
         // todo: make dynamic
-        $group = 'GapminderOrg';
+        $group = 'GapminderInternal';
 
         $attributes = array(
             'account_id' => $id,
@@ -388,6 +390,28 @@ class AccountController extends Controller
         } else {
             PermissionHelper::removeAccountFromGroup($id, $group, $attribute);
         }
+    }
+
+    /**
+     * @param string $id
+     * @param string $group
+     * @param string $role
+     */
+    public function actionAddToGroup($id, $group, $role, $returnUrl)
+    {
+        PermissionHelper::addAccountToGroup($id, $group, $role);
+        $this->redirect(TbHtml::decode($returnUrl));
+    }
+
+    /**
+     * @param string $id
+     * @param string $group
+     * @param string $role
+     */
+    public function actionRemoveFromGroup($id, $group, $role, $returnUrl)
+    {
+        PermissionHelper::removeAccountFromGroup($id, $group, $role);
+        $this->redirect(TbHtml::decode($returnUrl));
     }
 
     public function loadModel($id)

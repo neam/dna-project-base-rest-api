@@ -127,7 +127,7 @@
     },
     "require":{
         "php":">=5.4.0",
-        "crisu83/yii-rights":"@dev",
+        "crisu83/yii-consoletools": "1.1.*",
         "crisu83/yiistrap":"dev-bs3 as 1.1.1",
         "crisu83/yiistrap-widgets":"1.7.*",
         "mishamx/yii-user":"dev-develop",

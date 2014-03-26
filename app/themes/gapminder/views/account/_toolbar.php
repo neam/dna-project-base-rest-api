@@ -71,3 +71,40 @@
         <?php endif; ?>
     </div>
 </div>
+<div class="btn-toolbar">
+    <div class="btn-group">
+        <?php foreach (MetaData::assignableGroupRoles() as $groupRole => $role): ?>
+            <?php if ($model->belongsToGroup('GapminderInternal', $groupRole)): ?>
+                <?php echo TbHtml::linkButton(
+                    Yii::t('app', 'Remove from {role}', array('{role}' => $role)),
+                    array(
+                        'id' => 'removeFromGroup_' . $role,
+                        'icon' => TbHtml::ICON_MINUS,
+                        'url' => array(
+                            'removeFromGroup',
+                            'id' => $model->id,
+                            'group' => 'GapminderInternal',
+                            'role' => $groupRole,
+                            'returnUrl' => TbHtml::encode(Yii::app()->request->url),
+                        ),
+                    )
+                ); ?>
+            <?php else: ?>
+                <?php echo TbHtml::linkButton(
+                    Yii::t('app', 'Add to {role}', array('{role}' => $role)),
+                    array(
+                        'id' => 'addToGroup_' . $role,
+                        'icon' => TbHtml::ICON_PLUS,
+                        'url' => array(
+                            'addToGroup',
+                            'id' => $model->id,
+                            'group' => 'GapminderInternal',
+                            'role' => $groupRole,
+                            'returnUrl' => TbHtml::encode(Yii::app()->request->url),
+                        ),
+                    )
+                ); ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>

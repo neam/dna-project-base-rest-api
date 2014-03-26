@@ -8,7 +8,7 @@ $model = new $modelClass();
 <div class="item-type-introduction">
     <div class="intro-head">
         <h3 class="intro-title"><?php print Yii::t('model', $model->modelLabel, 2); ?></h3>
-        <?php if (Yii::app()->user->checkAccess('Item.Browse')): ?>
+        <?php if (Yii::app()->user->checkAccess('Browse')): ?>
             <div class="intro-actions">
                 <?php echo TbHtml::linkButton(
                     Yii::t('model', 'Browse'),

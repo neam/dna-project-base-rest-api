@@ -7481,7 +7481,10 @@ td.visible-print {
   margin-top: 218px;
 }
 .videofile-controller.edit-action .after-flowbar {
-  margin-top: 218px;
+  margin-top: 238px;
+}
+.wafflecategorything-controller .after-flowbar {
+  margin-top: 238px;
 }
 .alert.alert-error {
   background-color: #f2dede;

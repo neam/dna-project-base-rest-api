@@ -21,7 +21,7 @@
         )
     ); ?>
     <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
-    <?php $this->renderPartial('/_item/edit/_flowbar', compact('model', 'requiredCounts')); ?>
+    <?php $this->renderPartial('/_item/edit/_flowbar', compact('model')); ?>
     <div class="after-flowbar">
         <div class="alerts">
             <div class="alerts-content">

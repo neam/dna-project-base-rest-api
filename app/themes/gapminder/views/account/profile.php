@@ -20,12 +20,7 @@
             'class' => 'dirtyforms',
         ),
     )); ?>
-    <?php $this->renderPartial(
-        'profile/_flowbar',
-        array(
-            'model' => $model,
-        )
-    ) ?>
+    <?php $this->renderPartial('profile/_flowbar', array('model' => $model)); ?>
     <div class="after-flowbar">
         <div class="alerts">
             <div class="alerts-content">

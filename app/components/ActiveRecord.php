@@ -188,6 +188,9 @@ class ActiveRecord extends CActiveRecord
     // Logic for access restriction
     // ----------------------------------------
 
+    // todo: implement with beforeFind & beforeCount
+    // see this for ideas: https://github.com/codemix/AccessRestrictable/blob/master/src/AccessRestrictable/Behavior.php
+
     /**
      * @inheritDoc
      */
@@ -297,6 +300,20 @@ class ActiveRecord extends CActiveRecord
             return $criteria;
         }
 
-        return PermissionHelper::applyAccessCriteria($criteria, $params);
+        // Show published items to anonymous users
+        if (Yii::app()->user->isGuest) {
+            $visible = NodeHasGroup::VISIBILITY_VISIBLE;
+
+            $criteria->join = "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)";
+            $criteria->addCondition("(`nhg`.`visibility` = '$visible')");
+
+            return $criteria;
+        }
+
+        $roleNames = isset($params['roleNames']) && !empty($params['roleNames'])
+            ? $params['roleNames']
+            : Yii::app()->user->getRoles();
+
+        return PermissionHelper::applyAccessCriteria($criteria, $roleNames);
     }
 }

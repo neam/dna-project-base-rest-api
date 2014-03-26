@@ -57,14 +57,49 @@ trait ItemTrait
 
     /**
      * Checks if the item has a group.
+     * @param string $group
      * @return boolean
      */
-    public function hasGroup()
+    public function belongsToGroup($group)
     {
         return PermissionHelper::nodeHasGroup(array(
             'node_id' => $this->node_id,
-            'group_id' => PermissionHelper::groupNameToId('GapminderOrg'),
+            'group_id' => PermissionHelper::groupNameToId($group),
         ));
+    }
+
+    /**
+     * Make all related NodeHasGroup records visible.
+     */
+    public function makeNodeHasGroupVisible()
+    {
+        if (isset($this->node)) {
+            $nhgs = $this->node->nodeHasGroups;
+
+            if (!empty($nhgs)) {
+                foreach ($nhgs as $nodeHasGroup) {
+                    /** @var NodeHasGroup $nodeHasGroup */
+                    $nodeHasGroup->makeVisible();
+                }
+            }
+        }
+    }
+
+    /**
+     * Make all related NodeHasGroup records hidden.
+     */
+    public function makeNodeHasGroupHidden()
+    {
+        if (isset($this->node)) {
+            $nhgs = $this->node->nodeHasGroups;
+
+            if (!empty($nhgs)) {
+                foreach ($nhgs as $nodeHasGroup) {
+                    /** @var NodeHasGroup $nodeHasGroup */
+                    $nodeHasGroup->makeHidden();
+                }
+            }
+        }
     }
 
     /**
@@ -246,6 +281,31 @@ trait ItemTrait
     }
 
     /**
+     * Returns invalid fields.
+     * @param string $scenario
+     * @return array
+     */
+    public function getInvalidFields($scenario)
+    {
+        // Work on a clone to not interfere with existing attributes and validation errors
+        $model = clone $this;
+        $model->scenario = $scenario;
+
+        $attributes = $this->scenarioSpecificAttributes($scenario);
+        $invalidFields = array();
+
+        foreach ($attributes as $attribute) {
+            $valid = $model->validate(array($attribute));
+
+            if (!$valid) {
+                $invalidFields[] = $attribute;
+            }
+        }
+
+        return $invalidFields;
+    }
+
+    /**
      * Returns an action route.
      * @param string $action the controller action.
      * @param string $step
@@ -265,5 +325,15 @@ trait ItemTrait
         }
 
         return $route;
+    }
+
+    /**
+     * Checks an item models access relative to the user.
+     * @param string $operation
+     * @return boolean
+     */
+    public function checkAccess($operation)
+    {
+        return Yii::app()->user->checkAccess(get_class($this) . '.' . $operation, array('id' => $this->{$this->tableSchema->primaryKey}));
     }
 }
