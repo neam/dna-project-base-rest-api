@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1fe7950537ff671983afc1114b496c8b",
+    "hash": "ad062b331b2c4a96c2cfc44b54fb3beb",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -604,12 +604,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "e2ede533a1841cf59260c2c8d58fc17e78f437e2"
+                "reference": "0ef15faae274dc7630c88f79883ecf9839d79765"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/e2ede533a1841cf59260c2c8d58fc17e78f437e2",
-                "reference": "e2ede533a1841cf59260c2c8d58fc17e78f437e2",
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/0ef15faae274dc7630c88f79883ecf9839d79765",
+                "reference": "0ef15faae274dc7630c88f79883ecf9839d79765",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -631,7 +631,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-03-18 09:21:14"
+            "time": "2014-03-20 10:05:58"
         },
         {
             "name": "motin/yii-owner-behavior",
@@ -679,12 +679,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/php-po2json.git",
-                "reference": "17bc3006f72619e863706c88132502bd56d2b3ee"
+                "reference": "e693dd87c53ae628902d7d12b6992e05d8cf2592"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/php-po2json/zipball/17bc3006f72619e863706c88132502bd56d2b3ee",
-                "reference": "17bc3006f72619e863706c88132502bd56d2b3ee",
+                "url": "https://api.github.com/repos/neam/php-po2json/zipball/e693dd87c53ae628902d7d12b6992e05d8cf2592",
+                "reference": "e693dd87c53ae628902d7d12b6992e05d8cf2592",
                 "shasum": ""
             },
             "require": {
@@ -720,7 +720,7 @@
                 "source": "https://github.com/neam/php-po2json/tree/develop",
                 "issues": "https://github.com/neam/php-po2json/issues"
             },
-            "time": "2014-03-17 04:13:02"
+            "time": "2014-03-26 13:38:12"
         },
         {
             "name": "neam/yii-i18n-attribute-messages",
@@ -1508,7 +1508,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record access check implementation",
@@ -1539,7 +1539,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
@@ -1592,12 +1592,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/multi-theme.git",
-                "reference": "0.1.1"
+                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/0.1.1",
-                "reference": "0.1.1",
+                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/f9fcd89e8620be03340cd1d6125ae2522b71719a",
+                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a",
                 "shasum": ""
             },
             "require": {
@@ -1613,7 +1613,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Theme-Manager class, switch themes by regular expressions on controller routes.",
