@@ -432,7 +432,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'approval_progress',
+                'name' => 'translate_into_zh_tw_validation_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
                     //'placement' => 'right',
@@ -440,7 +440,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'translate_into_zh_tw_validation_progress',
+                'name' => 'approval_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
                     //'placement' => 'right',
@@ -480,6 +480,14 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'slug_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'question_en_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
@@ -504,7 +512,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'slug_approved',
+                'name' => 'related_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
                     //'placement' => 'right',
@@ -512,7 +520,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'related_approved',
+                'name' => 'question_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
                     //'placement' => 'right',
@@ -537,14 +545,6 @@ $this->widget('\TbGridView',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'question_en_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'question_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
                     //'placement' => 'right',

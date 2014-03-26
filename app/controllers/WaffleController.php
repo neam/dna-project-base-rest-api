@@ -64,7 +64,8 @@ class WaffleController extends Controller
             } catch (Exception $e) {
 
                 $model->addError('json_import_media_id', $e->getMessage());
-
+                // Throwing the exception may be useful while developing
+                //throw $e;
             }
 
             // emulate us hitting the save button (so that json_import_media_id is saved and changeset is created etc)

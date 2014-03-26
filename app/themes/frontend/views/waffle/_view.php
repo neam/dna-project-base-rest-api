@@ -15,6 +15,10 @@
     <?php echo CHtml::encode($data->cloned_from_id); ?>
     <br/>
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('file_format')); ?>:</b>
+    <?php echo CHtml::encode($data->file_format); ?>
+    <br/>
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('_title')); ?>:</b>
     <?php echo CHtml::encode($data->_title); ?>
     <br/>
@@ -27,11 +31,11 @@
     <?php echo CHtml::encode($data->_short_title); ?>
     <br/>
 
+    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('_description')); ?>:</b>
     <?php echo CHtml::encode($data->_description); ?>
-    <br/>
+    <br />
 
-    <?php /*
     <b><?php echo CHtml::encode($data->getAttributeLabel('link')); ?>:</b>
     <?php echo CHtml::encode($data->link); ?>
     <br />

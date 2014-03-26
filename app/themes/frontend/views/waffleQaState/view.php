@@ -229,22 +229,6 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->allow_publish); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
-<?php echo CHtml::encode($model->title_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_approved')); ?>:</b>
-<?php echo CHtml::encode($model->slug_approved); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->title_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_proofed')); ?>:</b>
-<?php echo CHtml::encode($model->slug_proofed); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_en_approved')); ?>:</b>
 <?php echo CHtml::encode($model->title_en_approved); ?>
 <br />
@@ -253,24 +237,72 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->slug_en_approved); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('short_title_en_approved')); ?>:</b>
+<?php echo CHtml::encode($model->short_title_en_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('file_format_approved')); ?>:</b>
+<?php echo CHtml::encode($model->file_format_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('license_approved')); ?>:</b>
+<?php echo CHtml::encode($model->license_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('license_link_approved')); ?>:</b>
+<?php echo CHtml::encode($model->license_link_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('waffle_publisher_id_approved')); ?>:</b>
+<?php echo CHtml::encode($model->waffle_publisher_id_approved); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('json_import_media_id_approved')); ?>:</b>
 <?php echo CHtml::encode($model->json_import_media_id_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_approved')); ?>:</b>
-<?php echo CHtml::encode($model->po_contents_approved); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_approved')); ?>:</b>
+<?php echo CHtml::encode($model->title_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('title_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->title_en_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_approved')); ?>:</b>
+<?php echo CHtml::encode($model->po_contents_approved); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->slug_en_proofed); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('short_title_en_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->short_title_en_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('file_format_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->file_format_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('license_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->license_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('license_link_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->license_link_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('waffle_publisher_id_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->waffle_publisher_id_proofed); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('json_import_media_id_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->json_import_media_id_proofed); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('title_proofed')); ?>:</b>
+<?php echo CHtml::encode($model->title_proofed); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('po_contents_proofed')); ?>:</b>

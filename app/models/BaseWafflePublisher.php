@@ -21,10 +21,10 @@
  *
  * Relations of table "waffle_publisher" available as properties of the model:
  * @property Waffle[] $waffles
+ * @property P3Media $imageSmallMedia
  * @property WafflePublisherQaState $wafflePublisherQaState
  * @property Account $owner
  * @property Node $node
- * @property P3Media $imageSmallMedia
  * @property P3Media $imageLargeMedia
  * @property WafflePublisher $clonedFrom
  * @property WafflePublisher[] $wafflePublishers
@@ -77,10 +77,10 @@ abstract class BaseWafflePublisher extends ActiveRecord
         return array_merge(
             parent::relations(), array(
                 'waffles' => array(self::HAS_MANY, 'Waffle', 'waffle_publisher_id'),
+                'imageSmallMedia' => array(self::BELONGS_TO, 'P3Media', 'image_small_media_id'),
                 'wafflePublisherQaState' => array(self::BELONGS_TO, 'WafflePublisherQaState', 'waffle_publisher_qa_state_id'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-                'imageSmallMedia' => array(self::BELONGS_TO, 'P3Media', 'image_small_media_id'),
                 'imageLargeMedia' => array(self::BELONGS_TO, 'P3Media', 'image_large_media_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'WafflePublisher', 'cloned_from_id'),
                 'wafflePublishers' => array(self::HAS_MANY, 'WafflePublisher', 'cloned_from_id'),

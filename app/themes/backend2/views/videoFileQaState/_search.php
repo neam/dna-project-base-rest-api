@@ -276,18 +276,23 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'original_media_id_approved'); ?>
-        <?php echo $form->checkBox($model, 'original_media_id_approved'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'about_en_approved'); ?>
-        <?php echo $form->checkBox($model, 'about_en_approved'); ?>
+        <?php echo $form->label($model, 'clip_mp4_media_id_approved'); ?>
+        <?php echo $form->checkBox($model, 'clip_mp4_media_id_approved'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->label($model, 'thumbnail_media_id_approved'); ?>
         <?php echo $form->checkBox($model, 'thumbnail_media_id_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'clip_webm_media_id_approved'); ?>
+        <?php echo $form->checkBox($model, 'clip_webm_media_id_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'about_en_approved'); ?>
+        <?php echo $form->checkBox($model, 'about_en_approved'); ?>
     </div>
 
     <div class="row">
@@ -301,6 +306,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'subtitles_approved'); ?>
+        <?php echo $form->checkBox($model, 'subtitles_approved'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'title_en_proofed'); ?>
         <?php echo $form->checkBox($model, 'title_en_proofed'); ?>
     </div>
@@ -311,13 +321,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'original_media_id_proofed'); ?>
-        <?php echo $form->checkBox($model, 'original_media_id_proofed'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'about_en_proofed'); ?>
-        <?php echo $form->checkBox($model, 'about_en_proofed'); ?>
+        <?php echo $form->label($model, 'clip_mp4_media_id_proofed'); ?>
+        <?php echo $form->checkBox($model, 'clip_mp4_media_id_proofed'); ?>
     </div>
 
     <div class="row">
@@ -326,8 +331,18 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'clip_webm_media_id_proofed'); ?>
+        <?php echo $form->checkBox($model, 'clip_webm_media_id_proofed'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'subtitles_en_proofed'); ?>
         <?php echo $form->checkBox($model, 'subtitles_en_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'about_en_proofed'); ?>
+        <?php echo $form->checkBox($model, 'about_en_proofed'); ?>
     </div>
 
     <div class="row">
@@ -336,23 +351,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'clip_mp4_media_id_approved'); ?>
-        <?php echo $form->checkBox($model, 'clip_mp4_media_id_approved'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'clip_webm_media_id_approved'); ?>
-        <?php echo $form->checkBox($model, 'clip_webm_media_id_approved'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'clip_mp4_media_id_proofed'); ?>
-        <?php echo $form->checkBox($model, 'clip_mp4_media_id_proofed'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'clip_webm_media_id_proofed'); ?>
-        <?php echo $form->checkBox($model, 'clip_webm_media_id_proofed'); ?>
+        <?php echo $form->label($model, 'subtitles_proofed'); ?>
+        <?php echo $form->checkBox($model, 'subtitles_proofed'); ?>
     </div>
 
 

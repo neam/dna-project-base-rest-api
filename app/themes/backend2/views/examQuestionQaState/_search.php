@@ -241,13 +241,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'approval_progress'); ?>
-        <?php echo $form->textField($model, 'approval_progress'); ?>
+        <?php echo $form->label($model, 'translate_into_zh_tw_validation_progress'); ?>
+        <?php echo $form->textField($model, 'translate_into_zh_tw_validation_progress'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'translate_into_zh_tw_validation_progress'); ?>
-        <?php echo $form->textField($model, 'translate_into_zh_tw_validation_progress'); ?>
+        <?php echo $form->label($model, 'approval_progress'); ?>
+        <?php echo $form->textField($model, 'approval_progress'); ?>
     </div>
 
     <div class="row">
@@ -271,6 +271,11 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'slug_approved'); ?>
+        <?php echo $form->checkBox($model, 'slug_approved'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'question_en_approved'); ?>
         <?php echo $form->checkBox($model, 'question_en_approved'); ?>
     </div>
@@ -286,13 +291,13 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'slug_approved'); ?>
-        <?php echo $form->checkBox($model, 'slug_approved'); ?>
+        <?php echo $form->label($model, 'related_approved'); ?>
+        <?php echo $form->checkBox($model, 'related_approved'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'related_approved'); ?>
-        <?php echo $form->checkBox($model, 'related_approved'); ?>
+        <?php echo $form->label($model, 'question_approved'); ?>
+        <?php echo $form->checkBox($model, 'question_approved'); ?>
     </div>
 
     <div class="row">
@@ -308,11 +313,6 @@
     <div class="row">
         <?php echo $form->label($model, 'question_en_proofed'); ?>
         <?php echo $form->checkBox($model, 'question_en_proofed'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'question_approved'); ?>
-        <?php echo $form->checkBox($model, 'question_approved'); ?>
     </div>
 
     <div class="row">

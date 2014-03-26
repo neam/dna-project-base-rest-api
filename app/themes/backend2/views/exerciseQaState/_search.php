@@ -291,6 +291,16 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'thumbnail_approved'); ?>
+        <?php echo $form->checkBox($model, 'thumbnail_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'materials_approved'); ?>
+        <?php echo $form->checkBox($model, 'materials_approved'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'title_approved'); ?>
         <?php echo $form->checkBox($model, 'title_approved'); ?>
     </div>
@@ -306,18 +316,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'thumbnail_approved'); ?>
-        <?php echo $form->checkBox($model, 'thumbnail_approved'); ?>
-    </div>
-
-    <div class="row">
         <?php echo $form->label($model, 'question_en_proofed'); ?>
         <?php echo $form->checkBox($model, 'question_en_proofed'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'materials_approved'); ?>
-        <?php echo $form->checkBox($model, 'materials_approved'); ?>
     </div>
 
     <div class="row">

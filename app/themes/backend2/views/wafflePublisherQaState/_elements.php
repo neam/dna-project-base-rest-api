@@ -109,9 +109,13 @@
 
             <?php echo $form->textFieldRow($model, 'ref_approved'); ?>
 
+            <?php echo $form->textFieldRow($model, 'name_approved'); ?>
+
             <?php echo $form->textFieldRow($model, 'name_en_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'ref_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'name_proofed'); ?>
         </div>
     </div>
     <!-- main inputs -->

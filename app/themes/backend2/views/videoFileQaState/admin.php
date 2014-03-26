@@ -488,15 +488,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'original_media_id_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'about_en_approved',
+                'name' => 'clip_mp4_media_id_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -505,6 +497,22 @@ $this->widget('\TbGridView',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'thumbnail_media_id_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'clip_webm_media_id_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'about_en_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -528,6 +536,14 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'subtitles_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'title_en_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
@@ -544,15 +560,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'original_media_id_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'about_en_proofed',
+                'name' => 'clip_mp4_media_id_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -568,7 +576,23 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'clip_webm_media_id_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'subtitles_en_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'about_en_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                     //'placement' => 'right',
@@ -584,31 +608,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'clip_mp4_media_id_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'clip_webm_media_id_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'clip_mp4_media_id_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/videoFileQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'clip_webm_media_id_proofed',
+                'name' => 'subtitles_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/videoFileQaState/editableSaver'),
                     //'placement' => 'right',

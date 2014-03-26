@@ -91,23 +91,15 @@
 
             <?php echo $form->textFieldRow($model, 'translate_into_vi_validation_progress'); ?>
 
+            <?php echo $form->textFieldRow($model, 'translate_into_zh_validation_progress'); ?>
+
             <?php echo $form->textFieldRow($model, 'translate_into_zh_cn_validation_progress'); ?>
 
             <?php echo $form->textFieldRow($model, 'translate_into_zh_tw_validation_progress'); ?>
 
-            <?php echo $form->textFieldRow($model, 'translate_into_zh_validation_progress'); ?>
-
-            <?php echo $form->textFieldRow($model, 'proofing_progress'); ?>
-
             <?php echo $form->textFieldRow($model, 'approval_progress'); ?>
 
-            <?php echo $form->textFieldRow($model, 'original_media_id_approved'); ?>
-
-            <?php echo $form->textFieldRow($model, 'about_approved'); ?>
-
-            <?php echo $form->textFieldRow($model, 'pot_import_media_id_approved'); ?>
-
-            <?php echo $form->textFieldRow($model, 'title_proofed'); ?>
+            <?php echo $form->textFieldRow($model, 'proofing_progress'); ?>
 
             <?php echo $form->textFieldRow($model, 'allow_review'); ?>
 
@@ -115,13 +107,17 @@
 
             <?php echo $form->textFieldRow($model, 'title_approved'); ?>
 
-            <?php echo $form->textFieldRow($model, 'original_media_id_proofed'); ?>
+            <?php echo $form->textFieldRow($model, 'po_contents_en_approved'); ?>
 
-            <?php echo $form->textFieldRow($model, 'about_proofed'); ?>
-
-            <?php echo $form->textFieldRow($model, 'pot_import_media_id_proofed'); ?>
+            <?php echo $form->textFieldRow($model, 'about_approved'); ?>
 
             <?php echo $form->textFieldRow($model, 'po_contents_approved'); ?>
+
+            <?php echo $form->textFieldRow($model, 'title_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'po_contents_en_proofed'); ?>
+
+            <?php echo $form->textFieldRow($model, 'about_proofed'); ?>
 
             <?php echo $form->textFieldRow($model, 'po_contents_proofed'); ?>
         </div>

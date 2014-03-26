@@ -29,19 +29,27 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->ref); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('_name')); ?>:</b>
-<?php echo CHtml::encode($model->_name); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_list_name')); ?>:</b>
+<?php echo CHtml::encode($model->_list_name); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('_short_name')); ?>:</b>
-<?php echo CHtml::encode($model->_short_name); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_property_name')); ?>:</b>
+<?php echo CHtml::encode($model->_property_name); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('_description')); ?>:</b>
-<?php echo CHtml::encode($model->_description); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('_possessive')); ?>:</b>
+<?php echo CHtml::encode($model->_possessive); ?>
 <br/>
 
 <?php /*
+<b><?php echo CHtml::encode($model->getAttributeLabel('_choice_format')); ?>:</b>
+<?php echo CHtml::encode($model->_choice_format); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('_description')); ?>:</b>
+<?php echo CHtml::encode($model->_description); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('waffle_id')); ?>:</b>
 <?php echo CHtml::encode($model->waffle_id); ?>
 <br />
@@ -134,26 +142,52 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => '_name',
+                        'name' => '_list_name',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => '_name',
+                                    'attribute' => '_list_name',
                                     'url' => $this->createUrl('/waffleCategory/editableSaver'),
                                 ),
                                 true
                             )
                     ),
                     array(
-                        'name' => '_short_name',
+                        'name' => '_property_name',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => '_short_name',
+                                    'attribute' => '_property_name',
+                                    'url' => $this->createUrl('/waffleCategory/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => '_possessive',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => '_possessive',
+                                    'url' => $this->createUrl('/waffleCategory/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => '_choice_format',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => '_choice_format',
                                     'url' => $this->createUrl('/waffleCategory/editableSaver'),
                                 ),
                                 true

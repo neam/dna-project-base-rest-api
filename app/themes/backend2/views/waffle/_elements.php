@@ -5,6 +5,8 @@
 
             <?php echo $form->textFieldRow($model, 'version'); ?>
 
+            <?php echo $form->textFieldRow($model, 'file_format', array('maxlength' => 255)); ?>
+
             <?php echo $form->textFieldRow($model, '_title', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>

@@ -56,18 +56,18 @@
  * @property integer $proofing_progress
  * @property integer $allow_review
  * @property integer $allow_publish
- * @property integer $title_approved
- * @property integer $short_name_approved
+ * @property integer $list_name_en_approved
+ * @property integer $property_name_en_approved
+ * @property integer $possessive_en_approved
+ * @property integer $choice_format_en_approved
  * @property integer $ref_approved
- * @property integer $name_approved
- * @property integer $title_proofed
- * @property integer $short_name_proofed
+ * @property integer $list_name_approved
+ * @property integer $list_name_en_proofed
+ * @property integer $property_name_en_proofed
+ * @property integer $possessive_en_proofed
+ * @property integer $choice_format_en_proofed
  * @property integer $ref_proofed
- * @property integer $name_proofed
- * @property integer $name_en_approved
- * @property integer $short_name_en_approved
- * @property integer $name_en_proofed
- * @property integer $short_name_en_proofed
+ * @property integer $list_name_proofed
  *
  * Relations of table "waffle_category_qa_state" available as properties of the model:
  * @property WaffleCategory[] $waffleCategories
@@ -89,10 +89,10 @@ abstract class BaseWaffleCategoryQaState extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('status, draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, title_approved, short_name_approved, ref_approved, name_approved, title_proofed, short_name_proofed, ref_proofed, name_proofed, name_en_approved, short_name_en_approved, name_en_proofed, short_name_en_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, title_approved, short_name_approved, ref_approved, name_approved, title_proofed, short_name_proofed, ref_proofed, name_proofed, name_en_approved, short_name_en_approved, name_en_proofed, short_name_en_proofed', 'numerical', 'integerOnly' => true),
+                array('status, draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, list_name_en_approved, property_name_en_approved, possessive_en_approved, choice_format_en_approved, ref_approved, list_name_approved, list_name_en_proofed, property_name_en_proofed, possessive_en_proofed, choice_format_en_proofed, ref_proofed, list_name_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, list_name_en_approved, property_name_en_approved, possessive_en_approved, choice_format_en_approved, ref_approved, list_name_approved, list_name_en_proofed, property_name_en_proofed, possessive_en_proofed, choice_format_en_proofed, ref_proofed, list_name_proofed', 'numerical', 'integerOnly' => true),
                 array('status', 'length', 'max' => 255),
-                array('id, status, draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, title_approved, short_name_approved, ref_approved, name_approved, title_proofed, short_name_proofed, ref_proofed, name_proofed, name_en_approved, short_name_en_approved, name_en_proofed, short_name_en_proofed', 'safe', 'on' => 'search'),
+                array('id, status, draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, list_name_en_approved, property_name_en_approved, possessive_en_approved, choice_format_en_approved, ref_approved, list_name_approved, list_name_en_proofed, property_name_en_proofed, possessive_en_proofed, choice_format_en_proofed, ref_proofed, list_name_proofed', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -177,18 +177,18 @@ abstract class BaseWaffleCategoryQaState extends ActiveRecord
             'proofing_progress' => Yii::t('model', 'Proofing Progress'),
             'allow_review' => Yii::t('model', 'Allow Review'),
             'allow_publish' => Yii::t('model', 'Allow Publish'),
-            'title_approved' => Yii::t('model', 'Title Approved'),
-            'short_name_approved' => Yii::t('model', 'Short Name Approved'),
+            'list_name_en_approved' => Yii::t('model', 'List Name En Approved'),
+            'property_name_en_approved' => Yii::t('model', 'Property Name En Approved'),
+            'possessive_en_approved' => Yii::t('model', 'Possessive En Approved'),
+            'choice_format_en_approved' => Yii::t('model', 'Choice Format En Approved'),
             'ref_approved' => Yii::t('model', 'Ref Approved'),
-            'name_approved' => Yii::t('model', 'Name Approved'),
-            'title_proofed' => Yii::t('model', 'Title Proofed'),
-            'short_name_proofed' => Yii::t('model', 'Short Name Proofed'),
+            'list_name_approved' => Yii::t('model', 'List Name Approved'),
+            'list_name_en_proofed' => Yii::t('model', 'List Name En Proofed'),
+            'property_name_en_proofed' => Yii::t('model', 'Property Name En Proofed'),
+            'possessive_en_proofed' => Yii::t('model', 'Possessive En Proofed'),
+            'choice_format_en_proofed' => Yii::t('model', 'Choice Format En Proofed'),
             'ref_proofed' => Yii::t('model', 'Ref Proofed'),
-            'name_proofed' => Yii::t('model', 'Name Proofed'),
-            'name_en_approved' => Yii::t('model', 'Name En Approved'),
-            'short_name_en_approved' => Yii::t('model', 'Short Name En Approved'),
-            'name_en_proofed' => Yii::t('model', 'Name En Proofed'),
-            'short_name_en_proofed' => Yii::t('model', 'Short Name En Proofed'),
+            'list_name_proofed' => Yii::t('model', 'List Name Proofed'),
         );
     }
 
@@ -250,18 +250,18 @@ abstract class BaseWaffleCategoryQaState extends ActiveRecord
         $criteria->compare('t.proofing_progress', $this->proofing_progress);
         $criteria->compare('t.allow_review', $this->allow_review);
         $criteria->compare('t.allow_publish', $this->allow_publish);
-        $criteria->compare('t.title_approved', $this->title_approved);
-        $criteria->compare('t.short_name_approved', $this->short_name_approved);
+        $criteria->compare('t.list_name_en_approved', $this->list_name_en_approved);
+        $criteria->compare('t.property_name_en_approved', $this->property_name_en_approved);
+        $criteria->compare('t.possessive_en_approved', $this->possessive_en_approved);
+        $criteria->compare('t.choice_format_en_approved', $this->choice_format_en_approved);
         $criteria->compare('t.ref_approved', $this->ref_approved);
-        $criteria->compare('t.name_approved', $this->name_approved);
-        $criteria->compare('t.title_proofed', $this->title_proofed);
-        $criteria->compare('t.short_name_proofed', $this->short_name_proofed);
+        $criteria->compare('t.list_name_approved', $this->list_name_approved);
+        $criteria->compare('t.list_name_en_proofed', $this->list_name_en_proofed);
+        $criteria->compare('t.property_name_en_proofed', $this->property_name_en_proofed);
+        $criteria->compare('t.possessive_en_proofed', $this->possessive_en_proofed);
+        $criteria->compare('t.choice_format_en_proofed', $this->choice_format_en_proofed);
         $criteria->compare('t.ref_proofed', $this->ref_proofed);
-        $criteria->compare('t.name_proofed', $this->name_proofed);
-        $criteria->compare('t.name_en_approved', $this->name_en_approved);
-        $criteria->compare('t.short_name_en_approved', $this->short_name_en_approved);
-        $criteria->compare('t.name_en_proofed', $this->name_en_proofed);
-        $criteria->compare('t.short_name_en_proofed', $this->short_name_en_proofed);
+        $criteria->compare('t.list_name_proofed', $this->list_name_proofed);
 
 
         return $criteria;

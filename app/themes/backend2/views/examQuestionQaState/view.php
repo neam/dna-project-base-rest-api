@@ -202,12 +202,12 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->translate_into_zh_cn_validation_progress); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
-<?php echo CHtml::encode($model->approval_progress); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
 <?php echo CHtml::encode($model->translate_into_zh_tw_validation_progress); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('approval_progress')); ?>:</b>
+<?php echo CHtml::encode($model->approval_progress); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('proofing_progress')); ?>:</b>
@@ -226,6 +226,10 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->slug_en_approved); ?>
 <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('slug_approved')); ?>:</b>
+<?php echo CHtml::encode($model->slug_approved); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('question_en_approved')); ?>:</b>
 <?php echo CHtml::encode($model->question_en_approved); ?>
 <br />
@@ -238,12 +242,12 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->alternatives_approved); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('slug_approved')); ?>:</b>
-<?php echo CHtml::encode($model->slug_approved); ?>
-<br />
-
 <b><?php echo CHtml::encode($model->getAttributeLabel('related_approved')); ?>:</b>
 <?php echo CHtml::encode($model->related_approved); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('question_approved')); ?>:</b>
+<?php echo CHtml::encode($model->question_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en_proofed')); ?>:</b>
@@ -256,10 +260,6 @@ $this->breadcrumbs[] = $model->id;
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('question_en_proofed')); ?>:</b>
 <?php echo CHtml::encode($model->question_en_proofed); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('question_approved')); ?>:</b>
-<?php echo CHtml::encode($model->question_approved); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('source_node_id_proofed')); ?>:</b>
@@ -907,19 +907,6 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'approval_progress',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'approval_progress',
-                                    'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
                         'name' => 'translate_into_zh_tw_validation_progress',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -927,6 +914,19 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'translate_into_zh_tw_validation_progress',
+                                    'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'approval_progress',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'approval_progress',
                                     'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
                                 ),
                                 true
@@ -985,6 +985,19 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
+                        'name' => 'slug_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'slug_approved',
+                                    'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
                         'name' => 'question_en_approved',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1024,19 +1037,6 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'slug_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'slug_approved',
-                                    'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
                         'name' => 'related_approved',
                         'type' => 'raw',
                         'value' => $this->widget(
@@ -1044,6 +1044,19 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'related_approved',
+                                    'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
+                                ),
+                                true
+                            )
+                    ),
+                    array(
+                        'name' => 'question_approved',
+                        'type' => 'raw',
+                        'value' => $this->widget(
+                                'TbEditableField',
+                                array(
+                                    'model' => $model,
+                                    'attribute' => 'question_approved',
                                     'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
                                 ),
                                 true
@@ -1083,19 +1096,6 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'question_en_proofed',
-                                    'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
-                                ),
-                                true
-                            )
-                    ),
-                    array(
-                        'name' => 'question_approved',
-                        'type' => 'raw',
-                        'value' => $this->widget(
-                                'TbEditableField',
-                                array(
-                                    'model' => $model,
-                                    'attribute' => 'question_approved',
                                     'url' => $this->createUrl('/examQuestionQaState/editableSaver'),
                                 ),
                                 true

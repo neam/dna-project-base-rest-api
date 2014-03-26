@@ -432,6 +432,14 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'translate_into_zh_tw_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'approval_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
@@ -441,14 +449,6 @@ $this->widget('\TbGridView',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'proofing_progress',
-                'editable' => array(
-                    'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'translate_into_zh_tw_validation_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
                     //'placement' => 'right',
@@ -496,6 +496,14 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'title_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'slug_en_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
@@ -513,14 +521,6 @@ $this->widget('\TbGridView',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'about_en_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/dataSourceQaState/editableSaver'),
                     //'placement' => 'right',

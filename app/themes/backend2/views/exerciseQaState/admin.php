@@ -512,6 +512,22 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'thumbnail_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/exerciseQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'materials_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/exerciseQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'title_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
@@ -536,23 +552,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'thumbnail_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
                 'name' => 'question_en_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/exerciseQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'materials_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/exerciseQaState/editableSaver'),
                     //'placement' => 'right',

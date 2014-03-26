@@ -72,6 +72,14 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'file_format',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffle/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => '_title',
                 'editable' => array(
                     'url' => $this->createUrl('/waffle/editableSaver'),
@@ -102,15 +110,15 @@ $this->widget('\TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'link',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffle/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
             /*
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'link',
+                    'editable' => array(
+                        'url' => $this->createUrl('/waffle/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
             array(
                     'class' => 'TbEditableColumn',
                     'name' => 'publishing_date',

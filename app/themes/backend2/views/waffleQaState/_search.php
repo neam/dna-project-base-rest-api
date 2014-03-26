@@ -266,26 +266,6 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'title_approved'); ?>
-        <?php echo $form->checkBox($model, 'title_approved'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'slug_approved'); ?>
-        <?php echo $form->checkBox($model, 'slug_approved'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'title_proofed'); ?>
-        <?php echo $form->checkBox($model, 'title_proofed'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'slug_proofed'); ?>
-        <?php echo $form->checkBox($model, 'slug_proofed'); ?>
-    </div>
-
-    <div class="row">
         <?php echo $form->label($model, 'title_en_approved'); ?>
         <?php echo $form->checkBox($model, 'title_en_approved'); ?>
     </div>
@@ -296,13 +276,38 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'short_title_en_approved'); ?>
+        <?php echo $form->checkBox($model, 'short_title_en_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'file_format_approved'); ?>
+        <?php echo $form->checkBox($model, 'file_format_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'license_approved'); ?>
+        <?php echo $form->checkBox($model, 'license_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'license_link_approved'); ?>
+        <?php echo $form->checkBox($model, 'license_link_approved'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'waffle_publisher_id_approved'); ?>
+        <?php echo $form->checkBox($model, 'waffle_publisher_id_approved'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'json_import_media_id_approved'); ?>
         <?php echo $form->checkBox($model, 'json_import_media_id_approved'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'po_contents_approved'); ?>
-        <?php echo $form->checkBox($model, 'po_contents_approved'); ?>
+        <?php echo $form->label($model, 'title_approved'); ?>
+        <?php echo $form->checkBox($model, 'title_approved'); ?>
     </div>
 
     <div class="row">
@@ -311,13 +316,48 @@
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'po_contents_approved'); ?>
+        <?php echo $form->checkBox($model, 'po_contents_approved'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'slug_en_proofed'); ?>
         <?php echo $form->checkBox($model, 'slug_en_proofed'); ?>
     </div>
 
     <div class="row">
+        <?php echo $form->label($model, 'short_title_en_proofed'); ?>
+        <?php echo $form->checkBox($model, 'short_title_en_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'file_format_proofed'); ?>
+        <?php echo $form->checkBox($model, 'file_format_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'license_proofed'); ?>
+        <?php echo $form->checkBox($model, 'license_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'license_link_proofed'); ?>
+        <?php echo $form->checkBox($model, 'license_link_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'waffle_publisher_id_proofed'); ?>
+        <?php echo $form->checkBox($model, 'waffle_publisher_id_proofed'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->label($model, 'json_import_media_id_proofed'); ?>
         <?php echo $form->checkBox($model, 'json_import_media_id_proofed'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'title_proofed'); ?>
+        <?php echo $form->checkBox($model, 'title_proofed'); ?>
     </div>
 
     <div class="row">

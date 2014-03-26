@@ -286,7 +286,7 @@ class DataModel
                 'VectorGraphic' => array('title', 'about'),
                 'VideoFile' => array('title', 'caption', 'about', 'subtitles'),
                 'Waffle' => array('title', 'short_title', 'description'),
-                'WaffleCategory' => array('name', 'short_name', 'description'),
+                'WaffleCategory' => array('list_name', 'property_name', 'possessive', 'choice_format', 'description'),
                 'WaffleCategoryThing' => array('name', 'short_name'),
                 'WaffleIndicator' => array('name', 'short_name', 'description'),
                 'WaffleUnit' => array('name', 'short_name', 'description'),

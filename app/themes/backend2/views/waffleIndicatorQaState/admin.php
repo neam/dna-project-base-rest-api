@@ -472,15 +472,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'short_name_approved',
+                'name' => 'name_en_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
                     //'placement' => 'right',
@@ -496,55 +488,15 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'name_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'short_name_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'ref_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'name_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'name_en_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
                 'name' => 'short_name_en_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'name_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
                     //'placement' => 'right',
@@ -561,6 +513,22 @@ $this->widget('\TbGridView',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'short_name_en_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'ref_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'name_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleIndicatorQaState/editableSaver'),
                     //'placement' => 'right',

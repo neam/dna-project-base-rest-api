@@ -192,16 +192,16 @@
     <?php echo CHtml::encode($data->translate_into_zh_cn_validation_progress); ?>
     <br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
+    <?php echo CHtml::encode($data->translate_into_zh_tw_validation_progress); ?>
+    <br />
+
     <b><?php echo CHtml::encode($data->getAttributeLabel('approval_progress')); ?>:</b>
     <?php echo CHtml::encode($data->approval_progress); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('proofing_progress')); ?>:</b>
     <?php echo CHtml::encode($data->proofing_progress); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('translate_into_zh_tw_validation_progress')); ?>:</b>
-    <?php echo CHtml::encode($data->translate_into_zh_tw_validation_progress); ?>
     <br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('allow_review')); ?>:</b>

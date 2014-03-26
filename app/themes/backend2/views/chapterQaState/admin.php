@@ -432,7 +432,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'approval_progress',
+                'name' => 'translate_into_zh_tw_validation_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/chapterQaState/editableSaver'),
                     //'placement' => 'right',
@@ -440,7 +440,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'translate_into_zh_tw_validation_progress',
+                'name' => 'approval_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/chapterQaState/editableSaver'),
                     //'placement' => 'right',
@@ -512,39 +512,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'related_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
                 'name' => 'exercises_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_en_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'slug_en_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/chapterQaState/editableSaver'),
                     //'placement' => 'right',
@@ -561,6 +529,38 @@ $this->widget('\TbGridView',
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'snapshots_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'related_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_en_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/chapterQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_en_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/chapterQaState/editableSaver'),
                     //'placement' => 'right',

@@ -472,38 +472,6 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'title_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'slug_approved',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'title_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'slug_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
                 'name' => 'title_en_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleQaState/editableSaver'),
@@ -520,6 +488,46 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'short_title_en_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'file_format_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'license_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'license_link_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'waffle_publisher_id_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'json_import_media_id_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleQaState/editableSaver'),
@@ -528,7 +536,7 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'po_contents_approved',
+                'name' => 'title_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleQaState/editableSaver'),
                     //'placement' => 'right',
@@ -544,6 +552,14 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'po_contents_approved',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'slug_en_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleQaState/editableSaver'),
@@ -552,7 +568,55 @@ $this->widget('\TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
+                'name' => 'short_title_en_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'file_format_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'license_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'license_link_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'waffle_publisher_id_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
                 'name' => 'json_import_media_id_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/waffleQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'title_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/waffleQaState/editableSaver'),
                     //'placement' => 'right',
