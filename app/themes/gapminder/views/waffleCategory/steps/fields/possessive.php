@@ -5,20 +5,20 @@
 ?>
 <?php echo $form->textFieldControlGroup(
     $model,
-    'short_name_' . $model->source_language,
+    'possessive_' . $model->source_language,
     array(
         'class' => Html::ITEM_FORM_FIELD_CLASS,
         'disabled' => !$this->canEditSourceLanguage(),
         'maxlength' => 255,
         'labelOptions' => array(
-            'label' => Html::attributeLabelWithTooltip($model, 'short_name_' . $model->source_language, 'short_name'),
+            'label' => Html::attributeLabelWithTooltip($model, 'possessive_' . $model->source_language, 'possessive'),
         ),
     )
 ); ?>
 <?php if ($this->workflowData['translateInto']): ?>
     <?php echo $form->textFieldControlGroup(
         $model,
-        'short_name_' . $this->workflowData['translateInto'],
+        'possessive_' . $this->workflowData['translateInto'],
         array(
             'class' => Html::ITEM_FORM_FIELD_CLASS,
             'maxlength' => 255,

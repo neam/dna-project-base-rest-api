@@ -22,7 +22,7 @@ class WaffleCategory extends BaseWaffleCategory
 
     public function getItemLabel()
     {
-        return (string) !empty($this->name) ? $this->name : "WaffleCategory #" . $this->id;
+        return (string) !empty($this->list_name) ? $this->list_name : "WaffleCategory #" . $this->id;
     }
 
     public function behaviors()
@@ -63,9 +63,10 @@ class WaffleCategory extends BaseWaffleCategory
     public function statusRequirements()
     {
         return array(
-            'draft' => array(),
-            'reviewable' => array(
+            'draft' => array(
                 'list_name_' . $this->source_language,
+            ),
+            'reviewable' => array(
                 'property_name_' . $this->source_language,
                 'possessive_' . $this->source_language,
                 'choice_format_' . $this->source_language,
@@ -107,8 +108,10 @@ class WaffleCategory extends BaseWaffleCategory
         return array_merge(
             parent::attributeLabels(), array(
                 'ref' => Yii::t('model', 'Ref'),
-                'name' => Yii::t('model', 'Name'),
-                'short_name' => Yii::t('model', 'Short name'),
+                'list_name' => Yii::t('model', 'List name'),
+                'property_name' => Yii::t('model', 'Property name'),
+                'possessive' => Yii::t('model', 'Possessive'),
+                'choice_format' => Yii::t('model', 'Choice format'),
                 'description' => Yii::t('model', 'Description'),
             )
         );
@@ -119,8 +122,10 @@ class WaffleCategory extends BaseWaffleCategory
         return array_merge(
             parent::attributeHints(), array(
                 'ref' => Yii::t('model', ''),
-                'name' => Yii::t('model', ''),
-                'short_name' => Yii::t('model', ''),
+                'list_name' => Yii::t('model', ''),
+                'property_name' => Yii::t('model', ''),
+                'possessive' => Yii::t('model', ''),
+                'choice_format' => Yii::t('model', ''),
                 'description' => Yii::t('model', ''),
             )
         );
