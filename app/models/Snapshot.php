@@ -7,6 +7,7 @@ Yii::import('Snapshot.*');
 class Snapshot extends BaseSnapshot
 {
     use ItemTrait;
+
     public $firstFlowStep = 'info';
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
@@ -60,7 +61,7 @@ class Snapshot extends BaseSnapshot
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable'),
                 array('about_' . $this->source_language . '', 'length', 'min' => 10, 'max' => 200),
-                array('vizabi_state', 'validateVizabiState', 'on' => 'publishable'),
+                array('vizabi_state', 'validateVizabiState'),
 
             )
         );
@@ -76,9 +77,12 @@ class Snapshot extends BaseSnapshot
         return !is_null($this->thumbnail_media_id);
     }
 
-    public function validateVizabiState()
+    public function validateVizabiState($attribute)
     {
-        return strlen($this->vizabi_state) > 0;
+        $json_decoded = json_decode(trim($this->vizabi_state));
+        if (strlen(trim($this->vizabi_state)) > 0 && is_null($json_decoded)) {
+            $this->addError('vizabi_state', Yii::t('app', 'Vizabi state could not be parsed as JSON'));
+        }
     }
 
     public function validateRelated()
@@ -190,7 +194,7 @@ class Snapshot extends BaseSnapshot
         $response = new stdClass();
 
         $response->id = $this->id;
-        $response->vizabi_state = json_decode($this->vizabi_state);
+        $response->vizabi_state = json_decode(trim($this->vizabi_state));
         $response->tool = !is_null($this->tool_id) ? $this->tool->allAttributes : null;
         $response->embed_override = $this->embed_override;
         $response->title = $this->title;
