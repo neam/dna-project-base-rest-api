@@ -73,7 +73,7 @@ class Waffle extends BaseWaffle
 
     public function validateWaffleTranslation($attribute)
     {
-        if (true) {
+        if (false) {
             $this->addError($attribute, Yii::t('app', 'TODO: Waffle translation validation'));
         }
     }
