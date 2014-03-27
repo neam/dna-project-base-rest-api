@@ -308,6 +308,22 @@ class I18nCatalog extends BaseI18nCatalog
         );
     }
 
+    /**
+     * The attributes that is returned by the REST api
+     */
+    public function getAllAttributes()
+    {
+
+        $response = new stdClass();
+
+        $response->id = $this->id;
+        $response->title = $this->title;
+        $response->about = $this->about;
+
+        return $response;
+
+    }
+
     public function search($criteria = null)
     {
         if (is_null($criteria)) {

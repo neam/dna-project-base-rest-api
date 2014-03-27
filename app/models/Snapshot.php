@@ -191,7 +191,7 @@ class Snapshot extends BaseSnapshot
 
         $response->id = $this->id;
         $response->vizabi_state = json_decode($this->vizabi_state);
-        $response->tool = $this->tool;
+        $response->tool = $this->tool->allAttributes;
         $response->embed_override = $this->embed_override;
         $response->title = $this->title;
         $response->slug = $this->slug;

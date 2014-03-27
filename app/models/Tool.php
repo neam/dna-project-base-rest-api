@@ -128,6 +128,25 @@ class Tool extends BaseTool
         );
     }
 
+    /**
+     * The attributes that is returned by the REST api
+     */
+    public function getAllAttributes()
+    {
+
+        $response = new stdClass();
+
+        $response->id = $this->id;
+        $response->title = $this->title;
+        $response->slug = $this->slug;
+        $response->about = $this->about;
+        $response->embed_template = $this->embed_template;
+        $response->i18nCatalog = $this->i18nCatalog->allAttributes;
+
+        return $response;
+
+    }
+
     public function search($criteria = null)
     {
         if (is_null($criteria)) {
