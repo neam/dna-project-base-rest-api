@@ -181,6 +181,28 @@ class Snapshot extends BaseSnapshot
         );
     }
 
+    /**
+     * The attributes that is returned by the REST api
+     */
+    public function getAllAttributes()
+    {
+
+        $response = new stdClass();
+
+        $response->id = $this->id;
+        $response->vizabi_state = json_decode($this->vizabi_state);
+        $response->tool = $this->tool;
+        $response->embed_override = $this->embed_override;
+        $response->title = $this->title;
+        $response->slug = $this->slug;
+        $response->about = $this->about;
+        $response->thumbnail = !is_null($this->thumbnail_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $this->thumbnailMedia->path : null;
+        $response->related = $this->related;
+
+        return $response;
+
+    }
+
     public function search($criteria = null)
     {
         if (is_null($criteria)) {
