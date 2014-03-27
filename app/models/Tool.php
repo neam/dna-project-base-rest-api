@@ -141,7 +141,7 @@ class Tool extends BaseTool
         $response->slug = $this->slug;
         $response->about = $this->about;
         $response->embed_template = $this->embed_template;
-        $response->i18nCatalog = $this->i18nCatalog->allAttributes;
+        $response->i18nCatalog = !is_null($this->i18n_catalog_id) ? $this->i18nCatalog->allAttributes : null;
 
         return $response;
 
