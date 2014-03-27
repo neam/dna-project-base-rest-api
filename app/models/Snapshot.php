@@ -157,7 +157,7 @@ class Snapshot extends BaseSnapshot
                 'thumbnail_media_id' => Yii::t('model', 'Thumbnail'),
                 'related' => Yii::t('model', 'Related'),
                 'dataarticles' => Yii::t('model', 'Data'),
-                'vizabi_state' => Yii::t('model', 'Snapshot'),
+                'vizabi_state' => Yii::t('model', 'Vizabi State'),
                 'tool' => Yii::t('model', 'Tool'),
                 'embed_override' => Yii::t('model', 'Embed override'),
             )
