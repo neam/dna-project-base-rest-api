@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e9018bae1377d69ff6fe66e5b10e5ff5",
+    "hash": "manuallyupdatedff6fe66e5b10e5ff5",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1279,12 +1279,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/p3media.git",
-                "reference": "4a20441f805d36cebde699f0fa78b17ac741c4fe"
+                "reference": "18c4d57bdb50ca3e15fd3014300616d8d01eb932"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/p3media/zipball/4a20441f805d36cebde699f0fa78b17ac741c4fe",
-                "reference": "4a20441f805d36cebde699f0fa78b17ac741c4fe",
+                "url": "https://api.github.com/repos/motin/p3media/zipball/18c4d57bdb50ca3e15fd3014300616d8d01eb932",
+                "reference": "18c4d57bdb50ca3e15fd3014300616d8d01eb932",
                 "shasum": ""
             },
             "require": {
@@ -1328,7 +1328,7 @@
             "support": {
                 "source": "https://github.com/motin/p3media/tree/awaiting-prs"
             },
-            "time": "2013-12-16 11:56:54"
+            "time": "2014-03-27 17:48:00"
         },
         {
             "name": "phundament/p3pages",

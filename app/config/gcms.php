@@ -116,6 +116,12 @@ $gcmsConfig = array(
                         'savePublic' => true,
                         'type' => 'webm',
                     ),
+                    'original-public-mp4' => array(
+                        //'name'         => 'Original File Public',
+                        'originalFile' => true,
+                        'savePublic' => true,
+                        'type' => 'mp4',
+                    ),
                 ),
             ),
         ),

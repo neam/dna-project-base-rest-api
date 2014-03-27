@@ -323,9 +323,9 @@ class VideoFile extends BaseVideoFile
         $response->about = $this->about;
         //$response->tags = $this->tags;
         $response->subtitles = Yii::app()->createAbsoluteUrl('api/videoFile/subtitles', array('id' => $this->id));
-        $response->thumbnail = !is_null($this->thumbnail_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . urlencode($this->thumbnailMedia->path) : null;
-        $response->clipWebm = !is_null($this->clip_webm_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . urlencode($this->clipWebmMedia->path) : null;
-        $response->clipMp4 = !is_null($this->clip_mp4_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . urlencode($this->clipMp4Media->path) : null;
+        $response->thumbnail = !is_null($this->thumbnail_media_id) ? $this->thumbnailMedia->createUrl('original-public', true)  : null;
+        $response->clipWebm = !is_null($this->clip_webm_media_id) ? $this->clipWebmMedia->createUrl('original-public-webm', true) : null;
+        $response->clipMp4 = !is_null($this->clip_mp4_media_id) ? $this->clipMp4Media->createUrl('original-public-mp4', true) : null;
         //$response->related = $this->related;
         //$response->overlays = $this->overlays;
         //$response->dubbing = $this->dubbing;
