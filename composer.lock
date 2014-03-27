@@ -711,12 +711,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/php-po2json.git",
-                "reference": "17bc3006f72619e863706c88132502bd56d2b3ee"
+                "reference": "e693dd87c53ae628902d7d12b6992e05d8cf2592"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/php-po2json/zipball/17bc3006f72619e863706c88132502bd56d2b3ee",
-                "reference": "17bc3006f72619e863706c88132502bd56d2b3ee",
+                "url": "https://api.github.com/repos/neam/php-po2json/zipball/e693dd87c53ae628902d7d12b6992e05d8cf2592",
+                "reference": "e693dd87c53ae628902d7d12b6992e05d8cf2592",
                 "shasum": ""
             },
             "require": {
@@ -752,7 +752,7 @@
                 "source": "https://github.com/neam/php-po2json/tree/develop",
                 "issues": "https://github.com/neam/php-po2json/issues"
             },
-            "time": "2014-03-17 04:13:02"
+            "time": "2014-03-26 13:38:12"
         },
         {
             "name": "neam/yii-i18n-attribute-messages",
@@ -1602,7 +1602,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record access check implementation",
@@ -1633,7 +1633,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
@@ -1686,12 +1686,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/multi-theme.git",
-                "reference": "0.1.1"
+                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/0.1.1",
-                "reference": "0.1.1",
+                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/f9fcd89e8620be03340cd1d6125ae2522b71719a",
+                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a",
                 "shasum": ""
             },
             "require": {
@@ -1707,7 +1707,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Theme-Manager class, switch themes by regular expressions on controller routes.",
