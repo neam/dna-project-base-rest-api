@@ -200,7 +200,11 @@ class Snapshot extends BaseSnapshot
         $response->title = $this->title;
         $response->slug = $this->slug;
         $response->about = $this->about;
-        $response->thumbnail = !is_null($this->thumbnail_media_id) ? Yii::app()->request->getBaseUrl(true) . $this->thumbnailMedia->createUrl('original-public')  : null;
+        $response->thumbnail = new stdClass();
+        if (!is_null($this->thumbnail_media_id)) {
+            $response->thumbnail->original = $this->thumbnailMedia->createUrl('original-public', true);
+            $response->thumbnail->thumb = $this->thumbnailMedia->createUrl('related-thumb', true);
+        }
         $response->related = $this->related;
 
         return $response;
