@@ -49,9 +49,11 @@
                             echo nl2br($data->sourceMessage);
                             echo '</div>';
                         }
-                        echo Yii::t('app', 'Reference') . ": ";
-                        echo "<br>";
-                        echo "<small>" . implode("<br>", $data->reference) . "</small>";
+                        if (isset($data->reference)) {
+                            echo Yii::t('app', 'Reference') . ": ";
+                            echo "<br>";
+                            echo "<small>" . implode("<br>", $data->reference) . "</small>";
+                        }
                         if (isset($data->context)) {
                             echo "<br>";
                             echo Yii::t('app', 'Context') . ": ";

@@ -136,7 +136,7 @@ class I18nCatalog extends BaseI18nCatalog
 
             $pft = new stdClass();
             $pft->id = $i;
-            $pft->reference = $t['reference'];
+            $pft->reference = isset($t['reference']) ? $t['reference'] : null;
             $pft->fuzzy = isset($t['fuzzy']) ? $t['fuzzy'] : null;
 
             $entry = array();
