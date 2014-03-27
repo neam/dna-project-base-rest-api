@@ -36,7 +36,7 @@
                         if (isset($item->_title)) {
                             return $item->_title;
                         }
-                        return $item->model_class . ' #' . $item->id;
+                        return $item->getItemLabel();
                     }
                 ),
             'htmlOptions' => array(
