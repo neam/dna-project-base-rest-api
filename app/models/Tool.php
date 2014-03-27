@@ -65,7 +65,9 @@ class Tool extends BaseTool
                 'slug_' . $this->source_language,
             ),
             'reviewable' => array(),
-            'publishable' => array(),
+            'publishable' => array(
+                'ref',
+            ),
         );
     }
 
@@ -84,7 +86,7 @@ class Tool extends BaseTool
             'embed' => array(
                 'embed_template',
             ),
-            'po' => array(
+            'i18n' => array(
                 'i18n_catalog_id',
             ),
         );
@@ -95,7 +97,7 @@ class Tool extends BaseTool
         return array(
             'info' => Yii::t('app', 'Info'),
             'embed' => Yii::t('app', 'Embed'),
-            'po' => Yii::t('app', 'Po'),
+            'i18n' => Yii::t('app', 'I18n'),
         );
     }
 
@@ -103,6 +105,7 @@ class Tool extends BaseTool
     {
         return array_merge(
             parent::attributeLabels(), array(
+                'ref' => Yii::t('model', 'Reference'),
                 'title' => Yii::t('model', 'Title'),
                 'title_en' => Yii::t('model', 'English Title'),
                 'slug' => Yii::t('model', 'Nice link'),
@@ -137,6 +140,7 @@ class Tool extends BaseTool
         $response = new stdClass();
 
         $response->id = $this->id;
+        $response->ref = $this->ref;
         $response->title = $this->title;
         $response->slug = $this->slug;
         $response->about = $this->about;
