@@ -1,10 +1,7 @@
 .flowbar {
   #gradient > .vertical(#fff, rgba(255,255,255,0), 90%);
   max-width: 1140px;
-  padding: 20px 0;
-  position: fixed;
-  top: @navbar-height;
-  z-index: 10;
+  position: relative;
   width: 100%;
 
   // todo: rename 'foot' to 'actions'
@@ -83,8 +80,4 @@
       color: @red;
     }
   }
-}
-
-.after-flowbar {
-  margin-top: 190px;
 }
