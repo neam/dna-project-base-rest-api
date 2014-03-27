@@ -58,37 +58,37 @@
             <?php // TODO: Action to prevent publishing. ?>
         <?php endif; ?>
     </div>
-    <?php if ($model->checkAccess('Edit')): ?>
-        <div class="btn-group">
-            <?php if ($model->belongsToGroup('GapminderInternal')): ?>
+    <div class="btn-group">
+        <?php foreach (MetaData::assignableGroups() as $groupName => $group): ?>
+            <?php if ($model->belongsToGroup($groupName)): ?>
                 <?php echo TbHtml::linkButton(
-                    Yii::t('app', 'Remove from group'),
+                    Yii::t('app', 'Remove from {group}', array('{group}' => $group)),
                     array(
                         'icon' => TbHtml::ICON_MINUS,
                         'url' => array(
                             'removeFromGroup',
                             'node_id' => $model->node_id,
-                            'group' => 'GapminderInternal',
+                            'group' => $groupName,
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
                     )
                 ); ?>
             <?php else: ?>
                 <?php echo TbHtml::linkButton(
-                    Yii::t('app', 'Add to group'),
+                    Yii::t('app', 'Add to {group}', array('{group}' => $group)),
                     array(
                         'icon' => TbHtml::ICON_PLUS,
                         'url' => array(
                             'addToGroup',
                             'node_id' => $model->node_id,
-                            'group' => 'GapminderInternal',
+                            'group' => $groupName,
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
                     )
                 ); ?>
             <?php endif; ?>
-        </div>
-    <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
     <div class="btn-group">
         <?php $this->widget(
             '\TbButton',

@@ -101,6 +101,21 @@ class Metadata
     {
         return array(
             'GapminderInternal',
+            'GapminderOrg',
+            'GapminderOrgSuggest',
+            'Proofreaders',
+            'Translators',
+        );
+    }
+
+    static public function assignableGroups()
+    {
+        return array(
+            'GapminderInternal' => 'Gapminder Internal',
+            'GapminderOrg' => 'Gapminder.org',
+            'GapminderOrgSuggest' => 'Gapminder.org suggestions',
+            'Proofreaders' => 'Proofreaders',
+            'Translators' => 'Translators',
         );
     }
 
@@ -149,112 +164,5 @@ class Metadata
     {
         $map = self::operationToRolesMap();
         return isset($map[$operation]) ? $map[$operation] : array();
-    }
-
-    /**
-     * Returns the checkAccess to permissions map.
-     * @return array
-     */
-    static public function checkAccessToPermissionMap()
-    {
-        $group = 'GapminderInternal';
-
-        return array(
-            // Roles and groups
-            'Administrator' => array('group' => $group, 'roles' => array(Role::SUPER_ADMINISTRATOR)),
-            'Super Adminstrator' => array('group' => $group, 'roles' => array(Role::SUPER_ADMINISTRATOR)),
-            'Superuser' => array('group' => $group, 'roles' => array(Role::SUPER_ADMINISTRATOR)),
-            'Developer' => array('group' => $group, 'roles' => array(Role::DEVELOPER)),
-            'Editor' => array('group' => $group, 'roles' => array(Role::GROUP_EDITOR)),
-            'Group.*' => array('group' => $group, 'roles' => array('TODO')), // TODO: Add an appropriate role.
-            'GroupHasAccount.*' => array('group' => $group, 'roles' => array('TODO')), // TODO: Add an appropriate role.
-
-            // Item
-            'Item.Edit' => array('group' => $group, 'roles' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR)),
-            'Item.Translate' => array('group' => $group, 'roles' => array(Role::GROUP_TRANSLATOR)),
-            'Item.Preview' => array('group' => $group, 'roles' => array(Role::GROUP_REVIEWER)),
-            'Item.PrepareForReview' => array('group' => $group, 'roles' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR)),
-            'Item.PrepareForPublishing' => array('group' => $group, 'roles' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR)),
-            'Item.Evaluate' => array('group' => $group, 'roles' => array(Role::GROUP_REVIEWER)),
-            'Item.Review' => array('group' => $group, 'roles' => array(Role::GROUP_REVIEWER)),
-            'Item.Proofread' => array('group' => $group, 'roles' => array(Role::GROUP_REVIEWER)),
-            'Item.Publish' => array('group' => $group, 'roles' => array(Role::GROUP_PUBLISHER)),
-            'Item.Clone' => array('group' => $group, 'roles' => array(Role::GROUP_EDITOR)),
-            'Item.Add' => array('group' => $group, 'roles' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR)),
-            'Item.Approve' => array('group' => $group, 'roles' => array(Role::GROUP_APPROVER)),
-            'Item.Remove' => array('group' => $group, 'roles' => array(Role::GROUP_CONTRIBUTOR)), // TODO: one should be able to remove only own items
-            'Item.Replace' => array('group' => $group, 'roles' => array(Role::GROUP_MODERATOR)), // TODO: one should be able to remove only own items
-            'Item.Browse' => array('group' => $group, 'roles' => array(Role::ANONYMOUS)), // TODO: Everybody has it anyways
-
-            // Models
-            'Account.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Action.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Changeset.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Chapter.*' => array('group' => $group, 'roles' => array('TODO')),
-            'ChapterQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Comment.*' => array('group' => $group, 'roles' => array('TODO')),
-            'DataArticle.*' => array('group' => $group, 'roles' => array('TODO')),
-            'DataArticleQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'DataSource.*' => array('group' => $group, 'roles' => array('TODO')),
-            'DownloadLink.*' => array('group' => $group, 'roles' => array('TODO')),
-            'DownloadLinkQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Edge.*' => array('group' => $group, 'roles' => array('TODO')),
-            'GuiSection.*' => array('group' => $group, 'roles' => array('TODO')),
-            'GuiSectionQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'ExamQuestion.*' => array('group' => $group, 'roles' => array('TODO')),
-            'ExamQuestionAlternative.*' => array('group' => $group, 'roles' => array('TODO')),
-            'ExamQuestionAlternativeQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Exercise.*' => array('group' => $group, 'roles' => array('TODO')),
-            'ExerciseQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'EzcWorkflow.*' => array('group' => $group, 'roles' => array('TODO')),
-            'HtmlChunk.*' => array('group' => $group, 'roles' => array('TODO')),
-            'HtmlChunkQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'I18nCatalog.*' => array('group' => $group, 'roles' => array('TODO')),
-            'I18nCatalogQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Menu.*' => array('group' => $group, 'roles' => array('TODO')),
-            'MenuQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Node.*' => array('group' => $group, 'roles' => array('TODO')),
-            'NodeHasGroup.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Page.*' => array('group' => $group, 'roles' => array('TODO')),
-            'PageQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'PoFile.*' => array('group' => $group, 'roles' => array('TODO')),
-            'PoFileQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Presentation.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Profile.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Profiles.*' => array('group' => $group, 'roles' => array('TODO')), // TODO: Should references to 'Profiles.*' be replaced with 'Profile.*'?
-            'Role.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Section.*' => array('group' => $group, 'roles' => array('TODO')),
-            'SectionContent.*' => array('group' => $group, 'roles' => array('TODO')),
-            'SectionQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'SlideshowFile.*' => array('group' => $group, 'roles' => array('TODO')),
-            'SlideshowFileQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Snapshot.*' => array('group' => $group, 'roles' => array('TODO')),
-            'SnapshotQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'SourceMessage.*' => array('group' => $group, 'roles' => array('TODO')),
-            'SpreadsheetFile.*' => array('group' => $group, 'roles' => array('TODO')),
-            'SpreadsheetFileQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'TextDoc.*' => array('group' => $group, 'roles' => array('TODO')),
-            'TextDocQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Tool.*' => array('group' => $group, 'roles' => array('TODO')),
-            'ToolQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'VectorGraphic.*' => array('group' => $group, 'roles' => array('TODO')),
-            'VectorGraphicQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'VideoFile.*' => array('group' => $group, 'roles' => array('TODO')),
-            'VideoFileQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'Waffle.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleCategory.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleCategoryQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleCategoryElement.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleCategoryElementQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleDataSource.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleDataSourceQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleIndicator.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleIndicatorQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleTag.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleTagQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleUnit.*' => array('group' => $group, 'roles' => array('TODO')),
-            'WaffleUnitQaState.*' => array('group' => $group, 'roles' => array('TODO')),
-        );
     }
 }
