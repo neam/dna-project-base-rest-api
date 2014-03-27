@@ -148,7 +148,7 @@ $gcmsConfig = array(
 				// REST CORS pattern
 				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
 				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
-				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/saveOrder', 'verb' => 'OPTIONS'),
+				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
             ),
         ),
         'db' => array(
