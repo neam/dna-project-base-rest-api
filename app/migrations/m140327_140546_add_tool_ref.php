@@ -5,7 +5,7 @@ class m140327_140546_add_tool_ref extends EDbMigration
 	public function up()
 	{
         $this->execute(
-            "ALTER TABLE `gscms`.`tool` ADD COLUMN `ref` VARCHAR(255) NULL DEFAULT NULL AFTER `cloned_from_id`;"
+            "ALTER TABLE `tool` ADD COLUMN `ref` VARCHAR(255) NULL DEFAULT NULL AFTER `cloned_from_id`;"
         );
 	}
 
