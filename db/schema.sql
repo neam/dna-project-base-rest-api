@@ -3959,6 +3959,29 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `email_message`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `email_message` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `from` TEXT NOT NULL,
+  `to` TEXT NOT NULL,
+  `cc` TEXT NULL DEFAULT NULL,
+  `bcc` TEXT NULL DEFAULT NULL,
+  `subject` VARCHAR(255) NOT NULL,
+  `body` TEXT NOT NULL,
+  `headers` TEXT NOT NULL,
+  `contentType` VARCHAR(255) NOT NULL,
+  `charset` VARCHAR(255) NOT NULL,
+  `created` DATETIME NOT NULL,
+  `status` INT(11) NOT NULL DEFAULT '0',
+  `sentTime` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
 -- Table `exam_question`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `exam_question` (
