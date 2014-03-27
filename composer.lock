@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "450612a94d5ef45b2cc8af60755b7b87",
+    "hash": "e9018bae1377d69ff6fe66e5b10e5ff5",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -200,6 +200,47 @@
             "time": "2013-08-22 19:12:29"
         },
         {
+            "name": "crisu83/yii-consoletools",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Crisu83/yii-consoletools.git",
+                "reference": "7938906c1e85e01dd58ed6961d619d165d69e594"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Crisu83/yii-consoletools/zipball/7938906c1e85e01dd58ed6961d619d165d69e594",
+                "reference": "7938906c1e85e01dd58ed6961d619d165d69e594",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "behaviors/",
+                    "commands/",
+                    "helpers/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christoffer Niska",
+                    "email": "christoffer.niska@gmail.com",
+                    "homepage": "http://www.cniska.net/"
+                }
+            ],
+            "description": "A collection of tools for developing console commands for Yii.",
+            "keywords": [
+                "console",
+                "tools",
+                "yii"
+            ],
+            "time": "2014-02-12 09:45:31"
+        },
+        {
             "name": "crisu83/yii-formatter",
             "version": "dev-master",
             "source": {
@@ -230,24 +271,6 @@
                 "formatter"
             ],
             "time": "2013-05-22 13:05:40"
-        },
-        {
-            "name": "crisu83/yii-rights",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmunk42/yii-rights.git",
-                "reference": "4f2ccb66378e1e5bf37deae34635fe68bf057faa"
-            },
-            "type": "library",
-            "authors": [
-                {
-                    "name": "Tobias Munk",
-                    "email": "schmunk@usrbin.de"
-                }
-            ],
-            "description": "Yii Rights module",
-            "time": "2013-10-11 09:20:14"
         },
         {
             "name": "crisu83/yii-sentry",
@@ -2390,7 +2413,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "crisu83/yii-rights": 20,
         "crisu83/yiistrap": 20,
         "mishamx/yii-user": 20,
         "phundament/jquery-file-upload": 20,
