@@ -200,7 +200,7 @@ class Snapshot extends BaseSnapshot
         $response->title = $this->title;
         $response->slug = $this->slug;
         $response->about = $this->about;
-        $response->thumbnail = !is_null($this->thumbnail_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $this->thumbnailMedia->path : null;
+        $response->thumbnail = !is_null($this->thumbnail_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . urlencode($this->thumbnailMedia->path) : null;
         $response->related = $this->related;
 
         return $response;
