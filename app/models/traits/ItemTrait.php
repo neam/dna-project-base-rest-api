@@ -328,6 +328,23 @@ trait ItemTrait
     }
 
     /**
+     * Returns the *_qa_state_id attribute name of the current model.
+     * @return string
+     * @throws CException
+     */
+    public function getQaStateAttribute()
+    {
+        $modelClass = get_class($this);
+        $attribute = $this->tableName() . '_qa_state_id';
+
+        if ($this->hasAttribute($attribute)) {
+            return $attribute;
+        } else {
+            throw new CException("$modelClass does not have an attribute '$attribute'.");
+        }
+    }
+
+    /**
      * Checks an item models access relative to the user.
      * @param string $operation
      * @return boolean

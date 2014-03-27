@@ -753,8 +753,9 @@ trait ItemController
 
         // reset qa states
         $behaviors = $model->behaviors();
-        // TODO: Do not hard-code for video file
-        $qaStateAttribute = 'video_file_qa_state_id';
+
+        $qaStateAttribute = $model->getQaStateAttribute();
+
         if (isset($behaviors['i18n-columns']['translationAttributes']) && in_array($qaStateAttribute, $behaviors['i18n-columns']['translationAttributes'])) {
             foreach (Yii::app()->params["languages"] as $lang => $label) {
                 $translatedAttribute = $qaStateAttribute . "_" . $lang;
