@@ -225,6 +225,6 @@ $gcmsConfig = array(
 );
 
 require('logging.php');
-//require('mail.php');
+require('mail.php');
 
 return $gcmsConfig;

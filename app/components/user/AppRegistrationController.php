@@ -4,6 +4,19 @@ Yii::import('vendor.mishamx.yii-user.controllers.RegistrationController');
 
 class AppRegistrationController extends RegistrationController
 {
+
+    public function behaviors()
+    {
+        return array_merge(
+            parent::behaviors(),
+            array(
+                'emailer' => array(
+                    'class' => 'vendor.nordsoftware.yii-emailer.behaviors.EmailBehavior',
+                ),
+            )
+        );
+    }
+
     /**
      * Registers a user.
      * @see RegistrationController::actionRegistration()
@@ -51,14 +64,37 @@ class AppRegistrationController extends RegistrationController
                                 '/user/activation/activation',
                                 array("activkey" => $model->activkey, "email" => $model->email)
                             );
-                            UserModule::sendMail($model->email, UserModule::t(
-                                    "You registered from {site_name}",
-                                    array('{site_name}' => Yii::app()->name)
-                                ),
-                                UserModule::t(
-                                    "Please activate you account go to {activation_url}",
-                                    array('{activation_url}' => $activation_url)
-                                ));
+
+                            $from = Yii::app()->params['signupsender'];
+                            $to = $model->email;
+                            $subject = Yii::t(
+                                'user registration',
+                                'Email Confirmation to activate your Gapminder Account'
+                            );
+                            $bodyTxt = <<<EOD
+Please confirm your email address and activate your new Gapminder Account by clicking this link: {link}
+
+Thanks
+Gapminder Foundation
+
+(Your email-address was provided to us by someone request to sign up for a new account at www.gapminder.org/signup/. If you did not provide the address, this email message must come as a surprise to you. We apologize for the inconvenience and ask you kindly to inform us about this incident so we can investigate what happened. Please tell us about this, by sending an email to info@gapminder.org
+We are very sorry!
+/The Gapminder Foundation.)
+EOD;
+                            $body = Yii::t(
+                                'user registration',
+                                $bodyTxt,
+                                array(
+                                    '{link}' => $activation_url,
+                                )
+                            );
+                            $config = array(
+                                'body' => $body
+                            );
+                            // TODO: method signature broken compared to component Emailer::create
+                            $mail = $this->createEmail($from, $to, $subject, $config);
+                            $this->sendEmail($mail);
+
                         }
 
                         if ((Yii::app()->controller->module->loginNotActiv
