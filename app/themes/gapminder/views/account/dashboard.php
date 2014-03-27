@@ -14,7 +14,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
         <h4>Work in progress</h4>
         This is where you will see recommended actions for you to take.
     </div>
-    <?php if (!Yii::app()->user->checkAccess('Item.Translate') && !Yii::app()->user->checkAccess('Item.Edit') && !Yii::app()->user->checkAccess('Item.Add')): ?>
+    <?php if (!Yii::app()->user->checkAccess('Translate') && !Yii::app()->user->checkAccess('Edit') && !Yii::app()->user->checkAccess('Add')): ?>
         <div class="alert alert-error">
             <?php echo Yii::t('account', 'You do not have permissions assigned.'); ?>
             <?php echo Yii::t('account', 'Without any permissions, we can not propose a suitable task for you.'); ?>
@@ -22,7 +22,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
             <?php //echo Yii::t('account', 'Please apply for a permission.'); ?>
         </div>
     <?php endif; ?>
-    <?php if (Yii::app()->user->checkAccess('Item.Add')): ?>
+    <?php if (Yii::app()->user->checkAccess('Add')): ?>
         <div class="add-content">
             <h2><?php echo Yii::t('dashboard', 'Add content'); ?></h2>
             <?php foreach (DataModel::qaModels() as $modelClass => $table): ?>
@@ -38,7 +38,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-    <?php if (Yii::app()->user->checkAccess('Item.Translate')): ?>
+    <?php if (Yii::app()->user->checkAccess('Translate')): ?>
         <div class="translate-content">
             <h2><?php echo Yii::t('dashboard', 'Translate content'); ?></h2>
 
