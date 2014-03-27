@@ -6847,9 +6847,6 @@ td.visible-print {
     width: 75%;
   }
 }
-.chapter-controller.edit-action .after-flowbar {
-  margin-top: 217px;
-}
 .chapter-controller.translate-action .after-flowbar {
   margin-top: 237px;
 }
@@ -6909,9 +6906,6 @@ td.visible-print {
 }
 .examquestion-controller.edit-action .related-text .alert-link {
   color: #245269;
-}
-.exercise-controller.edit-action .after-flowbar {
-  margin-top: 217px;
 }
 .exercise-controller.translate-action {
   margin-top: 237px;
@@ -7358,6 +7352,9 @@ td.visible-print {
 .item-controller.browse-action .item-actions .action-buttons .btn-group {
   margin: 5px 0 0 5px;
 }
+.item-controller.edit-action .after-flowbar {
+  margin-top: 251px;
+}
 .item-controller.prepareforpublishing-action .after-flowbar {
   margin-top: 238px;
 }
@@ -7465,26 +7462,11 @@ td.visible-print {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
-.slideshowfile-controller.edit-action .after-flowbar {
-  margin-top: 217px;
-}
 .slideshowfile-controller.translate-action .after-flowbar {
   margin-top: 237px;
 }
-.snapshot-controller.edit-action .after-flowbar {
-  margin-top: 218px;
-}
 .snapshot-controller .view-action .map {
   overflow: hidden;
-}
-.tool-controller.edit-action .after-flowbar {
-  margin-top: 218px;
-}
-.videofile-controller.edit-action .after-flowbar {
-  margin-top: 238px;
-}
-.waffle-controller.edit-action .after-flowbar {
-  margin-top: 219px;
 }
 .wafflecategorything-controller .after-flowbar {
   margin-top: 238px;
