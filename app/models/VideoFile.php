@@ -322,7 +322,7 @@ class VideoFile extends BaseVideoFile
         $response->caption = $this->caption;
         $response->about = $this->about;
         //$response->tags = $this->tags;
-        $response->subtitles = Yii::app()->createAbsoluteUrl('videoFile/subtitles', array('id' => $this->id));
+        $response->subtitles = Yii::app()->createAbsoluteUrl('api/videoFile/subtitles', array('id' => $this->id));
         $response->thumbnail = !is_null($this->thumbnail_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $this->thumbnailMedia->path : null;
         $response->clipWebm = !is_null($this->clip_webm_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $this->clipWebmMedia->path : null;
         $response->clipMp4 = !is_null($this->clip_mp4_media_id) ? Yii::app()->request->getBaseUrl(true) . '/media/' . $this->clipMp4Media->path : null;

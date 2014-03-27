@@ -27,4 +27,14 @@ class VideoFileController extends AppRestController
         );
     }
 
+    public function actionSubtitles($id)
+    {
+        $model = VideoFile::model()->findByPk($id);
+
+        $parsedSubtitles = $model->getParsedSubtitles();
+        echo $model->getTranslatedSubtitles($parsedSubtitles);
+
+        exit;
+    }
+
 }
