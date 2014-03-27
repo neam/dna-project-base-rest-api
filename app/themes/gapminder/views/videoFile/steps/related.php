@@ -30,15 +30,10 @@
         array(
             'name' => 'add-related-edges',
             'data' => CHtml::listData(
-                    Item::model()->findAllActualItems($relatedCriteria),
-                    'node_id',
-                    function($item) {
-                        if (isset($item->_title)) {
-                            return $item->_title;
-                        }
-                        return $item->getItemLabel();
-                    }
-                ),
+                Item::model()->findAllActualItems($relatedCriteria),
+                'node_id',
+                'itemLabel'
+            ),
             'htmlOptions' => array(
                 'multiple' => 'multiple',
             ),

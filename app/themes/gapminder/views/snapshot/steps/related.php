@@ -31,12 +31,7 @@
             'data' => CHtml::listData(
                 Item::model()->findAllActualItems($relatedCriteria),
                 'node_id',
-                function($item) {
-                    if (isset($item->_title)) {
-                        return $item->_title;
-                    }
-                    return $item->getItemLabel();
-                }
+                'itemLabel'
             ),
             'htmlOptions' => array(
                 'multiple' => 'multiple',
