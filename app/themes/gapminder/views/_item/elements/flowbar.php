@@ -123,6 +123,6 @@
                 )); ?>
             </div>
         </div>
-        <?php publishJs('/themes/frontend/js/flowbar-form-controls.js', CClientScript::POS_END); ?>
+        <?php publishJs('/themes/gapminder/js/flowbar-form-controls.js', CClientScript::POS_END); ?>
     <?php endif; ?>
 </div>

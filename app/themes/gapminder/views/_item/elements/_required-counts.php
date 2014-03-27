@@ -16,7 +16,7 @@
         <?php $this->widget(
             '\TbButton',
             array(
-                'label' => Yii::t('button', 'Take action'),
+                'label' => Yii::t('button', 'Next'),
                 'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                 'url' => '#',
                 'htmlOptions' => array(
@@ -48,5 +48,5 @@
             ),
         )
     );*/ ?>
-    <?php publishJs('/themes/frontend/js/flowbar-form-controls.js', CClientScript::POS_END); ?>
+    <?php publishJs('/themes/gapminder/js/flowbar-form-controls.js', CClientScript::POS_END); ?>
 <?php endif; ?>

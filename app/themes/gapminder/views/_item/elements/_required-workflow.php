@@ -20,7 +20,7 @@
                 <?php $this->widget(
                     '\TbButton',
                     array(
-                        'label' => Yii::t('button', 'Take action'),
+                        'label' => Yii::t('button', 'Next'),
                         'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                         'url' => '#',
                         'htmlOptions' => array(
@@ -34,21 +34,19 @@
                     <?php throw new CException("The item's validation rules for $validationScenario are out of sync. Make sure that the step-based validation rules match those of the overall $validationScenario validation scenarios"); ?>
                 <?php endif; ?>
                 <?php if ($_GET['step'] != $nextStep): ?>
-                    <div class="btn-group">
-                        <?php echo CHtml::submitButton(
-                            Yii::t('model', 'Next'),
-                            array(
-                                'class' => 'btn btn-primary',
-                                'name' => 'next-required',
-                            )
-                        ); ?>
-                        <input type="hidden" name="next-required-url" value="<?php echo CHtml::encode(
-                           Yii::app()->createUrl(
-                               lcfirst($this->modelClass) . '/' . $this->action->id,
-                               array('id' => $model->id, 'step' => $nextStep)
-                           )
-                       ); ?>">
-                    </div>
+                    <?php echo CHtml::submitButton(
+                        Yii::t('model', 'Next'),
+                        array(
+                            'class' => 'btn btn-primary',
+                            'name' => 'next-required',
+                        )
+                    ); ?>
+                    <input type="hidden" name="next-required-url" value="<?php echo CHtml::encode(
+                       Yii::app()->createUrl(
+                           lcfirst($this->modelClass) . '/' . $this->action->id,
+                           array('id' => $model->id, 'step' => $nextStep)
+                       )
+                   ); ?>">
                 <?php endif; ?>
             <?php endif; ?>
         </div>
@@ -87,4 +85,4 @@
         </div>
     </div>
 </div>
-<?php publishJs('/themes/frontend/js/flowbar-form-controls.js', CClientScript::POS_END); ?>
+<?php publishJs('/themes/gapminder/js/flowbar-form-controls.js', CClientScript::POS_END); ?>
