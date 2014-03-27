@@ -10,6 +10,19 @@ class AppRestController extends WRestController
         return parent::init();
     }
 
+    public function loadModel($id)
+    {
+        if (is_null($id)) {
+            $id = Yii::app()->user->id;
+        }
+        $modelName = $this->_modelName;
+        $model = $modelName::model()->findByPk($id);
+        if ($model === null) {
+            $this->sendResponse(404);
+        }
+        return $model;
+    }
+
     private function _getStatusCodeMessage($status)
     {
         $codes = Array(
