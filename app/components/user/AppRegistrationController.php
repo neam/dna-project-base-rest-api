@@ -65,7 +65,7 @@ class AppRegistrationController extends RegistrationController
                                 array("activkey" => $model->activkey, "email" => $model->email)
                             );
 
-                            $from = Yii::app()->params['signupsender'];
+                            $from = Yii::app()->params['signupSender'];
                             $to = $model->email;
                             $subject = Yii::t(
                                 'user registration',
