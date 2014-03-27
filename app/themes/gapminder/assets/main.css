@@ -7483,6 +7483,9 @@ td.visible-print {
 .videofile-controller.edit-action .after-flowbar {
   margin-top: 238px;
 }
+.waffle-controller.edit-action .after-flowbar {
+  margin-top: 219px;
+}
 .wafflecategorything-controller .after-flowbar {
   margin-top: 238px;
 }
