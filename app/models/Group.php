@@ -6,6 +6,11 @@ Yii::import('Group.*');
 
 class Group extends BaseGroup
 {
+    const GAPMINDER_ORG = 'GapminderOrg';
+    const GAPMINDER_INTERNAL = 'GapminderInternal';
+    const GAPMINDER_ORG_SUGGEST = 'GapminderOrgSuggest';
+    const PROOFREADERS = 'Proofreaders';
+    const TRANSLATORS = 'Translators';
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)

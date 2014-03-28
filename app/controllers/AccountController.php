@@ -379,6 +379,8 @@ class AccountController extends Controller
         // todo: make dynamic
         $group = 'GapminderInternal';
 
+        // TODO foreach all groups
+
         $attributes = array(
             'account_id' => $id,
             'group_id' => PermissionHelper::groupNameToId($group),

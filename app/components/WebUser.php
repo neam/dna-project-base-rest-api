@@ -57,7 +57,7 @@ class WebUser extends CWebUser
 
         // Handle anonymous users
         if ($this->isGuest) {
-            return in_array(Role::ANONYMOUS, MetaData::operationToRoles($operation));
+            return in_array(Role::ANONYMOUS, MetaData::operationToRolesAndGroups($operation));
         }
 
         if (strpos($operation, '.') !== false) {
@@ -84,26 +84,31 @@ class WebUser extends CWebUser
                 $criteria->params[':modelId'] = $params['id'];
             }
 
-            $criteria = PermissionHelper::applyAccessCriteria($criteria, MetaData::operationToRoles($operation));
-            $result = ActiveRecord::model($modelClass)->findAll($criteria, array('roleNames' => MetaData::operationToRoles($operation)));
+            $criteria = PermissionHelper::applyAccessCriteria($criteria, MetaData::operationToRolesAndGroups($operation));
+            $result = ActiveRecord::model($modelClass)->findAll($criteria, array('roleNames' => MetaData::operationToRolesAndGroups($operation)));
 
             return count($result) > 0;
         } else {
-            $map = MetaData::operationToRolesMap();
+            $map = MetaData::operationToRolesAndGroupsMap();
 
-            if (isset($map[$operation])) {
+            if (isset($map[$operation]['roles'])) {
                 // Get role IDs
                 $roles = array();
-                foreach ($map[$operation] as $role) {
+                foreach ($map[$operation]['roles'] as $role) {
                     $roles[] = PermissionHelper::roleNameToId($role);
+                }
+
+                // Get group IDs
+                $groups = array();
+                foreach ($map[$operation]['groups'] as $group) {
+                    $groups[] = PermissionHelper::groupNameToId($group);
                 }
 
                 $criteria = new CDbCriteria();
                 $criteria->addInCondition('role_id', $roles);
+                $criteria->addInCondition('group_id', $groups);
                 $criteria->addCondition('account_id = :userId');
                 $criteria->params[':userId'] = $this->id;
-                $criteria->addCondition('group_id = :groupId'); // TODO: Change to addInCondition when more groups have been implemented.
-                $criteria->params[':groupId'] = PermissionHelper::groupNameToId('GapminderInternal');
 
                 return GroupHasAccount::model()->find($criteria) !== null;
             }

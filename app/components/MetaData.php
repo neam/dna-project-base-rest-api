@@ -130,29 +130,92 @@ class Metadata
     }
 
     /**
-     * Returns the operation to roles map.
+     * Returns the operation to roles and groups map.
      * @return array
      */
-    static public function operationToRolesMap()
+    static public function operationToRolesAndGroupsMap()
     {
         return array(
-            'Edit' => array(Role::GROUP_EDITOR),
-            'Translate' => array(Role::GROUP_TRANSLATOR),
-            'Preview' => array(Role::GROUP_REVIEWER),
-            'PrepareForReview' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),
-            'PrepareForPublishing' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),
-            'Evaluate' => array(Role::GROUP_REVIEWER),
-            'Review' => array(Role::GROUP_REVIEWER),
-            'Proofread' => array(Role::GROUP_REVIEWER),
-            'Publish' => array(Role::GROUP_PUBLISHER),
-            'Clone' => array(Role::GROUP_EDITOR),
-            'Add' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),
-            'Approve' => array(Role::GROUP_APPROVER),
-            'Remove' => array(Role::GROUP_CONTRIBUTOR), // TODO: One should be able to remove his own items only.
-            'Replace' => array(Role::GROUP_MODERATOR), // TODO: One should be able to remove his own items only.
-            'Browse' => array(Role::ANONYMOUS), // TODO: Everybody has the role in any case.
-            'View' => array(Role::ANONYMOUS), // TODO: Everybody has the role in any case.
+            'Edit' => array(
+                'roles' => array(Role::GROUP_EDITOR),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'Translate' => array(
+                'roles' => array(Role::GROUP_TRANSLATOR),
+                'groups' => array(Group::GAPMINDER_INTERNAL, Group::TRANSLATORS),
+            ),
+            'Preview' => array(
+                'roles' => array(Role::GROUP_REVIEWER),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'PrepareForReview' => array(
+                'roles' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'PrepareForPublishing' => array(
+                'roles' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'Evaluate' => array(
+                'roles' => array(Role::GROUP_REVIEWER),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'Review' => array(
+                'roles' => array(Role::GROUP_REVIEWER),
+                'groups' => array(Group::GAPMINDER_INTERNAL, Group::PROOFREADERS),
+            ),
+            'Proofread' => array(
+                'roles' => array(Role::GROUP_REVIEWER),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'Publish' => array(
+                'roles' => array(Role::GROUP_PUBLISHER),
+                'groups' => array(Group::GAPMINDER_INTERNAL, Group::GAPMINDER_ORG),
+            ),
+            'Clone' => array(
+                'roles' => array(Role::GROUP_EDITOR),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'Add' => array(
+                'roles' => array(Role::GROUP_CONTRIBUTOR, Role::GROUP_EDITOR),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'Approve' => array(
+                'roles' => array(Role::GROUP_APPROVER),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'Remove' => array(
+                'roles' => array(Role::GROUP_CONTRIBUTOR),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'Replace' => array(
+                'roles' => array(Role::GROUP_MODERATOR),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'Browse' => array(
+                'roles' => array(Role::ANONYMOUS),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
+            'View' => array(
+                'roles' => array(Role::ANONYMOUS),
+                'groups' => array(Group::GAPMINDER_INTERNAL),
+            ),
         );
+    }
+
+    static public function roleToGroupMap()
+    {
+        $map = array();
+
+        $operationsToRolesAndGroupsMap = self::operationToRolesAndGroupsMap();
+
+        foreach ($operationsToRolesAndGroupsMap as $rolesAndGroups) {
+            foreach ($rolesAndGroups['roles'] as $roleName) {
+                $map[$roleName] = $rolesAndGroups['groups'];
+            }
+        }
+
+        return $map;
     }
 
     /**
@@ -160,9 +223,9 @@ class Metadata
      * @param string $operation
      * @return array
      */
-    static public function operationToRoles($operation)
+    static public function operationToRolesAndGroups($operation)
     {
-        $map = self::operationToRolesMap();
-        return isset($map[$operation]) ? $map[$operation] : array();
+        $map = self::operationToRolesAndGroupsMap();
+        return isset($map[$operation]['roles']) ? $map[$operation]['roles'] : array();
     }
 }
