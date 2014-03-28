@@ -44,14 +44,9 @@
             'class' => 'TbToggleColumn',
             'displayText' => false,
             'name' => $roleName,
-            'value' => function ($data) use ($roleName, $roleId) {
-                return PermissionHelper::groupHasAccount(
-                    array(
-                        'account_id' => $data->id,
-                        'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
-                        'role_id' => $roleId,
-                    )
-                );
+            'value' => function($data) use ($roleName) {
+                /** @var Account $data */
+                return $data->roleIsActive($roleName);
             },
             'filter' => true,
             'toggleAction' => 'account/toggleRole',

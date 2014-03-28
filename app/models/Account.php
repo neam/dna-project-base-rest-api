@@ -98,4 +98,34 @@ class Account extends BaseAccount
             'role_id' => PermissionHelper::roleNameToId($role),
         ));
     }
+
+    /**
+     * Checks if a role and its associated groups are active.
+     * @param string $roleName
+     * @return boolean
+     */
+    public function roleIsActive($roleName)
+    {
+        $roleId = PermissionHelper::roleNameToId($roleName);
+        $roleToGroupsMap = MetaData::roleToGroupsMap($roleName);
+        $groups = isset($roleToGroupsMap[$roleName]) ? $roleToGroupsMap[$roleName] : array();
+        $groupCount = count($groups);
+        $groupHasAccountCount = 0;
+
+        foreach ($groups as $group) {
+            $groupHasAccount = PermissionHelper::groupHasAccount(
+                array(
+                    'account_id' => $this->id,
+                    'group_id' => PermissionHelper::groupNameToId($group),
+                    'role_id' => $roleId,
+                )
+            );
+
+            if ($groupHasAccount) {
+                $groupHasAccountCount++;
+            }
+        }
+
+        return (int) $groupHasAccountCount === (int) $groupCount;
+    }
 }

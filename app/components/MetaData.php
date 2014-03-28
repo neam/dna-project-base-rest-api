@@ -203,7 +203,7 @@ class Metadata
         );
     }
 
-    static public function roleToGroupMap()
+    static public function roleToGroupsMap()
     {
         $map = array();
 

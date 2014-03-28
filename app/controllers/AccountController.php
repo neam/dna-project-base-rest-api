@@ -376,21 +376,21 @@ class AccountController extends Controller
      */
     public function actionToggleRole($id, $attribute)
     {
-        // todo: make dynamic
-        $group = 'GapminderInternal';
+        $groups = MetaData::roleToGroupsMap($attribute);
 
-        // TODO foreach all groups
+        foreach ($groups as $group) {
+            $attributes = array(
+                'account_id' => $id,
+                'group_id' => PermissionHelper::groupNameToId($group),
+                'role_id' => PermissionHelper::roleNameToId($attribute),
+            );
 
-        $attributes = array(
-            'account_id' => $id,
-            'group_id' => PermissionHelper::groupNameToId($group),
-            'role_id' => PermissionHelper::roleNameToId($attribute),
-        );
-
-        if (!PermissionHelper::groupHasAccount($attributes)) {
-            PermissionHelper::addAccountToGroup($id, $group, $attribute);
-        } else {
-            PermissionHelper::removeAccountFromGroup($id, $group, $attribute);
+            // TODO: Fix.
+            if (!PermissionHelper::groupHasAccount($attributes)) {
+                PermissionHelper::addAccountToGroup($id, $group, $attribute);
+            } else {
+                PermissionHelper::removeAccountFromGroup($id, $group, $attribute);
+            }
         }
     }
 
