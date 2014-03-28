@@ -71,7 +71,7 @@
 
                         $sourceMessage = SourceMessage::ensureSourceMessage($model->getTranslationCategory('po_contents'), $data->sourceMessage, $translateInto);
 
-                        $currentTranslation = Yii::t($model->getTranslationCategory('po_contents.' . $model->id), $data->sourceMessage, array(), 'editedMessages', $translateInto);
+                        $currentTranslation = Yii::t($model->getTranslationCategory('po_contents'), $data->sourceMessage, array(), 'editedMessages', $translateInto);
 
                         //var_dump(compact("currentFallbackTranslation", "currentTranslation"));
 
