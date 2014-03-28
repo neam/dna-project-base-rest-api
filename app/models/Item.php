@@ -20,7 +20,7 @@ class Item extends BaseItem
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return (isset($this->_title)) ? $this->_title : $this->model_class . ' #' . $this->id;
     }
 
     public function behaviors()
@@ -63,22 +63,6 @@ class Item extends BaseItem
         return new CActiveDataProvider(get_class($this), array(
             'criteria' => $this->searchCriteria($criteria),
         ));
-    }
-
-    /**
-     * @param $criteria
-     * @return array
-     */
-    public function findAllActualItems($criteria)
-    {
-        $items = array();
-        // TODO: ensure that DataModel::qaModels returns the correct classes
-        foreach (DataModel::qaModels() as $modelClass => $table) {
-            foreach (ActiveRecord::model($modelClass)->findAll($criteria) as $relatedItemCandidate) {
-                $items[] = $relatedItemCandidate;
-            }
-        }
-        return $items;
     }
 
 }

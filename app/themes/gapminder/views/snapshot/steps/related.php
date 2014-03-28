@@ -18,23 +18,27 @@
     </div>
 
     <?php
-    // TODO: This could propably be refactored
     $relatedCriteria = new CDbCriteria();
     $relatedCriteria->addNotInCondition('t.node_id', $model->getRelatedNodeIds());
-    $relatedCriteria->addCondition('t.node_id != :model_node_id');
-    $relatedCriteria->params[':model_node_id'] = $model->node_id;
+    $relatedCriteria->addCondition('t.node_id != :self_node_id');
+    $relatedCriteria->join = "INNER JOIN node_has_group AS nhg USING(node_id)";
+    $relatedCriteria->params[':self_node_id'] = $model->node_id;
+    ?>
 
+    <?php
     $select2 = $this->widget(
         'vendor.crisu83.yiistrap-widgets.widgets.TbSelect2',
         array(
             'name' => 'add-related-edges',
+            'asDropDownList' => false,
             'data' => CHtml::listData(
-                Item::model()->findAllActualItems($relatedCriteria),
+                Item::model()->findAll($relatedCriteria),
                 'node_id',
                 'itemLabel'
             ),
-            'htmlOptions' => array(
-                'multiple' => 'multiple',
+            'pluginOptions' => array(
+                'multiple' => true,
+                'width' => '100%',
             ),
         )
     );
