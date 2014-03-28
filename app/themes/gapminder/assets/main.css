@@ -7762,3 +7762,6 @@ td.visible-print {
   margin-bottom: 10px;
   vertical-align: middle;
 }
+.mejs-container {
+  background: none;
+}
