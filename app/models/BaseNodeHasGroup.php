@@ -12,8 +12,8 @@
  * @property string $modified
  *
  * Relations of table "node_has_group" available as properties of the model:
- * @property Node $node
  * @property Group $group
+ * @property Node $node
  */
 abstract class BaseNodeHasGroup extends ActiveRecord
 {
@@ -62,8 +62,8 @@ abstract class BaseNodeHasGroup extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'group' => array(self::BELONGS_TO, 'Group', 'group_id'),
+                'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
             )
         );
     }

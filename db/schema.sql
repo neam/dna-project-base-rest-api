@@ -99,6 +99,7 @@ CREATE TABLE IF NOT EXISTS `waffle_unit_qa_state` (
   `short_name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -230,6 +231,7 @@ CREATE TABLE IF NOT EXISTS `html_chunk_qa_state` (
   `markup_approved` TINYINT(1) NULL DEFAULT NULL,
   `markup_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `markup_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
@@ -299,6 +301,7 @@ CREATE TABLE IF NOT EXISTS `menu_qa_state` (
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
   `slug_proofed` TINYINT(1) NULL DEFAULT NULL,
   `pages_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -614,6 +617,7 @@ CREATE TABLE IF NOT EXISTS `i18n_catalog_qa_state` (
   `po_contents_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `about_proofed` TINYINT(1) NULL DEFAULT NULL,
   `po_contents_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -764,6 +768,9 @@ CREATE TABLE IF NOT EXISTS `tool_qa_state` (
   `title_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `slug_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
+  `ref_approved` TINYINT(1) NULL DEFAULT NULL,
+  `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -842,6 +849,7 @@ CREATE TABLE IF NOT EXISTS `exercise_qa_state` (
   `thumbnail_proofed` TINYINT(1) NULL DEFAULT NULL,
   `materials_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -968,6 +976,7 @@ CREATE TABLE IF NOT EXISTS `exam_question_alternative_qa_state` (
   `correct_proofed` TINYINT(1) NULL DEFAULT NULL,
   `slug_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `markup_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -1044,6 +1053,7 @@ CREATE TABLE IF NOT EXISTS `exam_question_qa_state` (
   `alternatives_proofed` TINYINT(1) NULL DEFAULT NULL,
   `related_proofed` TINYINT(1) NULL DEFAULT NULL,
   `question_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -1120,17 +1130,13 @@ CREATE TABLE IF NOT EXISTS `exercise` (
   `slug_vi` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_exercise_p3_media1_idx` (`thumbnail_media_id` ASC),
   INDEX `fk_exercise_exercise1_idx` (`cloned_from_id` ASC),
   INDEX `fk_exercise_node1_idx` (`node_id` ASC),
   INDEX `exercise_qa_state_id_fk` (`exercise_qa_state_id` ASC),
   INDEX `fk_exercise_users1_idx` (`owner_id` ASC),
-  CONSTRAINT `fk_exercise_users1`
-    FOREIGN KEY (`owner_id`)
-    REFERENCES `account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `exercise_qa_state_id_fk`
     FOREIGN KEY (`exercise_qa_state_id`)
     REFERENCES `exercise_qa_state` (`id`)
@@ -1149,6 +1155,11 @@ CREATE TABLE IF NOT EXISTS `exercise` (
   CONSTRAINT `fk_exercise_p3_media1`
     FOREIGN KEY (`thumbnail_media_id`)
     REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_exercise_users1`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -1230,6 +1241,7 @@ CREATE TABLE IF NOT EXISTS `chapter_qa_state` (
   `snapshots_proofed` TINYINT(1) NULL DEFAULT NULL,
   `related_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -1330,6 +1342,7 @@ CREATE TABLE IF NOT EXISTS `data_article_qa_state` (
   `title_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `about_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -1395,17 +1408,13 @@ CREATE TABLE IF NOT EXISTS `data_article` (
   `slug_vi` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_data_chunk_p3_media1_idx` (`file_media_id` ASC),
   INDEX `fk_data_chunk_data_chunk1_idx` (`cloned_from_id` ASC),
   INDEX `fk_data_chunk_node1_idx` (`node_id` ASC),
   INDEX `fk_data_chunk_users1_idx` (`owner_id` ASC),
   INDEX `data_chunk_qa_state_id_fk` (`data_article_qa_state_id` ASC),
-  CONSTRAINT `fk_data_chunk_users1`
-    FOREIGN KEY (`owner_id`)
-    REFERENCES `account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `data_chunk_qa_state_id_fk`
     FOREIGN KEY (`data_article_qa_state_id`)
     REFERENCES `data_article_qa_state` (`id`)
@@ -1424,6 +1433,11 @@ CREATE TABLE IF NOT EXISTS `data_article` (
   CONSTRAINT `fk_data_chunk_p3_media1`
     FOREIGN KEY (`file_media_id`)
     REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_data_chunk_users1`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -1493,6 +1507,7 @@ CREATE TABLE IF NOT EXISTS `data_source_qa_state` (
   `title_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `about_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -1610,6 +1625,7 @@ CREATE TABLE IF NOT EXISTS `tool` (
   `slug_vi` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_tool_po_file1_idx` (`i18n_catalog_id` ASC),
   INDEX `fk_tool_tool1_idx` (`cloned_from_id` ASC),
@@ -1708,6 +1724,7 @@ CREATE TABLE IF NOT EXISTS `snapshot_qa_state` (
   `vizabi_state_proofed` TINYINT(1) NULL DEFAULT NULL,
   `thumbnail_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -1775,6 +1792,7 @@ CREATE TABLE IF NOT EXISTS `snapshot` (
   `slug_vi` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_snapshot_tool1_idx` (`tool_id` ASC),
   INDEX `fk_snapshot_node1_idx` (`node_id` ASC),
@@ -1782,11 +1800,6 @@ CREATE TABLE IF NOT EXISTS `snapshot` (
   INDEX `snapshot_qa_state_id_fk` (`snapshot_qa_state_id` ASC),
   INDEX `fk_snapshot_p3_media1_idx` (`thumbnail_media_id` ASC),
   INDEX `fk_snapshot_users1_idx` (`owner_id` ASC),
-  CONSTRAINT `fk_snapshot_users1`
-    FOREIGN KEY (`owner_id`)
-    REFERENCES `account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_snapshot_node1`
     FOREIGN KEY (`node_id`)
     REFERENCES `node` (`id`)
@@ -1805,6 +1818,11 @@ CREATE TABLE IF NOT EXISTS `snapshot` (
   CONSTRAINT `fk_snapshot_tool1`
     FOREIGN KEY (`tool_id`)
     REFERENCES `tool` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_snapshot_users1`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `snapshot_qa_state_id_fk`
@@ -1875,6 +1893,7 @@ CREATE TABLE IF NOT EXISTS `data_source` (
   `slug_vi` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_data_source_p3_media1_idx` (`logo_media_id` ASC),
   INDEX `fk_data_source_p3_media2_idx` (`mini_logo_media_id` ASC),
@@ -1882,11 +1901,6 @@ CREATE TABLE IF NOT EXISTS `data_source` (
   INDEX `fk_data_source_node1_idx` (`node_id` ASC),
   INDEX `data_source_qa_state_id_fk` (`data_source_qa_state_id` ASC),
   INDEX `fk_data_source_users1_idx` (`owner_id` ASC),
-  CONSTRAINT `fk_data_source_users1`
-    FOREIGN KEY (`owner_id`)
-    REFERENCES `account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `data_source_qa_state_id_fk`
     FOREIGN KEY (`data_source_qa_state_id`)
     REFERENCES `data_source_qa_state` (`id`)
@@ -1910,6 +1924,11 @@ CREATE TABLE IF NOT EXISTS `data_source` (
   CONSTRAINT `fk_data_source_p3_media2`
     FOREIGN KEY (`mini_logo_media_id`)
     REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_data_source_users1`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -1981,6 +2000,7 @@ CREATE TABLE IF NOT EXISTS `spreadsheet_file_qa_state` (
   `original_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
   `processed_media_id_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -2077,6 +2097,7 @@ CREATE TABLE IF NOT EXISTS `text_doc_qa_state` (
   `original_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
   `processed_media_id_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -2185,6 +2206,8 @@ CREATE TABLE IF NOT EXISTS `text_doc` (
   `processed_media_id_vi` INT(11) NULL DEFAULT NULL,
   `processed_media_id_zh_cn` INT(11) NULL DEFAULT NULL,
   `processed_media_id_zh_tw` INT(11) NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `processed_media_id_fa` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_word_file_p3_media1_idx` (`original_media_id` ASC),
   INDEX `fk_word_file_p3_media2_idx` (`processed_media_id_en` ASC),
@@ -2234,6 +2257,10 @@ CREATE TABLE IF NOT EXISTS `text_doc` (
   INDEX `fk_word_file_p3_media2_vi` (`processed_media_id_vi` ASC),
   INDEX `fk_word_file_p3_media2_zh_cn` (`processed_media_id_zh_cn` ASC),
   INDEX `fk_word_file_p3_media2_zh_tw` (`processed_media_id_zh_tw` ASC),
+  INDEX `fk_word_file_p3_media2_fa` (`processed_media_id_fa` ASC),
+  CONSTRAINT `fk_word_file_p3_media2_fa`
+    FOREIGN KEY (`processed_media_id_fa`)
+    REFERENCES `p3_media` (`id`),
   CONSTRAINT `fk_text_doc_users1`
     FOREIGN KEY (`owner_id`)
     REFERENCES `account` (`id`)
@@ -2452,6 +2479,7 @@ CREATE TABLE IF NOT EXISTS `spreadsheet_file` (
   `processed_media_id_zh_cn` INT(11) NULL DEFAULT NULL,
   `processed_media_id_zh_tw` INT(11) NULL DEFAULT NULL,
   `spreadsheet_file_qa_state_id` BIGINT(20) NULL DEFAULT NULL,
+  `processed_media_id_fa` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_spreadsheet_file_data_source1_idx` (`data_source_id` ASC),
   INDEX `fk_spreadsheet_file_p3_media1_idx` (`original_media_id` ASC),
@@ -2502,11 +2530,10 @@ CREATE TABLE IF NOT EXISTS `spreadsheet_file` (
   INDEX `fk_spreadsheet_file_p3_media2_zh_cn` (`processed_media_id_zh_cn` ASC),
   INDEX `fk_spreadsheet_file_p3_media2_zh_tw` (`processed_media_id_zh_tw` ASC),
   INDEX `spreadsheet_file_qa_state_id_fk` (`spreadsheet_file_qa_state_id` ASC),
-  CONSTRAINT `spreadsheet_file_qa_state_id_fk`
-    FOREIGN KEY (`spreadsheet_file_qa_state_id`)
-    REFERENCES `spreadsheet_file_qa_state` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE SET NULL,
+  INDEX `fk_spreadsheet_file_p3_media2_fa` (`processed_media_id_fa` ASC),
+  CONSTRAINT `fk_spreadsheet_file_p3_media2_fa`
+    FOREIGN KEY (`processed_media_id_fa`)
+    REFERENCES `p3_media` (`id`),
   CONSTRAINT `fk_spreadsheet_file_data_source1`
     FOREIGN KEY (`data_source_id`)
     REFERENCES `data_source` (`id`)
@@ -2662,7 +2689,12 @@ CREATE TABLE IF NOT EXISTS `spreadsheet_file` (
     FOREIGN KEY (`owner_id`)
     REFERENCES `account` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION,
+  CONSTRAINT `spreadsheet_file_qa_state_id_fk`
+    FOREIGN KEY (`spreadsheet_file_qa_state_id`)
+    REFERENCES `spreadsheet_file_qa_state` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE SET NULL)
 ENGINE = InnoDB;
 
 
@@ -2745,6 +2777,7 @@ CREATE TABLE IF NOT EXISTS `vector_graphic_qa_state` (
   `original_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
   `processed_media_id_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -2825,6 +2858,7 @@ CREATE TABLE IF NOT EXISTS `video_file_qa_state` (
   `about_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
   `subtitles_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -2894,6 +2928,7 @@ CREATE TABLE IF NOT EXISTS `video_file` (
   `slug_vi` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_video_file_p3_media3_idx` (`thumbnail_media_id` ASC),
   INDEX `fk_video_file_video_file1_idx` (`cloned_from_id` ASC),
@@ -2906,6 +2941,16 @@ CREATE TABLE IF NOT EXISTS `video_file` (
   CONSTRAINT `fk_video_file_node1`
     FOREIGN KEY (`node_id`)
     REFERENCES `node` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_video_file_p3_media1`
+    FOREIGN KEY (`clip_webm_media_id`)
+    REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_video_file_p3_media2`
+    FOREIGN KEY (`clip_mp4_media_id`)
+    REFERENCES `p3_media` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_video_file_p3_media3`
@@ -2932,17 +2977,7 @@ CREATE TABLE IF NOT EXISTS `video_file` (
     FOREIGN KEY (`video_file_qa_state_id`)
     REFERENCES `video_file_qa_state` (`id`)
     ON DELETE SET NULL
-    ON UPDATE SET NULL,
-  CONSTRAINT `fk_video_file_p3_media1`
-    FOREIGN KEY (`clip_webm_media_id`)
-    REFERENCES `p3_media` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_video_file_p3_media2`
-    FOREIGN KEY (`clip_mp4_media_id`)
-    REFERENCES `p3_media` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE SET NULL)
 ENGINE = InnoDB;
 
 
@@ -3012,74 +3047,7 @@ CREATE TABLE IF NOT EXISTS `slideshow_file_qa_state` (
   `original_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
   `processed_media_id_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
-
-
--- -----------------------------------------------------
--- Table `section_qa_state`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `section_qa_state` (
-  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `status` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
-  `draft_validation_progress` INT(11) NULL DEFAULT NULL,
-  `reviewable_validation_progress` INT(11) NULL DEFAULT NULL,
-  `publishable_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_en_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ar_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_bg_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ca_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_cs_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_da_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_de_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_en_gb_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_en_us_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_el_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_es_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_fi_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_fil_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_fr_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_hi_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_hr_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_hu_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_id_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_iw_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_it_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ja_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ko_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_lt_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_lv_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_nl_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_no_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_pl_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_pt_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_pt_br_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_pt_pt_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ro_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ru_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_sk_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_sl_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_sr_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_sv_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_th_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_tr_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_uk_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_vi_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_zh_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_zh_cn_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_zh_tw_validation_progress` INT(11) NULL DEFAULT NULL,
-  `approval_progress` INT(11) NULL DEFAULT NULL,
-  `proofing_progress` INT(11) NULL DEFAULT NULL,
-  `allow_review` TINYINT(1) NULL DEFAULT NULL,
-  `allow_publish` TINYINT(1) NULL DEFAULT NULL,
-  `title_en_approved` TINYINT(1) NULL DEFAULT NULL,
-  `slug_en_approved` TINYINT(1) NULL DEFAULT NULL,
-  `title_approved` TINYINT(1) NULL DEFAULT NULL,
-  `title_en_proofed` TINYINT(1) NULL DEFAULT NULL,
-  `slug_en_proofed` TINYINT(1) NULL DEFAULT NULL,
-  `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -3148,6 +3116,7 @@ CREATE TABLE IF NOT EXISTS `page_qa_state` (
   `title_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `slug_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -3211,16 +3180,12 @@ CREATE TABLE IF NOT EXISTS `page` (
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `page_qa_state_id` BIGINT(20) NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_page_page1_idx` (`cloned_from_id` ASC),
   INDEX `fk_page_node1_idx` (`node_id` ASC),
   INDEX `fk_page_users1_idx` (`owner_id` ASC),
   INDEX `page_qa_state_id_fk` (`page_qa_state_id` ASC),
-  CONSTRAINT `page_qa_state_id_fk`
-    FOREIGN KEY (`page_qa_state_id`)
-    REFERENCES `page_qa_state` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE SET NULL,
   CONSTRAINT `fk_page_node1`
     FOREIGN KEY (`node_id`)
     REFERENCES `node` (`id`)
@@ -3235,8 +3200,82 @@ CREATE TABLE IF NOT EXISTS `page` (
     FOREIGN KEY (`owner_id`)
     REFERENCES `account` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION,
+  CONSTRAINT `page_qa_state_id_fk`
+    FOREIGN KEY (`page_qa_state_id`)
+    REFERENCES `page_qa_state` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE SET NULL)
 ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `section_qa_state`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `section_qa_state` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `status` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `draft_validation_progress` INT(11) NULL DEFAULT NULL,
+  `reviewable_validation_progress` INT(11) NULL DEFAULT NULL,
+  `publishable_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_en_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ar_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_bg_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ca_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_cs_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_da_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_de_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_en_gb_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_en_us_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_el_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_es_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_fi_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_fil_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_fr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_hi_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_hr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_hu_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_id_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_iw_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_it_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ja_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ko_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_lt_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_lv_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_nl_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_no_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pl_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pt_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pt_br_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pt_pt_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ro_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ru_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sk_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sl_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sv_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_th_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_tr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_uk_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_vi_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_zh_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_zh_cn_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_zh_tw_validation_progress` INT(11) NULL DEFAULT NULL,
+  `approval_progress` INT(11) NULL DEFAULT NULL,
+  `proofing_progress` INT(11) NULL DEFAULT NULL,
+  `allow_review` TINYINT(1) NULL DEFAULT NULL,
+  `allow_publish` TINYINT(1) NULL DEFAULT NULL,
+  `title_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `slug_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `title_approved` TINYINT(1) NULL DEFAULT NULL,
+  `title_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `slug_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
 
 
 -- -----------------------------------------------------
@@ -3297,17 +3336,18 @@ CREATE TABLE IF NOT EXISTS `section` (
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `section_qa_state_id` BIGINT(20) NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_section_node1_idx` (`node_id` ASC),
   INDEX `fk_section_page1_idx` (`page_id` ASC),
   INDEX `section_qa_state_id_fk` (`section_qa_state_id` ASC),
   INDEX `fk_section_section1_idx` (`cloned_from_id` ASC),
   INDEX `fk_section_account1_idx` (`owner_id` ASC),
-  CONSTRAINT `section_qa_state_id_fk`
-    FOREIGN KEY (`section_qa_state_id`)
-    REFERENCES `section_qa_state` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE SET NULL,
+  CONSTRAINT `fk_section_account1`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `account` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_section_node1`
     FOREIGN KEY (`node_id`)
     REFERENCES `node` (`id`)
@@ -3323,11 +3363,11 @@ CREATE TABLE IF NOT EXISTS `section` (
     REFERENCES `section` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_section_account1`
-    FOREIGN KEY (`owner_id`)
-    REFERENCES `account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  CONSTRAINT `section_qa_state_id_fk`
+    FOREIGN KEY (`section_qa_state_id`)
+    REFERENCES `section_qa_state` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE SET NULL)
 ENGINE = InnoDB;
 
 
@@ -3433,6 +3473,8 @@ CREATE TABLE IF NOT EXISTS `slideshow_file` (
   `processed_media_id_vi` INT(11) NULL DEFAULT NULL,
   `processed_media_id_zh_cn` INT(11) NULL DEFAULT NULL,
   `processed_media_id_zh_tw` INT(11) NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `processed_media_id_fa` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_slideshow_file_p3_media1_idx` (`original_media_id` ASC),
   INDEX `fk_slideshow_file_p3_media2_idx` (`processed_media_id_en` ASC),
@@ -3482,11 +3524,10 @@ CREATE TABLE IF NOT EXISTS `slideshow_file` (
   INDEX `fk_slideshow_file_p3_media2_vi` (`processed_media_id_vi` ASC),
   INDEX `fk_slideshow_file_p3_media2_zh_cn` (`processed_media_id_zh_cn` ASC),
   INDEX `fk_slideshow_file_p3_media2_zh_tw` (`processed_media_id_zh_tw` ASC),
-  CONSTRAINT `fk_slideshow_file_users1`
-    FOREIGN KEY (`owner_id`)
-    REFERENCES `account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_slideshow_file_p3_media2_fa` (`processed_media_id_fa` ASC),
+  CONSTRAINT `fk_slideshow_file_p3_media2_fa`
+    FOREIGN KEY (`processed_media_id_fa`)
+    REFERENCES `p3_media` (`id`),
   CONSTRAINT `fk_slideshow_file_node1`
     FOREIGN KEY (`node_id`)
     REFERENCES `node` (`id`)
@@ -3637,7 +3678,12 @@ CREATE TABLE IF NOT EXISTS `slideshow_file` (
     FOREIGN KEY (`slideshow_file_qa_state_id`)
     REFERENCES `slideshow_file_qa_state` (`id`)
     ON DELETE SET NULL
-    ON UPDATE SET NULL)
+    ON UPDATE SET NULL,
+  CONSTRAINT `fk_slideshow_file_users1`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `account` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
@@ -3702,17 +3748,13 @@ CREATE TABLE IF NOT EXISTS `chapter` (
   `slug_vi` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_chapter_p3_media1_idx` (`thumbnail_media_id` ASC),
   INDEX `fk_chapter_chapter1_idx` (`cloned_from_id` ASC),
   INDEX `fk_chapter_node1_idx` (`node_id` ASC),
   INDEX `chapter_qa_state_id_fk` (`chapter_qa_state_id` ASC),
   INDEX `fk_chapter_users1_idx` (`owner_id` ASC),
-  CONSTRAINT `fk_chapter_users1`
-    FOREIGN KEY (`owner_id`)
-    REFERENCES `account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `chapter_qa_state_id_fk`
     FOREIGN KEY (`chapter_qa_state_id`)
     REFERENCES `chapter_qa_state` (`id`)
@@ -3731,6 +3773,11 @@ CREATE TABLE IF NOT EXISTS `chapter` (
   CONSTRAINT `fk_chapter_p3_media1`
     FOREIGN KEY (`thumbnail_media_id`)
     REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_chapter_users1`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -3796,6 +3843,7 @@ CREATE TABLE IF NOT EXISTS `gui_section_qa_state` (
   `slug_approved` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
   `slug_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -3905,6 +3953,7 @@ CREATE TABLE IF NOT EXISTS `download_link_qa_state` (
   `file_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -4039,6 +4088,7 @@ CREATE TABLE IF NOT EXISTS `exam_question` (
   `slug_vi` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_exam_question_exam_question1_idx` (`cloned_from_id` ASC),
   INDEX `fk_exam_question_node1_idx` (`node_id` ASC),
@@ -4174,6 +4224,8 @@ CREATE TABLE IF NOT EXISTS `vector_graphic` (
   `processed_media_id_vi` INT(11) NULL DEFAULT NULL,
   `processed_media_id_zh_cn` INT(11) NULL DEFAULT NULL,
   `processed_media_id_zh_tw` INT(11) NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `processed_media_id_fa` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_vector_graphic_vector_graphic1_idx` (`cloned_from_id` ASC),
   INDEX `fk_vector_graphic_p3_media1_idx` (`original_media_id` ASC),
@@ -4223,11 +4275,10 @@ CREATE TABLE IF NOT EXISTS `vector_graphic` (
   INDEX `fk_vector_graphic_p3_media2_vi` (`processed_media_id_vi` ASC),
   INDEX `fk_vector_graphic_p3_media2_zh_cn` (`processed_media_id_zh_cn` ASC),
   INDEX `fk_vector_graphic_p3_media2_zh_tw` (`processed_media_id_zh_tw` ASC),
-  CONSTRAINT `fk_vector_graphic_users1`
-    FOREIGN KEY (`owner_id`)
-    REFERENCES `account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_vector_graphic_p3_media2_fa` (`processed_media_id_fa` ASC),
+  CONSTRAINT `fk_vector_graphic_p3_media2_fa`
+    FOREIGN KEY (`processed_media_id_fa`)
+    REFERENCES `p3_media` (`id`),
   CONSTRAINT `fk_vector_graphic_node1`
     FOREIGN KEY (`node_id`)
     REFERENCES `node` (`id`)
@@ -4372,6 +4423,11 @@ CREATE TABLE IF NOT EXISTS `vector_graphic` (
   CONSTRAINT `fk_vector_graphic_vector_graphic1`
     FOREIGN KEY (`cloned_from_id`)
     REFERENCES `vector_graphic` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_vector_graphic_users1`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `vector_graphic_qa_state_id_fk`
@@ -4582,6 +4638,133 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `waffle_publisher_qa_state`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `waffle_publisher_qa_state` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `status` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
+  `draft_validation_progress` INT(11) NULL DEFAULT NULL,
+  `reviewable_validation_progress` INT(11) NULL DEFAULT NULL,
+  `publishable_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_en_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ar_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_bg_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ca_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_cs_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_da_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_de_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_en_gb_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_en_us_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_el_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_es_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_fi_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_fil_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_fr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_hi_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_hr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_hu_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_id_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_iw_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_it_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ja_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ko_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_lt_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_lv_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_nl_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_no_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pl_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pt_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pt_br_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_pt_pt_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ro_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_ru_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sk_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sl_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_sv_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_th_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_tr_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_uk_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_vi_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_zh_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_zh_cn_validation_progress` INT(11) NULL DEFAULT NULL,
+  `translate_into_zh_tw_validation_progress` INT(11) NULL DEFAULT NULL,
+  `approval_progress` INT(11) NULL DEFAULT NULL,
+  `proofing_progress` INT(11) NULL DEFAULT NULL,
+  `allow_review` TINYINT(1) NULL DEFAULT NULL,
+  `allow_publish` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_approved` TINYINT(1) NULL DEFAULT NULL,
+  `ref_approved` TINYINT(1) NULL DEFAULT NULL,
+  `name_approved` TINYINT(1) NULL DEFAULT NULL,
+  `name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `waffle_publisher`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `waffle_publisher` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `version` INT(11) NOT NULL DEFAULT 1,
+  `cloned_from_id` BIGINT NULL,
+  `ref` VARCHAR(255) NULL,
+  `_name` VARCHAR(255) NULL,
+  `_description` VARCHAR(255) NULL,
+  `url` VARCHAR(255) NULL,
+  `image_small_media_id` INT(11) NULL,
+  `image_large_media_id` INT(11) NULL,
+  `created` DATETIME NULL,
+  `modified` DATETIME NULL,
+  `owner_id` INT(11) NULL,
+  `node_id` BIGINT NULL,
+  `waffle_publisher_qa_state_id` BIGINT(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_waffle_data_source_p3_media1_idx` (`image_small_media_id` ASC),
+  INDEX `fk_waffle_data_source_p3_media2_idx` (`image_large_media_id` ASC),
+  INDEX `fk_waffle_data_source_waffle_data_source1_idx` (`cloned_from_id` ASC),
+  INDEX `fk_waffle_data_source_account1_idx` (`owner_id` ASC),
+  INDEX `fk_waffle_data_source_node1_idx` (`node_id` ASC),
+  INDEX `waffle_publisher_qa_state_id_fk` (`waffle_publisher_qa_state_id` ASC),
+  CONSTRAINT `fk_waffle_data_source_p3_media10`
+    FOREIGN KEY (`image_small_media_id`)
+    REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `waffle_publisher_qa_state_id_fk`
+    FOREIGN KEY (`waffle_publisher_qa_state_id`)
+    REFERENCES `waffle_publisher_qa_state` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE SET NULL,
+  CONSTRAINT `fk_waffle_data_source_account10`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `account` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_data_source_node10`
+    FOREIGN KEY (`node_id`)
+    REFERENCES `node` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_data_source_p3_media20`
+    FOREIGN KEY (`image_large_media_id`)
+    REFERENCES `p3_media` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_data_source_waffle_data_source10`
+    FOREIGN KEY (`cloned_from_id`)
+    REFERENCES `waffle_publisher` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `waffle_qa_state`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `waffle_qa_state` (
@@ -4657,136 +4840,11 @@ CREATE TABLE IF NOT EXISTS `waffle_qa_state` (
   `json_import_media_id_proofed` TINYINT(1) NULL DEFAULT NULL,
   `title_proofed` TINYINT(1) NULL DEFAULT NULL,
   `po_contents_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
-
-
--- -----------------------------------------------------
--- Table `waffle_publisher_qa_state`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `waffle_publisher_qa_state` (
-  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `status` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
-  `draft_validation_progress` INT(11) NULL DEFAULT NULL,
-  `reviewable_validation_progress` INT(11) NULL DEFAULT NULL,
-  `publishable_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_en_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ar_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_bg_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ca_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_cs_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_da_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_de_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_en_gb_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_en_us_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_el_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_es_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_fi_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_fil_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_fr_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_hi_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_hr_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_hu_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_id_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_iw_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_it_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ja_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ko_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_lt_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_lv_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_nl_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_no_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_pl_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_pt_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_pt_br_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_pt_pt_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ro_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_ru_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_sk_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_sl_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_sr_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_sv_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_th_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_tr_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_uk_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_vi_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_zh_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_zh_cn_validation_progress` INT(11) NULL DEFAULT NULL,
-  `translate_into_zh_tw_validation_progress` INT(11) NULL DEFAULT NULL,
-  `approval_progress` INT(11) NULL DEFAULT NULL,
-  `proofing_progress` INT(11) NULL DEFAULT NULL,
-  `allow_review` TINYINT(1) NULL DEFAULT NULL,
-  `allow_publish` TINYINT(1) NULL DEFAULT NULL,
-  `name_en_approved` TINYINT(1) NULL DEFAULT NULL,
-  `ref_approved` TINYINT(1) NULL DEFAULT NULL,
-  `name_approved` TINYINT(1) NULL DEFAULT NULL,
-  `name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
-  `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
-  `name_proofed` TINYINT(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
-
-
--- -----------------------------------------------------
--- Table `waffle_publisher`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `waffle_publisher` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `version` INT(11) NOT NULL DEFAULT 1,
-  `cloned_from_id` BIGINT NULL,
-  `ref` VARCHAR(255) NULL,
-  `_name` VARCHAR(255) NULL,
-  `_description` VARCHAR(255) NULL,
-  `url` VARCHAR(255) NULL,
-  `image_small_media_id` INT(11) NULL,
-  `image_large_media_id` INT(11) NULL,
-  `created` DATETIME NULL,
-  `modified` DATETIME NULL,
-  `owner_id` INT(11) NULL,
-  `node_id` BIGINT NULL,
-  `waffle_publisher_qa_state_id` BIGINT(20) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_waffle_data_source_p3_media1_idx` (`image_small_media_id` ASC),
-  INDEX `fk_waffle_data_source_p3_media2_idx` (`image_large_media_id` ASC),
-  INDEX `fk_waffle_data_source_waffle_data_source1_idx` (`cloned_from_id` ASC),
-  INDEX `fk_waffle_data_source_account1_idx` (`owner_id` ASC),
-  INDEX `fk_waffle_data_source_node1_idx` (`node_id` ASC),
-  INDEX `waffle_publisher_qa_state_id_fk` (`waffle_publisher_qa_state_id` ASC),
-  CONSTRAINT `fk_waffle_data_source_p3_media10`
-    FOREIGN KEY (`image_small_media_id`)
-    REFERENCES `p3_media` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `waffle_publisher_qa_state_id_fk`
-    FOREIGN KEY (`waffle_publisher_qa_state_id`)
-    REFERENCES `waffle_publisher_qa_state` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE SET NULL,
-  CONSTRAINT `fk_waffle_data_source_account10`
-    FOREIGN KEY (`owner_id`)
-    REFERENCES `account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_waffle_data_source_node10`
-    FOREIGN KEY (`node_id`)
-    REFERENCES `node` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_waffle_data_source_p3_media20`
-    FOREIGN KEY (`image_large_media_id`)
-    REFERENCES `p3_media` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_waffle_data_source_waffle_data_source10`
-    FOREIGN KEY (`cloned_from_id`)
-    REFERENCES `waffle_publisher` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -4857,6 +4915,7 @@ CREATE TABLE IF NOT EXISTS `waffle` (
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `waffle_qa_state_id` BIGINT(20) NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_waffle_waffle1_idx` (`cloned_from_id` ASC),
   INDEX `waffle_qa_state_id_fk` (`waffle_qa_state_id` ASC),
@@ -4866,16 +4925,6 @@ CREATE TABLE IF NOT EXISTS `waffle` (
   INDEX `fk_waffle_p3_media2_idx` (`image_small_media_id` ASC),
   INDEX `fk_waffle_p3_media3_idx` (`image_large_media_id` ASC),
   INDEX `fk_waffle_waffle_publisher1_idx` (`waffle_publisher_id` ASC),
-  CONSTRAINT `waffle_qa_state_id_fk`
-    FOREIGN KEY (`waffle_qa_state_id`)
-    REFERENCES `waffle_qa_state` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE SET NULL,
-  CONSTRAINT `fk_waffle_waffle1`
-    FOREIGN KEY (`cloned_from_id`)
-    REFERENCES `waffle` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_waffle_account1`
     FOREIGN KEY (`owner_id`)
     REFERENCES `account` (`id`)
@@ -4901,11 +4950,21 @@ CREATE TABLE IF NOT EXISTS `waffle` (
     REFERENCES `p3_media` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
+  CONSTRAINT `fk_waffle_waffle1`
+    FOREIGN KEY (`cloned_from_id`)
+    REFERENCES `waffle` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_waffle_waffle_publisher1`
     FOREIGN KEY (`waffle_publisher_id`)
     REFERENCES `waffle_publisher` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION,
+  CONSTRAINT `waffle_qa_state_id_fk`
+    FOREIGN KEY (`waffle_qa_state_id`)
+    REFERENCES `waffle_qa_state` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE SET NULL)
 ENGINE = InnoDB;
 
 
@@ -4965,31 +5024,32 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `slug_zh_cn` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `slug_zh_tw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `menu_qa_state_id` BIGINT(20) NULL DEFAULT NULL,
+  `slug_fa` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_menu_menu1_idx` (`cloned_from_id` ASC),
   INDEX `menu_qa_state_id_fk` (`menu_qa_state_id` ASC),
   INDEX `fk_menu_account1_idx` (`owner_id` ASC),
   INDEX `fk_menu_node1_idx` (`node_id` ASC),
-  CONSTRAINT `menu_qa_state_id_fk`
-    FOREIGN KEY (`menu_qa_state_id`)
-    REFERENCES `menu_qa_state` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE SET NULL,
-  CONSTRAINT `fk_menu_menu1`
-    FOREIGN KEY (`cloned_from_id`)
-    REFERENCES `menu` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_menu_account1`
     FOREIGN KEY (`owner_id`)
     REFERENCES `account` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_menu_menu1`
+    FOREIGN KEY (`cloned_from_id`)
+    REFERENCES `menu` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_menu_node1`
     FOREIGN KEY (`node_id`)
     REFERENCES `node` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION,
+  CONSTRAINT `menu_qa_state_id_fk`
+    FOREIGN KEY (`menu_qa_state_id`)
+    REFERENCES `menu_qa_state` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE SET NULL)
 ENGINE = InnoDB;
 
 
@@ -5061,6 +5121,7 @@ CREATE TABLE IF NOT EXISTS `waffle_category_qa_state` (
   `choice_format_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `list_name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -5184,6 +5245,7 @@ CREATE TABLE IF NOT EXISTS `waffle_data_source_qa_state` (
   `short_name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -5254,6 +5316,7 @@ CREATE TABLE IF NOT EXISTS `waffle_indicator_qa_state` (
   `short_name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -5375,6 +5438,7 @@ CREATE TABLE IF NOT EXISTS `waffle_category_thing_qa_state` (
   `short_name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -5560,6 +5624,7 @@ CREATE TABLE IF NOT EXISTS `waffle_tag_qa_state` (
   `short_name_en_proofed` TINYINT(1) NULL DEFAULT NULL,
   `ref_proofed` TINYINT(1) NULL DEFAULT NULL,
   `name_proofed` TINYINT(1) NULL DEFAULT NULL,
+  `translate_into_fa_validation_progress` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8

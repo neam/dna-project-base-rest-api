@@ -59,14 +59,15 @@
  * @property string $slug_vi
  * @property string $slug_zh_cn
  * @property string $slug_zh_tw
+ * @property string $slug_fa
  *
  * Relations of table "chapter" available as properties of the model:
- * @property Account $owner
  * @property ChapterQaState $chapterQaState
  * @property Chapter $clonedFrom
  * @property Chapter[] $chapters
  * @property Node $node
  * @property P3Media $thumbnailMedia
+ * @property Account $owner
  */
 abstract class BaseChapter extends ActiveRecord
 {
@@ -85,12 +86,12 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, thumbnail_media_id, _about, _teachers_guide, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, chapter_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, slug_en, thumbnail_media_id, _about, _teachers_guide, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, chapter_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, thumbnail_media_id, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, chapter_qa_state_id', 'length', 'max' => 20),
-                array('_title, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
+                array('_title, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'length', 'max' => 255),
                 array('_about, _teachers_guide, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, thumbnail_media_id, _about, _teachers_guide, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, chapter_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, thumbnail_media_id, _about, _teachers_guide, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, chapter_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -115,12 +116,12 @@ abstract class BaseChapter extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'chapterQaState' => array(self::BELONGS_TO, 'ChapterQaState', 'chapter_qa_state_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Chapter', 'cloned_from_id'),
                 'chapters' => array(self::HAS_MANY, 'Chapter', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
             )
         );
     }
@@ -183,6 +184,7 @@ abstract class BaseChapter extends ActiveRecord
             'slug_vi' => Yii::t('model', 'Slug Vi'),
             'slug_zh_cn' => Yii::t('model', 'Slug Zh Cn'),
             'slug_zh_tw' => Yii::t('model', 'Slug Zh Tw'),
+            'slug_fa' => Yii::t('model', 'Slug Fa'),
         );
     }
 
@@ -247,6 +249,7 @@ abstract class BaseChapter extends ActiveRecord
         $criteria->compare('t.slug_vi', $this->slug_vi, true);
         $criteria->compare('t.slug_zh_cn', $this->slug_zh_cn, true);
         $criteria->compare('t.slug_zh_tw', $this->slug_zh_tw, true);
+        $criteria->compare('t.slug_fa', $this->slug_fa, true);
 
 
         return $criteria;
