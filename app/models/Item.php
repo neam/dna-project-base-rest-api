@@ -42,6 +42,19 @@ class Item extends BaseItem
         );
     }
 
+    /**
+     * The attributes that is returned by the REST api
+     */
+    public function getAllAttributes()
+    {
+
+        $response = new stdClass();
+        $response->id = $this->id;
+        $response->title = $this->_title;
+        return $response;
+
+    }
+
     public function search($criteria = null)
     {
         if (is_null($criteria)) {
