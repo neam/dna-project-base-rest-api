@@ -376,7 +376,8 @@ class AccountController extends Controller
      */
     public function actionToggleRole($id, $attribute)
     {
-        $groups = MetaData::roleToGroupsMap($attribute);
+        $roleToGroupsMap = MetaData::roleToGroupsMap($attribute);
+        $groups = isset($roleToGroupsMap[$attribute]) ? $roleToGroupsMap[$attribute] : array();
 
         foreach ($groups as $group) {
             $attributes = array(
@@ -385,7 +386,6 @@ class AccountController extends Controller
                 'role_id' => PermissionHelper::roleNameToId($attribute),
             );
 
-            // TODO: Fix.
             if (!PermissionHelper::groupHasAccount($attributes)) {
                 PermissionHelper::addAccountToGroup($id, $group, $attribute);
             } else {
