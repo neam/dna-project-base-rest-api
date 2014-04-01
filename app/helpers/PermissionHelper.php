@@ -6,6 +6,16 @@
 class PermissionHelper
 {
     /**
+     * @var array runtime cache for roles.
+     */
+    private static $_roles = array();
+
+    /**
+     * @var array runtime cache for groups.
+     */
+    private static $_groups = array();
+
+    /**
      * Adds an account to a specific group.
      *
      * @param int $accountId
@@ -185,6 +195,18 @@ class PermissionHelper
     }
 
     /**
+     * Converts a role id to its name.
+     *
+     * @param integer $id
+     *
+     * @return string
+     */
+    static public function roleIdToName($id)
+    {
+        return array_search($id, self::getRoles());
+    }
+
+    /**
      * Converts a group name to its id.
      *
      * @param string $name
@@ -198,9 +220,16 @@ class PermissionHelper
     }
 
     /**
-     * @var array runtime cache for roles.
+     * Converts a group id to its name.
+     *
+     * @param integer $id
+     *
+     * @return string
      */
-    private static $_roles = array();
+    static public function groupIdToName($id)
+    {
+        return array_search($id, self::getGroups());
+    }
 
     /**
      * Return a map over all the roles (name => id).
@@ -219,11 +248,6 @@ class PermissionHelper
 
         return self::$_roles;
     }
-
-    /**
-     * @var array runtime cache for groups.
-     */
-    private static $_groups = array();
 
     /**
      * Return a map over all the groups (name => id).

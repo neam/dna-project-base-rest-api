@@ -81,7 +81,7 @@ class Account extends BaseAccount
      */
     public function getRoles()
     {
-        return $this->getAuthItems();
+        return array('@todo'); // TODO: Get roles.
     }
 
     /**
