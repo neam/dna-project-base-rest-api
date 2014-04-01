@@ -18,7 +18,7 @@
 <?php if ($this->workflowData['translateInto']): ?>
     <?php echo $form->textFieldControlGroup(
         $model,
-        'property_name' . $this->workflowData['translateInto'],
+        'property_name_' . $this->workflowData['translateInto'],
         array(
             'class' => Html::ITEM_FORM_FIELD_CLASS,
             'maxlength' => 255,
