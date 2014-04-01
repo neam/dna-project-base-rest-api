@@ -20,8 +20,8 @@
  * @property string $language5
  *
  * Relations of table "profile" available as properties of the model:
- * @property Account $user
  * @property P3Media $pictureMedia
+ * @property Account $user
  */
 abstract class BaseProfile extends ActiveRecord
 {
@@ -70,8 +70,8 @@ abstract class BaseProfile extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'user' => array(self::BELONGS_TO, 'Account', 'user_id'),
                 'pictureMedia' => array(self::BELONGS_TO, 'P3Media', 'picture_media_id'),
+                'user' => array(self::BELONGS_TO, 'Account', 'user_id'),
             )
         );
     }

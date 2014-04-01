@@ -122,6 +122,65 @@ trait ItemTrait
     }
 
     /**
+     * Checks if the item can be published.
+     * @return boolean
+     */
+    public function isPublishable()
+    {
+        return $this->qaStateBehavior()->validStatus('publishable')
+            && $this->belongsToAtLeastOneGroup()
+            && !$this->isPublished();
+    }
+
+    /**
+     * Checks if the item can be unpublished.
+     * @return boolean
+     */
+    public function isUnpublishable()
+    {
+        return in_array($this->qaState()->status, array('public'))
+            && $this->belongsToAtLeastOneGroup()
+            && $this->isPublished();
+    }
+
+    /**
+     * Checks if the item has been published.
+     * @return boolean
+     */
+    public function isPublished()
+    {
+        // TODO: Improve this check.
+        return $this->isVisible();
+    }
+
+    /**
+     * Checks if the item is visible (to anonymous users).
+     * @return boolean
+     */
+    public function isVisible()
+    {
+        $result = NodeHasGroup::model()->findAllByAttributes(array(
+            'node_id' => $this->node_id,
+            'visibility' => NodeHasGroup::VISIBILITY_VISIBLE,
+        ));
+
+        return !empty($result);
+    }
+
+    /**
+     * Checks if the item belongs to at least one group.
+     * @return boolean
+     */
+    public function belongsToAtLeastOneGroup()
+    {
+        $result = NodeHasGroup::model()->findAllByAttributes(array(
+            'node_id' => $this->node_id,
+        ));
+
+        return !empty($result);
+    }
+
+    /**
      * Changes a model's QA status.
      * @param string $status
      * @throws SaveException

@@ -150,7 +150,7 @@
                 'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
                 'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
         ))): ?>
-            <?php if (in_array($model->qaState()->status, array('public'))): // TODO: Refactor this check. ?>
+            <?php if ($model->isUnpublishable()): ?>
                 <?php $this->widget(
                     '\TbButton',
                     array(
@@ -163,7 +163,7 @@
                         'visible' => $model->checkAccess('Publish'),
                     )
                 ); ?>
-            <?php elseif ($model->qaStateBehavior()->validStatus('publishable')): ?>
+            <?php elseif ($model->isPublishable()): ?>
                 <?php $this->widget(
                     '\TbButton',
                     array(

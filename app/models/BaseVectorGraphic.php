@@ -101,9 +101,11 @@
  * @property integer $processed_media_id_vi
  * @property integer $processed_media_id_zh_cn
  * @property integer $processed_media_id_zh_tw
+ * @property string $slug_fa
+ * @property integer $processed_media_id_fa
  *
  * Relations of table "vector_graphic" available as properties of the model:
- * @property Account $owner
+ * @property P3Media $processedMediaIdFa
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -149,6 +151,7 @@
  * @property P3Media $processedMediaIdZh
  * @property P3Media $processedMediaIdZhCn
  * @property P3Media $processedMediaIdZhTw
+ * @property Account $owner
  * @property VectorGraphic $clonedFrom
  * @property VectorGraphic[] $vectorGraphics
  * @property VectorGraphicQaState $vectorGraphicQaState
@@ -170,12 +173,12 @@ abstract class BaseVectorGraphic extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, original_media_id, processed_media_id_en, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, vector_graphic_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, original_media_id, processed_media_id_en, owner_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw', 'numerical', 'integerOnly' => true),
+                array('version, cloned_from_id, _title, slug_en, _about, original_media_id, processed_media_id_en, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, vector_graphic_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw, slug_fa, processed_media_id_fa', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, original_media_id, processed_media_id_en, owner_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw, processed_media_id_fa', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, vector_graphic_qa_state_id', 'length', 'max' => 20),
-                array('_title, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
+                array('_title, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'length', 'max' => 255),
                 array('_about, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, original_media_id, processed_media_id_en, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, vector_graphic_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _about, original_media_id, processed_media_id_en, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, vector_graphic_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw, slug_fa, processed_media_id_fa', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -200,7 +203,7 @@ abstract class BaseVectorGraphic extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
                 'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
@@ -246,6 +249,7 @@ abstract class BaseVectorGraphic extends ActiveRecord
                 'processedMediaIdZh' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh'),
                 'processedMediaIdZhCn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_cn'),
                 'processedMediaIdZhTw' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_tw'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'VectorGraphic', 'cloned_from_id'),
                 'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'cloned_from_id'),
                 'vectorGraphicQaState' => array(self::BELONGS_TO, 'VectorGraphicQaState', 'vector_graphic_qa_state_id'),
@@ -353,6 +357,8 @@ abstract class BaseVectorGraphic extends ActiveRecord
             'processed_media_id_vi' => Yii::t('model', 'Processed Media Id Vi'),
             'processed_media_id_zh_cn' => Yii::t('model', 'Processed Media Id Zh Cn'),
             'processed_media_id_zh_tw' => Yii::t('model', 'Processed Media Id Zh Tw'),
+            'slug_fa' => Yii::t('model', 'Slug Fa'),
+            'processed_media_id_fa' => Yii::t('model', 'Processed Media Id Fa'),
         );
     }
 
@@ -459,6 +465,8 @@ abstract class BaseVectorGraphic extends ActiveRecord
         $criteria->compare('t.processed_media_id_vi', $this->processed_media_id_vi);
         $criteria->compare('t.processed_media_id_zh_cn', $this->processed_media_id_zh_cn);
         $criteria->compare('t.processed_media_id_zh_tw', $this->processed_media_id_zh_tw);
+        $criteria->compare('t.slug_fa', $this->slug_fa, true);
+        $criteria->compare('t.processed_media_id_fa', $this->processed_media_id_fa);
 
 
         return $criteria;

@@ -13,6 +13,7 @@ $languages = array(
     'en_us' => 'US English',
     'el' => 'Ελληνικά',
     'es' => 'Español',
+    'fa' => 'فارسی',
     'fi' => 'Suomi',
     'fil' => 'Filipino',
     'fr' => 'Français',

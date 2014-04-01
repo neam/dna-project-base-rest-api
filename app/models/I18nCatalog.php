@@ -209,7 +209,7 @@ class I18nCatalog extends BaseI18nCatalog
 
                 // The source content first plural form (the singular form) is the $key, the second plural form is the first $entry element
                 $sourceMessage = ChoiceFormatHelper::toString(array($key, $entry[0]), $this->source_language);
-                $message = Yii::t($category, $sourceMessage);
+                $message = Yii::t($category, $sourceMessage, array(), 'displayedMessages');
 
                 // The translation should be sent as elements 1->end of array
                 $entry = array($entry[0]);
@@ -228,7 +228,7 @@ class I18nCatalog extends BaseI18nCatalog
 
             } else {
                 $sourceMessage = $key;
-                $message = Yii::t($category, $sourceMessage);
+                $message = Yii::t($category, $sourceMessage, array(), 'displayedMessages');
                 // The translation should be sent as element 1
                 $entry[1] = $message;
             }
