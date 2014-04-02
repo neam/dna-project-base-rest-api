@@ -16,8 +16,8 @@ chmod -R g+rw app/data/
 chmod -R g+rw app/runtime/
 chmod -R g+rw www/assets/
 chmod -R g+rw www/runtime/
-app/yiic migrate --connectionID=$connectionID
-app/yiic authorizationhierarchy reset
-app/yiic authorizationhierarchy build
-app/yiic databaseviewgenerator --connectionID=$connectionID item
-app/yiic fixture --connectionID=$connectionID load
+php app/yiic migrate --connectionID=$connectionID
+php app/yiic authorizationhierarchy reset
+php app/yiic authorizationhierarchy build
+php app/yiic databaseviewgenerator --connectionID=$connectionID item
+php app/yiic fixture --connectionID=$connectionID load

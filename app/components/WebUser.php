@@ -8,7 +8,7 @@ class WebUser extends CWebUser
      */
     public function getIsAdmin()
     {
-        return $this->hasRole('Developer') || $this->hasRole(Role::SUPER_ADMINISTRATOR);
+        return $this->hasRole(Role::DEVELOPER) || $this->hasRole(Role::SUPER_ADMINISTRATOR);
     }
 
     /**
@@ -118,14 +118,14 @@ class WebUser extends CWebUser
      */
     public function checkAccess($operation, $params = array(), $allowCaching = true)
     {
+        // Handle guests
+        if ($this->isGuest) {
+            return in_array(Role::GUEST, MetaData::operationToRolesAndGroups($operation));
+        }
+
         // Auto-grant access to admins
         if ($this->isAdmin) {
             return true;
-        }
-
-        // Handle anonymous users
-        if ($this->isGuest) {
-            return in_array(Role::ANONYMOUS, MetaData::operationToRolesAndGroups($operation));
         }
 
         if (strpos($operation, '.') !== false) {
@@ -152,7 +152,7 @@ class WebUser extends CWebUser
      */
     protected function _checkAccessWithModelClass($operation, $modelClass)
     {
-        // TODO: fix p3media properly
+        // TODO: Fix P3media properly.
         if ($modelClass === 'P3media') {
             return $operation === 'Import';
         }
@@ -167,6 +167,7 @@ class WebUser extends CWebUser
 
         $criteria = PermissionHelper::applyAccessCriteria($criteria, MetaData::operationToRolesAndGroups($operation));
         $result = ActiveRecord::model($modelClass)->findAll($criteria, array('roleNames' => MetaData::operationToRolesAndGroups($operation)));
+
         return count($result) > 0;
     }
 

@@ -284,6 +284,12 @@ class ActiveRecord extends CActiveRecord
      */
     public $accessRestricted;
 
+    /**
+     * Applies the access criteria.
+     * @param string $criteria
+     * @param array $params
+     * @return CDbCriteria|string
+     */
     public function applyAccessCriteria($criteria = '', array $params = array())
     {
         // Normalize the criteria (this must ALWAYS be done as we override the find and count methods).

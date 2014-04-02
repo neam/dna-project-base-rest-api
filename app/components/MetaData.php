@@ -54,57 +54,103 @@ class Metadata
     {
 
         return array(
-            "GoItem" => DataModel::goItemModels(),
-            "EducationalItem" => DataModel::educationalItemModels(),
-            "InternalItem" => DataModel::internalItemModels(),
-            "WebsiteContentItem" => DataModel::websiteContentItemModels(),
-            "WaffleItem" => DataModel::waffleItemModels(),
-            "DollarStreetItem" => array(),
+            'GoItem' => DataModel::goItemModels(),
+            'EducationalItem' => DataModel::educationalItemModels(),
+            'InternalItem' => DataModel::internalItemModels(),
+            'WebsiteContentItem' => DataModel::websiteContentItemModels(),
+            'WaffleItem' => DataModel::waffleItemModels(),
+            'DollarStreetItem' => array(),
         );
 
     }
 
-    static public function contextLessSuperRoles()
+    /**
+     * Returns the system roles as name => label.
+     * @return array
+     */
+    static public function systemRoles()
     {
         return array(
-            "Developer",
-            "Super Administrator",
+            Role::DEVELOPER => 'Developer',
+            Role::SUPER_ADMINISTRATOR => 'Super Administrator',
         );
     }
 
-    static public function groupBasedRoles()
-    {
-
-        return array(
-            "Administrator",
-            "Publisher",
-            "Editor",
-            "Approver",
-            "Moderator",
-            "Contributor",
-            "Reviewer",
-            "Translator",
-            "Member",
-        );
-
-    }
-
-    static public function contextLessDefaultRoles()
+    /**
+     * Returns the group roles as name => label.
+     * @return array
+     */
+    static public function groupRoles()
     {
         return array(
-            "Member",
-            "Anonymous",
+            Role::GROUP_ADMINISTRATOR => 'Administrator',
+            Role::GROUP_PUBLISHER => 'Publisher',
+            Role::GROUP_EDITOR => 'Editor',
+            Role::GROUP_APPROVER => 'Approver',
+            Role::GROUP_MODERATOR => 'Moderator',
+            Role::GROUP_CONTRIBUTOR => 'Contributor',
+            Role::GROUP_REVIEWER => 'Reviewer',
+            Role::GROUP_TRANSLATOR => 'Translator',
+            Role::GROUP_MEMBER => 'Member',
         );
     }
 
-    static public function groups()
+    /**
+     * Returns the default roles as name => label.
+     * @return array
+     */
+    static public function defaultRoles()
     {
         return array(
-            'GapminderInternal',
-            'GapminderOrg',
-            'GapminderOrgSuggest',
-            'Proofreaders',
-            'Translators',
+            Role::AUTHENTICATED => 'Authenticated',
+            Role::GUEST => 'Guest',
+        );
+    }
+
+    /**
+     * Returns the project groups as name => label.
+     * @return array
+     */
+    static public function projectGroups()
+    {
+        return array(
+            Group::GAPMINDER_ORG => 'Gapminder.org',
+            Group::SCHOOL => 'School',
+            Group::DOLLAR_STREET => 'Dollar Street',
+            Group::HUMAN_NUMBERS => 'Human Numbers',
+            Group::IGNORANCE_PROJECT => 'Ignorance Project',
+        );
+    }
+
+    /**
+     * Returns the topic groups as name => label.
+     * @return array
+     */
+    static public function topicGroups()
+    {
+        return array(
+            Group::GAPMINDER_INTERNAL => 'Gapminder Internal',
+            Group::GAPMINDER_GLOBAL => 'Gapminder Global',
+            Group::GAPMINDER_SVERIGE => 'Gapminder Sverige',
+            Group::GAPMINDER_ESPANA_SALUD => 'Gapminder España Salud',
+            Group::GAPMINDER_ESPANA_BARCELONA => 'Gapminder España Barcelona',
+            Group::GAPMINDER_UNITED_KINGDOM => 'Gapminder United Kingdom',
+            Group::GAPMINDER_RUSSIA => 'Gapminder Russia',
+            Group::GAPMINDER_STATEMINDER => 'Gapminder Stateminder',
+            Group::GAPMINDER_NORGE => 'Gapminder Norge',
+        );
+    }
+
+    /**
+     * Returns the skill groups as name => label.
+     * @return array
+     */
+    static public function skillGroups()
+    {
+        return array(
+            Group::TRANSLATORS => 'Translators',
+            Group::REVIEWERS => 'Reviewers',
+            Group::PROOFREADERS => 'Proofreaders',
         );
     }
 
@@ -113,7 +159,7 @@ class Metadata
         return array(
             'GapminderInternal' => 'Gapminder Internal',
             'GapminderOrg' => 'Gapminder.org',
-            'GapminderOrgSuggest' => 'Gapminder.org suggestions',
+            'GapminderOrgSuggest' => 'Gapminder.org Suggestions',
             'Proofreaders' => 'Proofreaders',
             'Translators' => 'Translators',
         );
@@ -193,16 +239,17 @@ class Metadata
                 'groups' => array(Group::GAPMINDER_INTERNAL),
             ),
             'Browse' => array(
-                'roles' => array(Role::ANONYMOUS),
+                'roles' => array(Role::GUEST),
                 'groups' => array(Group::GAPMINDER_INTERNAL),
             ),
             'View' => array(
-                'roles' => array(Role::ANONYMOUS),
+                'roles' => array(Role::GUEST),
                 'groups' => array(Group::GAPMINDER_INTERNAL),
             ),
         );
     }
 
+    /*
     static public function roleToGroupsMap()
     {
         $map = array();
@@ -217,6 +264,7 @@ class Metadata
 
         return $map;
     }
+    */
 
     /**
      * Returns the authorized roles for the given operation.

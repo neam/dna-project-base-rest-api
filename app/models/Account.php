@@ -134,4 +134,15 @@ class Account extends BaseAccount
 
         return $roleIsActive;
     }
+
+    public function groupRoleIsActive($group, $role)
+    {
+        return PermissionHelper::groupHasAccount(
+            array(
+                'account_id' => $this->id,
+                'group_id' => PermissionHelper::groupNameToId($group),
+                'role_id' => PermissionHelper::roleNameToId($role),
+            )
+        );
+    }
 }
