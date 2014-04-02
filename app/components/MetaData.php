@@ -207,9 +207,9 @@ class Metadata
     {
         $map = array();
 
-        $operationsToRolesAndGroupsMap = self::operationToRolesAndGroupsMap();
+        $operationToRolesAndGroupsMap = self::operationToRolesAndGroupsMap();
 
-        foreach ($operationsToRolesAndGroupsMap as $rolesAndGroups) {
+        foreach ($operationToRolesAndGroupsMap as $rolesAndGroups) {
             foreach ($rolesAndGroups['roles'] as $roleName) {
                 $map[$roleName] = $rolesAndGroups['groups'];
             }

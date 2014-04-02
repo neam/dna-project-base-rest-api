@@ -31,29 +31,35 @@
     </h1>
     <?php $this->renderPartial('_toolbar', array('model' => $model)); ?>
     <?php Yii::beginProfile('Account.view.grid'); ?>
-
-    <?php
-    $roles = array_merge(
+    <?php $roles = array_merge(
         MetaData::contextLessSuperRoles(),
         MetaData::groupBasedRoles()
-    );
-
-    $roleColumns = array();
-    foreach (PermissionHelper::getRoles() as $roleName => $roleId) {
-        $roleColumns[] = array(
-            'class' => 'TbToggleColumn',
-            'displayText' => false,
-            'name' => $roleName,
-            'value' => function($data) use ($roleName) {
-                /** @var Account $data */
-                return $data->roleIsActive($roleName);
-            },
-            'filter' => true,
-            'toggleAction' => 'account/toggleRole',
-        );
+    ); ?>
+    <?php // TODO: Remove exclusions when groups have been properly implemented.
+    $excludedRoles = array(
+        Role::MEMBER,
+        Role::DEVELOPER,
+        Role::SUPER_ADMINISTRATOR,
+        Role::GROUP_ADMINISTRATOR,
+        Role::GROUP_MEMBER,
+    ); ?>
+    <?php $roleColumns = array(); ?>
+    <?php foreach (PermissionHelper::getRoles() as $roleName => $roleId) {
+        if (!in_array($roleName, $excludedRoles)) { // TODO: Remove this condition when groups have been properly implemented.
+            $roleColumns[] = array(
+                'class' => 'TbToggleColumn',
+                'displayText' => false,
+                'name' => $roleName,
+                'value' => function($data) use ($roleName) {
+                    /** @var Account $data */
+                    return $data->roleIsActive($roleName);
+                },
+                'filter' => true,
+                'toggleAction' => 'account/toggleRole',
+            );
+        }
     }
     ?>
-
     <?php /*$roleColumns = array(
         array(
             'class' => 'TbToggleColumn',
@@ -147,7 +153,6 @@
         ),
     );
     */
-
     $columns = array_merge(array(
         array(
             'class' => 'CLinkColumn',

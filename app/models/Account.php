@@ -112,20 +112,26 @@ class Account extends BaseAccount
         $groupCount = count($groups);
         $groupHasAccountCount = 0;
 
-        foreach ($groups as $group) {
-            $groupHasAccount = PermissionHelper::groupHasAccount(
-                array(
-                    'account_id' => $this->id,
-                    'group_id' => PermissionHelper::groupNameToId($group),
-                    'role_id' => $roleId,
-                )
-            );
+        if ($groupCount > 0) {
+            foreach ($groups as $group) {
+                $groupHasAccount = PermissionHelper::groupHasAccount(
+                    array(
+                        'account_id' => $this->id,
+                        'group_id' => PermissionHelper::groupNameToId($group),
+                        'role_id' => $roleId,
+                    )
+                );
 
-            if ($groupHasAccount) {
-                $groupHasAccountCount++;
+                if ($groupHasAccount) {
+                    $groupHasAccountCount++;
+                }
             }
+
+            $roleIsActive = (int) $groupHasAccountCount === (int) $groupCount;
+        } else {
+            $roleIsActive = false;
         }
 
-        return (int) $groupHasAccountCount === (int) $groupCount;
+        return $roleIsActive;
     }
 }
