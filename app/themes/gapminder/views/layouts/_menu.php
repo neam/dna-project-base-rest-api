@@ -43,7 +43,7 @@
                         array(
                             'label' => ucfirst(Yii::app()->user->name),
                             'visible' => !Yii::app()->user->isGuest,
-                            'icon' => Yii::app()->user->checkAccess('Superuser') ?
+                            'icon' => Yii::app()->user->isAdmin ?
                                     'warning-sign' :
                                     'user',
                             'id' => 'accountMenuLink',
@@ -77,7 +77,7 @@
                                     'label' => Yii::t('app', 'List'),
                                     'icon' => 'list',
                                     'url' => array('/account/admin'),
-                                    'visible' => Yii::app()->user->checkAccess('Superuser')
+                                    'visible' => Yii::app()->user->isAdmin
                                 ),
                                 '---',
                                 array(

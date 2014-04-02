@@ -55,9 +55,11 @@ class AppRegistrationController extends RegistrationController
                         $profile->save();
 
                         // Automatically assign the Group Translator role to new members
+                        /*
                         PermissionHelper::addAccountToGroup($model->id, 'GapminderInternal', 'Group Translator');
                         PermissionHelper::addAccountToGroup($model->id, 'GapminderInternal', 'Member');
                         PermissionHelper::addAccountToGroup($model->id, 'GapminderInternal', 'Anonymous');
+                        */
 
                         if (Yii::app()->controller->module->sendActivationMail) {
                             $activation_url = $this->createAbsoluteUrl(

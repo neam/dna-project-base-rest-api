@@ -3,13 +3,14 @@
 class WebUser extends CWebUser
 {
     /**
-     * Checks if the user is an admin.
-     * @return boolean
+     * @var array
      */
-    public function getIsAdmin()
-    {
-        return $this->hasRole(Role::DEVELOPER) || $this->hasRole(Role::SUPER_ADMINISTRATOR);
-    }
+    private $_groupMap = array();
+
+    /**
+     * @var array
+     */
+    private $_roleMap = array();
 
     /**
      * Loads an Account model.
@@ -25,92 +26,72 @@ class WebUser extends CWebUser
     }
 
     /**
-     * Returns the user's group names.
+     * Returns the group based roles for the logged in user.
+     *
+     * The format is the following:
+     *
+     * array(
+     *   'GapminderInternal' => array(
+     *     'Contributor',
+     *     'Editor',
+     *   ),
+     *   'Translators' => array(
+     *      'Translator',
+     *   ),
+     * )
+     *
      * @return array
      */
-    public function getRoles()
+    public function getGroupRoles()
     {
-        $criteria = new CDbCriteria();
-        $criteria->addInCondition('group_id', $this->getGroupIds());
-        $criteria->addCondition('account_id = :accountId');
-        $criteria->params[':accountId'] = $this->id;
-        $ghas = GroupHasAccount::model()->findAll($criteria);
+        $tree = array('All' => array());
 
-        $roleIds = array();
-        foreach ($ghas as $gha) {
-            $roleIds[] = $gha->role_id;
-        }
-
-        $roles = PermissionHelper::getRoles();
-        $roleMap = array();
-        foreach ($roles as $roleName => $roleId) {
-            $roleMap[$roleId] = $roleName;
-        }
-
-        $roles = array();
-        foreach ($roleIds as $roleId) {
-            $roles[$roleId] = $roleMap[$roleId];
-        }
-
-        return $roles;
-    }
-
-    /**
-     * Returns the user's group names.
-     * @return array
-     */
-    public function getGroups()
-    {
-        $criteria = new CDbCriteria();
-        $criteria->addCondition('account_id = :accountId');
-        $criteria->params[':accountId'] = $this->id;
-
-        $groups = GroupHasAccount::model()->findAll($criteria);
-        $groupNames = array();
-
-        if (count($groups) > 0) {
-            foreach ($groups as $group) {
-                $groupNames[$group->group_id] = PermissionHelper::groupIdToName($group->group_id);
+        if (!$this->isGuest) {
+            foreach (PermissionHelper::getGroups() as $roleName => $roleId) {
+                $this->_groupMap[$roleId] = $roleName;
             }
-        }
 
-        return array_unique($groupNames);
-    }
-
-    /**
-     * Returns the user's group IDs.
-     * @return array
-     */
-    public function getGroupIds()
-    {
-        $criteria = new CDbCriteria();
-        $criteria->addCondition('account_id = :accountId');
-        $criteria->params[':accountId'] = $this->id;
-
-        $groups = GroupHasAccount::model()->findAll($criteria);
-        $groupIds = array();
-
-        if (count($groups) > 0) {
-            foreach ($groups as $group) {
-                $groupIds[] = $group->group_id;
+            foreach (PermissionHelper::getRoles() as $roleName => $roleId) {
+                $this->_roleMap[$roleId] = $roleName;
             }
+
+            $criteria = new CDbCriteria();
+            $criteria->addCondition('account_id = :accountId');
+            $criteria->params[':accountId'] = $this->id;
+            $ghas = GroupHasAccount::model()->findAll($criteria);
+
+            foreach ($ghas as $gha) {
+                $groupName = $this->_groupMap[$gha->group_id];
+                if (!isset($tree[$groupName])) {
+                    $tree[$groupName] = array();
+                }
+                $tree[$groupName][] = $this->_roleMap[$gha->role_id];
+            }
+        } else {
+            $tree['All'][] = Role::GUEST;
         }
 
-        return array_unique($groupIds);
+        return $tree;
     }
 
     /**
-     * @param $roleName
+     * @param string $group
+     * @param string $role
      *
      * @return bool
      */
-    public function hasRole($roleName)
+    public function hasRole($group, $role)
     {
-        return PermissionHelper::hasRole(
-            $this->id,
-            'GapminderInternal',
-            $roleName
-        );
+        return PermissionHelper::hasRole($this->id, $group, $role);
+    }
+
+    /**
+     * Checks if the user is an admin.
+     * @return boolean
+     */
+    public function getIsAdmin()
+    {
+        return $this->hasRole(Group::SYSTEM, Role::DEVELOPER) || $this->hasRole(Group::SYSTEM, Role::SUPER_ADMINISTRATOR);
     }
 
     /**
@@ -118,14 +99,16 @@ class WebUser extends CWebUser
      */
     public function checkAccess($operation, $params = array(), $allowCaching = true)
     {
-        // Handle guests
-        if ($this->isGuest) {
-            return in_array(Role::GUEST, MetaData::operationToRolesAndGroups($operation));
-        }
-
         // Auto-grant access to admins
         if ($this->isAdmin) {
             return true;
+        }
+
+        $operationRoleMap = MetaData::operationToRoles();
+
+        // Handle guests
+        if ($this->isGuest) {
+            return isset($operationRoleMap[$operation]) ? in_array(Role::GUEST, $operationRoleMap[$operation]) : false;
         }
 
         if (strpos($operation, '.') !== false) {
@@ -138,7 +121,7 @@ class WebUser extends CWebUser
         }
 
         if (isset($modelClass)) {
-            return $this->_checkAccessWithModelClass($operation, $modelClass);
+            return $this->_checkAccessWithModelClass($modelClass, $operation, $params);
         } else {
             return $this->_checkAccessWithoutModelClass($operation);
         }
@@ -146,11 +129,12 @@ class WebUser extends CWebUser
 
     /**
      * Checks access against a model class.
-     * @param string $operation
      * @param string $modelClass
+     * @param string $operation
+     * @param array $params
      * @return boolean
      */
-    protected function _checkAccessWithModelClass($operation, $modelClass)
+    protected function _checkAccessWithModelClass($modelClass, $operation, $params)
     {
         // TODO: Fix P3media properly.
         if ($modelClass === 'P3media') {
@@ -178,30 +162,24 @@ class WebUser extends CWebUser
      */
     protected function _checkAccessWithoutModelClass($operation)
     {
-        $map = MetaData::operationToRolesAndGroupsMap();
+        $map = MetaData::operationToRoles();
 
-        if (isset($map[$operation]['roles'])) {
-            // Get role IDs
-            $roles = array();
-            foreach ($map[$operation]['roles'] as $role) {
-                $roles[] = PermissionHelper::roleNameToId($role);
-            }
-
-            // Get group IDs
-            $groups = array();
-            foreach ($map[$operation]['groups'] as $group) {
-                $groups[] = PermissionHelper::groupNameToId($group);
-            }
-
-            $criteria = new CDbCriteria();
-            $criteria->addInCondition('role_id', $roles);
-            $criteria->addInCondition('group_id', $groups);
-            $criteria->addCondition('account_id = :userId');
-            $criteria->params[':userId'] = $this->id;
-
-            return GroupHasAccount::model()->find($criteria) !== null;
-        } else {
+        if (!isset($map[$operation]) || empty($map[$operation])) {
             return false;
         }
+
+        $roles = array();
+        foreach ($map[$operation] as $role) {
+            $roles[] = PermissionHelper::roleNameToId($role);
+        }
+
+        // TODO add support for checking the group as well (if necessary)
+
+        $criteria = new CDbCriteria();
+        $criteria->addInCondition('role_id', $roles);
+        $criteria->addCondition('account_id = :userId');
+        $criteria->params[':userId'] = $this->id;
+
+        return GroupHasAccount::model()->find($criteria) !== null;
     }
 }

@@ -107,6 +107,13 @@ class Metadata
         );
     }
 
+    static public function systemGroups()
+    {
+        return array(
+            Group::SYSTEM => 'System',
+        );
+    }
+
     /**
      * Returns the project groups as name => label.
      * @return array
@@ -172,6 +179,66 @@ class Metadata
             'Group Editor' => 'editors',
             'Group Reviewer' => 'reviewers',
             'Group Translator' => 'translators'
+        );
+    }
+
+    static public function operationToRoles()
+    {
+        return array(
+            'Edit' => array(
+                Role::GROUP_EDITOR,
+            ),
+            'Translate' => array(
+                Role::GROUP_TRANSLATOR,
+            ),
+            'Preview' => array(
+                Role::GROUP_REVIEWER,
+            ),
+            'PrepareForReview' => array(
+                Role::GROUP_CONTRIBUTOR,
+                Role::GROUP_EDITOR,
+            ),
+            'PrepareForPublishing' => array(
+                Role::GROUP_CONTRIBUTOR,
+                Role::GROUP_EDITOR,
+            ),
+            'Evaluate' => array(
+                Role::GROUP_REVIEWER,
+            ),
+            'Review' => array(
+                Role::GROUP_REVIEWER,
+            ),
+            'Proofread' => array(
+                Role::GROUP_REVIEWER,
+            ),
+            'Publish' => array(
+                Role::GROUP_PUBLISHER,
+            ),
+            'Clone' => array(
+                Role::GROUP_EDITOR,
+            ),
+            'Add' => array(
+                Role::GROUP_MEMBER,
+            ),
+            'Approve' => array(
+                Role::GROUP_APPROVER,
+            ),
+            'Remove' => array(
+                Role::GROUP_CONTRIBUTOR,
+            ),
+            'Replace' => array(
+                Role::GROUP_MODERATOR,
+            ),
+            'Browse' => array(
+                Role::GUEST,
+                Role::GROUP_MEMBER,
+            ),
+            'View' => array(
+                Role::GUEST,
+            ),
+            'ChangeGroup' => array(
+                Role::GROUP_MODERATOR,
+            ),
         );
     }
 

@@ -180,7 +180,7 @@ trait ItemController
                     'removeFromGroup',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Edit');
+                    return $this->checkAccess('ChangeGroup');
                 },
             ),
             array('allow',

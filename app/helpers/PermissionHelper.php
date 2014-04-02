@@ -271,33 +271,38 @@ class PermissionHelper
      * Applies the access restrictions to the given criteria.
      *
      * @param CDbCriteria $criteria
-     * @param array $groupRoles
      *
      * @return CDbCriteria
      */
-    static public function applyAccessCriteria(CDbCriteria $criteria, array $roleNames)
+    static public function applyAccessCriteria(CDbCriteria $criteria)
     {
-        $roleIds = array();
+        $groupRoles = Yii::app()->user->getGroupRoles();
 
-        foreach ($roleNames as $roleName) {
-            $roleIds[] = self::roleNameToId($roleName);
+        $joins = array();
+
+        $joins[] = "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)";
+        $joins[] = "LEFT JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id`)";
+
+        $counter = 0;
+        foreach ($groupRoles as $groupName => $roles) {
+            $roleIds = array();
+            foreach ($roles as $roleName) {
+                $roleIds[] = self::roleNameToId($roleName);
+            }
+            if (!empty($roleIds)) {
+                $key = ":groupId_$counter";
+                $roleIds = implode(',', $roleIds);
+                $joins[] = "LEFT JOIN `group_has_account` AS `gha_$counter` ON (`gha_$counter`.`group_id` = $key AND `gha_$counter`.`role_id` IN ($roleIds))";
+                $criteria->params[$key] = PermissionHelper::groupNameToId($groupName);
+            }
+            $counter++;
         }
-
-        $roleIds = !empty($roleNames)
-            ? implode(', ', $roleIds)
-            : '-1'; // TODO: Replace with a safe "null" value, or only conditionally add the "IN ($roleIds)" statement to the query.
 
         // All items should be found only once.
         $criteria->distinct = true;
 
         // Apply all the necessary joins to check for group based access.
-        $criteria->join = implode(
-            ' ',
-            array(
-                "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)",
-                "LEFT JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `gha`.`role_id` IN ($roleIds))", // TODO: Include $roleIds as a criteria param.
-            )
-        );
+        $criteria->join = implode(' ', $joins);
 
         // Restrict access based on the account id.
         $criteria->addCondition("(`gha`.`account_id` = :accountId OR `t`.`owner_id` = :accountId)");

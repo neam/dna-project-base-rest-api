@@ -6,6 +6,9 @@ Yii::import('Group.*');
 
 class Group extends BaseGroup
 {
+    // System groups
+    const SYSTEM = 'System';
+
     // Project groups
     const GAPMINDER_ORG = 'GapminderOrg';
     const SCHOOL = 'School';
