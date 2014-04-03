@@ -410,6 +410,7 @@ trait ItemTrait
      */
     public function checkAccess($operation)
     {
-        return Yii::app()->user->checkAccess(get_class($this) . '.' . $operation, array('id' => $this->{$this->tableSchema->primaryKey}));
+        $operation = get_class($this) . '.' . $operation;
+        return Yii::app()->user->checkAccess($operation, array('id' => $this->{$this->tableSchema->primaryKey}));
     }
 }

@@ -27,7 +27,6 @@
                 array(
                     'label' => Yii::t('crud', 'Prepare for review'),
                     'color' => $this->action->id === 'prepareForReview' ? 'inverse' : null,
-                    'icon' => 'glyphicon-pencil' . ($this->action->id == '' ? ' icon-white' : null),
                     'url' => array(
                         'prepareForReview',
                         'id' => $model->{$model->tableSchema->primaryKey},
@@ -45,7 +44,6 @@
                 array(
                     'label' => Yii::t('crud', 'Prepare for publishing'),
                     'color' => $this->action->id === 'prepareForPublishing' ? 'inverse' : null,
-                    'icon' => 'glyphicon-pencil' . ($this->action->id === 'prepareForPublishing' ? ' icon-white' : null),
                     'url' => array(
                         'prepareForPublishing',
                         'id' => $model->{$model->tableSchema->primaryKey},
@@ -59,43 +57,11 @@
         <?php endif; ?>
     </div>
     <div class="btn-group">
-        <?php foreach (Yii::app()->user->getGroups() as $groupId => $groupName): ?>
-            <?php if ($model->belongsToGroup($groupId)): ?>
-                <?php echo TbHtml::linkButton(
-                    Yii::t('app', 'Remove from {group}', array('{group}' => $groupName)),
-                    array(
-                        'icon' => TbHtml::ICON_MINUS,
-                        'url' => array(
-                            'removeFromGroup',
-                            'node_id' => $model->node_id,
-                            'group' => $groupId,
-                            'returnUrl' => TbHtml::encode(Yii::app()->request->url),
-                        ),
-                    )
-                ); ?>
-            <?php else: ?>
-                <?php echo TbHtml::linkButton(
-                    Yii::t('app', 'Add to {group}', array('{group}' => $groupName)),
-                    array(
-                        'icon' => TbHtml::ICON_PLUS,
-                        'url' => array(
-                            'addToGroup',
-                            'node_id' => $model->node_id,
-                            'group' => $groupId,
-                            'returnUrl' => TbHtml::encode(Yii::app()->request->url),
-                        ),
-                    )
-                ); ?>
-            <?php endif; ?>
-        <?php endforeach; ?>
-    </div>
-    <div class="btn-group">
         <?php $this->widget(
             '\TbButton',
             array(
                 'label' => Yii::t('crud', 'Evaluate'),
                 'color' => $this->action->id === 'evaluate' ? 'inverse' : null,
-                'icon' => 'glyphicon-comment' . ($this->action->id === 'evaluate' ? ' icon-white' : null),
                 'url' => array(
                     'evaluate',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -109,7 +75,6 @@
             array(
                 'label' => Yii::t('model', 'Review'),
                 'color' => $this->action->id === 'review' ? 'inverse' : null,
-                'icon' => 'glyphicon-check' . ($this->action->id === 'review' ? ' icon-white' : null),
                 'url' => array(
                     'review',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -122,7 +87,6 @@
             array(
                 'label' => Yii::t('model', 'Proofread'),
                 'color' => $this->action->id === 'proofRead' ? 'inverse' : null,
-                'icon' => 'glyphicon-certificate' . ($this->action->id === 'proofRead' ? ' icon-white' : null),
                 'url' => array(
                     'proofRead',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -135,7 +99,6 @@
             array(
                 'label' => Yii::t('model', 'Translate'),
                 'color' => $this->action->id === 'translationOverview' ? 'inverse' : null,
-                'icon' => 'glyphicon-globe' . ($this->action->id === 'translationOverview' ? ' icon-white' : null),
                 'url' => array(
                     'translationOverview',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -155,7 +118,6 @@
                     '\TbButton',
                     array(
                         'label' => Yii::t('model', 'Unpublish'),
-                        'icon' => TbHtml::ICON_THUMBS_DOWN,
                         'url' => array(
                             'unpublish',
                             'id' => $model->{$model->tableSchema->primaryKey},
@@ -168,7 +130,6 @@
                     '\TbButton',
                     array(
                         'label' => Yii::t('model', 'Publish'),
-                        'icon' => TbHtml::ICON_THUMBS_UP,
                         'url' => array(
                             'publish',
                             'id' => $model->{$model->tableSchema->primaryKey},
@@ -181,7 +142,6 @@
                     Yii::t('model', 'Publish'),
                     array(
                         'disabled' => true,
-                        'icon' => TbHtml::ICON_THUMBS_UP,
                         'visible' => $model->checkAccess('Publish'),
                     )
                 ); ?>
@@ -194,7 +154,6 @@
             array(
                 'label' => Yii::t('model', 'Clone'),
                 'color' => $this->action->id === 'clone' ? 'inverse' : null,
-                'icon' => 'glyphicon-plus' . ($this->action->id === 'clone' ? ' icon-white' : null),
                 'url' => array(
                     'clone',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -206,7 +165,6 @@
             '\TbButton', array(
                 'label' => Yii::t('model', 'Remove'),
                 'color' => $this->action->id === 'remove' ? 'inverse' : null,
-                'icon' => 'glyphicon-eye-close' . ($this->action->id === 'remove' ? ' icon-white' : null),
                 'url' => array(
                     'remove',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -214,5 +172,38 @@
                 'visible' => $model->checkAccess('Remove'),
             )
         ); ?>
+    </div>
+    <div class="btn-group">
+        <?php foreach (Yii::app()->user->getGroups() as $groupId => $groupName): ?>
+            <?php if ($model->belongsToGroup($groupName)): ?>
+                <?php echo TbHtml::linkButton(
+                    $groupName,
+                    array(
+                        'icon' => TbHtml::ICON_MINUS,
+                        'url' => array(
+                            'removeFromGroup',
+                            'nodeId' => $model->node_id,
+                            'modelId' => $model->id,
+                            'group' => $groupName,
+                            'returnUrl' => TbHtml::encode(Yii::app()->request->url),
+                        ),
+                    )
+                ); ?>
+            <?php else: ?>
+                <?php echo TbHtml::linkButton(
+                    $groupName,
+                    array(
+                        'icon' => TbHtml::ICON_PLUS,
+                        'url' => array(
+                            'addToGroup',
+                            'nodeId' => $model->node_id,
+                            'modelId' => $model->id,
+                            'group' => $groupName,
+                            'returnUrl' => TbHtml::encode(Yii::app()->request->url),
+                        ),
+                    )
+                ); ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
 </div>

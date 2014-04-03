@@ -132,22 +132,22 @@ class PermissionHelper
      * Adds a node to a specific group.
      *
      * @param int $nodeId
-     * @param string $group
+     * @param string $groupId
      *
      * @return bool
      */
-    static public function addNodeToGroup($nodeId, $group)
+    static public function addNodeToGroup($nodeId, $groupId)
     {
         $attributes = array(
             'node_id' => $nodeId,
-            'group_id' => self::groupNameToId($group),
+            'group_id' => self::groupNameToId($groupId),
         );
 
         if (self::nodeHasGroup($attributes)) {
             return false; // already in group
         }
 
-        Yii::log(sprintf('Adding node #%d to group "%s".', $nodeId, $group), CLogger::LEVEL_TRACE, 'permissions');
+        Yii::log(sprintf('Adding node #%d to group "%s".', $nodeId, $groupId), CLogger::LEVEL_TRACE, 'permissions');
 
         $model = new NodeHasGroup();
         $model->attributes = $attributes;
@@ -288,30 +288,47 @@ class PermissionHelper
      *
      * @return CDbCriteria
      */
-    static public function applyAccessCriteria(CDbCriteria $criteria)
+    static public function applyAccessCriteria(CDbCriteria $criteria, $operation = null)
     {
-        $groupRoles = Yii::app()->user->getGroupRoles();
+        //$groupRoles = Yii::app()->user->getGroupRoles();
 
         $joins = array();
 
         $joins[] = "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)";
-        $joins[] = "LEFT JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id`)";
 
+        $map = MetaData::operationToRolesMap();
+
+        if ($operation !== null && isset($map[$operation])) {
+            $roleIds = array();
+            foreach ($map[$operation] as $roleName) {
+                $roleIds[] = PermissionHelper::roleNameToId($roleName);
+            }
+            $roleIds = implode(',', $roleIds);
+            $joins[] = "INNER JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `gha`.`role_id` IN ($roleIds) AND `gha`.`account_id` = :accountId)";
+        } else {
+            $joins[] = "INNER JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `gha`.`account_id` = :accountId)";
+        }
+
+        /*
         $counter = 0;
         foreach ($groupRoles as $groupName => $roles) {
             $roleIds = array();
+
             foreach ($roles as $roleName) {
                 $roleIds[] = self::roleNameToId($roleName);
             }
+
             if (!empty($roleIds)) {
-                $tableAlias = "`gha_$counter`";
+                $ghaTableAlias = "`gha_$counter`";
+
                 $groupId = ":groupId_$counter";
                 $roleIds = implode(',', $roleIds);
-                $joins[] = "LEFT JOIN `group_has_account` AS $tableAlias ON ($tableAlias.`group_id` = $groupId AND $tableAlias.`role_id` IN ($roleIds) AND $tableAlias.`account_id` = :accountId)";
+                $joins[] = "INNER JOIN `group_has_account` AS $ghaTableAlias ON ($ghaTableAlias.`group_id` = $groupId AND $ghaTableAlias.`role_id` IN ($roleIds) AND $ghaTableAlias.`account_id` = :accountId)";
                 $criteria->params[$groupId] = PermissionHelper::groupNameToId($groupName);
                 $counter++;
             }
         }
+        */
 
         // All items should be found only once.
         $criteria->distinct = true;
@@ -320,7 +337,7 @@ class PermissionHelper
         $criteria->join = implode(' ', $joins);
 
         // Restrict access based on the account id.
-        $criteria->addCondition("(`gha`.`account_id` = :accountId OR `t`.`owner_id` = :accountId)");
+        //$criteria->addCondition("`gha`.`account_id` = :accountId OR `t`.`owner_id` = :accountId");
         $criteria->params[':accountId'] = Yii::app()->user->id;
 
         return $criteria;

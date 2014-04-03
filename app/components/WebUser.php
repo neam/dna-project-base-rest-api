@@ -106,7 +106,7 @@ class WebUser extends CWebUser
             return true;
         }
 
-        $operationRoleMap = MetaData::operationToRoles();
+        $operationRoleMap = MetaData::operationToRolesMap();
 
         // Handle guests
         if ($this->isGuest) {
@@ -143,6 +143,19 @@ class WebUser extends CWebUser
             return $operation === 'Import';
         }
 
+        /*
+        $map = MetaData::operationToRolesMap();
+
+        if (!isset($map[$operation]) || empty($map[$operation])) {
+            return false;
+        }
+
+        $roles = array();
+        foreach ($map[$operation] as $role) {
+            $roles[] = PermissionHelper::roleNameToId($role);
+        }
+        */
+
         $criteria = new CDbCriteria();
 
         // Add model ID condition
@@ -151,8 +164,9 @@ class WebUser extends CWebUser
             $criteria->params[':modelId'] = $params['id'];
         }
 
-        $criteria = PermissionHelper::applyAccessCriteria($criteria, MetaData::operationToRolesAndGroups($operation));
-        $result = ActiveRecord::model($modelClass)->findAll($criteria, array('roleNames' => MetaData::operationToRolesAndGroups($operation)));
+        $criteria = PermissionHelper::applyAccessCriteria($criteria, $operation);
+
+        $result = ActiveRecord::model($modelClass)->findAll($criteria);
 
         return count($result) > 0;
     }
@@ -164,7 +178,7 @@ class WebUser extends CWebUser
      */
     protected function _checkAccessWithoutModelClass($operation)
     {
-        $map = MetaData::operationToRoles();
+        $map = MetaData::operationToRolesMap();
 
         if (!isset($map[$operation]) || empty($map[$operation])) {
             return false;

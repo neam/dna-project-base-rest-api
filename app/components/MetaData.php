@@ -182,7 +182,27 @@ class Metadata
         );
     }
 
-    static public function operationToRoles()
+    /**
+     * Returns roles by operation.
+     * @param string $operation
+     * @return array
+     * @throws CException
+     */
+    static public function getRolesByOperation($operation)
+    {
+        $map = self::operationToRolesMap();
+
+        if (isset($map[$operation])) {
+            return $map[$operation];
+        } else {
+            throw new CException("Invalid operation: $operation");
+        }
+    }
+
+    /**
+     * @return array
+     */
+    static public function operationToRolesMap()
     {
         return array(
             'Edit' => array(

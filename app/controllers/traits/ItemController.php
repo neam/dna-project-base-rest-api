@@ -180,7 +180,7 @@ trait ItemController
                     'removeFromGroup',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('ChangeGroup');
+                    return $this->checkAccessById($_GET['modelId'], 'ChangeGroup');
                 },
             ),
             array('allow',
@@ -663,25 +663,27 @@ trait ItemController
 
     /**
      * Adds an item to a group.
-     * @param integer $node_id
+     * @param integer $nodeId
+     * @param integer $modelId
      * @param string $group
      * @param string $returnUrl
      */
-    public function actionAddToGroup($node_id, $group, $returnUrl)
+    public function actionAddToGroup($nodeId, $modelId, $group, $returnUrl)
     {
-        PermissionHelper::addNodeToGroup($node_id, $group);
+        PermissionHelper::addNodeToGroup($nodeId, $group);
         $this->redirect($returnUrl);
     }
 
     /**
      * Removes an item from a group.
-     * @param integer $node_id
-     * @param $group
+     * @param integer $nodeId
+     * @param integer $modelId
+     * @param string $group
      * @param string $returnUrl
      */
-    public function actionRemoveFromGroup($node_id, $group, $returnUrl)
+    public function actionRemoveFromGroup($nodeId, $modelId, $group, $returnUrl)
     {
-        PermissionHelper::removeNodeFromGroup($node_id, $group);
+        PermissionHelper::removeNodeFromGroup($nodeId, $group);
         $this->redirect($returnUrl);
     }
 
