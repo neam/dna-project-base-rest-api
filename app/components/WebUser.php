@@ -3,16 +3,6 @@
 class WebUser extends CWebUser
 {
     /**
-     * @var array
-     */
-    private $_groupMap = array();
-
-    /**
-     * @var array
-     */
-    private $_roleMap = array();
-
-    /**
      * Loads an Account model.
      * @return CActiveRecord|null
      */
@@ -47,31 +37,43 @@ class WebUser extends CWebUser
         $tree = array('All' => array());
 
         if (!$this->isGuest) {
-            foreach (PermissionHelper::getGroups() as $roleName => $roleId) {
-                $this->_groupMap[$roleId] = $roleName;
-            }
+            $groups = PermissionHelper::getGroups();
+            $roles = PermissionHelper::getRoles();
 
-            foreach (PermissionHelper::getRoles() as $roleName => $roleId) {
-                $this->_roleMap[$roleId] = $roleName;
-            }
+            foreach (PermissionHelper::getGroupsForAccount($this->id) as $gha) {
+                $groupName = $groups[$gha->group_id];
 
-            $criteria = new CDbCriteria();
-            $criteria->addCondition('account_id = :accountId');
-            $criteria->params[':accountId'] = $this->id;
-            $ghas = GroupHasAccount::model()->findAll($criteria);
-
-            foreach ($ghas as $gha) {
-                $groupName = $this->_groupMap[$gha->group_id];
                 if (!isset($tree[$groupName])) {
                     $tree[$groupName] = array();
                 }
-                $tree[$groupName][] = $this->_roleMap[$gha->role_id];
+
+                $tree[$groupName][] = $roles[$gha->role_id];
             }
         } else {
             $tree['All'][] = Role::GUEST;
         }
 
         return $tree;
+    }
+
+    /**
+     * @return array
+     */
+    public function getGroups()
+    {
+        $result = array();
+
+        $groups = PermissionHelper::getGroups();
+
+        foreach (PermissionHelper::getGroupsForAccount($this->id) as $gha) {
+            if (isset($result[$gha->group_id])) {
+                continue;
+            }
+
+            $result[$gha->group_id] = $groups[$gha->group_id];
+        }
+
+        return $result;
     }
 
     /**

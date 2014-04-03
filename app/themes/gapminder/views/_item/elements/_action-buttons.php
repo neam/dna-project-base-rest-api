@@ -59,29 +59,29 @@
         <?php endif; ?>
     </div>
     <div class="btn-group">
-        <?php foreach (MetaData::assignableGroups() as $groupName => $group): ?>
-            <?php if ($model->belongsToGroup($groupName)): ?>
+        <?php foreach (Yii::app()->user->getGroups() as $groupId => $groupName): ?>
+            <?php if ($model->belongsToGroup($groupId)): ?>
                 <?php echo TbHtml::linkButton(
-                    Yii::t('app', 'Remove from {group}', array('{group}' => $group)),
+                    Yii::t('app', 'Remove from {group}', array('{group}' => $groupName)),
                     array(
                         'icon' => TbHtml::ICON_MINUS,
                         'url' => array(
                             'removeFromGroup',
                             'node_id' => $model->node_id,
-                            'group' => $groupName,
+                            'group' => $groupId,
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
                     )
                 ); ?>
             <?php else: ?>
                 <?php echo TbHtml::linkButton(
-                    Yii::t('app', 'Add to {group}', array('{group}' => $group)),
+                    Yii::t('app', 'Add to {group}', array('{group}' => $groupName)),
                     array(
                         'icon' => TbHtml::ICON_PLUS,
                         'url' => array(
                             'addToGroup',
                             'node_id' => $model->node_id,
-                            'group' => $groupName,
+                            'group' => $groupId,
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
                     )

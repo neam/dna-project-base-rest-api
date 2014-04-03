@@ -95,6 +95,20 @@ class PermissionHelper
     }
 
     /**
+     * @param $accountId
+     *
+     * @return GroupHasAccount[]
+     */
+    static public function getGroupsForAccount($accountId)
+    {
+        $criteria = new CDbCriteria();
+        $criteria->addCondition('account_id = :accountId');
+        $criteria->params[':accountId'] = $accountId;
+
+        return GroupHasAccount::model()->findAll($criteria);
+    }
+
+    /**
      * Returns whether the given account has a specific role in a group.
      *
      * @param int $accountId
@@ -190,8 +204,7 @@ class PermissionHelper
      */
     static public function roleNameToId($name)
     {
-        $roles = self::getRoles();
-        return isset($roles[$name]) ? $roles[$name] : -1;
+        return array_search($name, self::getRoles());
     }
 
     /**
@@ -203,7 +216,8 @@ class PermissionHelper
      */
     static public function roleIdToName($id)
     {
-        return array_search($id, self::getRoles());
+        $roles = self::getRoles();
+        return isset($roles[$id]) ? $roles[$id] : -1;
     }
 
     /**
@@ -215,8 +229,7 @@ class PermissionHelper
      */
     static public function groupNameToId($name)
     {
-        $groups = self::getGroups();
-        return isset($groups[$name]) ? $groups[$name] : -1;
+        return array_search($name, self::getGroups());
     }
 
     /**
@@ -228,7 +241,8 @@ class PermissionHelper
      */
     static public function groupIdToName($id)
     {
-        return array_search($id, self::getGroups());
+        $groups = self::getGroups();
+        return isset($groups[$id]) ? $groups[$id] : -1;
     }
 
     /**
@@ -241,7 +255,7 @@ class PermissionHelper
         if (empty(self::$_roles)) {
             $roles = array();
             foreach (Role::model()->findAll() as $model) {
-                $roles[$model->title] = $model->id;
+                $roles[$model->id] = $model->title;
             }
             self::$_roles = $roles;
         }
@@ -259,7 +273,7 @@ class PermissionHelper
         if (empty(self::$_groups)) {
             $groups = array();
             foreach (Group::model()->findAll() as $model) {
-                $groups[$model->title] = $model->id;
+                $groups[$model->id] = $model->title;
             }
             self::$_groups = $groups;
         }
@@ -290,12 +304,13 @@ class PermissionHelper
                 $roleIds[] = self::roleNameToId($roleName);
             }
             if (!empty($roleIds)) {
-                $key = ":groupId_$counter";
+                $tableAlias = "`gha_$counter`";
+                $groupId = ":groupId_$counter";
                 $roleIds = implode(',', $roleIds);
-                $joins[] = "LEFT JOIN `group_has_account` AS `gha_$counter` ON (`gha_$counter`.`group_id` = $key AND `gha_$counter`.`role_id` IN ($roleIds))";
-                $criteria->params[$key] = PermissionHelper::groupNameToId($groupName);
+                $joins[] = "LEFT JOIN `group_has_account` AS $tableAlias ON ($tableAlias.`group_id` = $groupId AND $tableAlias.`role_id` IN ($roleIds) AND $tableAlias.`account_id` = :accountId)";
+                $criteria->params[$groupId] = PermissionHelper::groupNameToId($groupName);
+                $counter++;
             }
-            $counter++;
         }
 
         // All items should be found only once.
