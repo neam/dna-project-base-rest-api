@@ -2,6 +2,10 @@
 
 class ActiveRecord extends CActiveRecord
 {
+    /**
+     * @var boolean whether or not this model instance should use access restrictions
+     */
+    public $accessRestricted;
 
     // Hard code source language to en for now. TODO: Be able to choose and store source language
     public $source_language = 'en';
@@ -278,11 +282,6 @@ class ActiveRecord extends CActiveRecord
     {
         return parent::count($this->applyAccessCriteria($sql, $params));
     }
-
-    /**
-     * @var boolean whether or not this model instance should use access restrictions
-     */
-    public $accessRestricted;
 
     /**
      * Applies the access criteria.
