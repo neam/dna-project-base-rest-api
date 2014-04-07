@@ -315,6 +315,7 @@ class ActiveRecord extends CActiveRecord
             return $criteria;
         }
 
+        // TODO: Always use an operation; here it could be 'read'.
         return PermissionHelper::applyAccessCriteria($criteria);
     }
 }
