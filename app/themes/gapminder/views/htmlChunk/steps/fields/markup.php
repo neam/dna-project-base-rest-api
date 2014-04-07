@@ -1,7 +1,7 @@
 <?php
 /**
- * @var ExamQuestionAlternativeController $this
- * @var ExamQuestionAlternative $model
+ * @var HtmlChunkController $this
+ * @var HtmlChunk $model
  * @var AppActiveForm $form
  */
 ?>
