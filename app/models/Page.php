@@ -90,4 +90,11 @@ class Page extends BasePage
         );
     }
 
+    public function flowStepCaptions()
+    {
+        return array(
+            'info' => Yii::t('app', 'Info'),
+        );
+    }
+
 }

@@ -10,6 +10,7 @@
     $model,
     'correct',
     array(
+        'disabled' => !$this->canEditSourceLanguage(),
         'labelOptions' => array(
             'label' => Html::attributeLabelWithTooltip($model, 'correct', 'correct'),
         ),
