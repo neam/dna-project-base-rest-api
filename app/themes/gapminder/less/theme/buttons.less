@@ -1,0 +1,100 @@
+/*
+Buttons
+
+Markup:
+<a class="btn {$modifiers}" href="#">a.btn</a>
+<button class="btn {$modifiers}">button.btn</button>
+<input type="button" class="btn {$modifiers}" value="input[type='button']">
+
+.btn-link           - Link button.
+.btn-default        - Default button.
+.btn-default:hover  - Default button, hovered.
+.btn-primary        - Primary button.
+.btn-primary:hover  - Primary button, hovered.
+
+Styleguide 1
+*/
+.btn {
+  .btn;
+  background-color: @brand-secondary;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  padding: 15px 30px;
+
+  &:hover {
+    background-color: darken(@brand-secondary, 5%);
+    color: #fff;
+  }
+
+  // Default buttons
+  &.btn-default {
+    background-color: @brand-secondary;
+
+    &:hover {
+      background-color: darken(@brand-secondary, 5%);
+      color: #fff;
+    }
+  }
+
+  // Primary buttons
+  &.btn-primary {
+    background-color: @brand-primary;
+
+    &:hover {
+      background-color: @brand-secondary;
+      color: #fff;
+    }
+  }
+
+  // Link buttons
+  &.btn-link {
+    .btn-link;
+  }
+}
+
+/*
+Small buttons
+
+Markup:
+<a class="btn btn-sm {$modifiers}" href="#">a.btn</a>
+<button class="btn btn-sm {$modifiers}">button.btn</button>
+<input type="button" class="btn btn-sm {$modifiers}" value="input[type='button']">
+
+.btn-link           - Link button.
+.btn-default        - Default button.
+.btn-default:hover  - Default button, hovered.
+.btn-primary        - Primary button.
+.btn-primary:hover  - Primary button, hovered.
+
+Styleguide 1.1
+*/
+.btn-sm {
+  .btn;
+  .btn-sm;
+  border-radius: 20px;
+  padding: 4px 20px;
+}
+
+/*
+Extra small buttons
+
+Markup:
+<a class="btn btn-xs {$modifiers}" href="#">a.btn</a>
+<button class="btn btn-xs {$modifiers}">button.btn</button>
+<input type="button" class="btn btn-xs {$modifiers}" value="input[type='button']">
+
+.btn-link           - Link button.
+.btn-default        - Default button.
+.btn-default:hover  - Default button, hovered.
+.btn-primary        - Primary button.
+.btn-primary:hover  - Primary button, hovered.
+
+Styleguide 1.2
+*/
+.btn-xs {
+  .btn;
+  .btn-xs;
+  border-radius: 20px;
+  padding: 2px 15px;
+}

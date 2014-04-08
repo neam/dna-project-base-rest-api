@@ -7,6 +7,17 @@ module.exports = function(grunt) {
 
     // Project and task configuration
     grunt.initConfig({
+        kss: {
+            options: {
+                includeType: 'less',
+                includePath: 'app/themes/gapminder/less/theme/main.less'
+            },
+            dist: {
+                files: {
+                    'app/themes/gapminder/less/styleguide': ['app/themes/gapminder/less/theme']
+                }
+            }
+        },
         less: {
             theme: {
                 files: {
@@ -16,14 +27,17 @@ module.exports = function(grunt) {
         },
         watch: {
             styles: {
-                files: ['app/themes/gapminder/less/**/*.less' ],
-                tasks: ['less'],
+                files: ['app/themes/gapminder/less/**/*.less'],
+                tasks: ['less', 'kss'],
                 options: {
                     spawn: false
                 }
             }
         }
     });
+
+    // Load plugins
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Define tasks
     grunt.registerTask('default', []);
