@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <?php Html::registerCss(); ?>
     <?php Html::jsDirtyForms(); // TODO: Load this only when needed. ?>
+    <?php Yii::app()->ga->registerTracking(); ?>
 </head>
 <body>
     <?php $this->renderPartial('application.themes.gapminder.views.layouts._menu'); ?>

@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e9018bae1377d69ff6fe66e5b10e5ff5",
+    "hash": "036cf303b5515f1e4d92d319d9b98748",
     "packages": [
         {
             "name": "alchemy/zippy",
-            "version": "0.1.1",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/alchemy-fr/Zippy.git",
-                "reference": "7c9211377881a98f84ca382f1e5792e8a27019e5"
+                "reference": "e652161e1d99f647b34c3ff9695bb4bb0b8837cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alchemy-fr/Zippy/zipball/7c9211377881a98f84ca382f1e5792e8a27019e5",
-                "reference": "7c9211377881a98f84ca382f1e5792e8a27019e5",
+                "url": "https://api.github.com/repos/alchemy-fr/Zippy/zipball/e652161e1d99f647b34c3ff9695bb4bb0b8837cf",
+                "reference": "e652161e1d99f647b34c3ff9695bb4bb0b8837cf",
                 "shasum": ""
             },
             "require": {
@@ -29,6 +29,7 @@
             },
             "require-dev": {
                 "ext-zip": "*",
+                "phpunit/phpunit": "~3.7",
                 "sami/sami": "dev-master@dev",
                 "symfony/finder": "~2.0"
             },
@@ -38,7 +39,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.1.x-dev"
+                    "dev-master": "0.2.x-dev"
                 }
             },
             "autoload": {
@@ -64,7 +65,7 @@
                 "tar",
                 "zip"
             ],
-            "time": "2013-04-12 10:24:45"
+            "time": "2014-04-04 16:24:46"
         },
         {
             "name": "bwoester/yii-event-interceptor",
@@ -584,6 +585,44 @@
             "time": "2014-01-28 22:29:15"
         },
         {
+            "name": "jalle19/yii-ga",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jalle19/yii-ga.git",
+                "reference": "d4520f4bd6b83156ef7ac029f9e56b8cbec9c002"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jalle19/yii-ga/zipball/d4520f4bd6b83156ef7ac029f9e56b8cbec9c002",
+                "reference": "d4520f4bd6b83156ef7ac029f9e56b8cbec9c002",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "yiisoft/yii": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "yiiga": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "description": "Google Analytics extension for the Yii framework",
+            "homepage": "https://github.com/Jalle19/yii-ga",
+            "keywords": [
+                "analytics",
+                "ga",
+                "googleanalytics",
+                "yii"
+            ],
+            "time": "2013-07-09 12:38:11"
+        },
+        {
             "name": "kswedberg/jquery-smooth-scroll",
             "version": "1.4.10",
             "source": {
@@ -636,12 +675,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "0ef15faae274dc7630c88f79883ecf9839d79765"
+                "reference": "e7b26776859ee6653d10b2e4be74798b6cc92430"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/0ef15faae274dc7630c88f79883ecf9839d79765",
-                "reference": "0ef15faae274dc7630c88f79883ecf9839d79765",
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/e7b26776859ee6653d10b2e4be74798b6cc92430",
+                "reference": "e7b26776859ee6653d10b2e4be74798b6cc92430",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -663,7 +702,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-03-20 10:05:58"
+            "time": "2014-03-24 13:40:06"
         },
         {
             "name": "motin/yii-owner-behavior",
@@ -1336,12 +1375,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/p3pages.git",
-                "reference": "0.17.3"
+                "reference": "0.17.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/0.17.3",
-                "reference": "0.17.3",
+                "url": "https://api.github.com/repos/schmunk42/p3pages/zipball/0.17.4",
+                "reference": "0.17.4",
                 "shasum": ""
             },
             "require": {
@@ -1382,10 +1421,10 @@
                 "tree"
             ],
             "support": {
-                "source": "https://github.com/schmunk42/p3pages/tree/0.17.3",
+                "source": "https://github.com/schmunk42/p3pages/tree/0.17.4",
                 "issues": "https://github.com/schmunk42/p3pages/issues"
             },
-            "time": "2014-03-16 16:21:24"
+            "time": "2014-03-28 13:26:34"
         },
         {
             "name": "phundament/p3widgets",
@@ -1940,7 +1979,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.4.2",
+            "version": "v2.4.3",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
@@ -1996,17 +2035,17 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.4.2",
+            "version": "v2.4.3",
             "target-dir": "Symfony/Component/Filesystem",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "7e65abb06d3b38f4be89266fe3fb4a759544e713"
+                "reference": "b717952487176a993e9b12a08b87beae25ae419c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/7e65abb06d3b38f4be89266fe3fb4a759544e713",
-                "reference": "7e65abb06d3b38f4be89266fe3fb4a759544e713",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/b717952487176a993e9b12a08b87beae25ae419c",
+                "reference": "b717952487176a993e9b12a08b87beae25ae419c",
                 "shasum": ""
             },
             "require": {
@@ -2041,21 +2080,21 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-07 13:28:54"
+            "time": "2014-03-26 11:55:03"
         },
         {
             "name": "symfony/process",
-            "version": "v2.4.2",
+            "version": "v2.4.3",
             "target-dir": "Symfony/Component/Process",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "c175448bac997556f8ab972908a4e14c7291fb03"
+                "reference": "c09c3b08455c35688eee3e481fdfc85518ef01d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/c175448bac997556f8ab972908a4e14c7291fb03",
-                "reference": "c175448bac997556f8ab972908a4e14c7291fb03",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/c09c3b08455c35688eee3e481fdfc85518ef01d7",
+                "reference": "c09c3b08455c35688eee3e481fdfc85518ef01d7",
                 "shasum": ""
             },
             "require": {
@@ -2090,7 +2129,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2014-02-11 13:52:09"
+            "time": "2014-03-26 11:35:33"
         },
         {
             "name": "twitter/bootstrap",
@@ -2217,12 +2256,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii-backend-theme.git",
-                "reference": "8631a672ec0c2a050805f6d1795705ed8cbddc79"
+                "reference": "86a9633aaf04b2c10e8080cdb8cf64e8d87e3b05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/8631a672ec0c2a050805f6d1795705ed8cbddc79",
-                "reference": "8631a672ec0c2a050805f6d1795705ed8cbddc79",
+                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/86a9633aaf04b2c10e8080cdb8cf64e8d87e3b05",
+                "reference": "86a9633aaf04b2c10e8080cdb8cf64e8d87e3b05",
                 "shasum": ""
             },
             "require": {
@@ -2255,7 +2294,7 @@
                 "theme",
                 "yii"
             ],
-            "time": "2013-11-21 02:07:14"
+            "time": "2014-03-21 17:02:50"
         },
         {
             "name": "phundament/gii-template-collection",
@@ -2409,6 +2448,12 @@
             "alias_normalized": "0.7.2.1",
             "version": "9999999-dev",
             "package": "yiiext/migrate-command"
+        },
+        {
+            "alias": "dev-master",
+            "alias_normalized": "9999999-dev",
+            "version": "1.1.14.0",
+            "package": "yiisoft/yii"
         }
     ],
     "minimum-stability": "stable",

@@ -367,6 +367,11 @@ $mainConfig = array(
                 ),
             ),
         ),
+        'ga' => array(
+            'class' => 'yiiga\components\GoogleAnalytics',
+            'accountId' => 'UA-XXXXXXX-X', // TODO: Use the real account ID.
+            'cookieDomain' => 'cms.gapminder.org', // optional
+        ),
         'image'         => array(
             'class'  => 'vendor.phundament.p3extensions.components.image.CImageComponent',
             // GD or ImageMagick
