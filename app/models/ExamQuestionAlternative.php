@@ -51,11 +51,7 @@ class ExamQuestionAlternative extends BaseExamQuestionAlternative
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
-            array(
-                array('markup_' . $this->source_language, 'required', 'on' => 'preview,public'),
-                array('correct', 'required', 'on' => 'preview,public'),
-                array('slug_' . $this->source_language, 'required', 'on' => 'publishable'),
-            )
+            array()
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;

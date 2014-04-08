@@ -105,4 +105,11 @@ class Section extends BaseSection
         );
     }
 
+    public function flowStepCaptions()
+    {
+        return array(
+            'info' => Yii::t('app', 'Info'),
+        );
+    }
+
 }

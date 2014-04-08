@@ -2,10 +2,6 @@
 
 class Html extends TbHtml
 {
-    // App constants.
-    const THEME_FRONTEND = 'frontend';
-    const THEME_BACKEND2 = 'backend2';
-
     // HTML class constants.
     const ITEM_FORM_FIELD_CLASS = 'span9';
 
@@ -17,52 +13,6 @@ class Html extends TbHtml
         $clientScript = Yii::app()->getClientScript();
         $clientScript->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
         $clientScript->registerLinkTag('shortcut icon', null, '/favicon.ico', null, null);
-    }
-
-    /**
-     * Registers the CSS files for the current theme.
-     */
-    public static function registerCss()
-    {
-        $theme = Yii::app()->theme->name;
-
-        // todo: refactor this.
-        switch ($theme) {
-            case self::THEME_FRONTEND:
-                $path = 'assets';
-                $files = array(
-                    'main.css',
-                );
-                break;
-
-            case self::THEME_BACKEND2:
-                $path = 'css';
-                $files = array(
-                    'backend.css',
-                );
-                break;
-
-            default:
-                $path = 'assets';
-                $files = array('main.css');
-                break;
-        }
-
-        if (!empty($files)) {
-            // Set the CSS path
-            $forceCopy = (defined('DEV') && DEV) || !empty($_GET['refresh_assets']) ? true : false;
-            $css = Yii::app()->assetManager->publish(
-                Yii::app()->theme->basePath . '/' . $path,
-                true, // hash by name
-                -1, // level
-                $forceCopy
-            );
-
-            $clientScript = Yii::app()->getClientScript();
-            foreach ($files as $file) {
-                $clientScript->registerCssFile($css . '/' . $file);
-            }
-        }
     }
 
     /**

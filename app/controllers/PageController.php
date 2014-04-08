@@ -2,7 +2,10 @@
 
 class PageController extends Controller
 {
-    #public $layout='//layouts/column2';
+
+    use ItemController;
+
+    public $modelClass = 'Page';
 
     public $defaultAction = "admin";
     public $scenario = "crud";
@@ -16,7 +19,7 @@ class PageController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array(
                 'allow',
                 'actions' => array(
@@ -35,7 +38,7 @@ class PageController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)

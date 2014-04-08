@@ -78,6 +78,17 @@ class DownloadLink extends BaseDownloadLink
         );
     }
 
+    /**
+     * Defines the flow step captions.
+     * @return array
+     */
+    public function flowStepCaptions()
+    {
+        return array(
+            'markup' => Yii::t('app', 'Markup'),
+        );
+    }
+
     public function search($criteria = null)
     {
         if (is_null($criteria)) {
@@ -87,5 +98,4 @@ class DownloadLink extends BaseDownloadLink
             'criteria' => $this->searchCriteria($criteria),
         ));
     }
-
 }
