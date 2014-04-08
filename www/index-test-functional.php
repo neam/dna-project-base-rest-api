@@ -16,8 +16,11 @@ require_once(dirname(__FILE__).'/../vendor/autoload.php');
 // load Yii
 require_once($dir.'vendor/yiisoft/yii/framework/yii.php');
 
+// load custom WebApplication class
+require_once($dir . 'app/components/WebApplication.php');
+
 // merge configurations
 $config = CMap::mergeArray($main,$env,$local);
 
 // start web application
-Yii::createWebApplication($config)->run();
+Yii::createApplication('WebApplication', $config)->run();

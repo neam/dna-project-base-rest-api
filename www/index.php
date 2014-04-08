@@ -5,10 +5,13 @@ $dir = realpath(dirname(__FILE__).'/..').'/';
 // register composer autoloader
 require_once(dirname(__FILE__).'/../vendor/autoload.php');
 
-//define("YII_DEBUG", true);
+// define("YII_DEBUG", true);
 
 // load Yii
-require_once($dir.'vendor/yiisoft/yii/framework/yii.php');
+require_once($dir . 'vendor/yiisoft/yii/framework/yii.php');
+
+// load custom WebApplication class
+require_once($dir . 'app/components/WebApplication.php');
 
 // config files
 $main   = require($dir.'app/config/main.php');
@@ -23,4 +26,4 @@ if (defined('YII_DEBUG') && YII_DEBUG)
 $config = CMap::mergeArray($main,$env,$local);
 
 // start web application
-Yii::createWebApplication($config)->run();
+Yii::createApplication('WebApplication', $config)->run();
