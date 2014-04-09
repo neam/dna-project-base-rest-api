@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -x;
 
 ./_start-local-server.sh

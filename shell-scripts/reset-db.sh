@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "This command is too dangerous to keep activated in git. To use this locally, comment out these exit line below, but DO NOT commit this shellscript in an activated form"
 exit;
 

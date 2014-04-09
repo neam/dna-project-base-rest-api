@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -x
 git pull --rebase
 ./_provision.sh

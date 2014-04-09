@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ "$connectionID" == "" ]; then
     connectionID=db
 fi
@@ -16,3 +18,5 @@ app/yiic authorizationhierarchy reset
 app/yiic authorizationhierarchy build
 app/yiic databaseviewgenerator --connectionID=$connectionID item
 app/yiic fixture --connectionID=$connectionID load
+
+exit 0
