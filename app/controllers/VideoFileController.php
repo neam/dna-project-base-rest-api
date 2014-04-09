@@ -314,8 +314,6 @@ class VideoFileController extends Controller
     public function actionIndex()
     {
         $dataProvider = new CActiveDataProvider('VideoFile');
-        $criteria = $this->getTranslatorCriteria(VideoFile::model()->tableName());
-        $dataProvider->setCriteria($criteria);
         $this->render('index', array('dataProvider' => $dataProvider));
     }
 

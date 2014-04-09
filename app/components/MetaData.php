@@ -149,14 +149,24 @@ class Metadata
      */
     static public function operationToSystemRolesMap()
     {
-        return array(
-            'Browse' => array(
-                Role::GUEST,
-                Role::AUTHENTICATED,
+        $addItems = array();
+        foreach (DataModel::crudModels() as $modelClass => $table) {
+            $addItems[$modelClass . ".Add"] = array(
+                Role::AUTHENTICATED
+            );
+        }
+
+        return array_merge(
+            array(
+                'Browse' => array(
+                    Role::GUEST,
+                    Role::AUTHENTICATED,
+                ),
+                'View' => array(
+                    Role::GUEST,
+                ),
             ),
-            'View' => array(
-                Role::GUEST,
-            ),
+            $addItems
         );
     }
 

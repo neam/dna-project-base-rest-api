@@ -89,7 +89,7 @@ class WebUser extends CWebUser
             $groups = PermissionHelper::getGroups();
             $roles = PermissionHelper::getRoles();
 
-            foreach (PermissionHelper::getGroupsForAccount($this->id) as $gha) {
+            foreach (PermissionHelper::getGroupHasAccountsForAccount($this->id) as $gha) {
                 $groupName = $groups[$gha->group_id];
 
                 if (!isset($tree[$groupName])) {
@@ -114,7 +114,7 @@ class WebUser extends CWebUser
 
         $groups = PermissionHelper::getGroups();
 
-        foreach (PermissionHelper::getGroupsForAccount($this->id) as $gha) {
+        foreach (PermissionHelper::getGroupHasAccountsForAccount($this->id) as $gha) {
             if (isset($result[$gha->group_id])) {
                 continue;
             }
