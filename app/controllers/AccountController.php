@@ -66,8 +66,8 @@ class AccountController extends Controller
                     'translations',
                     'profile',
                     'history',
-                    'addToGroup',
-                    'removeFromGroup',
+                    'addToGroup', // TODO: restrict access to group admins and moderators
+                    'removeFromGroup', // TODO: restrict access to group admins and moderators
                 ),
                 'users' => array('@'),
             ),
