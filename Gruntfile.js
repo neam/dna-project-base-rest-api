@@ -1,9 +1,6 @@
-// The wrapper function
 module.exports = function(grunt) {
-
     // Load plugins
     require('load-grunt-tasks')(grunt);
-
 
     // Project and task configuration
     grunt.initConfig({
