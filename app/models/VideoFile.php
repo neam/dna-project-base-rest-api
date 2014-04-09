@@ -311,7 +311,7 @@ class VideoFile extends BaseVideoFile
     /**
      * The attributes that is returned by the REST api
      */
-    public function getAllAttributes()
+    public function getAllAttributes($includeRelated = true)
     {
 
         $response = new stdClass();
@@ -330,7 +330,15 @@ class VideoFile extends BaseVideoFile
         }
         $response->clipWebm = !is_null($this->clip_webm_media_id) ? $this->clipWebmMedia->createUrl('original-public-webm', true) : null;
         $response->clipMp4 = !is_null($this->clip_mp4_media_id) ? $this->clipMp4Media->createUrl('original-public-mp4', true) : null;
-        $response->related = $this->related;
+
+
+        if ($includeRelated) {
+            $response->related = array();
+            foreach ($this->related as $related) {
+                $response->related[] = $related->item()->getAllAttributes(false);
+            }
+        }
+
         //$response->overlays = $this->overlays;
         //$response->dubbing = $this->dubbing;
 
