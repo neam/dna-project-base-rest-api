@@ -23,6 +23,7 @@
     "grunt": "~0.4.1",
     "grunt-contrib-less": "~0.6.4",
     "grunt-contrib-watch": "~0.5.1",
+    "grunt-kss": "~0.2.6",
     "load-grunt-tasks": "~0.3.0"
   }
 }

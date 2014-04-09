@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <title>KSS: Living Styleguide</title>
+  <meta name="description" content="">
+  <meta name="generator" content="kss-node" />
+
+  <meta name="viewport" content="width=device-width">
+
+  <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="public/kss.css">
+  <link rel="stylesheet" href="public/style.css">
+
+</head>
+<body><div id="kss-wrapper">
+  <div id="kss-nav">
+    <header id="kss-header">
+      <hgroup><h1>kss-node Styleguide</h1></hgroup>
+    </header>
+    <aside>
+      <nav><ul>
+        <li><a href="index.html">0.0: Overview</a></li>
+        
+          <li><a href="section-1.html">1.0: Buttons</a></li>
+        
+          <li><a href="section-2.html">2.0: Forms</a></li>
+        
+          <li><a href="section-3.html">3.0: Progress bars</a></li>
+        
+          <li><a href="section-4.html">4.0: Alerts</a></li>
+        
+          <li><a href="section-5.html">5.0: Colors</a></li>
+        
+      </ul></nav>
+    </aside>
+  </div>
+  <div role="main" id="kss-main">
+    <article id="kss-content">
+      
+
+        
+        
+          
+            <h1 class="kss-title"><span class="kss-ref">2.0</span> - Forms</h1>
+          
+            
+                
+            
+           
+        
+          
+           <section class="kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">2.1</span> - Input fields</h1>
+          
+            
+                <div class="kss-box"></div>
+                <table class="kss-mod-list">
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Default styling</p></td>
+                    <td class="kss-mod-name"></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><input type="text" class="form-control" value="input[type='text'].form-control"></td>
+                  </tr>
+                
+                </table>
+                <div class="kss-markup">
+                  <pre class="prettyprint lang-html">&lt;input type=&quot;text&quot; class=&quot;form-control&quot; value=&quot;input[type=&#x27;text&#x27;].form-control&quot;&gt;</pre>
+                </div>
+            
+          
+            </section>
+          
+        
+          
+           <section class="kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">2.2</span> - Textareas</h1>
+          
+            
+                <div class="kss-box"></div>
+                <table class="kss-mod-list">
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Default styling</p></td>
+                    <td class="kss-mod-name"></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><textarea class="form-control" rows="3">textarea.form-control</textarea></td>
+                  </tr>
+                
+                </table>
+                <div class="kss-markup">
+                  <pre class="prettyprint lang-html">&lt;textarea class=&quot;form-control&quot; rows=&quot;3&quot;&gt;textarea.form-control&lt;/textarea&gt;</pre>
+                </div>
+            
+          
+            </section>
+          
+        
+          
+           <section class="kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">2.3</span> - Checkboxes</h1>
+          
+            
+                <div class="kss-box"><p>TODO: Replace check icon and change label font styles.</p>
+</div>
+                <table class="kss-mod-list">
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Default styling</p></td>
+                    <td class="kss-mod-name"></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><input id="check1" type="checkbox" name="check" value="1">
+<label for="check1">Checkbox Label</label></td>
+                  </tr>
+                
+                </table>
+                <div class="kss-markup">
+                  <pre class="prettyprint lang-html">&lt;input id=&quot;check1&quot; type=&quot;checkbox&quot; name=&quot;check&quot; value=&quot;1&quot;&gt;
+&lt;label for=&quot;check1&quot;&gt;Checkbox Label&lt;/label&gt;</pre>
+                </div>
+            
+          
+            </section>
+          
+        
+          
+           <section class="kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">2.4</span> - Select fields</h1>
+          
+            
+                <div class="kss-box"><p>Dropdown functionality is to be provided by JavaScript.</p>
+</div>
+                <table class="kss-mod-list">
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Default styling</p></td>
+                    <td class="kss-mod-name"></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><div class="select">
+  <span class="selected">Selected option</span>
+  <div class="select-button">
+    <!-- <span class="glyphicon glyphicon-chevron-down"></span> -->
+  </div>
+</div></td>
+                  </tr>
+                
+                </table>
+                <div class="kss-markup">
+                  <pre class="prettyprint lang-html">&lt;div class=&quot;select&quot;&gt;
+  &lt;span class=&quot;selected&quot;&gt;Selected option&lt;/span&gt;
+  &lt;div class=&quot;select-button&quot;&gt;
+    &lt;!-- &lt;span class=&quot;glyphicon glyphicon-chevron-down&quot;&gt;&lt;/span&gt; --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+            
+          
+            </section>
+          
+        
+      
+    </article>
+  </div>
+  <footer>
+    
+  </footer>
+  <!-- SCRIPTS -->
+  <script src="public/kss.js"></script>
+  <script src="public/prettify.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var sidebarAdjust = function() {
+        // Match footer/body height
+        var height = Math.max($(window).height(), $('#kss-main').height());
+
+        if ($(window).width() <= 768) {
+          $('#kss-main, #kss-nav').height('auto');
+        } else {
+          $('#kss-main, #kss-nav').height(height);
+        }
+      };
+
+      $(window).resize(sidebarAdjust);
+      $(window).scroll(sidebarAdjust);
+      sidebarAdjust();
+
+      // Ensure code blocks are highlighted properly...
+      $('pre>code').addClass('prettyprint');
+      prettyPrint();
+
+    });
+  </script>
+
+  
+  
+</div></body>
+</html>
