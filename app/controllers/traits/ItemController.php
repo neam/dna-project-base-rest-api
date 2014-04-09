@@ -34,7 +34,7 @@ trait ItemController
      * @param string $operation the operation.
      * @return boolean
      */
-    public function checkAccessById($id, $operation)
+    public function checkModelOperationAccessById($id, $operation)
     {
         /** @var ActiveRecord|ItemTrait $model */
         $model = ActiveRecord::model($this->modelClass)->findByPk($id);
@@ -61,7 +61,7 @@ trait ItemController
                 ),
                 'users' => array('*'),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'View');
+                    return $this->checkModelOperationAccessById($this->modelId, 'View');
                 },
             ),
             array('allow',
@@ -94,7 +94,7 @@ trait ItemController
                     'saveDraft',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Edit');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Edit');
                 },
             ),
             array('allow',
@@ -120,7 +120,7 @@ trait ItemController
                     'evaluate',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Evaluate');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Evaluate');
                 },
             ),
             array('allow',
@@ -129,7 +129,7 @@ trait ItemController
                     'submitForPublishing',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'PrepareForPublishing');
+                    return $this->checkModelOperationAccessById($this->modelId, 'PrepareForPublishing');
                 },
             ),
             array('allow',
@@ -137,7 +137,7 @@ trait ItemController
                     'proofread',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Proofread');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Proofread');
                 },
             ),
             array('allow',
@@ -145,7 +145,7 @@ trait ItemController
                     'preview',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Preview');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Preview');
                 },
             ),
             array('allow',
@@ -154,7 +154,7 @@ trait ItemController
                     'translationOverview',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Translate');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Translate');
                 },
             ),
             array('allow',
@@ -163,7 +163,7 @@ trait ItemController
                     'unpublish',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Publish');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Publish');
                 },
             ),
             array('allow',
@@ -171,7 +171,7 @@ trait ItemController
                     'edit',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Edit');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Edit');
                 },
             ),
             array('allow',
@@ -180,7 +180,7 @@ trait ItemController
                     'removeFromGroup',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($_GET['modelId'], 'ChangeGroup');
+                    return $this->checkModelOperationAccessById($_GET['modelId'], 'ChangeGroup');
                 },
             ),
             array('allow',
@@ -188,7 +188,7 @@ trait ItemController
                     'clone',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Clone');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Clone');
                 },
             ),
             array('allow',
@@ -196,7 +196,7 @@ trait ItemController
                     'remove',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Remove');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Remove');
                 },
             ),
         );
