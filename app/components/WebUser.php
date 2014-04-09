@@ -2,6 +2,55 @@
 
 class WebUser extends CWebUser
 {
+
+    /**
+     * Checks if the user is an admin.
+     * @return boolean
+     */
+    public function getSystemRoles()
+    {
+        $systemRoles = array();
+        if ($this->isGuest) {
+            $systemRoles[] = Role::GUEST;
+        } else {
+            $systemRoles[] = Role::AUTHENTICATED;
+        }
+        return $systemRoles;
+    }
+
+    /**
+     * Checks access using RBAC
+     */
+    public function checkAccess($operation, $params = array(), $allowCaching = true)
+    {
+
+        // Auto-grant access to admins
+        if ($this->isAdmin()) {
+            return true;
+        }
+
+        // Can we grant access using system roles?
+        $operationRoleMap = MetaData::operationToSystemRolesMap();
+        foreach ($this->getSystemRoles() as $role) {
+            if (isset($operationRoleMap[$operation]) && in_array($role, $operationRoleMap[$operation])) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    /**
+     *
+     */
+    public function checkGroupBasedAccess($group, $operation, $params = array(), $allowCaching = true)
+    {
+        return false;
+        // todo
+        $operationRoleMap = MetaData::operationToGroupRolesMap();
+    }
+
     /**
      * Loads an Account model.
      * @return CActiveRecord|null
@@ -99,7 +148,7 @@ class WebUser extends CWebUser
     /**
      * @inheritDoc
      */
-    public function checkAccess($operation, $params = array(), $allowCaching = true)
+    public function _checkAccess($operation, $params = array(), $allowCaching = true)
     {
         // Auto-grant access to admins
         if ($this->isAdmin) {

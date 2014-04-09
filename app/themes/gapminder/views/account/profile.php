@@ -68,10 +68,12 @@
                 <?php echo TbHtml::link(Yii::t('account', 'Apply for permission'), '#'); ?>
                 */ ?>
                 <h2 class="sidebar-heading"><?php echo Yii::t('account', 'Roles'); ?></h2>
-                <?php $this->renderPartial(
+                <?php
+                //Account::model()->findByPk(Yii::app()->user->id)->assignDefaultGroupRoles();
+                $this->renderPartial(
                     'profile/_permissions',
                     array(
-                        'roles' => $model->getRoles(),
+                        'ghas' => $model->groupHasAccounts,
                     )
                 ); ?>
                 <?php /*

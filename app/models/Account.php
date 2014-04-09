@@ -79,9 +79,19 @@ class Account extends BaseAccount
      * Returns the roles.
      * @return array
      */
-    public function getRoles()
+    public function getGroupHasAccounts()
     {
-        return array('@todo'); // TODO: Get roles.
+        return U::arAttributes(PermissionHelper::getGroupHasAccountsForAccount($this->id));
+    }
+
+    /**
+     * Automatically assign default group roles to new members
+     */
+    public function assignDefaultGroupRoles()
+    {
+        PermissionHelper::addAccountToGroup($this->id, Group::GAPMINDER_ORG, Role::GROUP_TRANSLATOR);
+        PermissionHelper::addAccountToGroup($this->id, Group::GAPMINDER_ORG, Role::GROUP_CONTRIBUTOR);
+        PermissionHelper::addAccountToGroup($this->id, Group::GAPMINDER_ORG, Role::GROUP_MEMBER);
     }
 
     /**

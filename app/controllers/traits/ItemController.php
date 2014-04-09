@@ -1124,7 +1124,7 @@ trait ItemController
     public function canEditSourceLanguage()
     {
         if ($this->action->id === 'translate') {
-            if (Yii::app()->user->isAdmin) {
+            if (Yii::app()->user->isAdmin()) {
                 return true;
             }
 

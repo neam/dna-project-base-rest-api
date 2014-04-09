@@ -21,7 +21,7 @@ Yii::app()->clientScript->registerScript(
                     "label" => Yii::t("model", "Manage"),
                     "icon" => "glyphicon-edit",
                     "url" => array("admin"),
-                    "visible" => Yii::app()->user->checkAccess('Administrator')
+                    "visible" => Yii::app()->user->isAdmin()
                 )
             ); ?>
             <?php $this->widget(

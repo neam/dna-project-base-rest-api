@@ -37,6 +37,9 @@ class MemberSteps extends \WebGuy
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
         $I->click(RegistrationPage::$submitButton);
+
+        // todo activate account using mailcatcher
+
     }
 
     function joinGroup($group)

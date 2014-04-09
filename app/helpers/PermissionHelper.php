@@ -94,12 +94,12 @@ class PermissionHelper
         return GroupHasAccount::model()->findByAttributes($attributes) !== null;
     }
 
-    /**
+    /*
      * @param $accountId
      *
      * @return GroupHasAccount[]
      */
-    static public function getGroupsForAccount($accountId)
+    static public function getGroupHasAccountsForAccount($accountId)
     {
         $criteria = new CDbCriteria();
         $criteria->addCondition('account_id = :accountId');
