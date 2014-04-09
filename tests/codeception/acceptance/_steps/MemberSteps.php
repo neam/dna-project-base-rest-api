@@ -4,7 +4,7 @@ namespace WebGuy;
 use HomePage;
 use LoginPage;
 use ProfilePage;
-use RegisterationPage;
+use RegistrationPage;
 
 class MemberSteps extends \WebGuy
 {
@@ -28,15 +28,15 @@ class MemberSteps extends \WebGuy
     function register($username, $password, $verifyPassword, $email, $acceptTerms)
     {
         $I = $this;
-        $I->amOnPage(RegisterationPage::$URL);
-        $I->fillField(RegisterationPage::$usernameField, $username);
-        $I->fillField(RegisterationPage::$passwordField, $password);
-        $I->fillField(RegisterationPage::$verifyPasswordField, $verifyPassword);
-        $I->fillField(RegisterationPage::$emailField, $email);
+        $I->amOnPage(RegistrationPage::$URL);
+        $I->fillField(RegistrationPage::$usernameField, $username);
+        $I->fillField(RegistrationPage::$passwordField, $password);
+        $I->fillField(RegistrationPage::$verifyPasswordField, $verifyPassword);
+        $I->fillField(RegistrationPage::$emailField, $email);
         $acceptTerms
-            ? $I->checkOption(RegisterationPage::$acceptTermsField)
-            : $I->uncheckOption(RegisterationPage::$acceptTermsField);
-        $I->click(RegisterationPage::$submitButton);
+            ? $I->checkOption(RegistrationPage::$acceptTermsField)
+            : $I->uncheckOption(RegistrationPage::$acceptTermsField);
+        $I->click(RegistrationPage::$submitButton);
     }
 
     function joinGroup($group)

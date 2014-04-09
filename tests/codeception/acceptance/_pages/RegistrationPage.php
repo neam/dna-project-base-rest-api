@@ -1,6 +1,6 @@
 <?php
 
-class RegisterationPage
+class RegistrationPage
 {
     // include url of current page
     static $URL = '?r=user/registration';
@@ -39,7 +39,7 @@ class RegisterationPage
     }
 
     /**
-     * @return RegisterationPage
+     * @return RegistrationPage
      */
     public static function of(WebGuy $I)
     {
