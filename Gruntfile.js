@@ -14,7 +14,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'app/themes/gapminder/less/styleguide': ['app/themes/gapminder/less/theme']
+                    'www/styleguide': ['app/themes/gapminder/less/theme']
                 }
             }
         },

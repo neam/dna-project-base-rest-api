@@ -74,8 +74,9 @@ input[type="checkbox"] {
 
   &:checked + label:before {
     color: @text-color;
-    content: "\2713";
-    font-size: 34px;
+    content: "\e013";
+    font-family: @glyphicons-halflings-font;
+    font-size: 26px;
     line-height: 38px;
     text-align: center;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
@@ -109,6 +110,7 @@ Styleguide 2.4
 
   .select-button {
     .btn;
+    .glyphicon-play;
     background-color: @brand-primary;
     display: inline-block;
     padding: 15px;
@@ -118,7 +120,14 @@ Styleguide 2.4
     width: 40px;
     height: 40px;
 
-    .glyphicon {
+    &:before {
+      transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      font-family: @glyphicons-halflings-font;
+      font-size: 18px;
+      position: absolute;
+      top: 9px;
+      right: 10px;
     }
   }
 }
