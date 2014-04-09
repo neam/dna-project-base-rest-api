@@ -35,6 +35,8 @@ textarea.form-control {
 /*
 Checkboxes
 
+TODO: Replace check icon and change label font styles.
+
 Markup:
 <input id="check1" type="checkbox" name="check" value="1">
 <label for="check1">Checkbox Label</label>
@@ -77,5 +79,46 @@ input[type="checkbox"] {
     line-height: 38px;
     text-align: center;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+  }
+}
+
+/*
+Select fields
+
+Dropdown functionality is to be provided by JavaScript.
+
+Markup:
+<div class="select">
+  <span class="selected">Selected option</span>
+  <div class="select-button">
+    <!-- <span class="glyphicon glyphicon-chevron-down"></span> -->
+  </div>
+</div>
+
+Styleguide 2.4
+*/
+.select {
+  .form-control;
+  position: relative;
+
+  .selected {
+    line-height: 40px;
+    position: absolute;
+    top: 8px;
+  }
+
+  .select-button {
+    .btn;
+    background-color: @brand-primary;
+    display: inline-block;
+    padding: 15px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
+
+    .glyphicon {
+    }
   }
 }
