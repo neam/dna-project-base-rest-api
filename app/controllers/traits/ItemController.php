@@ -40,7 +40,7 @@ trait ItemController
         $model = ActiveRecord::model($this->modelClass)->findByPk($id);
 
         if ($model instanceof ActiveRecord) {
-            return $model->checkAccess($operation);
+            return Yii::app()->user->checkModelOperationAccess($model, $operation);
         } else {
             throw new CHttpException(404, Yii::t('error', "Failed to check access: the $this->modelClass model with ID $id does not exist."));
         }
@@ -214,7 +214,7 @@ trait ItemController
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
 
-        if ($model->checkAccess('Edit')) {
+        if (Yii::app()->user->checkModelOperationAccess($model, 'Edit')) {
             $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
         } else {
             $this->redirect('/' . lcfirst(get_class($model)) . '/browse'); // TODO: Clean up route.
@@ -576,7 +576,7 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
-        if ($model->checkAccess('Edit')) {
+        if (Yii::app()->user->checkModelOperationAccess($model, 'Edit')) {
             $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
         } else {
             $this->redirect(array('view', 'id' => $model->id));

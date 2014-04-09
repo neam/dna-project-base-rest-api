@@ -32,7 +32,7 @@
                         'id' => $model->{$model->tableSchema->primaryKey},
                         'step' => $this->firstFlowStep($model),
                     ),
-                    'visible' => $model->checkAccess('PrepareForReview'),
+                    'visible' => Yii::app()->user->checkModelOperationAccess($model, 'PrepareForReview'),
                 )
             ); ?>
         <?php else: ?>
@@ -49,7 +49,7 @@
                         'id' => $model->{$model->tableSchema->primaryKey},
                         'step' => $this->firstFlowStep($model),
                     ),
-                    'visible' => $model->checkAccess('PrepareForPublishing'),
+                    'visible' => Yii::app()->user->checkModelOperationAccess($model, 'PrepareForPublishing'),
                 )
             ); ?>
         <?php else: ?>
@@ -67,7 +67,7 @@
                     'id' => $model->{$model->tableSchema->primaryKey},
                     'step' => $this->firstFlowStep($model),
                 ),
-                'visible' => $model->checkAccess('Evaluate'),
+                'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Evaluate'),
             )
         ); ?>
         <?php $this->widget(
@@ -79,7 +79,7 @@
                     'review',
                     'id' => $model->{$model->tableSchema->primaryKey},
                 ),
-                'visible' => $model->checkAccess('Review'),
+                'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Review'),
             )
         ); ?>
         <?php $this->widget(
@@ -91,7 +91,7 @@
                     'proofRead',
                     'id' => $model->{$model->tableSchema->primaryKey},
                 ),
-                'visible' => $model->checkAccess('Proofread'),
+                'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Proofread'),
             )
         ); ?>
         <?php $this->widget(
@@ -103,7 +103,7 @@
                     'translationOverview',
                     'id' => $model->{$model->tableSchema->primaryKey},
                 ),
-                'visible' => $model->checkAccess('Translate'),
+                'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Translate'),
             )
         ); ?>
     </div>
@@ -122,7 +122,7 @@
                             'unpublish',
                             'id' => $model->{$model->tableSchema->primaryKey},
                         ),
-                        'visible' => $model->checkAccess('Publish'),
+                        'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Publish'),
                     )
                 ); ?>
             <?php elseif ($model->isPublishable()): ?>
@@ -134,7 +134,7 @@
                             'publish',
                             'id' => $model->{$model->tableSchema->primaryKey},
                         ),
-                        'visible' => $model->checkAccess('Publish'),
+                        'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Publish'),
                     )
                 ); ?>
             <?php else: ?>
@@ -142,7 +142,7 @@
                     Yii::t('model', 'Publish'),
                     array(
                         'disabled' => true,
-                        'visible' => $model->checkAccess('Publish'),
+                        'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Publish'),
                     )
                 ); ?>
             <?php endif; ?>
@@ -158,7 +158,7 @@
                     'clone',
                     'id' => $model->{$model->tableSchema->primaryKey},
                 ),
-                'visible' => $model->checkAccess('Clone'),
+                'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Clone'),
             )
         ); ?>
         <?php $this->widget(
@@ -169,7 +169,7 @@
                     'remove',
                     'id' => $model->{$model->tableSchema->primaryKey},
                 ),
-                'visible' => $model->checkAccess('Remove'),
+                'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Remove'),
             )
         ); ?>
     </div>

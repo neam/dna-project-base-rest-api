@@ -19,9 +19,23 @@ class WebUser extends CWebUser
     }
 
     /**
-     * Checks access using RBAC
+     * Checks access
      */
     public function checkAccess($operation, $params = array(), $allowCaching = true)
+    {
+
+        if ($this->checkSystemRoleBasedAccess($operation, $params, $allowCaching)) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    /**
+     * Checks access regarding system-groups
+     */
+    public function checkSystemRoleBasedAccess($operation, $params = array(), $allowCaching = true)
     {
 
         // Auto-grant access to admins
@@ -44,11 +58,21 @@ class WebUser extends CWebUser
     /**
      *
      */
-    public function checkGroupBasedAccess($group, $operation, $params = array(), $allowCaching = true)
+    public function checkModelOperationAccess(CActiveRecord $model, $operation, $params = array(), $allowCaching = true)
     {
+
+        // owner-based
+        if ($model->owner_id == $this->loadAccount()->id) {
+            return true;
+        }
+
+        //
+
+        throw new CException("TODO");
+
         return false;
-        // todo
-        $operationRoleMap = MetaData::operationToGroupRolesMap();
+        //       $operationRoleMap = MetaData::operationToGroupRolesMap();
+
     }
 
     /**
