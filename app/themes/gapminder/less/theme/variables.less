@@ -13,12 +13,14 @@
 @brand-success:   @green;
 @brand-warning:   @yellow;
 @brand-danger:    @red;
+@brand-info:      @purple;
 
 @yellow:          #feee74;
 @green:           #22d23e;
 @red:             #e0575c;
 @pink:            #eb4498;
 @pink-light:      #fef5fa;
+@purple:          #b7c1d8;
 @gray:            #c9c9c9;
 @gray-medium:     #979797;
 @gray-dark:       #3d3d3d;
@@ -134,6 +136,21 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
+@state-success-text:             #468847;
+@state-success-bg:               #dff0d8;
+@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text:                #fff;
+@state-info-bg:                  @brand-info;
+@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text:             #c09853;
+@state-warning-bg:               #fcf8e3;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text:              #b94a48;
+@state-danger-bg:                #f2dede;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 
 //== Tooltips
 //
