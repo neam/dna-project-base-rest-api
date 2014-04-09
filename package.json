@@ -4,24 +4,6 @@
   "engines": {
       "node": "0.10.26"
   },
-  "contributors": [
-    {
-      "name": "Eric Nishio",
-      "email": "eric.nishio@nordsoftware.com"
-    },
-    {
-      "name": "Fredrik Wollsén",
-      "email": "fredrik@neam.se"
-    },
-    {
-      "name": "Johan Ström",
-      "email": "johan@johanstrom.se"
-    },
-    {
-      "name": "Thiago Costa Porto",
-      "email": "thiago@gapminder.org"
-    }
-  ],
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-less": "~0.6.4",
