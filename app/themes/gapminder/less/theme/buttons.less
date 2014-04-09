@@ -17,6 +17,10 @@ Markup:
 .btn-default:hover  - Default button, hovered.
 .btn-primary        - Primary button.
 .btn-primary:hover  - Primary button, hovered.
+.btn-success        - Success button.
+.btn-success:hover  - Success button, hovered.
+.btn-warning        - Warning button.
+.btn-warning:hover  - Warning button, hovered.
 
 Styleguide 1.1
 */
@@ -45,17 +49,27 @@ Styleguide 1.1
 
   // Primary buttons
   &.btn-primary {
-    background-color: @brand-primary;
+    .btn-primary;
+  }
 
-    &:hover {
-      background-color: @brand-secondary;
-      color: #fff;
-    }
+  // Success buttons
+  &.btn-success {
+    .btn-success;
+  }
+
+  // Warning button
+  &.btn-warning {
+    .btn-warning;
   }
 
   // Link buttons
   &.btn-link {
     .btn-link;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 

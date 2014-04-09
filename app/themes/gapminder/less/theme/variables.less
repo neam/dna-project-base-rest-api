@@ -9,11 +9,15 @@
 
 @brand-primary:   @pink;
 @brand-secondary: @gray;
+@brand-success:   @green;
+@brand-warning:   @yellow;
+@brand-danger:    @red;
 
 @yellow:          #feee74;
-@green:           #6be387;
+@green:           #22d23e;
 @red:             #e0575c;
 @pink:            #eb4498;
+@pink-light:      #fef5fa;
 @gray:            #c9c9c9;
 @gray-medium:     #979797;
 @gray-dark:       #3d3d3d;
@@ -53,6 +57,17 @@
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
 
+@btn-font-weight:                normal;
+
+@btn-default-color:              #fff;
+@btn-default-bg:                 @brand-secondary;
+@btn-default-border:             darken(@brand-secondary, 5%);
+
+@btn-warning-color:              @gray-dark;
+@btn-warning-bg:                 @brand-warning;
+@btn-warning-border:             darken(@btn-warning-bg, 5%);
+
+@btn-link-disabled-color:        @gray-light;
 
 //== Forms
 //
