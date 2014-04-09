@@ -86,6 +86,7 @@ class Page extends BasePage
             'info' => array(
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
+                'about_' . $this->source_language,
             ),
         );
     }
