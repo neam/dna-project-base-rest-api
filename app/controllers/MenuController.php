@@ -2,7 +2,9 @@
 
 class MenuController extends Controller
 {
-    #public $layout='//layouts/column2';
+    use ItemController;
+
+    public $modelClass = 'menu';
 
     public $defaultAction = "admin";
     public $scenario = "crud";
@@ -16,7 +18,7 @@ class MenuController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array(
                 'allow',
                 'actions' => array(
@@ -35,7 +37,7 @@ class MenuController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)

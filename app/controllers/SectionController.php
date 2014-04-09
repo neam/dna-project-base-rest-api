@@ -70,6 +70,18 @@ class SectionController extends Controller
         $this->render('view', array('model' => $model,));
     }
 
+    public function actionAdd($pageId)
+    {
+        $model = new Section();
+        $model->page_id = $pageId;
+
+        if ($model->save()) {
+            $this->redirect(array('/section/continueAuthoring', 'id' => $model->id));
+        }
+
+        $this->redirect(Yii::app()->request->urlReferrer);
+    }
+
     public function actionCreate()
     {
         $model = new Section;
