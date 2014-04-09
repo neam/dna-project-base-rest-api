@@ -174,7 +174,7 @@
     "extra": {
         "heroku": {
             "engines": {
-                "php": "5.4.4",
+                "php": "5.4.26",
                 "nginx": "1.4.3"
             },
             "php-config": [
