@@ -30,6 +30,7 @@ module.exports = function(grunt) {
                 dest: 'app/themes/gapminder/less/app.less',
                 src: [
                     'app/themes/gapminder/less/layouts/**/*.less',
+                    'app/themes/gapminder/less/partials/**/*.less',
                     'app/themes/gapminder/less/controllers/**/*.less',
                     'app/themes/gapminder/less/widgets/**/*.less'
                 ]
