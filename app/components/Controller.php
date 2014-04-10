@@ -125,7 +125,7 @@ class Controller extends CController
 
         ob_start();
 
-        echo CHtml::openTag('ul', array('class' => 'pull-left navbar-breadcrumbs'));
+        echo CHtml::openTag('ul', array('class' => 'breadcrumbs'));
 
 		end($breadcrumbs);
 		$lastLink = key($breadcrumbs);

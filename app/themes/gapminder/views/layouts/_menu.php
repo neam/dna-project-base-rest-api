@@ -1,5 +1,4 @@
 <?php /* @var Controller $this */ ?>
-<div id="frontend-navbar" class="layout-navbar">
     <?php
     Yii::import('p3pages.modules.*');
 
@@ -15,10 +14,10 @@
         '\TbNavbar',
         array(
             //'fluid' => true,
+            'brandLabel' => TbHtml::image(Yii::app()->baseUrl . '/images/logo.png'),
             'collapse' => true,
             'display' => TbHtml::NAVBAR_DISPLAY_FIXEDTOP,
             'items' => array(
-                $this->renderBreadcrumbs(),
                 array(
                     'class' => '\TbNav',
                     'items' => P3Page::getMenuItems($rootNode)
@@ -102,4 +101,3 @@
         )
     );
     ?>
-</div>

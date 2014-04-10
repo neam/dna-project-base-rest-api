@@ -40,7 +40,6 @@ EOF;
             <?php echo TbHtml::button(
                 Yii::t('app', 'Upload new'),
                 array(
-                    'icon' => TbHtml::ICON_CLOUD_UPLOAD,
                     'block' => true,
                     'class' => 'upload-btn',
                     'data-toggle' => 'modal',
