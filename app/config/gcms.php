@@ -2,7 +2,7 @@
 
 // Configuration specific to Gapminder School CMS
 
-// Include envbootstrap
+// Include envbootstrap - see app/config/envbootstrap/README.md for more information
 $envbootstrap_strategy = getenv('ENVBOOTSTRAP_STRATEGY');
 if (empty($envbootstrap_strategy)) {
     Yii::log("ENVBOOTSTRAP_STRATEGY empty, defaulting to self-detect", CLogger::LEVEL_INFO);
