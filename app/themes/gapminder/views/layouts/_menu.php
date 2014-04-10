@@ -43,9 +43,7 @@
                         array(
                             'label' => ucfirst(Yii::app()->user->name),
                             'visible' => !Yii::app()->user->isGuest,
-                            'icon' => Yii::app()->user->isAdmin() ?
-                                    'warning-sign' :
-                                    'user',
+                            'icon' => Yii::app()->user->isAdmin() ? 'warning-sign' : 'user',
                             'id' => 'accountMenuLink',
                             'items' => array(
                                 array('label' => Yii::t('app', 'User')),
@@ -74,15 +72,15 @@
                                     'visible' => !Yii::app()->user->isGuest
                                 ),
                                 array(
-                                    'label' => Yii::t('app', 'List'),
-                                    'icon' => 'list',
-                                    'url' => array('/account/admin'),
-                                    'visible' => Yii::app()->user->isAdmin()
+                                    'label' => Yii::t('app', 'Permissions'),
+                                    'icon' => 'lock',
+                                    'url' => array('/account/permissions'),
+                                    'visible' => Yii::app()->user->checkAccess('GrantPermission'),
                                 ),
                                 '---',
                                 array(
                                     'label' => Yii::t('app', 'Logout'),
-                                    'icon' => 'lock',
+                                    'icon' => 'logt-out',
                                     'url' => array('/site/logout'),
                                     'visible' => !Yii::app()->user->isGuest,
                                     'id' => 'logoutLink',
@@ -93,7 +91,7 @@
                             'label' => Yii::t('app', 'Login'),
                             'url' => Yii::app()->user->loginUrl,
                             'visible' => Yii::app()->user->isGuest,
-                            'icon' => 'lock',
+                            'icon' => 'log-in',
                             'id' => 'loginLink',
                         ),
                     ),

@@ -84,12 +84,26 @@ class Metadata
      */
     static public function groupRoles()
     {
+        return array_merge(
+            self::groupAdminRoles(),
+            self::groupModeratorRoles()
+        );
+    }
+
+    static public function groupAdminRoles()
+    {
         return array(
             Role::GROUP_ADMINISTRATOR => 'Group Administrator',
             Role::GROUP_PUBLISHER => 'Group Publisher',
             Role::GROUP_EDITOR => 'Group Editor',
             Role::GROUP_APPROVER => 'Group Approver',
             Role::GROUP_MODERATOR => 'Group Moderator',
+        );
+    }
+
+    static public function groupModeratorRoles()
+    {
+        return array(
             Role::GROUP_CONTRIBUTOR => 'Group Contributor',
             Role::GROUP_REVIEWER => 'Group Reviewer',
             Role::GROUP_TRANSLATOR => 'Group Translator',
@@ -149,14 +163,8 @@ class Metadata
      */
     static public function operationToSystemRolesMap()
     {
-        $addItems = array();
-        foreach (DataModel::crudModels() as $modelClass => $table) {
-            $addItems[$modelClass . ".Add"] = array(
-                Role::AUTHENTICATED
-            );
-        }
-
         return array_merge(
+            self::getAddItemSystemRoleMap(),
             array(
                 'Browse' => array(
                     Role::GUEST,
@@ -165,9 +173,19 @@ class Metadata
                 'View' => array(
                     Role::GUEST,
                 ),
-            ),
-            $addItems
+            )
         );
+    }
+
+    static public function getAddItemSystemRoleMap()
+    {
+        $map = array();
+        foreach (DataModel::crudModels() as $modelClass => $table) {
+            $map[$modelClass . ".Add"] = array(
+                Role::AUTHENTICATED
+            );
+        }
+        return $map;
     }
 
     /**
@@ -221,6 +239,16 @@ class Metadata
                 Role::GROUP_MODERATOR,
             ),
             'ChangeGroup' => array(
+                Role::GROUP_MODERATOR,
+            ),
+            'GrantPermission' => array(
+                Role::GROUP_ADMINISTRATOR,
+                Role::GROUP_MODERATOR,
+            ),
+            'GrantGroupAdminPermissions' => array(
+                Role::GROUP_ADMINISTRATOR,
+            ),
+            'GrantGroupModeratorPermissions' => array(
                 Role::GROUP_MODERATOR,
             ),
         );

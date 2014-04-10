@@ -5,7 +5,7 @@ class AccountController extends Controller
     /**
      * @var string
      */
-    public $defaultAction = 'admin';
+    public $defaultAction = 'profile';
 
     /**
      * @var string
@@ -32,8 +32,7 @@ class AccountController extends Controller
             array(
                 'allow',
                 'actions' => array(
-                    'admin',
-                    'toggleRole',
+                    'permissions',
                     'delete',
                     'deleteRelations',
                 ),
@@ -50,7 +49,7 @@ class AccountController extends Controller
                     'editableCreator',
                     'delete',
                 ),
-                'roles' => array('Account.*'),
+                'roles' => array('Account.*'), // TODO Fix this permission check
             ),
             array(
                 'allow',
@@ -66,10 +65,19 @@ class AccountController extends Controller
                     'translations',
                     'profile',
                     'history',
-                    'addToGroup', // TODO: restrict access to group admins and moderators
-                    'removeFromGroup', // TODO: restrict access to group admins and moderators
                 ),
                 'users' => array('@'),
+            ),
+            array(
+                'allow',
+                'actions' => array(
+                    'permissions',
+                    'addToGroup',
+                    'removeFromGroup',
+                ),
+                'expression' => function() {
+                    return Yii::app()->user->checkAccess('GrantPermission');
+                }
             ),
             array(
                 'deny',
@@ -395,22 +403,20 @@ class AccountController extends Controller
     }
 
     /**
-     * Displays the admin page.
+     * Displays the permissions page.
      */
-    public function actionAdmin()
+    public function actionPermissions()
     {
-        $model = new Account('search');
-        $model->unsetAttributes();
-
-        if (isset($_GET['Account'])) {
-            $model->attributes = $_GET['Account'];
-        }
-
         $groupColumnMap = array();
 
         $groups = array_merge(MetaData::projectGroups(), MetaData::topicGroups(), MetaData::skillGroups());
 
         foreach ($groups as $groupName => $groupLabel) {
+            // Skip groups that the logged in user does not have access to.
+            if (!Yii::app()->user->isAdmin() && !Yii::app()->user->belongsToGroup($groupName)) {
+                continue;
+            }
+
             $columns = array();
 
             $columns[] = array(
@@ -420,19 +426,24 @@ class AccountController extends Controller
                 'urlExpression' => 'Yii::app()->controller->createUrl("view", array("id" => $data["id"]))'
             );
 
+            $groupModeratorRoles = MetaData::groupModeratorRoles();
             foreach (MetaData::groupRoles() as $roleName => $roleLabel) {
-                $columns[] = array(
-                    'class' => 'TbToggleColumn',
-                    'displayText' => false,
-                    'header' => $roleLabel,
-                    'name' => $groupName . '_' . $roleName,
-                    'value' => function ($data) use ($groupName, $roleName) {
-                        /** @var Account $data */
-                        return $data->groupRoleIsActive($groupName, $roleName);
-                    },
-                    'filter' => true,
-                    'toggleAction' => 'account/toggleRole',
-                );
+                if (Yii::app()->user->checkAccess('GrantGroupAdminPermissions')
+                    || (isset($groupModeratorRoles[$roleName]) && Yii::app()->user->checkAccess('GrantGroupModeratorPermissions'))
+                ) {
+                    $columns[] = array(
+                        'class' => 'TbToggleColumn',
+                        'displayText' => false,
+                        'header' => $roleLabel,
+                        'name' => $groupName . '_' . $roleName,
+                        'value' => function ($data) use ($groupName, $roleName) {
+                            /** @var Account $data */
+                            return $data->groupRoleIsActive($groupName, $roleName);
+                        },
+                        'filter' => true,
+                        'toggleAction' => 'account/toggleRole',
+                    );
+                }
             }
 
             $columns[] = array(
@@ -445,10 +456,12 @@ class AccountController extends Controller
             $groupColumnMap[$groupName] = $columns;
         }
 
-        $this->render('admin', array(
-            'model' => $model,
+        $dataProvider = new CActiveDataProvider('Account');
+
+        $this->render('permissions', array(
             'groups' => $groups,
             'groupColumnMap' => $groupColumnMap,
+            'dataProvider' => $dataProvider,
         ));
     }
 
@@ -481,6 +494,7 @@ class AccountController extends Controller
      */
     public function actionAddToGroup($id, $group, $role, $returnUrl)
     {
+        // TODO Check that the user actually has sufficient privileges to do this.
         PermissionHelper::addAccountToGroup($id, $group, $role);
         $this->redirect(TbHtml::decode($returnUrl));
     }
@@ -492,6 +506,7 @@ class AccountController extends Controller
      */
     public function actionRemoveFromGroup($id, $group, $role, $returnUrl)
     {
+        // TODO Check that the user actually has sufficient privileges to do this.
         PermissionHelper::removeAccountFromGroup($id, $group, $role);
         $this->redirect(TbHtml::decode($returnUrl));
     }

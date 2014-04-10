@@ -12,10 +12,9 @@ class ActiveRecord extends CActiveRecord
 
     public function behaviors()
     {
-
         $behaviors = array();
 
-        if (!in_array(get_class($this), array("Workflow", "Profile", "Account", "Message", "SourceMessage")) && strpos(get_class($this), "QaState") === false) {
+        if (!in_array(get_class($this), array("Workflow", "Profile", "Account", "AppRegistrationForm", "Message", "SourceMessage")) && strpos(get_class($this), "QaState") === false) {
             $behaviors['CTimestampBehavior'] = array(
                 'class' => 'zii.behaviors.CTimestampBehavior',
                 'createAttribute' => 'created',

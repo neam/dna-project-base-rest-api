@@ -4,8 +4,7 @@ class WebUser extends CWebUser
 {
 
     /**
-     * Checks if the user is an admin.
-     * @return boolean
+     * @return array
      */
     public function getSystemRoles()
     {
@@ -19,31 +18,39 @@ class WebUser extends CWebUser
     }
 
     /**
-     * Checks access
+     * Checks access using all different types of access checks.
+     * @param string $operation
+     * @param array $params
+     * @param bool $allowCaching
+     * @return bool
      */
     public function checkAccess($operation, $params = array(), $allowCaching = true)
     {
-
-        if ($this->checkSystemRoleBasedAccess($operation, $params, $allowCaching)) {
-            return true;
-        }
-
-        return false;
-
-    }
-
-    /**
-     * Checks access regarding system-groups
-     */
-    public function checkSystemRoleBasedAccess($operation, $params = array(), $allowCaching = true)
-    {
+        // TODO Implement caching?
 
         // Auto-grant access to admins
         if ($this->isAdmin()) {
             return true;
         }
 
-        // Can we grant access using system roles?
+        if ($this->checkSystemRoleBasedAccess($operation)) {
+            return true;
+        }
+
+        if ($this->checkGroupRoleBasedAccess($operation)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Checks access using system-based roles.
+     * @param string $operation
+     * @return bool
+     */
+    public function checkSystemRoleBasedAccess($operation)
+    {
         $operationRoleMap = MetaData::operationToSystemRolesMap();
         foreach ($this->getSystemRoles() as $role) {
             if (isset($operationRoleMap[$operation]) && in_array($role, $operationRoleMap[$operation])) {
@@ -56,23 +63,37 @@ class WebUser extends CWebUser
     }
 
     /**
-     *
+     * Checks access using group-based roles.
+     * @param string $operation
+     * @return bool
      */
-    public function checkModelOperationAccess(CActiveRecord $model, $operation, $params = array(), $allowCaching = true)
+    public function checkGroupRoleBasedAccess($operation)
     {
+        $operationRoleMap = MetaData::operationToGroupRolesMap();
+        foreach ($this->getGroupRoles() as $role) {
+            if (isset($operationRoleMap[$operation]) && in_array($role, $operationRoleMap[$operation])) {
+                return true;
+            }
+        }
 
+        return false;
+    }
+
+    /**
+     * @param CActiveRecord $model
+     * @param string $operation
+     * @param array $params
+     * @return bool
+     * @throws CException
+     */
+    public function checkModelOperationAccess(CActiveRecord $model, $operation, $params = array())
+    {
         // owner-based
         if ($model->owner_id == $this->loadAccount()->id) {
             return true;
         }
 
-        //
-
         throw new CException("TODO");
-
-        return false;
-        //       $operationRoleMap = MetaData::operationToGroupRolesMap();
-
     }
 
     /**
@@ -105,7 +126,7 @@ class WebUser extends CWebUser
      *
      * @return array
      */
-    public function getGroupRoles()
+    public function getGroupRolesTree()
     {
         $tree = array('All' => array());
 
@@ -134,141 +155,181 @@ class WebUser extends CWebUser
      */
     public function getGroups()
     {
-        $result = array();
+        $assigned = $this->getAssignedGroupsAndRoles();
+        return $assigned['groups'];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGroupRoles()
+    {
+        $assigned = $this->getAssignedGroupsAndRoles();
+        return $assigned['roles'];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getAssignedGroupsAndRoles()
+    {
+        $assigned = array('groups' => array(), 'roles' => array());
 
         $groups = PermissionHelper::getGroups();
+        $roles = PermissionHelper::getRoles();
 
         foreach (PermissionHelper::getGroupHasAccountsForAccount($this->id) as $gha) {
-            if (isset($result[$gha->group_id])) {
-                continue;
+            if (!isset($assigned['groups'][$gha->group_id])) {
+                $assigned['groups'][$gha->group_id] = $groups[$gha->group_id];
             }
-
-            $result[$gha->group_id] = $groups[$gha->group_id];
+            if (!isset($assigned['roles'][$gha->role_id])) {
+                $assigned['roles'][$gha->role_id] = $roles[$gha->role_id];
+            }
         }
 
-        return $result;
+        return $assigned;
     }
 
     /**
+     * Checks if the logged in user belongs to a certain group (with a certain role, if applicable).
      * @param string $group
-     * @param string $role
-     *
-     * @return bool
-     */
-    public function hasRole($group, $role)
-    {
-        return PermissionHelper::hasRole($this->id, $group, $role);
-    }
-
-    /**
-     * Checks if the user is an admin.
+     * @param string|null $role
      * @return boolean
      */
-    public function getIsAdmin()
+    public function belongsToGroup($group, $role = null)
     {
-        return $this->hasRole(Group::SYSTEM, Role::DEVELOPER) || $this->hasRole(Group::SYSTEM, Role::SUPER_ADMINISTRATOR);
+        $attributes = array(
+            'account_id' => $this->id,
+            'group_id' => PermissionHelper::groupNameToId($group),
+        );
+
+        if ($role !== null) {
+            $attributes['role_id'] = PermissionHelper::roleNameToId($role);
+        }
+
+        return PermissionHelper::groupHasAccount($attributes);
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function _checkAccess($operation, $params = array(), $allowCaching = true)
-    {
-        // Auto-grant access to admins
-        if ($this->isAdmin) {
-            return true;
-        }
-
-        $operationRoleMap = MetaData::operationToRolesMap();
-
-        // Handle guests
-        if ($this->isGuest) {
-            return isset($operationRoleMap[$operation]) ? in_array(Role::GUEST, $operationRoleMap[$operation]) : false;
-        }
-
-        if (strpos($operation, '.') !== false) {
-            list ($modelClass, $operation) = explode('.', $operation);
-        }
-
-        // TODO: Implement this properly.
-        if ($operation === 'Add') {
-            return true;
-        }
-
-        if (isset($modelClass)) {
-            return $this->_checkAccessWithModelClass($modelClass, $operation, $params);
-        } else {
-            return $this->_checkAccessWithoutModelClass($operation);
-        }
-    }
-
-    /**
-     * Checks access against a model class.
-     * @param string $modelClass
-     * @param string $operation
-     * @param array $params
-     * @return boolean
-     */
-    protected function _checkAccessWithModelClass($modelClass, $operation, $params)
-    {
-        // TODO: Fix P3media properly.
-        if ($modelClass === 'P3media') {
-            return $operation === 'Import';
-        }
-
-        /*
-        $map = MetaData::operationToRolesMap();
-
-        if (!isset($map[$operation]) || empty($map[$operation])) {
-            return false;
-        }
-
-        $roles = array();
-        foreach ($map[$operation] as $role) {
-            $roles[] = PermissionHelper::roleNameToId($role);
-        }
-        */
-
-        $criteria = new CDbCriteria();
-
-        // Add model ID condition
-        if (isset($params['id'])) {
-            $criteria->addCondition('t.id = :modelId');
-            $criteria->params[':modelId'] = $params['id'];
-        }
-
-        $criteria = PermissionHelper::applyAccessCriteria($criteria, $operation);
-
-        $result = ActiveRecord::model($modelClass)->findAll($criteria);
-
-        return count($result) > 0;
-    }
-
-    /**
-     * Checks access without a model class.
-     * @param string $operation
-     * @return boolean
-     */
-    protected function _checkAccessWithoutModelClass($operation)
-    {
-        $map = MetaData::operationToRolesMap();
-
-        if (!isset($map[$operation]) || empty($map[$operation])) {
-            return false;
-        }
-
-        $roles = array();
-        foreach ($map[$operation] as $role) {
-            $roles[] = PermissionHelper::roleNameToId($role);
-        }
-
-        // TODO add support for checking the group as well (if necessary)
-
-        $criteria = new CDbCriteria();
-        $criteria->addInCondition('role_id', $roles);
-        $criteria->addCondition('account_id = :userId');
-        $criteria->params[':userId'] = $this->id;
-
-        return GroupHasAccount::model()->find($criteria) !== null;
-    }
+//    /**
+//     * @param string $group
+//     * @param string $role
+//     *
+//     * @return bool
+//     */
+//    public function hasRole($group, $role)
+//    {
+//        return PermissionHelper::hasRole($this->id, $group, $role);
+//    }
+//
+//    /**
+//     * Checks if the user is an admin.
+//     * @return boolean
+//     */
+//    public function getIsAdmin()
+//    {
+//        return $this->hasRole(Group::SYSTEM, Role::DEVELOPER) || $this->hasRole(Group::SYSTEM, Role::SUPER_ADMINISTRATOR);
+//    }
+//
+//    /**
+//     * @inheritDoc
+//     */
+//    public function _checkAccess($operation, $params = array(), $allowCaching = true)
+//    {
+//        // Auto-grant access to admins
+//        if ($this->isAdmin) {
+//            return true;
+//        }
+//
+//        $operationRoleMap = MetaData::operationToRolesMap();
+//
+//        // Handle guests
+//        if ($this->isGuest) {
+//            return isset($operationRoleMap[$operation]) ? in_array(Role::GUEST, $operationRoleMap[$operation]) : false;
+//        }
+//
+//        if (strpos($operation, '.') !== false) {
+//            list ($modelClass, $operation) = explode('.', $operation);
+//        }
+//
+//        // TODO: Implement this properly.
+//        if ($operation === 'Add') {
+//            return true;
+//        }
+//
+//        if (isset($modelClass)) {
+//            return $this->_checkAccessWithModelClass($modelClass, $operation, $params);
+//        } else {
+//            return $this->_checkAccessWithoutModelClass($operation);
+//        }
+//    }
+//
+//    /**
+//     * Checks access against a model class.
+//     * @param string $modelClass
+//     * @param string $operation
+//     * @param array $params
+//     * @return boolean
+//     */
+//    protected function _checkAccessWithModelClass($modelClass, $operation, $params)
+//    {
+//        // TODO: Fix P3media properly.
+//        if ($modelClass === 'P3media') {
+//            return $operation === 'Import';
+//        }
+//
+//        /*
+//        $map = MetaData::operationToRolesMap();
+//
+//        if (!isset($map[$operation]) || empty($map[$operation])) {
+//            return false;
+//        }
+//
+//        $roles = array();
+//        foreach ($map[$operation] as $role) {
+//            $roles[] = PermissionHelper::roleNameToId($role);
+//        }
+//        */
+//
+//        $criteria = new CDbCriteria();
+//
+//        // Add model ID condition
+//        if (isset($params['id'])) {
+//            $criteria->addCondition('t.id = :modelId');
+//            $criteria->params[':modelId'] = $params['id'];
+//        }
+//
+//        $criteria = PermissionHelper::applyAccessCriteria($criteria, $operation);
+//
+//        $result = ActiveRecord::model($modelClass)->findAll($criteria);
+//
+//        return count($result) > 0;
+//    }
+//
+//    /**
+//     * Checks access without a model class.
+//     * @param string $operation
+//     * @return boolean
+//     */
+//    protected function _checkAccessWithoutModelClass($operation)
+//    {
+//        $map = MetaData::operationToRolesMap();
+//
+//        if (!isset($map[$operation]) || empty($map[$operation])) {
+//            return false;
+//        }
+//
+//        $roles = array();
+//        foreach ($map[$operation] as $role) {
+//            $roles[] = PermissionHelper::roleNameToId($role);
+//        }
+//
+//        // TODO add support for checking the group as well (if necessary)
+//
+//        $criteria = new CDbCriteria();
+//        $criteria->addInCondition('role_id', $roles);
+//        $criteria->addCondition('account_id = :userId');
+//        $criteria->params[':userId'] = $this->id;
+//
+//        return GroupHasAccount::model()->find($criteria) !== null;
+//    }
 }

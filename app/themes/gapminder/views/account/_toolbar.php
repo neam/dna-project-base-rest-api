@@ -58,16 +58,4 @@
             ); ?>
         <?php endif; ?>
     </div>
-    <div class="btn-group">
-        <?php if (Yii::app()->user->checkAccess('Super Administrator')): ?>
-            <?php echo TbHtml::linkButton(
-                Yii::t('model', 'Users'),
-                array(
-                    'color' => $this->action->id === 'admin' ? TbHtml::BUTTON_COLOR_INVERSE : null,
-                    'icon' => TbHtml::ICON_LIST,
-                    'url' => array('admin'),
-                )
-            ); ?>
-        <?php endif; ?>
-    </div>
 </div>

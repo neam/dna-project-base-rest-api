@@ -10,8 +10,6 @@ trait ItemController
      */
     public function init()
     {
-        parent::init();
-
         // Set the model ID if it has been passed as a GET param.
         if (isset($_GET['id'])) {
             $this->modelId = $_GET['id'];

@@ -13,7 +13,7 @@ class VideoFileController extends Controller
 
     #public $layout='//layouts/column2';
 
-    public $defaultAction = "admin";
+    public $defaultAction = "browse";
     public $scenario = "crud";
 
     public function filters()

@@ -96,16 +96,21 @@ class Account extends BaseAccount
     /**
      * Checks if the item has a group.
      * @param string $group
-     * @param string $role
+     * @param string|null $role
      * @return boolean
      */
-    public function belongsToGroup($group, $role)
+    public function belongsToGroup($group, $role = null)
     {
-        return PermissionHelper::groupHasAccount(array(
+        $attributes = array(
             'account_id' => $this->id,
             'group_id' => PermissionHelper::groupNameToId($group),
-            'role_id' => PermissionHelper::roleNameToId($role),
-        ));
+        );
+
+        if ($role !== null) {
+            $attributes['role_id'] = PermissionHelper::roleNameToId($role);
+        }
+
+        return PermissionHelper::groupHasAccount($attributes);
     }
 
     /**
