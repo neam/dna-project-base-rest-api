@@ -154,7 +154,6 @@ class ChapterController extends Controller
         $model = $this->loadModel($id);
         $sections = $this->chapterSections($model);
 
-        $evaluate = isset($evaluate) ? $evaluate : false;
         $preview = isset($preview) ? $preview : false;
 
         $this->breadcrumbs[Yii::t('breadcrumbs', 'Chapters')] = array('index');
@@ -163,7 +162,6 @@ class ChapterController extends Controller
         $this->render('view', array(
             'model' => $model,
             'sections' => $sections,
-            'evaluate' => $evaluate,
             'preview' => $preview,
         ));
     }

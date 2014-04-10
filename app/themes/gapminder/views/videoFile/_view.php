@@ -4,7 +4,7 @@
 ?>
 <div class="view">
     <?php $this->widget('VideoPlayer', array('videoFile' => $data)); ?>
-    <?php if (isset($evaluate) && $evaluate): ?>
+    <?php if ($this->actionIsEvaluate()): ?>
         <?php $this->widget(
             'ModalCommentsWidget',
             array(

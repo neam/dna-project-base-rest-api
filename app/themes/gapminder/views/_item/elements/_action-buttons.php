@@ -107,19 +107,6 @@
         <?php $this->widget(
             '\TbButton',
             array(
-                'label' => Yii::t('model', 'Review'),
-                'color' => $this->action->id === 'review' ? 'inverse' : null,
-                'icon' => 'glyphicon-check' . ($this->action->id === 'review' ? ' icon-white' : null),
-                'url' => array(
-                    'review',
-                    'id' => $model->{$model->tableSchema->primaryKey},
-                ),
-                'visible' => $model->checkAccess('Review'),
-            )
-        ); ?>
-        <?php $this->widget(
-            '\TbButton',
-            array(
                 'label' => Yii::t('model', 'Proofread'),
                 'color' => $this->action->id === 'proofRead' ? 'inverse' : null,
                 'icon' => 'glyphicon-certificate' . ($this->action->id === 'proofRead' ? ' icon-white' : null),

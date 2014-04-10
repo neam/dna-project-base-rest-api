@@ -134,7 +134,6 @@
                     array(
                         'model' => $model,
                         'sections' => $sections,
-                        'evaluate' => $evaluate,
                     )
                 ); ?>
             </div>

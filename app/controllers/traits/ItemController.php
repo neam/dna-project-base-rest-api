@@ -4,6 +4,7 @@ trait ItemController
 {
     public $workflowData = array();
     public $modelId;
+    protected $_actionIsEvaluate = false;
 
     /**
      * Initializes the controller.
@@ -490,7 +491,16 @@ trait ItemController
         $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, "evaluate", Yii::t('app', 'Evaluate'));
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/evaluate', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+        $this->_actionIsEvaluate = true;
+
+        $this->render(
+            '/_item/evaluate',
+            array(
+                'model' => $model,
+                'step' => $step,
+                'stepCaption' => $stepCaptions[$step],
+            )
+        );
     }
 
     /**
@@ -1144,5 +1154,19 @@ trait ItemController
         } else {
             return true;
         }
+    }
+
+    /**
+     * Checks if the action is 'evaluate'.
+     *
+     * This is used to check if the context is related to the 'evaluate' action
+     * since some view files are shared across controller actions.
+     *
+     * @return boolean
+     */
+    public function actionIsEvaluate()
+    {
+        // TODO: Could we simply use $this->action->id === 'evaluate' instead?
+        return $this->_actionIsEvaluate;
     }
 }

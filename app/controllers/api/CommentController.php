@@ -62,7 +62,7 @@ class CommentController extends AppRestController
 
         $command->from('comment');
 
-        $command->join('users account', 'account.id = comment.author_user_id');
+        $command->join('account account', 'account.id = comment.author_user_id');
 
         $command->params = array();
         /*
@@ -126,6 +126,8 @@ class CommentController extends AppRestController
         if (isset($_REQUEST['context_attribute'])) {
             $comment->context_attribute = $_REQUEST['context_attribute'];
         }
+
+        $comment->author_user_id = Yii::app()->user->id;
 
         if (!$comment->save()) {
             throw new SaveException($comment);
