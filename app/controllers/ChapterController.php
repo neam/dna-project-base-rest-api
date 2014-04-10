@@ -70,7 +70,7 @@ class ChapterController extends Controller
         return true;
     }
 
-    protected function chapterSections($chapter)
+    public function chapterSections($chapter)
     {
 
         $sections = array();

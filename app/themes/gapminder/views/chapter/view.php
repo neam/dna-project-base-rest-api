@@ -1,8 +1,13 @@
 <?php
-/* @var ChapterController|ItemController $this */
-/* @var Chapter|ItemTrait $model */
-/* @var ActiveRecord[]|ItemTrait[] $sections */
+/* @var ChapterController $this */
+/* @var Chapter $model */
+/* @var ActiveRecord[] $sections */
 ?>
+
+<?php
+$sections = $this->chapterSections($model);
+?>
+
 <div class="<?php echo $this->getCssClasses($model); ?>">
     <?php // TODO: Refactor jQuery Smooth Scroll registration. ?>
     <?php $cs = Yii::app()->getClientScript(); ?>
