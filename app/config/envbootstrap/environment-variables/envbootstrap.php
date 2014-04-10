@@ -2,12 +2,11 @@
 
 namespace gapminder\envbootstrap;
 
-var_dump("FOO", getenv("FOO"));
-
 function setenv($ref, $default = null, $required = false)
 {
     $value = getenv($ref);
-    if (is_null($value)) {
+    var_dump($value);
+    if ($value === false) {
         if ($required) {
             throw new \Exception("Environment variable $ref needs to be set. Adjust app configuration and re-build.");
         }
