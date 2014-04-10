@@ -2,9 +2,15 @@
 
 // Configuration specific to Gapminder School CMS
 
-$envbootstrap = dirname(__FILE__) . '/../../../common/settings/envbootstrap.php';
+// Include envbootstrap
+$envbootstrap_strategy = getenv('ENVBOOTSTRAP_STRATEGY');
+if (empty($envbootstrap_strategy)) {
+    Yii::log("ENVBOOTSTRAP_STRATEGY empty, defaulting to self-detect", CLogger::LEVEL_INFO);
+    $envbootstrap_strategy = "self-detect";
+}
+$envbootstrap = dirname(__FILE__) . '/envbootstrap/' . $envbootstrap_strategy . '/envbootstrap.php';
 if (!is_readable($envbootstrap)) {
-    echo "Main envbootstrap file not available.";
+    echo "Main envbootstrap file not available ($envbootstrap).";
     die(2);
 }
 require_once($envbootstrap);
