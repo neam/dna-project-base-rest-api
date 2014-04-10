@@ -89,9 +89,8 @@ class Account extends BaseAccount
      */
     public function assignDefaultGroupRoles()
     {
-        PermissionHelper::addAccountToGroup($this->id, Group::GAPMINDER_ORG, Role::GROUP_TRANSLATOR);
-        PermissionHelper::addAccountToGroup($this->id, Group::GAPMINDER_ORG, Role::GROUP_CONTRIBUTOR);
-        PermissionHelper::addAccountToGroup($this->id, Group::GAPMINDER_ORG, Role::GROUP_MEMBER);
+        PermissionHelper::addAccountToGroup($this->id, Group::TRANSLATORS, Role::GROUP_TRANSLATOR);
+        PermissionHelper::addAccountToGroup($this->id, Group::REVIEWERS, Role::GROUP_REVIEWER);
     }
 
     /**
