@@ -28,6 +28,11 @@ setenv("DEV", $default = false);
 setenv("DEBUG_REDIRECTS", $default = false);
 setenv("DEBUG_LOGS", $default = false);
 
+// ==== Identity-related constants ====
+
+setenv("BRAND_SITENAME", $default = null, $required = true);
+setenv("BRAND_DOMAIN", $default = null, $required = true);
+
 // ==== Defines infrastructure = all backing services, usernames, api:s, servers, ports etc depending on environment ====
 
 setenv("SMTP_HOST", $default = null);
@@ -39,7 +44,7 @@ setenv("SMTP_AUTH_PASSWORD", $default = null);
 
 // Support setting main db constants based on DATABASE_URL environment variable
 setenv("DATABASE_URL", $default = null, $required = false);
-if (defined("DATABASE_URL")) {
+if (!is_null(DATABASE_URL)) {
 
     // get the environment variable and parse it:
     $url = parse_url(DATABASE_URL);
@@ -61,8 +66,8 @@ if (defined("DATABASE_URL")) {
 }
 
 setenv("TEST_DB_NAME", $default = YII_DB_NAME . '_test', $required = false);
-setenv("TEST_DB_USER", $default = TEST_DB_USER . '_test', $required = false);
-setenv("TEST_DB_PASSWORD", $default = TEST_DB_USER . '_test', $required = false);
+setenv("TEST_DB_USER", $default = YII_DB_USER . '_test', $required = false);
+setenv("TEST_DB_PASSWORD", $default = YII_DB_USER . '_test', $required = false);
 setenv("TEST_DB_HOST", $default = YII_DB_HOST, $required = false);
 
 // ==== Define some dependent constants and/or settings ====
