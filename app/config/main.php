@@ -16,7 +16,7 @@ $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' 
 $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SERVER['SCRIPT_NAME']) == '\\') ? '' :
     dirname($_SERVER['SCRIPT_NAME']);
 
-require('languages.php');
+require('includes/languages.php');
 
 // main application configuration
 $mainConfig = array(

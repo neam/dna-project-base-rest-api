@@ -234,7 +234,7 @@ $gcmsConfig = array(
     )
 );
 
-require('logging.php');
-require('mail.php');
+require('includes/logging.php');
+require('includes/mail.php');
 
 return $gcmsConfig;
