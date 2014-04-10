@@ -9,8 +9,16 @@ function setenv($ref, $default = null, $required = false)
         if ($required) {
             throw new \Exception("Environment variable $ref needs to be set. Adjust app configuration and re-build.");
         }
-        define($ref, $default);
+        $value = $default;
     }
+    // Treat the strings "true" and "false" as booleans
+    if ($value === "true") {
+        $value = true;
+    }
+    if ($value === "false") {
+        $value = false;
+    }
+    define($ref, $value);
 }
 
 // ==== Initial environment bootstrap ====
