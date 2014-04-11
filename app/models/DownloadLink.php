@@ -22,7 +22,7 @@ class DownloadLink extends BaseDownloadLink
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return isset($this->title) ? $this->title : 'DownloadLink #' . $this->id;
     }
 
     public function behaviors()
@@ -72,8 +72,9 @@ class DownloadLink extends BaseDownloadLink
     public function flowSteps()
     {
         return array(
-            'markup' => array(
-                'markup_' . $this->source_language,
+            'info' => array(
+                'title_' . $this->source_language,
+                'file_media_id',
             ),
         );
     }
@@ -85,7 +86,7 @@ class DownloadLink extends BaseDownloadLink
     public function flowStepCaptions()
     {
         return array(
-            'markup' => Yii::t('app', 'Markup'),
+            'info' => Yii::t('app', 'Info'),
         );
     }
 
