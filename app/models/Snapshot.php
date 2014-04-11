@@ -188,7 +188,7 @@ class Snapshot extends BaseSnapshot
     /**
      * The attributes that is returned by the REST api
      */
-    public function getAllAttributes()
+    public function getAllAttributes($includeRelated = true)
     {
 
         $response = new stdClass();
@@ -205,7 +205,13 @@ class Snapshot extends BaseSnapshot
             $response->thumbnail->original = $this->thumbnailMedia->createUrl('original-public', true);
             $response->thumbnail->thumb = $this->thumbnailMedia->createUrl('related-thumb', true);
         }
-        $response->related = $this->related;
+
+        if ($includeRelated) {
+            $response->related = array();
+            foreach ($this->related as $related) {
+                $response->related[] = $related->item()->getAllAttributes(false);
+            }
+        }
 
         return $response;
 

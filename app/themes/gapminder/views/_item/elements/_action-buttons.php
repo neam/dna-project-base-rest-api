@@ -27,6 +27,9 @@
                 array(
                     'label' => Yii::t('crud', 'Prepare for review'),
                     'color' => $this->action->id === 'prepareForReview' ? 'inverse' : null,
+                    'htmlOptions' => array(
+                        'class' => 'action-button',
+                    ),
                     'url' => array(
                         'prepareForReview',
                         'id' => $model->{$model->tableSchema->primaryKey},
@@ -44,6 +47,9 @@
                 array(
                     'label' => Yii::t('crud', 'Prepare for publishing'),
                     'color' => $this->action->id === 'prepareForPublishing' ? 'inverse' : null,
+                    'htmlOptions' => array(
+                        'class' => 'action-button',
+                    ),
                     'url' => array(
                         'prepareForPublishing',
                         'id' => $model->{$model->tableSchema->primaryKey},
@@ -62,6 +68,9 @@
             array(
                 'label' => Yii::t('crud', 'Evaluate'),
                 'color' => $this->action->id === 'evaluate' ? 'inverse' : null,
+                'htmlOptions' => array(
+                    'class' => 'action-button',
+                ),
                 'url' => array(
                     'evaluate',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -73,20 +82,11 @@
         <?php $this->widget(
             '\TbButton',
             array(
-                'label' => Yii::t('model', 'Review'),
-                'color' => $this->action->id === 'review' ? 'inverse' : null,
-                'url' => array(
-                    'review',
-                    'id' => $model->{$model->tableSchema->primaryKey},
-                ),
-                'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Review'),
-            )
-        ); ?>
-        <?php $this->widget(
-            '\TbButton',
-            array(
                 'label' => Yii::t('model', 'Proofread'),
                 'color' => $this->action->id === 'proofRead' ? 'inverse' : null,
+                'htmlOptions' => array(
+                    'class' => 'action-button',
+                ),
                 'url' => array(
                     'proofRead',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -99,6 +99,9 @@
             array(
                 'label' => Yii::t('model', 'Translate'),
                 'color' => $this->action->id === 'translationOverview' ? 'inverse' : null,
+                'htmlOptions' => array(
+                    'class' => 'action-button',
+                ),
                 'url' => array(
                     'translationOverview',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -108,16 +111,15 @@
         ); ?>
     </div>
     <div class="btn-group">
-        <?php if (PermissionHelper::groupHasAccount(array(
-                'account_id' => Yii::app()->user->id,
-                'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
-                'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
-        ))): ?>
+        <?php if (Yii::app()->user->checkAccess('Publish')): ?>
             <?php if ($model->isUnpublishable()): ?>
                 <?php $this->widget(
                     '\TbButton',
                     array(
                         'label' => Yii::t('model', 'Unpublish'),
+                        'htmlOptions' => array(
+                            'class' => 'action-button',
+                        ),
                         'url' => array(
                             'unpublish',
                             'id' => $model->{$model->tableSchema->primaryKey},
@@ -130,6 +132,9 @@
                     '\TbButton',
                     array(
                         'label' => Yii::t('model', 'Publish'),
+                        'htmlOptions' => array(
+                            'class' => 'action-button',
+                        ),
                         'url' => array(
                             'publish',
                             'id' => $model->{$model->tableSchema->primaryKey},
@@ -142,7 +147,7 @@
                     Yii::t('model', 'Publish'),
                     array(
                         'disabled' => true,
-                        'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Publish'),
+                        'class' => 'action-button',
                     )
                 ); ?>
             <?php endif; ?>
@@ -154,6 +159,9 @@
             array(
                 'label' => Yii::t('model', 'Clone'),
                 'color' => $this->action->id === 'clone' ? 'inverse' : null,
+                'htmlOptions' => array(
+                    'class' => 'action-button',
+                ),
                 'url' => array(
                     'clone',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -165,6 +173,9 @@
             '\TbButton', array(
                 'label' => Yii::t('model', 'Remove'),
                 'color' => $this->action->id === 'remove' ? 'inverse' : null,
+                'htmlOptions' => array(
+                    'class' => 'action-button',
+                ),
                 'url' => array(
                     'remove',
                     'id' => $model->{$model->tableSchema->primaryKey},

@@ -23,7 +23,7 @@ class ModalCommentsWidget extends CWidget
             true
         );
 
-        $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
+        $this->beginWidget('yiistrap.widgets.TbModal', array('id' => $modalId));
         ?>
 
         <div class="modal-header">

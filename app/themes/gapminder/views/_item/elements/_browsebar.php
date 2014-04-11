@@ -14,26 +14,28 @@ Yii::app()->clientScript->registerScript(
 ?>
 <div class="browsebar">
     <div class="browsebar-actions">
-        <div class="btn-group">
-            <?php $this->widget(
-                "\TbButton",
-                array(
-                    "label" => Yii::t("model", "Manage"),
-                    "icon" => "glyphicon-edit",
-                    "url" => array("admin"),
-                    "visible" => Yii::app()->user->isAdmin()
-                )
-            ); ?>
-            <?php $this->widget(
-                "\TbButton",
-                array(
-                    "label" => Yii::t("model", "Add"),
-                    "icon" => "glyphicon-plus",
-                    "url" => array("add"),
-                    "visible" => Yii::app()->user->checkAccess('Add')
-                )
-            ); ?>
-        </div>
+        <?php $this->widget(
+            '\TbButton',
+            array(
+                'label' => Yii::t('model', 'Add'),
+                'url' => array('add'),
+                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                'visible' => Yii::app()->user->checkAccess('Add')
+            )
+        ); ?>
+        <?php /*
+        <?php $this->widget(
+            '\TbButton',
+            array(
+                'label' => Yii::t('model', 'Manage'),
+                'url' => array('admin'),
+                'htmlOptions' => array(
+                    'class' => 'btn-link',
+                ),
+                'visible' => Yii::app()->user->checkAccess('Administrator')
+            )
+        ); ?>
+        */ ?>
         <?php /*
         <div class="btn-group">
             <?php $this->widget('\TbButton', array(

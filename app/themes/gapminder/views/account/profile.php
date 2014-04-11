@@ -64,13 +64,14 @@
             </div>
             <div class="profile-sidebar">
                 <h2 class="sidebar-heading"><?php echo Yii::t('account', 'Groups'); ?></h2>
-                <div class="btn-group">
+                <div class="action-buttons">
                     <?php foreach (PermissionHelper::getGroups() as $groupId => $groupName): ?>
                         <?php if ($model->belongsToGroup($groupName, ROLE::GROUP_MEMBER)): ?>
                             <?php echo TbHtml::linkButton(
                                 $groupName,
                                 array(
                                     'icon' => TbHtml::ICON_MINUS,
+                                    'class' => 'action-button',
                                     'url' => array(
                                         'removeFromGroup',
                                         'id' => $model->id,
@@ -85,6 +86,7 @@
                                 $groupName,
                                 array(
                                     'icon' => TbHtml::ICON_PLUS,
+                                    'class' => 'action-button',
                                     'url' => array(
                                         'addToGroup',
                                         'id' => $model->id,

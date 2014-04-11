@@ -1,5 +1,4 @@
 <?php /* @var Controller $this */ ?>
-<div id="frontend-navbar" class="layout-navbar">
     <?php
     Yii::import('p3pages.modules.*');
 
@@ -15,15 +14,14 @@
         '\TbNavbar',
         array(
             //'fluid' => true,
+            'brandLabel' => TbHtml::image(Yii::app()->baseUrl . '/images/logo.png'),
             'collapse' => true,
             'display' => TbHtml::NAVBAR_DISPLAY_FIXEDTOP,
             'items' => array(
-                $this->renderBreadcrumbs(),
                 array(
                     'class' => '\TbNav',
                     'items' => P3Page::getMenuItems($rootNode)
                 ),
-                //'<form class="navbar-search pull-left" action=""><input type="text" class="search-query span2" placeholder="Search"></form>',
                 array(
                     'class' => '\TbNav',
                     'htmlOptions' => array('class' => 'pull-right language-menu'),
@@ -100,4 +98,3 @@
         )
     );
     ?>
-</div>

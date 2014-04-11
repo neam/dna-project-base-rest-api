@@ -25,18 +25,17 @@
             <?php $this->renderPartial('_toolbar', array('model' => $model)); ?>
         </div>
         <div class="content-actions">
-            <div class="btn-group">
-                <?php echo CHtml::submitButton(Yii::t('model', 'Save'), array(
-                    'class' => 'btn btn-primary btn-dirtyforms',
-                )); ?>
-                <?php $this->widget('\TbButton', array(
-                    'label' => Yii::t('model', 'Undo'),
-                    'url' => Yii::app()->request->url,
-                    'htmlOptions' => array(
-                        'class' => 'btn-dirtyforms ignoredirty',
-                    ),
-                )); ?>
-            </div>
+            <?php $this->widget('\TbButton', array(
+                'color' => TbHtml::BUTTON_COLOR_LINK,
+                'label' => Yii::t('model', 'Undo'),
+                'url' => Yii::app()->request->url,
+                'htmlOptions' => array(
+                    'class' => 'btn-dirtyforms ignoredirty',
+                ),
+            )); ?>
+            <?php echo CHtml::submitButton(Yii::t('model', 'Save'), array(
+                'class' => 'btn btn-primary btn-dirtyforms',
+            )); ?>
         </div>
     </div>
 </div>

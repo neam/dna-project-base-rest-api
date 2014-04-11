@@ -18,16 +18,16 @@
         ),
     )
 ); ?>
-<?php if ($this->workflowData['translateInto']) {
-    echo $form->textFieldControlGroup(
+<?php if ($this->workflowData['translateInto']): ?>
+    <?php echo $form->textFieldControlGroup(
         $model,
         'slug_' . $this->workflowData['translateInto'],
         array(
             'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-2',
             'maxlength' => 255,
         )
-    );
-} ?>
+    ); ?>
+<?php endif; ?>
 
 <?php Html::jsSlugIt(array(
     '.slugit-from-1' => '.slugit-to-1',
