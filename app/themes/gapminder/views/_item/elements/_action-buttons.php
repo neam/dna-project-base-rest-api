@@ -68,9 +68,7 @@
                 <?php echo TbHtml::linkButton(
                     Yii::t('app', 'Remove from {group}', array('{group}' => $group)),
                     array(
-                        'htmlOptions' => array(
-                            'class' => 'action-button',
-                        ),
+                        'class' => 'action-button',
                         'url' => array(
                             'removeFromGroup',
                             'node_id' => $model->node_id,
