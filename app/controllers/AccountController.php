@@ -72,6 +72,7 @@ class AccountController extends Controller
                 'allow',
                 'actions' => array(
                     'permissions',
+                    'toggleRole',
                     'addToGroup',
                     'removeFromGroup',
                 ),
