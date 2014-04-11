@@ -15,7 +15,6 @@ chmod -R g+rw www/assets/
 chmod -R g+rw www/runtime/
 app/yiic fixture --connectionID=$connectionID load
 app/yiic migrate --connectionID=$connectionID --interactive=0
-app/yiic migrate --connectionID=$connectionID --migrationPath=vendor.nordsoftware.yii-emailer.migrations --interactive=0
 app/yiic authorizationhierarchy reset
 app/yiic authorizationhierarchy build
 app/yiic databaseviewgenerator --connectionID=$connectionID item
