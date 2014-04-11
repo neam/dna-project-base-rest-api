@@ -7706,10 +7706,10 @@ Markup:
 
 Styleguide 2.3
 */
-input[type="checkbox"] {
+input[type="checkbox"].checkbox {
   display: none;
 }
-input[type="checkbox"] + label {
+input[type="checkbox"].checkbox + label {
   cursor: pointer;
   display: inline-block;
   font-size: 13px;
@@ -7720,7 +7720,7 @@ input[type="checkbox"] + label {
   position: relative;
   vertical-align: middle;
 }
-input[type="checkbox"] + label:before {
+input[type="checkbox"].checkbox + label:before {
   background-color: #fff;
   border: 2px solid #d2d4d5;
   border-radius: 3px;
@@ -7733,7 +7733,7 @@ input[type="checkbox"] + label:before {
   width: 40px;
   height: 40px;
 }
-input[type="checkbox"]:checked + label:before {
+input[type="checkbox"].checkbox:checked + label:before {
   color: #3d3d3d;
   content: "\e013";
   font-family: 'Glyphicons Halflings';
