@@ -70,6 +70,8 @@ setenv("TEST_DB_USER", $default = YII_DB_USER . '_test', $required = false);
 setenv("TEST_DB_PASSWORD", $default = YII_DB_USER . '_test', $required = false);
 setenv("TEST_DB_HOST", $default = YII_DB_HOST, $required = false);
 
+setenv("YII_GII_PASSWORD", $default = uniqid(), $required = false);
+
 // ==== Define some dependent constants and/or settings ====
 
 // General error reporting level
