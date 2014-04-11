@@ -23,11 +23,8 @@ date_default_timezone_set('UTC');
 
 // Setup some inter-app path aliases
 $basePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..';
-$root = $basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..';
-Yii::setPathOfAlias('backend', $root . DIRECTORY_SEPARATOR . 'cms');
-Yii::setPathOfAlias('common', $root . DIRECTORY_SEPARATOR . 'common');
-Yii::setPathOfAlias('frontend', $root . DIRECTORY_SEPARATOR . 'frontend');
-Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
+$root = $basePath . DIRECTORY_SEPARATOR . '..';
+Yii::setPathOfAlias('root', $root);
 
 $gcmsConfig = array(
     'name' => 'Gapminder CMS',
@@ -43,7 +40,7 @@ $gcmsConfig = array(
     ),
     'aliases' => array(
         // bower components
-        'bower-components' => 'backend.bower_components',
+        'bower-components' => 'root.bower_components',
         // i18n
         'i18n-columns' => 'vendor.neam.yii-i18n-columns',
         'i18n-attribute-messages' => 'vendor.neam.yii-i18n-attribute-messages',
@@ -212,7 +209,7 @@ $gcmsConfig = array(
         */
         'authManager' => array(
             'class' => 'vendor.codemix.hybridauthmanager.HybridAuthManager',
-            'authFile' => Yii::getPathOfAlias('backend') . '/app/data/auth-gcms.php',
+            'authFile' => Yii::getPathOfAlias('root') . '/app/data/auth-gcms.php',
             'defaultRoles' => array('Anonymous', 'Member'),
         ),
         'assetManager' => array(
