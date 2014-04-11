@@ -1614,7 +1614,7 @@ output {
 .form-control {
   display: block;
   width: 100%;
-  height: 34px;
+  height: 55px;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
@@ -3123,7 +3123,7 @@ input[type="button"].btn-block {
   border: none;
   color: #fff;
   font-weight: 100;
-  padding: 15px 30px;
+  padding: 17px 30px 18px;
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
@@ -3435,7 +3435,7 @@ fieldset[disabled] .btn-group-xs > .btn.btn-link:focus {
   border: none;
   color: #fff;
   font-weight: 100;
-  padding: 15px 30px;
+  padding: 17px 30px 18px;
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
@@ -4423,8 +4423,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-bottom: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-  margin-top: 18px;
-  margin-bottom: 18px;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
 }
 @media (min-width: 768px) {
   .navbar-form .form-group {
@@ -4486,8 +4486,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   right: 0;
 }
 .navbar-btn {
-  margin-top: 18px;
-  margin-bottom: 18px;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
 }
 .navbar-btn.btn-sm {
   margin-top: 20px;
@@ -6616,7 +6616,7 @@ Styleguide 1.1
   border-radius: 3px;
   color: #fff;
   font-weight: 100;
-  padding: 15px 30px;
+  padding: 17px 30px 18px;
 }
 .btn:hover {
   background-color: #bcbcbc;
@@ -6913,7 +6913,7 @@ Styleguide 1.2
   border: none;
   color: #fff;
   font-weight: 100;
-  padding: 15px 30px;
+  padding: 17px 30px 18px;
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
@@ -7243,7 +7243,7 @@ Styleguide 1.3
   border: none;
   color: #fff;
   font-weight: 100;
-  padding: 15px 30px;
+  padding: 17px 30px 18px;
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
@@ -7636,7 +7636,7 @@ Styleguide 2.1
 .form-control {
   display: block;
   width: 100%;
-  height: 34px;
+  height: 55px;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
@@ -7654,7 +7654,6 @@ Styleguide 2.1
   border-radius: 3px;
   font-size: 16px;
   font-weight: 100;
-  padding: 28px 22px;
   color: #979797;
 }
 .form-control:focus {
@@ -7761,7 +7760,7 @@ Styleguide 2.4
 .select {
   display: block;
   width: 100%;
-  height: 34px;
+  height: 55px;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
@@ -7779,7 +7778,6 @@ Styleguide 2.4
   border-radius: 3px;
   font-size: 16px;
   font-weight: 100;
-  padding: 28px 22px;
   color: #979797;
   position: relative;
 }
@@ -7867,7 +7865,7 @@ textarea.select {
   border-radius: 3px;
   color: #fff;
   font-weight: 100;
-  padding: 15px 30px;
+  padding: 17px 30px 18px;
   background-color: #eb4498;
   display: inline-block;
   padding: 15px;
@@ -9392,7 +9390,7 @@ Styleguide 5
   border: none;
   color: #fff;
   font-weight: 100;
-  padding: 15px 30px;
+  padding: 17px 30px 18px;
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
@@ -10074,25 +10072,25 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
   background: none;
 }
 .select2 {
-  height: 50px;
+  height: 55px;
 }
 .select2 .select2-container {
-  height: 50px;
+  height: 55px;
 }
 .select2 .select2-container.form-control {
   border: none;
   padding: 0;
 }
 .select2 .select2-container .select2-choice {
-  height: 50px;
-  line-height: 50px;
+  height: 55px;
+  line-height: 55px;
 }
 .select2 .select2-container .select2-choice .select2-arrow b {
   background-position-y: 12px;
 }
 .select2-result-label {
-  height: 50px;
-  line-height: 50px;
+  height: 55px;
+  line-height: 55px;
 }
 .hint-tooltip {
   font-size: 14px;
