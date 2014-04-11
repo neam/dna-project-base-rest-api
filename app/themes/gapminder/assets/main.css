@@ -6581,9 +6581,9 @@ Styleguide 1
 Regular buttons
 
 Markup:
-<a class="btn {$modifiers}" href="#">a.btn</a>
-<button class="btn {$modifiers}">button.btn</button>
-<input type="button" class="btn {$modifiers}" value="input[type='button']">
+<a class="btn {$modifiers}" href="#">Link</a>
+<button class="btn {$modifiers}">Button</button>
+<input type="button" class="btn {$modifiers}" value="Input Button">
 
 .btn-link           - Link button.
 .btn-default        - Default button.
@@ -6861,9 +6861,9 @@ fieldset[disabled] .btn.btn-link:focus {
 Small buttons
 
 Markup:
-<a class="btn btn-sm {$modifiers}" href="#">a.btn</a>
-<button class="btn btn-sm {$modifiers}">button.btn</button>
-<input type="button" class="btn btn-sm {$modifiers}" value="input[type='button']">
+<a class="btn btn-sm {$modifiers}" href="#">Link</a>
+<button class="btn btn-sm {$modifiers}">Button</button>
+<input type="button" class="btn btn-sm {$modifiers}" value="Input Button">
 
 .btn-link           - Link button.
 .btn-default        - Default button.
@@ -7191,9 +7191,9 @@ fieldset[disabled] .btn-sm.btn-link:focus {
 Extra small buttons
 
 Markup:
-<a class="btn btn-xs {$modifiers}" href="#">a.btn</a>
-<button class="btn btn-xs {$modifiers}">button.btn</button>
-<input type="button" class="btn btn-xs {$modifiers}" value="input[type='button']">
+<a class="btn btn-xs {$modifiers}" href="#">Link</a>
+<button class="btn btn-xs {$modifiers}">Button</button>
+<input type="button" class="btn btn-xs {$modifiers}" value="Input Button">
 
 .btn-link           - Link button.
 .btn-default        - Default button.
@@ -7516,6 +7516,94 @@ fieldset[disabled] .btn-xs.btn-link:focus {
 }
 .btn-xs.btn-link:hover {
   text-decoration: none;
+}
+/*
+Button groups
+
+Markup:
+<div class="btn-group">
+  <button class="btn btn-primary {$modifiers}">ボタン</button>
+  <button class="btn btn-primary {$modifiers}">ボタン</button>
+  <button class="btn btn-primary {$modifiers}">ボタン</button>
+</div>
+
+.btn-sm - Small button.
+.btn-xs - Extra small button.
+
+Styleguide 1.4
+*/
+.btn-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.btn-group > .btn {
+  position: relative;
+  float: left;
+}
+.btn-group > .btn:hover,
+.btn-group > .btn:focus,
+.btn-group > .btn:active,
+.btn-group > .btn.active {
+  z-index: 2;
+}
+.btn-group > .btn:focus {
+  outline: none;
+}
+.btn-group .btn + .btn,
+.btn-group .btn + .btn-group,
+.btn-group .btn-group + .btn,
+.btn-group .btn-group + .btn-group {
+  margin-left: -1px;
+}
+/*
+Action buttons
+
+Markup:
+<div class="action-buttons">
+  <a class="btn action-button {$modifiers}">Botón individual</a>
+  <div class="btn-group">
+    <a class="btn action-button {$modifiers}">Botón de grupo</a>
+    <a class="btn action-button {$modifiers}">Botón de grupo</a>
+    <a class="btn action-button {$modifiers}">Botón de grupo</a>
+  </div>
+</div>
+
+.btn-default - Default button.
+.btn-primary - Primary button.
+.btn-success - Success button.
+.btn-warning - Success button.
+.btn-danger  - Success button.
+.btn-info    - Success button.
+
+Styleguide 1.5
+*/
+.action-buttons .action-button {
+  margin-bottom: 5px;
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  border-radius: 20px;
+  padding: 2px 15px;
+}
+.action-buttons .action-button .btn {
+  margin-bottom: 5px;
+}
+.heading-large {
+  font-size: 40px;
+  font-weight: 100;
+}
+h1 small,
+h2 small,
+h3 h4 small,
+h5 small,
+h6 small {
+  color: #c9c9c9;
+}
+.page-title {
+  font-size: 40px;
+  font-weight: 100;
 }
 /*
 Forms
@@ -8225,629 +8313,6 @@ Styleguide 5
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
 }
-.layout-main .breadcrumbs {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 13px;
-  line-height: 1;
-  list-style-type: none;
-  margin: 0;
-}
-@media (min-width: 992px) {
-  .layout-main .breadcrumbs {
-    float: left;
-    width: 100%;
-  }
-}
-.layout-main .breadcrumbs li {
-  display: inline-block;
-}
-.layout-main .breadcrumbs li:after {
-  margin: 0 10px;
-  content: '\003e';
-}
-.layout-main .breadcrumbs li:last-child:after {
-  content: none;
-  margin: 0;
-}
-.action-buttons .action-button {
-  display: inline-block;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.428571429;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  background-color: #c9c9c9;
-  border: none;
-  color: #fff;
-  font-weight: 100;
-  padding: 15px 30px;
-  padding: 1px 5px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
-  border-radius: 20px;
-  padding: 2px 15px;
-}
-.action-buttons .action-button:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-.action-buttons .action-button:hover,
-.action-buttons .action-button:focus {
-  color: #ffffff;
-  text-decoration: none;
-}
-.action-buttons .action-button:active,
-.action-buttons .action-button.active {
-  outline: 0;
-  background-image: none;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-.action-buttons .action-button.disabled,
-.action-buttons .action-button[disabled],
-fieldset[disabled] .action-buttons .action-button {
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.action-buttons .action-button:hover {
-  background-color: #bcbcbc;
-  color: #fff;
-}
-.action-buttons .action-button.btn-default {
-  background-color: #c9c9c9;
-}
-.action-buttons .action-button.btn-default:hover {
-  background-color: #bcbcbc;
-  color: #fff;
-}
-.action-buttons .action-button.btn-primary {
-  color: #ffffff;
-  background-color: #eb4498;
-  border-color: #e92d8b;
-}
-.action-buttons .action-button.btn-primary:hover,
-.action-buttons .action-button.btn-primary:focus,
-.action-buttons .action-button.btn-primary:active,
-.action-buttons .action-button.btn-primary.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-primary {
-  color: #ffffff;
-  background-color: #e71f84;
-  border-color: #c3156d;
-}
-.action-buttons .action-button.btn-primary:active,
-.action-buttons .action-button.btn-primary.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-primary {
-  background-image: none;
-}
-.action-buttons .action-button.btn-primary.disabled,
-.action-buttons .action-button.btn-primary[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-primary,
-.action-buttons .action-button.btn-primary.disabled:hover,
-.action-buttons .action-button.btn-primary[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-primary:hover,
-.action-buttons .action-button.btn-primary.disabled:focus,
-.action-buttons .action-button.btn-primary[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-primary:focus,
-.action-buttons .action-button.btn-primary.disabled:active,
-.action-buttons .action-button.btn-primary[disabled]:active,
-fieldset[disabled] .action-buttons .action-button.btn-primary:active,
-.action-buttons .action-button.btn-primary.disabled.active,
-.action-buttons .action-button.btn-primary[disabled].active,
-fieldset[disabled] .action-buttons .action-button.btn-primary.active {
-  background-color: #eb4498;
-  border-color: #e92d8b;
-}
-.action-buttons .action-button.btn-primary .badge {
-  color: #eb4498;
-  background-color: #fff;
-}
-.action-buttons .action-button.btn-success {
-  color: #ffffff;
-  background-color: #22d23e;
-  border-color: #1ebc38;
-}
-.action-buttons .action-button.btn-success:hover,
-.action-buttons .action-button.btn-success:focus,
-.action-buttons .action-button.btn-success:active,
-.action-buttons .action-button.btn-success.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-success {
-  color: #ffffff;
-  background-color: #1caf34;
-  border-color: #168728;
-}
-.action-buttons .action-button.btn-success:active,
-.action-buttons .action-button.btn-success.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-success {
-  background-image: none;
-}
-.action-buttons .action-button.btn-success.disabled,
-.action-buttons .action-button.btn-success[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-success,
-.action-buttons .action-button.btn-success.disabled:hover,
-.action-buttons .action-button.btn-success[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-success:hover,
-.action-buttons .action-button.btn-success.disabled:focus,
-.action-buttons .action-button.btn-success[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-success:focus,
-.action-buttons .action-button.btn-success.disabled:active,
-.action-buttons .action-button.btn-success[disabled]:active,
-fieldset[disabled] .action-buttons .action-button.btn-success:active,
-.action-buttons .action-button.btn-success.disabled.active,
-.action-buttons .action-button.btn-success[disabled].active,
-fieldset[disabled] .action-buttons .action-button.btn-success.active {
-  background-color: #22d23e;
-  border-color: #1ebc38;
-}
-.action-buttons .action-button.btn-success .badge {
-  color: #22d23e;
-  background-color: #fff;
-}
-.action-buttons .action-button.btn-warning {
-  color: #3d3d3d;
-  background-color: #feee74;
-  border-color: #feeb5b;
-}
-.action-buttons .action-button.btn-warning:hover,
-.action-buttons .action-button.btn-warning:focus,
-.action-buttons .action-button.btn-warning:active,
-.action-buttons .action-button.btn-warning.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-warning {
-  color: #3d3d3d;
-  background-color: #fee94b;
-  border-color: #fde31e;
-}
-.action-buttons .action-button.btn-warning:active,
-.action-buttons .action-button.btn-warning.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-warning {
-  background-image: none;
-}
-.action-buttons .action-button.btn-warning.disabled,
-.action-buttons .action-button.btn-warning[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-warning,
-.action-buttons .action-button.btn-warning.disabled:hover,
-.action-buttons .action-button.btn-warning[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-warning:hover,
-.action-buttons .action-button.btn-warning.disabled:focus,
-.action-buttons .action-button.btn-warning[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-warning:focus,
-.action-buttons .action-button.btn-warning.disabled:active,
-.action-buttons .action-button.btn-warning[disabled]:active,
-fieldset[disabled] .action-buttons .action-button.btn-warning:active,
-.action-buttons .action-button.btn-warning.disabled.active,
-.action-buttons .action-button.btn-warning[disabled].active,
-fieldset[disabled] .action-buttons .action-button.btn-warning.active {
-  background-color: #feee74;
-  border-color: #feeb5b;
-}
-.action-buttons .action-button.btn-warning .badge {
-  color: #feee74;
-  background-color: #fff;
-}
-.action-buttons .action-button.btn-danger {
-  color: #ffffff;
-  background-color: #e0575c;
-  border-color: #dc4147;
-}
-.action-buttons .action-button.btn-danger:hover,
-.action-buttons .action-button.btn-danger:focus,
-.action-buttons .action-button.btn-danger:active,
-.action-buttons .action-button.btn-danger.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-danger {
-  color: #ffffff;
-  background-color: #da353b;
-  border-color: #bd2329;
-}
-.action-buttons .action-button.btn-danger:active,
-.action-buttons .action-button.btn-danger.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-danger {
-  background-image: none;
-}
-.action-buttons .action-button.btn-danger.disabled,
-.action-buttons .action-button.btn-danger[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-danger,
-.action-buttons .action-button.btn-danger.disabled:hover,
-.action-buttons .action-button.btn-danger[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-danger:hover,
-.action-buttons .action-button.btn-danger.disabled:focus,
-.action-buttons .action-button.btn-danger[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-danger:focus,
-.action-buttons .action-button.btn-danger.disabled:active,
-.action-buttons .action-button.btn-danger[disabled]:active,
-fieldset[disabled] .action-buttons .action-button.btn-danger:active,
-.action-buttons .action-button.btn-danger.disabled.active,
-.action-buttons .action-button.btn-danger[disabled].active,
-fieldset[disabled] .action-buttons .action-button.btn-danger.active {
-  background-color: #e0575c;
-  border-color: #dc4147;
-}
-.action-buttons .action-button.btn-danger .badge {
-  color: #e0575c;
-  background-color: #fff;
-}
-.action-buttons .action-button.btn-info {
-  color: #ffffff;
-  background-color: #b7c1d8;
-  border-color: #a6b3cf;
-}
-.action-buttons .action-button.btn-info:hover,
-.action-buttons .action-button.btn-info:focus,
-.action-buttons .action-button.btn-info:active,
-.action-buttons .action-button.btn-info.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-info {
-  color: #ffffff;
-  background-color: #9daaca;
-  border-color: #7f91ba;
-}
-.action-buttons .action-button.btn-info:active,
-.action-buttons .action-button.btn-info.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-info {
-  background-image: none;
-}
-.action-buttons .action-button.btn-info.disabled,
-.action-buttons .action-button.btn-info[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-info,
-.action-buttons .action-button.btn-info.disabled:hover,
-.action-buttons .action-button.btn-info[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-info:hover,
-.action-buttons .action-button.btn-info.disabled:focus,
-.action-buttons .action-button.btn-info[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-info:focus,
-.action-buttons .action-button.btn-info.disabled:active,
-.action-buttons .action-button.btn-info[disabled]:active,
-fieldset[disabled] .action-buttons .action-button.btn-info:active,
-.action-buttons .action-button.btn-info.disabled.active,
-.action-buttons .action-button.btn-info[disabled].active,
-fieldset[disabled] .action-buttons .action-button.btn-info.active {
-  background-color: #b7c1d8;
-  border-color: #a6b3cf;
-}
-.action-buttons .action-button.btn-info .badge {
-  color: #b7c1d8;
-  background-color: #fff;
-}
-.action-buttons .action-button.btn-link {
-  color: #eb4498;
-  font-weight: normal;
-  cursor: pointer;
-  border-radius: 0;
-  font-weight: 100;
-  text-decoration: underline;
-}
-.action-buttons .action-button.btn-link,
-.action-buttons .action-button.btn-link:active,
-.action-buttons .action-button.btn-link[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-link {
-  background-color: transparent;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.action-buttons .action-button.btn-link,
-.action-buttons .action-button.btn-link:hover,
-.action-buttons .action-button.btn-link:focus,
-.action-buttons .action-button.btn-link:active {
-  border-color: transparent;
-}
-.action-buttons .action-button.btn-link:hover,
-.action-buttons .action-button.btn-link:focus {
-  color: #cd1672;
-  text-decoration: underline;
-  background-color: transparent;
-}
-.action-buttons .action-button.btn-link[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-link:hover,
-.action-buttons .action-button.btn-link[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-link:focus {
-  color: #f1f2f2;
-  text-decoration: none;
-}
-.action-buttons .action-button.btn-link:hover {
-  text-decoration: none;
-}
-.action-buttons .action-button:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-.action-buttons .action-button:hover,
-.action-buttons .action-button:focus {
-  color: #ffffff;
-  text-decoration: none;
-}
-.action-buttons .action-button:active,
-.action-buttons .action-button.active {
-  outline: 0;
-  background-image: none;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-.action-buttons .action-button.disabled,
-.action-buttons .action-button[disabled],
-fieldset[disabled] .action-buttons .action-button {
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.action-buttons .action-button:hover {
-  background-color: #bcbcbc;
-  color: #fff;
-}
-.action-buttons .action-button.btn-default {
-  background-color: #c9c9c9;
-}
-.action-buttons .action-button.btn-default:hover {
-  background-color: #bcbcbc;
-  color: #fff;
-}
-.action-buttons .action-button.btn-primary {
-  color: #ffffff;
-  background-color: #eb4498;
-  border-color: #e92d8b;
-}
-.action-buttons .action-button.btn-primary:hover,
-.action-buttons .action-button.btn-primary:focus,
-.action-buttons .action-button.btn-primary:active,
-.action-buttons .action-button.btn-primary.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-primary {
-  color: #ffffff;
-  background-color: #e71f84;
-  border-color: #c3156d;
-}
-.action-buttons .action-button.btn-primary:active,
-.action-buttons .action-button.btn-primary.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-primary {
-  background-image: none;
-}
-.action-buttons .action-button.btn-primary.disabled,
-.action-buttons .action-button.btn-primary[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-primary,
-.action-buttons .action-button.btn-primary.disabled:hover,
-.action-buttons .action-button.btn-primary[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-primary:hover,
-.action-buttons .action-button.btn-primary.disabled:focus,
-.action-buttons .action-button.btn-primary[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-primary:focus,
-.action-buttons .action-button.btn-primary.disabled:active,
-.action-buttons .action-button.btn-primary[disabled]:active,
-fieldset[disabled] .action-buttons .action-button.btn-primary:active,
-.action-buttons .action-button.btn-primary.disabled.active,
-.action-buttons .action-button.btn-primary[disabled].active,
-fieldset[disabled] .action-buttons .action-button.btn-primary.active {
-  background-color: #eb4498;
-  border-color: #e92d8b;
-}
-.action-buttons .action-button.btn-primary .badge {
-  color: #eb4498;
-  background-color: #fff;
-}
-.action-buttons .action-button.btn-success {
-  color: #ffffff;
-  background-color: #22d23e;
-  border-color: #1ebc38;
-}
-.action-buttons .action-button.btn-success:hover,
-.action-buttons .action-button.btn-success:focus,
-.action-buttons .action-button.btn-success:active,
-.action-buttons .action-button.btn-success.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-success {
-  color: #ffffff;
-  background-color: #1caf34;
-  border-color: #168728;
-}
-.action-buttons .action-button.btn-success:active,
-.action-buttons .action-button.btn-success.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-success {
-  background-image: none;
-}
-.action-buttons .action-button.btn-success.disabled,
-.action-buttons .action-button.btn-success[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-success,
-.action-buttons .action-button.btn-success.disabled:hover,
-.action-buttons .action-button.btn-success[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-success:hover,
-.action-buttons .action-button.btn-success.disabled:focus,
-.action-buttons .action-button.btn-success[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-success:focus,
-.action-buttons .action-button.btn-success.disabled:active,
-.action-buttons .action-button.btn-success[disabled]:active,
-fieldset[disabled] .action-buttons .action-button.btn-success:active,
-.action-buttons .action-button.btn-success.disabled.active,
-.action-buttons .action-button.btn-success[disabled].active,
-fieldset[disabled] .action-buttons .action-button.btn-success.active {
-  background-color: #22d23e;
-  border-color: #1ebc38;
-}
-.action-buttons .action-button.btn-success .badge {
-  color: #22d23e;
-  background-color: #fff;
-}
-.action-buttons .action-button.btn-warning {
-  color: #3d3d3d;
-  background-color: #feee74;
-  border-color: #feeb5b;
-}
-.action-buttons .action-button.btn-warning:hover,
-.action-buttons .action-button.btn-warning:focus,
-.action-buttons .action-button.btn-warning:active,
-.action-buttons .action-button.btn-warning.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-warning {
-  color: #3d3d3d;
-  background-color: #fee94b;
-  border-color: #fde31e;
-}
-.action-buttons .action-button.btn-warning:active,
-.action-buttons .action-button.btn-warning.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-warning {
-  background-image: none;
-}
-.action-buttons .action-button.btn-warning.disabled,
-.action-buttons .action-button.btn-warning[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-warning,
-.action-buttons .action-button.btn-warning.disabled:hover,
-.action-buttons .action-button.btn-warning[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-warning:hover,
-.action-buttons .action-button.btn-warning.disabled:focus,
-.action-buttons .action-button.btn-warning[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-warning:focus,
-.action-buttons .action-button.btn-warning.disabled:active,
-.action-buttons .action-button.btn-warning[disabled]:active,
-fieldset[disabled] .action-buttons .action-button.btn-warning:active,
-.action-buttons .action-button.btn-warning.disabled.active,
-.action-buttons .action-button.btn-warning[disabled].active,
-fieldset[disabled] .action-buttons .action-button.btn-warning.active {
-  background-color: #feee74;
-  border-color: #feeb5b;
-}
-.action-buttons .action-button.btn-warning .badge {
-  color: #feee74;
-  background-color: #fff;
-}
-.action-buttons .action-button.btn-danger {
-  color: #ffffff;
-  background-color: #e0575c;
-  border-color: #dc4147;
-}
-.action-buttons .action-button.btn-danger:hover,
-.action-buttons .action-button.btn-danger:focus,
-.action-buttons .action-button.btn-danger:active,
-.action-buttons .action-button.btn-danger.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-danger {
-  color: #ffffff;
-  background-color: #da353b;
-  border-color: #bd2329;
-}
-.action-buttons .action-button.btn-danger:active,
-.action-buttons .action-button.btn-danger.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-danger {
-  background-image: none;
-}
-.action-buttons .action-button.btn-danger.disabled,
-.action-buttons .action-button.btn-danger[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-danger,
-.action-buttons .action-button.btn-danger.disabled:hover,
-.action-buttons .action-button.btn-danger[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-danger:hover,
-.action-buttons .action-button.btn-danger.disabled:focus,
-.action-buttons .action-button.btn-danger[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-danger:focus,
-.action-buttons .action-button.btn-danger.disabled:active,
-.action-buttons .action-button.btn-danger[disabled]:active,
-fieldset[disabled] .action-buttons .action-button.btn-danger:active,
-.action-buttons .action-button.btn-danger.disabled.active,
-.action-buttons .action-button.btn-danger[disabled].active,
-fieldset[disabled] .action-buttons .action-button.btn-danger.active {
-  background-color: #e0575c;
-  border-color: #dc4147;
-}
-.action-buttons .action-button.btn-danger .badge {
-  color: #e0575c;
-  background-color: #fff;
-}
-.action-buttons .action-button.btn-info {
-  color: #ffffff;
-  background-color: #b7c1d8;
-  border-color: #a6b3cf;
-}
-.action-buttons .action-button.btn-info:hover,
-.action-buttons .action-button.btn-info:focus,
-.action-buttons .action-button.btn-info:active,
-.action-buttons .action-button.btn-info.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-info {
-  color: #ffffff;
-  background-color: #9daaca;
-  border-color: #7f91ba;
-}
-.action-buttons .action-button.btn-info:active,
-.action-buttons .action-button.btn-info.active,
-.open .dropdown-toggle.action-buttons .action-button.btn-info {
-  background-image: none;
-}
-.action-buttons .action-button.btn-info.disabled,
-.action-buttons .action-button.btn-info[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-info,
-.action-buttons .action-button.btn-info.disabled:hover,
-.action-buttons .action-button.btn-info[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-info:hover,
-.action-buttons .action-button.btn-info.disabled:focus,
-.action-buttons .action-button.btn-info[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-info:focus,
-.action-buttons .action-button.btn-info.disabled:active,
-.action-buttons .action-button.btn-info[disabled]:active,
-fieldset[disabled] .action-buttons .action-button.btn-info:active,
-.action-buttons .action-button.btn-info.disabled.active,
-.action-buttons .action-button.btn-info[disabled].active,
-fieldset[disabled] .action-buttons .action-button.btn-info.active {
-  background-color: #b7c1d8;
-  border-color: #a6b3cf;
-}
-.action-buttons .action-button.btn-info .badge {
-  color: #b7c1d8;
-  background-color: #fff;
-}
-.action-buttons .action-button.btn-link {
-  color: #eb4498;
-  font-weight: normal;
-  cursor: pointer;
-  border-radius: 0;
-  font-weight: 100;
-  text-decoration: underline;
-}
-.action-buttons .action-button.btn-link,
-.action-buttons .action-button.btn-link:active,
-.action-buttons .action-button.btn-link[disabled],
-fieldset[disabled] .action-buttons .action-button.btn-link {
-  background-color: transparent;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.action-buttons .action-button.btn-link,
-.action-buttons .action-button.btn-link:hover,
-.action-buttons .action-button.btn-link:focus,
-.action-buttons .action-button.btn-link:active {
-  border-color: transparent;
-}
-.action-buttons .action-button.btn-link:hover,
-.action-buttons .action-button.btn-link:focus {
-  color: #cd1672;
-  text-decoration: underline;
-  background-color: transparent;
-}
-.action-buttons .action-button.btn-link[disabled]:hover,
-fieldset[disabled] .action-buttons .action-button.btn-link:hover,
-.action-buttons .action-button.btn-link[disabled]:focus,
-fieldset[disabled] .action-buttons .action-button.btn-link:focus {
-  color: #f1f2f2;
-  text-decoration: none;
-}
-.action-buttons .action-button.btn-link:hover {
-  text-decoration: none;
-}
-.action-buttons .action-button.btn-link:hover {
-  text-decoration: none;
-}
 .account-controller.admin-action .grid-view {
   margin-top: 20px;
 }
@@ -8951,6 +8416,25 @@ fieldset[disabled] .action-buttons .action-button.btn-link:focus {
     float: left;
     width: 50%;
   }
+}
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn {
+  position: relative;
+  float: left;
+}
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:hover,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:focus,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:active,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn.active {
+  z-index: 2;
+}
+.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:focus {
+  outline: none;
+}
+.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn + .btn,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn + .btn-group,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn-group + .btn,
+.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn-group + .btn-group {
+  margin-left: -1px;
 }
 .account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn {
   position: relative;
@@ -9109,7 +8593,7 @@ fieldset[disabled] .action-buttons .action-button.btn-link:focus {
 @media (min-width: 992px) {
   .account-controller.profile-action .profile .profile-content .content-form .profile-picture .picture-select {
     float: left;
-    width: 66.66666666666666%;
+    width: 50%;
   }
 }
 .account-controller.profile-action .profile .profile-content .content-form .profile-picture .picture-upload {
@@ -9121,7 +8605,7 @@ fieldset[disabled] .action-buttons .action-button.btn-link:focus {
 @media (min-width: 992px) {
   .account-controller.profile-action .profile .profile-content .content-form .profile-picture .picture-upload {
     float: left;
-    width: 33.33333333333333%;
+    width: 50%;
   }
 }
 .account-controller.profile-action .profile .profile-content .content-form .username-and-password {
@@ -9436,6 +8920,8 @@ fieldset[disabled] .action-buttons .action-button.btn-link:focus {
   }
 }
 .item-controller .item-header .header-text .header-title {
+  font-size: 40px;
+  font-weight: 100;
   margin: 0;
 }
 .item-controller .item-header .header-text .header-icon,
@@ -9985,6 +9471,36 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
 }
 .alert.alert-error .alert-link {
   color: #953b39;
+}
+.breadcrumbs {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 13px;
+  line-height: 1;
+  list-style-type: none;
+  margin: 0;
+}
+@media (min-width: 992px) {
+  .breadcrumbs {
+    float: left;
+    width: 100%;
+  }
+}
+.breadcrumbs li {
+  display: inline-block;
+}
+.breadcrumbs li:after {
+  margin: 0 5px;
+  content: '\003e';
+}
+.breadcrumbs li:last-child:after {
+  content: none;
+  margin: 0;
+}
+.breadcrumbs li a {
+  color: #3d3d3d;
 }
 .flowbar {
   background-image: -webkit-linear-gradient(top, #ffffff 90%, rgba(255, 255, 255, 0) 100%);
