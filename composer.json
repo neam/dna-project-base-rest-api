@@ -173,6 +173,7 @@
     },
     "extra": {
         "heroku": {
+            "framework": "yii",
             "engines": {
                 "php": "5.4.26",
                 "nginx": "1.4.3"
