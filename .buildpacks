@@ -1,2 +1,2 @@
 https://github.com/ddollar/heroku-buildpack-apt#7993a88465873f318486a388187764294a6a615d
-https://github.com/aarondfrancis/heroku-buildpack-php-nginx-yii.git#v0.3.6
+https://github.com/neam/heroku-buildpack-php#feature/yii-framework-support
