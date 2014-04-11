@@ -8997,8 +8997,317 @@ Styleguide 5
   }
 }
 .item-controller .item-progress .progress-item .item-action .btn {
-  padding: 0 4px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  background-color: #c9c9c9;
+  border: none;
+  color: #fff;
+  font-weight: 100;
+  padding: 17px 30px 18px;
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  border-radius: 20px;
+  padding: 2px 15px;
   text-align: left;
+}
+.item-controller .item-progress .progress-item .item-action .btn:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.item-controller .item-progress .progress-item .item-action .btn:hover,
+.item-controller .item-progress .progress-item .item-action .btn:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn:active,
+.item-controller .item-progress .progress-item .item-action .btn.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.item-controller .item-progress .progress-item .item-action .btn.disabled,
+.item-controller .item-progress .progress-item .item-action .btn[disabled],
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-default {
+  background-color: #c9c9c9;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-default:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary {
+  color: #ffffff;
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary.active,
+.open .dropdown-toggle.item-controller .item-progress .progress-item .item-action .btn.btn-primary {
+  color: #ffffff;
+  background-color: #e71f84;
+  border-color: #c3156d;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary.active,
+.open .dropdown-toggle.item-controller .item-progress .progress-item .item-action .btn.btn-primary {
+  background-image: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary.disabled,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary[disabled],
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-primary,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary.disabled:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary[disabled]:hover,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-primary:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary.disabled:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary[disabled]:focus,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-primary:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary.disabled:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary[disabled]:active,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-primary:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary.disabled.active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary[disabled].active,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-primary.active {
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-primary .badge {
+  color: #eb4498;
+  background-color: #fff;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-success {
+  color: #ffffff;
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-success:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success.active,
+.open .dropdown-toggle.item-controller .item-progress .progress-item .item-action .btn.btn-success {
+  color: #ffffff;
+  background-color: #1caf34;
+  border-color: #168728;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-success:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success.active,
+.open .dropdown-toggle.item-controller .item-progress .progress-item .item-action .btn.btn-success {
+  background-image: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-success.disabled,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success[disabled],
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-success,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success.disabled:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success[disabled]:hover,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-success:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success.disabled:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success[disabled]:focus,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-success:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success.disabled:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success[disabled]:active,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-success:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success.disabled.active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-success[disabled].active,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-success.active {
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-success .badge {
+  color: #22d23e;
+  background-color: #fff;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning {
+  color: #3d3d3d;
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning.active,
+.open .dropdown-toggle.item-controller .item-progress .progress-item .item-action .btn.btn-warning {
+  color: #3d3d3d;
+  background-color: #fee94b;
+  border-color: #fde31e;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning.active,
+.open .dropdown-toggle.item-controller .item-progress .progress-item .item-action .btn.btn-warning {
+  background-image: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning.disabled,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning[disabled],
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-warning,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning.disabled:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning[disabled]:hover,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-warning:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning.disabled:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning[disabled]:focus,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-warning:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning.disabled:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning[disabled]:active,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-warning:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning.disabled.active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning[disabled].active,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-warning.active {
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-warning .badge {
+  color: #feee74;
+  background-color: #fff;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger {
+  color: #ffffff;
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger.active,
+.open .dropdown-toggle.item-controller .item-progress .progress-item .item-action .btn.btn-danger {
+  color: #ffffff;
+  background-color: #da353b;
+  border-color: #bd2329;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger.active,
+.open .dropdown-toggle.item-controller .item-progress .progress-item .item-action .btn.btn-danger {
+  background-image: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger.disabled,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger[disabled],
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-danger,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger.disabled:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger[disabled]:hover,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-danger:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger.disabled:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger[disabled]:focus,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-danger:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger.disabled:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger[disabled]:active,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-danger:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger.disabled.active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger[disabled].active,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-danger.active {
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-danger .badge {
+  color: #e0575c;
+  background-color: #fff;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-info {
+  color: #ffffff;
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-info:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info.active,
+.open .dropdown-toggle.item-controller .item-progress .progress-item .item-action .btn.btn-info {
+  color: #ffffff;
+  background-color: #9daaca;
+  border-color: #7f91ba;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-info:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info.active,
+.open .dropdown-toggle.item-controller .item-progress .progress-item .item-action .btn.btn-info {
+  background-image: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-info.disabled,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info[disabled],
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-info,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info.disabled:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info[disabled]:hover,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-info:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info.disabled:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info[disabled]:focus,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-info:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info.disabled:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info[disabled]:active,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-info:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info.disabled.active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-info[disabled].active,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-info.active {
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-info .badge {
+  color: #b7c1d8;
+  background-color: #fff;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link[disabled],
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link:active {
+  border-color: transparent;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link[disabled]:hover,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-link:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link[disabled]:focus,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-link:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link:hover {
+  text-decoration: none;
 }
 .item-controller .item-form {
   position: relative;

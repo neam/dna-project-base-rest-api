@@ -1157,6 +1157,20 @@ trait ItemController
     }
 
     /**
+     * Checks if the given step matches the current step.
+     * @param string $step
+     * @return boolean
+     */
+    public function isStep($step)
+    {
+        if (isset($_GET['step'])) {
+            return $_GET['step'] === $step;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Checks if the action is 'evaluate'.
      *
      * This is used to check if the context is related to the 'evaluate' action
