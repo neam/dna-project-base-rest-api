@@ -27,7 +27,9 @@
                 array(
                     'label' => Yii::t('crud', 'Prepare for review'),
                     'color' => $this->action->id === 'prepareForReview' ? 'inverse' : null,
-                    'icon' => 'glyphicon-pencil' . ($this->action->id == '' ? ' icon-white' : null),
+                    'htmlOptions' => array(
+                        'class' => 'action-button',
+                    ),
                     'url' => array(
                         'prepareForReview',
                         'id' => $model->{$model->tableSchema->primaryKey},
@@ -45,7 +47,9 @@
                 array(
                     'label' => Yii::t('crud', 'Prepare for publishing'),
                     'color' => $this->action->id === 'prepareForPublishing' ? 'inverse' : null,
-                    'icon' => 'glyphicon-pencil' . ($this->action->id === 'prepareForPublishing' ? ' icon-white' : null),
+                    'htmlOptions' => array(
+                        'class' => 'action-button',
+                    ),
                     'url' => array(
                         'prepareForPublishing',
                         'id' => $model->{$model->tableSchema->primaryKey},
@@ -64,7 +68,9 @@
                 <?php echo TbHtml::linkButton(
                     Yii::t('app', 'Remove from {group}', array('{group}' => $group)),
                     array(
-                        'icon' => TbHtml::ICON_MINUS,
+                        'htmlOptions' => array(
+                            'class' => 'action-button',
+                        ),
                         'url' => array(
                             'removeFromGroup',
                             'node_id' => $model->node_id,
@@ -77,7 +83,7 @@
                 <?php echo TbHtml::linkButton(
                     Yii::t('app', 'Add to {group}', array('{group}' => $group)),
                     array(
-                        'icon' => TbHtml::ICON_PLUS,
+                        'class' => 'action-button',
                         'url' => array(
                             'addToGroup',
                             'node_id' => $model->node_id,
@@ -95,7 +101,9 @@
             array(
                 'label' => Yii::t('crud', 'Evaluate'),
                 'color' => $this->action->id === 'evaluate' ? 'inverse' : null,
-                'icon' => 'glyphicon-comment' . ($this->action->id === 'evaluate' ? ' icon-white' : null),
+                'htmlOptions' => array(
+                    'class' => 'action-button',
+                ),
                 'url' => array(
                     'evaluate',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -109,7 +117,9 @@
             array(
                 'label' => Yii::t('model', 'Proofread'),
                 'color' => $this->action->id === 'proofRead' ? 'inverse' : null,
-                'icon' => 'glyphicon-certificate' . ($this->action->id === 'proofRead' ? ' icon-white' : null),
+                'htmlOptions' => array(
+                    'class' => 'action-button',
+                ),
                 'url' => array(
                     'proofRead',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -122,7 +132,9 @@
             array(
                 'label' => Yii::t('model', 'Translate'),
                 'color' => $this->action->id === 'translationOverview' ? 'inverse' : null,
-                'icon' => 'glyphicon-globe' . ($this->action->id === 'translationOverview' ? ' icon-white' : null),
+                'htmlOptions' => array(
+                    'class' => 'action-button',
+                ),
                 'url' => array(
                     'translationOverview',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -142,7 +154,9 @@
                     '\TbButton',
                     array(
                         'label' => Yii::t('model', 'Unpublish'),
-                        'icon' => TbHtml::ICON_THUMBS_DOWN,
+                        'htmlOptions' => array(
+                            'class' => 'action-button',
+                        ),
                         'url' => array(
                             'unpublish',
                             'id' => $model->{$model->tableSchema->primaryKey},
@@ -155,7 +169,9 @@
                     '\TbButton',
                     array(
                         'label' => Yii::t('model', 'Publish'),
-                        'icon' => TbHtml::ICON_THUMBS_UP,
+                        'htmlOptions' => array(
+                            'class' => 'action-button',
+                        ),
                         'url' => array(
                             'publish',
                             'id' => $model->{$model->tableSchema->primaryKey},
@@ -168,7 +184,7 @@
                     Yii::t('model', 'Publish'),
                     array(
                         'disabled' => true,
-                        'icon' => TbHtml::ICON_THUMBS_UP,
+                        'class' => 'action-button',
                         'visible' => $model->checkAccess('Publish'),
                     )
                 ); ?>
@@ -181,7 +197,9 @@
             array(
                 'label' => Yii::t('model', 'Clone'),
                 'color' => $this->action->id === 'clone' ? 'inverse' : null,
-                'icon' => 'glyphicon-plus' . ($this->action->id === 'clone' ? ' icon-white' : null),
+                'htmlOptions' => array(
+                    'class' => 'action-button',
+                ),
                 'url' => array(
                     'clone',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -193,7 +211,9 @@
             '\TbButton', array(
                 'label' => Yii::t('model', 'Remove'),
                 'color' => $this->action->id === 'remove' ? 'inverse' : null,
-                'icon' => 'glyphicon-eye-close' . ($this->action->id === 'remove' ? ' icon-white' : null),
+                'htmlOptions' => array(
+                    'class' => 'action-button',
+                ),
                 'url' => array(
                     'remove',
                     'id' => $model->{$model->tableSchema->primaryKey},

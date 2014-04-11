@@ -1,6 +1,8 @@
 <?php
-/* @var SiteController $this */
-
+/** @var SiteController|ItemController $this */
+/** @var ActiveRecord|ItemTrait $model */
+?>
+<?php
 // todo: move to controller.
 $model = new $modelClass();
 // todo: move url generation to model (e.g. $model->url)
@@ -13,14 +15,14 @@ $model = new $modelClass();
                 <?php echo TbHtml::linkButton(
                     Yii::t('model', 'Browse'),
                     array(
-                        'icon' => TbHtml::ICON_FORWARD,
+                        'class' => 'action-button',
+                        'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                         'url' => array(lcfirst($modelClass) . '/browse'),
                     )
                 ); ?>
             </div>
         <?php endif; ?>
     </div>
-
     <div class="intro-description">
         <?php echo CHtml::encode($model->itemDescription); ?>
     </div>

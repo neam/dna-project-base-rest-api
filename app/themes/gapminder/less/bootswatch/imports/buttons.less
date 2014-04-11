@@ -8,9 +8,9 @@ Styleguide 1
 Regular buttons
 
 Markup:
-<a class="btn {$modifiers}" href="#">a.btn</a>
-<button class="btn {$modifiers}">button.btn</button>
-<input type="button" class="btn {$modifiers}" value="input[type='button']">
+<a class="btn {$modifiers}" href="#">Link</a>
+<button class="btn {$modifiers}">Button</button>
+<input type="button" class="btn {$modifiers}" value="Input Button">
 
 .btn-link           - Link button.
 .btn-default        - Default button.
@@ -23,11 +23,11 @@ Markup:
 Styleguide 1.1
 */
 .btn {
-  .btn;
   background-color: @brand-secondary;
   border: none;
   border-radius: 3px;
   color: #fff;
+  font-weight: 100;
   padding: 15px 30px;
 
   &:hover {
@@ -73,6 +73,7 @@ Styleguide 1.1
   // Link buttons
   &.btn-link {
     .btn-link;
+    font-weight: 100;
     text-decoration: underline;
 
     &:hover {
@@ -85,9 +86,9 @@ Styleguide 1.1
 Small buttons
 
 Markup:
-<a class="btn btn-sm {$modifiers}" href="#">a.btn</a>
-<button class="btn btn-sm {$modifiers}">button.btn</button>
-<input type="button" class="btn btn-sm {$modifiers}" value="input[type='button']">
+<a class="btn btn-sm {$modifiers}" href="#">Link</a>
+<button class="btn btn-sm {$modifiers}">Button</button>
+<input type="button" class="btn btn-sm {$modifiers}" value="Input Button">
 
 .btn-link           - Link button.
 .btn-default        - Default button.
@@ -110,9 +111,9 @@ Styleguide 1.2
 Extra small buttons
 
 Markup:
-<a class="btn btn-xs {$modifiers}" href="#">a.btn</a>
-<button class="btn btn-xs {$modifiers}">button.btn</button>
-<input type="button" class="btn btn-xs {$modifiers}" value="input[type='button']">
+<a class="btn btn-xs {$modifiers}" href="#">Link</a>
+<button class="btn btn-xs {$modifiers}">Button</button>
+<input type="button" class="btn btn-xs {$modifiers}" value="Input Button">
 
 .btn-link           - Link button.
 .btn-default        - Default button.
@@ -129,4 +130,56 @@ Styleguide 1.3
   .btn-xs;
   border-radius: 20px;
   padding: 2px 15px;
+}
+
+/*
+Button groups
+
+Markup:
+<div class="btn-group">
+  <button class="btn btn-primary {$modifiers}">ボタン</button>
+  <button class="btn btn-primary {$modifiers}">ボタン</button>
+  <button class="btn btn-primary {$modifiers}">ボタン</button>
+</div>
+
+.btn-sm - Small button.
+.btn-xs - Extra small button.
+
+Styleguide 1.4
+*/
+.btn-group {
+  .btn-group;
+}
+
+/*
+Action buttons
+
+Markup:
+<div class="action-buttons">
+  <a class="btn action-button {$modifiers}">Botón individual</a>
+  <div class="btn-group">
+    <a class="btn action-button {$modifiers}">Botón de grupo</a>
+    <a class="btn action-button {$modifiers}">Botón de grupo</a>
+    <a class="btn action-button {$modifiers}">Botón de grupo</a>
+  </div>
+</div>
+
+.btn-default - Default button.
+.btn-primary - Primary button.
+.btn-success - Success button.
+.btn-warning - Success button.
+.btn-danger  - Success button.
+.btn-info    - Success button.
+
+Styleguide 1.5
+*/
+.action-buttons {
+  .action-button {
+    .btn;
+    .btn-xs;
+
+    .btn {
+      margin-bottom: 5px;
+    }
+  }
 }

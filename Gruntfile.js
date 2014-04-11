@@ -7,11 +7,11 @@ module.exports = function(grunt) {
         kss: {
             options: {
                 includeType: 'less',
-                includePath: 'app/themes/gapminder/less/theme/main.less'
+                includePath: 'app/themes/gapminder/less/main.less'
             },
             dist: {
                 files: {
-                    'www/styleguide': ['app/themes/gapminder/less/theme']
+                    'www/styleguide': ['app/themes/gapminder/less']
                 }
             }
         },
@@ -27,9 +27,10 @@ module.exports = function(grunt) {
                 inlineCSS: false
             },
             dist: {
-                dest: 'app/themes/gapminder/less/imports.less',
+                dest: 'app/themes/gapminder/less/app.less',
                 src: [
                     'app/themes/gapminder/less/layouts/**/*.less',
+                    'app/themes/gapminder/less/partials/**/*.less',
                     'app/themes/gapminder/less/controllers/**/*.less',
                     'app/themes/gapminder/less/widgets/**/*.less'
                 ]
