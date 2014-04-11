@@ -22,11 +22,12 @@
         <?php $this->widget(
             '\TbButton',
             array(
-                'label' => Yii::t('model', $caption),
-                'color' => $_GET['step'] === $step ? TbHtml::BUTTON_COLOR_INVERSE : TbHtml::BUTTON_COLOR_DEFAULT,
-                'size' => TbHtml::BUTTON_SIZE_XS,
                 'block' => true,
-                'icon' => 'glyphicon-edit',
+                'htmlOptions' => array(
+                    'disabled' => $this->isStep($step),
+                ),
+                'label' => Yii::t('model', $caption),
+                'size' => TbHtml::BUTTON_SIZE_XS,
                 'url' => $model->getActionRoute($this->action->id, $step, $translateInto),
             )
         ); ?>
