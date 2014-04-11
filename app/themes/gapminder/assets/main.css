@@ -8398,62 +8398,21 @@ Styleguide 5
 @media (min-width: 992px) {
   .account-controller.profile-action .flowbar .flowbar-content .content-toolbar {
     float: left;
-    width: 50%;
+    width: 66.66666666666666%;
   }
 }
 .account-controller.profile-action .flowbar .flowbar-content .content-actions {
+  position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  float: right !important;
   text-align: right;
 }
 @media (min-width: 992px) {
   .account-controller.profile-action .flowbar .flowbar-content .content-actions {
     float: left;
-    width: 50%;
+    width: 33.33333333333333%;
   }
-}
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn {
-  position: relative;
-  float: left;
-}
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:hover,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:focus,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:active,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn.active {
-  z-index: 2;
-}
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:focus {
-  outline: none;
-}
-.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn + .btn,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn + .btn-group,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn-group + .btn,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn-group + .btn-group {
-  margin-left: -1px;
-}
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn {
-  position: relative;
-  float: left;
-}
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:hover,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:focus,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:active,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn.active {
-  z-index: 2;
-}
-.account-controller.profile-action .flowbar .flowbar-content .content-actions > .btn:focus {
-  outline: none;
-}
-.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn + .btn,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn + .btn-group,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn-group + .btn,
-.account-controller.profile-action .flowbar .flowbar-content .content-actions .btn-group + .btn-group {
-  margin-left: -1px;
 }
 .account-controller.profile-action .alerts {
   margin-left: -15px;
@@ -9396,9 +9355,319 @@ Styleguide 5
   float: right;
 }
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  background-color: #c9c9c9;
+  border: none;
+  color: #fff;
+  font-weight: 100;
+  padding: 15px 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  border-radius: 20px;
+  padding: 4px 20px;
   color: #ffffff;
   background-color: #eb4498;
   border-color: #e92d8b;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.disabled,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button[disabled],
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-default {
+  background-color: #c9c9c9;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-default:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary {
+  color: #ffffff;
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary.active,
+.open .dropdown-toggle.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary {
+  color: #ffffff;
+  background-color: #e71f84;
+  border-color: #c3156d;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary.active,
+.open .dropdown-toggle.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary {
+  background-image: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary.disabled,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary[disabled],
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary.disabled:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary[disabled]:hover,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary.disabled:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary[disabled]:focus,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary.disabled:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary[disabled]:active,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary.disabled.active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary[disabled].active,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary.active {
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-primary .badge {
+  color: #eb4498;
+  background-color: #fff;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success {
+  color: #ffffff;
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success.active,
+.open .dropdown-toggle.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success {
+  color: #ffffff;
+  background-color: #1caf34;
+  border-color: #168728;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success.active,
+.open .dropdown-toggle.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success {
+  background-image: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success.disabled,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success[disabled],
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success.disabled:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success[disabled]:hover,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success.disabled:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success[disabled]:focus,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success.disabled:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success[disabled]:active,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success.disabled.active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success[disabled].active,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success.active {
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-success .badge {
+  color: #22d23e;
+  background-color: #fff;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning {
+  color: #3d3d3d;
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning.active,
+.open .dropdown-toggle.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning {
+  color: #3d3d3d;
+  background-color: #fee94b;
+  border-color: #fde31e;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning.active,
+.open .dropdown-toggle.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning {
+  background-image: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning.disabled,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning[disabled],
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning.disabled:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning[disabled]:hover,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning.disabled:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning[disabled]:focus,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning.disabled:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning[disabled]:active,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning.disabled.active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning[disabled].active,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning.active {
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-warning .badge {
+  color: #feee74;
+  background-color: #fff;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger {
+  color: #ffffff;
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger.active,
+.open .dropdown-toggle.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger {
+  color: #ffffff;
+  background-color: #da353b;
+  border-color: #bd2329;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger.active,
+.open .dropdown-toggle.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger {
+  background-image: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger.disabled,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger[disabled],
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger.disabled:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger[disabled]:hover,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger.disabled:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger[disabled]:focus,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger.disabled:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger[disabled]:active,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger.disabled.active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger[disabled].active,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger.active {
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-danger .badge {
+  color: #e0575c;
+  background-color: #fff;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info {
+  color: #ffffff;
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info.active,
+.open .dropdown-toggle.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info {
+  color: #ffffff;
+  background-color: #9daaca;
+  border-color: #7f91ba;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info.active,
+.open .dropdown-toggle.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info {
+  background-image: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info.disabled,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info[disabled],
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info.disabled:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info[disabled]:hover,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info.disabled:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info[disabled]:focus,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info.disabled:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info[disabled]:active,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info.disabled.active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info[disabled].active,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info.active {
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-info .badge {
+  color: #b7c1d8;
+  background-color: #fff;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link[disabled],
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link:active {
+  border-color: transparent;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link[disabled]:hover,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link[disabled]:focus,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link:hover {
+  text-decoration: none;
 }
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button:hover,
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button:focus,
@@ -9789,16 +10058,26 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
 .mejs-container {
   background: none;
 }
-.select2-container.form-control {
+.select2 {
+  height: 50px;
+}
+.select2 .select2-container {
+  height: 50px;
+}
+.select2 .select2-container.form-control {
   border: none;
   padding: 0;
 }
-.select2-container .select2-choice {
+.select2 .select2-container .select2-choice {
   height: 50px;
   line-height: 50px;
 }
-.select2-container .select2-choice .select2-arrow b {
+.select2 .select2-container .select2-choice .select2-arrow b {
   background-position-y: 12px;
+}
+.select2-result-label {
+  height: 50px;
+  line-height: 50px;
 }
 .hint-tooltip {
   font-size: 14px;

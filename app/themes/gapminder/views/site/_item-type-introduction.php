@@ -16,6 +16,7 @@ $model = new $modelClass();
                     Yii::t('model', 'Browse'),
                     array(
                         'class' => 'action-button',
+                        'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                         'url' => array(lcfirst($modelClass) . '/browse'),
                     )
                 ); ?>
