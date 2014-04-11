@@ -186,7 +186,7 @@
                 "short_open_tag=on"
             ],
             "compile": [
-                "bash shell-scripts/post-buildstep.sh"
+                "printenv"
             ],
             "log-files": [
                 "app/runtime/application.log"

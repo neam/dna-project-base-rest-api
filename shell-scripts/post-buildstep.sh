@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 if [ "$connectionID" == "" ]; then
     connectionID=db
 fi
@@ -11,8 +13,6 @@ chmod -R g+rw app/data/
 chmod -R g+rw app/runtime/
 chmod -R g+rw www/assets/
 chmod -R g+rw www/runtime/
-# todo, fix envbootstrap before continuing
-exit 0
 app/yiic migrate --connectionID=$connectionID
 app/yiic authorizationhierarchy reset
 app/yiic authorizationhierarchy build
