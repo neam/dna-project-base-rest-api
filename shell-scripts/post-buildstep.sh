@@ -13,6 +13,13 @@ chmod -R g+rw app/data/
 chmod -R g+rw app/runtime/
 chmod -R g+rw www/assets/
 chmod -R g+rw www/runtime/
+
+# temporarily
+chmod -R 777 app/data/
+chmod -R 777 app/runtime/
+chmod -R 777 www/assets/
+chmod -R 777 www/runtime/
+
 app/yiic fixture --connectionID=$connectionID load
 app/yiic migrate --connectionID=$connectionID --interactive=0
 app/yiic authorizationhierarchy reset
