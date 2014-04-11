@@ -6568,9 +6568,24 @@ td.visible-print {
     display: none !important;
   }
 }
-.navbar-nav > li > a {
+.navbar .navbar-nav > li > a {
   padding-top: 31px;
   padding-bottom: 31px;
+}
+.navbar-default .navbar-toggle {
+  background-color: #ffffff;
+  border: 1px solid #d2d4d5;
+  border-radius: 3px;
+}
+.navbar-default .navbar-toggle:hover {
+  background-color: #f1f2f2;
+}
+.navbar-default .navbar-toggle:focus {
+  background-color: #ffffff;
+  outline: none;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #eb4498;
 }
 /*
 Buttons

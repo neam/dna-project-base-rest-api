@@ -1,8 +1,31 @@
-.navbar-nav {
-  & > li {
-    & > a {
-      padding-top: 31px;
-      padding-bottom: 31px;
+.navbar {
+  .navbar-nav {
+    & > li {
+      & > a {
+        padding-top: 31px;
+        padding-bottom: 31px;
+      }
+    }
+  }
+}
+
+.navbar-default {
+  .navbar-toggle {
+    background-color: @navbar-default-bg;
+    border: 1px solid @navbar-default-border;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: @gray-light;
+    }
+
+    &:focus {
+      background-color: @navbar-default-bg;
+      outline: none;
+    }
+
+    .icon-bar {
+      background-color: @brand-primary;
     }
   }
 }
