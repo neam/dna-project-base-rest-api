@@ -20,7 +20,7 @@ chmod -R 777 app/runtime/
 chmod -R 777 www/assets/
 chmod -R 777 www/runtime/
 
-// todo: move to php/node.js buildstep
+# todo: move to php/node.js buildstep
 bower install # --allow-root
 
 rm -r www/assets/*
