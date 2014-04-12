@@ -20,10 +20,16 @@ chmod -R 777 app/runtime/
 chmod -R 777 www/assets/
 chmod -R 777 www/runtime/
 
+// todo: move to php/node.js buildstep
+bower install # --allow-root
+
+rm -r www/assets/*
+
 app/yiic fixture --connectionID=$connectionID load
 app/yiic migrate --connectionID=$connectionID --interactive=0
+app/yiic databaseviewgenerator --connectionID=$connectionID item
+
 app/yiic authorizationhierarchy reset
 app/yiic authorizationhierarchy build
-app/yiic databaseviewgenerator --connectionID=$connectionID item
 
 exit 0
