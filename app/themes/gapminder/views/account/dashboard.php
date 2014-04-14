@@ -1,10 +1,32 @@
-<?php /** @var AccountController $this */ ?>
 <?php
-//$this->breadcrumbs[] = Yii::t('model', 'Users');
-//$this->breadcrumbs[$model->username] = array('account/profile', 'id' => $model->id);
+/** @var AccountController $this */
+/** @var Account $model */
+/** @var CActiveDataProvider $dataProvider */
+/** @var string $modelClass */
+?>
+<?php
+$this->breadcrumbs[] = Yii::t('account', 'Gapminder Community'); // TODO: Replace with an appropriate breadcrumb item/link.
 $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
 ?>
 <div class="account-controller dashboard-action">
+    <div class="dashboard-profile">
+        <div class="row">
+            <div class="profile-info">
+                <div class="row">
+                    <div class="profile-picture">
+                        <img src="http://placehold.it/195x195">
+                    </div>
+                    <div class="profile-facts">
+                        @todo: Points, Full Name, Title, etc.
+                    </div>
+                </div>
+            </div>
+            <div class="recent-updates">
+                @todo: Recent Updates
+            </div>
+        </div>
+    </div>
+
     <h1>
         <?php echo $model->profile->first_name . " " . $model->profile->last_name; ?>
         <small><?php echo Yii::t('account', 'Dashboard') ?> <?php //echo $model->id ?></small>
@@ -52,4 +74,3 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
         </div>
     <?php endif; ?>
 </div>
-

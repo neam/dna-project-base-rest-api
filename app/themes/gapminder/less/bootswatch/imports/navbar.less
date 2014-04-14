@@ -1,9 +1,27 @@
 .navbar {
+  font-weight: 100;
+
+  .navbar-brand {
+    padding-right: 40px;
+    border-right: 1px solid @navbar-default-border;
+  }
+
   .navbar-nav {
     & > li {
+      &:last-child {
+        & > a {
+          border-left: none;
+        }
+      }
+
       & > a {
-        padding-top: 31px;
-        padding-bottom: 31px;
+        &:hover {
+          border-color: @navbar-default-border;
+        }
+
+        border-left: 1px solid @navbar-default-border;
+        border-right: 1px solid @navbar-default-border;
+        padding: 27px 25px 26px;
       }
     }
   }
