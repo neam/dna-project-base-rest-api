@@ -13,5 +13,6 @@
     <?php $this->renderPartial('application.themes.gapminder.views.layouts._menu'); ?>
     <?php $this->widget('\TbAlert'); ?>
     <?php echo $content; ?>
+    <?php $this->renderPartial('application.themes.gapminder.views.layouts._footer'); ?>
 </body>
 </html>

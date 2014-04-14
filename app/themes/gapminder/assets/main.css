@@ -5379,7 +5379,7 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 .panel-footer {
   padding: 10px 15px;
-  background-color: #f5f5f5;
+  background-color: #fef5fa;
   border-top: 1px solid #dddddd;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
@@ -8377,6 +8377,77 @@ Styleguide 5
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
+}
+.layout-main .footer {
+  background-color: #fef5fa;
+  color: #707070;
+  margin-top: 100px;
+  padding: 40px 0;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+.layout-main .footer a {
+  color: #707070;
+}
+.layout-main .footer .footer-top {
+  margin-bottom: 35px;
+}
+.layout-main .footer .footer-column {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .layout-main .footer .footer-column {
+    float: left;
+    width: 50%;
+  }
+}
+.layout-main .footer .footer-column .link-column {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .layout-main .footer .footer-column .link-column {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.layout-main .footer .footer-column .link-column .footer-links {
+  color: #707070;
+  font-size: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+.layout-main .footer .footer-column .link-column .footer-links li {
+  margin-bottom: 10px;
+}
+.layout-main .footer .copyright-column {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 11px;
+  margin-top: 25px;
+}
+@media (min-width: 992px) {
+  .layout-main .footer .copyright-column {
+    float: left;
+    width: 100%;
+  }
+}
+.layout-main .footer .copyright-column .lead {
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.layout-main .footer .copyright-column p:last-child {
+  margin-bottom: 0;
 }
 .account-controller.admin-action .grid-view {
   margin-top: 20px;
