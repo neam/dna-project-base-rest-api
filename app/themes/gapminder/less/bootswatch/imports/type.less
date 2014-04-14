@@ -1,7 +1,7 @@
-.heading-large {
-  font-size: 40px;
-  font-weight: 100;
-}
+/* Typography
+
+Styleguide 7
+*/
 
 h1,
 h2,
@@ -14,6 +14,61 @@ h6 {
   }
 }
 
+.font-color-primary {
+  color: @brand-primary !important;
+}
+
+.font-color-secondary {
+  color: @brand-secondary !important;
+}
+
+/*
+Large heading
+
+Base class for large headings.
+
+Markup:
+<h1 class="heading-large {$modifiers}">Large Heading</h1>
+
+.font-color-primary - Primary font color.
+.font-color-secondary - Secondary font color.
+
+Styleguide 7.1
+*/
+.heading-large {
+  font-size: @font-size-h1;
+  font-weight: 100;
+}
+
+/*
+Small heading
+
+Base class for small headings.
+
+.font-color-primary - Primary font color.
+.font-color-secondary - Secondary font color.
+
+Markup:
+<h1 class="heading-small {$modifiers}">Small Heading<h1>
+
+Styleguide 7.2
+*/
+.heading-small {
+  color: #000;
+  font-size: @font-size-base;
+  font-weight: 600;
+}
+
+/*
+Page title
+
+Implements the .heading-large class.
+
+Markup:
+<h1 class="page-title {$modifiers}">Page Title</h1>
+
+Styleguide 7.3
+*/
 .page-title {
   .heading-large;
 }

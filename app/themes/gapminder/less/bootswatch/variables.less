@@ -21,8 +21,9 @@
 @pink-light:      #fef5fa;
 @purple:          #b7c1d8;
 @gray:            #c9c9c9;
-@gray-medium:     #979797;
+@gray-medium:     #565656;
 @gray-dark:       #3d3d3d;
+@gray-darker:     #353535;
 @gray-light:      #f1f2f2;
 
 //== Scaffolding
@@ -33,7 +34,22 @@
 @body-bg: #fff;
 
 //** Text color.
-@text-color: @gray-dark;
+@text-color: @gray-darker;
+
+@input-color-placeholder: #565656;
+
+@font-size-base: 16px;
+@font-size-small: 14px;
+@font-size-extra-small: 12px;
+
+@font-size-h1: 44.5px;
+@font-size-h2: floor(@font-size-base * 2.15); // ~30px
+@font-size-h3: ceil(@font-size-base * 1.7); // ~24px
+@font-size-h4: ceil(@font-size-base * 1.25); // ~18px
+@font-size-h5: @font-size-base;
+@font-size-h6: ceil(@font-size-base * 0.85); // ~12px
+
+@headings-color: @gray-dark;
 
 //== Typography
 //
