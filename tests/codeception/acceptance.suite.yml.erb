@@ -15,22 +15,50 @@ modules:
         - WebHelper
     config:
         WebDriver:
-            url: 'http://localhost:31415/index-test.php'
-            browser: 'chrome'
+            port: 80
+            wait: 1
+            restart: true
 
-env:
-    chrome:
+    cms-saucelabs-chrome-win8:
          modules:
             config:
                 WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
                     browser: 'chrome'
-    firefox:
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows 8.1'
+                        version: '25'
+
+    cms-saucelabs-chrome-winxp:
          modules:
             config:
                 WebDriver:
-                    browser: 'firefox'
-    phantomjs:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'chrome'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows 8.1'
+                        version: '25'
+
+    go-saucelabs-chrome-win8:
          modules:
             config:
                 WebDriver:
-                    browser: 'phantomjs'
+                    url: http://<%= ENV['CANONICAL_HOST'] %>/go
+                    browser: 'chrome'
+                    capabilities:
+                      unexpectedAlertBehaviour: 'accept'
+                      platform: 'Windows XP'
+                      version: '25'
+
+    go-saucelabs-chrome-winxp:
+         modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CANONICAL_HOST'] %>/go
+                    browser: 'chrome'
+                    capabilities:
+                      unexpectedAlertBehaviour: 'accept'
+                      platform: 'Windows XP'
+                      version: '25'

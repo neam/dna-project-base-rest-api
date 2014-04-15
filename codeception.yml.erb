@@ -18,3 +18,11 @@ modules:
             dump: tests/codeception/_data/dump.sql
             populate: true
             cleanup: true
+extensions:
+    enabled:
+      - Codeception\Extension\SauceExtension
+    config:
+        Codeception\Extension\SauceExtension:
+        username: <%= ENV['SAUCE_USERNAME'] %>
+        accesskey: <%= ENV['SAUCE_ACCESS_KEY'] %>
+        #build: 'Local Test'
