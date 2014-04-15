@@ -40,7 +40,7 @@
                     'htmlOptions' => array('class' => 'pull-right'),
                     'items' => array(
                         array(
-                            'class' => '\TbNav',
+                            'class' => 'language-menu',
                             'icon' => TbHtml::ICON_GLOBE,
                             'label' => Yii::app()->language,
                             'htmlOptions' => array('class' => 'language-menu'),

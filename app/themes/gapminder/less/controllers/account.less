@@ -72,11 +72,8 @@
             .make-sm-column(6);
 
             .updates-heading {
-              font-size: @font-size-extra-small;
-              font-weight: 100;
-              line-height: 22px;
+              .heading-tiny;
               margin: 0;
-              text-transform: uppercase;
             }
           }
 
@@ -132,6 +129,143 @@
             }
           }
         }
+      }
+    }
+
+    .dashboard-tasks-in-progress {
+      border-bottom: @grid-border-size solid @grid-border-color;
+      padding-bottom: 40px;
+
+      .tasks-in-progress-heading {
+        .heading-large;
+        margin-bottom: 40px;
+      }
+
+      .tasks {
+        .make-md-column(12);
+
+        .tasks-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          & > li {
+            .well;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .task {
+              .make-row();
+              margin-bottom: 0px;
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+
+              .task-thumbnail {
+                .make-md-column(3);
+
+                .thumbnail-container {
+                  margin-bottom: 10px;
+                }
+
+                .skip-link-container {
+                  .skip-this-link {
+                    .link;
+                    .link.link-dark;
+                    .link.link-xs;
+                  }
+                }
+              }
+
+              .task-info {
+                .make-md-column(9);
+
+                .task-top-bar {
+                  .make-row();
+                  margin-bottom: 10px;
+
+                  .task-action-text {
+                    .make-md-column(6);
+
+                    .action-heading {
+                      .heading-tiny;
+                    }
+                  }
+
+                  .task-facts {
+                    .make-md-column(6);
+
+                    .facts-list {
+                      list-style: none;
+                      margin: 0;
+                      padding: 0;
+                      text-align: right;
+
+                      & > li {
+                        .badge;
+                        .badge.badge-xs;
+                        display: inline-block;
+                        margin-right: 6px;
+
+                        &:last-child {
+                        margin-right: 0;
+                      }
+                      }
+                    }
+                  }
+                }
+
+                .task-title {
+                  margin-bottom: 30px;
+
+                  .task-heading {
+                    .heading-small;
+                    margin: 0;
+                  }
+                }
+
+                .task-bottom-bar {
+                  .make-row();
+
+                  .task-progress {
+                    .make-md-column(6);
+
+                    .progress-info {
+                      margin-bottom: 3px;
+
+                      .progress-title {
+                        .heading-tiny;
+                      }
+
+                      .progress-percentage {
+                        .heading-tiny;
+                        font-weight: bold;
+                      }
+                    }
+
+                    .progress-bar-container {
+                      width: 190px;
+                    }
+                  }
+
+                  .task-actions {
+                    .make-md-column(6);
+                    text-align: right;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .dashboard-new-tasks {
+      .new-tasks-heading {
+        .heading-large;
       }
     }
   }

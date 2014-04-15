@@ -41,6 +41,8 @@
         
           <li><a href="section-7.html">7.0: Typography</a></li>
         
+          <li><a href="section-8.html">8.0: Badges</a></li>
+        
       </ul></nav>
     </aside>
   </div>
@@ -146,7 +148,50 @@
         
           
            <section class="kss-depth-2">
-            <h1 class="kss-title"><span class="kss-ref">7.3</span> - Page title</h1>
+            <h1 class="kss-title"><span class="kss-ref">7.3</span> - Tiny heading</h1>
+          
+            
+                <div class="kss-box"><p>Base class for tiny headings.</p>
+</div>
+                <table class="kss-mod-list">
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Default styling</p></td>
+                    <td class="kss-mod-name"></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><h1 class="heading-tiny {$modifiers}">Tiny Heading</h1></td>
+                  </tr>
+                
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Primary font color.</p>
+</td>
+                    <td class="kss-mod-name"><p>.font-color-primary</p></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><h1 class="heading-tiny font-color-primary">Tiny Heading</h1></td>
+                  </tr>
+                
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Secondary font color.</p>
+</td>
+                    <td class="kss-mod-name"><p>.font-color-secondary</p></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><h1 class="heading-tiny font-color-secondary">Tiny Heading</h1></td>
+                  </tr>
+                
+                </table>
+                <div class="kss-markup">
+                  <pre class="prettyprint lang-html">&lt;h1 class=&quot;heading-tiny {$modifiers}&quot;&gt;Tiny Heading&lt;/h1&gt;</pre>
+                </div>
+            
+          
+            </section>
+          
+        
+          
+           <section class="kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">7.4</span> - Page title</h1>
           
             
                 <div class="kss-box"><p>Implements the .heading-large class.</p>
@@ -163,6 +208,72 @@
                 </table>
                 <div class="kss-markup">
                   <pre class="prettyprint lang-html">&lt;h1 class=&quot;page-title {$modifiers}&quot;&gt;Page Title&lt;/h1&gt;</pre>
+                </div>
+            
+          
+            </section>
+          
+        
+          
+           <section class="kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">7.5</span> - Links</h1>
+          
+            
+                <div class="kss-box"></div>
+                <table class="kss-mod-list">
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Default styling</p></td>
+                    <td class="kss-mod-name"></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><a href="#" class="link {$modifiers}">Link</a>
+<a href="#" class="link link-primary {$modifiers}">Link</a>
+<a href="#" class="link link-success {$modifiers}">Link</a>
+<a href="#" class="link link-warning {$modifiers}">Link</a>
+<a href="#" class="link link-danger {$modifiers}">Link</a>
+<a href="#" class="link link-info {$modifiers}">Link</a>
+<a href="#" class="link link-dark {$modifiers}">Link</a></td>
+                  </tr>
+                
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Small links.</p>
+</td>
+                    <td class="kss-mod-name"><p>.link-sm</p></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><a href="#" class="link link-sm">Link</a>
+<a href="#" class="link link-primary link-sm">Link</a>
+<a href="#" class="link link-success link-sm">Link</a>
+<a href="#" class="link link-warning link-sm">Link</a>
+<a href="#" class="link link-danger link-sm">Link</a>
+<a href="#" class="link link-info link-sm">Link</a>
+<a href="#" class="link link-dark link-sm">Link</a></td>
+                  </tr>
+                
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Extra small links.</p>
+</td>
+                    <td class="kss-mod-name"><p>.link-xs</p></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><a href="#" class="link link-xs">Link</a>
+<a href="#" class="link link-primary link-xs">Link</a>
+<a href="#" class="link link-success link-xs">Link</a>
+<a href="#" class="link link-warning link-xs">Link</a>
+<a href="#" class="link link-danger link-xs">Link</a>
+<a href="#" class="link link-info link-xs">Link</a>
+<a href="#" class="link link-dark link-xs">Link</a></td>
+                  </tr>
+                
+                </table>
+                <div class="kss-markup">
+                  <pre class="prettyprint lang-html">&lt;a href=&quot;#&quot; class=&quot;link {$modifiers}&quot;&gt;Link&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;link link-primary {$modifiers}&quot;&gt;Link&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;link link-success {$modifiers}&quot;&gt;Link&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;link link-warning {$modifiers}&quot;&gt;Link&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;link link-danger {$modifiers}&quot;&gt;Link&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;link link-info {$modifiers}&quot;&gt;Link&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;link link-dark {$modifiers}&quot;&gt;Link&lt;/a&gt;</pre>
                 </div>
             
           

@@ -78,7 +78,99 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
             </div>
         </div>
     </div>
+    <div class="dashboard-tasks-in-progress">
+        <h2 class="tasks-in-progress-heading"><?php echo Yii::t('app', 'Tasks in Progress'); ?></h2>
+        <div class="row">
+            <div class="tasks">
+                <ul class="tasks-list">
+                    <?php // TODO: Render tasks dynamically. ?>
+                    <li>
+                        <div class="task">
+                            <div class="task-thumbnail">
+                                <div class="thumbnail-container">
+                                    <?php echo TbHtml::image('http://placehold.it/210x120'); ?>
+                                </div>
+                                <div class="skip-link-container">
+                                    <?php echo TbHtml::link(
+                                        Yii::t('app', "Skip this, I don't want to continue."),
+                                        '#', // TODO: Add cancellation URL.
+                                        array(
+                                            'class' => 'skip-this-link',
+                                        )
+                                    ); ?>
+                                </div>
+                            </div>
+                            <div class="task-info">
+                                <div class="task-top-bar">
+                                    <div class="task-action-text">
+                                        <span class="action-heading">
+                                            <?php echo Yii::t('app', 'Now Translating:'); // TODO: Get action heading dynamically. ?>
+                                        </span>
+                                    </div>
+                                    <div class="task-facts">
+                                        <ul class="facts-list">
+                                            <li><?php echo Yii::t('app', '{viewCount} views', array(
+                                                '{viewCount}' => 0, // TODO: Get view count dynamically.
+                                            )); ?></li>
+                                            <li><?php echo Yii::t('app', 'In {languageCount} languages', array(
+                                                '{languageCount}' => 0, // TODO: Get language count dynamically.
+                                            )); ?></li>
+                                            <li><?php echo Yii::t('app', '+{pointCount} pts', array(
+                                                '{pointCount}' => 0, // TODO: Get point count dynamically.
+                                            )); ?></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="task-title">
+                                    <h3 class="task-heading">
+                                        <?php echo 'What you did not know about literacy'; // TODO: Get item title dynamically. ?>
+                                    </h3>
+                                </div>
+                                <div class="task-bottom-bar">
+                                    <div class="task-progress">
+                                        <div class="progress-info">
+                                            <span class="progress-title">
+                                                <?php echo 'Swedish'; // TODO: Get progress title dynamically. ?>
+                                            </span>
+                                            <span class="progress-percentage">
+                                                <?php echo '22%'; // TODO: Get percentage dynamically. ?>
+                                            </span>
+                                        </div>
+                                        <div class="progress-bar-container">
+                                            <?php echo TbHtml::progressBar(
+                                                20, // TODO: Get percentage dynamically.
+                                                array(
+                                                    'color' => TbHtml::LABEL_COLOR_SUCCESS,
+                                                )
+                                            ); ?>
+                                        </div>
+                                    </div>
+                                    <div class="task-actions">
+                                        <?php echo TbHtml::linkButton(
+                                            Yii::t('app', 'Continue'),
+                                            array(
+                                                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                                                'href' => '#', // TODO: Add URL to the next step.
+                                            )
+                                        ); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-new-tasks">
+        <h2 class="new-tasks-heading"><?php echo Yii::t('app', 'New Tasks'); ?></h2>
+        <?php $this->widget('zii.widgets.CListView', array(
+            'dataProvider' => $dataProvider,
+            'itemView' => '_dashboard-action',
+        )); ?>
+    </div>
 
+    <?php /*
     <h1>
         <?php echo $model->profile->first_name . " " . $model->profile->last_name; ?>
         <small><?php echo Yii::t('account', 'Dashboard') ?> <?php //echo $model->id ?></small>
@@ -125,4 +217,5 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
 
         </div>
     <?php endif; ?>
+    */ ?>
 </div>

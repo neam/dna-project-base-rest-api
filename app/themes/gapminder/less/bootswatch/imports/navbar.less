@@ -36,6 +36,24 @@
         }
       }
     }
+
+    .language-menu {
+      .dropdown-menu {
+        height: 460px;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+          -webkit-appearance: none;
+          width: 7px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+          background-color: rgba(0,0,0,.5);
+          border-radius: 4px;
+        }
+      }
+    }
   }
 
   border: @grid-border-size solid @grid-border-color;
