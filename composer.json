@@ -166,6 +166,7 @@
         "crisu83/yii-formatter": "@dev"
     },
     "require-dev":{
+        "psychomieze/sauceextension":"@dev",
         "phundament/backend-theme":"@dev",
         "phundament/p3bootstrap":"0.22.0",
         "schmunk42/giic": "dev-master",
