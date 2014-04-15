@@ -17,6 +17,7 @@ Yii::app()->clientScript->registerScript(
         <?php $this->widget(
             '\TbButton',
             array(
+                'id' => 'addButton',
                 'label' => Yii::t('model', 'Add'),
                 'url' => array('add'),
                 'color' => TbHtml::BUTTON_COLOR_PRIMARY,

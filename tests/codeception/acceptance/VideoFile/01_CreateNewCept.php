@@ -1,21 +1,28 @@
 <?php
-/**
- * @var MemberSteps $I
- */
-$I = new WebGuy($scenario);
+$I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('perform actions and see result');
 
-// register max
+// Register max
 $I->register('max', 'test', 'test', 'max@gapminder.org', true);
+$I->login('max', 'test');
 
-// verify max is part of default groups
-$I->amOnPage(ProfilePage::$URL);
-$I->dontSee('You do not have any permissions assigned. Only administrators can assign permissions.');
-// todo
-$I->see();
+// TODO verify that Max is part of default groups
 
-// create new video file
-// todo
+$I->amOnPage(VideoFileBrowsePage::$URL);
+$I->click(VideoFileBrowsePage::$addButton);
 
-// verify that only Max can see and edit
-// todo
+// TODO create new video file
+
+// TODO verify that only Max can see and edit the video file
+
+$I->register('ola', 'test', 'test', 'ola@gapminder.org', true);
+$I->login('ola', 'test');
+
+$I->register('mattias', 'test', 'test', 'mattias@gapminder.org', true);
+$I->login('mattias', 'test');
+
+$I->register('julia', 'test', 'test', 'julia@gapminder.org', true);
+$I->login('julia', 'test');
+
+$I->register('fernanda', 'test', 'test', 'fernanda@gapminder.org', true);
+$I->login('fernanda', 'test');

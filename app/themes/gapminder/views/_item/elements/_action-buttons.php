@@ -27,9 +27,7 @@
                 array(
                     'label' => Yii::t('crud', 'Prepare for review'),
                     'color' => $this->action->id === 'prepareForReview' ? 'inverse' : null,
-                    'htmlOptions' => array(
-                        'class' => 'action-button',
-                    ),
+                    'size' => TbHtml::BUTTON_SIZE_MINI,
                     'url' => array(
                         'prepareForReview',
                         'id' => $model->{$model->tableSchema->primaryKey},
@@ -47,9 +45,7 @@
                 array(
                     'label' => Yii::t('crud', 'Prepare for publishing'),
                     'color' => $this->action->id === 'prepareForPublishing' ? 'inverse' : null,
-                    'htmlOptions' => array(
-                        'class' => 'action-button',
-                    ),
+                    'size' => TbHtml::BUTTON_SIZE_MINI,
                     'url' => array(
                         'prepareForPublishing',
                         'id' => $model->{$model->tableSchema->primaryKey},
@@ -68,9 +64,7 @@
             array(
                 'label' => Yii::t('crud', 'Evaluate'),
                 'color' => $this->action->id === 'evaluate' ? 'inverse' : null,
-                'htmlOptions' => array(
-                    'class' => 'action-button',
-                ),
+                'size' => TbHtml::BUTTON_SIZE_MINI,
                 'url' => array(
                     'evaluate',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -84,9 +78,7 @@
             array(
                 'label' => Yii::t('model', 'Proofread'),
                 'color' => $this->action->id === 'proofRead' ? 'inverse' : null,
-                'htmlOptions' => array(
-                    'class' => 'action-button',
-                ),
+                'size' => TbHtml::BUTTON_SIZE_MINI,
                 'url' => array(
                     'proofRead',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -99,9 +91,7 @@
             array(
                 'label' => Yii::t('model', 'Translate'),
                 'color' => $this->action->id === 'translationOverview' ? 'inverse' : null,
-                'htmlOptions' => array(
-                    'class' => 'action-button',
-                ),
+                'size' => TbHtml::BUTTON_SIZE_MINI,
                 'url' => array(
                     'translationOverview',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -117,9 +107,7 @@
                     '\TbButton',
                     array(
                         'label' => Yii::t('model', 'Unpublish'),
-                        'htmlOptions' => array(
-                            'class' => 'action-button',
-                        ),
+                        'size' => TbHtml::BUTTON_SIZE_MINI,
                         'url' => array(
                             'unpublish',
                             'id' => $model->{$model->tableSchema->primaryKey},
@@ -132,9 +120,7 @@
                     '\TbButton',
                     array(
                         'label' => Yii::t('model', 'Publish'),
-                        'htmlOptions' => array(
-                            'class' => 'action-button',
-                        ),
+                        'size' => TbHtml::BUTTON_SIZE_MINI,
                         'url' => array(
                             'publish',
                             'id' => $model->{$model->tableSchema->primaryKey},
@@ -147,7 +133,7 @@
                     Yii::t('model', 'Publish'),
                     array(
                         'disabled' => true,
-                        'class' => 'action-button',
+                        'size' => TbHtml::BUTTON_SIZE_MINI,
                     )
                 ); ?>
             <?php endif; ?>
@@ -159,9 +145,7 @@
             array(
                 'label' => Yii::t('model', 'Clone'),
                 'color' => $this->action->id === 'clone' ? 'inverse' : null,
-                'htmlOptions' => array(
-                    'class' => 'action-button',
-                ),
+                'size' => TbHtml::BUTTON_SIZE_MINI,
                 'url' => array(
                     'clone',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -173,9 +157,7 @@
             '\TbButton', array(
                 'label' => Yii::t('model', 'Remove'),
                 'color' => $this->action->id === 'remove' ? 'inverse' : null,
-                'htmlOptions' => array(
-                    'class' => 'action-button',
-                ),
+                'size' => TbHtml::BUTTON_SIZE_MINI,
                 'url' => array(
                     'remove',
                     'id' => $model->{$model->tableSchema->primaryKey},
@@ -191,6 +173,7 @@
                     $groupName,
                     array(
                         'icon' => TbHtml::ICON_MINUS,
+                        'size' => TbHtml::BUTTON_SIZE_MINI,
                         'url' => array(
                             'removeFromGroup',
                             'nodeId' => $model->node_id,
@@ -205,6 +188,7 @@
                     $groupName,
                     array(
                         'icon' => TbHtml::ICON_PLUS,
+                        'size' => TbHtml::BUTTON_SIZE_MINI,
                         'url' => array(
                             'addToGroup',
                             'nodeId' => $model->node_id,

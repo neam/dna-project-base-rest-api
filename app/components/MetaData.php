@@ -181,8 +181,8 @@ class Metadata
     {
         $map = array();
         foreach (DataModel::crudModels() as $modelClass => $table) {
-            $map[$modelClass . ".Add"] = array(
-                Role::AUTHENTICATED
+            $map["$modelClass.Add"] = array(
+                Role::AUTHENTICATED,
             );
         }
         return $map;
@@ -227,6 +227,14 @@ class Metadata
                 Role::GROUP_EDITOR,
             ),
             'Add' => array(
+                Role::GROUP_ADMINISTRATOR,
+                Role::GROUP_MODERATOR,
+                Role::GROUP_PUBLISHER,
+                Role::GROUP_APPROVER,
+                Role::GROUP_EDITOR,
+                Role::GROUP_REVIEWER,
+                Role::GROUP_TRANSLATOR,
+                Role::GROUP_CONTRIBUTOR,
                 Role::GROUP_MEMBER,
             ),
             'Approve' => array(
