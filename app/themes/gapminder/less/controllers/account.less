@@ -9,6 +9,11 @@
 
         .profile-picture {
           .make-md-column(4);
+
+          img {
+            width: @user-dashboard-profile-picture-size;
+            height: auto;
+          }
         }
 
         .profile-facts {
@@ -19,7 +24,7 @@
             margin-bottom: 40px;
 
             .profile-points {
-              .make-md-column(6);
+              .make-xs-column(6);
               color: @green;
               font-size: 20px;
               font-weight: 100;
@@ -30,7 +35,7 @@
             }
 
             .profile-actions {
-              .make-md-column(6);
+              .make-xs-column(6);
               text-align: right;
 
               .glyphicon {
@@ -57,6 +62,76 @@
         .pull-right;
         min-height: @user-dashboard-profile-picture-size;
         border-left: @grid-border-size solid @grid-border-color;
+
+        .updates-top-bar {
+          .make-row();
+          font-size: @font-size-extra-small;
+          margin-bottom: 30px;
+
+          .updates-title {
+            .make-sm-column(6);
+
+            .updates-heading {
+              font-size: @font-size-extra-small;
+              font-weight: 100;
+              line-height: 22px;
+              margin: 0;
+              text-transform: uppercase;
+            }
+          }
+
+          .updates-view-all {
+            .make-sm-column(6);
+            text-align: right;
+
+            .view-all-link {
+              .btn-xs;
+              .btn-link-dark;
+            }
+          }
+        }
+
+        .updates {
+          .make-row();
+
+          .updates-content {
+            .make-sm-column(12);
+
+            .updates-list {
+              margin: 0;
+              padding: 0;
+
+              li {
+                .make-row();
+                list-style: none;
+                margin-bottom: 45px;
+
+                &:last-child {
+                  margin-bottom: 0;
+                }
+
+                .update-image {
+                  .make-xs-column(3);
+                }
+
+                .update-info {
+                  .make-xs-column(9);
+                  font-size: @font-size-extra-small;
+                  font-weight: 100;
+
+                  .update-title {
+                    display: block;
+                    font-weight: bold;
+                  }
+
+                  .update-description {
+                    display: block;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

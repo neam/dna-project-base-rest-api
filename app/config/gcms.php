@@ -110,6 +110,14 @@ $gcmsConfig = array(
                         ),
                         'type' => 'jpg',
                     ),
+                    'user-profile-picture' => array(
+                        'name' => 'User Profile Picture',
+                        'commands' => array(
+                            'resize' => array(195, 195, 7), // Image::AUTO
+                            'quality' => '85',
+                        ),
+                        'type' => 'jpg',
+                    ),
                     'original-public-webm' => array(
                         //'name'         => 'Original File Public',
                         'originalFile' => true,

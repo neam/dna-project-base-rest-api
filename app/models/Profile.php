@@ -122,4 +122,16 @@ class Profile extends BaseProfile
     {
         return $this->getOptions($this->getPictures());
     }
+
+    /**
+     * Renders the user's profile picture.
+     * @param string $p3preset the P3Media preset. Defaults to 'dashboard-profile-picture'.
+     * @return string the HTML.
+     */
+    public function renderPicture($p3preset = 'user-profile-picture')
+    {
+        return isset($this->picture_media_id)
+            ? $this->pictureMedia->image($p3preset)
+            : TbHtml::image('http://placehold.it/195x195');
+    }
 }
