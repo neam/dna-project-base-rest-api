@@ -257,9 +257,9 @@ html {
 }
 body {
   font-family: 'Open Sans', serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
-  color: #3d3d3d;
+  color: #353535;
   background-color: #ffffff;
 }
 input,
@@ -311,8 +311,8 @@ img {
   border-radius: 50%;
 }
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 22px;
+  margin-bottom: 22px;
   border: 0;
   border-top: 1px solid #eeeeee;
 }
@@ -341,7 +341,7 @@ h6,
   font-family: 'Open Sans', serif;
   font-weight: 500;
   line-height: 1.1;
-  color: inherit;
+  color: #3d3d3d;
 }
 h1 small,
 h2 small,
@@ -374,8 +374,8 @@ h6 .small,
 h1,
 h2,
 h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 22px;
+  margin-bottom: 11px;
 }
 h1 small,
 h2 small,
@@ -388,8 +388,8 @@ h3 .small {
 h4,
 h5,
 h6 {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 11px;
+  margin-bottom: 11px;
 }
 h4 small,
 h5 small,
@@ -401,40 +401,40 @@ h6 .small {
 }
 h1,
 .h1 {
-  font-size: 36px;
+  font-size: 44.5px;
 }
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 34px;
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 28px;
 }
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 20px;
 }
 h5,
 .h5 {
-  font-size: 14px;
+  font-size: 16px;
 }
 h6,
 .h6 {
-  font-size: 12px;
+  font-size: 14px;
 }
 p {
-  margin: 0 0 10px;
+  margin: 0 0 11px;
 }
 .lead {
-  margin-bottom: 20px;
-  font-size: 16px;
+  margin-bottom: 22px;
+  font-size: 18px;
   font-weight: 200;
   line-height: 1.4;
 }
 @media (min-width: 768px) {
   .lead {
-    font-size: 21px;
+    font-size: 24px;
   }
 }
 small,
@@ -487,14 +487,14 @@ cite {
   text-align: center;
 }
 .page-header {
-  padding-bottom: 9px;
-  margin: 40px 0 20px;
+  padding-bottom: 10px;
+  margin: 44px 0 22px;
   border-bottom: 1px solid #eeeeee;
 }
 ul,
 ol {
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
 }
 ul ul,
 ol ul,
@@ -520,7 +520,7 @@ ol ol {
 }
 dl {
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 dt,
 dd {
@@ -572,12 +572,12 @@ abbr[data-original-title] {
   text-transform: uppercase;
 }
 blockquote {
-  padding: 10px 20px;
-  margin: 0 0 20px;
+  padding: 11px 22px;
+  margin: 0 0 22px;
   border-left: 5px solid #eeeeee;
 }
 blockquote p {
-  font-size: 17.5px;
+  font-size: 20px;
   font-weight: 300;
   line-height: 1.25;
 }
@@ -618,7 +618,7 @@ blockquote:after {
   content: "";
 }
 address {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   font-style: normal;
   line-height: 1.428571429;
 }
@@ -638,9 +638,9 @@ code {
 }
 pre {
   display: block;
-  padding: 9.5px;
-  margin: 0 0 10px;
-  font-size: 13px;
+  padding: 10.5px;
+  margin: 0 0 11px;
+  font-size: 15px;
   line-height: 1.428571429;
   word-break: break-all;
   word-wrap: break-word;
@@ -1363,7 +1363,7 @@ th {
 }
 .table {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -1502,7 +1502,7 @@ table th[class*="col-"] {
 @media (max-width: 767px) {
   .table-responsive {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 16.5px;
     overflow-y: hidden;
     overflow-x: scroll;
     -ms-overflow-style: -ms-autohiding-scrollbar;
@@ -1555,8 +1555,8 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: 20px;
-  font-size: 21px;
+  margin-bottom: 22px;
+  font-size: 24px;
   line-height: inherit;
   color: #3d3d3d;
   border: 0;
@@ -1606,7 +1606,7 @@ input[type="number"]::-webkit-inner-spin-button {
 output {
   display: block;
   padding-top: 7px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
   color: #c9c9c9;
   vertical-align: middle;
@@ -1616,7 +1616,7 @@ output {
   width: 100%;
   height: 55px;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
   color: #c9c9c9;
   vertical-align: middle;
@@ -1636,17 +1636,17 @@ output {
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 .form-control:-moz-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .form-control::-moz-placeholder {
-  color: #f1f2f2;
+  color: #565656;
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .form-control::-webkit-input-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .form-control[disabled],
 .form-control[readonly],
@@ -1663,7 +1663,7 @@ textarea.form-control {
 .radio,
 .checkbox {
   display: block;
-  min-height: 20px;
+  min-height: 22px;
   margin-top: 10px;
   margin-bottom: 10px;
   padding-left: 20px;
@@ -1716,29 +1716,29 @@ fieldset[disabled] .checkbox-inline {
   cursor: not-allowed;
 }
 .input-sm {
-  height: 30px;
+  height: 33px;
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
 }
 select.input-sm {
-  height: 30px;
-  line-height: 30px;
+  height: 33px;
+  line-height: 33px;
 }
 textarea.input-sm {
   height: auto;
 }
 .input-lg {
-  height: 46px;
+  height: 49px;
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.33;
   border-radius: 6px;
 }
 select.input-lg {
-  height: 46px;
-  line-height: 46px;
+  height: 49px;
+  line-height: 49px;
 }
 textarea.input-lg {
   height: auto;
@@ -1819,7 +1819,7 @@ textarea.input-lg {
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #7d7d7d;
+  color: #757575;
 }
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -1857,7 +1857,7 @@ textarea.input-lg {
 }
 .form-horizontal .radio,
 .form-horizontal .checkbox {
-  min-height: 27px;
+  min-height: 29px;
 }
 .form-horizontal .form-group {
   margin-left: -15px;
@@ -1898,7 +1898,7 @@ textarea.input-lg {
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -2215,19 +2215,19 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-lg {
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.33;
   border-radius: 6px;
 }
 .btn-sm {
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
 }
 .btn-xs {
   padding: 1px 5px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
 }
@@ -2912,7 +2912,7 @@ input[type="button"].btn-block {
   padding: 5px 0;
   margin: 2px 0 0;
   list-style: none;
-  font-size: 14px;
+  font-size: 16px;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -2927,7 +2927,7 @@ input[type="button"].btn-block {
 }
 .dropdown-menu .divider {
   height: 1px;
-  margin: 9px 0;
+  margin: 10px 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }
@@ -2976,7 +2976,7 @@ input[type="button"].btn-block {
 .dropdown-header {
   display: block;
   padding: 3px 20px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.428571429;
   color: #f1f2f2;
 }
@@ -3111,7 +3111,7 @@ input[type="button"].btn-block {
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -3125,10 +3125,11 @@ input[type="button"].btn-block {
   font-weight: 100;
   padding: 17px 30px 18px;
   padding: 1px 5px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
   border-radius: 20px;
+  font-size: 12px;
   padding: 2px 15px;
 }
 .btn-group-xs > .btn:focus {
@@ -3412,6 +3413,48 @@ fieldset[disabled] .btn-group-xs > .btn.btn-link:focus {
 .btn-group-xs > .btn.btn-link:hover {
   text-decoration: none;
 }
+.btn-group-xs > .btn.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.btn-group-xs > .btn.btn-link-dark,
+.btn-group-xs > .btn.btn-link-dark:active,
+.btn-group-xs > .btn.btn-link-dark[disabled],
+fieldset[disabled] .btn-group-xs > .btn.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn-group-xs > .btn.btn-link-dark,
+.btn-group-xs > .btn.btn-link-dark:hover,
+.btn-group-xs > .btn.btn-link-dark:focus,
+.btn-group-xs > .btn.btn-link-dark:active {
+  border-color: transparent;
+}
+.btn-group-xs > .btn.btn-link-dark:hover,
+.btn-group-xs > .btn.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.btn-group-xs > .btn.btn-link-dark[disabled]:hover,
+fieldset[disabled] .btn-group-xs > .btn.btn-link-dark:hover,
+.btn-group-xs > .btn.btn-link-dark[disabled]:focus,
+fieldset[disabled] .btn-group-xs > .btn.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.btn-group-xs > .btn.btn-link-dark:hover {
+  text-decoration: none;
+}
+.btn-group-xs > .btn.btn-link-dark:hover {
+  color: #353535;
+}
 .btn-group-sm > .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -3423,7 +3466,7 @@ fieldset[disabled] .btn-group-xs > .btn.btn-link:focus {
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -3437,10 +3480,10 @@ fieldset[disabled] .btn-group-xs > .btn.btn-link:focus {
   font-weight: 100;
   padding: 17px 30px 18px;
   padding: 5px 10px;
-  font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
   border-radius: 20px;
+  font-size: 14px;
   padding: 4px 20px;
 }
 .btn-group-sm > .btn:focus {
@@ -3724,9 +3767,51 @@ fieldset[disabled] .btn-group-sm > .btn.btn-link:focus {
 .btn-group-sm > .btn.btn-link:hover {
   text-decoration: none;
 }
+.btn-group-sm > .btn.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.btn-group-sm > .btn.btn-link-dark,
+.btn-group-sm > .btn.btn-link-dark:active,
+.btn-group-sm > .btn.btn-link-dark[disabled],
+fieldset[disabled] .btn-group-sm > .btn.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn-group-sm > .btn.btn-link-dark,
+.btn-group-sm > .btn.btn-link-dark:hover,
+.btn-group-sm > .btn.btn-link-dark:focus,
+.btn-group-sm > .btn.btn-link-dark:active {
+  border-color: transparent;
+}
+.btn-group-sm > .btn.btn-link-dark:hover,
+.btn-group-sm > .btn.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.btn-group-sm > .btn.btn-link-dark[disabled]:hover,
+fieldset[disabled] .btn-group-sm > .btn.btn-link-dark:hover,
+.btn-group-sm > .btn.btn-link-dark[disabled]:focus,
+fieldset[disabled] .btn-group-sm > .btn.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.btn-group-sm > .btn.btn-link-dark:hover {
+  text-decoration: none;
+}
+.btn-group-sm > .btn.btn-link-dark:hover {
+  color: #353535;
+}
 .btn-group-lg > .btn {
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.33;
   border-radius: 6px;
 }
@@ -3851,17 +3936,17 @@ fieldset[disabled] .btn-group-sm > .btn.btn-link:focus {
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
-  height: 46px;
+  height: 49px;
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.33;
   border-radius: 6px;
 }
 select.input-group-lg > .form-control,
 select.input-group-lg > .input-group-addon,
 select.input-group-lg > .input-group-btn > .btn {
-  height: 46px;
-  line-height: 46px;
+  height: 49px;
+  line-height: 49px;
 }
 textarea.input-group-lg > .form-control,
 textarea.input-group-lg > .input-group-addon,
@@ -3871,17 +3956,17 @@ textarea.input-group-lg > .input-group-btn > .btn {
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
-  height: 30px;
+  height: 33px;
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
 }
 select.input-group-sm > .form-control,
 select.input-group-sm > .input-group-addon,
 select.input-group-sm > .input-group-btn > .btn {
-  height: 30px;
-  line-height: 30px;
+  height: 33px;
+  line-height: 33px;
 }
 textarea.input-group-sm > .form-control,
 textarea.input-group-sm > .input-group-addon,
@@ -3906,7 +3991,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .input-group-addon {
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
   line-height: 1;
   color: #c9c9c9;
@@ -3917,12 +4002,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .input-group-addon.input-sm {
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 3px;
 }
 .input-group-addon.input-lg {
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 20px;
   border-radius: 6px;
 }
 .input-group-addon input[type="radio"],
@@ -4024,7 +4109,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .nav .nav-divider {
   height: 1px;
-  margin: 9px 0;
+  margin: 10px 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }
@@ -4181,8 +4266,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 70px;
-  margin-bottom: 20px;
+  min-height: 63px;
+  margin-bottom: 22px;
   border: 1px solid transparent;
 }
 .navbar:before,
@@ -4322,9 +4407,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  padding: 25px 15px;
-  font-size: 18px;
-  line-height: 20px;
+  padding: 20.5px 15px;
+  font-size: 20px;
+  line-height: 22px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4340,8 +4425,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   float: right;
   margin-right: 15px;
   padding: 9px 10px;
-  margin-top: 18px;
-  margin-bottom: 18px;
+  margin-top: 14.5px;
+  margin-bottom: 14.5px;
   background-color: transparent;
   background-image: none;
   border: 1px solid transparent;
@@ -4362,12 +4447,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav {
-  margin: 12.5px -15px;
+  margin: 10.25px -15px;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
-  line-height: 20px;
+  line-height: 22px;
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
@@ -4384,7 +4469,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     padding: 5px 15px 5px 25px;
   }
   .navbar-nav .open .dropdown-menu > li > a {
-    line-height: 20px;
+    line-height: 22px;
   }
   .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-nav .open .dropdown-menu > li > a:focus {
@@ -4400,8 +4485,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 20.5px;
+    padding-bottom: 20.5px;
   }
   .navbar-nav.navbar-right:last-child {
     margin-right: -15px;
@@ -4423,8 +4508,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-bottom: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-  margin-top: 7.5px;
-  margin-bottom: 7.5px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 @media (min-width: 768px) {
   .navbar-form .form-group {
@@ -4486,20 +4571,20 @@ textarea.input-group-sm > .input-group-btn > .btn {
   right: 0;
 }
 .navbar-btn {
-  margin-top: 7.5px;
-  margin-bottom: 7.5px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 .navbar-btn.btn-sm {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .navbar-btn.btn-xs {
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin-top: 20.5px;
+  margin-bottom: 20.5px;
 }
 .navbar-text {
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 20.5px;
+  margin-bottom: 20.5px;
 }
 @media (min-width: 768px) {
   .navbar-text {
@@ -4513,7 +4598,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #ffffff;
-  border-color: #d2d4d5;
+  border-color: #e4e4e4;
 }
 .navbar-default .navbar-brand {
   color: #777777;
@@ -4524,7 +4609,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-text {
-  color: #3d3d3d;
+  color: #353535;
 }
 .navbar-default .navbar-nav > li > a {
   color: #777777;
@@ -4558,7 +4643,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #d2d4d5;
+  border-color: #e4e4e4;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
@@ -4685,7 +4770,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .breadcrumb {
   padding: 8px 15px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   list-style: none;
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -4704,7 +4789,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination {
   display: inline-block;
   padding-left: 0;
-  margin: 20px 0;
+  margin: 22px 0;
   border-radius: 4px;
 }
 .pagination > li {
@@ -4764,7 +4849,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination-lg > li > a,
 .pagination-lg > li > span {
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 20px;
 }
 .pagination-lg > li:first-child > a,
 .pagination-lg > li:first-child > span {
@@ -4779,7 +4864,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination-sm > li > a,
 .pagination-sm > li > span {
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: 14px;
 }
 .pagination-sm > li:first-child > a,
 .pagination-sm > li:first-child > span {
@@ -4793,7 +4878,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .pager {
   padding-left: 0;
-  margin: 20px 0;
+  margin: 22px 0;
   list-style: none;
   text-align: center;
 }
@@ -4916,7 +5001,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   display: inline-block;
   min-width: 10px;
   padding: 3px 7px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   color: #ffffff;
   line-height: 1;
@@ -4950,7 +5035,7 @@ a.list-group-item.active > .badge,
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
-  font-size: 21px;
+  font-size: 24px;
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
@@ -4981,13 +5066,13 @@ a.list-group-item.active > .badge,
   }
   .jumbotron h1,
   .jumbotron .h1 {
-    font-size: 63px;
+    font-size: 72px;
   }
 }
 .thumbnail {
   display: block;
   padding: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   line-height: 1.428571429;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -5010,11 +5095,11 @@ a.thumbnail.active {
 }
 .thumbnail .caption {
   padding: 9px;
-  color: #3d3d3d;
+  color: #353535;
 }
 .alert {
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   border: 1px solid transparent;
   border-radius: 4px;
 }
@@ -5103,8 +5188,8 @@ a.thumbnail.active {
 }
 .progress {
   overflow: hidden;
-  height: 20px;
-  margin-bottom: 20px;
+  height: 22px;
+  margin-bottom: 22px;
   background-color: #c9c9c9;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -5114,8 +5199,8 @@ a.thumbnail.active {
   float: left;
   width: 0%;
   height: 100%;
-  font-size: 12px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 22px;
   color: #ffffff;
   text-align: center;
   background-color: #eb4498;
@@ -5254,7 +5339,7 @@ a.list-group-item.active:focus .list-group-item-text {
   line-height: 1.3;
 }
 .panel {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   background-color: #ffffff;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -5370,7 +5455,7 @@ a.list-group-item.active:focus .list-group-item-text {
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 18px;
   color: inherit;
 }
 .panel-title > a {
@@ -5378,7 +5463,7 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 .panel-footer {
   padding: 10px 15px;
-  background-color: #f5f5f5;
+  background-color: #fef5fa;
   border-top: 1px solid #dddddd;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
@@ -5511,7 +5596,7 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 .close {
   float: right;
-  font-size: 21px;
+  font-size: 24px;
   font-weight: bold;
   line-height: 1;
   color: #000000;
@@ -5659,7 +5744,7 @@ button.close {
   z-index: 1030;
   display: block;
   visibility: visible;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
   opacity: 0;
   filter: alpha(opacity=0);
@@ -5785,7 +5870,7 @@ button.close {
 .popover-title {
   margin: 0;
   padding: 8px 14px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
   line-height: 18px;
   background-color: #f7f7f7;
@@ -6568,13 +6653,30 @@ td.visible-print {
     display: none !important;
   }
 }
+.navbar {
+  font-weight: 100;
+}
+.navbar .navbar-brand {
+  padding-right: 40px;
+  border-right: 2px solid #e4e4e4;
+}
+.navbar .navbar-nav > li:last-child > a {
+  border-left: none;
+}
 .navbar .navbar-nav > li > a {
-  padding-top: 31px;
-  padding-bottom: 31px;
+  border-left: 2px solid #e4e4e4;
+  border-right: 2px solid #e4e4e4;
+  padding: 27px 25px 26px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-color: #e4e4e4;
+}
+.navbar-default {
+  border: 2px solid #e4e4e4;
 }
 .navbar-default .navbar-toggle {
   background-color: #ffffff;
-  border: 1px solid #d2d4d5;
+  border: 2px solid #e4e4e4;
   border-radius: 3px;
 }
 .navbar-default .navbar-toggle:hover {
@@ -6601,6 +6703,7 @@ Markup:
 <input type="button" class="btn {$modifiers}" value="Input Button">
 
 .btn-link           - Link button.
+.btn-link-dark      - Link button, dark.
 .btn-default        - Default button.
 .btn-primary        - Primary button.
 .btn-success        - Success button.
@@ -6872,6 +6975,48 @@ fieldset[disabled] .btn.btn-link:focus {
 .btn.btn-link:hover {
   text-decoration: none;
 }
+.btn.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.btn.btn-link-dark,
+.btn.btn-link-dark:active,
+.btn.btn-link-dark[disabled],
+fieldset[disabled] .btn.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn.btn-link-dark,
+.btn.btn-link-dark:hover,
+.btn.btn-link-dark:focus,
+.btn.btn-link-dark:active {
+  border-color: transparent;
+}
+.btn.btn-link-dark:hover,
+.btn.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.btn.btn-link-dark[disabled]:hover,
+fieldset[disabled] .btn.btn-link-dark:hover,
+.btn.btn-link-dark[disabled]:focus,
+fieldset[disabled] .btn.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.btn.btn-link-dark:hover {
+  text-decoration: none;
+}
+.btn.btn-link-dark:hover {
+  color: #353535;
+}
 /*
 Small buttons
 
@@ -6881,6 +7026,7 @@ Markup:
 <input type="button" class="btn btn-sm {$modifiers}" value="Input Button">
 
 .btn-link           - Link button.
+.btn-link-dark      - Link button, dark.
 .btn-default        - Default button.
 .btn-primary        - Primary button.
 .btn-success        - Success button.
@@ -6901,7 +7047,7 @@ Styleguide 1.2
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -6915,10 +7061,10 @@ Styleguide 1.2
   font-weight: 100;
   padding: 17px 30px 18px;
   padding: 5px 10px;
-  font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
   border-radius: 20px;
+  font-size: 14px;
   padding: 4px 20px;
 }
 .btn-sm:focus {
@@ -7202,6 +7348,48 @@ fieldset[disabled] .btn-sm.btn-link:focus {
 .btn-sm.btn-link:hover {
   text-decoration: none;
 }
+.btn-sm.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.btn-sm.btn-link-dark,
+.btn-sm.btn-link-dark:active,
+.btn-sm.btn-link-dark[disabled],
+fieldset[disabled] .btn-sm.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn-sm.btn-link-dark,
+.btn-sm.btn-link-dark:hover,
+.btn-sm.btn-link-dark:focus,
+.btn-sm.btn-link-dark:active {
+  border-color: transparent;
+}
+.btn-sm.btn-link-dark:hover,
+.btn-sm.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.btn-sm.btn-link-dark[disabled]:hover,
+fieldset[disabled] .btn-sm.btn-link-dark:hover,
+.btn-sm.btn-link-dark[disabled]:focus,
+fieldset[disabled] .btn-sm.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.btn-sm.btn-link-dark:hover {
+  text-decoration: none;
+}
+.btn-sm.btn-link-dark:hover {
+  color: #353535;
+}
 /*
 Extra small buttons
 
@@ -7211,6 +7399,7 @@ Markup:
 <input type="button" class="btn btn-xs {$modifiers}" value="Input Button">
 
 .btn-link           - Link button.
+.btn-link-dark      - Link button, dark.
 .btn-default        - Default button.
 .btn-primary        - Primary button.
 .btn-success        - Success button.
@@ -7231,7 +7420,7 @@ Styleguide 1.3
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -7245,10 +7434,11 @@ Styleguide 1.3
   font-weight: 100;
   padding: 17px 30px 18px;
   padding: 1px 5px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
   border-radius: 20px;
+  font-size: 12px;
   padding: 2px 15px;
 }
 .btn-xs:focus {
@@ -7532,6 +7722,48 @@ fieldset[disabled] .btn-xs.btn-link:focus {
 .btn-xs.btn-link:hover {
   text-decoration: none;
 }
+.btn-xs.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.btn-xs.btn-link-dark,
+.btn-xs.btn-link-dark:active,
+.btn-xs.btn-link-dark[disabled],
+fieldset[disabled] .btn-xs.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn-xs.btn-link-dark,
+.btn-xs.btn-link-dark:hover,
+.btn-xs.btn-link-dark:focus,
+.btn-xs.btn-link-dark:active {
+  border-color: transparent;
+}
+.btn-xs.btn-link-dark:hover,
+.btn-xs.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.btn-xs.btn-link-dark[disabled]:hover,
+fieldset[disabled] .btn-xs.btn-link-dark:hover,
+.btn-xs.btn-link-dark[disabled]:focus,
+fieldset[disabled] .btn-xs.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.btn-xs.btn-link-dark:hover {
+  text-decoration: none;
+}
+.btn-xs.btn-link-dark:hover {
+  color: #353535;
+}
 /*
 Button groups
 
@@ -7596,19 +7828,20 @@ Styleguide 1.5
 .action-buttons .action-button {
   margin-bottom: 5px;
   padding: 1px 5px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
   border-radius: 20px;
+  font-size: 12px;
   padding: 2px 15px;
 }
 .action-buttons .action-button .btn {
   margin-bottom: 5px;
 }
-.heading-large {
-  font-size: 40px;
-  font-weight: 100;
-}
+/* Typography
+
+Styleguide 7
+*/
 h1 small,
 h2 small,
 h3 h4 small,
@@ -7616,8 +7849,59 @@ h5 small,
 h6 small {
   color: #c9c9c9;
 }
+.font-color-primary {
+  color: #eb4498 !important;
+}
+.font-color-secondary {
+  color: #c9c9c9 !important;
+}
+/*
+Large heading
+
+Base class for large headings.
+
+Markup:
+<h1 class="heading-large {$modifiers}">Large Heading</h1>
+
+.font-color-primary - Primary font color.
+.font-color-secondary - Secondary font color.
+
+Styleguide 7.1
+*/
+.heading-large {
+  font-size: 44.5px;
+  font-weight: 100;
+}
+/*
+Small heading
+
+Base class for small headings.
+
+.font-color-primary - Primary font color.
+.font-color-secondary - Secondary font color.
+
+Markup:
+<h1 class="heading-small {$modifiers}">Small Heading<h1>
+
+Styleguide 7.2
+*/
+.heading-small {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+}
+/*
+Page title
+
+Implements the .heading-large class.
+
+Markup:
+<h1 class="page-title {$modifiers}">Page Title</h1>
+
+Styleguide 7.3
+*/
 .page-title {
-  font-size: 40px;
+  font-size: 44.5px;
   font-weight: 100;
 }
 /*
@@ -7638,7 +7922,6 @@ Styleguide 2.1
   width: 100%;
   height: 55px;
   padding: 6px 12px;
-  font-size: 14px;
   line-height: 1.428571429;
   color: #c9c9c9;
   vertical-align: middle;
@@ -7650,11 +7933,11 @@ Styleguide 2.1
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  border: 1px solid #d2d4d5;
+  border: 1px solid #e4e4e4;
   border-radius: 3px;
   font-size: 16px;
   font-weight: 100;
-  color: #979797;
+  color: #565656;
 }
 .form-control:focus {
   border-color: #66afe9;
@@ -7663,17 +7946,17 @@ Styleguide 2.1
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 .form-control:-moz-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .form-control::-moz-placeholder {
-  color: #f1f2f2;
+  color: #565656;
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .form-control::-webkit-input-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .form-control[disabled],
 .form-control[readonly],
@@ -7706,10 +7989,10 @@ Markup:
 
 Styleguide 2.3
 */
-input[type="checkbox"] {
+input[type="checkbox"].checkbox {
   display: none;
 }
-input[type="checkbox"] + label {
+input[type="checkbox"].checkbox + label {
   cursor: pointer;
   display: inline-block;
   font-size: 13px;
@@ -7720,9 +8003,9 @@ input[type="checkbox"] + label {
   position: relative;
   vertical-align: middle;
 }
-input[type="checkbox"] + label:before {
+input[type="checkbox"].checkbox + label:before {
   background-color: #fff;
-  border: 2px solid #d2d4d5;
+  border: 2px solid #e4e4e4;
   border-radius: 3px;
   bottombottom: 1px;
   content: "";
@@ -7733,8 +8016,8 @@ input[type="checkbox"] + label:before {
   width: 40px;
   height: 40px;
 }
-input[type="checkbox"]:checked + label:before {
-  color: #3d3d3d;
+input[type="checkbox"].checkbox:checked + label:before {
+  color: #353535;
   content: "\e013";
   font-family: 'Glyphicons Halflings';
   font-size: 26px;
@@ -7762,7 +8045,6 @@ Styleguide 2.4
   width: 100%;
   height: 55px;
   padding: 6px 12px;
-  font-size: 14px;
   line-height: 1.428571429;
   color: #c9c9c9;
   vertical-align: middle;
@@ -7774,11 +8056,11 @@ Styleguide 2.4
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  border: 1px solid #d2d4d5;
+  border: 1px solid #e4e4e4;
   border-radius: 3px;
   font-size: 16px;
   font-weight: 100;
-  color: #979797;
+  color: #565656;
   position: relative;
 }
 .select:focus {
@@ -7788,17 +8070,17 @@ Styleguide 2.4
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 .select:-moz-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .select::-moz-placeholder {
-  color: #f1f2f2;
+  color: #565656;
   opacity: 1;
 }
 .select:-ms-input-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .select::-webkit-input-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .select[disabled],
 .select[readonly],
@@ -7816,17 +8098,17 @@ textarea.select {
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 .select:-moz-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .select::-moz-placeholder {
-  color: #f1f2f2;
+  color: #565656;
   opacity: 1;
 }
 .select:-ms-input-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .select::-webkit-input-placeholder {
-  color: #f1f2f2;
+  color: #565656;
 }
 .select[disabled],
 .select[readonly],
@@ -7852,7 +8134,7 @@ textarea.select {
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -8156,6 +8438,48 @@ fieldset[disabled] .select .select-button.btn-link:focus {
 .select .select-button.btn-link:hover {
   text-decoration: none;
 }
+.select .select-button.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.select .select-button.btn-link-dark,
+.select .select-button.btn-link-dark:active,
+.select .select-button.btn-link-dark[disabled],
+fieldset[disabled] .select .select-button.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.select .select-button.btn-link-dark,
+.select .select-button.btn-link-dark:hover,
+.select .select-button.btn-link-dark:focus,
+.select .select-button.btn-link-dark:active {
+  border-color: transparent;
+}
+.select .select-button.btn-link-dark:hover,
+.select .select-button.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.select .select-button.btn-link-dark[disabled]:hover,
+fieldset[disabled] .select .select-button.btn-link-dark:hover,
+.select .select-button.btn-link-dark[disabled]:focus,
+fieldset[disabled] .select .select-button.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.select .select-button.btn-link-dark:hover {
+  text-decoration: none;
+}
+.select .select-button.btn-link-dark:hover {
+  color: #353535;
+}
 .select .select-button:before {
   content: "\e072";
 }
@@ -8212,8 +8536,8 @@ Styleguide 3
 */
 .progress {
   overflow: hidden;
-  height: 20px;
-  margin-bottom: 20px;
+  height: 22px;
+  margin-bottom: 22px;
   background-color: #c9c9c9;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -8278,7 +8602,7 @@ Styleguide 5
 */
 .styleguide-color {
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   border: 1px solid transparent;
   border-radius: 4px;
   border: none;
@@ -8311,7 +8635,7 @@ Styleguide 5
   color: #953b39;
 }
 .layout-main body {
-  padding-top: 100px;
+  padding-top: 95px;
 }
 .layout-main .navbar .language-menu .dropdown-menu {
   height: 495px;
@@ -8325,6 +8649,725 @@ Styleguide 5
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
+}
+.layout-main .footer {
+  background-color: #fef5fa;
+  color: #707070;
+  margin-top: 100px;
+  padding: 40px 0;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+.layout-main .footer a {
+  color: #707070;
+}
+.layout-main .footer .footer-top {
+  margin-bottom: 35px;
+}
+.layout-main .footer .footer-column {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .layout-main .footer .footer-column {
+    float: left;
+    width: 50%;
+  }
+}
+.layout-main .footer .footer-column .link-column {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .layout-main .footer .footer-column .link-column {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.layout-main .footer .footer-column .link-column .footer-links {
+  color: #707070;
+  font-size: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+.layout-main .footer .footer-column .link-column .footer-links li {
+  margin-bottom: 10px;
+}
+.layout-main .footer .copyright-column {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 11px;
+  margin-top: 25px;
+}
+@media (min-width: 992px) {
+  .layout-main .footer .copyright-column {
+    float: left;
+    width: 100%;
+  }
+}
+.layout-main .footer .copyright-column .lead {
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.layout-main .footer .copyright-column p:last-child {
+  margin-bottom: 0;
+}
+.account-controller.dashboard-action .dashboard-profile {
+  padding-bottom: 35px;
+  border-bottom: 2px solid #e4e4e4;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.dashboard-action .dashboard-profile .profile-info {
+    float: left;
+    width: 66.66666666666666%;
+  }
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-picture {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.dashboard-action .dashboard-profile .profile-info .profile-picture {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-picture img {
+  width: 195px;
+  height: auto;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts {
+    float: left;
+    width: 66.66666666666666%;
+  }
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 40px;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:before,
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:after {
+  clear: both;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:before,
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:after {
+  clear: both;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar .profile-points {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #22d23e;
+  font-size: 20px;
+  font-weight: 100;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar .profile-points .glyphicon {
+  font-size: 17px;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar .profile-actions {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: right;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar .profile-actions .glyphicon {
+  font-size: 20px;
+  color: #939393;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-name {
+  font-size: 44.5px;
+  font-weight: 100;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-title {
+  font-weight: 100;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: right !important;
+  min-height: 195px;
+  border-left: 2px solid #e4e4e4;
+}
+@media (min-width: 992px) {
+  .account-controller.dashboard-action .dashboard-profile .recent-updates {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar {
+  margin-left: -15px;
+  margin-right: -15px;
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar:before,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar:after {
+  clear: both;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar:before,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar:after {
+  clear: both;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-title {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-title {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-title .updates-heading {
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 22px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: right;
+}
+@media (min-width: 768px) {
+  .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.428571429;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  background-color: #c9c9c9;
+  border: none;
+  color: #fff;
+  padding: 17px 30px 18px;
+  padding: 1px 5px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 3px;
+  border-radius: 20px;
+  font-size: 12px;
+  padding: 2px 15px;
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.disabled,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link[disabled],
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-default {
+  background-color: #c9c9c9;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-default:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary {
+  color: #ffffff;
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary.active,
+.open .dropdown-toggle.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary {
+  color: #ffffff;
+  background-color: #e71f84;
+  border-color: #c3156d;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary.active,
+.open .dropdown-toggle.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary {
+  background-image: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary.disabled,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary[disabled],
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary.disabled:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary[disabled]:hover,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary.disabled:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary[disabled]:focus,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary.disabled:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary[disabled]:active,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary.disabled.active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary[disabled].active,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary.active {
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-primary .badge {
+  color: #eb4498;
+  background-color: #fff;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success {
+  color: #ffffff;
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success.active,
+.open .dropdown-toggle.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success {
+  color: #ffffff;
+  background-color: #1caf34;
+  border-color: #168728;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success.active,
+.open .dropdown-toggle.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success {
+  background-image: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success.disabled,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success[disabled],
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success.disabled:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success[disabled]:hover,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success.disabled:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success[disabled]:focus,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success.disabled:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success[disabled]:active,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success.disabled.active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success[disabled].active,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success.active {
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-success .badge {
+  color: #22d23e;
+  background-color: #fff;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning {
+  color: #3d3d3d;
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning.active,
+.open .dropdown-toggle.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning {
+  color: #3d3d3d;
+  background-color: #fee94b;
+  border-color: #fde31e;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning.active,
+.open .dropdown-toggle.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning {
+  background-image: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning.disabled,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning[disabled],
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning.disabled:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning[disabled]:hover,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning.disabled:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning[disabled]:focus,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning.disabled:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning[disabled]:active,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning.disabled.active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning[disabled].active,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning.active {
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-warning .badge {
+  color: #feee74;
+  background-color: #fff;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger {
+  color: #ffffff;
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger.active,
+.open .dropdown-toggle.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger {
+  color: #ffffff;
+  background-color: #da353b;
+  border-color: #bd2329;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger.active,
+.open .dropdown-toggle.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger {
+  background-image: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger.disabled,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger[disabled],
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger.disabled:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger[disabled]:hover,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger.disabled:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger[disabled]:focus,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger.disabled:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger[disabled]:active,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger.disabled.active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger[disabled].active,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger.active {
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-danger .badge {
+  color: #e0575c;
+  background-color: #fff;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info {
+  color: #ffffff;
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info.active,
+.open .dropdown-toggle.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info {
+  color: #ffffff;
+  background-color: #9daaca;
+  border-color: #7f91ba;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info.active,
+.open .dropdown-toggle.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info {
+  background-image: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info.disabled,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info[disabled],
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info.disabled:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info[disabled]:hover,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info.disabled:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info[disabled]:focus,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info.disabled:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info[disabled]:active,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info.disabled.active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info[disabled].active,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info.active {
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-info .badge {
+  color: #b7c1d8;
+  background-color: #fff;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link[disabled],
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link:active {
+  border-color: transparent;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link[disabled]:hover,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link[disabled]:focus,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link:hover {
+  text-decoration: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark[disabled],
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:active {
+  border-color: transparent;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark[disabled]:hover,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark[disabled]:focus,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:hover {
+  text-decoration: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:hover {
+  color: #353535;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:active,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link[disabled],
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:focus,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:active {
+  border-color: transparent;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link[disabled]:hover,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:hover,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link[disabled]:focus,
+fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:hover {
+  text-decoration: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:hover {
+  color: #353535;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates:before,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates:after {
+  content: " ";
+  display: table;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates:after {
+  clear: both;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates:before,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates:after {
+  content: " ";
+  display: table;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates:after {
+  clear: both;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content {
+    float: left;
+    width: 100%;
+  }
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list {
+  margin: 0;
+  padding: 0;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li {
+  margin-left: -15px;
+  margin-right: -15px;
+  list-style: none;
+  margin-bottom: 45px;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li:before,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li:after {
+  content: " ";
+  display: table;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li:after {
+  clear: both;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li:before,
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li:after {
+  content: " ";
+  display: table;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li:after {
+  clear: both;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li:last-child {
+  margin-bottom: 0;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li .update-image {
+  position: relative;
+  float: left;
+  width: 25%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li .update-info {
+  position: relative;
+  float: left;
+  width: 75%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
+  font-weight: 100;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li .update-info .update-title {
+  display: block;
+  font-weight: bold;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li .update-info .update-description {
+  display: block;
 }
 .account-controller.admin-action .grid-view {
   margin-top: 20px;
@@ -8493,7 +9536,7 @@ Styleguide 5
 }
 .account-controller.profile-action .profile .profile-content .content-messages {
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   border: 1px solid transparent;
   border-radius: 4px;
   border: none;
@@ -8778,7 +9821,7 @@ Styleguide 5
 }
 .examquestion-controller.edit-action .related-text {
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   border: 1px solid transparent;
   border-radius: 4px;
   border: none;
@@ -8789,7 +9832,7 @@ Styleguide 5
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #7d7d7d;
+  color: #757575;
 }
 .examquestion-controller.edit-action .related-text h4 {
   margin-top: 0;
@@ -8892,7 +9935,7 @@ Styleguide 5
   }
 }
 .item-controller .item-header .header-text .header-title {
-  font-size: 40px;
+  font-size: 44.5px;
   font-weight: 100;
   margin: 0;
 }
@@ -9007,7 +10050,7 @@ Styleguide 5
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -9021,10 +10064,11 @@ Styleguide 5
   font-weight: 100;
   padding: 17px 30px 18px;
   padding: 1px 5px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
   border-radius: 20px;
+  font-size: 12px;
   padding: 2px 15px;
   text-align: left;
 }
@@ -9309,6 +10353,48 @@ fieldset[disabled] .item-controller .item-progress .progress-item .item-action .
 .item-controller .item-progress .progress-item .item-action .btn.btn-link:hover {
   text-decoration: none;
 }
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:active,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark[disabled],
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:focus,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:active {
+  border-color: transparent;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark[disabled]:hover,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:hover,
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark[disabled]:focus,
+fieldset[disabled] .item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:hover {
+  text-decoration: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:hover {
+  color: #353535;
+}
 .item-controller .item-form {
   position: relative;
   min-height: 1px;
@@ -9485,7 +10571,7 @@ fieldset[disabled] .item-controller .item-progress .progress-item .item-action .
 }
 .item-controller.browse-action .item-thumb .no-thumb {
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   border: 1px solid transparent;
   border-radius: 4px;
   border: none;
@@ -9687,7 +10773,7 @@ fieldset[disabled] .item-controller .item-progress .progress-item .item-action .
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -9701,10 +10787,10 @@ fieldset[disabled] .item-controller .item-progress .progress-item .item-action .
   font-weight: 100;
   padding: 17px 30px 18px;
   padding: 5px 10px;
-  font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
   border-radius: 20px;
+  font-size: 14px;
   padding: 4px 20px;
   color: #ffffff;
   background-color: #eb4498;
@@ -9991,6 +11077,48 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link:hover {
   text-decoration: none;
 }
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:active,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark[disabled],
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:focus,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:active {
+  border-color: transparent;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark[disabled]:hover,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:hover,
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark[disabled]:focus,
+fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:hover {
+  text-decoration: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:hover {
+  color: #353535;
+}
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button:hover,
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button:focus,
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button:active,
@@ -10068,10 +11196,11 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1;
   list-style-type: none;
   margin: 0;
+  margin-bottom: 25px;
 }
 @media (min-width: 992px) {
   .breadcrumbs {
@@ -10091,7 +11220,7 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
   margin: 0;
 }
 .breadcrumbs li a {
-  color: #3d3d3d;
+  color: #353535;
 }
 .flowbar {
   background-image: -webkit-linear-gradient(top, #ffffff 90%, rgba(255, 255, 255, 0) 100%);

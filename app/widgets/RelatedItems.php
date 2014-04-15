@@ -30,7 +30,11 @@ class RelatedItems extends CWidget
         $relatedItems = $this->model->{$this->relation};
         foreach ($relatedItems as $i => $relatedItem) {
 
-            $actualModel = $relatedItem->item();
+            if ($relatedItem instanceof Node) {
+                $actualModel = $relatedItem->item();
+            } else {
+                $actualModel = $relatedItem;
+            }
 
             $this->render('relatedItem', array(
                 'item' => $relatedItem,

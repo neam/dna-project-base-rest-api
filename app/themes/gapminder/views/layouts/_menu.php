@@ -24,27 +24,37 @@
                 ),
                 array(
                     'class' => '\TbNav',
-                    'htmlOptions' => array('class' => 'pull-right language-menu'),
+                    'htmlOptions' => array(),
                     'items' => array(
                         array(
-                            'label' => Yii::app()->language,
-                            'icon' => 'globe',
-                            'url' => '#',
-                            'items' => Controller::getLanguageMenuItems()
-                        )
-                    )
+                            'label' => Yii::t('app', 'Dashboard'),
+                            'icon' => TbHtml::ICON_TH,
+                            'url' => array('/account/dashboard'),
+                            'visible' => !Yii::app()->user->isGuest,
+                        ),
+                    ),
                 ),
+                //'<form class="navbar-search pull-left" action=""><input type="text" class="search-query span2" placeholder="Search"></form>',
                 array(
                     'class' => '\TbNav',
                     'htmlOptions' => array('class' => 'pull-right'),
                     'items' => array(
+                        array(
+                            'class' => '\TbNav',
+                            'icon' => TbHtml::ICON_GLOBE,
+                            'label' => Yii::app()->language,
+                            'htmlOptions' => array('class' => 'language-menu'),
+                            'items' => Controller::getLanguageMenuItems(),
+                        ),
                         array(
                             'label' => ucfirst(Yii::app()->user->name),
                             'visible' => !Yii::app()->user->isGuest,
                             'icon' => Yii::app()->user->isAdmin() ? 'warning-sign' : 'user',
                             'id' => 'accountMenuLink',
                             'items' => array(
-                                array('label' => Yii::t('app', 'User')),
+                                array(
+                                    'label' => Yii::t('app', 'User'),
+                                ),
                                 array(
                                     'label' => Yii::t('app', 'Dashboard'),
                                     'icon' => 'th-large',

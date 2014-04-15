@@ -51,7 +51,7 @@
         
         
           
-            <h1 class="kss-title"><span class="kss-ref">2.0</span> - Forms</h1>
+            <h1 class="kss-title"><span class="kss-ref">7.0</span> - Typography</h1>
           
             
                 
@@ -60,58 +60,10 @@
         
           
            <section class="kss-depth-2">
-            <h1 class="kss-title"><span class="kss-ref">2.1</span> - Input fields</h1>
+            <h1 class="kss-title"><span class="kss-ref">7.1</span> - Large heading</h1>
           
             
-                <div class="kss-box"></div>
-                <table class="kss-mod-list">
-                  <tr class="kss-mod-desc-group">
-                    <td class="kss-mod-desc"><p>Default styling</p></td>
-                    <td class="kss-mod-name"></td>
-                  </tr>
-                  <tr class="kss-mod-example">
-                    <td colspan="2"><input type="text" class="form-control" value="input[type='text'].form-control"></td>
-                  </tr>
-                
-                </table>
-                <div class="kss-markup">
-                  <pre class="prettyprint lang-html">&lt;input type=&quot;text&quot; class=&quot;form-control&quot; value=&quot;input[type=&#x27;text&#x27;].form-control&quot;&gt;</pre>
-                </div>
-            
-          
-            </section>
-          
-        
-          
-           <section class="kss-depth-2">
-            <h1 class="kss-title"><span class="kss-ref">2.2</span> - Textareas</h1>
-          
-            
-                <div class="kss-box"></div>
-                <table class="kss-mod-list">
-                  <tr class="kss-mod-desc-group">
-                    <td class="kss-mod-desc"><p>Default styling</p></td>
-                    <td class="kss-mod-name"></td>
-                  </tr>
-                  <tr class="kss-mod-example">
-                    <td colspan="2"><textarea class="form-control" rows="3">textarea.form-control</textarea></td>
-                  </tr>
-                
-                </table>
-                <div class="kss-markup">
-                  <pre class="prettyprint lang-html">&lt;textarea class=&quot;form-control&quot; rows=&quot;3&quot;&gt;textarea.form-control&lt;/textarea&gt;</pre>
-                </div>
-            
-          
-            </section>
-          
-        
-          
-           <section class="kss-depth-2">
-            <h1 class="kss-title"><span class="kss-ref">2.3</span> - Checkboxes</h1>
-          
-            
-                <div class="kss-box"><p>TODO: Replace check icon and change label font styles.</p>
+                <div class="kss-box"><p>Base class for large headings.</p>
 </div>
                 <table class="kss-mod-list">
                   <tr class="kss-mod-desc-group">
@@ -119,14 +71,30 @@
                     <td class="kss-mod-name"></td>
                   </tr>
                   <tr class="kss-mod-example">
-                    <td colspan="2"><input id="check1" type="checkbox" name="check" value="1">
-<label for="check1">Checkbox Label</label></td>
+                    <td colspan="2"><h1 class="heading-large {$modifiers}">Large Heading</h1></td>
+                  </tr>
+                
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Primary font color.</p>
+</td>
+                    <td class="kss-mod-name"><p>.font-color-primary</p></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><h1 class="heading-large font-color-primary">Large Heading</h1></td>
+                  </tr>
+                
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Secondary font color.</p>
+</td>
+                    <td class="kss-mod-name"><p>.font-color-secondary</p></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><h1 class="heading-large font-color-secondary">Large Heading</h1></td>
                   </tr>
                 
                 </table>
                 <div class="kss-markup">
-                  <pre class="prettyprint lang-html">&lt;input id=&quot;check1&quot; type=&quot;checkbox&quot; name=&quot;check&quot; value=&quot;1&quot;&gt;
-&lt;label for=&quot;check1&quot;&gt;Checkbox Label&lt;/label&gt;</pre>
+                  <pre class="prettyprint lang-html">&lt;h1 class=&quot;heading-large {$modifiers}&quot;&gt;Large Heading&lt;/h1&gt;</pre>
                 </div>
             
           
@@ -135,10 +103,10 @@
         
           
            <section class="kss-depth-2">
-            <h1 class="kss-title"><span class="kss-ref">2.4</span> - Select fields</h1>
+            <h1 class="kss-title"><span class="kss-ref">7.2</span> - Small heading</h1>
           
             
-                <div class="kss-box"><p>Dropdown functionality is to be provided by JavaScript.</p>
+                <div class="kss-box"><p>Base class for small headings.</p>
 </div>
                 <table class="kss-mod-list">
                   <tr class="kss-mod-desc-group">
@@ -146,22 +114,55 @@
                     <td class="kss-mod-name"></td>
                   </tr>
                   <tr class="kss-mod-example">
-                    <td colspan="2"><div class="select">
-  <span class="selected">Selected option</span>
-  <div class="select-button">
-    <!-- <span class="glyphicon glyphicon-chevron-down"></span> -->
-  </div>
-</div></td>
+                    <td colspan="2"><h1 class="heading-small {$modifiers}">Small Heading<h1></td>
+                  </tr>
+                
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Primary font color.</p>
+</td>
+                    <td class="kss-mod-name"><p>.font-color-primary</p></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><h1 class="heading-small font-color-primary">Small Heading<h1></td>
+                  </tr>
+                
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Secondary font color.</p>
+</td>
+                    <td class="kss-mod-name"><p>.font-color-secondary</p></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><h1 class="heading-small font-color-secondary">Small Heading<h1></td>
                   </tr>
                 
                 </table>
                 <div class="kss-markup">
-                  <pre class="prettyprint lang-html">&lt;div class=&quot;select&quot;&gt;
-  &lt;span class=&quot;selected&quot;&gt;Selected option&lt;/span&gt;
-  &lt;div class=&quot;select-button&quot;&gt;
-    &lt;!-- &lt;span class=&quot;glyphicon glyphicon-chevron-down&quot;&gt;&lt;/span&gt; --&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
+                  <pre class="prettyprint lang-html">&lt;h1 class=&quot;heading-small {$modifiers}&quot;&gt;Small Heading&lt;h1&gt;</pre>
+                </div>
+            
+          
+            </section>
+          
+        
+          
+           <section class="kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">7.3</span> - Page title</h1>
+          
+            
+                <div class="kss-box"><p>Implements the .heading-large class.</p>
+</div>
+                <table class="kss-mod-list">
+                  <tr class="kss-mod-desc-group">
+                    <td class="kss-mod-desc"><p>Default styling</p></td>
+                    <td class="kss-mod-name"></td>
+                  </tr>
+                  <tr class="kss-mod-example">
+                    <td colspan="2"><h1 class="page-title {$modifiers}">Page Title</h1></td>
+                  </tr>
+                
+                </table>
+                <div class="kss-markup">
+                  <pre class="prettyprint lang-html">&lt;h1 class=&quot;page-title {$modifiers}&quot;&gt;Page Title&lt;/h1&gt;</pre>
                 </div>
             
           
