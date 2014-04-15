@@ -28,6 +28,16 @@
 }
 
 .navbar-default {
+  .navbar-nav {
+    .open {
+      & > a {
+        &:focus {
+          border-color: @grid-border-color;
+        }
+      }
+    }
+  }
+
   border: @grid-border-size solid @grid-border-color;
 
   .navbar-toggle {

@@ -21,7 +21,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                             <div class="profile-points">
                                 <?php echo TbHtml::icon(TbHtml::ICON_RECORD); ?>
                                 <?php echo Yii::t('app', '{pointCount} pts', array(
-                                    '{pointCount}' => 22402 // TODO: Get points dynamically.
+                                    '{pointCount}' => 0 // TODO: Get points dynamically.
                                 )); ?>
                             </div>
                             <div class="profile-actions">
@@ -41,9 +41,9 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                     <div class="updates-view-all">
                         <?php echo TbHtml::link(
                             Yii::t('app', 'View all ({updateCount})', array(
-                                '{updateCount}' => 180, // TODO: Get update count dynamically.
+                                '{updateCount}' => 0, // TODO: Get update count dynamically.
                             )),
-                            array('#'), // TODO: Add link.
+                            '#', // TODO: Add link.
                             array(
                                 'class' => 'view-all-link',
                             )
