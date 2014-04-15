@@ -188,7 +188,7 @@
                 "short_open_tag=on"
             ],
             "compile": [
-                "bash shell-scripts/post-buildstep.sh"
+                "bash deploy/post-buildstep.sh"
             ],
             "log-files": [
                 "app/runtime/application.log"
