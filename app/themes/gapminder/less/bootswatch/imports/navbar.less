@@ -3,7 +3,7 @@
 
   .navbar-brand {
     padding-right: 40px;
-    border-right: 1px solid @navbar-default-border;
+    border-right: @grid-border-size solid @navbar-default-border;
   }
 
   .navbar-nav {
@@ -19,8 +19,8 @@
           border-color: @navbar-default-border;
         }
 
-        border-left: 1px solid @navbar-default-border;
-        border-right: 1px solid @navbar-default-border;
+        border-left: @grid-border-size solid @navbar-default-border;
+        border-right: @grid-border-size solid @navbar-default-border;
         padding: 27px 25px 26px;
       }
     }
@@ -28,9 +28,11 @@
 }
 
 .navbar-default {
+  border: @grid-border-size solid @grid-border-color;
+
   .navbar-toggle {
     background-color: @navbar-default-bg;
-    border: 1px solid @navbar-default-border;
+    border: @grid-border-size solid @navbar-default-border;
     border-radius: 3px;
 
     &:hover {

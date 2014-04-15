@@ -17,7 +17,19 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                         <img src="http://placehold.it/195x195">
                     </div>
                     <div class="profile-facts">
-                        @todo: Points, Full Name, Title, etc.
+                        <div class="profile-top-bar">
+                            <div class="profile-points">
+                                <?php echo TbHtml::icon(TbHtml::ICON_RECORD); ?>
+                                <?php echo Yii::t('app', '{pointCount} pts', array(
+                                    '{pointCount}' => 22402 // TODO: Get points dynamically.
+                                )); ?>
+                            </div>
+                            <div class="profile-actions">
+                                <?php echo TbHtml::link(TbHtml::icon(TbHtml::ICON_COG), array('/account/profile')); ?>
+                            </div>
+                        </div>
+                        <h1 class="profile-name"><?php echo $model->profile->getFullName(); ?></h1>
+                        <span class="profile-title"><?php echo 'Project Manager at Nord Software'; // TODO: Get title dynamically. ?></span>
                     </div>
                 </div>
             </div>

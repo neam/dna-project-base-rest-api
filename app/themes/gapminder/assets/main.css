@@ -4514,7 +4514,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #ffffff;
-  border-color: #d2d4d5;
+  border-color: #e4e4e4;
 }
 .navbar-default .navbar-brand {
   color: #777777;
@@ -4559,7 +4559,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #d2d4d5;
+  border-color: #e4e4e4;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
@@ -6574,22 +6574,25 @@ td.visible-print {
 }
 .navbar .navbar-brand {
   padding-right: 40px;
-  border-right: 1px solid #d2d4d5;
+  border-right: 2px solid #e4e4e4;
 }
 .navbar .navbar-nav > li:last-child > a {
   border-left: none;
 }
 .navbar .navbar-nav > li > a {
-  border-left: 1px solid #d2d4d5;
-  border-right: 1px solid #d2d4d5;
+  border-left: 2px solid #e4e4e4;
+  border-right: 2px solid #e4e4e4;
   padding: 27px 25px 26px;
 }
 .navbar .navbar-nav > li > a:hover {
-  border-color: #d2d4d5;
+  border-color: #e4e4e4;
+}
+.navbar-default {
+  border: 2px solid #e4e4e4;
 }
 .navbar-default .navbar-toggle {
   background-color: #ffffff;
-  border: 1px solid #d2d4d5;
+  border: 2px solid #e4e4e4;
   border-radius: 3px;
 }
 .navbar-default .navbar-toggle:hover {
@@ -7717,7 +7720,7 @@ Styleguide 2.1
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  border: 1px solid #d2d4d5;
+  border: 1px solid #e4e4e4;
   border-radius: 3px;
   font-size: 16px;
   font-weight: 100;
@@ -7789,7 +7792,7 @@ input[type="checkbox"].checkbox + label {
 }
 input[type="checkbox"].checkbox + label:before {
   background-color: #fff;
-  border: 2px solid #d2d4d5;
+  border: 2px solid #e4e4e4;
   border-radius: 3px;
   bottombottom: 1px;
   content: "";
@@ -7840,7 +7843,7 @@ Styleguide 2.4
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  border: 1px solid #d2d4d5;
+  border: 1px solid #e4e4e4;
   border-radius: 3px;
   font-size: 16px;
   font-weight: 100;
@@ -8463,6 +8466,10 @@ Styleguide 5
 .layout-main .footer .copyright-column p:last-child {
   margin-bottom: 0;
 }
+.account-controller.dashboard-action .dashboard-profile {
+  padding-bottom: 35px;
+  border-bottom: 2px solid #e4e4e4;
+}
 .account-controller.dashboard-action .dashboard-profile .profile-info {
   position: relative;
   min-height: 1px;
@@ -8499,11 +8506,79 @@ Styleguide 5
     width: 66.66666666666666%;
   }
 }
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 40px;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:before,
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:after {
+  clear: both;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:before,
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar:after {
+  clear: both;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar .profile-points {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #22d23e;
+  font-size: 20px;
+  font-weight: 100;
+}
+@media (min-width: 992px) {
+  .account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar .profile-points {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar .profile-points .glyphicon {
+  font-size: 17px;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar .profile-actions {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: right;
+}
+@media (min-width: 992px) {
+  .account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar .profile-actions {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar .profile-actions .glyphicon {
+  font-size: 20px;
+  color: #939393;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-name {
+  font-size: 44.5px;
+  font-weight: 100;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-title {
+  font-weight: 100;
+}
 .account-controller.dashboard-action .dashboard-profile .recent-updates {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+  float: right !important;
+  min-height: 195px;
+  border-left: 2px solid #e4e4e4;
 }
 @media (min-width: 992px) {
   .account-controller.dashboard-action .dashboard-profile .recent-updates {
