@@ -2,10 +2,6 @@
 
 class ActiveRecord extends CActiveRecord
 {
-    /**
-     * @var boolean whether or not this model instance should use access restrictions
-     */
-    public $accessRestricted;
 
     // Hard code source language to en for now. TODO: Be able to choose and store source language
     public $source_language = 'en';
@@ -37,6 +33,9 @@ class ActiveRecord extends CActiveRecord
             }
             $behaviors['owner-behavior'] = array(
                 'class' => 'OwnerBehavior',
+            );
+            $behaviors['RestrictedAccessBehavior'] = array(
+                'class' => 'RestrictedAccessBehavior',
             );
         }
 
@@ -187,39 +186,50 @@ class ActiveRecord extends CActiveRecord
         );
     }
 
-    /**
-     * Applies the access criteria.
-     * @param string $criteria
-     * @param array $params
-     * @return CDbCriteria|string
-     */
-    public function applyAccessCriteria($criteria = '', array $params = array())
+    public function beforeRead()
     {
-        // Normalize the criteria (this must ALWAYS be done as we override the find and count methods).
-        if (!$criteria instanceof CDbCriteria) {
-            $criteria = new CDbCriteria(array('condition' => $criteria, 'params' => $params));
-        }
 
-        // Check whether to apply the access criteria to this model from the data model.
-        if (is_null($this->accessRestricted)) {
-            $this->accessRestricted = isset(DataModel::accessRestrictedModels()[get_class($this)]);
-        }
+        // todo: use corr accessRestricted from behavior -> tests
 
-        if (!$this->accessRestricted) {
-            return $criteria;
-        }
+        $user = Yii::app()->user;
+        $table = $this->getTableAlias();
 
-        // Show published items to anonymous users
-        if (Yii::app()->user->isGuest) {
+        if ($user->isAdmin()) {
+            return true; // no restriction for administrators
+        } elseif ($user->isGuest) {
             $visible = NodeHasGroup::VISIBILITY_VISIBLE;
 
-            $criteria->join = "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)";
+            $criteria = new CDbCriteria();
+            $criteria->join = "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id` AND `nhg`.`group_id` = :current_project_group_id)";
+            $criteria->params = array(
+                ":current_project_group_id" => Group::GAPMINDER_ORG, // TODO: Base on current domain
+            );
             $criteria->addCondition("(`nhg`.`visibility` = '$visible')");
 
             return $criteria;
-        }
 
-        // TODO: Always use an operation; here it could be 'read'.
-        return PermissionHelper::applyAccessCriteria($criteria);
+        } else {
+
+            //
+            die("TODO");
+            return $this->accessCriteria();
+
+            if ($user->checkAccess('organizationAdmin')) {
+                $userRecord = User::model()->findByPk(Yii::app()->user->id);
+
+                // Admins in an organisation are allowed to see all users from that organisation
+                return array(
+                    'condition' => "$table.organisation_id = :organisation",
+                    'params' => array(':organisation' => $userRecord->organisation_id),
+                );
+            } else {
+                // All other users can only query their own user record
+                return array(
+                    'condition' => "$table.user_id = :id",
+                    'params' => array(':id' => Yii::app()->user->id),
+                );
+            }
+        }
     }
+
 }
