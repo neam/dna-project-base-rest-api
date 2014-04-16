@@ -7,7 +7,11 @@
     <div class="task">
         <div class="task-thumbnail">
             <div class="thumbnail-container">
-                <?php echo $this->getItemModel($data['model_class'], $data['id'])->renderImage(); ?>
+                <?php // TODO: Remove this if condition once the permission system has been implemented. ?>
+                <?php $model = $this->getItemModel($data['model_class'], $data['id']); ?>
+                <?php if (isset($model)): ?>
+                    <?php echo $this->getItemModel($data['model_class'], $data['id'])->renderImage(); ?>
+                <?php endif; ?>
             </div>
             <div class="skip-link-container">
             </div>

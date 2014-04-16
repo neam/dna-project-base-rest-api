@@ -18,7 +18,7 @@
     ); ?>
     <div class="after-flowbar">
         <?php $_lang = Yii::app()->language; ?>
-        <?php foreach (Yii::app()->params['languages'] as $languageCode => $languageLabel): ?>
+        <?php foreach (Yii::app()->user->getTranslatableLanguages() as $languageCode => $languageLabel): ?>
             <?php if ($languageCode === Yii::app()->sourceLanguage): ?>
                 <?php continue; ?>
             <?php endif; ?>
@@ -36,12 +36,11 @@
                             'color' => $this->action->id === $action
                                     ? TbHtml::BUTTON_COLOR_INVERSE
                                     : TbHtml::BUTTON_COLOR_DEFAULT,
-                            'size' => TbHtml::BUTTON_SIZE_XS,
-                            'icon' => TbHtml::ICON_GLOBE,
+                            'size' => TbHtml::BUTTON_SIZE_SM,
                             'url' => array(
                                 $action,
                                 'id' => $model->{$model->tableSchema->primaryKey},
-                                'step' => $step, 'translateInto' => $languageCode
+                                'step' => $step, 'translateInto' => $languageCode,
                             ),
                         )
                     ); ?>
