@@ -19,6 +19,13 @@ modules:
             wait: 1
             restart: true
 
+    cms-local-chrome:
+         modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'chrome'
+
     cms-saucelabs-chrome-win8:
          modules:
             config:

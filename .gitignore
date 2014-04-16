@@ -12,3 +12,5 @@ nbproject
 www/graphs
 .idea/workspace.xml
 test-php.pid
+tests/codeception/acceptance.suite.yml
+codeception.yml

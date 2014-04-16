@@ -2,9 +2,11 @@
 
 set -x;
 
-./_start-local-server.sh
+script_path=`dirname $0`
 
-./_test.sh
+$script_path/_start-local-server.sh
+
+$script_path/_test.sh
 
 kill -9 `cat test-php.pid`
 rm test-php.pid
