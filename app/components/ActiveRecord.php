@@ -197,14 +197,14 @@ class ActiveRecord extends CActiveRecord
         if ($user->isAdmin()) {
             return true; // no restriction for administrators
         } elseif ($user->isGuest) {
-            $visible = NodeHasGroup::VISIBILITY_VISIBLE;
 
             $criteria = new CDbCriteria();
             $criteria->join = "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id` AND `nhg`.`group_id` = :current_project_group_id)";
+            $criteria->addCondition("(`nhg`.`visibility` = :visibility)");
             $criteria->params = array(
                 ":current_project_group_id" => Group::GAPMINDER_ORG, // TODO: Base on current domain
+                ":visibility" => NodeHasGroup::VISIBILITY_VISIBLE,
             );
-            $criteria->addCondition("(`nhg`.`visibility` = '$visible')");
 
             return $criteria;
 
