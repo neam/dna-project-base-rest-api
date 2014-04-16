@@ -210,6 +210,14 @@ class ActiveRecord extends CActiveRecord
 
         } else {
 
+            $criteria = new CDbCriteria();
+
+            // Restrict access based on the account id.
+            $criteria->addCondition("`t`.`owner_id` = :account_id");
+            $criteria->params[':account_id'] = $user->id;
+
+            return $criteria;
+
             //
             die("TODO");
             return $this->accessCriteria();
