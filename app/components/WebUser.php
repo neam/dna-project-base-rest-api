@@ -28,18 +28,25 @@ class WebUser extends CWebUser
     {
         // TODO Implement caching?
 
+        Yii::log("checkAccess - operation: $operation", CLogger::LEVEL_INFO);
+
         // Auto-grant access to admins
         if ($this->isAdmin()) {
+            Yii::log('isAdmin true', CLogger::LEVEL_INFO);
             return true;
         }
 
         if ($this->checkSystemRoleBasedAccess($operation)) {
+            Yii::log("checkSystemRoleBasedAccess true - operation: $operation", CLogger::LEVEL_INFO);
             return true;
         }
 
         if ($this->checkGroupRoleBasedAccess($operation)) {
+            Yii::log("checkGroupRoleBasedAccess true - operation: $operation", CLogger::LEVEL_INFO);
             return true;
         }
+
+        Yii::log("no access - operation: $operation", CLogger::LEVEL_INFO);
 
         return false;
     }
