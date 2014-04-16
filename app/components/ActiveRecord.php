@@ -191,53 +191,47 @@ class ActiveRecord extends CActiveRecord
 
         // todo: use corr accessRestricted from behavior -> tests
 
+        $publicCriteria = new CDbCriteria();
+        $publicCriteria->join = "LEFT JOIN `node_has_group` AS `nhg_public` ON (`t`.`node_id` = `nhg_public`.`node_id` AND `nhg_public`.`group_id` = :current_project_group_id AND `nhg_public`.`visibility` = :visibility)";
+        $publicCriteria->addCondition("(`nhg_public`.`id` IS NOT NULL)");
+        $publicCriteria->params = array(
+            ":current_project_group_id" => Group::GAPMINDER_ORG, // TODO: Base on current domain
+            ":visibility" => NodeHasGroup::VISIBILITY_VISIBLE,
+        );
+
+
         $user = Yii::app()->user;
         $table = $this->getTableAlias();
 
         if ($user->isAdmin()) {
-            return true; // no restriction for administrators
+
+            // All items
+            return true;
+
         } elseif ($user->isGuest) {
 
-            $criteria = new CDbCriteria();
-            $criteria->join = "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id` AND `nhg`.`group_id` = :current_project_group_id)";
-            $criteria->addCondition("(`nhg`.`visibility` = :visibility)");
-            $criteria->params = array(
-                ":current_project_group_id" => Group::GAPMINDER_ORG, // TODO: Base on current domain
-                ":visibility" => NodeHasGroup::VISIBILITY_VISIBLE,
-            );
-
-            return $criteria;
+            // Only public items
+            return $publicCriteria;
 
         } else {
 
             $criteria = new CDbCriteria();
 
-            // Restrict access based on the account id.
-            $criteria->addCondition("`t`.`owner_id` = :account_id");
             $criteria->params[':account_id'] = $user->id;
+
+            // Public items ...
+            $criteria->mergeWith($publicCriteria, 'OR');
+
+            // ... and own items
+            $criteria->addCondition("`t`.`owner_id` = :account_id", "OR");
+
+            // ... and items within groups that the user is a member of
+            $criteria->join = $criteria->join . "\n" . "LEFT JOIN (`node_has_group` AS `nhg` INNER JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `gha`.`account_id` = :account_id)) ON (`t`.`node_id` = `nhg`.`node_id`) ";
+            $criteria->addCondition("`nhg`.id IS NOT NULL AND (`nhg`.`visibility` = 'visible' OR `nhg`.`visibility` IS NULL)", "OR");
+            return $criteria;
 
             return $criteria;
 
-            //
-            die("TODO");
-            return $this->accessCriteria();
-
-            if ($user->checkAccess('organizationAdmin')) {
-                $userRecord = User::model()->findByPk(Yii::app()->user->id);
-
-                // Admins in an organisation are allowed to see all users from that organisation
-                return array(
-                    'condition' => "$table.organisation_id = :organisation",
-                    'params' => array(':organisation' => $userRecord->organisation_id),
-                );
-            } else {
-                // All other users can only query their own user record
-                return array(
-                    'condition' => "$table.user_id = :id",
-                    'params' => array(':id' => Yii::app()->user->id),
-                );
-            }
         }
     }
-
 }
