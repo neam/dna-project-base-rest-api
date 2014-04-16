@@ -53,6 +53,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                 <div class="updates">
                     <div class="updates-content">
                         <ul class="updates-list">
+                            <?php /*
                             <?php // TODO: Render the two most recent updates. ?>
                             <li>
                                 <div class="update-image">
@@ -72,6 +73,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                                     <span class="update-description"><?php echo 'This achievement is awarded to users that have translated 30 videos.'; ?></span>
                                 </div>
                             </li>
+                            */ ?>
                         </ul>
                     </div>
                 </div>
