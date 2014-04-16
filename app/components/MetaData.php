@@ -173,6 +173,9 @@ class Metadata
                 'View' => array(
                     Role::GUEST,
                 ),
+                'Add' => array(
+                    Role::AUTHENTICATED,
+                ),
             )
         );
     }
@@ -225,17 +228,6 @@ class Metadata
             ),
             'Clone' => array(
                 Role::GROUP_EDITOR,
-            ),
-            'Add' => array(
-                Role::GROUP_ADMINISTRATOR,
-                Role::GROUP_MODERATOR,
-                Role::GROUP_PUBLISHER,
-                Role::GROUP_APPROVER,
-                Role::GROUP_EDITOR,
-                Role::GROUP_REVIEWER,
-                Role::GROUP_TRANSLATOR,
-                Role::GROUP_CONTRIBUTOR,
-                Role::GROUP_MEMBER,
             ),
             'Approve' => array(
                 Role::GROUP_APPROVER,
