@@ -99,10 +99,12 @@
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
+
                 <?php /*
                 <h2 class="sidebar-heading"><?php echo Yii::t('account', 'Permissions'); ?></h2>
                 <?php echo TbHtml::link(Yii::t('account', 'Apply for permission'), '#'); ?>
-                */ ?>
+                */
+                ?>
                 <h2 class="sidebar-heading"><?php echo Yii::t('account', 'Roles'); ?></h2>
                 <?php
                 //Account::model()->findByPk(Yii::app()->user->id)->assignDefaultGroupRoles();
@@ -114,23 +116,26 @@
                 ); ?>
                 <?php /*
                 <h2 class="sidebar-heading"><?php echo Yii::t('account', 'Badges'); ?></h2>
-                */ ?>
+                */
+                ?>
                 <?php /*
                 <h4>Tasks</h4>
                 <p>
                     <?php $tasks = array_keys(Yii::app()->authManager->getAuthItems(0, $model->id)); ?>
                     <?php print implode(', ', $tasks); ?>
                 </p>
-                */ ?>
+                */
+                ?>
                 <?php /*
                 <h2 class="sidebar-heading"><?php echo Yii::t('account', 'Operations'); ?></h2>
                 <p>
                     <?php $operations = array_keys(Yii::app()->authManager->getAuthItems(1, $model->id)); ?>
                     <?php print implode(', ', $operations); ?>
                 </p>
-                */ ?>
+                */
+                ?>
             </div>
         </div>
-    <?php $this->endWidget(); ?>
+        <?php $this->endWidget(); ?>
     </div>
 </div>
