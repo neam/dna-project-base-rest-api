@@ -29,7 +29,9 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                             </div>
                         </div>
                         <h1 class="profile-name"><?php echo $model->profile->getFullName(); ?></h1>
+                        <?php /*
                         <span class="profile-title"><?php echo 'Project Manager at Nord Software'; // TODO: Get title dynamically. ?></span>
+                        */ ?>
                     </div>
                 </div>
             </div>
