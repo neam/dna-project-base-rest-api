@@ -32,4 +32,7 @@ app/yiic databaseviewgenerator --connectionID=$connectionID item
 app/yiic authorizationhierarchy reset
 app/yiic authorizationhierarchy build
 
+# necessary for user data backup uploads
+deploy/install-s3cmd.sh
+
 exit 0
