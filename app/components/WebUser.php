@@ -109,7 +109,9 @@ class WebUser extends CWebUser
             return true;
         }
 
-        throw new CException("TODO");
+        Yii::log('checkModelOperationAccess TODO', CLogger::LEVEL_INFO);
+        return false;
+
     }
 
     /**
