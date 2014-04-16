@@ -78,13 +78,22 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
             </div>
         </div>
     </div>
-    <div class="dashboard-tasks-in-progress">
-        <h2 class="tasks-in-progress-heading"><?php echo Yii::t('app', 'Tasks in Progress'); ?></h2>
+    <?php /*
+    <div class="dashboard-tasks-container">
+        <div class="tasks-top-bar">
+            <div class="top-bar-title">
+                <h2 class="tasks-heading">
+                    <?php echo Yii::t('app', 'Tasks in Progress'); ?>
+                </h2>
+            </div>
+            <div class="top-bar-actions">
+            </div>
+        </div>
         <div class="row">
             <div class="tasks">
                 <ul class="tasks-list">
                     <?php // TODO: Render tasks dynamically. ?>
-                    <li>
+                    <li class="tasks-list-item">
                         <div class="task">
                             <div class="task-thumbnail">
                                 <div class="thumbnail-container">
@@ -109,13 +118,13 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                                     </div>
                                     <div class="task-facts">
                                         <ul class="facts-list">
-                                            <li><?php echo Yii::t('app', '{viewCount} views', array(
+                                            <li class="facts-list-item"><?php echo Yii::t('app', '{viewCount} views', array(
                                                 '{viewCount}' => 0, // TODO: Get view count dynamically.
                                             )); ?></li>
-                                            <li><?php echo Yii::t('app', 'In {languageCount} languages', array(
+                                            <li class="facts-list-item"><?php echo Yii::t('app', 'In {languageCount} languages', array(
                                                 '{languageCount}' => 0, // TODO: Get language count dynamically.
                                             )); ?></li>
-                                            <li><?php echo Yii::t('app', '+{pointCount} pts', array(
+                                            <li class="facts-list-item"><?php echo Yii::t('app', '+{pointCount} pts', array(
                                                 '{pointCount}' => 0, // TODO: Get point count dynamically.
                                             )); ?></li>
                                         </ul>
@@ -162,60 +171,35 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
             </div>
         </div>
     </div>
-    <div class="dashboard-new-tasks">
-        <h2 class="new-tasks-heading"><?php echo Yii::t('app', 'New Tasks'); ?></h2>
-        <?php $this->widget('zii.widgets.CListView', array(
-            'dataProvider' => $dataProvider,
-            'itemView' => '_dashboard-action',
-        )); ?>
-    </div>
-
-    <?php /*
-    <h1>
-        <?php echo $model->profile->first_name . " " . $model->profile->last_name; ?>
-        <small><?php echo Yii::t('account', 'Dashboard') ?> <?php //echo $model->id ?></small>
-    </h1>
-    <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-    <div class="alert alert-info">
-        <h4>Work in progress</h4>
-        This is where you will see recommended actions for you to take.
-    </div>
-    <?php if (!Yii::app()->user->checkAccess('Translate') && !Yii::app()->user->checkAccess('Edit') && !Yii::app()->user->checkAccess('Add')): ?>
-        <div class="alert alert-error">
-            <?php echo Yii::t('account', 'You do not have permissions assigned.'); ?>
-            <?php echo Yii::t('account', 'Without any permissions, we can not propose a suitable task for you.'); ?>
-            <?php echo Yii::t('account', 'Only administrators can assign permissions.'); ?>
-            <?php //echo Yii::t('account', 'Please apply for a permission.'); ?>
-        </div>
-    <?php endif; ?>
-    <?php if (Yii::app()->user->checkAccess('Add')): ?>
-        <div class="add-content">
-            <h2><?php echo Yii::t('dashboard', 'Add content'); ?></h2>
-            <?php foreach (DataModel::qaModels() as $modelClass => $table): ?>
-                <?php if ($table == "exam_question_alternative") {
-                    continue;
-                } ?>
-                <?php $this->widget("\TbButton", array(
-                    "label" => Yii::t("model", "Create $modelClass"),
-                    "size" => "large",
-                    "icon" => "glyphicon-plus",
-                    "url" => array(lcfirst($modelClass) . "/add")
-                )); ?>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
-    <?php if (Yii::app()->user->checkAccess('Translate')): ?>
-        <div class="translate-content">
-            <h2><?php echo Yii::t('dashboard', 'Translate content'); ?></h2>
-
-            <?php
-            $this->widget('zii.widgets.CListView', array(
-                'dataProvider' => $dataProvider,
-                'itemView' => '_dashboard-action',
-            ));
-            ?>
-
-        </div>
-    <?php endif; ?>
     */ ?>
+    <div class="dashboard-tasks-container">
+        <div class="tasks-top-bar">
+            <div class="top-bar-title">
+                <h2 class="tasks-heading">
+                    <?php echo Yii::t(
+                        'app', 'New Tasks ({taskCount})',
+                        array(
+                            '{taskCount}' => $dataProvider->getTotalItemCount(),
+                        )
+                    ); ?>
+                </h2>
+            </div>
+            <div class="top-bar-actions">
+            </div>
+        </div>
+        <div class="row">
+            <div class="tasks">
+                <ul class="tasks-list">
+                    <?php $this->widget(
+                        'yiistrap.widgets.TbListView',
+                        array(
+                            'dataProvider' => $dataProvider,
+                            'itemView' => '_dashboard-action',
+                            'template' => '{items} {pager}',
+                        )
+                    ); ?>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>

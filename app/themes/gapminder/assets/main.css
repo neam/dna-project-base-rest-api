@@ -9448,6 +9448,12 @@ fieldset[disabled] .select .select-button.btn-link-dark:focus {
   top: 9px;
   right: 10px;
 }
+.list-view .list-pager {
+  text-align: right;
+}
+.list-view .list-pager .pagination {
+  margin-top: 20px;
+}
 /*
 Badges
 
@@ -10401,327 +10407,6 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
   border-bottom: 2px solid #e4e4e4;
   padding-bottom: 40px;
 }
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks-in-progress-heading {
-  font-size: 44.5px;
-  font-weight: 100;
-  margin-bottom: 40px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.dashboard-action .dashboard-tasks-in-progress .tasks {
-    float: left;
-    width: 100%;
-  }
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li {
-  min-height: 20px;
-  padding: 19px;
-  margin-bottom: 20px;
-  background-color: #f1f2f2;
-  border: 1px solid #dee1e1;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border: none;
-  border-radius: 2px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li blockquote {
-  border-color: #ddd;
-  border-color: rgba(0, 0, 0, 0.15);
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li blockquote {
-  border-color: #ddd;
-  border-color: rgba(0, 0, 0, 0.15);
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li:last-child {
-  margin-bottom: 0;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task {
-  margin-left: -15px;
-  margin-right: -15px;
-  margin-bottom: 0px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task:before,
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task:after {
-  content: " ";
-  display: table;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task:after {
-  clear: both;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task:before,
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task:after {
-  content: " ";
-  display: table;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task:after {
-  clear: both;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task:last-child {
-  margin-bottom: 0;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail {
-    float: left;
-    width: 25%;
-  }
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail .thumbnail-container {
-  margin-bottom: 10px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail .skip-link-container .skip-this-link {
-  text-decoration: underline;
-  color: #444444;
-  font-size: 11px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail .skip-link-container .skip-this-link:hover {
-  text-decoration: none;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail .skip-link-container .skip-this-link.link-dark {
-  color: #444444;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail .skip-link-container .skip-this-link.link-primary {
-  color: #eb4498;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail .skip-link-container .skip-this-link.link-success {
-  color: #22d23e;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail .skip-link-container .skip-this-link.link-warning {
-  color: #feee74;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail .skip-link-container .skip-this-link.link-danger {
-  color: #e0575c;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail .skip-link-container .skip-this-link.link-info {
-  color: #b7c1d8;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail .skip-link-container .skip-this-link.link-sm {
-  font-size: 14px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-thumbnail .skip-link-container .skip-this-link.link-xs {
-  font-size: 11px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info {
-    float: left;
-    width: 75%;
-  }
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar {
-  margin-left: -15px;
-  margin-right: -15px;
-  margin-bottom: 10px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar:before,
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar:after {
-  content: " ";
-  display: table;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar:after {
-  clear: both;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar:before,
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar:after {
-  content: " ";
-  display: table;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar:after {
-  clear: both;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-action-text {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-action-text {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-action-text .action-heading {
-  color: #000;
-  font-size: 12px;
-  font-weight: 100;
-  line-height: 22px;
-  text-transform: uppercase;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: right;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list > li {
-  min-width: 10px;
-  padding: 3px 7px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffffff;
-  line-height: 1;
-  vertical-align: baseline;
-  white-space: nowrap;
-  text-align: center;
-  background-color: #f1f2f2;
-  border-radius: 10px;
-  background-color: #c9c9c9;
-  border-radius: 20px;
-  font-weight: 100;
-  padding: 8px 25px;
-  font-size: 12px;
-  padding: 4px 15px;
-  display: inline-block;
-  margin-right: 6px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list > li:empty {
-  display: none;
-}
-.btn .account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list > li {
-  position: relative;
-  top: -1px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list > li.badge-sm {
-  font-size: 14px;
-  padding: 7px 20px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list > li.badge-xs {
-  font-size: 12px;
-  padding: 4px 15px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list > li.badge-primary {
-  background-color: #eb4498;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list > li.badge-success {
-  background-color: #22d23e;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list > li.badge-warning {
-  background-color: #feee74;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list > li.badge-danger {
-  background-color: #e0575c;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list > li.badge-info {
-  background-color: #b7c1d8;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-top-bar .task-facts .facts-list > li:last-child {
-  margin-right: 0;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-title {
-  margin-bottom: 30px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-title .task-heading {
-  color: #000;
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar:before,
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar:after {
-  content: " ";
-  display: table;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar:after {
-  clear: both;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar:before,
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar:after {
-  content: " ";
-  display: table;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar:after {
-  clear: both;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar .task-progress {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar .task-progress {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar .task-progress .progress-info {
-  margin-bottom: 3px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar .task-progress .progress-info .progress-title {
-  color: #000;
-  font-size: 12px;
-  font-weight: 100;
-  line-height: 22px;
-  text-transform: uppercase;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar .task-progress .progress-info .progress-percentage {
-  color: #000;
-  font-size: 12px;
-  font-weight: 100;
-  line-height: 22px;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar .task-progress .progress-bar-container {
-  width: 190px;
-}
-.account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar .task-actions {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  text-align: right;
-}
-@media (min-width: 992px) {
-  .account-controller.dashboard-action .dashboard-tasks-in-progress .tasks .tasks-list > li .task .task-info .task-bottom-bar .task-actions {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.dashboard-action .dashboard-new-tasks .new-tasks-heading {
-  font-size: 44.5px;
-  font-weight: 100;
-}
 .account-controller.admin-action .grid-view {
   margin-top: 20px;
 }
@@ -11126,6 +10811,377 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
   .account-controller.profile-action .profile .profile-sidebar {
     float: left;
     width: 25%;
+  }
+}
+.account-controller .dashboard-tasks-container {
+  border-bottom: 2px solid #e4e4e4;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+.account-controller .dashboard-tasks-container:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 30px;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar:before,
+.account-controller .dashboard-tasks-container .tasks-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar:before,
+.account-controller .dashboard-tasks-container .tasks-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar .top-bar-title {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks-top-bar .top-bar-title {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar .top-bar-title .tasks-heading {
+  font-size: 44.5px;
+  font-weight: 100;
+  margin: 0;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar .top-bar-actions {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks-top-bar .top-bar-actions {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks {
+    float: left;
+    width: 100%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f1f2f2;
+  border: 1px solid #dee1e1;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 2px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item blockquote {
+  border-color: #ddd;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item blockquote {
+  border-color: #ddd;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item:last-child {
+  margin-bottom: 0;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 0px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:last-child {
+  margin-bottom: 0;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail {
+    float: left;
+    width: 25%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .thumbnail-container {
+  margin-bottom: 10px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link {
+  text-decoration: underline;
+  color: #444444;
+  font-size: 11px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link:hover {
+  text-decoration: none;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-dark {
+  color: #444444;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-primary {
+  color: #eb4498;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-success {
+  color: #22d23e;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-warning {
+  color: #feee74;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-danger {
+  color: #e0575c;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-info {
+  color: #b7c1d8;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-sm {
+  font-size: 14px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-xs {
+  font-size: 11px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info {
+    float: left;
+    width: 75%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 10px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-action-text {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-action-text {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-action-text .action-heading {
+  color: #000;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item {
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #f1f2f2;
+  border-radius: 10px;
+  background-color: #c9c9c9;
+  border-radius: 20px;
+  font-weight: 100;
+  padding: 8px 25px;
+  font-size: 12px;
+  padding: 4px 15px;
+  display: inline-block;
+  margin-right: 6px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item:empty {
+  display: none;
+}
+.btn .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item {
+  position: relative;
+  top: -1px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-sm {
+  font-size: 14px;
+  padding: 7px 20px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-xs {
+  font-size: 12px;
+  padding: 4px 15px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-primary {
+  background-color: #eb4498;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-success {
+  background-color: #22d23e;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-warning {
+  background-color: #feee74;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-danger {
+  background-color: #e0575c;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-info {
+  background-color: #b7c1d8;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item:last-child {
+  margin-right: 0;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-title {
+  margin-bottom: 30px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-title .task-heading {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress .progress-info {
+  margin-bottom: 3px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress .progress-info .progress-title {
+  color: #000;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress .progress-info .progress-percentage {
+  color: #000;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 22px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress .progress-bar-container {
+  width: 190px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-actions {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: right;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-actions {
+    float: left;
+    width: 50%;
   }
 }
 .chapter-controller.view-action .chapter-content {
