@@ -72,8 +72,13 @@ class Node extends BaseNode
     {
         foreach ($this->relations() as $relationName => $relationSpec) {
 
-            // Filter out edges and nodeHasGroup
-            if (count($relationSpec) < 3 || $relationSpec[2] !== 'node_id' || $relationSpec[1] === 'NodeHasGroup') {
+            // Filter out edges and nodeHasGroup, changesets
+            if (
+                count($relationSpec) < 3
+                || $relationSpec[2] !== 'node_id'
+                || $relationSpec[1] === 'NodeHasGroup'
+                || $relationSpec[1] === 'Changeset'
+            ) {
                 continue;
             }
 

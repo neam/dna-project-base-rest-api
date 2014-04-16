@@ -30,6 +30,7 @@ class RelatedItems extends CWidget
         $relatedItems = $this->model->{$this->relation};
         foreach ($relatedItems as $i => $relatedItem) {
 
+            // We dont want instances of Nodes, but their actual model, ie VideoFile
             if ($relatedItem instanceof Node) {
                 $actualModel = $relatedItem->item();
             } else {
