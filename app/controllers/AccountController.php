@@ -160,7 +160,7 @@ class AccountController extends Controller
                 ),
             ),
             'pagination' => array(
-                'pageSize' => 3,
+                'pageSize' => 10,
             ),
         ));
 
