@@ -1,6 +1,8 @@
 #!/bin/bash
 
-erb codeception.yml.erb > codeception.yml
-erb tests/codeception/acceptance.suite.yml.erb > tests/codeception/acceptance.suite.yml
+script_path=`dirname $0`
+
+erb $script_path/codeception.yml.erb > $script_path/codeception.yml
+erb $script_path/codeception/acceptance.suite.yml.erb > $script_path/codeception/acceptance.suite.yml
 
 exit 0

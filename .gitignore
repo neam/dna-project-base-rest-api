@@ -14,3 +14,4 @@ www/graphs
 test-php.pid
 tests/codeception/acceptance.suite.yml
 codeception.yml
+tests/vendor

@@ -1,8 +1,8 @@
 paths:
-    tests: tests/codeception
-    log: tests/codeception/_log
-    data: tests/codeception/_data
-    helpers: tests/codeception/_helpers
+    tests: codeception
+    log: codeception/_log
+    data: codeception/_data
+    helpers: codeception/_helpers
 settings:
     bootstrap: _bootstrap.php
     suite_class: \PHPUnit_Framework_TestSuite
@@ -15,14 +15,16 @@ modules:
             dsn: 'mysql:host=127.0.0.1;dbname=gscms_test'
             user: 'gcms_test'
             password: 'gcms_test'
-            dump: tests/codeception/_data/dump.sql
+            dump: codeception/_data/dump.sql
             populate: true
             cleanup: true
+<% if ENV.has_key? "CI" and ENV['CI'].to_s != "" %>
 extensions:
     enabled:
-      - Codeception\Extension\SauceExtension
+        - Codeception\Extension\SauceExtension
     config:
         Codeception\Extension\SauceExtension:
-        username: <%= ENV['SAUCE_USERNAME'] %>
-        accesskey: <%= ENV['SAUCE_ACCESS_KEY'] %>
-        #build: 'Local Test'
+            username: <%= ENV['SAUCE_USERNAME'] %>
+            accesskey: <%= ENV['SAUCE_ACCESS_KEY'] %>
+            #build: 'Local Test'
+<% end %>

@@ -9,6 +9,8 @@ $script_path/reset-test-db.sh
 export CMS_HOST=localhost:31415/index-test.php
 $script_path/generate-local-codeception-config.sh
 
-php codecept.phar run unit
-php codecept.phar run functional
-php codecept.phar run acceptance --env=cms-local-chrome
+cd $script_path
+
+vendor/bin/codecept run unit
+vendor/bin/codecept run functional
+vendor/bin/codecept run acceptance --env=cms-local-chrome
