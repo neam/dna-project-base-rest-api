@@ -64,7 +64,9 @@ class ExamQuestionAlternative extends BaseExamQuestionAlternative
     public function statusRequirements()
     {
         return array(
-            'draft' => array(),
+            'draft' => array(
+                'markup_' . $this->source_language,
+            ),
             'reviewable' => array(
                 'markup_' . $this->source_language,
                 'correct',

@@ -3,7 +3,7 @@
 /** @var ExamQuestionAlternative|ItemTrait $model */
 /** @var TbActiveForm|AppActiveForm $form */
 ?>
-<?php echo $form->translateTextFieldControlGroup(
+<?php echo $form->translateTextAreaControlGroup(
     $model,
     'markup',
     $this->getTranslationLanguage(),
