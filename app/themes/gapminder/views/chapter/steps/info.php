@@ -24,8 +24,10 @@
     $this->action->id,
     array('hint' => true)
 ); ?>
-<?php echo $form->select2ControlGroup(
-    $model,
-    'thumbnail_media_id',
-    $model->getThumbnailOptions()
-); ?>
+<?php if ($this->action->id === 'edit'): ?>
+    <?php echo $form->select2ControlGroup(
+        $model,
+        'thumbnail_media_id',
+        $model->getThumbnailOptions()
+    ); ?>
+<?php endif; ?>
