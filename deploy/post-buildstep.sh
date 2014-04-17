@@ -25,6 +25,8 @@ chmod -R 777 www/runtime/
 
 rm -r www/assets/*
 
+echo "Messages about 'Main envbootstrap file not available' is normal following this message - it happens for new deployments before environment variables have been set through 'config:set'. Currently there is no way to set these before creating a deployment through a push - See https://github.com/progrium/dokku/issues/487"
+
 app/yiic fixture --connectionID=$connectionID load
 app/yiic migrate --connectionID=$connectionID --interactive=0
 app/yiic databaseviewgenerator --connectionID=$connectionID item
