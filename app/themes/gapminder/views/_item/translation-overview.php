@@ -8,7 +8,7 @@
     . ' - '
     . Yii::t('app', 'Choose language')
 ); ?>
-<?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index'); ?>
+<?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
 <?php $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey}); ?>
 <?php $this->breadcrumbs[] = Yii::t('app', 'Choose language'); ?>
 <div class="<?php echo $this->getCssClasses($model); ?>">

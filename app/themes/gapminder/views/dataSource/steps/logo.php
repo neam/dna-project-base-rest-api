@@ -3,5 +3,20 @@
 /* @var DataSource|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php $this->renderPartial('steps/fields/logo_media', compact('form', 'model')); ?>
-<?php $this->renderPartial('steps/fields/mini_logo_media', compact('form', 'model')); ?>
+<?php // TODO: Fix and refactor this view. ?>
+<?php
+$relation = 'logoMedia';
+$attribute = 'logo_media_id';
+$step = 'logo';
+$mimeTypes = array('image/jpeg', 'image/png');
+
+$this->renderPartial('//p3Media/_select', compact('model', 'form', 'relation', 'attribute', 'step', 'mimeTypes'));
+?>
+<?php
+$relation = 'miniLogoMedia';
+$attribute = 'mini_logo_media_id';
+$step = 'logo';
+$mimeTypes = array('image/jpeg', 'image/png');
+
+$this->renderPartial('//p3Media/_select', compact('model', 'form', 'relation', 'attribute', 'step', 'mimeTypes'));
+?>

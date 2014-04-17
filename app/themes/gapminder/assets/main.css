@@ -9448,6 +9448,16 @@ fieldset[disabled] .select .select-button.btn-link-dark:focus {
   top: 9px;
   right: 10px;
 }
+.static-text-field-label {
+  display: block;
+  font-weight: bold;
+}
+.static-text-field {
+  display: block;
+  font-weight: 100;
+  line-height: 1.428571429;
+  padding: 12px;
+}
 .list-view .list-pager {
   text-align: right;
 }

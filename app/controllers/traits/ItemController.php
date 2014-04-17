@@ -254,6 +254,17 @@ trait ItemController
     }
 
     /**
+     * Returns the target translation language. Defaults to null if undefined.
+     * @return string|null
+     */
+    public function getTranslationLanguage()
+    {
+        return isset($this->workflowData['translateInto'])
+            ? $this->workflowData['translateInto']
+            : null;
+    }
+
+    /**
      * TODO: Move away from controller to model or helper
      *
      * Returns a CDbCriteria which shows the models in testable-state or higher for translators.
