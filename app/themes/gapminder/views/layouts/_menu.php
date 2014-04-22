@@ -80,10 +80,10 @@
                                     'visible' => !Yii::app()->user->isGuest
                                 ),
                                 array(
-                                    'label' => Yii::t('app', 'Permissions'),
+                                    'label' => Yii::t('app', 'Manage'),
                                     'icon' => 'lock',
-                                    'url' => array('/account/permissions'),
-                                    'visible' => Yii::app()->user->checkAccess('GrantPermission'),
+                                    'url' => array('/account/admin'),
+                                    'visible' => Yii::app()->user->isAdmin(),
                                 ),
                                 '---',
                                 array(

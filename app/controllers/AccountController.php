@@ -32,9 +32,11 @@ class AccountController extends Controller
             array(
                 'allow',
                 'actions' => array(
+                    'admin',
                     'permissions',
                     'delete',
                     'deleteRelations',
+                    'view',
                 ),
                 'roles' => array(Role::SUPER_ADMINISTRATOR),
             ),
@@ -304,7 +306,71 @@ class AccountController extends Controller
     public function actionView($id)
     {
         $model = $this->loadModel($id);
-        $this->render('view', array('model' => $model,));
+
+        $groups = array_merge(MetaData::projectGroups(), MetaData::topicGroups(), MetaData::skillGroups());
+        $groupRoles = MetaData::groupRoles();
+
+        $rawData = array();
+
+        $id = 1;
+        foreach ($groups as $groupName => $groupLabel) {
+            // TODO fix this, must use stdClass because of the stupid TbToggleColumn
+            $row = new stdClass();
+
+            $row->id = $id++;
+            $row->accountId = $model->id;
+            $row->groupName = $groupName;
+            $row->groupLabel = $groupLabel;
+
+            foreach ($groupRoles as $roleName => $roleLabel) {
+                $row->$roleName = $model->groupRoleIsActive($groupName, $roleName);
+            }
+
+            $rawData[] = $row;
+        }
+
+        $dataProvider = new CArrayDataProvider(
+            $rawData,
+            array(
+                'id' => 'permissions',
+                'pagination' => false,
+            )
+        );
+
+        $columns = array();
+
+        $columns[] = array(
+            'class' => 'CDataColumn',
+            'header' => Yii::t('admin', 'Group name'),
+            'name' => 'groupLabel',
+        );
+
+        $groupModeratorRoles = MetaData::groupModeratorRoles();
+        foreach ($groupRoles as $roleName => $roleLabel) {
+            if (Yii::app()->user->checkAccess('GrantGroupAdminPermissions')
+                || (isset($groupModeratorRoles[$roleName]) && Yii::app()->user->checkAccess('GrantGroupModeratorPermissions'))
+            ) {
+                $columns[] = array(
+                    'class' => 'GroupRoleToggleColumn',
+                    'displayText' => false,
+                    'header' => $roleLabel,
+                    'name' => $roleName,
+                    'toggleAction' => 'account/toggleRole',
+                    'value' => function($data) use ($roleName) {
+                        return $data->$roleName;
+                    },
+                );
+            }
+        }
+
+        $this->render(
+            'view',
+            array(
+                'columns' => $columns,
+                'dataProvider' => $dataProvider,
+                'model' => $model,
+            )
+        );
     }
 
     /**
@@ -438,66 +504,18 @@ class AccountController extends Controller
     }
 
     /**
-     * Displays the permissions page.
+     * Displays the page for managing accounts.
      */
-    public function actionPermissions()
+    public function actionAdmin()
     {
-        $groupColumnMap = array();
-
-        $groups = array_merge(MetaData::projectGroups(), MetaData::topicGroups(), MetaData::skillGroups());
-
-        foreach ($groups as $groupName => $groupLabel) {
-            // Skip groups that the logged in user does not have access to.
-            if (!Yii::app()->user->isAdmin() && !Yii::app()->user->belongsToGroup($groupName)) {
-                continue;
-            }
-
-            $columns = array();
-
-            $columns[] = array(
-                'class' => 'CLinkColumn',
-                'header' => '',
-                'labelExpression' => '$data->itemLabel',
-                'urlExpression' => 'Yii::app()->controller->createUrl("view", array("id" => $data["id"]))'
-            );
-
-            $groupModeratorRoles = MetaData::groupModeratorRoles();
-            foreach (MetaData::groupRoles() as $roleName => $roleLabel) {
-                if (Yii::app()->user->checkAccess('GrantGroupAdminPermissions')
-                    || (isset($groupModeratorRoles[$roleName]) && Yii::app()->user->checkAccess('GrantGroupModeratorPermissions'))
-                ) {
-                    $columns[] = array(
-                        'class' => 'TbToggleColumn',
-                        'displayText' => false,
-                        'header' => $roleLabel,
-                        'name' => $groupName . '_' . $roleName,
-                        'value' => function ($data) use ($groupName, $roleName) {
-                            /** @var Account $data */
-                            return $data->groupRoleIsActive($groupName, $roleName);
-                        },
-                        'filter' => true,
-                        'toggleAction' => 'account/toggleRole',
-                    );
-                }
-            }
-
-            $columns[] = array(
-                'class' => '\TbButtonColumn',
-                'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
-                'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
-                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("delete", array("id" => $data->id))',
-            );
-
-            $groupColumnMap[$groupName] = $columns;
-        }
-
         $dataProvider = new CActiveDataProvider('Account');
 
-        $this->render('permissions', array(
-            'groups' => $groups,
-            'groupColumnMap' => $groupColumnMap,
-            'dataProvider' => $dataProvider,
-        ));
+        $this->render(
+            'admin',
+            array(
+                'dataProvider' => $dataProvider,
+            )
+        );
     }
 
     /**
@@ -546,6 +564,11 @@ class AccountController extends Controller
         $this->redirect(TbHtml::decode($returnUrl));
     }
 
+    /**
+     * @param string $id
+     * @return Account
+     * @throws CHttpException
+     */
     public function loadModel($id)
     {
         if (is_null($id)) {
