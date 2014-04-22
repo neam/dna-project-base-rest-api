@@ -103,6 +103,14 @@ $gcmsConfig = array(
                         ),
                         'type' => 'jpg',
                     ),
+                    'dashboard-item-task-thumbnail' => array(
+                        'name' => 'Dashboard Item Task Thumbnail',
+                        'commands' => array(
+                            'resize' => array(210, 120, 7), // Image::AUTO
+                            'quality' => '85',
+                        ),
+                        'type' => 'jpg',
+                    ),
                     'related-thumb' => array(
                         'name' => 'Related Panel Thumbnail',
                         'commands' => array(

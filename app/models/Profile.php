@@ -113,6 +113,17 @@ class Profile extends BaseProfile
         }
     }
 
+    /**
+     * Returns the languages the user is able to translate into.
+     * @return array
+     */
+    public function getTranslatableLanguages()
+    {
+        return Yii::app()->user->isAdmin
+            ? Yii::app()->params['languages']
+            : $this->getLanguages();
+    }
+
     public function getPictures()
     {
         return $this->getP3Media(array('image/jpeg', 'image/png'), 'file', true);

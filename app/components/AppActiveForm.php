@@ -2,6 +2,9 @@
 
 class AppActiveForm extends TbActiveForm
 {
+    // Controller action ID for 'translate'
+    const CONTROLLER_ACTION_TRANSLATE = 'translate';
+
     /**
      * Renders a pre-rendered custom field input row.
      *
@@ -41,5 +44,93 @@ class AppActiveForm extends TbActiveForm
     {
         $htmlOptions = $this->processControlGroupOptions($model, $attribute, $htmlOptions);
         return Html::activeSelect2ControlGroup($model, $attribute, $data, $htmlOptions);
+    }
+
+    /**
+     * Creates a multi text field control group for a translatable attribute.
+     * @param ActiveRecord|ItemTrait $model
+     * @param string $attribute
+     * @param string $translateInto
+     * @param string $controllerAction
+     * @return string
+     */
+    public function translateTextFieldControlGroup($model, $attribute, $translateInto, $controllerAction, $fieldOptions = array())
+    {
+        return $this->translateFieldControlGroup($model, $attribute, $translateInto, $controllerAction, TbHtml::INPUT_TYPE_TEXT, $fieldOptions);
+    }
+
+    /**
+     * Creates a multi textarea field control group for a translatable attribute.
+     * @param ActiveRecord|ItemTrait $model
+     * @param string $attribute
+     * @param string $translateInto
+     * @param string $controllerAction
+     * @param array $fieldOptions
+     */
+    public function translateTextAreaControlGroup($model, $attribute, $translateInto, $controllerAction, $fieldOptions = array())
+    {
+        return $this->translateFieldControlGroup($model, $attribute, $translateInto, $controllerAction, TbHtml::INPUT_TYPE_TEXTAREA, $fieldOptions);
+    }
+
+    /**
+     * Builds a multi input field configuration for a translatable attribute.
+     * @param ActiveRecord|ItemTrait $model
+     * @param string $attribute
+     * @param string $translateInto
+     * @param string $controllerAction
+     * @param string $inputType
+     * @param array $fieldOptions
+     * @return string
+     */
+    public function translateFieldControlGroup($model, $attribute, $translateInto, $controllerAction, $inputType, $fieldOptions = array())
+    {
+        $attributeSourceLanguage = $attribute . '_' . $model->source_language;
+        $attributeTranslateInto = $attribute . '_' . $translateInto;
+
+        // TODO: Add support for dynamic htmlOptions.
+        $htmlOptions = array();
+
+        if ($controllerAction === self::CONTROLLER_ACTION_TRANSLATE) {
+            // Auto-generate slug from title
+            if ($attribute === 'title' || $attribute === 'question') {
+                $htmlOptions['class'] = Html::ITEM_FORM_FIELD_CLASS . ' slugit-from-2';
+            } else if ($attribute === 'slug') {
+                $htmlOptions['class'] = Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-2';
+            }
+
+            // Get hint
+            if (isset($fieldOptions['hint']) && $fieldOptions['hint']) {
+                $htmlOptions['label'] = Html::attributeLabelWithTooltip($model, $attributeTranslateInto, 'title');
+            }
+
+            // Bind slug field
+            Html::jsSlugIt(array(
+                '.slugit-from-2' => '.slugit-to-2',
+            ));
+
+            $html = Html::staticTextFieldControlGroup($model, $attributeSourceLanguage);
+            $html .= $this->createControlGroup($inputType, $model, $attributeTranslateInto, $htmlOptions);
+
+            return $html;
+        } else {
+            // Auto-generate slug from title
+            if ($attribute === 'title' || $attribute === 'question') {
+                $htmlOptions['class'] = Html::ITEM_FORM_FIELD_CLASS . ' slugit-from-1';
+            } else if ($attribute === 'slug') {
+                $htmlOptions['class'] = Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-1';
+            }
+
+            // Get hint
+            if (isset($fieldOptions['hint']) && $fieldOptions['hint']) {
+                $htmlOptions['label'] = Html::attributeLabelWithTooltip($model, $attributeSourceLanguage, 'title');
+            }
+
+            // Bind slug field
+            Html::jsSlugIt(array(
+                '.slugit-from-1' => '.slugit-to-1',
+            ));
+
+            return $this->createControlGroup($inputType, $model, $attributeSourceLanguage, $htmlOptions);
+        }
     }
 }

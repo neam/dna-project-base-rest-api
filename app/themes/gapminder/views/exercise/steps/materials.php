@@ -1,10 +1,8 @@
 <?php
-/**
- * @var $model Exercise
- * @var ExerciseController $this
-*/
+/** @var ExerciseController|ItemController $this */
+/** @var Exercise|ItemTrait $model */
+/** @var TbActiveForm|AppActiveForm $form */
 ?>
-
 <div class="control-group">
     <div class="controls">
         <?php echo $this->widget(

@@ -4,6 +4,11 @@ class WebUser extends CWebUser
 {
 
     /**
+     * @var Account
+     */
+    protected $_model;
+
+    /**
      * @return array
      */
     public function getSystemRoles()
@@ -178,7 +183,41 @@ class WebUser extends CWebUser
     }
 
     /**
-     * @return mixed
+     * Returns the languages the user is able to translate into.
+     * @return array
+     */
+    public function getTranslatableLanguages()
+    {
+        return !$this->isGuest
+            ? $this->getModel()->profile->getTranslatableLanguages()
+            : array();
+    }
+
+    /**
+     * Checks if the user is able to translate into the given language.
+     * @param string $language
+     * @return boolean
+     */
+    public function canTranslateInto($language)
+    {
+        return array_key_exists($language, $this->getTranslatableLanguages());
+    }
+
+    /**
+     * Returns (or sets and returns if not set) the user account model from the runtime cache.
+     * @return Account
+     */
+    public function getModel()
+    {
+        if (!$this->_model instanceof Account) {
+            $this->_model = Account::model()->findByPk($this->id);
+        }
+
+        return $this->_model;
+    }
+
+    /**
+     * @return CActiveRecord|null
      */
     public function getGroupRoles()
     {

@@ -403,4 +403,25 @@ trait ItemTrait
         }
     }
 
+    /**
+     * Renders an item image.
+     * @param string $p3preset
+     * @return string the HTML.
+     */
+    public function renderImage($p3preset = 'dashboard-item-task-thumbnail')
+    {
+        return isset($this->thumbnail_media_id)
+            ? $this->thumbnailMedia->image($p3preset)
+            : TbHtml::image('http://placehold.it/210x120');
+    }
+
+    /**
+     * Checks an item models access relative to the user.
+     * @param string $operation
+     * @return boolean
+     */
+    public function checkAccess($operation)
+    {
+        return Yii::app()->user->checkAccess(get_class($this) . '.' . $operation, array('id' => $this->{$this->tableSchema->primaryKey}));
+    }
 }

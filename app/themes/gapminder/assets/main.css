@@ -3101,15 +3101,12 @@ input[type="button"].btn-block {
   outline: 0;
 }
 .btn-group-xs > .btn {
-  display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
-  text-align: center;
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
-  white-space: nowrap;
   padding: 6px 12px;
   font-size: 16px;
   line-height: 1.428571429;
@@ -3119,18 +3116,30 @@ input[type="button"].btn-block {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  background-color: #c9c9c9;
   border: none;
   color: #fff;
-  font-weight: 100;
   padding: 17px 30px 18px;
   padding: 1px 5px;
-  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #f1f2f2;
+  border-radius: 10px;
+  background-color: #c9c9c9;
   border-radius: 20px;
+  font-weight: 100;
+  padding: 8px 25px;
   font-size: 12px;
-  padding: 2px 15px;
+  padding: 4px 15px;
 }
 .btn-group-xs > .btn:focus {
   outline: thin dotted;
@@ -3455,16 +3464,43 @@ fieldset[disabled] .btn-group-xs > .btn.btn-link-dark:focus {
 .btn-group-xs > .btn.btn-link-dark:hover {
   color: #353535;
 }
+.btn-group-xs > .btn:empty {
+  display: none;
+}
+.btn .btn-group-xs > .btn {
+  position: relative;
+  top: -1px;
+}
+.btn-group-xs > .btn.badge-sm {
+  font-size: 14px;
+  padding: 7px 20px;
+}
+.btn-group-xs > .btn.badge-xs {
+  font-size: 12px;
+  padding: 4px 15px;
+}
+.btn-group-xs > .btn.badge-primary {
+  background-color: #eb4498;
+}
+.btn-group-xs > .btn.badge-success {
+  background-color: #22d23e;
+}
+.btn-group-xs > .btn.badge-warning {
+  background-color: #feee74;
+}
+.btn-group-xs > .btn.badge-danger {
+  background-color: #e0575c;
+}
+.btn-group-xs > .btn.badge-info {
+  background-color: #b7c1d8;
+}
 .btn-group-sm > .btn {
-  display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
-  text-align: center;
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
-  white-space: nowrap;
   padding: 6px 12px;
   font-size: 16px;
   line-height: 1.428571429;
@@ -3474,17 +3510,29 @@ fieldset[disabled] .btn-group-xs > .btn.btn-link-dark:focus {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  background-color: #c9c9c9;
   border: none;
   color: #fff;
-  font-weight: 100;
   padding: 17px 30px 18px;
   padding: 5px 10px;
   line-height: 1.5;
   border-radius: 3px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #f1f2f2;
+  border-radius: 10px;
+  background-color: #c9c9c9;
   border-radius: 20px;
+  font-weight: 100;
+  padding: 8px 25px;
   font-size: 14px;
-  padding: 4px 20px;
+  padding: 7px 20px;
 }
 .btn-group-sm > .btn:focus {
   outline: thin dotted;
@@ -3808,6 +3856,36 @@ fieldset[disabled] .btn-group-sm > .btn.btn-link-dark:focus {
 }
 .btn-group-sm > .btn.btn-link-dark:hover {
   color: #353535;
+}
+.btn-group-sm > .btn:empty {
+  display: none;
+}
+.btn .btn-group-sm > .btn {
+  position: relative;
+  top: -1px;
+}
+.btn-group-sm > .btn.badge-sm {
+  font-size: 14px;
+  padding: 7px 20px;
+}
+.btn-group-sm > .btn.badge-xs {
+  font-size: 12px;
+  padding: 4px 15px;
+}
+.btn-group-sm > .btn.badge-primary {
+  background-color: #eb4498;
+}
+.btn-group-sm > .btn.badge-success {
+  background-color: #22d23e;
+}
+.btn-group-sm > .btn.badge-warning {
+  background-color: #feee74;
+}
+.btn-group-sm > .btn.badge-danger {
+  background-color: #e0575c;
+}
+.btn-group-sm > .btn.badge-info {
+  background-color: #b7c1d8;
 }
 .btn-group-lg > .btn {
   padding: 10px 16px;
@@ -6674,6 +6752,22 @@ td.visible-print {
 .navbar-default {
   border: 2px solid #e4e4e4;
 }
+.navbar-default .navbar-nav .open > a:focus {
+  border-color: #e4e4e4;
+}
+.navbar-default .navbar-nav .language-menu .dropdown-menu {
+  height: 460px;
+  overflow-y: scroll;
+}
+.navbar-default .navbar-nav .language-menu .dropdown-menu::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+.navbar-default .navbar-nav .language-menu .dropdown-menu::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
 .navbar-default .navbar-toggle {
   background-color: #ffffff;
   border: 2px solid #e4e4e4;
@@ -7020,6 +7114,8 @@ fieldset[disabled] .btn.btn-link-dark:focus {
 /*
 Small buttons
 
+Small buttons are based on the .badge and .badge-sm classes.
+
 Markup:
 <a class="btn btn-sm {$modifiers}" href="#">Link</a>
 <button class="btn btn-sm {$modifiers}">Button</button>
@@ -7037,15 +7133,12 @@ Markup:
 Styleguide 1.2
 */
 .btn-sm {
-  display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
-  text-align: center;
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
-  white-space: nowrap;
   padding: 6px 12px;
   font-size: 16px;
   line-height: 1.428571429;
@@ -7055,17 +7148,29 @@ Styleguide 1.2
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  background-color: #c9c9c9;
   border: none;
   color: #fff;
-  font-weight: 100;
   padding: 17px 30px 18px;
   padding: 5px 10px;
   line-height: 1.5;
   border-radius: 3px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #f1f2f2;
+  border-radius: 10px;
+  background-color: #c9c9c9;
   border-radius: 20px;
+  font-weight: 100;
+  padding: 8px 25px;
   font-size: 14px;
-  padding: 4px 20px;
+  padding: 7px 20px;
 }
 .btn-sm:focus {
   outline: thin dotted;
@@ -7390,8 +7495,40 @@ fieldset[disabled] .btn-sm.btn-link-dark:focus {
 .btn-sm.btn-link-dark:hover {
   color: #353535;
 }
+.btn-sm:empty {
+  display: none;
+}
+.btn .btn-sm {
+  position: relative;
+  top: -1px;
+}
+.btn-sm.badge-sm {
+  font-size: 14px;
+  padding: 7px 20px;
+}
+.btn-sm.badge-xs {
+  font-size: 12px;
+  padding: 4px 15px;
+}
+.btn-sm.badge-primary {
+  background-color: #eb4498;
+}
+.btn-sm.badge-success {
+  background-color: #22d23e;
+}
+.btn-sm.badge-warning {
+  background-color: #feee74;
+}
+.btn-sm.badge-danger {
+  background-color: #e0575c;
+}
+.btn-sm.badge-info {
+  background-color: #b7c1d8;
+}
 /*
 Extra small buttons
+
+Extra small buttons are based on the .badge and .badge-xs classes.
 
 Markup:
 <a class="btn btn-xs {$modifiers}" href="#">Link</a>
@@ -7410,15 +7547,12 @@ Markup:
 Styleguide 1.3
 */
 .btn-xs {
-  display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
-  text-align: center;
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
-  white-space: nowrap;
   padding: 6px 12px;
   font-size: 16px;
   line-height: 1.428571429;
@@ -7428,18 +7562,30 @@ Styleguide 1.3
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  background-color: #c9c9c9;
   border: none;
   color: #fff;
-  font-weight: 100;
   padding: 17px 30px 18px;
   padding: 1px 5px;
-  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #f1f2f2;
+  border-radius: 10px;
+  background-color: #c9c9c9;
   border-radius: 20px;
+  font-weight: 100;
+  padding: 8px 25px;
   font-size: 12px;
-  padding: 2px 15px;
+  padding: 4px 15px;
 }
 .btn-xs:focus {
   outline: thin dotted;
@@ -7764,6 +7910,36 @@ fieldset[disabled] .btn-xs.btn-link-dark:focus {
 .btn-xs.btn-link-dark:hover {
   color: #353535;
 }
+.btn-xs:empty {
+  display: none;
+}
+.btn .btn-xs {
+  position: relative;
+  top: -1px;
+}
+.btn-xs.badge-sm {
+  font-size: 14px;
+  padding: 7px 20px;
+}
+.btn-xs.badge-xs {
+  font-size: 12px;
+  padding: 4px 15px;
+}
+.btn-xs.badge-primary {
+  background-color: #eb4498;
+}
+.btn-xs.badge-success {
+  background-color: #22d23e;
+}
+.btn-xs.badge-warning {
+  background-color: #feee74;
+}
+.btn-xs.badge-danger {
+  background-color: #e0575c;
+}
+.btn-xs.badge-info {
+  background-color: #b7c1d8;
+}
 /*
 Button groups
 
@@ -7825,18 +8001,731 @@ Markup:
 
 Styleguide 1.5
 */
-.action-buttons .action-button {
+.action-buttons {
   margin-bottom: 5px;
+}
+.action-buttons .action-button {
+  margin-bottom: 0;
+  font-weight: normal;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.428571429;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  border: none;
+  color: #fff;
+  padding: 17px 30px 18px;
   padding: 1px 5px;
-  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #f1f2f2;
+  border-radius: 10px;
+  background-color: #c9c9c9;
   border-radius: 20px;
+  font-weight: 100;
+  padding: 8px 25px;
   font-size: 12px;
-  padding: 2px 15px;
+  padding: 4px 15px;
 }
-.action-buttons .action-button .btn {
-  margin-bottom: 5px;
+.action-buttons .action-button:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.action-buttons .action-button:hover,
+.action-buttons .action-button:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+.action-buttons .action-button:active,
+.action-buttons .action-button.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.action-buttons .action-button.disabled,
+.action-buttons .action-button[disabled],
+fieldset[disabled] .action-buttons .action-button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.action-buttons .action-button:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+.action-buttons .action-button.btn-default {
+  background-color: #c9c9c9;
+}
+.action-buttons .action-button.btn-default:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+.action-buttons .action-button.btn-primary {
+  color: #ffffff;
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+.action-buttons .action-button.btn-primary:hover,
+.action-buttons .action-button.btn-primary:focus,
+.action-buttons .action-button.btn-primary:active,
+.action-buttons .action-button.btn-primary.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-primary {
+  color: #ffffff;
+  background-color: #e71f84;
+  border-color: #c3156d;
+}
+.action-buttons .action-button.btn-primary:active,
+.action-buttons .action-button.btn-primary.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-primary {
+  background-image: none;
+}
+.action-buttons .action-button.btn-primary.disabled,
+.action-buttons .action-button.btn-primary[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-primary,
+.action-buttons .action-button.btn-primary.disabled:hover,
+.action-buttons .action-button.btn-primary[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-primary:hover,
+.action-buttons .action-button.btn-primary.disabled:focus,
+.action-buttons .action-button.btn-primary[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-primary:focus,
+.action-buttons .action-button.btn-primary.disabled:active,
+.action-buttons .action-button.btn-primary[disabled]:active,
+fieldset[disabled] .action-buttons .action-button.btn-primary:active,
+.action-buttons .action-button.btn-primary.disabled.active,
+.action-buttons .action-button.btn-primary[disabled].active,
+fieldset[disabled] .action-buttons .action-button.btn-primary.active {
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+.action-buttons .action-button.btn-primary .badge {
+  color: #eb4498;
+  background-color: #fff;
+}
+.action-buttons .action-button.btn-success {
+  color: #ffffff;
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+.action-buttons .action-button.btn-success:hover,
+.action-buttons .action-button.btn-success:focus,
+.action-buttons .action-button.btn-success:active,
+.action-buttons .action-button.btn-success.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-success {
+  color: #ffffff;
+  background-color: #1caf34;
+  border-color: #168728;
+}
+.action-buttons .action-button.btn-success:active,
+.action-buttons .action-button.btn-success.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-success {
+  background-image: none;
+}
+.action-buttons .action-button.btn-success.disabled,
+.action-buttons .action-button.btn-success[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-success,
+.action-buttons .action-button.btn-success.disabled:hover,
+.action-buttons .action-button.btn-success[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-success:hover,
+.action-buttons .action-button.btn-success.disabled:focus,
+.action-buttons .action-button.btn-success[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-success:focus,
+.action-buttons .action-button.btn-success.disabled:active,
+.action-buttons .action-button.btn-success[disabled]:active,
+fieldset[disabled] .action-buttons .action-button.btn-success:active,
+.action-buttons .action-button.btn-success.disabled.active,
+.action-buttons .action-button.btn-success[disabled].active,
+fieldset[disabled] .action-buttons .action-button.btn-success.active {
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+.action-buttons .action-button.btn-success .badge {
+  color: #22d23e;
+  background-color: #fff;
+}
+.action-buttons .action-button.btn-warning {
+  color: #3d3d3d;
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+.action-buttons .action-button.btn-warning:hover,
+.action-buttons .action-button.btn-warning:focus,
+.action-buttons .action-button.btn-warning:active,
+.action-buttons .action-button.btn-warning.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-warning {
+  color: #3d3d3d;
+  background-color: #fee94b;
+  border-color: #fde31e;
+}
+.action-buttons .action-button.btn-warning:active,
+.action-buttons .action-button.btn-warning.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-warning {
+  background-image: none;
+}
+.action-buttons .action-button.btn-warning.disabled,
+.action-buttons .action-button.btn-warning[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-warning,
+.action-buttons .action-button.btn-warning.disabled:hover,
+.action-buttons .action-button.btn-warning[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-warning:hover,
+.action-buttons .action-button.btn-warning.disabled:focus,
+.action-buttons .action-button.btn-warning[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-warning:focus,
+.action-buttons .action-button.btn-warning.disabled:active,
+.action-buttons .action-button.btn-warning[disabled]:active,
+fieldset[disabled] .action-buttons .action-button.btn-warning:active,
+.action-buttons .action-button.btn-warning.disabled.active,
+.action-buttons .action-button.btn-warning[disabled].active,
+fieldset[disabled] .action-buttons .action-button.btn-warning.active {
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+.action-buttons .action-button.btn-warning .badge {
+  color: #feee74;
+  background-color: #fff;
+}
+.action-buttons .action-button.btn-danger {
+  color: #ffffff;
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+.action-buttons .action-button.btn-danger:hover,
+.action-buttons .action-button.btn-danger:focus,
+.action-buttons .action-button.btn-danger:active,
+.action-buttons .action-button.btn-danger.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-danger {
+  color: #ffffff;
+  background-color: #da353b;
+  border-color: #bd2329;
+}
+.action-buttons .action-button.btn-danger:active,
+.action-buttons .action-button.btn-danger.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-danger {
+  background-image: none;
+}
+.action-buttons .action-button.btn-danger.disabled,
+.action-buttons .action-button.btn-danger[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-danger,
+.action-buttons .action-button.btn-danger.disabled:hover,
+.action-buttons .action-button.btn-danger[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-danger:hover,
+.action-buttons .action-button.btn-danger.disabled:focus,
+.action-buttons .action-button.btn-danger[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-danger:focus,
+.action-buttons .action-button.btn-danger.disabled:active,
+.action-buttons .action-button.btn-danger[disabled]:active,
+fieldset[disabled] .action-buttons .action-button.btn-danger:active,
+.action-buttons .action-button.btn-danger.disabled.active,
+.action-buttons .action-button.btn-danger[disabled].active,
+fieldset[disabled] .action-buttons .action-button.btn-danger.active {
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+.action-buttons .action-button.btn-danger .badge {
+  color: #e0575c;
+  background-color: #fff;
+}
+.action-buttons .action-button.btn-info {
+  color: #ffffff;
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+.action-buttons .action-button.btn-info:hover,
+.action-buttons .action-button.btn-info:focus,
+.action-buttons .action-button.btn-info:active,
+.action-buttons .action-button.btn-info.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-info {
+  color: #ffffff;
+  background-color: #9daaca;
+  border-color: #7f91ba;
+}
+.action-buttons .action-button.btn-info:active,
+.action-buttons .action-button.btn-info.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-info {
+  background-image: none;
+}
+.action-buttons .action-button.btn-info.disabled,
+.action-buttons .action-button.btn-info[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-info,
+.action-buttons .action-button.btn-info.disabled:hover,
+.action-buttons .action-button.btn-info[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-info:hover,
+.action-buttons .action-button.btn-info.disabled:focus,
+.action-buttons .action-button.btn-info[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-info:focus,
+.action-buttons .action-button.btn-info.disabled:active,
+.action-buttons .action-button.btn-info[disabled]:active,
+fieldset[disabled] .action-buttons .action-button.btn-info:active,
+.action-buttons .action-button.btn-info.disabled.active,
+.action-buttons .action-button.btn-info[disabled].active,
+fieldset[disabled] .action-buttons .action-button.btn-info.active {
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+.action-buttons .action-button.btn-info .badge {
+  color: #b7c1d8;
+  background-color: #fff;
+}
+.action-buttons .action-button.btn-link {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+}
+.action-buttons .action-button.btn-link,
+.action-buttons .action-button.btn-link:active,
+.action-buttons .action-button.btn-link[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.action-buttons .action-button.btn-link,
+.action-buttons .action-button.btn-link:hover,
+.action-buttons .action-button.btn-link:focus,
+.action-buttons .action-button.btn-link:active {
+  border-color: transparent;
+}
+.action-buttons .action-button.btn-link:hover,
+.action-buttons .action-button.btn-link:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.action-buttons .action-button.btn-link[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-link:hover,
+.action-buttons .action-button.btn-link[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-link:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link:hover {
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.action-buttons .action-button.btn-link-dark,
+.action-buttons .action-button.btn-link-dark:active,
+.action-buttons .action-button.btn-link-dark[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.action-buttons .action-button.btn-link-dark,
+.action-buttons .action-button.btn-link-dark:hover,
+.action-buttons .action-button.btn-link-dark:focus,
+.action-buttons .action-button.btn-link-dark:active {
+  border-color: transparent;
+}
+.action-buttons .action-button.btn-link-dark:hover,
+.action-buttons .action-button.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.action-buttons .action-button.btn-link-dark[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-link-dark:hover,
+.action-buttons .action-button.btn-link-dark[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link-dark:hover {
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link-dark:hover {
+  color: #353535;
+}
+.action-buttons .action-button:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.action-buttons .action-button:hover,
+.action-buttons .action-button:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+.action-buttons .action-button:active,
+.action-buttons .action-button.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.action-buttons .action-button.disabled,
+.action-buttons .action-button[disabled],
+fieldset[disabled] .action-buttons .action-button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.action-buttons .action-button:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+.action-buttons .action-button.btn-default {
+  background-color: #c9c9c9;
+}
+.action-buttons .action-button.btn-default:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+.action-buttons .action-button.btn-primary {
+  color: #ffffff;
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+.action-buttons .action-button.btn-primary:hover,
+.action-buttons .action-button.btn-primary:focus,
+.action-buttons .action-button.btn-primary:active,
+.action-buttons .action-button.btn-primary.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-primary {
+  color: #ffffff;
+  background-color: #e71f84;
+  border-color: #c3156d;
+}
+.action-buttons .action-button.btn-primary:active,
+.action-buttons .action-button.btn-primary.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-primary {
+  background-image: none;
+}
+.action-buttons .action-button.btn-primary.disabled,
+.action-buttons .action-button.btn-primary[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-primary,
+.action-buttons .action-button.btn-primary.disabled:hover,
+.action-buttons .action-button.btn-primary[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-primary:hover,
+.action-buttons .action-button.btn-primary.disabled:focus,
+.action-buttons .action-button.btn-primary[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-primary:focus,
+.action-buttons .action-button.btn-primary.disabled:active,
+.action-buttons .action-button.btn-primary[disabled]:active,
+fieldset[disabled] .action-buttons .action-button.btn-primary:active,
+.action-buttons .action-button.btn-primary.disabled.active,
+.action-buttons .action-button.btn-primary[disabled].active,
+fieldset[disabled] .action-buttons .action-button.btn-primary.active {
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+.action-buttons .action-button.btn-primary .badge {
+  color: #eb4498;
+  background-color: #fff;
+}
+.action-buttons .action-button.btn-success {
+  color: #ffffff;
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+.action-buttons .action-button.btn-success:hover,
+.action-buttons .action-button.btn-success:focus,
+.action-buttons .action-button.btn-success:active,
+.action-buttons .action-button.btn-success.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-success {
+  color: #ffffff;
+  background-color: #1caf34;
+  border-color: #168728;
+}
+.action-buttons .action-button.btn-success:active,
+.action-buttons .action-button.btn-success.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-success {
+  background-image: none;
+}
+.action-buttons .action-button.btn-success.disabled,
+.action-buttons .action-button.btn-success[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-success,
+.action-buttons .action-button.btn-success.disabled:hover,
+.action-buttons .action-button.btn-success[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-success:hover,
+.action-buttons .action-button.btn-success.disabled:focus,
+.action-buttons .action-button.btn-success[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-success:focus,
+.action-buttons .action-button.btn-success.disabled:active,
+.action-buttons .action-button.btn-success[disabled]:active,
+fieldset[disabled] .action-buttons .action-button.btn-success:active,
+.action-buttons .action-button.btn-success.disabled.active,
+.action-buttons .action-button.btn-success[disabled].active,
+fieldset[disabled] .action-buttons .action-button.btn-success.active {
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+.action-buttons .action-button.btn-success .badge {
+  color: #22d23e;
+  background-color: #fff;
+}
+.action-buttons .action-button.btn-warning {
+  color: #3d3d3d;
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+.action-buttons .action-button.btn-warning:hover,
+.action-buttons .action-button.btn-warning:focus,
+.action-buttons .action-button.btn-warning:active,
+.action-buttons .action-button.btn-warning.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-warning {
+  color: #3d3d3d;
+  background-color: #fee94b;
+  border-color: #fde31e;
+}
+.action-buttons .action-button.btn-warning:active,
+.action-buttons .action-button.btn-warning.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-warning {
+  background-image: none;
+}
+.action-buttons .action-button.btn-warning.disabled,
+.action-buttons .action-button.btn-warning[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-warning,
+.action-buttons .action-button.btn-warning.disabled:hover,
+.action-buttons .action-button.btn-warning[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-warning:hover,
+.action-buttons .action-button.btn-warning.disabled:focus,
+.action-buttons .action-button.btn-warning[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-warning:focus,
+.action-buttons .action-button.btn-warning.disabled:active,
+.action-buttons .action-button.btn-warning[disabled]:active,
+fieldset[disabled] .action-buttons .action-button.btn-warning:active,
+.action-buttons .action-button.btn-warning.disabled.active,
+.action-buttons .action-button.btn-warning[disabled].active,
+fieldset[disabled] .action-buttons .action-button.btn-warning.active {
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+.action-buttons .action-button.btn-warning .badge {
+  color: #feee74;
+  background-color: #fff;
+}
+.action-buttons .action-button.btn-danger {
+  color: #ffffff;
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+.action-buttons .action-button.btn-danger:hover,
+.action-buttons .action-button.btn-danger:focus,
+.action-buttons .action-button.btn-danger:active,
+.action-buttons .action-button.btn-danger.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-danger {
+  color: #ffffff;
+  background-color: #da353b;
+  border-color: #bd2329;
+}
+.action-buttons .action-button.btn-danger:active,
+.action-buttons .action-button.btn-danger.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-danger {
+  background-image: none;
+}
+.action-buttons .action-button.btn-danger.disabled,
+.action-buttons .action-button.btn-danger[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-danger,
+.action-buttons .action-button.btn-danger.disabled:hover,
+.action-buttons .action-button.btn-danger[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-danger:hover,
+.action-buttons .action-button.btn-danger.disabled:focus,
+.action-buttons .action-button.btn-danger[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-danger:focus,
+.action-buttons .action-button.btn-danger.disabled:active,
+.action-buttons .action-button.btn-danger[disabled]:active,
+fieldset[disabled] .action-buttons .action-button.btn-danger:active,
+.action-buttons .action-button.btn-danger.disabled.active,
+.action-buttons .action-button.btn-danger[disabled].active,
+fieldset[disabled] .action-buttons .action-button.btn-danger.active {
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+.action-buttons .action-button.btn-danger .badge {
+  color: #e0575c;
+  background-color: #fff;
+}
+.action-buttons .action-button.btn-info {
+  color: #ffffff;
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+.action-buttons .action-button.btn-info:hover,
+.action-buttons .action-button.btn-info:focus,
+.action-buttons .action-button.btn-info:active,
+.action-buttons .action-button.btn-info.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-info {
+  color: #ffffff;
+  background-color: #9daaca;
+  border-color: #7f91ba;
+}
+.action-buttons .action-button.btn-info:active,
+.action-buttons .action-button.btn-info.active,
+.open .dropdown-toggle.action-buttons .action-button.btn-info {
+  background-image: none;
+}
+.action-buttons .action-button.btn-info.disabled,
+.action-buttons .action-button.btn-info[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-info,
+.action-buttons .action-button.btn-info.disabled:hover,
+.action-buttons .action-button.btn-info[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-info:hover,
+.action-buttons .action-button.btn-info.disabled:focus,
+.action-buttons .action-button.btn-info[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-info:focus,
+.action-buttons .action-button.btn-info.disabled:active,
+.action-buttons .action-button.btn-info[disabled]:active,
+fieldset[disabled] .action-buttons .action-button.btn-info:active,
+.action-buttons .action-button.btn-info.disabled.active,
+.action-buttons .action-button.btn-info[disabled].active,
+fieldset[disabled] .action-buttons .action-button.btn-info.active {
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+.action-buttons .action-button.btn-info .badge {
+  color: #b7c1d8;
+  background-color: #fff;
+}
+.action-buttons .action-button.btn-link {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+}
+.action-buttons .action-button.btn-link,
+.action-buttons .action-button.btn-link:active,
+.action-buttons .action-button.btn-link[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.action-buttons .action-button.btn-link,
+.action-buttons .action-button.btn-link:hover,
+.action-buttons .action-button.btn-link:focus,
+.action-buttons .action-button.btn-link:active {
+  border-color: transparent;
+}
+.action-buttons .action-button.btn-link:hover,
+.action-buttons .action-button.btn-link:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.action-buttons .action-button.btn-link[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-link:hover,
+.action-buttons .action-button.btn-link[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-link:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link:hover {
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link:hover {
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+.action-buttons .action-button.btn-link-dark,
+.action-buttons .action-button.btn-link-dark:active,
+.action-buttons .action-button.btn-link-dark[disabled],
+fieldset[disabled] .action-buttons .action-button.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.action-buttons .action-button.btn-link-dark,
+.action-buttons .action-button.btn-link-dark:hover,
+.action-buttons .action-button.btn-link-dark:focus,
+.action-buttons .action-button.btn-link-dark:active {
+  border-color: transparent;
+}
+.action-buttons .action-button.btn-link-dark:hover,
+.action-buttons .action-button.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.action-buttons .action-button.btn-link-dark[disabled]:hover,
+fieldset[disabled] .action-buttons .action-button.btn-link-dark:hover,
+.action-buttons .action-button.btn-link-dark[disabled]:focus,
+fieldset[disabled] .action-buttons .action-button.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link-dark:hover {
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link-dark:hover {
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link-dark:hover {
+  color: #353535;
+}
+.action-buttons .action-button:empty {
+  display: none;
+}
+.btn .action-buttons .action-button {
+  position: relative;
+  top: -1px;
+}
+.action-buttons .action-button.badge-sm {
+  font-size: 14px;
+  padding: 7px 20px;
+}
+.action-buttons .action-button.badge-xs {
+  font-size: 12px;
+  padding: 4px 15px;
+}
+.action-buttons .action-button.badge-primary {
+  background-color: #eb4498;
+}
+.action-buttons .action-button.badge-success {
+  background-color: #22d23e;
+}
+.action-buttons .action-button.badge-warning {
+  background-color: #feee74;
+}
+.action-buttons .action-button.badge-danger {
+  background-color: #e0575c;
+}
+.action-buttons .action-button.badge-info {
+  background-color: #b7c1d8;
 }
 /* Typography
 
@@ -7877,7 +8766,7 @@ Small heading
 
 Base class for small headings.
 
-.font-color-primary - Primary font color.
+.font-color-primary   - Primary font color.
 .font-color-secondary - Secondary font color.
 
 Markup:
@@ -7891,6 +8780,26 @@ Styleguide 7.2
   font-weight: 600;
 }
 /*
+Tiny heading
+
+Base class for tiny headings.
+
+.font-color-primary   - Primary font color.
+.font-color-secondary - Secondary font color.
+
+Markup:
+<h1 class="heading-tiny {$modifiers}">Tiny Heading</h1>
+
+Styleguide 7.3
+*/
+.heading-tiny {
+  color: #000;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+/*
 Page title
 
 Implements the .heading-large class.
@@ -7898,11 +8807,58 @@ Implements the .heading-large class.
 Markup:
 <h1 class="page-title {$modifiers}">Page Title</h1>
 
-Styleguide 7.3
+Styleguide 7.4
 */
 .page-title {
   font-size: 44.5px;
   font-weight: 100;
+}
+/*
+Links
+
+Markup:
+<a href="#" class="link {$modifiers}">Link</a>
+<a href="#" class="link link-primary {$modifiers}">Link</a>
+<a href="#" class="link link-success {$modifiers}">Link</a>
+<a href="#" class="link link-warning {$modifiers}">Link</a>
+<a href="#" class="link link-danger {$modifiers}">Link</a>
+<a href="#" class="link link-info {$modifiers}">Link</a>
+<a href="#" class="link link-dark {$modifiers}">Link</a>
+
+.link-sm - Small links.
+.link-xs - Extra small links.
+
+Styleguide 7.5
+*/
+.link {
+  text-decoration: underline;
+}
+.link:hover {
+  text-decoration: none;
+}
+.link.link-dark {
+  color: #444444;
+}
+.link.link-primary {
+  color: #eb4498;
+}
+.link.link-success {
+  color: #22d23e;
+}
+.link.link-warning {
+  color: #feee74;
+}
+.link.link-danger {
+  color: #e0575c;
+}
+.link.link-info {
+  color: #b7c1d8;
+}
+.link.link-sm {
+  font-size: 14px;
+}
+.link.link-xs {
+  font-size: 11px;
 }
 /*
 Forms
@@ -8492,6 +9448,67 @@ fieldset[disabled] .select .select-button.btn-link-dark:focus {
   top: 9px;
   right: 10px;
 }
+.static-text-field-label {
+  display: block;
+  font-weight: bold;
+}
+.static-text-field {
+  display: block;
+  font-weight: 100;
+  line-height: 1.428571429;
+  padding: 12px;
+}
+.list-view .list-pager {
+  text-align: right;
+}
+.list-view .list-pager .pagination {
+  margin-top: 20px;
+}
+/*
+Badges
+
+Markup:
+<div class="badge {$modifiers}">Badge</div>
+<div class="badge badge-primary {$modifiers}">Badge</div>
+<div class="badge badge-success {$modifiers}">Badge</div>
+<div class="badge badge-warning {$modifiers}">Badge</div>
+<div class="badge badge-danger {$modifiers}">Badge</div>
+<div class="badge badge-info {$modifiers}">Badge</div>
+
+.badge-sm - Small badge.
+.badge-xs - Extra small badge.
+
+Styleguide 8
+*/
+.badge {
+  background-color: #c9c9c9;
+  border-radius: 20px;
+  font-weight: 100;
+  padding: 8px 25px;
+}
+.badge.badge-sm {
+  font-size: 14px;
+  padding: 7px 20px;
+}
+.badge.badge-xs {
+  font-size: 12px;
+  padding: 4px 15px;
+}
+.badge.badge-primary {
+  background-color: #eb4498;
+}
+.badge.badge-success {
+  background-color: #22d23e;
+}
+.badge.badge-warning {
+  background-color: #feee74;
+}
+.badge.badge-danger {
+  background-color: #e0575c;
+}
+.badge.badge-info {
+  background-color: #b7c1d8;
+}
 /*
 Alerts
 
@@ -8636,19 +9653,6 @@ Styleguide 5
 }
 .layout-main body {
   padding-top: 95px;
-}
-.layout-main .navbar .language-menu .dropdown-menu {
-  height: 495px;
-  overflow-y: scroll;
-}
-.layout-main .navbar .language-menu .dropdown-menu::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 7px;
-}
-.layout-main .navbar .language-menu .dropdown-menu::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
 }
 .layout-main .footer {
   background-color: #fef5fa;
@@ -8872,11 +9876,12 @@ Styleguide 5
   }
 }
 .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-title .updates-heading {
+  color: #000;
   font-size: 12px;
   font-weight: 100;
   line-height: 22px;
-  margin: 0;
   text-transform: uppercase;
+  margin: 0;
 }
 .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all {
   position: relative;
@@ -8892,13 +9897,10 @@ Styleguide 5
   }
 }
 .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link {
-  display: inline-block;
   margin-bottom: 0;
-  text-align: center;
   vertical-align: middle;
   background-image: none;
   border: 1px solid transparent;
-  white-space: nowrap;
   padding: 6px 12px;
   font-size: 16px;
   line-height: 1.428571429;
@@ -8908,17 +9910,29 @@ Styleguide 5
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  background-color: #c9c9c9;
   border: none;
   color: #fff;
   padding: 17px 30px 18px;
   padding: 1px 5px;
-  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #f1f2f2;
+  border-radius: 10px;
+  background-color: #c9c9c9;
   border-radius: 20px;
+  padding: 8px 25px;
   font-size: 12px;
-  padding: 2px 15px;
+  padding: 4px 15px;
   color: #eb4498;
   font-weight: normal;
   cursor: pointer;
@@ -9250,6 +10264,36 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
 .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:hover {
   color: #353535;
 }
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:empty {
+  display: none;
+}
+.btn .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link {
+  position: relative;
+  top: -1px;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.badge-sm {
+  font-size: 14px;
+  padding: 7px 20px;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.badge-xs {
+  font-size: 12px;
+  padding: 4px 15px;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.badge-primary {
+  background-color: #eb4498;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.badge-success {
+  background-color: #22d23e;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.badge-warning {
+  background-color: #feee74;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.badge-danger {
+  background-color: #e0575c;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.badge-info {
+  background-color: #b7c1d8;
+}
 .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link,
 .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:active,
 .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link[disabled],
@@ -9368,6 +10412,10 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
 }
 .account-controller.dashboard-action .dashboard-profile .recent-updates .updates .updates-content .updates-list li .update-info .update-description {
   display: block;
+}
+.account-controller.dashboard-action .dashboard-tasks-in-progress {
+  border-bottom: 2px solid #e4e4e4;
+  padding-bottom: 40px;
 }
 .account-controller.admin-action .grid-view {
   margin-top: 20px;
@@ -9775,6 +10823,377 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
     width: 25%;
   }
 }
+.account-controller .dashboard-tasks-container {
+  border-bottom: 2px solid #e4e4e4;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+.account-controller .dashboard-tasks-container:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 30px;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar:before,
+.account-controller .dashboard-tasks-container .tasks-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar:before,
+.account-controller .dashboard-tasks-container .tasks-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar .top-bar-title {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks-top-bar .top-bar-title {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar .top-bar-title .tasks-heading {
+  font-size: 44.5px;
+  font-weight: 100;
+  margin: 0;
+}
+.account-controller .dashboard-tasks-container .tasks-top-bar .top-bar-actions {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks-top-bar .top-bar-actions {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks {
+    float: left;
+    width: 100%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f1f2f2;
+  border: 1px solid #dee1e1;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 2px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item blockquote {
+  border-color: #ddd;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item blockquote {
+  border-color: #ddd;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item:last-child {
+  margin-bottom: 0;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 0px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task:last-child {
+  margin-bottom: 0;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail {
+    float: left;
+    width: 25%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .thumbnail-container {
+  margin-bottom: 10px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link {
+  text-decoration: underline;
+  color: #444444;
+  font-size: 11px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link:hover {
+  text-decoration: none;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-dark {
+  color: #444444;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-primary {
+  color: #eb4498;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-success {
+  color: #22d23e;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-warning {
+  color: #feee74;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-danger {
+  color: #e0575c;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-info {
+  color: #b7c1d8;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-sm {
+  font-size: 14px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-thumbnail .skip-link-container .skip-this-link.link-xs {
+  font-size: 11px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info {
+    float: left;
+    width: 75%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 10px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-action-text {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-action-text {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-action-text .action-heading {
+  color: #000;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item {
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #f1f2f2;
+  border-radius: 10px;
+  background-color: #c9c9c9;
+  border-radius: 20px;
+  font-weight: 100;
+  padding: 8px 25px;
+  font-size: 12px;
+  padding: 4px 15px;
+  display: inline-block;
+  margin-right: 6px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item:empty {
+  display: none;
+}
+.btn .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item {
+  position: relative;
+  top: -1px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-sm {
+  font-size: 14px;
+  padding: 7px 20px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-xs {
+  font-size: 12px;
+  padding: 4px 15px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-primary {
+  background-color: #eb4498;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-success {
+  background-color: #22d23e;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-warning {
+  background-color: #feee74;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-danger {
+  background-color: #e0575c;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item.badge-info {
+  background-color: #b7c1d8;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-top-bar .task-facts .facts-list .facts-list-item:last-child {
+  margin-right: 0;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-title {
+  margin-bottom: 30px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-title .task-heading {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:before,
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:after {
+  content: " ";
+  display: table;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar:after {
+  clear: both;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress {
+    float: left;
+    width: 50%;
+  }
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress .progress-info {
+  margin-bottom: 3px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress .progress-info .progress-title {
+  color: #000;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress .progress-info .progress-percentage {
+  color: #000;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 22px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-progress .progress-bar-container {
+  width: 190px;
+}
+.account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-actions {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: right;
+}
+@media (min-width: 992px) {
+  .account-controller .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .task-actions {
+    float: left;
+    width: 50%;
+  }
+}
 .chapter-controller.view-action .chapter-content {
   margin-left: -15px;
   margin-right: -15px;
@@ -10040,15 +11459,12 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
   }
 }
 .item-controller .item-progress .progress-item .item-action .btn {
-  display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
-  text-align: center;
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
-  white-space: nowrap;
   padding: 6px 12px;
   font-size: 16px;
   line-height: 1.428571429;
@@ -10058,18 +11474,30 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  background-color: #c9c9c9;
   border: none;
   color: #fff;
-  font-weight: 100;
   padding: 17px 30px 18px;
   padding: 1px 5px;
-  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #f1f2f2;
+  border-radius: 10px;
+  background-color: #c9c9c9;
   border-radius: 20px;
+  font-weight: 100;
+  padding: 8px 25px;
   font-size: 12px;
-  padding: 2px 15px;
+  padding: 4px 15px;
   text-align: left;
 }
 .item-controller .item-progress .progress-item .item-action .btn:focus {
@@ -10394,6 +11822,36 @@ fieldset[disabled] .item-controller .item-progress .progress-item .item-action .
 }
 .item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:hover {
   color: #353535;
+}
+.item-controller .item-progress .progress-item .item-action .btn:empty {
+  display: none;
+}
+.btn .item-controller .item-progress .progress-item .item-action .btn {
+  position: relative;
+  top: -1px;
+}
+.item-controller .item-progress .progress-item .item-action .btn.badge-sm {
+  font-size: 14px;
+  padding: 7px 20px;
+}
+.item-controller .item-progress .progress-item .item-action .btn.badge-xs {
+  font-size: 12px;
+  padding: 4px 15px;
+}
+.item-controller .item-progress .progress-item .item-action .btn.badge-primary {
+  background-color: #eb4498;
+}
+.item-controller .item-progress .progress-item .item-action .btn.badge-success {
+  background-color: #22d23e;
+}
+.item-controller .item-progress .progress-item .item-action .btn.badge-warning {
+  background-color: #feee74;
+}
+.item-controller .item-progress .progress-item .item-action .btn.badge-danger {
+  background-color: #e0575c;
+}
+.item-controller .item-progress .progress-item .item-action .btn.badge-info {
+  background-color: #b7c1d8;
 }
 .item-controller .item-form {
   position: relative;
@@ -10763,15 +12221,12 @@ fieldset[disabled] .item-controller .item-progress .progress-item .item-action .
   float: right;
 }
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button {
-  display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
-  text-align: center;
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
-  white-space: nowrap;
   padding: 6px 12px;
   font-size: 16px;
   line-height: 1.428571429;
@@ -10781,17 +12236,28 @@ fieldset[disabled] .item-controller .item-progress .progress-item .item-action .
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  background-color: #c9c9c9;
   border: none;
   color: #fff;
-  font-weight: 100;
   padding: 17px 30px 18px;
   padding: 5px 10px;
   line-height: 1.5;
   border-radius: 3px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-weight: bold;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #f1f2f2;
+  border-radius: 10px;
+  background-color: #c9c9c9;
   border-radius: 20px;
+  font-weight: 100;
+  padding: 8px 25px;
   font-size: 14px;
-  padding: 4px 20px;
+  padding: 7px 20px;
   color: #ffffff;
   background-color: #eb4498;
   border-color: #e92d8b;
@@ -11118,6 +12584,36 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
 }
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:hover {
   color: #353535;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button:empty {
+  display: none;
+}
+.btn .site-controller .item-type-introduction .intro-head .intro-actions .action-button {
+  position: relative;
+  top: -1px;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.badge-sm {
+  font-size: 14px;
+  padding: 7px 20px;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.badge-xs {
+  font-size: 12px;
+  padding: 4px 15px;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.badge-primary {
+  background-color: #eb4498;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.badge-success {
+  background-color: #22d23e;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.badge-warning {
+  background-color: #feee74;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.badge-danger {
+  background-color: #e0575c;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.badge-info {
+  background-color: #b7c1d8;
 }
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button:hover,
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button:focus,

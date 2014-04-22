@@ -4,8 +4,30 @@
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
 <?php if (!$this->workflowData['translateInto']): ?>
-    <?php $this->renderPartial('steps/fields/i18n_category', compact('form', 'model')); ?>
-    <?php $this->renderPartial('steps/fields/po_contents', compact('form', 'model')); ?>
+    <?php echo $form->textFieldControlGroup(
+        $model,
+        'i18n_category',
+        array(
+            'class' => Html::ITEM_FORM_FIELD_CLASS,
+            'maxlength' => 255,
+            'labelOptions' => array(
+                'label' => Html::attributeLabelWithTooltip($model, 'i18n_category'),
+            ),
+        )
+    ); ?>
+    <?php echo $form->textAreaControlGroup(
+        $model,
+        'po_contents_' . $model->source_language,
+        array(
+            'class' => Html::ITEM_FORM_FIELD_CLASS,
+            'disabled' => !$this->canEditSourceLanguage(),
+            'rows' => 6,
+            'cols' => 50,
+            'labelOptions' => array(
+                'label' => Html::attributeLabelWithTooltip($model, 'po_contents'),
+            ),
+        )
+    ); ?>
 <?php else: ?>
     <?php $this->renderPartial('translate/po_contents', array(
         'model' => $model,

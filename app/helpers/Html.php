@@ -185,6 +185,28 @@ class Html extends TbHtml
             : '';
     }
 
+    static public function staticTextField($model, $attribute)
+    {
+        $tag = 'span';
+        $html = self::openTag($tag, array(
+            'class' => 'static-text-field',
+        ));
+        $html .= $model->{$attribute};
+        $html .= self::closeTag($tag);
+        return $html;
+    }
+
+    static public function staticTextFieldControlGroup($model, $attribute)
+    {
+        $html = self::openTag('span', array(
+            'class' => 'static-text-field-label',
+        ));
+        $html .= $model->getAttributeLabel($attribute);
+        $html .= self::closeTag('span');
+        $html .= self::staticTextField($model, $attribute);
+        return $html;
+    }
+
     /**
      * Registers the assets for jquery comments
      */

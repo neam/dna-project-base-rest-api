@@ -194,7 +194,41 @@ class AccountController extends Controller
             ),
         ));
 
-        $this->render('dashboard', array('model' => $model, 'dataProvider' => $dataProvider));
+        $this->render(
+            'dashboard',
+            array(
+                'model' => $model,
+                'dataProvider' => $dataProvider,
+            )
+        );
+    }
+
+    /**
+     * Returns an item model by model class and model ID.
+     * @param string $modelClass
+     * @param integer $modelId
+     * @return ActiveRecord|ItemTrait
+     */
+    public function getItemModel($modelClass, $modelId)
+    {
+        return ActiveRecord::model($modelClass)->findByPk($modelId);
+    }
+
+    /**
+     * Creates a controller action URL based on the given action ID, model class, and model ID (optional).
+     * @param string $controllerAction
+     * @param string $modelClass
+     * @param integer|null $modelId
+     * @return string
+     */
+    public function createActionUrl($controllerAction, $modelClass, $modelId = null)
+    {
+        $modelClass = lcfirst($modelClass);
+        $route = "/$modelClass/$controllerAction";
+
+        return isset($modelId)
+            ? Yii::app()->createUrl($route, array('id' => $modelId))
+            : Yii::app()->createUrl($route);
     }
 
     /**

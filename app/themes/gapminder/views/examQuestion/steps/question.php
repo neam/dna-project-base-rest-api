@@ -3,5 +3,17 @@
 /* @var ExamQuestion|ItemTrait $model */
 /* @var AppActiveForm $form */
 ?>
-<?php $this->renderPartial('steps/fields/question', compact('form', 'model')); ?>
-<?php $this->renderPartial('steps/fields/slug', compact('form', 'model')); ?>
+<?php echo $form->translateTextFieldControlGroup(
+    $model,
+    'question',
+    $this->getTranslationLanguage(),
+    $this->action->id,
+    array('hint' => true)
+); ?>
+<?php echo $form->translateTextFieldControlGroup(
+    $model,
+    'slug',
+    $this->getTranslationLanguage(),
+    $this->action->id,
+    array('hint' => true)
+); ?>

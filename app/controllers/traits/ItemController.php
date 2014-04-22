@@ -251,6 +251,55 @@ trait ItemController
         return null;
     }
 
+    /**
+     * Returns the target translation language. Defaults to null if undefined.
+     * @return string|null
+     */
+    public function getTranslationLanguage()
+    {
+        return isset($this->workflowData['translateInto'])
+            ? $this->workflowData['translateInto']
+            : null;
+    }
+
+    /**
+     * TODO: Move away from controller to model or helper
+     *
+     * Returns a CDbCriteria which shows the models in testable-state or higher for translators.
+     *
+     * @param $modelTbl
+     * @param array $defaultCriteria the criteria to return if user has Administrator-role or is not a translator
+     * @return array|\CDbCriteria
+     */
+    /*
+    public function getTranslatorCriteria($modelTbl, $defaultCriteria = array())
+    {
+        // Administrators should see everything so return early
+        if (Yii::app()->user->checkAccess('Administrator')) {
+            return $defaultCriteria;
+        }
+
+        $criteria = $defaultCriteria;
+
+        return $criteria;
+
+        // TODO: Make group-dependent
+
+        // Translators should only see items which are in testable mode or higher
+        if (Yii::app()->user->checkAccess('Translate')) {
+            $criteria = new CDbCriteria();
+
+            $qaStateTbl = $modelTbl . '_qa_state'; // model_table_qa_state
+            $qaStateForeignId = $qaStateTbl . '_id'; // model_table_qa_state_id
+
+            $criteria->join = sprintf('INNER JOIN %s qs ON %s = qs.id', $qaStateTbl, $qaStateForeignId);
+            $criteria->addInCondition('status', array('reviewable', 'publishable'));
+        }
+
+        return $criteria;
+    }
+    */
+
     public function actionBrowse()
     {
         $model = new $this->modelClass('search');
@@ -836,9 +885,14 @@ trait ItemController
      * @param integer $id the item ID.
      * @param string $step the step identifier.
      * @param string $translateInto the target language code.
+     * @throws CHttpException
      */
     public function actionTranslate($id, $step, $translateInto)
     {
+        if (!Yii::app()->user->canTranslateInto($translateInto)) {
+            throw new CHttpException(403, Yii::t('app', "You are not allowed to translate into: $translateInto"));
+        }
+
         $this->scenario = "into_$translateInto-step_$step";
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;

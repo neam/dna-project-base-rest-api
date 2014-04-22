@@ -3,8 +3,31 @@
 /* @var Chapter|ItemTrait $model */
 /* @var AppActiveForm $form */
 ?>
-<div class="info-step">
-    <?php $this->renderPartial('steps/fields/title', compact('form', 'model')); ?>
-    <?php $this->renderPartial('steps/fields/about', compact('form', 'model')); ?>
-    <?php echo $form->select2ControlGroup($model, 'thumbnail_media_id', $model->getThumbnailOptions()); ?>
-</div>
+<?php echo $form->translateTextFieldControlGroup(
+    $model,
+    'title',
+    $this->getTranslationLanguage(),
+    $this->action->id,
+    array('hint' => true)
+); ?>
+<?php echo $form->translateTextFieldControlGroup(
+    $model,
+    'slug',
+    $this->getTranslationLanguage(),
+    $this->action->id,
+    array('hint' => true)
+); ?>
+<?php echo $form->translateTextAreaControlGroup(
+    $model,
+    'about',
+    $this->getTranslationLanguage(),
+    $this->action->id,
+    array('hint' => true)
+); ?>
+<?php if ($this->action->id === 'edit'): ?>
+    <?php echo $form->select2ControlGroup(
+        $model,
+        'thumbnail_media_id',
+        $model->getThumbnailOptions()
+    ); ?>
+<?php endif; ?>

@@ -4,7 +4,15 @@
 /* @var AppActiveForm $form */
 ?>
 <?php if (!$this->workflowData['translateInto']): ?>
-    <?php $this->renderPartial('steps/fields/subtitles', compact('form', 'model')); ?>
+    <?php echo $form->textAreaControlGroup($model, 'subtitles_' . $model->source_language, array(
+        'class' => Html::ITEM_FORM_FIELD_CLASS,
+        'disabled' => !$this->canEditSourceLanguage(),
+        'rows' => 50,
+        'cols' => 50,
+        'labelOptions' => array(
+            'label' => Html::attributeLabelWithTooltip($model, 'subtitles_' . $model->source_language, 'subtitles'),
+        ),
+    )); ?>
     <?php $this->renderPartial('steps/fields/subtitles_import', compact('form', 'model')); ?>
     <br>
     <?php echo TbHtml::linkButton(
