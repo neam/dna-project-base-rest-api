@@ -2,6 +2,9 @@
 
 set -x
 
+# fail on any error
+set -o errexit
+
 script_path=`dirname $0`
 
 # Note: this script is tailored to be run on dokku deployments through sshcommand
