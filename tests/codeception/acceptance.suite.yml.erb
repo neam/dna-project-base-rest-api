@@ -24,34 +24,35 @@ modules:
             wait: 1
             restart: true
 
+env:
     cms-local-chrome:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_HOST'] %>/index-test.php
                     browser: 'chrome'
 
     cms-saucelabs-chrome-win8:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_HOST'] %>/index-test.php
                     browser: 'chrome'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
                         platform: 'Windows 8.1'
-                        version: '25'
+                        version: '34'
 
     cms-saucelabs-chrome-winxp:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_HOST'] %>/index-test.php
                     browser: 'chrome'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
                         platform: 'Windows XP'
-                        version: '25'
+                        version: '34'
 
     go-saucelabs-chrome-win8:
         modules:
@@ -62,7 +63,7 @@ modules:
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
                         platform: 'Windows 8.1'
-                        version: '25'
+                        version: '34'
 
     go-saucelabs-chrome-winxp:
         modules:
@@ -73,4 +74,4 @@ modules:
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
                         platform: 'Windows XP'
-                        version: '25'
+                        version: '34'
