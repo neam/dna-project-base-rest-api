@@ -17,7 +17,10 @@ modules:
         WebDriver:
             url: http://localhost:99999/configured-through-environments-not-here.php
             browser: 'chrome'
+            <% if ENV.has_key? "CI" and ENV['CI'].to_s != "" %>
+            host: '<%= ENV['SAUCE_USERNAME'] %>:<%= ENV['SAUCE_ACCESS_KEY'] %>@ondemand.saucelabs.com'
             port: 80
+            <% end %>
             wait: 1
             restart: true
 
