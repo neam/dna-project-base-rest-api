@@ -205,12 +205,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/yii-consoletools.git",
-                "reference": "c9f5724c642310aca53b2f4e445bf18d21db6a53"
+                "reference": "d53e21be8a07700a00e325d614bf328a9d82d3ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/yii-consoletools/zipball/c9f5724c642310aca53b2f4e445bf18d21db6a53",
-                "reference": "c9f5724c642310aca53b2f4e445bf18d21db6a53",
+                "url": "https://api.github.com/repos/motin/yii-consoletools/zipball/d53e21be8a07700a00e325d614bf328a9d82d3ae",
+                "reference": "d53e21be8a07700a00e325d614bf328a9d82d3ae",
                 "shasum": ""
             },
             "type": "library",
@@ -240,7 +240,7 @@
             "support": {
                 "source": "https://github.com/motin/yii-consoletools/tree/patch-1"
             },
-            "time": "2014-04-23 10:30:54"
+            "time": "2014-04-23 10:56:53"
         },
         {
             "name": "crisu83/yii-formatter",
