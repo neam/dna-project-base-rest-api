@@ -59,9 +59,7 @@ if [ "$DATA" == "user-generated" ]; then
     echo "===== Load the user-generated data associated with this commit ===="
 
     app/yiic databaseschema --connectionID=db loadSql --path=db/user-generated-data.sql --verbose=1
-    ls -l db/
-    ls -l db/user-generated-p3media/
-    cp -r db/user-generated-p3media/* app/data/p3media/
+    cp -r db/user-generated-media/* app/data/p3media/
 
 fi
 
