@@ -24,7 +24,7 @@ FILENAME=$DATETIME.sql
 FILEPATH=cms/$FOLDER/$FILENAME
 
 $script_path/../app/yiic mysqldump --dumpFile=/tmp/$FILENAME
-s3cmd --config=/tmp/.s3cfg --acl-private --guess-mime-type put /tmp/$FILENAME "$USER_GENERATED_DATA_S3_BUCKET/$FILEPATH"
+s3cmd -v -d --config=/tmp/.s3cfg put /tmp/$FILENAME "$USER_GENERATED_DATA_S3_BUCKET/$FILEPATH"
 
 echo $FILEPATH > /app/db/user-generated-data.filepath
 echo "User data sql dump uploaded to $USER_GENERATED_DATA_S3_BUCKET/$FILEPATH"
@@ -34,7 +34,7 @@ echo "Set the contents of 'db/user-generated-data.filepath' to '$FILEPATH' in or
 
 FOLDERPATH=cms/$FOLDER/$DATETIME.user-generated-media/
 
-s3cmd --config=/tmp/.s3cfg --acl-private --guess-mime-type put $script_path/../app/data/p3media "$USER_GENERATED_DATA_S3_BUCKET/$FOLDERPATH"
+s3cmd -v -d --config=/tmp/.s3cfg --recursive put $script_path/../app/data/p3media/ "$USER_GENERATED_DATA_S3_BUCKET/$FOLDERPATH"
 echo $FOLDERPATH > /app/db/user-generated-media.folderpath
 
 echo "User media uploaded to $USER_GENERATED_DATA_S3_BUCKET/$FOLDERPATH"
