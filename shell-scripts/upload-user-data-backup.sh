@@ -31,7 +31,7 @@ if [ ! -f db/dump.sql ] ; then
     echo "The mysql dump is not found at the expected location: db/dump.sql"
     exit 1
 fi
-s3cmd -v -d --config=/tmp/.s3cfg put db/dump.sql "$USER_GENERATED_DATA_S3_BUCKET/$FILEPATH"
+s3cmd -v --config=/tmp/.s3cfg put db/dump.sql "$USER_GENERATED_DATA_S3_BUCKET/$FILEPATH"
 
 echo $FILEPATH > /app/db/user-generated-data.filepath
 echo "User data sql dump uploaded to $USER_GENERATED_DATA_S3_BUCKET/$FILEPATH"
@@ -41,7 +41,7 @@ echo "Set the contents of 'db/user-generated-data.filepath' to '$FILEPATH' in or
 
 FOLDERPATH=cms/$FOLDER/$DATETIME.user-generated-media/
 
-s3cmd -v -d --config=/tmp/.s3cfg --recursive put $script_path/../app/data/p3media/ "$USER_GENERATED_DATA_S3_BUCKET/$FOLDERPATH"
+s3cmd -v --config=/tmp/.s3cfg --recursive put $script_path/../app/data/p3media/ "$USER_GENERATED_DATA_S3_BUCKET/$FOLDERPATH"
 echo $FOLDERPATH > /app/db/user-generated-media.folderpath
 
 echo "User media uploaded to $USER_GENERATED_DATA_S3_BUCKET/$FOLDERPATH"
