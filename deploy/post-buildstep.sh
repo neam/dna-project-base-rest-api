@@ -37,15 +37,23 @@ if [ ! "$ENV" == "" ]; then
     app/yiic authorizationhierarchy reset
     app/yiic authorizationhierarchy build
 
-fi
-
-# make sure that /app/app/data/p3media is a symlink to persistent /cache/p3media
-if [ -d /app/app/data/p3media ] ; then
-    mv /app/app/data/p3media /app/app/data/.p3media-directory-before-symlinking
+    # make sure that app/data/p3media is a symlink to persistent /cache/p3media
     if [ ! -d /cache/p3media ] ; then
         mkdir /cache/p3media
     fi
-    ln -s /cache/p3media /app/app/data/p3media
+    if [ -d app/data/p3media ] ; then
+        mv app/data/p3media app/data/.p3media-directory-before-symlinking
+    fi
+    if [ ! -L app/data/p3media ] ; then
+        ln -s /cache/p3media app/data/p3media
+    fi
+
+    # set permissions for persistent /cache/p3media
+    chown -R www-data:www-data /cache/p3media
+    chmod -R g+rw /cache/p3media
+    # temporarily
+    chmod -R 777 /cache/p3media
+
 fi
 
 exit 0
