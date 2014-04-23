@@ -39,4 +39,13 @@ if [ ! "$ENV" == "" ]; then
 
 fi
 
+# make sure that /app/app/data/p3media is a symlink to persistent /cache/p3media
+if [ -d /app/app/data/p3media ] ; then
+    mv /app/app/data/p3media /app/app/data/.p3media-directory-before-symlinking
+    if [ ! -d /cache/p3media ] ; then
+        mkdir /cache/p3media
+    fi
+    ln -s /cache/p3media /app/app/data/p3media
+fi
+
 exit 0
