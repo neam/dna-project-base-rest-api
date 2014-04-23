@@ -6,6 +6,8 @@ script_path=`dirname $0`
 
 export connectionID=dbTest
 
+cd $script_path/..
+
 app/yiic databaseschema --connectionID=$connectionID dropAllTablesAndViews --verbose=0
 app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/schema.sql --verbose=0
 app/yiic fixture --connectionID=$connectionID load
