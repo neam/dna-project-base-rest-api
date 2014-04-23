@@ -1,4 +1,6 @@
 <?php
+$scenario->group('data:clean-db');
+$scenario->group('data:user-generated');
 $I = new ApiGuy($scenario);
 $I->wantTo('list items via the REST API');
 $I->sendGET('videoFile');

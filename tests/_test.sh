@@ -11,7 +11,9 @@ $script_path/generate-local-codeception-config.sh
 
 cd $script_path
 
-vendor/bin/codecept run unit
-vendor/bin/codecept run functional
-vendor/bin/codecept run acceptance --env=cms-local-chrome
-vendor/bin/codecept run api
+vendor/bin/codecept run unit -g data:clean-db --debug
+vendor/bin/codecept run functional -g data:clean-db --debug
+vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:clean-db --debug
+vendor/bin/codecept run api -g data:clean-db --debug
+
+vendor/bin/codecept run api -g data:user-generated --debug
