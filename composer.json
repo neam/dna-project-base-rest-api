@@ -190,6 +190,9 @@
                 "display_errors=on",
                 "short_open_tag=on"
             ],
+            "nginx-includes": [
+                "deploy/nginx.inc.conf"
+            ],
             "compile": [
                 "bash deploy/post-buildstep.sh"
             ],
