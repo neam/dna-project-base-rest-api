@@ -23,8 +23,15 @@ FOLDER=ENV-$ENV
 FILENAME=$DATETIME.sql
 FILEPATH=cms/$FOLDER/$FILENAME
 
-$script_path/../app/yiic mysqldump --dumpFile=/tmp/$FILENAME
-s3cmd -v -d --config=/tmp/.s3cfg put /tmp/$FILENAME "$USER_GENERATED_DATA_S3_BUCKET/$FILEPATH"
+if [ -f db/dump.sql ] ; then
+    rm db/dump.sql
+fi
+$script_path/../app/yiic mysqldump
+if [ ! -f db/dump.sql ] ; then
+    echo "The mysql dump is not found at the expected location: db/dump.sql"
+    exit 1
+fi
+s3cmd -v -d --config=/tmp/.s3cfg put db/dump.sql "$USER_GENERATED_DATA_S3_BUCKET/$FILEPATH"
 
 echo $FILEPATH > /app/db/user-generated-data.filepath
 echo "User data sql dump uploaded to $USER_GENERATED_DATA_S3_BUCKET/$FILEPATH"
