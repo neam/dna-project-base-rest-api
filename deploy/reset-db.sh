@@ -26,7 +26,7 @@ if [ "$DATA" == "user-generated" ]; then
             export USER_GENERATED_DATA_S3_BUCKET="s3://user-data-backups"
             export USER_GENERATED_DATA_FILEPATH=`cat db/user-generated-data.filepath`
             export USER_GENERATED_DATA_S3_URL=$USER_GENERATED_DATA_S3_BUCKET/$USER_GENERATED_DATA_FILEPATH
-            s3cmd --config=/tmp/.s3cfg get "$USER_GENERATED_DATA_S3_URL" db/user-generated-data.sql
+            s3cmd -v --config=/tmp/.s3cfg get "$USER_GENERATED_DATA_S3_URL" db/user-generated-data.sql
 
             echo "User data dump downloaded from $USER_GENERATED_DATA_S3_URL to db/user-generated-data.sql"
 
@@ -46,7 +46,7 @@ if [ "$DATA" == "user-generated" ]; then
             export USER_GENERATED_MEDIA_FOLDERPATH=`cat db/user-generated-data.folderpath`
             export USER_GENERATED_MEDIA_S3_URL=$USER_GENERATED_MEDIA_S3_BUCKET/$USER_GENERATED_MEDIA_FOLDERPATH
             mkdir db/user-generated-media/
-            s3cmd --config=/tmp/.s3cfg --recursive get "$USER_GENERATED_MEDIA_S3_URL" db/user-generated-media/
+            s3cmd -v --config=/tmp/.s3cfg --recursive get "$USER_GENERATED_MEDIA_S3_URL" db/user-generated-media/
 
             echo "User media downloaded from $USER_GENERATED_DATA_S3_URL to db/user-generated-media/"
 
