@@ -2,6 +2,12 @@
 
 class DataArticleController extends Controller
 {
+    use ItemController {
+        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    }
+
+    public $modelClass = 'DataArticle';
+
     #public $layout='//layouts/column2';
 
     public $defaultAction = "admin";
@@ -16,25 +22,28 @@ class DataArticleController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge(
+            $this->itemAccessRules(),
             array(
-                'allow',
-                'actions' => array(
-                    'index',
-                    'view',
-                    'create',
-                    'update',
-                    'editableSaver',
-                    'editableCreator',
-                    'admin',
-                    'delete',
+                array(
+                    'allow',
+                    'actions' => array(
+                        'index',
+                        'view',
+                        'create',
+                        'update',
+                        'editableSaver',
+                        'editableCreator',
+                        'admin',
+                        'delete',
+                    ),
+                    'roles' => array('DataArticle.*'),
                 ),
-                'roles' => array('DataArticle.*'),
-            ),
-            array(
-                'deny',
-                'users' => array('*'),
-            ),
+                array(
+                    'deny',
+                    'users' => array('*'),
+                ),
+            )
         );
     }
 
