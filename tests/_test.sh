@@ -14,3 +14,4 @@ cd $script_path
 vendor/bin/codecept run unit
 vendor/bin/codecept run functional
 vendor/bin/codecept run acceptance --env=cms-local-chrome
+vendor/bin/codecept run api
