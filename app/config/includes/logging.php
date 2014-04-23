@@ -28,6 +28,7 @@ if (DEBUG_LOGS) {
     $config["components"]["log"]["routes"][] = array(
         'class' => 'CWebLogRoute',
         'levels' => $levels, //trace,
+        'enabled' => false,
     );
 
     /* Persistent logs */
