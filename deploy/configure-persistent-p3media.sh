@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# only run in dokku deployments
+if [ ! "${ENV:0:5}" == "dokku" ]; then
+    exit 0
+fi
+
 # make sure that persistent /cache/p3media exists
 if [ ! -d /cache/p3media ] ; then
     mkdir /cache/p3media
