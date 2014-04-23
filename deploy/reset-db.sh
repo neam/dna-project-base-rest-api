@@ -13,6 +13,9 @@ rm -rf app/data/p3media/*
 #mkdir .trashed-p3media-data
 #mv app/data/p3media/* .trashed-p3media-data/
 
+# make sure that the persistent p3media folder exists
+deploy/configure-persistent-p3media.sh
+
 if [ "$DATA" == "user-generated" ]; then
 
     if [ ! -f db/user-generated-data.sql ]; then

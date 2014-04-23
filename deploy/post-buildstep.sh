@@ -28,7 +28,7 @@ rm -r www/assets/*
 # necessary for user data backup uploads
 deploy/install-s3cmd.sh
 
-# make sure that app/data/p3media is a symlink to persistent /cache/p3media
+# make sure that app/data/p3media is a symlink to persistent /cache/p3media already in the build
 if [ -d app/data/p3media ] ; then
     mv app/data/p3media app/data/.p3media-directory-before-symlinking
 fi
@@ -44,17 +44,6 @@ if [ ! "$ENV" == "" ]; then
 
     app/yiic authorizationhierarchy reset
     app/yiic authorizationhierarchy build
-
-    # make sure that persistent /cache/p3media exists
-    if [ ! -d /cache/p3media ] ; then
-        mkdir /cache/p3media
-    fi
-
-    # set permissions for persistent /cache/p3media
-    chown -R www-data:www-data /cache/p3media
-    chmod -R g+rw /cache/p3media
-    # temporarily
-    chmod -R 777 /cache/p3media
 
 fi
 
