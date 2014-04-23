@@ -5,7 +5,14 @@
 ?>
 <div class="file-field-2cols">
     <div class="field-column">
-        <?php echo $form->select2ControlGroup($model, 'original_media_id', $model->getTextDocOptions()); ?>
+        <?php echo $form->select2ControlGroup(
+            $model,
+            'original_media_id',
+            $model->getTextDocOptions(),
+            array(
+                'empty' => Yii::t('app', 'None'),
+            )
+        ); ?>
     </div>
     <div class="field-column">
         <div class="form-group">
@@ -40,6 +47,7 @@
             $model->getTextDocOptions(),
             array(
                 'disabled' => !$this->canEditSourceLanguage(),
+                'empty' => Yii::t('app', 'None'),
             )
         ); ?>
     </div>
@@ -71,7 +79,14 @@
 <?php if ($this->workflowData['translateInto']): ?>
     <div class="file-field-2cols">
         <div class="field-column">
-            <?php echo $form->select2ControlGroup($model, 'processed_media_id_' . $this->workflowData['translateInto'], $model->getTextDocOptions()); ?>
+            <?php echo $form->select2ControlGroup(
+                $model,
+                'processed_media_id_' . $this->workflowData['translateInto'],
+                $model->getTextDocOptions(),
+                array(
+                    'empty' => Yii::t('app', 'None'),
+                )
+            ); ?>
         </div>
         <div class="field-column">
             <div class="form-group">

@@ -14,7 +14,10 @@
 <?php echo $form->select2ControlGroup(
     $model,
     'tool_id',
-    CHtml::listData(Tool::model()->findAll(), 'id', 'itemLabel')
+    CHtml::listData(Tool::model()->findAll(), 'id', 'itemLabel'),
+    array(
+        'empty' => Yii::t('app', 'None'),
+    )
 ); ?>
 <?php echo $form->textAreaControlGroup($model, 'embed_override', array(
     'class' => Html::ITEM_FORM_FIELD_CLASS,

@@ -5,7 +5,14 @@
 ?>
 <div class="file-field-2cols">
     <div class="field-column">
-        <?php echo $form->select2ControlGroup($model, 'original_media_id', $model->getVectorGraphicOptions()); ?>
+        <?php echo $form->select2ControlGroup(
+            $model,
+            'original_media_id',
+            $model->getVectorGraphicOptions(),
+            array(
+                'empty' => Yii::t('app', 'None'),
+            )
+        ); ?>
     </div>
     <div class="field-column">
         <div class="form-group">
