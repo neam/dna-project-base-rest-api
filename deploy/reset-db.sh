@@ -36,7 +36,7 @@ if [ "$DATA" == "user-generated" ]; then
 
     fi
 
-    if [ ! -f db/user-generated-media/ ]; then
+    if [ ! -d db/user-generated-media/ ]; then
 
         echo "== Fetching the user-generated media associated with this commit =="
 
@@ -58,7 +58,11 @@ if [ "$DATA" == "user-generated" ]; then
 
     echo "===== Load the user-generated data associated with this commit ===="
 
-    app/yiic databaseschema --connectionID=db loadSql --path=db/user-generated-data.sql --verbose=1
+    # load mysql dump
+    # app/yiic databaseschema --connectionID=db loadSql --path=db/user-generated-data.sql --verbose=1
+    mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/user-generated-data.sql
+
+    # copy the downloaded data to the persistant p3media folder
     cp -r db/user-generated-media/* app/data/p3media/
 
 fi
