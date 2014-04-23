@@ -28,6 +28,14 @@ rm -r www/assets/*
 # necessary for user data backup uploads
 deploy/install-s3cmd.sh
 
+# make sure that app/data/p3media is a symlink to persistent /cache/p3media
+if [ -d app/data/p3media ] ; then
+    mv app/data/p3media app/data/.p3media-directory-before-symlinking
+fi
+if [ ! -L app/data/p3media ] ; then
+    ln -s /cache/p3media app/data/p3media
+fi
+
 if [ ! "$ENV" == "" ]; then
 
     app/yiic fixture --connectionID=$connectionID load
@@ -37,15 +45,9 @@ if [ ! "$ENV" == "" ]; then
     app/yiic authorizationhierarchy reset
     app/yiic authorizationhierarchy build
 
-    # make sure that app/data/p3media is a symlink to persistent /cache/p3media
+    # make sure that persistent /cache/p3media exists
     if [ ! -d /cache/p3media ] ; then
         mkdir /cache/p3media
-    fi
-    if [ -d app/data/p3media ] ; then
-        mv app/data/p3media app/data/.p3media-directory-before-symlinking
-    fi
-    if [ ! -L app/data/p3media ] ; then
-        ln -s /cache/p3media app/data/p3media
     fi
 
     # set permissions for persistent /cache/p3media
