@@ -211,7 +211,6 @@ trait ItemTrait
 
     public function flowStepRules()
     {
-
         // Metadata
         $flowSteps = $this->flowSteps();
         $statusRequirements = $this->statusRequirements();
