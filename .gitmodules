@@ -1,0 +1,3 @@
+[submodule "deploy/heroku-buildpack-php"]
+	path = deploy/heroku-buildpack-php
+	url = https://github.com/neam/heroku-buildpack-php.git

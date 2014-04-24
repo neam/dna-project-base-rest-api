@@ -116,6 +116,10 @@
             "url":"https://github.com/Gapminder/PHP-po-parser"
         },
         {
+            "type":"vcs",
+            "url":"https://github.com/motin/yii-consoletools"
+        },
+        {
             "type":"composer",
             "url":"http://packages.phundament.com"
         }
@@ -127,7 +131,7 @@
     },
     "require":{
         "php":">=5.4.0",
-        "crisu83/yii-consoletools": "1.1.*",
+        "crisu83/yii-consoletools": "dev-patch-1",
         "crisu83/yiistrap":"dev-bs3 as 1.1.1",
         "crisu83/yiistrap-widgets":"1.7.*",
         "mishamx/yii-user":"dev-develop",
@@ -171,6 +175,34 @@
         "phundament/p3bootstrap":"0.22.0",
         "schmunk42/giic": "dev-master",
         "phundament/gii-template-collection":"dev-gcms-yiistrap"
+    },
+    "extra": {
+        "heroku": {
+            "framework": "yii",
+            "engines": {
+                "php": "5.4.26",
+                "nginx": "1.4.3"
+            },
+            "php-config": [
+                "upload_max_filesize=200M",
+                "post_max_size=200M",
+                "xdebug.default_enable=on",
+                "html_errors=on",
+                "display_errors=on",
+                "short_open_tag=on"
+            ],
+            "nginx-includes": [
+                "deploy/nginx.inc.conf"
+            ],
+            "compile": [
+                "bash deploy/post-buildstep.sh"
+            ],
+            "log-files": [
+                "app/runtime/application.log"
+            ],
+            "document-root": "www",
+            "index-document": "index.php"
+        }
     },
     "autoload":{
         "psr-0":{

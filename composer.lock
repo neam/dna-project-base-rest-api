@@ -202,16 +202,16 @@
         },
         {
             "name": "crisu83/yii-consoletools",
-            "version": "1.1.0",
+            "version": "dev-patch-1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Crisu83/yii-consoletools.git",
-                "reference": "7938906c1e85e01dd58ed6961d619d165d69e594"
+                "url": "https://github.com/motin/yii-consoletools.git",
+                "reference": "d53e21be8a07700a00e325d614bf328a9d82d3ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-consoletools/zipball/7938906c1e85e01dd58ed6961d619d165d69e594",
-                "reference": "7938906c1e85e01dd58ed6961d619d165d69e594",
+                "url": "https://api.github.com/repos/motin/yii-consoletools/zipball/d53e21be8a07700a00e325d614bf328a9d82d3ae",
+                "reference": "d53e21be8a07700a00e325d614bf328a9d82d3ae",
                 "shasum": ""
             },
             "type": "library",
@@ -222,7 +222,6 @@
                     "helpers/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -239,7 +238,10 @@
                 "tools",
                 "yii"
             ],
-            "time": "2014-02-12 09:45:31"
+            "support": {
+                "source": "https://github.com/motin/yii-consoletools/tree/patch-1"
+            },
+            "time": "2014-04-23 10:56:53"
         },
         {
             "name": "crisu83/yii-formatter",
@@ -1641,7 +1643,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record access check implementation",
@@ -1672,7 +1674,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
@@ -1725,12 +1727,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/multi-theme.git",
-                "reference": "0.1.1"
+                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/0.1.1",
-                "reference": "0.1.1",
+                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/f9fcd89e8620be03340cd1d6125ae2522b71719a",
+                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a",
                 "shasum": ""
             },
             "require": {
@@ -1746,7 +1748,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Theme-Manager class, switch themes by regular expressions on controller routes.",
@@ -2458,6 +2460,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "crisu83/yii-consoletools": 20,
         "crisu83/yiistrap": 20,
         "mishamx/yii-user": 20,
         "phundament/jquery-file-upload": 20,
