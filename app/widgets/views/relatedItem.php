@@ -1,24 +1,22 @@
 <?php
 /**
- * @var CActiveRecord $model the model whose related items are being rendered
- * @var Node $item a single related item
- * @var ActiveRecord $actualModel result of $item->item()
- * @var CWidget $this the widget being rendered
- * @var array $editUrl URL to the related items editing
- * @var array $removeUrl URL to remove the related item from the list
+ * @var ActiveRecord $model the model whose related items are being rendered
+ * @var Node $node a single related item
+ * @var ActiveRecord $item result of $node->item()
+ * @var RelatedItems $this the widget being rendered
  */
 ?>
 
 <div class="related-item">
     <strong class="item-label">
-        <?php echo Html::link($actualModel->getItemLabel(), $editUrl) ?>
+        <?php echo Html::link($item->itemLabel, $this->getEditUrl($item)) ?>
     </strong>
     <?php
     $this->widget(
         '\TbButton',
         array(
             'label' => Yii::t('model', 'Remove'),
-            'url' => $removeUrl,
+            'url' => $this->getDeleteUrl($item),
             'icon' => TbHtml::ICON_REMOVE,
         )
     );

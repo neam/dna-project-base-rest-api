@@ -43,8 +43,9 @@ class Section extends BaseSection
                     'Node',
                     array('id', 'id'),
                     'through' => 'outNodes',
-                    'condition' => 'relation = :relation',
-                    'params' => array(':relation' => 'contents')
+                    'condition' => 'outEdges.relation = :relation',
+                    'order' => 'outEdges.weight ASC',
+                    'params' => array(':relation' => 'contents'),
                 ),
             )
         );

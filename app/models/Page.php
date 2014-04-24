@@ -25,6 +25,26 @@ class Page extends BasePage
         return isset($this->_title) ? $this->_title : 'Page #' . $this->id;
     }
 
+    public function relations()
+    {
+        $relations = parent::relations();
+
+        // Sort sections by edge weight
+        $relations['sections'] = array(
+            self::HAS_MANY,
+            'Section',
+            array('id' => 'node_id'),
+            'condition' => 'relation = :relation',
+            'through' => 'outNodes',
+            'order' => 'outEdges.weight ASC',
+            'params' => array(
+                ':relation' => 'sections',
+            )
+        );
+
+        return $relations;
+    }
+
     public function behaviors()
     {
         return array_merge(

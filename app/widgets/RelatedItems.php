@@ -38,12 +38,10 @@ class RelatedItems extends CWidget
             }
 
             $this->render('relatedItem', array(
-                'item' => $relatedItem,
-                'actualModel' => $actualModel,
+                'node' => $relatedItem,
+                'item' => $actualModel,
                 'model' => $this->model,
                 'relation' => $this->relation,
-                'editUrl' => $this->getEditUrl($actualModel),
-                'removeUrl' => $this->getDeleteUrl($actualModel),
             ));
         }
     }
@@ -53,7 +51,7 @@ class RelatedItems extends CWidget
      * @param ActiveRecord $model
      * @return string
      */
-    protected function getEditUrl($model)
+    public function getEditUrl($model)
     {
         return array(
             lcfirst(get_class($model)) . '/continueAuthoring',
@@ -66,7 +64,7 @@ class RelatedItems extends CWidget
      * @param ActiveRecord $model
      * @return array
      */
-    protected function getDeleteUrl($model)
+    public function getDeleteUrl($model)
     {
         return array(
             'deleteEdge',
