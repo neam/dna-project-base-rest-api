@@ -2,7 +2,6 @@
 
 class WebUser extends CWebUser
 {
-
     /**
      * @var Account
      */

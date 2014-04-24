@@ -29,10 +29,10 @@ $this->breadcrumbs[] = Yii::t('model', 'Accounts');
             ),
             'columns' => array(
                 array(
-                    'class' => 'CLinkColumn',
+                    'class' => 'AccountLinkColumn',
                     'header' => '',
                     'labelExpression' => '$data->itemLabel',
-                    'urlExpression' => 'Yii::app()->controller->createUrl("view", array("id" => $data["id"]))',
+                    'urlExpression' => 'Yii::app()->createUrl("account/view", array("id" => $data["id"]))',
                 ),
                 array(
                     'class' => '\TbButtonColumn',

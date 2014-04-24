@@ -1,16 +1,16 @@
 <?php
 
-class ItemEditPage
+class AccountAdminPage
 {
     // include url of current page
-    static $URL = '';
+    static $URL = '?r=account/admin';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
-    public static $submitButton = '#item-form button[type=submit]';
+    public static $viewLinkPrefix = '#viewLink_';
 
     /**
      * Basic route example for your current URL
@@ -33,10 +33,15 @@ class ItemEditPage
     }
 
     /**
-     * @return ItemEditPage
+     * @return AccountAdminPage
      */
     public static function of(WebGuy $I)
     {
         return new static($I);
+    }
+
+    public static function generateViewLinkSelector($username)
+    {
+        return self::$viewLinkPrefix . $username;
     }
 }

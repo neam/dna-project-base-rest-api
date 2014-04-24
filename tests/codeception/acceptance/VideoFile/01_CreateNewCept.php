@@ -2,27 +2,20 @@
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('perform actions and see result');
 
-// Register max
-$I->register('max', 'test', 'test', 'max@gapminder.org', true);
+// Register users.
+$I->registerGapminderStaff();
+
+// Max logs in.
 $I->login('max', 'test');
+
+$I->pauseExecution();
 
 // TODO verify that Max is part of default groups
 
-$I->amOnPage(VideoFileBrowsePage::$URL);
-$I->click(VideoFileBrowsePage::$addButton);
+// Max creates a new video file.
+$I->createVideoFile('Max video');
 
-// TODO create new video file
-
-// TODO verify that only Max can see and edit the video file
-
-$I->register('ola', 'test', 'test', 'ola@gapminder.org', true);
+// Verify that only Max can see his video.
+$I->seeVideoFile('Max video');
 $I->login('ola', 'test');
-
-$I->register('mattias', 'test', 'test', 'mattias@gapminder.org', true);
-$I->login('mattias', 'test');
-
-$I->register('julia', 'test', 'test', 'julia@gapminder.org', true);
-$I->login('julia', 'test');
-
-$I->register('fernanda', 'test', 'test', 'fernanda@gapminder.org', true);
-$I->login('fernanda', 'test');
+$I->dontSeeVideoFile('Max video');
