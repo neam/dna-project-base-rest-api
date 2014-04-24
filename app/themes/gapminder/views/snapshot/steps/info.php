@@ -24,12 +24,14 @@
     $this->action->id,
     array('hint' => true)
 ); ?>
-<?php
-// TODO: Refactor this.
-$relation = "thumbnailMedia";
-$attribute = "thumbnail_media_id";
-$step = "info";
-$mimeTypes = array('image/jpeg', 'image/png');
+<?php if ($this->action->id === 'edit'): ?>
+    <?php
+    // TODO: Refactor this.
+    $relation = "thumbnailMedia";
+    $attribute = "thumbnail_media_id";
+    $step = "info";
+    $mimeTypes = array('image/jpeg', 'image/png');
 
-$this->renderPartial('//p3Media/_select', compact("model", "form", "relation", "attribute", "step", "mimeTypes"));
-?>
+    $this->renderPartial('//p3Media/_select', compact("model", "form", "relation", "attribute", "step", "mimeTypes"));
+    ?>
+<?php endif; ?>
