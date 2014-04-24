@@ -110,11 +110,10 @@ class I18nCatalog extends BaseI18nCatalog
      */
     public function parsePoContents()
     {
-
+        // TODO: Implement error handling. The parser currently raises an ambiguous undefined variable error if the format of the submitted PO content is invalid.
         $poparser = new Sepia\PoParser();
         $entries = $poparser->readVariable($this->po_contents);
         return $entries;
-
     }
 
     /**
