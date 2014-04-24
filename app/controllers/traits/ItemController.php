@@ -254,6 +254,18 @@ trait ItemController
     }
 
     /**
+     * Returns the first step in the translation workflow. Falls back to ItemController::firstFlowStep().
+     * @param ActiveRecord|ItemTrait $item
+     * @return string
+     */
+    protected function firstTranslationFlowStep($item)
+    {
+        return (isset($item->firstTranslationFlowStep))
+            ? $item->firstTranslationFlowStep
+            : $this->firstFlowStep($item);
+    }
+
+    /**
      * Returns the target translation language. Defaults to null if undefined.
      * @return string|null
      */

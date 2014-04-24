@@ -22,7 +22,7 @@
             <?php if ($languageCode === Yii::app()->sourceLanguage): ?>
                 <?php continue; ?>
             <?php endif; ?>
-            <?php $step = $this->firstFlowStep($model); ?>
+            <?php $step = $this->firstTranslationFlowStep($model); ?>
             <?php $action = 'translate'; ?>
             <?php $options = array(
                 'icon' => 'globe',

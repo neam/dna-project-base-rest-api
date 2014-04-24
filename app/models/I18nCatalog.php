@@ -8,6 +8,8 @@ class I18nCatalog extends BaseI18nCatalog
 {
     use ItemTrait;
 
+    public $firstTranslationFlowStep = 'i18n';
+
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
     {
