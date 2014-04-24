@@ -5,17 +5,14 @@
  */
 ?>
 
-<?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
-<?php $this->renderPartial('/_item/elements/flowbar', compact('model')); ?>
-
 <div class="<?php echo $this->getCssClasses($model); ?>">
-    <div class="after-flowbar">
 
-        <div class="content">
-            <?php foreach ($model->sections as $section): ?>
-                <?php $this->renderPartial('/section/view', array('model' => $section)); ?>
-            <?php endforeach; ?>
-        </div>
+    <h1><?php echo $model->title; ?></h1>
 
+    <div class="content">
+        <?php foreach ($model->sections as $section): ?>
+            <?php $this->renderPartial('/section/view', array('model' => $section)); ?>
+        <?php endforeach; ?>
     </div>
+
 </div>
