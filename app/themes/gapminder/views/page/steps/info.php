@@ -24,15 +24,24 @@
     $this->action->id,
     array('hint' => true)
 ); ?>
-<?php $this->widget(
-    '\RelatedItems',
+
+<?php
+$pageCriteria = new CDbCriteria();
+$pageCriteria->addCondition('page_id = :page_id');
+$pageCriteria->params[':page_id'] = $model->id;
+
+$this->widget(
+    '\Edges',
     array(
         'model' => $model,
+        'criteria' => $pageCriteria,
         'relation' => 'sections',
+        'itemClass' => 'Section',
     )
 ); ?>
+
 <?php echo Html::link(
-    Yii::t('page sections', 'New section'),
+    Yii::t('page sections', '{icon} Create new section', array('{icon}' => '<i class="glyphicon glyphicon-plus"></i>')),
     array('/section/add', 'pageId' => $model->id),
     array(
         'class' => 'btn btn-default',

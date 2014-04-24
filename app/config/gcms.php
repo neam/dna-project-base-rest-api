@@ -2,9 +2,15 @@
 
 // Configuration specific to Gapminder School CMS
 
-$envbootstrap = dirname(__FILE__) . '/../../../common/settings/envbootstrap.php';
+// Include envbootstrap - see app/config/envbootstrap/README.md for more information
+$envbootstrap_strategy = getenv('ENVBOOTSTRAP_STRATEGY');
+if (empty($envbootstrap_strategy)) {
+    Yii::log("ENVBOOTSTRAP_STRATEGY empty, defaulting to self-detect", CLogger::LEVEL_INFO);
+    $envbootstrap_strategy = "self-detect";
+}
+$envbootstrap = dirname(__FILE__) . '/envbootstrap/' . $envbootstrap_strategy . '/envbootstrap.php';
 if (!is_readable($envbootstrap)) {
-    echo "Main envbootstrap file not available.";
+    echo "Main envbootstrap file not available ($envbootstrap).";
     die(2);
 }
 require_once($envbootstrap);
@@ -17,11 +23,8 @@ date_default_timezone_set('UTC');
 
 // Setup some inter-app path aliases
 $basePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..';
-$root = $basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..';
-Yii::setPathOfAlias('backend', $root . DIRECTORY_SEPARATOR . 'cms');
-Yii::setPathOfAlias('common', $root . DIRECTORY_SEPARATOR . 'common');
-Yii::setPathOfAlias('frontend', $root . DIRECTORY_SEPARATOR . 'frontend');
-Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
+$root = $basePath . DIRECTORY_SEPARATOR . '..';
+Yii::setPathOfAlias('root', $root);
 
 $gcmsConfig = array(
     'name' => 'Gapminder CMS',
@@ -37,7 +40,7 @@ $gcmsConfig = array(
     ),
     'aliases' => array(
         // bower components
-        'bower-components' => 'backend.bower_components',
+        'bower-components' => 'root.bower_components',
         // i18n
         'i18n-columns' => 'vendor.neam.yii-i18n-columns',
         'i18n-attribute-messages' => 'vendor.neam.yii-i18n-attribute-messages',
@@ -223,7 +226,7 @@ $gcmsConfig = array(
         */
         'authManager' => array(
             'class' => 'vendor.codemix.hybridauthmanager.HybridAuthManager',
-            'authFile' => Yii::getPathOfAlias('backend') . '/app/data/auth-gcms.php',
+            'authFile' => Yii::getPathOfAlias('root') . '/app/data/auth-gcms.php',
             'defaultRoles' => array('Anonymous', 'Member'),
         ),
         'assetManager' => array(
@@ -251,7 +254,7 @@ $gcmsConfig = array(
     )
 );
 
-require('logging.php');
-require('mail.php');
+require('includes/logging.php');
+require('includes/mail.php');
 
 return $gcmsConfig;

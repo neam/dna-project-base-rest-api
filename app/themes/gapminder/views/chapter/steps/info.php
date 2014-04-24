@@ -28,6 +28,9 @@
     <?php echo $form->select2ControlGroup(
         $model,
         'thumbnail_media_id',
-        $model->getThumbnailOptions()
+        $model->getThumbnailOptions(),
+        array(
+            'empty' => Yii::t('app', 'None'),
+        )
     ); ?>
 <?php endif; ?>

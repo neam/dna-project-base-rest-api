@@ -32,7 +32,14 @@ EOF;
 ?>
 <div class="file-field-3cols">
     <div class="field-column">
-        <?php echo $form->select2ControlGroup($model, 'json_import_media_id', $model->getJsonFileOptions()); ?>
+        <?php echo $form->select2ControlGroup(
+            $model,
+            'json_import_media_id',
+            $model->getJsonFileOptions(),
+            array(
+                'empty' => Yii::t('app', 'None'),
+            )
+        ); ?>
     </div>
     <div class="field-column">
         <div class="form-group">

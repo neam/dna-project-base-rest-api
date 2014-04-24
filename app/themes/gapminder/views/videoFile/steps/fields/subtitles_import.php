@@ -31,7 +31,14 @@ EOF;
 ?>
 <div class="file-field-3cols">
     <div class="field-column">
-        <?php echo $form->select2ControlGroup($model, 'subtitles_import_media_id', $model->getSubtitleOptions()); ?>
+        <?php echo $form->select2ControlGroup(
+            $model,
+            'subtitles_import_media_id',
+            $model->getSubtitleOptions(),
+            array(
+                'empty' => Yii::t('app', 'None'),
+            )
+        ); ?>
     </div>
     <div class="field-column">
         <div class="form-group">

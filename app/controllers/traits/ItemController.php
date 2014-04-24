@@ -252,6 +252,18 @@ trait ItemController
     }
 
     /**
+     * Returns the first step in the translation workflow. Falls back to ItemController::firstFlowStep().
+     * @param ActiveRecord|ItemTrait $item
+     * @return string
+     */
+    protected function firstTranslationFlowStep($item)
+    {
+        return (isset($item->firstTranslationFlowStep))
+            ? $item->firstTranslationFlowStep
+            : $this->firstFlowStep($item);
+    }
+
+    /**
      * Returns the target translation language. Defaults to null if undefined.
      * @return string|null
      */
@@ -916,11 +928,14 @@ trait ItemController
     /**
      * Returns actions based on the current qa state TODO: and access rules
      * together with progress calculations and whether or not the action is available yet or not
+     * @param ActiveRecord|ItemTrait|QaStateBehavior $item
+     * @param string $validationScenario
+     * @param string $caption
+     * @param string|null $translateInto
      * @return array
      */
     public function populateWorkflowData($item, $validationScenario, $caption, $translateInto = null)
     {
-
         $this->workflowData["action"] = $this->action->id;
         $this->workflowData["caption"] = $caption;
         $this->workflowData["validationScenario"] = $validationScenario;
@@ -978,8 +993,9 @@ trait ItemController
 
         $stepCaptions = $item->flowStepCaptions();
         foreach ($item->flowSteps() as $step => $fields) {
-
             // todo: do this some other way
+
+            /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
             $model = $item->asa('i18n-attribute-messages') !== null ? $item->edited() : $item;
 
             if ($this->action->id == "translate" && $translateInto !== null) {

@@ -22,7 +22,7 @@ class Section extends BaseSection
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return isset($this->title) ? $this->title : 'Section #' . $this->id;
     }
 
     public function behaviors()
@@ -35,16 +35,20 @@ class Section extends BaseSection
 
     public function relations()
     {
-        return array_merge(parent::relations(), array(
-            'htmlChunks' => array(self::MANY_MANY, 'HtmlChunk', 'section_content(section_id, html_chunk_id)'),
-            'snapshots' => array(self::MANY_MANY, 'Snapshot', 'section_content(section_id, snapshot_id)'),
-            'videoFiles' => array(self::MANY_MANY, 'VideoFile', 'section_content(section_id, video_file_id)'),
-            'exercises' => array(self::MANY_MANY, 'Exercise', 'section_content(section_id, exercise_id)'),
-            'slideshoFiles' => array(self::MANY_MANY, 'SlideshowFIle', 'section_content(section_id, slideshow_file_id)'),
-            'dataArticles' => array(self::MANY_MANY, 'DataArticle', 'section_content(section_id, data_chunk_id)'),
-            'downloadLinks' => array(self::MANY_MANY, 'DownloadLink', 'section_content(section_id, download_link_id)'),
-            'examQuestions' => array(self::MANY_MANY, 'ExamQuestion', 'section_content(section_id, exam_question_id)'),
-        ));
+        return array_merge(
+            parent::relations(),
+            array(
+                'contents' => array(
+                    self::HAS_MANY,
+                    'Node',
+                    array('id', 'id'),
+                    'through' => 'outNodes',
+                    'condition' => 'outEdges.relation = :relation',
+                    'order' => 'outEdges.weight ASC',
+                    'params' => array(':relation' => 'contents'),
+                ),
+            )
+        );
     }
 
     public function rules()

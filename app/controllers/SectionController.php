@@ -76,6 +76,15 @@ class SectionController extends Controller
         $model->page_id = $pageId;
 
         if ($model->save()) {
+
+            if ($page = Page::model()->findByPk($pageId)) {
+                $edge = new Edge();
+                $edge->from_node_id = $page->node_id;;
+                $edge->to_node_id = $model->node_id;
+                $edge->relation = 'sections';
+                $edge->save();
+            }
+
             $this->redirect(array('/section/continueAuthoring', 'id' => $model->id));
         }
 

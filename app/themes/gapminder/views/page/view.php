@@ -10,8 +10,11 @@
 
 <div class="<?php echo $this->getCssClasses($model); ?>">
     <div class="after-flowbar">
+
         <div class="content">
-            <?php echo $model->about; ?>
+            <?php foreach ($model->sections as $section): ?>
+                <?php $this->renderPartial('/section/view', array('model' => $section)); ?>
+            <?php endforeach; ?>
         </div>
 
     </div>

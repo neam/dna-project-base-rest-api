@@ -29,7 +29,14 @@ EOF;
 ?>
 <div class="file-field-3cols">
     <div class="field-column">
-        <?php echo $form->select2ControlGroup($model, 'pot_import_media_id', $model->getPoOptions()); ?>
+        <?php echo $form->select2ControlGroup(
+            $model,
+            'pot_import_media_id',
+            $model->getPoOptions(),
+            array(
+                'empty' => Yii::t('app', 'None'),
+            )
+        ); ?>
     </div>
     <div class="field-column">
         <div class="form-group">

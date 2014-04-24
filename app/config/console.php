@@ -124,6 +124,11 @@ $consoleConfig = array(
         'mysqldump' => array(
             'class' => 'vendor.crisu83.yii-consoletools.commands.MysqldumpCommand',
             'basePath' => dirname(__DIR__) . '/..',
+            'dumpPath' => '/db',
+        ),
+        'mysqldump-dbTest' => array(
+            'class' => 'vendor.crisu83.yii-consoletools.commands.MysqldumpCommand',
+            'basePath' => dirname(__DIR__) . '/..',
             'dumpPath' => '/tests/codeception/_data',
             'connectionID' => 'dbTest',
         ),
