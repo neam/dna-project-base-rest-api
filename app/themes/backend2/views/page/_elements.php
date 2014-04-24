@@ -98,6 +98,8 @@
             <?php echo $form->textFieldRow($model, 'slug_zh_cn', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_zh_tw', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'page_qa_state_id', array('maxlength' => 20)); ?>
         </div>
     </div>
     <!-- main inputs -->

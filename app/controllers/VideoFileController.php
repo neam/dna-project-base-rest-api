@@ -1,5 +1,7 @@
 <?php
 
+use Alchemy\Zippy\Zippy;
+
 class VideoFileController extends Controller
 {
 
@@ -27,6 +29,7 @@ class VideoFileController extends Controller
             array('allow',
                 'actions' => array(
                     'subtitles',
+                    'downloadSubtitles',
                 ),
                 'users' => array('*'),
             ),
@@ -34,7 +37,6 @@ class VideoFileController extends Controller
                 'actions' => array(
                     'index',
                     'view',
-                    'edit',
                 ),
                 'users' => array('@'),
             ),
@@ -107,18 +109,67 @@ class VideoFileController extends Controller
         return true;
     }
 
+    /**
+     * Translate workflow
+     * @param $id
+     * @param $step
+     * @param $translateInto
+     */
+    public function actionTranslate($id, $step, $translateInto)
+    {
+        $this->scenario = "into_$translateInto-step_$step";
+        $model = $this->loadModel($id);
+        $model->scenario = $this->scenario;
+        $subtitles = $model->getParsedSubtitles();
+        if (isset($_POST['SourceMessage']) && !empty($_POST['SourceMessage'])) {
+            foreach ($_POST['SourceMessage'] as $id => $translation) {
+                $message = Message::model()->findByAttributes(array(
+                    'id' => $id,
+                    'language' => $translateInto,
+                ));
+                if (!isset($message)) {
+                    $message = new Message();
+                    $message->id = $id;
+                    $message->language = $translateInto;
+                }
+                $message->translation = $translation;
+                $message->save();
+            }
+        }
+        if (!empty($subtitles)) {
+            $this->performAjaxValidation($model);
+            $this->saveAndContinueOnSuccess($model);
+            $this->populateWorkflowData(
+                $model,
+                "translate",
+                Yii::t(
+                    'app',
+                    'Translate into {translateIntoLanguage}',
+                    array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])
+                ),
+                $translateInto
+            );
+            $stepCaptions = $model->flowStepCaptions();
+            $this->render(
+                '/_item/edit',
+                array(
+                    'model' => $model,
+                    'step' => $step,
+                    'stepCaption' => $stepCaptions[$step],
+                )
+            );
+        } else {
+            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_ERROR, Yii::t('app', 'Unable to translate video: subtitles are missing or cannot be parsed.'));
+            $this->redirect(array('/videoFile/browse'));
+        }
+    }
+
     public function actionSubtitles($id)
     {
         $model = $this->loadModel($id);
 
-        $subtitles = $model->getParsedSubtitles();
-
-        foreach ($subtitles as $subtitle) {
-            echo "{$subtitle->id}\n";
-            echo "{$subtitle->timestamp}\n";
-            echo Yii::t("video-{$model->id}-subtitles", $subtitle->sourceMessage, array(), 'displayedMessages', Yii::app()->language) . "\n";
-            echo "\n";
-        }
+        $parsedSubtitles = $model->getParsedSubtitles();
+        echo $model->getTranslatedSubtitles($parsedSubtitles);
 
         exit;
     }
@@ -214,7 +265,6 @@ class VideoFileController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
         $es = new TbEditableSaver('VideoFile'); // classname of model to be updated
         $es->update();
     }
@@ -281,6 +331,11 @@ class VideoFileController extends Controller
         $this->render('admin', array('model' => $model,));
     }
 
+    /**
+     * @param $id
+     * @return VideoFile
+     * @throws CHttpException
+     */
     public function loadModel($id)
     {
         $model = VideoFile::model()->findByPk($id);
@@ -350,6 +405,49 @@ class VideoFileController extends Controller
         }
 
         return $related;
+    }
+
+    /**
+     * Action for downloading all video subtitles as a zip file.
+     * @param int $id model id.
+     * @throws CException if the zip archive cannot be created.
+     */
+    public function actionDownloadSubtitles($id)
+    {
+        $model = $this->loadModel($id);
+
+        $runtimePath = Yii::app()->getRuntimePath();
+        $hash = sha1(microtime(true));
+        $basePath = "$runtimePath/video_subtitles_{$model->id}_$hash";
+
+        if (!mkdir($basePath)) {
+            throw new CException('Failed to create temporary directory for subtitles.');
+        }
+
+        $paths = array();
+
+        $fileName = "subtitles.srt";
+        $path = "$basePath/{$fileName}";
+        file_put_contents($path, $model->_subtitles);
+        $paths[$fileName] = $path;
+
+        foreach (Yii::app()->params['languages'] as $locale => $name) {
+            $fileName = "subtitles_$locale.srt";
+            $path = "$basePath/{$fileName}";
+            $attribute = "subtitles_$locale";
+            if (!empty($model->$attribute)) {
+                file_put_contents($path, $model->$attribute);
+                $paths[$fileName] = $path;
+            }
+        }
+
+        $fileName = "srt.zip";
+        $filePath = "$basePath/$fileName";
+
+        $zip = Zippy::load();
+        $zip->create($filePath, $paths);
+
+        Yii::app()->request->sendFile($fileName, file_get_contents($filePath));
     }
 
 }

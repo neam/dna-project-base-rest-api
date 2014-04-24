@@ -7,11 +7,12 @@
  * @property string $id
  * @property integer $version
  * @property string $cloned_from_id
+ * @property string $ref
  * @property string $_title
  * @property string $slug_en
  * @property string $_about
  * @property string $embed_template
- * @property string $po_file_id
+ * @property string $i18n_catalog_id
  * @property string $created
  * @property string $modified
  * @property integer $owner_id
@@ -59,14 +60,15 @@
  * @property string $slug_vi
  * @property string $slug_zh_cn
  * @property string $slug_zh_tw
+ * @property string $slug_fa
  *
  * Relations of table "tool" available as properties of the model:
  * @property Snapshot[] $snapshots
  * @property Node $node
- * @property PoFile $poFile
+ * @property I18nCatalog $i18nCatalog
  * @property Tool $clonedFrom
  * @property Tool[] $tools
- * @property Users $owner
+ * @property Account $owner
  * @property ToolQaState $toolQaState
  */
 abstract class BaseTool extends ActiveRecord
@@ -86,12 +88,12 @@ abstract class BaseTool extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _about, embed_template, po_file_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, tool_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, ref, _title, slug_en, _about, embed_template, i18n_catalog_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, tool_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, owner_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, po_file_id, node_id, tool_qa_state_id', 'length', 'max' => 20),
-                array('_title, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
+                array('cloned_from_id, i18n_catalog_id, node_id, tool_qa_state_id', 'length', 'max' => 20),
+                array('ref, _title, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'length', 'max' => 255),
                 array('_about, embed_template, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _about, embed_template, po_file_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, tool_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, ref, _title, slug_en, _about, embed_template, i18n_catalog_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, tool_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -118,10 +120,10 @@ abstract class BaseTool extends ActiveRecord
             parent::relations(), array(
                 'snapshots' => array(self::HAS_MANY, 'Snapshot', 'tool_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
-                'poFile' => array(self::BELONGS_TO, 'PoFile', 'po_file_id'),
+                'i18nCatalog' => array(self::BELONGS_TO, 'I18nCatalog', 'i18n_catalog_id'),
                 'clonedFrom' => array(self::BELONGS_TO, 'Tool', 'cloned_from_id'),
                 'tools' => array(self::HAS_MANY, 'Tool', 'cloned_from_id'),
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'toolQaState' => array(self::BELONGS_TO, 'ToolQaState', 'tool_qa_state_id'),
             )
         );
@@ -133,11 +135,12 @@ abstract class BaseTool extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'version' => Yii::t('model', 'Version'),
             'cloned_from_id' => Yii::t('model', 'Cloned From'),
+            'ref' => Yii::t('model', 'Ref'),
             '_title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
             '_about' => Yii::t('model', 'About'),
             'embed_template' => Yii::t('model', 'Embed Template'),
-            'po_file_id' => Yii::t('model', 'Po File'),
+            'i18n_catalog_id' => Yii::t('model', 'I18n Catalog'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'owner_id' => Yii::t('model', 'Owner'),
@@ -185,6 +188,7 @@ abstract class BaseTool extends ActiveRecord
             'slug_vi' => Yii::t('model', 'Slug Vi'),
             'slug_zh_cn' => Yii::t('model', 'Slug Zh Cn'),
             'slug_zh_tw' => Yii::t('model', 'Slug Zh Tw'),
+            'slug_fa' => Yii::t('model', 'Slug Fa'),
         );
     }
 
@@ -197,11 +201,12 @@ abstract class BaseTool extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.version', $this->version);
         $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
+        $criteria->compare('t.ref', $this->ref, true);
         $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
         $criteria->compare('t._about', $this->_about, true);
         $criteria->compare('t.embed_template', $this->embed_template, true);
-        $criteria->compare('t.po_file_id', $this->po_file_id);
+        $criteria->compare('t.i18n_catalog_id', $this->i18n_catalog_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.owner_id', $this->owner_id);
@@ -249,6 +254,7 @@ abstract class BaseTool extends ActiveRecord
         $criteria->compare('t.slug_vi', $this->slug_vi, true);
         $criteria->compare('t.slug_zh_cn', $this->slug_zh_cn, true);
         $criteria->compare('t.slug_zh_tw', $this->slug_zh_tw, true);
+        $criteria->compare('t.slug_fa', $this->slug_fa, true);
 
 
         return $criteria;

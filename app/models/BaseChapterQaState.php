@@ -7,38 +7,8 @@
  * @property string $id
  * @property string $status
  * @property integer $draft_validation_progress
- * @property integer $preview_validation_progress
- * @property integer $public_validation_progress
- * @property integer $approval_progress
- * @property integer $proofing_progress
- * @property integer $translations_draft_validation_progress
- * @property integer $translations_preview_validation_progress
- * @property integer $translations_public_validation_progress
- * @property integer $translations_approval_progress
- * @property integer $translations_proofing_progress
- * @property integer $previewing_welcome
- * @property integer $candidate_for_public_status
- * @property integer $title_approved
- * @property integer $slug_approved
- * @property integer $thumbnail_approved
- * @property integer $about_approved
- * @property integer $video_approved
- * @property integer $teachers_guide_approved
- * @property integer $exercises_approved
- * @property integer $snapshots_approved
- * @property integer $credits_approved
- * @property integer $title_proofed
- * @property integer $slug_proofed
- * @property integer $thumbnail_proofed
- * @property integer $about_proofed
- * @property integer $video_proofed
- * @property integer $teachers_guide_proofed
- * @property integer $exercises_proofed
- * @property integer $snapshots_proofed
- * @property integer $credits_proofed
- * @property integer $draft_saved
- * @property integer $videos_approved
- * @property integer $videos_proofed
+ * @property integer $reviewable_validation_progress
+ * @property integer $publishable_validation_progress
  * @property integer $translate_into_en_validation_progress
  * @property integer $translate_into_ar_validation_progress
  * @property integer $translate_into_bg_validation_progress
@@ -82,18 +52,31 @@
  * @property integer $translate_into_zh_validation_progress
  * @property integer $translate_into_zh_cn_validation_progress
  * @property integer $translate_into_zh_tw_validation_progress
+ * @property integer $approval_progress
+ * @property integer $proofing_progress
+ * @property integer $allow_review
+ * @property integer $allow_publish
  * @property integer $title_en_approved
  * @property integer $slug_en_approved
  * @property integer $about_en_approved
  * @property integer $thumbnail_media_id_approved
  * @property integer $teachers_guide_en_approved
+ * @property integer $exercises_approved
+ * @property integer $videos_approved
+ * @property integer $snapshots_approved
  * @property integer $related_approved
+ * @property integer $title_approved
  * @property integer $title_en_proofed
  * @property integer $slug_en_proofed
  * @property integer $about_en_proofed
  * @property integer $thumbnail_media_id_proofed
  * @property integer $teachers_guide_en_proofed
+ * @property integer $exercises_proofed
+ * @property integer $videos_proofed
+ * @property integer $snapshots_proofed
  * @property integer $related_proofed
+ * @property integer $title_proofed
+ * @property integer $translate_into_fa_validation_progress
  *
  * Relations of table "chapter_qa_state" available as properties of the model:
  * @property Chapter[] $chapters
@@ -115,10 +98,10 @@ abstract class BaseChapterQaState extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, thumbnail_approved, about_approved, video_approved, teachers_guide_approved, exercises_approved, snapshots_approved, credits_approved, title_proofed, slug_proofed, thumbnail_proofed, about_proofed, video_proofed, teachers_guide_proofed, exercises_proofed, snapshots_proofed, credits_proofed, draft_saved, videos_approved, videos_proofed, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, title_en_approved, slug_en_approved, about_en_approved, thumbnail_media_id_approved, teachers_guide_en_approved, related_approved, title_en_proofed, slug_en_proofed, about_en_proofed, thumbnail_media_id_proofed, teachers_guide_en_proofed, related_proofed', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, thumbnail_approved, about_approved, video_approved, teachers_guide_approved, exercises_approved, snapshots_approved, credits_approved, title_proofed, slug_proofed, thumbnail_proofed, about_proofed, video_proofed, teachers_guide_proofed, exercises_proofed, snapshots_proofed, credits_proofed, draft_saved, videos_approved, videos_proofed, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, title_en_approved, slug_en_approved, about_en_approved, thumbnail_media_id_approved, teachers_guide_en_approved, related_approved, title_en_proofed, slug_en_proofed, about_en_proofed, thumbnail_media_id_proofed, teachers_guide_en_proofed, related_proofed', 'numerical', 'integerOnly' => true),
+                array('status, draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, title_en_approved, slug_en_approved, about_en_approved, thumbnail_media_id_approved, teachers_guide_en_approved, exercises_approved, videos_approved, snapshots_approved, related_approved, title_approved, title_en_proofed, slug_en_proofed, about_en_proofed, thumbnail_media_id_proofed, teachers_guide_en_proofed, exercises_proofed, videos_proofed, snapshots_proofed, related_proofed, title_proofed, translate_into_fa_validation_progress', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, title_en_approved, slug_en_approved, about_en_approved, thumbnail_media_id_approved, teachers_guide_en_approved, exercises_approved, videos_approved, snapshots_approved, related_approved, title_approved, title_en_proofed, slug_en_proofed, about_en_proofed, thumbnail_media_id_proofed, teachers_guide_en_proofed, exercises_proofed, videos_proofed, snapshots_proofed, related_proofed, title_proofed, translate_into_fa_validation_progress', 'numerical', 'integerOnly' => true),
                 array('status', 'length', 'max' => 255),
-                array('id, status, draft_validation_progress, preview_validation_progress, public_validation_progress, approval_progress, proofing_progress, translations_draft_validation_progress, translations_preview_validation_progress, translations_public_validation_progress, translations_approval_progress, translations_proofing_progress, previewing_welcome, candidate_for_public_status, title_approved, slug_approved, thumbnail_approved, about_approved, video_approved, teachers_guide_approved, exercises_approved, snapshots_approved, credits_approved, title_proofed, slug_proofed, thumbnail_proofed, about_proofed, video_proofed, teachers_guide_proofed, exercises_proofed, snapshots_proofed, credits_proofed, draft_saved, videos_approved, videos_proofed, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, title_en_approved, slug_en_approved, about_en_approved, thumbnail_media_id_approved, teachers_guide_en_approved, related_approved, title_en_proofed, slug_en_proofed, about_en_proofed, thumbnail_media_id_proofed, teachers_guide_en_proofed, related_proofed', 'safe', 'on' => 'search'),
+                array('id, status, draft_validation_progress, reviewable_validation_progress, publishable_validation_progress, translate_into_en_validation_progress, translate_into_ar_validation_progress, translate_into_bg_validation_progress, translate_into_ca_validation_progress, translate_into_cs_validation_progress, translate_into_da_validation_progress, translate_into_de_validation_progress, translate_into_en_gb_validation_progress, translate_into_en_us_validation_progress, translate_into_el_validation_progress, translate_into_es_validation_progress, translate_into_fi_validation_progress, translate_into_fil_validation_progress, translate_into_fr_validation_progress, translate_into_hi_validation_progress, translate_into_hr_validation_progress, translate_into_hu_validation_progress, translate_into_id_validation_progress, translate_into_iw_validation_progress, translate_into_it_validation_progress, translate_into_ja_validation_progress, translate_into_ko_validation_progress, translate_into_lt_validation_progress, translate_into_lv_validation_progress, translate_into_nl_validation_progress, translate_into_no_validation_progress, translate_into_pl_validation_progress, translate_into_pt_validation_progress, translate_into_pt_br_validation_progress, translate_into_pt_pt_validation_progress, translate_into_ro_validation_progress, translate_into_ru_validation_progress, translate_into_sk_validation_progress, translate_into_sl_validation_progress, translate_into_sr_validation_progress, translate_into_sv_validation_progress, translate_into_th_validation_progress, translate_into_tr_validation_progress, translate_into_uk_validation_progress, translate_into_vi_validation_progress, translate_into_zh_validation_progress, translate_into_zh_cn_validation_progress, translate_into_zh_tw_validation_progress, approval_progress, proofing_progress, allow_review, allow_publish, title_en_approved, slug_en_approved, about_en_approved, thumbnail_media_id_approved, teachers_guide_en_approved, exercises_approved, videos_approved, snapshots_approved, related_approved, title_approved, title_en_proofed, slug_en_proofed, about_en_proofed, thumbnail_media_id_proofed, teachers_guide_en_proofed, exercises_proofed, videos_proofed, snapshots_proofed, related_proofed, title_proofed, translate_into_fa_validation_progress', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -154,38 +137,8 @@ abstract class BaseChapterQaState extends ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'status' => Yii::t('model', 'Status'),
             'draft_validation_progress' => Yii::t('model', 'Draft Validation Progress'),
-            'preview_validation_progress' => Yii::t('model', 'Preview Validation Progress'),
-            'public_validation_progress' => Yii::t('model', 'Public Validation Progress'),
-            'approval_progress' => Yii::t('model', 'Approval Progress'),
-            'proofing_progress' => Yii::t('model', 'Proofing Progress'),
-            'translations_draft_validation_progress' => Yii::t('model', 'Translations Draft Validation Progress'),
-            'translations_preview_validation_progress' => Yii::t('model', 'Translations Preview Validation Progress'),
-            'translations_public_validation_progress' => Yii::t('model', 'Translations Public Validation Progress'),
-            'translations_approval_progress' => Yii::t('model', 'Translations Approval Progress'),
-            'translations_proofing_progress' => Yii::t('model', 'Translations Proofing Progress'),
-            'previewing_welcome' => Yii::t('model', 'Previewing Welcome'),
-            'candidate_for_public_status' => Yii::t('model', 'Candidate For Public Status'),
-            'title_approved' => Yii::t('model', 'Title Approved'),
-            'slug_approved' => Yii::t('model', 'Slug Approved'),
-            'thumbnail_approved' => Yii::t('model', 'Thumbnail Approved'),
-            'about_approved' => Yii::t('model', 'About Approved'),
-            'video_approved' => Yii::t('model', 'Video Approved'),
-            'teachers_guide_approved' => Yii::t('model', 'Teachers Guide Approved'),
-            'exercises_approved' => Yii::t('model', 'Exercises Approved'),
-            'snapshots_approved' => Yii::t('model', 'Snapshots Approved'),
-            'credits_approved' => Yii::t('model', 'Credits Approved'),
-            'title_proofed' => Yii::t('model', 'Title Proofed'),
-            'slug_proofed' => Yii::t('model', 'Slug Proofed'),
-            'thumbnail_proofed' => Yii::t('model', 'Thumbnail Proofed'),
-            'about_proofed' => Yii::t('model', 'About Proofed'),
-            'video_proofed' => Yii::t('model', 'Video Proofed'),
-            'teachers_guide_proofed' => Yii::t('model', 'Teachers Guide Proofed'),
-            'exercises_proofed' => Yii::t('model', 'Exercises Proofed'),
-            'snapshots_proofed' => Yii::t('model', 'Snapshots Proofed'),
-            'credits_proofed' => Yii::t('model', 'Credits Proofed'),
-            'draft_saved' => Yii::t('model', 'Draft Saved'),
-            'videos_approved' => Yii::t('model', 'Videos Approved'),
-            'videos_proofed' => Yii::t('model', 'Videos Proofed'),
+            'reviewable_validation_progress' => Yii::t('model', 'Reviewable Validation Progress'),
+            'publishable_validation_progress' => Yii::t('model', 'Publishable Validation Progress'),
             'translate_into_en_validation_progress' => Yii::t('model', 'Translate Into En Validation Progress'),
             'translate_into_ar_validation_progress' => Yii::t('model', 'Translate Into Ar Validation Progress'),
             'translate_into_bg_validation_progress' => Yii::t('model', 'Translate Into Bg Validation Progress'),
@@ -229,18 +182,31 @@ abstract class BaseChapterQaState extends ActiveRecord
             'translate_into_zh_validation_progress' => Yii::t('model', 'Translate Into Zh Validation Progress'),
             'translate_into_zh_cn_validation_progress' => Yii::t('model', 'Translate Into Zh Cn Validation Progress'),
             'translate_into_zh_tw_validation_progress' => Yii::t('model', 'Translate Into Zh Tw Validation Progress'),
+            'approval_progress' => Yii::t('model', 'Approval Progress'),
+            'proofing_progress' => Yii::t('model', 'Proofing Progress'),
+            'allow_review' => Yii::t('model', 'Allow Review'),
+            'allow_publish' => Yii::t('model', 'Allow Publish'),
             'title_en_approved' => Yii::t('model', 'Title En Approved'),
             'slug_en_approved' => Yii::t('model', 'Slug En Approved'),
             'about_en_approved' => Yii::t('model', 'About En Approved'),
             'thumbnail_media_id_approved' => Yii::t('model', 'Thumbnail Media Id Approved'),
             'teachers_guide_en_approved' => Yii::t('model', 'Teachers Guide En Approved'),
+            'exercises_approved' => Yii::t('model', 'Exercises Approved'),
+            'videos_approved' => Yii::t('model', 'Videos Approved'),
+            'snapshots_approved' => Yii::t('model', 'Snapshots Approved'),
             'related_approved' => Yii::t('model', 'Related Approved'),
+            'title_approved' => Yii::t('model', 'Title Approved'),
             'title_en_proofed' => Yii::t('model', 'Title En Proofed'),
             'slug_en_proofed' => Yii::t('model', 'Slug En Proofed'),
             'about_en_proofed' => Yii::t('model', 'About En Proofed'),
             'thumbnail_media_id_proofed' => Yii::t('model', 'Thumbnail Media Id Proofed'),
             'teachers_guide_en_proofed' => Yii::t('model', 'Teachers Guide En Proofed'),
+            'exercises_proofed' => Yii::t('model', 'Exercises Proofed'),
+            'videos_proofed' => Yii::t('model', 'Videos Proofed'),
+            'snapshots_proofed' => Yii::t('model', 'Snapshots Proofed'),
             'related_proofed' => Yii::t('model', 'Related Proofed'),
+            'title_proofed' => Yii::t('model', 'Title Proofed'),
+            'translate_into_fa_validation_progress' => Yii::t('model', 'Translate Into Fa Validation Progress'),
         );
     }
 
@@ -253,38 +219,8 @@ abstract class BaseChapterQaState extends ActiveRecord
         $criteria->compare('t.id', $this->id, true);
         $criteria->compare('t.status', $this->status, true);
         $criteria->compare('t.draft_validation_progress', $this->draft_validation_progress);
-        $criteria->compare('t.preview_validation_progress', $this->preview_validation_progress);
-        $criteria->compare('t.public_validation_progress', $this->public_validation_progress);
-        $criteria->compare('t.approval_progress', $this->approval_progress);
-        $criteria->compare('t.proofing_progress', $this->proofing_progress);
-        $criteria->compare('t.translations_draft_validation_progress', $this->translations_draft_validation_progress);
-        $criteria->compare('t.translations_preview_validation_progress', $this->translations_preview_validation_progress);
-        $criteria->compare('t.translations_public_validation_progress', $this->translations_public_validation_progress);
-        $criteria->compare('t.translations_approval_progress', $this->translations_approval_progress);
-        $criteria->compare('t.translations_proofing_progress', $this->translations_proofing_progress);
-        $criteria->compare('t.previewing_welcome', $this->previewing_welcome);
-        $criteria->compare('t.candidate_for_public_status', $this->candidate_for_public_status);
-        $criteria->compare('t.title_approved', $this->title_approved);
-        $criteria->compare('t.slug_approved', $this->slug_approved);
-        $criteria->compare('t.thumbnail_approved', $this->thumbnail_approved);
-        $criteria->compare('t.about_approved', $this->about_approved);
-        $criteria->compare('t.video_approved', $this->video_approved);
-        $criteria->compare('t.teachers_guide_approved', $this->teachers_guide_approved);
-        $criteria->compare('t.exercises_approved', $this->exercises_approved);
-        $criteria->compare('t.snapshots_approved', $this->snapshots_approved);
-        $criteria->compare('t.credits_approved', $this->credits_approved);
-        $criteria->compare('t.title_proofed', $this->title_proofed);
-        $criteria->compare('t.slug_proofed', $this->slug_proofed);
-        $criteria->compare('t.thumbnail_proofed', $this->thumbnail_proofed);
-        $criteria->compare('t.about_proofed', $this->about_proofed);
-        $criteria->compare('t.video_proofed', $this->video_proofed);
-        $criteria->compare('t.teachers_guide_proofed', $this->teachers_guide_proofed);
-        $criteria->compare('t.exercises_proofed', $this->exercises_proofed);
-        $criteria->compare('t.snapshots_proofed', $this->snapshots_proofed);
-        $criteria->compare('t.credits_proofed', $this->credits_proofed);
-        $criteria->compare('t.draft_saved', $this->draft_saved);
-        $criteria->compare('t.videos_approved', $this->videos_approved);
-        $criteria->compare('t.videos_proofed', $this->videos_proofed);
+        $criteria->compare('t.reviewable_validation_progress', $this->reviewable_validation_progress);
+        $criteria->compare('t.publishable_validation_progress', $this->publishable_validation_progress);
         $criteria->compare('t.translate_into_en_validation_progress', $this->translate_into_en_validation_progress);
         $criteria->compare('t.translate_into_ar_validation_progress', $this->translate_into_ar_validation_progress);
         $criteria->compare('t.translate_into_bg_validation_progress', $this->translate_into_bg_validation_progress);
@@ -328,18 +264,31 @@ abstract class BaseChapterQaState extends ActiveRecord
         $criteria->compare('t.translate_into_zh_validation_progress', $this->translate_into_zh_validation_progress);
         $criteria->compare('t.translate_into_zh_cn_validation_progress', $this->translate_into_zh_cn_validation_progress);
         $criteria->compare('t.translate_into_zh_tw_validation_progress', $this->translate_into_zh_tw_validation_progress);
+        $criteria->compare('t.approval_progress', $this->approval_progress);
+        $criteria->compare('t.proofing_progress', $this->proofing_progress);
+        $criteria->compare('t.allow_review', $this->allow_review);
+        $criteria->compare('t.allow_publish', $this->allow_publish);
         $criteria->compare('t.title_en_approved', $this->title_en_approved);
         $criteria->compare('t.slug_en_approved', $this->slug_en_approved);
         $criteria->compare('t.about_en_approved', $this->about_en_approved);
         $criteria->compare('t.thumbnail_media_id_approved', $this->thumbnail_media_id_approved);
         $criteria->compare('t.teachers_guide_en_approved', $this->teachers_guide_en_approved);
+        $criteria->compare('t.exercises_approved', $this->exercises_approved);
+        $criteria->compare('t.videos_approved', $this->videos_approved);
+        $criteria->compare('t.snapshots_approved', $this->snapshots_approved);
         $criteria->compare('t.related_approved', $this->related_approved);
+        $criteria->compare('t.title_approved', $this->title_approved);
         $criteria->compare('t.title_en_proofed', $this->title_en_proofed);
         $criteria->compare('t.slug_en_proofed', $this->slug_en_proofed);
         $criteria->compare('t.about_en_proofed', $this->about_en_proofed);
         $criteria->compare('t.thumbnail_media_id_proofed', $this->thumbnail_media_id_proofed);
         $criteria->compare('t.teachers_guide_en_proofed', $this->teachers_guide_en_proofed);
+        $criteria->compare('t.exercises_proofed', $this->exercises_proofed);
+        $criteria->compare('t.videos_proofed', $this->videos_proofed);
+        $criteria->compare('t.snapshots_proofed', $this->snapshots_proofed);
         $criteria->compare('t.related_proofed', $this->related_proofed);
+        $criteria->compare('t.title_proofed', $this->title_proofed);
+        $criteria->compare('t.translate_into_fa_validation_progress', $this->translate_into_fa_validation_progress);
 
 
         return $criteria;

@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Download Links')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Download Link'); ?>
@@ -67,7 +67,7 @@ $this->breadcrumbs[] = $model->id;
 
         <?php
         $this->widget(
-            'TbDetailView',
+            '\TbDetailView',
             array(
                 'data' => $model,
                 'attributes' => array(
@@ -100,10 +100,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'cloned_from_id',
                         'value' => ($model->clonedFrom !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
                                     array('//downloadLink/view', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//downloadLink/update', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -124,10 +124,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'file_media_id',
                         'value' => ($model->fileMedia !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->fileMedia->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->fileMedia->itemLabel,
                                     array('//p3Media/view', 'id' => $model->fileMedia->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//p3Media/update', 'id' => $model->fileMedia->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -161,21 +161,21 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'owner_id',
                         'value' => ($model->owner !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
-                                    array('//users/view', 'id' => $model->owner->id),
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
+                                    array('//account/view', 'id' => $model->owner->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//users/update', 'id' => $model->owner->id),
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//account/update', 'id' => $model->owner->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->node->itemLabel,
                                     array('//node/view', 'id' => $model->node->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//node/update', 'id' => $model->node->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -183,10 +183,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'download_link_qa_state_id',
                         'value' => ($model->downloadLinkQaState !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->downloadLinkQaState->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->downloadLinkQaState->itemLabel,
                                     array('//downloadLinkQaState/view', 'id' => $model->downloadLinkQaState->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//downloadLinkQaState/update', 'id' => $model->downloadLinkQaState->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',

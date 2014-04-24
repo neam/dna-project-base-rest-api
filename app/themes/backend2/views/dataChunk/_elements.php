@@ -35,7 +35,7 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
                         'icon' => 'icon-plus',
                         'htmlOptions' => array(
@@ -50,7 +50,7 @@
             $this->beginClip('modal:' . $formId . '-modal');
             $this->renderPartial('//p3Media/_modal_form', array(
                 'formId' => $formId,
-                'inputSelector' => '#DataChunk_file_media_id',
+                'inputSelector' => '#DataArticle_file_media_id',
                 'model' => new P3Media,
                 'pk' => 'id',
                 'field' => 'itemLabel',

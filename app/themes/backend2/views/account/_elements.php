@@ -25,7 +25,7 @@
     <div class="span4"> <!-- sub inputs -->
 
         <h3>
-            <?php echo Yii::t('model', 'profiles'); ?>
+            <?php echo Yii::t('model', 'profile'); ?>
         </h3>
         <?php ?>
 

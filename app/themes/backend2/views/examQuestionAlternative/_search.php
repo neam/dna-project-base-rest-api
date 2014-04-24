@@ -1,13 +1,18 @@
 <div class="wide form">
 
     <?php
-    $form = $this->beginWidget('TbActiveForm', array(
+    $form = $this->beginWidget('\TbActiveForm', array(
         'action' => Yii::app()->createUrl($this->route),
         'method' => 'get',
     )); ?>
     <div class="row">
         <?php echo $form->label($model, 'id'); ?>
         <?php ; ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'version'); ?>
+        <?php echo $form->textField($model, 'version'); ?>
     </div>
 
     <div class="row">
@@ -48,6 +53,11 @@
     <div class="row">
         <?php echo $form->label($model, 'node_id'); ?>
         <?php echo $form->textField($model, 'node_id', array('size' => 20, 'maxlength' => 20)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'exam_question_alternative_qa_state_id'); ?>
+        <?php echo $form->textField($model, 'exam_question_alternative_qa_state_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
 

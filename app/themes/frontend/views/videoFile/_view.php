@@ -58,13 +58,13 @@
 
     <?php if (Yii::app()->user->checkAccess('VideoFile.*')): ?>
         <div class="admin-container hide">
-            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            <?php echo CHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
     <?php if (Yii::app()->user->checkAccess('Developer')): ?>
         <div class="admin-container hide">
             <h3>Developer access</h3>
-            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            <?php echo CHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
 
@@ -74,7 +74,7 @@
 <?php if (isset($step)): ?>
     <?php switch ($this->action->id . '-' . $step) {
         case 'translate-subtitles':
-            $this->widget('bootstrap.widgets.TbButton', array(
+            $this->widget('\TbButton', array(
                 'label' => Yii::t('model', 'Load current translations into media player'),
                 'url' => Yii::app()->request->url,
                 'type' => 'primary',
@@ -85,7 +85,7 @@
                 'class' => 'btn btn-primary btn-dirtyforms',
                 'name' => 'save-changes',
             ));
-            $this->widget('bootstrap.widgets.TbButton', array(
+            $this->widget('\TbButton', array(
                 'label' => Yii::t('model', 'Reset'),
                 'url' => Yii::app()->request->url,
                 'htmlOptions' => array(

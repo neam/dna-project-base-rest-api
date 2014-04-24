@@ -21,7 +21,7 @@ Yii::app()->clientScript->registerScript('search', "
     ");
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
     <h1>
 
         <?php echo Yii::t('model', 'Tool Qa States'); ?>
@@ -35,7 +35,7 @@ Yii::app()->clientScript->registerScript('search', "
 
 
 <?php
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'tool-qa-state-grid',
         'dataProvider' => $model->search(),
@@ -43,7 +43,7 @@ $this->widget('TbGridView',
         #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -79,7 +79,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'preview_validation_progress',
+                'name' => 'reviewable_validation_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/toolQaState/editableSaver'),
                     //'placement' => 'right',
@@ -87,7 +87,352 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'public_validation_progress',
+                'name' => 'publishable_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_en_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_ar_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_bg_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            /*
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_ca_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_cs_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_da_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_de_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_en_gb_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_en_us_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_el_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_es_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_fi_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_fil_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_fr_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_hi_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_hr_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_hu_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_id_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_iw_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_it_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_ja_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_ko_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_lt_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_lv_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_nl_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_no_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_pl_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_pt_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_pt_br_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_pt_pt_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_ro_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_ru_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_sk_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_sl_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_sr_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_sv_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_th_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_tr_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_uk_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_vi_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_zh_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_zh_cn_validation_progress',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'translate_into_zh_tw_validation_progress',
                 'editable' => array(
                     'url' => $this->createUrl('/toolQaState/editableSaver'),
                     //'placement' => 'right',
@@ -111,16 +456,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'translations_draft_validation_progress',
-                'editable' => array(
-                    'url' => $this->createUrl('/toolQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            /*
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'translations_preview_validation_progress',
+                'name' => 'allow_review',
                 'editable' => array(
                     'url' => $this->createUrl('/toolQaState/editableSaver'),
                     //'placement' => 'right',
@@ -128,7 +464,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'translations_public_validation_progress',
+                'name' => 'allow_publish',
                 'editable' => array(
                     'url' => $this->createUrl('/toolQaState/editableSaver'),
                     //'placement' => 'right',
@@ -136,7 +472,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'translations_approval_progress',
+                'name' => 'title_en_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/toolQaState/editableSaver'),
                     //'placement' => 'right',
@@ -144,23 +480,7 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'translations_proofing_progress',
-                'editable' => array(
-                    'url' => $this->createUrl('/toolQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'previewing_welcome',
-                'editable' => array(
-                    'url' => $this->createUrl('/toolQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'candidate_for_public_status',
+                'name' => 'slug_en_approved',
                 'editable' => array(
                     'url' => $this->createUrl('/toolQaState/editableSaver'),
                     //'placement' => 'right',
@@ -176,7 +496,15 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'slug_approved',
+                'name' => 'title_en_proofed',
+                'editable' => array(
+                    'url' => $this->createUrl('/toolQaState/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_en_proofed',
                 'editable' => array(
                     'url' => $this->createUrl('/toolQaState/editableSaver'),
                     //'placement' => 'right',
@@ -190,18 +518,10 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            array(
-                'class' => 'TbEditableColumn',
-                'name' => 'slug_proofed',
-                'editable' => array(
-                    'url' => $this->createUrl('/toolQaState/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
             */
 
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'buttons' => array(
                     'view' => array('visible' => 'Yii::app()->user->checkAccess("ToolQaState.View")'),
                     'update' => array('visible' => 'Yii::app()->user->checkAccess("ToolQaState.Update")'),

@@ -3,6 +3,8 @@
 
         <div class="form-horizontal">
 
+            <?php echo $form->textFieldRow($model, 'version'); ?>
+
             <?php
             $input = $this->widget(
                 '\GtcRelation',
@@ -17,7 +19,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'page_id', $input);
+            echo $form->customControlGroup($model, 'page_id', $input);
             ?>
 
             <?php
@@ -27,9 +29,9 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Page'))),
-                        'icon' => 'icon-plus',
+                        'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',
@@ -54,9 +56,9 @@
 
             <?php echo $form->textFieldRow($model, 'slug_en', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textFieldRow($model, 'ordinal'); ?>
-
             <?php echo $form->textFieldRow($model, '_menu_label', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'owner_id'); ?>
 
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
 
@@ -143,6 +145,8 @@
             <?php echo $form->textFieldRow($model, 'slug_zh_cn', array('maxlength' => 255)); ?>
 
             <?php echo $form->textFieldRow($model, 'slug_zh_tw', array('maxlength' => 255)); ?>
+
+            <?php echo $form->textFieldRow($model, 'section_qa_state_id', array('maxlength' => 20)); ?>
         </div>
     </div>
     <!-- main inputs -->
@@ -175,7 +179,7 @@
         <?php ?>
 
         <h3>
-            <?php echo Yii::t('model', 'dataChunks'); ?>
+            <?php echo Yii::t('model', 'dataArticles'); ?>
         </h3>
         <?php ?>
 

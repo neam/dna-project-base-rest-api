@@ -1,7 +1,7 @@
 <div class="wide form">
 
     <?php
-    $form = $this->beginWidget('TbActiveForm', array(
+    $form = $this->beginWidget('\TbActiveForm', array(
         'action' => Yii::app()->createUrl($this->route),
         'method' => 'get',
     )); ?>
@@ -273,6 +273,11 @@
     <div class="row">
         <?php echo $form->label($model, 'processed_media_id_zh_tw'); ?>
         <?php echo $form->textField($model, 'processed_media_id_zh_tw'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'spreadsheet_file_qa_state_id'); ?>
+        <?php echo $form->textField($model, 'spreadsheet_file_qa_state_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
 

@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Data Chunk Qa States')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Data Chunk Qa State'); ?>
@@ -123,7 +123,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'id',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -136,7 +136,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'status',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -149,7 +149,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'draft_validation_progress',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -162,7 +162,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'preview_validation_progress',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -175,7 +175,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'public_validation_progress',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -188,7 +188,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'approval_progress',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -201,7 +201,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'proofing_progress',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -214,7 +214,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'translations_draft_validation_progress',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -227,7 +227,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'translations_preview_validation_progress',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -240,7 +240,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'translations_public_validation_progress',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -253,7 +253,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'translations_approval_progress',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -266,7 +266,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'translations_proofing_progress',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -279,7 +279,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'previewing_welcome',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -292,7 +292,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'candidate_for_public_status',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -305,7 +305,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_approved',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -318,7 +318,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'title_approved',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -331,7 +331,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'file_approved',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -344,7 +344,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'slug_proofed',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -357,7 +357,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'title_proofed',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -370,7 +370,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'file_proofed',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )
@@ -383,7 +383,7 @@ $this->breadcrumbs[] = $model->id;
                                 array(
                                     'model' => $model,
                                     'attribute' => 'draft_saved',
-                                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                                 ),
                                 true
                             )

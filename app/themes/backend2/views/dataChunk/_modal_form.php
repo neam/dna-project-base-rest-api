@@ -1,12 +1,12 @@
 <?php
-/* @var $this DataChunkController */
+/* @var $this DataArticleController */
 /* @var $inputSelector jQuery selector to the select-input of the parent form */
 /* @var $pk The primary key field added object */
 /* @var $field The field of the newly added object to be used as the key/label of the parent form select-input */
 
 $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $formId . "-modal"));
 
-$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+$form = $this->beginWidget('\TbActiveForm', array(
     'id' => $formId,
     'enableAjaxValidation' => true,
     'enableClientValidation' => true,
@@ -22,7 +22,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     <div class="modal-body">
 
         <?php
-        $this->renderPartial('/dataChunk/_elements', array(
+        $this->renderPartial('/dataArticle/_elements', array(
             'model' => $model,
             'form' => $form,
         ));
@@ -32,7 +32,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     <div class="modal-footer">
         <a href="#" class="btn" data-toggle="modal" data-target="#<?php echo $formId; ?>-modal">Cancel</a>
         <?php
-        echo CHtml::ajaxSubmitButton('Save', CHtml::normalizeUrl(array('dataChunk/editableCreator', 'render' => true)), array(
+        echo CHtml::ajaxSubmitButton('Save', CHtml::normalizeUrl(array('dataArticle/editableCreator', 'render' => true)), array(
             'dataType' => 'json',
             'type' => 'post',
             'success' => 'function(data, config) {

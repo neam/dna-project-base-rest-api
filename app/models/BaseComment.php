@@ -18,7 +18,7 @@
  * Relations of table "comment" available as properties of the model:
  * @property Comment $parent
  * @property Comment[] $comments
- * @property Users $authorUser
+ * @property Account $authorUser
  */
 abstract class BaseComment extends ActiveRecord
 {
@@ -71,7 +71,7 @@ abstract class BaseComment extends ActiveRecord
             parent::relations(), array(
                 'parent' => array(self::BELONGS_TO, 'Comment', 'parent_id'),
                 'comments' => array(self::HAS_MANY, 'Comment', 'parent_id'),
-                'authorUser' => array(self::BELONGS_TO, 'Users', 'author_user_id'),
+                'authorUser' => array(self::BELONGS_TO, 'Account', 'author_user_id'),
             )
         );
     }

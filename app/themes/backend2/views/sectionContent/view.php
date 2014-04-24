@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Section Contents')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Section Content'); ?>
@@ -207,12 +207,12 @@ $this->breadcrumbs[] = $model->id;
                     ),
                     array(
                         'name' => 'data_chunk_id',
-                        'value' => ($model->dataChunk !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->dataChunk->itemLabel,
-                                    array('//dataChunk/view', 'id' => $model->dataChunk->id),
+                        'value' => ($model->dataArticle !== null) ? CHtml::link(
+                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->dataArticle->itemLabel,
+                                    array('//dataArticle/view', 'id' => $model->dataArticle->id),
                                     array('class' => '')) . ' ' . CHtml::link(
                                     '<i class="icon icon-pencil"></i> ',
-                                    array('//dataChunk/update', 'id' => $model->dataChunk->id),
+                                    array('//dataArticle/update', 'id' => $model->dataArticle->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),

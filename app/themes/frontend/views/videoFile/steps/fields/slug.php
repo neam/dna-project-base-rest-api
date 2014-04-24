@@ -1,6 +1,6 @@
 <?php /** @var VideoFile $model */ ?>
 
-<?php echo $form->textFieldRow($model, 'slug_' . $model->source_language, array(
+<?php echo $form->textFieldControlGroup($model, 'slug_' . $model->source_language, array(
     'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-1',
     'maxlength' => 255,
     'labelOptions' => array(
@@ -9,7 +9,7 @@
 )); ?>
 
 <?php if ($this->workflowData['translateInto']) {
-    echo $form->textFieldRow($model, 'slug_' . $this->workflowData['translateInto'], array(
+    echo $form->textFieldControlGroup($model, 'slug_' . $this->workflowData['translateInto'], array(
         'class' => Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-2',
         'maxlength' => 255,
     ));

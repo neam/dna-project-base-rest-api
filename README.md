@@ -1,106 +1,52 @@
-Phundament
-==========
+Gapminder School CMS
+====================
 
-**Version 3-0.22.0**
+Builds and runs with PHP 5.4.26, Nginx 1.4.3. However note that php cli runs version 5.4.6 (default Ubuntu Quantal).
 
+Requires Dokku master branch and the following plugins:
 
-What is Phundament?
--------------------
+ - For post-buildstep.sh to run properly - [https://github.com/musicglue/dokku-user-env-compile]()
+ - For MySQL-compatible database access - [https://github.com/Kloadut/dokku-md-plugin]()
+ - For mounting persistent cache directory at runtime - [https://github.com/dyson/dokku-docker-options]()
 
-Phundament is a solid, highly customizable universal application foundation built with [composer](http://getcomposer.org) 
-upon [Yii Framework](http://yiiframework.com). 
+## Deploy
 
-It's goal is the seamless integration of Yii extensions and libraries bundled in composer packages packages. 
-[Read on…](https://github.com/phundament/app/wiki/Phundament)
+To build and deploy on dokku, first set fundamental config vars:
 
+    export APPNAME=foo1-cms
+    export DOKKU_HOST=dokku.gapminder.org
 
-Quick-Start
------------
+Then, push to a dokku repository:
 
-### Step 1
-   Option A) If you have [composer already installed](http://getcomposer.org/doc/00-intro.md#installation-nix)
-   
-```
-composer.phar create-project --prefer-dist phundament/app my-app
-```
-   
-   Option B) [Download](https://github.com/phundament/app/tags), extract, enter the app root folder
-      and start the installation process with
-```
-php composer.phar create-project --prefer-dist
-```
+    export CURRENT_BRANCH=develop
+    git push dokku@$DOKKU_HOST:$APPNAME $CURRENT_BRANCH:master
 
-When asked, create local configuration files and choose your environment.
+You will also need to run the following once after the initial push:
 
-### Step 2
+    export USER_GENERATED_DATA_S3_BUCKET="s3://user-data-backups"
+    export USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY="replacme"
+    export USER_DATA_BACKUP_UPLOADERS_SECRET="replaceme"
+    export CMS_HOST=$APPNAME.gapminder.org
 
-Apply the database migrations and enter your desired admin credentials.
+    # connect a db instance
 
-```
-cd my-app
-app/yiic migrate
-```
+    ssh dokku@$DOKKU_HOST mariadb:create $APPNAME
 
-### Step 3
+    # set environment variables
 
-Open `http://localhost/my-app/www/index.php` in your browser
+    ssh dokku@$DOKKU_HOST config:set $APPNAME ENVBOOTSTRAP_STRATEGY=environment-variables ENV=dokku/$APPNAME BRAND_SITENAME=Gapminder-CMS-$APPNAME BRAND_DOMAIN=$CMS_HOST DATA=$DATA GRANULARITY=$GRANULARITY USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY=$USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET
 
-[Manage your application](https://github.com/phundament/app/wiki/Content-Management)
+    # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
 
-*You may add the `--no-dev` option for production systems or use `--prefer-source` if you want to develop packages.*
+    export DOKKU_ROOT=/home/dokku
+    ssh dokku@$DOKKU_HOST docker-options:add $APPNAME "-v $DOKKU_ROOT/$APPNAME/cache:/cache"
 
-*Note: if you want to install Phundament 3 with a MySQL database, you have to update your config first, see the [Setup](https://github.com/phundament/app/wiki/Setup) section in our wiki.*
+    # reset db and load user data if DATA=user-generated
 
-Documentation
--------------
+    export DATA=clean-db
+    export DATA=user-generated
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/reset-db.sh
 
- * [The Definitive Guide to Phundament](https://github.com/phundament/app/wiki)
+To upload the current user-generated data to S3, run:
 
-Demo
-----
-
- * Try a test-drive at the [Demo Page](http://demo.phundament.com/3.0-dev)
-   * Login with `admin` / `admin`. **The demo website will be resetted every 6 hours.**
-
-
-Resources
----------
-
-[![Latest Stable Version](https://poser.pugx.org/phundament/app/v/stable.png)](https://packagist.org/packages/phundament/app)
-[![Total Downloads](https://poser.pugx.org/phundament/app/downloads.png)](https://packagist.org/packages/phundament/app)
-
-[![Latest Unstable Version](https://poser.pugx.org/phundament/app/v/unstable.png)](https://packagist.org/packages/phundament/app)
-[![Build Status](https://travis-ci.org/phundament/app.png?branch=develop)](https://travis-ci.org/phundament/app)
-
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/phundament/app/badges/quality-score.png?s=4d1ce01151a4e82df75b563e7ccf0001cc227bd1)](https://scrutinizer-ci.com/g/phundament/app/)
-[![Dependencies Status](https://depending.in/phundament/app.png)](http://depending.in/phundament/app)
-
-### Fundamentals
- *  [Documentation](https://github.com/phundament/app/wiki/)
- *  [API Class Reference](http://docs.phundament.com/3.0)
- *  [FAQ / Troubleshooting](https://github.com/phundament/app/wiki/FAQ)
- *  [Support](https://github.com/phundament/app/wiki/Support)
- *  [Report a bug](https://github.com/phundament/app/issues)
- *  Composer Repository [packages.phundament.com](http://packages.phundament.com)
-
-### Information
- *  [CHANGELOG](https://github.com/phundament/app/blob/master/CHANGELOG.md)
- *  [License](https://github.com/phundament/app/blob/master/LICENSE) BSD
-
-### Links
- *  [Phundament Website](http://phundament.com)
- *  [View at Yii Extensions](http://www.yiiframework.com/extension/phundament/)
- *  [View at packagist.org](https://packagist.org/packages/phundament/app)
- *  [Fork on github](https://github.com/phundament/app)
- *  [Downloads](https://github.com/phundament/app/tags)
- *  [Continuous Integration](https://travis-ci.org/phundament/app.png?branch=master)  
- *  [Company Website](http://herzogkommunikation.de)
- *  [Demo Website](http://demo.phundament.com/3.0-dev/)
-
-### Social Networks
- *  [Twitter](http://twitter.com/#!/phundament)
- *  [Facebook](http://www.facebook.com/phundament)
- *  [Google+](https://plus.google.com/114873431066202526630)
-
-### Contact
- *  phundament@usrbin.de
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/shell-scripts/upload-user-data-backup.sh

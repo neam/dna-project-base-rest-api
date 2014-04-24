@@ -64,8 +64,10 @@ class Tool extends BaseTool
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(),
-            'public' => array(),
+            'reviewable' => array(),
+            'publishable' => array(
+                'ref',
+            ),
         );
     }
 
@@ -84,8 +86,8 @@ class Tool extends BaseTool
             'embed' => array(
                 'embed_template',
             ),
-            'po' => array(
-                'po_file_id',
+            'i18n' => array(
+                'i18n_catalog_id',
             ),
         );
     }
@@ -95,7 +97,7 @@ class Tool extends BaseTool
         return array(
             'info' => Yii::t('app', 'Info'),
             'embed' => Yii::t('app', 'Embed'),
-            'po' => Yii::t('app', 'Po'),
+            'i18n' => Yii::t('app', 'I18n'),
         );
     }
 
@@ -103,6 +105,7 @@ class Tool extends BaseTool
     {
         return array_merge(
             parent::attributeLabels(), array(
+                'ref' => Yii::t('model', 'Reference'),
                 'title' => Yii::t('model', 'Title'),
                 'title_en' => Yii::t('model', 'English Title'),
                 'slug' => Yii::t('model', 'Nice link'),
@@ -128,6 +131,26 @@ class Tool extends BaseTool
         );
     }
 
+    /**
+     * The attributes that is returned by the REST api
+     */
+    public function getAllAttributes()
+    {
+
+        $response = new stdClass();
+
+        $response->id = $this->id;
+        $response->ref = $this->ref;
+        $response->title = $this->title;
+        $response->slug = $this->slug;
+        $response->about = $this->about;
+        $response->embed_template = $this->embed_template;
+        $response->i18nCatalog = !is_null($this->i18n_catalog_id) ? $this->i18nCatalog->allAttributes : null;
+
+        return $response;
+
+    }
+
     public function search($criteria = null)
     {
         if (is_null($criteria)) {
@@ -138,4 +161,12 @@ class Tool extends BaseTool
         ));
     }
 
+    /**
+     * Returns i18n catalog options.
+     * @return array
+     */
+    public function getCatalogOptions()
+    {
+        return I18nCatalog::model()->getPoOptions();
+    }
 }

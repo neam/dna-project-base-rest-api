@@ -43,11 +43,11 @@ $this->breadcrumbs[] = $actionCaption;
                 <div class="span4">
 
                     <?php
-                    $this->widget("bootstrap.widgets.TbButton", array(
+                    $this->widget("\TbButton", array(
                         "label" => $label,
                         "type" => $this->action->id == $action ? "inverse" : null,
                         "size" => "",
-                        "icon" => "icon-" . $options['icon'] . ($this->action->id == $action ? " icon-white" : null),
+                        "icon" => "glyphicon-" . $options['icon'] . ($this->action->id == $action ? " icon-white" : null),
                         "url" => array($action, "id" => $model->{$model->tableSchema->primaryKey}, 'step' => $step, 'translateInto' => $language),
                         "htmlOptions" => array(
                             "class" => "span12",
@@ -63,7 +63,7 @@ $this->breadcrumbs[] = $actionCaption;
                     try {
 
                         $this->widget(
-                            'bootstrap.widgets.TbProgress',
+                            '\TbProgress',
                             array(
                                 'type' => 'success', // 'info', 'success' or 'danger'
                                 'percent' => $model->calculateValidationProgress('translate_into_' . $language),

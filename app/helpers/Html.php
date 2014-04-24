@@ -1,7 +1,5 @@
 <?php
 
-Yii::import('bootstrap.helpers.TbHtml');
-
 class Html extends TbHtml
 {
     // App constants.
@@ -27,8 +25,8 @@ class Html extends TbHtml
     public static function registerCss()
     {
         $theme = Yii::app()->theme->name;
-        $files = array();
 
+        // todo: refactor this.
         switch ($theme) {
             case self::THEME_FRONTEND:
                 $path = 'assets';
@@ -42,6 +40,11 @@ class Html extends TbHtml
                 $files = array(
                     'backend.css',
                 );
+                break;
+
+            default:
+                $path = 'assets';
+                $files = array('main.css');
                 break;
         }
 
@@ -60,6 +63,83 @@ class Html extends TbHtml
                 $clientScript->registerCssFile($css . '/' . $file);
             }
         }
+    }
+
+    /**
+     * Renders a widget with the given properties.
+     * @param string $className widget class name.
+     * @param array $properties widget properties.
+     * @return string rendered widget.
+     */
+    protected static function renderWidget($className, $properties)
+    {
+        return Yii::app()->controller->widget($className, $properties, true);
+    }
+
+    /**
+     * Removes values from the given options that should not be passed to widgets.
+     * @param array $htmlOptions a list of options.
+     */
+    protected static function createWidgetOptions($htmlOptions)
+    {
+        $widgetOptions = $htmlOptions;
+        TbArray::removeValues(
+            array(
+                'groupOptions',
+                'controlOptions',
+                'label',
+                'labelOptions',
+                'error',
+                'errorOptions',
+                'help',
+                'helpOptions',
+                'widgetOptions'
+            ),
+            $widgetOptions
+        );
+        return $widgetOptions;
+    }
+
+    /**
+     * @param $model
+     * @param $attribute
+     * @param array $data
+     * @param array $htmlOptions
+     * @return string
+     */
+    public static function activeSelect2($model, $attribute, $data = array(), $htmlOptions = array())
+    {
+        $options = TbArray::merge(
+            TbArray::popValue('pluginOptions', $htmlOptions, array()),
+            array(
+                'minimumResultsForSearch' => 20,
+            )
+        );
+        $widgetOptions = self::createWidgetOptions($htmlOptions);
+        $properties = TbArray::merge(
+            TbArray::popValue('widgetOptions', $htmlOptions, array()),
+            array(
+                'model' => $model,
+                'attribute' => $attribute,
+                'data' => $data,
+                'pluginOptions' => $options,
+                'htmlOptions' => $widgetOptions,
+            )
+        );
+        return self::renderWidget('vendor.crisu83.yiistrap-widgets.widgets.TbSelect2', $properties);
+    }
+
+    /**
+     * @param $model
+     * @param $attribute
+     * @param array $data
+     * @param array $htmlOptions
+     * @return string
+     */
+    public static function activeSelect2ControlGroup($model, $attribute, $data = array(), $htmlOptions = array())
+    {
+        $input = self::activeSelect2($model, $attribute, $data, $htmlOptions);
+        return TbHtml::customActiveControlGroup($input, $model, $attribute, $htmlOptions);
     }
 
     /**
@@ -149,6 +229,7 @@ class Html extends TbHtml
      */
     public static function hintTooltip($content, $htmlOptions = array())
     {
+        $htmlOptions['class'] = 'hint-tooltip';
         return isset($content)
             ? Html::tooltip(TbHtml::icon(TbHtml::ICON_QUESTION_SIGN), '#', $content, $htmlOptions)
             : '';

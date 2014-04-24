@@ -6,17 +6,17 @@
 echo '<h3>';
 echo Yii::t('model', 'Presentations') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///presentation/admin')
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///presentation/create',
                     'Presentation' => array('cloned_from_id' => $model->{$model->tableSchema->primaryKey})
@@ -53,17 +53,17 @@ echo '</h3>' ?>
 echo '<h3>';
 echo Yii::t('model', 'SectionContents') . ' ';
 $this->widget(
-    'bootstrap.widgets.TbButtonGroup',
+    '\TbButtonGroup',
     array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'size' => 'mini',
         'buttons' => array(
             array(
-                'icon' => 'icon-list-alt',
+                'icon' => 'glyphicon-list-alt',
                 'url' => array('///sectionContent/admin')
             ),
             array(
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'url' => array(
                     '///sectionContent/create',
                     'SectionContent' => array('presentation_id' => $model->{$model->tableSchema->primaryKey})

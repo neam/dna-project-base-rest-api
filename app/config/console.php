@@ -47,14 +47,15 @@ $consoleConfig = array(
             'applicationModuleName' => 'core',
             // define all available modules (if you do not set this, modules will be set from yii app config)
             'modulePaths'           => array(
-                'rights'                => 'application.migrations.rights',
                 'user'                  => 'vendor.mishamx.yii-user.migrations',
-                'p3pages'               => 'vendor.phundament.p3pages.migrations',
-                'p3widgets'             => 'vendor.phundament.p3widgets.migrations',
-                'p3media'               => 'vendor.phundament.p3media.migrations',
-                'ckeditor-configurator' => 'vendor.schmunk42.ckeditor-configurator.migrations',
-                'translate'             => 'vendor.gusnips.yii-translate.migrations',
-                'auditrail2'            => 'vendor.sammaye.auditrail2.migrations',
+                // The following migrations are not used since they are already included in the data model or the extension is not used
+                //'rights'                => 'application.migrations.rights',
+                //'p3pages'               => 'vendor.phundament.p3pages.migrations',
+                //'p3widgets'             => 'vendor.phundament.p3widgets.migrations',
+                //'p3media'               => 'vendor.phundament.p3media.migrations',
+                //'ckeditor-configurator' => 'vendor.schmunk42.ckeditor-configurator.migrations',
+                //'translate'             => 'vendor.gusnips.yii-translate.migrations',
+                //'auditrail2'            => 'vendor.sammaye.auditrail2.migrations',
             ),
             // you can customize the modules migrations subdirectory which is used when you are using yii module config
             'migrationSubPath'      => 'migrations',
@@ -120,6 +121,27 @@ $consoleConfig = array(
             'themePath' => 'application.themes',
             'themeName' => 'backend2',
         ),
+        'mysqldump' => array(
+            'class' => 'vendor.crisu83.yii-consoletools.commands.MysqldumpCommand',
+            'basePath' => dirname(__DIR__) . '/..',
+            'dumpPath' => '/db',
+        ),
+        'mysqldump-dbTest' => array(
+            'class' => 'vendor.crisu83.yii-consoletools.commands.MysqldumpCommand',
+            'basePath' => dirname(__DIR__) . '/..',
+            'dumpPath' => '/tests/codeception/_data',
+            'connectionID' => 'dbTest',
+        ),
+        /*
+        'generate' => array(
+            'class' => '\crisu83\yii_caviar\GenerateCommand',
+            'enableNamespaces' => false,
+            'defaultTemplate' => 'noNamespaces',
+            'templates' => array(
+                'noNamespaces' => 'vendor.crisu83.yii-caviar.templates.no-namespaces',
+            ),
+        ),
+        */
     ),
     'components' => array(
         'fixture-helper'      => array(

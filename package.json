@@ -1,27 +1,13 @@
 {
-    "name": "GCMS",
-    "version": "1.0.0",
-    "contributors": [
-        {
-            "name": "Eric Nishio",
-            "email": "eric.nishio@nordsoftware.com"
-        },
-        {
-            "name": "Fredrik Wollsén",
-            "email": "fredrik@neam.se"
-        },
-        {
-            "name": "Johan Ström",
-            "email": "johan@johanstrom.se"
-        },
-        {
-            "name": "Thiago Costa Porto",
-            "email": "thiago@gapminder.org"
-        }
-    ],
-    "devDependencies": {
-        "grunt": "~0.4.1",
-        "grunt-contrib-less": "~0.6.4",
-        "grunt-contrib-watch": "~0.5.1"
-    }
+  "name": "GCMS",
+  "version": "1.0.0",
+  "engines": {
+      "node": "0.10.26"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-less": "~0.6.4",
+    "grunt-contrib-watch": "~0.5.1",
+    "load-grunt-tasks": "~0.3.0"
+  }
 }

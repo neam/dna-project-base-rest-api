@@ -1,8 +1,8 @@
 <?php
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 ?>
 <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
-
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <!--<h1>
     
     <?php echo Yii::t('model', 'Exam Question Alternative'); ?>
@@ -24,6 +24,10 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
     <br />
 
+<b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
+<?php echo CHtml::encode($model->version); ?>
+<br />
+
 <b><?php echo CHtml::encode($model->getAttributeLabel('slug')); ?>:</b>
 <?php echo CHtml::encode($model->slug); ?>
 <br />
@@ -44,17 +48,21 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
 <?php echo CHtml::encode($model->created); ?>
 <br />
 
+<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('modified')); ?>:</b>
 <?php echo CHtml::encode($model->modified); ?>
 <br />
 
-<?php /*
 <b><?php echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>:</b>
 <?php echo CHtml::encode($model->owner_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('node_id')); ?>:</b>
 <?php echo CHtml::encode($model->node_id); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('exam_question_alternative_qa_state_id')); ?>:</b>
+<?php echo CHtml::encode($model->exam_question_alternative_qa_state_id); ?>
 <br />
 
     */

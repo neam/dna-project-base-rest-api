@@ -1,4 +1,4 @@
-<?php echo $form->textFieldRow($model, 'question_' . $model->source_language, array(
+<?php echo $form->textFieldControlGroup($model, 'question_' . $model->source_language, array(
     'class' => Html::ITEM_FORM_FIELD_CLASS,
     'maxlength' => 200,
     'labelOptions' => array(
@@ -7,7 +7,7 @@
 )); ?>
 
 <?php if ($this->workflowData['translateInto']) {
-    echo $form->textFieldRow($model, 'question_' . $this->workflowData['translateInto'], array(
+    echo $form->textFieldControlGroup($model, 'question_' . $this->workflowData['translateInto'], array(
         'class' => Html::ITEM_FORM_FIELD_CLASS,
         'maxlength' => 255,
     ));

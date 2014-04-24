@@ -19,7 +19,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'cloned_from_id', $input);
+            echo $form->customControlGroup($model, 'cloned_from_id', $input);
             ?>
 
             <?php
@@ -29,9 +29,9 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Snapshot'))),
-                        'icon' => 'icon-plus',
+                        'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',
@@ -72,7 +72,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'logo_media_id', $input);
+            echo $form->customControlGroup($model, 'logo_media_id', $input);
             ?>
 
             <?php
@@ -82,9 +82,9 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
-                        'icon' => 'icon-plus',
+                        'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',
@@ -119,7 +119,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'mini_logo_media_id', $input);
+            echo $form->customControlGroup($model, 'mini_logo_media_id', $input);
             ?>
 
             <?php
@@ -129,9 +129,9 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
-                        'icon' => 'icon-plus',
+                        'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',

@@ -152,12 +152,19 @@ class ChapterController extends Controller
     public function actionView($id)
     {
         $model = $this->loadModel($id);
+        $sections = $this->chapterSections($model);
+
+        $evaluate = isset($evaluate) ? $evaluate : false;
+        $preview = isset($preview) ? $preview : false;
 
         $this->breadcrumbs[Yii::t('breadcrumbs', 'Chapters')] = array('index');
         $this->breadcrumbs[] = $model->title;
 
         $this->render('view', array(
             'model' => $model,
+            'sections' => $sections,
+            'evaluate' => $evaluate,
+            'preview' => $preview,
         ));
     }
 

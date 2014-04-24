@@ -1,7 +1,7 @@
 <div class="wide form">
 
     <?php
-    $form = $this->beginWidget('TbActiveForm', array(
+    $form = $this->beginWidget('\TbActiveForm', array(
         'action' => Yii::app()->createUrl($this->route),
         'method' => 'get',
     )); ?>
@@ -43,11 +43,6 @@
     <div class="row">
         <?php echo $form->label($model, 'thumbnail_media_id'); ?>
         <?php echo $form->textField($model, 'thumbnail_media_id'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model, 'slideshow_file_id'); ?>
-        <?php echo $form->textField($model, 'slideshow_file_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
     <div class="row">

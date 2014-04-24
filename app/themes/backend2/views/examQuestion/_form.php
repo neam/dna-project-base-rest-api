@@ -4,7 +4,7 @@
     </p>
     <?php
 
-    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    $form = $this->beginWidget('\TbActiveForm', array(
         'id' => 'exam-question-form',
         'enableAjaxValidation' => true,
         'enableClientValidation' => true,

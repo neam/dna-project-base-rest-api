@@ -9,7 +9,7 @@
     ),
 ), true); ?>
 
-<?php echo $form->customRow($model, 'data_source_id', $input, array(
+<?php echo $form->customControlGroup($model, 'data_source_id', $input, array(
     'labelOptions' => array(
         'label' => Html::attributeLabelWithTooltip($model, 'data_source_id', 'datasource'),
     ),
@@ -17,9 +17,9 @@
 
     <div class="control-group">
         <div class="controls">
-            <?php echo $this->widget('bootstrap.widgets.TbButton', array(
+            <?php echo $this->widget('\TbButton', array(
                 'label' => Yii::t('app', 'Add Data source'),
-                'icon' => 'icon-plus',
+                'icon' => 'glyphicon-plus',
                 'htmlOptions' => array(
                     'data-toggle' => 'modal',
                     'data-target' => '#addrelation-examquestion-datasource-modal',

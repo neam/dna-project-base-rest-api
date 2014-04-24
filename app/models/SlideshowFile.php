@@ -23,7 +23,7 @@ class SlideshowFile extends BaseSlideshowFile
 
     public function getItemLabel()
     {
-        return 'Slideshow file #' . $this->id;
+        return (string) !empty($this->title) ? $this->title : "SlideshowFile #" . $this->id;
     }
 
     public function behaviors()
@@ -37,7 +37,7 @@ class SlideshowFile extends BaseSlideshowFile
         return array_merge(
             parent::relations(),
             array(
-                'datachunks' => array(self::HAS_MANY, 'DataChunk', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'datachunks')),
+                'dataarticles' => array(self::HAS_MANY, 'DataArticle', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'dataarticles')),
                 'related' => array(self::HAS_MANY, 'Node', array('id' => 'id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'related')),
             )
         );
@@ -54,7 +54,7 @@ class SlideshowFile extends BaseSlideshowFile
 
                 // Ordinary validation rules
                 array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 120),
-                array('datachunks', 'validateDataChunks'),
+                array('dataarticles', 'validateDataArticles'),
                 array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 250),
 
             )
@@ -63,9 +63,9 @@ class SlideshowFile extends BaseSlideshowFile
         return $return;
     }
 
-    public function validateDataChunks()
+    public function validateDataArticles()
     {
-        return count($this->datachunks) <= 100;
+        return count($this->dataarticles) <= 100;
     }
 
 
@@ -163,12 +163,12 @@ class SlideshowFile extends BaseSlideshowFile
             'draft' => array(
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'title_' . $this->source_language,
                 'original_media_id',
                 'processed_media_id_' . $this->source_language,
             ),
-            'public' => array(),
+            'publishable' => array(),
         );
     }
 
@@ -189,7 +189,7 @@ class SlideshowFile extends BaseSlideshowFile
                 'processed_media_id_' . $this->source_language,
             ),
             'data' => array(
-                'datachunks',
+                'dataarticles',
             ),
             'related' => array(
                 'related',
@@ -218,7 +218,7 @@ class SlideshowFile extends BaseSlideshowFile
                 'about' => Yii::t('model', 'About'),
                 'about_en' => Yii::t('model', 'About (English)'),
                 'original_media_id' => Yii::t('model', 'File'),
-                'datachunks' => Yii::t('model', 'Data'),
+                'dataarticles' => Yii::t('model', 'Data'),
                 'related' => Yii::t('model', 'Related'),
             )
         );
@@ -232,7 +232,7 @@ class SlideshowFile extends BaseSlideshowFile
                 'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines'),
                 'about' => Yii::t('model', 'Describe the content. For example: "These are the print outs for the exercise Draw the World Population Trend."'),
                 'original_media_id' => Yii::t('model', 'The file contains the latest numbers.'),
-                'datachunks' => Yii::t('model', 'The list of datachunks will be used to generate the datasource page that comes with the VIzualization when downloading it. Datachunks will be listed in order of appearance, each with a title, about, metadata and links to original sources.'),
+                'dataarticles' => Yii::t('model', 'The list of dataarticles will be used to generate the datasource page that comes with the VIzualization when downloading it. Dataarticles will be listed in order of appearance, each with a title, about, metadata and links to original sources.'),
                 'related' => Yii::t('model', 'Users of this slideshow may also be interested in these things.'),
             )
         );
@@ -248,4 +248,24 @@ class SlideshowFile extends BaseSlideshowFile
         ));
     }
 
+    /**
+     * Returns the SlideshowFile P3Media files.
+     * @return P3Media[]
+     */
+    public function getSlideshowFiles()
+    {
+        return $this->getP3Media(array(
+            'application/vnd.ms-powerpoint',
+            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        ));
+    }
+
+    /**
+     * Returns the SlideshowFile options.
+     * @return array
+     */
+    public function getSlideshowFileOptions()
+    {
+        return $this->getOptions($this->getSlideshowFiles());
+    }
 }

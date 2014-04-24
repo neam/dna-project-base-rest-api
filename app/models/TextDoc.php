@@ -23,7 +23,7 @@ class TextDoc extends BaseTextDoc
 
     public function getItemLabel()
     {
-        return (string) isset($this->_title) ? $this->_title : 'Text doc #' . $this->id;
+        return (string) isset($this->_title) ? $this->_title : 'Text Doc #' . $this->id;
     }
 
     public function behaviors()
@@ -44,7 +44,7 @@ class TextDoc extends BaseTextDoc
                 // Ordinary validation rules
                 array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 120),
                 array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 250),
-                
+
             )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
@@ -122,12 +122,12 @@ class TextDoc extends BaseTextDoc
             'draft' => array(
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'title_' . $this->source_language,
                 'original_media_id',
                 'processed_media_id_' . $this->source_language,
             ),
-            'public' => array(),
+            'publishable' => array(),
         );
     }
 
@@ -196,4 +196,25 @@ class TextDoc extends BaseTextDoc
         ));
     }
 
+    /**
+     * Returns the TextDoc P3Media files.
+     * @return P3Media[]
+     */
+    public function getTextDocs()
+    {
+        return $this->getP3Media(array(
+            'application/msword',
+            'application/vnd.ms-powerpoint',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        ));
+    }
+
+    /**
+     * Returns the TextDoc options.
+     * @return array
+     */
+    public function getTextDocOptions()
+    {
+        return $this->getOptions($this->getTextDocs());
+    }
 }

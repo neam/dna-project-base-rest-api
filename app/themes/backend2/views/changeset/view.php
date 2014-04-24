@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Changesets')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Changeset'); ?>
@@ -52,7 +52,7 @@ $this->breadcrumbs[] = $model->id;
 
         <?php
         $this->widget(
-            'TbDetailView',
+            '\TbDetailView',
             array(
                 'data' => $model,
                 'attributes' => array(
@@ -85,21 +85,21 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'user_id',
                         'value' => ($model->user !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->user->itemLabel,
-                                    array('//users/view', 'id' => $model->user->id),
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->user->itemLabel,
+                                    array('//account/view', 'id' => $model->user->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//users/update', 'id' => $model->user->id),
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//account/update', 'id' => $model->user->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->node->itemLabel,
                                     array('//node/view', 'id' => $model->node->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//node/update', 'id' => $model->node->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',

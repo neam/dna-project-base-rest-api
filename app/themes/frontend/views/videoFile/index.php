@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Video Files')] = array('index');
 $this->breadcrumbs[] = Yii::t('model', 'Index');
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <?php
 if (!isset($this->menu) || $this->menu === array()) {
     $this->menu = array(
@@ -18,6 +18,5 @@ if (!isset($this->menu) || $this->menu === array()) {
 $this->widget('zii.widgets.CListView', array(
     'dataProvider' => $dataProvider,
     'itemView' => '_view',
-    'ajaxUpdate' => false,
 ));
 ?>

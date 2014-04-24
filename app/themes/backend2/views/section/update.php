@@ -11,7 +11,7 @@ $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'i
 $this->breadcrumbs[] = Yii::t('model', 'Update');
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Section'); ?>
@@ -30,38 +30,65 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <h2>
-    <?php echo Yii::t('model', 'Section Contents'); ?>
-    <small>sectionContents</small>
+    <?php echo Yii::t('model', 'Edges'); ?>
+    <small>outEdges</small>
 </h2>
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('section_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('edge/create', 'Edge' => array('from_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
+
     ?></div>
 
 <?php
-$relatedSearchModel = $this->getRelatedSearchModel($model, 'sectionContents');
-$this->widget('TbGridView',
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'outEdges');
+$this->widget('\TbGridView',
     array(
-        'id' => 'sectionContent-grid',
+        'id' => 'edge-grid',
         'dataProvider' => $relatedSearchModel->search(),
-        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->sectionContents) > 1 ? $relatedSearchModel : null,
+        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->outEdges) > 1 ? $relatedSearchModel : null,
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
             'id',
             array(
+                'name' => 'from_node_id',
+                'value' => 'CHtml::value($data, \'fromNode.itemLabel\')',
+                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'name' => 'to_node_id',
+                'value' => 'CHtml::value($data, \'toNode.itemLabel\')',
+                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
                 'class' => 'TbEditableColumn',
-                'name' => 'ordinal',
+                'name' => 'weight',
                 'editable' => array(
-                    'url' => $this->createUrl('/sectionContent/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => '_title',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'relation',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -69,7 +96,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'created',
                 'editable' => array(
-                    'url' => $this->createUrl('/sectionContent/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -77,62 +104,562 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
                 'editable' => array(
-                    'url' => $this->createUrl('/sectionContent/editableSaver'),
+                    'url' => $this->createUrl('/edge/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
             array(
-                'name' => 'html_chunk_id',
-                'value' => 'CHtml::value($data, \'htmlChunk.itemLabel\')',
-                'filter' => '', //CHtml::listData(HtmlChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'class' => '\TbButtonColumn',
+                'viewButtonUrl' => "Yii::app()->controller->createUrl('edge/view', array('id' => \$data->id))",
+                'updateButtonUrl' => "Yii::app()->controller->createUrl('edge/update', array('id' => \$data->id))",
+                'deleteButtonUrl' => "Yii::app()->controller->createUrl('edge/delete', array('id' => \$data->id))",
+            ),
+        ),
+    ));
+?>
+
+
+<h2>
+    <?php echo Yii::t('model', 'Nodes'); ?>
+    <small>outNodes</small>
+</h2>
+
+This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.
+<h2>
+    <?php echo Yii::t('model', 'Edges'); ?>
+    <small>inEdges</small>
+</h2>
+
+
+<div class="btn-group">
+    <?php $this->widget('\TbButtonGroup', array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'buttons' => array(
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('edge/create', 'Edge' => array('to_node_id' => $model->node->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+        ),
+    ));
+
+    ?></div>
+
+<?php
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'inEdges');
+$this->widget('\TbGridView',
+    array(
+        'id' => 'edge-grid',
+        'dataProvider' => $relatedSearchModel->search(),
+        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->inEdges) > 1 ? $relatedSearchModel : null,
+        'pager' => array(
+            'class' => '\TbPager',
+            'displayFirstAndLast' => true,
+        ),
+        'columns' => array(
+            'id',
+            array(
+                'name' => 'from_node_id',
+                'value' => 'CHtml::value($data, \'fromNode.itemLabel\')',
+                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'snapshot_id',
-                'value' => 'CHtml::value($data, \'snapshot.itemLabel\')',
-                'filter' => '', //CHtml::listData(Snapshot::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'name' => 'to_node_id',
+                'value' => 'CHtml::value($data, \'toNode.itemLabel\')',
+                'filter' => '', //CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
-                'name' => 'video_file_id',
-                'value' => 'CHtml::value($data, \'videoFile.itemLabel\')',
-                'filter' => '', //CHtml::listData(VideoFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'class' => 'TbEditableColumn',
+                'name' => 'weight',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
             ),
             array(
-                'name' => 'exercise_id',
-                'value' => 'CHtml::value($data, \'exercise.itemLabel\')',
-                'filter' => '', //CHtml::listData(Exercise::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'class' => 'TbEditableColumn',
+                'name' => '_title',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'relation',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'created',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'modified',
+                'editable' => array(
+                    'url' => $this->createUrl('/edge/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => '\TbButtonColumn',
+                'viewButtonUrl' => "Yii::app()->controller->createUrl('edge/view', array('id' => \$data->id))",
+                'updateButtonUrl' => "Yii::app()->controller->createUrl('edge/update', array('id' => \$data->id))",
+                'deleteButtonUrl' => "Yii::app()->controller->createUrl('edge/delete', array('id' => \$data->id))",
+            ),
+        ),
+    ));
+?>
+
+
+<h2>
+    <?php echo Yii::t('model', 'Nodes'); ?>
+    <small>inNodes</small>
+</h2>
+
+This relation is specified through another relation, which in turn is not a BELONGS_TO relation. Unfortunately this template does not support code generation for such a relation yet.
+<h2>
+    <?php echo Yii::t('model', 'Sections'); ?>
+    <small>sections</small>
+</h2>
+
+
+<div class="btn-group">
+    <?php $this->widget('\TbButtonGroup', array(
+        'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'buttons' => array(
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('section/create', 'Section' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+        ),
+    ));
+    ?></div>
+
+<?php
+$relatedSearchModel = $this->getRelatedSearchModel($model, 'sections');
+$this->widget('\TbGridView',
+    array(
+        'id' => 'section-grid',
+        'dataProvider' => $relatedSearchModel->search(),
+        'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->sections) > 1 ? $relatedSearchModel : null,
+        'pager' => array(
+            'class' => '\TbPager',
+            'displayFirstAndLast' => true,
+        ),
+        'columns' => array(
+            'id',
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'page_id',
+                'value' => 'CHtml::value($data, \'page.itemLabel\')',
+                'filter' => '', //CHtml::listData(Page::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => '_title',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'slug_en',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => '_menu_label',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'created',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'modified',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
             ),
             /*
             array(
-                    'name' => 'slideshow_file_id',
-                    'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'data_chunk_id',
-                    'value' => 'CHtml::value($data, \'dataChunk.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'download_link_id',
-                    'value' => 'CHtml::value($data, \'downloadLink.itemLabel\')',
-                    'filter' => '',//CHtml::listData(DownloadLink::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
-                    'name' => 'exam_question_id',
-                    'value' => 'CHtml::value($data, \'examQuestion.itemLabel\')',
-                    'filter' => '',//CHtml::listData(ExamQuestion::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'name' => 'owner_id',
+                    'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                    'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
                     'value' => 'CHtml::value($data, \'node.itemLabel\')',
                     'filter' => '',//CHtml::listData(Node::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_es',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_de',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ar',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_bg',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ca',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_cs',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_da',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_gb',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_en_us',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_el',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fil',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_fr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_hu',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_id',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_iw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_it',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ja',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ko',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_lv',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_nl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_no',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_br',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_pt_pt',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ro',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_ru',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sl',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_sr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_th',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_tr',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_uk',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_vi',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_cn',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'class' => 'TbEditableColumn',
+                    'name' => 'slug_zh_tw',
+                    'editable' => array(
+                        'url' => $this->createUrl('/section/editableSaver'),
+                        //'placement' => 'right',
+                    )
+                ),
+            array(
+                    'name' => 'section_qa_state_id',
+                    'value' => 'CHtml::value($data, \'sectionQaState.itemLabel\')',
+                    'filter' => '',//CHtml::listData(SectionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                ),
             */
             array(
-                'class' => 'TbButtonColumn',
-                'viewButtonUrl' => "Yii::app()->controller->createUrl('sectionContent/view', array('id' => \$data->id))",
-                'updateButtonUrl' => "Yii::app()->controller->createUrl('sectionContent/update', array('id' => \$data->id))",
-                'deleteButtonUrl' => "Yii::app()->controller->createUrl('sectionContent/delete', array('id' => \$data->id))",
+                'class' => '\TbButtonColumn',
+                'viewButtonUrl' => "Yii::app()->controller->createUrl('section/view', array('id' => \$data->id))",
+                'updateButtonUrl' => "Yii::app()->controller->createUrl('section/update', array('id' => \$data->id))",
+                'deleteButtonUrl' => "Yii::app()->controller->createUrl('section/delete', array('id' => \$data->id))",
             ),
         ),
     ));
@@ -144,13 +671,13 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.HtmlChunks') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
                     'buttons' => array(
                         array(
-                            'icon' => 'icon-list-alt',
+                            'icon' => 'glyphicon-list-alt',
                             'url' => array('/htmlChunk/admin', 'HtmlChunk' => array('section_content(section_id, html_chunk_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
@@ -183,13 +710,13 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.Snapshots') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
                     'buttons' => array(
                         array(
-                            'icon' => 'icon-list-alt',
+                            'icon' => 'glyphicon-list-alt',
                             'url' => array('/snapshot/admin', 'Snapshot' => array('section_content(section_id, snapshot_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
@@ -222,13 +749,13 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.VideoFiles') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
                     'buttons' => array(
                         array(
-                            'icon' => 'icon-list-alt',
+                            'icon' => 'glyphicon-list-alt',
                             'url' => array('/videoFile/admin', 'VideoFile' => array('section_content(section_id, video_file_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
@@ -261,13 +788,13 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.Exercises') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
                     'buttons' => array(
                         array(
-                            'icon' => 'icon-list-alt',
+                            'icon' => 'glyphicon-list-alt',
                             'url' => array('/exercise/admin', 'Exercise' => array('section_content(section_id, exercise_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
@@ -300,13 +827,13 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.SlideshoFiles') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
                     'buttons' => array(
                         array(
-                            'icon' => 'icon-list-alt',
+                            'icon' => 'glyphicon-list-alt',
                             'url' => array('/slideshowFIle/admin', 'SlideshowFIle' => array('section_content(section_id, slideshow_file_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
@@ -337,16 +864,16 @@ $this->widget('TbGridView',
     <div class='row'>
         <div class='span3'><?php
             echo '<h3>';
-            echo Yii::t('model', 'relation.DataChunks') . ' ';
+            echo Yii::t('model', 'relation.DataArticles') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
                     'buttons' => array(
                         array(
-                            'icon' => 'icon-list-alt',
-                            'url' => array('/dataChunk/admin', 'DataChunk' => array('section_content(section_id, data_chunk_id)' => $model->{$model->tableSchema->primaryKey}))
+                            'icon' => 'glyphicon-list-alt',
+                            'url' => array('/dataArticle/admin', 'DataArticle' => array('section_content(section_id, data_chunk_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
                     )
@@ -356,13 +883,13 @@ $this->widget('TbGridView',
         <div class='span8'>
             <?php
             echo '<span class=label>CManyManyRelation</span>';
-            if (is_array($model->dataChunks)) {
+            if (is_array($model->dataArticles)) {
 
                 echo CHtml::openTag('ul');
-                foreach ($model->dataChunks as $relatedModel) {
+                foreach ($model->dataArticles as $relatedModel) {
 
                     echo '<li>';
-                    echo CHtml::link($relatedModel->itemLabel, array('dataChunk/view', 'id' => $relatedModel->id), array('class' => ''));
+                    echo CHtml::link($relatedModel->itemLabel, array('dataArticle/view', 'id' => $relatedModel->id), array('class' => ''));
 
                     echo '</li>';
                 }
@@ -378,13 +905,13 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.DownloadLinks') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
                     'buttons' => array(
                         array(
-                            'icon' => 'icon-list-alt',
+                            'icon' => 'glyphicon-list-alt',
                             'url' => array('/downloadLink/admin', 'DownloadLink' => array('section_content(section_id, download_link_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 
@@ -417,13 +944,13 @@ $this->widget('TbGridView',
             echo '<h3>';
             echo Yii::t('model', 'relation.ExamQuestions') . ' ';
             $this->widget(
-                'bootstrap.widgets.TbButtonGroup',
+                '\TbButtonGroup',
                 array(
                     'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     'size' => 'mini',
                     'buttons' => array(
                         array(
-                            'icon' => 'icon-list-alt',
+                            'icon' => 'glyphicon-list-alt',
                             'url' => array('/examQuestion/admin', 'ExamQuestion' => array('section_content(section_id, exam_question_id)' => $model->{$model->tableSchema->primaryKey}))
                         ),
 

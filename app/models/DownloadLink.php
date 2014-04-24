@@ -58,8 +58,8 @@ class DownloadLink extends BaseDownloadLink
             'draft' => array(
                 'file_media_id',
             ),
-            'preview' => array(),
-            'public' => array(
+            'reviewable' => array(),
+            'publishable' => array(
                 'title_' . $this->source_language,
             ),
         );

@@ -21,7 +21,7 @@ Yii::app()->clientScript->registerScript('search', "
     ");
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
     <h1>
 
         <?php echo Yii::t('model', 'Exam Questions'); ?>
@@ -35,7 +35,7 @@ Yii::app()->clientScript->registerScript('search', "
 
 
 <?php
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'exam-question-grid',
         'dataProvider' => $model->search(),
@@ -43,7 +43,7 @@ $this->widget('TbGridView',
         #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -107,7 +107,7 @@ $this->widget('TbGridView',
             array(
                 'name' => 'owner_id',
                 'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                'filter' => '', //CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                'filter' => '', //CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             /*
             array(
@@ -459,7 +459,7 @@ $this->widget('TbGridView',
             */
 
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'buttons' => array(
                     'view' => array('visible' => 'Yii::app()->user->checkAccess("ExamQuestion.View")'),
                     'update' => array('visible' => 'Yii::app()->user->checkAccess("ExamQuestion.Update")'),

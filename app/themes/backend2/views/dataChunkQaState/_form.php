@@ -4,7 +4,7 @@
     </p>
     <?php
 
-    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    $form = $this->beginWidget('\TbActiveForm', array(
         'id' => 'data-chunk-qa-state-form',
         'enableAjaxValidation' => true,
         'enableClientValidation' => true,
@@ -25,7 +25,7 @@
     <div class="form-actions">
         <?php
         echo CHtml::Button(Yii::t('model', 'Cancel'), array(
-                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('dataChunkQaState/admin'),
+                'submit' => (isset($_GET['returnUrl'])) ? $_GET['returnUrl'] : array('dataArticleQaState/admin'),
                 'class' => 'btn'
             )
         );

@@ -1,7 +1,7 @@
 <div class="wide form">
 
     <?php
-    $form = $this->beginWidget('TbActiveForm', array(
+    $form = $this->beginWidget('\TbActiveForm', array(
         'action' => Yii::app()->createUrl($this->route),
         'method' => 'get',
     )); ?>
@@ -263,6 +263,11 @@
     <div class="row">
         <?php echo $form->label($model, 'slug_zh_tw'); ?>
         <?php echo $form->textField($model, 'slug_zh_tw', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'page_qa_state_id'); ?>
+        <?php echo $form->textField($model, 'page_qa_state_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
 

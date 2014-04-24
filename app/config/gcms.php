@@ -2,9 +2,15 @@
 
 // Configuration specific to Gapminder School CMS
 
-$envbootstrap = dirname(__FILE__) . '/../../../common/settings/envbootstrap.php';
+// Include envbootstrap - see app/config/envbootstrap/README.md for more information
+$envbootstrap_strategy = getenv('ENVBOOTSTRAP_STRATEGY');
+if (empty($envbootstrap_strategy)) {
+    Yii::log("ENVBOOTSTRAP_STRATEGY empty, defaulting to self-detect", CLogger::LEVEL_INFO);
+    $envbootstrap_strategy = "self-detect";
+}
+$envbootstrap = dirname(__FILE__) . '/envbootstrap/' . $envbootstrap_strategy . '/envbootstrap.php';
 if (!is_readable($envbootstrap)) {
-    echo "Main envbootstrap file not available.";
+    echo "Main envbootstrap file not available ($envbootstrap).";
     die(2);
 }
 require_once($envbootstrap);
@@ -17,26 +23,24 @@ date_default_timezone_set('UTC');
 
 // Setup some inter-app path aliases
 $basePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..';
-$root = $basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..';
-Yii::setPathOfAlias('backend', $root . DIRECTORY_SEPARATOR . 'cms');
-Yii::setPathOfAlias('common', $root . DIRECTORY_SEPARATOR . 'common');
-Yii::setPathOfAlias('frontend', $root . DIRECTORY_SEPARATOR . 'frontend');
-Yii::setPathOfAlias('i18n', $root . DIRECTORY_SEPARATOR . 'i18n');
+$root = $basePath . DIRECTORY_SEPARATOR . '..';
+Yii::setPathOfAlias('root', $root);
 
 $gcmsConfig = array(
     'name' => 'Gapminder CMS',
     'language' => 'en', // default language, see also components.langHandler
+    'theme' => 'gapminder',
     'sourceLanguage' => 'en', // source code language
     'params' => array(
         'env' => 'development',
     ),
     'preload' => array( //'ezc', // trying out if we can lazy-load this instead of preloading it...
-        // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login
-        'loginReturnUrlTracker'
+                        // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login
+                        'loginReturnUrlTracker'
     ),
     'aliases' => array(
         // bower components
-        'bower-components' => 'backend.bower_components',
+        'bower-components' => 'root.bower_components',
         // i18n
         'i18n-columns' => 'vendor.neam.yii-i18n-columns',
         'i18n-attribute-messages' => 'vendor.neam.yii-i18n-attribute-messages',
@@ -115,10 +119,18 @@ $gcmsConfig = array(
                         'savePublic' => true,
                         'type' => 'webm',
                     ),
+                    'original-public-mp4' => array(
+                        //'name'         => 'Original File Public',
+                        'originalFile' => true,
+                        'savePublic' => true,
+                        'type' => 'mp4',
+                    ),
                 ),
             ),
         ),
         'user' => array(
+            'tableUsers' => 'account',
+            'tableProfiles' => 'profile',
             'controllerMap' => array(
                 'activation' => 'AppActivationController',
                 'registration' => 'AppRegistrationController',
@@ -142,6 +154,10 @@ $gcmsConfig = array(
                 array('api/<model>/list', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),
                 array('api/<model>/get', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'GET'),
                 array('api/<model>/create', 'pattern' => 'api/<model:\w+>', 'verb' => 'POST'),
+				// REST CORS pattern
+				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
+				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
+				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
             ),
         ),
         'db' => array(
@@ -193,8 +209,8 @@ $gcmsConfig = array(
         */
         'authManager' => array(
             'class' => 'vendor.codemix.hybridauthmanager.HybridAuthManager',
-            'authFile' => Yii::getPathOfAlias('backend') . '/app/data/auth-gcms.php',
-            'defaultRoles' => array('Authenticated'),
+            'authFile' => Yii::getPathOfAlias('root') . '/app/data/auth-gcms.php',
+            'defaultRoles' => array('Anonymous', 'Member'),
         ),
         'assetManager' => array(
             'class' => 'AssetManager',
@@ -203,10 +219,25 @@ $gcmsConfig = array(
             'class' => 'application.components.EzcComponent',
             'tablePrefix' => 'ezc_',
         ),
+        'sentry' => array(
+            'dns' => 'https://f04403a913c647c88aa97bb1a3261f48:1096055a3e5840e59f84409db2d8e159@app.getsentry.com/20208',
+            'enabledEnvironments' => array('stage.cms.gapminder.org', 'cms.gapminder.org'),
+            'environment' => ENV,
+        ),
+        'user' => array(
+            'class' => 'application.components.WebUser',
+        ),
+        'widgetFactory' => array(
+            'widgets' => array(
+                'TbSelect2' => array(
+                    'assetPath' => dirname(__DIR__) . '/../vendor/crisu83/yiistrap-widgets/lib/select2',
+                ),
+            ),
+        ),
     )
 );
 
-require('logging.php');
-//require('mail.php');
+require('includes/logging.php');
+require('includes/mail.php');
 
 return $gcmsConfig;

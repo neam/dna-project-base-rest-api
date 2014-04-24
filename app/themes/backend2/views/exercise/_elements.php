@@ -27,7 +27,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'thumbnail_media_id', $input);
+            echo $form->customControlGroup($model, 'thumbnail_media_id', $input);
             ?>
 
             <?php
@@ -37,9 +37,9 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
-                        'icon' => 'icon-plus',
+                        'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',
@@ -54,53 +54,6 @@
                 'formId' => $formId,
                 'inputSelector' => '#Exercise_thumbnail_media_id',
                 'model' => new P3Media,
-                'pk' => 'id',
-                'field' => 'itemLabel',
-            ));
-            $this->endClip();
-            ?>
-
-            <?php
-            $input = $this->widget(
-                '\GtcRelation',
-                array(
-                    'model' => $model,
-                    'relation' => 'slideshowFile',
-                    'fields' => 'itemLabel',
-                    'allowEmpty' => true,
-                    'style' => 'dropdownlist',
-                    'htmlOptions' => array(
-                        'checkAll' => 'all'
-                    ),
-                )
-                , true);
-            echo $form->customRow($model, 'slideshow_file_id', $input);
-            ?>
-
-            <?php
-            $formId = 'exercise-slideshow_file_id-' . \uniqid() . '-form';
-            ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Slideshow File'))),
-                        'icon' => 'icon-plus',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $formId . '-modal',
-                        ),
-                    ), true);
-                    ?>                </div>
-            </div>
-
-            <?php
-            $this->beginClip('modal:' . $formId . '-modal');
-            $this->renderPartial('//slideshowFile/_modal_form', array(
-                'formId' => $formId,
-                'inputSelector' => '#Exercise_slideshow_file_id',
-                'model' => new SlideshowFile,
                 'pk' => 'id',
                 'field' => 'itemLabel',
             ));

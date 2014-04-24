@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Snapshots')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Snapshot'); ?>
@@ -255,7 +255,7 @@ $this->breadcrumbs[] = $model->id;
 
         <?php
         $this->widget(
-            'TbDetailView',
+            '\TbDetailView',
             array(
                 'data' => $model,
                 'attributes' => array(
@@ -288,10 +288,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'cloned_from_id',
                         'value' => ($model->clonedFrom !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
                                     array('//snapshot/view', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//snapshot/update', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -325,10 +325,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'tool_id',
                         'value' => ($model->tool !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->tool->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->tool->itemLabel,
                                     array('//tool/view', 'id' => $model->tool->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//tool/update', 'id' => $model->tool->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -375,10 +375,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'thumbnail_media_id',
                         'value' => ($model->thumbnailMedia !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->thumbnailMedia->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->thumbnailMedia->itemLabel,
                                     array('//p3Media/view', 'id' => $model->thumbnailMedia->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//p3Media/update', 'id' => $model->thumbnailMedia->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -412,21 +412,21 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'owner_id',
                         'value' => ($model->owner !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
-                                    array('//users/view', 'id' => $model->owner->id),
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
+                                    array('//account/view', 'id' => $model->owner->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//users/update', 'id' => $model->owner->id),
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//account/update', 'id' => $model->owner->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->node->itemLabel,
                                     array('//node/view', 'id' => $model->node->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//node/update', 'id' => $model->node->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -499,10 +499,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'snapshot_qa_state_id',
                         'value' => ($model->snapshotQaState !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->snapshotQaState->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->snapshotQaState->itemLabel,
                                     array('//snapshotQaState/view', 'id' => $model->snapshotQaState->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//snapshotQaState/update', 'id' => $model->snapshotQaState->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',

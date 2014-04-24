@@ -11,6 +11,7 @@ class AccountController extends Controller
     {
         return array(
             'accessControl',
+            'ajaxOnly + toggleRole',
         );
     }
 
@@ -22,8 +23,10 @@ class AccountController extends Controller
                 'actions' => array(
                     'admin',
                     'toggleRole',
+                    'delete',
+                    'deleteRelations',
                 ),
-                'roles' => array('Administrator'),
+                'roles' => array('Super Administrator'),
             ),
             array(
                 'allow',
@@ -52,6 +55,8 @@ class AccountController extends Controller
                     'translations',
                     'profile',
                     'history',
+                    'addToGroup',
+                    'removeFromGroup',
                 ),
                 'users' => array('@'),
             ),
@@ -89,7 +94,77 @@ class AccountController extends Controller
     {
         $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
-        $this->render('dashboard', array('model' => $model,));
+
+        $lang1 = $model->profile->language1;
+        $lang2 = $model->profile->language2;
+        $lang3 = $model->profile->language3;
+
+        $lang1Sql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoPrimaryLanguage' AS action,
+                    translate_into_{$lang1}_validation_progress AS progress,
+                    0 AS relevance
+                    FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language1 IS NOT NULL AND i.id IS NOT NULL";
+
+        $lang2Sql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoSecondaryLanguage' AS action,
+                    translate_into_{$lang2}_validation_progress AS progress,
+                    0 AS relevance
+                    FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language2 IS NOT NULL AND i.id IS NOT NULL";
+
+        $lang3Sql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoTertiaryLanguage' AS action,
+                    translate_into_{$lang3}_validation_progress AS progress,
+                    0 AS relevance
+                    FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language3 IS NOT NULL AND i.id IS NOT NULL";
+
+        $fillProfileLanguageSql = "SELECT 0 as id, '' as model_class, '' as _title, 'SupplyProfileLanguages' AS action, CASE
+                           WHEN (profile.language1 IS NOT NULL OR profile.language2 IS NOT NULL OR profile.language2 IS NOT NULL) THEN 100
+                           ELSE 0
+                       END
+                    AS progress,
+                    9999 AS relevance
+                    FROM account INNER JOIN profile ON account.id = profile.user_id AND account.id = :user_id";
+
+        $sqls = array();
+        if (is_null($lang1) && is_null($lang2) && is_null($lang3)) {
+            $sqls[] = $fillProfileLanguageSql;
+        }
+        if (!is_null($lang1)) {
+            $sqls[] = $lang1Sql;
+        }
+        if (!is_null($lang2)) {
+            $sqls[] = $lang2Sql;
+        }
+        if (!is_null($lang3)) {
+            $sqls[] = $lang3Sql;
+        }
+
+        // Dashboard items query
+        $virtualDashboardActionTableSql = implode("\nUNION ALL\n", $sqls);
+
+        // if checkaccess Editor
+        //where status IS NOT Null
+
+        //if checkaccess Translator
+        //where status IN ('PUBLIC') OR own
+
+        $mainCommand = Yii::app()->db->createCommand('SELECT * FROM (' . $virtualDashboardActionTableSql . ') as dashboard_action');
+        $countCommand = Yii::app()->db->createCommand('SELECT COUNT(*) FROM (' . $virtualDashboardActionTableSql . ') as dashboard_action');
+        $mainCommand->params = $countCommand->params = array(':user_id' => Yii::app()->user->id);
+
+        $dataProvider = new CSqlDataProvider($mainCommand, array(
+            'totalItemCount' => $countCommand->queryScalar(),
+            'sort' => array(
+                'attributes' => array(
+                    'relevance, progress',
+                ),
+                'defaultOrder' => array(
+                    'relevance, progress ASC',
+                ),
+            ),
+            'pagination' => array(
+                'pageSize' => 10,
+            ),
+        ));
+
+        $this->render('dashboard', array('model' => $model, 'dataProvider' => $dataProvider));
     }
 
     public function actionTranslations()
@@ -102,24 +177,27 @@ class AccountController extends Controller
     public function actionProfile()
     {
         $id = user()->id;
-        $model = $this->loadModel($id); // Account
-        $roles = $model->getAuthItems();
 
-        $this->performAjaxValidation(array($model, $model->profiles));
+        /** @var Account $model */
+        $model = $this->loadModel($id);
 
-        if (!request()->isAjaxRequest && isset($_POST['Profiles'], $_POST['Account'])) {
+        $this->performAjaxValidation(array(
+            $model,
+            $model->profile,
+        ));
+
+        if (!request()->isAjaxRequest && isset($_POST['Profile'], $_POST['Account'])) {
             $model->attributes = $_POST['Account'];
-            $model->profiles->attributes = $_POST['Profiles'];
+            $model->profile->attributes = $_POST['Profile'];
 
-            if ($model->save() && $model->profiles->save()) {
-                setFlash(TbAlert::TYPE_SUCCESS, t('app', 'Your account information has been updated.'));
+            if ($model->save() && $model->profile->save()) {
+                setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('app', 'Your account information has been updated.'));
                 $this->refresh();
             }
         }
 
         $this->render('profile', array(
             'model' => $model,
-            'roles' => $roles,
         ));
     }
 
@@ -127,7 +205,13 @@ class AccountController extends Controller
     {
         $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
-        $this->render('history', array('model' => $model,));
+
+        $userChangedItems = new Item('search');
+        $userChangedItems->unsetAttributes();
+        $userChangedItems->setAttribute("user_id", Yii::app()->user->id);
+        $dataProvider = $userChangedItems->search();
+
+        $this->render('history', array('model' => $model, 'dataProvider' => $dataProvider));
     }
 
     public function actionPublicProfile($id)
@@ -199,7 +283,6 @@ class AccountController extends Controller
 
     public function actionEditableSaver()
     {
-        Yii::import('TbEditableSaver'); //or you can add import 'ext.editable.*' to config
         $es = new TbEditableSaver('Account'); // classname of model to be updated
         $es->update();
     }
@@ -225,12 +308,23 @@ class AccountController extends Controller
         }
     }
 
+    /**
+     * Deletes an account.
+     * @param integer $id the account ID.
+     * @throws CHttpException if unable to delete.
+     */
     public function actionDelete($id)
     {
         if (Yii::app()->request->isPostRequest) {
+            /** @var CDbTransaction $transaction */
+            $transaction = Yii::app()->db->beginTransaction();
+
             try {
+                $this->deleteRelations($id);
                 $this->loadModel($id)->delete();
+                $transaction->commit();
             } catch (Exception $e) {
+                $transaction->rollback();
                 throw new CHttpException(500, $e->getMessage());
             }
 
@@ -244,6 +338,15 @@ class AccountController extends Controller
         } else {
             throw new CHttpException(400, Yii::t('model', 'Invalid request. Please do not repeat this request again.'));
         }
+    }
+
+    /**
+     * Deletes account-related records to satisfy the foreign key constraints.
+     * @param integer $id the account ID.
+     */
+    public function deleteRelations($id)
+    {
+        // TODO: Delete account-related records.
     }
 
     public function actionIndex()
@@ -269,18 +372,46 @@ class AccountController extends Controller
     /**
      * Toggles a role for a given user.
      * @param integer $id the user ID.
+     * @param string $attribute the role name.
      */
-    public function actionToggleRole($id)
+    public function actionToggleRole($id, $attribute)
     {
-        if (isset($_GET['attribute'])) {
-            $attribute = $_GET['attribute'];
+        // todo: make dynamic
+        $group = 'GapminderInternal';
 
-            if (Yii::app()->authManager->isAssigned($attribute, $id)) {
-                Yii::app()->authManager->revoke($attribute, $id);
-            } else {
-                Yii::app()->authManager->assign($attribute, $id);
-            }
+        $attributes = array(
+            'account_id' => $id,
+            'group_id' => PermissionHelper::groupNameToId($group),
+            'role_id' => PermissionHelper::roleNameToId($attribute),
+        );
+
+        if (!PermissionHelper::groupHasAccount($attributes)) {
+            PermissionHelper::addAccountToGroup($id, $group, $attribute);
+        } else {
+            PermissionHelper::removeAccountFromGroup($id, $group, $attribute);
         }
+    }
+
+    /**
+     * @param string $id
+     * @param string $group
+     * @param string $role
+     */
+    public function actionAddToGroup($id, $group, $role, $returnUrl)
+    {
+        PermissionHelper::addAccountToGroup($id, $group, $role);
+        $this->redirect(TbHtml::decode($returnUrl));
+    }
+
+    /**
+     * @param string $id
+     * @param string $group
+     * @param string $role
+     */
+    public function actionRemoveFromGroup($id, $group, $role, $returnUrl)
+    {
+        PermissionHelper::removeAccountFromGroup($id, $group, $role);
+        $this->redirect(TbHtml::decode($returnUrl));
     }
 
     public function loadModel($id)
@@ -297,7 +428,7 @@ class AccountController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'profiles-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'profile-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

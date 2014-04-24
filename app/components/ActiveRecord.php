@@ -11,7 +11,7 @@ class ActiveRecord extends CActiveRecord
 
         $behaviors = array();
 
-        if (!in_array(get_class($this), array("Workflow", "Profiles", "Users", "Account", "Message", "SourceMessage")) && strpos(get_class($this), "QaState") === false) {
+        if (!in_array(get_class($this), array("Workflow", "Profile", "Account", "Message", "SourceMessage")) && strpos(get_class($this), "QaState") === false) {
             $behaviors['CTimestampBehavior'] = array(
                 'class' => 'zii.behaviors.CTimestampBehavior',
                 'createAttribute' => 'created',
@@ -25,8 +25,8 @@ class ActiveRecord extends CActiveRecord
                 'class' => 'QaStateBehavior',
                 'scenarios' => array(
                     'draft',
-                    'preview',
-                    'public',
+                    'reviewable',
+                    'publishable',
                 ),
             );
             foreach (Yii::app()->params["languages"] as $language => $label) {
@@ -60,7 +60,9 @@ class ActiveRecord extends CActiveRecord
                 'class' => 'I18nAttributeMessagesBehavior',
                 'translationAttributes' => $i18nAttributeMessagesMap[get_class($this)],
                 'languageSuffixes' => array_keys(Yii::app()->params["languages"]),
-                'messageSourceComponent' => 'editedMessages',
+                'behaviorKey' => 'i18n-attribute-messages',
+                'displayedMessageSourceComponent' => 'displayedMessages',
+                'editedMessageSourceComponent' => 'editedMessages',
             );
         }
 
@@ -144,5 +146,174 @@ class ActiveRecord extends CActiveRecord
     {
         $labels = DataModel::modelLabels();
         return $labels[get_class($this)];
+    }
+
+    /**
+     * Returns related P3Media records.
+     * @param array $mimeType
+     * @param string $type P3Media.type
+     * @param boolean $getOwnedOnly only retrieves records where the user owns the file. Defaults to false.
+     * @return P3Media[]
+     */
+    public function getP3Media(array $mimeType, $type = 'file', $getOwnedOnly = false)
+    {
+        $criteria = new CDbCriteria();
+        $criteria->addInCondition('mime_type', $mimeType);
+        $criteria->addCondition('t.type = :type');
+        $criteria->limit = 100;
+        $criteria->order = 't.created_at DESC';
+        $criteria->params[':type'] = $type;
+        if ($getOwnedOnly) {
+            $criteria->addCondition('t.access_owner = :userId');
+            $criteria->params[':userId'] = Yii::app()->user->id;
+        }
+        return P3Media::model()->findAll($criteria);
+    }
+
+    /**
+     * Returns related P3Media options.
+     * @param P3Media[] $data
+     * @return array
+     */
+    public function getOptions($data)
+    {
+        return TbHtml::listData(
+            $data,
+            'id',
+            'original_name'
+        );
+    }
+
+    // ----------------------------------------
+    // Logic for access restriction
+    // ----------------------------------------
+
+    // todo: implement with beforeFind & beforeCount
+    // see this for ideas: https://github.com/codemix/AccessRestrictable/blob/master/src/AccessRestrictable/Behavior.php
+
+    /**
+     * @inheritDoc
+     */
+    public function find($condition = '', $params = array())
+    {
+        return parent::find($this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findByPk($pk, $condition = '', $params = array())
+    {
+        return parent::findByPk($pk, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findByAttributes($attributes, $condition = '', $params = array())
+    {
+        return parent::findByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findBySql($sql, $params = array())
+    {
+        return parent::find($this->applyAccessCriteria($sql, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAll($condition = '', $params = array())
+    {
+        return parent::findAll($this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAllByPk($pk, $condition = '', $params = array())
+    {
+        return parent::findAllByPk($pk, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAllByAttributes($attributes, $condition = '', $params = array())
+    {
+        return parent::findAllByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAllBySql($sql, $params = array())
+    {
+        return parent::findAll($this->applyAccessCriteria($sql, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function count($condition = '', $params = array())
+    {
+        return parent::count($this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function countByAttributes($attributes, $condition = '', $params = array())
+    {
+        return parent::countByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function countBySql($sql, $params = array())
+    {
+        return parent::count($this->applyAccessCriteria($sql, $params));
+    }
+
+    /**
+     * @var boolean whether or not this model instance should use access restrictions
+     */
+    public $accessRestricted;
+
+    public function applyAccessCriteria($criteria = '', array $params = array())
+    {
+        // Normalize the criteria (this must ALWAYS be done as we override the find and count methods).
+        if (!$criteria instanceof CDbCriteria) {
+            $criteria = new CDbCriteria(array('condition' => $criteria, 'params' => $params));
+        }
+
+        // Check whether to apply the access criteria to this model from the data model.
+        if (is_null($this->accessRestricted)) {
+            $this->accessRestricted = isset(DataModel::accessRestrictedModels()[get_class($this)]);
+        }
+
+        if (!$this->accessRestricted) {
+            return $criteria;
+        }
+
+        // Show published items to anonymous users
+        if (Yii::app()->user->isGuest) {
+            $visible = NodeHasGroup::VISIBILITY_VISIBLE;
+
+            $criteria->join = "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)";
+            $criteria->addCondition("(`nhg`.`visibility` = '$visible')");
+
+            return $criteria;
+        }
+
+        $roleNames = isset($params['roleNames']) && !empty($params['roleNames'])
+            ? $params['roleNames']
+            : Yii::app()->user->getRoles();
+
+        return PermissionHelper::applyAccessCriteria($criteria, $roleNames);
     }
 }

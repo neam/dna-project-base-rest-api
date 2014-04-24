@@ -57,12 +57,12 @@ class Chapter extends BaseChapter
             $this->i18nRules(),
             array(
                 // Ordinary validation rules
-                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
+                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
-                array('videos', 'validateVideo', 'on' => 'public'),
+                array('videos', 'validateVideo', 'on' => 'publishable'),
                 //array('teachers_guide', 'length', 'min' => 150, 'max' => 400), // currently not keeping constraints on html fields until further notice
-                array('exercises', 'validateExercises', 'on' => 'public'),
-                array('snapshots', 'validateSnapshots', 'on' => 'public'),
+                array('exercises', 'validateExercises', 'on' => 'publishable'),
+                array('snapshots', 'validateSnapshots', 'on' => 'publishable'),
                 array('credits', 'length', 'min' => 1, 'max' => 200),
             )
         );
@@ -70,24 +70,32 @@ class Chapter extends BaseChapter
         return $return;
     }
 
-    public function validateThumbnail()
+    public function validateThumbnail($attribute)
     {
-        return !is_null($this->thumbnail_media_id);
+        if (!is_null($this->thumbnail_media_id)) {
+            $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
+        }
     }
 
-    public function validateVideo()
+    public function validateVideo($attribute)
     {
-        return count($this->videos) == 1;
+        if (count($this->videos) == 1) {
+            $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
+        }
     }
 
-    public function validateExercises()
+    public function validateExercises($attribute)
     {
-        return count($this->exercises) > 0;
+        if (count($this->exercises) > 0) {
+            $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
+        }
     }
 
-    public function validateSnapshots()
+    public function validateSnapshots($attribute)
     {
-        return count($this->snapshots) > 0;
+        if (count($this->snapshots) > 0) {
+            $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
+        }
     }
 
     /**
@@ -96,7 +104,8 @@ class Chapter extends BaseChapter
      */
     public function htmlLength()
     {
-        return true;
+        if (false) {
+        }
     }
 
     /**
@@ -110,8 +119,8 @@ class Chapter extends BaseChapter
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(),
-            'public' => array(
+            'reviewable' => array(),
+            'publishable' => array(
                 'about_' . $this->source_language,
                 'thumbnail_media_id',
                 'teachers_guide_' . $this->source_language,
@@ -188,7 +197,7 @@ class Chapter extends BaseChapter
                 'teachers_guide' => Yii::t('model', 'Teacher\'s guide'),
                 'exercises' => Yii::t('model', 'Exercise(s)'),
                 'snapshots' => Yii::t('model', 'Visualization(s)'),
-                'dataChunks' => Yii::t('model', 'Data'),
+                'dataArticles' => Yii::t('model', 'Data'),
                 'tests' => Yii::t('model', 'Test'),
                 'related' => Yii::t('model', 'Related'),
                 'credits' => Yii::t('model', 'Thanks'),
@@ -209,7 +218,7 @@ class Chapter extends BaseChapter
                 'teachers_guide' => Yii::t('model', 'You are a teacher. Your time is precious and your students are picky.  By watching the video you\'ve already understood the content of this chapter. Now you are reading the guide looking for ways to engage your students without loosing time. If the guide is good, you will realize you don\'t need any fancy technology. Maybe you just need seven small stones. You may get an advice to give the students one of the exercises first and then give the presentation, when they are more curious for an answer. That\'s what a good guide can do for a teacher!'),
                 'exercise' => Yii::t('model', 'Exercises let students build skills and use knowledge, instead of just memorize facts and then forget them. The exercises deal with the same phenomenas as the chapter video and mimics it\'s graphics so that students can bring their understanding from the videos and slideshows into assignments.'),
                 'snapshot' => Yii::t('model', 'The visualizations opens a window into the data, which lets the students generate their hypothesis and try answering questions themselves. With local data the story of the chapter can be made local, by selecting your country. The visualizations in this view should relate directly to those in the video. Visualizations that are indirectly relevant are in the related list.'),
-                'dataChunks' => Yii::t('model', 'This is the data used in this chapter, listed as relating to the video and the visualizations.'),
+                'dataArticles' => Yii::t('model', 'This is the data used in this chapter, listed as relating to the video and the visualizations.'),
                 'tests' => Yii::t('model', 'Fact-questions for quiz or exams. By watching the video and doing the exercises the students should be able to get the answer right.'),
                 'related' => Yii::t('model', 'Users of this chapter may also be interested in these things, in addition to the related material of the various components.'),
                 'credits' => Yii::t('model', 'These are the people who contributed to this chapter. They helped in different ways. Some by editing a special piece of content, some by facilitating access to schools where the materials were evaluated.'),
@@ -227,4 +236,21 @@ class Chapter extends BaseChapter
         ));
     }
 
+    /**
+     * Returns thumbnails.
+     * @return P3Media[]
+     */
+    public function getThumbnails()
+    {
+        return $this->getP3Media(array('image/jpeg', 'image/png'));
+    }
+
+    /**
+     * Returns thumbnail options.
+     * @return array
+     */
+    public function getThumbnailOptions()
+    {
+        return $this->getOptions($this->getThumbnails());
+    }
 }

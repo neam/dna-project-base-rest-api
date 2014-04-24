@@ -7,11 +7,11 @@ Yii::import('Account.*');
 class Account extends BaseAccount
 {
     // Auth item types
-    const AUTH_ITEM_TYPE_OPERATION  = 0;
-    const AUTH_ITEM_TYPE_TASK       = 1;
-    const AUTH_ITEM_TYPE_ROLE       = 2;
+    const AUTH_ITEM_TYPE_OPERATION = 0;
+    const AUTH_ITEM_TYPE_TASK = 1;
+    const AUTH_ITEM_TYPE_ROLE = 2;
 
-    // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
+    // Add your model-specific methods here. This file will not be overridden by gtc except you force it.
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -34,6 +34,15 @@ class Account extends BaseAccount
             array()
         );
     }
+
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(),
+            array()
+        );
+    }
+
 
     public function rules()
     {
@@ -64,5 +73,29 @@ class Account extends BaseAccount
     public function getAuthItems($type = self::AUTH_ITEM_TYPE_ROLE)
     {
         return array_keys(Yii::app()->authManager->getAuthItems($type, $this->id));
+    }
+
+    /**
+     * Returns the roles.
+     * @return array
+     */
+    public function getRoles()
+    {
+        return $this->getAuthItems();
+    }
+
+    /**
+     * Checks if the item has a group.
+     * @param string $group
+     * @param string $role
+     * @return boolean
+     */
+    public function belongsToGroup($group, $role)
+    {
+        return PermissionHelper::groupHasAccount(array(
+            'account_id' => $this->id,
+            'group_id' => PermissionHelper::groupNameToId($group),
+            'role_id' => PermissionHelper::roleNameToId($role),
+        ));
     }
 }

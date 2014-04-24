@@ -23,14 +23,14 @@
  * @property Chapter[] $chapters5
  * @property Chapter[] $chapters6
  * @property Chapter[] $chapters7
- * @property DataChunk[] $dataChunks
- * @property DataChunk[] $dataChunks1
- * @property DataChunk[] $dataChunks2
- * @property DataChunk[] $dataChunks3
- * @property DataChunk[] $dataChunks4
- * @property DataChunk[] $dataChunks5
- * @property DataChunk[] $dataChunks6
- * @property DataChunk[] $dataChunks7
+ * @property DataArticle[] $dataArticles
+ * @property DataArticle[] $dataArticles1
+ * @property DataArticle[] $dataArticles2
+ * @property DataArticle[] $dataArticles3
+ * @property DataArticle[] $dataArticles4
+ * @property DataArticle[] $dataArticles5
+ * @property DataArticle[] $dataArticles6
+ * @property DataArticle[] $dataArticles7
  * @property DataSource[] $dataSources
  * @property DataSource[] $dataSources1
  * @property DataSource[] $dataSources2
@@ -72,14 +72,14 @@
  * @property HtmlChunk[] $htmlChunks5
  * @property HtmlChunk[] $htmlChunks6
  * @property HtmlChunk[] $htmlChunks7
- * @property PoFile[] $poFiles
- * @property PoFile[] $poFiles1
- * @property PoFile[] $poFiles2
- * @property PoFile[] $poFiles3
- * @property PoFile[] $poFiles4
- * @property PoFile[] $poFiles5
- * @property PoFile[] $poFiles6
- * @property PoFile[] $poFiles7
+ * @property I18nCatalog[] $i18nCatalogs
+ * @property I18nCatalog[] $i18nCatalogs1
+ * @property I18nCatalog[] $i18nCatalogs2
+ * @property I18nCatalog[] $i18nCatalogs3
+ * @property I18nCatalog[] $i18nCatalogs4
+ * @property I18nCatalog[] $i18nCatalogs5
+ * @property I18nCatalog[] $i18nCatalogs6
+ * @property I18nCatalog[] $i18nCatalogs7
  * @property SlideshowFile[] $slideshowFiles
  * @property SlideshowFile[] $slideshowFiles1
  * @property SlideshowFile[] $slideshowFiles2
@@ -183,14 +183,14 @@ abstract class BaseEzcExecution extends ActiveRecord
             'chapters5' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_hi'),
             'chapters6' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_pt'),
             'chapters7' => array(self::HAS_MANY, 'Chapter', 'authoring_workflow_execution_id_sv'),
-            'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'authoring_workflow_execution_id_de'),
-            'dataChunks1' => array(self::HAS_MANY, 'DataChunk', 'authoring_workflow_execution_id_en'),
-            'dataChunks2' => array(self::HAS_MANY, 'DataChunk', 'authoring_workflow_execution_id_cn'),
-            'dataChunks3' => array(self::HAS_MANY, 'DataChunk', 'authoring_workflow_execution_id_es'),
-            'dataChunks4' => array(self::HAS_MANY, 'DataChunk', 'authoring_workflow_execution_id_fa'),
-            'dataChunks5' => array(self::HAS_MANY, 'DataChunk', 'authoring_workflow_execution_id_hi'),
-            'dataChunks6' => array(self::HAS_MANY, 'DataChunk', 'authoring_workflow_execution_id_pt'),
-            'dataChunks7' => array(self::HAS_MANY, 'DataChunk', 'authoring_workflow_execution_id_sv'),
+            'dataArticles' => array(self::HAS_MANY, 'DataArticle', 'authoring_workflow_execution_id_de'),
+            'dataArticles1' => array(self::HAS_MANY, 'DataArticle', 'authoring_workflow_execution_id_en'),
+            'dataArticles2' => array(self::HAS_MANY, 'DataArticle', 'authoring_workflow_execution_id_cn'),
+            'dataArticles3' => array(self::HAS_MANY, 'DataArticle', 'authoring_workflow_execution_id_es'),
+            'dataArticles4' => array(self::HAS_MANY, 'DataArticle', 'authoring_workflow_execution_id_fa'),
+            'dataArticles5' => array(self::HAS_MANY, 'DataArticle', 'authoring_workflow_execution_id_hi'),
+            'dataArticles6' => array(self::HAS_MANY, 'DataArticle', 'authoring_workflow_execution_id_pt'),
+            'dataArticles7' => array(self::HAS_MANY, 'DataArticle', 'authoring_workflow_execution_id_sv'),
             'dataSources' => array(self::HAS_MANY, 'DataSource', 'authoring_workflow_execution_id_de'),
             'dataSources1' => array(self::HAS_MANY, 'DataSource', 'authoring_workflow_execution_id_en'),
             'dataSources2' => array(self::HAS_MANY, 'DataSource', 'authoring_workflow_execution_id_cn'),
@@ -232,14 +232,14 @@ abstract class BaseEzcExecution extends ActiveRecord
             'htmlChunks5' => array(self::HAS_MANY, 'HtmlChunk', 'authoring_workflow_execution_id_hi'),
             'htmlChunks6' => array(self::HAS_MANY, 'HtmlChunk', 'authoring_workflow_execution_id_pt'),
             'htmlChunks7' => array(self::HAS_MANY, 'HtmlChunk', 'authoring_workflow_execution_id_sv'),
-            'poFiles' => array(self::HAS_MANY, 'PoFile', 'authoring_workflow_execution_id_de'),
-            'poFiles1' => array(self::HAS_MANY, 'PoFile', 'authoring_workflow_execution_id_en'),
-            'poFiles2' => array(self::HAS_MANY, 'PoFile', 'authoring_workflow_execution_id_cn'),
-            'poFiles3' => array(self::HAS_MANY, 'PoFile', 'authoring_workflow_execution_id_es'),
-            'poFiles4' => array(self::HAS_MANY, 'PoFile', 'authoring_workflow_execution_id_fa'),
-            'poFiles5' => array(self::HAS_MANY, 'PoFile', 'authoring_workflow_execution_id_hi'),
-            'poFiles6' => array(self::HAS_MANY, 'PoFile', 'authoring_workflow_execution_id_pt'),
-            'poFiles7' => array(self::HAS_MANY, 'PoFile', 'authoring_workflow_execution_id_sv'),
+            'i18nCatalogs' => array(self::HAS_MANY, 'I18nCatalog', 'authoring_workflow_execution_id_de'),
+            'i18nCatalogs1' => array(self::HAS_MANY, 'I18nCatalog', 'authoring_workflow_execution_id_en'),
+            'i18nCatalogs2' => array(self::HAS_MANY, 'I18nCatalog', 'authoring_workflow_execution_id_cn'),
+            'i18nCatalogs3' => array(self::HAS_MANY, 'I18nCatalog', 'authoring_workflow_execution_id_es'),
+            'i18nCatalogs4' => array(self::HAS_MANY, 'I18nCatalog', 'authoring_workflow_execution_id_fa'),
+            'i18nCatalogs5' => array(self::HAS_MANY, 'I18nCatalog', 'authoring_workflow_execution_id_hi'),
+            'i18nCatalogs6' => array(self::HAS_MANY, 'I18nCatalog', 'authoring_workflow_execution_id_pt'),
+            'i18nCatalogs7' => array(self::HAS_MANY, 'I18nCatalog', 'authoring_workflow_execution_id_sv'),
             'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'authoring_workflow_execution_id_de'),
             'slideshowFiles1' => array(self::HAS_MANY, 'SlideshowFile', 'authoring_workflow_execution_id_en'),
             'slideshowFiles2' => array(self::HAS_MANY, 'SlideshowFile', 'authoring_workflow_execution_id_cn'),

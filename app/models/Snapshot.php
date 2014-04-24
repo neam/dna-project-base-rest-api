@@ -6,8 +6,9 @@ Yii::import('Snapshot.*');
 
 class Snapshot extends BaseSnapshot
 {
-
     use ItemTrait;
+
+    public $firstFlowStep = 'info';
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
@@ -18,7 +19,7 @@ class Snapshot extends BaseSnapshot
     public function init()
     {
         $this->itemDescription = Yii::t('itemDescription', 'This shows a visualization of a specific kind and state. It is a link to a snapshot of a tool for visually exploration of data. The Snapshot illustrates something described in the title and the about text.');
-        return parent::init();
+        parent::init();
     }
 
     public function getItemLabel()
@@ -30,7 +31,9 @@ class Snapshot extends BaseSnapshot
     {
         return array_merge(
             parent::behaviors(),
-            array()
+            array(
+                'goBehavior' => 'app.behaviors.GoActiveRecordBehavior',
+            )
         );
     }
 
@@ -56,12 +59,15 @@ class Snapshot extends BaseSnapshot
             array(
 
                 // Ordinary validation rules
-                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'public'),
+                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable'),
                 array('about_' . $this->source_language . '', 'length', 'min' => 10, 'max' => 200),
-                array('vizabi_state', 'validateVizabiState', 'on' => 'public'),
+                array('vizabi_state', 'validateVizabiState'),
 
             )
         );
+        Yii::log("model->statusRequirementsRules(): " . print_r($this->statusRequirementsRules(), true), "trace", __METHOD__);
+        Yii::log("model->flowStepRules(): " . print_r($this->flowStepRules(), true), "trace", __METHOD__);
+        Yii::log("model->i18nRules(): " . print_r($this->i18nRules(), true), "trace", __METHOD__);
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
         return $return;
     }
@@ -71,9 +77,12 @@ class Snapshot extends BaseSnapshot
         return !is_null($this->thumbnail_media_id);
     }
 
-    public function validateVizabiState()
+    public function validateVizabiState($attribute)
     {
-        return strlen($this->vizabi_state) > 0;
+        $json_decoded = json_decode(trim($this->vizabi_state));
+        if (strlen(trim($this->vizabi_state)) > 0 && is_null($json_decoded)) {
+            $this->addError('vizabi_state', Yii::t('app', 'Vizabi state could not be parsed as JSON'));
+        }
     }
 
     public function validateRelated()
@@ -100,10 +109,10 @@ class Snapshot extends BaseSnapshot
             'draft' => array(
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'vizabi_state',
             ),
-            'public' => array(),
+            'publishable' => array(),
         );
     }
 
@@ -151,8 +160,8 @@ class Snapshot extends BaseSnapshot
                 'about_en' => Yii::t('model', 'About (English)'),
                 'thumbnail_media_id' => Yii::t('model', 'Thumbnail'),
                 'related' => Yii::t('model', 'Related'),
-                'datachunks' => Yii::t('model', 'Data'),
-                'vizabi_state' => Yii::t('model', 'Snapshot'),
+                'dataarticles' => Yii::t('model', 'Data'),
+                'vizabi_state' => Yii::t('model', 'Vizabi State'),
                 'tool' => Yii::t('model', 'Tool'),
                 'embed_override' => Yii::t('model', 'Embed override'),
             )
@@ -168,12 +177,38 @@ class Snapshot extends BaseSnapshot
                 'about' => Yii::t('model', 'What\'s interesting with this visualization.'),
                 'thumbnail_media_id' => Yii::t('model', 'This thumbnail is used in lists of snapshots. Automatically generated'),
                 'related' => Yii::t('model', 'Users seeing this visualization may also be interested in these Items. especially list other visualizations that should be of interest. For example: A linechart showing the world Population trend, should be related to at least 4 things: 1) linecharts with four lines for regional Population trends, 2) linechart showing Babies per Woman, 3)  line chart showing Life Expectancy for the World, 3) the chapter about World Population'),
-                'datachunks' => Yii::t('model', 'This is the data that is being visualized.'),
+                'dataarticles' => Yii::t('model', 'This is the data that is being visualized.'),
                 'vizabi_state' => Yii::t('model', 'A link to the visualization on the related page.'),
                 'tool' => Yii::t('model', ''),
                 'embed_override' => Yii::t('model', ''),
             )
         );
+    }
+
+    /**
+     * The attributes that is returned by the REST api
+     */
+    public function getAllAttributes()
+    {
+
+        $response = new stdClass();
+
+        $response->id = $this->id;
+        $response->vizabi_state = json_decode(trim($this->vizabi_state));
+        $response->tool = !is_null($this->tool_id) ? $this->tool->allAttributes : null;
+        $response->embed_override = $this->embed_override;
+        $response->title = $this->title;
+        $response->slug = $this->slug;
+        $response->about = $this->about;
+        $response->thumbnail = new stdClass();
+        if (!is_null($this->thumbnail_media_id)) {
+            $response->thumbnail->original = $this->thumbnailMedia->createUrl('original-public', true);
+            $response->thumbnail->thumb = $this->thumbnailMedia->createUrl('related-thumb', true);
+        }
+        $response->related = $this->related;
+
+        return $response;
+
     }
 
     public function search($criteria = null)

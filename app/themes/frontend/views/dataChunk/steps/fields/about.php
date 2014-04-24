@@ -1,4 +1,4 @@
-<?php echo $form->textAreaRow($model, 'about_' . $model->source_language, array(
+<?php echo $form->textAreaControlGroup($model, 'about_' . $model->source_language, array(
     'class' => Html::ITEM_FORM_FIELD_CLASS,
     'rows' => 6,
     'cols' => 50,
@@ -8,5 +8,5 @@
 )); ?>
 
 <?php if ($this->workflowData["translateInto"]): ?>
-    <?php echo $form->textAreaRow($model, 'about_' . $this->workflowData["translateInto"], array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+    <?php echo $form->textAreaRow($model, 'about_' . $this->workflowData["translateInto"], array('ControlGroups' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 <?php endif; ?>

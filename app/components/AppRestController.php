@@ -10,6 +10,19 @@ class AppRestController extends WRestController
         return parent::init();
     }
 
+    public function loadModel($id)
+    {
+        if (is_null($id)) {
+            $id = Yii::app()->user->id;
+        }
+        $modelName = $this->_modelName;
+        $model = $modelName::model()->findByPk($id);
+        if ($model === null) {
+            $this->sendResponse(404);
+        }
+        return $model;
+    }
+
     private function _getStatusCodeMessage($status)
     {
         $codes = Array(
@@ -40,11 +53,11 @@ class AppRestController extends WRestController
         header('Content-type: ' . $content_type);
     }
 
-    public function sendResponse($status = 200, $bodyParams = array())
+    public function sendResponse($status = 200, $bodyParams = array(), $options = array())
     {
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Headers: Authorization, Origin, Content-Type, Accept");
-        return parent::sendResponse($status, $bodyParams);
+        return parent::sendResponse($status, $bodyParams, $options);
     }
 
     public function runDefaultWrestListAction()

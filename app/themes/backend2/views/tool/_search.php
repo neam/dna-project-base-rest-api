@@ -1,7 +1,7 @@
 <div class="wide form">
 
     <?php
-    $form = $this->beginWidget('TbActiveForm', array(
+    $form = $this->beginWidget('\TbActiveForm', array(
         'action' => Yii::app()->createUrl($this->route),
         'method' => 'get',
     )); ?>
@@ -41,8 +41,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'po_file_id'); ?>
-        <?php echo $form->textField($model, 'po_file_id', array('size' => 20, 'maxlength' => 20)); ?>
+        <?php echo $form->label($model, 'i18n_catalog_id'); ?>
+        <?php echo $form->textField($model, 'i18n_catalog_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
     <div class="row">

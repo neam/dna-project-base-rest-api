@@ -70,39 +70,20 @@ class Node extends BaseNode
      */
     public function item()
     {
+        foreach ($this->relations() as $relationName => $relationSpec) {
 
-        // Figure out parent item
-        foreach (array(
-                     'chapters' => array(self::HAS_MANY, 'Chapter', 'node_id'),
-                     'dataChunks' => array(self::HAS_MANY, 'DataChunk', 'node_id'),
-                     'dataSources' => array(self::HAS_MANY, 'DataSource', 'node_id'),
-                     'downloadLinks' => array(self::HAS_MANY, 'DownloadLink', 'node_id'),
-                     'examQuestions' => array(self::HAS_MANY, 'ExamQuestion', 'node_id'),
-                     'examQuestionAlternatives' => array(self::HAS_MANY, 'ExamQuestionAlternative', 'node_id'),
-                     'exercises' => array(self::HAS_MANY, 'Exercise', 'node_id'),
-                     'htmlChunks' => array(self::HAS_MANY, 'HtmlChunk', 'node_id'),
-                     'poFiles' => array(self::HAS_MANY, 'PoFile', 'node_id'),
-                     'sections' => array(self::HAS_MANY, 'Section', 'node_id'),
-                     'sectionContents' => array(self::HAS_MANY, 'SectionContent', 'node_id'),
-                     'slideshowFiles' => array(self::HAS_MANY, 'SlideshowFile', 'node_id'),
-                     'snapshots' => array(self::HAS_MANY, 'Snapshot', 'node_id'),
-                     'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'node_id'),
-                     //'teachersGuides' => array(self::HAS_MANY, 'TeachersGuide', 'node_id'),
-                     'textDocs' => array(self::HAS_MANY, 'TextDoc', 'node_id'),
-                     'tools' => array(self::HAS_MANY, 'Tool', 'node_id'),
-                     'vectorGraphics' => array(self::HAS_MANY, 'VectorGraphic', 'node_id'),
-                     'videoFiles' => array(self::HAS_MANY, 'VideoFile', 'node_id'),
-                 ) as $candidateRelation => $relation) {
-
-            if (count($this->$candidateRelation) == 1) {
-                $itemArray = $this->$candidateRelation;
-                return $itemArray[0];
+            // Filter out edges and nodeHasGroup
+            if (count($relationSpec) < 3 || $relationSpec[2] !== 'node_id' || $relationSpec[1] === 'NodeHasGroup') {
+                continue;
             }
 
+            if (count($this->{$relationName}) === 1) {
+                $tmp = $this->{$relationName};
+                return $tmp[0];
+            }
         }
 
         throw new CException("This node does not have any parent item");
-
     }
 
 }

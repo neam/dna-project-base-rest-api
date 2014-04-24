@@ -16,25 +16,53 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
     {
     }
 
+    public static function assertEquals(
+        $expected,
+        $actual,
+        $message = '',
+        $delta = 0,
+        $maxDepth = 10,
+        $canonicalize = false,
+        $ignoreCase = false
+    ) {
+
+        $trace = debug_backtrace();
+        $message = "assertEquals($expected, $actual) on line {$trace[0]["line"]}:";
+
+        return parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
+
+    }
+
     // tests
     public function testChapterExercisesAndSnapshots()
     {
 
         $chapter = new Chapter();
-        $chapter->save();
+        if (!$chapter->save()) {
+            throw new SaveException($chapter);
+        }
 
         $this->assertTrue(!is_null($chapter->node()->id));
 
+        $chapter->accessRestricted = false; // Turn of access restrictions for this test
+
         $exercise = new Exercise();
         $exercise->_title = "An exercise title";
-        $exercise->save();
+        if (!$exercise->save()) {
+            throw new SaveException($exercise);
+        }
+
+        $exercise->accessRestricted = false; // Turn of access restrictions for this test
 
         $this->assertTrue(!is_null($exercise->node()->id));
 
         $edge = new Edge();
         $edge->from_node_id = $chapter->node()->id;
         $edge->to_node_id = $exercise->node()->id;
-        $edge->save();
+        $edge->relation = 'exercises';
+        if (!$edge->save()) {
+            throw new SaveException($edge);
+        }
 
         $this->assertEquals(1, count($chapter->node()->outEdges));
         $this->assertEquals(1, count($exercise->node()->inEdges));
@@ -52,14 +80,21 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
 
         $snapshot = new Snapshot();
         $snapshot->_title = "A snapshot title";
-        $snapshot->save();
+        if (!$snapshot->save()) {
+            throw new SaveException($snapshot);
+        }
+
+        $snapshot->accessRestricted = false; // Turn of access restrictions for this test
 
         $this->assertTrue(!is_null($snapshot->node()->id));
 
         $edge = new Edge();
         $edge->from_node_id = $chapter->node()->id;
         $edge->to_node_id = $snapshot->node()->id;
-        $edge->save();
+        $edge->relation = 'snapshots';
+        if (!$edge->save()) {
+            throw new SaveException($edge);
+        }
 
         $chapter->node()->refresh();
         $chapter->refresh();
@@ -119,11 +154,11 @@ LIMIT 3
 
     }
 
-    public function testFindGoItemsThroughDatabaseView()
+    public function testFindItemsThroughDatabaseView()
     {
 
-        $goItems = GoItem::model()->findAll();
-        $this->assertNotEmpty(count($goItems));
+        $items = Item::model()->findAll();
+        $this->assertNotEmpty(count($items));
 
     }
 

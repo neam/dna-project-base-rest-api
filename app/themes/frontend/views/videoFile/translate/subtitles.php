@@ -17,14 +17,14 @@ $dataProvider = new CArrayDataProvider(array_values($messages_to_translate), arr
 // $dataProvider->getData() will return a list of arrays.
 
 
-$this->widget('TbGridView', array(
+$this->widget('\TbGridView', array(
     'id' => 'message-grid',
     'dataProvider' => $dataProvider,
     //'filter' => $model,
     'template' => '{pager}{items}{pager}',
     'pager' => array(
-        'class' => 'TbPager',
-        'displayFirstAndLast' => true,
+        'class' => '\TbPager',
+        'hideFirstAndLast' => false,
     ),
     'columns' => array(
         'id',

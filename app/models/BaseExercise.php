@@ -12,7 +12,6 @@
  * @property string $_question
  * @property string $_description
  * @property integer $thumbnail_media_id
- * @property string $slideshow_file_id
  * @property string $created
  * @property string $modified
  * @property integer $owner_id
@@ -60,6 +59,7 @@
  * @property string $slug_vi
  * @property string $slug_zh_cn
  * @property string $slug_zh_tw
+ * @property string $slug_fa
  *
  * Relations of table "exercise" available as properties of the model:
  * @property ExerciseQaState $exerciseQaState
@@ -67,8 +67,7 @@
  * @property Exercise[] $exercises
  * @property Node $node
  * @property P3Media $thumbnailMedia
- * @property SlideshowFile $slideshowFile
- * @property Users $owner
+ * @property Account $owner
  */
 abstract class BaseExercise extends ActiveRecord
 {
@@ -87,12 +86,12 @@ abstract class BaseExercise extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, slug_en, _question, _description, thumbnail_media_id, slideshow_file_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, exercise_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, slug_en, _question, _description, thumbnail_media_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, exercise_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, thumbnail_media_id, owner_id', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, slideshow_file_id, node_id, exercise_qa_state_id', 'length', 'max' => 20),
-                array('_title, slug_en, _question, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
+                array('cloned_from_id, node_id, exercise_qa_state_id', 'length', 'max' => 20),
+                array('_title, slug_en, _question, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'length', 'max' => 255),
                 array('_description, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, slug_en, _question, _description, thumbnail_media_id, slideshow_file_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, exercise_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, slug_en, _question, _description, thumbnail_media_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, exercise_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -122,8 +121,7 @@ abstract class BaseExercise extends ActiveRecord
                 'exercises' => array(self::HAS_MANY, 'Exercise', 'cloned_from_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'thumbnailMedia' => array(self::BELONGS_TO, 'P3Media', 'thumbnail_media_id'),
-                'slideshowFile' => array(self::BELONGS_TO, 'SlideshowFile', 'slideshow_file_id'),
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
             )
         );
     }
@@ -139,7 +137,6 @@ abstract class BaseExercise extends ActiveRecord
             '_question' => Yii::t('model', 'Question'),
             '_description' => Yii::t('model', 'Description'),
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
-            'slideshow_file_id' => Yii::t('model', 'Slideshow File'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
             'owner_id' => Yii::t('model', 'Owner'),
@@ -187,6 +184,7 @@ abstract class BaseExercise extends ActiveRecord
             'slug_vi' => Yii::t('model', 'Slug Vi'),
             'slug_zh_cn' => Yii::t('model', 'Slug Zh Cn'),
             'slug_zh_tw' => Yii::t('model', 'Slug Zh Tw'),
+            'slug_fa' => Yii::t('model', 'Slug Fa'),
         );
     }
 
@@ -204,7 +202,6 @@ abstract class BaseExercise extends ActiveRecord
         $criteria->compare('t._question', $this->_question, true);
         $criteria->compare('t._description', $this->_description, true);
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
-        $criteria->compare('t.slideshow_file_id', $this->slideshow_file_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
         $criteria->compare('t.owner_id', $this->owner_id);
@@ -252,6 +249,7 @@ abstract class BaseExercise extends ActiveRecord
         $criteria->compare('t.slug_vi', $this->slug_vi, true);
         $criteria->compare('t.slug_zh_cn', $this->slug_zh_cn, true);
         $criteria->compare('t.slug_zh_tw', $this->slug_zh_tw, true);
+        $criteria->compare('t.slug_fa', $this->slug_fa, true);
 
 
         return $criteria;

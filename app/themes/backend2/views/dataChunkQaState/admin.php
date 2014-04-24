@@ -21,7 +21,7 @@ Yii::app()->clientScript->registerScript('search', "
     ");
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
     <h1>
 
         <?php echo Yii::t('model', 'Data Chunk Qa States'); ?>
@@ -31,7 +31,7 @@ Yii::app()->clientScript->registerScript('search', "
 
 
 <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>
-<?php Yii::beginProfile('DataChunkQaState.view.grid'); ?>
+<?php Yii::beginProfile('DataArticleQaState.view.grid'); ?>
 
 
 <?php
@@ -57,7 +57,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'id',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -65,7 +65,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'status',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -73,7 +73,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'draft_validation_progress',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -81,7 +81,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'preview_validation_progress',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -89,7 +89,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'public_validation_progress',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -97,7 +97,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'approval_progress',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -105,7 +105,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'proofing_progress',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -113,7 +113,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'translations_draft_validation_progress',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -122,7 +122,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'translations_preview_validation_progress',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -130,7 +130,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'translations_public_validation_progress',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -138,7 +138,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'translations_approval_progress',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -146,7 +146,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'translations_proofing_progress',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -154,7 +154,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'previewing_welcome',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -162,7 +162,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'candidate_for_public_status',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -170,7 +170,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_approved',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -178,7 +178,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'title_approved',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -186,7 +186,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'file_approved',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -194,7 +194,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'slug_proofed',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -202,7 +202,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'title_proofed',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -210,7 +210,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'file_proofed',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -218,7 +218,7 @@ $this->widget('TbGridView',
                 'class' => 'TbEditableColumn',
                 'name' => 'draft_saved',
                 'editable' => array(
-                    'url' => $this->createUrl('/dataChunkQaState/editableSaver'),
+                    'url' => $this->createUrl('/dataArticleQaState/editableSaver'),
                     //'placement' => 'right',
                 )
             ),
@@ -227,9 +227,9 @@ $this->widget('TbGridView',
             array(
                 'class' => 'TbButtonColumn',
                 'buttons' => array(
-                    'view' => array('visible' => 'Yii::app()->user->checkAccess("DataChunkQaState.View")'),
-                    'update' => array('visible' => 'Yii::app()->user->checkAccess("DataChunkQaState.Update")'),
-                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("DataChunkQaState.Delete")'),
+                    'view' => array('visible' => 'Yii::app()->user->checkAccess("DataArticleQaState.View")'),
+                    'update' => array('visible' => 'Yii::app()->user->checkAccess("DataArticleQaState.Update")'),
+                    'delete' => array('visible' => 'Yii::app()->user->checkAccess("DataArticleQaState.Delete")'),
                 ),
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
@@ -239,4 +239,4 @@ $this->widget('TbGridView',
     )
 );
 ?>
-<?php Yii::endProfile('DataChunkQaState.view.grid'); ?>
+<?php Yii::endProfile('DataArticleQaState.view.grid'); ?>

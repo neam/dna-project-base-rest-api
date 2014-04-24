@@ -72,5 +72,4 @@ class SourceMessage extends BaseSourceMessage
         }
         return $model;
     }
-
 }

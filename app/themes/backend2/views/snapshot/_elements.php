@@ -23,7 +23,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'tool_id', $input);
+            echo $form->customControlGroup($model, 'tool_id', $input);
             ?>
 
             <?php
@@ -33,9 +33,9 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Tool'))),
-                        'icon' => 'icon-plus',
+                        'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',
@@ -76,7 +76,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'thumbnail_media_id', $input);
+            echo $form->customControlGroup($model, 'thumbnail_media_id', $input);
             ?>
 
             <?php
@@ -86,9 +86,9 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'P3 Media'))),
-                        'icon' => 'icon-plus',
+                        'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',

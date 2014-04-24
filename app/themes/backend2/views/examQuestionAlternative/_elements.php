@@ -3,6 +3,8 @@
 
         <div class="form-horizontal">
 
+            <?php echo $form->textFieldRow($model, 'version'); ?>
+
             <?php echo $form->textFieldRow($model, 'slug', array('maxlength' => 255)); ?>
 
             <?php echo $form->html5EditorRow($model, '_markup', array('rows' => 6, 'cols' => 50, 'class' => 'span8', 'options' => array(
@@ -28,7 +30,7 @@
                     ),
                 )
                 , true);
-            echo $form->customRow($model, 'exam_question_id', $input);
+            echo $form->customControlGroup($model, 'exam_question_id', $input);
             ?>
 
             <?php
@@ -38,9 +40,9 @@
             <div class="control-group">
                 <div class="controls">
                     <?php
-                    echo $this->widget('bootstrap.widgets.TbButton', array(
+                    echo $this->widget('\TbButton', array(
                         'label' => Yii::t('model', 'Create {model}', array('{model}' => Yii::t('model', 'Exam Question'))),
-                        'icon' => 'icon-plus',
+                        'icon' => 'glyphicon-plus',
                         'htmlOptions' => array(
                             'data-toggle' => 'modal',
                             'data-target' => '#' . $formId . '-modal',
@@ -64,6 +66,8 @@
             <?php echo $form->textFieldRow($model, 'owner_id'); ?>
 
             <?php echo $form->textFieldRow($model, 'node_id', array('maxlength' => 20)); ?>
+
+            <?php echo $form->textFieldRow($model, 'exam_question_alternative_qa_state_id', array('maxlength' => 20)); ?>
         </div>
     </div>
     <!-- main inputs -->

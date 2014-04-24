@@ -1,0 +1,32 @@
+{
+    "name": "gapminder/cms-test-deps",
+    "description": "Gapminder CMS Tests",
+    "keywords": ["yii", "web", "application", "gapminder", "gapminder-school", "cms", "tests"],
+    "homepage": "http://gapminder.org/",
+    "type": "yii-application",
+    "license": "TBD",
+    "authors": [
+        {
+            "name": "Fredrik Wollsén",
+            "email": "fredrik@neam.se",
+            "homepage": "http://www.neam.se"
+        }
+    ],
+    "support": {
+        "email": "support@gapminder.org",
+        "issues": "https://github.com/gapminder/gapminder-school-cms/issues",
+        "source": "https://github.com/gapminder/gapminder-school-cms"
+    },
+    "repositories": [
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "~1.8.5",
+        "psychomieze/sauceextension": "@dev"
+    },
+    "scripts": {
+    }
+}

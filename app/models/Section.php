@@ -41,7 +41,7 @@ class Section extends BaseSection
             'videoFiles' => array(self::MANY_MANY, 'VideoFile', 'section_content(section_id, video_file_id)'),
             'exercises' => array(self::MANY_MANY, 'Exercise', 'section_content(section_id, exercise_id)'),
             'slideshoFiles' => array(self::MANY_MANY, 'SlideshowFIle', 'section_content(section_id, slideshow_file_id)'),
-            'dataChunks' => array(self::MANY_MANY, 'DataChunk', 'section_content(section_id, data_chunk_id)'),
+            'dataArticles' => array(self::MANY_MANY, 'DataArticle', 'section_content(section_id, data_chunk_id)'),
             'downloadLinks' => array(self::MANY_MANY, 'DownloadLink', 'section_content(section_id, download_link_id)'),
             'examQuestions' => array(self::MANY_MANY, 'ExamQuestion', 'section_content(section_id, exam_question_id)'),
         ));
@@ -83,10 +83,10 @@ class Section extends BaseSection
             'draft' => array(
                 'title_' . $this->source_language,
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'slug_' . $this->source_language,
             ),
-            'public' => array(),
+            'publishable' => array(),
         );
     }
 

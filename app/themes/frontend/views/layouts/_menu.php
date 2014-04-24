@@ -11,20 +11,20 @@
     }
 
     $this->widget(
-        'TbNavbar',
+        '\TbNavbar',
         array(
             //'fluid' => true,
             'collapse' => true,
-            'fixed' => 'top',
+            'display' => TbHtml::NAVBAR_DISPLAY_FIXEDTOP,
             'items' => array(
                 $this->renderBreadcrumbs(),
                 array(
-                    'class' => 'TbMenu',
+                    'class' => '\TbNav',
                     'items' => P3Page::getMenuItems($rootNode)
                 ),
                 //'<form class="navbar-search pull-left" action=""><input type="text" class="search-query span2" placeholder="Search"></form>',
                 array(
-                    'class' => 'TbMenu',
+                    'class' => '\TbNav',
                     'htmlOptions' => array('class' => 'pull-right language-menu'),
                     'items' => array(
                         array(
@@ -36,7 +36,7 @@
                     )
                 ),
                 array(
-                    'class' => 'TbMenu',
+                    'class' => '\TbNav',
                     'htmlOptions' => array('class' => 'pull-right'),
                     'items' => array(
                         array(

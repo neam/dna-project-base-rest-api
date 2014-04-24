@@ -26,7 +26,7 @@ return array (
   'Choose Language' => '',
   'Click Start upload' => '',
   'Create' => '',
-  'DataChunks' => '',
+  'DataArticles' => '',
   'Drag & drop the file you wish to upload or use the select button below' => '',
   'Email' => '',
   'Exercises' => '',

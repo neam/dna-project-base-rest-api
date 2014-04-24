@@ -30,7 +30,7 @@ foreach ($this->workflowData["stepActions"] as $action) {
 
         <!--
         Status: <?php $this->widget(
-            'bootstrap.widgets.TbEditableField',
+            '\TbEditableField',
             array(
                 'type' => 'select',
                 'model' => $model->qaState(),

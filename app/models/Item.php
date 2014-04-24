@@ -20,7 +20,7 @@ class Item extends BaseItem
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return (isset($this->_title)) ? $this->_title : $this->model_class . ' #' . $this->id;
     }
 
     public function behaviors()
@@ -40,6 +40,19 @@ class Item extends BaseItem
           array('column3', 'rule2'),
           ) */
         );
+    }
+
+    /**
+     * The attributes that is returned by the REST api
+     */
+    public function getAllAttributes()
+    {
+
+        $response = new stdClass();
+        $response->id = $this->id;
+        $response->title = $this->_title;
+        return $response;
+
     }
 
     public function search($criteria = null)

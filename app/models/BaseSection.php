@@ -5,13 +5,15 @@
  *
  * Columns in table "section" available as properties of the model:
  * @property string $id
+ * @property integer $version
+ * @property string $cloned_from_id
  * @property string $page_id
  * @property string $_title
  * @property string $slug_en
- * @property integer $ordinal
  * @property string $_menu_label
  * @property string $created
  * @property string $modified
+ * @property integer $owner_id
  * @property string $node_id
  * @property string $slug_es
  * @property string $slug_hi
@@ -56,11 +58,15 @@
  * @property string $slug_zh_cn
  * @property string $slug_zh_tw
  * @property string $section_qa_state_id
+ * @property string $slug_fa
  *
  * Relations of table "section" available as properties of the model:
- * @property SectionQaState $sectionQaState
+ * @property Account $owner
  * @property Node $node
  * @property Page $page
+ * @property Section $clonedFrom
+ * @property Section[] $sections
+ * @property SectionQaState $sectionQaState
  */
 abstract class BaseSection extends ActiveRecord
 {
@@ -80,19 +86,19 @@ abstract class BaseSection extends ActiveRecord
         return array_merge(
             parent::rules(), array(
                 array('page_id', 'required'),
-                array('_title, slug_en, ordinal, _menu_label, created, modified, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, section_qa_state_id', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('ordinal', 'numerical', 'integerOnly' => true),
-                array('page_id, node_id, section_qa_state_id', 'length', 'max' => 20),
-                array('_title, slug_en, _menu_label, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw', 'length', 'max' => 255),
+                array('version, cloned_from_id, _title, slug_en, _menu_label, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, section_qa_state_id, slug_fa', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, owner_id', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id, page_id, node_id, section_qa_state_id', 'length', 'max' => 20),
+                array('_title, slug_en, _menu_label, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, page_id, _title, slug_en, ordinal, _menu_label, created, modified, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, section_qa_state_id', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, page_id, _title, slug_en, _menu_label, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, section_qa_state_id, slug_fa', 'safe', 'on' => 'search'),
             )
         );
     }
 
     public function getItemLabel()
     {
-        return (string) $this->page_id;
+        return (string) $this->cloned_from_id;
     }
 
     public function behaviors()
@@ -110,9 +116,12 @@ abstract class BaseSection extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'sectionQaState' => array(self::BELONGS_TO, 'SectionQaState', 'section_qa_state_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'page' => array(self::BELONGS_TO, 'Page', 'page_id'),
+                'clonedFrom' => array(self::BELONGS_TO, 'Section', 'cloned_from_id'),
+                'sections' => array(self::HAS_MANY, 'Section', 'cloned_from_id'),
+                'sectionQaState' => array(self::BELONGS_TO, 'SectionQaState', 'section_qa_state_id'),
             )
         );
     }
@@ -121,13 +130,15 @@ abstract class BaseSection extends ActiveRecord
     {
         return array(
             'id' => Yii::t('model', 'ID'),
+            'version' => Yii::t('model', 'Version'),
+            'cloned_from_id' => Yii::t('model', 'Cloned From'),
             'page_id' => Yii::t('model', 'Page'),
             '_title' => Yii::t('model', 'Title'),
             'slug_en' => Yii::t('model', 'Slug En'),
-            'ordinal' => Yii::t('model', 'Ordinal'),
             '_menu_label' => Yii::t('model', 'Menu Label'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
+            'owner_id' => Yii::t('model', 'Owner'),
             'node_id' => Yii::t('model', 'Node'),
             'slug_es' => Yii::t('model', 'Slug Es'),
             'slug_hi' => Yii::t('model', 'Slug Hi'),
@@ -172,6 +183,7 @@ abstract class BaseSection extends ActiveRecord
             'slug_zh_cn' => Yii::t('model', 'Slug Zh Cn'),
             'slug_zh_tw' => Yii::t('model', 'Slug Zh Tw'),
             'section_qa_state_id' => Yii::t('model', 'Section Qa State'),
+            'slug_fa' => Yii::t('model', 'Slug Fa'),
         );
     }
 
@@ -182,13 +194,15 @@ abstract class BaseSection extends ActiveRecord
         }
 
         $criteria->compare('t.id', $this->id, true);
+        $criteria->compare('t.version', $this->version);
+        $criteria->compare('t.cloned_from_id', $this->cloned_from_id);
         $criteria->compare('t.page_id', $this->page_id);
         $criteria->compare('t._title', $this->_title, true);
         $criteria->compare('t.slug_en', $this->slug_en, true);
-        $criteria->compare('t.ordinal', $this->ordinal);
         $criteria->compare('t._menu_label', $this->_menu_label, true);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);
+        $criteria->compare('t.owner_id', $this->owner_id);
         $criteria->compare('t.node_id', $this->node_id);
         $criteria->compare('t.slug_es', $this->slug_es, true);
         $criteria->compare('t.slug_hi', $this->slug_hi, true);
@@ -233,6 +247,7 @@ abstract class BaseSection extends ActiveRecord
         $criteria->compare('t.slug_zh_cn', $this->slug_zh_cn, true);
         $criteria->compare('t.slug_zh_tw', $this->slug_zh_tw, true);
         $criteria->compare('t.section_qa_state_id', $this->section_qa_state_id);
+        $criteria->compare('t.slug_fa', $this->slug_fa, true);
 
 
         return $criteria;

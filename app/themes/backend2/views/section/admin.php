@@ -21,7 +21,7 @@ Yii::app()->clientScript->registerScript('search', "
     ");
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
     <h1>
 
         <?php echo Yii::t('model', 'Sections'); ?>
@@ -35,7 +35,7 @@ Yii::app()->clientScript->registerScript('search', "
 
 
 <?php
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'section-grid',
         'dataProvider' => $model->search(),
@@ -43,7 +43,7 @@ $this->widget('TbGridView',
         #'responsiveTable' => true,
         'template' => '{summary}{pager}{items}{pager}',
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -60,6 +60,19 @@ $this->widget('TbGridView',
                     'url' => $this->createUrl('/section/editableSaver'),
                     //'placement' => 'right',
                 )
+            ),
+            array(
+                'class' => 'TbEditableColumn',
+                'name' => 'version',
+                'editable' => array(
+                    'url' => $this->createUrl('/section/editableSaver'),
+                    //'placement' => 'right',
+                )
+            ),
+            array(
+                'name' => 'cloned_from_id',
+                'value' => 'CHtml::value($data, \'sections.itemLabel\')',
+                'filter' => '', //CHtml::listData(Section::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
             ),
             array(
                 'name' => 'page_id',
@@ -84,14 +97,6 @@ $this->widget('TbGridView',
             ),
             array(
                 'class' => 'TbEditableColumn',
-                'name' => 'ordinal',
-                'editable' => array(
-                    'url' => $this->createUrl('/section/editableSaver'),
-                    //'placement' => 'right',
-                )
-            ),
-            array(
-                'class' => 'TbEditableColumn',
                 'name' => '_menu_label',
                 'editable' => array(
                     'url' => $this->createUrl('/section/editableSaver'),
@@ -106,6 +111,7 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            /*
             array(
                 'class' => 'TbEditableColumn',
                 'name' => 'modified',
@@ -114,7 +120,11 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
-            /*
+            array(
+                'name' => 'owner_id',
+                'value' => 'CHtml::value($data, \'owner.itemLabel\')',
+                'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
             array(
                 'name' => 'node_id',
                 'value' => 'CHtml::value($data, \'node.itemLabel\')',
@@ -456,10 +466,15 @@ $this->widget('TbGridView',
                     //'placement' => 'right',
                 )
             ),
+            array(
+                'name' => 'section_qa_state_id',
+                'value' => 'CHtml::value($data, \'sectionQaState.itemLabel\')',
+                'filter' => '',//CHtml::listData(SectionQaState::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+            ),
             */
 
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'buttons' => array(
                     'view' => array('visible' => 'Yii::app()->user->checkAccess("Section.View")'),
                     'update' => array('visible' => 'Yii::app()->user->checkAccess("Section.Update")'),

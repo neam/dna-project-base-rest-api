@@ -41,11 +41,11 @@ return array(
             'class'  => 'CLogRouter',
             'routes' => array(
                 // Yii debug toolbar
-                array(
+                /*array(
                     'class'     => 'vendor.malyshev.yii-debug-toolbar.yii-debug-toolbar.YiiDebugToolbarRoute',
                     'ipFilters' => array('127.0.0.1'),
                     'enabled'   => DEV,
-                ),
+                ),*/
                 // file logging
                 array(
                     'class'   => 'CFileLogRoute',
@@ -64,6 +64,9 @@ return array(
                     'enabled' => false
                 ),
             ),
+        ),
+        'sentry' => array(
+            'environment' => 'development',
         ),
     ),
 );

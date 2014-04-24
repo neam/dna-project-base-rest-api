@@ -1,13 +1,23 @@
 <div class="wide form">
 
     <?php
-    $form = $this->beginWidget('TbActiveForm', array(
+    $form = $this->beginWidget('\TbActiveForm', array(
         'action' => Yii::app()->createUrl($this->route),
         'method' => 'get',
     )); ?>
     <div class="row">
         <?php echo $form->label($model, 'id'); ?>
         <?php ; ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'version'); ?>
+        <?php echo $form->textField($model, 'version'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'cloned_from_id'); ?>
+        <?php echo $form->textField($model, 'cloned_from_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
     <div class="row">
@@ -26,11 +36,6 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'ordinal'); ?>
-        <?php echo $form->textField($model, 'ordinal'); ?>
-    </div>
-
-    <div class="row">
         <?php echo $form->label($model, '_menu_label'); ?>
         <?php echo $form->textField($model, '_menu_label', array('size' => 60, 'maxlength' => 255)); ?>
     </div>
@@ -43,6 +48,11 @@
     <div class="row">
         <?php echo $form->label($model, 'modified'); ?>
         <?php echo $form->textField($model, 'modified'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'owner_id'); ?>
+        <?php echo $form->textField($model, 'owner_id'); ?>
     </div>
 
     <div class="row">
@@ -258,6 +268,11 @@
     <div class="row">
         <?php echo $form->label($model, 'slug_zh_tw'); ?>
         <?php echo $form->textField($model, 'slug_zh_tw', array('size' => 60, 'maxlength' => 255)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model, 'section_qa_state_id'); ?>
+        <?php echo $form->textField($model, 'section_qa_state_id', array('size' => 20, 'maxlength' => 20)); ?>
     </div>
 
 

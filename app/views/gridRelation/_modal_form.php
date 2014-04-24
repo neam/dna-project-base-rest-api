@@ -1,3 +1,4 @@
+<?php // TODO: Fix and refactor this view. ?>
 <?php
 $fromType = get_class($model);
 $modalId = "addrelation-" . strtolower($fromType) . "-" . strtolower($toType) . "-modal";
@@ -5,7 +6,7 @@ $allItems = ($toType == '') ? true : false;
 if ($allItems) {
     $toType = 'chapter';
 } // Even if there's no specific type (related items), we need a specified controller to post to
-$this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
+$this->beginWidget('\TbModal', array('id' => $modalId));
 ?>
     <script>
         var selectedType = null;
@@ -54,17 +55,19 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
     </div>
     <div class="modal-body">
         <?php
-        $allRelated = new GoItem('search');
+        $allRelated = new Item('search');
         $allRelated->unsetAttributes();
         if (!$allItems) {
             $allRelated->setAttribute("model_class", $toType);
         }
-        if (isset($_GET["GoItem"])) {
-            $allRelated->attributes = $_GET["GoItem"];
+        if (isset($_GET["Item"])) {
+            $allRelated->attributes = $_GET["Item"];
         }
         $dataProvider = $allRelated->search();
+        // todo: add support for the extended grid view
+        /*
         $this->widget(
-            'bootstrap.widgets.TbExtendedGridView',
+            '\TbExtendedGridView',
             array(
                 'filter' => $allRelated,
                 'id' => strtolower($toType) . 's_to_add',
@@ -100,6 +103,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                 )
             )
         );
+        */
         ?>
     </div>
     <div class="modal-footer">
@@ -130,7 +134,7 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id' => $modalId));
                         foreach (DataModel::qaModels() as $key => $qaModel) {
                             $items[] = array('label' => $key, 'url' => '#');
                         }
-                        $this->widget('bootstrap.widgets.TbButtonGroup',
+                        $this->widget('\TbButtonGroup',
                             array(
                                 'htmlOptions' => array(
                                     'class' => 'add-allitems',

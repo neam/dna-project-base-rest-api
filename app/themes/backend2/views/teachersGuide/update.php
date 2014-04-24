@@ -33,7 +33,7 @@ $this->renderPartial('_form', array('model' => $model));
     <?php echo Yii::t('model', 'Section Contents'); ?> </h2>
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('sectionContent/create', 'SectionContent' => array('teachers_guide_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
@@ -111,8 +111,8 @@ $this->widget('TbGridView',
                 ),
             array(
                     'name' => 'data_chunk_id',
-                    'value' => 'CHtml::value($data, \'dataChunk.itemLabel\')',
-                    'filter' => CHtml::listData(DataChunk::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'value' => 'CHtml::value($data, \'dataArticle.itemLabel\')',
+                    'filter' => CHtml::listData(DataArticle::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'download_link_id',
@@ -145,7 +145,7 @@ $this->widget('TbGridView',
     <?php echo Yii::t('model', 'Teachers Guides'); ?> </h2>
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
             array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('teachersGuide/create', 'TeachersGuide' => array('cloned_from_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))

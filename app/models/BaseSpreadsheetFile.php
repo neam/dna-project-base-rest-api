@@ -58,8 +58,11 @@
  * @property integer $processed_media_id_vi
  * @property integer $processed_media_id_zh_cn
  * @property integer $processed_media_id_zh_tw
+ * @property string $spreadsheet_file_qa_state_id
+ * @property integer $processed_media_id_fa
  *
  * Relations of table "spreadsheet_file" available as properties of the model:
+ * @property P3Media $processedMediaIdFa
  * @property DataSource $dataSource
  * @property Node $node
  * @property P3Media $originalMedia
@@ -108,7 +111,8 @@
  * @property P3Media $processedMediaIdZhTw
  * @property SpreadsheetFile $clonedFrom
  * @property SpreadsheetFile[] $spreadsheetFiles
- * @property Users $owner
+ * @property Account $owner
+ * @property SpreadsheetFileQaState $spreadsheetFileQaState
  */
 abstract class BaseSpreadsheetFile extends ActiveRecord
 {
@@ -127,12 +131,12 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('version, original_media_id, generate_processed_media, processed_media_id_en, owner_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw', 'numerical', 'integerOnly' => true),
-                array('cloned_from_id, data_source_id, node_id', 'length', 'max' => 20),
+                array('version, cloned_from_id, _title, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw, spreadsheet_file_qa_state_id, processed_media_id_fa', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, original_media_id, generate_processed_media, processed_media_id_en, owner_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw, processed_media_id_fa', 'numerical', 'integerOnly' => true),
+                array('cloned_from_id, data_source_id, node_id, spreadsheet_file_qa_state_id', 'length', 'max' => 20),
                 array('_title', 'length', 'max' => 255),
                 array('created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, _title, data_source_id, original_media_id, generate_processed_media, processed_media_id_en, created, modified, owner_id, node_id, processed_media_id_es, processed_media_id_hi, processed_media_id_pt, processed_media_id_sv, processed_media_id_de, processed_media_id_zh, processed_media_id_ar, processed_media_id_bg, processed_media_id_ca, processed_media_id_cs, processed_media_id_da, processed_media_id_en_gb, processed_media_id_en_us, processed_media_id_el, processed_media_id_fi, processed_media_id_fil, processed_media_id_fr, processed_media_id_hr, processed_media_id_hu, processed_media_id_id, processed_media_id_iw, processed_media_id_it, processed_media_id_ja, processed_media_id_ko, processed_media_id_lt, processed_media_id_lv, processed_media_id_nl, processed_media_id_no, processed_media_id_pl, processed_media_id_pt_br, processed_media_id_pt_pt, processed_media_id_ro, processed_media_id_ru, processed_media_id_sk, processed_media_id_sl, processed_media_id_sr, processed_media_id_th, processed_media_id_tr, processed_media_id_uk, processed_media_id_vi, processed_media_id_zh_cn, processed_media_id_zh_tw, spreadsheet_file_qa_state_id, processed_media_id_fa', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -157,6 +161,7 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
+                'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
                 'dataSource' => array(self::BELONGS_TO, 'DataSource', 'data_source_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
@@ -205,7 +210,8 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
                 'processedMediaIdZhTw' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_zh_tw'),
                 'clonedFrom' => array(self::BELONGS_TO, 'SpreadsheetFile', 'cloned_from_id'),
                 'spreadsheetFiles' => array(self::HAS_MANY, 'SpreadsheetFile', 'cloned_from_id'),
-                'owner' => array(self::BELONGS_TO, 'Users', 'owner_id'),
+                'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
+                'spreadsheetFileQaState' => array(self::BELONGS_TO, 'SpreadsheetFileQaState', 'spreadsheet_file_qa_state_id'),
             )
         );
     }
@@ -267,6 +273,8 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
             'processed_media_id_vi' => Yii::t('model', 'Processed Media Id Vi'),
             'processed_media_id_zh_cn' => Yii::t('model', 'Processed Media Id Zh Cn'),
             'processed_media_id_zh_tw' => Yii::t('model', 'Processed Media Id Zh Tw'),
+            'spreadsheet_file_qa_state_id' => Yii::t('model', 'Spreadsheet File Qa State'),
+            'processed_media_id_fa' => Yii::t('model', 'Processed Media Id Fa'),
         );
     }
 
@@ -330,6 +338,8 @@ abstract class BaseSpreadsheetFile extends ActiveRecord
         $criteria->compare('t.processed_media_id_vi', $this->processed_media_id_vi);
         $criteria->compare('t.processed_media_id_zh_cn', $this->processed_media_id_zh_cn);
         $criteria->compare('t.processed_media_id_zh_tw', $this->processed_media_id_zh_tw);
+        $criteria->compare('t.spreadsheet_file_qa_state_id', $this->spreadsheet_file_qa_state_id);
+        $criteria->compare('t.processed_media_id_fa', $this->processed_media_id_fa);
 
 
         return $criteria;

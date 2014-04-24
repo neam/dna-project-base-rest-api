@@ -30,19 +30,116 @@ EOD;
 
     }
 
+    /**
+     * Atomic actions are called operations
+     * Actions under special circumstances are called tasks - if a user may perform the task then the user may perform the task's associated operations
+     * Roles has the right to perform one or many tasks and operations
+     *
+     * This action builds to authorization hierarchy. At first it defines operations and tasks, then assigns access to these to the roles
+     */
     public function actionBuild()
     {
 
         $auth = Yii::app()->authManager;
 
-        $superAdministratorRole = $auth->createRole('Super Administrator');
+        // BIZRULES
 
-        // We can use the developer role temporarily to get access to items while developing (ie add to roles => array('Developer') in access control filter)
-        // it has access to all of Super Administrator items and these temporary dev items (for instance features not yet released)
-        $developerRole = $auth->createRole('Developer');
-        $developerRole->addChild('Super Administrator');
+        // Bizrule for checking that the item belongs to the group that is sent to checkAccess()
+        $belongsToGroupBizrule = 'return TODO;';
+        $belongsToGapminderOrgGroupBizrule = 'return true;';
+        $userHasbelongsToGroupBizrule = 'return TODO;';
+        // Bizrule for checking that the current user is the owner of the item
+        $userIsOwnerBizrule = 'return Yii::app()->user->id==$params["item"]->owner_id;';
+        // Bizrule for checking that the current user has contributed to the item
+        $userHasChangeSetBizrule = 'return TODO;';
+        // Bizrule for checking that the language being translated into is one of the user's selected languages
+        $translatedIntoIsProfileLanguageBizrule = 'return TODO;';
 
-        // These operations are defined in phundament components
+        // OPERATIONS & TASKS
+
+        //  itemVisibilityOperations
+        //   group-dependent
+        $auth->createOperation('Item.List');
+        $auth->createOperation('Item.Unlist');
+        $auth->createOperation('Item.Suggest');
+        $auth->createOperation('Item.Publish/Replace');
+        $auth->createOperation('Item.Unpublish/Revert');
+
+        $task = $auth->createTask('Items.List.WithinGroup');
+        $task->addChild('Item.List');
+        $task = $auth->createTask('Items.Unlist.WithinGroup');
+        $task->addChild('Item.Unlist');
+        $task = $auth->createTask('Items.Suggest.WithinAnyGroup');
+        $task->addChild('Item.Suggest');
+        $task = $auth->createTask('Items.Publish/Replace.WithinGroup');
+        $task->addChild('Item.Publish/Replace');
+        $task = $auth->createTask('Items.Unpublish/Revert.WithinGroup');
+        $task->addChild('Item.Unpublish/Revert');
+        $task = $auth->createTask('OwnItems.List.WithinGroup');
+        $task->addChild('Item.List');
+        $task = $auth->createTask('OwnItems.Unlist.WithinGroup');
+        $task->addChild('Item.Unlist');
+        $task = $auth->createTask('OwnItems.Suggest.WithinAnyGroup');
+        $task->addChild('Item.Suggest');
+
+        //  itemInteractionOperations
+        //   group/own-independent
+        $auth->createOperation('Item.Add');
+
+        //   group-independent,own-dependent
+        $auth->createOperation('Item.Remove');
+
+        $task = $auth->createTask('OwnItems.Remove');
+        $task->addChild('Item.Add');
+
+        //   group/own-dependent in the sense that they are allowed if the user is part of the group
+        $auth->createOperation('Item.Browse');
+        $auth->createOperation('Item.View');
+        $auth->createOperation('Item.PrepareForReview');
+        $auth->createOperation('Item.Preview');
+        $auth->createOperation('Item.Evaluate');
+        $auth->createOperation('Item.Proofread');
+        $auth->createOperation('Item.PrepareForPublishing');
+        $auth->createOperation('Item.Approve');
+        $auth->createOperation('Item.Translate');
+        $auth->createOperation('Item.TranslateUnrestricted');
+        $auth->createOperation('Item.Edit');
+        $auth->createOperation('Item.Clone');
+
+        $task = $auth->createTask('GroupItems.Browse');
+        $task->addChild('Item.Browse');
+        $task = $auth->createTask('GroupItems.View');
+        $task->addChild('Item.View');
+        $task = $auth->createTask('GroupItems.PrepareForReview');
+        $task->addChild('Item.PrepareForReview');
+        $task = $auth->createTask('GroupItems.Preview');
+        $task->addChild('Item.Preview');
+        $task = $auth->createTask('GroupItems.Evaluate');
+        $task->addChild('Item.Evaluate');
+        $task = $auth->createTask('GroupItems.Proofread');
+        $task->addChild('Item.Proofread');
+        $task = $auth->createTask('GroupItems.PrepareForPublishing');
+        $task->addChild('Item.PrepareForPublishing');
+        $task = $auth->createTask('GroupItems.Approve');
+        $task->addChild('Item.Approve');
+        $task = $auth->createTask('GroupItems.Translate');
+        $task->addChild('Item.Translate');
+        $task = $auth->createTask('GroupItems.TranslateUnrestricted');
+        $task->addChild('Item.TranslateUnrestricted');
+        $task = $auth->createTask('GroupItems.Edit');
+        $task->addChild('Item.Edit');
+        $task = $auth->createTask('GroupItems.Clone');
+        $task->addChild('Item.Clone');
+
+        $task = $auth->createTask('OwnItems.Edit');
+        $task->addChild('Item.Edit');
+
+        $task = $auth->createTask('GapminderOrgGroupItems.Browse', null, $belongsToGapminderOrgGroupBizrule);
+        $task->addChild('Item.Browse');
+        $task = $auth->createTask('GapminderOrgGroupItems.View', null, $belongsToGapminderOrgGroupBizrule);
+        $task->addChild('Item.View');
+
+        // Phundament-operations necessary to access some Phundament-features
         $auth->createOperation('P3media.Import.*');
         $auth->createOperation('P3media.Import.scan');
         $auth->createOperation('P3media.P3Media.*');
@@ -58,108 +155,71 @@ EOD;
         $auth->createOperation('P3widgets.Default.*');
         $auth->createOperation('Translate.*');
 
-        foreach (array('GapminderSchool', 'DollarStreet', 'IgnoranceProject', 'HumanNumbers', '') as $project) {
+        // ROLES & ASSIGNMENTS
 
-            $prefix = !empty($project) ? $project . '.' : '';
+        $role = $auth->createRole('Anonymous');
+        $role->addChild('GapminderOrgGroupItems.Browse');
+        $role->addChild('GapminderOrgGroupItems.View');
 
-            // Atomic actions are called operations
-            $auth->createOperation($prefix . 'Item.Browse', 'Browse amongst items');
-            $auth->createOperation($prefix . 'Item.View', 'View items');
-            $auth->createOperation($prefix . 'Item.Add', 'Adds a temporary empty item to the database');
-            $auth->createOperation($prefix . 'Item.Draft', 'Completes a temporary item by stepping through fields required for DRAFT  ');
-            $auth->createOperation($prefix . 'Item.AddEdge', 'Add a relation');
-            $auth->createOperation($prefix . 'Item.DeleteEdge', 'Remove a relation');
-            $auth->createOperation($prefix . 'Item.PrepPreshow', 'Prepare item for preshow, by stepping through fields required for PREVIEW');
-            $auth->createOperation($prefix . 'Item.Preshow', 'Put item in preshow mode, by switching itemVersion.status to PREVIEW');
-            $auth->createOperation($prefix . 'Item.Evaluate', 'Evaluating an item in Preview-mode by grading and commenting on it\'s fields or the total itemVersion.');
-            $auth->createOperation($prefix . 'Item.PrepPublish', 'Prepare for publishing, by stepping through fields required for PUBLIC.');
-            $auth->createOperation($prefix . 'Item.Preview', 'Preview the current content.');
-            $auth->createOperation($prefix . 'Item.Review', 'Reviewing the full content by stepping to next field approved==false.');
-            $auth->createOperation($prefix . 'Item.ProofRead', 'Review and improve language');
-            $auth->createOperation($prefix . 'Item.Translate', 'Translate to languages that you added to our profile.');
-            $auth->createOperation($prefix . 'Item.Publish', 'Make public for the first time, or when replacing a previous version.');
-            $auth->createOperation($prefix . 'Item.Edit', 'Look at all fields, no obvious goal');
-            $auth->createOperation($prefix . 'Item.Clone', 'Creates a new itemVersion with incremented version number and goes to "edit" workFlow. If the original is in PUBLIC after achieving publishableFlag == true, suggest workFlow PrepPublish');
-            $auth->createOperation($prefix . 'Item.Remove', 'Removed means there\'s something wrong with the content so it should not be used in any language any time');
-            $auth->createOperation($prefix . 'Item.Replace', 'Replaced, means it\'s OK to fall back to, in case translation is missing for new version');
-            $auth->createOperation($prefix . 'Item.Go', 'Displays the item and it\'s related items using the CMS Go interface');
+        $authenticatedBizRule = 'return !Yii::app()->user->isGuest;';
+        $role = $auth->createRole('Member', null, $authenticatedBizRule);
+        $role->addChild('Item.Add');
+        $role->addChild('OwnItems.Edit');
+        $role->addChild('OwnItems.Suggest.WithinAnyGroup');
+        $role->addChild('P3media.Import.*'); // Upload access is necessary for everyone in order to upload their profile picture
 
-            // Actions under special circumstances are called tasks - if a user may perform the task then the user may perform the task's associated operations
+        $role = $auth->createRole('Group Member');
+        $role->addChild('GroupItems.Browse');
+        $role->addChild('GroupItems.View');
+        $role->addChild('GroupItems.Clone');
 
-            // "Own" items
-            $bizRule = 'return Yii::app()->user->id==$params["post"]->creator_id;';
-            $task = $auth->createTask($prefix . 'Item.RemoveOwn', 'Remove an item created by the user himself', $bizRule);
-            $task->addChild($prefix . 'Item.Remove');
-            $task = $auth->createTask($prefix . 'Item.ReplaceOwn', 'Replace an item created by the user himself', $bizRule);
-            $task->addChild($prefix . 'Item.Replace');
+        $role = $auth->createRole('Group Translator');
+        $role->addChild('GroupItems.Translate');
 
-            // Status-dependent
-            $bizRule = 'return $params["post"]->version->status == "Public";';
-            $task = $auth->createTask($prefix . 'Item.RemovePublic', 'Remove an item that is public', $bizRule);
-            $task->addChild($prefix . 'Item.Remove');
-            $task = $auth->createTask($prefix . 'Item.ReplacePublic', 'Remove an item that is public', $bizRule);
-            $task->addChild($prefix . 'Item.Replace');
-            $bizRule = 'return $params["post"]->version->status != "Public";';
-            $task = $auth->createTask($prefix . 'Item.RemoveNonPublic', 'Remove an item that is not public', $bizRule);
-            $task->addChild($prefix . 'Item.Remove');
-            $task = $auth->createTask($prefix . 'Item.ReplaceNonPublic', 'Remove an item that is not public', $bizRule);
-            $task->addChild($prefix . 'Item.Replace');
+        $role = $auth->createRole('Group Reviewer');
+        $role->addChild('GroupItems.Preview');
+        $role->addChild('GroupItems.Evaluate');
+        $role->addChild('GroupItems.Proofread');
 
-            // Roles has the right to perform one or many tasks and operations
-            $role = $auth->createRole($prefix . 'Authenticated');
-            $role->addChild($prefix . 'Item.Browse');
-            $role->addChild($prefix . 'Item.View');
-            $role->addChild($prefix . 'Item.Go');
-            $role->addChild('P3media.Import.*'); // Upload access is necessary for everyone in order to upload their profile picture
+        $role = $auth->createRole('Group Contributor');
+        $role->addChild('OwnItems.List.WithinGroup');
+        $role->addChild('OwnItems.Unlist.WithinGroup');
 
-            $role = $auth->createRole($prefix . 'Creator');
-            $role->addChild($prefix . 'Item.Add');
-            $role->addChild($prefix . 'Item.Draft');
-            $role->addChild($prefix . 'Item.AddEdge');
-            $role->addChild($prefix . 'Item.DeleteEdge');
-            $role->addChild($prefix . 'Item.PrepPreshow');
-            $role->addChild($prefix . 'Item.Preshow');
-            $role->addChild($prefix . 'Item.PrepPublish');
-            $role->addChild($prefix . 'Item.Edit');
-            $role->addChild($prefix . 'Item.Clone');
-            $role->addChild($prefix . 'Item.RemoveOwn');
-            $role->addChild($prefix . 'Item.ReplaceOwn');
-            $role->addChild($prefix . 'Item.RemoveNonPublic');
-            $role->addChild($prefix . 'Item.ReplaceNonPublic');
+        $role = $auth->createRole('Group Moderator');
+        $role->addChild('Items.List.WithinGroup');
+        $role->addChild('Items.Unlist.WithinGroup');
+        // TODO add assign-tasks
 
-            $role = $auth->createRole($prefix . 'Previewer');
-            $role->addChild($prefix . 'Item.Preview');
+        $role = $auth->createRole('Group Approver');
+        $role->addChild('GroupItems.Approve');
 
-            $role = $auth->createRole($prefix . 'Evaluator');
-            $role->addChild($prefix . 'Item.Evaluate');
+        $role = $auth->createRole('Group Editor');
+        $role->addChild('GroupItems.PrepareForReview');
+        $role->addChild('GroupItems.PrepareForPublishing');
+        $role->addChild('GroupItems.Edit');
 
-            $role = $auth->createRole($prefix . 'Approver');
-            $role->addChild($prefix . 'Item.Review');
+        $role = $auth->createRole('Group Publisher');
+        $role->addChild('Items.Publish/Replace.WithinGroup');
+        $role->addChild('Items.Unpublish/Revert.WithinGroup');
 
-            $role = $auth->createRole($prefix . 'Proofreader');
-            $role->addChild($prefix . 'Item.ProofRead');
+        $role = $auth->createRole('Group Administrator');
+        $role->addChild('Group Publisher');
+        $role->addChild('Group Editor');
+        $role->addChild('Group Approver');
+        $role->addChild('Group Moderator');
+        $role->addChild('Group Contributor');
+        $role->addChild('Group Reviewer');
+        $role->addChild('Group Translator');
+        // TODO add assign-tasks
 
-            $role = $auth->createRole($prefix . 'Translator');
-            $role->addChild($prefix . 'Item.Translate');
+        $superAdministratorRole = $auth->createRole('Super Administrator');
+        $superAdministratorRole->addChild('Group Administrator');
+        // TODO add Item-operations regardless of Group here
 
-            $role = $auth->createRole($prefix . 'Publisher');
-            $role->addChild($prefix . 'Item.Publish');
-            $role->addChild($prefix . 'Item.RemovePublic');
-            $role->addChild($prefix . 'Item.ReplacePublic');
-
-            $role = $auth->createRole($prefix . 'Administrator');
-            $role->addChild($prefix . 'Publisher');
-            $role->addChild($prefix . 'Approver');
-            $role->addChild($prefix . 'Creator');
-            $role->addChild($prefix . 'Previewer');
-            $role->addChild($prefix . 'Evaluator');
-            $role->addChild($prefix . 'Proofreader');
-            $role->addChild($prefix . 'Translator');
-
-            // Assign administrator roles for all projects to super administrator
-            $superAdministratorRole->addChild($prefix . 'Administrator');
-
-        }
+        // We can use the developer role temporarily to get access to items while developing (ie add to roles => array('Developer') in access control filter)
+        // it has access to all of Super Administrator items and these temporary dev items (for instance features not yet released)
+        $developerRole = $auth->createRole('Developer');
+        $developerRole->addChild('Super Administrator');
 
         // Temporary dev items that gives access to phundament-specific actions. Assigned to Developer role until properly sorted into hierarchy
         $developerRole->addChild('P3media.Import.*');
@@ -187,6 +247,7 @@ EOD;
             if ($model == "Item") {
                 continue;
             }
+
             foreach (array('*', 'View', 'Update', 'Delete') as $action) {
 
                 $auth->createOperation("{$model}.{$action}");
@@ -209,43 +270,27 @@ EOD;
 
     public function actionGoogleSpreadsheetPermissionsMatrixColumnsAndRows()
     {
-        /*
-        foreach (DataModel::qaModels() as $model => $table) {
-            echo "$model\n";
-        }
-DataModel::goItemModels()
-DataModel::educationalItemModels()
-DataModel::websiteContentItemModels()
-DataModel::waffleItemModels()
-        */
-
         echo "\t";
 
-        foreach (Metadata::anonymousRoles() as $role) {
+        foreach (Metadata::developerRoles() as $role) {
             echo "$role\t";
         }
 
-        // RoleInProject
-        foreach (Metadata::projects() as $project) {
-            foreach (Metadata::projectRoles() as $projectRole) {
-                echo "$project.$projectRole\t";
-            }
+        foreach (Metadata::roleTypes() as $roleType) {
+            echo "$roleType\t";
         }
 
-        foreach (Metadata::superAdministratorRoles() as $role) {
+        foreach (Metadata::contextLessRoles() as $role) {
             echo "$role\t";
         }
 
         echo "\n";
 
-        // ItemTypeAction X Participation
-        foreach (Metadata::itemActions() as $action => $table) {
-            foreach (Metadata::itemTypes() as $itemType => $itemModels) {
-                //foreach (array("All", "Own") as $participation) {
-                echo "$action {$itemType}s\n";
-                //}
-            }
-
+        foreach (Metadata::itemVisibilityOperations() as $operation => $description) {
+            echo "$operation\n";
+        }
+        foreach (Metadata::itemInteractionOperations() as $operation => $description) {
+            echo "$operation\n";
         }
 
     }

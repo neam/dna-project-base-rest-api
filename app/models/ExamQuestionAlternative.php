@@ -54,7 +54,7 @@ class ExamQuestionAlternative extends BaseExamQuestionAlternative
             array(
                 array('markup_' . $this->source_language, 'required', 'on' => 'preview,public'),
                 array('correct', 'required', 'on' => 'preview,public'),
-                array('slug_' . $this->source_language, 'required', 'on' => 'public'),
+                array('slug_' . $this->source_language, 'required', 'on' => 'publishable'),
             )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
@@ -69,11 +69,11 @@ class ExamQuestionAlternative extends BaseExamQuestionAlternative
     {
         return array(
             'draft' => array(),
-            'preview' => array(
+            'reviewable' => array(
                 'markup_' . $this->source_language,
                 'correct',
             ),
-            'public' => array(
+            'publishable' => array(
                 'slug_' . $this->source_language,
             ),
         );
@@ -123,9 +123,9 @@ class ExamQuestionAlternative extends BaseExamQuestionAlternative
         return array_merge(
             parent::attributeHints(),
             array(
-                'slug' => Yii::t('model',''),
-                'markup' => Yii::t('model',''),
-                'correct' => Yii::t('model',''),
+                'slug' => Yii::t('model', ''),
+                'markup' => Yii::t('model', ''),
+                'correct' => Yii::t('model', ''),
             )
         );
     }

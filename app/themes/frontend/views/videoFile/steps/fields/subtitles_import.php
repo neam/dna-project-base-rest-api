@@ -31,8 +31,8 @@
 
 <?php
 
-Yii::app()->bootstrap->registerAssetCss('../select2/select2.css');
-Yii::app()->bootstrap->registerAssetJs('../select2/select2.js');
+//Yii::app()->bootstrap->registerAssetCss('../select2/select2.css');
+//Yii::app()->bootstrap->registerAssetJs('../select2/select2.js');
 
 $baseUrl = Yii::app()->request->baseUrl;
 
@@ -80,7 +80,7 @@ $input = $this->widget('\GtcRelation', array(
 ), true);
 ?>
 
-<?php echo $form->customRow($model, 'subtitles_import_media_id', $input, array(
+<?php echo $form->customControlGroup($model, 'subtitles_import_media_id', $input, array(
     'labelOptions' => array(
         'label' => Html::attributeLabelWithTooltip($model, 'subtitles_import_media_id'),
     ),
@@ -90,9 +90,9 @@ $input = $this->widget('\GtcRelation', array(
 
 <div class="control-group">
     <div class="controls">
-        <?php echo $this->widget('bootstrap.widgets.TbButton', array(
+        <?php echo $this->widget('\TbButton', array(
             'label' => Yii::t('app', 'Upload'),
-            'icon' => 'icon-plus',
+            'icon' => 'glyphicon-plus',
             'htmlOptions' => array(
                 'data-toggle' => 'modal',
                 'data-target' => '#' . $formId . '-modal',

@@ -36,30 +36,6 @@
             }
         },
         {
-            "type": "package",
-            "package": {
-                "name": "ascendro/yii-graphviz",
-                "version": "@dev",
-                "source": {
-                    "url": "https://github.com/ascendro/yii-graphviz.git",
-                    "type": "git",
-                    "reference": "707993b53083cc746b6b7969c9b8f9529e099e1b"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "mihanentalpo/yii-sql-migration-generator",
-                "version": "@dev",
-                "source": {
-                    "url": "https://github.com/MihanEntalpo/yii-sql-migration-generator.git",
-                    "type": "git",
-                    "reference": "5a0b93a4f0ac9ace6a4e7e1d92dc0980bba17cee"
-                }
-            }
-        },
-        {
             "type": "vcs",
             "url": "https://github.com/motin/p3media"
         },
@@ -105,23 +81,11 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/motin/WorkflowDatabaseTiein"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/codemix/hybridauthmanager"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/schmunk42/packagecompressor.git"
         },
         {
             "type":"git",
             "url":"https://github.com/schmunk42/yii-rights.git"
-        },
-        {
-            "type":"git",
-            "url":"https://github.com/Quexer69/yii.translate.git"
         },
         {
             "type":"vcs",
@@ -137,6 +101,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://github.com/neam/php-po2json.git"
+        },
+        {
+            "type":"vcs",
             "url":"https://github.com/motin/gii-template-collection"
         },
         {
@@ -144,39 +112,41 @@
             "url":"https://github.com/Gapminder/yii-user"
         },
         {
+            "type":"vcs",
+            "url":"https://github.com/Gapminder/PHP-po-parser"
+        },
+        {
+            "type":"vcs",
+            "url":"https://github.com/motin/yii-consoletools"
+        },
+        {
             "type":"composer",
             "url":"http://packages.phundament.com"
         }
     ],
     "minimum-stability":"stable",
+    "comments-about-certain-required-deps": {
+        "crisu83/yii-rights": "Used for RWebUser in user component only",
+        "neam/yii-relational-graph-db":"Not a real plugin yet, but a placeholder to which to move node/edge-related functionality"
+    },
     "require":{
         "php":">=5.4.0",
-        "clevertech/yiibooster":"2.*",
-        "crisu83/yii-rights":"@dev",
-        "gusnips/yii-translate" : "dev-master",
-        "malyshev/yii-debug-toolbar":"@dev",
-        "mikehaertl/packagecompressor": "dev-develop",
+        "crisu83/yii-consoletools": "dev-patch-1",
+        "crisu83/yiistrap":"dev-bs3 as 1.1.1",
+        "crisu83/yiistrap-widgets":"1.7.*",
         "mishamx/yii-user":"dev-develop",
-        "moein7tl/yii-introjs":"@dev",
-        "nordsoftware/yii-emailer": "1.*",
-        "phundament/backend-theme":"@dev",
         "phundament/jquery-file-upload": "@dev",
         "phundament/p3admin":"0.16.0",
         "phundament/p3extensions":"0.17.0",
-        "phundament/p3bootstrap":"0.22.0",
         "phundament/p3pages":"dev-master as 0.17.0",
         "phundament/p3media":"dev-awaiting-prs",
         "phundament/p3widgets":"0.16.0",
         "schmunk42/ckeditor-configurator":"@dev",
         "schmunk42/multi-theme":"0.1.*",
         "schmunk42/web-user-behavior":"0.1.*",
-        "waalzer/app-demo-data": "@dev",
-        "yiiext/fancybox-widget":"0.*",
-        "yiiext/lipsum-widget":"0.*",
         "yiiext/migrate-command":"dev-master#35f315b as 0.7.2.1",
         "kswedberg/jquery-smooth-scroll":"1.4.10",
-        "firstrow/stranslateablebehavior":"@dev",
-        "neam/yii-i18n-columns":"0.3.1",
+        "neam/yii-i18n-columns":"dev-develop",
         "neam/yii-i18n-attribute-messages":"dev-develop",
         "neam/yii-qa-state":"dev-develop",
         "neam/yii-relational-graph-db":"@dev",
@@ -185,31 +155,53 @@
         "phpoffice/phpexcel": "1.7.9",
         "phpoffice/phpword": "dev-added-composer-json",
         "phpoffice/phppowerpoint": "dev-master",
-        "schmunk42/giic": "dev-master",
-        "thomaspark/bootswatch": "2.3.*",
-		"anggiaj/eselect2": "dev-master",
-        "zetacomponents/workflow-database-tiein": "dev-awaiting-prs",
-        "zetacomponents/workflow": "dev-master",
-        "zetacomponents/database": "dev-travis",
+        "sepia/po-parser": "dev-master",
+        "neam/php-po2json": "dev-develop",
         "weavora/wrest": "dev-awaiting-prs",
-        "ascendro/yii-graphviz": "@dev",
-        "mihanentalpo/yii-sql-migration-generator": "@dev",
         "codemix/hybridauthmanager": "dev-master",
-        "schmunk42/yii-sakila-crud": "@dev",
         "schmunk42/relation": "1.*",
         "yiisoft/yii":"1.1.14",
+        "mikehaertl/translatable": "~1.1.0",
+        "twitter/bootstrap":"3.0.*",
+        "crisu83/yii-sentry": "1.3.*",
+        "alchemy/zippy": "*",
+        "nordsoftware/yii-emailer": "1.2.*",
         "nordsoftware/yii-utils": "@dev",
-        "mikehaertl/translatable": "~1.1.0"
+        "crisu83/yii-formatter": "@dev"
     },
     "require-dev":{
-        "cloudhead/less.js":"1.3.*",
-        "crisu83/yii-less":"2.0.2",
-        "phundament/gii-template-collection":"dev-gcms",
-        "phundament/lessii":"@dev",
-        "schmunk42/database-command":"0.8.*",
-        "schmunk42/giic":"@dev",
-        "thomaspark/bootswatch":"2.3.*",
-        "twitter/bootstrap":"2.3.*"
+        "phundament/backend-theme":"@dev",
+        "phundament/p3bootstrap":"0.22.0",
+        "schmunk42/giic": "dev-master",
+        "phundament/gii-template-collection":"dev-gcms-yiistrap"
+    },
+    "extra": {
+        "heroku": {
+            "framework": "yii",
+            "engines": {
+                "php": "5.4.26",
+                "nginx": "1.4.3"
+            },
+            "php-config": [
+                "upload_max_filesize=200M",
+                "post_max_size=200M",
+                "xdebug.default_enable=on",
+                "html_errors=on",
+                "display_errors=on",
+                "short_open_tag=on"
+            ],
+            "nginx-includes": [
+                "deploy/nginx.inc.conf"
+            ],
+            "compile": [
+                "bash deploy/post-buildstep.sh"
+            ],
+            "log-files": [
+                "app/runtime/application.log"
+            ],
+            "document-root": "www",
+            "index-document": "index.php"
+        }
     },
     "autoload":{
         "psr-0":{
@@ -217,15 +209,5 @@
         }
     },
     "scripts":{
-        "pre-install-cmd":"Phundament\\ComposerCallback::preInstall",
-        "post-install-cmd":"Phundament\\ComposerCallback::postInstall",
-        "pre-update-cmd":"Phundament\\ComposerCallback::preUpdate",
-        "post-update-cmd":"Phundament\\ComposerCallback::postUpdate",
-        "post-package-install":[
-            "Phundament\\ComposerCallback::postPackageInstall"
-        ],
-        "post-package-update":[
-            "Phundament\\ComposerCallback::postPackageUpdate"
-        ]
     }
 }

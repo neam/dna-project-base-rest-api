@@ -23,7 +23,7 @@ class VectorGraphic extends BaseVectorGraphic
 
     public function getItemLabel()
     {
-        return (string) isset($this->_title) ? $this->title : 'Vector graphic #' . $this->id;
+        return (string) isset($this->_title) ? $this->title : 'Vector Graphic #' . $this->id;
     }
 
     public function behaviors()
@@ -39,7 +39,7 @@ class VectorGraphic extends BaseVectorGraphic
         return array_merge(
             parent::relations(),
             array(
-                'datachunks' => array(self::HAS_MANY, 'DataChunk', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'datachunks')),
+                'dataarticles' => array(self::HAS_MANY, 'DataArticle', array('id' => 'node_id'), 'through' => 'outNodes', 'condition' => 'relation=:relation', 'params' => array(':relation' => 'dataarticles')),
             )
         );
     }
@@ -55,7 +55,7 @@ class VectorGraphic extends BaseVectorGraphic
 
                 // Ordinary validation rules
                 array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 120),
-                array('datachunks', 'validateDataChunks'),
+                array('dataarticles', 'validateDataArticles'),
                 array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 250),
 
             )
@@ -64,9 +64,9 @@ class VectorGraphic extends BaseVectorGraphic
         return $return;
     }
 
-    public function validateDataChunks()
+    public function validateDataArticles()
     {
-        return count($this->datachunks) <= 100;
+        return count($this->dataarticles) <= 100;
     }
 
     /**
@@ -79,12 +79,12 @@ class VectorGraphic extends BaseVectorGraphic
             'draft' => array(
                 'slug_' . $this->source_language,
             ),
-            'preview' => array(
+            'reviewable' => array(
                 'title_' . $this->source_language,
                 'original_media_id',
                 'processed_media_id_' . $this->source_language,
             ),
-            'public' => array(),
+            'publishable' => array(),
         );
     }
 
@@ -105,7 +105,7 @@ class VectorGraphic extends BaseVectorGraphic
                 'processed_media_id_' . $this->source_language,
             ),
             'data' => array(
-                'datachunks',
+                'dataarticles',
             ),
         );
     }
@@ -130,7 +130,7 @@ class VectorGraphic extends BaseVectorGraphic
                 'about' => Yii::t('model', 'About'),
                 'about_en' => Yii::t('model', 'About (English)'),
                 'original_media_id' => Yii::t('model', 'File (svg)'),
-                'datachunks' => Yii::t('model', 'Data'),
+                'dataarticles' => Yii::t('model', 'Data'),
             )
         );
     }
@@ -143,7 +143,7 @@ class VectorGraphic extends BaseVectorGraphic
                 'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines'),
                 'about' => Yii::t('model', 'Describe the content. For example: "High-res poster of all UN-states comparing the health and wealth of all UN-States for the most reasent year."'),
                 'original_media_id' => Yii::t('model', 'A Vector Graphic File.'),
-                'datachunks' => Yii::t('model', 'The list of datachunks will be used to generate the datasource slide that appears automatically on the last slide in the slideShow. Datachunks will be listed in order of appearance, each with a title, about, metadata and links to original sources.'),
+                'dataarticles' => Yii::t('model', 'The list of dataarticles will be used to generate the datasource slide that appears automatically on the last slide in the slideShow. Dataarticles will be listed in order of appearance, each with a title, about, metadata and links to original sources.'),
             )
         );
     }
@@ -158,4 +158,23 @@ class VectorGraphic extends BaseVectorGraphic
         ));
     }
 
+    /**
+     * Returns vector graphics.
+     * @return P3Media[]
+     */
+    public function getVectorGraphics()
+    {
+        return $this->getP3Media(array(
+            'image/svg+xml',
+        ));
+    }
+
+    /**
+     * Returns vector graphic options.
+     * @return array
+     */
+    public function getVectorGraphicOptions()
+    {
+        return $this->getOptions($this->getVectorGraphics());
+    }
 }

@@ -2,7 +2,7 @@
 $this->breadcrumbs[Yii::t('model', 'Tools')] = array('admin');
 $this->breadcrumbs[] = $model->id;
 ?>
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Tool'); ?>
@@ -42,8 +42,8 @@ $this->breadcrumbs[] = $model->id;
 <br/>
 
 <?php /*
-<b><?php echo CHtml::encode($model->getAttributeLabel('po_file_id')); ?>:</b>
-<?php echo CHtml::encode($model->po_file_id); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('i18n_catalog_id')); ?>:</b>
+<?php echo CHtml::encode($model->i18n_catalog_id); ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
@@ -247,7 +247,7 @@ $this->breadcrumbs[] = $model->id;
 
         <?php
         $this->widget(
-            'TbDetailView',
+            '\TbDetailView',
             array(
                 'data' => $model,
                 'attributes' => array(
@@ -280,10 +280,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'cloned_from_id',
                         'value' => ($model->clonedFrom !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->clonedFrom->itemLabel,
                                     array('//tool/view', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//tool/update', 'id' => $model->clonedFrom->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -341,13 +341,13 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => 'po_file_id',
-                        'value' => ($model->poFile !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->poFile->itemLabel,
-                                    array('//poFile/view', 'id' => $model->poFile->id),
+                        'name' => 'i18n_catalog_id',
+                        'value' => ($model->i18nCatalog !== null) ? CHtml::link(
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->i18nCatalog->itemLabel,
+                                    array('//i18nCatalog/view', 'id' => $model->i18nCatalog->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//poFile/update', 'id' => $model->poFile->id),
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//i18nCatalog/update', 'id' => $model->i18nCatalog->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
@@ -380,21 +380,21 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'owner_id',
                         'value' => ($model->owner !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
-                                    array('//users/view', 'id' => $model->owner->id),
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->owner->itemLabel,
+                                    array('//account/view', 'id' => $model->owner->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
-                                    array('//users/update', 'id' => $model->owner->id),
+                                    '<i class="icon glyphicon-pencil"></i> ',
+                                    array('//account/update', 'id' => $model->owner->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
                     ),
                     array(
                         'name' => 'node_id',
                         'value' => ($model->node !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->node->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->node->itemLabel,
                                     array('//node/view', 'id' => $model->node->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//node/update', 'id' => $model->node->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',
@@ -467,10 +467,10 @@ $this->breadcrumbs[] = $model->id;
                     array(
                         'name' => 'tool_qa_state_id',
                         'value' => ($model->toolQaState !== null) ? CHtml::link(
-                                    '<i class="icon icon-circle-arrow-left"></i> ' . $model->toolQaState->itemLabel,
+                                    '<i class="icon glyphicon-circle-arrow-left"></i> ' . $model->toolQaState->itemLabel,
                                     array('//toolQaState/view', 'id' => $model->toolQaState->id),
                                     array('class' => '')) . ' ' . CHtml::link(
-                                    '<i class="icon icon-pencil"></i> ',
+                                    '<i class="icon glyphicon-pencil"></i> ',
                                     array('//toolQaState/update', 'id' => $model->toolQaState->id),
                                     array('class' => '')) : 'n/a',
                         'type' => 'html',

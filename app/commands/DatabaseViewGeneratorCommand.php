@@ -9,13 +9,43 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
 {
 
     /**
+     * @var string database connection component
+     */
+    public $connectionID = "db";
+
+    /**
+     * @var
+     */
+    public $_db;
+
+    /**
+     * If we should be verbose
+     *
+     * @var bool
+     */
+    private $_verbose = false;
+
+    /**
+     * Write a string to standard output if we're verbose
+     *
+     * @param $string
+     */
+    protected function d($string)
+    {
+        if ($this->_verbose) {
+            print "\033[37m" . $string . "\033[30m";
+        }
+    }
+
+    /**
      * item
      *      node_id
      *      id
      *      _title
      *      status
-     *      preview_validation_progress
-     *      public_validation_progress
+     *      draft_validation_progress
+     *      reviewable_validation_progress
+     *      publishable_validation_progress
      *      approval_progress
      *      proofing_progress
      *      translate_into_{$language}_validation_progress
@@ -24,8 +54,16 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
      *      created
      *      modified
      */
-    public function actionItem()
+    public function actionItem($verbose = false)
     {
+
+        if (!empty($verbose)) {
+            $this->_verbose = true;
+        }
+
+        $this->_db =& Yii::app()->{$this->connectionID};
+
+        $this->d("Connecting to '" . $this->_db->connectionString . "'\n");
 
         $sql = "SELECT \n";
 
@@ -66,29 +104,41 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
         $sql .= "       ELSE NULL\n";
         $sql .= "END AS status,\n";
 
-        // preview_validation_progress
+        // draft_validation_progress
         $sql .= "   CASE\n";
 
         foreach (DataModel::qaModels() as $modelClass => $table) {
-            if ($this->_checkTableAndColumnExists($table . "_qa_state", "preview_validation_progress")) {
-                $sql .= "       WHEN {$table}_qa_state.preview_validation_progress IS NOT NULL THEN {$table}_qa_state.preview_validation_progress\n";
+            if ($this->_checkTableAndColumnExists($table . "_qa_state", "draft_validation_progress")) {
+                $sql .= "       WHEN {$table}_qa_state.draft_validation_progress IS NOT NULL THEN {$table}_qa_state.draft_validation_progress\n";
             }
         }
 
         $sql .= "       ELSE NULL\n";
-        $sql .= "END AS preview_validation_progress,\n";
+        $sql .= "END AS draft_validation_progress,\n";
 
-        // public_validation_progress
+        // reviewable_validation_progress
         $sql .= "   CASE\n";
 
         foreach (DataModel::qaModels() as $modelClass => $table) {
-            if ($this->_checkTableAndColumnExists($table . "_qa_state", "public_validation_progress")) {
-                $sql .= "       WHEN {$table}_qa_state.public_validation_progress IS NOT NULL THEN {$table}_qa_state.public_validation_progress\n";
+            if ($this->_checkTableAndColumnExists($table . "_qa_state", "reviewable_validation_progress")) {
+                $sql .= "       WHEN {$table}_qa_state.reviewable_validation_progress IS NOT NULL THEN {$table}_qa_state.reviewable_validation_progress\n";
             }
         }
 
         $sql .= "       ELSE NULL\n";
-        $sql .= "END AS public_validation_progress,\n";
+        $sql .= "END AS reviewable_validation_progress,\n";
+
+        // publishable_validation_progress
+        $sql .= "   CASE\n";
+
+        foreach (DataModel::qaModels() as $modelClass => $table) {
+            if ($this->_checkTableAndColumnExists($table . "_qa_state", "publishable_validation_progress")) {
+                $sql .= "       WHEN {$table}_qa_state.publishable_validation_progress IS NOT NULL THEN {$table}_qa_state.publishable_validation_progress\n";
+            }
+        }
+
+        $sql .= "       ELSE NULL\n";
+        $sql .= "END AS publishable_validation_progress,\n";
 
         // approval_progress
         $sql .= "   CASE\n";
@@ -195,18 +245,26 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
 
         $viewSql = "CREATE OR REPLACE VIEW item AS $sql";
 
-        echo "\n";
-        echo $viewSql;
-        echo "\n";
+        if ($this->_verbose) {
+            echo "\n";
+            echo $viewSql;
+            echo "\n";
+        }
 
-        $selectResult = Yii::app()->db->createCommand($sql . " LIMIT 2")->queryAll();
-        Yii::app()->db->createCommand($viewSql)->execute();
-        $selectViewResult = Yii::app()->db->createCommand("SELECT * FROM $viewName LIMIT 2")->queryAll();
-        var_dump(compact("selectResult", "selectViewResult"));
+        $selectResult = $this->_db->createCommand($sql . " LIMIT 2")->queryAll();
+        $this->_db->createCommand($viewSql)->execute();
+        $selectViewResult = $this->_db->createCommand("SELECT * FROM $viewName LIMIT 2")->queryAll();
 
-        $selectExistingGoItemsResult = Yii::app()->db->createCommand("SELECT * FROM $viewName WHERE model_class IS NOT NULL LIMIT 2")->queryAll();
+        if ($this->_verbose) {
+            var_dump(compact("selectResult", "selectViewResult"));
+        }
 
-        var_dump(compact("selectExistingGoItemsResult"));
+        $selectExistingItemsResult = $this->_db->createCommand("SELECT * FROM $viewName WHERE model_class IS NOT NULL LIMIT 2")->queryAll();
+
+        if ($this->_verbose) {
+            var_dump(compact("selectExistingItemsResult"));
+        }
+
     }
 
     /**
@@ -216,7 +274,7 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
      */
     protected function _checkTableAndColumnExists($table, $column)
     {
-        $tables = Yii::app()->db->schema->getTables();
+        $tables = $this->_db->schema->getTables();
         // The column does not exist if the table does not exist
         return isset($tables[$table]) && (isset($tables[$table]->columns[$column]));
     }

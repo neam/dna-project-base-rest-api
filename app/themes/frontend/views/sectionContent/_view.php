@@ -18,7 +18,7 @@
         <?php $this->renderPartial('/slideshowFile/_view', array('data' => $data->slideshowFile)); ?>
     <?php
     elseif (!is_null($data->data_chunk_id)): ?>
-        <?php $this->renderPartial('/dataChunk/_view', array('data' => $data->dataChunk)); ?>
+        <?php $this->renderPartial('/dataArticle/_view', array('data' => $data->dataArticle)); ?>
     <?php
     elseif (!is_null($data->download_link_id)): ?>
         <?php $this->renderPartial('/downloadLink/_view', array('data' => $data->downloadLink)); ?>
@@ -30,7 +30,7 @@
     <?php endif; ?>
     <?php if (Yii::app()->user->checkAccess('SectionContent.*')): ?>
         <div class="admin-container hide">
-            <?php echo CHtml::link('<i class="icon-edit"></i> ' . Yii::t('crud', 'Update {model}', array('{model}' => Yii::t('crud', 'Section Content'))), array('sectionContent/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            <?php echo CHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('crud', 'Update {model}', array('{model}' => Yii::t('crud', 'Section Content'))), array('sectionContent/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
         </div>
     <?php endif; ?>
 

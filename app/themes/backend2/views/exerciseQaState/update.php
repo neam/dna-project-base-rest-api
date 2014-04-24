@@ -11,7 +11,7 @@ $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'i
 $this->breadcrumbs[] = Yii::t('model', 'Update');
 ?>
 
-<?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
+<?php $this->widget("\TbBreadcrumb", array("links" => $this->breadcrumbs)) ?>
 <h1>
 
     <?php echo Yii::t('model', 'Exercise Qa State'); ?>
@@ -36,23 +36,23 @@ $this->renderPartial('_form', array('model' => $model));
 
 
 <div class="btn-group">
-    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    <?php $this->widget('\TbButtonGroup', array(
         'type' => '', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons' => array(
-            array('label' => Yii::t('model', 'Create'), 'icon' => 'icon-plus', 'url' => array('exercise/create', 'Exercise' => array('exercise_qa_state_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
+            array('label' => Yii::t('model', 'Create'), 'icon' => 'glyphicon-plus', 'url' => array('exercise/create', 'Exercise' => array('exercise_qa_state_id' => $model->id), 'returnUrl' => Yii::app()->request->url), array('class' => ''))
         ),
     ));
     ?></div>
 
 <?php
 $relatedSearchModel = $this->getRelatedSearchModel($model, 'exercises');
-$this->widget('TbGridView',
+$this->widget('\TbGridView',
     array(
         'id' => 'exercise-grid',
         'dataProvider' => $relatedSearchModel->search(),
         'filter' => $relatedSearchModel, // TODO: Restore similar functionality without oom problems: count($model->exercises) > 1 ? $relatedSearchModel : null,
         'pager' => array(
-            'class' => 'TbPager',
+            'class' => '\TbPager',
             'displayFirstAndLast' => true,
         ),
         'columns' => array(
@@ -102,11 +102,6 @@ $this->widget('TbGridView',
             ),
             /*
             array(
-                    'name' => 'slideshow_file_id',
-                    'value' => 'CHtml::value($data, \'slideshowFile.itemLabel\')',
-                    'filter' => '',//CHtml::listData(SlideshowFile::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
-                ),
-            array(
                     'class' => 'TbEditableColumn',
                     'name' => 'created',
                     'editable' => array(
@@ -125,7 +120,7 @@ $this->widget('TbGridView',
             array(
                     'name' => 'owner_id',
                     'value' => 'CHtml::value($data, \'owner.itemLabel\')',
-                    'filter' => '',//CHtml::listData(Users::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
+                    'filter' => '',//CHtml::listData(Account::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
             array(
                     'name' => 'node_id',
@@ -470,7 +465,7 @@ $this->widget('TbGridView',
                 ),
             */
             array(
-                'class' => 'TbButtonColumn',
+                'class' => '\TbButtonColumn',
                 'viewButtonUrl' => "Yii::app()->controller->createUrl('exercise/view', array('id' => \$data->id))",
                 'updateButtonUrl' => "Yii::app()->controller->createUrl('exercise/update', array('id' => \$data->id))",
                 'deleteButtonUrl' => "Yii::app()->controller->createUrl('exercise/delete', array('id' => \$data->id))",
