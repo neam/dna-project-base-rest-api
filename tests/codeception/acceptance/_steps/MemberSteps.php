@@ -134,6 +134,13 @@ class MemberSteps extends \WebGuy
         $I->dontSee($title, 'h2');
     }
 
+    function activateMember($username)
+    {
+        $I = $this;
+        $I->amOnPage(AccountAdminPage::$URL);
+        $I->click(AccountAdminPage::generateActivateLinkSelector($username));
+    }
+
     function toggleGroupRole($username, $group, $role)
     {
         $I = $this;

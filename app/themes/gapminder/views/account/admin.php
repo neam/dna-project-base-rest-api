@@ -2,6 +2,7 @@
 /* @var AccountController $this */
 /* @var Account $model */
 /* @var CActiveDataProvider $dataProvider */
+/* @var array $columns */
 
 $this->setPageTitle(
     Yii::t('model', 'Accounts')
@@ -27,20 +28,7 @@ $this->breadcrumbs[] = Yii::t('model', 'Accounts');
                 'class' => '\TbPager',
                 'hideFirstAndLast' => false,
             ),
-            'columns' => array(
-                array(
-                    'class' => 'AccountLinkColumn',
-                    'header' => '',
-                    'labelExpression' => '$data->itemLabel',
-                    'urlExpression' => 'Yii::app()->createUrl("account/view", array("id" => $data["id"]))',
-                ),
-                array(
-                    'class' => '\TbButtonColumn',
-                    'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
-                    'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
-                    'deleteButtonUrl' => 'Yii::app()->controller->createUrl("delete", array("id" => $data->id))',
-                ),
-            ),
+            'columns' => $columns,
         )
     ); ?>
 </div>

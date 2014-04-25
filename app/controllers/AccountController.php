@@ -37,6 +37,7 @@ class AccountController extends Controller
                     'delete',
                     'deleteRelations',
                     'view',
+                    'activate',
                 ),
                 'roles' => array(Role::SUPER_ADMINISTRATOR),
             ),
@@ -510,10 +511,31 @@ class AccountController extends Controller
     {
         $dataProvider = new CActiveDataProvider('Account');
 
+        $columns = array(
+            array(
+                'class' => 'AccountLinkColumn',
+                'header' => '',
+                'labelExpression' => '$data->itemLabel',
+                'urlExpression' => 'Yii::app()->createUrl("account/view", array("id" => $data["id"]))',
+            ),
+            array(
+                'class' => 'ActivateLinkColumn',
+                'labelExpression' => '(int)$data->status === 0 ? Yii::t("account", "Activate") : ""',
+                'urlExpression' => '(int)$data->status === 0 ? Yii::app()->createUrl("account/activate", array("id" => $data["id"])) : ""',
+            ),
+            array(
+                'class' => '\TbButtonColumn',
+                'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
+                'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
+                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("delete", array("id" => $data->id))',
+            ),
+        );
+
         $this->render(
             'admin',
             array(
                 'dataProvider' => $dataProvider,
+                'columns' => $columns,
             )
         );
     }
@@ -538,6 +560,24 @@ class AccountController extends Controller
         } else {
             PermissionHelper::removeAccountFromGroup($id, $group, $role);
         }
+    }
+
+    /**
+     * Activates a given user (if not already activated).
+     * @param string $id the user ID.
+     */
+    public function actionActivate($id)
+    {
+        $account = $this->loadModel($id);
+
+        if ($account->status > 0) {
+            return;
+        }
+
+        $account->status = 1;
+        $account->save(true, array('status'));
+
+        $this->redirect(array('admin'));
     }
 
     /**

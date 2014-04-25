@@ -11,6 +11,7 @@ class AccountAdminPage
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
     public static $viewLinkPrefix = '#viewLink_';
+    public static $activateLinkPrefix = '#activateLink_';
 
     /**
      * Basic route example for your current URL
@@ -43,5 +44,10 @@ class AccountAdminPage
     public static function generateViewLinkSelector($username)
     {
         return self::$viewLinkPrefix . $username;
+    }
+
+    public static function generateActivateLinkSelector($username)
+    {
+        return self::$activateLinkPrefix . $username;
     }
 }
