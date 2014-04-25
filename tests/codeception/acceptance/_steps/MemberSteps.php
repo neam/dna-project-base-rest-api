@@ -7,8 +7,6 @@ use AccountViewPage;
 use Exception;
 use HomePage;
 use LoginPage;
-use PermissionHelper;
-use ProfilePage;
 use RegistrationPage;
 use VideoFileBrowsePage;
 use VideoFileEditPage;
@@ -46,7 +44,9 @@ class MemberSteps extends \WebGuy
 
         $I->click(RegistrationPage::$submitButton);
 
-        sleep(1); // we must sleep here or the users will actually not get registered
+        if ($this->scenario->running()) {
+            sleep(1); // we must sleep here or the users will actually not get registered
+        }
 
         // TODO activate account using mailcatcher
     }
@@ -102,6 +102,7 @@ class MemberSteps extends \WebGuy
             $I->register($person['name'], $person['password'], $person['password'], $person['email']);
 
             $I->login('admin', 'admin');
+            $I->activateMember($person['name']);
             foreach ($person['groupRoles'] as $groupName => $rolesNames) {
                 foreach ($rolesNames as $roleName) {
                     $I->toggleGroupRole($person['name'], $groupName, $roleName);

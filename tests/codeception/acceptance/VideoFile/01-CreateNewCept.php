@@ -2,7 +2,7 @@
 $scenario->group('data:clean-db');
 
 $I = new WebGuy\MemberSteps($scenario);
-$I->wantTo('perform actions and see result');
+$I->wantTo('create a video and make sure that only I see it.');
 
 // Register users.
 $I->registerGapminderStaff();
@@ -10,14 +10,10 @@ $I->registerGapminderStaff();
 // Max logs in.
 $I->login('max', 'test');
 
-$I->pauseExecution();
-
-// TODO verify that Max is part of default groups
-
 // Max creates a new video file.
 $I->createVideoFile('Max video');
-
-// Verify that only Max can see his video.
 $I->seeVideoFile('Max video');
+$I->logout();
+
 $I->login('ola', 'test');
 $I->dontSeeVideoFile('Max video');
