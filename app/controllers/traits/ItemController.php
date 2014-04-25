@@ -11,8 +11,6 @@ trait ItemController
      */
     public function init()
     {
-        parent::init();
-
         // Set the model ID if it has been passed as a GET param.
         if (isset($_GET['id'])) {
             $this->modelId = $_GET['id'];
@@ -35,13 +33,13 @@ trait ItemController
      * @param string $operation the operation.
      * @return boolean
      */
-    public function checkAccessById($id, $operation)
+    public function checkModelOperationAccessById($id, $operation)
     {
         /** @var ActiveRecord|ItemTrait $model */
         $model = ActiveRecord::model($this->modelClass)->findByPk($id);
 
         if ($model instanceof ActiveRecord) {
-            return $model->checkAccess($operation);
+            return Yii::app()->user->checkModelOperationAccess($model, $operation);
         } else {
             throw new CHttpException(404, Yii::t('error', "Failed to check access: the $this->modelClass model with ID $id does not exist."));
         }
@@ -62,7 +60,7 @@ trait ItemController
                 ),
                 'users' => array('*'),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'View');
+                    return $this->checkModelOperationAccessById($this->modelId, 'View');
                 },
             ),
             array('allow',
@@ -95,7 +93,7 @@ trait ItemController
                     'saveDraft',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Edit');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Edit');
                 },
             ),
             array('allow',
@@ -121,7 +119,7 @@ trait ItemController
                     'evaluate',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Evaluate');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Evaluate');
                 },
             ),
             array('allow',
@@ -130,7 +128,7 @@ trait ItemController
                     'submitForPublishing',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'PrepareForPublishing');
+                    return $this->checkModelOperationAccessById($this->modelId, 'PrepareForPublishing');
                 },
             ),
             array('allow',
@@ -138,7 +136,7 @@ trait ItemController
                     'proofread',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Proofread');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Proofread');
                 },
             ),
             array('allow',
@@ -146,7 +144,7 @@ trait ItemController
                     'preview',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Preview');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Preview');
                 },
             ),
             array('allow',
@@ -155,7 +153,7 @@ trait ItemController
                     'translationOverview',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Translate');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Translate');
                 },
             ),
             array('allow',
@@ -164,7 +162,7 @@ trait ItemController
                     'unpublish',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Publish');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Publish');
                 },
             ),
             array('allow',
@@ -172,7 +170,7 @@ trait ItemController
                     'edit',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Edit');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Edit');
                 },
             ),
             array('allow',
@@ -181,7 +179,7 @@ trait ItemController
                     'removeFromGroup',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Edit');
+                    return $this->checkModelOperationAccessById($_GET['modelId'], 'ChangeGroup');
                 },
             ),
             array('allow',
@@ -189,7 +187,7 @@ trait ItemController
                     'clone',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Clone');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Clone');
                 },
             ),
             array('allow',
@@ -197,7 +195,7 @@ trait ItemController
                     'remove',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Remove');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Remove');
                 },
             ),
         );
@@ -215,7 +213,7 @@ trait ItemController
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
 
-        if ($model->checkAccess('Edit')) {
+        if (Yii::app()->user->checkModelOperationAccess($model, 'Edit')) {
             $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
         } else {
             $this->redirect('/' . lcfirst(get_class($model)) . '/browse'); // TODO: Clean up route.
@@ -285,6 +283,7 @@ trait ItemController
      * @param array $defaultCriteria the criteria to return if user has Administrator-role or is not a translator
      * @return array|\CDbCriteria
      */
+    /*
     public function getTranslatorCriteria($modelTbl, $defaultCriteria = array())
     {
         // Administrators should see everything so return early
@@ -311,6 +310,7 @@ trait ItemController
 
         return $criteria;
     }
+    */
 
     public function actionBrowse()
     {
@@ -322,8 +322,6 @@ trait ItemController
         }
 
         $dataProvider = $model->search();
-        $criteria = $this->getTranslatorCriteria($model->tableName());
-        $dataProvider->setCriteria($criteria);
 
         $this->populateWorkflowData($model, "browse", Yii::t('app', 'Browse'));
 
@@ -647,7 +645,7 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
-        if ($model->checkAccess('Edit')) {
+        if (Yii::app()->user->checkModelOperationAccess($model, 'Edit')) {
             $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
         } else {
             $this->redirect(array('view', 'id' => $model->id));
@@ -696,25 +694,27 @@ trait ItemController
 
     /**
      * Adds an item to a group.
-     * @param integer $node_id
+     * @param integer $nodeId
+     * @param integer $modelId
      * @param string $group
      * @param string $returnUrl
      */
-    public function actionAddToGroup($node_id, $group, $returnUrl)
+    public function actionAddToGroup($nodeId, $modelId, $group, $returnUrl)
     {
-        PermissionHelper::addNodeToGroup($node_id, $group);
+        PermissionHelper::addNodeToGroup($nodeId, $group);
         $this->redirect($returnUrl);
     }
 
     /**
      * Removes an item from a group.
-     * @param integer $node_id
-     * @param $group
+     * @param integer $nodeId
+     * @param integer $modelId
+     * @param string $group
      * @param string $returnUrl
      */
-    public function actionRemoveFromGroup($node_id, $group, $returnUrl)
+    public function actionRemoveFromGroup($nodeId, $modelId, $group, $returnUrl)
     {
-        PermissionHelper::removeNodeFromGroup($node_id, $group);
+        PermissionHelper::removeNodeFromGroup($nodeId, $group);
         $this->redirect($returnUrl);
     }
 
@@ -1164,7 +1164,7 @@ trait ItemController
     public function canEditSourceLanguage()
     {
         if ($this->action->id === 'translate') {
-            if (Yii::app()->user->isAdmin) {
+            if (Yii::app()->user->isAdmin()) {
                 return true;
             }
 

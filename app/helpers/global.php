@@ -367,3 +367,30 @@ function dumpd($var, $depth = 10, $highlight = true)
     dump($var, $depth, $highlight);
     die();
 }
+
+/**
+ * Dumps the given variable using var_export().
+ * @param mixed $var
+ */
+function ajaxdump($var)
+{
+    var_export($var);
+}
+
+/**
+ * Dumps the given variable and terminates the application.
+ * @param mixed $var
+ */
+function ajaxdumpd($var)
+{
+    ajaxdump($var);
+    endApp();
+}
+
+/**
+ * Terminates the application.
+ */
+function endApp()
+{
+    Yii::app()->end();
+}

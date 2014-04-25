@@ -13,8 +13,8 @@ class VideoFileController extends Controller
 
     #public $layout='//layouts/column2';
 
-    public $defaultAction = 'admin';
-    public $scenario = 'crud';
+    public $defaultAction = "browse";
+    public $scenario = "crud";
 
     public function filters()
     {
@@ -321,8 +321,6 @@ class VideoFileController extends Controller
     public function actionIndex()
     {
         $dataProvider = new CActiveDataProvider('VideoFile');
-        $criteria = $this->getTranslatorCriteria(VideoFile::model()->tableName());
-        $dataProvider->setCriteria($criteria);
         $this->render('index', array('dataProvider' => $dataProvider));
     }
 

@@ -49,7 +49,7 @@
                         array(
                             'label' => ucfirst(Yii::app()->user->name),
                             'visible' => !Yii::app()->user->isGuest,
-                            'icon' => Yii::app()->user->checkAccess('Super Administrator') ? TbHtml::ICON_TOWER : TbHtml::ICON_USER,
+                            'icon' => Yii::app()->user->isAdmin() ? 'warning-sign' : 'user',
                             'id' => 'accountMenuLink',
                             'items' => array(
                                 array(
@@ -80,15 +80,15 @@
                                     'visible' => !Yii::app()->user->isGuest
                                 ),
                                 array(
-                                    'label' => Yii::t('app', 'List'),
-                                    'icon' => 'list',
+                                    'label' => Yii::t('app', 'Manage'),
+                                    'icon' => 'lock',
                                     'url' => array('/account/admin'),
-                                    'visible' => Yii::app()->user->checkAccess('Superuser')
+                                    'visible' => Yii::app()->user->isAdmin(),
                                 ),
                                 '---',
                                 array(
                                     'label' => Yii::t('app', 'Logout'),
-                                    'icon' => 'lock',
+                                    'icon' => 'logt-out',
                                     'url' => array('/site/logout'),
                                     'visible' => !Yii::app()->user->isGuest,
                                     'id' => 'logoutLink',
@@ -99,7 +99,7 @@
                             'label' => Yii::t('app', 'Login'),
                             'url' => Yii::app()->user->loginUrl,
                             'visible' => Yii::app()->user->isGuest,
-                            'icon' => 'lock',
+                            'icon' => 'log-in',
                             'id' => 'loginLink',
                         ),
                     ),

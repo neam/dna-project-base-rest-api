@@ -500,7 +500,7 @@ $mainConfig = array(
         ),
         'user'          => array(
             // enable cookie-based authentication
-            'class'          => 'RWebUser',
+            //'class'          => 'RWebUser',
             // crisu83/yii-rights: Allows super users access implicitly.
             'behaviors'      => array('vendor.schmunk42.web-user-behavior.WebUserBehavior'),
             // compatibility behavior for yii-user and yii-rights

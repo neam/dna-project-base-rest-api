@@ -34,7 +34,7 @@
                                 'id' => $model->{$model->tableSchema->primaryKey},
                                 'editingUrl' => Yii::app()->request->url,
                             ),
-                            'visible' => $model->checkAccess('Preview'),
+                            'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Preview'),
                         )
                     ); ?>
                 </div>

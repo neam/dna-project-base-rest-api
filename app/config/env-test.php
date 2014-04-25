@@ -6,8 +6,6 @@ return array(
     'modules' => array(
         'user' => array(
             'captcha' => array('registration' => false),
-            'sendActivationMail' => false,
-            'loginNotActiv' => true,
         ),
     ),
     'components' => array(
@@ -17,6 +15,9 @@ return array(
         ),
         'fixture'      => array(
             'class' => 'system.test.CDbFixtureManager',
+        ),
+        'urlManager' => array(
+            'showScriptName' => true, // this must be here
         ),
     ),
 );

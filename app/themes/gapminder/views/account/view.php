@@ -1,27 +1,21 @@
 <?php
 /* @var AccountController $this */
-/* @var Account $model */
-/* @var CActiveDataProvider $dataProvider */
 /* @var array $columns */
-
-$this->setPageTitle(
-    Yii::t('model', 'Accounts')
-    . ' - '
-    . Yii::t('model', 'Manage')
-);
-
-$this->breadcrumbs[] = Yii::t('model', 'Accounts');
+/* @var CArrayDataProvider $dataProvider */
+/* @var Account $model */
 ?>
-<div class="account-controller admin-action">
+<div class="account-controller view-action">
     <h1>
-        <?php echo Yii::t('model', 'Accounts'); ?>
-        <small><?php echo Yii::t('model', 'Manage'); ?></small>
+        <?php echo $model->username; ?>
+        <small><?php echo Yii::t('model', 'account') ;?></small>
     </h1>
+
+    <h2><?php echo Yii::t('admin', 'Permissions'); ?></h2>
 
     <?php $this->widget(
         'TbGridView',
         array(
-            'id' => 'account-grid',
+            'id' => 'permissions-grid',
             'dataProvider' => $dataProvider,
             'template' => '{pager}{items}{pager}',
             'pager' => array(

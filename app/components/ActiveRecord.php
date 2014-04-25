@@ -8,10 +8,9 @@ class ActiveRecord extends CActiveRecord
 
     public function behaviors()
     {
-
         $behaviors = array();
 
-        if (!in_array(get_class($this), array("Workflow", "Profile", "Account", "Message", "SourceMessage")) && strpos(get_class($this), "QaState") === false) {
+        if (!in_array(get_class($this), array("Workflow", "Profile", "Account", "AppRegistrationForm", "Message", "SourceMessage")) && strpos(get_class($this), "QaState") === false) {
             $behaviors['CTimestampBehavior'] = array(
                 'class' => 'zii.behaviors.CTimestampBehavior',
                 'createAttribute' => 'created',
@@ -34,6 +33,9 @@ class ActiveRecord extends CActiveRecord
             }
             $behaviors['owner-behavior'] = array(
                 'class' => 'OwnerBehavior',
+            );
+            $behaviors['RestrictedAccessBehavior'] = array(
+                'class' => 'RestrictedAccessBehavior',
             );
         }
 
@@ -184,136 +186,52 @@ class ActiveRecord extends CActiveRecord
         );
     }
 
-    // ----------------------------------------
-    // Logic for access restriction
-    // ----------------------------------------
-
-    // todo: implement with beforeFind & beforeCount
-    // see this for ideas: https://github.com/codemix/AccessRestrictable/blob/master/src/AccessRestrictable/Behavior.php
-
-    /**
-     * @inheritDoc
-     */
-    public function find($condition = '', $params = array())
+    public function beforeRead()
     {
-        return parent::find($this->applyAccessCriteria($condition, $params));
-    }
 
-    /**
-     * @inheritDoc
-     */
-    public function findByPk($pk, $condition = '', $params = array())
-    {
-        return parent::findByPk($pk, $this->applyAccessCriteria($condition, $params));
-    }
+        // todo: use corr accessRestricted from behavior -> tests
 
-    /**
-     * @inheritDoc
-     */
-    public function findByAttributes($attributes, $condition = '', $params = array())
-    {
-        return parent::findByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
-    }
+        $publicCriteria = new CDbCriteria();
+        $publicCriteria->join = "LEFT JOIN `node_has_group` AS `nhg_public` ON (`t`.`node_id` = `nhg_public`.`node_id` AND `nhg_public`.`group_id` = :current_project_group_id AND `nhg_public`.`visibility` = :visibility)";
+        $publicCriteria->addCondition("(`nhg_public`.`id` IS NOT NULL)");
+        $publicCriteria->params = array(
+            ":current_project_group_id" => Group::GAPMINDER_ORG, // TODO: Base on current domain
+            ":visibility" => NodeHasGroup::VISIBILITY_VISIBLE,
+        );
 
-    /**
-     * @inheritDoc
-     */
-    public function findBySql($sql, $params = array())
-    {
-        return parent::find($this->applyAccessCriteria($sql, $params));
-    }
 
-    /**
-     * @inheritDoc
-     */
-    public function findAll($condition = '', $params = array())
-    {
-        return parent::findAll($this->applyAccessCriteria($condition, $params));
-    }
+        $user = Yii::app()->user;
+        $table = $this->getTableAlias();
 
-    /**
-     * @inheritDoc
-     */
-    public function findAllByPk($pk, $condition = '', $params = array())
-    {
-        return parent::findAllByPk($pk, $this->applyAccessCriteria($condition, $params));
-    }
+        if ($user->isAdmin()) {
 
-    /**
-     * @inheritDoc
-     */
-    public function findAllByAttributes($attributes, $condition = '', $params = array())
-    {
-        return parent::findAllByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
-    }
+            // All items
+            return true;
 
-    /**
-     * @inheritDoc
-     */
-    public function findAllBySql($sql, $params = array())
-    {
-        return parent::findAll($this->applyAccessCriteria($sql, $params));
-    }
+        } elseif ($user->isGuest) {
 
-    /**
-     * @inheritDoc
-     */
-    public function count($condition = '', $params = array())
-    {
-        return parent::count($this->applyAccessCriteria($condition, $params));
-    }
+            // Only public items
+            return $publicCriteria;
 
-    /**
-     * @inheritDoc
-     */
-    public function countByAttributes($attributes, $condition = '', $params = array())
-    {
-        return parent::countByAttributes($attributes, $this->applyAccessCriteria($condition, $params));
-    }
+        } else {
 
-    /**
-     * @inheritDoc
-     */
-    public function countBySql($sql, $params = array())
-    {
-        return parent::count($this->applyAccessCriteria($sql, $params));
-    }
+            $criteria = new CDbCriteria();
 
-    /**
-     * @var boolean whether or not this model instance should use access restrictions
-     */
-    public $accessRestricted;
+            $criteria->params[':account_id'] = $user->id;
 
-    public function applyAccessCriteria($criteria = '', array $params = array())
-    {
-        // Normalize the criteria (this must ALWAYS be done as we override the find and count methods).
-        if (!$criteria instanceof CDbCriteria) {
-            $criteria = new CDbCriteria(array('condition' => $criteria, 'params' => $params));
-        }
+            // Public items ...
+            $criteria->mergeWith($publicCriteria, 'OR');
 
-        // Check whether to apply the access criteria to this model from the data model.
-        if (is_null($this->accessRestricted)) {
-            $this->accessRestricted = isset(DataModel::accessRestrictedModels()[get_class($this)]);
-        }
+            // ... and own items
+            $criteria->addCondition("`t`.`owner_id` = :account_id", "OR");
 
-        if (!$this->accessRestricted) {
+            // ... and items within groups that the user is a member of
+            $criteria->join = $criteria->join . "\n" . "LEFT JOIN (`node_has_group` AS `nhg` INNER JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `gha`.`account_id` = :account_id)) ON (`t`.`node_id` = `nhg`.`node_id`) ";
+            $criteria->addCondition("`nhg`.id IS NOT NULL AND (`nhg`.`visibility` = 'visible' OR `nhg`.`visibility` IS NULL)", "OR");
             return $criteria;
-        }
-
-        // Show published items to anonymous users
-        if (Yii::app()->user->isGuest) {
-            $visible = NodeHasGroup::VISIBILITY_VISIBLE;
-
-            $criteria->join = "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)";
-            $criteria->addCondition("(`nhg`.`visibility` = '$visible')");
 
             return $criteria;
+
         }
-
-        $roleNames = isset($params['roleNames']) && !empty($params['roleNames'])
-            ? $params['roleNames']
-            : Yii::app()->user->getRoles();
-
-        return PermissionHelper::applyAccessCriteria($criteria, $roleNames);
     }
 }

@@ -1,36 +1,12 @@
 <?php
 $actions = array();
-$id = 1;
 
-foreach (MetaData::contextLessDefaultRoles() as $title) {
-
-    $actions['Role_' . $id] = array(
-        'id' => $id,
-        'title' => $title,
-    );
-    $id++;
-
+foreach (MetaData::systemRoles() as $title => $label) {
+    $actions[] = array('title' => $title);
 }
 
-foreach (MetaData::contextLessSuperRoles() as $title) {
-
-    $actions['Role_' . $id] = array(
-        'id' => $id,
-        'title' => $title,
-    );
-    $id++;
-
-}
-
-foreach (MetaData::groupBasedRoles() as $title) {
-
-    $actions['Role_' . $id] = array(
-        'id' => $id,
-        'title' => "Group $title",
-    );
-    $id++;
-
+foreach (MetaData::groupRoles() as $title => $label) {
+    $actions[] = array('title' => $title);
 }
 
 return $actions;
-

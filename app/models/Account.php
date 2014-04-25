@@ -79,23 +79,84 @@ class Account extends BaseAccount
      * Returns the roles.
      * @return array
      */
-    public function getRoles()
+    public function getGroupHasAccounts()
     {
-        return $this->getAuthItems();
+        return U::arAttributes(PermissionHelper::getGroupHasAccountsForAccount($this->id));
+    }
+
+    /**
+     * Automatically assign default group roles to new members
+     */
+    public function assignDefaultGroupRoles()
+    {
+        PermissionHelper::addAccountToGroup($this->id, Group::TRANSLATORS, Role::GROUP_TRANSLATOR);
+        PermissionHelper::addAccountToGroup($this->id, Group::REVIEWERS, Role::GROUP_REVIEWER);
     }
 
     /**
      * Checks if the item has a group.
      * @param string $group
-     * @param string $role
+     * @param string|null $role
      * @return boolean
      */
-    public function belongsToGroup($group, $role)
+    public function belongsToGroup($group, $role = null)
     {
-        return PermissionHelper::groupHasAccount(array(
+        $attributes = array(
             'account_id' => $this->id,
             'group_id' => PermissionHelper::groupNameToId($group),
-            'role_id' => PermissionHelper::roleNameToId($role),
-        ));
+        );
+
+        if ($role !== null) {
+            $attributes['role_id'] = PermissionHelper::roleNameToId($role);
+        }
+
+        return PermissionHelper::groupHasAccount($attributes);
+    }
+
+    /**
+     * Checks if a role and its associated groups are active.
+     * @param string $roleName
+     * @return boolean
+     */
+    public function roleIsActive($roleName)
+    {
+        $roleId = PermissionHelper::roleNameToId($roleName);
+        $roleToGroupsMap = MetaData::roleToGroupsMap($roleName);
+        $groups = isset($roleToGroupsMap[$roleName]) ? $roleToGroupsMap[$roleName] : array();
+        $groupCount = count($groups);
+        $groupHasAccountCount = 0;
+
+        if ($groupCount > 0) {
+            foreach ($groups as $group) {
+                $groupHasAccount = PermissionHelper::groupHasAccount(
+                    array(
+                        'account_id' => $this->id,
+                        'group_id' => PermissionHelper::groupNameToId($group),
+                        'role_id' => $roleId,
+                    )
+                );
+
+                if ($groupHasAccount) {
+                    $groupHasAccountCount++;
+                }
+            }
+
+            $roleIsActive = (int) $groupHasAccountCount === (int) $groupCount;
+        } else {
+            $roleIsActive = false;
+        }
+
+        return $roleIsActive;
+    }
+
+    public function groupRoleIsActive($group, $role)
+    {
+        return PermissionHelper::groupHasAccount(
+            array(
+                'account_id' => $this->id,
+                'group_id' => PermissionHelper::groupNameToId($group),
+                'role_id' => PermissionHelper::roleNameToId($role),
+            )
+        );
     }
 }
