@@ -2,10 +2,16 @@
 
 class GuiSectionController extends Controller
 {
+    use ItemController {
+        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    }
+
+    public $modelClass = 'GuiSection';
+
     #public $layout='//layouts/column2';
 
-    public $defaultAction = "admin";
-    public $scenario = "crud";
+    public $defaultAction = 'admin';
+    public $scenario = 'crud';
 
     public function filters()
     {
@@ -16,25 +22,28 @@ class GuiSectionController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge(
+            $this->itemAccessRules(),
             array(
-                'allow',
-                'actions' => array(
-                    'index',
-                    'view',
-                    'create',
-                    'update',
-                    'editableSaver',
-                    'editableCreator',
-                    'admin',
-                    'delete',
+                array(
+                    'allow',
+                    'actions' => array(
+                        'index',
+                        'view',
+                        'create',
+                        'update',
+                        'editableSaver',
+                        'editableCreator',
+                        'admin',
+                        'delete',
+                    ),
+                    'roles' => array('GuiSection.*'),
                 ),
-                'roles' => array('GuiSection.*'),
-            ),
-            array(
-                'deny',
-                'users' => array('*'),
-            ),
+                array(
+                    'deny',
+                    'users' => array('*'),
+                ),
+            )
         );
     }
 
@@ -199,7 +208,7 @@ class GuiSectionController extends Controller
 
     protected function performAjaxValidation($model)
     {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'gui-section-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'item-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

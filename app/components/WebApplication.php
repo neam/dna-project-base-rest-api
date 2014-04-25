@@ -65,4 +65,13 @@ class WebApplication extends CWebApplication
         $this->yiistrap->registerAllScripts();
         Html::jsDirtyForms(); // TODO: Load this only when needed.
     }
+
+    /**
+     * Returns all available languages.
+     * @return array
+     */
+    public function getLanguages()
+    {
+        return Yii::app()->params['languages'];
+    }
 }

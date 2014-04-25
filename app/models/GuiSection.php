@@ -35,19 +35,23 @@ class GuiSection extends BaseGuiSection
 
     public function rules()
     {
-        $return = array_merge(
+        $translationRules = array();
+        foreach (Yii::app()->getLanguages() as $language => $label) {
+            $translationRules[] = array('title', 'length', 'min' => 3, 'on' => 'translate_into_' . $language); // dummy rule
+        }
+
+        $rules = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
+            $translationRules,
             array(
-
                 array('title', 'length', 'min' => 3, 'max' => 200),
-
             )
         );
-        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
-        return $return;
+        Yii::log('model->rules(): ' . print_r($rules, true), 'trace', __METHOD__);
+        return $rules;
     }
 
     public function validateFile()

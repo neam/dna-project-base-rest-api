@@ -73,6 +73,58 @@ class AppActiveForm extends TbActiveForm
     }
 
     /**
+     * Creates an item title text field control group with support for SlugIt auto-generation.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @param array $htmlOptions
+     * @return string
+     */
+    public function itemTitleTextFieldControlGroup($model, $attribute, $htmlOptions = array())
+    {
+        $titleClass = 'slugit-from-1';
+        $slugClass = 'slugit-to-1';
+
+        $classes = array();
+        if (isset($htmlOptions['class'])) {
+            $classes = explode(' ', $htmlOptions['class']);
+        }
+        $classes[] = $titleClass;
+        $htmlOptions['class'] = implode(' ', $classes);
+
+        Html::jsSlugIt(array(
+            ".$titleClass" => ".$slugClass",
+        ));
+
+        return parent::textFieldControlGroup($model, $attribute, $htmlOptions);
+    }
+
+    /**
+     * Creates an item slug text field control group with support for SlugIt auto-generation.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @param array $htmlOptions
+     * @return string
+     */
+    public function itemSlugTextFieldControlGroup($model, $attribute, $htmlOptions = array())
+    {
+        $titleClass = 'slugit-from-1';
+        $slugClass = 'slugit-to-1';
+
+        $classes = array();
+        if (isset($htmlOptions['class'])) {
+            $classes = explode(' ', $htmlOptions['class']);
+        }
+        $classes[] = $slugClass;
+        $htmlOptions['class'] = implode(' ', $classes);
+
+        Html::jsSlugIt(array(
+            ".$titleClass" => ".$slugClass",
+        ));
+
+        return parent::textFieldControlGroup($model, $attribute, $htmlOptions);
+    }
+
+    /**
      * Builds a multi input field configuration for a translatable attribute.
      * @param ActiveRecord|ItemTrait $model
      * @param string $attribute

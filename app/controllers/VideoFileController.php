@@ -9,12 +9,12 @@ class VideoFileController extends Controller
         ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
     }
 
-    public $modelClass = "VideoFile";
+    public $modelClass = 'VideoFile';
 
     #public $layout='//layouts/column2';
 
-    public $defaultAction = "admin";
-    public $scenario = "crud";
+    public $defaultAction = 'admin';
+    public $scenario = 'crud';
 
     public function filters()
     {
@@ -25,38 +25,41 @@ class VideoFileController extends Controller
 
     public function accessRules()
     {
-        return array_merge($this->itemAccessRules(), array(
-            array('allow',
-                'actions' => array(
-                    'subtitles',
-                    'downloadSubtitles',
-                ),
-                'users' => array('*'),
-            ),
-            array('allow',
-                'actions' => array(
-                    'index',
-                    'view',
-                ),
-                'users' => array('@'),
-            ),
-            array('allow',
-                'actions' => array(
-                    'view',
-                    'create',
-                    'update',
-                    'editableSaver',
-                    'editableCreator',
-                    'admin',
-                    'delete',
-                ),
-                'roles' => array('VideoFile.*'),
-            ),
+        return array_merge(
+            $this->itemAccessRules(),
             array(
-                'deny',
-                'users' => array('*'),
-            ),
-        ));
+                array('allow',
+                    'actions' => array(
+                        'subtitles',
+                        'downloadSubtitles',
+                    ),
+                    'users' => array('*'),
+                ),
+                array('allow',
+                    'actions' => array(
+                        'index',
+                        'view',
+                    ),
+                    'users' => array('@'),
+                ),
+                array('allow',
+                    'actions' => array(
+                        'view',
+                        'create',
+                        'update',
+                        'editableSaver',
+                        'editableCreator',
+                        'admin',
+                        'delete',
+                    ),
+                    'roles' => array('VideoFile.*'),
+                ),
+                array(
+                    'deny',
+                    'users' => array('*'),
+                ),
+            )
+        );
     }
 
     protected function listenForEdges($id)
