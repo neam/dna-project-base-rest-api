@@ -147,6 +147,7 @@ class AccountController extends Controller
                     0 AS relevance
                     FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language3 IS NOT NULL AND i.id IS NOT NULL";
 
+        /*
         $fillProfileLanguageSql = "SELECT 0 as id, '' as model_class, '' as _title, 'SupplyProfileLanguages' AS action, CASE
                            WHEN (profile.language1 IS NOT NULL OR profile.language2 IS NOT NULL OR profile.language2 IS NOT NULL) THEN 100
                            ELSE 0
@@ -154,11 +155,12 @@ class AccountController extends Controller
                     AS progress,
                     9999 AS relevance
                     FROM account INNER JOIN profile ON account.id = profile.user_id AND account.id = :user_id";
+        */
 
         $sqls = array();
-        if (is_null($lang1) && is_null($lang2) && is_null($lang3)) {
+        /*if (is_null($lang1) && is_null($lang2) && is_null($lang3)) {
             $sqls[] = $fillProfileLanguageSql;
-        }
+        }*/
         if (!is_null($lang1)) {
             $sqls[] = $lang1Sql;
         }
@@ -178,8 +180,14 @@ class AccountController extends Controller
         //if checkaccess Translator
         //where status IN ('PUBLIC') OR own
 
-        $mainCommand = Yii::app()->db->createCommand('SELECT * FROM (' . $virtualDashboardActionTableSql . ') as dashboard_action');
-        $countCommand = Yii::app()->db->createCommand('SELECT COUNT(*) FROM (' . $virtualDashboardActionTableSql . ') as dashboard_action');
+        if (count($sqls) > 0) {
+            $mainCommand = Yii::app()->db->createCommand("SELECT * FROM ($virtualDashboardActionTableSql) AS dashboard_action");
+            $countCommand = Yii::app()->db->createCommand("SELECT COUNT(*) FROM ($virtualDashboardActionTableSql) AS dashboard_action");
+        } else {
+            $mainCommand = Yii::app()->db->createCommand('SELECT * FROM account AS dashboard_action WHERE 1 = 0');
+            $countCommand = Yii::app()->db->createCommand('SELECT COUNT(*) FROM account AS dashboard_action WHERE 1 = 0');
+        }
+
         $mainCommand->params = $countCommand->params = array(':user_id' => Yii::app()->user->id);
 
         $dataProvider = new CSqlDataProvider($mainCommand, array(
