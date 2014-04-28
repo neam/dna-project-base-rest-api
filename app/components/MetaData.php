@@ -251,6 +251,10 @@ class Metadata
             'GrantGroupModeratorPermissions' => array(
                 Role::GROUP_MODERATOR,
             ),
+            'P3media.Import.*' => array(
+                Role::GROUP_CONTRIBUTOR,
+                Role::GROUP_EDITOR,
+            ),
         );
     }
 
