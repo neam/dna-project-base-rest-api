@@ -22,7 +22,7 @@ class Page extends BasePage
 
     public function getItemLabel()
     {
-        return isset($this->_title) ? $this->_title : 'Page #' . $this->id;
+        return isset($this->title) ? $this->title : 'Page #' . $this->id;
     }
 
     public function relations()

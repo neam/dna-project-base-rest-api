@@ -24,17 +24,19 @@
     $this->action->id,
     array('hint' => true)
 ); ?>
+
 <?php if ($this->action->id === 'edit'): ?>
-    <?php
-    $pageCriteria = new CDbCriteria();
-    $pageCriteria->addCondition('page_id = :page_id');
-    $pageCriteria->params[':page_id'] = $model->id;
+    $criteria = new CDbCriteria();
+    $criteria->addCondition('t.page_id = :page_id');
+    $criteria->addCondition('t.node_id NOT IN (SELECT to_node_id FROM edge WHERE from_node_id = :page_node_id)');
+    $criteria->params[':page_id'] = $model->id;
+    $criteria->params[':page_node_id'] = $model->node_id;
 
     $this->widget(
         '\Edges',
         array(
             'model' => $model,
-            'criteria' => $pageCriteria,
+            'criteria' => $criteria,
             'relation' => 'sections',
             'itemClass' => 'Section',
         )
