@@ -39,3 +39,4 @@
         'toLabel' => 'related item',
     )
 );*/ ?>
+<?php publishJs('/themes/gapminder/js/force-dirty-forms.js', CClientScript::POS_END); ?>

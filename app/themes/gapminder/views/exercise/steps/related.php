@@ -1,5 +1,7 @@
-<?php /* @var Exercise $model */ ?>
-
+<?php
+/** @var Exercise $model */
+/** @var ExerciseController|ItemController $this */
+?>
 <div class="control-group">
     <div class="controls">
         <?php echo $this->widget('\TbButton', array(
@@ -21,7 +23,6 @@
         ); ?>
     </div>
 </div>
-
 <?php $this->renderPartial('//gridRelation/_modal_form', array(
     'model' => $model,
     'relation' => 'related',
@@ -29,3 +30,4 @@
     'toLabel' => 'related item',
     'type' => 'edge',
 )); ?>
+<?php publishJs('/themes/gapminder/js/force-dirty-forms.js', CClientScript::POS_END); ?>
