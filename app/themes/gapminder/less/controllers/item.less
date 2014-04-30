@@ -136,6 +136,61 @@
     }
   }
 
+  &.edit-action,
+  &.translate-action
+  {
+    .preview-button {
+      .btn-sm;
+      border-radius: 0; // TODO: Create a mixin for sharp corners.
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .item-header {
+      .make-row();
+
+      .header-text {
+        .make-md-column(12);
+
+        .item-heading {
+          .heading-large;
+          margin-bottom: 30px;
+        }
+      }
+    }
+
+    .item-row {
+      .make-row();
+
+      .row-column {
+        .make-md-column(12);
+
+        .item-well {
+          .well;
+          margin-bottom: 0;
+
+          .step-heading {
+            .heading-small;
+            margin: 0;
+          }
+
+          .item-content {
+            .make-row();
+
+            .content-primary {
+              .make-md-column(7);
+            }
+
+            .content-secondary {
+              .make-md-column(6);
+            }
+          }
+        }
+      }
+    }
+  }
+
   &.translate-action {
     .translate-subtitles {
       .column-subtitle {

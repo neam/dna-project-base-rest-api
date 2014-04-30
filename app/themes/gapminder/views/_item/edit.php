@@ -6,7 +6,22 @@
 /* @var string $stepCaption */
 /* @var string $controllerCssClass */
 ?>
+<?php $this->breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl; // TODO: Get link dynamically. ?>
+<?php $this->breadcrumbs[Yii::t('app', 'Dashboard')] = array('/account/dashboard'); ?>
+<?php $this->breadcrumbs[] = $model->itemLabel; ?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
+    <?php echo TbHtml::linkbutton(
+        Yii::t('app', 'Preview'),
+        array(
+            'class' => 'preview-button',
+            'url' => array(
+                'preview',
+                'id' => $model->{$model->tableSchema->primaryKey},
+                'editingUrl' => Yii::app()->request->url,
+            ),
+            'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Preview'),
+        )
+    ); ?>
     <?php $form = $this->beginWidget(
         'AppActiveForm',
         array(
@@ -21,6 +36,38 @@
         )
     ); ?>
     <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
+    <div class="item-header">
+        <div class="header-text">
+            <h1 class="item-heading"><?php echo $model->itemLabel; ?></h1>
+        </div>
+    </div>
+    <?php if ($this->action->id === 'translate'): ?>
+        <div class="item-row">
+            <div class="row-column">
+                <div class="item-well">
+                    <div class="item-content">
+                        <div class="content-primary">
+                            <h2 class="step-heading">
+                                <?php echo Yii::t(
+                                    'app',
+                                    'Translating to {language}',
+                                    array(
+                                        '{language}' => $this->workflowData['translateInto'],
+                                    )
+                                ); ?>
+                            </h2>
+                        </div>
+                        <div class="content-secondary">
+                            <h2 class="step-heading"><?php echo $stepCaption; ?></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php /*
+    <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
     <?php $this->renderPartial('/_item/edit/_flowbar', compact('model')); ?>
     <div class="after-flowbar">
         <div class="alerts">
@@ -33,12 +80,12 @@
                 <?php foreach ($this->workflowData["stepActions"] as $action): ?>
                     <?php $this->renderPartial("/_item/edit/_progress-item", $action); ?>
                 <?php endforeach; ?>
-                <?php /*
                 // todo: remove if unused
+                <!--
                 <div class="well well-white">
-                    <?php echo $this->renderPartial('/_item/elements/actions', compact("model", "execution")); ?>
+                    <?php //echo $this->renderPartial('/_item/elements/actions', compact("model", "execution")); ?>
                 </div>
-                */ ?>
+                -->
             </div>
             <div class="item-form">
                 <h2 class="form-title"><?php echo $stepCaption; ?></h2>
@@ -52,6 +99,8 @@
             </div>
         </div>
     </div>
+    */ ?>
+
     <?php $this->endWidget(); ?>
     <?php // Include previously rendered content for modals. ?>
     <?php // These need to be rendered outside the <form> since they contain form elements of their own. ?>
