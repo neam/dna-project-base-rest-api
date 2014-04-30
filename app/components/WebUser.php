@@ -99,23 +99,14 @@ class WebUser extends CWebUser
      */
     public function checkModelOperationAccess(CActiveRecord $model, $operation, $params = array())
     {
-
         Yii::log("checkModelOperationAccess - operation: $operation", CLogger::LEVEL_INFO);
 
-        // Auto-grant access to admins
-        if ($this->isAdmin()) {
-            Yii::log('isAdmin true', CLogger::LEVEL_INFO);
-            return true;
-        }
-
         // owner-based
-        if ($model->owner_id == $this->loadAccount()->id) {
+        if ($model->owner_id == Yii::app()->user->id) {
             return true;
         }
 
-        Yii::log('checkModelOperationAccess TODO', CLogger::LEVEL_INFO);
-        return false;
-
+        return $this->checkAccess($operation, $params);
     }
 
     /**
