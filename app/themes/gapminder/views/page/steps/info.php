@@ -26,6 +26,7 @@
 ); ?>
 
 <?php if ($this->action->id === 'edit'): ?>
+    <?php
     $criteria = new CDbCriteria();
     $criteria->addCondition('t.page_id = :page_id');
     $criteria->addCondition('t.node_id NOT IN (SELECT to_node_id FROM edge WHERE from_node_id = :page_node_id)');
@@ -40,14 +41,17 @@
             'relation' => 'sections',
             'itemClass' => 'Section',
         )
-    ); ?>
+    );
 
-    <?php echo Html::link(
+    echo Html::link(
         Yii::t('page sections', '{icon} Create new section', array('{icon}' => '<i class="glyphicon glyphicon-plus"></i>')),
         array('/section/add', 'pageId' => $model->id),
         array(
             'class' => 'btn btn-default',
             'role' => 'button',
         )
-    ); ?>
+    );
+
+    ?>
+
 <?php endif; ?>
