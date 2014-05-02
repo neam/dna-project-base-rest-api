@@ -120,6 +120,8 @@ class VideoFileController extends Controller
      */
     public function actionTranslate($id, $step, $translateInto)
     {
+        $this->step = $step;
+
         if (!Yii::app()->user->canTranslateInto($translateInto)) {
             throw new CHttpException(403, Yii::t('app', "You are not allowed to translate into: $translateInto"));
         }

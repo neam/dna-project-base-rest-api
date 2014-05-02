@@ -47,18 +47,81 @@
                 <div class="item-well">
                     <div class="item-content">
                         <div class="content-primary">
-                            <h2 class="step-heading">
-                                <?php echo Yii::t(
-                                    'app',
-                                    'Translating to {language}',
-                                    array(
-                                        '{language}' => $this->workflowData['translateInto'],
-                                    )
-                                ); ?>
-                            </h2>
+                            <div class="content-header">
+                                <h2 class="action-heading">
+                                    <?php echo Yii::t(
+                                        'app', 'Translating to {language}',
+                                        array('{language}' => Yii::app()->getLanguageNameByCode($this->workflowData['translateInto']))
+                                    ); ?>
+                                </h2>
+                                <div class="action-progress">
+                                    <div class="progress-bar-container">
+                                        <?php $this->widget(
+                                            '\TbProgress',
+                                            array(
+                                                'color' => TbHtml::PROGRESS_COLOR_SUCCESS,
+                                                'percent' => $model->getValidationProgress('translate_into_' . $this->workflowData['translateInto']),
+                                            )
+                                        ); ?>
+                                    </div>
+                                    <div class="progress-percentage-container">
+                                        <?php echo Yii::t(
+                                            'app', '{percentage}% done',
+                                            array('{percentage}' => $model->getValidationProgress('translate_into_' . $this->workflowData['translateInto']))
+                                        ); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-preview">
+                                <?php if (get_class($model) === 'VideoFile'): ?>
+                                    <?php $this->widget('VideoPlayer', array('videoFile' => $model)); ?>
+                                <?php endif; ?>
+                            </div>
                         </div>
                         <div class="content-secondary">
-                            <h2 class="step-heading"><?php echo $stepCaption; ?></h2>
+                            <div class="content-header">
+                                <div class="action-title-row">
+                                    <div class="action-title">
+                                        <h2 class="action-heading"><?php echo $stepCaption; ?></h2>
+                                    </div>
+                                    <div class="action-stop">
+                                        <?php echo TbHtml::linkButton(
+                                            Yii::t('app', 'Stop {action}', array(
+                                                '{action}' => 'Translating',
+                                            )),
+                                            array(
+                                                'url' => array('browse'),
+                                                'color' => TbHtml::BUTTON_COLOR_LINK,
+                                                'icon' => TbHtml::ICON_REMOVE,
+                                                'size' => TbHtml::BUTTON_SIZE_XS,
+                                            )
+                                        ); ?>
+                                    </div>
+                                </div>
+                                <?php $this->renderPartial(
+                                    '/_item/edit/_step-progress',
+                                    array(
+                                        'currentStepNumber' => $this->getCurrentStepNumber(),
+                                        'totalStepCount' => $this->getTotalStepCount(),
+                                    )
+                                ); ?>
+                            </div>
+                            <div class="item-fields">
+                                <?php $this->renderPartial('steps/' . $step, array(
+                                    'model' => $model,
+                                    'form' => $form,
+                                    'step' => $step,
+                                )); ?>
+                            </div>
+                            <div class="item-actions">
+                                <?php $this->renderPartial(
+                                    '/_item/edit/_step-action-buttons',
+                                    array(
+                                        'model' => $model,
+                                        'form' => $form,
+                                    )
+                                ); ?>
+                            </div>
                         </div>
                     </div>
                 </div>

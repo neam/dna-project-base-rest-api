@@ -3,8 +3,39 @@
 trait ItemController
 {
     public $workflowData = array();
+    public $step;
+
     public $modelId;
     protected $_actionIsEvaluate = false;
+
+    /**
+     * Returns the current step number.
+     * @return integer
+     */
+    public function getCurrentStepNumber()
+    {
+        $currentStep = $this->step;
+        $steps = $this->workflowData['stepActions'];
+
+        foreach ($steps as $index => $step) {
+            if ($step['step'] === $currentStep) {
+                return $index + 1;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the total number of steps.
+     * @return integer
+     */
+    public function getTotalStepCount()
+    {
+        return isset($this->workflowData['stepActions'])
+            ? count($this->workflowData['stepActions'])
+            : null;
+    }
 
     /**
      * Initializes the controller.
@@ -659,6 +690,7 @@ trait ItemController
      */
     public function actionEdit($step, $id)
     {
+        $this->step = $step;
         $this->scenario = "temporary-step_$step";
 
         $model = $this->loadModel($id);
@@ -901,6 +933,8 @@ trait ItemController
      */
     public function actionTranslate($id, $step, $translateInto)
     {
+        $this->step = $step;
+
         if (!Yii::app()->user->canTranslateInto($translateInto)) {
             throw new CHttpException(403, Yii::t('app', "You are not allowed to translate into: $translateInto"));
         }

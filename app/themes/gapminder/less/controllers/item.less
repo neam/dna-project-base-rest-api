@@ -168,22 +168,100 @@
 
         .item-well {
           .well;
+          font-weight: 100;
           margin-bottom: 0;
 
-          .step-heading {
+          .action-heading {
             .heading-small;
             margin: 0;
+            margin-bottom: 20px;
           }
 
           .item-content {
             .make-row();
 
+            .content-header {
+              height: 75px;
+
+              .action-title-row {
+                .make-row();
+
+                .action-title {
+                  .make-md-column(8);
+                }
+
+                .action-stop {
+                  .make-md-column(4);
+                  text-align: right;
+                }
+              }
+            }
+
             .content-primary {
               .make-md-column(7);
+
+              .action-progress {
+                .make-row();
+
+                .progress-bar-container {
+                  .make-md-column(4);
+
+                  .progress {
+                    margin: 0;
+                    margin-top: 5px;
+                  }
+                }
+
+                .progress-percentage-container {
+                  .make-md-column(8);
+                  text-transform: uppercase;
+                }
+              }
             }
 
             .content-secondary {
-              .make-md-column(6);
+              .make-md-column(5);
+
+              .item-fields {
+                height: 350px;
+                overflow-y: scroll;
+              }
+
+              .step-actions {
+              }
+
+              .step-progress {
+                .progress-dots {
+                  display: inline-block;
+                  margin-right: 10px;
+                  vertical-align: top;
+
+                  .step-progress-dots {
+                    .progress-dots;
+
+                    li {
+                      .progress-dot;
+
+                      &.active {
+                        &:before {
+                          .progress-dot-filled;
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .progress-text {
+                  display: inline-block;
+                  vertical-align: top;
+                }
+              }
+
+              .item-actions {
+                .step-action-buttons {
+                  text-align: right;
+                }
+              }
             }
           }
         }

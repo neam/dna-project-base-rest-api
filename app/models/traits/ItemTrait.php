@@ -4,6 +4,12 @@ trait ItemTrait
 {
     public $itemDescription;
 
+    /**
+     * Runtime cache for validation progress percentages.
+     * @var array
+     */
+    public $validationProgress = array();
+
     public function saveWithChangeSet()
     {
         /** @var ActiveRecord|QaStateBehavior $model */
@@ -207,6 +213,21 @@ trait ItemTrait
         if ($this->qaState()->allow_publish != 1) {
             $this->addError($attribute, Yii::t('app', 'Publishing not marked as allowed'));
         }
+    }
+
+    /**
+     * Returns the validation progress percentage for the given scenario (checks the runtime cache).
+     * @param string $scenario
+     * @return integer
+     */
+    public function getValidationProgress($scenario)
+    {
+        if (isset($this->validationProgress[$scenario])) {
+            return $this->validationProgress[$scenario];
+        }
+
+        $this->validationProgress[$scenario] = $this->calculateValidationProgress($scenario);
+        return $this->validationProgress[$scenario];
     }
 
     public function flowStepRules()
