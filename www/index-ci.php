@@ -16,7 +16,7 @@ require_once($dir . 'app/components/WebApplication.php');
 // config files
 $main   = require($dir.'app/config/main.php');
 $local  = require($dir.'app/config/main-local.php');
-$env    = require($dir.'app/config/env-test.php');
+$env    = require($dir.'app/config/env-ci.php');
 
 // define YII_DEBUG in config files
 if (defined('YII_DEBUG') && YII_DEBUG)
