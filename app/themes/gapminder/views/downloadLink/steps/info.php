@@ -10,4 +10,33 @@
     $this->action->id,
     array('hint' => true)
 ); ?>
-<strong>TODO: add file_media_id input</strong>
+
+<?php echo $form->select2ControlGroup(
+    $model,
+    'file_media_id',
+    $model->getFileOptions(),
+    array(
+        'empty' => Yii::t('app', 'None'),
+    )
+); ?>
+
+<?php echo TbHtml::button(
+    Yii::t('app', 'Upload new'),
+    array(
+        'block' => true,
+        'class' => 'upload-btn',
+        'data-toggle' => 'modal',
+        'data-target' => '#' . $form->id . '-modal',
+    )
+); ?>
+
+<?php $this->renderPartial(
+    '//p3Media/_modal_form',
+    array(
+        'formId' => $form->id,
+        'inputSelector' => "#DownloadLink_file_media_id",
+        'model' => new P3Media(),
+        'pk' => 'id',
+        'field' => 'itemLabel',
+    )
+); ?>
