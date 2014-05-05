@@ -172,7 +172,7 @@ class VectorGraphic extends BaseVectorGraphic
     /**
      * TODO: Remove this temporary method override once support for the 'image/svg+xml' MIME type has been implemented.
      */
-    public function getP3Media(array $mimeType, $type = 'file', $getOwnedOnly = false)
+    public function getP3Media($mimeType, $type = 'file', $getOwnedOnly = false)
     {
         $mimeType = array('text/plain');
         $fileExtension = '.svg';

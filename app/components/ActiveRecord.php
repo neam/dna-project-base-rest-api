@@ -152,15 +152,22 @@ class ActiveRecord extends CActiveRecord
 
     /**
      * Returns related P3Media records.
-     * @param array $mimeType
+     * @param array|string|null $mimeType. null to skip mime-type check
      * @param string $type P3Media.type
      * @param boolean $getOwnedOnly only retrieves records where the user owns the file. Defaults to false.
      * @return P3Media[]
      */
-    public function getP3Media(array $mimeType, $type = 'file', $getOwnedOnly = false)
+    public function getP3Media($mimeType, $type = 'file', $getOwnedOnly = false)
     {
         $criteria = new CDbCriteria();
-        $criteria->addInCondition('mime_type', $mimeType);
+
+        if (is_array($mimeType)) {
+            $criteria->addInCondition('mime_type', $mimeType);
+        } elseif (is_string($mimeType)) {
+            $criteria->addCondition('mime_type = :mimeType');
+            $criteria->params[':mimeType'] = $mimeType;
+        }
+
         $criteria->addCondition('t.type = :type');
         $criteria->limit = 100;
         $criteria->order = 't.created_at DESC';

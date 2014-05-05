@@ -99,4 +99,15 @@ class DownloadLink extends BaseDownloadLink
             'criteria' => $this->searchCriteria($criteria),
         ));
     }
+
+    public function getFiles()
+    {
+        // Skip mime-type check
+        return $this->getP3Media(null, 'file', true);
+    }
+
+    public function getFileOptions()
+    {
+        return $this->getOptions($this->getFiles());
+    }
 }
