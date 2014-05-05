@@ -142,9 +142,15 @@ class AppActiveForm extends TbActiveForm
         // TODO: Add support for dynamic htmlOptions.
         $htmlOptions = array();
 
+        // Valid base attributes for SlugIt IDs from which slugs are created
+        $slugitFromAttributes = array(
+            'title',
+            'question',
+        );
+
         if ($controllerAction === self::CONTROLLER_ACTION_TRANSLATE) {
             // Auto-generate slug from title
-            if ($attribute === 'title' || $attribute === 'question') {
+            if (in_array($attribute, $slugitFromAttributes) && !isset($fieldOptions['disableSlug'])) {
                 $htmlOptions['class'] = Html::ITEM_FORM_FIELD_CLASS . ' slugit-from-2';
             } else if ($attribute === 'slug') {
                 $htmlOptions['class'] = Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-2';
@@ -166,7 +172,7 @@ class AppActiveForm extends TbActiveForm
             return $html;
         } else {
             // Auto-generate slug from title
-            if ($attribute === 'title' || $attribute === 'question') {
+            if (in_array($attribute, $slugitFromAttributes) && !isset($fieldOptions['disableSlug'])) {
                 $htmlOptions['class'] = Html::ITEM_FORM_FIELD_CLASS . ' slugit-from-1';
             } else if ($attribute === 'slug') {
                 $htmlOptions['class'] = Html::ITEM_FORM_FIELD_CLASS . ' slugit-to-1';
