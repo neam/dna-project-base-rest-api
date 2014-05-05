@@ -1,3 +1,4 @@
+<?php /* @var ItemEditUi $this */ ?>
 <div class="step-action-buttons">
     <?php /*
     <?php echo TbHtml::linkButton(
@@ -10,23 +11,25 @@
     ); ?>
     */ ?>
     <?php echo TbHtml::linkButton(
-        Yii::t('model', 'Cancel'),
+        Yii::t('app', 'Cancel'),
         array(
             'color' => TbHtml::BUTTON_COLOR_LINK,
             'url' => array('browse'),
             'class' => 'btn-dirtyforms ignoredirty',
         )
     ); ?>
+    <?php /* TODO: Add the previous button when auto-saving has been implemented.
     <?php echo TbHtml::linkButton(
-        Yii::t('model', 'Previous'),
+        Yii::t('app', 'Previous'),
         array(
             'color' => TbHtml::BUTTON_COLOR_LINK,
-            'url' => '#', // TODO: Add link to previous step.
+            'url' => '#',
             'class' => 'btn-dirtyforms ignoredirty',
         )
     ); ?>
+    */ ?>
     <?php echo TbHtml::submitButton(
-        Yii::t('model', 'Next'),
+        $this->getSubmitButtonLabel(),
         array(
             'class' => 'btn-dirtyforms',
             'color' => TbHtml::BUTTON_COLOR_PRIMARY,

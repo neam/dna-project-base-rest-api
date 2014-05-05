@@ -4,38 +4,8 @@ trait ItemController
 {
     public $workflowData = array();
     public $step;
-
     public $modelId;
     protected $_actionIsEvaluate = false;
-
-    /**
-     * Returns the current step number.
-     * @return integer
-     */
-    public function getCurrentStepNumber()
-    {
-        $currentStep = $this->step;
-        $steps = $this->workflowData['stepActions'];
-
-        foreach ($steps as $index => $step) {
-            if ($step['step'] === $currentStep) {
-                return $index + 1;
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Returns the total number of steps.
-     * @return integer
-     */
-    public function getTotalStepCount()
-    {
-        return isset($this->workflowData['stepActions'])
-            ? count($this->workflowData['stepActions'])
-            : null;
-    }
 
     /**
      * Initializes the controller.
@@ -1148,11 +1118,13 @@ trait ItemController
         } else {
 
             // redirect
-            if (isset($_REQUEST['returnUrl'])) {
+            if (isset(Yii::app()->user->returnUrl)) {
+                $this->redirect(Yii::app()->user->returnUrl);
+            } else if (isset($_REQUEST['returnUrl'])) {
                 $this->redirect($_REQUEST['returnUrl']);
-            } elseif (isset($_POST['save-changes'])) {
+            } else if (isset($_POST['save-changes'])) {
                 $this->redirect($_REQUEST['form-url']);
-            } elseif (isset($_POST['next-required'])) {
+            } else if (isset($_POST['next-required'])) {
                 $this->redirect($_REQUEST['next-required-url']);
             } else {
                 $this->actionCancel($model->id);
