@@ -3,39 +3,21 @@
 /* @var SlideshowFile|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<div class="control-group">
-    <div class="controls">
-        <?php echo $this->widget(
-            '\TbButton',
-            array(
-                'label' => Yii::t('app', 'Add related item'),
-                'icon' => 'glyphicon-plus',
-                'htmlOptions' => array(
-                    'data-toggle' => 'modal',
-                    'data-target' => '#addrelation-slideshowfile--modal',
-                ),
-            ), true
-        ); ?>
-        <?php echo Html::hintTooltip($model->getAttributeHint('related')); ?>
-        <?php $this->renderPartial(
-            '//gridRelation/_relation_list',
-            array(
-                'relation' => 'related',
-                'model' => $model,
-                'label' => 'related items',
-            )
-        ); ?>
-    </div>
-</div>
-<?php // TODO: Fix modal. ?>
-<?php /*$this->renderPartial(
-    '//gridRelation/_modal_form',
+<?php
+$relatedCriteria = new CDbCriteria();
+$relatedCriteria->addNotInCondition('t.node_id', $model->getRelatedModelColumnValues('related', 'id'));
+$relatedCriteria->addCondition('t.node_id != :self_node_id');
+$relatedCriteria->join = "INNER JOIN node_has_group AS nhg ON nhg.node_id = t.node_id";
+$relatedCriteria->params[':self_node_id'] = $model->node_id;
+?>
+<?php $this->widget(
+    '\Edges',
     array(
         'model' => $model,
         'relation' => 'related',
-        'toType' => '',
-        'toLabel' => 'related item',
-        'type' => 'edge',
+        'criteria' => $relatedCriteria,
+        'itemClass' => 'Item',
     )
-);*/ ?>
+);
+?>
 <?php publishJs('/themes/gapminder/js/force-dirty-forms.js', CClientScript::POS_END); ?>

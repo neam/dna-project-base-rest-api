@@ -29,7 +29,11 @@ class SlideshowFile extends BaseSlideshowFile
     public function behaviors()
     {
         return array_merge(
-            parent::behaviors(), array());
+            parent::behaviors(),
+            array(
+                'relatedNodesBehavior' => 'app.behaviors.RelatedNodesBehavior',
+            )
+        );
     }
 
     public function relations()

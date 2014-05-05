@@ -5,7 +5,7 @@
 ?>
 <?php
 $relatedCriteria = new CDbCriteria();
-$relatedCriteria->addNotInCondition('t.node_id', $model->getRelatedNodeIds());
+$relatedCriteria->addNotInCondition('t.node_id', $model->getRelatedModelColumnValues('related', 'id'));
 $relatedCriteria->addCondition('t.node_id != :self_node_id');
 $relatedCriteria->join = "INNER JOIN node_has_group AS nhg ON nhg.node_id = t.node_id";
 $relatedCriteria->params[':self_node_id'] = $model->node_id;
