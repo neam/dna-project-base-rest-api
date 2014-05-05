@@ -36,7 +36,7 @@ env:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_HOST'] %>/index-ci.php
                     browser: 'chrome'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
@@ -47,7 +47,7 @@ env:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_HOST'] %>/index-ci.php
                     browser: 'chrome'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'

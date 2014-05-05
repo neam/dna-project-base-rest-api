@@ -94,8 +94,6 @@ class RestrictedAccessBehavior extends CActiveRecordBehavior
         if ($this->enableRestriction && !$this->_unrestricted) {
             $this->readable();
         }
-        //var_dump($this->owner->getDbCriteria());
-        //die();
         $this->_unrestricted = false;
     }
 
@@ -107,8 +105,6 @@ class RestrictedAccessBehavior extends CActiveRecordBehavior
         if ($this->enableRestriction && !$this->_unrestricted) {
             $this->readable();
         }
-        //var_dump($this->owner->getDbCriteria());
-        //die();
         $this->_unrestricted = false;
     }
 
