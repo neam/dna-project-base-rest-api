@@ -134,35 +134,41 @@ class VideoFileController extends Controller
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
         $subtitles = $model->getParsedSubtitles();
+
         if (isset($_POST['SourceMessage']) && !empty($_POST['SourceMessage'])) {
             foreach ($_POST['SourceMessage'] as $id => $translation) {
                 $message = Message::model()->findByAttributes(array(
                     'id' => $id,
                     'language' => $translateInto,
                 ));
+
                 if (!isset($message)) {
                     $message = new Message();
                     $message->id = $id;
                     $message->language = $translateInto;
                 }
+
                 $message->translation = $translation;
                 $message->save();
             }
         }
+
         if (!empty($subtitles)) {
             $this->performAjaxValidation($model);
             $this->saveAndContinueOnSuccess($model);
             $this->populateWorkflowData(
                 $model,
-                "translate",
+                'translate',
                 Yii::t(
                     'app',
                     'Translate into {translateIntoLanguage}',
-                    array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])
+                    array('{translateIntoLanguage}' => Yii::app()->params['languages'][$translateInto])
                 ),
                 $translateInto
             );
+
             $stepCaptions = $model->flowStepCaptions();
+
             $this->render(
                 '/_item/edit',
                 array(
@@ -461,4 +467,24 @@ class VideoFileController extends Controller
         Yii::app()->request->sendFile($fileName, file_get_contents($filePath));
     }
 
+    /**
+     * Returns a data provider for translating subtitles.
+     * @param VideoFile $model
+     * @return CArrayDataProvider
+     */
+    public function getSubtitleTranslationDataProvider(VideoFile $model)
+    {
+        $subtitles = $model->getParsedSubtitles();
+
+        return new CArrayDataProvider(array_values($subtitles), array(
+            'id' => 'user',
+            'sort' => array(
+                'attributes' => array(
+                    'id',
+                    'timestamp',
+                    'sourceMessage',
+                ),
+            ),
+        ));
+    }
 }

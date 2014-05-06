@@ -8932,7 +8932,7 @@ Markup:
 Styleguide 2.2
 */
 textarea.form-control {
-  padding: 18px 22px;
+  padding: 12px;
 }
 /*
 Checkboxes
@@ -13599,6 +13599,18 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
 }
 .snapshot-controller .view-action .map {
   overflow: hidden;
+}
+.videofile-controller.translate-action .translate-subtitles-list-view {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .videofile-controller.translate-action .translate-subtitles-list-view {
+    float: left;
+    width: 100%;
+  }
 }
 .alert.alert-error {
   background-color: #f2dede;

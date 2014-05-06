@@ -185,7 +185,46 @@ class Html extends TbHtml
             : '';
     }
 
-    static public function staticTextField($model, $attribute)
+    /**
+     * Creates a static text element that adopts the dimensions of a text field.
+     * @param string $value the field value.
+     * @return string
+     */
+    static public function staticTextField($value)
+    {
+        $tag = 'span';
+        $html = self::openTag($tag, array(
+            'class' => 'static-text-field',
+        ));
+        $html .= $value;
+        $html .= self::closeTag($tag);
+        return $html;
+    }
+
+    /**
+     * Creates a static text element that adopts the dimensions of a text field control group.
+     * @param string $label the field label.
+     * @param string $value the field value.
+     * @return string
+     */
+    static public function staticTextFieldControlGroup($label, $value)
+    {
+        $html = self::openTag('span', array(
+            'class' => 'static-text-field-label',
+        ));
+        $html .= $label;
+        $html .= self::closeTag('span');
+        $html .= self::staticTextField($value);
+        return $html;
+    }
+
+    /**
+     * Creates a static text element that adopts the dimensions of an active text field.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @return string
+     */
+    static public function activeStaticTextField($model, $attribute)
     {
         $tag = 'span';
         $html = self::openTag($tag, array(
@@ -196,14 +235,20 @@ class Html extends TbHtml
         return $html;
     }
 
-    static public function staticTextFieldControlGroup($model, $attribute)
+    /**
+     * Creates a static text element that adopts the dimensions of an active text field control group.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @return string
+     */
+    static public function activeStaticTextFieldControlGroup($model, $attribute)
     {
         $html = self::openTag('span', array(
             'class' => 'static-text-field-label',
         ));
         $html .= $model->getAttributeLabel($attribute);
         $html .= self::closeTag('span');
-        $html .= self::staticTextField($model, $attribute);
+        $html .= self::activeStaticTextField($model, $attribute);
         return $html;
     }
 

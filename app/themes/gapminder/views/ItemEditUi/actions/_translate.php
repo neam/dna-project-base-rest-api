@@ -28,7 +28,10 @@
                     </div>
                     <div class="item-preview">
                         <?php if (get_class($this->model) === 'VideoFile'): ?>
+                            <?php $currentLang = Yii::app()->language; ?>
+                            <?php Yii::app()->language = $this->controller->workflowData['translateInto']; ?>
                             <?php $this->widget('VideoPlayer', array('videoFile' => $this->model)); ?>
+                            <?php Yii::app()->language = $currentLang; ?>
                         <?php endif; ?>
                     </div>
                 </div>
