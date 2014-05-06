@@ -4,6 +4,6 @@
 
 return array(
     'params' => array(
-        'env' => 'development'
+        'env' => CONFIG_ENVIRONMENT
     ),
 );

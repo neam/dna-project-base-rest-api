@@ -27,6 +27,7 @@ setenv("ENV", $default = null, $required = true);
 setenv("DEV", $default = false);
 setenv("DEBUG_REDIRECTS", $default = false);
 setenv("DEBUG_LOGS", $default = false);
+setenv("CONFIG_ENVIRONMENT", $default = 'development', $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
 
 // ==== Identity-related constants ====
 
@@ -64,6 +65,8 @@ if (!is_null(DATABASE_URL)) {
     setenv("YII_DB_HOST", $default = null, $required = true);
 
 }
+
+// ==== Define test-related constants ====
 
 setenv("TEST_DB_NAME", $default = YII_DB_NAME . '_test', $required = false);
 setenv("TEST_DB_USER", $default = YII_DB_USER . '_test', $required = false);
