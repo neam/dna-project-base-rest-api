@@ -430,9 +430,14 @@ trait ItemTrait
      */
     public function renderImage($p3preset = 'dashboard-item-task-thumbnail')
     {
+        $presetConfig = Yii::app()->getModule('p3media')->params['presets'][$p3preset];
+
+        $width = $presetConfig['commands']['resize'][0];
+        $height = $presetConfig['commands']['resize'][1];
+
         return isset($this->thumbnail_media_id)
             ? $this->thumbnailMedia->image($p3preset)
-            : TbHtml::image('http://placehold.it/210x120');
+            : TbHtml::image("http://placehold.it/{$width}x{$height}");
     }
 
     /**
