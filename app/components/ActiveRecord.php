@@ -44,6 +44,9 @@ class ActiveRecord extends CActiveRecord
             $behaviors['relational-graph-db'] = array(
                 'class' => 'RelationalGraphDbBehavior',
             );
+            $behaviors['relatedNodesBehavior'] = array(
+                'class' => 'app.behaviors.RelatedNodesBehavior',
+            );
         }
 
         $restModels = DataModel::restModels();
