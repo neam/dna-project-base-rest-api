@@ -3,37 +3,19 @@
 /* @var Chapter|ItemTrait $model */
 /* @var AppActiveForm $form */
 ?>
-<div class="control-group">
-    <div class="controls">
-        <?php echo $this->widget(
-            '\TbButton',
-            array(
-                'label' => Yii::t('app', 'Add visualization'),
-                'icon' => TbHtml::ICON_PLUS,
-                'htmlOptions' => array(
-                    'data-toggle' => 'modal',
-                    'data-target' => '#addrelation-chapter-snapshot-modal',
-                ),
-            ),
-            true
-        ); ?>
-        <?php echo Html::hintTooltip($model->getAttributeHint('snapshot')); ?>
-        <?php $this->renderPartial(
-            '//gridRelation/_relation_list',
-            array(
-                'relation' => 'snapshots',
-                'model' => $model,
-                'label' => 'visualizations',
-            )
-        ); ?>
-    </div>
-</div>
+<?php
+$criteria = new CDbCriteria();
+$criteria->addNotInCondition('t.node_id', $model->getRelatedModelColumnValues('snapshots', 'node_id'));
 
-<?php // TODO: Fix modal. ?>
-<?php $this->renderPartial('//gridRelation/_modal_form', array(
-    'model' => $model,
-    'relation' => 'snapshots',
-    'toType' => 'Snapshot',
-    'toLabel' => 'visualization',
-    'type' => 'edge',
-)); ?>
+$this->widget(
+    '\Edges',
+    array(
+        'relation' => 'snapshots',
+        'model' => $model,
+        'criteria' => $criteria,
+    )
+);
+
+?>
+
+<?php publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END); ?>

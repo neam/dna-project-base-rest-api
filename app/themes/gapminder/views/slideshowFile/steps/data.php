@@ -11,7 +11,6 @@ $this->widget(
     array(
         'model' => $model,
         'relation' => 'dataarticles',
-        'itemClass' => 'DataArticle',
         'criteria' => $criteria,
     )
 );
