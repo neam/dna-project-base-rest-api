@@ -22,7 +22,10 @@
     'question',
     $this->getTranslationLanguage(),
     $this->action->id,
-    array('hint' => true)
+    array(
+        'hint' => true,
+        'disableSlug' => true,
+    )
 ); ?>
 <?php echo $form->translateTextAreaControlGroup(
     $model,
