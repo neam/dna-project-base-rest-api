@@ -4,6 +4,7 @@ class ItemEditUi extends CWidget
 {
     const ACTION_TRANSLATE = 'translate';
     const ACTION_EDIT = 'edit';
+    const STEP_SUBTITLES = 'subtitles';
 
     /**
      * @var ActiveRecord|ItemTrait
@@ -31,6 +32,11 @@ class ItemEditUi extends CWidget
     public $step;
 
     /**
+     * @var string the wrapping CSS class based on the step
+     */
+    public $cssClass;
+
+    /**
      * Initializes the widget.
      * @throws CException
      */
@@ -39,6 +45,7 @@ class ItemEditUi extends CWidget
         parent::init();
         $this->actionId = $this->controller->action->id;
         $this->actionPartialView = $this->getActionPartialViewName();
+        $this->cssClass = $this->getCssClass($this->step);
     }
 
     /**
@@ -54,6 +61,16 @@ class ItemEditUi extends CWidget
                 'model' => $this->model,
             )
         );
+    }
+
+    /**
+     * Returns the wrapper CSS class for the given step.
+     * @param string $step
+     * @return string
+     */
+    public function getCssClass($step)
+    {
+        return "step-$step";
     }
 
     /**

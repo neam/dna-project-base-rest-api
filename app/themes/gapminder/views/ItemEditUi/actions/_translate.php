@@ -1,5 +1,5 @@
 <?php /* @var ItemEditUi $this */ ?>
-<div class="item-row">
+<div class="item-row <?php echo $this->cssClass; ?>">
     <div class="row-column">
         <div class="item-well">
             <div class="item-content">
@@ -27,11 +27,13 @@
                         </div>
                     </div>
                     <div class="item-preview">
-                        <?php if (get_class($this->model) === 'VideoFile'): ?>
+                        <?php if (get_class($this->model) === 'VideoFile' && $this->step === $this::STEP_SUBTITLES): ?>
                             <?php $currentLang = Yii::app()->language; ?>
                             <?php Yii::app()->language = $this->controller->workflowData['translateInto']; ?>
                             <?php $this->widget('VideoPlayer', array('videoFile' => $this->model)); ?>
                             <?php Yii::app()->language = $currentLang; ?>
+                        <?php else: ?>
+                            <?php echo $this->model->renderImage('translation-workflow-preview'); ?>
                         <?php endif; ?>
                     </div>
                 </div>

@@ -542,7 +542,7 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
-     * Gets the current translation for the given source message and language.
+     * Returns the current translation for the given source message and language.
      * @param string $sourceMessage
      * @param string $language
      * @return string

@@ -241,12 +241,18 @@ class Html extends TbHtml
      * @param string $attribute
      * @return string
      */
-    static public function activeStaticTextFieldControlGroup($model, $attribute)
+    static public function activeStaticTextFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
+        if (isset($htmlOptions['label'])) {
+            $label = $htmlOptions['label'];
+        } else {
+            $label = $model->getAttributeLabel($attribute);
+        }
+
         $html = self::openTag('span', array(
             'class' => 'static-text-field-label',
         ));
-        $html .= $model->getAttributeLabel($attribute);
+        $html .= $label;
         $html .= self::closeTag('span');
         $html .= self::activeStaticTextField($model, $attribute);
         return $html;

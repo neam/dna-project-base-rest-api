@@ -12912,7 +12912,7 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
   .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary,
   .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary {
     float: left;
-    width: 58.333333333333336%;
+    width: 41.66666666666667%;
   }
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress,
@@ -12987,13 +12987,16 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
   .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary,
   .item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary {
     float: left;
-    width: 41.66666666666667%;
+    width: 58.333333333333336%;
   }
 }
-.item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .item-fields,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-fields {
-  height: 350px;
-  overflow-y: scroll;
+.item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control,
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control {
+  margin-bottom: 20px;
+}
+.item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control:last-child,
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control:last-child {
+  margin-bottom: 0;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots,
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots {
@@ -13034,7 +13037,41 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .item-actions .step-action-buttons,
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-actions .step-action-buttons {
+  margin-top: 20px;
   text-align: right;
+}
+.item-controller.edit-action .item-row.step-subtitles .row-column .item-well .item-content .content-primary,
+.item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-primary {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller.edit-action .item-row.step-subtitles .row-column .item-well .item-content .content-primary,
+  .item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-primary {
+    float: left;
+    width: 58.333333333333336%;
+  }
+}
+.item-controller.edit-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary,
+.item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .item-controller.edit-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary,
+  .item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary {
+    float: left;
+    width: 41.66666666666667%;
+  }
+}
+.item-controller.edit-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary .item-fields,
+.item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary .item-fields {
+  height: 340px;
+  overflow-y: scroll;
 }
 .item-controller.translate-action .translate-subtitles .column-subtitle {
   width: 45%;
