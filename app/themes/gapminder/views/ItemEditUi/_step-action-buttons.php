@@ -18,16 +18,16 @@
             //'class' => 'ignoredirty',
         )
     ); ?>
-    <?php /* TODO: Add the previous button when auto-saving has been implemented.
-    <?php echo TbHtml::linkButton(
-        Yii::t('app', 'Previous'),
-        array(
-            'color' => TbHtml::BUTTON_COLOR_LINK,
-            'url' => '#',
-            'class' => 'btn-dirtyforms ignoredirty',
-        )
-    ); ?>
-    */ ?>
+    <?php if (!$this->isFirstStep()): ?>
+        <?php echo TbHtml::linkButton(
+            Yii::t('app', 'Previous'),
+            array(
+                'color' => TbHtml::BUTTON_COLOR_LINK,
+                'url' => $this->createPreviousStepUrl(),
+                //'class' => 'btn-dirtyforms ignoredirty',
+            )
+        ); ?>
+    <?php endif; ?>
     <?php echo TbHtml::submitButton(
         $this->getSubmitButtonLabel(),
         array(

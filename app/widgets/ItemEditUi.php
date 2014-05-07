@@ -171,7 +171,7 @@ class ItemEditUi extends CWidget
     }
 
     /**
-     * Returns the URL to the next step.
+     * Creates an URL to the next step.
      * @return string
      */
     public function createNextStepUrl()
@@ -192,14 +192,42 @@ class ItemEditUi extends CWidget
     }
 
     /**
+     * Creates an URL to the previous step.
+     * @return string
+     */
+    public function createPreviousStepUrl()
+    {
+        $currentStepNumber = $this->getCurrentStepNumber();
+        $previousStepIndex = $this->getCurrentStepIndex() - 1;
+        $stepActions = $this->controller->workflowData['stepActions'];
+
+
+        if ($currentStepNumber > 1) {
+            $previousStepAction = $stepActions[$previousStepIndex];
+            $url = $this->createFormActionUrlForStep($previousStepAction['step']);
+        } else {
+            $url = Yii::app()->createUrl('/account/dashboard');
+        }
+
+        return $url;
+    }
+
+    /**
+     * Checks if the current step is the first one.
+     * @return boolean
+     */
+    public function isFirstStep()
+    {
+        return (int) $this->getCurrentStepNumber() === 1;
+    }
+
+    /**
      * Checks if the current step is the final one.
      * @return boolean
      */
     public function isFinalStep()
     {
-        $currentStepNumber = $this->getCurrentStepNumber();
-        $totalStepCount = $this->getTotalStepCount();
-        return (int) $currentStepNumber === (int) $totalStepCount;
+        return (int) $this->getCurrentStepNumber() === (int) $this->getTotalStepCount();
     }
 
     /**
