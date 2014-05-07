@@ -9,6 +9,7 @@ define("DEV", true);
 define("DEBUG_REDIRECTS", false);
 define("DEBUG_LOGS", false);
 define("CONFIG_ENVIRONMENT", 'development');
+define("DATA", 'user-generated');
 
 // ==== Identity-related constants ====
 
