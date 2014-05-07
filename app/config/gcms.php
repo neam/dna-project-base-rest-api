@@ -6,7 +6,7 @@
 $envbootstrap_strategy = getenv('ENVBOOTSTRAP_STRATEGY');
 if (empty($envbootstrap_strategy)) {
     Yii::log("ENVBOOTSTRAP_STRATEGY empty, defaulting to self-detect", CLogger::LEVEL_INFO);
-    $envbootstrap_strategy = "self-detect";
+    $envbootstrap_strategy = "local";
 }
 $envbootstrap = dirname(__FILE__) . '/envbootstrap/' . $envbootstrap_strategy . '/envbootstrap.php';
 if (!is_readable($envbootstrap)) {
@@ -35,8 +35,8 @@ $gcmsConfig = array(
         'env' => 'development',
     ),
     'preload' => array( //'ezc', // trying out if we can lazy-load this instead of preloading it...
-                        // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login
-                        'loginReturnUrlTracker'
+        // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login
+        'loginReturnUrlTracker'
     ),
     'aliases' => array(
         // bower components
