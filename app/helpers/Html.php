@@ -8,7 +8,7 @@ class Html extends TbHtml
     /**
      * Registers the head tags.
      */
-    public static function registerHeadTags()
+    static public function registerHeadTags()
     {
         $clientScript = Yii::app()->getClientScript();
         $clientScript->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
@@ -57,7 +57,7 @@ class Html extends TbHtml
      * @param array $htmlOptions
      * @return string
      */
-    public static function activeSelect2($model, $attribute, $data = array(), $htmlOptions = array())
+    static public function activeSelect2($model, $attribute, $data = array(), $htmlOptions = array())
     {
         $options = TbArray::merge(
             TbArray::popValue('pluginOptions', $htmlOptions, array()),
@@ -86,7 +86,7 @@ class Html extends TbHtml
      * @param array $htmlOptions
      * @return string
      */
-    public static function activeSelect2ControlGroup($model, $attribute, $data = array(), $htmlOptions = array())
+    static public function activeSelect2ControlGroup($model, $attribute, $data = array(), $htmlOptions = array())
     {
         $input = self::activeSelect2($model, $attribute, $data, $htmlOptions);
         return TbHtml::customActiveControlGroup($input, $model, $attribute, $htmlOptions);
@@ -95,7 +95,7 @@ class Html extends TbHtml
     /**
      * Renders the backend navbar.
      */
-    public static function renderBackendNavbar()
+    static public function renderBackendNavbar()
     {
         $role = 'Editor'; // required role for rendering backend navbar
         if (Yii::app()->user->checkAccess($role)) {
@@ -106,7 +106,7 @@ class Html extends TbHtml
     /**
      * Registers the Dirty Forms jQuery plugin and binds it to a form element.
      */
-    public static function jsDirtyForms()
+    static public function jsDirtyForms()
     {
         self::jsFacebox(); // required by Dirty Forms
         publishJs('/themes/frontend/js/vendor/jquery.dirtyforms.js', CClientScript::POS_HEAD);
@@ -118,7 +118,7 @@ class Html extends TbHtml
     /**
      * Registers the Facebox jQuery plugin.
      */
-    public static function jsFacebox()
+    static public function jsFacebox()
     {
         publishJs('/themes/frontend/js/vendor/facebox/facebox.js', CClientScript::POS_HEAD);
         publishCss('/themes/frontend/js/vendor/facebox/assets/facebox.css');
@@ -132,7 +132,7 @@ class Html extends TbHtml
      * @param array $fields the from and to IDs (e.g. array('#from' => '#to').
      * @param string $separator the separator. Defaults to '-'.
      */
-    public static function jsSlugIt($fields = array(), $separator = '-')
+    static public function jsSlugIt($fields = array(), $separator = '-')
     {
         publishJs('/themes/frontend/js/slugit.js', CClientScript::POS_HEAD);
         foreach ($fields as $from => $to) {
@@ -149,7 +149,7 @@ class Html extends TbHtml
    	 * @param array $htmlOptions additional HTML attributes.
    	 * @return string the generated tooltip.
    	 */
-    public static function tooltip($label, $url, $content, $htmlOptions = array())
+    static public function tooltip($label, $url, $content, $htmlOptions = array())
     {
         $htmlOptions['data-toggle'] = 'tooltip'; // this option is missing from TbHtml::tooltip()
         return parent::tooltip($label, $url, $content, $htmlOptions);
@@ -162,7 +162,7 @@ class Html extends TbHtml
      * @param string $hintAttribute the attribute hint (if different). Defaults to $attribute.
      * @return string the label HTMl.
      */
-    public static function attributeLabelWithTooltip(ActiveRecord $model, $attribute, $hintAttribute = '', $htmlOptions = array())
+    static public function attributeLabelWithTooltip(ActiveRecord $model, $attribute, $hintAttribute = '', $htmlOptions = array())
     {
         $hintAttribute = !empty($hintAttribute) ? $hintAttribute : $attribute;
         $label = $model->getAttributeLabel($attribute);
@@ -177,12 +177,27 @@ class Html extends TbHtml
      * @param string $content the tooltip content.
      * @return string the tooltip HTML.
      */
-    public static function hintTooltip($content, $htmlOptions = array())
+    static public function hintTooltip($content, $htmlOptions = array())
     {
         $htmlOptions['class'] = 'hint-tooltip';
         return isset($content)
             ? Html::tooltip(TbHtml::icon(TbHtml::ICON_QUESTION_SIGN), '#', $content, $htmlOptions)
             : '';
+    }
+
+    /**
+     * Creates a link button with an icon.
+     * @param string $icon the icon class.
+     * @param string $label the button label.
+     * @param array $htmlOptions
+     * @return string
+     */
+    static public function linkButtonWithIcon($icon, $label, $htmlOptions = array())
+    {
+        TbHtml::addCssClass('btn-icon-link', $htmlOptions);
+        $htmlOptions['icon'] = $icon;
+        $label = '<span class="btn-label">' . $label . '</span>';
+        return self::linkButton($label, $htmlOptions);
     }
 
     /**
@@ -261,7 +276,7 @@ class Html extends TbHtml
     /**
      * Registers the assets for jquery comments
      */
-    public static function assetsJqueryComments()
+    static public function assetsJqueryComments()
     {
 
         $cs = Yii::app()->clientScript;
@@ -276,7 +291,7 @@ class Html extends TbHtml
 
     }
 
-    public static function initJqueryComments($selector = "#commentSection", $context = array())
+    static public function initJqueryComments($selector = "#commentSection", $context = array())
     {
 
         $localization = array(
@@ -301,7 +316,7 @@ class Html extends TbHtml
      * Returns a list of available languages (language codes, e.g. 'en_us').
      * @return array
      */
-    public static function getLanguages()
+    static public function getLanguages()
     {
         $languages = array(
             'en'    => Yii::t('language', 'English'),

@@ -3464,6 +3464,12 @@ fieldset[disabled] .btn-group-xs > .btn.btn-link-dark:focus {
 .btn-group-xs > .btn.btn-link-dark:hover {
   color: #353535;
 }
+.btn-group-xs > .btn.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.btn-group-xs > .btn.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
+}
 .btn-group-xs > .btn:empty {
   display: none;
 }
@@ -3856,6 +3862,12 @@ fieldset[disabled] .btn-group-sm > .btn.btn-link-dark:focus {
 }
 .btn-group-sm > .btn.btn-link-dark:hover {
   color: #353535;
+}
+.btn-group-sm > .btn.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.btn-group-sm > .btn.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
 }
 .btn-group-sm > .btn:empty {
   display: none;
@@ -6794,6 +6806,7 @@ Regular buttons
 Markup:
 <a class="btn {$modifiers}" href="#">Link</a>
 <button class="btn {$modifiers}">Button</button>
+<a href="#" class="btn btn-link btn-icon-link {$modifiers}"><span class="glyphicon glyphicon-remove"></span><span class="btn-label">Icon Link Button</span></a>
 <input type="button" class="btn {$modifiers}" value="Input Button">
 
 .btn-link           - Link button.
@@ -7495,6 +7508,12 @@ fieldset[disabled] .btn-sm.btn-link-dark:focus {
 .btn-sm.btn-link-dark:hover {
   color: #353535;
 }
+.btn-sm.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.btn-sm.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
+}
 .btn-sm:empty {
   display: none;
 }
@@ -7910,6 +7929,12 @@ fieldset[disabled] .btn-xs.btn-link-dark:focus {
 .btn-xs.btn-link-dark:hover {
   color: #353535;
 }
+.btn-xs.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.btn-xs.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
+}
 .btn-xs:empty {
   display: none;
 }
@@ -7941,6 +7966,25 @@ fieldset[disabled] .btn-xs.btn-link-dark:focus {
   background-color: #b7c1d8;
 }
 /*
+Link buttons with icons
+
+Markup:
+<a href="#" class="btn btn-link btn-icon-link {$modifiers}"><span class="glyphicon glyphicon-remove"></span> <span class="btn-label">Icon Link Button</span></a>
+<a href="#" class="btn btn-link btn-icon-link btn-link-dark {$modifiers}"><span class="glyphicon glyphicon-remove"></span> <span class="btn-label">Icon Link Button</span></a>
+
+.btn-lg - Large link button with an icon.
+.btn-sm - Small link button with an icon.
+.btn-xs - Extra small link button with an icon.
+
+Styleguide 1.4
+*/
+.btn.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.btn.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
+}
+/*
 Button groups
 
 Markup:
@@ -7953,7 +7997,7 @@ Markup:
 .btn-sm - Small button.
 .btn-xs - Extra small button.
 
-Styleguide 1.4
+Styleguide 1.5
 */
 .btn-group {
   position: relative;
@@ -7999,7 +8043,7 @@ Markup:
 .btn-danger  - Success button.
 .btn-info    - Success button.
 
-Styleguide 1.5
+Styleguide 1.6
 */
 .action-buttons {
   margin-bottom: 5px;
@@ -8368,6 +8412,12 @@ fieldset[disabled] .action-buttons .action-button.btn-link-dark:focus {
 .action-buttons .action-button.btn-link-dark:hover {
   color: #353535;
 }
+.action-buttons .action-button.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
+}
 .action-buttons .action-button:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
@@ -8649,6 +8699,12 @@ fieldset[disabled] .action-buttons .action-button.btn-link:focus {
 .action-buttons .action-button.btn-link:hover {
   text-decoration: none;
 }
+.action-buttons .action-button.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
+}
 .action-buttons .action-button.btn-link:hover {
   text-decoration: none;
 }
@@ -8691,11 +8747,23 @@ fieldset[disabled] .action-buttons .action-button.btn-link-dark:focus {
 .action-buttons .action-button.btn-link-dark:hover {
   text-decoration: none;
 }
+.action-buttons .action-button.btn-link-dark.btn-icon-link {
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link-dark.btn-icon-link .btn-label {
+  text-decoration: underline;
+}
 .action-buttons .action-button.btn-link-dark:hover {
   text-decoration: none;
 }
 .action-buttons .action-button.btn-link-dark:hover {
   color: #353535;
+}
+.action-buttons .action-button.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.action-buttons .action-button.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
 }
 .action-buttons .action-button:empty {
   display: none;
@@ -9435,6 +9503,12 @@ fieldset[disabled] .select .select-button.btn-link-dark:focus {
 }
 .select .select-button.btn-link-dark:hover {
   color: #353535;
+}
+.select .select-button.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.select .select-button.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
 }
 .select .select-button:before {
   content: "\e072";
@@ -10266,6 +10340,12 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
 }
 .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link-dark:hover {
   color: #353535;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
 }
 .account-controller.dashboard-action .dashboard-profile .recent-updates .updates-top-bar .updates-view-all .view-all-link:empty {
   display: none;
@@ -11823,6 +11903,12 @@ fieldset[disabled] .item-controller .item-progress .progress-item .item-action .
 .item-controller .item-progress .progress-item .item-action .btn.btn-link-dark:hover {
   color: #353535;
 }
+.item-controller .item-progress .progress-item .item-action .btn.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.item-controller .item-progress .progress-item .item-action .btn.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
+}
 .item-controller .item-progress .progress-item .item-action .btn:empty {
   display: none;
 }
@@ -12648,6 +12734,14 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
 .item-controller.edit-action .preview-button.btn-link-dark:hover,
 .item-controller.translate-action .preview-button.btn-link-dark:hover {
   color: #353535;
+}
+.item-controller.edit-action .preview-button.btn-link.btn-icon-link,
+.item-controller.translate-action .preview-button.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.item-controller.edit-action .preview-button.btn-link.btn-icon-link .btn-label,
+.item-controller.translate-action .preview-button.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
 }
 .item-controller.edit-action .preview-button:empty,
 .item-controller.translate-action .preview-button:empty {
@@ -13537,6 +13631,12 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
 }
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link-dark:hover {
   color: #353535;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+.site-controller .item-type-introduction .intro-head .intro-actions .action-button.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
 }
 .site-controller .item-type-introduction .intro-head .intro-actions .action-button:empty {
   display: none;

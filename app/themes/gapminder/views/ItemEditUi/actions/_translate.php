@@ -44,12 +44,12 @@
                                 <h2 class="action-heading"><?php echo $this->getStepCaption(); ?></h2>
                             </div>
                             <div class="action-stop">
-                                <?php echo TbHtml::linkButton(
+                                <?php echo Html::linkButtonWithIcon(
+                                    TbHtml::ICON_REMOVE,
                                     Yii::t('app', 'Stop Translating'),
                                     array(
                                         'url' => array('browse'),
                                         'color' => TbHtml::BUTTON_COLOR_LINK,
-                                        'icon' => TbHtml::ICON_REMOVE,
                                         'size' => TbHtml::BUTTON_SIZE_XS,
                                     )
                                 ); ?>
