@@ -3,41 +3,20 @@
 /** @var Exercise|ItemTrait $model */
 /** @var TbActiveForm|AppActiveForm $form */
 ?>
-<div class="control-group">
-    <div class="controls">
-        <?php echo $this->widget(
-            '\TbButton',
-            array(
-                'label' => Yii::t('app', 'Add material'),
-                'icon' => TbHtml::ICON_PLUS,
-                'htmlOptions' => array(
-                    'data-toggle' => 'modal',
-                    'data-target' => '#addrelation-exercise--modal',
-                ),
-            ),
-            true
-        ); ?>
 
-        <?php echo Html::hintTooltip($model->getAttributeHint('materials')); ?>
+<?php
+$criteria = new CDbCriteria();
+$criteria->addNotInCondition('t.node_id', $model->getRelatedModelColumnValues('materials', 'id'));
+$criteria->addCondition('t.node_id != :self_node_id');
+$criteria->params[':self_node_id'] = $model->node_id;
 
-        <?php $this->renderPartial(
-            '//gridRelation/_relation_list',
-            array(
-                'relation' => 'materials',
-                'model' => $model,
-                'label' => 'materials',
-            )
-        ); ?>
-    </div>
-</div>
-
-<?php $this->renderPartial(
-    '//gridRelation/_modal_form',
+$this->widget(
+    '\Edges',
     array(
         'model' => $model,
         'relation' => 'materials',
-        'toType' => '',
-        'toLabel' => 'material',
-        'type' => 'edge',
+        'itemClass' => 'Item',
+        'criteria' => $criteria,
     )
-); ?>
+);
+?>

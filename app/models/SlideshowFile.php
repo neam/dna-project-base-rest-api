@@ -31,7 +31,6 @@ class SlideshowFile extends BaseSlideshowFile
         return array_merge(
             parent::behaviors(),
             array(
-                'relatedNodesBehavior' => 'app.behaviors.RelatedNodesBehavior',
             )
         );
     }

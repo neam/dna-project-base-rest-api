@@ -178,6 +178,9 @@ class VectorGraphic extends BaseVectorGraphic
         $fileExtension = '.svg';
 
         $criteria = new CDbCriteria();
+        if (!is_array($mimeType)) {
+            $mimeType = array($mimeType);
+        }
         $criteria->addInCondition('mime_type', $mimeType);
         $criteria->addCondition('t.type = :type');
         $criteria->addCondition("t.original_name REGEXP '$fileExtension$'");

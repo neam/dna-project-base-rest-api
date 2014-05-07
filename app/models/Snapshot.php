@@ -32,7 +32,6 @@ class Snapshot extends BaseSnapshot
         return array_merge(
             parent::behaviors(),
             array(
-                'relatedNodesBehavior' => 'app.behaviors.RelatedNodesBehavior',
             )
         );
     }

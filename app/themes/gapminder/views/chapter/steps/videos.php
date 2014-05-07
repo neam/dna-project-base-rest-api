@@ -3,42 +3,20 @@
 /* @var Chapter|ItemTrait $model */
 /* @var AppActiveForm $form */
 ?>
-<div class="control-group">
-    <div class="controls">
-        <?php echo $this->widget(
-            '\TbButton',
-            array(
-                'label' => Yii::t('app', 'Add video'),
-                'icon' => TbHtml::ICON_PLUS,
-                'htmlOptions' => array(
-                    'data-toggle' => 'modal',
-                    'data-target' => '#addrelation-chapter-videofile-modal',
-                ),
-            ),
-            true
-        ); ?>
-        <?php echo Html::hintTooltip($model->getAttributeHint('video')); ?>
-        <?php $this->renderPartial(
-            '//gridRelation/_relation_list',
-            array(
-                'relation' => 'videos',
-                'model' => $model,
-                'label' => 'videos',
-            )
-        ); ?>
-    </div>
-</div>
 
-<?php // TODO: Fix modal. ?>
-<?php $this->renderPartial(
-    '//gridRelation/_modal_form',
+<?php
+$criteria = new CDbCriteria();
+$criteria->addNotInCondition('t.node_id', $model->getRelatedModelColumnValues('videos', 'node_id'));
+
+$this->widget(
+    '\Edges',
     array(
-        'model' => $model,
         'relation' => 'videos',
-        'toType' => 'VideoFile',
-        'toLabel' => 'video',
-        'type' => 'edge',
+        'model' => $model,
+        'criteria' => $criteria,
     )
-); ?>
+);
+
+?>
 
 <?php publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END); ?>

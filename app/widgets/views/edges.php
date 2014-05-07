@@ -6,6 +6,7 @@
  * @var string $id
  * @var string $itemClass
  * @var mixed $criteria
+ * @var bool $multiple
  */
 ?>
 
@@ -35,14 +36,14 @@
                 'itemLabel'
             ),
             'pluginOptions' => array(
-                'multiple' => true,
+                'multiple' => $multiple,
                 'width' => '100%',
             ),
         )
     );
 
     echo TbHtml::ajaxButton(
-        Yii::t('edges', 'Add ' . $model->getAttributeLabel($relation)),
+        Yii::t('edges', 'Add {item}', array('{item}' => $model->getAttributeLabel($relation))),
         Yii::app()->controller->createUrl('addEdges'),
         array(
             'type' => 'POST',
