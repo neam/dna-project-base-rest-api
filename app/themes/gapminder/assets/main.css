@@ -13037,7 +13037,6 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
   margin-top: 20px;
   text-align: right;
 }
-.item-controller.edit-action .item-row.step-subtitles .row-column .item-well .item-content .content-primary,
 .item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-primary {
   position: relative;
   min-height: 1px;
@@ -13045,13 +13044,11 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .item-controller.edit-action .item-row.step-subtitles .row-column .item-well .item-content .content-primary,
   .item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-primary {
     float: left;
     width: 58.333333333333336%;
   }
 }
-.item-controller.edit-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary,
 .item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary {
   position: relative;
   min-height: 1px;
@@ -13059,13 +13056,11 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .item-controller.edit-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary,
   .item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary {
     float: left;
     width: 41.66666666666667%;
   }
 }
-.item-controller.edit-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary .item-fields,
 .item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary .item-fields {
   height: 340px;
   overflow-y: scroll;

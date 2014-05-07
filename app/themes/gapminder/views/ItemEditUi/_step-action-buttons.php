@@ -15,7 +15,7 @@
         array(
             'color' => TbHtml::BUTTON_COLOR_LINK,
             'url' => array('browse'),
-            'class' => 'btn-dirtyforms ignoredirty',
+            //'class' => 'ignoredirty',
         )
     ); ?>
     <?php /* TODO: Add the previous button when auto-saving has been implemented.
@@ -31,7 +31,7 @@
     <?php echo TbHtml::submitButton(
         $this->getSubmitButtonLabel(),
         array(
-            'class' => 'btn-dirtyforms',
+            //'class' => 'btn-dirtyforms',
             'color' => TbHtml::BUTTON_COLOR_PRIMARY,
             'name' => 'save-changes',
         )
