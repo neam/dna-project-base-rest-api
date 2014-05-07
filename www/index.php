@@ -8,8 +8,7 @@ require_once("$root/app/components/WebApplication.php");
 
 // config files
 $main = require("$root/app/config/main.php");
-$local = require("$root/app/config/main-local.php");
-$env = require("$root/app/config/env-{$main['params']['env']}.php");
+$env = require("$root/app/config/env-" . CONFIG_ENVIRONMENT . ".php");
 
 // define YII_DEBUG in config files
 if (defined('YII_DEBUG') && YII_DEBUG) {
@@ -17,7 +16,7 @@ if (defined('YII_DEBUG') && YII_DEBUG) {
 }
 
 // merge configurations
-$config = CMap::mergeArray($main,$env,$local);
+$config = CMap::mergeArray($main, $env);
 
 // start web application
 Yii::createApplication('WebApplication', $config)->run();
