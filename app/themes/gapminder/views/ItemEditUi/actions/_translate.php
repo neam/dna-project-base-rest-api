@@ -33,7 +33,7 @@
                             <?php $this->widget('VideoPlayer', array('videoFile' => $this->model)); ?>
                             <?php Yii::app()->language = $currentLang; ?>
                         <?php else: ?>
-                            <?php echo $this->model->renderImage('translation-workflow-preview'); ?>
+                            <?php echo $this->model->renderImage('item-workflow-preview'); ?>
                         <?php endif; ?>
                     </div>
                 </div>

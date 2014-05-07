@@ -114,8 +114,8 @@ $gcmsConfig = array(
                         ),
                         'type' => 'jpg',
                     ),
-                    'translation-workflow-preview' => array(
-                        'name' => 'Translation Workflow Preview',
+                    'item-workflow-preview' => array(
+                        'name' => 'Item Workflow Preview',
                         'commands' => array(
                             'resize' => array(442, 253, 7),
                             'quality' => 85,
