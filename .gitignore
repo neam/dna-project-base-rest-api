@@ -16,3 +16,6 @@ tests/codeception/acceptance.suite.yml
 codeception.yml
 tests/vendor
 tests/codeception/api.suite.yml
+
+app/config/envbootstrap/local/envbootstrap.php
+tests/selenium-*

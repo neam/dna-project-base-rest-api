@@ -27,6 +27,7 @@ setenv("ENV", $default = null, $required = true);
 setenv("DEV", $default = false);
 setenv("DEBUG_REDIRECTS", $default = false);
 setenv("DEBUG_LOGS", $default = false);
+setenv("CONFIG_ENVIRONMENT", $default = 'development', $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
 
 // ==== Identity-related constants ====
 
@@ -44,33 +45,31 @@ setenv("SMTP_AUTH_PASSWORD", $default = null);
 
 // Support setting main db constants based on DATABASE_URL environment variable
 setenv("DATABASE_URL", $default = null, $required = false);
-if (!is_null(DATABASE_URL)) {
-
+if (DATABASE_URL === null) {
+    setenv("YII_DB_SCHEME", $default = 'mysql', $required = false);
+    setenv("YII_DB_HOST", $default = null, $required = true);
+    setenv("YII_DB_USER", $default = null, $required = true);
+    setenv("YII_DB_PASSWORD", $default = null, $required = true);
+    setenv("YII_DB_NAME", $default = null, $required = true);
+} else {
     // get the environment variable and parse it:
     $url = parse_url(DATABASE_URL);
     define("YII_DB_SCHEME", $url['scheme']);
     define("YII_DB_HOST", $url['host']);
     define("YII_DB_PORT", $url['port']);
-    define("YII_DB_NAME", trim($url['path'], '/'));
     define("YII_DB_USER", $url['user']);
     define("YII_DB_PASSWORD", $url['pass']);
-
-} else {
-
-    setenv("YII_DB_SCHEME", $default = 'mysql', $required = false);
-    setenv("YII_DB_NAME", $default = null, $required = true);
-    setenv("YII_DB_USER", $default = null, $required = true);
-    setenv("YII_DB_PASSWORD", $default = null, $required = true);
-    setenv("YII_DB_HOST", $default = null, $required = true);
-
+    define("YII_DB_NAME", trim($url['path'], '/'));
 }
+
+setenv("YII_GII_PASSWORD", $default = uniqid(), $required = false);
+
+// ==== Define test-related constants ====
 
 setenv("TEST_DB_NAME", $default = YII_DB_NAME . '_test', $required = false);
 setenv("TEST_DB_USER", $default = YII_DB_USER . '_test', $required = false);
 setenv("TEST_DB_PASSWORD", $default = YII_DB_USER . '_test', $required = false);
 setenv("TEST_DB_HOST", $default = YII_DB_HOST, $required = false);
-
-setenv("YII_GII_PASSWORD", $default = uniqid(), $required = false);
 
 // ==== Define some dependent constants and/or settings ====
 
@@ -87,19 +86,15 @@ if (DEV) {
 
 class Identity
 {
-
     static public function brand()
     {
-
         $return = new \stdClass();
         $return->siteName = BRAND_SITENAME;
         $return->domain = BRAND_DOMAIN;
         $return->supportEmail = "info@" . $return->domain;
         $return->mailSentByMail = "noreply@" . $return->domain;
         $return->mailSentByName = $return->siteName;
-
     }
-
 }
 
 
