@@ -6806,7 +6806,6 @@ Regular buttons
 Markup:
 <a class="btn {$modifiers}" href="#">Link</a>
 <button class="btn {$modifiers}">Button</button>
-<a href="#" class="btn btn-link btn-icon-link {$modifiers}"><span class="glyphicon glyphicon-remove"></span><span class="btn-label">Icon Link Button</span></a>
 <input type="button" class="btn {$modifiers}" value="Input Button">
 
 .btn-link           - Link button.
