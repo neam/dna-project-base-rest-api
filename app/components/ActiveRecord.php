@@ -239,8 +239,6 @@ class ActiveRecord extends CActiveRecord
             $criteria->join .= "\n" . "LEFT JOIN (`node_has_group` AS `nhg` INNER JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `gha`.`account_id` = :account_id)) ON (`t`.`node_id` = `nhg`.`node_id`) ";
             $criteria->addCondition("`nhg`.id IS NOT NULL AND (`nhg`.`visibility` = 'visible' OR `nhg`.`visibility` IS NULL)", "OR");
             return $criteria;
-
-            return $criteria;
         }
     }
 }
