@@ -201,7 +201,6 @@ class ItemEditUi extends CWidget
         $previousStepIndex = $this->getCurrentStepIndex() - 1;
         $stepActions = $this->controller->workflowData['stepActions'];
 
-
         if ($currentStepNumber > 1) {
             $previousStepAction = $stepActions[$previousStepIndex];
             $url = $this->createFormActionUrlForStep($previousStepAction['step']);
