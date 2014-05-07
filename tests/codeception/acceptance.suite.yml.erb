@@ -29,14 +29,14 @@ env:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>/index-test.php
+                    url: http://<%= ENV['CMS_HOST'] %>
                     browser: 'chrome'
 
     cms-saucelabs-chrome-win8:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>/index-ci.php
+                    url: http://<%= ENV['CMS_HOST'] %>
                     browser: 'chrome'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
@@ -47,7 +47,7 @@ env:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>/index-ci.php
+                    url: http://<%= ENV['CMS_HOST'] %>
                     browser: 'chrome'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'

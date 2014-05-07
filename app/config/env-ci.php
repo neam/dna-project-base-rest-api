@@ -16,8 +16,5 @@ return array(
         'fixture' => array(
             'class' => 'system.test.CDbFixtureManager',
         ),
-        'urlManager' => array(
-            'showScriptName' => true, // this must be here
-        ),
     ),
 );

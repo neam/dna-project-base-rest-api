@@ -1,29 +1,22 @@
 <?php
 
-$dir = realpath(dirname(__FILE__).'/..').'/';
+$root = dirname(__DIR__);
 
-// register composer autoloader
-require_once(dirname(__FILE__).'/../vendor/autoload.php');
-
-// define("YII_DEBUG", true);
-
-// load Yii
-require_once($dir . 'vendor/yiisoft/yii/framework/yii.php');
-
-// load custom WebApplication class
-require_once($dir . 'app/components/WebApplication.php');
+require_once("$root/vendor/autoload.php");
+require_once("$root/vendor/yiisoft/yii/framework/yii.php");
+require_once("$root/app/components/WebApplication.php");
 
 // config files
-$main   = require($dir.'app/config/main.php');
-$local  = require($dir.'app/config/main-local.php');
-$env    = require($dir.'app/config/env-'.$main['params']['env'].'.php');
+$main = require("$root/app/config/main.php");
+$env = require("$root/app/config/env-" . CONFIG_ENVIRONMENT . ".php");
 
 // define YII_DEBUG in config files
-if (defined('YII_DEBUG') && YII_DEBUG)
+if (defined('YII_DEBUG') && YII_DEBUG) {
     error_reporting(E_ALL | E_STRICT);
+}
 
 // merge configurations
-$config = CMap::mergeArray($main,$env,$local);
+$config = CMap::mergeArray($main, $env);
 
 // start web application
 Yii::createApplication('WebApplication', $config)->run();
