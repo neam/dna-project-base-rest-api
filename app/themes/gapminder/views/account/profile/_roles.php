@@ -24,6 +24,5 @@
                 ),
             )
         ); ?>
-        <?php //var_dump($gha->group->attributes, $gha->attributes); ?>
     <?php endforeach; ?>
 <?php endif; ?>
