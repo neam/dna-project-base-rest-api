@@ -5,9 +5,6 @@ $root = dirname(__DIR__);
 require_once("$root/vendor/autoload.php");
 require_once("$root/vendor/yiisoft/yii/framework/yii.php");
 
-// config file
-$consoleConfig = require("$root/app/config/console.php");
-
 // web config files
 $main = require("$root/app/config/main.php");
 $env = require("$root/app/config/env-" . CONFIG_ENVIRONMENT . ".php");
@@ -26,6 +23,9 @@ $config = array(
     'modules'    => $webConfig['modules'],
     'params'     => $webConfig['params'],
 );
+
+// config file
+$consoleConfig = require("$root/app/config/console.php");
 
 // apply console config
 $config = CMap::mergeArray($config, $consoleConfig);
