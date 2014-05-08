@@ -19,3 +19,4 @@ tests/codeception/api.suite.yml
 
 app/config/envbootstrap/local/envbootstrap.php
 tests/selenium-*
+www/js

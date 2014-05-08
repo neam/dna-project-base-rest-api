@@ -10,6 +10,12 @@ class WebApplication extends CWebApplication
     const THEME_FRONTEND = 'frontend';
     const THEME_BACKEND2 = 'backend2';
 
+    // TODO update this automatically.
+    /**
+     * @var string application version
+     */
+    public $version = '0.4.0';
+
     /**
      * Registers CSS files.
      */

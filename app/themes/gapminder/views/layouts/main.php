@@ -3,12 +3,7 @@
 ?>
 <!DOCTYPE html>
 <html class="layout-main" lang="<?php echo Yii::app()->language ?>">
-<head>
-    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
-    <meta charset="utf-8">
-    <?php Yii::app()->registerCss(); ?>
-    <?php Yii::app()->registerScripts(); ?>
-</head>
+<?php Yii::app()->controller->renderPartial('application.themes.gapminder.views.layouts._head'); ?>
 <body>
     <?php $this->renderPartial('application.themes.gapminder.views.layouts._menu'); ?>
     <?php $this->widget('\TbAlert'); ?>

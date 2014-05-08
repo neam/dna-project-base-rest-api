@@ -1,9 +1,87 @@
+'use strict';
+
 module.exports = function(grunt) {
     // Load plugins
     require('load-grunt-tasks')(grunt);
 
-    // Project and task configuration
+    /**
+     * Parses the given components path and returns a list with the main file for each bower dependency.
+     * @param {string} componentsPath path to Bower components
+     * @returns {Array} list of files
+     */
+    function findBowerMainFiles(componentsPath) {
+        var files = [];
+
+        fs.readdirSync(componentsPath).filter(function (file) {
+            return fs.statSync(componentsPath + '/' + file).isDirectory();
+        }).forEach(function (packageName) {
+            var bowerJsonPath = componentsPath + '/' + packageName + '/bower.json';
+            if (fs.existsSync(bowerJsonPath)) {
+                var json = grunt.file.readJSON(bowerJsonPath);
+                files.push(packageName + '/' + json.main);
+            }
+        });
+
+        return files;
+    }
+
+    var path = require('path'),
+        fs = require('fs'),
+        bowerMainFiles = findBowerMainFiles(path.resolve(__dirname, 'bower_components'));
+
+    /* jshint camelcase:false */
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        bower: {
+            app: {
+                rjsConfig: 'app/js/app/config.js',
+                options: {
+                    exclude: ['jquery']
+                }
+            }
+        },
+        clean: {
+            scripts: 'www/js',
+            build: 'build'
+        },
+        copy: {
+            scripts: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'app/js/app/',
+                        src: ['**/*.js'],
+                        dest: 'www/js/app',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'bower_components/',
+                        src: bowerMainFiles,
+                        dest: 'www/js/lib',
+                        filter: 'isFile'
+                    }
+                ]
+            },
+            build: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'app/js/app/',
+                        src: ['**/*.js'],
+                        dest: 'build/app',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'bower_components/',
+                        src: bowerMainFiles,
+                        dest: 'build/lib',
+                        filter: 'isFile'
+                    }
+                ]
+            }
+        },
         kss: {
             options: {
                 includeType: 'less',
@@ -18,7 +96,7 @@ module.exports = function(grunt) {
         less: {
             theme: {
                 files: {
-                    "app/themes/gapminder/assets/main.css": "app/themes/gapminder/less/main.less"
+                    'app/themes/gapminder/assets/main.css': 'app/themes/gapminder/less/main.less'
                 }
             }
         },
@@ -36,21 +114,62 @@ module.exports = function(grunt) {
                 ]
             }
         },
+        jshint: {
+            app: ['app/js/app/**/*.js'],
+            gruntFile: ['Gruntfile.js'],
+            options: {
+                'curly': true,
+                'eqeqeq': true,
+                'eqnull': true,
+                'expr': true,
+                'latedef': true,
+                'onevar': true,
+                'noarg': true,
+                'node': true,
+                'trailing': true,
+                'undef': true,
+                'unused': true,
+                'camelcase': true,
+                'indent': 4,
+                'predef': ['document', 'define']
+            }
+        },
+        requirejs: {
+            app: {
+                options: {
+                    appDir: 'build/',
+                    baseUrl: './',
+                    optimize: 'uglify2',
+                    name: 'lib/almond/almond',
+                    dir: 'www/js'
+                }
+            }
+        },
         watch: {
             styles: {
                 files: ['app/themes/gapminder/less/**/*.less'],
-                tasks: ['less', 'less_imports', 'kss'],
+                tasks: ['less', 'lessImports', 'kss'],
                 options: {
+                    spawn: false
+                }
+            },
+            scripts: {
+                files: [
+                    'app/js/**/*.js'
+                ],
+                tasks: ['jshint:app', 'copy:scripts'],
+                options: {
+                    livereload: 35730,
                     spawn: false
                 }
             }
         }
     });
 
-    // Load plugins
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-less-imports');
-
     // Define tasks
-    grunt.registerTask('default', []);
+    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('init', 'Initializes the project.', function () {
+        grunt.task.run('bower');
+    });
+    grunt.registerTask('build', ['copy:build', 'requirejs', 'clean:build']);
 };
