@@ -888,7 +888,8 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
-        $this->populateWorkflowData($model, 'translate', Yii::t('app', 'Translation overview'));
+        
+        $this->populateWorkflowData($model, 'translate', Yii::t('app', ''));
 
         $this->render(
             '/_item/translation-overview',
