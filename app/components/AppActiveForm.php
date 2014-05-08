@@ -166,8 +166,14 @@ class AppActiveForm extends TbActiveForm
                 '.slugit-from-2' => '.slugit-to-2',
             ));
 
-            $html = Html::staticTextFieldControlGroup($model, $attributeSourceLanguage);
-            $html .= $this->createControlGroup($inputType, $model, $attributeTranslateInto, $htmlOptions);
+            $html = Html::activeStaticTextFieldControlGroup(
+                $model,
+                $attributeSourceLanguage,
+                array(
+                    'label' => $model->getAttributeLabel($attributeTranslateInto),
+                )
+            );
+            $html .= $this->createInput($inputType, $model, $attributeTranslateInto, $htmlOptions);
 
             return $html;
         } else {

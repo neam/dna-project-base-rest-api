@@ -526,6 +526,54 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
+     * Returns a source message model for the given source message and language.
+     * @param string $sourceMessage
+     * @param string $language
+     * @return SourceMessage
+     */
+    public function getSourceMessage($sourceMessage, $language)
+    {
+        return SourceMessage::ensureSourceMessage(
+            $this->getTranslationCategory('subtitles'),
+            $sourceMessage,
+            $language
+        );
+    }
+
+    /**
+     * Returns the current translation for the given source message and language.
+     * @param string $sourceMessage
+     * @param string $language
+     * @return string
+     */
+    public function getCurrentTranslation($sourceMessage, $language)
+    {
+        return Yii::t(
+            $this->getTranslationCategory('subtitles'),
+            $sourceMessage,
+            array(),
+            'editedMessages',
+            $language
+        );
+    }
+
+    /**
+     * Returns the fallback translation for the given source message and language.
+     * @param string $sourceMessage the original subtitle text.
+     * @param string $language the target language.
+     * @return string
+     */
+    public function getSubtitleFallbackTranslation($sourceMessage, $language)
+    {
+        return Yii::t(
+            $this->getTranslationCategory('subtitles'),
+            $sourceMessage,
+            array(),
+            'displayedMessages',
+            $language);
+    }
+
+    /**
      * Returns the subtitle URL.
      * @return string
      */

@@ -4,6 +4,12 @@ trait ItemTrait
 {
     public $itemDescription;
 
+    /**
+     * Runtime cache for validation progress percentages.
+     * @var array
+     */
+    public $validationProgress = array();
+
     public function saveWithChangeSet()
     {
         /** @var ActiveRecord|QaStateBehavior $model */
@@ -209,6 +215,21 @@ trait ItemTrait
         }
     }
 
+    /**
+     * Returns the validation progress percentage for the given scenario (checks the runtime cache).
+     * @param string $scenario
+     * @return integer
+     */
+    public function getValidationProgress($scenario)
+    {
+        if (isset($this->validationProgress[$scenario])) {
+            return $this->validationProgress[$scenario];
+        }
+
+        $this->validationProgress[$scenario] = $this->calculateValidationProgress($scenario);
+        return $this->validationProgress[$scenario];
+    }
+
     public function flowStepRules()
     {
         // Metadata
@@ -409,9 +430,14 @@ trait ItemTrait
      */
     public function renderImage($p3preset = 'dashboard-item-task-thumbnail')
     {
+        $presetConfig = Yii::app()->getModule('p3media')->params['presets'][$p3preset];
+
+        $width = $presetConfig['commands']['resize'][0];
+        $height = $presetConfig['commands']['resize'][1];
+
         return isset($this->thumbnail_media_id)
             ? $this->thumbnailMedia->image($p3preset)
-            : TbHtml::image('http://placehold.it/210x120');
+            : TbHtml::image("http://placehold.it/{$width}x{$height}");
     }
 
     /**

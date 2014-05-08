@@ -3,6 +3,7 @@
 trait ItemController
 {
     public $workflowData = array();
+    public $step;
     public $modelId;
     protected $_actionIsEvaluate = false;
 
@@ -657,9 +658,14 @@ trait ItemController
      * @param $step
      * @param $id
      */
-    public function actionEdit($step, $id)
+    public function actionEdit($step, $id, $returnUrl = null)
     {
+        $this->step = $step;
         $this->scenario = "temporary-step_$step";
+
+        if (isset($returnUrl)) {
+            Yii::app()->user->setReturnUrl($returnUrl);
+        }
 
         $model = $this->loadModel($id);
 
@@ -899,8 +905,14 @@ trait ItemController
      * @param string $translateInto the target language code.
      * @throws CHttpException
      */
-    public function actionTranslate($id, $step, $translateInto)
+    public function actionTranslate($id, $step, $translateInto, $returnUrl = null)
     {
+        $this->step = $step;
+
+        if (isset($returnUrl)) {
+            Yii::app()->user->setReturnUrl($returnUrl);
+        }
+
         if (!Yii::app()->user->canTranslateInto($translateInto)) {
             throw new CHttpException(403, Yii::t('app', "You are not allowed to translate into: $translateInto"));
         }
@@ -1114,11 +1126,13 @@ trait ItemController
         } else {
 
             // redirect
-            if (isset($_REQUEST['returnUrl'])) {
+            if (isset(Yii::app()->user->returnUrl)) {
+                $this->redirect(Yii::app()->user->returnUrl);
+            } else if (isset($_REQUEST['returnUrl'])) {
                 $this->redirect($_REQUEST['returnUrl']);
-            } elseif (isset($_POST['save-changes'])) {
+            } else if (isset($_POST['save-changes'])) {
                 $this->redirect($_REQUEST['form-url']);
-            } elseif (isset($_POST['next-required'])) {
+            } else if (isset($_POST['next-required'])) {
                 $this->redirect($_REQUEST['next-required-url']);
             } else {
                 $this->actionCancel($model->id);

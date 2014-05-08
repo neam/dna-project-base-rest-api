@@ -114,6 +114,13 @@ $gcmsConfig = array(
                         ),
                         'type' => 'jpg',
                     ),
+                    'item-workflow-preview' => array(
+                        'name' => 'Item Workflow Preview',
+                        'commands' => array(
+                            'resize' => array(442, 253, 7),
+                            'quality' => 85,
+                        ),
+                    ),
                     'related-thumb' => array(
                         'name' => 'Related Panel Thumbnail',
                         'commands' => array(
