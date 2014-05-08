@@ -109,8 +109,9 @@
                 <?php
                 //Account::model()->findByPk(Yii::app()->user->id)->assignDefaultGroupRoles();
                 $this->renderPartial(
-                    'profile/_permissions',
+                    'profile/_roles',
                     array(
+                        'model' => $model,
                         'ghas' => $model->groupHasAccounts,
                     )
                 ); ?>
