@@ -6,7 +6,7 @@ define([
 
     /**
      * @constructor
-     * @class app.core.Entity
+     * @class gapminder.core.Entity
      * @param {Object} options arguments
      */
     var Entity = function (options) {

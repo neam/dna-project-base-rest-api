@@ -1,17 +1,17 @@
 define([
     'underscore',
     'backbone',
-    'app/core/entity'
+    'gapminder/core/entity'
 ], function (_, Backbone, Entity) {
     'use strict';
 
     /**
-     * @class app.core.Component
-     * @extend app.core.Entity
+     * @class gapminder.core.Component
+     * @extend gapminder.core.Entity
      */
     var Component = Entity.extend({
         /**
-         * @type {app.core.App}
+         * @type {gapminder.core.App}
          */
         app: null,
         
@@ -27,7 +27,7 @@ define([
         /**
          * Returns a specific application component based on the given identifier.
          * @param {string} id component identifier
-         * @returns {app.core.Component}
+         * @returns {gapminder.core.Component}
          */
         getComponent: function (id) {
             return this.app.getComponent(id);

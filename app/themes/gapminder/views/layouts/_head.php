@@ -9,7 +9,7 @@
     <?php app()->registerCss(); ?>
     <?php app()->registerScripts(); ?>
     <?php app()->clientScript->registerCoreScript('jquery', CClientScript::POS_END); ?>
-    <?php js('js/bower_components/requirejs/require.js', CClientScript::POS_HEAD); ?>
+    <?php js('js/lib/requirejs/require.js', CClientScript::POS_HEAD); ?>
     <script type="text/javascript">
         // Define the Gapminder namespace.
         var Gapminder = Gapminder || {};
@@ -23,8 +23,8 @@
         };
 
         // Set up the application through RequireJS.
-        require(['require', '<?php echo baseUrl('js/app/config.js'); ?>' + '?_=' + Gapminder.server.cacheBuster], function(require) {
-            require(['app/index']);
+        require(['require', '<?php echo baseUrl('js/config.js'); ?>' + '?_=' + Gapminder.server.cacheBuster], function(require) {
+            require(['index']);
         });
     </script>
 </head>

@@ -23,6 +23,7 @@ module.exports = function(grunt) {
         });
 
         return files;
+
     }
 
     var path = require('path'),
@@ -34,7 +35,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         bower: {
             app: {
-                rjsConfig: 'app/js/app/config.js',
+                rjsConfig: 'app/js/config.js',
                 options: {
                     exclude: ['jquery']
                 }
@@ -49,9 +50,9 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'app/js/app/',
+                        cwd: 'app/js/',
                         src: ['**/*.js'],
-                        dest: 'www/js/app',
+                        dest: 'www/js',
                         filter: 'isFile'
                     },
                     {
@@ -67,9 +68,9 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'app/js/app/',
+                        cwd: 'app/js/',
                         src: ['**/*.js'],
-                        dest: 'build/app',
+                        dest: 'build',
                         filter: 'isFile'
                     },
                     {
@@ -115,7 +116,7 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            app: ['app/js/app/**/*.js'],
+            app: ['app/js/**/*.js'],
             gruntFile: ['Gruntfile.js'],
             options: {
                 'curly': true,

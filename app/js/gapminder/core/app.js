@@ -3,15 +3,15 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'app/core/Entity',
-    'app/utils/dependencyLoader',
-    'app/components/viewManager'
+    'gapminder/core/Entity',
+    'gapminder/utils/dependencyLoader',
+    'gapminder/components/viewManager'
 ], function (module, $, _, Backbone, Entity, DependencyLoader, ViewManager) {
     'use strict';
     
     /**
-     * @class app.core.App
-     * @extends app.core.Entity
+     * @class gapminder.core.App
+     * @extends gapminder.core.Entity
      */
     var App = Entity.extend({
         /**
@@ -20,7 +20,7 @@ define([
         config: null,
         
         /**
-         * @type {Object<string, Component>}
+         * @type {Object<string, gapminder.core.Component>}
          */
         components: null,
         
@@ -30,7 +30,10 @@ define([
         constructor: function () {
             this.config = module.config() || {};
             this.components = {
-                viewManager: new ViewManager({app: this, loader: new DependencyLoader({basePath: 'app/views'})})
+                viewManager: new ViewManager({
+                    app: this,
+                    loader: new DependencyLoader({basePath: 'gapminder/views'})
+                })
             };
         },
         
@@ -40,7 +43,7 @@ define([
         initialize: function () {
             this.initializeViews();
 
-
+            console.log('Application initialized.');
         },
         
         /**
@@ -66,7 +69,7 @@ define([
         /**
          * Returns a specific application component based on the given identifier.
          * @param {string} id component identifier
-         * @returns {Component}
+         * @returns {gapminder.core.Component}
          */
         getComponent: function (id) {
             return this.components[id];

@@ -1,7 +1,7 @@
 define([
     'jquery',
     'underscore',
-    'app/core/Entity'
+    'gapminder/core/Entity'
 ], function($, _, Entity) {
     'use strict';
 
@@ -16,18 +16,21 @@ define([
         basePath: '/',
 
         /**
-         * Loads the given dependencies.
+         * Loads a set of dependencies using require().
          * @returns {*}
          */
         load: function() {
-            var deps = Array.prototype.slice.call(arguments),
+            var dependencies = Array.prototype.slice.call(arguments),
                 dfd = $.Deferred();
-            for (var i = 0, len = deps.length; i < len; i++) {
-                deps[i] = this.basePath + deps[i];
+
+            for (var i = 0; i < dependencies.length; i++) {
+                dependencies[i] = this.basePath + dependencies[i];
             }
-            require(deps, function() {
+
+            require(dependencies, function() {
                 dfd.resolve.apply(dfd, arguments);
             });
+
             return dfd.promise();
         }
     });

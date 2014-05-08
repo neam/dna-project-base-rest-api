@@ -13,11 +13,11 @@ require.config({
 
     },
     paths: {
-        app: './',
-        underscore: '../../../bower_components/underscore/underscore',
-        requirejs: '../../../bower_components/requirejs/require',
-        backbone: '../../../bower_components/backbone/backbone',
-        almond: '../../../bower_components/almond/almond'
+        app: 'gapminder/',
+        underscore: '../../bower_components/underscore/underscore',
+        requirejs: '../../bower_components/requirejs/require',
+        backbone: '../../bower_components/backbone/backbone',
+        almond: '../../bower_components/almond/almond'
     },
     config: {
         'app/core/App': {
