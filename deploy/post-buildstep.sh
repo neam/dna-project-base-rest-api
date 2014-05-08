@@ -24,6 +24,9 @@ chmod -R 777 www/runtime/
 npm install -g bower
 bower install --allow-root
 
+# generate the js app
+grunt build
+
 # remove assets folder in case it was committed by mistake or we are updating an existing instance for some reason
 rm -r www/assets/*
 
