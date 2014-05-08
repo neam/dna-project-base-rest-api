@@ -70,14 +70,19 @@ class Node extends BaseNode
      */
     public function item()
     {
-        foreach ($this->relations() as $relationName => $relationSpec) {
+        $relationNames = array_keys($this->relations());
 
-            // Filter out edges and nodeHasGroup, changesets
+        foreach ($relationNames as $relationName) {
+
+            // Ensure relation exists
+            if (($activeRelation = $this->getActiveRelation($relationName)) === null) {
+                continue;
+            }
+
+            // Filter out nodeHasGroup, changesets, edges so that only items remain
             if (
-                count($relationSpec) < 3
-                || $relationSpec[2] !== 'node_id'
-                || $relationSpec[1] === 'NodeHasGroup'
-                || $relationSpec[1] === 'Changeset'
+                in_array($activeRelation->className, array('NodeHasGroup', 'Changeset'))
+                || $activeRelation->foreignKey !== 'node_id'
             ) {
                 continue;
             }
@@ -86,9 +91,44 @@ class Node extends BaseNode
                 $tmp = $this->{$relationName};
                 return $tmp[0];
             }
+
         }
 
         throw new CException("This node does not have any parent item");
+    }
+
+    public function getEdgeWeight($relation, $toNodeId)
+    {
+        $result = Yii::app()->db->createCommand()
+            ->select('weight')
+            ->from('edge')
+            ->where(
+                'from_node_id = :from AND to_node_id = :to AND relation = :relation',
+                array(
+                    ':from' => $this->id,
+                    ':to' => $toNodeId,
+                    ':relation' => $relation,
+                )
+            )
+            ->queryRow();
+
+        if ($result) {
+            return array_shift($result);
+        }
+    }
+
+    public function setEdgeWeight($relation, $toNodeId, $weight)
+    {
+        Yii::app()->db->createCommand()->update(
+            'edge',
+            array('weight' => $weight),
+            'from_node_id = :from AND to_node_id = :to AND relation = :relation',
+            array(
+                ':from' => $this->id,
+                ':to' => $toNodeId,
+                ':relation' => $relation,
+            )
+        );
     }
 
 }
