@@ -72,6 +72,7 @@ $gcmsConfig = array(
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
         'vendor.weavora.wrest.behaviors.*',
+        'application.components.dashboard.*',
         'application.components.user.*',
         'application.behaviors.EzcWorkflowBehavior',
         'application.behaviors.*',

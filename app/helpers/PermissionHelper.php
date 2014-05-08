@@ -129,6 +129,26 @@ class PermissionHelper
     }
 
     /**
+     * Returns a map of all roles (id => title) that the account belongs to, regardless of group.
+     *
+     * @param int $accountId the account model id.
+     *
+     * @return array the role map.
+     */
+    static public function getRolesForAccount($accountId)
+    {
+        $result = array();
+        $roles = self::getRoles();
+        $groupHasAccounts = self::getGroupHasAccountsForAccount($accountId);
+        foreach ($groupHasAccounts as $groupHasAccount) {
+            if (isset($roles[$groupHasAccount->role_id]) && !isset($result[$groupHasAccount->role_id])) {
+                $result[$groupHasAccount->role_id] = $roles[$groupHasAccount->role_id];
+            }
+        }
+        return $result;
+    }
+
+    /**
      * Adds a node to a specific group.
      *
      * @param int $nodeId

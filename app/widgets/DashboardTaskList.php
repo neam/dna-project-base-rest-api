@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * Widget for showing "tasks" on the dashboard.
+ * There are two types of tasks, "started" and "new". The "started" tasks are ones that the logged in user has edited
+ * in some way, e.g. has created a video file. The "new" tasks are ones that the logged user as access to view, but has
+ * not edited, e.g. another user with the same role as the logged in user has created a new video file.
+ *
+ * Usage in view file:
+ *
+ * $this->widget(
+ *     'app.widgets.DashboardTaskList',
+ *     array(
+ *         'type' => DashboardTaskList::TYPE_STARTED, // the type of tasks to show.
+ *         'account' => $model, // the account model for the logged in user.
+ *     )
+ * );
+ */
 class DashboardTaskList extends CWidget
 {
     const TYPE_STARTED = 'started';
@@ -26,6 +42,13 @@ class DashboardTaskList extends CWidget
     protected $dataProvider;
 
     /**
+     * @var array map of all available task query builder component class names.
+     */
+    static protected $queryBuilderComponents = array(
+        'DashboardGroupTranslatorTaskQueryBuilder'
+    );
+
+    /**
      * @inheritdoc
      */
     public function init()
@@ -33,18 +56,10 @@ class DashboardTaskList extends CWidget
         if (empty($this->account) || !($this->account instanceof Account)) {
             throw new CException('Property "account" is of invalid type.');
         }
-        switch ($this->type) {
-            case self::TYPE_STARTED:
-                $this->dataProvider = $this->createStartedTaskDataProvider();
-                break;
-
-            case self::TYPE_NEW:
-                $this->dataProvider = $this->createNewTaskDataProvider();
-                break;
-
-            default:
-                throw new CException(sprintf('Invalid type "%s".', $this->type));
+        if ($this->type !== self::TYPE_STARTED && $this->type !== self::TYPE_NEW) {
+            throw new CException(sprintf('Invalid type "%s".', $this->type));
         }
+        $this->dataProvider = $this->createDataProvider();
     }
 
     /**
@@ -59,7 +74,9 @@ class DashboardTaskList extends CWidget
 
     /**
      * Returns the task item model based on class name and id.
+     *
      * @param array $data the task data.
+     *
      * @return ActiveRecord the model.
      */
     public function getTaskModel($data)
@@ -69,8 +86,10 @@ class DashboardTaskList extends CWidget
 
     /**
      * Creates a controller action URL based on the given action ID, model class, and model ID (optional).
+     *
      * @param string $action
      * @param array $data the task data.
+     *
      * @return string
      */
     public function createTaskUrl($action, $data)
@@ -83,166 +102,22 @@ class DashboardTaskList extends CWidget
     }
 
     /**
-     * Creates and returns a SQL data provider for the accounts started tasks.
+     * Creates the SQL data provider the accounts task list.
+     *
      * @return CSqlDataProvider the data provider.
      */
-    protected function createStartedTaskDataProvider()
-    {
-        $queries = $this->buildStartedTranslationTaskQueries();
-        return $this->createTaskDataProvider($queries);
-    }
-
-    /**
-     * Creates and returns a SQL data provider for the accounts new tasks.
-     * @return CSqlDataProvider the data provider.
-     */
-    protected function createNewTaskDataProvider()
-    {
-        $queries = $this->buildNewTranslationTaskQueries();
-        return $this->createTaskDataProvider($queries);
-    }
-
-    /**
-     * Builds a list of SQL queries to get the "started" translation task queries.
-     * @return array the SQL queries.
-     */
-    protected function buildStartedTranslationTaskQueries()
+    protected function createDataProvider()
     {
         $queries = array();
-        $lang1 = $this->account->profile->language1;
-        $lang2 = $this->account->profile->language2;
-        $lang3 = $this->account->profile->language3;
-        if ($lang1 !== null) {
-            $queries[] = "SELECT
-                            i.id as id,
-                            i.model_class,
-                            i._title,
-                            'TranslateIntoPrimaryLanguage' AS action,
-                            translate_into_{$lang1}_validation_progress AS progress,
-                            '{$lang1}' AS language,
-                            'translation' AS task,
-                            0 AS relevance
-                          FROM item i
-                          INNER JOIN changeset AS c ON c.node_id = i.node_id
-                          INNER JOIN node_has_group AS nhg ON nhg.node_id = i.node_id
-                          INNER JOIN group_has_account AS gha ON gha.group_id = nhg.group_id
-                          WHERE gha.account_id = :account_id
-                          AND c.user_id = :account_id
-                          GROUP BY i.id";
+        $roles = PermissionHelper::getRolesForAccount($this->account->id);
+        $type = ucfirst($this->type);
+        $queryGetter = "get{$type}TaskQueries";
+        foreach ($roles as $roleTitle) {
+            if (($queryBuilder = $this->createQueryBuilder($roleTitle)) !== null) {
+                $queries = array_merge($queries, $queryBuilder->$queryGetter($this->account));
+            }
         }
-        if ($lang2 !== null) {
-            $queries[] = "SELECT
-                            i.id as id,
-                            i.model_class,
-                            i._title,
-                            'TranslateIntoSecondaryLanguage' AS action,
-                            translate_into_{$lang2}_validation_progress AS progress,
-                            '{$lang2}' AS language,
-                            'translation' AS task,
-                            0 AS relevance
-                          FROM item i
-                          INNER JOIN changeset AS c ON c.node_id = i.node_id
-                          INNER JOIN node_has_group AS nhg ON nhg.node_id = i.node_id
-                          INNER JOIN group_has_account AS gha ON gha.group_id = nhg.group_id
-                          WHERE gha.account_id = :account_id
-                          AND c.user_id = :account_id
-                          GROUP BY i.id";
-        }
-        if ($lang3 !== null) {
-            $queries[] = "SELECT
-                            i.id as id,
-                            i.model_class,
-                            i._title,
-                            'TranslateIntoTertiaryLanguage' AS action,
-                            translate_into_{$lang3}_validation_progress AS progress,
-                            '{$lang3}' AS language,
-                            'translation' AS task,
-                            0 AS relevance
-                          FROM item i
-                          INNER JOIN changeset AS c ON c.node_id = i.node_id
-                          INNER JOIN node_has_group AS nhg ON nhg.node_id = i.node_id
-                          INNER JOIN group_has_account AS gha ON gha.group_id = nhg.group_id
-                          WHERE gha.account_id = :account_id
-                          AND c.user_id = :account_id
-                          GROUP BY i.id";
-        }
-        return $queries;
-    }
 
-    /**
-     * Builds a list of SQL queries to get the "new" translation task queries.
-     * @return array the SQL queries.
-     */
-    protected function buildNewTranslationTaskQueries()
-    {
-        $queries = array();
-        $lang1 = $this->account->profile->language1;
-        $lang2 = $this->account->profile->language2;
-        $lang3 = $this->account->profile->language3;
-        if ($lang1 !== null) {
-            $queries[] = "SELECT
-                            i.id AS id,
-                            i.model_class,
-                            i._title,
-                            'TranslateIntoPrimaryLanguage' AS action,
-                            translate_into_{$lang1}_validation_progress AS progress,
-                            '{$lang1}' AS language,
-                            'translation' AS task,
-                            0 AS relevance
-                          FROM item AS i
-                          INNER JOIN changeset AS c ON c.node_id = i.node_id
-                          INNER JOIN node_has_group AS nhg ON nhg.node_id = i.node_id
-                          INNER JOIN group_has_account AS gha ON gha.group_id = nhg.group_id
-                          WHERE gha.account_id = :account_id
-                          AND c.user_id != :account_id
-                          GROUP BY i.id";
-        }
-        if ($lang2 !== null) {
-            $queries[] = "SELECT
-                            i.id AS id,
-                            i.model_class,
-                            i._title,
-                            'TranslateIntoSecondaryLanguage' AS action,
-                            translate_into_{$lang2}_validation_progress AS progress,
-                            '{$lang2}' AS language,
-                            'translation' AS task,
-                            0 AS relevance
-                          FROM item AS i
-                          INNER JOIN changeset AS c ON c.node_id = i.node_id
-                          INNER JOIN node_has_group AS nhg ON nhg.node_id = i.node_id
-                          INNER JOIN group_has_account AS gha ON gha.group_id = nhg.group_id
-                          WHERE gha.account_id = :account_id
-                          AND c.user_id != :account_id
-                          GROUP BY i.id";
-        }
-        if ($lang3 !== null) {
-            $queries[] = "SELECT
-                            i.id AS id,
-                            i.model_class,
-                            i._title,
-                            'TranslateIntoTertiaryLanguage' AS action,
-                            translate_into_{$lang3}_validation_progress AS progress,
-                            '{$lang3}' AS language,
-                            'translation' AS task,
-                            0 AS relevance
-                          FROM item AS i
-                          INNER JOIN changeset AS c ON c.node_id = i.node_id
-                          INNER JOIN node_has_group AS nhg ON nhg.node_id = i.node_id
-                          INNER JOIN group_has_account AS gha ON gha.group_id = nhg.group_id
-                          WHERE gha.account_id = :account_id
-                          AND c.user_id != :account_id
-                          GROUP BY i.id";
-        }
-        return $queries;
-    }
-
-    /**
-     * Creates a SQL data provider out of the given queries.
-     * @param array $queries the SQL queries to run.
-     * @return CSqlDataProvider
-     */
-    protected function createTaskDataProvider(array $queries)
-    {
         if (!empty($queries)) {
             $sql = implode("\nUNION ALL\n", $queries);
             $mainCommand = Yii::app()->db->createCommand("SELECT * FROM ({$sql}) AS dashboard_task");
@@ -251,7 +126,9 @@ class DashboardTaskList extends CWidget
             $mainCommand = Yii::app()->db->createCommand('SELECT * FROM account AS dashboard_task WHERE 1 = 0');
             $countCommand = Yii::app()->db->createCommand('SELECT COUNT(*) FROM account AS dashboard_task WHERE 1 = 0');
         }
+
         $mainCommand->params = $countCommand->params = array(':account_id' => $this->account->id);
+
         return new CSqlDataProvider($mainCommand, array(
             'totalItemCount' => $countCommand->queryScalar(),
             'sort' => array(
@@ -266,5 +143,21 @@ class DashboardTaskList extends CWidget
                 'pageSize' => 10,
             ),
         ));
+    }
+
+    /**
+     * Creates the query builder component for the given role.
+     *
+     * @param string $roleTitle the role model title.
+     *
+     * @return DashboardTaskQueryBuilder|null the component or null if none is found for the role.
+     */
+    protected function createQueryBuilder($roleTitle)
+    {
+        $className = "Dashboard{$roleTitle}TaskQueryBuilder";
+        if (in_array($className, self::$queryBuilderComponents)) {
+            return Yii::createComponent(array('class' => $className));
+        }
+        return null;
     }
 } 
