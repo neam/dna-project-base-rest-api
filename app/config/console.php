@@ -19,6 +19,29 @@ $webappCommand = array(
 
 $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
 
+// Selection of migrations to apply in clean-db vs user-generated DATA scenario
+$modulePaths = array();
+if (DATA == "clean-db") {
+    $modulePaths[] = 'application.migrations.clean-db';
+    $modulePaths['user'] = 'vendor.mishamx.yii-user.migrations';
+}
+if (DATA == "user-generated") {
+    $modulePaths[] = 'application.migrations.user-generated';
+}
+/*
+ * Currently unused
+                //'user'                  => 'vendor.mishamx.yii-user.migrations',
+                // The following migrations are not used since they are already included in the data model or the extension is not used
+                //'rights'                => 'application.migrations.rights',
+                //'p3pages'               => 'vendor.phundament.p3pages.migrations',
+                //'p3widgets'             => 'vendor.phundament.p3widgets.migrations',
+                //'p3media'               => 'vendor.phundament.p3media.migrations',
+                //'ckeditor-configurator' => 'vendor.schmunk42.ckeditor-configurator.migrations',
+                //'translate'             => 'vendor.gusnips.yii-translate.migrations',
+                //'auditrail2'            => 'vendor.sammaye.auditrail2.migrations',
+
+ */
+
 $consoleConfig = array(
     'aliases' => array(
         'vendor'  => $applicationDirectory . '/../vendor',
@@ -46,17 +69,7 @@ $consoleConfig = array(
             // the application migrations are in a pseudo-module called "core" by default
             'applicationModuleName' => 'core',
             // define all available modules (if you do not set this, modules will be set from yii app config)
-            'modulePaths'           => array(
-                'user'                  => 'vendor.mishamx.yii-user.migrations',
-                // The following migrations are not used since they are already included in the data model or the extension is not used
-                //'rights'                => 'application.migrations.rights',
-                //'p3pages'               => 'vendor.phundament.p3pages.migrations',
-                //'p3widgets'             => 'vendor.phundament.p3widgets.migrations',
-                //'p3media'               => 'vendor.phundament.p3media.migrations',
-                //'ckeditor-configurator' => 'vendor.schmunk42.ckeditor-configurator.migrations',
-                //'translate'             => 'vendor.gusnips.yii-translate.migrations',
-                //'auditrail2'            => 'vendor.sammaye.auditrail2.migrations',
-            ),
+            'modulePaths'           => $modulePaths,
             // you can customize the modules migrations subdirectory which is used when you are using yii module config
             'migrationSubPath'      => 'migrations',
             // here you can configure which modules should be active, you can disable a module by adding its name to this array
