@@ -93,6 +93,7 @@ class ActiveRecord extends CActiveRecord
 
     /**
      * Ensures node relation
+     * @return Node
      */
     public function node()
     {
