@@ -265,6 +265,43 @@ trait ItemController
     }
 
     /**
+     * Runs operations before all ItemController actions.
+     * @param CAction $action
+     * @return boolean
+     */
+    public function beforeItemControllerAction($action)
+    {
+        $translateInto = Yii::app()->request->getParam('translateInto');
+
+        // Set translation and edit workflow returnUrls
+        if (in_array($action->id, array('translate', 'edit'))) {
+            $this->setWorkflowReturnUrl();
+        }
+
+        // Disallow user to translate items into languages other than those listed in his profile
+        if ($action->id === 'translate' && !Yii::app()->user->canTranslateInto($translateInto)) {
+            throw new CHttpException(
+                403,
+                Yii::t('app', "You are not permitted to translate into: $translateInto")
+            );
+        }
+
+        return true;
+    }
+
+    /**
+     * Sets the returnUrl when navigating between workflow steps.
+     */
+    public function setWorkflowReturnUrl()
+    {
+        $returnUrl = Yii::app()->request->getParam('returnUrl');
+
+        if (isset($returnUrl)) {
+            Yii::app()->user->setReturnUrl($returnUrl);
+        }
+    }
+
+    /**
      * Returns the target translation language. Defaults to null if undefined.
      * @return string|null
      */
@@ -663,10 +700,6 @@ trait ItemController
         $this->step = $step;
         $this->scenario = "temporary-step_$step";
 
-        if (isset($returnUrl)) {
-            Yii::app()->user->setReturnUrl($returnUrl);
-        }
-
         $model = $this->loadModel($id);
 
         $model->scenario = $this->scenario;
@@ -888,7 +921,8 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
-        $this->populateWorkflowData($model, 'translate', Yii::t('app', 'Translation overview'));
+        
+        $this->populateWorkflowData($model, 'translate', Yii::t('app', ''));
 
         $this->render(
             '/_item/translation-overview',
@@ -908,14 +942,6 @@ trait ItemController
     public function actionTranslate($id, $step, $translateInto, $returnUrl = null)
     {
         $this->step = $step;
-
-        if (isset($returnUrl)) {
-            Yii::app()->user->setReturnUrl($returnUrl);
-        }
-
-        if (!Yii::app()->user->canTranslateInto($translateInto)) {
-            throw new CHttpException(403, Yii::t('app', "You are not allowed to translate into: $translateInto"));
-        }
 
         $this->scenario = "into_$translateInto-step_$step";
         $model = $this->loadModel($id);

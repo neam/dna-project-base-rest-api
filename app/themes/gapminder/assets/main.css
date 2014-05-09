@@ -13196,10 +13196,6 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
     width: 33.33333333333333%;
   }
 }
-.item-controller.translationoverview-action .language-actions .btn {
-  padding: 0 4px;
-  text-align: left;
-}
 .item-controller.translationoverview-action .language-progress {
   position: relative;
   min-height: 1px;
@@ -13211,6 +13207,9 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
     float: left;
     width: 66.66666666666666%;
   }
+}
+.item-controller.translationoverview-action .language-progress .progress {
+  margin-top: 8px;
 }
 .item-controller .list-view .list-items .list-item {
   min-height: 20px;

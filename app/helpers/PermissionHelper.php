@@ -94,7 +94,7 @@ class PermissionHelper
         return GroupHasAccount::model()->findByAttributes($attributes) !== null;
     }
 
-    /*
+    /**
      * @param $accountId
      *
      * @return GroupHasAccount[]
@@ -126,6 +126,26 @@ class PermissionHelper
                 'role_id' => self::roleNameToId($role),
             )
         );
+    }
+
+    /**
+     * Returns a map of all roles (id => title) that the account belongs to, regardless of group.
+     *
+     * @param int $accountId the account model id.
+     *
+     * @return array the role map.
+     */
+    static public function getRolesForAccount($accountId)
+    {
+        $result = array();
+        $roles = self::getRoles();
+        $groupHasAccounts = self::getGroupHasAccountsForAccount($accountId);
+        foreach ($groupHasAccounts as $groupHasAccount) {
+            if (isset($roles[$groupHasAccount->role_id]) && !isset($result[$groupHasAccount->role_id])) {
+                $result[$groupHasAccount->role_id] = $roles[$groupHasAccount->role_id];
+            }
+        }
+        return $result;
     }
 
     /**
@@ -279,67 +299,5 @@ class PermissionHelper
         }
 
         return self::$_groups;
-    }
-
-    /**
-     * Applies the access restrictions to the given criteria.
-     *
-     * @param CDbCriteria $criteria
-     *
-     * @return CDbCriteria
-     */
-    static public function applyAccessCriteria(CDbCriteria $criteria, $operation = null)
-    {
-        //$groupRoles = Yii::app()->user->getGroupRoles();
-
-        $joins = array();
-
-        $joins[] = "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)";
-
-        $map = MetaData::operationToRolesMap();
-
-        if ($operation !== null && isset($map[$operation])) {
-            $roleIds = array();
-            foreach ($map[$operation] as $roleName) {
-                $roleIds[] = PermissionHelper::roleNameToId($roleName);
-            }
-            $roleIds = implode(',', $roleIds);
-            $joins[] = "INNER JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `gha`.`role_id` IN ($roleIds) AND `gha`.`account_id` = :accountId)";
-        } else {
-            $joins[] = "INNER JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `gha`.`account_id` = :accountId)";
-        }
-
-        /*
-        $counter = 0;
-        foreach ($groupRoles as $groupName => $roles) {
-            $roleIds = array();
-
-            foreach ($roles as $roleName) {
-                $roleIds[] = self::roleNameToId($roleName);
-            }
-
-            if (!empty($roleIds)) {
-                $ghaTableAlias = "`gha_$counter`";
-
-                $groupId = ":groupId_$counter";
-                $roleIds = implode(',', $roleIds);
-                $joins[] = "INNER JOIN `group_has_account` AS $ghaTableAlias ON ($ghaTableAlias.`group_id` = $groupId AND $ghaTableAlias.`role_id` IN ($roleIds) AND $ghaTableAlias.`account_id` = :accountId)";
-                $criteria->params[$groupId] = PermissionHelper::groupNameToId($groupName);
-                $counter++;
-            }
-        }
-        */
-
-        // All items should be found only once.
-        $criteria->distinct = true;
-
-        // Apply all the necessary joins to check for group based access.
-        $criteria->join = implode(' ', $joins);
-
-        // Restrict access based on the account id.
-        //$criteria->addCondition("`gha`.`account_id` = :accountId OR `t`.`owner_id` = :accountId");
-        $criteria->params[':accountId'] = Yii::app()->user->id;
-
-        return $criteria;
     }
 }

@@ -22,25 +22,21 @@
             <?php if ($languageCode === Yii::app()->sourceLanguage): ?>
                 <?php continue; ?>
             <?php endif; ?>
-            <?php $step = $this->firstTranslationFlowStep($model); ?>
-            <?php $action = 'translate'; ?>
             <?php $options = array(
                 'icon' => 'globe',
             ); ?>
             <div class="language-content">
                 <div class="language-actions">
                     <?php echo TbHtml::linkButton(
-                        $languageLabel,
+                        Yii::t('app', 'Translate into {language}', array('{language}' => $languageLabel)),
                         array(
                             'block' => true,
-                            'color' => $this->action->id === $action
-                                    ? TbHtml::BUTTON_COLOR_INVERSE
-                                    : TbHtml::BUTTON_COLOR_DEFAULT,
                             'size' => TbHtml::BUTTON_SIZE_SM,
                             'url' => array(
-                                $action,
+                                'translate',
                                 'id' => $model->{$model->tableSchema->primaryKey},
-                                'step' => $step, 'translateInto' => $languageCode,
+                                'step' => $this->firstTranslationFlowStep($model),
+                                'translateInto' => $languageCode,
                             ),
                         )
                     ); ?>
@@ -65,9 +61,5 @@
             </div>
         <?php endforeach; ?>
         <?php Yii::app()->language = $_lang; ?>
-        <div class="alert alert-info">
-            <?php print Yii::t('app', 'Hint'); ?>:
-            <?php print Yii::t('app', 'Above you see the current translation progress for the current item. Choose language to help translate into above.'); ?>
-        </div>
     </div>
 </div>

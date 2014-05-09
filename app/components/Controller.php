@@ -31,6 +31,21 @@ class Controller extends CController
     }
 
     /**
+     * @inheritDoc
+     */
+    protected function beforeAction($action)
+    {
+        $traits = class_uses(get_class($this));
+
+        if (in_array('ItemController', $traits)) {
+            /** @var self|ItemController $this */
+            $this->beforeItemControllerAction($action);
+        }
+
+        return parent::beforeAction($action);
+    }
+
+    /**
      * Ability to debug redirects
      */
     public function redirect($url, $terminate = true, $statusCode = 302)
