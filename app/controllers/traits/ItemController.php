@@ -265,6 +265,31 @@ trait ItemController
     }
 
     /**
+     * Runs operations before all ItemController actions.
+     * @param CAction $action
+     * @return boolean
+     */
+    public function beforeItemControllerAction($action)
+    {
+        // Handle 'translate' and 'edit' actions
+        if (in_array($action->id, array('translate', 'edit'))) {
+            $this->setWorkflowReturnUrl();
+        }
+
+        return true;
+    }
+
+    /**
+     * Sets the returnUrl when navigating between workflow steps.
+     */
+    public function setWorkflowReturnUrl()
+    {
+        if (isset($_GET['returnUrl'])) {
+            Yii::app()->user->setReturnUrl($_GET['returnUrl']);
+        }
+    }
+
+    /**
      * Returns the target translation language. Defaults to null if undefined.
      * @return string|null
      */
@@ -663,10 +688,6 @@ trait ItemController
         $this->step = $step;
         $this->scenario = "temporary-step_$step";
 
-        if (isset($returnUrl)) {
-            Yii::app()->user->setReturnUrl($returnUrl);
-        }
-
         $model = $this->loadModel($id);
 
         $model->scenario = $this->scenario;
@@ -909,10 +930,6 @@ trait ItemController
     public function actionTranslate($id, $step, $translateInto, $returnUrl = null)
     {
         $this->step = $step;
-
-        if (isset($returnUrl)) {
-            Yii::app()->user->setReturnUrl($returnUrl);
-        }
 
         if (!Yii::app()->user->canTranslateInto($translateInto)) {
             throw new CHttpException(403, Yii::t('app', "You are not allowed to translate into: $translateInto"));

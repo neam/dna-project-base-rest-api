@@ -126,10 +126,6 @@ class VideoFileController extends Controller
             throw new CHttpException(403, Yii::t('app', "You are not allowed to translate into: $translateInto"));
         }
 
-        if (isset($returnUrl)) {
-            Yii::app()->user->setReturnUrl($returnUrl);
-        }
-
         $this->scenario = "into_$translateInto-step_$step";
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
