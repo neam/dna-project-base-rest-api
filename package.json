@@ -13,7 +13,10 @@
     "grunt-contrib-less": "~0.6.4",
     "grunt-contrib-requirejs": "^0.4.4",
     "grunt-less-imports": "~0.9.1",
-    "load-grunt-tasks": "~0.3.0"
+    "load-grunt-tasks": "~0.3.0",
+    "grunt-cli": "^0.1.13",
+    "yo": "^1.1.2",
+    "generator-nord-backbone": "^0.1.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "^0.10.0",
