@@ -31,9 +31,7 @@ class Controller extends CController
     }
 
     /**
-     * Run before every action.
-     * @param CAction $action
-     * @return boolean
+     * @inheritDoc
      */
     protected function beforeAction($action)
     {
