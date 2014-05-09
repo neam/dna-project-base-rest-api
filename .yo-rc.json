@@ -1,6 +1,6 @@
 {
-    "generator-nord-backbone": {
-        "appName": "gapminder",
-        "appPath": "app/js/gapminder"
-    }
+  "generator-nord-backbone": {
+    "appName": "gapminder",
+    "appPath": "app/js/gapminder"
+  }
 }
