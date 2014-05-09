@@ -18,6 +18,21 @@ $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SE
 
 require('includes/languages.php');
 
+// Set the Google Analytics ID
+// TODO: Proper environment check.
+switch ($_SERVER['SERVER_NAME']) {
+    case 'cms.gapminder.org':
+        $googleAnalyticsId = 'UA-739025-9';
+        break;
+
+    case 'develop-cms.gapminder.org':
+        $googleAnalyticsId = 'UA-739025-10';
+        break;
+
+    default:
+        $googleAnalyticsId = 'UA-XXXXXXX-X';
+}
+
 // main application configuration
 $mainConfig = array(
     'basePath'   => $applicationDirectory,
@@ -369,8 +384,8 @@ $mainConfig = array(
         ),
         'ga' => array(
             'class' => 'yiiga\components\GoogleAnalytics',
-            'accountId' => 'UA-XXXXXXX-X', // TODO: Use the real account ID.
-            'cookieDomain' => 'cms.gapminder.org', // optional
+            'accountId' => $googleAnalyticsId,
+            'cookieDomain' => $_SERVER['SERVER_NAME'], // TODO: Implement properly.
         ),
         'image'         => array(
             'class'  => 'vendor.phundament.p3extensions.components.image.CImageComponent',
