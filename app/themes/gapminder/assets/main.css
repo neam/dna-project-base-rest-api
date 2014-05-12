@@ -9724,13 +9724,16 @@ Styleguide 5
 .styleguide-color.alert-error .alert-link {
   color: #953b39;
 }
-.layout-main body {
+.layout-minimal {
+  margin-top: 60px;
+}
+.layout-regular {
   padding-top: 95px;
 }
-.layout-main .container .content {
+.layout-regular .container .content {
   position: relative;
 }
-.layout-main .footer {
+.layout-regular .footer {
   background-color: #fef5fa;
   color: #707070;
   margin-top: 100px;
@@ -9738,37 +9741,37 @@ Styleguide 5
   font-weight: 100;
   letter-spacing: 1px;
 }
-.layout-main .footer a {
+.layout-regular .footer a {
   color: #707070;
 }
-.layout-main .footer .footer-top {
+.layout-regular .footer .footer-top {
   margin-bottom: 35px;
 }
-.layout-main .footer .footer-column {
+.layout-regular .footer .footer-column {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .layout-main .footer .footer-column {
+  .layout-regular .footer .footer-column {
     float: left;
     width: 50%;
   }
 }
-.layout-main .footer .footer-column .link-column {
+.layout-regular .footer .footer-column .link-column {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .layout-main .footer .footer-column .link-column {
+  .layout-regular .footer .footer-column .link-column {
     float: left;
     width: 33.33333333333333%;
   }
 }
-.layout-main .footer .footer-column .link-column .footer-links {
+.layout-regular .footer .footer-column .link-column .footer-links {
   color: #707070;
   font-size: 14px;
   list-style: none;
@@ -9776,10 +9779,10 @@ Styleguide 5
   padding: 0;
   text-transform: uppercase;
 }
-.layout-main .footer .footer-column .link-column .footer-links li {
+.layout-regular .footer .footer-column .link-column .footer-links li {
   margin-bottom: 10px;
 }
-.layout-main .footer .copyright-column {
+.layout-regular .footer .copyright-column {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -9788,17 +9791,17 @@ Styleguide 5
   margin-top: 25px;
 }
 @media (min-width: 992px) {
-  .layout-main .footer .copyright-column {
+  .layout-regular .footer .copyright-column {
     float: left;
     width: 100%;
   }
 }
-.layout-main .footer .copyright-column .lead {
+.layout-regular .footer .copyright-column .lead {
   font-size: 14px;
   margin-bottom: 5px;
   text-transform: uppercase;
 }
-.layout-main .footer .copyright-column p:last-child {
+.layout-regular .footer .copyright-column p:last-child {
   margin-bottom: 0;
 }
 .account-controller.dashboard-action .dashboard-profile {
@@ -13235,6 +13238,38 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
 }
 .login-controller.login-action .radio {
   padding-left: 0;
+}
+.login-controller.login-action .form-container {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .login-controller.login-action .form-container {
+    float: left;
+    width: 50%;
+  }
+}
+@media (min-width: 992px) {
+  .login-controller.login-action .form-container {
+    margin-left: 25%;
+  }
+}
+.login-controller.login-action .form-container .brand-logo {
+  text-align: center;
+}
+.login-controller.login-action .form-container .login-heading {
+  color: #000;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 22px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.login-controller.login-action .form-container .container-lead {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 .registration-controller.register-action .radio {
   padding-left: 0;

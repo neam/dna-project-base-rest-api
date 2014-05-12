@@ -118,7 +118,7 @@ class VideoFileController extends Controller
      * @param $step
      * @param $translateInto
      */
-    public function actionTranslate($id, $step, $translateInto, $returnUrl = null)
+    public function actionTranslate($id, $step, $translateInto)
     {
         $this->step = $step;
 

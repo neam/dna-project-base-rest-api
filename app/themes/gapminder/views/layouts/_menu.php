@@ -14,7 +14,7 @@
         '\TbNavbar',
         array(
             //'fluid' => true,
-            'brandLabel' => TbHtml::image(Yii::app()->baseUrl . '/images/logo.png'),
+            'brandLabel' => Html::renderLogo(),
             'collapse' => true,
             'display' => TbHtml::NAVBAR_DISPLAY_FIXEDTOP,
             'items' => array(

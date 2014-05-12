@@ -6,9 +6,14 @@
  */
 class WebApplication extends CWebApplication
 {
-    // Application constants
+    // Theme constants
     const THEME_FRONTEND = 'frontend';
     const THEME_BACKEND2 = 'backend2';
+
+    // View layout constants
+    const LAYOUT_MAIN = '//layouts/main';
+    const LAYOUT_REGULAR = '//layouts/regular';
+    const LAYOUT_MINIMAL = '//layouts/minimal';
 
     /**
      * Registers CSS files.

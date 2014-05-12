@@ -368,4 +368,25 @@ class Html extends TbHtml
 
         return $languages;
     }
+
+    /**
+     * Renders the Gapminder logo.
+     * @return string
+     */
+    static public function renderLogo()
+    {
+        return TbHtml::image(Yii::app()->baseUrl . '/images/logo.png');
+    }
+
+    /**
+     * Renders the Gapminder logo with a link to the home page.
+     * @return string
+     */
+    static public function renderLogoWithLink()
+    {
+        return TbHtml::link(
+            self::renderLogo(),
+            Yii::app()->homeUrl
+        );
+    }
 }
