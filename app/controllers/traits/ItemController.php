@@ -921,15 +921,22 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
-        
-        $this->populateWorkflowData($model, 'translate', Yii::t('app', ''));
 
-        $this->render(
-            '/_item/translation-overview',
-            array(
-                'model' => $model,
-            )
-        );
+        $profileLanguages = Yii::app()->user->getTranslatableLanguages();
+
+        if (count($profileLanguages) > 0) {
+            $this->populateWorkflowData($model, 'translate', Yii::t('app', ''));
+
+            $this->render(
+                '/_item/translation-overview',
+                array(
+                    'model' => $model,
+                )
+            );
+        } else {
+            Yii::app()->user->setFlash('warning', Yii::t('app', 'Please set your languages before translating.'));
+            $this->redirect('/account/profile');
+        }
     }
 
     /**
