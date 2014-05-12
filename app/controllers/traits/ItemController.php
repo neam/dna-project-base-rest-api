@@ -621,26 +621,16 @@ trait ItemController
      */
     public function actionPublish($id)
     {
-        $permissionAttributes = array(
-            'account_id' => Yii::app()->user->id,
-            'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
-            'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
-        );
+        // TODO: Save changeset.
 
-        if (PermissionHelper::groupHasAccount($permissionAttributes)) {
-            // TODO: Save changeset.
+        $model = $this->loadModel($id);
 
-            $model = $this->loadModel($id);
-
-            if (!$model->qaStateBehavior()->validStatus('publishable')) {
-                throw new CException('This item does not validate for the publishable status.');
-            }
-
-            $model->changeStatus('public');
-            $model->makeNodeHasGroupVisible();
-        } else {
-            throw new CHttpException(403, Yii::t('error', 'You do not have permission to publish items.'));
+        if (!$model->qaStateBehavior()->validStatus('publishable')) {
+            throw new CException('This item does not validate for the publishable status.');
         }
+
+        $model->changeStatus('public');
+        $model->makeNodeHasGroupVisible();
 
         // Redirect
         if (isset($_GET['returnUrl'])) {

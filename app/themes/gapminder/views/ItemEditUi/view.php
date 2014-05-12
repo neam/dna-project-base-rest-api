@@ -31,7 +31,14 @@
             <h1 class="item-heading"><?php echo $this->model->itemLabel; ?></h1>
         </div>
     </div>
-    <?php $this->render("actions/$this->actionPartialView"); ?>
+    <?php if ($this->actionPartialView === '_prepareForPublishing'): ?>
+        <?php $this->render('_required-workflow', array(
+            'model' => $this->model,
+        )); ?>
+        <?php $this->render("actions/_edit"); ?>
+    <?php else: ?>
+        <?php $this->render("actions/$this->actionPartialView"); ?>
+    <?php endif; ?>
     <?php /*
     <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
     <?php $this->renderPartial('/_item/edit/_flowbar', compact('model')); ?>
