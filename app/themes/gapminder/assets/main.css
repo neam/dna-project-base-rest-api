@@ -12200,8 +12200,24 @@ fieldset[disabled] .item-controller .item-progress .progress-item .item-action .
 .item-controller.browse-action .item-actions .action-buttons .btn-group {
   margin: 5px 0 0 5px;
 }
-.item-controller.edit-action .preview-button,
-.item-controller.translate-action .preview-button {
+.item-controller.edit-action label,
+.item-controller.translate-action label,
+.item-controller.prepareforpublishing-action label,
+.item-controller.prepareforreview-action label {
+  font-weight: 400;
+}
+.item-controller.edit-action .item-top-actions,
+.item-controller.translate-action .item-top-actions,
+.item-controller.prepareforpublishing-action .item-top-actions,
+.item-controller.prepareforreview-action .item-top-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.item-controller.edit-action .item-top-actions .preview-button,
+.item-controller.translate-action .item-top-actions .preview-button,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button,
+.item-controller.prepareforreview-action .item-top-actions .preview-button {
   margin-bottom: 0;
   font-weight: normal;
   vertical-align: middle;
@@ -12241,38 +12257,51 @@ fieldset[disabled] .item-controller .item-progress .progress-item .item-action .
   font-size: 14px;
   padding: 7px 20px;
   border-radius: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
 }
-.item-controller.edit-action .preview-button:focus,
-.item-controller.translate-action .preview-button:focus {
+.item-controller.edit-action .item-top-actions .preview-button:focus,
+.item-controller.translate-action .item-top-actions .preview-button:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-.item-controller.edit-action .preview-button:hover,
-.item-controller.translate-action .preview-button:hover,
-.item-controller.edit-action .preview-button:focus,
-.item-controller.translate-action .preview-button:focus {
+.item-controller.edit-action .item-top-actions .preview-button:hover,
+.item-controller.translate-action .item-top-actions .preview-button:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button:hover,
+.item-controller.edit-action .item-top-actions .preview-button:focus,
+.item-controller.translate-action .item-top-actions .preview-button:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button:focus {
   color: #ffffff;
   text-decoration: none;
 }
-.item-controller.edit-action .preview-button:active,
-.item-controller.translate-action .preview-button:active,
-.item-controller.edit-action .preview-button.active,
-.item-controller.translate-action .preview-button.active {
+.item-controller.edit-action .item-top-actions .preview-button:active,
+.item-controller.translate-action .item-top-actions .preview-button:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button:active,
+.item-controller.edit-action .item-top-actions .preview-button.active,
+.item-controller.translate-action .item-top-actions .preview-button.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.active {
   outline: 0;
   background-image: none;
   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
-.item-controller.edit-action .preview-button.disabled,
-.item-controller.translate-action .preview-button.disabled,
-.item-controller.edit-action .preview-button[disabled],
-.item-controller.translate-action .preview-button[disabled],
-fieldset[disabled] .item-controller.edit-action .preview-button,
-fieldset[disabled] .item-controller.translate-action .preview-button {
+.item-controller.edit-action .item-top-actions .preview-button.disabled,
+.item-controller.translate-action .item-top-actions .preview-button.disabled,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.disabled,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.disabled,
+.item-controller.edit-action .item-top-actions .preview-button[disabled],
+.item-controller.translate-action .item-top-actions .preview-button[disabled],
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button[disabled],
+.item-controller.prepareforreview-action .item-top-actions .preview-button[disabled],
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button {
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.65;
@@ -12280,352 +12309,610 @@ fieldset[disabled] .item-controller.translate-action .preview-button {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.item-controller.edit-action .preview-button:hover,
-.item-controller.translate-action .preview-button:hover {
+.item-controller.edit-action .item-top-actions .preview-button:hover,
+.item-controller.translate-action .item-top-actions .preview-button:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button:hover {
   background-color: #bcbcbc;
   color: #fff;
 }
-.item-controller.edit-action .preview-button.btn-default,
-.item-controller.translate-action .preview-button.btn-default {
+.item-controller.edit-action .item-top-actions .preview-button.btn-default,
+.item-controller.translate-action .item-top-actions .preview-button.btn-default,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-default,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-default {
   background-color: #c9c9c9;
 }
-.item-controller.edit-action .preview-button.btn-default:hover,
-.item-controller.translate-action .preview-button.btn-default:hover {
+.item-controller.edit-action .item-top-actions .preview-button.btn-default:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-default:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-default:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-default:hover {
   background-color: #bcbcbc;
   color: #fff;
 }
-.item-controller.edit-action .preview-button.btn-primary,
-.item-controller.translate-action .preview-button.btn-primary {
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary {
   color: #ffffff;
   background-color: #eb4498;
   border-color: #e92d8b;
 }
-.item-controller.edit-action .preview-button.btn-primary:hover,
-.item-controller.translate-action .preview-button.btn-primary:hover,
-.item-controller.edit-action .preview-button.btn-primary:focus,
-.item-controller.translate-action .preview-button.btn-primary:focus,
-.item-controller.edit-action .preview-button.btn-primary:active,
-.item-controller.translate-action .preview-button.btn-primary:active,
-.item-controller.edit-action .preview-button.btn-primary.active,
-.item-controller.translate-action .preview-button.btn-primary.active,
-.open .dropdown-toggle.item-controller.edit-action .preview-button.btn-primary,
-.open .dropdown-toggle.item-controller.translate-action .preview-button.btn-primary {
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary.active,
+.open .dropdown-toggle.item-controller.edit-action .item-top-actions .preview-button.btn-primary,
+.open .dropdown-toggle.item-controller.translate-action .item-top-actions .preview-button.btn-primary,
+.open .dropdown-toggle.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary,
+.open .dropdown-toggle.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary {
   color: #ffffff;
   background-color: #e71f84;
   border-color: #c3156d;
 }
-.item-controller.edit-action .preview-button.btn-primary:active,
-.item-controller.translate-action .preview-button.btn-primary:active,
-.item-controller.edit-action .preview-button.btn-primary.active,
-.item-controller.translate-action .preview-button.btn-primary.active,
-.open .dropdown-toggle.item-controller.edit-action .preview-button.btn-primary,
-.open .dropdown-toggle.item-controller.translate-action .preview-button.btn-primary {
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary.active,
+.open .dropdown-toggle.item-controller.edit-action .item-top-actions .preview-button.btn-primary,
+.open .dropdown-toggle.item-controller.translate-action .item-top-actions .preview-button.btn-primary,
+.open .dropdown-toggle.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary,
+.open .dropdown-toggle.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary {
   background-image: none;
 }
-.item-controller.edit-action .preview-button.btn-primary.disabled,
-.item-controller.translate-action .preview-button.btn-primary.disabled,
-.item-controller.edit-action .preview-button.btn-primary[disabled],
-.item-controller.translate-action .preview-button.btn-primary[disabled],
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-primary,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-primary,
-.item-controller.edit-action .preview-button.btn-primary.disabled:hover,
-.item-controller.translate-action .preview-button.btn-primary.disabled:hover,
-.item-controller.edit-action .preview-button.btn-primary[disabled]:hover,
-.item-controller.translate-action .preview-button.btn-primary[disabled]:hover,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-primary:hover,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-primary:hover,
-.item-controller.edit-action .preview-button.btn-primary.disabled:focus,
-.item-controller.translate-action .preview-button.btn-primary.disabled:focus,
-.item-controller.edit-action .preview-button.btn-primary[disabled]:focus,
-.item-controller.translate-action .preview-button.btn-primary[disabled]:focus,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-primary:focus,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-primary:focus,
-.item-controller.edit-action .preview-button.btn-primary.disabled:active,
-.item-controller.translate-action .preview-button.btn-primary.disabled:active,
-.item-controller.edit-action .preview-button.btn-primary[disabled]:active,
-.item-controller.translate-action .preview-button.btn-primary[disabled]:active,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-primary:active,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-primary:active,
-.item-controller.edit-action .preview-button.btn-primary.disabled.active,
-.item-controller.translate-action .preview-button.btn-primary.disabled.active,
-.item-controller.edit-action .preview-button.btn-primary[disabled].active,
-.item-controller.translate-action .preview-button.btn-primary[disabled].active,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-primary.active,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-primary.active {
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary.disabled,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary.disabled,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary.disabled,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary.disabled,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary[disabled],
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary[disabled],
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary[disabled],
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary[disabled],
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-primary,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-primary,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary.disabled:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary.disabled:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary.disabled:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary.disabled:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary[disabled]:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary[disabled]:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary[disabled]:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary[disabled]:hover,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-primary:hover,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-primary:hover,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary:hover,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary.disabled:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary.disabled:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary.disabled:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary.disabled:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary[disabled]:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary[disabled]:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary[disabled]:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary[disabled]:focus,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-primary:focus,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-primary:focus,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary:focus,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary.disabled:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary.disabled:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary.disabled:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary.disabled:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary[disabled]:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary[disabled]:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary[disabled]:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary[disabled]:active,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-primary:active,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-primary:active,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary:active,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary.disabled.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary.disabled.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary.disabled.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary.disabled.active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary[disabled].active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary[disabled].active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary[disabled].active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary[disabled].active,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-primary.active,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-primary.active,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary.active,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary.active {
   background-color: #eb4498;
   border-color: #e92d8b;
 }
-.item-controller.edit-action .preview-button.btn-primary .badge,
-.item-controller.translate-action .preview-button.btn-primary .badge {
+.item-controller.edit-action .item-top-actions .preview-button.btn-primary .badge,
+.item-controller.translate-action .item-top-actions .preview-button.btn-primary .badge,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-primary .badge,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-primary .badge {
   color: #eb4498;
   background-color: #fff;
 }
-.item-controller.edit-action .preview-button.btn-success,
-.item-controller.translate-action .preview-button.btn-success {
+.item-controller.edit-action .item-top-actions .preview-button.btn-success,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success {
   color: #ffffff;
   background-color: #22d23e;
   border-color: #1ebc38;
 }
-.item-controller.edit-action .preview-button.btn-success:hover,
-.item-controller.translate-action .preview-button.btn-success:hover,
-.item-controller.edit-action .preview-button.btn-success:focus,
-.item-controller.translate-action .preview-button.btn-success:focus,
-.item-controller.edit-action .preview-button.btn-success:active,
-.item-controller.translate-action .preview-button.btn-success:active,
-.item-controller.edit-action .preview-button.btn-success.active,
-.item-controller.translate-action .preview-button.btn-success.active,
-.open .dropdown-toggle.item-controller.edit-action .preview-button.btn-success,
-.open .dropdown-toggle.item-controller.translate-action .preview-button.btn-success {
+.item-controller.edit-action .item-top-actions .preview-button.btn-success:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success.active,
+.open .dropdown-toggle.item-controller.edit-action .item-top-actions .preview-button.btn-success,
+.open .dropdown-toggle.item-controller.translate-action .item-top-actions .preview-button.btn-success,
+.open .dropdown-toggle.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success,
+.open .dropdown-toggle.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success {
   color: #ffffff;
   background-color: #1caf34;
   border-color: #168728;
 }
-.item-controller.edit-action .preview-button.btn-success:active,
-.item-controller.translate-action .preview-button.btn-success:active,
-.item-controller.edit-action .preview-button.btn-success.active,
-.item-controller.translate-action .preview-button.btn-success.active,
-.open .dropdown-toggle.item-controller.edit-action .preview-button.btn-success,
-.open .dropdown-toggle.item-controller.translate-action .preview-button.btn-success {
+.item-controller.edit-action .item-top-actions .preview-button.btn-success:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success.active,
+.open .dropdown-toggle.item-controller.edit-action .item-top-actions .preview-button.btn-success,
+.open .dropdown-toggle.item-controller.translate-action .item-top-actions .preview-button.btn-success,
+.open .dropdown-toggle.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success,
+.open .dropdown-toggle.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success {
   background-image: none;
 }
-.item-controller.edit-action .preview-button.btn-success.disabled,
-.item-controller.translate-action .preview-button.btn-success.disabled,
-.item-controller.edit-action .preview-button.btn-success[disabled],
-.item-controller.translate-action .preview-button.btn-success[disabled],
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-success,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-success,
-.item-controller.edit-action .preview-button.btn-success.disabled:hover,
-.item-controller.translate-action .preview-button.btn-success.disabled:hover,
-.item-controller.edit-action .preview-button.btn-success[disabled]:hover,
-.item-controller.translate-action .preview-button.btn-success[disabled]:hover,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-success:hover,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-success:hover,
-.item-controller.edit-action .preview-button.btn-success.disabled:focus,
-.item-controller.translate-action .preview-button.btn-success.disabled:focus,
-.item-controller.edit-action .preview-button.btn-success[disabled]:focus,
-.item-controller.translate-action .preview-button.btn-success[disabled]:focus,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-success:focus,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-success:focus,
-.item-controller.edit-action .preview-button.btn-success.disabled:active,
-.item-controller.translate-action .preview-button.btn-success.disabled:active,
-.item-controller.edit-action .preview-button.btn-success[disabled]:active,
-.item-controller.translate-action .preview-button.btn-success[disabled]:active,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-success:active,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-success:active,
-.item-controller.edit-action .preview-button.btn-success.disabled.active,
-.item-controller.translate-action .preview-button.btn-success.disabled.active,
-.item-controller.edit-action .preview-button.btn-success[disabled].active,
-.item-controller.translate-action .preview-button.btn-success[disabled].active,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-success.active,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-success.active {
+.item-controller.edit-action .item-top-actions .preview-button.btn-success.disabled,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success.disabled,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success.disabled,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success.disabled,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success[disabled],
+.item-controller.translate-action .item-top-actions .preview-button.btn-success[disabled],
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success[disabled],
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success[disabled],
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-success,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-success,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success.disabled:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success.disabled:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success.disabled:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success.disabled:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success[disabled]:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success[disabled]:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success[disabled]:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success[disabled]:hover,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-success:hover,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-success:hover,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success:hover,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success.disabled:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success.disabled:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success.disabled:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success.disabled:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success[disabled]:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success[disabled]:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success[disabled]:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success[disabled]:focus,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-success:focus,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-success:focus,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success:focus,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success.disabled:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success.disabled:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success.disabled:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success.disabled:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success[disabled]:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success[disabled]:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success[disabled]:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success[disabled]:active,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-success:active,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-success:active,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success:active,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success.disabled.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success.disabled.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success.disabled.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success.disabled.active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-success[disabled].active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success[disabled].active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success[disabled].active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success[disabled].active,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-success.active,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-success.active,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success.active,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success.active {
   background-color: #22d23e;
   border-color: #1ebc38;
 }
-.item-controller.edit-action .preview-button.btn-success .badge,
-.item-controller.translate-action .preview-button.btn-success .badge {
+.item-controller.edit-action .item-top-actions .preview-button.btn-success .badge,
+.item-controller.translate-action .item-top-actions .preview-button.btn-success .badge,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-success .badge,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-success .badge {
   color: #22d23e;
   background-color: #fff;
 }
-.item-controller.edit-action .preview-button.btn-warning,
-.item-controller.translate-action .preview-button.btn-warning {
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning {
   color: #3d3d3d;
   background-color: #feee74;
   border-color: #feeb5b;
 }
-.item-controller.edit-action .preview-button.btn-warning:hover,
-.item-controller.translate-action .preview-button.btn-warning:hover,
-.item-controller.edit-action .preview-button.btn-warning:focus,
-.item-controller.translate-action .preview-button.btn-warning:focus,
-.item-controller.edit-action .preview-button.btn-warning:active,
-.item-controller.translate-action .preview-button.btn-warning:active,
-.item-controller.edit-action .preview-button.btn-warning.active,
-.item-controller.translate-action .preview-button.btn-warning.active,
-.open .dropdown-toggle.item-controller.edit-action .preview-button.btn-warning,
-.open .dropdown-toggle.item-controller.translate-action .preview-button.btn-warning {
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning.active,
+.open .dropdown-toggle.item-controller.edit-action .item-top-actions .preview-button.btn-warning,
+.open .dropdown-toggle.item-controller.translate-action .item-top-actions .preview-button.btn-warning,
+.open .dropdown-toggle.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning,
+.open .dropdown-toggle.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning {
   color: #3d3d3d;
   background-color: #fee94b;
   border-color: #fde31e;
 }
-.item-controller.edit-action .preview-button.btn-warning:active,
-.item-controller.translate-action .preview-button.btn-warning:active,
-.item-controller.edit-action .preview-button.btn-warning.active,
-.item-controller.translate-action .preview-button.btn-warning.active,
-.open .dropdown-toggle.item-controller.edit-action .preview-button.btn-warning,
-.open .dropdown-toggle.item-controller.translate-action .preview-button.btn-warning {
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning.active,
+.open .dropdown-toggle.item-controller.edit-action .item-top-actions .preview-button.btn-warning,
+.open .dropdown-toggle.item-controller.translate-action .item-top-actions .preview-button.btn-warning,
+.open .dropdown-toggle.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning,
+.open .dropdown-toggle.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning {
   background-image: none;
 }
-.item-controller.edit-action .preview-button.btn-warning.disabled,
-.item-controller.translate-action .preview-button.btn-warning.disabled,
-.item-controller.edit-action .preview-button.btn-warning[disabled],
-.item-controller.translate-action .preview-button.btn-warning[disabled],
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-warning,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-warning,
-.item-controller.edit-action .preview-button.btn-warning.disabled:hover,
-.item-controller.translate-action .preview-button.btn-warning.disabled:hover,
-.item-controller.edit-action .preview-button.btn-warning[disabled]:hover,
-.item-controller.translate-action .preview-button.btn-warning[disabled]:hover,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-warning:hover,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-warning:hover,
-.item-controller.edit-action .preview-button.btn-warning.disabled:focus,
-.item-controller.translate-action .preview-button.btn-warning.disabled:focus,
-.item-controller.edit-action .preview-button.btn-warning[disabled]:focus,
-.item-controller.translate-action .preview-button.btn-warning[disabled]:focus,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-warning:focus,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-warning:focus,
-.item-controller.edit-action .preview-button.btn-warning.disabled:active,
-.item-controller.translate-action .preview-button.btn-warning.disabled:active,
-.item-controller.edit-action .preview-button.btn-warning[disabled]:active,
-.item-controller.translate-action .preview-button.btn-warning[disabled]:active,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-warning:active,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-warning:active,
-.item-controller.edit-action .preview-button.btn-warning.disabled.active,
-.item-controller.translate-action .preview-button.btn-warning.disabled.active,
-.item-controller.edit-action .preview-button.btn-warning[disabled].active,
-.item-controller.translate-action .preview-button.btn-warning[disabled].active,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-warning.active,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-warning.active {
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning.disabled,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning.disabled,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning.disabled,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning.disabled,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning[disabled],
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning[disabled],
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning[disabled],
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning[disabled],
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-warning,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-warning,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning.disabled:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning.disabled:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning.disabled:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning.disabled:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning[disabled]:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning[disabled]:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning[disabled]:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning[disabled]:hover,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-warning:hover,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-warning:hover,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning:hover,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning.disabled:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning.disabled:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning.disabled:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning.disabled:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning[disabled]:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning[disabled]:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning[disabled]:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning[disabled]:focus,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-warning:focus,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-warning:focus,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning:focus,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning.disabled:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning.disabled:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning.disabled:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning.disabled:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning[disabled]:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning[disabled]:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning[disabled]:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning[disabled]:active,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-warning:active,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-warning:active,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning:active,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning.disabled.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning.disabled.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning.disabled.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning.disabled.active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning[disabled].active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning[disabled].active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning[disabled].active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning[disabled].active,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-warning.active,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-warning.active,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning.active,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning.active {
   background-color: #feee74;
   border-color: #feeb5b;
 }
-.item-controller.edit-action .preview-button.btn-warning .badge,
-.item-controller.translate-action .preview-button.btn-warning .badge {
+.item-controller.edit-action .item-top-actions .preview-button.btn-warning .badge,
+.item-controller.translate-action .item-top-actions .preview-button.btn-warning .badge,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-warning .badge,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-warning .badge {
   color: #feee74;
   background-color: #fff;
 }
-.item-controller.edit-action .preview-button.btn-danger,
-.item-controller.translate-action .preview-button.btn-danger {
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger {
   color: #ffffff;
   background-color: #e0575c;
   border-color: #dc4147;
 }
-.item-controller.edit-action .preview-button.btn-danger:hover,
-.item-controller.translate-action .preview-button.btn-danger:hover,
-.item-controller.edit-action .preview-button.btn-danger:focus,
-.item-controller.translate-action .preview-button.btn-danger:focus,
-.item-controller.edit-action .preview-button.btn-danger:active,
-.item-controller.translate-action .preview-button.btn-danger:active,
-.item-controller.edit-action .preview-button.btn-danger.active,
-.item-controller.translate-action .preview-button.btn-danger.active,
-.open .dropdown-toggle.item-controller.edit-action .preview-button.btn-danger,
-.open .dropdown-toggle.item-controller.translate-action .preview-button.btn-danger {
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger.active,
+.open .dropdown-toggle.item-controller.edit-action .item-top-actions .preview-button.btn-danger,
+.open .dropdown-toggle.item-controller.translate-action .item-top-actions .preview-button.btn-danger,
+.open .dropdown-toggle.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger,
+.open .dropdown-toggle.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger {
   color: #ffffff;
   background-color: #da353b;
   border-color: #bd2329;
 }
-.item-controller.edit-action .preview-button.btn-danger:active,
-.item-controller.translate-action .preview-button.btn-danger:active,
-.item-controller.edit-action .preview-button.btn-danger.active,
-.item-controller.translate-action .preview-button.btn-danger.active,
-.open .dropdown-toggle.item-controller.edit-action .preview-button.btn-danger,
-.open .dropdown-toggle.item-controller.translate-action .preview-button.btn-danger {
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger.active,
+.open .dropdown-toggle.item-controller.edit-action .item-top-actions .preview-button.btn-danger,
+.open .dropdown-toggle.item-controller.translate-action .item-top-actions .preview-button.btn-danger,
+.open .dropdown-toggle.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger,
+.open .dropdown-toggle.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger {
   background-image: none;
 }
-.item-controller.edit-action .preview-button.btn-danger.disabled,
-.item-controller.translate-action .preview-button.btn-danger.disabled,
-.item-controller.edit-action .preview-button.btn-danger[disabled],
-.item-controller.translate-action .preview-button.btn-danger[disabled],
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-danger,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-danger,
-.item-controller.edit-action .preview-button.btn-danger.disabled:hover,
-.item-controller.translate-action .preview-button.btn-danger.disabled:hover,
-.item-controller.edit-action .preview-button.btn-danger[disabled]:hover,
-.item-controller.translate-action .preview-button.btn-danger[disabled]:hover,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-danger:hover,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-danger:hover,
-.item-controller.edit-action .preview-button.btn-danger.disabled:focus,
-.item-controller.translate-action .preview-button.btn-danger.disabled:focus,
-.item-controller.edit-action .preview-button.btn-danger[disabled]:focus,
-.item-controller.translate-action .preview-button.btn-danger[disabled]:focus,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-danger:focus,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-danger:focus,
-.item-controller.edit-action .preview-button.btn-danger.disabled:active,
-.item-controller.translate-action .preview-button.btn-danger.disabled:active,
-.item-controller.edit-action .preview-button.btn-danger[disabled]:active,
-.item-controller.translate-action .preview-button.btn-danger[disabled]:active,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-danger:active,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-danger:active,
-.item-controller.edit-action .preview-button.btn-danger.disabled.active,
-.item-controller.translate-action .preview-button.btn-danger.disabled.active,
-.item-controller.edit-action .preview-button.btn-danger[disabled].active,
-.item-controller.translate-action .preview-button.btn-danger[disabled].active,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-danger.active,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-danger.active {
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger.disabled,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger.disabled,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger.disabled,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger.disabled,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger[disabled],
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger[disabled],
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger[disabled],
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger[disabled],
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-danger,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-danger,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger.disabled:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger.disabled:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger.disabled:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger.disabled:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger[disabled]:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger[disabled]:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger[disabled]:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger[disabled]:hover,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-danger:hover,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-danger:hover,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger:hover,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger.disabled:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger.disabled:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger.disabled:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger.disabled:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger[disabled]:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger[disabled]:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger[disabled]:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger[disabled]:focus,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-danger:focus,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-danger:focus,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger:focus,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger.disabled:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger.disabled:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger.disabled:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger.disabled:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger[disabled]:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger[disabled]:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger[disabled]:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger[disabled]:active,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-danger:active,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-danger:active,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger:active,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger.disabled.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger.disabled.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger.disabled.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger.disabled.active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger[disabled].active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger[disabled].active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger[disabled].active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger[disabled].active,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-danger.active,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-danger.active,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger.active,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger.active {
   background-color: #e0575c;
   border-color: #dc4147;
 }
-.item-controller.edit-action .preview-button.btn-danger .badge,
-.item-controller.translate-action .preview-button.btn-danger .badge {
+.item-controller.edit-action .item-top-actions .preview-button.btn-danger .badge,
+.item-controller.translate-action .item-top-actions .preview-button.btn-danger .badge,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-danger .badge,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-danger .badge {
   color: #e0575c;
   background-color: #fff;
 }
-.item-controller.edit-action .preview-button.btn-info,
-.item-controller.translate-action .preview-button.btn-info {
+.item-controller.edit-action .item-top-actions .preview-button.btn-info,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info {
   color: #ffffff;
   background-color: #b7c1d8;
   border-color: #a6b3cf;
 }
-.item-controller.edit-action .preview-button.btn-info:hover,
-.item-controller.translate-action .preview-button.btn-info:hover,
-.item-controller.edit-action .preview-button.btn-info:focus,
-.item-controller.translate-action .preview-button.btn-info:focus,
-.item-controller.edit-action .preview-button.btn-info:active,
-.item-controller.translate-action .preview-button.btn-info:active,
-.item-controller.edit-action .preview-button.btn-info.active,
-.item-controller.translate-action .preview-button.btn-info.active,
-.open .dropdown-toggle.item-controller.edit-action .preview-button.btn-info,
-.open .dropdown-toggle.item-controller.translate-action .preview-button.btn-info {
+.item-controller.edit-action .item-top-actions .preview-button.btn-info:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info.active,
+.open .dropdown-toggle.item-controller.edit-action .item-top-actions .preview-button.btn-info,
+.open .dropdown-toggle.item-controller.translate-action .item-top-actions .preview-button.btn-info,
+.open .dropdown-toggle.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info,
+.open .dropdown-toggle.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info {
   color: #ffffff;
   background-color: #9daaca;
   border-color: #7f91ba;
 }
-.item-controller.edit-action .preview-button.btn-info:active,
-.item-controller.translate-action .preview-button.btn-info:active,
-.item-controller.edit-action .preview-button.btn-info.active,
-.item-controller.translate-action .preview-button.btn-info.active,
-.open .dropdown-toggle.item-controller.edit-action .preview-button.btn-info,
-.open .dropdown-toggle.item-controller.translate-action .preview-button.btn-info {
+.item-controller.edit-action .item-top-actions .preview-button.btn-info:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info.active,
+.open .dropdown-toggle.item-controller.edit-action .item-top-actions .preview-button.btn-info,
+.open .dropdown-toggle.item-controller.translate-action .item-top-actions .preview-button.btn-info,
+.open .dropdown-toggle.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info,
+.open .dropdown-toggle.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info {
   background-image: none;
 }
-.item-controller.edit-action .preview-button.btn-info.disabled,
-.item-controller.translate-action .preview-button.btn-info.disabled,
-.item-controller.edit-action .preview-button.btn-info[disabled],
-.item-controller.translate-action .preview-button.btn-info[disabled],
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-info,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-info,
-.item-controller.edit-action .preview-button.btn-info.disabled:hover,
-.item-controller.translate-action .preview-button.btn-info.disabled:hover,
-.item-controller.edit-action .preview-button.btn-info[disabled]:hover,
-.item-controller.translate-action .preview-button.btn-info[disabled]:hover,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-info:hover,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-info:hover,
-.item-controller.edit-action .preview-button.btn-info.disabled:focus,
-.item-controller.translate-action .preview-button.btn-info.disabled:focus,
-.item-controller.edit-action .preview-button.btn-info[disabled]:focus,
-.item-controller.translate-action .preview-button.btn-info[disabled]:focus,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-info:focus,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-info:focus,
-.item-controller.edit-action .preview-button.btn-info.disabled:active,
-.item-controller.translate-action .preview-button.btn-info.disabled:active,
-.item-controller.edit-action .preview-button.btn-info[disabled]:active,
-.item-controller.translate-action .preview-button.btn-info[disabled]:active,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-info:active,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-info:active,
-.item-controller.edit-action .preview-button.btn-info.disabled.active,
-.item-controller.translate-action .preview-button.btn-info.disabled.active,
-.item-controller.edit-action .preview-button.btn-info[disabled].active,
-.item-controller.translate-action .preview-button.btn-info[disabled].active,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-info.active,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-info.active {
+.item-controller.edit-action .item-top-actions .preview-button.btn-info.disabled,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info.disabled,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info.disabled,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info.disabled,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info[disabled],
+.item-controller.translate-action .item-top-actions .preview-button.btn-info[disabled],
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info[disabled],
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info[disabled],
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-info,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-info,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info.disabled:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info.disabled:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info.disabled:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info.disabled:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info[disabled]:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info[disabled]:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info[disabled]:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info[disabled]:hover,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-info:hover,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-info:hover,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info:hover,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info.disabled:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info.disabled:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info.disabled:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info.disabled:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info[disabled]:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info[disabled]:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info[disabled]:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info[disabled]:focus,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-info:focus,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-info:focus,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info:focus,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info.disabled:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info.disabled:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info.disabled:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info.disabled:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info[disabled]:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info[disabled]:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info[disabled]:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info[disabled]:active,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-info:active,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-info:active,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info:active,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info.disabled.active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info.disabled.active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info.disabled.active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info.disabled.active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-info[disabled].active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info[disabled].active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info[disabled].active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info[disabled].active,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-info.active,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-info.active,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info.active,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info.active {
   background-color: #b7c1d8;
   border-color: #a6b3cf;
 }
-.item-controller.edit-action .preview-button.btn-info .badge,
-.item-controller.translate-action .preview-button.btn-info .badge {
+.item-controller.edit-action .item-top-actions .preview-button.btn-info .badge,
+.item-controller.translate-action .item-top-actions .preview-button.btn-info .badge,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-info .badge,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-info .badge {
   color: #b7c1d8;
   background-color: #fff;
 }
-.item-controller.edit-action .preview-button.btn-link,
-.item-controller.translate-action .preview-button.btn-link {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link {
   color: #eb4498;
   font-weight: normal;
   cursor: pointer;
@@ -12633,53 +12920,85 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-info.ac
   font-weight: 100;
   text-decoration: underline;
 }
-.item-controller.edit-action .preview-button.btn-link,
-.item-controller.translate-action .preview-button.btn-link,
-.item-controller.edit-action .preview-button.btn-link:active,
-.item-controller.translate-action .preview-button.btn-link:active,
-.item-controller.edit-action .preview-button.btn-link[disabled],
-.item-controller.translate-action .preview-button.btn-link[disabled],
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-link,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-link {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link[disabled],
+.item-controller.translate-action .item-top-actions .preview-button.btn-link[disabled],
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link[disabled],
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link[disabled],
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-link,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-link,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link {
   background-color: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.item-controller.edit-action .preview-button.btn-link,
-.item-controller.translate-action .preview-button.btn-link,
-.item-controller.edit-action .preview-button.btn-link:hover,
-.item-controller.translate-action .preview-button.btn-link:hover,
-.item-controller.edit-action .preview-button.btn-link:focus,
-.item-controller.translate-action .preview-button.btn-link:focus,
-.item-controller.edit-action .preview-button.btn-link:active,
-.item-controller.translate-action .preview-button.btn-link:active {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link:active {
   border-color: transparent;
 }
-.item-controller.edit-action .preview-button.btn-link:hover,
-.item-controller.translate-action .preview-button.btn-link:hover,
-.item-controller.edit-action .preview-button.btn-link:focus,
-.item-controller.translate-action .preview-button.btn-link:focus {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link:focus {
   color: #cd1672;
   text-decoration: underline;
   background-color: transparent;
 }
-.item-controller.edit-action .preview-button.btn-link[disabled]:hover,
-.item-controller.translate-action .preview-button.btn-link[disabled]:hover,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-link:hover,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-link:hover,
-.item-controller.edit-action .preview-button.btn-link[disabled]:focus,
-.item-controller.translate-action .preview-button.btn-link[disabled]:focus,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-link:focus,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-link:focus {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link[disabled]:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link[disabled]:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link[disabled]:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link[disabled]:hover,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-link:hover,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-link:hover,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link:hover,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link[disabled]:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link[disabled]:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link[disabled]:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link[disabled]:focus,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-link:focus,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-link:focus,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link:focus,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link:focus {
   color: #f1f2f2;
   text-decoration: none;
 }
-.item-controller.edit-action .preview-button.btn-link:hover,
-.item-controller.translate-action .preview-button.btn-link:hover {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link:hover {
   text-decoration: none;
 }
-.item-controller.edit-action .preview-button.btn-link-dark,
-.item-controller.translate-action .preview-button.btn-link-dark {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark {
   color: #eb4498;
   font-weight: normal;
   cursor: pointer;
@@ -12688,131 +13007,201 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link:fo
   text-decoration: underline;
   color: #353535;
 }
-.item-controller.edit-action .preview-button.btn-link-dark,
-.item-controller.translate-action .preview-button.btn-link-dark,
-.item-controller.edit-action .preview-button.btn-link-dark:active,
-.item-controller.translate-action .preview-button.btn-link-dark:active,
-.item-controller.edit-action .preview-button.btn-link-dark[disabled],
-.item-controller.translate-action .preview-button.btn-link-dark[disabled],
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-link-dark,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-dark {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark:active,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark[disabled],
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark[disabled],
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark[disabled],
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark[disabled],
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-link-dark,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-link-dark,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark {
   background-color: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.item-controller.edit-action .preview-button.btn-link-dark,
-.item-controller.translate-action .preview-button.btn-link-dark,
-.item-controller.edit-action .preview-button.btn-link-dark:hover,
-.item-controller.translate-action .preview-button.btn-link-dark:hover,
-.item-controller.edit-action .preview-button.btn-link-dark:focus,
-.item-controller.translate-action .preview-button.btn-link-dark:focus,
-.item-controller.edit-action .preview-button.btn-link-dark:active,
-.item-controller.translate-action .preview-button.btn-link-dark:active {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark:focus,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark:active,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark:active,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark:active,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark:active {
   border-color: transparent;
 }
-.item-controller.edit-action .preview-button.btn-link-dark:hover,
-.item-controller.translate-action .preview-button.btn-link-dark:hover,
-.item-controller.edit-action .preview-button.btn-link-dark:focus,
-.item-controller.translate-action .preview-button.btn-link-dark:focus {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark:focus {
   color: #cd1672;
   text-decoration: underline;
   background-color: transparent;
 }
-.item-controller.edit-action .preview-button.btn-link-dark[disabled]:hover,
-.item-controller.translate-action .preview-button.btn-link-dark[disabled]:hover,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-link-dark:hover,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-dark:hover,
-.item-controller.edit-action .preview-button.btn-link-dark[disabled]:focus,
-.item-controller.translate-action .preview-button.btn-link-dark[disabled]:focus,
-fieldset[disabled] .item-controller.edit-action .preview-button.btn-link-dark:focus,
-fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-dark:focus {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark[disabled]:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark[disabled]:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark[disabled]:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark[disabled]:hover,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-link-dark:hover,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-link-dark:hover,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark:hover,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark[disabled]:focus,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark[disabled]:focus,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark[disabled]:focus,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark[disabled]:focus,
+fieldset[disabled] .item-controller.edit-action .item-top-actions .preview-button.btn-link-dark:focus,
+fieldset[disabled] .item-controller.translate-action .item-top-actions .preview-button.btn-link-dark:focus,
+fieldset[disabled] .item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark:focus,
+fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark:focus {
   color: #f1f2f2;
   text-decoration: none;
 }
-.item-controller.edit-action .preview-button.btn-link-dark:hover,
-.item-controller.translate-action .preview-button.btn-link-dark:hover {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark:hover {
   text-decoration: none;
 }
-.item-controller.edit-action .preview-button.btn-link-dark:hover,
-.item-controller.translate-action .preview-button.btn-link-dark:hover {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link-dark:hover,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link-dark:hover {
   color: #353535;
 }
-.item-controller.edit-action .preview-button.btn-link.btn-icon-link,
-.item-controller.translate-action .preview-button.btn-link.btn-icon-link {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link.btn-icon-link,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link.btn-icon-link,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link.btn-icon-link,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link.btn-icon-link {
   text-decoration: none;
 }
-.item-controller.edit-action .preview-button.btn-link.btn-icon-link .btn-label,
-.item-controller.translate-action .preview-button.btn-link.btn-icon-link .btn-label {
+.item-controller.edit-action .item-top-actions .preview-button.btn-link.btn-icon-link .btn-label,
+.item-controller.translate-action .item-top-actions .preview-button.btn-link.btn-icon-link .btn-label,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.btn-link.btn-icon-link .btn-label,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.btn-link.btn-icon-link .btn-label {
   text-decoration: underline;
 }
-.item-controller.edit-action .preview-button:empty,
-.item-controller.translate-action .preview-button:empty {
+.item-controller.edit-action .item-top-actions .preview-button:empty,
+.item-controller.translate-action .item-top-actions .preview-button:empty,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button:empty,
+.item-controller.prepareforreview-action .item-top-actions .preview-button:empty {
   display: none;
 }
-.btn .item-controller.edit-action .preview-button,
-.btn .item-controller.translate-action .preview-button {
+.btn .item-controller.edit-action .item-top-actions .preview-button,
+.btn .item-controller.translate-action .item-top-actions .preview-button,
+.btn .item-controller.prepareforpublishing-action .item-top-actions .preview-button,
+.btn .item-controller.prepareforreview-action .item-top-actions .preview-button {
   position: relative;
   top: -1px;
 }
-.item-controller.edit-action .preview-button.badge-sm,
-.item-controller.translate-action .preview-button.badge-sm {
+.item-controller.edit-action .item-top-actions .preview-button.badge-sm,
+.item-controller.translate-action .item-top-actions .preview-button.badge-sm,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.badge-sm,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.badge-sm {
   font-size: 14px;
   padding: 7px 20px;
 }
-.item-controller.edit-action .preview-button.badge-xs,
-.item-controller.translate-action .preview-button.badge-xs {
+.item-controller.edit-action .item-top-actions .preview-button.badge-xs,
+.item-controller.translate-action .item-top-actions .preview-button.badge-xs,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.badge-xs,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.badge-xs {
   font-size: 12px;
   padding: 4px 15px;
 }
-.item-controller.edit-action .preview-button.badge-primary,
-.item-controller.translate-action .preview-button.badge-primary {
+.item-controller.edit-action .item-top-actions .preview-button.badge-primary,
+.item-controller.translate-action .item-top-actions .preview-button.badge-primary,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.badge-primary,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.badge-primary {
   background-color: #eb4498;
 }
-.item-controller.edit-action .preview-button.badge-success,
-.item-controller.translate-action .preview-button.badge-success {
+.item-controller.edit-action .item-top-actions .preview-button.badge-success,
+.item-controller.translate-action .item-top-actions .preview-button.badge-success,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.badge-success,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.badge-success {
   background-color: #22d23e;
 }
-.item-controller.edit-action .preview-button.badge-warning,
-.item-controller.translate-action .preview-button.badge-warning {
+.item-controller.edit-action .item-top-actions .preview-button.badge-warning,
+.item-controller.translate-action .item-top-actions .preview-button.badge-warning,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.badge-warning,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.badge-warning {
   background-color: #feee74;
 }
-.item-controller.edit-action .preview-button.badge-danger,
-.item-controller.translate-action .preview-button.badge-danger {
+.item-controller.edit-action .item-top-actions .preview-button.badge-danger,
+.item-controller.translate-action .item-top-actions .preview-button.badge-danger,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.badge-danger,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.badge-danger {
   background-color: #e0575c;
 }
-.item-controller.edit-action .preview-button.badge-info,
-.item-controller.translate-action .preview-button.badge-info {
+.item-controller.edit-action .item-top-actions .preview-button.badge-info,
+.item-controller.translate-action .item-top-actions .preview-button.badge-info,
+.item-controller.prepareforpublishing-action .item-top-actions .preview-button.badge-info,
+.item-controller.prepareforreview-action .item-top-actions .preview-button.badge-info {
   background-color: #b7c1d8;
 }
 .item-controller.edit-action .item-header,
-.item-controller.translate-action .item-header {
+.item-controller.translate-action .item-header,
+.item-controller.prepareforpublishing-action .item-header,
+.item-controller.prepareforreview-action .item-header {
   margin-left: -15px;
   margin-right: -15px;
 }
 .item-controller.edit-action .item-header:before,
 .item-controller.translate-action .item-header:before,
+.item-controller.prepareforpublishing-action .item-header:before,
+.item-controller.prepareforreview-action .item-header:before,
 .item-controller.edit-action .item-header:after,
-.item-controller.translate-action .item-header:after {
+.item-controller.translate-action .item-header:after,
+.item-controller.prepareforpublishing-action .item-header:after,
+.item-controller.prepareforreview-action .item-header:after {
   content: " ";
   display: table;
 }
 .item-controller.edit-action .item-header:after,
-.item-controller.translate-action .item-header:after {
+.item-controller.translate-action .item-header:after,
+.item-controller.prepareforpublishing-action .item-header:after,
+.item-controller.prepareforreview-action .item-header:after {
   clear: both;
 }
 .item-controller.edit-action .item-header:before,
 .item-controller.translate-action .item-header:before,
+.item-controller.prepareforpublishing-action .item-header:before,
+.item-controller.prepareforreview-action .item-header:before,
 .item-controller.edit-action .item-header:after,
-.item-controller.translate-action .item-header:after {
+.item-controller.translate-action .item-header:after,
+.item-controller.prepareforpublishing-action .item-header:after,
+.item-controller.prepareforreview-action .item-header:after {
   content: " ";
   display: table;
 }
 .item-controller.edit-action .item-header:after,
-.item-controller.translate-action .item-header:after {
+.item-controller.translate-action .item-header:after,
+.item-controller.prepareforpublishing-action .item-header:after,
+.item-controller.prepareforreview-action .item-header:after {
   clear: both;
 }
 .item-controller.edit-action .item-header .header-text,
-.item-controller.translate-action .item-header .header-text {
+.item-controller.translate-action .item-header .header-text,
+.item-controller.prepareforpublishing-action .item-header .header-text,
+.item-controller.prepareforreview-action .item-header .header-text {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -12820,46 +13209,66 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
 }
 @media (min-width: 992px) {
   .item-controller.edit-action .item-header .header-text,
-  .item-controller.translate-action .item-header .header-text {
+  .item-controller.translate-action .item-header .header-text,
+  .item-controller.prepareforpublishing-action .item-header .header-text,
+  .item-controller.prepareforreview-action .item-header .header-text {
     float: left;
     width: 100%;
   }
 }
 .item-controller.edit-action .item-header .header-text .item-heading,
-.item-controller.translate-action .item-header .header-text .item-heading {
+.item-controller.translate-action .item-header .header-text .item-heading,
+.item-controller.prepareforpublishing-action .item-header .header-text .item-heading,
+.item-controller.prepareforreview-action .item-header .header-text .item-heading {
   font-size: 44.5px;
   font-weight: 100;
   margin-bottom: 30px;
 }
 .item-controller.edit-action .item-row,
-.item-controller.translate-action .item-row {
+.item-controller.translate-action .item-row,
+.item-controller.prepareforpublishing-action .item-row,
+.item-controller.prepareforreview-action .item-row {
   margin-left: -15px;
   margin-right: -15px;
 }
 .item-controller.edit-action .item-row:before,
 .item-controller.translate-action .item-row:before,
+.item-controller.prepareforpublishing-action .item-row:before,
+.item-controller.prepareforreview-action .item-row:before,
 .item-controller.edit-action .item-row:after,
-.item-controller.translate-action .item-row:after {
+.item-controller.translate-action .item-row:after,
+.item-controller.prepareforpublishing-action .item-row:after,
+.item-controller.prepareforreview-action .item-row:after {
   content: " ";
   display: table;
 }
 .item-controller.edit-action .item-row:after,
-.item-controller.translate-action .item-row:after {
+.item-controller.translate-action .item-row:after,
+.item-controller.prepareforpublishing-action .item-row:after,
+.item-controller.prepareforreview-action .item-row:after {
   clear: both;
 }
 .item-controller.edit-action .item-row:before,
 .item-controller.translate-action .item-row:before,
+.item-controller.prepareforpublishing-action .item-row:before,
+.item-controller.prepareforreview-action .item-row:before,
 .item-controller.edit-action .item-row:after,
-.item-controller.translate-action .item-row:after {
+.item-controller.translate-action .item-row:after,
+.item-controller.prepareforpublishing-action .item-row:after,
+.item-controller.prepareforreview-action .item-row:after {
   content: " ";
   display: table;
 }
 .item-controller.edit-action .item-row:after,
-.item-controller.translate-action .item-row:after {
+.item-controller.translate-action .item-row:after,
+.item-controller.prepareforpublishing-action .item-row:after,
+.item-controller.prepareforreview-action .item-row:after {
   clear: both;
 }
 .item-controller.edit-action .item-row .row-column,
-.item-controller.translate-action .item-row .row-column {
+.item-controller.translate-action .item-row .row-column,
+.item-controller.prepareforpublishing-action .item-row .row-column,
+.item-controller.prepareforreview-action .item-row .row-column {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -12867,13 +13276,17 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
 }
 @media (min-width: 992px) {
   .item-controller.edit-action .item-row .row-column,
-  .item-controller.translate-action .item-row .row-column {
+  .item-controller.translate-action .item-row .row-column,
+  .item-controller.prepareforpublishing-action .item-row .row-column,
+  .item-controller.prepareforreview-action .item-row .row-column {
     float: left;
     width: 100%;
   }
 }
 .item-controller.edit-action .item-row .row-column .item-well,
-.item-controller.translate-action .item-row .row-column .item-well {
+.item-controller.translate-action .item-row .row-column .item-well,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well,
+.item-controller.prepareforreview-action .item-row .row-column .item-well {
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
@@ -12890,17 +13303,23 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
   margin-bottom: 0;
 }
 .item-controller.edit-action .item-row .row-column .item-well blockquote,
-.item-controller.translate-action .item-row .row-column .item-well blockquote {
+.item-controller.translate-action .item-row .row-column .item-well blockquote,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well blockquote,
+.item-controller.prepareforreview-action .item-row .row-column .item-well blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
 .item-controller.edit-action .item-row .row-column .item-well blockquote,
-.item-controller.translate-action .item-row .row-column .item-well blockquote {
+.item-controller.translate-action .item-row .row-column .item-well blockquote,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well blockquote,
+.item-controller.prepareforreview-action .item-row .row-column .item-well blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
 .item-controller.edit-action .item-row .row-column .item-well .action-heading,
-.item-controller.translate-action .item-row .row-column .item-well .action-heading {
+.item-controller.translate-action .item-row .row-column .item-well .action-heading,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .action-heading,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .action-heading {
   color: #000;
   font-size: 16px;
   font-weight: 600;
@@ -12908,65 +13327,97 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
   margin-bottom: 20px;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content,
-.item-controller.translate-action .item-row .row-column .item-well .item-content {
+.item-controller.translate-action .item-row .row-column .item-well .item-content,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content {
   margin-left: -15px;
   margin-right: -15px;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content:before,
 .item-controller.translate-action .item-row .row-column .item-well .item-content:before,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content:before,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content:before,
 .item-controller.edit-action .item-row .row-column .item-well .item-content:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content:after {
   content: " ";
   display: table;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content:after {
   clear: both;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content:before,
 .item-controller.translate-action .item-row .row-column .item-well .item-content:before,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content:before,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content:before,
 .item-controller.edit-action .item-row .row-column .item-well .item-content:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content:after {
   content: " ";
   display: table;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content:after {
   clear: both;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header {
   height: 75px;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row {
   margin-left: -15px;
   margin-right: -15px;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row:before,
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row:before,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row:before,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row:before,
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after {
   content: " ";
   display: table;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after {
   clear: both;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row:before,
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row:before,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row:before,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row:before,
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after {
   content: " ";
   display: table;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row:after {
   clear: both;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -12974,13 +13425,17 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
 }
 @media (min-width: 992px) {
   .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
-  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title {
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
+  .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
+  .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title {
     float: left;
     width: 66.66666666666666%;
   }
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -12989,13 +13444,17 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
 }
 @media (min-width: 992px) {
   .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
-  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop {
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
+  .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
+  .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop {
     float: left;
     width: 33.33333333333333%;
   }
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -13003,40 +13462,58 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
 }
 @media (min-width: 992px) {
   .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary,
-  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary {
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary,
+  .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary,
+  .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary {
     float: left;
     width: 41.66666666666667%;
   }
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress {
   margin-left: -15px;
   margin-right: -15px;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress:before,
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress:before,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress:before,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress:before,
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after {
   content: " ";
   display: table;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after {
   clear: both;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress:before,
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress:before,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress:before,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress:before,
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after {
   content: " ";
   display: table;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress:after {
   clear: both;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -13044,18 +13521,24 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
 }
 @media (min-width: 992px) {
   .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container,
-  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container {
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container,
+  .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container,
+  .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container {
     float: left;
     width: 33.33333333333333%;
   }
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container .progress,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container .progress {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container .progress,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container .progress,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container .progress {
   margin: 0;
   margin-top: 5px;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -13064,13 +13547,17 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
 }
 @media (min-width: 992px) {
   .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container,
-  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container {
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container,
+  .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container,
+  .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container {
     float: left;
     width: 66.66666666666666%;
   }
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-secondary,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-secondary {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -13078,33 +13565,45 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
 }
 @media (min-width: 992px) {
   .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary,
-  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary {
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary,
+  .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-secondary,
+  .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-secondary {
     float: left;
     width: 58.333333333333336%;
   }
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control {
   margin-bottom: 20px;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control:last-child,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control:last-child {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control:last-child,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control:last-child,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-secondary .item-fields .form-control:last-child {
   margin-bottom: 0;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots {
   display: inline-block;
   margin-right: 10px;
   vertical-align: top;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots li,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots li {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots li,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots li,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots li {
   background-color: #c9c9c9;
   border-radius: 50%;
   display: inline-block;
@@ -13113,7 +13612,9 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
   height: 20px;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots li.active:before,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots li.active:before {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots li.active:before,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots li.active:before,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-dots .step-progress-dots li.active:before {
   background-color: #939393;
   border-radius: 50%;
   content: "";
@@ -13124,14 +13625,24 @@ fieldset[disabled] .item-controller.translate-action .preview-button.btn-link-da
   height: 14px;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-text,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-text {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-text,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-text,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-secondary .step-progress .progress-text {
   display: inline-block;
   vertical-align: top;
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .item-actions .step-action-buttons,
-.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-actions .step-action-buttons {
+.item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-actions .step-action-buttons,
+.item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-secondary .item-actions .step-action-buttons,
+.item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-secondary .item-actions .step-action-buttons {
   margin-top: 20px;
   text-align: right;
+}
+.item-controller.edit-action .workflow-actions,
+.item-controller.translate-action .workflow-actions,
+.item-controller.prepareforpublishing-action .workflow-actions,
+.item-controller.prepareforreview-action .workflow-actions {
+  margin-bottom: 20px;
 }
 .item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-primary {
   position: relative;

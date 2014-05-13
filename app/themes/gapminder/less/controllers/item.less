@@ -137,14 +137,23 @@
   }
 
   &.edit-action,
-  &.translate-action
+  &.translate-action,
+  &.prepareforpublishing-action,
+  &.prepareforreview-action
   {
-    .preview-button {
-      .btn-sm;
-      border-radius: 0; // TODO: Create a mixin for sharp corners.
+    label {
+      font-weight: 400;
+    }
+
+    .item-top-actions {
       position: absolute;
       top: 0;
       right: 0;
+
+      .preview-button {
+        .btn-sm;
+        border-radius: 0; // TODO: Create a mixin for sharp corners.
+      }
     }
 
     .item-header {
@@ -272,6 +281,10 @@
           }
         }
       }
+    }
+
+    .workflow-actions {
+      margin-bottom: 20px;
     }
   }
 
