@@ -154,7 +154,7 @@ class VideoFileController extends Controller
                 Yii::t(
                     'app',
                     'Translate into {translateIntoLanguage}',
-                    array('{translateIntoLanguage}' => Yii::app()->params['languages'][$translateInto])
+                    array('{translateIntoLanguage}' => LanguageHelper::getName($translateInto))
                 ),
                 $translateInto
             );
@@ -440,7 +440,7 @@ class VideoFileController extends Controller
         file_put_contents($path, $model->_subtitles);
         $paths[$fileName] = $path;
 
-        foreach (Yii::app()->params['languages'] as $locale => $name) {
+        foreach (LanguageHelper::getCodes() as $locale) {
             $fileName = "subtitles_$locale.srt";
             $path = "$basePath/{$fileName}";
             $attribute = "subtitles_$locale";

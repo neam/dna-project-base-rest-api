@@ -824,7 +824,7 @@ trait ItemController
         $qaStateAttribute = $model->getQaStateAttribute();
 
         if (isset($behaviors['i18n-columns']['translationAttributes']) && in_array($qaStateAttribute, $behaviors['i18n-columns']['translationAttributes'])) {
-            foreach (Yii::app()->params["languages"] as $lang => $label) {
+            foreach (LanguageHelper::getCodes() as $lang) {
                 $translatedAttribute = $qaStateAttribute . "_" . $lang;
                 $clone->$translatedAttribute = null;
             }
@@ -951,7 +951,7 @@ trait ItemController
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, 'translate', Yii::t('app', 'Translate into {translateIntoLanguage}', array(
-            '{translateIntoLanguage}' => Yii::app()->params['languages'][$translateInto],
+            '{translateIntoLanguage}' => LanguageHelper::getName($translateInto),
         )), $translateInto);
         $stepCaptions = $model->flowStepCaptions();
 

@@ -165,7 +165,7 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
         $sql .= "END AS proofing_progress,\n";
 
         // translate_into_{$language}_validation_progress
-        foreach (Yii::app()->params["languages"] as $language => $label) {
+        foreach (LanguageHelper::getCodes() as $language) {
 
             $sql .= "   CASE\n";
 

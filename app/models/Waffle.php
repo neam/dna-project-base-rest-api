@@ -39,7 +39,7 @@ class Waffle extends BaseWaffle
         // Add i18n validation rules manually for the related item translations
         $attribute = "po_contents";
         $manualI18nRules = array();
-        foreach (Yii::app()->params["languages"] as $language => $label) {
+        foreach (LanguageHelper::getCodes() as $language) {
             $manualI18nRules[] = array($attribute, 'validateWaffleTranslation', 'on' => 'translate_into_' . $language);
 
             foreach ($this->flowSteps() as $step => $fields) {

@@ -28,7 +28,7 @@ class ActiveRecord extends CActiveRecord
                     'publishable',
                 ),
             );
-            foreach (Yii::app()->params["languages"] as $language => $label) {
+            foreach (LanguageHelper::getCodes() as $language) {
                 $behaviors['qa-state']['scenarios'][] = 'translate_into_' . $language;
             }
             $behaviors['owner-behavior'] = array(
@@ -64,7 +64,7 @@ class ActiveRecord extends CActiveRecord
             $behaviors['i18n-attribute-messages'] = array(
                 'class' => 'I18nAttributeMessagesBehavior',
                 'translationAttributes' => $i18nAttributeMessagesMap[get_class($this)],
-                'languageSuffixes' => array_keys(Yii::app()->params["languages"]),
+                'languageSuffixes' => LanguageHelper::getCodes(),
                 'behaviorKey' => 'i18n-attribute-messages',
                 'displayedMessageSourceComponent' => 'displayedMessages',
                 'editedMessageSourceComponent' => 'editedMessages',

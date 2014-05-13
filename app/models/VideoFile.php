@@ -53,7 +53,7 @@ class VideoFile extends BaseVideoFile
         // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
         $attribute = "subtitles";
         $manualI18nRules = array();
-        foreach (Yii::app()->params["languages"] as $language => $label) {
+        foreach (LanguageHelper::getCodes() as $language) {
             $manualI18nRules[] = array($attribute, 'validateSubtitlesTranslation', 'on' => 'translate_into_' . $language);
 
             foreach ($this->flowSteps() as $step => $fields) {

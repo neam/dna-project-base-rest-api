@@ -62,7 +62,7 @@ $this->widget('\TbGridView', array(
                         'text' => $currentTranslation,
                         'model' => $sourceMessage,
                         'attribute' => 'translation',
-                        'emptytext' => Yii::t('app', $emptytext, array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto], '{currentFallbackTranslation}' => $currentFallbackTranslation)),
+                        'emptytext' => Yii::t('app', $emptytext, array('{translateIntoLanguage}' => LanguageHelper::getName($translateInto), '{currentFallbackTranslation}' => $currentFallbackTranslation)),
                         'url' => $this->createUrl('sourceMessage/editableTranslationSaver', array('id' => $sourceMessage->id, 'translateInto' => $translateInto)),
                     ));
 

@@ -41,7 +41,7 @@ class I18nCatalog extends BaseI18nCatalog
         // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
         $attribute = "po_contents";
         $manualI18nRules = array();
-        foreach (Yii::app()->params["languages"] as $language => $label) {
+        foreach (LanguageHelper::getCodes() as $language) {
             $manualI18nRules[] = array($attribute, 'validatePoContentsTranslation', 'on' => 'translate_into_' . $language);
 
             foreach ($this->flowSteps() as $step => $fields) {
