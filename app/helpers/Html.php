@@ -371,6 +371,8 @@ class Html extends TbHtml
 
     /**
      * Renders the Gapminder logo.
+     * @param string $alt the image alt text.
+     * @param array $htmlOptions
      * @return string
      */
     static public function renderLogo($alt = '', $htmlOptions = array())
@@ -384,6 +386,9 @@ class Html extends TbHtml
 
     /**
      * Renders the Gapminder logo with a link to the home page.
+     * @param string $alt the image alt text.
+     * @param array $imageHtmlOptions
+     * @param array $linkHtmlOptions
      * @return string
      */
     static public function renderLogoWithLink($alt = '', $imageHtmlOptions = array(), $linkHtmlOptions = array())
