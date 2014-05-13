@@ -23,6 +23,8 @@ class AppRegistrationController extends RegistrationController
      */
     public function actionRegistration()
     {
+        $this->layout = WebApplication::LAYOUT_MINIMAL;
+
         // TODO: 1. This method should be refactored. It is too cluttered.
         // TODO: 2. Use ONE profile class throughout the entire app. Having multiple classes (Profiles, AppProfile) is confusing and creates duplicate code.
         Profile::$regMode = true;

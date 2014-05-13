@@ -373,20 +373,25 @@ class Html extends TbHtml
      * Renders the Gapminder logo.
      * @return string
      */
-    static public function renderLogo()
+    static public function renderLogo($alt = '', $htmlOptions = array())
     {
-        return TbHtml::image(Yii::app()->baseUrl . '/images/logo.png');
+        return TbHtml::image(
+            Yii::app()->baseUrl . '/images/logo.png',
+            $alt,
+            $htmlOptions
+        );
     }
 
     /**
      * Renders the Gapminder logo with a link to the home page.
      * @return string
      */
-    static public function renderLogoWithLink()
+    static public function renderLogoWithLink($alt = '', $imageHtmlOptions = array(), $linkHtmlOptions = array())
     {
         return TbHtml::link(
-            self::renderLogo(),
-            Yii::app()->homeUrl
+            self::renderLogo($alt, $imageHtmlOptions),
+            Yii::app()->homeUrl,
+            $linkHtmlOptions
         );
     }
 }
