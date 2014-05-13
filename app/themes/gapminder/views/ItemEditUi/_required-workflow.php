@@ -17,17 +17,14 @@
                         $invalidFieldCount
                     ); ?>
                 </span>
-                <?php $this->widget(
-                    '\TbButton',
+                <?php echo TbHtml::linkButton(
+                    Yii::t('button', 'Go to next field'),
                     array(
-                        'label' => Yii::t('button', 'Next'),
-                        'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                         'url' => '#',
-                        'size' => TbHtml::BUTTON_SIZE_XS,
-                        'htmlOptions' => array(
-                            'class' => 'required-button',
-                            'id' => 'next-required',
-                        ),
+                        'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                        'size' => TbHtml::BUTTON_SIZE_SM,
+                        'id' => 'next-required',
+                        'class' => 'required-button',
                     )
                 ); ?>
                 <?php $nextStep = $this->controller->nextFlowStep("$validationScenario-", $model); ?>

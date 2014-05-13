@@ -273,6 +273,11 @@ trait ItemController
     {
         $translateInto = Yii::app()->request->getParam('translateInto');
 
+        // Redirect to next required step
+        if ($action->id === 'prepareForPublishing' && isset($_POST['next-required-url'])) {
+            $this->redirect($_POST['next-required-url']);
+        }
+
         // Set translation and edit workflow returnUrls
         if (in_array($action->id, array('translate', 'edit'))) {
             $this->setWorkflowReturnUrl();
