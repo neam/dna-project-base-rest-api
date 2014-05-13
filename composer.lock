@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "036cf303b5515f1e4d92d319d9b98748",
+    "hash": "8299744647fcb4cceb31dde3f795f26e",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -496,22 +496,22 @@
         },
         {
             "name": "guzzle/guzzle",
-            "version": "v3.8.1",
+            "version": "v3.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba"
+                "url": "https://github.com/guzzle/guzzle3.git",
+                "reference": "92d9934f2fca1da15178c91239576ae26e505e60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
-                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
+                "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/92d9934f2fca1da15178c91239576ae26e505e60",
+                "reference": "92d9934f2fca1da15178c91239576ae26e505e60",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "php": ">=5.3.3",
-                "symfony/event-dispatcher": ">=2.1"
+                "symfony/event-dispatcher": "~2.1"
             },
             "replace": {
                 "guzzle/batch": "self.version",
@@ -538,13 +538,13 @@
                 "guzzle/stream": "self.version"
             },
             "require-dev": {
-                "doctrine/cache": "*",
-                "monolog/monolog": "1.*",
+                "doctrine/cache": "~1.3",
+                "monolog/monolog": "~1.0",
                 "phpunit/phpunit": "3.7.*",
-                "psr/log": "1.0.*",
-                "symfony/class-loader": "*",
-                "zendframework/zend-cache": "<2.3",
-                "zendframework/zend-log": "<2.3"
+                "psr/log": "~1.0",
+                "symfony/class-loader": "~2.1",
+                "zendframework/zend-cache": "2.*,<2.3",
+                "zendframework/zend-log": "2.*,<2.3"
             },
             "type": "library",
             "extra": {
@@ -584,7 +584,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-01-28 22:29:15"
+            "time": "2014-05-07 17:04:22"
         },
         {
             "name": "jalle19/yii-ga",
@@ -677,12 +677,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "e7b26776859ee6653d10b2e4be74798b6cc92430"
+                "reference": "b3fc1822b1a434906aa24f2080d442dec04d5590"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/e7b26776859ee6653d10b2e4be74798b6cc92430",
-                "reference": "e7b26776859ee6653d10b2e4be74798b6cc92430",
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/b3fc1822b1a434906aa24f2080d442dec04d5590",
+                "reference": "b3fc1822b1a434906aa24f2080d442dec04d5590",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -704,7 +704,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-03-24 13:40:06"
+            "time": "2014-05-13 08:26:58"
         },
         {
             "name": "motin/yii-owner-behavior",
@@ -977,16 +977,16 @@
         },
         {
             "name": "nordsoftware/yii-emailer",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-emailer.git",
-                "reference": "9d19ea49c65125818f401fdfdd9d39b9a99448dc"
+                "reference": "b19d23233415b199fe11caddde745d439c5a36be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-emailer/zipball/9d19ea49c65125818f401fdfdd9d39b9a99448dc",
-                "reference": "9d19ea49c65125818f401fdfdd9d39b9a99448dc",
+                "url": "https://api.github.com/repos/nordsoftware/yii-emailer/zipball/b19d23233415b199fe11caddde745d439c5a36be",
+                "reference": "b19d23233415b199fe11caddde745d439c5a36be",
                 "shasum": ""
             },
             "require": {
@@ -1010,7 +1010,7 @@
                 }
             ],
             "description": "Extension for creating and sending emails for the Yii PHP framework.",
-            "time": "2014-01-10 12:28:32"
+            "time": "2014-04-09 07:47:30"
         },
         {
             "name": "nordsoftware/yii-utils",
@@ -1102,17 +1102,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PHPPowerPoint.git",
-                "reference": "e6cdeb57ac164a5ec62645e893a2b1c87a714bda"
+                "reference": "50fd978df41f031c1ceadfcc18b947231cefe1a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PHPPowerPoint/zipball/e6cdeb57ac164a5ec62645e893a2b1c87a714bda",
-                "reference": "e6cdeb57ac164a5ec62645e893a2b1c87a714bda",
+                "url": "https://api.github.com/repos/PHPOffice/PHPPowerPoint/zipball/50fd978df41f031c1ceadfcc18b947231cefe1a1",
+                "reference": "50fd978df41f031c1ceadfcc18b947231cefe1a1",
                 "shasum": ""
             },
             "require": {
                 "ext-xml": "*",
                 "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "ext-gd2": "*",
+                "ext-zip": "*"
             },
             "type": "library",
             "autoload": {
@@ -1130,6 +1137,10 @@
                 {
                     "name": "Franck Lefevre",
                     "homepage": "http://blog.rootslabs.net"
+                },
+                {
+                    "name": "Ivan Lanin",
+                    "homepage": "http://ivan.lanin.org"
                 }
             ],
             "description": "PHPPowerPoint - Read, Create and Write Presentations documents in PHP",
@@ -1147,7 +1158,7 @@
                 "source": "https://github.com/PHPOffice/PHPPowerPoint/tree/master",
                 "issues": "https://github.com/PHPOffice/PHPPowerPoint/issues"
             },
-            "time": "2013-12-13 10:46:08"
+            "time": "2014-04-27 01:57:57"
         },
         {
             "name": "phpoffice/phpword",
@@ -1620,16 +1631,16 @@
         },
         {
             "name": "schmunk42/access",
-            "version": "0.1",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii-access.git",
-                "reference": "1b06dce3c57ebe317add2798d6c761d75d91fc2f"
+                "reference": "6011a5a42db19d73ee6967874e33c5620a4218fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-access/zipball/1b06dce3c57ebe317add2798d6c761d75d91fc2f",
-                "reference": "1b06dce3c57ebe317add2798d6c761d75d91fc2f",
+                "url": "https://api.github.com/repos/schmunk42/yii-access/zipball/6011a5a42db19d73ee6967874e33c5620a4218fc",
+                "reference": "6011a5a42db19d73ee6967874e33c5620a4218fc",
                 "shasum": ""
             },
             "type": "library",
@@ -1643,11 +1654,11 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record access check implementation",
-            "time": "2013-10-23 23:30:01"
+            "time": "2014-04-17 09:20:23"
         },
         {
             "name": "schmunk42/adjacency-list-behavior",
@@ -1674,7 +1685,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
@@ -1727,12 +1738,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/multi-theme.git",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a"
+                "reference": "0.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/f9fcd89e8620be03340cd1d6125ae2522b71719a",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a",
+                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/0.1.1",
+                "reference": "0.1.1",
                 "shasum": ""
             },
             "require": {
@@ -1748,7 +1759,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Theme-Manager class, switch themes by regular expressions on controller routes.",
@@ -1981,17 +1992,17 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "4708b8cd41984a5ba29fe7dd40716f7f761ac501"
+                "reference": "e539602e5455aa086c0e81e604745af7789e4d8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/4708b8cd41984a5ba29fe7dd40716f7f761ac501",
-                "reference": "4708b8cd41984a5ba29fe7dd40716f7f761ac501",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/e539602e5455aa086c0e81e604745af7789e4d8a",
+                "reference": "e539602e5455aa086c0e81e604745af7789e4d8a",
                 "shasum": ""
             },
             "require": {
@@ -2033,21 +2044,21 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-02-11 13:52:09"
+            "time": "2014-04-16 10:34:31"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/Filesystem",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "b717952487176a993e9b12a08b87beae25ae419c"
+                "reference": "a3af8294bcce4a7c1b2892363b0c9d8109affad4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/b717952487176a993e9b12a08b87beae25ae419c",
-                "reference": "b717952487176a993e9b12a08b87beae25ae419c",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/a3af8294bcce4a7c1b2892363b0c9d8109affad4",
+                "reference": "a3af8294bcce4a7c1b2892363b0c9d8109affad4",
                 "shasum": ""
             },
             "require": {
@@ -2082,21 +2093,21 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-26 11:55:03"
+            "time": "2014-04-16 10:34:31"
         },
         {
             "name": "symfony/process",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/Process",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "c09c3b08455c35688eee3e481fdfc85518ef01d7"
+                "reference": "8721f1476d5d38a43c7d6ccb6435b351cf8f3bb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/c09c3b08455c35688eee3e481fdfc85518ef01d7",
-                "reference": "c09c3b08455c35688eee3e481fdfc85518ef01d7",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/8721f1476d5d38a43c7d6ccb6435b351cf8f3bb7",
+                "reference": "8721f1476d5d38a43c7d6ccb6435b351cf8f3bb7",
                 "shasum": ""
             },
             "require": {
@@ -2131,7 +2142,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-26 11:35:33"
+            "time": "2014-04-27 13:34:57"
         },
         {
             "name": "twitter/bootstrap",
@@ -2258,12 +2269,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii-backend-theme.git",
-                "reference": "86a9633aaf04b2c10e8080cdb8cf64e8d87e3b05"
+                "reference": "dc23fa5fad12a44cec697ecfcc18d235a0c7ad08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/86a9633aaf04b2c10e8080cdb8cf64e8d87e3b05",
-                "reference": "86a9633aaf04b2c10e8080cdb8cf64e8d87e3b05",
+                "url": "https://api.github.com/repos/schmunk42/yii-backend-theme/zipball/dc23fa5fad12a44cec697ecfcc18d235a0c7ad08",
+                "reference": "dc23fa5fad12a44cec697ecfcc18d235a0c7ad08",
                 "shasum": ""
             },
             "require": {
@@ -2296,7 +2307,7 @@
                 "theme",
                 "yii"
             ],
-            "time": "2014-03-21 17:02:50"
+            "time": "2014-05-08 14:59:47"
         },
         {
             "name": "phundament/gii-template-collection",
@@ -2397,12 +2408,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/giic.git",
-                "reference": "29f3bc567b4ce2c1a550bf99d65dc5ae36046051"
+                "reference": "9fb37bf2e26f329e1d212237711831f8d4e0f79d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/giic/zipball/29f3bc567b4ce2c1a550bf99d65dc5ae36046051",
-                "reference": "29f3bc567b4ce2c1a550bf99d65dc5ae36046051",
+                "url": "https://api.github.com/repos/schmunk42/giic/zipball/9fb37bf2e26f329e1d212237711831f8d4e0f79d",
+                "reference": "9fb37bf2e26f329e1d212237711831f8d4e0f79d",
                 "shasum": ""
             },
             "require": {
@@ -2429,7 +2440,7 @@
                 "gii",
                 "yii"
             ],
-            "time": "2014-02-14 16:15:49"
+            "time": "2014-05-09 12:49:59"
         }
     ],
     "aliases": [
