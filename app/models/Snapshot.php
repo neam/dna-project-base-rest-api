@@ -194,8 +194,7 @@ class Snapshot extends BaseSnapshot
 
         $response->id = $this->id;
         $response->vizabi_state = json_decode(trim($this->vizabi_state));
-        // TODO this caused the app to crash, is it necessary
-        //$response->tool = !is_null($this->tool_id) ? $this->tool->allAttributes : null;
+        $response->tool = !is_null($this->tool_id) ? $this->tool->allAttributes : null;
         $response->embed_override = $this->embed_override;
         $response->title = $this->title;
         $response->slug = $this->slug;
