@@ -3,7 +3,7 @@
 /* @var Waffle|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php if ($this->action->id === 'edit'): ?>
+<?php if ($this->actionUsesEditWorkflow()): ?>
     <?php echo $form->textFieldControlGroup(
         $model,
         'ref',
@@ -51,6 +51,6 @@
     ),
     true
 ); ?>
-<?php if ($this->action->id === 'edit'): ?>
+<?php if ($this->actionUsesEditWorkflow()): ?>
     <?php echo $form->customControlGroup($model, 'waffle_id', $input); ?>
 <?php endif; ?>

@@ -24,7 +24,7 @@
     $this->action->id,
     array('hint' => true)
 ); ?>
-<?php if ($this->action->id === 'edit'): ?>
+<?php if ($this->actionUsesEditWorkflow()): ?>
     <?php
     // TODO: Refactor this.
     $relation = "thumbnailMedia";

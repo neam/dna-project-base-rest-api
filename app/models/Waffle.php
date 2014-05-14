@@ -54,7 +54,6 @@ class Waffle extends BaseWaffle
             $this->i18nRules(),
             $manualI18nRules,
             array(
-
                 array('title', 'length', 'min' => 3, 'max' => 200),
                 array('json_import_media_id', 'validateFile', 'on' => 'publishable'),
 

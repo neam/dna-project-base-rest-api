@@ -233,6 +233,21 @@ trait ItemController
     }
 
     /**
+     * Checks if the current action uses the edit workflow (but not the translation workflow).
+     * @return boolean
+     */
+    public function actionUsesEditWorkflow()
+    {
+        $editActions = array(
+            'edit',
+            'prepareForPublishing',
+            'prepareForReview',
+        );
+
+        return in_array($this->action->id, $editActions);
+    }
+
+    /**
      * Returns the first workflow step of the given item.
      * @param ItemTrait|ActiveRecord $item
      * @return string|null

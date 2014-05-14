@@ -31,7 +31,7 @@
     $this->action->id,
     array('hint' => true)
 ); ?>
-<?php if ($this->action->id === 'edit'): ?>
+<?php if ($this->actionUsesEditWorkflow()): ?>
     <div class="file-field-2cols">
         <div class="field-column">
             <?php echo $form->select2ControlGroup(
