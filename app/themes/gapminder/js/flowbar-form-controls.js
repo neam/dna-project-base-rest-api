@@ -72,7 +72,12 @@
          * Focuses on the current field.
          */
         function focusOnField() {
-            $currentMissingField[0].focus();
+            if ($currentMissingField.hasClass('select2-offscreen')) {
+                var select2Id = '#s2id_' + $currentMissingField.selector.substring(1);
+                $('.select2-focusser', select2Id)[0].focus();
+            } else {
+                $currentMissingField[0].focus();
+            }
         }
 
         /**
