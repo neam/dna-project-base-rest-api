@@ -90,8 +90,29 @@
   margin: 5px 0 10px 0;
 }
 
-.commentsBlock .newComment {
-  padding: 2px;
+.commentsBlock {
+  .newComment {
+    padding: 2px;
+
+    form {
+      text-align: right;
+    }
+
+    textarea {
+      .form-control;
+    }
+
+    .sendComment {
+      .btn;
+      .btn-sm;
+      color: #fff;
+
+      span {
+        background: none;
+        padding: 0;
+      }
+    }
+  }
 }
 
 .commentsBlock .heading {
