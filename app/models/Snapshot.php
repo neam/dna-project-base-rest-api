@@ -189,12 +189,11 @@ class Snapshot extends BaseSnapshot
      */
     public function getAllAttributes($includeRelated = true)
     {
-
         $response = new stdClass();
 
         $response->id = $this->id;
         $response->vizabi_state = json_decode(trim($this->vizabi_state));
-        $response->tool = !is_null($this->tool_id) ? $this->tool->allAttributes : null;
+        $response->tool = ($this->tool !== null) ? $this->tool->getAllAttributes() : null;
         $response->embed_override = $this->embed_override;
         $response->title = $this->title;
         $response->slug = $this->slug;
@@ -213,7 +212,6 @@ class Snapshot extends BaseSnapshot
         }
 
         return $response;
-
     }
 
     public function search($criteria = null)
