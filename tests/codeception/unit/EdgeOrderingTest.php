@@ -1,7 +1,7 @@
 <?php
 use Codeception\Util\Stub;
 
-class GraphRelationsTest extends \Codeception\TestCase\Test
+class EdgeOrderingTest extends \Codeception\TestCase\Test
 {
     /**
      * @var \CodeGuy
@@ -36,10 +36,7 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
     // tests
     public function testEdgeOrder()
     {
-        $section = new Section();
-        if (!$section->save()) {
-            var_dump($section->getErrors());
-        }
+
     }
 
 
