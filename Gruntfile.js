@@ -156,9 +156,10 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: [
-                    'app/js/**/*.js'
+                    'app/js/**/*.js',
+                    'Gruntfile.js'
                 ],
-                tasks: ['jshint:app', 'copy:scripts'],
+                tasks: ['jshint', 'copy:scripts'],
                 options: {
                     livereload: 35730,
                     spawn: false
