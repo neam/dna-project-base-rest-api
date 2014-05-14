@@ -17,6 +17,7 @@ $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SE
     dirname($_SERVER['SCRIPT_NAME']);
 
 require('includes/languages.php');
+require('includes/languageDirections.php');
 
 // Set the Google Analytics ID
 // TODO: Proper environment check.
@@ -534,6 +535,7 @@ $mainConfig = array(
         'adminEmail'           => 'user@example.com',
         'signupSender'         => 'signup@gapminder.org',
         'languages'            => $languages,
+        'languageDirections'   => $languageDirections,
         'ext.ckeditor.options' => array(
             'type'                            => 'fckeditor',
             'height'                          => 400,

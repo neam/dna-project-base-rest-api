@@ -82,11 +82,10 @@ class ItemEditUi extends CWidget
         $heading = Yii::t('app', 'Editing');
 
         if ($this->actionId === self::ACTION_TRANSLATE) {
-            $language = Yii::app()->getLanguageNameByCode($this->controller->workflowData['translateInto']);
             $heading = Yii::t(
                 'app', 'Translating into {language}',
                 array(
-                    '{language}' => $language,
+                    '{language}' => LanguageHelper::getName($this->controller->workflowData['translateInto']),
                 )
             );
         }

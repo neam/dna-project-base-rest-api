@@ -36,7 +36,7 @@ class GuiSection extends BaseGuiSection
     public function rules()
     {
         $translationRules = array();
-        foreach (Yii::app()->getLanguages() as $language => $label) {
+        foreach (LanguageHelper::getCodes() as $language) {
             $translationRules[] = array('title', 'length', 'min' => 3, 'on' => 'translate_into_' . $language); // dummy rule
         }
 

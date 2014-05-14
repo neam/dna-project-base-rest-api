@@ -77,22 +77,6 @@ class WebApplication extends CWebApplication
      */
     public function getLanguages()
     {
-        // todo: check where used and decide if it should be change to use the LanguageHelper directly
-        return Yii::app()->params['languages'];
-    }
-
-    /**
-     * Returns a language name by the given language code.
-     * @param string $languageCode
-     * @return string
-     */
-    public function getLanguageNameByCode($languageCode)
-    {
-        // todo: check where used and decide if it should be change to use the LanguageHelper directly
-        $languages = $this->getLanguages();
-
-        return (isset($languages[$languageCode]))
-            ? $languages[$languageCode]
-            : $languageCode;
+        return LanguageHelper::getLanguageList();
     }
 }

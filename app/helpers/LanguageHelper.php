@@ -8,15 +8,61 @@ class LanguageHelper
     /**
      * Returns a list of all supported languages in the application.
      *
+     * Format:
+     * array('en' => 'English', ... )
+     *
      * @return array data about the languages.
      * @throws CException if no languages are defined in the application config.
      */
-    static public function getList()
+    static public function getLanguageList()
     {
         if (!isset(Yii::app()->params['languages'])) {
             throw new CException('No languages defined in application "params" config.');
         }
         return Yii::app()->params['languages'];
+    }
+
+    /**
+     * Returns a list of all language directions in the application.
+     *
+     * Format:
+     * array('en' => 'ltr', ... )
+     *
+     * @return array data about the languages.
+     * @throws CException if no languages are defined in the application config.
+     */
+    static public function getLanguageDirections()
+    {
+        if (!isset(Yii::app()->params['languageDirections'])) {
+            throw new CException('No language directions defined in application "params" config.');
+        }
+        return Yii::app()->params['languageDirections'];
+    }
+
+    /**
+     * Returns a list of all supported languages in the application with the direction info, i.e. "ltr" or "rtl".
+     *
+     * Format:
+     * array('en' => array('name' => 'English', 'direction' => 'ltr'), ... )
+     *
+     * @return array the language list.
+     * @throws CException if language direction cannot be found for a language.
+     */
+    static public function getLanguageListWithDirection()
+    {
+        $result = array();
+        $languages = self::getLanguageList();
+        $directions = self::getLanguageDirections();
+        foreach ($languages as $code => $name) {
+            if (!isset($directions[$code])) {
+                throw new CException(sprintf('No language direction defined in app config for "%s".', $code));
+            }
+            $result[$code] = array(
+                'name' => $name,
+                'direction' => $directions[$code],
+            );
+        }
+        return $result;
     }
 
     /**
@@ -27,7 +73,7 @@ class LanguageHelper
      */
     static public function getCodes()
     {
-        return array_keys(self::getList());
+        return array_keys(self::getLanguageList());
     }
 
     /**
@@ -39,10 +85,10 @@ class LanguageHelper
      */
     static public function getName($code)
     {
-        $languages = self::getList();
-        if (!isset($languages[$code], $languages[$code]['name'])) {
+        $languages = self::getLanguageList();
+        if (!isset($languages[$code])) {
             throw new CException(sprintf('Failed to find language name for code "%s".', $code));
         }
-        return $languages[$code]['name'];
+        return $languages[$code];
     }
 }
