@@ -98,9 +98,9 @@ class Controller extends CController
     static public function getLanguageMenuItems()
     {
         $languages = array();
-        foreach (LanguageHelper::getList() AS $code => $data) {
+        foreach (LanguageHelper::getLanguageList() AS $code => $name) {
             $languages[] = array(
-                'label' => $data['name'],
+                'label' => $name,
                 'url' => array_merge(array(''), $_GET, array('lang' => $code)),
                 'active' => ($code == Yii::app()->language)
             );

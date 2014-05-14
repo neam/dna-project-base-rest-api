@@ -44,7 +44,7 @@
         <div class="task-progress">
             <div class="progress-info">
                 <span class="progress-title">
-                    <?php echo Html::encode(Yii::app()->getLanguageNameByCode($data['language'])); // TODO: get language name dynamically ?>
+                    <?php echo Html::encode(LanguageHelper::getName($data['language'])); ?>
                 </span>
                 <span class="progress-percentage">
                     <?php echo (int)$data['progress'] . '%'; ?>

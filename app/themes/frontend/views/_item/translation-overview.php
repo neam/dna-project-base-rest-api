@@ -23,7 +23,7 @@ $this->breadcrumbs[] = $actionCaption;
         <?php
         $_lang = Yii::app()->language;
 
-        foreach (LanguageHelper::getList() as $language => $data): ?>
+        foreach (LanguageHelper::getLanguageList() as $language => $name): ?>
 
             <?php
 
@@ -44,7 +44,7 @@ $this->breadcrumbs[] = $actionCaption;
 
                     <?php
                     $this->widget("\TbButton", array(
-                        "label" => $data['name'],
+                        "label" => $name,
                         "type" => $this->action->id == $action ? "inverse" : null,
                         "size" => "",
                         "icon" => "glyphicon-" . $options['icon'] . ($this->action->id == $action ? " icon-white" : null),

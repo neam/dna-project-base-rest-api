@@ -4,6 +4,6 @@ class LanguageController extends AppRestController
 {
     public function actionList()
     {
-        $this->sendResponse(200, LanguageHelper::getList());
+        $this->sendResponse(200, LanguageHelper::getLanguageListWithDirection());
     }
 }
