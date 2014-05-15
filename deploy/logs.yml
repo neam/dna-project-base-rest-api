@@ -1,4 +1,0 @@
-files:
- - /app/vendor/nginx/logs/*log
- - /app/vendor/php/var/log/error.log
- - /app/app/runtime/application.log
