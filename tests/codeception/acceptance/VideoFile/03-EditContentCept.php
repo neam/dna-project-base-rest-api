@@ -4,8 +4,6 @@ $scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('edit a video I have previously created.');
 
-$I->registerGapminderStaff();
-
 $I->login('max', 'test');
 
 
