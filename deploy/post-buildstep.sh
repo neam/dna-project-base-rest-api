@@ -47,4 +47,10 @@ if [ ! "$ENV" == "" ]; then
 
 fi
 
+# set up papertrail logging
+sudo gem install remote_syslog
+echo "*.*          @logs.papertrailapp.com:$PAPERTRAIL_PORT" > /etc/rsyslog.d/papertrail.conf
+service rsyslog restart
+remote_syslog -c deploy/logs.yml -p $PAPERTRAIL_PORT -d logs.papertrailapp.com
+
 exit 0

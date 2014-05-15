@@ -183,7 +183,6 @@
                 "php": "5.4.26",
                 "nginx": "1.4.3"
             },
-            "papertrail": "true",
             "php-config": [
                 "upload_max_filesize=200M",
                 "post_max_size=200M",
