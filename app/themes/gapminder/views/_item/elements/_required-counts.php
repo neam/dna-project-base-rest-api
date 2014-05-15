@@ -48,5 +48,5 @@
             ),
         )
     );*/ ?>
-    <?php publishJs('/themes/gapminder/js/flowbar-form-controls.js', CClientScript::POS_END); ?>
+    <?php publishJs('/themes/gapminder/js/workflow-validation-guide.js', CClientScript::POS_END); ?>
 <?php endif; ?>

@@ -56,13 +56,10 @@ class Chapter extends BaseChapter
             $this->flowStepRules(),
             $this->i18nRules(),
             array(
-                // Ordinary validation rules
-                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
-                array('videos', 'validateVideo', 'on' => 'publishable'),
-                //array('teachers_guide', 'length', 'min' => 150, 'max' => 400), // currently not keeping constraints on html fields until further notice
-                array('exercises', 'validateExercises', 'on' => 'publishable'),
-                array('snapshots', 'validateSnapshots', 'on' => 'publishable'),
+                array('thumbnail_media_id', 'exist', 'on' => 'publishable', 'attributeName' => 'id', 'className' => 'P3Media'),
+                array('videos', 'RelationCountValidator', 'on' => 'publishable', 'min' => 1),
+                array('exercises', 'RelationCountValidator', 'on' => 'publishable', 'min' => 1),
                 array('credits', 'length', 'min' => 1, 'max' => 200),
             )
         );
@@ -72,7 +69,7 @@ class Chapter extends BaseChapter
 
     public function validateThumbnail($attribute)
     {
-        if (!is_null($this->thumbnail_media_id)) {
+        if (!empty($this->thumbnail_media_id)) {
             $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
         }
     }
@@ -126,8 +123,6 @@ class Chapter extends BaseChapter
                 'teachers_guide_' . $this->source_language,
                 'exercises',
                 'videos',
-                'snapshots',
-                'related',
             ),
         );
     }
