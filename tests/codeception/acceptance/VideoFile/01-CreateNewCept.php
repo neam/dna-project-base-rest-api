@@ -11,9 +11,18 @@ $I->registerGapminderStaff();
 $I->login('max', 'test');
 
 // Max creates a new video file.
-$I->createVideoFile('Max video');
+$I->createVideoFile(
+    array(
+        'info' => array(
+            VideoFileEditPage::$titleField => 'Max video',
+        ),
+    )
+);
+
+$I->amOnPage(VideoFileBrowsePage::$URL);
 $I->seeVideoFile('Max video');
 $I->logout();
 
 $I->login('ola', 'test');
 $I->dontSeeVideoFile('Max video');
+

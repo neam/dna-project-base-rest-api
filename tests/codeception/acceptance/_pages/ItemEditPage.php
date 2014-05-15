@@ -10,7 +10,7 @@ class ItemEditPage
      * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
-    public static $submitButton = '#item-form button[type=submit]';
+    public static $submitButton = '#item-form button[name=save-changes]';
 
     /**
      * Basic route example for your current URL

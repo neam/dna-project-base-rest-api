@@ -13,6 +13,16 @@ use VideoFileEditPage;
 
 class MemberSteps extends \WebGuy
 {
+
+    function findAccountByUsername($username)
+    {
+        $account = Account::model()->findByAttributes(array('username' => $username));
+        if ($account === null) {
+            throw new Exception('Failed to find account with username "$username".');
+        }
+        return $account;
+    }
+
     function login($username, $password)
     {
         $I = $this;
@@ -51,6 +61,48 @@ class MemberSteps extends \WebGuy
         // TODO activate account using mailcatcher
     }
 
+    function registerUsers(array $users)
+    {
+        $I = $this;
+
+        foreach ($users as $person) {
+            $I->register($person['name'], $person['password'], $person['password'], $person['email']);
+
+            $I->login('admin', 'admin');
+            $I->activateMember($person['name']);
+            foreach ($person['groupRoles'] as $groupName => $rolesNames) {
+                foreach ($rolesNames as $roleName) {
+                    $I->toggleGroupRole($person['name'], $groupName, $roleName);
+                }
+            }
+            $I->logout();
+        }
+    }
+
+    function registerExternalUsers()
+    {
+        $users = array(
+            array(
+                'name' => 'jack',
+                'password' => 'test',
+                'email' => 'test@example.com',
+                'groupRoles' => array(
+                    'Proofreaders' => array('GroupReviewer'),
+                ),
+            ),
+            array(
+                'name' => 'martha',
+                'password' => 'test',
+                'email' => 'test@example.com',
+                'groupRoles' => array(
+                    'Translators' => array('GroupTranslator'),
+                ),
+            ),
+        );
+
+        $this->registerUsers($users);
+    }
+
     function registerGapminderStaff()
     {
         $staff = array(
@@ -71,9 +123,9 @@ class MemberSteps extends \WebGuy
                 ),
             ),
             array(
-                'name' => 'ferdanda',
+                'name' => 'fernanda',
                 'password' => 'test',
-                'email' => 'dev+ferdanda@gapminder.org',
+                'email' => 'dev+fernanda@gapminder.org',
                 'groupRoles' => array(
                     'GapminderInternal' => array('GroupEditor'),
                 ),
@@ -96,29 +148,84 @@ class MemberSteps extends \WebGuy
             ),
         );
 
-        $I = $this;
-
-        foreach ($staff as $person) {
-            $I->register($person['name'], $person['password'], $person['password'], $person['email']);
-
-            $I->login('admin', 'admin');
-            $I->activateMember($person['name']);
-            foreach ($person['groupRoles'] as $groupName => $rolesNames) {
-                foreach ($rolesNames as $roleName) {
-                    $I->toggleGroupRole($person['name'], $groupName, $roleName);
-                }
-            }
-            $I->logout();
-        }
+        $this->registerUsers($staff);
     }
 
-    function createVideoFile($title)
+    function createVideoFile($stepAttributes)
     {
         $I = $this;
         $I->amOnPage(VideoFileBrowsePage::$URL);
         $I->click(VideoFileBrowsePage::$addButton);
-        $I->fillField(VideoFileEditPage::$titleField, $title);
-        $I->click(VideoFileEditPage::$submitButton);
+        $this->fillVideoFileStepPages($stepAttributes);
+    }
+
+    function editVideoFile($videoId, $stepAttributes)
+    {
+        $I = $this;
+        $I->amOnPage(VideoFileBrowsePage::$URL);
+        $I->click('Edit', '#VideoFile_' . $videoId);
+        $I->fillVideoFileStepPages($stepAttributes);
+    }
+
+    /**
+     * Fills attributes on the videoFile editing pages.
+     * I must be on the first page of editing/creating video before calling this method!
+     * @param $stepAttributes
+     */
+    function fillVideoFileStepPages($stepAttributes)
+    {
+        $I = $this;
+        foreach (VideoFileEditPage::$steps as $step) {
+            $attributes = isset($stepAttributes[$step]) ? $stepAttributes[$step] : array();
+            $I->fillFieldsOnPageAndSubmit($attributes);
+        }
+    }
+
+    /**
+     * Fills fields on the current page and submits
+     * @param $attributes
+     * @param $submit (optional) defaults to \ItemEditPage::$submitButton
+     */
+    function fillFieldsOnPageAndSubmit(array $attributes, $submit = null)
+    {
+        $I = $this;
+
+        if (empty($submit)) {
+            $submit = \ItemEditPage::$submitButton;
+        }
+
+        foreach ($attributes as $id => $value) {
+            $I->fillField($id, $value);
+        }
+
+        $I->click($submit);
+    }
+
+    function putVideoToGroup($video, $group)
+    {
+        $I = $this;
+        $context = $this->videoContextOfTitle($video);
+        $I->see($video, $context);
+        $I->click($group, $context);
+    }
+
+
+    function videoContextOfTitle($videoTitle)
+    {
+        return $this->videoContext(
+            $this->getVideoId($videoTitle)
+        );
+    }
+
+    function videoContext($id)
+    {
+        return '#VideoFile_' . $id;
+    }
+
+    function getVideoId($title)
+    {
+        $I = $this;
+        return $I->grabFromDatabase('video_file', 'id', array('_title' => $title));
     }
 
     function seeVideoFile($title)
@@ -150,12 +257,4 @@ class MemberSteps extends \WebGuy
         $I->click(AccountViewPage::generateToggleGroupRoleLinkSelector($group, $role));
     }
 
-    function findAccountByUsername($username)
-    {
-        $account = Account::model()->findByAttributes(array('username' => $username));
-        if ($account === null) {
-            throw new Exception('Failed to find account with username "$username".');
-        }
-        return $account;
-    }
 }

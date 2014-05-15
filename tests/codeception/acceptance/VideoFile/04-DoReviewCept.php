@@ -1,5 +1,7 @@
 <?php
 $scenario->group('data:clean-db');
 
-$I = new WebGuy($scenario);
-$I->wantTo('perform actions and see result');
+$I = new WebGuy\MemberSteps($scenario);
+$I->wantTo('review a videofile');
+
+
