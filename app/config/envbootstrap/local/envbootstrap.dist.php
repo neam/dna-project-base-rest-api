@@ -2,14 +2,16 @@
 
 namespace gapminder\envbootstrap;
 
+require(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'function.setenv.php');
+
 // ==== Initial environment bootstrap ====
 
 define("ENV", 'local-foo');
 define("DEV", true);
 define("DEBUG_REDIRECTS", false);
 define("DEBUG_LOGS", false);
-define("CONFIG_ENVIRONMENT", 'development');
-define("DATA", 'user-generated');
+setenv("CONFIG_ENVIRONMENT", $default = 'development', $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
+setenv("DATA", $default = 'user-generated', $required = true);
 
 // ==== Identity-related constants ====
 

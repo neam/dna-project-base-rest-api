@@ -1,6 +1,55 @@
 Gapminder School CMS
 ====================
 
+This web application is used by the community as well as Gapminder staff to author, translate and publish the educational material.
+
+## Tests
+
+First, decide whether or not to run tests against a clean database or with user generated data:
+
+    export DATA=clean-db
+    OR
+    export DATA=user-generated
+
+Then, do the following before attempting to run any tests:
+
+    cd tests
+    php ../composer.phar install
+
+    export CONFIG_ENVIRONMENT=test
+    ./reset-test-db.sh
+
+    export CMS_HOST=localhost:31415
+    ./generate-local-codeception-config.sh
+
+    # in another terminal window/tab
+    java -jar selenium-server-standalone-2.41.0.jar
+
+    # if above doesn't work, try specifying chromedriver explicitly
+    java -jar selenium-server-standalone-2.41.0.jar -Dwebdriver.chrome.driver=./chromedriver
+
+To run the unit tests:
+
+    vendor/bin/codecept run unit -g data:$DATA --debug
+
+To run the functional tests:
+
+    vendor/bin/codecept run functional -g data:$DATA --debug
+
+For the remaining tests, you need to start the built in php server on port 31415 beforehand:
+
+    ./_start-local-server.sh
+
+To run the acceptance suite:
+
+    vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug
+
+To run the the API suite:
+
+    vendor/bin/codecept run api -g data:$DATA --debug
+
+## Deploy
+
 Builds and runs with PHP 5.4.26, Nginx 1.4.3. However note that php cli runs version 5.4.6 (default Ubuntu Quantal).
 
 Requires Dokku master branch and the following plugins:
@@ -8,8 +57,6 @@ Requires Dokku master branch and the following plugins:
  - For post-buildstep.sh to run properly - [https://github.com/musicglue/dokku-user-env-compile]()
  - For MySQL-compatible database access - [https://github.com/Kloadut/dokku-md-plugin]()
  - For mounting persistent cache directory at runtime - [https://github.com/dyson/dokku-docker-options]()
-
-## Deploy
 
 To build and deploy (regardless of target), first set some fundamental config vars:
 
