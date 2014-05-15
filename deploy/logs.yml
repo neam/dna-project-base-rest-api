@@ -1,5 +1,4 @@
 files:
- - /app/vendor/nginx/logs/access.log.papertrail
- - /app/vendor/nginx/logs/error.log.papertrail
- - /app/vendor/php/var/log/error.log.papertrail
- - /app/app/runtime/application.log.papertrail
+ - /app/vendor/nginx/logs/*log
+ - /app/vendor/php/var/log/error.log
+ - /app/app/runtime/application.log
