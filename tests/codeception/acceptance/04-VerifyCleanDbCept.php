@@ -8,6 +8,5 @@ $I->login('admin', 'admin');
 $I->amOnPage(AccountAdminPage::$URL);
 foreach ($I->staff as $person) {
     $I->dontSeeLink($person['name']);
-    $I->seeLink($person['name']);
 }
 $I->seeLink('admin');
