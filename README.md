@@ -16,9 +16,6 @@ Then, do the following before attempting to run any tests:
     cd tests
     php ../composer.phar install
 
-    export CONFIG_ENVIRONMENT=test
-    ./reset-test-db.sh
-
     export CMS_HOST=localhost:31415
     ./generate-local-codeception-config.sh
 
@@ -27,6 +24,11 @@ Then, do the following before attempting to run any tests:
 
     # if above doesn't work, try specifying chromedriver explicitly
     java -jar selenium-server-standalone-2.41.0.jar -Dwebdriver.chrome.driver=./chromedriver
+
+To reset the test database (necessary in order to re-run tests):
+
+    export CONFIG_ENVIRONMENT=test
+    ./reset-test-db.sh
 
 To run the unit tests:
 
