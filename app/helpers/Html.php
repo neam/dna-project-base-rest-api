@@ -399,4 +399,17 @@ class Html extends TbHtml
             $linkHtmlOptions
         );
     }
+
+    /**
+     * eg Snapshot_2, editVideoFile_14
+     * Not unique if called with same arguments twice or more!
+     * @param $model
+     * @param string $action (optional)
+     * @return string
+     */
+    static public function generateModelId($model, $action = '')
+    {
+        return $action . get_class($model) . '_' . $model->{$model->tableSchema->primaryKey};
+    }
+
 }

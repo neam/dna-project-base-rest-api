@@ -774,6 +774,7 @@ trait ItemController
      */
     public function getCssClasses($model)
     {
+        // todo: use TbHtml::addCssClass instead
         $classes = array();
         $classes[] = 'item-controller';
         if ($model instanceof ActiveRecord) {
