@@ -401,15 +401,16 @@ class Html extends TbHtml
     }
 
     /**
-     * eg Snapshot_2, editVideoFile_14
+     * eg Snapshot_2, editVideoFile_14, removeFromGroupTranslatorsVideoFile_25
      * Not unique if called with same arguments twice or more!
      * @param $model
      * @param string $action (optional)
+     * @param string $group (optional)
      * @return string
      */
-    static public function generateModelId($model, $action = '')
+    static public function generateModelId($model, $action = '', $group = '')
     {
-        return $action . get_class($model) . '_' . $model->{$model->tableSchema->primaryKey};
+        return $action . $group . get_class($model) . '_' . $model->{$model->tableSchema->primaryKey};
     }
 
 }

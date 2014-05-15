@@ -181,6 +181,7 @@
                             'group' => $groupName,
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
+                        'id' => Html::generateModelId($model, 'removeFromGroup', $groupName),
                     )
                 ); ?>
             <?php else: ?>
@@ -196,6 +197,7 @@
                             'group' => $groupName,
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
+                        'id' => Html::generateModelId($model, 'addToGroup', $groupName),
                     )
                 ); ?>
             <?php endif; ?>
