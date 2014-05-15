@@ -11,22 +11,27 @@ Requires Dokku master branch and the following plugins:
 
 ## Deploy
 
-To build and deploy on dokku, first set fundamental config vars:
+To build and deploy (regardless of target), first set some fundamental config vars:
 
     export APPNAME=foo1-cms
+    export CURRENT_BRANCH=develop
+    export CMS_HOST=$APPNAME.gapminder.org
+
+### Deploy using Dokku
+
+To build and deploy on dokku, first set dokku host config var:
+
     export DOKKU_HOST=dokku.gapminder.org
 
 Then, push to a dokku repository:
 
-    export CURRENT_BRANCH=develop
     git push dokku@$DOKKU_HOST:$APPNAME $CURRENT_BRANCH:master
 
 You will also need to run the following once after the initial push:
 
     export USER_GENERATED_DATA_S3_BUCKET="s3://user-data-backups"
-    export USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY="replacme"
+    export USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY="replaceme"
     export USER_DATA_BACKUP_UPLOADERS_SECRET="replaceme"
-    export CMS_HOST=$APPNAME.gapminder.org
 
     # connect a db instance
 
@@ -45,8 +50,41 @@ You will also need to run the following once after the initial push:
 
     export DATA=clean-db
     export DATA=user-generated
+    ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
     ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/reset-db.sh
 
 To upload the current user-generated data to S3, run:
 
     ssh dokku@$DOKKU_HOST run $APPNAME /app/shell-scripts/upload-user-data-backup.sh
+
+## Deploy using Heroku
+
+To build and deploy on dokku, push to a heroku repository:
+
+    git push git@heroku.com:$APPNAME.git $CURRENT_BRANCH:master
+
+You will also need to run the following once after the initial push:
+
+    # set the proper buildpack url
+
+    heroku config:add BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git --app=$APPNAME
+
+    # activate papertrail logging
+
+    heroku addons:add papertrail --app=$APPNAME
+
+    # connect a db instance
+
+    heroku addons:add cleardb --app=$APPNAME
+    heroku config:set --app=$APPNAME DATABASE_URL="`heroku config:get --app=$APPNAME CLEARDB_DATABASE_URL`"
+
+    # set environment variables
+
+    heroku config:set --app=$APPNAME ENVBOOTSTRAP_STRATEGY=environment-variables ENV=dokku/$APPNAME BRAND_SITENAME=Gapminder-CMS-$APPNAME BRAND_DOMAIN=$CMS_HOST DATA=$DATA GRANULARITY=$GRANULARITY USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY=$USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET PAPERTRAIL_PORT=$PAPERTRAIL_PORT
+
+    # reset db and load user data if DATA=user-generated
+
+    # todo
+
+Note: Deploying using Heroku is currently not feasable. The app needs to be made read-only before it will work. For instance, p3media needs to be replaced with a fully network-based-solution.
+
