@@ -29,6 +29,12 @@ if [ "$DATA" == "user-generated" ]; then
 
 fi
 
+if [ "$DATA" == "clean-db" ]; then
+
+    app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/schema.sql
+
+fi
+
 app/yiic fixture --connectionID=$connectionID load
 app/yiic migrate --connectionID=$connectionID --interactive=0 # > /dev/null
 app/yiic databaseviewgenerator --connectionID=$connectionID item
