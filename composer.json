@@ -197,6 +197,7 @@
             "compile": [
                 "bash deploy/post-buildstep.sh"
             ],
+            "newrelic": true,
             "log-files": [
                 "app/runtime/application.log"
             ],
