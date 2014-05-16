@@ -89,6 +89,7 @@ class Identity
         $return->supportEmail = "info@" . $return->domain;
         $return->mailSentByMail = "noreply@" . $return->domain;
         $return->mailSentByName = $return->siteName;
+        return $return;
     }
 }
 
