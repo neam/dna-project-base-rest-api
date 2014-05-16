@@ -92,9 +92,9 @@ class WaffleController extends AppRestController
         $response->definitions = new stdClass();
 
         // waffleCategories
+        // Prevent double-escaping ("The method will automatically quote the column names unless a column contains some parenthesis (which means the column contains a DB expression).")
         $command = Yii::app()->db->createCommand()
-            // Prevent double-escaping ("The method will automatically quote the column names unless a column contains some parenthesis (which means the column contains a DB expression).")
-            ->select("waffle_category.ref AS `waffle_category.id`, waffle_category_thing.ref AS `waffle_category_thing.id`, (-1) AS prevent_double_escaping_yii_workaround")
+            ->select("waffle_category.ref AS `waffle_category.ref`, waffle_category_thing.ref AS `waffle_category_thing.ref`, (-1) AS prevent_double_escaping_yii_workaround")
             ->from("waffle_category")
             ->leftJoin("waffle_category_thing", "waffle_category_thing.waffle_category_id = waffle_category.id")
             ->where("waffle_category.waffle_id = :waffle_id");
@@ -106,21 +106,21 @@ class WaffleController extends AppRestController
             $categories = array();
             if (is_array($records)) {
                 foreach ($records as $r) {
-                    if (!isset($categories[$r['waffle_category.id']])) {
+                    if (!isset($categories[$r['waffle_category.ref']])) {
                         $category = new stdClass();
-                        $category->id = $r['waffle_category.id'];
+                        $category->id = $r['waffle_category.ref'];
                         $category->list_name = $r['waffle_category.list_name'];
                         $category->property_name = $r['waffle_category.property_name'];
                         $category->possessive = $r['waffle_category.possessive'];
                         $category->expanded_choice_format = (object) array_values(ChoiceFormatHelper::toArray($r['waffle_category.choice_format'], $lang));
                         $category->description = $r['waffle_category.description'];
                         $category->things = array();
-                        $categories[$r['waffle_category.id']] = $category;
+                        $categories[$r['waffle_category.ref']] = $category;
                     }
-                    if ($r['waffle_category_thing.id'] !== null) {
-                        $things =& $categories[$r['waffle_category.id']]->things;
+                    if ($r['waffle_category_thing.ref'] !== null) {
+                        $things =& $categories[$r['waffle_category.ref']]->things;
                         $thing = new stdClass();
-                        $thing->id = $r['waffle_category_thing.id'];
+                        $thing->id = $r['waffle_category_thing.ref'];
                         $thing->name = $r['waffle_category_thing.name'];
                         $thing->short_name = $r['waffle_category_thing.short_name'];
                         $things[] = $thing;
