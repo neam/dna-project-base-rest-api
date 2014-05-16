@@ -4,6 +4,12 @@
 Yii::setPathOfAlias('WaffleTag', dirname(__FILE__));
 Yii::import('WaffleTag.*');
 
+/**
+ * i18n properties for this model fetched through the I18nColumnsBehavior class.
+ * @property string $name
+ * @property string $short_name
+ * @property string $description
+ */
 class WaffleTag extends BaseWaffleTag
 {
     use ItemTrait;

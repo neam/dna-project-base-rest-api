@@ -4,6 +4,11 @@
 Yii::setPathOfAlias('WafflePublisher', dirname(__FILE__));
 Yii::import('WafflePublisher.*');
 
+/**
+ * i18n properties for this model fetched through the I18nColumnsBehavior class.
+ * @property string $name
+ * @property string $description
+ */
 class WafflePublisher extends BaseWafflePublisher
 {
     use ItemTrait;
