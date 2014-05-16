@@ -19,12 +19,6 @@ Then, do the following before attempting to run any tests:
     export CMS_HOST=localhost:31415
     ./generate-local-codeception-config.sh
 
-    # in another terminal window/tab
-    java -jar selenium-server-standalone-2.41.0.jar
-
-    # if above doesn't work, try specifying chromedriver explicitly
-    java -jar selenium-server-standalone-2.41.0.jar -Dwebdriver.chrome.driver=./chromedriver
-
 To reset the test database (necessary in order to re-run tests):
 
     export CONFIG_ENVIRONMENT=test
@@ -38,9 +32,17 @@ To run the functional tests:
 
     vendor/bin/codecept run functional -g data:$DATA --debug
 
-For the remaining tests, you need to start the built in php server on port 31415 beforehand:
+For the remaining tests, you need to A. start the built in php server on port 31415 beforehand:
 
     ./_start-local-server.sh
+
+B. have a selenium server running locally:
+
+    # in another terminal window/tab
+    java -jar selenium-server-standalone-2.41.0.jar
+
+    # if above doesn't work, try specifying chromedriver explicitly
+    java -jar selenium-server-standalone-2.41.0.jar -Dwebdriver.chrome.driver=./chromedriver
 
 To run the acceptance suite:
 
@@ -49,6 +51,26 @@ To run the acceptance suite:
 To run the the API suite:
 
     vendor/bin/codecept run api -g data:$DATA --debug
+
+### Hints for test developers
+
+To run an individual test, in this example an acceptance test:
+
+     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug 04-VerifyCleanDbCept.php
+
+In general, consult the documentation at [http://codeception.com/docs/modules/WebDriver]() and related Codeception docs.
+
+A useful method while developing tests locally is pauseExecution(). It only has effect if tests are run with the "--debug" flag (as per above). It pauses the execution and let's you use developer tools or similar to inspect the current state of things. For instance, if you can't a selector to work, add it just before the problematic selector:
+
+    <?php
+    $scenario->group('data:clean-db');
+    $I = new WebGuy\MemberSteps($scenario);
+    $I->wantTo('login and see result');
+    $I->login('admin', 'admin');
+    $I->pauseExecution(); // <-- here
+    $I->see('Welcome to Gapminder', 'h4');
+
+Happy test development!
 
 ## Deploy
 
