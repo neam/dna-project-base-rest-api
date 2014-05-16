@@ -46,6 +46,17 @@ if (DATABASE_URL === null) {
     define("YII_DB_NAME", trim($url['path'], '/'));
 }
 
+// Require setting smtp constants based on SMTP_URL environment variable
+setenv("SMTP_URL", $default = null, $required = true); // smtp://username:password@host:587?encryption=tls
+
+$url = parse_url(SMTP_URL);
+isset($url['query']) && parse_str($url['query'], $args);
+define("SMTP_HOST", $url['host']);
+define("SMTP_PORT", $url['port']);
+define("SMTP_USER", $url['user']);
+define("SMTP_PASSWORD", $url['pass']);
+define("SMTP_ENCRYPTION", isset($args['encryption']) ? $args['encryption'] : false);
+
 setenv("YII_GII_PASSWORD", $default = uniqid(), $required = false);
 
 // ==== Define test-related constants ====
