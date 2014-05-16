@@ -53,8 +53,8 @@ $url = parse_url(SMTP_URL);
 isset($url['query']) && parse_str($url['query'], $args);
 define("SMTP_HOST", $url['host']);
 define("SMTP_PORT", $url['port']);
-define("SMTP_USER", $url['user']);
-define("SMTP_PASSWORD", $url['pass']);
+define("SMTP_USERNAME", $url['user']);
+define("SMTP_PASSWORD", urldecode($url['pass']));
 define("SMTP_ENCRYPTION", isset($args['encryption']) ? $args['encryption'] : false);
 
 setenv("YII_GII_PASSWORD", $default = uniqid(), $required = false);
