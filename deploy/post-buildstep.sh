@@ -42,9 +42,6 @@ if [ ! "$ENV" == "" ]; then
     app/yiic migrate --connectionID=$connectionID --interactive=0
     app/yiic databaseviewgenerator --connectionID=$connectionID item
 
-    app/yiic authorizationhierarchy reset
-    app/yiic authorizationhierarchy build
-
 fi
 
 exit 0
