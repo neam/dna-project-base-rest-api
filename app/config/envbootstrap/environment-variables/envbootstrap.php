@@ -20,13 +20,6 @@ setenv("BRAND_DOMAIN", $default = null, $required = true);
 
 // ==== Defines infrastructure = all backing services, usernames, api:s, servers, ports etc depending on environment ====
 
-setenv("SMTP_HOST", $default = null);
-setenv("SMTP_PORT", $default = null);
-setenv("SMTP_TIMEOUT", $default = null);
-setenv("SMTP_ENCRYPTION", $default = null);
-setenv("SMTP_AUTH_USERNAME", $default = null);
-setenv("SMTP_AUTH_PASSWORD", $default = null);
-
 // Support setting main db constants based on DATABASE_URL environment variable
 setenv("DATABASE_URL", $default = null, $required = false);
 if (DATABASE_URL === null) {
