@@ -52,25 +52,30 @@ class AppRegistrationController extends RegistrationController
                     $model->superuser = 0;
                     $model->status = ((Yii::app()->controller->module->activeAfterRegister) ? User::STATUS_ACTIVE : User::STATUS_NOACTIVE);
 
-                    if ($model->save()) {
-                        $profile->user_id = $model->id;
-                        $profile->save();
+                    // Start transaction and do not store registration in database if something goes wrong during it's processing
+                    $transaction = Yii::app()->db->beginTransaction();
 
-                        $model->assignDefaultGroupRoles();
+                    try {
 
-                        if (Yii::app()->controller->module->sendActivationMail) {
-                            $activation_url = $this->createAbsoluteUrl(
-                                '/user/activation/activation',
-                                array("activkey" => $model->activkey, "email" => $model->email)
-                            );
+                        if ($model->save()) {
+                            $profile->user_id = $model->id;
+                            $profile->save();
 
-                            $from = Yii::app()->params['signupSender'];
-                            $to = $model->email;
-                            $subject = Yii::t(
-                                'user registration',
-                                'Email Confirmation to activate your Gapminder Account'
-                            );
-                            $bodyTxt = <<<EOD
+                            $model->assignDefaultGroupRoles();
+
+                            if (Yii::app()->controller->module->sendActivationMail) {
+                                $activation_url = $this->createAbsoluteUrl(
+                                    '/user/activation/activation',
+                                    array("activkey" => $model->activkey, "email" => $model->email)
+                                );
+
+                                $from = Yii::app()->params['signupSender'];
+                                $to = $model->email;
+                                $subject = Yii::t(
+                                    'user registration',
+                                    'Email Confirmation to activate your Gapminder Account'
+                                );
+                                $bodyTxt = <<<EOD
 Please confirm your email address and activate your new Gapminder Account by clicking this link: {link}
 
 Thanks
@@ -80,48 +85,53 @@ Gapminder Foundation
 We are very sorry!
 /The Gapminder Foundation.)
 EOD;
-                            $body = Yii::t(
-                                'user registration',
-                                $bodyTxt,
-                                array(
-                                    '{link}' => $activation_url,
-                                )
-                            );
-                            $config = array(
-                                'body' => $body
-                            );
-                            // TODO: method signature broken compared to component Emailer::create
-                            $mail = $this->createEmail($from, $to, $subject, $config);
-                            $this->sendEmail($mail);
+                                $body = Yii::t(
+                                    'user registration',
+                                    $bodyTxt,
+                                    array(
+                                        '{link}' => $activation_url,
+                                    )
+                                );
+                                $config = array(
+                                    'body' => $body
+                                );
+                                // TODO: method signature broken compared to component Emailer::create
+                                $mail = $this->createEmail($from, $to, $subject, $config);
+                                $this->sendEmail($mail);
 
-                        }
-
-                        if ((Yii::app()->controller->module->loginNotActiv
-                                || (Yii::app()->controller->module->activeAfterRegister
-                                    && Yii::app()->controller->module->sendActivationMail == false))
-                            && Yii::app()->controller->module->autoLogin
-                        ) {
-                            $identity = new UserIdentity($model->username, $soucePassword);
-                            $identity->authenticate();
-                            Yii::app()->user->login($identity, 0);
-                            $this->redirect(Yii::app()->controller->module->returnUrl);
-                        } else {
-                            if (!Yii::app()->controller->module->activeAfterRegister && !Yii::app()->controller->module->sendActivationMail) {
-                                Yii::app()->user->setFlash('registration', UserModule::t("Thank you for your registration. Contact Admin to activate your account."));
-                            } elseif (Yii::app()->controller->module->activeAfterRegister && Yii::app()->controller->module->sendActivationMail == false
-                            ) {
-                                Yii::app()->user->setFlash('registration', UserModule::t("Thank you for your registration. Please {{login}}.", array(
-                                    '{{login}}' => CHtml::link(UserModule::t('Login'), Yii::app()->controller->module->loginUrl),
-                                )));
-                            } elseif (Yii::app()->controller->module->loginNotActiv) {
-                                Yii::app()->user->setFlash('registration',
-                                    UserModule::t("Thank you for your registration. Please check your email or login."));
-                            } else {
-                                $this->redirect(array('/user/registration/registrationSuccess'));
                             }
 
-                            $this->refresh();
+                            if ((Yii::app()->controller->module->loginNotActiv
+                                    || (Yii::app()->controller->module->activeAfterRegister
+                                        && Yii::app()->controller->module->sendActivationMail == false))
+                                && Yii::app()->controller->module->autoLogin
+                            ) {
+                                $identity = new UserIdentity($model->username, $soucePassword);
+                                $identity->authenticate();
+                                Yii::app()->user->login($identity, 0);
+                                $this->redirect(Yii::app()->controller->module->returnUrl);
+                            } else {
+                                if (!Yii::app()->controller->module->activeAfterRegister && !Yii::app()->controller->module->sendActivationMail) {
+                                    Yii::app()->user->setFlash('registration', UserModule::t("Thank you for your registration. Contact Admin to activate your account."));
+                                } elseif (Yii::app()->controller->module->activeAfterRegister && Yii::app()->controller->module->sendActivationMail == false
+                                ) {
+                                    Yii::app()->user->setFlash('registration', UserModule::t("Thank you for your registration. Please {{login}}.", array(
+                                        '{{login}}' => CHtml::link(UserModule::t('Login'), Yii::app()->controller->module->loginUrl),
+                                    )));
+                                } elseif (Yii::app()->controller->module->loginNotActiv) {
+                                    Yii::app()->user->setFlash('registration',
+                                        UserModule::t("Thank you for your registration. Please check your email or login."));
+                                } else {
+                                    $this->redirect(array('/user/registration/registrationSuccess'));
+                                }
+
+                                $this->refresh();
+                            }
                         }
+                        $transaction->commit();
+                    } catch (Exception $e) {
+                        $transaction->rollback();
+                        throw $e;
                     }
                 } else {
                     $profile->validate();
