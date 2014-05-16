@@ -21,6 +21,7 @@ require('includes/languageDirections.php');
 
 // Set the Google Analytics ID
 // TODO: Proper environment check.
+$_SERVER['SERVER_NAME'] = "preventnotice-this-var-doesnt-work-anyway-on-dokku-deployments-nor-in-cli";
 switch ($_SERVER['SERVER_NAME']) {
     case 'cms.gapminder.org':
         $googleAnalyticsId = 'UA-739025-9';
