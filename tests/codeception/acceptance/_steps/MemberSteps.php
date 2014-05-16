@@ -11,7 +11,7 @@ use RegistrationPage;
 use VideoFileBrowsePage;
 use VideoFileEditPage;
 
-class MemberSteps extends \WebGuy
+class MemberSteps extends AppSteps
 {
 
     public $staff = array(

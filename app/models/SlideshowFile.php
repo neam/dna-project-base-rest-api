@@ -54,12 +54,9 @@ class SlideshowFile extends BaseSlideshowFile
             $this->flowStepRules(),
             $this->i18nRules(),
             array(
-
-                // Ordinary validation rules
                 array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 120),
                 array('dataarticles', 'validateDataArticles'),
                 array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 250),
-
             )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);

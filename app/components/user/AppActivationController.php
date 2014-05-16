@@ -28,11 +28,20 @@ class AppActivationController extends ActivationController
                 $find->status = 1;
                 $find->save();
                 $level = TbHtml::ALERT_COLOR_SUCCESS;
-                $flashMsg = Yii::t('accountActivation', '<strong>Welcome!</strong> Your account has been activated.');
+                $this->redirect(array('activated'));
             }
         }
 
         Yii::app()->user->setFlash($level, $flashMsg);
         $this->redirect(array('/'));
+    }
+
+    /**
+     * Displays the activation success page.
+     */
+    public function actionActivated()
+    {
+        $this->layout = WebApplication::LAYOUT_MINIMAL;
+        $this->render('//user/activated');
     }
 }
