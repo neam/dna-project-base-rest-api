@@ -141,6 +141,7 @@ EOD;
      */
     public function actionRegistrationSuccess()
     {
+        $this->layout = WebApplication::LAYOUT_MINIMAL;
         $this->render('//user/registration-success');
     }
 }

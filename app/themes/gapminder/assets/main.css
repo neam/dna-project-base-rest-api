@@ -9727,6 +9727,17 @@ Styleguide 5
 .layout-minimal {
   margin-top: 60px;
 }
+.layout-minimal h1,
+.layout-minimal h2,
+.layout-minimal h3,
+.layout-minimal h4,
+.layout-minimal h5,
+.layout-minimal h6 {
+  margin-top: 0;
+}
+.layout-minimal .brand-logo {
+  margin-bottom: 50px;
+}
 .layout-regular {
   padding-top: 95px;
 }
@@ -13915,6 +13926,47 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 }
 .registration-controller.register-action .registration-container .form-actions {
   margin: 50px 0 30px;
+}
+.registration-controller.registrationsuccess-action .message-container {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
+@media (min-width: 992px) {
+  .registration-controller.registrationsuccess-action .message-container {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+@media (min-width: 992px) {
+  .registration-controller.registrationsuccess-action .message-container {
+    margin-left: 33.33333333333333%;
+  }
+}
+.registration-controller.registrationsuccess-action .message-container .page-actions {
+  margin-top: 50px;
+}
+.registration-controller.activated-action .message-container {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .registration-controller.activated-action .message-container {
+    float: left;
+    width: 50%;
+  }
+}
+@media (min-width: 992px) {
+  .registration-controller.activated-action .message-container {
+    margin-left: 25%;
+  }
+}
+.registration-controller.activated-action .page-actions {
+  margin-top: 50px;
 }
 .site-controller .item-type-introduction .intro-head {
   margin-bottom: 20px;
