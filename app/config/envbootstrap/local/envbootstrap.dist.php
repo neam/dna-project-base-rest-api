@@ -11,7 +11,7 @@ define("DEV", true);
 define("DEBUG_REDIRECTS", false);
 define("DEBUG_LOGS", false);
 setenv("CONFIG_ENVIRONMENT", $default = 'development', $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
-setenv("DATA", $default = 'user-generated', $required = true);
+setenv("DATA", $default = 'user-generated', $required = false);
 
 // ==== Identity-related constants ====
 
