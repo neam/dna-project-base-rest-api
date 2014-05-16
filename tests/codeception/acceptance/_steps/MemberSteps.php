@@ -48,6 +48,8 @@ class MemberSteps extends AppSteps
             sleep(1); // we must sleep here or the users will actually not get registered
         }
 
+        $I->see("Thank you for registering!");
+
         // TODO activate account using mailcatcher
     }
 
