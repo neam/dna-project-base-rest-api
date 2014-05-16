@@ -5,12 +5,15 @@ class VideoFileBrowsePage extends ItemBrowsePage
     // include url of current page
     static $URL = '?r=videoFile/browse';
 
-    /**
-     * Declare UI map for this page here. CSS or XPath allowed.
-     * public static $usernameField = '#username';
-     * public static $formSubmitButton = "#mainForm input[type=submit]";
-     */
-    public static $addButton = '#addButton';
+    public static function addToGroupButton($group, $id)
+    {
+        return parent::addToGroupButton($group, 'VideoFile', $id);
+    }
+
+    public static function removeFromGroupButton($group, $id)
+    {
+        return parent::removeFromGroupButton($group, 'VideoFile', $id);
+    }
 
     /**
      * Basic route example for your current URL

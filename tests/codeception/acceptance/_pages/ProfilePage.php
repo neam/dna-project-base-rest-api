@@ -5,6 +5,7 @@ class ProfilePage
     // include url of current page
     static $URL = '?r=account/profile';
 
+
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';

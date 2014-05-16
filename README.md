@@ -24,11 +24,6 @@ To reset the test database (necessary in order to re-run tests):
     export CONFIG_ENVIRONMENT=test
     ./reset-test-db.sh
 
-To reset the test database (necessary in order to re-run tests):
-
-    export CONFIG_ENVIRONMENT=test
-    ./reset-test-db.sh
-
 To run the unit tests:
 
     vendor/bin/codecept run unit -g data:$DATA --debug

@@ -57,6 +57,25 @@ class MemberSteps extends AppSteps
         ),
     );
 
+    public $externalUsers = array(
+        array(
+            'name' => 'jack',
+            'password' => 'test',
+            'email' => 'test@example.com',
+            'groupRoles' => array(
+                'Proofreaders' => array('GroupReviewer'),
+            ),
+        ),
+        array(
+            'name' => 'martha',
+            'password' => 'test',
+            'email' => 'test@example.com',
+            'groupRoles' => array(
+                'Translators' => array('GroupTranslator'),
+            ),
+        ),
+    );
+
     function findAccountByUsername($username)
     {
         $account = Account::model()->findByAttributes(array('username' => $username));
@@ -122,33 +141,14 @@ class MemberSteps extends AppSteps
         }
     }
 
-    function registerExternalUsers()
-    {
-        $users = array(
-            array(
-                'name' => 'jack',
-                'password' => 'test',
-                'email' => 'test@example.com',
-                'groupRoles' => array(
-                    'Proofreaders' => array('GroupReviewer'),
-                ),
-            ),
-            array(
-                'name' => 'martha',
-                'password' => 'test',
-                'email' => 'test@example.com',
-                'groupRoles' => array(
-                    'Translators' => array('GroupTranslator'),
-                ),
-            ),
-        );
-
-        $this->registerUsers($users);
-    }
-
     function registerGapminderStaff()
     {
         $this->registerUsers($this->staff);
+    }
+
+    function registerExternalUsers()
+    {
+        $this->registerUsers($this->externalUsers);
     }
 
     function createVideoFile($stepAttributes)
@@ -212,12 +212,12 @@ class MemberSteps extends AppSteps
 
     function videoContextOfTitle($videoTitle)
     {
-        return $this->videoContext(
+        return $this->specifyVideoContext(
             $this->getVideoId($videoTitle)
         );
     }
 
-    function videoContext($id)
+    function specifyVideoContext($id)
     {
         return '#VideoFile_' . $id;
     }
