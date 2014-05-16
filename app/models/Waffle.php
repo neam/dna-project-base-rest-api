@@ -55,8 +55,7 @@ class Waffle extends BaseWaffle
             $manualI18nRules,
             array(
                 array('title', 'length', 'min' => 3, 'max' => 200),
-                array('json_import_media_id', 'validateFile', 'on' => 'publishable'),
-
+                array('json_import_media_id', 'validateFile', 'on' => 'publishable, publishable-step_import'),
             )
         );
         //Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
