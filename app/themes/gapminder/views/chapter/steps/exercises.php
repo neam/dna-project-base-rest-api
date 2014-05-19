@@ -14,6 +14,7 @@ $this->widget(
         'relation' => 'exercises',
         'model' => $model,
         'criteria' => $criteria,
+        'id' => 'Chapter_exercises',
     )
 );
 
