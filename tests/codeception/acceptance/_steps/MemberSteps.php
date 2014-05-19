@@ -201,27 +201,6 @@ class MemberSteps extends AppSteps
         $I->click($submit);
     }
 
-    function putVideoToGroup($video, $group)
-    {
-        $I = $this;
-        $context = $this->videoContextOfTitle($video);
-        $I->see($video, $context);
-        $I->click($group, $context);
-    }
-
-
-    function videoContextOfTitle($videoTitle)
-    {
-        return $this->specifyVideoContext(
-            $this->getVideoId($videoTitle)
-        );
-    }
-
-    function specifyVideoContext($id)
-    {
-        return '#VideoFile_' . $id;
-    }
-
     function seeVideoFile($title)
     {
         $I = $this;
