@@ -15,6 +15,12 @@ $config['components']['email'] = array(
     ),
 );
 
+// Allow but inactivate email sending and warn when no SMTP_HOST
+if (SMTP_HOST === null) {
+    $config['components']['email']['dryRun'] = true;
+    Yii::log("All mail sending is disabled until SMTP_HOST or SMTP_URL is set through envbootstrap", CLogger::LEVEL_WARNING);
+}
+
 // YiiMail
 /*
 $config['import'][] = 'ext.yii-mail.YiiMailMessage';
