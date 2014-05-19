@@ -168,7 +168,7 @@
         "nordsoftware/yii-emailer": "1.2.*",
         "nordsoftware/yii-utils": "@dev",
         "crisu83/yii-formatter": "@dev",
-        "jalle19/yii-ga": "1.0.0"
+        "jalle19/yii-ga": "dev-master"
     },
     "require-dev":{
         "phundament/backend-theme":"@dev",
