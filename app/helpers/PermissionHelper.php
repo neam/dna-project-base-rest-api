@@ -44,7 +44,9 @@ class PermissionHelper
 
         $model = new GroupHasAccount();
         $model->attributes = $attributes;
-        $model->save();
+        if (!$model->save()) {
+            throw new SaveException($model);
+        }
 
         return true;
     }
@@ -171,7 +173,9 @@ class PermissionHelper
 
         $model = new NodeHasGroup();
         $model->attributes = $attributes;
-        $model->save();
+        if (!$model->save()) {
+            throw new SaveException($model);
+        }
 
         return true;
     }
