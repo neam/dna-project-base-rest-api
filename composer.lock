@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "8299744647fcb4cceb31dde3f795f26e",
+    "hash": "db77b185547c49dea1c3f72fd1d29968",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -588,21 +588,21 @@
         },
         {
             "name": "jalle19/yii-ga",
-            "version": "1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/yii-ga.git",
-                "reference": "d4520f4bd6b83156ef7ac029f9e56b8cbec9c002"
+                "reference": "a6705d0cb4ae78b79198d98402cac2b07ad10062"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/yii-ga/zipball/d4520f4bd6b83156ef7ac029f9e56b8cbec9c002",
-                "reference": "d4520f4bd6b83156ef7ac029f9e56b8cbec9c002",
+                "url": "https://api.github.com/repos/Jalle19/yii-ga/zipball/a6705d0cb4ae78b79198d98402cac2b07ad10062",
+                "reference": "a6705d0cb4ae78b79198d98402cac2b07ad10062",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "yiisoft/yii": "dev-master"
+                "yiisoft/yii": ">=1.1.14"
             },
             "type": "library",
             "autoload": {
@@ -622,7 +622,7 @@
                 "googleanalytics",
                 "yii"
             ],
-            "time": "2013-07-09 12:38:11"
+            "time": "2014-05-14 06:31:47"
         },
         {
             "name": "kswedberg/jquery-smooth-scroll",
@@ -2493,6 +2493,7 @@
         "codemix/hybridauthmanager": 20,
         "nordsoftware/yii-utils": 20,
         "crisu83/yii-formatter": 20,
+        "jalle19/yii-ga": 20,
         "phundament/backend-theme": 20,
         "schmunk42/giic": 20,
         "phundament/gii-template-collection": 20

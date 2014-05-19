@@ -20,13 +20,6 @@ define("BRAND_DOMAIN", 'gapminder.local');
 
 // ==== Defines infrastructure = all backing services, usernames, api:s, servers, ports etc depending on environment ====
 
-define("SMTP_HOST", '');
-define("SMTP_PORT", '');
-define("SMTP_TIMEOUT", '');
-define("SMTP_ENCRYPTION", '');
-define("SMTP_AUTH_USERNAME", '');
-define("SMTP_AUTH_PASSWORD", '');
-
 // Support setting main db constants based on DATABASE_URL environment variable
 define("DATABASE_URL", null);
 

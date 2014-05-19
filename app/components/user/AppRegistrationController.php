@@ -101,6 +101,8 @@ EOD;
 
                             }
 
+                            $transaction->commit();
+
                             if ((Yii::app()->controller->module->loginNotActiv
                                     || (Yii::app()->controller->module->activeAfterRegister
                                         && Yii::app()->controller->module->sendActivationMail == false))
@@ -128,7 +130,7 @@ EOD;
                                 $this->refresh();
                             }
                         }
-                        $transaction->commit();
+
                     } catch (Exception $e) {
                         $transaction->rollback();
                         throw $e;

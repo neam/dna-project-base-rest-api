@@ -13,27 +13,20 @@ class AppActivationController extends ActivationController
         $email = $_GET['email'];
         $activkey = $_GET['activkey'];
 
-        // Defaulting to error
-        $level = TbHtml::ALERT_COLOR_ERROR;
-        $flashMsg = Yii::t('accountActivation', 'Incorrect activation URL.');
-
-        if ($email && $activkey) {
+        if (isset($email) && isset($activkey)) {
             $find = User::model()->notsafe()->findByAttributes(array('email' => $email));
 
-            if (isset($find) && $find->status) {
-                $level = TbHtml::ALERT_COLOR_INFO;
-                $flashMsg = Yii::t('accountActivation', 'Your account is active.');
-            } elseif (isset($find->activkey) && ($find->activkey == $activkey)) {
+            if (isset($find->activkey) && ($find->activkey === $activkey)) {
                 $find->activkey = UserModule::encrypting(microtime());
                 $find->status = 1;
                 $find->save();
-                $level = TbHtml::ALERT_COLOR_SUCCESS;
                 $this->redirect(array('activated'));
+            } else {
+                throw new CHttpException(401, Yii::t('app', 'Invalid activation key.'));
             }
+        } else {
+            throw new CHttpException(401, Yii::t('app', 'Invalid activation URL.'));
         }
-
-        Yii::app()->user->setFlash($level, $flashMsg);
-        $this->redirect(array('/'));
     }
 
     /**
