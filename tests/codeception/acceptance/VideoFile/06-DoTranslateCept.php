@@ -8,10 +8,10 @@ $I->login('max', 'test');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
 
-$videoId = $I->getVideoId('Max video');
-$I->click(VideoFileBrowsePage::addToGroupButton('Translators', $videoId));
+$videoContext = VideoFileBrowsePage::modelContext('Max video');
 
-$I->seeElementInDOM(VideoFileBrowsePage::removeFromGroupButton('Translators', $videoId));
+$I->click('Translators', $videoContext);
+
 $I->logout();
 
 
@@ -25,7 +25,6 @@ $I->amOnPage(ProfilePage::$URL);
 
 // TODO: figure out how to click on select2 instead
 $I->selectOption('#Profile_language1', 'Portuguese');
-$I->pauseExecution();
 $I->selectOption('#Profile_language2', 'Swedish');
 $I->selectOption('#Profile_language3', 'English');
 $I->click('Save');
@@ -36,4 +35,4 @@ $I->seeOptionIsSelected('#Profile_language3', 'English');
 
 $I->amOnPage(VideoFileBrowsePage::$URL);
 
-$I->click('Edit', $I->specifyVideoContext($videoId));
+$I->click('Edit', $videoContext);

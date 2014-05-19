@@ -5,14 +5,9 @@ class VideoFileBrowsePage extends ItemBrowsePage
     // include url of current page
     static $URL = '?r=videoFile/browse';
 
-    public static function addToGroupButton($group, $id)
+    public static function modelContext($title)
     {
-        return parent::addToGroupButton($group, 'VideoFile', $id);
-    }
-
-    public static function removeFromGroupButton($group, $id)
-    {
-        return parent::removeFromGroupButton($group, 'VideoFile', $id);
+        return '#VideoFile_' . str_replace(' ', '_', $title);
     }
 
     /**

@@ -2,7 +2,7 @@
 /* @var Controller|ItemController $this */
 /* @var ActiveRecord|ItemTrait|QaStateBehavior $data */
 ?>
-<div class="list-item" id="<?php echo Html::generateModelId($data); ?>">
+<div class="list-item" id="<?php echo Html::generateActiveId($data, 'title'); ?>">
     <div class="item-header">
         <div class="header-text">
             <h2 class="header-title">

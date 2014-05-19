@@ -19,10 +19,8 @@ $I->createVideoFile(
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->seeVideoFile('Max vedio');
 
-$videoId = $I->getVideoId('Max vedio');
-
 $I->editVideoFile(
-    $videoId,
+    'Max vedio',
     array(
         'info' => array(
             VideoFileEditPage::$titleField => 'Max video corrected',

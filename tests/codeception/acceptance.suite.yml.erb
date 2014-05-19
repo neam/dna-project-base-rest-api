@@ -13,7 +13,6 @@ modules:
     enabled:
         - WebDriver
         - WebHelper
-        - Db
     config:
         WebDriver:
             url: http://foo.com/the-url-property-of-WebDriver-needs-to-be-set-for-codecept-build-to-work-but-should-be-overwritten-by-env-config-during-actual-testing.php
@@ -24,8 +23,6 @@ modules:
             <% end %>
             wait: 0
             restart: true
-        Db:
-            cleanup: false
 
 env:
     cms-local-chrome:

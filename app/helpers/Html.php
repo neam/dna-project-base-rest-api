@@ -401,16 +401,18 @@ class Html extends TbHtml
     }
 
     /**
-     * eg Snapshot_2, editVideoFile_14, removeFromGroupTranslatorsVideoFile_25
-     * Not unique if called with same arguments twice or more!
-     * @param $model
-     * @param string $action (optional)
-     * @param string $group (optional)
-     * @return string
+     * Wrapper of CHtml::activeId with support for fallback attribute
+     * @param CModel $model the data model
+     * @param string $attribute the attribute
+     * @param string $fallbackAttribute (optional) the attribute to fall back on if $attribute is not set. Defaults to id
+     * @return string result of CHtml::activeId()
      */
-    static public function generateModelId($model, $action = '', $group = '')
+    static public function generateActiveId($model, $attribute, $fallbackAttribute = 'id')
     {
-        return $action . $group . get_class($model) . '_' . $model->{$model->tableSchema->primaryKey};
+        if (!isset($model->{$attribute})) {
+            $attribute = $fallbackAttribute;
+        }
+        return CHtml::activeId($model, $model->{$attribute});
     }
 
 }

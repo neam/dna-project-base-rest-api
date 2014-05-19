@@ -11,12 +11,14 @@ $I->dontSee('Max video');
 $I->logout();
 
 
+$videoContext = VideoFileBrowsePage::modelContext('Max video');
+
+
 // Put video to group GapminderInternal
 $I->login('max', 'test');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
-$videoId = $I->getVideoId('Max video');
-$I->click(VideoFileBrowsePage::addToGroupButton('GapminderInternal', $videoId));
+$I->click('GapminderInternal', $videoContext);
 $I->logout();
 
 
@@ -24,7 +26,7 @@ $I->logout();
 $I->login('mattias', 'test');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
-$I->dontSee('Edit', $I->specifyVideoContext($videoId));
+$I->dontSee('Edit', $videoContext);
 
 
 // Group contributor can create/edit own

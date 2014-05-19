@@ -7,16 +7,6 @@ class ItemBrowsePage
 
     public static $addButton = '#addButton';
 
-    public static function addToGroupButton($group, $type, $id)
-    {
-        return '#addToGroup' . $group . $type . '_' . $id;
-    }
-
-    public static function removeFromGroupButton($group, $type, $id)
-    {
-        return '#removeFromGroup' . $group . $type . '_' . $id;
-    }
-
     /**
      * Basic route example for your current URL
      * You can append any additional parameter to URL

@@ -159,11 +159,11 @@ class MemberSteps extends AppSteps
         $this->fillVideoFileStepPages($stepAttributes);
     }
 
-    function editVideoFile($videoId, $stepAttributes)
+    function editVideoFile($title, $stepAttributes)
     {
         $I = $this;
         $I->amOnPage(VideoFileBrowsePage::$URL);
-        $I->click('Edit', '#VideoFile_' . $videoId);
+        $I->click('Edit', VideoFileBrowsePage::modelContext($title));
         $I->fillVideoFileStepPages($stepAttributes);
     }
 
@@ -220,12 +220,6 @@ class MemberSteps extends AppSteps
     function specifyVideoContext($id)
     {
         return '#VideoFile_' . $id;
-    }
-
-    function getVideoId($title)
-    {
-        $I = $this;
-        return $I->grabFromDatabase('video_file', 'id', array('_title' => $title));
     }
 
     function seeVideoFile($title)
