@@ -87,13 +87,16 @@ To build and deploy (regardless of target), first set some fundamental config va
 
     export APPNAME=foo1-cms
     export CURRENT_BRANCH=develop
-    export CMS_HOST=$APPNAME.gapminder.org
 
 ### Deploy using Dokku
 
 To build and deploy on dokku, first set dokku host config var:
 
+    export DOKKU_HOST=dokku.gapminderdev.org
+    export CMS_HOST=$APPNAME.gapminderdev.org
+    OR, for production use:
     export DOKKU_HOST=dokku.gapminder.org
+    export CMS_HOST=$APPNAME.gapminder.org
 
 Then, push to a dokku repository:
 
@@ -136,6 +139,10 @@ To build and deploy on dokku, push to a heroku repository:
     git push git@heroku.com:$APPNAME.git $CURRENT_BRANCH:master
 
 You will also need to run the following once after the initial push:
+
+    # set the cms host
+
+    export CMS_HOST=$APPNAME.heroku.com
 
     # set the proper buildpack url
 
