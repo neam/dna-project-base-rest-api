@@ -24,19 +24,15 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
         $maxDepth = 10,
         $canonicalize = false,
         $ignoreCase = false
-    ) {
-
+    )
+    {
         $trace = debug_backtrace();
         $message = "assertEquals($expected, $actual) on line {$trace[0]["line"]}:";
-
         return parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
-
     }
 
-    // tests
     public function testChapterExercisesAndSnapshots()
     {
-
         $chapter = new Chapter();
         if (!$chapter->save()) {
             throw new SaveException($chapter);
@@ -118,7 +114,6 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
 
     public function testQueryNodesWithItemAttributes()
     {
-
         $sql = "
 SELECT
     node.id,
@@ -149,17 +144,12 @@ LIMIT 3
         ";
 
         $result = Yii::app()->db->createCommand($sql)->queryAll();
-
         $this->assertNotEmpty($result);
-
     }
 
     public function testFindItemsThroughDatabaseView()
     {
-
         $items = Item::model()->findAll();
         $this->assertNotEmpty(count($items));
-
     }
-
 }

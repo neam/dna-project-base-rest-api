@@ -52,12 +52,8 @@ class ActionTraitsTest extends \Codeception\TestCase\Test
     {
     }
 
-    /**
-     * @test
-     */
-    public function demonstrateTraitInheritance()
+    public function testDemonstrateTraitInheritance()
     {
-
         $controller = new Foo();
         $this->assertEquals(true, method_exists($controller, 'actionIndex'));
         $this->assertEquals(true, method_exists($controller, 'actionIndexFromTrait'));
@@ -69,7 +65,5 @@ class ActionTraitsTest extends \Codeception\TestCase\Test
         $this->assertEquals(true, method_exists($controller, 'actionIndexFromTrait'));
         $this->assertEquals("bar", $controller->actionIndex());
         $this->assertEquals("foo", $controller->actionIndexFromTrait());
-
     }
-
 }
