@@ -6,7 +6,6 @@ set -x;
 set -o errexit
 
 app/yiic databaseschema --connectionID=db dropAllTablesAndViews --verbose=0
-app/yiic databaseschema --connectionID=db loadSql --path=db/schema.sql --verbose=0
 
 rm -rf app/data/p3media/*
 # todo: find a way to ensure that previously uploaded media can be restored from, possible similar to below but that works more than once
@@ -67,6 +66,13 @@ if [ "$DATA" == "user-generated" ]; then
 
     # copy the downloaded data to the persistant p3media folder
     cp -r db/migration-base/user-generated/media/* app/data/p3media/
+
+fi
+
+if [ "$DATA" == "clean-db" ]; then
+
+    app/yiic databaseschema --connectionID=db loadSql --path=db/migration-base/clean-db/schema.sql --verbose=0
+    app/yiic databaseschema --connectionID=db loadSql --path=db/migration-base/clean-db/data.sql --verbose=0
 
 fi
 
