@@ -21,9 +21,10 @@ class Foo
     }
 }
 
-require('vendor/yiisoft/yii/framework/base/CComponent.php');
-require('vendor/yiisoft/yii/framework/web/CBaseController.php');
-require('vendor/yiisoft/yii/framework/web/CController.php');
+require(dirname(__FILE__) . '/../../../vendor/yiisoft/yii/framework/base/CComponent.php');
+require(dirname(__FILE__) . '/../../../vendor/yiisoft/yii/framework/web/CBaseController.php');
+require(dirname(__FILE__) . '/../../../vendor/yiisoft/yii/framework/web/CController.php');
+
 class FooController extends CController
 {
     use IndexActionTrait {
