@@ -14,11 +14,11 @@ class VideoFileEditPage extends ItemEditPage
     public static $slugField = '#VideoFile_slug_en';
     public static $captionField = '#VideoFile_caption_en';
     public static $aboutField = '#VideoFile_about_en';
-    public static $thumbnailField = '#VideoFile_thumbnail_media_id'; // TODO: make it work with select2
-    public static $webmField = '#VideoFile_clip_webm_media_id'; // TODO: make it work with select2
-    public static $mp4Field = '#VideoFile_clip_mp4_media_id'; // TODO: make it work with select2
+    public static $thumbnailField = '#VideoFile_thumbnail_media_id';
+    public static $webmField = '#VideoFile_clip_webm_media_id';
+    public static $mp4Field = '#VideoFile_clip_mp4_media_id';
     public static $subtitlesField = '#VideoFile_subtitles_en';
-    public static $subtitlesImportMediaField = '#VideoFile_subtitles_import_media_id'; // TODO: make it work with select2
+    public static $subtitlesImportMediaField = '#VideoFile_subtitles_import_media_id';
 
     public static $steps = array('info', 'files', 'subtitles', 'related');
 
