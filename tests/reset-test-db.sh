@@ -22,16 +22,18 @@ if [ "$DATA" == "user-generated" ]; then
     DB_USER=gcms_test
     DB_PASSWORD=gcms_test
     DB_NAME=gscms_test
-    mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/user-generated-data.sql
+    mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/migration-base/user-generated/schema.sql
+    mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/migration-base/user-generated/data.sql
 
     # copy the downloaded data to the persistant p3media folder
-    cp -r db/user-generated-media/* app/data/p3media/
+    cp -r db/migration-base/user-generated-media/* app/data/p3media/
 
 fi
 
 if [ "$DATA" == "clean-db" ]; then
 
-    app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/schema.sql
+    app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/migration-base/clean-db/schema.sql
+    app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/migration-base/clean-db/data.sql
 
 fi
 
