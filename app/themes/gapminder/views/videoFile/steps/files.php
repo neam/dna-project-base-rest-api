@@ -3,7 +3,7 @@
 /* @var VideoFile|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<div class="file-field-2cols">
+<div class="file-field-2cols webm">
     <div class="field-column">
         <?php echo $form->select2ControlGroup(
             $model,
@@ -39,7 +39,7 @@
         </div>
     </div>
 </div>
-<div class="file-field-2cols">
+<div class="file-field-2cols mp4">
     <div class="field-column">
         <?php echo $form->select2ControlGroup($model, 'clip_mp4_media_id', $model->getVideoOptions(VideoFile::MIME_TYPE_VIDEO_MP4)); ?>
     </div>
