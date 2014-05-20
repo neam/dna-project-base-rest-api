@@ -3,6 +3,15 @@ Gapminder School CMS
 
 This web application is used by the community as well as Gapminder staff to author, translate and publish the educational material.
 
+## Update to the latest changes
+
+After pulling the latest changes, run the following to update your local environment:
+
+    php composer.phar --prefer-source install
+    npm install
+    bower install
+    shell-scripts/yiic-migrate.sh
+
 ## Tests
 
 First, decide whether or not to run tests against a clean database or with user generated data:
