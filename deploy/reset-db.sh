@@ -18,43 +18,43 @@ deploy/configure-persistent-p3media.sh
 
 if [ "$DATA" == "user-generated" ]; then
 
-    if [ ! -f db/user-generated-data.sql ]; then
+    if [ ! -f db/migration-base/user-generated/data.sql ]; then
 
         echo "== Fetching the user-generated data associated with this commit =="
 
         shell-scripts/configure-s3cmd.sh
 
-        if [ -f db/user-generated-data.filepath ]; then
+        if [ -f db/migration-base/user-generated/data.filepath ]; then
 
             export USER_GENERATED_DATA_S3_BUCKET="s3://user-data-backups"
-            export USER_GENERATED_DATA_FILEPATH=`cat db/user-generated-data.filepath`
+            export USER_GENERATED_DATA_FILEPATH=`cat db/migration-base/user-generated/data.filepath`
             export USER_GENERATED_DATA_S3_URL=$USER_GENERATED_DATA_S3_BUCKET/$USER_GENERATED_DATA_FILEPATH
-            s3cmd -v --config=/tmp/.s3cfg get "$USER_GENERATED_DATA_S3_URL" db/user-generated-data.sql
+            s3cmd -v --config=/tmp/.s3cfg get "$USER_GENERATED_DATA_S3_URL" db/migration-base/user-generated/data.sql
 
-            echo "User data dump downloaded from $USER_GENERATED_DATA_S3_URL to db/user-generated-data.sql"
+            echo "User data dump downloaded from $USER_GENERATED_DATA_S3_URL to db/migration-base/user-generated/data.sql"
 
         else
-            echo "Error: the file db/user-generated-data.filepath needs to be available and contain the relative path in the S3 bucket that contains the sql dump with the user-generated data"
+            echo "Error: the file db/migration-base/user-generated/data.filepath needs to be available and contain the relative path in the S3 bucket that contains the sql dump with the user-generated data"
         fi
 
     fi
 
-    if [ ! -d db/user-generated-media/ ]; then
+    if [ ! -d db/migration-base/user-generated/media/ ]; then
 
         echo "== Fetching the user-generated media associated with this commit =="
 
-        if [ -f db/user-generated-data.folderpath ]; then
+        if [ -f db/migration-base/user-generated/media.folderpath ]; then
 
             export USER_GENERATED_MEDIA_S3_BUCKET="s3://user-data-backups"
-            export USER_GENERATED_MEDIA_FOLDERPATH=`cat db/user-generated-data.folderpath`
+            export USER_GENERATED_MEDIA_FOLDERPATH=`cat db/migration-base/user-generated/media.folderpath`
             export USER_GENERATED_MEDIA_S3_URL=$USER_GENERATED_MEDIA_S3_BUCKET/$USER_GENERATED_MEDIA_FOLDERPATH
-            mkdir db/user-generated-media/
-            s3cmd -v --config=/tmp/.s3cfg --recursive get "$USER_GENERATED_MEDIA_S3_URL" db/user-generated-media/
+            mkdir db/migration-base/user-generated/media/
+            s3cmd -v --config=/tmp/.s3cfg --recursive get "$USER_GENERATED_MEDIA_S3_URL" db/migration-base/user-generated/media/
 
-            echo "User media downloaded from $USER_GENERATED_DATA_S3_URL to db/user-generated-media/"
+            echo "User media downloaded from $USER_GENERATED_DATA_S3_URL to db/migration-base/user-generated/media/"
 
         else
-            echo "Error: the file db/user-generated-data.folderpath needs to be available and contain the relative path in the S3 bucket that contains the user-generated media files"
+            echo "Error: the file db/migration-base/user-generated/media.folderpath needs to be available and contain the relative path in the S3 bucket that contains the user-generated media files"
         fi
 
     fi
@@ -62,11 +62,11 @@ if [ "$DATA" == "user-generated" ]; then
     echo "===== Load the user-generated data associated with this commit ===="
 
     # load mysql dump
-    # app/yiic databaseschema --connectionID=db loadSql --path=db/user-generated-data.sql --verbose=1
-    mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/user-generated-data.sql
+    # app/yiic databaseschema --connectionID=db loadSql --path=db/migration-base/user-generated/data.sql --verbose=1
+    mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/migration-base/user-generated/data.sql
 
     # copy the downloaded data to the persistant p3media folder
-    cp -r db/user-generated-media/* app/data/p3media/
+    cp -r db/migration-base/user-generated/media/* app/data/p3media/
 
 fi
 
