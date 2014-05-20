@@ -3,7 +3,6 @@
 script_path=`dirname $0`
 cd $script_path/../
 
-app/yiic mysqldump
-mv db/dump.sql db/current-schema.sql
+app/yiic mysqldump --dumpPath=db --dumpFile=current-schema.sql --data=false
 
 exit 0

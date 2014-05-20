@@ -71,5 +71,5 @@ if [ "$DATA" == "user-generated" ]; then
 fi
 
 app/yiic fixture --connectionID=db load
-app/yiic migrate --connectionID=db --interactive=0
+shell-scripts/yiic-migrate.sh --connectionID=db --interactive=0
 app/yiic databaseviewgenerator --connectionID=db item

@@ -39,7 +39,7 @@ fi
 if [ ! "$ENV" == "" ]; then
 
     app/yiic fixture --connectionID=$connectionID load
-    app/yiic migrate --connectionID=$connectionID --interactive=0
+    shell-scripts/yiic-migrate.sh --connectionID=$connectionID --interactive=0
     app/yiic databaseviewgenerator --connectionID=$connectionID item
 
 fi
