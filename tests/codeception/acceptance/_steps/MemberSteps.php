@@ -61,7 +61,7 @@ class MemberSteps extends AppSteps
         array(
             'name' => 'jack',
             'password' => 'test',
-            'email' => 'test@example.com',
+            'email' => 'jack@example.com',
             'groupRoles' => array(
                 'Proofreaders' => array('GroupReviewer'),
             ),
@@ -69,7 +69,7 @@ class MemberSteps extends AppSteps
         array(
             'name' => 'martha',
             'password' => 'test',
-            'email' => 'test@example.com',
+            'email' => 'martha@example.com',
             'groupRoles' => array(
                 'Translators' => array('GroupTranslator'),
             ),
@@ -114,10 +114,11 @@ class MemberSteps extends AppSteps
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
 
+        $I->wait(1);
         $I->click(RegistrationPage::$submitButton);
 
         if ($this->scenario->running()) {
-            sleep(1); // we must sleep here or the users will actually not get registered
+            $I->waitForText('Thank you for your registration.', 30); // secs
         }
 
         // TODO activate account using mailcatcher
@@ -129,16 +130,22 @@ class MemberSteps extends AppSteps
 
         foreach ($users as $person) {
             $I->register($person['name'], $person['password'], $person['password'], $person['email']);
+            $names[] = $person['name'];
+        }
 
-            $I->login('admin', 'admin');
+
+        $I->login('admin', 'admin');
+
+        foreach ($users as $person) {
             $I->activateMember($person['name']);
             foreach ($person['groupRoles'] as $groupName => $rolesNames) {
                 foreach ($rolesNames as $roleName) {
                     $I->toggleGroupRole($person['name'], $groupName, $roleName);
                 }
             }
-            $I->logout();
         }
+
+        $I->logout();
     }
 
     function registerGapminderStaff()
@@ -195,7 +202,10 @@ class MemberSteps extends AppSteps
         }
 
         foreach ($attributes as $id => $value) {
-            $I->fillField($id, $value);
+
+            is_callable($value)
+                ? $value()
+                : $I->fillField($id, $value);
         }
 
         $I->click($submit);
@@ -229,5 +239,41 @@ class MemberSteps extends AppSteps
         $I->click(AccountAdminPage::generateViewLinkSelector($username));
         $I->click(AccountViewPage::generateToggleGroupRoleLinkSelector($group, $role));
     }
+
+    function selectSelect2Option($selectId, $option)
+    {
+        $I = $this;
+
+        $I->selectOption($selectId, $option);
+
+        $select2ChosenSelector = '#s2id_' . substr($selectId, 1, strlen($selectId) - 1) . ' .select2-choice';
+
+        $I->waitForElementChange($select2ChosenSelector, function (\WebDriverElement $element) use ($option) {
+            return $element->getText() === $option;
+        }, 10);
+
+    }
+
+    function seeSelect2OptionIsSelected($selectId, $option)
+    {
+        $I = $this;
+        if ($selectId[0] === '#') {
+            $selectId = substr($selectId, 1, strlen($selectId) - 1);
+        }
+        $selector = '#s2id_' . $selectId . ' .select2-choice .select2-chosen';
+        $I->see($option, $selector);
+    }
+
+    function addGroupRoleToAccount($username, $group, $role)
+    {
+        $I = $this;
+        $I->login('admin', 'admin');
+        $I->amOnPage(AccountAdminPage::$URL);
+        $I->click(AccountAdminPage::generateViewLinkSelector($username));
+        $I->see($username, 'h1');
+        $I->click(AccountViewPage::generateToggleGroupRoleLinkSelector($group, $role));
+        $I->logout();
+    }
+
 
 }
