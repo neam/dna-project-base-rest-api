@@ -26,6 +26,7 @@ To reset the test database (necessary in order to re-run tests):
 
 To run the unit tests:
 
+    app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/ --data=false
     vendor/bin/codecept run unit -g data:$DATA --debug
 
 To run the functional tests:
