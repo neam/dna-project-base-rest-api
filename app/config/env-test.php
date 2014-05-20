@@ -6,6 +6,7 @@ return array(
     'modules' => array(
         'user' => array(
             'captcha' => array('registration' => false),
+            'sendActivationMail' => false, // TODO: use mailcatcher instead
         ),
     ),
     'components' => array(
