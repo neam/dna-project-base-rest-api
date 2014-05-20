@@ -132,7 +132,6 @@
     "require":{
         "php":">=5.4.0",
         "crisu83/yii-consoletools": "dev-awaiting-prs",
-        "crisu83/yiistrap":"dev-bs3 as 1.1.1",
         "crisu83/yiistrap-widgets":"1.7.*",
         "mishamx/yii-user":"dev-develop",
         "phundament/jquery-file-upload": "@dev",
@@ -168,7 +167,8 @@
         "nordsoftware/yii-emailer": "1.2.*",
         "nordsoftware/yii-utils": "@dev",
         "crisu83/yii-formatter": "@dev",
-        "jalle19/yii-ga": "dev-master"
+        "jalle19/yii-ga": "dev-master",
+        "crisu83/yiistrap": "dev-bs3 as 1.1.1"
     },
     "require-dev":{
         "phundament/backend-theme":"@dev",
