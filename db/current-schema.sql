@@ -107,7 +107,7 @@ DROP TABLE IF EXISTS `SourceMessage`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SourceMessage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category` varchar(32) COLLATE utf8_bin DEFAULT NULL,
+  `category` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `message` text COLLATE utf8_bin,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -5141,4 +5141,4 @@ CREATE TABLE `waffle_unit_qa_state` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-20 16:21:50
+-- Dump completed on 2014-05-21 17:23:19
