@@ -12,6 +12,8 @@ if [ "$DATA" == "user-generated" ]; then
 
     echo "===== Load the user-generated data associated with this commit ===="
 
+    shell-scripts/fetch-user-generated-data.sh
+
     # load mysql dump
     # TODO fix what is causing the following command to crash (it is most likely the file size of > 1 MB)
     #app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/user-generated-data.sql
