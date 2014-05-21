@@ -369,8 +369,8 @@ $mainConfig = array(
         ),
         'ga' => array(
             'class' => 'yiiga\components\GoogleAnalytics',
-            'cookieDomain' => $_SERVER['SERVER_NAME'], // TODO: Implement properly.
             'accountId' => GA_TRACKING_ID,
+            'cookieDomain' => $_SERVER['HTTP_HOST'],
         ),
         'image'         => array(
             'class'  => 'vendor.phundament.p3extensions.components.image.CImageComponent',
