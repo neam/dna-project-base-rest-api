@@ -247,7 +247,7 @@ $gcmsConfig = array(
         ),
         'sentry' => array(
             'dns' => 'https://f04403a913c647c88aa97bb1a3261f48:1096055a3e5840e59f84409db2d8e159@app.getsentry.com/20208',
-            'enabledEnvironments' => array('stage.cms.gapminder.org', 'cms.gapminder.org'),
+            'enabledEnvironments' => array(ENV),
             'environment' => ENV,
         ),
         'user' => array(
