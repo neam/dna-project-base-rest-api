@@ -8,6 +8,27 @@ set -o errexit
 script_path=`dirname $0`
 cd $script_path/../
 
+if [ ! -f db/migration-base/user-generated/schema.sql ]; then
+
+    echo "== Fetching the user-generated schema associated with this commit =="
+
+    if [ -f db/migration-base/user-generated/schema.filepath ]; then
+
+        export USER_GENERATED_DATA_S3_BUCKET="s3://user-data-backups"
+        export USER_GENERATED_DATA_FILEPATH=`cat db/migration-base/user-generated/schema.filepath`
+        export USER_GENERATED_DATA_S3_URL=$USER_GENERATED_DATA_S3_BUCKET/$USER_GENERATED_DATA_FILEPATH
+        s3cmd -v --config=/tmp/.gapminder-user-generated-data.s3cfg get "$USER_GENERATED_DATA_S3_URL" db/migration-base/user-generated/schema.sql
+
+        echo "User data dump downloaded from $USER_GENERATED_DATA_S3_URL to db/migration-base/user-generated/schema.sql"
+
+    else
+        echo "Error: the file db/migration-base/user-generated/schema.filepath needs to be available and contain the relative path in the S3 bucket that contains the sql dump with the user-generated db schema"
+    fi
+
+else
+    echo "Not fetching user-generated data since db/migration-base/user-generated/schema.sql already exists"
+fi
+
 if [ ! -f db/migration-base/user-generated/data.sql ]; then
 
     echo "== Fetching the user-generated data associated with this commit =="
@@ -22,7 +43,7 @@ if [ ! -f db/migration-base/user-generated/data.sql ]; then
         echo "User data dump downloaded from $USER_GENERATED_DATA_S3_URL to db/migration-base/user-generated/data.sql"
 
     else
-        echo "Error: the file db/migration-base/user-generated/data.filepath needs to be available and contain the relative path in the S3 bucket that contains the sql dump with the user-generated data"
+        echo "Error: the file db/migration-base/user-generated/data.filepath needs to be available and contain the relative path in the S3 bucket that contains the sql dump with the user-generated db data"
     fi
 
 else
