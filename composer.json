@@ -188,6 +188,8 @@
                 "post_max_size=200M",
                 "max_execution_time=60",
                 "xdebug.default_enable=on",
+                "newrelic.logfile=var/log/newrelic.log",
+                "error_log=var/log/error.log",
                 "html_errors=on",
                 "display_errors=on",
                 "short_open_tag=on"
@@ -200,7 +202,9 @@
             ],
             "newrelic": true,
             "log-files": [
-                "app/runtime/application.log"
+                "app/runtime/application.log",
+                "app/vendor/php/var/log/newrelic.log",
+                "app/vendor/php/var/log/error.log"
             ],
             "document-root": "www",
             "index-document": "index.php"
