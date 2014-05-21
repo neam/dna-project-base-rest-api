@@ -50,7 +50,7 @@ define("SMTP_USERNAME", $url['user']);
 define("SMTP_PASSWORD", urldecode($url['pass']));
 define("SMTP_ENCRYPTION", isset($args['encryption']) ? $args['encryption'] : false);
 
-setenv("YII_GII_PASSWORD", $default = uniqid(), $required = false);
+setenv("SENTRY_DSN", $default = null, $required = true);
 
 // ==== Define test-related constants ====
 
@@ -58,6 +58,10 @@ setenv("TEST_DB_NAME", $default = YII_DB_NAME . '_test', $required = false);
 setenv("TEST_DB_USER", $default = YII_DB_USER . '_test', $required = false);
 setenv("TEST_DB_PASSWORD", $default = YII_DB_USER . '_test', $required = false);
 setenv("TEST_DB_HOST", $default = YII_DB_HOST, $required = false);
+
+// ==== Misc ====
+
+setenv("YII_GII_PASSWORD", $default = uniqid(), $required = false);
 
 // ==== Define some dependent constants and/or settings ====
 
