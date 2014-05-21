@@ -30,7 +30,18 @@
     array('hint' => true)
 ); ?>
 
-<?php $this->renderPartial(
-    'steps/fields/contents',
-    compact('form', 'model')
+<?php echo $form->select2ControlGroup(
+    $model,
+    'contents',
+    CHtml::listData(
+        Item::model()->findAllByAttributes(array('model_class' => array('HtmlChunk'))),
+        'node_id',
+        'itemLabel'
+    ),
+    array(
+        'multiple' => true,
+        'unselectValue' => '', // Anything that empty() evaluates as true
+        'options' => $form->selectRelated($model, 'contents'),
+    )
 ); ?>
+

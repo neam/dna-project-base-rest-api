@@ -15,15 +15,4 @@ class PermissionsTest extends \Codeception\TestCase\Test
     protected function _after()
     {
     }
-
-    // tests
-    public function testMe()
-    {
-
-
-
-
-
-    }
-
 }

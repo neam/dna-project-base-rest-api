@@ -2,44 +2,31 @@
 
 class AppActiveForm extends TbActiveForm
 {
-    // Controller action ID for 'translate'
     const CONTROLLER_ACTION_TRANSLATE = 'translate';
+    const DATA_ORIGINAL_VALUE = 'data-original-value';
 
     /**
-     * Renders a pre-rendered custom field input row.
-     *
-     * @param CModel $model the data model
-     * @param string $attribute the attribute
-     * @param string $input the rendered input.
-     * @param array $htmlOptions the HTML options.
-     *
-     * @return string the generated row
+     * Creates a Select2 field.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @param array $data
+     * @param array $htmlOptions
+     * @return string
      */
-    public function customControlGroup($model, $attribute, $input, $htmlOptions = array())
-    {
-        return TbHtml::customActiveControlGroup($input, $model, $attribute, $htmlOptions);
-    }
-
-    public function createControlGroup($type, $model, $attribute, $htmlOptions = array(), $data = array())
-    {
-        if ($model->asa('i18n-attribute-messages') !== null) {
-            $model = $model->edited();
-        }
-        return parent::createControlGroup(
-            $type,
-            $model,
-            $attribute,
-            $htmlOptions,
-            $data
-        );
-    }
-
     public function select2($model, $attribute, $data = array(), $htmlOptions = array())
     {
         $htmlOptions = $this->processControlGroupOptions($model, $attribute, $htmlOptions);
         return Html::activeSelect2($model, $attribute, $data, $htmlOptions);
     }
 
+    /**
+     * Creates a Select2 control group field.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @param array $data
+     * @param array $htmlOptions
+     * @return string
+     */
     public function select2ControlGroup($model, $attribute, $data = array(), $htmlOptions = array())
     {
         $htmlOptions = $this->processControlGroupOptions($model, $attribute, $htmlOptions);
@@ -89,32 +76,6 @@ class AppActiveForm extends TbActiveForm
             $classes = explode(' ', $htmlOptions['class']);
         }
         $classes[] = $titleClass;
-        $htmlOptions['class'] = implode(' ', $classes);
-
-        Html::jsSlugIt(array(
-            ".$titleClass" => ".$slugClass",
-        ));
-
-        return parent::textFieldControlGroup($model, $attribute, $htmlOptions);
-    }
-
-    /**
-     * Creates an item slug text field control group with support for SlugIt auto-generation.
-     * @param ActiveRecord $model
-     * @param string $attribute
-     * @param array $htmlOptions
-     * @return string
-     */
-    public function itemSlugTextFieldControlGroup($model, $attribute, $htmlOptions = array())
-    {
-        $titleClass = 'slugit-from-1';
-        $slugClass = 'slugit-to-1';
-
-        $classes = array();
-        if (isset($htmlOptions['class'])) {
-            $classes = explode(' ', $htmlOptions['class']);
-        }
-        $classes[] = $slugClass;
         $htmlOptions['class'] = implode(' ', $classes);
 
         Html::jsSlugIt(array(
@@ -196,5 +157,121 @@ class AppActiveForm extends TbActiveForm
 
             return $this->createControlGroup($inputType, $model, $attributeSourceLanguage, $htmlOptions);
         }
+    }
+
+    /**
+     * Creates an item slug text field control group with support for SlugIt auto-generation.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @param array $htmlOptions
+     * @return string
+     */
+    public function itemSlugTextFieldControlGroup($model, $attribute, $htmlOptions = array())
+    {
+        $titleClass = 'slugit-from-1';
+        $slugClass = 'slugit-to-1';
+
+        $classes = array();
+        if (isset($htmlOptions['class'])) {
+            $classes = explode(' ', $htmlOptions['class']);
+        }
+        $classes[] = $slugClass;
+        $htmlOptions['class'] = implode(' ', $classes);
+
+        Html::jsSlugIt(array(
+            ".$titleClass" => ".$slugClass",
+        ));
+
+        return parent::textFieldControlGroup($model, $attribute, $htmlOptions);
+    }
+
+    /**
+     * Renders a pre-rendered custom field input row.
+     *
+     * @param CModel $model the data model
+     * @param string $attribute the attribute
+     * @param string $input the rendered input.
+     * @param array $htmlOptions the HTML options.
+     *
+     * @return string the generated row
+     */
+    public function customControlGroup($model, $attribute, $input, $htmlOptions = array())
+    {
+        return TbHtml::customActiveControlGroup($input, $model, $attribute, $htmlOptions);
+    }
+
+    /**
+     * Creates a control group.
+     * @param string $type
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @param array $htmlOptions
+     * @param array $data
+     * @return string
+     */
+    public function createControlGroup($type, $model, $attribute, $htmlOptions = array(), $data = array())
+    {
+        $htmlOptions[self::DATA_ORIGINAL_VALUE] = $this->getAttributeValue($model, $attribute);
+
+        if ($model->asa('i18n-attribute-messages') !== null) {
+            $model = $model->edited();
+        }
+
+        return parent::createControlGroup(
+            $type,
+            $model,
+            $attribute,
+            $htmlOptions,
+            $data
+        );
+    }
+
+    /**
+     * Generates an input for a model attribute.
+     * @param string $type
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @param array $htmlOptions
+     * @param array $data
+     * @return string
+     */
+    public function createInput($type, $model, $attribute, $htmlOptions = array(), $data = array())
+    {
+        $htmlOptions[self::DATA_ORIGINAL_VALUE] = $this->getAttributeValue($model, $attribute);
+        return parent::createInput($type, $model, $attribute, $htmlOptions, $data);
+    }
+
+    /**
+     * Returns the attribute value (returns an empty string if null).
+     * Aa string value is required for HTML data attributes to be rendered.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @return string
+     */
+    public function getAttributeValue($model, $attribute)
+    {
+        if ($model instanceof ActiveRecord && !empty($model->$attribute)) {
+            return $model->$attribute;
+        } else {
+            return '';
+        }
+    }
+
+    /**
+     * Selects the current related models for a dropDownList
+     * Use for htmlOptions options-key
+     * @see http://www.yiiframework.com/doc/api/1.1/CHtml#activeDropDownList-detail
+     * @param $model
+     * @param $relation
+     * @param string $idField
+     * @return array
+     */
+    public function selectRelated($model, $relation, $idField = 'id')
+    {
+        $options = array();
+        foreach ($model->{$relation} as $related) {
+            $options[$related->{$idField}] = array('selected' => true);
+        }
+        return $options;
     }
 }

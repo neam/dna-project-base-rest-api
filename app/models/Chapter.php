@@ -4,11 +4,26 @@
 Yii::setPathOfAlias('Chapter', dirname(__FILE__));
 Yii::import('Chapter.*');
 
+/**
+ * Properties made available through the RestrictedAccessBehavior class.
+ * @property boolean $enableRestriction
+ *
+ * The followings are the available model relations:
+ * @property VideoFile[] $videos
+ * @property Exercise[] $exercises
+ * @property Snapshot[] $snapshots
+ * @property Node[] $related
+ */
 class Chapter extends BaseChapter
 {
     use ItemTrait;
 
-    // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
+    // Add your model-specific methods here. This file will not be overridden by gtc except you force it.
+
+    /**
+     * @param string $className
+     * @return Chapter
+     */
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -17,7 +32,7 @@ class Chapter extends BaseChapter
     public function init()
     {
         $this->itemDescription = Yii::t('itemDescription', 'A Chapter is a collection of related teaching material, useful to make a phenomena understandable. The video introduces the phenomena and the teachers guide suggest an effective way to convey this knowledge to students.');
-        return parent::init();
+        parent::init();
     }
 
     public function getItemLabel()
@@ -205,13 +220,13 @@ class Chapter extends BaseChapter
         return array_merge(
             parent::attributeHints(), array(
                 'title' => Yii::t('model', 'Chapter titles are descriptive with common language. Mentioning what data, geography and time is covered. '),
-                'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "regional_population_map" url to the chapter with populatins on the map.'),
-                'thumbnail_media_id' => Yii::t('model', 'This thumbnail is the visual symbol that enables users to reconginze the chapter again in a list of thumbnails. It should capture the essence of the visual presentation. and should not look like other chapters. Many chapters show bubblechart, so the thumbnail must capture the specific aspect by focusing on an essential detail.'),
-                'about' => Yii::t('model', 'Describe the purpose of the chapter, try aviding using the word "and". When repeating a lot of aspects there is probably a uniting aspect that should be written instead.'),
+                'slug' => Yii::t('model', 'This is part of the web-link to a page with this content. Keep the important words in there which makes the page rank higher in search engines. The identifier is "regional_population_map" url to the chapter with populations on the map.'),
+                'thumbnail_media_id' => Yii::t('model', 'This thumbnail is the visual symbol that enables users to recognize the chapter again in a list of thumbnails. It should capture the essence of the visual presentation. and should not look like other chapters. Many chapters show bubble charts, so the thumbnail must capture the specific aspect by focusing on an essential detail.'),
+                'about' => Yii::t('model', 'Describe the purpose of the chapter, try avoiding using the word "and". When repeating a lot of aspects there is probably a uniting aspect that should be written instead.'),
                 'tags' => Yii::t('model', 'Relevant tags refer to the content: e.g. AFRICA, CHANGE, CO2, AGE, INCOME, DEATH). Avoid tags about the media formats (PPT, CLASSROOM, INTERACTIVE.'),
-                'video' => Yii::t('model', 'The video does two things. First of all it shows some core global trends and patterns. But it also gives teachers ideas for how to make these learnings come alive with simple explanations that are easy to understand and remember.  This video does not give pracitcal advice for different equipment. Such videos are found as material with the exercises of the chapter.'),
+                'video' => Yii::t('model', 'The video does two things. First of all it shows some core global trends and patterns. But it also gives teachers ideas for how to make these learnings come alive with simple explanations that are easy to understand and remember.  This video does not give practical advice for different equipment. Such videos are found as material with the exercises of the chapter.'),
                 'teachers_guide' => Yii::t('model', 'You are a teacher. Your time is precious and your students are picky.  By watching the video you\'ve already understood the content of this chapter. Now you are reading the guide looking for ways to engage your students without loosing time. If the guide is good, you will realize you don\'t need any fancy technology. Maybe you just need seven small stones. You may get an advice to give the students one of the exercises first and then give the presentation, when they are more curious for an answer. That\'s what a good guide can do for a teacher!'),
-                'exercise' => Yii::t('model', 'Exercises let students build skills and use knowledge, instead of just memorize facts and then forget them. The exercises deal with the same phenomenas as the chapter video and mimics it\'s graphics so that students can bring their understanding from the videos and slideshows into assignments.'),
+                'exercise' => Yii::t('model', 'Exercises let students build skills and use knowledge, instead of just memorize facts and then forget them. The exercises deal with the same phenomenas as the chapter video and mimics it\'s graphics so that students can bring their understanding from the videos and slide shows into assignments.'),
                 'snapshot' => Yii::t('model', 'The visualizations opens a window into the data, which lets the students generate their hypothesis and try answering questions themselves. With local data the story of the chapter can be made local, by selecting your country. The visualizations in this view should relate directly to those in the video. Visualizations that are indirectly relevant are in the related list.'),
                 'dataArticles' => Yii::t('model', 'This is the data used in this chapter, listed as relating to the video and the visualizations.'),
                 'tests' => Yii::t('model', 'Fact-questions for quiz or exams. By watching the video and doing the exercises the students should be able to get the answer right.'),

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "db77b185547c49dea1c3f72fd1d29968",
+    "hash": "ce754fba66de368a6155f2bca341e532",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -202,16 +202,16 @@
         },
         {
             "name": "crisu83/yii-consoletools",
-            "version": "dev-patch-1",
+            "version": "dev-awaiting-prs",
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/yii-consoletools.git",
-                "reference": "d53e21be8a07700a00e325d614bf328a9d82d3ae"
+                "reference": "c4ec37d8f8b70a456563d9e3c40367f5d9cb10c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/yii-consoletools/zipball/d53e21be8a07700a00e325d614bf328a9d82d3ae",
-                "reference": "d53e21be8a07700a00e325d614bf328a9d82d3ae",
+                "url": "https://api.github.com/repos/motin/yii-consoletools/zipball/c4ec37d8f8b70a456563d9e3c40367f5d9cb10c2",
+                "reference": "c4ec37d8f8b70a456563d9e3c40367f5d9cb10c2",
                 "shasum": ""
             },
             "type": "library",
@@ -239,9 +239,9 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/motin/yii-consoletools/tree/patch-1"
+                "source": "https://github.com/motin/yii-consoletools/tree/awaiting-prs"
             },
-            "time": "2014-04-23 10:56:53"
+            "time": "2014-05-20 14:18:34"
         },
         {
             "name": "crisu83/yii-formatter",
@@ -677,12 +677,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "b3fc1822b1a434906aa24f2080d442dec04d5590"
+                "reference": "6c2b34351f652b6a8a533f6a55b323f8f3e54337"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/b3fc1822b1a434906aa24f2080d442dec04d5590",
-                "reference": "b3fc1822b1a434906aa24f2080d442dec04d5590",
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/6c2b34351f652b6a8a533f6a55b323f8f3e54337",
+                "reference": "6c2b34351f652b6a8a533f6a55b323f8f3e54337",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -704,7 +704,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-05-13 08:26:58"
+            "time": "2014-05-21 08:35:42"
         },
         {
             "name": "motin/yii-owner-behavior",
@@ -2445,12 +2445,6 @@
     ],
     "aliases": [
         {
-            "alias": "1.1.1",
-            "alias_normalized": "1.1.1.0",
-            "version": "dev-bs3",
-            "package": "crisu83/yiistrap"
-        },
-        {
             "alias": "0.17.0",
             "alias_normalized": "0.17.0.0",
             "version": "9999999-dev",
@@ -2467,12 +2461,17 @@
             "alias_normalized": "9999999-dev",
             "version": "1.1.14.0",
             "package": "yiisoft/yii"
+        },
+        {
+            "alias": "1.1.1",
+            "alias_normalized": "1.1.1.0",
+            "version": "dev-bs3",
+            "package": "crisu83/yiistrap"
         }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
         "crisu83/yii-consoletools": 20,
-        "crisu83/yiistrap": 20,
         "mishamx/yii-user": 20,
         "phundament/jquery-file-upload": 20,
         "phundament/p3pages": 20,
@@ -2494,6 +2493,7 @@
         "nordsoftware/yii-utils": 20,
         "crisu83/yii-formatter": 20,
         "jalle19/yii-ga": 20,
+        "crisu83/yiistrap": 20,
         "phundament/backend-theme": 20,
         "schmunk42/giic": 20,
         "phundament/gii-template-collection": 20

@@ -29,7 +29,7 @@ abstract class BaseSourceMessage extends ActiveRecord
         return array_merge(
             parent::rules(), array(
                 array('category, message', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('category', 'length', 'max' => 32),
+                array('category', 'length', 'max' => 255),
                 array('message', 'safe'),
                 array('id, category, message', 'safe', 'on' => 'search'),
             )

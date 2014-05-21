@@ -3,6 +3,15 @@ Gapminder School CMS
 
 This web application is used by the community as well as Gapminder staff to author, translate and publish the educational material.
 
+## Update to the latest changes
+
+After pulling the latest changes, run the following to update your local environment:
+
+    php composer.phar --prefer-source install
+    npm install
+    bower install
+    shell-scripts/yiic-migrate.sh
+
 ## Tests
 
 First, decide whether or not to run tests against a clean database or with user generated data:
@@ -26,6 +35,7 @@ To reset the test database (necessary in order to re-run tests):
 
 To run the unit tests:
 
+    app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
     vendor/bin/codecept run unit -g data:$DATA --debug
 
 To run the functional tests:
@@ -86,13 +96,16 @@ To build and deploy (regardless of target), first set some fundamental config va
 
     export APPNAME=foo1-cms
     export CURRENT_BRANCH=develop
-    export CMS_HOST=$APPNAME.gapminder.org
 
 ### Deploy using Dokku
 
 To build and deploy on dokku, first set dokku host config var:
 
+    export DOKKU_HOST=dokku.gapminderdev.org
+    export CMS_HOST=$APPNAME.gapminderdev.org
+    OR, for production use:
     export DOKKU_HOST=dokku.gapminder.org
+    export CMS_HOST=$APPNAME.gapminder.org
 
 Then, push to a dokku repository:
 
@@ -135,6 +148,10 @@ To build and deploy on dokku, push to a heroku repository:
     git push git@heroku.com:$APPNAME.git $CURRENT_BRANCH:master
 
 You will also need to run the following once after the initial push:
+
+    # set the cms host
+
+    export CMS_HOST=$APPNAME.heroku.com
 
     # set the proper buildpack url
 

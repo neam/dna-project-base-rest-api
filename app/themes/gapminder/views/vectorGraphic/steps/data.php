@@ -3,15 +3,18 @@
 /* @var VectorGraphic|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php
-$criteria = new CDbCriteria();
-$criteria->addNotInCondition('t.node_id', $model->getRelatedModelColumnValues('dataarticles', 'node_id'));
-$this->widget(
-    '\Edges',
+
+<?php echo $form->select2ControlGroup(
+    $model,
+    'dataarticles',
+    CHtml::listData(
+        DataArticle::model()->findAll(),
+        'node_id',
+        'itemLabel'
+    ),
     array(
-        'model' => $model,
-        'relation' => 'dataarticles',
-        'criteria' => $criteria,
+        'multiple' => true,
+        'unselectValue' => '', // Anything that empty() evaluates as true
+        'options' => $form->selectRelated($model, 'dataarticles', 'node_id'),
     )
-);
-?>
+); ?>

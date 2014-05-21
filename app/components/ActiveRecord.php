@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * The followings are the available model relations:
+ * @property Edge[] $outEdges
+ * @property Node[] $outNodes
+ * @property Edge[] $inEdges
+ * @property Node[] $inNodes
+ */
 class ActiveRecord extends CActiveRecord
 {
 

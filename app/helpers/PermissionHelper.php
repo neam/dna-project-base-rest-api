@@ -44,7 +44,9 @@ class PermissionHelper
 
         $model = new GroupHasAccount();
         $model->attributes = $attributes;
-        $model->save();
+        if (!$model->save()) {
+            throw new SaveException($model);
+        }
 
         return true;
     }
@@ -171,7 +173,9 @@ class PermissionHelper
 
         $model = new NodeHasGroup();
         $model->attributes = $attributes;
-        $model->save();
+        if (!$model->save()) {
+            throw new SaveException($model);
+        }
 
         return true;
     }
@@ -224,7 +228,11 @@ class PermissionHelper
      */
     static public function roleNameToId($name)
     {
-        return array_search($name, self::getRoles());
+        $return = array_search($name, self::getRoles());
+        if (!$return) {
+            throw new CException("No role with name $name");
+        }
+        return $return;
     }
 
     /**
@@ -237,7 +245,10 @@ class PermissionHelper
     static public function roleIdToName($id)
     {
         $roles = self::getRoles();
-        return isset($roles[$id]) ? $roles[$id] : -1;
+        if (!isset($roles[$id])) {
+            throw new CException("No role with id $id");
+        }
+        return $roles[$id];
     }
 
     /**
@@ -249,7 +260,11 @@ class PermissionHelper
      */
     static public function groupNameToId($name)
     {
-        return array_search($name, self::getGroups());
+        $return = array_search($name, self::getGroups());
+        if ($return === false) {
+            throw new CException("No group with name $name");
+        }
+        return $return;
     }
 
     /**
@@ -262,7 +277,10 @@ class PermissionHelper
     static public function groupIdToName($id)
     {
         $groups = self::getGroups();
-        return isset($groups[$id]) ? $groups[$id] : -1;
+        if (!isset($groups[$id])) {
+            throw new CException("No group with id $id");
+        }
+        return $groups[$id];
     }
 
     /**

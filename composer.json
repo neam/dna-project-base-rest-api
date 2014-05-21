@@ -131,8 +131,7 @@
     },
     "require":{
         "php":">=5.4.0",
-        "crisu83/yii-consoletools": "dev-patch-1",
-        "crisu83/yiistrap":"dev-bs3 as 1.1.1",
+        "crisu83/yii-consoletools": "dev-awaiting-prs",
         "crisu83/yiistrap-widgets":"1.7.*",
         "mishamx/yii-user":"dev-develop",
         "phundament/jquery-file-upload": "@dev",
@@ -168,7 +167,8 @@
         "nordsoftware/yii-emailer": "1.2.*",
         "nordsoftware/yii-utils": "@dev",
         "crisu83/yii-formatter": "@dev",
-        "jalle19/yii-ga": "dev-master"
+        "jalle19/yii-ga": "dev-master",
+        "crisu83/yiistrap": "dev-bs3 as 1.1.1"
     },
     "require-dev":{
         "phundament/backend-theme":"@dev",
@@ -186,7 +186,11 @@
             "php-config": [
                 "upload_max_filesize=200M",
                 "post_max_size=200M",
+                "max_execution_time=60",
                 "xdebug.default_enable=on",
+                "newrelic.logfile=var/log/newrelic.log",
+                "error_log=var/log/error.log",
+                "error_reporting=E_ALL",
                 "html_errors=on",
                 "display_errors=on",
                 "short_open_tag=on"
@@ -199,7 +203,8 @@
             ],
             "newrelic": true,
             "log-files": [
-                "app/runtime/application.log"
+                "app/runtime/application.log",
+                "vendor/php/var/log/newrelic.log"
             ],
             "document-root": "www",
             "index-document": "index.php"

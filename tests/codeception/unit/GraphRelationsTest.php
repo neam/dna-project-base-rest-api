@@ -24,35 +24,37 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
         $maxDepth = 10,
         $canonicalize = false,
         $ignoreCase = false
-    ) {
-
+    )
+    {
         $trace = debug_backtrace();
         $message = "assertEquals($expected, $actual) on line {$trace[0]["line"]}:";
-
-        return parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
-
+        parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
     }
 
-    // tests
+    /**
+     * @group data:clean-db
+     * @group data:user-generated
+     */
     public function testChapterExercisesAndSnapshots()
     {
-
         $chapter = new Chapter();
+        $chapter->enableRestriction = false; // Turn off access restrictions
         if (!$chapter->save()) {
             throw new SaveException($chapter);
         }
+        // Turn off access restrictions for the generic model used internally to load relations.
+        Chapter::model()->enableRestriction = false;
 
         $this->assertTrue(!is_null($chapter->node()->id));
 
-        $chapter->accessRestricted = false; // Turn of access restrictions for this test
-
         $exercise = new Exercise();
+        $exercise->enableRestriction = false; // Turn off access restrictions for this test
         $exercise->_title = "An exercise title";
         if (!$exercise->save()) {
             throw new SaveException($exercise);
         }
-
-        $exercise->accessRestricted = false; // Turn of access restrictions for this test
+        // Turn off access restrictions for the generic model used internally to load relations.
+        Exercise::model()->enableRestriction = false;
 
         $this->assertTrue(!is_null($exercise->node()->id));
 
@@ -79,12 +81,13 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
         $this->assertEquals($chapter->id, $exercise->parentChapters[0]->id);
 
         $snapshot = new Snapshot();
+        $snapshot->enableRestriction = false; // Turn off access restrictions for this test
         $snapshot->_title = "A snapshot title";
         if (!$snapshot->save()) {
             throw new SaveException($snapshot);
         }
-
-        $snapshot->accessRestricted = false; // Turn of access restrictions for this test
+        // Turn off access restrictions for the generic model used internally to load relations.
+        Snapshot::model()->enableRestriction = false;
 
         $this->assertTrue(!is_null($snapshot->node()->id));
 
@@ -113,12 +116,13 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
 
         $this->assertEquals($snapshot->id, $chapter->snapshots[0]->id);
         $this->assertEquals($chapter->id, $snapshot->parentChapters[0]->id);
-
     }
 
+    /**
+     * @group data:user-generated
+     */
     public function testQueryNodesWithItemAttributes()
     {
-
         $sql = "
 SELECT
     node.id,
@@ -149,17 +153,15 @@ LIMIT 3
         ";
 
         $result = Yii::app()->db->createCommand($sql)->queryAll();
-
         $this->assertNotEmpty($result);
-
     }
 
+    /**
+     * @group data:user-generated
+     */
     public function testFindItemsThroughDatabaseView()
     {
-
         $items = Item::model()->findAll();
         $this->assertNotEmpty(count($items));
-
     }
-
 }

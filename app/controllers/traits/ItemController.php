@@ -714,6 +714,10 @@ trait ItemController
 
         $model->scenario = $this->scenario;
 
+        if (Yii::app()->request->getPost($this->modelClass, false)) {
+            $this->handleEdges($model);
+        }
+
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
 
@@ -739,6 +743,111 @@ trait ItemController
             'stepCaption' => $stepCaptions[$step],
             'requiredCounts' => $requiredCounts,
         ));
+    }
+
+    /**
+     * @param $model ActiveRecord
+     */
+    protected function handleEdges($model)
+    {
+        $post = Yii::app()->request->getPost($this->modelClass, array());
+
+        $node = $model->node();
+
+        // array of models relation-names
+        $relationNames = array_keys($model->relations());
+
+        // Relations considered safe. Note: set the relation as safe in the model-rules!
+        $allowedRelations = array_filter(
+            array_keys($post),
+            function ($attribute) use ($model, $relationNames) {
+                return in_array($attribute, $relationNames) && $model->isAttributeSafe($attribute);
+            }
+        );
+
+        foreach ($allowedRelations as $relationName) {
+
+            // Delete all outEdges for the relation if none is
+            // present in form and the model has some (user removed edges)
+            if (empty($post[$relationName]) && count($model->{$relationName}) > 0) {
+
+                Edge::model()->deleteAllByAttributes(array(
+                    'from_node_id' => $node->id,
+                    'relation' => $relationName,
+                ));
+            }
+
+            $futureOutEdges = $post[$relationName];
+
+            if (empty($futureOutEdges)) {
+                $futureOutEdges = array();
+            }
+
+            $this->deleteEdgeDiff($model, $futureOutEdges, $relationName);
+
+            // TODO: fetch weights properly when they are implemented in form
+
+            $weight = 0;
+            foreach ($futureOutEdges as $toNodeId) {
+                $this->addEdge($node->id, $toNodeId, $relationName, $weight++);
+            }
+
+        }
+    }
+
+    /**
+     * Deletes the edges which are present but not in future-edges
+     *
+     * @param $model ActiveRecord
+     * @param $futureEdges array
+     * @param $relationName string
+     * @return int number of edges deleted
+     */
+    protected function deleteEdgeDiff($model, $futureEdges, $relationName)
+    {
+        $currentOutEdges = $model->getRelatedModelColumnValues($relationName, 'id');
+        $allEdges = array_merge($currentOutEdges, $futureEdges);
+        $edgesToDelete = array_diff($allEdges, $futureEdges);
+
+        $criteria = new CDbCriteria();
+        $criteria->addCondition('from_node_id = :from');
+        $criteria->addCondition('relation = :relation');
+        $criteria->addInCondition('to_node_id', $edgesToDelete);
+        $criteria->params[':from'] = $model->node()->id;
+        $criteria->params[':relation'] = $relationName;
+
+        return Edge::model()->deleteAll($criteria);
+    }
+
+    private function addEdge($fromNodeId, $toNodeId, $relation, $weight = null)
+    {
+        $edge = Edge::model()->findByAttributes(array(
+            'from_node_id' => $fromNodeId,
+            'to_node_id' => $toNodeId,
+            'relation' => $relation,
+        ));
+
+        // Nothing has changed
+        if ($edge !== null && $weight === null) {
+            return;
+        }
+
+        if ($edge === null) {
+            $edge = new Edge();
+        }
+
+        $edge->from_node_id = $fromNodeId;
+        $edge->to_node_id = $toNodeId;
+        $edge->relation = $relation;
+
+        if ($weight !== null) {
+            $edge->weight = $weight;
+        }
+
+        if (!$edge->save()) {
+            throw new SaveException($edge);
+        }
+        return true;
     }
 
     /**
@@ -1112,19 +1221,6 @@ trait ItemController
         }
     }
 
-    private function addEdge($from_node_id, $to_node_id, $relation)
-    {
-        $edge = new Edge();
-        $edge->from_node_id = $from_node_id;
-        $edge->to_node_id = $to_node_id;
-        $edge->relation = $relation;
-
-        if (!$edge->save()) {
-            throw new SaveException($edge);
-        }
-        return true;
-    }
-
     // Asks $_POST if a value isn't part of "Model"
     // If it ends with _c0, we suppose it's from a grid input, and put it into $_POST[$this->modelClass]
     // Returns $_POST with fixed values
@@ -1237,7 +1333,7 @@ trait ItemController
             $isTranslator = PermissionHelper::groupHasAccount(array(
                 'account_id' => $this->id,
                 'group_id' => PermissionHelper::groupNameToId($group),
-                'role_id' => PermissionHelper::roleNameToId('Group Translator'),
+                'role_id' => PermissionHelper::roleNameToId('GroupTranslator'),
             ));
 
             return $isEditor && !$isTranslator;

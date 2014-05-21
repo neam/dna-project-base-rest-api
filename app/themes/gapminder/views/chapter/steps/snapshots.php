@@ -3,19 +3,20 @@
 /* @var Chapter|ItemTrait $model */
 /* @var AppActiveForm $form */
 ?>
-<?php
-$criteria = new CDbCriteria();
-$criteria->addNotInCondition('t.node_id', $model->getRelatedModelColumnValues('snapshots', 'node_id'));
 
-$this->widget(
-    '\Edges',
+<?php echo $form->select2ControlGroup(
+    $model,
+    'snapshots',
+    CHtml::listData(
+        Snapshot::model()->findAll(),
+        'node_id',
+        'itemLabel'
+    ),
     array(
-        'relation' => 'snapshots',
-        'model' => $model,
-        'criteria' => $criteria,
+        'multiple' => true,
+        'unselectValue' => '', // Anything that empty() evaluates as true
+        'options' => $form->selectRelated($model, 'snapshots', 'node_id'),
     )
-);
-
-?>
+); ?>
 
 <?php publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END); ?>
