@@ -142,6 +142,24 @@ S3 credentials for an IAM user that has read+write access to the USER_GENERATED_
 
 ### Deployment configurations
 
+#### COMPOSER_GITHUB_OAUTH_TOKEN
+
+Type: Environment variable
+
+As per https://devcenter.heroku.com/articles/php-support#custom-github-oauth-tokens
+
+#### NEW_RELIC_LICENSE_KEY
+
+Type: Environment variable
+
+As per https://github.com/CHH/heroku-buildpack-php#newrelic
+
+#### NEW_RELIC_APP_NAME
+
+Type: Environment variable
+
+As per http://docs.newrelic.com/docs/site/naming-your-application
+
 #### SENTRY_DSN
 
 Type: Environment variable
