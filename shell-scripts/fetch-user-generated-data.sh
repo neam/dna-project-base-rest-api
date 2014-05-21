@@ -25,6 +25,8 @@ if [ ! -f db/migration-base/user-generated/data.sql ]; then
         echo "Error: the file db/migration-base/user-generated/data.filepath needs to be available and contain the relative path in the S3 bucket that contains the sql dump with the user-generated data"
     fi
 
+else
+    echo "Not fetching user-generated data since db/migration-base/user-generated/data.sql already exists"
 fi
 
 if [ ! -d db/migration-base/user-generated/media/ ]; then
@@ -45,6 +47,8 @@ if [ ! -d db/migration-base/user-generated/media/ ]; then
         echo "Error: the file db/migration-base/user-generated/media.folderpath needs to be available and contain the relative path in the S3 bucket that contains the user-generated media files"
     fi
 
+else
+    echo "Not fetching user-generated media since db/migration-base/user-generated/media/ already exists"
 fi
 
 exit 0
