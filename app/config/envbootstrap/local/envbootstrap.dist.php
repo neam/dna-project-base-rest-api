@@ -61,14 +61,16 @@ if (SMTP_URL === null) {
     define("SMTP_ENCRYPTION", isset($args['encryption']) ? $args['encryption'] : false);
 }
 
-define("YII_GII_PASSWORD", "foo");
-
 // ==== Define test-related constants ====
 
 define("TEST_DB_NAME", 'gscms_test');
 define("TEST_DB_USER", 'gcms_test');
 define("TEST_DB_PASSWORD", 'gcms_test');
 define("TEST_DB_HOST", YII_DB_HOST);
+
+// ==== Misc ====
+
+define("YII_GII_PASSWORD", "foo");
 
 // ==== Define some dependent constants and/or settings ====
 
