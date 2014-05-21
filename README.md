@@ -113,6 +113,8 @@ Then, push to a dokku repository:
 
 You will also need to run the following once after the initial push:
 
+    # replace "replaceme" with valid S3 credentials to be able to import/export user-generated data (DATA=user-generated)
+
     export USER_GENERATED_DATA_S3_BUCKET="s3://user-data-backups"
     export USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY="replaceme"
     export USER_DATA_BACKUP_UPLOADERS_SECRET="replaceme"
