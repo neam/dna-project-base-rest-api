@@ -4,20 +4,17 @@
 /* @var AppActiveForm $form */
 ?>
 
-<?php
-$criteria = new CDbCriteria();
-$criteria->addNotInCondition('t.node_id', $model->getRelatedModelColumnValues('videos', 'node_id'));
-
-$this->widget(
-    '\Edges',
+<?php echo $form->select2ControlGroup(
+    $model,
+    'videos',
+    CHtml::listData(
+        VideoFile::model()->findAll(),
+        'node_id',
+        'itemLabel'
+    ),
     array(
-        'relation' => 'videos',
-        'model' => $model,
-        'criteria' => $criteria,
-        'id' => 'Chapter_videos',
+        'multiple' => true,
+        'unselectValue' => '', // Anything that empty() evaluates as true
+        'options' => $form->selectRelated($model, 'videos', 'node_id'),
     )
-);
-
-?>
-
-<?php publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END); ?>
+); ?>

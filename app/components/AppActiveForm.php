@@ -256,4 +256,22 @@ class AppActiveForm extends TbActiveForm
             return '';
         }
     }
+
+    /**
+     * Selects the current related models for a dropDownList
+     * Use for htmlOptions options-key
+     * @see http://www.yiiframework.com/doc/api/1.1/CHtml#activeDropDownList-detail
+     * @param $model
+     * @param $relation
+     * @param string $idField
+     * @return array
+     */
+    public function selectRelated($model, $relation, $idField = 'id')
+    {
+        $options = array();
+        foreach ($model->{$relation} as $related) {
+            $options[$related->{$idField}] = array('selected' => true);
+        }
+        return $options;
+    }
 }
