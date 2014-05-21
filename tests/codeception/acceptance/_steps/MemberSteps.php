@@ -6,8 +6,10 @@ use AccountAdminPage;
 use AccountViewPage;
 use Exception;
 use HomePage;
+use ItemEditPage;
 use LoginPage;
 use RegistrationPage;
+use UploadPopupPage;
 use VideoFileBrowsePage;
 use VideoFileEditPage;
 
@@ -190,7 +192,11 @@ class MemberSteps extends AppSteps
 
     /**
      * Fills fields on the current page and submits
-     * @param $attributes
+     *
+     *
+     * @param $attributes array associative array with structure: field-selector => value.
+     * Value can be a anonymous function, or a scalar. If not a callable then fillField will be used
+     *
      * @param $submit (optional) defaults to \ItemEditPage::$submitButton
      */
     function fillFieldsOnPageAndSubmit(array $attributes, $submit = null)
@@ -198,11 +204,12 @@ class MemberSteps extends AppSteps
         $I = $this;
 
         if (empty($submit)) {
-            $submit = \ItemEditPage::$submitButton;
+            $submit = ItemEditPage::$submitButton;
         }
 
         foreach ($attributes as $id => $value) {
 
+            // Support for anonymous functions when needed more than just fillField, eg multiple steps in file upload
             is_callable($value)
                 ? $value()
                 : $I->fillField($id, $value);
@@ -240,27 +247,56 @@ class MemberSteps extends AppSteps
         $I->click(AccountViewPage::generateToggleGroupRoleLinkSelector($group, $role));
     }
 
+    /**
+     * Selects a option and then watches that the select2-widget bound to it changes its value
+     * @param $selectId
+     * @param $option
+     */
     function selectSelect2Option($selectId, $option)
     {
         $I = $this;
-
         $I->selectOption($selectId, $option);
+        $select2ChosenSelector = $this->generateSelect2ChosenSelector($selectId);
+        $I->waitForSelect2ElementChange($select2ChosenSelector, $option);
+    }
 
-        $select2ChosenSelector = '#s2id_' . substr($selectId, 1, strlen($selectId) - 1) . ' .select2-choice';
+    public function waitForSelect2ElementChange($select2ChosenSelector, $option, $timeout = 30)
+    {
+        $I = $this;
+        $I->waitForElementChange(
+            $select2ChosenSelector,
+            function (\WebDriverElement $element) use ($option, $timeout) {
+                return $element->getText() === $option;
+            },
+            $timeout
+        );
+    }
 
-        $I->waitForElementChange($select2ChosenSelector, function (\WebDriverElement $element) use ($option) {
-            return $element->getText() === $option;
-        }, 10);
+    /**
+     * Generates a selector for the select2 choice link (which can be clicked on)
+     * @param $selectElementId
+     * @return string
+     */
+    function generateSelect2ChoiceSelector($selectElementId)
+    {
+        // substr removes the hash-sign from the select-id
+        return '#s2id_' . substr($selectElementId, 1, strlen($selectElementId) - 1) . ' .select2-choice';
+    }
 
+    /**
+     * Generates a selector from which the select2 chosen option can be read from
+     * @param $selectElementId
+     * @return string
+     */
+    function generateSelect2ChosenSelector($selectElementId)
+    {
+        return $this->generateSelect2ChoiceSelector($selectElementId) . ' .select2-chosen';
     }
 
     function seeSelect2OptionIsSelected($selectId, $option)
     {
         $I = $this;
-        if ($selectId[0] === '#') {
-            $selectId = substr($selectId, 1, strlen($selectId) - 1);
-        }
-        $selector = '#s2id_' . $selectId . ' .select2-choice .select2-chosen';
+        $selector = $I->generateSelect2ChosenSelector($selectId);
         $I->see($option, $selector);
     }
 
@@ -273,6 +309,33 @@ class MemberSteps extends AppSteps
         $I->see($username, 'h1');
         $I->click(AccountViewPage::generateToggleGroupRoleLinkSelector($group, $role));
         $I->logout();
+    }
+
+    /**
+     * Uploads a videofile using attachFile (file must be in _data).
+     * I must be on correct page before calling this method (ie does not change page)
+     * @param string $file
+     */
+    function uploadWebmFile($file = 'big-buck-bunny_trailer.webm')
+    {
+        $I = $this;
+
+        $I->click('Upload new', VideoFileEditPage::$webmUploadNewContext);
+
+        $I->waitForElementVisible(VideoFileEditPage::$webmModalId, 30);
+
+        // Modal content is in iframe
+        $iframe = UploadPopupPage::iframeName(VideoFileEditPage::$webmModalFormId);
+        $I->switchToIFrame($iframe);
+        $I->attachFile(UploadPopupPage::$filesField, $file);
+        $I->see($file);
+        $I->click(UploadPopupPage::$uploadButton);
+        // Switch back to parent page
+        $I->switchToIFrame();
+
+        $I->waitForElementNotVisible('#item-form-modal', 30);
+        $I->waitForElementVisible(VideoFileEditPage::$submitButton);
+        $I->seeSelect2OptionIsSelected(VideoFileEditPage::$webmField, 'Uploaded file');
     }
 
 

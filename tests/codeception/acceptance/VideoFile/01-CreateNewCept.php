@@ -15,13 +15,7 @@ $I->createVideoFile(
         ),
         'files' => array(
             VideoFileEditPage::$webmField => function () use ($I) {
-                $modalContext = '#item-form-webm-modal';
-                $I->click('Upload new', '.webm');
-                $I->waitForElementVisible($modalContext, 30);
-                $I->switchToIFrame('item-form-webm-upload-iframe');
-                $I->attachFile('input[name="files[]"]', 'big-buck-bunny_trailer.webm');
-                $I->see('big-buck-bunny_trailer.webm');
-                $I->click('.start .ui-button');
+                $I->uploadWebmFile();
             },
         ),
     )
@@ -29,6 +23,9 @@ $I->createVideoFile(
 
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->seeVideoFile('Max video');
+$I->click('View', VideoFileBrowsePage::modelContext('Max video'));
+$I->seeElement('.mejs-video');
+$I->dontSee('No media file available');
 $I->logout();
 
 $I->login('ola', 'test');
