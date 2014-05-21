@@ -190,6 +190,7 @@
                 "xdebug.default_enable=on",
                 "newrelic.logfile=var/log/newrelic.log",
                 "error_log=var/log/error.log",
+                "error_reporting=E_ALL",
                 "html_errors=on",
                 "display_errors=on",
                 "short_open_tag=on"
