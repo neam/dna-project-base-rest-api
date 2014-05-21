@@ -16,7 +16,7 @@ rm -rf app/data/p3media/*
 deploy/configure-persistent-p3media.sh
 
 # set s3 credentials
-shell-scripts/configure-s3cmd.sh
+deploy/configure-s3cmd.sh
 
 if [ "$DATA" == "user-generated" ]; then
 
