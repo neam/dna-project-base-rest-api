@@ -1,18 +1,15 @@
 <?php
 
-class ItemEditPage
+class VideoFileViewPage
 {
     // include url of current page
-    static $URL = '';
+    static $URL = '?r=videoFile';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
-
-    public static $submitButton = '#item-form button[name=save-changes]';
-    public static $formId = '#item-form';
 
     /**
      * Basic route example for your current URL
@@ -24,21 +21,5 @@ class ItemEditPage
         return static::$URL.$param;
      }
 
-    /**
-     * @var WebGuy;
-     */
-    protected $webGuy;
 
-    public function __construct(WebGuy $I)
-    {
-        $this->webGuy = $I;
-    }
-
-    /**
-     * @return ItemEditPage
-     */
-    public static function of(WebGuy $I)
-    {
-        return new static($I);
-    }
 }

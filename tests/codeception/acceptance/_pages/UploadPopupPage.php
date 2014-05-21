@@ -1,9 +1,14 @@
 <?php
 
-class ItemEditPage
+/**
+ * Class UploadFilePage
+ *
+ * This page is used as a iframe inside a modal (see p3Media/_modal_form.php)
+ */
+class UploadPopupPage
 {
     // include url of current page
-    static $URL = '';
+    static $URL = '?r=p3media/import/uploadPopup';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
@@ -11,18 +16,27 @@ class ItemEditPage
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
 
-    public static $submitButton = '#item-form button[name=save-changes]';
-    public static $formId = '#item-form';
+    public static $filesField = 'input[name="files[]"]';
+
+    public static $uploadButton = '.start .ui-button';
+
+    public static function iframeName($formId)
+    {
+        if ($formId[0] === '#') {
+            $formId = substr($formId, 1, strlen($formId) - 1);
+        }
+        return $formId . '-upload-iframe';
+    }
 
     /**
      * Basic route example for your current URL
      * You can append any additional parameter to URL
      * and use it in tests like: EditPage::route('/123-post');
      */
-     public static function route($param)
-     {
+    public static function route($param)
+    {
         return static::$URL.$param;
-     }
+    }
 
     /**
      * @var WebGuy;
@@ -35,7 +49,7 @@ class ItemEditPage
     }
 
     /**
-     * @return ItemEditPage
+     * @return UploadFilePage
      */
     public static function of(WebGuy $I)
     {

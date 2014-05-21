@@ -20,6 +20,15 @@ class VideoFileEditPage extends ItemEditPage
     public static $subtitlesField = '#VideoFile_subtitles_en';
     public static $subtitlesImportMediaField = '#VideoFile_subtitles_import_media_id';
 
+    public static $webmUploadNewContext = '.webm';
+    public static $mp4mUploadNewContext = '.mp4';
+
+    public static $webmModalFormId = '#item-form-webm';
+    public static $mp4ModalFormId = '#item-form-mp4';
+    public static $webmModalId = '#item-form-webm-modal';
+    public static $mp4ModalId = '#item-form-mp4-modal';
+
+
     public static $steps = array('info', 'files', 'subtitles', 'related');
 
     /**
