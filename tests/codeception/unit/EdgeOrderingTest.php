@@ -28,7 +28,7 @@ class EdgeOrderingTest extends \Codeception\TestCase\Test
     {
         $trace = debug_backtrace();
         $message = "assertEquals($expected, $actual) on line {$trace[0]["line"]}:";
-        return parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
+        parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
     }
 
     public function testEdgeOrder()

@@ -52,6 +52,10 @@ class ActionTraitsTest extends \Codeception\TestCase\Test
     {
     }
 
+    /**
+     * @group data:clean-db
+     * @group data:user-generated
+     */
     public function testDemonstrateTraitInheritance()
     {
         $controller = new Foo();

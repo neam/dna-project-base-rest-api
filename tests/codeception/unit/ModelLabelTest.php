@@ -27,9 +27,13 @@ class ModelLabelTest extends \Codeception\TestCase\Test
     )
     {
         $message = "$expected = $actual";
-        return parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
+        parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
     }
 
+    /**
+     * @group data:clean-db
+     * @group data:user-generated
+     */
     public function testModelLabels()
     {
         $chapter = new Chapter();
