@@ -203,8 +203,7 @@
             "newrelic": true,
             "log-files": [
                 "app/runtime/application.log",
-                "app/vendor/php/var/log/newrelic.log",
-                "app/vendor/php/var/log/error.log"
+                "vendor/php/var/log/newrelic.log"
             ],
             "document-root": "www",
             "index-document": "index.php"
