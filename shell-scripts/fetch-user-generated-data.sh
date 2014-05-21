@@ -17,7 +17,7 @@ if [ ! -f db/migration-base/user-generated/data.sql ]; then
         export USER_GENERATED_DATA_S3_BUCKET="s3://user-data-backups"
         export USER_GENERATED_DATA_FILEPATH=`cat db/migration-base/user-generated/data.filepath`
         export USER_GENERATED_DATA_S3_URL=$USER_GENERATED_DATA_S3_BUCKET/$USER_GENERATED_DATA_FILEPATH
-        s3cmd -v --config=/tmp/.s3cfg get "$USER_GENERATED_DATA_S3_URL" db/migration-base/user-generated/data.sql
+        s3cmd -v --config=/tmp/.gapminder-user-generated-data.s3cfg get "$USER_GENERATED_DATA_S3_URL" db/migration-base/user-generated/data.sql
 
         echo "User data dump downloaded from $USER_GENERATED_DATA_S3_URL to db/migration-base/user-generated/data.sql"
 
@@ -37,7 +37,7 @@ if [ ! -d db/migration-base/user-generated/media/ ]; then
         export USER_GENERATED_MEDIA_FOLDERPATH=`cat db/migration-base/user-generated/media.folderpath`
         export USER_GENERATED_MEDIA_S3_URL=$USER_GENERATED_MEDIA_S3_BUCKET/$USER_GENERATED_MEDIA_FOLDERPATH
         mkdir db/migration-base/user-generated/media/
-        s3cmd -v --config=/tmp/.s3cfg --recursive get "$USER_GENERATED_MEDIA_S3_URL" db/migration-base/user-generated/media/
+        s3cmd -v --config=/tmp/.gapminder-user-generated-data.s3cfg --recursive get "$USER_GENERATED_MEDIA_S3_URL" db/migration-base/user-generated/media/
 
         echo "User media downloaded from $USER_GENERATED_DATA_S3_URL to db/migration-base/user-generated/media/"
 
