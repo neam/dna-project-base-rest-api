@@ -21,3 +21,6 @@ db/user-generated-media
 
 app/config/envbootstrap/local/envbootstrap.php
 tests/selenium-*
+db/migration-base/user-generated/schema.sql
+db/migration-base/user-generated/data.sql
+db/migration-base/user-generated/media
