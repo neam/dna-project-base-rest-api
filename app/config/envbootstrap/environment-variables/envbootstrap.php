@@ -51,6 +51,7 @@ define("SMTP_PASSWORD", urldecode($url['pass']));
 define("SMTP_ENCRYPTION", isset($args['encryption']) ? $args['encryption'] : false);
 
 setenv("SENTRY_DSN", $default = null, $required = true);
+setenv("GA_TRACKING_ID", $default = null, $required = true);
 
 // ==== Define test-related constants ====
 

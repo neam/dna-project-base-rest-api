@@ -62,6 +62,7 @@ if (SMTP_URL === null) {
 }
 
 define("SENTRY_DSN", "https://foo:bar@app.getsentry.com/00000");
+define("GA_TRACKING_ID", "UA-XXXXXXX-X");
 
 // ==== Define test-related constants ====
 

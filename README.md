@@ -160,6 +160,12 @@ Type: Environment variable
 
 As per http://docs.newrelic.com/docs/site/naming-your-application
 
+#### GA_TRACKING_ID
+
+Type: Environment variable
+
+Google Analytics tracking id (UA-XXXXXXX-X)
+
 #### SENTRY_DSN
 
 Type: Environment variable
@@ -293,6 +299,7 @@ You will also need to run the following once after the initial push:
     export NEW_RELIC_LICENSE_KEY="replaceme"
     export NEW_RELIC_APP_NAME="replaceme"
     export SMTP_URL="replaceme"
+    export GA_TRACKING_ID="replaceme"
     export SENTRY_DSN="replaceme"
 
     ssh dokku@$DOKKU_HOST config:set $APPNAME \
@@ -308,6 +315,7 @@ You will also need to run the following once after the initial push:
     NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY \
     NEW_RELIC_APP_NAME=dokku/$APPNAME \
     SMTP_URL=$SMTP_URL \
+    GA_TRACKING_ID=$GA_TRACKING_ID \
     SENTRY_DSN=$SENTRY_DSN
 
     # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
