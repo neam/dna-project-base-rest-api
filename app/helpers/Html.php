@@ -368,4 +368,49 @@ class Html extends TbHtml
 
         return $languages;
     }
+
+    /**
+     * Renders the Gapminder logo.
+     * @param string $alt the image alt text.
+     * @param array $htmlOptions
+     * @return string
+     */
+    static public function renderLogo($alt = '', $htmlOptions = array())
+    {
+        return TbHtml::image(
+            Yii::app()->baseUrl . '/images/logo.png',
+            $alt,
+            $htmlOptions
+        );
+    }
+
+    /**
+     * Renders the Gapminder logo with a link to the home page.
+     * @param string $alt the image alt text.
+     * @param array $imageHtmlOptions
+     * @param array $linkHtmlOptions
+     * @return string
+     */
+    static public function renderLogoWithLink($alt = '', $imageHtmlOptions = array(), $linkHtmlOptions = array())
+    {
+        return TbHtml::link(
+            self::renderLogo($alt, $imageHtmlOptions),
+            Yii::app()->homeUrl,
+            $linkHtmlOptions
+        );
+    }
+
+    /**
+     * eg Snapshot_2, editVideoFile_14, removeFromGroupTranslatorsVideoFile_25
+     * Not unique if called with same arguments twice or more!
+     * @param $model
+     * @param string $action (optional)
+     * @param string $group (optional)
+     * @return string
+     */
+    static public function generateModelId($model, $action = '', $group = '')
+    {
+        return $action . $group . get_class($model) . '_' . $model->{$model->tableSchema->primaryKey};
+    }
+
 }

@@ -176,6 +176,9 @@ class Metadata
                 'Add' => array(
                     Role::AUTHENTICATED,
                 ),
+                'P3media.Import.*' => array(
+                    Role::AUTHENTICATED,
+                ),
             )
         );
     }

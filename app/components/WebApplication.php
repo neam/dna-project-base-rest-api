@@ -6,15 +6,20 @@
  */
 class WebApplication extends CWebApplication
 {
-    // Application constants
+    /**
+     * @var string application version
+     * TODO: Update this automatically.
+     */
+    public $version = '0.4.0';
+
+    // Theme constants
     const THEME_FRONTEND = 'frontend';
     const THEME_BACKEND2 = 'backend2';
 
-    // TODO update this automatically.
-    /**
-     * @var string application version
-     */
-    public $version = '0.4.0';
+    // View layout constants
+    const LAYOUT_MAIN = '//layouts/main';
+    const LAYOUT_REGULAR = '//layouts/regular';
+    const LAYOUT_MINIMAL = '//layouts/minimal';
 
     /**
      * Registers CSS files.
@@ -78,7 +83,7 @@ class WebApplication extends CWebApplication
      */
     public function getLanguages()
     {
-        return Yii::app()->params['languages'];
+        return LanguageHelper::getLanguageList();
     }
 
     /**

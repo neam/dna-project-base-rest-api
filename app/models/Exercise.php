@@ -4,12 +4,26 @@
 Yii::setPathOfAlias('Exercise', dirname(__FILE__));
 Yii::import('Exercise.*');
 
+/**
+ * Properties made available through the RestrictedAccessBehavior class.
+ * @property boolean $enableRestriction
+ *
+ * The followings are the available model relations:
+ * @property Chapter[] $parentChapters
+ * @property Node[] $materials
+ * @property Node[] $related
+ */
 class Exercise extends BaseExercise
 {
 
     use ItemTrait;
 
-    // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
+    // Add your model-specific methods here. This file will not be overridden by gtc except you force it.
+
+    /**
+     * @param string $className
+     * @return Exercise
+     */
     public static function model($className = __CLASS__)
     {
         return parent::model($className);

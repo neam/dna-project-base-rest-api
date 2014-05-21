@@ -2,12 +2,8 @@
 
 class LanguageController extends AppRestController
 {
-
     public function actionList()
     {
-
-        $this->sendResponse(200, Yii::app()->params["languages"]);
-
+        $this->sendResponse(200, LanguageHelper::getLanguageListWithDirection());
     }
-
 }

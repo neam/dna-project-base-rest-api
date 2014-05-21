@@ -12,6 +12,13 @@
 ); ?>
 <?php echo $form->translateTextFieldControlGroup(
     $model,
+    'slug',
+    $this->getTranslationLanguage(),
+    $this->action->id,
+    array('hint' => true)
+); ?>
+<?php echo $form->translateTextFieldControlGroup(
+    $model,
     'short_title',
     $this->getTranslationLanguage(),
     $this->action->id,
@@ -24,7 +31,7 @@
     $this->action->id,
     array('hint' => true)
 ); ?>
-<?php if ($this->action->id === 'edit'): ?>
+<?php if ($this->actionUsesEditWorkflow()): ?>
     <?php echo $form->textFieldControlGroup(
         $model,
         'link',

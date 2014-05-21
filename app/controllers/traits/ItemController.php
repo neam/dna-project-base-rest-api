@@ -233,6 +233,21 @@ trait ItemController
     }
 
     /**
+     * Checks if the current action uses the edit workflow (but not the translation workflow).
+     * @return boolean
+     */
+    public function actionUsesEditWorkflow()
+    {
+        $editActions = array(
+            'edit',
+            'prepareForPublishing',
+            'prepareForReview',
+        );
+
+        return in_array($this->action->id, $editActions);
+    }
+
+    /**
      * Returns the first workflow step of the given item.
      * @param ItemTrait|ActiveRecord $item
      * @return string|null
@@ -272,6 +287,11 @@ trait ItemController
     public function beforeItemControllerAction($action)
     {
         $translateInto = Yii::app()->request->getParam('translateInto');
+
+        // Redirect to next required step
+        if ($action->id === 'prepareForPublishing' && isset($_POST['next-required-url'])) {
+            $this->redirect($_POST['next-required-url']);
+        }
 
         // Set translation and edit workflow returnUrls
         if (in_array($action->id, array('translate', 'edit'))) {
@@ -621,26 +641,16 @@ trait ItemController
      */
     public function actionPublish($id)
     {
-        $permissionAttributes = array(
-            'account_id' => Yii::app()->user->id,
-            'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
-            'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
-        );
+        // TODO: Save changeset.
 
-        if (PermissionHelper::groupHasAccount($permissionAttributes)) {
-            // TODO: Save changeset.
+        $model = $this->loadModel($id);
 
-            $model = $this->loadModel($id);
-
-            if (!$model->qaStateBehavior()->validStatus('publishable')) {
-                throw new CException('This item does not validate for the publishable status.');
-            }
-
-            $model->changeStatus('public');
-            $model->makeNodeHasGroupVisible();
-        } else {
-            throw new CHttpException(403, Yii::t('error', 'You do not have permission to publish items.'));
+        if (!$model->qaStateBehavior()->validStatus('publishable')) {
+            throw new CException('This item does not validate for the publishable status.');
         }
+
+        $model->changeStatus('public');
+        $model->makeNodeHasGroupVisible();
 
         // Redirect
         if (isset($_GET['returnUrl'])) {
@@ -764,6 +774,7 @@ trait ItemController
      */
     public function getCssClasses($model)
     {
+        // todo: use TbHtml::addCssClass instead
         $classes = array();
         $classes[] = 'item-controller';
         if ($model instanceof ActiveRecord) {
@@ -829,7 +840,7 @@ trait ItemController
         $qaStateAttribute = $model->getQaStateAttribute();
 
         if (isset($behaviors['i18n-columns']['translationAttributes']) && in_array($qaStateAttribute, $behaviors['i18n-columns']['translationAttributes'])) {
-            foreach (Yii::app()->params["languages"] as $lang => $label) {
+            foreach (LanguageHelper::getCodes() as $lang) {
                 $translatedAttribute = $qaStateAttribute . "_" . $lang;
                 $clone->$translatedAttribute = null;
             }
@@ -921,15 +932,22 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
-        
-        $this->populateWorkflowData($model, 'translate', Yii::t('app', ''));
 
-        $this->render(
-            '/_item/translation-overview',
-            array(
-                'model' => $model,
-            )
-        );
+        $profileLanguages = Yii::app()->user->getTranslatableLanguages();
+
+        if (count($profileLanguages) > 0) {
+            $this->populateWorkflowData($model, 'translate', Yii::t('app', ''));
+
+            $this->render(
+                '/_item/translation-overview',
+                array(
+                    'model' => $model,
+                )
+            );
+        } else {
+            Yii::app()->user->setFlash('warning', Yii::t('app', 'Please set your languages before translating.'));
+            $this->redirect('/account/profile');
+        }
     }
 
     /**
@@ -949,7 +967,7 @@ trait ItemController
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, 'translate', Yii::t('app', 'Translate into {translateIntoLanguage}', array(
-            '{translateIntoLanguage}' => Yii::app()->params['languages'][$translateInto],
+            '{translateIntoLanguage}' => LanguageHelper::getName($translateInto),
         )), $translateInto);
         $stepCaptions = $model->flowStepCaptions();
 

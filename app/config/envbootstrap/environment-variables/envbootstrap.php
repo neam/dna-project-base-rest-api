@@ -2,24 +2,7 @@
 
 namespace gapminder\envbootstrap;
 
-function setenv($ref, $default = null, $required = false)
-{
-    $value = getenv($ref);
-    if ($value === false) {
-        if ($required) {
-            throw new \Exception("Environment variable $ref needs to be set. Adjust app configuration and re-build.");
-        }
-        $value = $default;
-    }
-    // Treat the strings "true" and "false" as booleans
-    if ($value === "true") {
-        $value = true;
-    }
-    if ($value === "false") {
-        $value = false;
-    }
-    define($ref, $value);
-}
+require(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'function.setenv.php');
 
 // ==== Initial environment bootstrap ====
 
@@ -36,13 +19,6 @@ setenv("BRAND_SITENAME", $default = null, $required = true);
 setenv("BRAND_DOMAIN", $default = null, $required = true);
 
 // ==== Defines infrastructure = all backing services, usernames, api:s, servers, ports etc depending on environment ====
-
-setenv("SMTP_HOST", $default = null);
-setenv("SMTP_PORT", $default = null);
-setenv("SMTP_TIMEOUT", $default = null);
-setenv("SMTP_ENCRYPTION", $default = null);
-setenv("SMTP_AUTH_USERNAME", $default = null);
-setenv("SMTP_AUTH_PASSWORD", $default = null);
 
 // Support setting main db constants based on DATABASE_URL environment variable
 setenv("DATABASE_URL", $default = null, $required = false);
@@ -62,6 +38,17 @@ if (DATABASE_URL === null) {
     define("YII_DB_PASSWORD", $url['pass']);
     define("YII_DB_NAME", trim($url['path'], '/'));
 }
+
+// Require setting smtp constants based on SMTP_URL environment variable
+setenv("SMTP_URL", $default = null, $required = true); // smtp://username:password@host:587?encryption=tls
+
+$url = parse_url(SMTP_URL);
+isset($url['query']) && parse_str($url['query'], $args);
+define("SMTP_HOST", $url['host']);
+define("SMTP_PORT", $url['port']);
+define("SMTP_USERNAME", $url['user']);
+define("SMTP_PASSWORD", urldecode($url['pass']));
+define("SMTP_ENCRYPTION", isset($args['encryption']) ? $args['encryption'] : false);
 
 setenv("YII_GII_PASSWORD", $default = uniqid(), $required = false);
 
@@ -95,6 +82,7 @@ class Identity
         $return->supportEmail = "info@" . $return->domain;
         $return->mailSentByMail = "noreply@" . $return->domain;
         $return->mailSentByName = $return->siteName;
+        return $return;
     }
 }
 

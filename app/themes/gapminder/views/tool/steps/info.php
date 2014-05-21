@@ -3,7 +3,7 @@
 /** @var Tool $model */
 /** @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php if ($this->action->id === 'edit'): ?>
+<?php if ($this->actionUsesEditWorkflow()): ?>
     <?php echo $form->textFieldControlGroup(
         $model,
         'ref',

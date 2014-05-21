@@ -10,6 +10,13 @@
     $this->action->id,
     array('hint' => true)
 ); ?>
+<?php echo $form->translateTextFieldControlGroup(
+    $model,
+    'slug',
+    $this->getTranslationLanguage(),
+    $this->action->id,
+    array('hint' => true)
+); ?>
 <?php echo $form->translateTextAreaControlGroup(
     $model,
     'about',

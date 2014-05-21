@@ -4,6 +4,12 @@
 Yii::setPathOfAlias('WaffleIndicator', dirname(__FILE__));
 Yii::import('WaffleIndicator.*');
 
+/**
+ * i18n properties for this model fetched through the I18nColumnsBehavior class.
+ * @property string $name
+ * @property string $short_name
+ * @property string $description
+ */
 class WaffleIndicator extends BaseWaffleIndicator
 {
     use ItemTrait;

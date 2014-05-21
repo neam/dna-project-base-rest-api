@@ -82,11 +82,10 @@ class ItemEditUi extends CWidget
         $heading = Yii::t('app', 'Editing');
 
         if ($this->actionId === self::ACTION_TRANSLATE) {
-            $language = Yii::app()->getLanguageNameByCode($this->controller->workflowData['translateInto']);
             $heading = Yii::t(
                 'app', 'Translating into {language}',
                 array(
-                    '{language}' => $language,
+                    '{language}' => LanguageHelper::getName($this->controller->workflowData['translateInto']),
                 )
             );
         }
@@ -235,9 +234,15 @@ class ItemEditUi extends CWidget
      */
     public function getSubmitButtonLabel()
     {
-        return $this->isFinalStep()
-            ? Yii::t('app', 'Translation is done!')
-            : Yii::t('app', 'Next');
+        if ($this->actionId === self::ACTION_TRANSLATE) {
+            return $this->isFinalStep()
+                ? Yii::t('app', 'Translation is done!')
+                : Yii::t('app', 'Next');
+        } else {
+            return $this->isFinalStep()
+                ? Yii::t('app', 'Finish editing!')
+                : Yii::t('app', 'Next');
+        }
     }
 
     /**

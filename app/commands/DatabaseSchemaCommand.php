@@ -7,7 +7,6 @@
  */
 class DatabaseSchemaCommand extends CConsoleCommand
 {
-
     /**
      * @var string database connection component
      */
@@ -73,18 +72,12 @@ class DatabaseSchemaCommand extends CConsoleCommand
 
     public function actionLoadSql($path, $verbose = false)
     {
-
         if (!empty($verbose)) {
             $this->_verbose = true;
         }
 
-        $db =& Yii::app()->{$this->connectionID};
-
+        $db = Yii::app()->{$this->connectionID};
         $sql = file_get_contents($path);
-
         $this->execute($db, $sql);
-
-
     }
-
 }

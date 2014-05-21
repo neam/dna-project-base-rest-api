@@ -3,7 +3,7 @@
 /* @var Waffle|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php if ($this->action->id === 'edit'): ?>
+<?php if ($this->actionUsesEditWorkflow()): ?>
     <?php echo $form->textFieldControlGroup(
         $model,
         'ref',
@@ -30,7 +30,7 @@
     $this->action->id,
     array('hint' => true)
 ); ?>
-<?php if ($this->action->id === 'edit'): ?>
+<?php if ($this->actionUsesEditWorkflow()): ?>
     <?php echo $form->textFieldControlGroup(
         $model,
         'link',

@@ -46,11 +46,19 @@ class WaffleController extends Controller
 
     public function saveAndContinueOnSuccess($model)
     {
-
         if (isset($_POST['import'])) {
+            // TODO: Refactor and improve error handling.
+            if (isset($_POST['Waffle'], $_POST['Waffle']['json_import_media_id'])) {
+                $p3media = P3Media::model()->findByPk($_POST['Waffle']['json_import_media_id']);
+                $fullPath = $p3media->fullPath;
+                $json = file_get_contents($fullPath);
+
+                if (!isset(json_decode($json)->body)) {
+                    throw new CException('The imported JSON file contains invalid waffle data.');
+                }
+            }
 
             try {
-
                 // get file path
                 $p3media = P3Media::model()->findByPk($_POST['Waffle']['json_import_media_id']);
                 $fullPath = $p3media->fullPath;
@@ -60,7 +68,6 @@ class WaffleController extends Controller
 
                 // import
                 $model->importFromWaffleJson($json);
-
             } catch (Exception $e) {
 
                 $model->addError('json_import_media_id', $e->getMessage());
@@ -72,8 +79,8 @@ class WaffleController extends Controller
             $_POST['save-changes'] = true;
 
         }
-        return $this->parentSaveAndContinueOnSuccess($model);
 
+        return $this->parentSaveAndContinueOnSuccess($model);
     }
 
     public function beforeAction($action)

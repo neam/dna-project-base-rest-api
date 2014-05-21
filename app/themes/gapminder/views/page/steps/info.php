@@ -25,7 +25,7 @@
     array('hint' => true)
 ); ?>
 
-<?php if ($this->action->id === 'edit'): ?>
+<?php if ($this->actionUsesEditWorkflow()): ?>
     <?php
     $criteria = new CDbCriteria();
     $criteria->addCondition('t.page_id = :page_id');

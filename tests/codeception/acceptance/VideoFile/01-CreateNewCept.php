@@ -4,9 +4,6 @@ $scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('create a video and make sure that only I see it.');
 
-// Register users.
-$I->registerGapminderStaff();
-
 // Max logs in.
 $I->login('max', 'test');
 

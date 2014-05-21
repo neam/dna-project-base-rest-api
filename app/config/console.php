@@ -22,11 +22,11 @@ $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' 
 // Selection of migrations to apply in clean-db vs user-generated DATA scenario
 $modulePaths = array();
 if (DATA == "clean-db") {
-    $modulePaths[] = 'application.migrations.clean-db';
+    $modulePaths['clean-db'] = 'application.migrations.clean-db';
     $modulePaths['user'] = 'vendor.mishamx.yii-user.migrations';
 }
 if (DATA == "user-generated") {
-    $modulePaths[] = 'application.migrations.user-generated';
+    $modulePaths['user-generated'] = 'application.migrations.user-generated';
 }
 /*
  * Currently unused

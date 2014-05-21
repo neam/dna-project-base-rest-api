@@ -42,7 +42,7 @@
                             'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Edit'),
                         )
                     ); ?>
-                <?php elseif ($this->action->id === 'edit'): ?>
+                <?php elseif ($this->actionUsesEditWorkflow()): ?>
                     <?php $this->widget(
                         '\TbButton',
                         array(

@@ -9,7 +9,7 @@ class Controller extends CController
      * @var string the default layout for the controller view. Defaults to '//layouts/column1',
      * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
      */
-    public $layout = '//layouts/column1';
+    public $layout = WebApplication::LAYOUT_REGULAR;
     /**
      * @var array context menu items. This property will be assigned to {@link CMenu::items}.
      */
@@ -98,7 +98,7 @@ class Controller extends CController
     static public function getLanguageMenuItems()
     {
         $languages = array();
-        foreach (Yii::app()->params['languages'] AS $code => $name) {
+        foreach (LanguageHelper::getLanguageList() AS $code => $name) {
             $languages[] = array(
                 'label' => $name,
                 'url' => array_merge(array(''), $_GET, array('lang' => $code)),

@@ -11,7 +11,7 @@ use RegistrationPage;
 use VideoFileBrowsePage;
 use VideoFileEditPage;
 
-class MemberSteps extends \WebGuy
+class MemberSteps extends AppSteps
 {
     function login($username, $password)
     {
@@ -44,57 +44,57 @@ class MemberSteps extends \WebGuy
 
         $I->click(RegistrationPage::$submitButton);
 
-        if ($this->scenario->running()) {
-            sleep(1); // we must sleep here or the users will actually not get registered
-        }
+        $I->waitForText('Thank you for registering!', 30); // secs
 
         // TODO activate account using mailcatcher
     }
 
+    public $staff = array(
+        array(
+            'name' => 'ola',
+            'password' => 'test',
+            'email' => 'dev+ola@gapminder.org',
+            'groupRoles' => array(
+                'GapminderInternal' => array('GroupAdministrator'),
+            ),
+        ),
+        array(
+            'name' => 'max',
+            'password' => 'test',
+            'email' => 'dev+max@gapminder.org',
+            'groupRoles' => array(
+                'GapminderInternal' => array('GroupModerator'),
+            ),
+        ),
+        array(
+            'name' => 'ferdanda',
+            'password' => 'test',
+            'email' => 'dev+ferdanda@gapminder.org',
+            'groupRoles' => array(
+                'GapminderInternal' => array('GroupEditor'),
+            ),
+        ),
+        array(
+            'name' => 'julia',
+            'password' => 'test',
+            'email' => 'dev+julia@gapminder.org',
+            'groupRoles' => array(
+                'GapminderInternal' => array('GroupContributor'),
+            ),
+        ),
+        array(
+            'name' => 'mattias',
+            'password' => 'test',
+            'email' => 'dev+mattias@gapminder.org',
+            'groupRoles' => array(
+                'GapminderInternal' => array('GroupMember'),
+            ),
+        ),
+    );
+
     function registerGapminderStaff()
     {
-        $staff = array(
-            array(
-                'name' => 'ola',
-                'password' => 'test',
-                'email' => 'dev+ola@gapminder.org',
-                'groupRoles' => array(
-                    'GapminderInternal' => array('GroupAdministrator'),
-                ),
-            ),
-            array(
-                'name' => 'max',
-                'password' => 'test',
-                'email' => 'dev+max@gapminder.org',
-                'groupRoles' => array(
-                    'GapminderInternal' => array('GroupModerator'),
-                ),
-            ),
-            array(
-                'name' => 'ferdanda',
-                'password' => 'test',
-                'email' => 'dev+ferdanda@gapminder.org',
-                'groupRoles' => array(
-                    'GapminderInternal' => array('GroupEditor'),
-                ),
-            ),
-            array(
-                'name' => 'julia',
-                'password' => 'test',
-                'email' => 'dev+julia@gapminder.org',
-                'groupRoles' => array(
-                    'GapminderInternal' => array('GroupContributor'),
-                ),
-            ),
-            array(
-                'name' => 'mattias',
-                'password' => 'test',
-                'email' => 'dev+mattias@gapminder.org',
-                'groupRoles' => array(
-                    'GapminderInternal' => array('GroupMember'),
-                ),
-            ),
-        );
+        $staff = $this->staff;
 
         $I = $this;
 

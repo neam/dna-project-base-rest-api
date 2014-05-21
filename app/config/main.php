@@ -6,10 +6,9 @@
  * See also config.php, for composer installation and update "hooks"
  */
 
-// configuration files precedence: main-local, main-{env}, main
-
-// also includes environment config file, eg. 'development' or 'production', we merge the files (if available!) at the botton
+// include gapminder-specific configuration. merged with main configuration in the bottom
 $gcmsConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'gcms.php';
+$gcmsConfig = require($gcmsConfigFile);
 
 // convenience variables
 $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
@@ -17,9 +16,11 @@ $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SE
     dirname($_SERVER['SCRIPT_NAME']);
 
 require('includes/languages.php');
+require('includes/languageDirections.php');
 
 // Set the Google Analytics ID
 // TODO: Proper environment check.
+$_SERVER['SERVER_NAME'] = "preventnotice-this-var-doesnt-work-anyway-on-dokku-deployments-nor-in-cli";
 switch ($_SERVER['SERVER_NAME']) {
     case 'cms.gapminder.org':
         $googleAnalyticsId = 'UA-739025-9';
@@ -531,9 +532,10 @@ $mainConfig = array(
     // using Yii::app()->params['paramName']
     'params'     => array(
         // this is used in contact page (and by yii-user module)
-        'adminEmail'           => 'user@example.com',
-        'signupSender'         => 'signup@gapminder.org',
+        'adminEmail'           => \gapminder\envbootstrap\Identity::brand()->supportEmail,
+        'signupSender'         => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
         'languages'            => $languages,
+        'languageDirections'   => $languageDirections,
         'ext.ckeditor.options' => array(
             'type'                            => 'fckeditor',
             'height'                          => 400,
@@ -608,8 +610,4 @@ $mainConfig = array(
     ),
 );
 
-if (is_file($gcmsConfigFile)) {
-    return CMap::mergeArray($mainConfig, require($gcmsConfigFile));
-} else {
-    return $mainConfig;
-}
+return CMap::mergeArray($mainConfig, $gcmsConfig);

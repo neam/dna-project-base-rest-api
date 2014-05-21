@@ -1,7 +1,7 @@
 <?php
 use Codeception\Util\Stub;
 
-class GraphRelationsTest extends \Codeception\TestCase\Test
+class EdgeOrderingTest extends \Codeception\TestCase\Test
 {
     /**
      * @var \CodeGuy
@@ -24,23 +24,14 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
         $maxDepth = 10,
         $canonicalize = false,
         $ignoreCase = false
-    ) {
-
+    )
+    {
         $trace = debug_backtrace();
         $message = "assertEquals($expected, $actual) on line {$trace[0]["line"]}:";
-
-        return parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
-
+        parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
     }
 
-    // tests
     public function testEdgeOrder()
     {
-        $section = new Section();
-        if (!$section->save()) {
-            var_dump($section->getErrors());
-        }
     }
-
-
 }

@@ -59,8 +59,6 @@
                             echo Yii::t('app', 'Context') . ": ";
                             echo "<br>";
                             echo "<small>" . $data->context . "</small>";
-                            echo "<br>";
-                            echo Yii::t('app', 'Warning: Multiple contexts within I18n Catalogs are not supported');
                         }
                     },
                 'filter' => true,
@@ -68,12 +66,10 @@
             array(
                 'name' => 'Translation',
                 'value' => function ($data) use ($model, $form, $translateInto) {
-
-                        $sourceMessage = SourceMessage::ensureSourceMessage($model->getTranslationCategory('po_contents'), $data->sourceMessage, $translateInto);
-
-                        $currentTranslation = Yii::t($model->getTranslationCategory('po_contents'), $data->sourceMessage, array(), 'editedMessages', $translateInto);
-
-                        //var_dump(compact("currentFallbackTranslation", "currentTranslation"));
+                        $context = isset($data->context) ? $data->context : null;
+                        $category = $model->getTranslationCategory('po_contents', $context);
+                        $sourceMessage = SourceMessage::ensureSourceMessage($category, $data->sourceMessage, $translateInto);
+                        $currentTranslation = Yii::t($category, $data->sourceMessage, array(), 'editedMessages', $translateInto);
 
                         if ($data->plural_forms) {
                             $pluralTranslations = ChoiceFormatHelper::toArray($currentTranslation, $translateInto);
@@ -85,7 +81,7 @@
                             echo TbHtml::textAreaControlGroup("SourceMessage[{$sourceMessage->id}]", $currentTranslation);
                         }
                         if (is_null($currentTranslation)) {
-                            $currentFallbackTranslation = Yii::t($model->getTranslationCategory('po_contents'), $data->sourceMessage, array(), 'displayedMessages', $translateInto);
+                            $currentFallbackTranslation = Yii::t($category, $data->sourceMessage, array(), 'displayedMessages', $translateInto);
                             echo Yii::t('app', 'Current fallback for {lang}', array('{lang}' => Yii::app()->language)) . ": ";
                             echo '<br>';
                             echo nl2br($currentFallbackTranslation);

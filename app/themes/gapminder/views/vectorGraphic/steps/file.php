@@ -3,7 +3,7 @@
 /* @var VectorGraphic|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php if ($this->action->id === 'edit'): ?>
+<?php if ($this->actionUsesEditWorkflow()): ?>
     <div class="file-field-2cols">
         <div class="field-column">
             <?php echo $form->select2ControlGroup(

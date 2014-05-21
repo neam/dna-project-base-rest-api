@@ -26,7 +26,7 @@
                 '\TbButton',
                 array(
                     'label' => Yii::t('crud', 'Prepare for review'),
-                    'color' => $this->action->id === 'prepareForReview' ? 'inverse' : null,
+                    'color' => $this->action->id === 'prepareForReview' ? 'inverse' : null, // TODO: no inverse buttons in BS3 http://getbootstrap.com/css/#buttons
                     'size' => TbHtml::BUTTON_SIZE_MINI,
                     'url' => array(
                         'prepareForReview',
@@ -77,7 +77,7 @@
             '\TbButton',
             array(
                 'label' => Yii::t('model', 'Proofread'),
-                'color' => $this->action->id === 'proofRead' ? 'inverse' : null,
+                'color' => $this->action->id === 'proofread' ? 'inverse' : null,
                 'size' => TbHtml::BUTTON_SIZE_MINI,
                 'url' => array(
                     'proofRead',
@@ -181,6 +181,7 @@
                             'group' => $groupName,
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
+                        'id' => Html::generateModelId($model, 'removeFromGroup', $groupName),
                     )
                 ); ?>
             <?php else: ?>
@@ -196,6 +197,7 @@
                             'group' => $groupName,
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
+                        'id' => Html::generateModelId($model, 'addToGroup', $groupName),
                     )
                 ); ?>
             <?php endif; ?>

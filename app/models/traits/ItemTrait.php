@@ -327,7 +327,7 @@ trait ItemTrait
 
             // Add an always invalid status requirement for each language upon the first translatable attribute
             $i18nRules = array();
-            foreach (Yii::app()->params["languages"] as $language => $label) {
+            foreach (LanguageHelper::getCodes() as $language) {
                 $i18nRules[] = array($attribute, 'compare', 'compareValue' => -1, 'on' => 'translate_into_' . $language);
 
                 foreach ($this->flowSteps() as $step => $fields) {
@@ -347,7 +347,7 @@ trait ItemTrait
                 if (!in_array($sourceLanguageContentAttribute, $currentlyTranslatableAttributes)) {
                     continue;
                 }
-                foreach (Yii::app()->params["languages"] as $lang => $label) {
+                foreach (LanguageHelper::getCodes() as $lang) {
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "into_$lang-step_$step");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "into_$lang-step_$step");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "into_$lang-step_$step");

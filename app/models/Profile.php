@@ -120,7 +120,7 @@ class Profile extends BaseProfile
     public function getTranslatableLanguages()
     {
         return Yii::app()->user->isAdmin()
-            ? Yii::app()->params['languages']
+            ? LanguageHelper::getLanguageList()
             : $this->getLanguages();
     }
 

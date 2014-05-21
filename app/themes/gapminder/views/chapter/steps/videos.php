@@ -14,6 +14,7 @@ $this->widget(
         'relation' => 'videos',
         'model' => $model,
         'criteria' => $criteria,
+        'id' => 'Chapter_videos',
     )
 );
 

@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="flowbar-content">
-        <?php if ($this->action->id === 'edit'): ?>
+        <?php if ($this->actionUsesEditWorkflow()): ?>
             <?php $this->renderPartial('/_item/elements/_action-buttons', compact('model')); ?>
         <?php else: ?>
             <?php $this->renderPartial('/_item/elements/_required-workflow', compact('model')); ?>

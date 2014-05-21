@@ -27,7 +27,7 @@ class DashboardGroupTranslatorTaskQueryBuilder extends DashboardTaskQueryBuilder
                           INNER JOIN group_has_account AS gha ON gha.group_id = nhg.group_id
                           WHERE gha.account_id = :account_id
                           AND c.user_id = :account_id
-                          GROUP BY i.id";
+                          GROUP BY i.node_id";
         }
         return $queries;
     }
@@ -57,7 +57,7 @@ class DashboardGroupTranslatorTaskQueryBuilder extends DashboardTaskQueryBuilder
                           INNER JOIN group_has_account AS gha ON gha.group_id = nhg.group_id
                           WHERE gha.account_id = :account_id
                           AND c.user_id IS NULL
-                          GROUP BY i.id";
+                          GROUP BY i.node_id";
         }
         return $queries;
     }

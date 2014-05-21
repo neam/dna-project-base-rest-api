@@ -1,16 +1,18 @@
 <?php /* @var ItemEditUi $this */ ?>
-<?php echo TbHtml::linkbutton(
-    Yii::t('app', 'Preview'),
-    array(
-        'class' => 'preview-button',
-        'url' => array(
-            'preview',
-            'id' => $this->model->{$this->model->tableSchema->primaryKey},
-            'editingUrl' => Yii::app()->request->url,
-        ),
-        'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Preview'),
-    )
-); ?>
+<div class="item-top-actions">
+    <?php echo TbHtml::linkbutton(
+        Yii::t('app', 'Preview'),
+        array(
+            'class' => 'preview-button',
+            'url' => array(
+                'preview',
+                'id' => $this->model->{$this->model->tableSchema->primaryKey},
+                'editingUrl' => Yii::app()->request->url,
+            ),
+            'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Preview'),
+        )
+    ); ?>
+</div>
 <?php $this->form = $this->beginWidget(
     'AppActiveForm',
     array(
@@ -31,7 +33,16 @@
             <h1 class="item-heading"><?php echo $this->model->itemLabel; ?></h1>
         </div>
     </div>
-    <?php $this->render("actions/$this->actionPartialView"); ?>
+    <?php if (in_array($this->actionPartialView, array('_prepareForPublishing', '_prepareForReview'))): ?>
+        <?php if (in_array($this->actionPartialView, array('_prepareForPublishing', '_prepareForReview'))): ?>
+            <?php $this->render('_required-workflow', array(
+                'model' => $this->model,
+            )); ?>
+        <?php endif; ?>
+        <?php $this->render('actions/_edit'); ?>
+    <?php else: ?>
+        <?php $this->render("actions/$this->actionPartialView"); ?>
+    <?php endif; ?>
     <?php /*
     <input type="hidden" name="form-url" value="<?php echo CHtml::encode(Yii::app()->request->url); ?>"/>
     <?php $this->renderPartial('/_item/edit/_flowbar', compact('model')); ?>
