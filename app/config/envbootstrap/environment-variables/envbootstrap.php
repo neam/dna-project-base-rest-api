@@ -50,6 +50,8 @@ define("SMTP_USERNAME", $url['user']);
 define("SMTP_PASSWORD", urldecode($url['pass']));
 define("SMTP_ENCRYPTION", isset($args['encryption']) ? $args['encryption'] : false);
 
+setenv("SENTRY_DSN", $default = null, $required = true);
+
 // ==== Define test-related constants ====
 
 setenv("TEST_DB_NAME", $default = YII_DB_NAME . '_test', $required = false);

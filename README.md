@@ -11,6 +11,8 @@ All CMS entry scripts (currently `www/index.php` & `app/yiic`) should include a 
 
 For more information, see `app/config/envbootstrap/README.md`
 
+### Runtime configurations
+
 #### ENVBOOTSTRAP_STRATEGY (default: local)
 
 Type: Environment variable
@@ -137,6 +139,14 @@ The S3 bucket where user generated data is stored.
 #### USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY & USER_DATA_BACKUP_UPLOADERS_SECRET
 
 S3 credentials for an IAM user that has read+write access to the USER_GENERATED_DATA_S3_BUCKET.
+
+### Deployment configurations
+
+#### SENTRY_DSN
+
+Type: Environment variable
+
+As per https://app.getsentry.com/gapminder-developers/gapminder-cms/keys/
 
 ## Update to the latest changes
 
@@ -265,6 +275,7 @@ You will also need to run the following once after the initial push:
     export NEW_RELIC_LICENSE_KEY="replaceme"
     export NEW_RELIC_APP_NAME="replaceme"
     export SMTP_URL="replaceme"
+    export SENTRY_DSN="replaceme"
 
     ssh dokku@$DOKKU_HOST config:set $APPNAME \
     ENVBOOTSTRAP_STRATEGY=environment-variables \
@@ -278,7 +289,8 @@ You will also need to run the following once after the initial push:
     COMPOSER_GITHUB_OAUTH_TOKEN=$COMPOSER_GITHUB_OAUTH_TOKEN \
     NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY \
     NEW_RELIC_APP_NAME=dokku/$APPNAME \
-    SMTP_URL=$SMTP_URL
+    SMTP_URL=$SMTP_URL \
+    SENTRY_DSN=$SENTRY_DSN
 
     # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
 

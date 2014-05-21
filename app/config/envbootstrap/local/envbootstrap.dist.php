@@ -61,6 +61,8 @@ if (SMTP_URL === null) {
     define("SMTP_ENCRYPTION", isset($args['encryption']) ? $args['encryption'] : false);
 }
 
+define("SENTRY_DSN", "https://foo:bar@app.getsentry.com/00000");
+
 // ==== Define test-related constants ====
 
 define("TEST_DB_NAME", 'gscms_test');
