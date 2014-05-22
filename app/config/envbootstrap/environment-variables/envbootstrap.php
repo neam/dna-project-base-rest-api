@@ -85,7 +85,9 @@ class Identity
         $return->siteName = BRAND_SITENAME;
         $return->domain = BRAND_DOMAIN;
         $return->supportEmail = "info@" . $return->domain;
-        $return->mailSentByMail = "noreply@" . $return->domain;
+        // Temporarily hard-coding to dev@gapminder.org since we don't have production status for Amazon Simple Email Services yet and the sender email needs to be verified in the sandbox
+        $return->mailSentByMail = "dev@gapminder.org";
+        //$return->mailSentByMail = "noreply@" . $return->domain;
         $return->mailSentByName = $return->siteName;
         return $return;
     }
