@@ -283,6 +283,11 @@ class MemberSteps extends AppSteps
         return $this->generateSelect2ChoiceSelector($selectElementId, $multiple) . $append;
     }
 
+    /**
+     * Checks if the option(s) is selected
+     * @param $selectId
+     * @param $option
+     */
     function seeSelect2OptionIsSelected($selectId, $option)
     {
         $I = $this;
@@ -298,6 +303,35 @@ class MemberSteps extends AppSteps
         foreach ($option as $opt) {
             $I->see($opt, $selector);
         }
+    }
+
+    /**
+     * Checks if the option(s) is selected
+     * @param $selectId
+     * @param $option
+     */
+    function dontSeeSelect2OptionIsSelected($selectId, $option)
+    {
+        $I = $this;
+
+        $isMultiple = is_array($option);
+
+        $selector = $I->generateSelect2ChosenSelector($selectId, $isMultiple);
+
+        if (!$isMultiple) {
+            $option = array($option);
+        }
+
+        foreach ($option as $opt) {
+            $I->dontSee($opt, $selector);
+        }
+    }
+
+    function unselectSelect2Option($field, $option)
+    {
+        $I = $this;
+        $I->unselectOption($field, $option);
+        $I->dontSeeSelect2OptionIsSelected($field, $option);
     }
 
     function addGroupRoleToAccount($username, $group, $role)
@@ -344,6 +378,37 @@ class MemberSteps extends AppSteps
         $I = $this;
         $I->selectSelect2Option($field, $items);
         $I->seeSelect2OptionIsSelected($field, $items);
+    }
+
+    function seeVideoRelatedItems($title, $items)
+    {
+        $I = $this;
+        $I->amOnPage(VideoFileBrowsePage::$URL);
+        $I->click('Edit', VideoFileBrowsePage::modelContext($title));
+        $I->gotoStep('related', VideoFileEditPage::$steps);
+        $I->seeSelect2OptionIsSelected(VideoFileEditPage::$relatedField, $items);
+    }
+
+    function gotoStep($step, $steps, $submit = null)
+    {
+        $I = $this;
+
+        if (empty($submit)) {
+            $submit = ItemEditPage::$submitButton;
+        }
+
+        // times to submit to get to step
+        $times = array_search($step, $steps);
+
+        for ($index = 0; $index < $times; $index++) {
+            $I->click($submit);
+        }
+    }
+
+    function removeRelated($field, array $items)
+    {
+        $I = $this;
+        $I->unselectOption($field, $items);
     }
 
 }
