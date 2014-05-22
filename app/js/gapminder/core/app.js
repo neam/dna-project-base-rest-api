@@ -5,8 +5,10 @@ define([
     'backbone',
     'gapminder/core/Entity',
     'gapminder/utils/dependencyLoader',
+    'gapminder/components/imageManager',
+    'gapminder/components/urlManager',
     'gapminder/components/viewManager'
-], function (module, $, _, Backbone, Entity, DependencyLoader, ViewManager) {
+], function (module, $, _, Backbone, Entity, DependencyLoader, ImageManager, UrlManager, ViewManager) {
     'use strict';
     
     /**
@@ -28,11 +30,19 @@ define([
          * Constructor.
          */
         constructor: function () {
-            this.config = module.config() || {};
+            this.config = $('html').data('config') || {};
+
             this.components = {
+                imageManager: new ImageManager({
+                    app: this,
+                    baseUrl: 'images/'
+                }),
+                urlManager: new UrlManager({
+                    app: this
+                }),
                 viewManager: new ViewManager({
                     app: this,
-                    loader: new DependencyLoader({basePath: 'gapminder/views'})
+                    loader: new DependencyLoader({basePath: 'gapminder/views/'})
                 })
             };
         },
@@ -43,7 +53,16 @@ define([
         initialize: function () {
             this.initializeViews();
 
-            console.log('Application initialized.');
+            this.getComponent('imageManager').loadImages(['ccmini.png', 'ccregular.png', 'ccslim.png'])
+                .done(function(images) {
+                    console.info('Images loaded');
+                    console.debug('images:', images);
+                })
+                .fail(function () {
+                    console.log('Error occurred!');
+                });
+
+            console.info('Application initialized');
         },
         
         /**
@@ -55,15 +74,20 @@ define([
         initializeViews: function (selector, args, cb) {
             selector = selector || document;
             args = args || {};
+            cb = cb || function () {};
             
-            var self = this;
+            var views = [];
             
-            $(selector).find('*[data-view]').each(function () {
-                var viewArgs = _.extend({}, args);
-                viewArgs.el = this;
-                self.getComponent('viewManager').createView($(this).data('view'), viewArgs)
-                    .then(cb);
+            $(selector).find('[data-view]').each(function (index, element) {
+                views.push({
+                    name: $(element).data('view'),
+                    options: _.extend({el: element}, args)
+                });
             });
+
+            this.getComponent('viewManager')
+                .createViews(views)
+                .then(cb);
         },
         
         /**

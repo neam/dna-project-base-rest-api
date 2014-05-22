@@ -19,19 +19,20 @@ define([
          * Loads a set of dependencies using require().
          * @returns {*}
          */
-        load: function() {
-            var dependencies = Array.prototype.slice.call(arguments),
-                dfd = $.Deferred();
-            
+        load: function(dependencies) {
+            var defer = $.Deferred();
+
             for (var i = 0; i < dependencies.length; i++) {
                 dependencies[i] = this.basePath + dependencies[i];
             }
+
+            console.debug('Loading dependencies:', dependencies);
             
             require(dependencies, function() {
-                dfd.resolve.apply(dfd, arguments);
+                defer.resolve.apply(defer, arguments);
             });
             
-            return dfd.promise();
+            return defer.promise();
         }
     });
 

@@ -277,7 +277,6 @@ $mainConfig = array(
         */
         'yiistrap' => array(
             'class' => '\TbApi',
-            'assetsPath' => 'vendor.twitter.bootstrap.dist',
         ),
         'cache'         => array(
             'class' => 'CDummyCache',

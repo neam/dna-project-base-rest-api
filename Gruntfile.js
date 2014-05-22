@@ -132,7 +132,7 @@ module.exports = function(grunt) {
                 'unused': true,
                 'camelcase': true,
                 'indent': 4,
-                'predef': ['document', 'define']
+                'predef': ['document', 'define', 'Image']
             }
         },
         requirejs: {
@@ -170,8 +170,6 @@ module.exports = function(grunt) {
 
     // Define tasks
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('init', 'Initializes the project.', function () {
-        grunt.task.run('bower');
-    });
+    grunt.registerTask('createRjsConfig', ['bower']);
     grunt.registerTask('build', ['copy:build', 'requirejs', 'clean:build']);
 };

@@ -10,13 +10,13 @@ define([
      * @param {Object} options arguments
      */
     var Entity = function (options) {
-        this.cid = _.uniqueId('component');
+        this.cid = _.uniqueId('entity');
         options = options || {};
         _.extend(this, options);
         this.initialize.apply(this, arguments);
     };
 
-    // Extend the component prototype with an empty initialize method.
+    // Extend the entity prototype with an empty initialize method.
     _.extend(Entity.prototype, {
         initialize: function () {}
     });

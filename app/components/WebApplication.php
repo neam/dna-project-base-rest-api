@@ -99,4 +99,24 @@ class WebApplication extends CWebApplication
             ? $languages[$languageCode]
             : $languageCode;
     }
+
+    public function clientConfigJson()
+    {
+        return
+            CJSON::encode(
+            array(
+                'baseUrl' => baseUrl(),
+                'cacheBuster' => $this->resolveCacheBuster(),
+            )
+        );
+    }
+
+    /**
+     * Returns the cache buster for this application.
+     * @return string cache buster.
+     */
+    public function resolveCacheBuster()
+    {
+        return md5(YII_DEBUG ? time() : $this->version);
+    }
 }

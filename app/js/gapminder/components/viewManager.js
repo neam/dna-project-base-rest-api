@@ -3,7 +3,7 @@ define([
     'underscore',
     'backbone',
     'gapminder/core/component'
-], function($, _, Backbone, Component) {
+], function ($, _, Backbone, Component) {
     'use strict';
 
     /**
@@ -23,27 +23,52 @@ define([
 
         /**
          * Creates a new view.
-         * @param {string} className the view to create
-         * @param {Object} viewArgs view options
+         * @param {string} name
+         * @param {Object} options
+         * @returns {promise}
          */
-        createView: function(className, viewArgs) {
-            var self = this,
-                view = this.views[className],
-                dfd = $.Deferred();
+        createView: function (name, options) {
+            return this.createViews([{name: name, options: options}]);
+        },
 
-            if (view) {
-                view.undelegateEvents();
+        /**
+         * Creates multiple views at once.
+         * @param {Array<Object>} views
+         * @returns {promise}
+         */
+        createViews: function (views) {
+            var self = this,
+                defer = $.Deferred(),
+                dependencies = [],
+                name;
+
+            for (var i = 0; i < views.length; i++) {
+                name = views[i].name;
+                dependencies.push(name);
+
+                // Undelegate events to prevent them from being registered twice.
+                if (this.views[name]) {
+                    this.views[name].undelegateEvents();
+                }
             }
 
-            this.loader.load(className)
-                .then(function(Constructor) {
-                    viewArgs.manager = self;
-                    view = new Constructor(viewArgs);
-                    self.views[className] = view;
-                    dfd.resolve(view);
+            // Load the dependencies through the loader.
+            this.loader
+                .load(dependencies)
+                .then(function () {
+                    var Constructor, options, view;
+
+                    for (var i = 0; i < arguments.length; i++) {
+                        Constructor = arguments[i];
+                        options = _.extend({manager: self}, views[i].options);
+                        view = new Constructor(options);
+                        self.views[views[i].name] = view;
+                    }
+
+                    defer.resolve(self.views);
                 });
 
-            return dfd.promise();
+            return defer.promise();
         }
     });
 
