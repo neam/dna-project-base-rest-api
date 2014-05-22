@@ -248,56 +248,56 @@ class MemberSteps extends AppSteps
     }
 
     /**
-     * Selects a option and then watches that the select2-widget bound to it changes its value
-     * @param $selectId
-     * @param $option
+     * Selects a option and then waits that the select2-widget bound to it changes its value (no assertion)
+     * @param string $selectId id of the select-element (not select2)
+     * @param string|array $option the option to be selected. Can be array of options to select multiple
      */
     function selectSelect2Option($selectId, $option)
     {
         $I = $this;
         $I->selectOption($selectId, $option);
-        $select2ChosenSelector = $this->generateSelect2ChosenSelector($selectId);
-        $I->waitForSelect2ElementChange($select2ChosenSelector, $option);
-    }
-
-    public function waitForSelect2ElementChange($select2ChosenSelector, $option, $timeout = 30)
-    {
-        $I = $this;
-        $I->waitForElementChange(
-            $select2ChosenSelector,
-            function (\WebDriverElement $element) use ($option, $timeout) {
-                return $element->getText() === $option;
-            },
-            $timeout
-        );
     }
 
     /**
      * Generates a selector for the select2 choice link (which can be clicked on)
-     * @param $selectElementId
+     * @param string $selectElementId id of the select-element (not select2)
+     * @param bool $multiple whether multiple choices can be selected
      * @return string
      */
-    function generateSelect2ChoiceSelector($selectElementId)
+    function generateSelect2ChoiceSelector($selectElementId, $multiple = false)
     {
+        $append = ($multiple) ? ' .select2-choices' : ' .select2-choice';
         // substr removes the hash-sign from the select-id
-        return '#s2id_' . substr($selectElementId, 1, strlen($selectElementId) - 1) . ' .select2-choice';
+        return '#s2id_' . substr($selectElementId, 1, strlen($selectElementId) - 1) . $append;
     }
 
     /**
      * Generates a selector from which the select2 chosen option can be read from
-     * @param $selectElementId
+     * @param string $selectElementId id of the select-element (not select2)
+     * @param bool $multiple whether multiple choices can be selected
      * @return string
      */
-    function generateSelect2ChosenSelector($selectElementId)
+    function generateSelect2ChosenSelector($selectElementId, $multiple = false)
     {
-        return $this->generateSelect2ChoiceSelector($selectElementId) . ' .select2-chosen';
+        $append = ($multiple) ? ' .select2-search-choice' : ' .select2-chosen';
+        return $this->generateSelect2ChoiceSelector($selectElementId, $multiple) . $append;
     }
 
     function seeSelect2OptionIsSelected($selectId, $option)
     {
         $I = $this;
-        $selector = $I->generateSelect2ChosenSelector($selectId);
-        $I->see($option, $selector);
+
+        $isMultiple = is_array($option);
+
+        $selector = $I->generateSelect2ChosenSelector($selectId, $isMultiple);
+
+        if (!$isMultiple) {
+            $option = array($option);
+        }
+
+        foreach ($option as $opt) {
+            $I->see($opt, $selector);
+        }
     }
 
     function addGroupRoleToAccount($username, $group, $role)
@@ -335,8 +335,15 @@ class MemberSteps extends AppSteps
 
         $I->waitForElementNotVisible('#item-form-modal', 30);
         $I->waitForElementVisible(VideoFileEditPage::$submitButton);
+        $I->waitForText('Uploaded file', 10, $I->generateSelect2ChosenSelector(VideoFileEditPage::$webmField));
         $I->seeSelect2OptionIsSelected(VideoFileEditPage::$webmField, 'Uploaded file');
     }
 
+    function selectRelated($field, array $items)
+    {
+        $I = $this;
+        $I->selectSelect2Option($field, $items);
+        $I->seeSelect2OptionIsSelected($field, $items);
+    }
 
 }

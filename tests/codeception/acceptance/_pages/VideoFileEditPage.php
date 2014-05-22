@@ -19,6 +19,7 @@ class VideoFileEditPage extends ItemEditPage
     public static $mp4Field = '#VideoFile_clip_mp4_media_id';
     public static $subtitlesField = '#VideoFile_subtitles_en';
     public static $subtitlesImportMediaField = '#VideoFile_subtitles_import_media_id';
+    public static $relatedField = '#VideoFile_related';
 
     public static $webmUploadNewContext = '.webm';
     public static $mp4mUploadNewContext = '.mp4';
