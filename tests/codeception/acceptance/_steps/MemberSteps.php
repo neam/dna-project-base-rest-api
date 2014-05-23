@@ -171,6 +171,7 @@ class MemberSteps extends AppSteps
     function editVideoFile($title, $stepAttributes)
     {
         $I = $this;
+        $I->amGoingTo('edit the video-file ' . $title);
         $I->amOnPage(VideoFileBrowsePage::$URL);
         $I->click('Edit', VideoFileBrowsePage::modelContext($title));
         $I->fillVideoFileStepPages($stepAttributes);
@@ -247,50 +248,95 @@ class MemberSteps extends AppSteps
         $I->click(AccountViewPage::generateToggleGroupRoleLinkSelector($group, $role));
     }
 
+    function generateSelect2Selector($selectId, $asXpath = false)
+    {
+        $id = substr($selectId, 1, strlen($selectId) - 1);
+        if ($asXpath) {
+            return "//div[@id='s2id_$id']";
+        }
+        // substr removes the hash-sign from the select-id
+        return '#s2id_' . $id;
+    }
+
     /**
-     * Selects a option and then waits that the select2-widget bound to it changes its value (no assertion)
-     * @param string $selectId id of the select-element (not select2)
-     * @param string|array $option the option to be selected. Can be array of options to select multiple
+     * result of generateSelect2Selector + rest, where rest is:
+     * if multiple: ul.select2-choices
+     * if not multiple: a.select2-choice
+     * @param string $selectElementId id of the select-element (not select2)
+     * @param bool $multiple whether multiple choices can be selected
+     * @param bool $asXpath
+     * @return string
      */
-    function selectSelect2Option($selectId, $option)
+    function generateSelect2ChoiceSelector($selectElementId, $multiple = false, $asXpath = false)
+    {
+        // Defaulting to css and replace if xpath
+        $append = ($multiple) ? ' .select2-choices' : ' .select2-choice';
+
+        if ($asXpath) {
+            $append = ($multiple)
+                ? '//ul[contains(concat(" ", normalize-space(@class), " "), " select2-choices ")]'
+                : '//a[contains(concat(" ", normalize-space(@class), " "), " select2-choice ")]';
+        }
+        return $this->generateSelect2Selector($selectElementId, $asXpath) . $append;
+    }
+
+    /**
+     * result of generateSelect2ChoiceSelector + rest, where rest is:
+     * if multiple: li.select2-search-choice
+     * if not multiple: span.select2-chosen (the selection as string can be read from this element)
+     * @param string $selectElementId id of the select-element (not select2)
+     * @param bool $multiple whether multiple choices can be selected
+     * @param bool $asXpath
+     * @return string
+     */
+    function generateSelect2ChosenSelector($selectElementId, $multiple = false, $asXpath = false)
+    {
+        // Defaulting to css and replace if xpath
+        $append = ($multiple) ? ' .select2-search-choice' : ' .select2-chosen';
+
+        if ($asXpath) {
+            $append = ($multiple)
+                ? '//li[contains(concat(" ", normalize-space(@class), " "), " select2-search-choice ")]'
+                : '//span[contains(concat(" ", normalize-space(@class), " "), " select2-chosen ")]';
+        }
+        return $this->generateSelect2ChoiceSelector($selectElementId, $multiple, $asXpath) . $append;
+    }
+
+    function unselectSelect2Option($field, $option)
     {
         $I = $this;
-        $I->selectOption($selectId, $option);
-    }
 
-    /**
-     * Generates a selector for the select2 choice link (which can be clicked on)
-     * @param string $selectElementId id of the select-element (not select2)
-     * @param bool $multiple whether multiple choices can be selected
-     * @return string
-     */
-    function generateSelect2ChoiceSelector($selectElementId, $multiple = false)
-    {
-        $append = ($multiple) ? ' .select2-choices' : ' .select2-choice';
-        // substr removes the hash-sign from the select-id
-        return '#s2id_' . substr($selectElementId, 1, strlen($selectElementId) - 1) . $append;
-    }
+        if (!is_array($option)) {
+            $I->unselectOption($field, $option);
+            return;
+        }
 
-    /**
-     * Generates a selector from which the select2 chosen option can be read from
-     * @param string $selectElementId id of the select-element (not select2)
-     * @param bool $multiple whether multiple choices can be selected
-     * @return string
-     */
-    function generateSelect2ChosenSelector($selectElementId, $multiple = false)
-    {
-        $append = ($multiple) ? ' .select2-search-choice' : ' .select2-chosen';
-        return $this->generateSelect2ChoiceSelector($selectElementId, $multiple) . $append;
+        $xpath = $I->generateSelect2ChosenSelector($field, $multiple = true, $asXpath = true);
+
+        foreach ($option as $opt) {
+            $xpath .= "/div[contains(text(), '$opt')]/../a[contains(concat(' ', normalize-space(@class), ' '), ' select2-search-choice-close ')]";
+            $I->click($xpath);
+            $I->wait(1);
+        }
+
+        $I->dontSeeSelect2OptionIsSelected($field, $option);
     }
 
     /**
      * Checks if the option(s) is selected
      * @param $selectId
      * @param $option
+     * @param bool $dont use dontSeeSelect2OptionIsSelected() instead of using this argument
      */
-    function seeSelect2OptionIsSelected($selectId, $option)
+    function seeSelect2OptionIsSelected($selectId, $option, $dont = false)
     {
         $I = $this;
+
+        if ($dont) {
+            $I->amGoingTo('see option is not selected');
+        } else {
+            $I->amGoingTo('see option is selected');
+        }
 
         $isMultiple = is_array($option);
 
@@ -301,7 +347,9 @@ class MemberSteps extends AppSteps
         }
 
         foreach ($option as $opt) {
-            $I->see($opt, $selector);
+            ($dont)
+                ? $I->dontSee($opt, $selector)
+                : $I->see($opt, $selector);
         }
     }
 
@@ -312,26 +360,41 @@ class MemberSteps extends AppSteps
      */
     function dontSeeSelect2OptionIsSelected($selectId, $option)
     {
+        return $this->seeSelect2OptionIsSelected($selectId, $option, true);
+    }
+
+    /**
+     * Selects a option and then waits that the select2-widget bound to it changes its value (no assertion)
+     * @param string $selectId id of the select-element (not select2)
+     * @param string|array $option the option to be selected. Can be array of options to select multiple
+     */
+    function selectSelect2Option($selectId, $option)
+    {
         $I = $this;
 
-        $isMultiple = is_array($option);
+        $I->amGoingTo('select options using a select2 widget');
 
-        $selector = $I->generateSelect2ChosenSelector($selectId, $isMultiple);
+        $multiple = is_array($option);
 
-        if (!$isMultiple) {
+        if (!$multiple ) {
             $option = array($option);
         }
 
-        foreach ($option as $opt) {
-            $I->dontSee($opt, $selector);
-        }
-    }
+        $select2ClickableSelector = $I->generateSelect2ChoiceSelector($selectId, $multiple);
 
-    function unselectSelect2Option($field, $option)
-    {
-        $I = $this;
-        $I->unselectOption($field, $option);
-        $I->dontSeeSelect2OptionIsSelected($field, $option);
+        foreach ($option as $opt) {
+            // Opens options
+            $I->click($select2ClickableSelector);
+
+            // xpath
+            $resultSelector  = '//div[contains(concat(" ", normalize-space(@class), " "), " select2-drop-active ")]';
+            $resultSelector .= '//ul[contains(concat(" ", normalize-space(@class), " "), " select2-results ")]';
+            $resultSelector .= '/li[contains(concat(" ", normalize-space(@class), " "), " select2-result ")]';
+            $resultSelector .= "/div[contains(text(), '$opt')]";
+
+            // Click the result
+            $I->click($resultSelector);
+        }
     }
 
     function addGroupRoleToAccount($username, $group, $role)
@@ -353,6 +416,8 @@ class MemberSteps extends AppSteps
     function uploadWebmFile($file = 'big-buck-bunny_trailer.webm')
     {
         $I = $this;
+
+        $I->amGoingTo('upload a webm-file');
 
         $I->click('Upload new', VideoFileEditPage::$webmUploadNewContext);
 
@@ -376,6 +441,7 @@ class MemberSteps extends AppSteps
     function selectRelated($field, array $items)
     {
         $I = $this;
+        $I->amGoingTo('select related items');
         $I->selectSelect2Option($field, $items);
         $I->seeSelect2OptionIsSelected($field, $items);
     }
@@ -383,6 +449,7 @@ class MemberSteps extends AppSteps
     function seeVideoRelatedItems($title, $items)
     {
         $I = $this;
+        $I->expectTo('see a video has related items');
         $I->amOnPage(VideoFileBrowsePage::$URL);
         $I->click('Edit', VideoFileBrowsePage::modelContext($title));
         $I->gotoStep('related', VideoFileEditPage::$steps);
@@ -408,7 +475,8 @@ class MemberSteps extends AppSteps
     function removeRelated($field, array $items)
     {
         $I = $this;
-        $I->unselectOption($field, $items);
+        $I->amGoingTo('remove related items');
+        $I->unselectSelect2Option($field, $items);
     }
 
 }

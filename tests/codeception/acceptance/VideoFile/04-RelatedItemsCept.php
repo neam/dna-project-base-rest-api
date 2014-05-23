@@ -6,7 +6,6 @@ $I->wantTo('add related items to a video.');
 
 $I->login('max', 'test');
 
-
 // Create some videos to add as related items
 for ($count = 1; $count <= 3; $count++) {
 
@@ -42,7 +41,7 @@ $I->editVideoFile(
         'related' => array(
             VideoFileEditPage::$relatedField => function () use ($I) {
                 $I->removeRelated(VideoFileEditPage::$relatedField, array('Related video #2'));
-                $I->selectRelated(VideoFileEditPage::$relatedField, array('Related video #1', 'Related video #3'));
+                $I->selectRelated(VideoFileEditPage::$relatedField, array('Related video #3'));
             }
         ),
     )
