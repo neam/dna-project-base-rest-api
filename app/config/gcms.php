@@ -134,7 +134,7 @@ $gcmsConfig = array(
                     'user-profile-picture' => array(
                         'name' => 'User Profile Picture',
                         'commands' => array(
-                            'resize' => array(195, 195, 7), // Image::AUTO
+                            'resize' => array(160, 160, 7), // Image::AUTO
                             'quality' => '85',
                         ),
                         'type' => 'jpg',

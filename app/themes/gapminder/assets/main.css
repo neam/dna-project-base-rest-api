@@ -10621,7 +10621,7 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
 @media (min-width: 992px) {
   .account-controller.profile-action .profile-summary .summary-picture {
     float: left;
-    width: 25%;
+    width: 16.666666666666664%;
   }
 }
 .account-controller.profile-action .profile-summary .summary-info {
