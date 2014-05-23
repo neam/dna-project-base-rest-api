@@ -20,9 +20,14 @@ chmod -R 777 app/runtime/
 chmod -R 777 www/assets/
 chmod -R 777 www/runtime/
 
-# todo: move to php/node.js buildstep
-# bower install # --allow-root
+# install bower dependencies
+npm install -g bower
+bower install --allow-root
 
+# generate the js app
+grunt build
+
+# remove assets folder in case it was committed by mistake or we are updating an existing instance for some reason
 rm -r www/assets/*
 
 # necessary for user data backup uploads
