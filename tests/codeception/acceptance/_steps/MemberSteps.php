@@ -9,6 +9,7 @@ use HomePage;
 use ItemEditPage;
 use LoginPage;
 use RegistrationPage;
+use Symfony\Component\CssSelector\CssSelector;
 use UploadPopupPage;
 use VideoFileBrowsePage;
 use VideoFileEditPage;
@@ -248,13 +249,10 @@ class MemberSteps extends AppSteps
         $I->click(AccountViewPage::generateToggleGroupRoleLinkSelector($group, $role));
     }
 
-    function generateSelect2Selector($selectId, $asXpath = false)
+    function generateSelect2Selector($selectId)
     {
-        $id = substr($selectId, 1, strlen($selectId) - 1);
-        if ($asXpath) {
-            return "//div[@id='s2id_$id']";
-        }
         // substr removes the hash-sign from the select-id
+        $id = substr($selectId, 1, strlen($selectId) - 1);
         return '#s2id_' . $id;
     }
 
@@ -264,20 +262,12 @@ class MemberSteps extends AppSteps
      * if not multiple: a.select2-choice
      * @param string $selectElementId id of the select-element (not select2)
      * @param bool $multiple whether multiple choices can be selected
-     * @param bool $asXpath
      * @return string
      */
-    function generateSelect2ChoiceSelector($selectElementId, $multiple = false, $asXpath = false)
+    function generateSelect2ChoiceSelector($selectElementId, $multiple = false)
     {
-        // Defaulting to css and replace if xpath
         $append = ($multiple) ? ' .select2-choices' : ' .select2-choice';
-
-        if ($asXpath) {
-            $append = ($multiple)
-                ? '//ul[contains(concat(" ", normalize-space(@class), " "), " select2-choices ")]'
-                : '//a[contains(concat(" ", normalize-space(@class), " "), " select2-choice ")]';
-        }
-        return $this->generateSelect2Selector($selectElementId, $asXpath) . $append;
+        return $this->generateSelect2Selector($selectElementId) . $append;
     }
 
     /**
@@ -286,20 +276,12 @@ class MemberSteps extends AppSteps
      * if not multiple: span.select2-chosen (the selection as string can be read from this element)
      * @param string $selectElementId id of the select-element (not select2)
      * @param bool $multiple whether multiple choices can be selected
-     * @param bool $asXpath
      * @return string
      */
-    function generateSelect2ChosenSelector($selectElementId, $multiple = false, $asXpath = false)
+    function generateSelect2ChosenSelector($selectElementId, $multiple = false)
     {
-        // Defaulting to css and replace if xpath
         $append = ($multiple) ? ' .select2-search-choice' : ' .select2-chosen';
-
-        if ($asXpath) {
-            $append = ($multiple)
-                ? '//li[contains(concat(" ", normalize-space(@class), " "), " select2-search-choice ")]'
-                : '//span[contains(concat(" ", normalize-space(@class), " "), " select2-chosen ")]';
-        }
-        return $this->generateSelect2ChoiceSelector($selectElementId, $multiple, $asXpath) . $append;
+        return $this->generateSelect2ChoiceSelector($selectElementId, $multiple) . $append;
     }
 
     function unselectSelect2Option($field, $option)
@@ -311,10 +293,12 @@ class MemberSteps extends AppSteps
             return;
         }
 
-        $xpath = $I->generateSelect2ChosenSelector($field, $multiple = true, $asXpath = true);
+        $css = $I->generateSelect2ChosenSelector($field, $multiple = true);
+
+        $xpath = CssSelector::toXPath($css);
 
         foreach ($option as $opt) {
-            $xpath .= "/div[contains(text(), '$opt')]/../a[contains(concat(' ', normalize-space(@class), ' '), ' select2-search-choice-close ')]";
+            $xpath .= "/div[contains(text(), '$opt')]/../" . CssSelector::toXPath('a.select2-search-choice-close');
             $I->click($xpath);
             $I->wait(1);
         }
@@ -386,14 +370,12 @@ class MemberSteps extends AppSteps
             // Opens options
             $I->click($select2ClickableSelector);
 
-            // xpath
-            $resultSelector  = '//div[contains(concat(" ", normalize-space(@class), " "), " select2-drop-active ")]';
-            $resultSelector .= '//ul[contains(concat(" ", normalize-space(@class), " "), " select2-results ")]';
-            $resultSelector .= '/li[contains(concat(" ", normalize-space(@class), " "), " select2-result ")]';
-            $resultSelector .= "/div[contains(text(), '$opt')]";
+            $css = ".select2-drop-active .select2-results .select2-result";
+            $xpath = CssSelector::toXPath($css);
+            $xpath .= "/div[contains(text(), '$opt')]";
 
             // Click the result
-            $I->click($resultSelector);
+            $I->click($xpath);
         }
     }
 
