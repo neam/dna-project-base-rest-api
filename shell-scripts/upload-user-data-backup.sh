@@ -9,8 +9,11 @@ script_path=`dirname $0`
 
 # Note: this script is tailored to be run on dokku deployments through sshcommand
 
+# cd to app root
+cd $script_path/../
+
 # configure s3cmd
-$script_path/configure-s3cmd.sh
+deploy/configure-s3cmd.sh
 
 # make php binaries available
 export PATH="/app/vendor/php/bin/:$PATH"

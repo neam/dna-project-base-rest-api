@@ -61,6 +61,7 @@ class Section extends BaseSection
             array(
                 // Ordinary validation rules
                 array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 200),
+                array('contents', 'safe'), // contents not in any flowSteps. TODO: should probably not be always safe
             )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);

@@ -1,23 +1,21 @@
 <?php
-/** @var Exercise $model */
-/** @var ExerciseController|ItemController $this */
+/**
+ * @var Exercise $model
+ * @var ExerciseController $this
+ */
 ?>
 
-<?php
-$criteria = new CDbCriteria();
-$criteria->addNotInCondition('t.node_id', $model->getRelatedModelColumnValues('related', 'id'));
-$criteria->addCondition('t.node_id != :self_node_id');
-$criteria->params[':self_node_id'] = $model->node_id;
-
-$this->widget(
-    '\Edges',
+<?php echo $form->select2ControlGroup(
+    $model,
+    'related',
+    CHtml::listData(
+        Item::model()->findAll('node_id != :self_node_id', array(':self_node_id' => $model->node_id)),
+        'node_id',
+        'itemLabel'
+    ),
     array(
-        'model' => $model,
-        'relation' => 'related',
-        'itemClass' => 'Item',
-        'criteria' => $criteria,
+        'multiple' => true,
+        'unselectValue' => '', // Anything that empty() evaluates as true
+        'options' => $form->selectRelated($model, 'related'),
     )
-);
-?>
-
-<?php publishJs('/themes/gapminder/js/force-dirty-forms.js', CClientScript::POS_END); ?>
+); ?>

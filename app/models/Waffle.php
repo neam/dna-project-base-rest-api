@@ -89,6 +89,8 @@ class Waffle extends BaseWaffle
             throw new CException("Waffle json-based import only viable with existing Waffles");
         }
 
+        // todo: validate the json schema (maybe with https://github.com/justinrainbow/json-schema)
+
         // json decode
         $waffle = json_decode($waffleJson);
 
@@ -209,12 +211,14 @@ class Waffle extends BaseWaffle
             if (count($this->waffleDataSources) > 0) {
                 throw new CException("Waffle already has at least one WaffleDataSource. Waffle json-based import only supported for empty Waffles");
             }
-            foreach ($waffle->sources as $dataSource) {
-                $model = new WaffleDataSource();
-                $model->waffle_id = $this->id;
-                throw new CException("TODO");
-                if (!$waffleCategory->save()) {
-                    throw new SaveException($waffleCategory);
+            if (isset($waffle->sources)) {
+                foreach ($waffle->sources as $dataSource) {
+                    $model = new WaffleDataSource();
+                    $model->waffle_id = $this->id;
+                    throw new CException("TODO");
+                    if (!$waffleCategory->save()) {
+                        throw new SaveException($waffleCategory);
+                    }
                 }
             }
 

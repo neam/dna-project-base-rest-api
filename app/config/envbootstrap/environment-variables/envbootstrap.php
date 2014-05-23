@@ -50,7 +50,8 @@ define("SMTP_USERNAME", $url['user']);
 define("SMTP_PASSWORD", urldecode($url['pass']));
 define("SMTP_ENCRYPTION", isset($args['encryption']) ? $args['encryption'] : false);
 
-setenv("YII_GII_PASSWORD", $default = uniqid(), $required = false);
+setenv("SENTRY_DSN", $default = null, $required = true);
+setenv("GA_TRACKING_ID", $default = null, $required = true);
 
 // ==== Define test-related constants ====
 
@@ -58,6 +59,10 @@ setenv("TEST_DB_NAME", $default = YII_DB_NAME . '_test', $required = false);
 setenv("TEST_DB_USER", $default = YII_DB_USER . '_test', $required = false);
 setenv("TEST_DB_PASSWORD", $default = YII_DB_USER . '_test', $required = false);
 setenv("TEST_DB_HOST", $default = YII_DB_HOST, $required = false);
+
+// ==== Misc ====
+
+setenv("YII_GII_PASSWORD", $default = uniqid(), $required = false);
 
 // ==== Define some dependent constants and/or settings ====
 
@@ -80,7 +85,9 @@ class Identity
         $return->siteName = BRAND_SITENAME;
         $return->domain = BRAND_DOMAIN;
         $return->supportEmail = "info@" . $return->domain;
-        $return->mailSentByMail = "noreply@" . $return->domain;
+        // Temporarily hard-coding to dev@gapminder.org since we don't have production status for Amazon Simple Email Services yet and the sender email needs to be verified in the sandbox
+        $return->mailSentByMail = "dev@gapminder.org";
+        //$return->mailSentByMail = "noreply@" . $return->domain;
         $return->mailSentByName = $return->siteName;
         return $return;
     }

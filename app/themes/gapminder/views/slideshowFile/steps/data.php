@@ -3,17 +3,18 @@
 /* @var SlideshowFile|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php
-$criteria = new CDbCriteria();
-$criteria->addNotInCondition('t.id', $model->getRelatedModelColumnValues('dataarticles', 'id'));
-$this->widget(
-    '\Edges',
-    array(
-        'model' => $model,
-        'relation' => 'dataarticles',
-        'criteria' => $criteria,
-    )
-);
 
-publishJs('/themes/gapminder/js/force-dirty-forms.js', CClientScript::POS_END);
-?>
+<?php echo $form->select2ControlGroup(
+    $model,
+    'dataarticles',
+    CHtml::listData(
+        DataArticle::model()->findAll(),
+        'node_id',
+        'itemLabel'
+    ),
+    array(
+        'multiple' => true,
+        'unselectValue' => '', // Anything that empty() evaluates as true
+        'options' => $form->selectRelated($model, 'dataarticles', 'node_id'),
+    )
+); ?>

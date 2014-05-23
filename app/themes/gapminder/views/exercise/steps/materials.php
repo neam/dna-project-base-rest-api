@@ -4,19 +4,17 @@
 /** @var TbActiveForm|AppActiveForm $form */
 ?>
 
-<?php
-$criteria = new CDbCriteria();
-$criteria->addNotInCondition('t.node_id', $model->getRelatedModelColumnValues('materials', 'id'));
-$criteria->addCondition('t.node_id != :self_node_id');
-$criteria->params[':self_node_id'] = $model->node_id;
-
-$this->widget(
-    '\Edges',
+<?php echo $form->select2ControlGroup(
+    $model,
+    'materials',
+    CHtml::listData(
+        Item::model()->findAll('node_id != :self_node_id', array(':self_node_id' => $model->node_id)),
+        'node_id',
+        'itemLabel'
+    ),
     array(
-        'model' => $model,
-        'relation' => 'materials',
-        'itemClass' => 'Item',
-        'criteria' => $criteria,
+        'multiple' => true,
+        'unselectValue' => '', // Anything that empty() evaluates as true
+        'options' => $form->selectRelated($model, 'materials'),
     )
-);
-?>
+); ?>
