@@ -20,6 +20,112 @@
             'class' => 'dirtyforms',
         ),
     )); ?>
+    <section class="profile-summary">
+        <div class="summary-picture">
+            <?php echo $model->profile->renderPicture(); ?>
+        </div>
+        <div class="summary-info">
+            <h1 class="summary-heading"><?php echo $model->username; ?></h1>
+            <span class="summary-lead">Title</span>
+            <span class="summary-badges">* * *</span>
+        </div>
+        <div class="summary-role">
+            <?php // TODO: Roles. ?>
+        </div>
+    </section>
+    <section class="personal-information">
+        <h2 class="profile-section-heading"><?php echo Yii::t('app', 'Personal Information'); ?></h2>
+        <div class="profile-row">
+            <div class="profile-col-4">
+                <?php echo $form->textFieldControlGroup($model->profile, 'first_name', array('maxlength' => 255, 'class' => 'span9')); ?>
+                <?php echo $form->textFieldControlGroup($model->profile, 'last_name', array('maxlength' => 255, 'class' => 'span9')); ?>
+                <?php echo $form->textFieldControlGroup($model->profile, 'website', array('maxlength' => 255, 'class' => 'span9')); ?>
+            </div>
+            <div class="profile-col-4">
+                <?php echo $form->textFieldControlGroup(
+                    $model,
+                    'username',
+                    array(
+                        'class' => 'span9',
+                        'maxlength' => 255,
+                    )
+                ); ?>
+                <?php echo $form->textFieldControlGroup($model->profile, 'lives_in', array('maxlength' => 255, 'class' => 'span9')); ?>
+                <?php echo $form->textFieldControlGroup($model, 'email', array('maxlength' => 255, 'class' => 'span9')); ?>
+            </div>
+            <div class="profile-col-4">
+                <?php echo $form->textAreaControlGroup(
+                    $model->profile,
+                    'about',
+                    array(
+                        'ControlGroups' => 6,
+                        'cols' => 50,
+                        'class' => 'profile-about-field',
+                    )
+                ); ?>
+            </div>
+        </div>
+        <div class="profile-row">
+            <div class="profile-col-12">
+                <?php echo $form->checkBoxControlGroup($model->profile, 'others_may_contact_me'); ?>
+            </div>
+            <div class="profile-col-12">
+                <?php /*
+                <?php echo TbHtml::linkButton(
+                    Yii::t('account', 'Change password'),
+                    array(
+                        'color' => TbHtml::BUTTON_COLOR_LINK,
+                        'size' => TbHtml::BUTTON_SIZE_SM,
+                        'url' => array('user/profile/changepassword', 'returnUrl' => Yii::app()->request->url),
+                    )
+                ); ?>
+                */ ?>
+            </div>
+        </div>
+    </section>
+    <section class="profile-languages">
+        <div class="profile-row">
+            <div class="profile-col-12">
+                <h2 class="profile-section-heading"><?php echo Yii::t('app', 'Languages'); ?></h2>
+            </div>
+            <div class="profile-col-4">
+                <?php echo $form->select2ControlGroup($model->profile, 'language1', Html::getLanguages()); ?>
+            </div>
+            <div class="profile-col-4">
+                <?php echo $form->select2ControlGroup($model->profile, 'language2', Html::getLanguages()); ?>
+            </div>
+            <div class="profile-col-4">
+                <?php echo $form->select2ControlGroup($model->profile, 'language3', Html::getLanguages()); ?>
+            </div>
+        </div>
+    </section>
+    <section class="account-history">
+        <h2 class="profile-section-heading"><?php echo Yii::t('app', 'History'); ?></h2>
+        <?php echo TbHtml::linkButton(
+            Yii::t('app', 'View History'),
+            array(
+                'url' => array('/account/history'),
+            )
+        ); ?>
+    </section>
+    <section class="profile-actions">
+        <?php echo TbHtml::linkButton(
+            Yii::t('app', 'Cancel'),
+            array(
+                'url' => !empty(Yii::app()->request->returnUrl)
+                        ? Yii::app()->request->returnUrl
+                        : array('/account/dashboard'),
+                'color' => TbHtml::BUTTON_COLOR_LINK,
+            )
+        ); ?>
+        <?php echo TbHtml::submitButton(
+            Yii::t('model', 'Save'),
+            array(
+                'class' => 'btn btn-primary',
+            )
+        ); ?>
+    </section>
+    <?php /*
     <?php $this->renderPartial('profile/_flowbar', array('model' => $model)); ?>
     <div class="after-flowbar">
         <div class="alerts">
@@ -99,11 +205,6 @@
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
-
-                <?php /*
-                <h2 class="sidebar-heading"><?php echo Yii::t('account', 'Permissions'); ?></h2>
-                <?php echo TbHtml::link(Yii::t('account', 'Apply for permission'), '#'); ?>
-                */
                 ?>
                 <h2 class="sidebar-heading"><?php echo Yii::t('account', 'Roles'); ?></h2>
                 <?php
@@ -115,28 +216,8 @@
                         'ghas' => $model->groupHasAccounts,
                     )
                 ); ?>
-                <?php /*
-                <h2 class="sidebar-heading"><?php echo Yii::t('account', 'Badges'); ?></h2>
-                */
-                ?>
-                <?php /*
-                <h4>Tasks</h4>
-                <p>
-                    <?php $tasks = array_keys(Yii::app()->authManager->getAuthItems(0, $model->id)); ?>
-                    <?php print implode(', ', $tasks); ?>
-                </p>
-                */
-                ?>
-                <?php /*
-                <h2 class="sidebar-heading"><?php echo Yii::t('account', 'Operations'); ?></h2>
-                <p>
-                    <?php $operations = array_keys(Yii::app()->authManager->getAuthItems(1, $model->id)); ?>
-                    <?php print implode(', ', $operations); ?>
-                </p>
-                */
-                ?>
             </div>
         </div>
-        <?php $this->endWidget(); ?>
-    </div>
+        */ ?>
+    <?php $this->endWidget(); ?>
 </div>
