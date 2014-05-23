@@ -1,7 +1,7 @@
 define([
     'jquery',
     'underscore',
-    'gapminder/core/Component'
+    'gapminder/core/component'
 ], function($, _, Component) {
     'use strict';
 
@@ -34,18 +34,17 @@ define([
         },
 
         /**
-         * Loads multiple images at once.
+         * Pre-loads a set of images.
          * @param {Array} urls
          * @returns {promise}
          */
-        loadImages: function (urls) {
-            var defer = $.Deferred(),
-                chain = defer.pipe(null, function () {});
+        preloadImages: function (urls) {
+            var defer = $.Deferred();
 
-            console.debug('Loading images:', urls);
+            console.debug('Pre-loading images:', urls);
 
             for (var i = 0; i < urls.length; i++) {
-                chain = chain.pipe(this.loadImage(urls[i]));
+                defer = defer.then(this.loadImage(urls[i]));
             }
 
             return defer;

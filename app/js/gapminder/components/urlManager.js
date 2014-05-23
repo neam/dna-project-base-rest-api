@@ -1,7 +1,7 @@
 define([
     'jquery',
     'underscore',
-    'gapminder/core/Component'
+    'gapminder/core/component'
 ], function($, _, Component) {
     'use strict';
 

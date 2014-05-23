@@ -13,17 +13,34 @@ module.exports = function(grunt) {
         var files = [];
 
         fs.readdirSync(componentsPath).filter(function (file) {
-            return fs.statSync(componentsPath + '/' + file).isDirectory();
+            return fs.statSync(path.join(componentsPath, file)).isDirectory();
         }).forEach(function (packageName) {
-            var bowerJsonPath = componentsPath + '/' + packageName + '/bower.json';
+            var bowerJsonPath = path.join(componentsPath, packageName, 'bower.json');
             if (fs.existsSync(bowerJsonPath)) {
                 var json = grunt.file.readJSON(bowerJsonPath);
-                files.push(packageName + '/' + json.main);
+                files.push(path.join(packageName, json.main));
             }
         });
 
         return files;
+    }
 
+    /**
+     * Finds the amd modules within a specific path (not recrusively) and builds a list of includes for r.js.
+     * @param {string} modulePath path to look in
+     * @param {string} moduleNamespace module namespace to use for includes
+     * @returns {Array} list of includes
+     */
+    function findModuleIncludes(modulePath, moduleNamespace) {
+        var includes = [];
+
+        fs.readdirSync(modulePath).filter(function (file) {
+            return fs.statSync(path.join(modulePath, file)).isFile();
+        }).forEach(function (scriptFile) {
+            includes.push(moduleNamespace + '/' + scriptFile.replace(/.js$/g, ''));
+        });
+
+        return includes;
     }
 
     var path = require('path'),
@@ -35,10 +52,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         bower: {
             app: {
-                rjsConfig: 'app/js/config.js',
-                options: {
-                    exclude: ['jquery']
-                }
+                rjsConfig: 'app/js/config.js'
             }
         },
         clean: {
@@ -138,11 +152,20 @@ module.exports = function(grunt) {
         requirejs: {
             app: {
                 options: {
-                    appDir: 'build/',
+                    mainConfigFile: 'build/config.js',
                     baseUrl: './',
+                    appDir: 'build/',
+                    dir: 'www/js',
                     optimize: 'uglify2',
-                    name: 'lib/almond/almond',
-                    dir: 'www/js'
+                    modules: [
+                        {
+                            name: 'main',
+                            include: findModuleIncludes(path.resolve(__dirname, 'app/js/gapminder/views'), 'gapminder/views'),
+                            exclude: ['jquery', 'backbone', 'underscore']
+                        }
+                    ],
+                    removeCombined: true,
+                    useStrict: true
                 }
             }
         },
@@ -171,5 +194,6 @@ module.exports = function(grunt) {
     // Define tasks
     grunt.registerTask('default', ['watch']);
     grunt.registerTask('createRjsConfig', ['bower']);
-    grunt.registerTask('build', ['copy:build', 'requirejs', 'clean:build']);
+    grunt.registerTask('copyScripts', ['clean:scripts', 'copy:scripts']);
+    grunt.registerTask('build', ['copy:build', 'clean:scripts', 'requirejs', 'clean:build']);
 };

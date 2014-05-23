@@ -1,5 +1,4 @@
 define([
-    'module',
     'jquery',
     'underscore',
     'backbone',
@@ -8,7 +7,7 @@ define([
     'gapminder/components/imageManager',
     'gapminder/components/urlManager',
     'gapminder/components/viewManager'
-], function (module, $, _, Backbone, Entity, DependencyLoader, ImageManager, UrlManager, ViewManager) {
+], function ($, _, Backbone, Entity, DependencyLoader, ImageManager, UrlManager, ViewManager) {
     'use strict';
     
     /**
@@ -52,15 +51,6 @@ define([
          */
         initialize: function () {
             this.initializeViews();
-
-            this.getComponent('imageManager').loadImages(['ccmini.png', 'ccregular.png', 'ccslim.png'])
-                .done(function(images) {
-                    console.info('Images loaded');
-                    console.debug('images:', images);
-                })
-                .fail(function () {
-                    console.log('Error occurred!');
-                });
 
             console.info('Application initialized');
         },

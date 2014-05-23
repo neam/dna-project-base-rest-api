@@ -20,11 +20,11 @@
     <script type="text/javascript">
         // Set up the application through RequireJS.
         require(['require', '<?php echo baseUrl('js/config.js?_=' . app()->resolveCacheBuster()); ?>'], function(require) {
-            require(['index']);
+            require(['main']);
         });
     </script>
 </head>
-<body data-view="foo">
+<body>
 <?php echo $content; ?>
 </body>
 </html>
