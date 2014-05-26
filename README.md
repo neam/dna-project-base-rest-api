@@ -53,7 +53,7 @@ When true, Yii application and profile logs show up at the end of the pages. (Cu
 
 Type: Environment variable
 
-This sets which of the app/config/env-*.php configuration includes are used and can be one of the following:
+This sets which of the app/config/environments/*.php configuration includes are used and can be one of the following:
 
 * `ci` - Used while running acceptance tests (for instance, it disables captcha on the registration form)
 * `development` - Used for development and production deployments

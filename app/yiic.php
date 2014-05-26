@@ -7,7 +7,7 @@ require_once("$root/vendor/yiisoft/yii/framework/yii.php");
 
 // web config files
 $main = require("$root/app/config/main.php");
-$env = require("$root/app/config/env-" . CONFIG_ENVIRONMENT . ".php");
+$env = require("$root/app/config/environments/" . CONFIG_ENVIRONMENT . ".php");
 
 // merge configurations
 $webConfig = CMap::mergeArray($main, $env);
