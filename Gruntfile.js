@@ -172,7 +172,7 @@ module.exports = function(grunt) {
         watch: {
             styles: {
                 files: ['app/themes/gapminder/less/**/*.less'],
-                tasks: ['less', 'less_imports', 'kss'],
+                tasks: ['less', 'less_imports'],
                 options: {
                     spawn: false
                 }
