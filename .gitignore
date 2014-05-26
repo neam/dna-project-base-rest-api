@@ -26,3 +26,5 @@ www/js
 db/migration-base/user-generated/schema.sql
 db/migration-base/user-generated/data.sql
 db/migration-base/user-generated/media
+
+app/js/config.js
