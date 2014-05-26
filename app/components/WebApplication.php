@@ -6,6 +6,12 @@
  */
 class WebApplication extends CWebApplication
 {
+    /**
+     * @var string application version
+     * TODO: Update this automatically.
+     */
+    public $version = '0.4.0';
+
     // Theme constants
     const THEME_FRONTEND = 'frontend';
     const THEME_BACKEND2 = 'backend2';
@@ -78,5 +84,39 @@ class WebApplication extends CWebApplication
     public function getLanguages()
     {
         return LanguageHelper::getLanguageList();
+    }
+
+    /**
+     * Returns a language name by the given language code.
+     * @param string $languageCode
+     * @return string
+     */
+    public function getLanguageNameByCode($languageCode)
+    {
+        $languages = $this->getLanguages();
+
+        return (isset($languages[$languageCode]))
+            ? $languages[$languageCode]
+            : $languageCode;
+    }
+
+    public function clientConfigJson()
+    {
+        return
+            CJSON::encode(
+            array(
+                'baseUrl' => baseUrl(),
+                'cacheBuster' => $this->resolveCacheBuster(),
+            )
+        );
+    }
+
+    /**
+     * Returns the cache buster for this application.
+     * @return string cache buster.
+     */
+    public function resolveCacheBuster()
+    {
+        return md5(YII_DEBUG ? time() : $this->version);
     }
 }

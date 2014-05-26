@@ -10516,6 +10516,188 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
 .account-controller.admin-action .grid-view {
   margin-top: 20px;
 }
+.account-controller.profile-action .profile-section {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+}
+.account-controller.profile-action .profile-section:last-child {
+  border-bottom: none;
+}
+.account-controller.profile-action .profile-section-heading {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 30px;
+}
+.account-controller.profile-action .profile-row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.account-controller.profile-action .profile-row:before,
+.account-controller.profile-action .profile-row:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile-row:after {
+  clear: both;
+}
+.account-controller.profile-action .profile-row:before,
+.account-controller.profile-action .profile-row:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile-row:after {
+  clear: both;
+}
+.account-controller.profile-action .profile-row .profile-col-4 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile-row .profile-col-4 {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.account-controller.profile-action .profile-row .profile-col-4 .profile-about-field {
+  height: 250px;
+}
+.account-controller.profile-action .profile-row .profile-col-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile-row .profile-col-12 {
+    float: left;
+    width: 100%;
+  }
+}
+.account-controller.profile-action .profile-row .radio {
+  padding-left: 0;
+}
+.account-controller.profile-action label {
+  font-weight: 400;
+}
+.account-controller.profile-action .profile-summary {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+  border-bottom: none;
+  padding-bottom: 50px;
+}
+.account-controller.profile-action .profile-summary:before,
+.account-controller.profile-action .profile-summary:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile-summary:after {
+  clear: both;
+}
+.account-controller.profile-action .profile-summary:before,
+.account-controller.profile-action .profile-summary:after {
+  content: " ";
+  display: table;
+}
+.account-controller.profile-action .profile-summary:after {
+  clear: both;
+}
+.account-controller.profile-action .profile-summary:last-child {
+  border-bottom: none;
+}
+.account-controller.profile-action .profile-summary .summary-picture {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile-summary .summary-picture {
+    float: left;
+    width: 16.666666666666664%;
+  }
+}
+.account-controller.profile-action .profile-summary .summary-info {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile-summary .summary-info {
+    float: left;
+    width: 41.66666666666667%;
+  }
+}
+.account-controller.profile-action .profile-summary .summary-info .summary-heading {
+  font-size: 44.5px;
+  font-weight: 100;
+  margin: 0;
+  margin-bottom: 15px;
+}
+.account-controller.profile-action .profile-summary .summary-info .summary-lead {
+  font-weight: 100;
+  display: block;
+  margin-bottom: 10px;
+}
+.account-controller.profile-action .profile-summary .summary-info .summary-badges {
+  color: #c9c9c9;
+  display: block;
+  font-size: 50px;
+}
+.account-controller.profile-action .profile-summary .summary-roles {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .account-controller.profile-action .profile-summary .summary-roles {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.account-controller.profile-action .personal-information {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+  padding-bottom: 60px;
+}
+.account-controller.profile-action .personal-information:last-child {
+  border-bottom: none;
+}
+.account-controller.profile-action .profile-languages {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+}
+.account-controller.profile-action .profile-languages:last-child {
+  border-bottom: none;
+}
+.account-controller.profile-action .account-history {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+}
+.account-controller.profile-action .account-history:last-child {
+  border-bottom: none;
+}
+.account-controller.profile-action .profile-actions {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+  text-align: right;
+}
+.account-controller.profile-action .profile-actions:last-child {
+  border-bottom: none;
+}
 .account-controller.profile-action .flowbar .flowbar-head {
   margin-left: -15px;
   margin-right: -15px;

@@ -145,6 +145,101 @@
   }
 
   &.profile-action {
+    .profile-section {
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 2px solid @grid-border-color;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .profile-section-heading {
+      .heading-small;
+      margin: 0;
+      margin-bottom: 30px;
+    }
+
+    .profile-row {
+      .make-row();
+
+      .profile-col-4 {
+        .make-md-column(4);
+
+        .profile-about-field {
+          height: 250px;
+        }
+      }
+
+      .profile-col-12 {
+        .make-md-column(12);
+      }
+
+      .radio {
+        padding-left: 0;
+      }
+    }
+
+    label {
+      font-weight: 400;
+    }
+
+    .profile-summary {
+      .make-row();
+      .profile-section;
+      border-bottom: none;
+      padding-bottom: 50px;
+
+      .summary-picture {
+        .make-md-column(2);
+      }
+
+      .summary-info {
+        .make-md-column(5);
+
+        .summary-heading {
+          .heading-large;
+          margin: 0;
+          margin-bottom: 15px;
+        }
+
+        .summary-lead {
+          font-weight: 100;
+          display: block;
+          margin-bottom: 10px;
+        }
+
+        .summary-badges {
+          color: @gray;
+          display: block;
+          font-size: 50px;
+        }
+      }
+
+      .summary-roles {
+        .make-md-column(4);
+      }
+    }
+
+    .personal-information {
+      .profile-section;
+      padding-bottom: 60px;
+    }
+
+    .profile-languages {
+      .profile-section;
+    }
+
+    .account-history {
+      .profile-section;
+    }
+
+    .profile-actions {
+      .profile-section;
+      text-align: right;
+    }
+
     .flowbar {
       .flowbar-head {
         .make-row();

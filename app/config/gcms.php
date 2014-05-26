@@ -2,18 +2,8 @@
 
 // Configuration specific to Gapminder School CMS
 
-// Include envbootstrap - see app/config/envbootstrap/README.md for more information
-$envbootstrap_strategy = getenv('ENVBOOTSTRAP_STRATEGY');
-if (empty($envbootstrap_strategy)) {
-    Yii::log("ENVBOOTSTRAP_STRATEGY empty, defaulting to local", CLogger::LEVEL_INFO);
-    $envbootstrap_strategy = "local";
-}
-$envbootstrap = dirname(__FILE__) . '/envbootstrap/' . $envbootstrap_strategy . '/envbootstrap.php';
-if (!is_readable($envbootstrap)) {
-    echo "Main envbootstrap file not available ($envbootstrap).";
-    die(2);
-}
-require_once($envbootstrap);
+// include envbootstrap
+require(dirname(__FILE__) . '/envbootstrap/include.php');
 
 // load global helper functions
 require_once(dirname(__FILE__) . '/../helpers/global.php');
@@ -134,7 +124,7 @@ $gcmsConfig = array(
                     'user-profile-picture' => array(
                         'name' => 'User Profile Picture',
                         'commands' => array(
-                            'resize' => array(195, 195, 7), // Image::AUTO
+                            'resize' => array(160, 160, 7), // Image::AUTO
                             'quality' => '85',
                         ),
                         'type' => 'jpg',
@@ -180,10 +170,10 @@ $gcmsConfig = array(
                 array('api/<model>/list', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),
                 array('api/<model>/get', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'GET'),
                 array('api/<model>/create', 'pattern' => 'api/<model:\w+>', 'verb' => 'POST'),
-				// REST CORS pattern
-				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
-				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
-				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
+                // REST CORS pattern
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
             ),
         ),
         'db' => array(
@@ -246,8 +236,8 @@ $gcmsConfig = array(
             'tablePrefix' => 'ezc_',
         ),
         'sentry' => array(
-            'dns' => 'https://f04403a913c647c88aa97bb1a3261f48:1096055a3e5840e59f84409db2d8e159@app.getsentry.com/20208',
-            'enabledEnvironments' => array('stage.cms.gapminder.org', 'cms.gapminder.org'),
+            'dns' => SENTRY_DSN,
+            'enabledEnvironments' => array(ENV),
             'environment' => ENV,
         ),
         'user' => array(

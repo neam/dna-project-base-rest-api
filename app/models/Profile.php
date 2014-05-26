@@ -44,11 +44,11 @@ class Profile extends BaseProfile
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), array(
-            'language1' => Yii::t('model', 'Language #1'),
-            'language2' => Yii::t('model', 'Language #2'),
-            'language3' => Yii::t('model', 'Language #3'),
-            'language4' => Yii::t('model', 'Language #4'),
-            'language5' => Yii::t('model', 'Language #5'),
+            'language1' => Yii::t('model', 'First Language'),
+            'language2' => Yii::t('model', 'Second Language'),
+            'language3' => Yii::t('model', 'Third Language'),
+            'language4' => Yii::t('model', 'Fourth Language'),
+            'language5' => Yii::t('model', 'Fifth Language'),
             'picture_media_id' => Yii::t('model', 'Profile Picture'),
             'website' => Yii::t('model', 'My Website'),
         ));

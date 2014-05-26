@@ -18,22 +18,6 @@ $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SE
 require('includes/languages.php');
 require('includes/languageDirections.php');
 
-// Set the Google Analytics ID
-// TODO: Proper environment check.
-$_SERVER['SERVER_NAME'] = "preventnotice-this-var-doesnt-work-anyway-on-dokku-deployments-nor-in-cli";
-switch ($_SERVER['SERVER_NAME']) {
-    case 'cms.gapminder.org':
-        $googleAnalyticsId = 'UA-739025-9';
-        break;
-
-    case 'develop-cms.gapminder.org':
-        $googleAnalyticsId = 'UA-739025-10';
-        break;
-
-    default:
-        $googleAnalyticsId = 'UA-XXXXXXX-X';
-}
-
 // main application configuration
 $mainConfig = array(
     'basePath'   => $applicationDirectory,
@@ -277,7 +261,6 @@ $mainConfig = array(
         */
         'yiistrap' => array(
             'class' => '\TbApi',
-            'assetsPath' => 'vendor.twitter.bootstrap.dist',
         ),
         'cache'         => array(
             'class' => 'CDummyCache',
@@ -385,8 +368,8 @@ $mainConfig = array(
         ),
         'ga' => array(
             'class' => 'yiiga\components\GoogleAnalytics',
-            'accountId' => $googleAnalyticsId,
-            'cookieDomain' => $_SERVER['SERVER_NAME'], // TODO: Implement properly.
+            'accountId' => GA_TRACKING_ID,
+            'cookieDomain' => $_SERVER['HTTP_HOST'],
         ),
         'image'         => array(
             'class'  => 'vendor.phundament.p3extensions.components.image.CImageComponent',
