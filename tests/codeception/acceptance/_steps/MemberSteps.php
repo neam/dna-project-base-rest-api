@@ -117,7 +117,7 @@ class MemberSteps extends AppSteps
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
 
-        $I->wait(1);
+        $I->wait(1); // TODO: set a success/error class on the form to watch on instead
         $I->click(RegistrationPage::$submitButton);
 
         if ($this->scenario->running()) {
@@ -133,7 +133,6 @@ class MemberSteps extends AppSteps
 
         foreach ($users as $person) {
             $I->register($person['name'], $person['password'], $person['password'], $person['email']);
-            $names[] = $person['name'];
         }
 
 
@@ -300,7 +299,7 @@ class MemberSteps extends AppSteps
         foreach ($option as $opt) {
             $xpath .= "/div[contains(text(), '$opt')]/../" . CssSelector::toXPath('a.select2-search-choice-close');
             $I->click($xpath);
-            $I->wait(1);
+            $I->waitForElementNotVisible($xpath);
         }
 
         $I->dontSeeSelect2OptionIsSelected($field, $option);
