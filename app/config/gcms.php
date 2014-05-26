@@ -170,10 +170,10 @@ $gcmsConfig = array(
                 array('api/<model>/list', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),
                 array('api/<model>/get', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'GET'),
                 array('api/<model>/create', 'pattern' => 'api/<model:\w+>', 'verb' => 'POST'),
-				// REST CORS pattern
-				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
-				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
-				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
+                // REST CORS pattern
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
             ),
         ),
         'db' => array(
