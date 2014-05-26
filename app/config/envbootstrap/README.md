@@ -3,20 +3,12 @@ Environment Bootstrap
 
 A framework-agnostic approach to make the current [config](http://12factor.net/config) available to PHP applications.
 
-All app entry scripts should include a file called `envbootstrap.php` in the following manner:
+All app entry scripts should include a file called `include.php` in the following manner:
 
     // Include envbootstrap
-    $envbootstrap_strategy = getenv('ENVBOOTSTRAP_STRATEGY');
-    if (empty($envbootstrap_strategy)) {
-        Yii::log("ENVBOOTSTRAP_STRATEGY empty, defaulting to local", CLogger::LEVEL_INFO);
-        $envbootstrap_strategy = "local";
-    }
-    $envbootstrap = dirname(__FILE__) . '/envbootstrap/' . $envbootstrap_strategy . '/envbootstrap.php';
-    if (!is_readable($envbootstrap)) {
-        echo "Main envbootstrap file not available ($envbootstrap).";
-        die(2);
-    }
-    require_once($envbootstrap);
+    require(dirname(__FILE__) . '/envbootstrap/include.php');
+
+This assumes that the envbootstrap folder is found in the same directory as the entry script. Adjust the path as necessary in each entry script.
 
 This will make a series of PHP Constants available for use by the application wherever it may be fit, for instance in the PHP application's configuration files.
 
