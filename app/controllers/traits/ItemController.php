@@ -757,9 +757,11 @@ trait ItemController
         // array of models relation-names
         $relationNames = array_keys($model->relations());
 
-        // Relations considered safe. Note: set the relation as safe in the model-rules!
+        // Relations considered safe. Note: set the relation as safe in the model-rules (if it is not already)!
         $allowedRelations = array_filter(
+            // attribute-names posted from form
             array_keys($post),
+            // add to list if the attribute is a safe relation
             function ($attribute) use ($model, $relationNames) {
                 return in_array($attribute, $relationNames) && $model->isAttributeSafe($attribute);
             }
@@ -767,9 +769,13 @@ trait ItemController
 
         foreach ($allowedRelations as $relationName) {
 
-            // Delete all outEdges for the relation if none is
-            // present in form and the model has some (user removed edges)
-            if (empty($post[$relationName]) && count($model->{$relationName}) > 0) {
+            $futureOutEdges = $post[$relationName];
+
+            $isFutureOutEdgesEmpty = empty($futureOutEdges);
+
+            // Delete all outEdges for the relation if none is present in
+            // form and the model has some outEdges (ie user removed edges)
+            if ($isFutureOutEdgesEmpty && count($model->{$relationName}) > 0) {
 
                 Edge::model()->deleteAllByAttributes(array(
                     'from_node_id' => $node->id,
@@ -777,9 +783,7 @@ trait ItemController
                 ));
             }
 
-            $futureOutEdges = $post[$relationName];
-
-            if (empty($futureOutEdges)) {
+            if ($isFutureOutEdgesEmpty) {
                 $futureOutEdges = array();
             }
 
@@ -803,11 +807,13 @@ trait ItemController
      * @param $relationName string
      * @return int number of edges deleted
      */
-    protected function deleteEdgeDiff($model, $futureEdges, $relationName)
+    protected function deleteEdgeDiff(ActiveRecord $model, array $futureEdges, $relationName)
     {
+        // {1,2,3}
         $currentOutEdges = $model->getRelatedModelColumnValues($relationName, 'id');
-        $allEdges = array_merge($currentOutEdges, $futureEdges);
-        $edgesToDelete = array_diff($allEdges, $futureEdges);
+
+        // {1,2,3} complement {2,3,4} = {1}
+        $edgesToDelete = array_diff($currentOutEdges, $futureEdges);
 
         $criteria = new CDbCriteria();
         $criteria->addCondition('from_node_id = :from');
