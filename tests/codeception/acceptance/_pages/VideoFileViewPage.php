@@ -5,6 +5,9 @@ class VideoFileViewPage
     // include url of current page
     static $URL = '?r=videoFile';
 
+    static $videoContainer = '.mejs-video';
+    static $noVideoMessage = 'No media file available.';
+
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';

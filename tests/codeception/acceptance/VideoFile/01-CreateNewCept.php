@@ -24,8 +24,8 @@ $I->createVideoFile(
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->seeVideoFile('Max video');
 $I->click('View', VideoFileBrowsePage::modelContext('Max video'));
-$I->seeElement('.mejs-video');
-$I->dontSee('No media file available');
+$I->seeElement(VideoFileViewPage::$videoContainer);
+$I->dontSee(VideoFileViewPage::$noVideoMessage);
 $I->logout();
 
 $I->login('ola', 'test');
