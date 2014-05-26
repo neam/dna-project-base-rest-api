@@ -66,6 +66,42 @@
             </div>
         </div>
         <div class="profile-row">
+            <div class="profile-col-4">
+                <?php echo $form->select2ControlGroup(
+                    $model->profile,
+                    'picture_media_id',
+                    $model->profile->getPictureOptions(),
+                    array(
+                        'empty' => Yii::t('app', 'None'),
+                    )
+                ); ?>
+            </div>
+            <div class="profile-col-4">
+                <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+                <div>
+                    <?php echo TbHtml::button(
+                        Yii::t('app', 'Upload new'),
+                        array(
+                            'block' => true,
+                            'class' => 'upload-btn',
+                            'data-toggle' => 'modal',
+                            'data-target' => '#' . $form->id . '-modal',
+                        )
+                    ); ?>
+                </div>
+            </div>
+        </div>
+        <?php $this->renderPartial(
+            '//p3Media/_modal_form',
+            array(
+                'formId' => $form->id,
+                'inputSelector' => "#Profile_picture_media_id",
+                'model' => new P3Media(),
+                'pk' => 'id',
+                'field' => 'itemLabel',
+            )
+        ); ?>
+        <div class="profile-row">
             <div class="profile-col-12">
                 <?php echo $form->checkBoxControlGroup($model->profile, 'others_may_contact_me'); ?>
             </div>
