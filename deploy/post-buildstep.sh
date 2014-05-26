@@ -5,6 +5,7 @@ set -x
 if [ "$connectionID" == "" ]; then
     connectionID=db
 fi
+
 chown -R www-data:www-data app/data/
 chown -R www-data:www-data app/runtime/
 chown -R www-data:www-data www/assets/
@@ -20,12 +21,16 @@ chmod -R 777 app/runtime/
 chmod -R 777 www/assets/
 chmod -R 777 www/runtime/
 
+set -o errexit
+
 # install bower dependencies
 npm install -g bower
 bower install --allow-root
 
 # generate the js app
-grunt build
+node_modules/.bin/grunt build
+
+set +o errexit
 
 # remove assets folder in case it was committed by mistake or we are updating an existing instance for some reason
 rm -r www/assets/*
