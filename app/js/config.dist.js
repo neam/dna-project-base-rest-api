@@ -1,7 +1,7 @@
 'use strict';
 
 require.config({
-    baseUrl: '<insert-your-own-base-url-here>',
+    baseUrl: '/js/',
     shim: {
 
     },

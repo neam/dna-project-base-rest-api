@@ -28,6 +28,7 @@ npm install -g bower
 bower install --allow-root
 
 # generate the js app
+cp app/js/config.dist.js app/js/config.js
 node_modules/.bin/grunt build
 
 set +o errexit
