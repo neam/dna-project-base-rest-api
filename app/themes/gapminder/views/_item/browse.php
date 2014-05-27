@@ -3,7 +3,8 @@
 /* @var ActiveRecord|ItemTrait $model */
 /* @var CActiveDataProvider $dataProvider */
 ?>
-<?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index'); ?>
+<?php $this->breadcrumbs[] = Yii::t('app', 'Gapminder Community'); ?>
+<?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
 <?php $this->breadcrumbs[] = Yii::t('app', 'Browse'); ?>
 <?php /*
 // TODO: Create a method for setting the menu items, and remove this if statement.
