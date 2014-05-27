@@ -237,7 +237,7 @@ To run an individual test, in this example an acceptance test:
 
      vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug 04-VerifyCleanDbCept.php
 
-In general, consult the documentation at [http://codeception.com/docs/modules/WebDriver]() and related Codeception docs.
+In general, consult the documentation at http://codeception.com/docs/modules/WebDriver and related Codeception docs.
 
 A useful method while developing tests locally is pauseExecution(). It only has effect if tests are run with the `--debug` flag (as per above). It pauses the execution and let's you use developer tools or similar to inspect the current state of things. For instance, if you can't a selector to work, add it just before the problematic selector:
 
@@ -257,9 +257,9 @@ Builds and runs with PHP 5.4.26, Nginx 1.4.3. However note that php cli runs ver
 
 Requires Dokku master branch and the following plugins:
 
- - For post-buildstep.sh to run properly - [https://github.com/musicglue/dokku-user-env-compile]()
- - For MySQL-compatible database access - [https://github.com/Kloadut/dokku-md-plugin]()
- - For mounting persistent cache directory at runtime - [https://github.com/dyson/dokku-docker-options]()
+ - For post-buildstep.sh to run properly - https://github.com/musicglue/dokku-user-env-compile
+ - For MySQL-compatible database access - https://github.com/Kloadut/dokku-md-plugin
+ - For mounting persistent cache directory at runtime - https://github.com/dyson/dokku-docker-options
 
 To build and deploy (regardless of target), first set some fundamental config vars:
 
