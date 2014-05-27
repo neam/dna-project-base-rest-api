@@ -71,7 +71,7 @@ $mainConfig = array(
         'vendor.phundament.p3extensions.widgets.ckeditor.*', // shared classes
         'vendor.schmunk42.relation.widgets.*', //Include For p3media for media meta update.
         // imports for components from packages, which do not support composer autoloading
-        'vendor.mishamx.yii-user.models.*', // User Model
+        //'vendor.mishamx.yii-user.models.*', // User Model
         'vendor.crisu83.yii-rights.components.*', // RWebUser
         //'vendor.clevertech.yiibooster.src.helpers.*', //
         //'vendor.clevertech.yiibooster.src.widgets.*', //

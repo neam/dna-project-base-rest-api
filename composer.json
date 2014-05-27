@@ -132,8 +132,8 @@
     "require":{
         "php":">=5.4.0",
         "crisu83/yii-consoletools": "dev-awaiting-prs",
-        "crisu83/yiistrap-widgets":"1.7.*",
-        "mishamx/yii-user":"dev-develop",
+        "crisu83/yiistrap-widgets": "1.7.*",
+        "mishamx/yii-user": "dev-develop#e8a0221",
         "phundament/jquery-file-upload": "@dev",
         "phundament/p3admin":"0.16.0",
         "phundament/p3extensions":"0.17.0",
