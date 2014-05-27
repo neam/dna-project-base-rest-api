@@ -11,7 +11,7 @@ return array(
     ),
     'components' => array(
         'assetManager' => array(
-            'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . "../../www/assets",
+            'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . "../../../www/assets",
             // needed when running from global codecept.phar installation
         ),
         'db' => array(
