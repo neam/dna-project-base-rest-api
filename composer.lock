@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d44486f9f7a2be54e57fa02821f2a150",
+    "hash": "db059079bec3014e937e5f982d19fe5c",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -680,12 +680,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "6c2b343"
+                "reference": "e8a0221"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/b3fc1822b1a434906aa24f2080d442dec04d5590",
-                "reference": "6c2b343",
+                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/e8a0221e19c02579021e0aa2df57c787dd050c67",
+                "reference": "e8a0221",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -707,7 +707,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-05-21 08:35:42"
+            "time": "2014-05-27 12:40:29"
         },
         {
             "name": "motin/yii-owner-behavior",
