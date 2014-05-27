@@ -1,7 +1,7 @@
 define([
     'jquery',
     'underscore',
-    'gapminder/core/Entity'
+    'gapminder/core/entity'
 ], function($, _, Entity) {
     'use strict';
 

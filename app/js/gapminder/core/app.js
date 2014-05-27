@@ -2,7 +2,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'gapminder/core/Entity',
+    'gapminder/core/entity',
     'gapminder/utils/dependencyLoader',
     'gapminder/components/imageManager',
     'gapminder/components/urlManager',
