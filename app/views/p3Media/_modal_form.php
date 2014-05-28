@@ -21,8 +21,7 @@
         ),
     )
 ); ?>
-    <? /*
-    <?php $form = $this->beginWidget(
+    <?php /* $form = $this->beginWidget(
         'yiistrap.widgets.TbActiveForm',
         array(
             'id' => $formId,
@@ -30,8 +29,7 @@
             'enableClientValidation' => true,
             'layout' => TbHtml::FORM_LAYOUT_HORIZONTAL,
         )
-    ); ?>
-    */ ?>
+    ); */ ?>
         <script>
             // TODO: Refactor JavaScript.
             $(function() {
@@ -45,7 +43,5 @@
         <div class="modal-body">
             <iframe id="<?php echo $formId; ?>-upload-iframe" name="<?php echo $formId; ?>-upload-iframe" src="<?php echo Yii::app()->request->baseUrl; ?>/p3media/import/uploadPopup?parent_form=<?php echo $formId; ?>" width="100%" height="300" style="border: 0;"></iframe>
         </div>
-    <?php /*
-    <?php $this->endWidget(); ?>
-    */ ?>
+    <?php // $this->endWidget(); ?>
 <?php $this->endWidget(); ?>
