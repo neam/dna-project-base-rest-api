@@ -9,10 +9,17 @@ class VideoPlayer extends CWidget
      * @var VideoFile
      */
     public $videoFile;
+
     /**
      * @var P3Media[]
      */
     public $p3MediaFiles = array();
+
+    /**
+     * @var string the path to the mediaelement asset directory
+     */
+    public $assetBaseUrl;
+
     /**
      * @var string
      */
@@ -26,15 +33,15 @@ class VideoPlayer extends CWidget
         }
         $this->p3MediaFiles = $this->getP3MediaFiles();
         $this->_initSrcLang();
-        $this->_registerAssets();
     }
 
     public function run()
     {
         parent::run();
+        $this->_registerAssets();
         $this->_registerJs();
         $this->render('view', array(
-            'playerUrl' => $this->getPlayerUrl(),
+            'flashPlayerUrl' => $this->getFlashPlayerUrl(),
             'srcLang' => $this->srcLang,
             'p3MediaFiles' => $this->p3MediaFiles,
         ));
@@ -50,12 +57,12 @@ class VideoPlayer extends CWidget
     }
 
     /**
-     * Returns the video player URL.
+     * Returns the Flash video player URL.
      * @return string
      */
-    public function getPlayerUrl()
+    public function getFlashPlayerUrl()
     {
-        return request()->baseUrl . '/../components/mediaelement/build/flashmediaelement.swf';
+        return $this->assetBaseUrl . '/flashmediaelement.swf';
     }
 
     /**
@@ -110,15 +117,27 @@ class VideoPlayer extends CWidget
      */
     protected function _registerAssets()
     {
-        app()->params['bowerAssets'] = app()->assetManager->publish(
-            Yii::getPathOfAlias('bower-components'),
-            true // hash by name
-        );
+        $assetName = 'medialemenet';
+        $assetPath = 'bower-components.mediaelement.build';
 
-        $assetsPath = app()->params['bowerAssets'];
+        if (YII_DEBUG) {
+            $cssFiles = array(
+                'mediaelementplayer.css',
+            );
+            $jsFiles = array(
+                'mediaelement-and-player.js',
+            );
+        } else {
+            $cssFiles = array(
+                'mediaelementplayer.min.css',
+            );
+            $jsFiles = array(
+                'mediaelement-and-player.min.js',
+            );
+        }
 
-        app()->clientScript->registerScriptFile($assetsPath . '/mediaelement/build/mediaelement-and-player.min.js');
-        app()->clientScript->registerCssFile($assetsPath . '/mediaelement/build/mediaelementplayer.min.css');
+        registerPackage($assetName, $assetPath, $cssFiles, $jsFiles);
+        $this->assetBaseUrl = clientScript()->getPackageBaseUrl($assetName);
     }
 
     /**
