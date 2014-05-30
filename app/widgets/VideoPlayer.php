@@ -120,21 +120,8 @@ class VideoPlayer extends CWidget
         $assetName = 'medialemenet';
         $assetPath = 'bower-components.mediaelement.build';
 
-        if (YII_DEBUG) {
-            $cssFiles = array(
-                'mediaelementplayer.css',
-            );
-            $jsFiles = array(
-                'mediaelement-and-player.js',
-            );
-        } else {
-            $cssFiles = array(
-                'mediaelementplayer.min.css',
-            );
-            $jsFiles = array(
-                'mediaelement-and-player.min.js',
-            );
-        }
+        $cssFiles = YII_DEBUG ? array('mediaelementplayer.css') : array('mediaelementplayer.min.css');
+        $jsFiles = YII_DEBUG ? array('mediaelement-and-player.js') : array('mediaelement-and-player.min.js');
 
         registerPackage($assetName, $assetPath, $cssFiles, $jsFiles);
         $this->assetBaseUrl = clientScript()->getPackageBaseUrl($assetName);
