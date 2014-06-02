@@ -14757,19 +14757,23 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
     }
   }
 }*/
+/*
 .commentsBlock {
   overflow-y: auto;
   padding-right: 5px;
 }
+
 .commentsBlock form {
   margin-top: 10px;
   margin-bottom: 5px;
 }
+
 .commentsBlock ul {
   list-style: none;
   margin: 0 0;
   padding: 0;
 }
+
 .commentsBlock .comment .commentText {
   word-wrap: break-word;
   word-break: break-all;
@@ -14779,848 +14783,43 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
   white-space: -o-normal;
   margin: 5px 0 10px 0;
 }
-.commentsBlock .newComment {
-  padding: 2px;
-}
-.commentsBlock .newComment form {
-  text-align: right;
-}
-.commentsBlock .newComment textarea {
-  display: block;
-  width: 100%;
-  height: 55px;
-  padding: 6px 12px;
-  line-height: 1.428571429;
-  color: #c9c9c9;
-  vertical-align: middle;
-  background-color: #ffffff;
-  background-image: none;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  border: 1px solid #e4e4e4;
-  border-radius: 3px;
-  font-size: 16px;
-  font-weight: 100;
-  color: #565656;
-}
-.commentsBlock .newComment textarea:focus {
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-}
-.commentsBlock .newComment textarea:-moz-placeholder {
-  color: #565656;
-}
-.commentsBlock .newComment textarea::-moz-placeholder {
-  color: #565656;
-  opacity: 1;
-}
-.commentsBlock .newComment textarea:-ms-input-placeholder {
-  color: #565656;
-}
-.commentsBlock .newComment textarea::-webkit-input-placeholder {
-  color: #565656;
-}
-.commentsBlock .newComment textarea[disabled],
-.commentsBlock .newComment textarea[readonly],
-fieldset[disabled] .commentsBlock .newComment textarea {
-  cursor: not-allowed;
-  background-color: #eeeeee;
-}
-textarea.commentsBlock .newComment textarea {
-  height: auto;
-}
-.commentsBlock .newComment textarea:focus {
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-}
-.commentsBlock .newComment textarea:-moz-placeholder {
-  color: #565656;
-}
-.commentsBlock .newComment textarea::-moz-placeholder {
-  color: #565656;
-  opacity: 1;
-}
-.commentsBlock .newComment textarea:-ms-input-placeholder {
-  color: #565656;
-}
-.commentsBlock .newComment textarea::-webkit-input-placeholder {
-  color: #565656;
-}
-.commentsBlock .newComment textarea[disabled],
-.commentsBlock .newComment textarea[readonly],
-fieldset[disabled] .commentsBlock .newComment textarea {
-  cursor: not-allowed;
-  background-color: #eeeeee;
-}
-textarea.commentsBlock .newComment textarea {
-  height: auto;
-}
-.commentsBlock .newComment .sendComment {
-  margin-bottom: 0;
-  font-weight: normal;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  padding: 6px 12px;
-  font-size: 16px;
-  line-height: 1.428571429;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  border: none;
-  padding: 17px 30px 18px;
-  padding: 5px 10px;
-  line-height: 1.5;
-  border-radius: 3px;
-  display: inline-block;
-  min-width: 10px;
-  padding: 3px 7px;
-  font-weight: bold;
-  color: #ffffff;
-  line-height: 1;
-  vertical-align: baseline;
-  white-space: nowrap;
-  text-align: center;
-  background-color: #f1f2f2;
-  border-radius: 10px;
-  background-color: #c9c9c9;
-  border-radius: 20px;
-  font-weight: 100;
-  padding: 8px 25px;
-  font-size: 14px;
-  padding: 7px 20px;
-  color: #fff;
-}
-.commentsBlock .newComment .sendComment:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-.commentsBlock .newComment .sendComment:hover,
-.commentsBlock .newComment .sendComment:focus {
-  color: #ffffff;
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment:active,
-.commentsBlock .newComment .sendComment.active {
-  outline: 0;
-  background-image: none;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-.commentsBlock .newComment .sendComment.disabled,
-.commentsBlock .newComment .sendComment[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment {
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.commentsBlock .newComment .sendComment:hover {
-  background-color: #bcbcbc;
-  color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-default {
-  background-color: #c9c9c9;
-}
-.commentsBlock .newComment .sendComment.btn-default:hover {
-  background-color: #bcbcbc;
-  color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-primary {
-  color: #ffffff;
-  background-color: #eb4498;
-  border-color: #e92d8b;
-}
-.commentsBlock .newComment .sendComment.btn-primary:hover,
-.commentsBlock .newComment .sendComment.btn-primary:focus,
-.commentsBlock .newComment .sendComment.btn-primary:active,
-.commentsBlock .newComment .sendComment.btn-primary.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-primary {
-  color: #ffffff;
-  background-color: #e71f84;
-  border-color: #c3156d;
-}
-.commentsBlock .newComment .sendComment.btn-primary:active,
-.commentsBlock .newComment .sendComment.btn-primary.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-primary {
-  background-image: none;
-}
-.commentsBlock .newComment .sendComment.btn-primary.disabled,
-.commentsBlock .newComment .sendComment.btn-primary[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-primary,
-.commentsBlock .newComment .sendComment.btn-primary.disabled:hover,
-.commentsBlock .newComment .sendComment.btn-primary[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-primary:hover,
-.commentsBlock .newComment .sendComment.btn-primary.disabled:focus,
-.commentsBlock .newComment .sendComment.btn-primary[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-primary:focus,
-.commentsBlock .newComment .sendComment.btn-primary.disabled:active,
-.commentsBlock .newComment .sendComment.btn-primary[disabled]:active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-primary:active,
-.commentsBlock .newComment .sendComment.btn-primary.disabled.active,
-.commentsBlock .newComment .sendComment.btn-primary[disabled].active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-primary.active {
-  background-color: #eb4498;
-  border-color: #e92d8b;
-}
-.commentsBlock .newComment .sendComment.btn-primary .badge {
-  color: #eb4498;
-  background-color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-success {
-  color: #ffffff;
-  background-color: #22d23e;
-  border-color: #1ebc38;
-}
-.commentsBlock .newComment .sendComment.btn-success:hover,
-.commentsBlock .newComment .sendComment.btn-success:focus,
-.commentsBlock .newComment .sendComment.btn-success:active,
-.commentsBlock .newComment .sendComment.btn-success.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-success {
-  color: #ffffff;
-  background-color: #1caf34;
-  border-color: #168728;
-}
-.commentsBlock .newComment .sendComment.btn-success:active,
-.commentsBlock .newComment .sendComment.btn-success.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-success {
-  background-image: none;
-}
-.commentsBlock .newComment .sendComment.btn-success.disabled,
-.commentsBlock .newComment .sendComment.btn-success[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-success,
-.commentsBlock .newComment .sendComment.btn-success.disabled:hover,
-.commentsBlock .newComment .sendComment.btn-success[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-success:hover,
-.commentsBlock .newComment .sendComment.btn-success.disabled:focus,
-.commentsBlock .newComment .sendComment.btn-success[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-success:focus,
-.commentsBlock .newComment .sendComment.btn-success.disabled:active,
-.commentsBlock .newComment .sendComment.btn-success[disabled]:active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-success:active,
-.commentsBlock .newComment .sendComment.btn-success.disabled.active,
-.commentsBlock .newComment .sendComment.btn-success[disabled].active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-success.active {
-  background-color: #22d23e;
-  border-color: #1ebc38;
-}
-.commentsBlock .newComment .sendComment.btn-success .badge {
-  color: #22d23e;
-  background-color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-warning {
-  color: #3d3d3d;
-  background-color: #feee74;
-  border-color: #feeb5b;
-}
-.commentsBlock .newComment .sendComment.btn-warning:hover,
-.commentsBlock .newComment .sendComment.btn-warning:focus,
-.commentsBlock .newComment .sendComment.btn-warning:active,
-.commentsBlock .newComment .sendComment.btn-warning.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-warning {
-  color: #3d3d3d;
-  background-color: #fee94b;
-  border-color: #fde31e;
-}
-.commentsBlock .newComment .sendComment.btn-warning:active,
-.commentsBlock .newComment .sendComment.btn-warning.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-warning {
-  background-image: none;
-}
-.commentsBlock .newComment .sendComment.btn-warning.disabled,
-.commentsBlock .newComment .sendComment.btn-warning[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-warning,
-.commentsBlock .newComment .sendComment.btn-warning.disabled:hover,
-.commentsBlock .newComment .sendComment.btn-warning[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-warning:hover,
-.commentsBlock .newComment .sendComment.btn-warning.disabled:focus,
-.commentsBlock .newComment .sendComment.btn-warning[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-warning:focus,
-.commentsBlock .newComment .sendComment.btn-warning.disabled:active,
-.commentsBlock .newComment .sendComment.btn-warning[disabled]:active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-warning:active,
-.commentsBlock .newComment .sendComment.btn-warning.disabled.active,
-.commentsBlock .newComment .sendComment.btn-warning[disabled].active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-warning.active {
-  background-color: #feee74;
-  border-color: #feeb5b;
-}
-.commentsBlock .newComment .sendComment.btn-warning .badge {
-  color: #feee74;
-  background-color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-danger {
-  color: #ffffff;
-  background-color: #e0575c;
-  border-color: #dc4147;
-}
-.commentsBlock .newComment .sendComment.btn-danger:hover,
-.commentsBlock .newComment .sendComment.btn-danger:focus,
-.commentsBlock .newComment .sendComment.btn-danger:active,
-.commentsBlock .newComment .sendComment.btn-danger.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-danger {
-  color: #ffffff;
-  background-color: #da353b;
-  border-color: #bd2329;
-}
-.commentsBlock .newComment .sendComment.btn-danger:active,
-.commentsBlock .newComment .sendComment.btn-danger.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-danger {
-  background-image: none;
-}
-.commentsBlock .newComment .sendComment.btn-danger.disabled,
-.commentsBlock .newComment .sendComment.btn-danger[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-danger,
-.commentsBlock .newComment .sendComment.btn-danger.disabled:hover,
-.commentsBlock .newComment .sendComment.btn-danger[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-danger:hover,
-.commentsBlock .newComment .sendComment.btn-danger.disabled:focus,
-.commentsBlock .newComment .sendComment.btn-danger[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-danger:focus,
-.commentsBlock .newComment .sendComment.btn-danger.disabled:active,
-.commentsBlock .newComment .sendComment.btn-danger[disabled]:active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-danger:active,
-.commentsBlock .newComment .sendComment.btn-danger.disabled.active,
-.commentsBlock .newComment .sendComment.btn-danger[disabled].active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-danger.active {
-  background-color: #e0575c;
-  border-color: #dc4147;
-}
-.commentsBlock .newComment .sendComment.btn-danger .badge {
-  color: #e0575c;
-  background-color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-info {
-  color: #ffffff;
-  background-color: #b7c1d8;
-  border-color: #a6b3cf;
-}
-.commentsBlock .newComment .sendComment.btn-info:hover,
-.commentsBlock .newComment .sendComment.btn-info:focus,
-.commentsBlock .newComment .sendComment.btn-info:active,
-.commentsBlock .newComment .sendComment.btn-info.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-info {
-  color: #ffffff;
-  background-color: #9daaca;
-  border-color: #7f91ba;
-}
-.commentsBlock .newComment .sendComment.btn-info:active,
-.commentsBlock .newComment .sendComment.btn-info.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-info {
-  background-image: none;
-}
-.commentsBlock .newComment .sendComment.btn-info.disabled,
-.commentsBlock .newComment .sendComment.btn-info[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-info,
-.commentsBlock .newComment .sendComment.btn-info.disabled:hover,
-.commentsBlock .newComment .sendComment.btn-info[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-info:hover,
-.commentsBlock .newComment .sendComment.btn-info.disabled:focus,
-.commentsBlock .newComment .sendComment.btn-info[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-info:focus,
-.commentsBlock .newComment .sendComment.btn-info.disabled:active,
-.commentsBlock .newComment .sendComment.btn-info[disabled]:active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-info:active,
-.commentsBlock .newComment .sendComment.btn-info.disabled.active,
-.commentsBlock .newComment .sendComment.btn-info[disabled].active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-info.active {
-  background-color: #b7c1d8;
-  border-color: #a6b3cf;
-}
-.commentsBlock .newComment .sendComment.btn-info .badge {
-  color: #b7c1d8;
-  background-color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-link {
-  color: #eb4498;
-  font-weight: normal;
-  cursor: pointer;
-  border-radius: 0;
-  font-weight: 100;
-  text-decoration: underline;
-}
-.commentsBlock .newComment .sendComment.btn-link,
-.commentsBlock .newComment .sendComment.btn-link:active,
-.commentsBlock .newComment .sendComment.btn-link[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link {
-  background-color: transparent;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.commentsBlock .newComment .sendComment.btn-link,
-.commentsBlock .newComment .sendComment.btn-link:hover,
-.commentsBlock .newComment .sendComment.btn-link:focus,
-.commentsBlock .newComment .sendComment.btn-link:active {
-  border-color: transparent;
-}
-.commentsBlock .newComment .sendComment.btn-link:hover,
-.commentsBlock .newComment .sendComment.btn-link:focus {
-  color: #cd1672;
-  text-decoration: underline;
-  background-color: transparent;
-}
-.commentsBlock .newComment .sendComment.btn-link[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link:hover,
-.commentsBlock .newComment .sendComment.btn-link[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link:focus {
-  color: #f1f2f2;
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link:hover {
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark {
-  color: #eb4498;
-  font-weight: normal;
-  cursor: pointer;
-  border-radius: 0;
-  font-weight: 100;
-  text-decoration: underline;
-  color: #353535;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark,
-.commentsBlock .newComment .sendComment.btn-link-dark:active,
-.commentsBlock .newComment .sendComment.btn-link-dark[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link-dark {
-  background-color: transparent;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark,
-.commentsBlock .newComment .sendComment.btn-link-dark:hover,
-.commentsBlock .newComment .sendComment.btn-link-dark:focus,
-.commentsBlock .newComment .sendComment.btn-link-dark:active {
-  border-color: transparent;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark:hover,
-.commentsBlock .newComment .sendComment.btn-link-dark:focus {
-  color: #cd1672;
-  text-decoration: underline;
-  background-color: transparent;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link-dark:hover,
-.commentsBlock .newComment .sendComment.btn-link-dark[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link-dark:focus {
-  color: #f1f2f2;
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark:hover {
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark:hover {
-  color: #353535;
-}
-.commentsBlock .newComment .sendComment.btn-link.btn-icon-link {
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link.btn-icon-link .btn-label {
-  text-decoration: underline;
-}
-.commentsBlock .newComment .sendComment:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-.commentsBlock .newComment .sendComment:hover,
-.commentsBlock .newComment .sendComment:focus {
-  color: #ffffff;
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment:active,
-.commentsBlock .newComment .sendComment.active {
-  outline: 0;
-  background-image: none;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-.commentsBlock .newComment .sendComment.disabled,
-.commentsBlock .newComment .sendComment[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment {
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.commentsBlock .newComment .sendComment:hover {
-  background-color: #bcbcbc;
-  color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-default {
-  background-color: #c9c9c9;
-}
-.commentsBlock .newComment .sendComment.btn-default:hover {
-  background-color: #bcbcbc;
-  color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-primary {
-  color: #ffffff;
-  background-color: #eb4498;
-  border-color: #e92d8b;
-}
-.commentsBlock .newComment .sendComment.btn-primary:hover,
-.commentsBlock .newComment .sendComment.btn-primary:focus,
-.commentsBlock .newComment .sendComment.btn-primary:active,
-.commentsBlock .newComment .sendComment.btn-primary.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-primary {
-  color: #ffffff;
-  background-color: #e71f84;
-  border-color: #c3156d;
-}
-.commentsBlock .newComment .sendComment.btn-primary:active,
-.commentsBlock .newComment .sendComment.btn-primary.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-primary {
-  background-image: none;
-}
-.commentsBlock .newComment .sendComment.btn-primary.disabled,
-.commentsBlock .newComment .sendComment.btn-primary[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-primary,
-.commentsBlock .newComment .sendComment.btn-primary.disabled:hover,
-.commentsBlock .newComment .sendComment.btn-primary[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-primary:hover,
-.commentsBlock .newComment .sendComment.btn-primary.disabled:focus,
-.commentsBlock .newComment .sendComment.btn-primary[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-primary:focus,
-.commentsBlock .newComment .sendComment.btn-primary.disabled:active,
-.commentsBlock .newComment .sendComment.btn-primary[disabled]:active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-primary:active,
-.commentsBlock .newComment .sendComment.btn-primary.disabled.active,
-.commentsBlock .newComment .sendComment.btn-primary[disabled].active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-primary.active {
-  background-color: #eb4498;
-  border-color: #e92d8b;
-}
-.commentsBlock .newComment .sendComment.btn-primary .badge {
-  color: #eb4498;
-  background-color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-success {
-  color: #ffffff;
-  background-color: #22d23e;
-  border-color: #1ebc38;
-}
-.commentsBlock .newComment .sendComment.btn-success:hover,
-.commentsBlock .newComment .sendComment.btn-success:focus,
-.commentsBlock .newComment .sendComment.btn-success:active,
-.commentsBlock .newComment .sendComment.btn-success.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-success {
-  color: #ffffff;
-  background-color: #1caf34;
-  border-color: #168728;
-}
-.commentsBlock .newComment .sendComment.btn-success:active,
-.commentsBlock .newComment .sendComment.btn-success.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-success {
-  background-image: none;
-}
-.commentsBlock .newComment .sendComment.btn-success.disabled,
-.commentsBlock .newComment .sendComment.btn-success[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-success,
-.commentsBlock .newComment .sendComment.btn-success.disabled:hover,
-.commentsBlock .newComment .sendComment.btn-success[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-success:hover,
-.commentsBlock .newComment .sendComment.btn-success.disabled:focus,
-.commentsBlock .newComment .sendComment.btn-success[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-success:focus,
-.commentsBlock .newComment .sendComment.btn-success.disabled:active,
-.commentsBlock .newComment .sendComment.btn-success[disabled]:active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-success:active,
-.commentsBlock .newComment .sendComment.btn-success.disabled.active,
-.commentsBlock .newComment .sendComment.btn-success[disabled].active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-success.active {
-  background-color: #22d23e;
-  border-color: #1ebc38;
-}
-.commentsBlock .newComment .sendComment.btn-success .badge {
-  color: #22d23e;
-  background-color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-warning {
-  color: #3d3d3d;
-  background-color: #feee74;
-  border-color: #feeb5b;
-}
-.commentsBlock .newComment .sendComment.btn-warning:hover,
-.commentsBlock .newComment .sendComment.btn-warning:focus,
-.commentsBlock .newComment .sendComment.btn-warning:active,
-.commentsBlock .newComment .sendComment.btn-warning.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-warning {
-  color: #3d3d3d;
-  background-color: #fee94b;
-  border-color: #fde31e;
-}
-.commentsBlock .newComment .sendComment.btn-warning:active,
-.commentsBlock .newComment .sendComment.btn-warning.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-warning {
-  background-image: none;
-}
-.commentsBlock .newComment .sendComment.btn-warning.disabled,
-.commentsBlock .newComment .sendComment.btn-warning[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-warning,
-.commentsBlock .newComment .sendComment.btn-warning.disabled:hover,
-.commentsBlock .newComment .sendComment.btn-warning[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-warning:hover,
-.commentsBlock .newComment .sendComment.btn-warning.disabled:focus,
-.commentsBlock .newComment .sendComment.btn-warning[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-warning:focus,
-.commentsBlock .newComment .sendComment.btn-warning.disabled:active,
-.commentsBlock .newComment .sendComment.btn-warning[disabled]:active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-warning:active,
-.commentsBlock .newComment .sendComment.btn-warning.disabled.active,
-.commentsBlock .newComment .sendComment.btn-warning[disabled].active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-warning.active {
-  background-color: #feee74;
-  border-color: #feeb5b;
-}
-.commentsBlock .newComment .sendComment.btn-warning .badge {
-  color: #feee74;
-  background-color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-danger {
-  color: #ffffff;
-  background-color: #e0575c;
-  border-color: #dc4147;
-}
-.commentsBlock .newComment .sendComment.btn-danger:hover,
-.commentsBlock .newComment .sendComment.btn-danger:focus,
-.commentsBlock .newComment .sendComment.btn-danger:active,
-.commentsBlock .newComment .sendComment.btn-danger.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-danger {
-  color: #ffffff;
-  background-color: #da353b;
-  border-color: #bd2329;
-}
-.commentsBlock .newComment .sendComment.btn-danger:active,
-.commentsBlock .newComment .sendComment.btn-danger.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-danger {
-  background-image: none;
-}
-.commentsBlock .newComment .sendComment.btn-danger.disabled,
-.commentsBlock .newComment .sendComment.btn-danger[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-danger,
-.commentsBlock .newComment .sendComment.btn-danger.disabled:hover,
-.commentsBlock .newComment .sendComment.btn-danger[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-danger:hover,
-.commentsBlock .newComment .sendComment.btn-danger.disabled:focus,
-.commentsBlock .newComment .sendComment.btn-danger[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-danger:focus,
-.commentsBlock .newComment .sendComment.btn-danger.disabled:active,
-.commentsBlock .newComment .sendComment.btn-danger[disabled]:active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-danger:active,
-.commentsBlock .newComment .sendComment.btn-danger.disabled.active,
-.commentsBlock .newComment .sendComment.btn-danger[disabled].active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-danger.active {
-  background-color: #e0575c;
-  border-color: #dc4147;
-}
-.commentsBlock .newComment .sendComment.btn-danger .badge {
-  color: #e0575c;
-  background-color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-info {
-  color: #ffffff;
-  background-color: #b7c1d8;
-  border-color: #a6b3cf;
-}
-.commentsBlock .newComment .sendComment.btn-info:hover,
-.commentsBlock .newComment .sendComment.btn-info:focus,
-.commentsBlock .newComment .sendComment.btn-info:active,
-.commentsBlock .newComment .sendComment.btn-info.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-info {
-  color: #ffffff;
-  background-color: #9daaca;
-  border-color: #7f91ba;
-}
-.commentsBlock .newComment .sendComment.btn-info:active,
-.commentsBlock .newComment .sendComment.btn-info.active,
-.open .dropdown-toggle.commentsBlock .newComment .sendComment.btn-info {
-  background-image: none;
-}
-.commentsBlock .newComment .sendComment.btn-info.disabled,
-.commentsBlock .newComment .sendComment.btn-info[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-info,
-.commentsBlock .newComment .sendComment.btn-info.disabled:hover,
-.commentsBlock .newComment .sendComment.btn-info[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-info:hover,
-.commentsBlock .newComment .sendComment.btn-info.disabled:focus,
-.commentsBlock .newComment .sendComment.btn-info[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-info:focus,
-.commentsBlock .newComment .sendComment.btn-info.disabled:active,
-.commentsBlock .newComment .sendComment.btn-info[disabled]:active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-info:active,
-.commentsBlock .newComment .sendComment.btn-info.disabled.active,
-.commentsBlock .newComment .sendComment.btn-info[disabled].active,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-info.active {
-  background-color: #b7c1d8;
-  border-color: #a6b3cf;
-}
-.commentsBlock .newComment .sendComment.btn-info .badge {
-  color: #b7c1d8;
-  background-color: #fff;
-}
-.commentsBlock .newComment .sendComment.btn-link {
-  color: #eb4498;
-  font-weight: normal;
-  cursor: pointer;
-  border-radius: 0;
-  font-weight: 100;
-  text-decoration: underline;
-}
-.commentsBlock .newComment .sendComment.btn-link,
-.commentsBlock .newComment .sendComment.btn-link:active,
-.commentsBlock .newComment .sendComment.btn-link[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link {
-  background-color: transparent;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.commentsBlock .newComment .sendComment.btn-link,
-.commentsBlock .newComment .sendComment.btn-link:hover,
-.commentsBlock .newComment .sendComment.btn-link:focus,
-.commentsBlock .newComment .sendComment.btn-link:active {
-  border-color: transparent;
-}
-.commentsBlock .newComment .sendComment.btn-link:hover,
-.commentsBlock .newComment .sendComment.btn-link:focus {
-  color: #cd1672;
-  text-decoration: underline;
-  background-color: transparent;
-}
-.commentsBlock .newComment .sendComment.btn-link[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link:hover,
-.commentsBlock .newComment .sendComment.btn-link[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link:focus {
-  color: #f1f2f2;
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link:hover {
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link.btn-icon-link {
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link.btn-icon-link .btn-label {
-  text-decoration: underline;
-}
-.commentsBlock .newComment .sendComment.btn-link:hover {
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark {
-  color: #eb4498;
-  font-weight: normal;
-  cursor: pointer;
-  border-radius: 0;
-  font-weight: 100;
-  text-decoration: underline;
-  color: #353535;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark,
-.commentsBlock .newComment .sendComment.btn-link-dark:active,
-.commentsBlock .newComment .sendComment.btn-link-dark[disabled],
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link-dark {
-  background-color: transparent;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark,
-.commentsBlock .newComment .sendComment.btn-link-dark:hover,
-.commentsBlock .newComment .sendComment.btn-link-dark:focus,
-.commentsBlock .newComment .sendComment.btn-link-dark:active {
-  border-color: transparent;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark:hover,
-.commentsBlock .newComment .sendComment.btn-link-dark:focus {
-  color: #cd1672;
-  text-decoration: underline;
-  background-color: transparent;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark[disabled]:hover,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link-dark:hover,
-.commentsBlock .newComment .sendComment.btn-link-dark[disabled]:focus,
-fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link-dark:focus {
-  color: #f1f2f2;
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark:hover {
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark.btn-icon-link {
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark.btn-icon-link .btn-label {
-  text-decoration: underline;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark:hover {
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link-dark:hover {
-  color: #353535;
-}
-.commentsBlock .newComment .sendComment.btn-link.btn-icon-link {
-  text-decoration: none;
-}
-.commentsBlock .newComment .sendComment.btn-link.btn-icon-link .btn-label {
-  text-decoration: underline;
-}
-.commentsBlock .newComment .sendComment:empty {
-  display: none;
-}
-.btn .commentsBlock .newComment .sendComment {
-  position: relative;
-  top: -1px;
-}
-.commentsBlock .newComment .sendComment.badge-sm {
-  font-size: 14px;
-  padding: 7px 20px;
-}
-.commentsBlock .newComment .sendComment.badge-xs {
-  font-size: 12px;
-  padding: 4px 15px;
-}
-.commentsBlock .newComment .sendComment.badge-primary {
-  background-color: #eb4498;
-}
-.commentsBlock .newComment .sendComment.badge-success {
-  background-color: #22d23e;
-}
-.commentsBlock .newComment .sendComment.badge-warning {
-  background-color: #feee74;
-}
-.commentsBlock .newComment .sendComment.badge-danger {
-  background-color: #e0575c;
-}
-.commentsBlock .newComment .sendComment.badge-info {
-  background-color: #b7c1d8;
-}
-.commentsBlock .newComment .sendComment span {
-  background: none;
-  padding: 0;
-}
+
+.commentsBlock {
+  .newComment {
+    padding: 2px;
+
+    form {
+      text-align: right;
+    }
+
+    textarea {
+      .form-control;
+    }
+
+    .sendComment {
+      .btn;
+      .btn-sm;
+      color: #fff;
+
+      span {
+        background: none;
+        padding: 0;
+      }
+    }
+  }
+}
+
 .commentsBlock .heading {
   border-bottom: 1px solid #dcdcdc;
 }
+
 .commentsBlock .heading h4 {
+  float: left;
   color: #888;
   margin: 0 5px 5px 0;
   float: left;
 }
+
 .commentsBlock .heading .loadingIndicator {
   background: transparent url(../../../images/jquery-comments/ajax-loader.gif) no-repeat;
   height: 15px;
@@ -15628,60 +14827,73 @@ fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link-dark:focus {
   float: left;
   display: none;
 }
+
 .commentsBlock .sendComment {
   color: #508bc0;
   font-size: 12px;
 }
+
 .commentsBlock .sendComment span {
   padding: 0 5px 0px 20px;
   background: transparent url('../../../images/jquery-comments/add_comment_ico.png') no-repeat 0px 4px;
-  display: block;
+  display: block
 }
+
 .commentsBlock textarea {
   width: 98%;
   height: 30px;
   margin-bottom: 10px;
   height: 40px;
 }
+
 .commentsBlock .sendComment {
   color: #508bc0;
   font-size: 12px;
 }
+
 .comments {
   overflow-x: hidden;
   overflow-y: auto;
   list-style: none;
 }
+
 .comments .comment {
   padding: 10px 0px;
   margin: 0px 20px;
   border-bottom: #eee solid 1px;
 }
+
 .comments .comment .commentContent .avatar {
   margin-right: 10px;
   float: left;
 }
+
 .comments .comment .commentContent .avatar img {
   height: 64px;
 }
+
 .comments .comment .commentContent .avatar .defaultAvatar {
   background-image: url("../../../images/jquery-comments/userDefaultImage.png");
   background-repeat: no-repeat;
   height: 64px;
   width: 64px;
 }
+
 .comments .comment .commentContent .content.avatarPadding {
   padding-left: 64px;
 }
+
 .comments .comment .info {
   font-size: 13px;
   color: #505050;
   margin: 0 0;
 }
+
 .comments .comment .info .author {
   font-weight: bold;
   font-size: 12px;
 }
+
 .comments .comment .info time {
   font-size: 10px;
   color: #666666;
@@ -15689,20 +14901,25 @@ fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link-dark:focus {
   height: 20px;
   margin-right: 5px;
 }
+
 .comments .comment .info a {
   margin-left: 5px;
 }
+
 .comments li:last-child {
   border: none;
 }
+
 .comments .comment .contentBlockComment {
   padding: 0;
   border: none;
   margin-top: 5px;
 }
+
 .comments .comment .reply_comments {
   margin-top: 10px;
 }
+
 .comments .comment .reply_comments .comment {
   padding: 5px 20px 5px 20px;
   margin-bottom: 0px;
@@ -15710,9 +14927,11 @@ fieldset[disabled] .commentsBlock .newComment .sendComment.btn-link-dark:focus {
   border-bottom-width: 0px;
   background: transparent url('../../../images/jquery-comments/comment.gif') no-repeat 0px 10px;
 }
+
 .commentsBlock .clearFix {
   clear: both;
 }
+*/
 .flowbar {
   background-image: -webkit-linear-gradient(top, #ffffff 90%, rgba(255, 255, 255, 0) 100%);
   background-image: linear-gradient(to bottom, #ffffff 90%, rgba(255, 255, 255, 0) 100%);

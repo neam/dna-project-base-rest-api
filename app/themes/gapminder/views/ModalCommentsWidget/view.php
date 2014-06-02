@@ -16,11 +16,3 @@
     ),
     'content' => '<div id="' . $this->modalId . '-commentSection"></div>',
 )); ?>
-<?php Html::initJqueryComments(
-    "#$this->modalId-commentSection",
-    array(
-        'context_model' => get_class($this->model),
-        'context_id' => $this->model->id,
-        'context_attribute' => $this->attribute,
-    )
-); ?>
