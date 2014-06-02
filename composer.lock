@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "75c63c889226019703ca5e15524725ab",
+    "hash": "cb7e948402d24bfcc81ba5c71eba9ae3",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -590,6 +590,100 @@
             "time": "2014-05-07 17:04:22"
         },
         {
+            "name": "ircmaxell/random-lib",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ircmaxell/RandomLib.git",
+                "reference": "0eaad991c1756842f26dfbcbc6effcabb5003d0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ircmaxell/RandomLib/zipball/0eaad991c1756842f26dfbcbc6effcabb5003d0a",
+                "reference": "0eaad991c1756842f26dfbcbc6effcabb5003d0a",
+                "shasum": ""
+            },
+            "require": {
+                "ircmaxell/security-lib": "1.0.*@dev",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.1.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "RandomLib": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Ferrara",
+                    "email": "ircmaxell@ircmaxell.com",
+                    "homepage": "http://blog.ircmaxell.com"
+                }
+            ],
+            "description": "A Library For Generating Secure Random Numbers",
+            "homepage": "https://github.com/ircmaxell/PHP-RandomLib",
+            "keywords": [
+                "cryptography",
+                "random",
+                "random-numbers",
+                "random-strings"
+            ],
+            "time": "2013-07-30 17:40:57"
+        },
+        {
+            "name": "ircmaxell/security-lib",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ircmaxell/SecurityLib.git",
+                "reference": "80934de3c482dcafb46b5756e59ebece082b6dc7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/80934de3c482dcafb46b5756e59ebece082b6dc7",
+                "reference": "80934de3c482dcafb46b5756e59ebece082b6dc7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SecurityLib": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Ferrara",
+                    "email": "ircmaxell@ircmaxell.com",
+                    "homepage": "http://blog.ircmaxell.com"
+                }
+            ],
+            "description": "A Base Security Library",
+            "homepage": "https://github.com/ircmaxell/PHP-SecurityLib",
+            "time": "2013-04-30 18:00:34"
+        },
+        {
             "name": "jalle19/yii-ga",
             "version": "dev-master",
             "source": {
@@ -680,12 +774,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "78f939f"
+                "reference": "e8a0221"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/e8a0221e19c02579021e0aa2df57c787dd050c67",
-                "reference": "78f939f",
+                "reference": "e8a0221",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -707,7 +801,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-06-02 13:17:02"
+            "time": "2014-05-27 12:40:29"
         },
         {
             "name": "motin/yii-owner-behavior",
@@ -979,6 +1073,52 @@
             "time": "2013-10-28 16:48:19"
         },
         {
+            "name": "nordsoftware/yii-account",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nordsoftware/yii-account.git",
+                "reference": "3f2dd4c108b7f51c5662ae3ade29ab636cb18a1d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/3f2dd4c108b7f51c5662ae3ade29ab636cb18a1d",
+                "reference": "3f2dd4c108b7f51c5662ae3ade29ab636cb18a1d",
+                "shasum": ""
+            },
+            "require": {
+                "crisu83/yiistrap": "dev-bs3",
+                "ircmaxell/random-lib": "v1.0.0",
+                "phpnode/yiipassword": "dev-master#da426c2"
+            },
+            "require-dev": {
+                "codeception/codeception": "*",
+                "crisu83/yii-caviar": "dev-develop#1859e55504f3a4076678c9b39843da604dfc43aa",
+                "yiisoft/yii": ">=1.1.14"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "psr-4": {
+                    "nordsoftware\\yii_account\\": "./src"
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christoffer Niska",
+                    "email": "ChristofferNiska@gmail.com"
+                }
+            ],
+            "description": "Extension that provides basic account functionality for the Yii PHP framework.",
+            "support": {
+                "source": "https://github.com/nordsoftware/yii-account/tree/develop",
+                "issues": "https://github.com/nordsoftware/yii-account/issues"
+            },
+            "time": "2014-06-02 06:34:26"
+        },
+        {
             "name": "nordsoftware/yii-emailer",
             "version": "1.2.2",
             "source": {
@@ -1039,6 +1179,25 @@
             ],
             "description": "Utility classes for the Yii PHP framework.",
             "time": "2013-06-18 14:27:35"
+        },
+        {
+            "name": "phpnode/yiipassword",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpnode/yiipassword.git",
+                "reference": "da426c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/phpnode/yiipassword/archive/f57bb30dc5a3a93181eccc509824810847a3bfc9.zip",
+                "reference": "da426c2",
+                "shasum": null
+            },
+            "type": "yii-extension",
+            "description": "Password strategies for Yii",
+            "homepage": "https://github.com/phpnode/yiipassword",
+            "time": "2014-05-07 08:32:41"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -2529,12 +2688,14 @@
         "neam/yii-relational-graph-db": 20,
         "motin/yii-owner-behavior": 20,
         "sumwai/yii-fixture-helper": 20,
+        "phpnode/yiipassword": 20,
         "phpoffice/phpword": 20,
         "phpoffice/phppowerpoint": 20,
         "sepia/po-parser": 20,
         "neam/php-po2json": 20,
         "weavora/wrest": 20,
         "codemix/hybridauthmanager": 20,
+        "nordsoftware/yii-account": 20,
         "nordsoftware/yii-utils": 20,
         "crisu83/yii-formatter": 20,
         "jalle19/yii-ga": 20,
