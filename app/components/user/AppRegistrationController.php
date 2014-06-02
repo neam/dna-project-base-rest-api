@@ -27,7 +27,7 @@ class AppRegistrationController extends RegistrationController
 
         // TODO: 1. This method should be refactored. It is too cluttered.
         // TODO: 2. Use ONE profile class throughout the entire app. Having multiple classes (Profiles, AppProfile) is confusing and creates duplicate code.
-        Profile::$regMode = true;
+        UserProfile::$regMode = true;
         $model = new AppRegistrationForm;
         $profile = new AppProfile;
 
@@ -143,7 +143,7 @@ EOD;
             $this->render('/user/registration', array(
                 'model' => $model,
                 'profile' => $profile,
-                'profileFields' => Profile::getFields(),
+                'profileFields' => UserProfile::getFields(),
             ));
         }
     }
