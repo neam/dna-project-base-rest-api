@@ -108,6 +108,7 @@ class MemberSteps extends AppSteps
     function register($username, $password, $verifyPassword, $email, $acceptTerms = true)
     {
         $I = $this;
+        $I->amGoingTo("Register user $username");
         $I->amOnPage(RegistrationPage::$URL);
         $I->fillField(RegistrationPage::$usernameField, $username);
         $I->fillField(RegistrationPage::$passwordField, $password);
@@ -152,11 +153,15 @@ class MemberSteps extends AppSteps
 
     function registerGapminderStaff()
     {
+        $I = $this;
+        $I->amGoingTo('Register Gapminder staff');
         $this->registerUsers($this->staff);
     }
 
     function registerExternalUsers()
     {
+        $I = $this;
+        $I->amGoingTo('Register external users');
         $this->registerUsers($this->externalUsers);
     }
 
@@ -410,8 +415,11 @@ class MemberSteps extends AppSteps
         $I->attachFile(UploadPopupPage::$filesField, $file);
         $I->see($file);
         $I->click(UploadPopupPage::$uploadButton);
+        $I->waitForElementNotVisible('.fileupload-progressbar', 10);
+
         // Switch back to parent page
         $I->switchToIFrame();
+        $I->click('Close');
 
         $I->waitForElementNotVisible('#item-form-modal', 30);
         $I->waitForElementVisible(VideoFileEditPage::$submitButton);
