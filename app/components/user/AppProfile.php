@@ -3,7 +3,7 @@
 /**
  * AppProfile class.
  */
-class AppProfile extends Profile
+class AppProfile extends UserProfile
 {
     /**
      * Returns the validation rules.
