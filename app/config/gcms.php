@@ -160,16 +160,7 @@ $gcmsConfig = array(
             'classMap' => array(
                 'account' => 'Account',
             ),
-            'controllerMap' => array(
-                'authenticate' => array(
-                    'class' => '\nordsoftware\yii_account\controllers\AuthenticateController',
-                    'layout' => 'theme.views.layouts.minimal',
-                ),
-                'register' => array(
-                    'class' => '\nordsoftware\yii_account\controllers\RegisterController',
-                    'layout' => 'theme.views.layouts.minimal',
-                ),
-            ),
+            'defaultLayout' => 'theme.views.layouts.minimal',
             'fromEmailAddress' => 'noreply@gapminder.org',
         ),
     ),

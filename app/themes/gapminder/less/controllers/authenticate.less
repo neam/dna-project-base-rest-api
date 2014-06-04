@@ -1,4 +1,4 @@
-.login-controller {
+.authenticate-controller {
   &.login-action {
     .radio {
       padding-left: 0;
@@ -21,6 +21,26 @@
         margin-top: 50px;
         margin-bottom: 50px;
       }
+    }
+
+    .form-actions {
+      .make-row();
+
+      .login-action {
+        .make-xs-column(6);
+      }
+
+      .stay-logged-in-action {
+        .make-xs-column(6);
+
+        .checkbox {
+          margin: 20px 0;
+        }
+      }
+    }
+
+    .login-links {
+      margin: 20px auto;
     }
   }
 }

@@ -97,7 +97,7 @@
                         ),
                         array(
                             'label' => Yii::t('app', 'Login'),
-                            'url' => Yii::app()->user->loginUrl,
+                            'url' => array('/account/authenticate/login'),
                             'visible' => Yii::app()->user->isGuest,
                             'icon' => 'log-in',
                             'id' => 'loginLink',

@@ -155,7 +155,7 @@
         "neam/yii-relational-graph-db": "@dev",
         "motin/yii-owner-behavior": "*@dev",
         "sumwai/yii-fixture-helper": "@dev",
-        "phpnode/yiipassword": "dev-master#da426c2",
+        "phpnode/yiipassword": "dev-master#6be5c8fcb12d79e0ceceba66d69cf7024e981b34",
         "phpoffice/phpexcel": "1.7.9",
         "phpoffice/phpword": "dev-added-composer-json",
         "phpoffice/phppowerpoint": "dev-master",

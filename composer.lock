@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "faa5db60ff912db311ca933f5f219fd1",
+    "hash": "9efe88d5c62cdf2186516f382e891df9",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1078,12 +1078,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-account.git",
-                "reference": "ffc4b84302f538a344e37ba12aa0d5c03f0b6ad0"
+                "reference": "3da24db9925e8f1e5f4806e6503372afb66f8bd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/ffc4b84302f538a344e37ba12aa0d5c03f0b6ad0",
-                "reference": "ffc4b84302f538a344e37ba12aa0d5c03f0b6ad0",
+                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/3da24db9925e8f1e5f4806e6503372afb66f8bd4",
+                "reference": "3da24db9925e8f1e5f4806e6503372afb66f8bd4",
                 "shasum": ""
             },
             "require": {
@@ -1117,7 +1117,7 @@
                 "source": "https://github.com/nordsoftware/yii-account/tree/develop",
                 "issues": "https://github.com/nordsoftware/yii-account/issues"
             },
-            "time": "2014-06-03 13:09:09"
+            "time": "2014-06-04 11:10:42"
         },
         {
             "name": "nordsoftware/yii-emailer",
@@ -1187,18 +1187,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpnode/yiipassword.git",
-                "reference": "da426c2"
+                "reference": "6be5c8fcb12d79e0ceceba66d69cf7024e981b34"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://github.com/phpnode/yiipassword/archive/f57bb30dc5a3a93181eccc509824810847a3bfc9.zip",
-                "reference": "da426c2",
+                "reference": "6be5c8fcb12d79e0ceceba66d69cf7024e981b34",
                 "shasum": null
             },
             "type": "yii-extension",
             "description": "Password strategies for Yii",
             "homepage": "https://github.com/phpnode/yiipassword",
-            "time": "2014-05-07 08:32:41"
+            "time": "2014-06-04 11:26:28"
         },
         {
             "name": "phpoffice/phpexcel",

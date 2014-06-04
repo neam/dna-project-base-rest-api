@@ -33,15 +33,15 @@ class Account extends BaseAccount
             parent::behaviors(),
             array(
                 'PasswordBehavior' => array(
-                    'class' => 'YiiPassword\Behavior',
+                    'class' => '\YiiPassword\Behavior',
                     'defaultStrategyName' => 'bcrypt',
                     'strategies' => array(
                         'bcrypt' => array(
-                            'class' => 'YiiPassword\Strategies\Bcrypt',
+                            'class' => '\YiiPassword\Strategies\Bcrypt',
                             'workFactor' => 12,
                         ),
                         'legacy' => array(
-                            'class' => 'YiiPassword\Strategies\LegacyMd5',
+                            'class' => '\YiiPassword\Strategies\LegacyMd5',
                         )
                     ),
                 ),
