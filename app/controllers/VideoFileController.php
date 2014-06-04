@@ -143,7 +143,7 @@ class VideoFileController extends Controller
                 )
             );
         } else {
-            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_ERROR, Yii::t('app', 'Unable to translate video: subtitles are missing or cannot be parsed.'));
+            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_DANGER, Yii::t('app', 'Unable to translate video: subtitles are missing or cannot be parsed.'));
             $this->redirect(array('/videoFile/browse'));
         }
     }
@@ -440,7 +440,6 @@ class VideoFileController extends Controller
     public function getSubtitleTranslationDataProvider(VideoFile $model)
     {
         $subtitles = $model->getParsedSubtitles();
-
         return new CArrayDataProvider(array_values($subtitles), array(
             'id' => 'user',
             'sort' => array(
@@ -450,6 +449,7 @@ class VideoFileController extends Controller
                     'sourceMessage',
                 ),
             ),
+            'pagination' => false,
         ));
     }
 }

@@ -134,7 +134,14 @@ class AppActiveForm extends TbActiveForm
                     'label' => $model->getAttributeLabel($attributeTranslateInto),
                 )
             );
+            
             $html .= $this->createInput($inputType, $model->edited(), $attributeTranslateInto, $htmlOptions);
+
+            $errorOptions = TbArray::popValue('errorOptions', $htmlOptions, array());
+            if ($model->hasErrors($attributeTranslateInto)) {
+                TbHtml::addCssClass('error', $errorOptions);
+                $html .= $this->error($model, $attributeTranslateInto, $errorOptions);
+            }
 
             return $html;
         } else {
