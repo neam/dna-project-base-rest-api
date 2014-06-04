@@ -7,10 +7,19 @@ require.config({
     },
     paths: {
         gapminder: 'gapminder',
+        'jquery-noconflict': 'gapminder/lib/jquery-noconflict',
         jquery: 'lib/jquery/dist/jquery',
         underscore: 'lib/underscore/underscore',
         requirejs: 'lib/requirejs/require',
         backbone: 'lib/backbone/backbone',
         almond: 'lib/almond/almond'
+    },
+    map: {
+        '*': {
+            'jquery': 'jquery-noconflict'
+        },
+        'jquery-noconflict': {
+            'jquery': 'jquery'
+        }
     }
 });
