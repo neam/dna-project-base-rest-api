@@ -34,7 +34,7 @@
             // TODO: Refactor JavaScript.
             $(function() {
                 $('#<?php echo $formId; ?>-upload-iframe').on('done', function(event, p3_media_id) {
-                    $('#<?php echo $formId; ?>-modal').modal('hide');
+                    //$('#<?php echo $formId; ?>-modal').modal('hide');
                     $('<?php echo $inputSelector; ?>').append($('<option>', {value: p3_media_id, selected: 'selected'}).text('<?php echo Yii::t('crud', 'Uploaded file'); ?>'));
                     $("<?php echo $inputSelector; ?>").select2();
                 });
