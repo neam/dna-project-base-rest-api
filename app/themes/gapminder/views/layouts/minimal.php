@@ -6,7 +6,7 @@
         <div class="container">
             <div class="content">
                 <div class="row">
-                    <?php echo $this->renderBreadcrumbs(); ?>
+                    <?php //echo $this->renderBreadcrumbs(); // TODO: Move method. ?>
                 </div>
                 <?php echo $content; ?>
             </div>

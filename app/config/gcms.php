@@ -50,7 +50,7 @@ $gcmsConfig = array(
         'ext.wrest.WHttpRequest' => 'vendor.weavora.wrest.WHttpRequest',
         'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
         'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
-        'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode'
+        'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode',
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
@@ -153,7 +153,20 @@ $gcmsConfig = array(
             ),
             'returnUrl' => array('/'), // This is the default return url used if login is done from the front-page
             'profileUrl' => array('/account/dashboard'),
-        )
+        ),
+        'account' => array(
+            'class' => '\nordsoftware\yii_account\Module',
+            'classMap' => array(
+                'account' => 'Account',
+            ),
+            'controllerMap' => array(
+                'authenticate' => array(
+                    'class' => '\nordsoftware\yii_account\controllers\AuthenticateController',
+                    'layout' => 'application.themes.gapminder.views.layouts.minimal',
+                ),
+            ),
+            'fromEmailAddress' => 'noreply@gapminder.org',
+        ),
     ),
     'components' => array(
         'loginReturnUrlTracker' => array(

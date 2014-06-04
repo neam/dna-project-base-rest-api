@@ -31,7 +31,21 @@ class Account extends BaseAccount
     {
         return array_merge(
             parent::behaviors(),
-            array()
+            array(
+                'PasswordBehavior' => array(
+                    'class' => 'YiiPassword\Behavior',
+                    'defaultStrategyName' => 'bcrypt',
+                    'strategies' => array(
+                        'bcrypt' => array(
+                            'class' => 'YiiPassword\Strategies\Bcrypt',
+                            'workFactor' => 12,
+                        ),
+                        'legacy' => array(
+                            'class' => 'YiiPassword\Strategies\LegacyMd5',
+                        )
+                    ),
+                ),
+            )
         );
     }
 

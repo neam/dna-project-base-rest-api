@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "cb7e948402d24bfcc81ba5c71eba9ae3",
+    "hash": "faa5db60ff912db311ca933f5f219fd1",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1078,12 +1078,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-account.git",
-                "reference": "3f2dd4c108b7f51c5662ae3ade29ab636cb18a1d"
+                "reference": "ffc4b84302f538a344e37ba12aa0d5c03f0b6ad0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/3f2dd4c108b7f51c5662ae3ade29ab636cb18a1d",
-                "reference": "3f2dd4c108b7f51c5662ae3ade29ab636cb18a1d",
+                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/ffc4b84302f538a344e37ba12aa0d5c03f0b6ad0",
+                "reference": "ffc4b84302f538a344e37ba12aa0d5c03f0b6ad0",
                 "shasum": ""
             },
             "require": {
@@ -1094,6 +1094,7 @@
             "require-dev": {
                 "codeception/codeception": "*",
                 "crisu83/yii-caviar": "dev-develop#1859e55504f3a4076678c9b39843da604dfc43aa",
+                "crisu83/yii-consoletools": "*",
                 "yiisoft/yii": ">=1.1.14"
             },
             "type": "yii-extension",
@@ -1116,7 +1117,7 @@
                 "source": "https://github.com/nordsoftware/yii-account/tree/develop",
                 "issues": "https://github.com/nordsoftware/yii-account/issues"
             },
-            "time": "2014-06-02 06:34:26"
+            "time": "2014-06-03 13:09:09"
         },
         {
             "name": "nordsoftware/yii-emailer",
