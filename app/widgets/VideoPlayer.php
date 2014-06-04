@@ -122,8 +122,9 @@ class VideoPlayer extends CWidget
 
         $cssFiles = YII_DEBUG ? array('mediaelementplayer.css') : array('mediaelementplayer.min.css');
         $jsFiles = YII_DEBUG ? array('mediaelement-and-player.js') : array('mediaelement-and-player.min.js');
+        $depends = array('jquery');
 
-        registerPackage($assetName, $assetPath, $cssFiles, $jsFiles);
+        registerPackage($assetName, $assetPath, $cssFiles, $jsFiles, $depends);
         $this->assetBaseUrl = clientScript()->getPackageBaseUrl($assetName);
     }
 
