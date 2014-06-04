@@ -51,6 +51,7 @@ $gcmsConfig = array(
         'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
         'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
         'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode',
+        'theme' => 'application.themes.gapminder',
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
@@ -162,7 +163,11 @@ $gcmsConfig = array(
             'controllerMap' => array(
                 'authenticate' => array(
                     'class' => '\nordsoftware\yii_account\controllers\AuthenticateController',
-                    'layout' => 'application.themes.gapminder.views.layouts.minimal',
+                    'layout' => 'theme.views.layouts.minimal',
+                ),
+                'register' => array(
+                    'class' => '\nordsoftware\yii_account\controllers\RegisterController',
+                    'layout' => 'theme.views.layouts.minimal',
                 ),
             ),
             'fromEmailAddress' => 'noreply@gapminder.org',
