@@ -42,7 +42,7 @@
                 array(
                     'type' => TbHtml::NAV_TYPE_PILLS,
                     'items' => array(
-                        array('label' => 'Register', 'url' => array('/account/register')),
+                        array('label' => 'Register', 'url' => array('/account/signup')),
                         array('label' => 'Forgot your password?', 'url' => array('/account/password/forgot')),
                     ),
                     'htmlOptions' => array(

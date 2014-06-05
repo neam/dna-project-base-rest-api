@@ -151,7 +151,7 @@ $gcmsConfig = array(
                 'account' => 'Account',
             ),
             'controllerMap' => array(
-                'register' => array(
+                'signup' => array(
                     'layout' => 'theme.views.layouts.minimal',
                 ),
             ),
