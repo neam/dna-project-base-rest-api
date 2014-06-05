@@ -113,10 +113,6 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/Gapminder/yii-user"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/Gapminder/PHP-po-parser"
         },
         {
@@ -137,7 +133,6 @@
         "php": ">=5.4.0",
         "crisu83/yii-consoletools": "dev-awaiting-prs",
         "crisu83/yiistrap-widgets": "1.7.*",
-        "mishamx/yii-user": "dev-develop#78f939f",
         "phundament/jquery-file-upload": "@dev",
         "phundament/p3admin": "0.16.0",
         "phundament/p3extensions": "0.17.0",

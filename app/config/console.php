@@ -23,14 +23,12 @@ $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' 
 $modulePaths = array();
 if (DATA == "clean-db") {
     $modulePaths['clean-db'] = 'application.migrations.clean-db';
-    $modulePaths['user'] = 'vendor.mishamx.yii-user.migrations';
 }
 if (DATA == "user-generated") {
     $modulePaths['user-generated'] = 'application.migrations.user-generated';
 }
 /*
  * Currently unused
-                //'user'                  => 'vendor.mishamx.yii-user.migrations',
                 // The following migrations are not used since they are already included in the data model or the extension is not used
                 //'rights'                => 'application.migrations.rights',
                 //'p3pages'               => 'vendor.phundament.p3pages.migrations',

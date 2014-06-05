@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "134f80aa3fe4a6cf7f8b581008f03c2a",
+    "hash": "75c5f2aeca366cb13d70f590de6ae040",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -768,41 +768,6 @@
                 "yii"
             ],
             "time": "2013-10-26 10:04:31"
-        },
-        {
-            "name": "mishamx/yii-user",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "78f939f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/e8a0221e19c02579021e0aa2df57c787dd050c67",
-                "reference": "78f939f",
-                "shasum": ""
-            },
-            "type": "yii-extension",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Mikhail Mangushev",
-                    "email": "development@2mx.org"
-                }
-            ],
-            "description": "User management module",
-            "keywords": [
-                "phundament",
-                "user",
-                "yii"
-            ],
-            "support": {
-                "source": "https://github.com/Gapminder/yii-user/tree/develop"
-            },
-            "time": "2014-06-02 13:17:02"
         },
         {
             "name": "motin/yii-owner-behavior",
@@ -2678,7 +2643,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "crisu83/yii-consoletools": 20,
-        "mishamx/yii-user": 20,
         "phundament/jquery-file-upload": 20,
         "phundament/p3pages": 20,
         "phundament/p3media": 20,

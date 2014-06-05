@@ -494,7 +494,7 @@ $mainConfig = array(
     // application-level parameters that can be accessed
     // using Yii::app()->params['paramName']
     'params'     => array(
-        // this is used in contact page (and by yii-user module)
+        // this is used in contact page
         'adminEmail'           => \gapminder\envbootstrap\Identity::brand()->supportEmail,
         'signupSender'         => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
         'languages'            => $languages,
