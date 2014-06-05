@@ -9738,6 +9738,10 @@ Styleguide 5
 .layout-minimal .brand-logo {
   margin-bottom: 50px;
 }
+.layout-narrow {
+  width: inherit;
+  margin: 40px 0;
+}
 .layout-regular {
   padding-top: 95px;
 }
@@ -11481,15 +11485,10 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
   padding-left: 15px;
   padding-right: 15px;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .authenticate-controller.login-action .form-container {
     float: left;
-    width: 50%;
-  }
-}
-@media (min-width: 992px) {
-  .authenticate-controller.login-action .form-container {
-    margin-left: 25%;
+    width: 100%;
   }
 }
 .authenticate-controller.login-action .form-container .brand-logo {
@@ -15912,4 +15911,13 @@ Styleguide 9
   margin-top: 20px;
   margin-bottom: 10px;
   vertical-align: middle;
+}
+@media (min-width: 768px) {
+  .layout-narrow {
+    width: 440px;
+    margin: 40px auto;
+  }
+  .layout-narrow .container {
+    width: inherit;
+  }
 }

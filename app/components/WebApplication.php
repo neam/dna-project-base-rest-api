@@ -20,6 +20,7 @@ class WebApplication extends CWebApplication
     const LAYOUT_MAIN = '//layouts/main';
     const LAYOUT_REGULAR = '//layouts/regular';
     const LAYOUT_MINIMAL = '//layouts/minimal';
+    const LAYOUT_NARROW = '//layouts/narrow';
 
     /**
      * Registers CSS files.

@@ -160,7 +160,12 @@ $gcmsConfig = array(
             'classMap' => array(
                 'account' => 'Account',
             ),
-            'defaultLayout' => 'theme.views.layouts.minimal',
+            'controllerMap' => array(
+                'register' => array(
+                    'layout' => 'theme.views.layouts.minimal',
+                ),
+            ),
+            'defaultLayout' => 'theme.views.layouts.narrow',
             'fromEmailAddress' => 'noreply@gapminder.org',
         ),
     ),
