@@ -44,4 +44,9 @@ $I->login('martha', 'test');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
 
+// Translate the video
 $I->click('Translate', $videoContext);
+$I->click('Translate into Portuguese');
+$I->fillField(VideoFileTranslatePage::titleField('pt'), 'Video Max');
+
+// TODO: translate some subtitles

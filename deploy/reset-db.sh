@@ -31,6 +31,12 @@ if [ "$DATA" == "user-generated" ]; then
     # copy the downloaded data to the persistant p3media folder
     cp -r db/migration-base/user-generated/media/* app/data/p3media/
 
+    # make downloaded media directories owned and writable by the web server
+    chown -R nobody: app/data/p3media/
+
+    # temporarily until it is found enough to only set the user to nobody
+    chmod -R 777 app/data/p3media/
+
 fi
 
 if [ "$DATA" == "clean-db" ]; then

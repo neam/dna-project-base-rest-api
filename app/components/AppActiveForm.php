@@ -134,7 +134,7 @@ class AppActiveForm extends TbActiveForm
                     'label' => $model->getAttributeLabel($attributeTranslateInto),
                 )
             );
-            $html .= $this->createInput($inputType, $model, $attributeTranslateInto, $htmlOptions);
+            $html .= $this->createInput($inputType, $model->edited(), $attributeTranslateInto, $htmlOptions);
 
             return $html;
         } else {

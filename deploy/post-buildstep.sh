@@ -5,17 +5,16 @@ set -x
 if [ "$connectionID" == "" ]; then
     connectionID=db
 fi
-
-chown -R www-data:www-data app/data/
-chown -R www-data:www-data app/runtime/
-chown -R www-data:www-data www/assets/
-chown -R www-data:www-data www/runtime/
+chown -R nobody: app/data/
+chown -R nobody: app/runtime/
+chown -R nobody: www/assets/
+chown -R nobody: www/runtime/
 chmod -R g+rw app/data/
 chmod -R g+rw app/runtime/
 chmod -R g+rw www/assets/
 chmod -R g+rw www/runtime/
 
-# temporarily
+# temporarily until it is found enough to only set the user to nobody
 chmod -R 777 app/data/
 chmod -R 777 app/runtime/
 chmod -R 777 www/assets/
