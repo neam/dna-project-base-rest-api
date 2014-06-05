@@ -42,8 +42,8 @@
                 array(
                     'type' => TbHtml::NAV_TYPE_PILLS,
                     'items' => array(
-                        array('label' => 'Register', 'url' => array('/account/signup')),
-                        array('label' => 'Forgot your password?', 'url' => array('/account/password/forgot')),
+                        array('label' => Yii::t('user', 'Sign up'), 'url' => array('/account/signup')),
+                        array('label' => Yii::t('user', 'Forgot your password?'), 'url' => array('/account/password/forgot')),
                     ),
                     'htmlOptions' => array(
                         'class' => 'login-links',
