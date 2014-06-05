@@ -440,7 +440,6 @@ class VideoFileController extends Controller
     public function getSubtitleTranslationDataProvider(VideoFile $model)
     {
         $subtitles = $model->getParsedSubtitles();
-
         return new CArrayDataProvider(array_values($subtitles), array(
             'id' => 'user',
             'sort' => array(
@@ -450,6 +449,7 @@ class VideoFileController extends Controller
                     'sourceMessage',
                 ),
             ),
+            'pagination' => false,
         ));
     }
 }
