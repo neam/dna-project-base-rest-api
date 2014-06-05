@@ -23,6 +23,7 @@ class ProfileController extends Controller
                     'index',
                     'view',
                     'create',
+                    'edit',
                     'update',
                     'editableSaver',
                     'editableCreator',
@@ -93,6 +94,36 @@ class ProfileController extends Controller
         }
 
         $this->render('create', array('model' => $model));
+    }
+
+    /**
+     * Renders the profile page.
+     */
+    public function actionEdit()
+    {
+        $id = user()->id;
+
+        /** @var Account $model */
+        $model = Account::model()->findByPk($id);
+
+        $this->performAjaxValidation(array(
+            $model,
+            $model->profile,
+        ));
+
+        if (!request()->isAjaxRequest && isset($_POST['Profile'], $_POST['Account'])) {
+            $model->attributes = $_POST['Account'];
+            $model->profile->attributes = $_POST['Profile'];
+
+            if ($model->save() && $model->profile->save()) {
+                setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('app', 'Your account information has been updated.'));
+                $this->refresh();
+            }
+        }
+
+        $this->render('edit', array(
+            'model' => $model,
+        ));
     }
 
     public function actionUpdate($id)

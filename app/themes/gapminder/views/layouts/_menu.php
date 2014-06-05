@@ -29,7 +29,7 @@
                         array(
                             'label' => Yii::t('app', 'Dashboard'),
                             'icon' => TbHtml::ICON_TH,
-                            'url' => array('/account/dashboard'),
+                            'url' => array('/dashboard/index'),
                             'visible' => !Yii::app()->user->isGuest,
                         ),
                     ),
@@ -70,7 +70,7 @@
                                 array(
                                     'label' => Yii::t('app', 'Profile'),
                                     'icon' => 'user',
-                                    'url' => array('/account/profile'),
+                                    'url' => array('/profile/edit'),
                                     'visible' => !Yii::app()->user->isGuest
                                 ),
                                 array(

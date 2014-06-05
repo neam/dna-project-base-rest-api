@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "9efe88d5c62cdf2186516f382e891df9",
+    "hash": "d25c7c060bb32c1ef9d0748369bab5b0",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1074,22 +1074,22 @@
         },
         {
             "name": "nordsoftware/yii-account",
-            "version": "dev-develop",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-account.git",
-                "reference": "3da24db9925e8f1e5f4806e6503372afb66f8bd4"
+                "reference": "48ed2387ceeee24e100e98ace8a46296aee6b922"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/3da24db9925e8f1e5f4806e6503372afb66f8bd4",
-                "reference": "3da24db9925e8f1e5f4806e6503372afb66f8bd4",
+                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/48ed2387ceeee24e100e98ace8a46296aee6b922",
+                "reference": "48ed2387ceeee24e100e98ace8a46296aee6b922",
                 "shasum": ""
             },
             "require": {
                 "crisu83/yiistrap": "dev-bs3",
                 "ircmaxell/random-lib": "v1.0.0",
-                "phpnode/yiipassword": "dev-master#da426c2"
+                "phpnode/yiipassword": ">=1.0.3"
             },
             "require-dev": {
                 "codeception/codeception": "*",
@@ -1109,15 +1109,16 @@
             "authors": [
                 {
                     "name": "Christoffer Niska",
-                    "email": "ChristofferNiska@gmail.com"
+                    "email": "ChristofferNiska@gmail.com",
+                    "homepage": "http://crisu83.me"
                 }
             ],
             "description": "Extension that provides basic account functionality for the Yii PHP framework.",
             "support": {
-                "source": "https://github.com/nordsoftware/yii-account/tree/develop",
+                "source": "https://github.com/nordsoftware/yii-account/tree/1.0.2",
                 "issues": "https://github.com/nordsoftware/yii-account/issues"
             },
-            "time": "2014-06-04 11:10:42"
+            "time": "2014-06-05 10:44:03"
         },
         {
             "name": "nordsoftware/yii-emailer",
@@ -1183,7 +1184,7 @@
         },
         {
             "name": "phpnode/yiipassword",
-            "version": "dev-master",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpnode/yiipassword.git",
@@ -1191,14 +1192,13 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/phpnode/yiipassword/archive/f57bb30dc5a3a93181eccc509824810847a3bfc9.zip",
-                "reference": "6be5c8fcb12d79e0ceceba66d69cf7024e981b34",
+                "url": "https://github.com/phpnode/yiipassword/archive/6be5c8fcb12d79e0ceceba66d69cf7024e981b34.zip",
+                "reference": null,
                 "shasum": null
             },
             "type": "yii-extension",
             "description": "Password strategies for Yii",
-            "homepage": "https://github.com/phpnode/yiipassword",
-            "time": "2014-06-04 11:26:28"
+            "homepage": "https://github.com/phpnode/yiipassword"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -2689,14 +2689,12 @@
         "neam/yii-relational-graph-db": 20,
         "motin/yii-owner-behavior": 20,
         "sumwai/yii-fixture-helper": 20,
-        "phpnode/yiipassword": 20,
         "phpoffice/phpword": 20,
         "phpoffice/phppowerpoint": 20,
         "sepia/po-parser": 20,
         "neam/php-po2json": 20,
         "weavora/wrest": 20,
         "codemix/hybridauthmanager": 20,
-        "nordsoftware/yii-account": 20,
         "nordsoftware/yii-utils": 20,
         "crisu83/yii-formatter": 20,
         "jalle19/yii-ga": 20,
