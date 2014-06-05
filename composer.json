@@ -217,7 +217,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Phundament": "./src"
+            "Phundament": "./src",
+            "YiiPassword\\": "./vendor/phpnode/yiipassword/src"
         }
     },
     "scripts": {

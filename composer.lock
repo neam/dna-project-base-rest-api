@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "d25c7c060bb32c1ef9d0748369bab5b0",
+    "hash": "134f80aa3fe4a6cf7f8b581008f03c2a",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -689,17 +690,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/yii-ga.git",
-                "reference": "a6705d0cb4ae78b79198d98402cac2b07ad10062"
+                "reference": "a8b999b487eefb7c1cdc9d59218402390818190b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/yii-ga/zipball/a6705d0cb4ae78b79198d98402cac2b07ad10062",
-                "reference": "a6705d0cb4ae78b79198d98402cac2b07ad10062",
+                "url": "https://api.github.com/repos/Jalle19/yii-ga/zipball/a8b999b487eefb7c1cdc9d59218402390818190b",
+                "reference": "a8b999b487eefb7c1cdc9d59218402390818190b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "yiisoft/yii": ">=1.1.14"
+                "yiisoft/yii": "1.1.*"
             },
             "type": "library",
             "autoload": {
@@ -719,7 +720,7 @@
                 "googleanalytics",
                 "yii"
             ],
-            "time": "2014-05-14 06:31:47"
+            "time": "2014-06-03 12:17:38"
         },
         {
             "name": "kswedberg/jquery-smooth-scroll",
@@ -774,12 +775,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gapminder/yii-user.git",
-                "reference": "e8a0221"
+                "reference": "78f939f"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Gapminder/yii-user/zipball/e8a0221e19c02579021e0aa2df57c787dd050c67",
-                "reference": "e8a0221",
+                "reference": "78f939f",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -801,7 +802,7 @@
             "support": {
                 "source": "https://github.com/Gapminder/yii-user/tree/develop"
             },
-            "time": "2014-05-27 12:40:29"
+            "time": "2014-06-02 13:17:02"
         },
         {
             "name": "motin/yii-owner-behavior",
