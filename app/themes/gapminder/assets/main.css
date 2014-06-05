@@ -9531,6 +9531,11 @@ fieldset[disabled] .select .select-button.btn-link-dark:focus {
   line-height: 1.428571429;
   padding: 12px;
 }
+form span.help-block.error {
+  color: #e0575c;
+  font-size: 12px;
+  margin: 0 0 15px;
+}
 .list-view .list-pager {
   text-align: right;
 }

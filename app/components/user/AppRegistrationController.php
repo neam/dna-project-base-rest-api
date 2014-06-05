@@ -113,6 +113,9 @@ EOD;
                                 Yii::app()->user->login($identity, 0);
                                 $this->redirect(Yii::app()->controller->module->returnUrl);
                             } else {
+
+                                // NOTE! the following text ("Thank you for your registration.") is used by acceptance tests to test registration success.
+                                
                                 if (!Yii::app()->controller->module->activeAfterRegister && !Yii::app()->controller->module->sendActivationMail) {
                                     Yii::app()->user->setFlash('registration', UserModule::t("Thank you for your registration. Contact Admin to activate your account."));
                                 } elseif (Yii::app()->controller->module->activeAfterRegister && Yii::app()->controller->module->sendActivationMail == false
