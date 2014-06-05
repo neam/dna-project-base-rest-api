@@ -9,6 +9,5 @@
     $model->getCurrentTranslation($data->sourceMessage, $this->workflowData['translateInto']),
     array(
         'block' => true,
-        'placeholder' => $model->getSubtitleFallbackTranslation($data->sourceMessage, $this->workflowData['translateInto']),
     )
 ); ?>
