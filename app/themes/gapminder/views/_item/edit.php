@@ -7,7 +7,7 @@
 /* @var string $controllerCssClass */
 ?>
 <?php $this->breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl; // TODO: Get link dynamically. ?>
-<?php $this->breadcrumbs[Yii::t('app', 'Dashboard')] = array('/account/dashboard'); ?>
+<?php $this->breadcrumbs[Yii::t('app', 'Dashboard')] = array('/dashboard/index'); ?>
 <?php $this->breadcrumbs[] = $model->itemLabel; ?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
     <?php $this->widget(

@@ -58,7 +58,7 @@
                                 array(
                                     'label' => Yii::t('app', 'Dashboard'),
                                     'icon' => 'th-large',
-                                    'url' => array('/account/dashboard'),
+                                    'url' => array('/dashboard/index'),
                                     'visible' => !Yii::app()->user->isGuest
                                 ),
                                 array(

@@ -24,7 +24,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                                 )); ?>
                             </div>
                             <div class="profile-actions">
-                                <?php echo TbHtml::link(TbHtml::icon(TbHtml::ICON_COG), array('/account/profile')); ?>
+                                <?php echo TbHtml::link(TbHtml::icon(TbHtml::ICON_COG), array('/profile/edit')); ?>
                             </div>
                         </div>
                         <h1 class="profile-name"><?php echo $model->profile->getFullName(); ?></h1>
