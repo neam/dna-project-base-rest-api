@@ -79,15 +79,6 @@ class MemberSteps extends AppSteps
         ),
     );
 
-    function findAccountByUsername($username)
-    {
-        $account = Account::model()->findByAttributes(array('username' => $username));
-        if ($account === null) {
-            throw new Exception('Failed to find account with username "$username".');
-        }
-        return $account;
-    }
-
     function login($username, $password)
     {
         $I = $this;
@@ -466,6 +457,13 @@ class MemberSteps extends AppSteps
         $I = $this;
         $I->amGoingTo('remove related items');
         $I->unselectSelect2Option($field, $items);
+    }
+
+    function seeFieldIsEmpty($field)
+    {
+        $I = $this;
+        $I->amGoingTo("check that $field is empty");
+        $I->seeInField($field, '');
     }
 
 }

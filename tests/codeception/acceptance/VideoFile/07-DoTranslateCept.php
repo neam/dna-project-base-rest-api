@@ -47,6 +47,11 @@ $I->see('Max video');
 // Translate the video
 $I->click('Translate', $videoContext);
 $I->click('Translate into Portuguese');
+
+// Source language texts can not be edited
+$I->dontSeeElementInDOM(VideoFileEditPage::$titleField);
+// Test that the field is empty (had issues with field being set to the original language attribute value)
+$I->seeFieldIsEmpty(VideoFileTranslatePage::titleField('pt'));
 $I->fillField(VideoFileTranslatePage::titleField('pt'), 'Video Max');
 
 // TODO: translate some subtitles
