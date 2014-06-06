@@ -64,7 +64,7 @@ class MemberSteps extends AppSteps
         array(
             'name' => 'jack',
             'password' => 'test',
-            'email' => 'jack@example.com',
+            'email' => 'dev+jackexternal@gapminder.org',
             'groupRoles' => array(
                 'Proofreaders' => array('GroupReviewer'),
             ),
@@ -72,7 +72,7 @@ class MemberSteps extends AppSteps
         array(
             'name' => 'martha',
             'password' => 'test',
-            'email' => 'martha@example.com',
+            'email' => 'dev+marthaexternal@gapminder.org',
             'groupRoles' => array(
                 'Translators' => array('GroupTranslator'),
             ),
