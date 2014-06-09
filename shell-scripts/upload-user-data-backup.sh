@@ -18,7 +18,7 @@ deploy/configure-s3cmd.sh
 # make php binaries available
 export PATH="/app/vendor/php/bin/:$PATH"
 
-DATETIME=$(date +"%Y-%d-%m_%H%M%S")
+DATETIME=$(date +"%Y-%m-%d_%H%M%S")
 FOLDER=ENV-$ENV
 
 # dump and upload schema sql
