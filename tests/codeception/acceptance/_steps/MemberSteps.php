@@ -339,7 +339,7 @@ class MemberSteps extends AppSteps
      */
     function dontSeeSelect2OptionIsSelected($selectId, $option)
     {
-        return $this->seeSelect2OptionIsSelected($selectId, $option, true);
+        $this->seeSelect2OptionIsSelected($selectId, $option, true);
     }
 
     /**
@@ -464,6 +464,13 @@ class MemberSteps extends AppSteps
         $I = $this;
         $I->amGoingTo("check that $field is empty");
         $I->seeInField($field, '');
+    }
+
+    function switchLanguage($language)
+    {
+        $I = $this;
+        $I->click('.navbar .language-menu');
+        $I->click($language, '.navbar .language-menu');
     }
 
 }

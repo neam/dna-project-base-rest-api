@@ -17,6 +17,11 @@ $I->amOnPage(ProfilePage::$URL);
 $I->selectSelect2Option('#Profile_language1', 'Portuguese');
 $I->selectSelect2Option('#Profile_language2', 'Swedish');
 $I->selectSelect2Option('#Profile_language3', 'English');
+
+$I->waitForElementNotVisible('#item-form-modal', 30);
+$I->waitForElementVisible(VideoFileEditPage::$submitButton);
+
+
 $I->click('Save');
 
 $I->waitForText('Your account information has been updated.');
@@ -50,6 +55,7 @@ Its the other way around!
 4
 00:00:16,199 --> 00:00:22,000
 Saving the poor childrens lives is required to end population growth.
+
 EOD;
 
 $I->editVideoFile(
@@ -61,12 +67,15 @@ $I->editVideoFile(
     )
 );
 
+$I->amOnPage(VideoFileBrowsePage::$URL);
+
 $videoContext = VideoFileBrowsePage::modelContext('Max video');
 
+$I->amGoingTo('add "Max video" to the group "Translators"');
 $I->click('Translators', $videoContext);
 $I->logout();
 
-
+$I->amGoingTo('login as Martha and translate "Max video" into portuguese');
 $I->login('martha', 'test');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
@@ -79,6 +88,37 @@ $I->click('Translate into Portuguese');
 $I->dontSeeElementInDOM(VideoFileEditPage::$titleField);
 // Test that the field is empty (had issues with field being set to the original language attribute value)
 $I->seeFieldIsEmpty(VideoFileTranslatePage::titleField('pt'));
-$I->fillField(VideoFileTranslatePage::titleField('pt'), 'Video Max');
+$I->fillField(VideoFileTranslatePage::titleField('pt'), 'Vídeo Max');
+$I->click(VideoFileTranslatePage::$submitButton);
 
-// TODO: translate some subtitles
+$I->fillField(
+    "A common misunderstanding is that if we save all the poor children: the world will become overpopulated.",
+    "Um equívoco comum é que, se salvar todas as crianças pobres: o mundo vai se tornar superpovoado."
+);
+
+$I->fillField("This may sound logical, but it's wrong.", "Isto pode parecer lógico, mas é errado.");
+
+$I->fillField("Its the other way around!", "É o contrário!");
+
+$I->fillField(
+    "Saving the poor childrens lives is required to end population growth.",
+    "Salvando as crianças pobres vive é necessário para acabar com o crescimento da população."
+);
+
+$I->click(VideoFileTranslatePage::$submitButton);
+$I->amOnPage(VideoFileBrowsePage::$URL);
+$I->see('Max video');
+$I->dontSee('Vídeo Max');
+$I->switchLanguage('Português');
+$I->dontSee('Max video');
+$I->see('Vídeo Max');
+$I->switchLanguage('English');
+
+$I->click('View', $videoContext);
+$I->click(VideoFileViewPage::$videoContainer);
+// starts at 4 seconds but video.loading might take longer
+$I->waitForText("A common misunderstanding is that if we save all the poor children: the world will become overpopulated.", 10);
+
+$I->switchLanguage('Português');
+$I->click(VideoFileViewPage::$videoContainer);
+$I->waitForText("Um equívoco comum é que, se salvar todas as crianças pobres: o mundo vai se tornar superpovoado.", 10);

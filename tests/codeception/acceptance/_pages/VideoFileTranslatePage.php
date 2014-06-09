@@ -1,6 +1,6 @@
 <?php
 
-class VideoFileTranslatePage
+class VideoFileTranslatePage extends \ItemEditPage
 {
     // include url of current page
     static $URL = '?r=videoFile/translate';
@@ -30,8 +30,6 @@ class VideoFileTranslatePage
     {
         return '#VideoFile_about_' . $langCode;
     }
-
-    // TODO: add subtitles
 
     /**
      * Basic route example for your current URL
