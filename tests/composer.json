@@ -24,7 +24,7 @@
         "php": ">=5.4.0"
     },
     "require-dev": {
-        "codeception/codeception": "~1.8.5",
+        "codeception/codeception": "~1.8.6",
         "psychomieze/sauceextension": "@dev"
     },
     "scripts": {

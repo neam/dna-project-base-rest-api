@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "f43dc54f318efb91025da56d39b60b6f",
+    "hash": "6e36404e7e1d8b0b948d4a44d406f125",
     "packages": [
 
     ],
@@ -330,16 +331,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "1.8.5",
+            "version": "1.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "83ec480b24374fa627fb34fda23580949000a5bc"
+                "reference": "81b993c42b23800cb573489511a1a6927f50c914"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/83ec480b24374fa627fb34fda23580949000a5bc",
-                "reference": "83ec480b24374fa627fb34fda23580949000a5bc",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/81b993c42b23800cb573489511a1a6927f50c914",
+                "reference": "81b993c42b23800cb573489511a1a6927f50c914",
                 "shasum": ""
             },
             "require": {
@@ -351,6 +352,7 @@
                 "php": ">=5.3.19",
                 "phpunit/phpunit": "3.7.*",
                 "symfony/console": "~2.3",
+                "symfony/dom-crawler": "~2.3,!=2.3.14,!=2.3.15,!=2.4.5,!=dev-master",
                 "symfony/event-dispatcher": "~2.3",
                 "symfony/finder": "~2.3",
                 "symfony/yaml": "~2.3"
@@ -393,7 +395,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2014-04-04 21:22:42"
+            "time": "2014-06-03 23:43:32"
         },
         {
             "name": "fabpot/goutte",
