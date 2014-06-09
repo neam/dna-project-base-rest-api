@@ -369,7 +369,7 @@ $mainConfig = array(
         'ga' => array(
             'class' => 'yiiga\components\GoogleAnalytics',
             'accountId' => GA_TRACKING_ID,
-            'cookieDomain' => $_SERVER['HTTP_HOST'],
+            'cookieDomain' => php_sapi_name() == 'cli' ? 'extension-not-used-in-cli.example.com' : $_SERVER['HTTP_HOST'], // Avoids error notice. TODO: Refactor
         ),
         'image'         => array(
             'class'  => 'vendor.phundament.p3extensions.components.image.CImageComponent',
