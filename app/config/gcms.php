@@ -153,6 +153,7 @@ $gcmsConfig = array(
             ),
             'controllerMap' => array(
                 'signup' => array(
+                    'class' => 'application.controllers.SignupController',
                     'layout' => 'theme.views.layouts.minimal',
                 ),
             ),

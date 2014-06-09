@@ -20,17 +20,9 @@ class ProfileController extends Controller
             array(
                 'allow',
                 'actions' => array(
-                    'index',
-                    'view',
-                    'create',
                     'edit',
-                    'update',
-                    'editableSaver',
-                    'editableCreator',
-                    'admin',
-                    'delete',
                 ),
-                'roles' => array('Profile.*'),
+                'users' => array('@'),
             ),
             array(
                 'deny',

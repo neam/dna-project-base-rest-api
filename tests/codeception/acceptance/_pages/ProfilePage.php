@@ -3,7 +3,7 @@
 class ProfilePage
 {
     // include url of current page
-    static $URL = '?r=account/profile';
+    static $URL = '?r=profile/edit';
 
 
     /**

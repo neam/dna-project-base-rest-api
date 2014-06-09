@@ -47,7 +47,7 @@
                             'items' => Controller::getLanguageMenuItems(),
                         ),
                         array(
-                            'label' => ucfirst(Yii::app()->user->name),
+                            'label' => Yii::app()->user->name,
                             'visible' => !Yii::app()->user->isGuest,
                             'icon' => Yii::app()->user->isAdmin() ? 'warning-sign' : 'user',
                             'id' => 'accountMenuLink',
