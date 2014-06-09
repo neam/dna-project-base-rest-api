@@ -5,7 +5,14 @@
 ?>
 <div class="file-field-2cols">
     <div class="field-column">
-        <?php echo $form->select2ControlGroup($model, 'clip_webm_media_id', $model->getVideoOptions(VideoFile::MIME_TYPE_VIDEO_WEBM)); ?>
+        <?php echo $form->select2ControlGroup(
+            $model,
+            'clip_webm_media_id',
+            $model->getVideoOptions(VideoFile::MIME_TYPE_VIDEO_WEBM),
+            array(
+                'empty' => Yii::t('app', 'None'),
+            )
+        ); ?>
     </div>
     <div class="field-column">
         <div class="form-group">
@@ -13,7 +20,6 @@
             <?php echo TbHtml::button(
                 Yii::t('app', 'Upload new'),
                 array(
-                    'icon' => TbHtml::ICON_CLOUD_UPLOAD,
                     'block' => true,
                     'class' => 'upload-btn',
                     'data-toggle' => 'modal',
@@ -43,7 +49,6 @@
             <?php echo TbHtml::button(
                 Yii::t('app', 'Upload new'),
                 array(
-                    'icon' => TbHtml::ICON_CLOUD_UPLOAD,
                     'block' => true,
                     'class' => 'upload-btn',
                     'data-toggle' => 'modal',

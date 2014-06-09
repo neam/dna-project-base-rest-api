@@ -9,7 +9,7 @@ class Controller extends CController
      * @var string the default layout for the controller view. Defaults to '//layouts/column1',
      * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
      */
-    public $layout = '//layouts/column1';
+    public $layout = WebApplication::LAYOUT_REGULAR;
     /**
      * @var array context menu items. This property will be assigned to {@link CMenu::items}.
      */
@@ -28,6 +28,21 @@ class Controller extends CController
     {
         parent::init();
         Yii::app()->homeUrl = $this->createUrl('/');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function beforeAction($action)
+    {
+        $traits = class_uses(get_class($this));
+
+        if (in_array('ItemController', $traits)) {
+            /** @var self|ItemController $this */
+            $this->beforeItemControllerAction($action);
+        }
+
+        return parent::beforeAction($action);
     }
 
     /**
@@ -83,7 +98,7 @@ class Controller extends CController
     static public function getLanguageMenuItems()
     {
         $languages = array();
-        foreach (Yii::app()->params['languages'] AS $code => $name) {
+        foreach (LanguageHelper::getLanguageList() AS $code => $name) {
             $languages[] = array(
                 'label' => $name,
                 'url' => array_merge(array(''), $_GET, array('lang' => $code)),
@@ -125,7 +140,7 @@ class Controller extends CController
 
         ob_start();
 
-        echo CHtml::openTag('ul', array('class' => 'pull-left navbar-breadcrumbs'));
+        echo CHtml::openTag('ul', array('class' => 'breadcrumbs'));
 
 		end($breadcrumbs);
 		$lastLink = key($breadcrumbs);

@@ -6,6 +6,16 @@
 class PermissionHelper
 {
     /**
+     * @var array runtime cache for roles.
+     */
+    private static $_roles = array();
+
+    /**
+     * @var array runtime cache for groups.
+     */
+    private static $_groups = array();
+
+    /**
      * Adds an account to a specific group.
      *
      * @param int $accountId
@@ -34,7 +44,9 @@ class PermissionHelper
 
         $model = new GroupHasAccount();
         $model->attributes = $attributes;
-        $model->save();
+        if (!$model->save()) {
+            throw new SaveException($model);
+        }
 
         return true;
     }
@@ -85,6 +97,20 @@ class PermissionHelper
     }
 
     /**
+     * @param $accountId
+     *
+     * @return GroupHasAccount[]
+     */
+    static public function getGroupHasAccountsForAccount($accountId)
+    {
+        $criteria = new CDbCriteria();
+        $criteria->addCondition('account_id = :accountId');
+        $criteria->params[':accountId'] = $accountId;
+
+        return GroupHasAccount::model()->findAll($criteria);
+    }
+
+    /**
      * Returns whether the given account has a specific role in a group.
      *
      * @param int $accountId
@@ -105,29 +131,51 @@ class PermissionHelper
     }
 
     /**
+     * Returns a map of all roles (id => title) that the account belongs to, regardless of group.
+     *
+     * @param int $accountId the account model id.
+     *
+     * @return array the role map.
+     */
+    static public function getRolesForAccount($accountId)
+    {
+        $result = array();
+        $roles = self::getRoles();
+        $groupHasAccounts = self::getGroupHasAccountsForAccount($accountId);
+        foreach ($groupHasAccounts as $groupHasAccount) {
+            if (isset($roles[$groupHasAccount->role_id]) && !isset($result[$groupHasAccount->role_id])) {
+                $result[$groupHasAccount->role_id] = $roles[$groupHasAccount->role_id];
+            }
+        }
+        return $result;
+    }
+
+    /**
      * Adds a node to a specific group.
      *
      * @param int $nodeId
-     * @param string $group
+     * @param string $groupId
      *
      * @return bool
      */
-    static public function addNodeToGroup($nodeId, $group)
+    static public function addNodeToGroup($nodeId, $groupId)
     {
         $attributes = array(
             'node_id' => $nodeId,
-            'group_id' => self::groupNameToId($group),
+            'group_id' => self::groupNameToId($groupId),
         );
 
         if (self::nodeHasGroup($attributes)) {
             return false; // already in group
         }
 
-        Yii::log(sprintf('Adding node #%d to group "%s".', $nodeId, $group), CLogger::LEVEL_TRACE, 'permissions');
+        Yii::log(sprintf('Adding node #%d to group "%s".', $nodeId, $groupId), CLogger::LEVEL_TRACE, 'permissions');
 
         $model = new NodeHasGroup();
         $model->attributes = $attributes;
-        $model->save();
+        if (!$model->save()) {
+            throw new SaveException($model);
+        }
 
         return true;
     }
@@ -180,8 +228,27 @@ class PermissionHelper
      */
     static public function roleNameToId($name)
     {
+        $return = array_search($name, self::getRoles());
+        if (!$return) {
+            throw new CException("No role with name $name");
+        }
+        return $return;
+    }
+
+    /**
+     * Converts a role id to its name.
+     *
+     * @param integer $id
+     *
+     * @return string
+     */
+    static public function roleIdToName($id)
+    {
         $roles = self::getRoles();
-        return isset($roles[$name]) ? $roles[$name] : -1;
+        if (!isset($roles[$id])) {
+            throw new CException("No role with id $id");
+        }
+        return $roles[$id];
     }
 
     /**
@@ -193,14 +260,28 @@ class PermissionHelper
      */
     static public function groupNameToId($name)
     {
-        $groups = self::getGroups();
-        return isset($groups[$name]) ? $groups[$name] : -1;
+        $return = array_search($name, self::getGroups());
+        if ($return === false) {
+            throw new CException("No group with name $name");
+        }
+        return $return;
     }
 
     /**
-     * @var array runtime cache for roles.
+     * Converts a group id to its name.
+     *
+     * @param integer $id
+     *
+     * @return string
      */
-    private static $_roles = array();
+    static public function groupIdToName($id)
+    {
+        $groups = self::getGroups();
+        if (!isset($groups[$id])) {
+            throw new CException("No group with id $id");
+        }
+        return $groups[$id];
+    }
 
     /**
      * Return a map over all the roles (name => id).
@@ -212,18 +293,13 @@ class PermissionHelper
         if (empty(self::$_roles)) {
             $roles = array();
             foreach (Role::model()->findAll() as $model) {
-                $roles[$model->title] = $model->id;
+                $roles[$model->id] = $model->title;
             }
             self::$_roles = $roles;
         }
 
         return self::$_roles;
     }
-
-    /**
-     * @var array runtime cache for groups.
-     */
-    private static $_groups = array();
 
     /**
      * Return a map over all the groups (name => id).
@@ -235,50 +311,11 @@ class PermissionHelper
         if (empty(self::$_groups)) {
             $groups = array();
             foreach (Group::model()->findAll() as $model) {
-                $groups[$model->title] = $model->id;
+                $groups[$model->id] = $model->title;
             }
             self::$_groups = $groups;
         }
 
         return self::$_groups;
-    }
-
-    /**
-     * Applies the access restrictions to the given criteria.
-     *
-     * @param CDbCriteria $criteria
-     * @param array $groupRoles
-     *
-     * @return CDbCriteria
-     */
-    static public function applyAccessCriteria(CDbCriteria $criteria, array $roleNames)
-    {
-        $roleIds = array();
-
-        foreach ($roleNames as $roleName) {
-            $roleIds[] = self::roleNameToId($roleName);
-        }
-
-        $roleIds = !empty($roleNames)
-            ? implode(', ', $roleIds)
-            : '-1'; // TODO: Replace with a safe "null" value, or only conditionally add the "IN ($roleIds)" statement to the query.
-
-        // All items should be found only once.
-        $criteria->distinct = true;
-
-        // Apply all the necessary joins to check for group based access.
-        $criteria->join = implode(
-            ' ',
-            array(
-                "LEFT JOIN `node_has_group` AS `nhg` ON (`t`.`node_id` = `nhg`.`node_id`)",
-                "LEFT JOIN `group_has_account` AS `gha` ON (`gha`.`group_id` = `nhg`.`group_id` AND `gha`.`role_id` IN ($roleIds))", // TODO: Include $roleIds as a criteria param.
-            )
-        );
-
-        // Restrict access based on the account id.
-        $criteria->addCondition("(`gha`.`account_id` = :accountId OR `t`.`owner_id` = :accountId)");
-        $criteria->params[':accountId'] = Yii::app()->user->id;
-
-        return $criteria;
     }
 }

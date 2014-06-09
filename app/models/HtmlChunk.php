@@ -22,7 +22,7 @@ class HtmlChunk extends BaseHtmlChunk
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return 'HTML chunk #' . $this->id;
     }
 
     public function behaviors()

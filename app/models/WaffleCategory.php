@@ -4,6 +4,14 @@
 Yii::setPathOfAlias('WaffleCategory', dirname(__FILE__));
 Yii::import('WaffleCategory.*');
 
+/**
+ * i18n properties for this model fetched through the I18nColumnsBehavior class.
+ * @property string $list_name
+ * @property string $property_name
+ * @property string $possessive
+ * @property string $choice_format
+ * @property string $description
+ */
 class WaffleCategory extends BaseWaffleCategory
 {
     use ItemTrait;

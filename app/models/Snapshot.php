@@ -4,13 +4,27 @@
 Yii::setPathOfAlias('Snapshot', dirname(__FILE__));
 Yii::import('Snapshot.*');
 
+/**
+ * Properties made available through the RestrictedAccessBehavior class.
+ * @property boolean $enableRestriction
+ *
+ * The followings are the available model relations:
+ * @property Chapter[] $parentChapters
+ * @property Tool[] $tools
+ * @property Node[] $related
+ */
 class Snapshot extends BaseSnapshot
 {
     use ItemTrait;
 
     public $firstFlowStep = 'info';
 
-    // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
+    // Add your model-specific methods here. This file will not be overridden by gtc except you force it.
+
+    /**
+     * @param string $className
+     * @return Snapshot
+     */
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -32,7 +46,6 @@ class Snapshot extends BaseSnapshot
         return array_merge(
             parent::behaviors(),
             array(
-                'goBehavior' => 'app.behaviors.GoActiveRecordBehavior',
             )
         );
     }
@@ -188,14 +201,13 @@ class Snapshot extends BaseSnapshot
     /**
      * The attributes that is returned by the REST api
      */
-    public function getAllAttributes()
+    public function getAllAttributes($includeRelated = true)
     {
-
         $response = new stdClass();
 
         $response->id = $this->id;
         $response->vizabi_state = json_decode(trim($this->vizabi_state));
-        $response->tool = !is_null($this->tool_id) ? $this->tool->allAttributes : null;
+        $response->tool = ($this->tool !== null) ? $this->tool->getAllAttributes() : null;
         $response->embed_override = $this->embed_override;
         $response->title = $this->title;
         $response->slug = $this->slug;
@@ -205,10 +217,15 @@ class Snapshot extends BaseSnapshot
             $response->thumbnail->original = $this->thumbnailMedia->createUrl('original-public', true);
             $response->thumbnail->thumb = $this->thumbnailMedia->createUrl('related-thumb', true);
         }
-        $response->related = $this->related;
+
+        if ($includeRelated) {
+            $response->related = array();
+            foreach ($this->related as $related) {
+                $response->related[] = $related->item()->getAllAttributes(false);
+            }
+        }
 
         return $response;
-
     }
 
     public function search($criteria = null)

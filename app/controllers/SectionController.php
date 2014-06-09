@@ -2,7 +2,10 @@
 
 class SectionController extends Controller
 {
-    #public $layout='//layouts/column2';
+
+    use ItemController;
+
+    public $modelClass = 'Section';
 
     public $defaultAction = "admin";
     public $scenario = "crud";
@@ -16,7 +19,7 @@ class SectionController extends Controller
 
     public function accessRules()
     {
-        return array(
+        return array_merge($this->itemAccessRules(), array(
             array(
                 'allow',
                 'actions' => array(
@@ -35,7 +38,7 @@ class SectionController extends Controller
                 'deny',
                 'users' => array('*'),
             ),
-        );
+        ));
     }
 
     public function beforeAction($action)
@@ -65,6 +68,27 @@ class SectionController extends Controller
     {
         $model = $this->loadModel($id);
         $this->render('view', array('model' => $model,));
+    }
+
+    public function actionAdd($pageId)
+    {
+        $model = new Section();
+        $model->page_id = $pageId;
+
+        if ($model->save()) {
+
+            if ($page = Page::model()->findByPk($pageId)) {
+                $edge = new Edge();
+                $edge->from_node_id = $page->node_id;;
+                $edge->to_node_id = $model->node_id;
+                $edge->relation = 'sections';
+                $edge->save();
+            }
+
+            $this->redirect(array('/section/continueAuthoring', 'id' => $model->id));
+        }
+
+        $this->redirect(Yii::app()->request->urlReferrer);
     }
 
     public function actionCreate()

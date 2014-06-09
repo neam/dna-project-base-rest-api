@@ -2,6 +2,7 @@
 
 class SiteController extends Controller
 {
+    public $defaultAction = 'index';
 
     public function accessRules()
     {
@@ -19,6 +20,7 @@ class SiteController extends Controller
                 'actions' => array(
                     'index',
                     'error',
+                    'sleeper',
                     'contact',
                     'logout',
                 ),
@@ -91,6 +93,13 @@ class SiteController extends Controller
             $error['code'] = 412;
             $this->render('error', $error);
         }
+    }
+
+    public function actionSleeper() {
+
+        sleep(30);
+        die("I woke up after 30 seconds");
+
     }
 
     /**

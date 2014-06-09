@@ -5,24 +5,30 @@ set -x
 if [ "$connectionID" == "" ]; then
     connectionID=db
 fi
-chown -R www-data:www-data app/data/
-chown -R www-data:www-data app/runtime/
-chown -R www-data:www-data www/assets/
-chown -R www-data:www-data www/runtime/
+chown -R nobody: app/data/
+chown -R nobody: app/runtime/
+chown -R nobody: www/assets/
+chown -R nobody: www/runtime/
 chmod -R g+rw app/data/
 chmod -R g+rw app/runtime/
 chmod -R g+rw www/assets/
 chmod -R g+rw www/runtime/
 
-# temporarily
+# temporarily until it is found enough to only set the user to nobody
 chmod -R 777 app/data/
 chmod -R 777 app/runtime/
 chmod -R 777 www/assets/
 chmod -R 777 www/runtime/
 
-# todo: move to php/node.js buildstep
-# bower install # --allow-root
+set -o errexit
 
+# install bower dependencies
+npm install -g bower
+bower install --allow-root
+
+set +o errexit
+
+# remove assets folder in case it was committed by mistake or we are updating an existing instance for some reason
 rm -r www/assets/*
 
 # necessary for user data backup uploads
@@ -39,11 +45,8 @@ fi
 if [ ! "$ENV" == "" ]; then
 
     app/yiic fixture --connectionID=$connectionID load
-    app/yiic migrate --connectionID=$connectionID --interactive=0
+    shell-scripts/yiic-migrate.sh --connectionID=$connectionID --interactive=0
     app/yiic databaseviewgenerator --connectionID=$connectionID item
-
-    app/yiic authorizationhierarchy reset
-    app/yiic authorizationhierarchy build
 
 fi
 

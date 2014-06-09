@@ -9,11 +9,11 @@ class VideoFileController extends Controller
         ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
     }
 
-    public $modelClass = "VideoFile";
+    public $modelClass = 'VideoFile';
 
     #public $layout='//layouts/column2';
 
-    public $defaultAction = "admin";
+    public $defaultAction = "browse";
     public $scenario = "crud";
 
     public function filters()
@@ -25,65 +25,41 @@ class VideoFileController extends Controller
 
     public function accessRules()
     {
-        return array_merge($this->itemAccessRules(), array(
-            array('allow',
-                'actions' => array(
-                    'subtitles',
-                    'downloadSubtitles',
-                ),
-                'users' => array('*'),
-            ),
-            array('allow',
-                'actions' => array(
-                    'index',
-                    'view',
-                ),
-                'users' => array('@'),
-            ),
-            array('allow',
-                'actions' => array(
-                    'view',
-                    'create',
-                    'update',
-                    'editableSaver',
-                    'editableCreator',
-                    'admin',
-                    'delete',
-                ),
-                'roles' => array('VideoFile.*'),
-            ),
+        return array_merge(
+            $this->itemAccessRules(),
             array(
-                'deny',
-                'users' => array('*'),
-            ),
-        ));
-    }
-
-    protected function listenForEdges($id)
-    {
-        if (isset($_POST[$this->modelClass]["exercises_to_add"])) {
-            $this->addEdges($id, $_POST[$this->modelClass]["exercises_to_add"], 'Exercise');
-        } else {
-            if (isset($_POST[$this->modelClass]["exercises_to_remove"])) {
-                $this->removeEdges($_POST[$this->modelClass]["exercises_to_remove"]);
-            } else {
-                if (isset($_POST[$this->modelClass]["snapshots_to_add"])) {
-                    $this->addEdges($id, $_POST[$this->modelClass]["snapshots_to_add"], 'Snapshot');
-                } else {
-                    if (isset($_POST[$this->modelClass]["snapshots_to_remove"])) {
-                        $this->removeEdges($_POST[$this->modelClass]["snapshots_to_remove"]);
-                    } else {
-                        if (isset($_POST[$this->modelClass]["videos_to_add"])) {
-                            $this->addEdges($id, $_POST[$this->modelClass]["videos_to_add"], 'VideoFile');
-                        } else {
-                            if (isset($_POST[$this->modelClass]["videos_to_remove"])) {
-                                $this->removeEdges($_POST[$this->modelClass]["videos_to_remove"]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
+                array('allow',
+                    'actions' => array(
+                        'subtitles',
+                        'downloadSubtitles',
+                    ),
+                    'users' => array('*'),
+                ),
+                array('allow',
+                    'actions' => array(
+                        'index',
+                        'view',
+                    ),
+                    'users' => array('@'),
+                ),
+                array('allow',
+                    'actions' => array(
+                        'view',
+                        'create',
+                        'update',
+                        'editableSaver',
+                        'editableCreator',
+                        'admin',
+                        'delete',
+                    ),
+                    'roles' => array('VideoFile.*'),
+                ),
+                array(
+                    'deny',
+                    'users' => array('*'),
+                ),
+            )
+        );
     }
 
     public function beforeAction($action)
@@ -117,39 +93,47 @@ class VideoFileController extends Controller
      */
     public function actionTranslate($id, $step, $translateInto)
     {
+        $this->step = $step;
+
         $this->scenario = "into_$translateInto-step_$step";
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
         $subtitles = $model->getParsedSubtitles();
+
         if (isset($_POST['SourceMessage']) && !empty($_POST['SourceMessage'])) {
             foreach ($_POST['SourceMessage'] as $id => $translation) {
                 $message = Message::model()->findByAttributes(array(
                     'id' => $id,
                     'language' => $translateInto,
                 ));
+
                 if (!isset($message)) {
                     $message = new Message();
                     $message->id = $id;
                     $message->language = $translateInto;
                 }
+
                 $message->translation = $translation;
                 $message->save();
             }
         }
+
         if (!empty($subtitles)) {
             $this->performAjaxValidation($model);
             $this->saveAndContinueOnSuccess($model);
             $this->populateWorkflowData(
                 $model,
-                "translate",
+                'translate',
                 Yii::t(
                     'app',
                     'Translate into {translateIntoLanguage}',
-                    array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])
+                    array('{translateIntoLanguage}' => LanguageHelper::getName($translateInto))
                 ),
                 $translateInto
             );
+
             $stepCaptions = $model->flowStepCaptions();
+
             $this->render(
                 '/_item/edit',
                 array(
@@ -159,7 +143,7 @@ class VideoFileController extends Controller
                 )
             );
         } else {
-            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_ERROR, Yii::t('app', 'Unable to translate video: subtitles are missing or cannot be parsed.'));
+            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_DANGER, Yii::t('app', 'Unable to translate video: subtitles are missing or cannot be parsed.'));
             $this->redirect(array('/videoFile/browse'));
         }
     }
@@ -314,8 +298,6 @@ class VideoFileController extends Controller
     public function actionIndex()
     {
         $dataProvider = new CActiveDataProvider('VideoFile');
-        $criteria = $this->getTranslatorCriteria(VideoFile::model()->tableName());
-        $dataProvider->setCriteria($criteria);
         $this->render('index', array('dataProvider' => $dataProvider));
     }
 
@@ -431,7 +413,7 @@ class VideoFileController extends Controller
         file_put_contents($path, $model->_subtitles);
         $paths[$fileName] = $path;
 
-        foreach (Yii::app()->params['languages'] as $locale => $name) {
+        foreach (LanguageHelper::getCodes() as $locale) {
             $fileName = "subtitles_$locale.srt";
             $path = "$basePath/{$fileName}";
             $attribute = "subtitles_$locale";
@@ -450,4 +432,24 @@ class VideoFileController extends Controller
         Yii::app()->request->sendFile($fileName, file_get_contents($filePath));
     }
 
+    /**
+     * Returns a data provider for translating subtitles.
+     * @param VideoFile $model
+     * @return CArrayDataProvider
+     */
+    public function getSubtitleTranslationDataProvider(VideoFile $model)
+    {
+        $subtitles = $model->getParsedSubtitles();
+        return new CArrayDataProvider(array_values($subtitles), array(
+            'id' => 'user',
+            'sort' => array(
+                'attributes' => array(
+                    'id',
+                    'timestamp',
+                    'sourceMessage',
+                ),
+            ),
+            'pagination' => false,
+        ));
+    }
 }

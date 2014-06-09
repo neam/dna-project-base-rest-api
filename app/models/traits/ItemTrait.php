@@ -4,6 +4,12 @@ trait ItemTrait
 {
     public $itemDescription;
 
+    /**
+     * Runtime cache for validation progress percentages.
+     * @var array
+     */
+    public $validationProgress = array();
+
     public function saveWithChangeSet()
     {
         /** @var ActiveRecord|QaStateBehavior $model */
@@ -209,9 +215,23 @@ trait ItemTrait
         }
     }
 
+    /**
+     * Returns the validation progress percentage for the given scenario (checks the runtime cache).
+     * @param string $scenario
+     * @return integer
+     */
+    public function getValidationProgress($scenario)
+    {
+        if (isset($this->validationProgress[$scenario])) {
+            return $this->validationProgress[$scenario];
+        }
+
+        $this->validationProgress[$scenario] = $this->calculateValidationProgress($scenario);
+        return $this->validationProgress[$scenario];
+    }
+
     public function flowStepRules()
     {
-
         // Metadata
         $flowSteps = $this->flowSteps();
         $statusRequirements = $this->statusRequirements();
@@ -307,7 +327,7 @@ trait ItemTrait
 
             // Add an always invalid status requirement for each language upon the first translatable attribute
             $i18nRules = array();
-            foreach (Yii::app()->params["languages"] as $language => $label) {
+            foreach (LanguageHelper::getCodes() as $language) {
                 $i18nRules[] = array($attribute, 'compare', 'compareValue' => -1, 'on' => 'translate_into_' . $language);
 
                 foreach ($this->flowSteps() as $step => $fields) {
@@ -327,7 +347,7 @@ trait ItemTrait
                 if (!in_array($sourceLanguageContentAttribute, $currentlyTranslatableAttributes)) {
                     continue;
                 }
-                foreach (Yii::app()->params["languages"] as $lang => $label) {
+                foreach (LanguageHelper::getCodes() as $lang) {
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "into_$lang-step_$step");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "into_$lang-step_$step");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "into_$lang-step_$step");
@@ -401,6 +421,23 @@ trait ItemTrait
         } else {
             throw new CException("$modelClass does not have an attribute '$attribute'.");
         }
+    }
+
+    /**
+     * Renders an item image.
+     * @param string $p3preset
+     * @return string the HTML.
+     */
+    public function renderImage($p3preset = 'dashboard-item-task-thumbnail')
+    {
+        $presetConfig = Yii::app()->getModule('p3media')->params['presets'][$p3preset];
+
+        $width = $presetConfig['commands']['resize'][0];
+        $height = $presetConfig['commands']['resize'][1];
+
+        return isset($this->thumbnail_media_id)
+            ? $this->thumbnailMedia->image($p3preset)
+            : TbHtml::image("http://placehold.it/{$width}x{$height}");
     }
 
     /**

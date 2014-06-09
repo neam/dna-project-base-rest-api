@@ -28,14 +28,13 @@
                         '\TbButton',
                         array(
                             'label' => Yii::t('model', 'Preview'),
-                            'icon' => TbHtml::ICON_EYE_OPEN,
                             'color' => TbHtml::BUTTON_COLOR_DEFAULT,
                             'url' => array(
                                 'preview',
                                 'id' => $model->{$model->tableSchema->primaryKey},
                                 'editingUrl' => Yii::app()->request->url,
                             ),
-                            'visible' => $model->checkAccess('Preview'),
+                            'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Preview'),
                         )
                     ); ?>
                 </div>
@@ -43,7 +42,7 @@
         </div>
     </div>
     <div class="flowbar-content">
-        <?php if ($this->action->id === 'edit'): ?>
+        <?php if ($this->actionUsesEditWorkflow()): ?>
             <?php $this->renderPartial('/_item/elements/_action-buttons', compact('model')); ?>
         <?php else: ?>
             <?php $this->renderPartial('/_item/elements/_required-workflow', compact('model')); ?>
@@ -57,29 +56,25 @@
             ?>
         </div>
         <div class="foot-actions">
-            <div class="btn-group">
-                <?php echo TbHtml::submitButton(
-                    Yii::t('model', 'Save changes'),
-                    array(
-                        'class' => 'btn-dirtyforms',
-                        'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                        'name' => 'save-changes',
-                    )
-                ); ?>
-            </div>
-            <div class="btn-group">
-                <?php $this->widget(
-                    "\TbButton",
-                    array(
-                        'color' => TbHtml::BUTTON_COLOR_LINK,
-                        'label' => Yii::t('model', 'Reset'),
-                        'url' => Yii::app()->request->url,
-                        'htmlOptions' => array(
-                            'class' => 'btn-dirtyforms ignoredirty',
-                        ),
-                    )
-                ); ?>
-            </div>
+            <?php $this->widget(
+                '\TbButton',
+                array(
+                    'color' => TbHtml::BUTTON_COLOR_LINK,
+                    'label' => Yii::t('model', 'Reset'),
+                    'url' => Yii::app()->request->url,
+                    'htmlOptions' => array(
+                        'class' => 'btn-dirtyforms ignoredirty',
+                    ),
+                )
+            ); ?>
+            <?php echo TbHtml::submitButton(
+                Yii::t('model', 'Save changes'),
+                array(
+                    'class' => 'btn-dirtyforms',
+                    'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                    'name' => 'save-changes',
+                )
+            ); ?>
         </div>
     </div>
 <?php $this->endWidget(); ?>

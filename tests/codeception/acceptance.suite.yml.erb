@@ -21,7 +21,7 @@ modules:
             host: '<%= ENV['SAUCE_USERNAME'] %>:<%= ENV['SAUCE_ACCESS_KEY'] %>@ondemand.saucelabs.com'
             port: 80
             <% end %>
-            wait: 1
+            wait: 0
             restart: true
 
 env:
@@ -29,7 +29,7 @@ env:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>/index-test.php
+                    url: http://<%= ENV['CMS_HOST'] %>
                     browser: 'chrome'
 
     cms-saucelabs-chrome-win8:

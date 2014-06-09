@@ -39,10 +39,10 @@
                                 'continueAuthoring',
                                 'id' => $model->{$model->tableSchema->primaryKey}
                             ),
-                            'visible' => $model->checkAccess('Edit'),
+                            'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Edit'),
                         )
                     ); ?>
-                <?php elseif ($this->action->id === 'edit'): ?>
+                <?php elseif ($this->actionUsesEditWorkflow()): ?>
                     <?php $this->widget(
                         '\TbButton',
                         array(
@@ -54,7 +54,7 @@
                                 'id' => $model->{$model->tableSchema->primaryKey},
                                 'editingUrl' => $this->action->id === 'view' ? null : Yii::app()->request->url
                             ),
-                            'visible' => $model->checkAccess('Preview'),
+                            'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Preview'),
                         )
                     ); ?>
                 <?php endif; ?>

@@ -6,23 +6,24 @@ Yii::import('Role.*');
 
 class Role extends BaseRole
 {
-
+    // System roles
     const DEVELOPER = 'Developer';
-    const SUPER_ADMINISTRATOR = 'Super Administrator';
+    const SUPER_ADMINISTRATOR = 'SuperAdministrator';
 
-    const GROUP_ADMINISTRATOR = 'Group Administrator';
-    const GROUP_PUBLISHER = 'Group Publisher';
-    const GROUP_EDITOR = 'Group Editor';
-    const GROUP_APPROVER = 'Group Approver';
-    const GROUP_MODERATOR = 'Group Moderator';
-    const GROUP_CONTRIBUTOR = 'Group Contributor';
-    const GROUP_REVIEWER = 'Group Reviewer';
-    const GROUP_TRANSLATOR = 'Group Translator';
-    const GROUP_MEMBER = 'Group Member';
+    // Group roles
+    const GROUP_ADMINISTRATOR = 'GroupAdministrator';
+    const GROUP_PUBLISHER = 'GroupPublisher';
+    const GROUP_EDITOR = 'GroupEditor';
+    const GROUP_APPROVER = 'GroupApprover';
+    const GROUP_MODERATOR = 'GroupModerator';
+    const GROUP_CONTRIBUTOR = 'GroupContributor';
+    const GROUP_REVIEWER = 'GroupReviewer';
+    const GROUP_TRANSLATOR = 'GroupTranslator';
+    const GROUP_MEMBER = 'GroupMember';
 
-    const MEMBER = 'Member';
-    const ANONYMOUS = 'Anonymous';
-
+    // Default roles
+    const AUTHENTICATED = 'Authenticated';
+    const GUEST = 'Guest';
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)

@@ -8,7 +8,7 @@
         <section id="<?php echo $section['slug']; ?>">
             <div class="page-header">
                 <h1><?php echo $section['title']; ?></h1>
-                <?php if ($evaluate && isset($section['model'])): ?>
+                <?php if ($this->actionIsEvaluate() && isset($section['model'])): ?>
                     <?php $this->widget(
                         'ModalCommentsWidget',
                         array(
@@ -22,7 +22,7 @@
                 <?php foreach ($section['subsections'] as $subsection): ?>
                     <div class="view">
                         <h2><?php echo $subsection['title'] ?></h2>
-                        <?php if ($evaluate && isset($subsection['model'])): ?>
+                        <?php if ($this->actionIsEvaluate() && isset($subsection['model'])): ?>
                             <?php $this->widget(
                                 'ModalCommentsWidget',
                                 array(
@@ -36,12 +36,11 @@
                                 '/' . lcfirst(get_class($subsection['model'])) . '/_view',
                                 array(
                                     'data' => $subsection['model'],
-                                    'evaluate' => $evaluate,
                                 )
                             ); ?>
                         <?php else: ?>
                             <?php echo $subsection['markup']; ?>
-                            <?php if ($evaluate && isset($subsection['attribute'])): ?>
+                            <?php if ($this->actionIsEvaluate() && isset($subsection['attribute'])): ?>
                                 <?php $this->widget(
                                     'ModalCommentsWidget',
                                     array(
@@ -59,12 +58,11 @@
                         '/' . lcfirst(get_class($section['model'])) . '/_view',
                         array(
                             'data' => $section['model'],
-                            'evaluate' => $evaluate,
                         )
                     ); ?>
                 <?php else: ?>
                     <?php echo $section['markup']; ?>
-                    <?php if ($evaluate && isset($section['attribute'])): ?>
+                    <?php if ($this->actionIsEvaluate() && isset($section['attribute'])): ?>
                         <?php $this->widget(
                             'ModalCommentsWidget',
                             array(

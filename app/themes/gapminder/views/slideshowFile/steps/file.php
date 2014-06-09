@@ -5,7 +5,14 @@
 ?>
 <div class="file-field-2cols">
     <div class="field-column">
-        <?php echo $form->select2ControlGroup($model, 'original_media_id', $model->getSlideshowFileOptions()); ?>
+        <?php echo $form->select2ControlGroup(
+            $model,
+            'original_media_id',
+            $model->getSlideshowFileOptions(),
+            array(
+                'empty' => Yii::t('app', 'None'),
+            )
+        ); ?>
     </div>
     <div class="field-column">
         <div class="form-group">
@@ -13,7 +20,6 @@
             <?php echo TbHtml::button(
                 Yii::t('app', 'Upload new'),
                 array(
-                    'icon' => TbHtml::ICON_CLOUD_UPLOAD,
                     'block' => true,
                     'class' => 'upload-btn',
                     'data-toggle' => 'modal',
@@ -41,6 +47,7 @@
             $model->getSlideshowFileOptions(),
             array(
                 'disabled' => !$this->canEditSourceLanguage(),
+                'empty' => Yii::t('app', 'None'),
             )
         ); ?>
     </div>
@@ -50,7 +57,6 @@
             <?php echo TbHtml::button(
                 Yii::t('app', 'Upload new'),
                 array(
-                    'icon' => TbHtml::ICON_CLOUD_UPLOAD,
                     'block' => true,
                     'class' => 'upload-btn',
                     'data-toggle' => 'modal',
@@ -73,7 +79,14 @@
 <?php if ($this->workflowData['translateInto']): ?>
     <div class="file-field-2cols">
         <div class="field-column">
-            <?php echo $form->select2ControlGroup($model, 'processed_media_id_' . $this->workflowData['translateInto'], $model->getSlideshowFileOptions()); ?>
+            <?php echo $form->select2ControlGroup(
+                $model,
+                'processed_media_id_' . $this->workflowData['translateInto'],
+                $model->getSlideshowFileOptions(),
+                array(
+                    'empty' => Yii::t('app', 'None'),
+                )
+            ); ?>
         </div>
         <div class="field-column">
             <div class="form-group">
@@ -81,7 +94,6 @@
                 <?php echo TbHtml::button(
                     Yii::t('app', 'Upload new'),
                     array(
-                        'icon' => TbHtml::ICON_CLOUD_UPLOAD,
                         'block' => true,
                         'class' => 'upload-btn',
                         'data-toggle' => 'modal',

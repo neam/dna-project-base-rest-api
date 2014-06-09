@@ -6,10 +6,9 @@
  * See also config.php, for composer installation and update "hooks"
  */
 
-// configuration files precedence: main-local, main-{env}, main
-
-// also includes environment config file, eg. 'development' or 'production', we merge the files (if available!) at the botton
+// include gapminder-specific configuration. merged with main configuration in the bottom
 $gcmsConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'gcms.php';
+$gcmsConfig = require($gcmsConfigFile);
 
 // convenience variables
 $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
@@ -17,6 +16,7 @@ $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SE
     dirname($_SERVER['SCRIPT_NAME']);
 
 require('includes/languages.php');
+require('includes/languageDirections.php');
 
 // main application configuration
 $mainConfig = array(
@@ -71,7 +71,7 @@ $mainConfig = array(
         'vendor.phundament.p3extensions.widgets.ckeditor.*', // shared classes
         'vendor.schmunk42.relation.widgets.*', //Include For p3media for media meta update.
         // imports for components from packages, which do not support composer autoloading
-        'vendor.mishamx.yii-user.models.*', // User Model
+        //'vendor.mishamx.yii-user.models.*', // User Model
         'vendor.crisu83.yii-rights.components.*', // RWebUser
         //'vendor.clevertech.yiibooster.src.helpers.*', //
         //'vendor.clevertech.yiibooster.src.widgets.*', //
@@ -367,6 +367,11 @@ $mainConfig = array(
                 ),
             ),
         ),
+        'ga' => array(
+            'class' => 'yiiga\components\GoogleAnalytics',
+            'accountId' => GA_TRACKING_ID,
+            'cookieDomain' => $_SERVER['HTTP_HOST'],
+        ),
         'image'         => array(
             'class'  => 'vendor.phundament.p3extensions.components.image.CImageComponent',
             // GD or ImageMagick
@@ -495,7 +500,7 @@ $mainConfig = array(
         ),
         'user'          => array(
             // enable cookie-based authentication
-            'class'          => 'RWebUser',
+            //'class'          => 'RWebUser',
             // crisu83/yii-rights: Allows super users access implicitly.
             'behaviors'      => array('vendor.schmunk42.web-user-behavior.WebUserBehavior'),
             // compatibility behavior for yii-user and yii-rights
@@ -511,9 +516,10 @@ $mainConfig = array(
     // using Yii::app()->params['paramName']
     'params'     => array(
         // this is used in contact page (and by yii-user module)
-        'adminEmail'           => 'user@example.com',
-        'signupSender'         => 'signup@gapminder.org',
+        'adminEmail'           => \gapminder\envbootstrap\Identity::brand()->supportEmail,
+        'signupSender'         => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
         'languages'            => $languages,
+        'languageDirections'   => $languageDirections,
         'ext.ckeditor.options' => array(
             'type'                            => 'fckeditor',
             'height'                          => 400,
@@ -588,8 +594,4 @@ $mainConfig = array(
     ),
 );
 
-if (is_file($gcmsConfigFile)) {
-    return CMap::mergeArray($mainConfig, require($gcmsConfigFile));
-} else {
-    return $mainConfig;
-}
+return CMap::mergeArray($mainConfig, $gcmsConfig);

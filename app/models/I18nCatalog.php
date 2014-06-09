@@ -4,9 +4,15 @@
 Yii::setPathOfAlias('I18nCatalog', dirname(__FILE__));
 Yii::import('I18nCatalog.*');
 
+/**
+ * i18n properties for this model fetched through the I18nColumnsBehavior class.
+ * @property string $po_contents
+ */
 class I18nCatalog extends BaseI18nCatalog
 {
     use ItemTrait;
+
+    public $firstTranslationFlowStep = 'i18n';
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
@@ -39,7 +45,7 @@ class I18nCatalog extends BaseI18nCatalog
         // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
         $attribute = "po_contents";
         $manualI18nRules = array();
-        foreach (Yii::app()->params["languages"] as $language => $label) {
+        foreach (LanguageHelper::getCodes() as $language) {
             $manualI18nRules[] = array($attribute, 'validatePoContentsTranslation', 'on' => 'translate_into_' . $language);
 
             foreach ($this->flowSteps() as $step => $fields) {
@@ -110,11 +116,10 @@ class I18nCatalog extends BaseI18nCatalog
      */
     public function parsePoContents()
     {
-
+        // TODO: Implement error handling. The parser currently raises an ambiguous undefined variable error if the format of the submitted PO content is invalid.
         $poparser = new Sepia\PoParser();
         $entries = $poparser->readVariable($this->po_contents);
         return $entries;
-
     }
 
     /**
@@ -195,44 +200,40 @@ class I18nCatalog extends BaseI18nCatalog
 
     public function translatePoJsonMessages($messages, $lang)
     {
-        $category = $this->getTranslationCategory('po_contents');
         $return = $messages;
         foreach ($return as $key => &$entry) {
-
             // Skip headers entry
             if (empty($key)) {
                 continue;
             }
 
+            $items = explode("\x04", $key);
+            $context = (count($items) > 1) ? $items[0] : null;
+            $sourceMessage = (isset($items[1])) ? $items[1] : $items[0];
+            $category = $this->getTranslationCategory('po_contents', $context);
+
             // The entry has plural forms if the first array element is not null
             if (!is_null($entry[0])) {
-
-                // The source content first plural form (the singular form) is the $key, the second plural form is the first $entry element
-                $sourceMessage = ChoiceFormatHelper::toString(array($key, $entry[0]), $this->source_language);
+                // The source content first plural form (the singular form) is the $sourceMessage,
+                // the second plural form is the first $entry element
+                $sourceMessage = ChoiceFormatHelper::toString(array($sourceMessage, $entry[0]), $this->source_language);
                 $message = Yii::t($category, $sourceMessage, array(), 'displayedMessages');
-
                 // The translation should be sent as elements 1->end of array
                 $entry = array($entry[0]);
-                //var_dump($sourceMessage, $message, ChoiceFormatHelper::toArray($message, $lang));
                 $translationChoiceFormatArray = ChoiceFormatHelper::toArray($message, $lang);
-                foreach ($translationChoiceFormatArray as $pluralForm => $translation) {
-                    //var_dump($pluralForm, $translation);
-
-                    // Special fallback - in case the target language has more plural forms than the source language we'll supply the "true" plural form as fallback for the non-existing plural forms
+                foreach ($translationChoiceFormatArray as $translation) {
+                    // Special fallback - in case the target language has more plural forms than the source language
+                    // we'll supply the "true" plural form as fallback for the non-existing plural forms
                     if (is_null($translation)) {
                         $translation = $translationChoiceFormatArray["true"];
                     }
-
                     $entry[] = $translation;
                 }
-
             } else {
-                $sourceMessage = $key;
                 $message = Yii::t($category, $sourceMessage, array(), 'displayedMessages');
                 // The translation should be sent as element 1
                 $entry[1] = $message;
             }
-
         }
         return $return;
     }
@@ -360,11 +361,18 @@ class I18nCatalog extends BaseI18nCatalog
 
     /**
      * Returns the translation category for the current model and attribute.
+     *
+     * @param string $attribute
+     * @param string|null $context
      * @return string
      */
-    public function getTranslationCategory($attribute)
+    public function getTranslationCategory($attribute, $context = null)
     {
-        return 'i18n_catalog-' . $this->id . '-' . $attribute;
+        if ($context !== null) {
+            return 'i18n_catalog-' . $this->id . '-' . $context . '-' . $attribute;
+        } else {
+            return 'i18n_catalog-' . $this->id . '-' . $attribute;
+        }
     }
 
 }

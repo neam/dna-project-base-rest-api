@@ -3,7 +3,14 @@
 <div class="fields-left">
     <div class="profile-picture">
         <div class="picture-select">
-            <?php echo $form->select2ControlGroup($model, 'picture_media_id', $model->getPictureOptions()); ?>
+            <?php echo $form->select2ControlGroup(
+                $model,
+                'picture_media_id',
+                $model->getPictureOptions(),
+                array(
+                    'empty' => Yii::t('app', 'None'),
+                )
+            ); ?>
         </div>
         <div class="picture-upload">
             <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>

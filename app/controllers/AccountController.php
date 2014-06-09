@@ -2,11 +2,19 @@
 
 class AccountController extends Controller
 {
-    #public $layout='//layouts/column2';
+    /**
+     * @var string
+     */
+    public $defaultAction = 'profile';
 
-    public $defaultAction = "admin";
-    public $scenario = "crud";
+    /**
+     * @var string
+     */
+    public $scenario = 'crud';
 
+    /**
+     * @inheritDoc
+     */
     public function filters()
     {
         return array(
@@ -15,6 +23,9 @@ class AccountController extends Controller
         );
     }
 
+    /**
+     * @inheritDoc
+     */
     public function accessRules()
     {
         return array(
@@ -22,11 +33,13 @@ class AccountController extends Controller
                 'allow',
                 'actions' => array(
                     'admin',
-                    'toggleRole',
+                    'permissions',
                     'delete',
                     'deleteRelations',
+                    'view',
+                    'activate',
                 ),
-                'roles' => array('Super Administrator'),
+                'roles' => array(Role::SUPER_ADMINISTRATOR),
             ),
             array(
                 'allow',
@@ -39,7 +52,7 @@ class AccountController extends Controller
                     'editableCreator',
                     'delete',
                 ),
-                'roles' => array('Account.*'),
+                'roles' => array('Account.*'), // TODO Fix this permission check
             ),
             array(
                 'allow',
@@ -55,10 +68,20 @@ class AccountController extends Controller
                     'translations',
                     'profile',
                     'history',
+                ),
+                'users' => array('@'),
+            ),
+            array(
+                'allow',
+                'actions' => array(
+                    'permissions',
+                    'toggleRole',
                     'addToGroup',
                     'removeFromGroup',
                 ),
-                'users' => array('@'),
+                'expression' => function() {
+                    return Yii::app()->user->checkAccess('GrantPermission');
+                }
             ),
             array(
                 'deny',
@@ -67,9 +90,13 @@ class AccountController extends Controller
         );
     }
 
+    /**
+     * @inheritDoc
+     */
     public function beforeAction($action)
     {
         parent::beforeAction($action);
+
         // map identifcationColumn to id
         if (!isset($_GET['id']) && isset($_GET['id'])) {
             $model = Account::model()->find(
@@ -78,95 +105,32 @@ class AccountController extends Controller
                     ':id' => $_GET['id']
                 )
             );
+
             if ($model !== null) {
                 $_GET['id'] = $model->id;
             } else {
                 throw new CHttpException(400);
             }
         }
+
         if ($this->module !== null) {
             $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
         }
+
         return true;
     }
 
+    /**
+     * Displays the account dashboard page.
+     */
     public function actionDashboard()
     {
-        $id = Yii::app()->user->id;
-        $model = $this->loadModel($id);
-
-        $lang1 = $model->profile->language1;
-        $lang2 = $model->profile->language2;
-        $lang3 = $model->profile->language3;
-
-        $lang1Sql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoPrimaryLanguage' AS action,
-                    translate_into_{$lang1}_validation_progress AS progress,
-                    0 AS relevance
-                    FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language1 IS NOT NULL AND i.id IS NOT NULL";
-
-        $lang2Sql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoSecondaryLanguage' AS action,
-                    translate_into_{$lang2}_validation_progress AS progress,
-                    0 AS relevance
-                    FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language2 IS NOT NULL AND i.id IS NOT NULL";
-
-        $lang3Sql = "SELECT i.id as id, i.model_class, i._title, 'TranslateIntoTertiaryLanguage' AS action,
-                    translate_into_{$lang3}_validation_progress AS progress,
-                    0 AS relevance
-                    FROM `item` i,account user INNER JOIN profile profile WHERE user.id = :user_id AND profile.language3 IS NOT NULL AND i.id IS NOT NULL";
-
-        $fillProfileLanguageSql = "SELECT 0 as id, '' as model_class, '' as _title, 'SupplyProfileLanguages' AS action, CASE
-                           WHEN (profile.language1 IS NOT NULL OR profile.language2 IS NOT NULL OR profile.language2 IS NOT NULL) THEN 100
-                           ELSE 0
-                       END
-                    AS progress,
-                    9999 AS relevance
-                    FROM account INNER JOIN profile ON account.id = profile.user_id AND account.id = :user_id";
-
-        $sqls = array();
-        if (is_null($lang1) && is_null($lang2) && is_null($lang3)) {
-            $sqls[] = $fillProfileLanguageSql;
-        }
-        if (!is_null($lang1)) {
-            $sqls[] = $lang1Sql;
-        }
-        if (!is_null($lang2)) {
-            $sqls[] = $lang2Sql;
-        }
-        if (!is_null($lang3)) {
-            $sqls[] = $lang3Sql;
-        }
-
-        // Dashboard items query
-        $virtualDashboardActionTableSql = implode("\nUNION ALL\n", $sqls);
-
-        // if checkaccess Editor
-        //where status IS NOT Null
-
-        //if checkaccess Translator
-        //where status IN ('PUBLIC') OR own
-
-        $mainCommand = Yii::app()->db->createCommand('SELECT * FROM (' . $virtualDashboardActionTableSql . ') as dashboard_action');
-        $countCommand = Yii::app()->db->createCommand('SELECT COUNT(*) FROM (' . $virtualDashboardActionTableSql . ') as dashboard_action');
-        $mainCommand->params = $countCommand->params = array(':user_id' => Yii::app()->user->id);
-
-        $dataProvider = new CSqlDataProvider($mainCommand, array(
-            'totalItemCount' => $countCommand->queryScalar(),
-            'sort' => array(
-                'attributes' => array(
-                    'relevance, progress',
-                ),
-                'defaultOrder' => array(
-                    'relevance, progress ASC',
-                ),
-            ),
-            'pagination' => array(
-                'pageSize' => 10,
-            ),
-        ));
-
-        $this->render('dashboard', array('model' => $model, 'dataProvider' => $dataProvider));
+        $this->render('dashboard', array('model' => $this->loadModel(Yii::app()->user->id)));
     }
 
+    /**
+     * Displays the translations page.
+     */
     public function actionTranslations()
     {
         $id = Yii::app()->user->id;
@@ -174,6 +138,9 @@ class AccountController extends Controller
         $this->render('translations', array('model' => $model,));
     }
 
+    /**
+     * Displays the profile page.
+     */
     public function actionProfile()
     {
         $id = user()->id;
@@ -201,6 +168,9 @@ class AccountController extends Controller
         ));
     }
 
+    /**
+     * Displays the history page.
+     */
     public function actionHistory()
     {
         $id = Yii::app()->user->id;
@@ -214,18 +184,93 @@ class AccountController extends Controller
         $this->render('history', array('model' => $model, 'dataProvider' => $dataProvider));
     }
 
+    /**
+     * Displays a public profile page.
+     * @param integer $id account ID
+     */
     public function actionPublicProfile($id)
     {
         $model = $this->loadModel($id);
         $this->render('public-profile', array('model' => $model,));
     }
 
+    /**
+     * Displays a profile page.
+     * @param integer $id account ID
+     */
     public function actionView($id)
     {
         $model = $this->loadModel($id);
-        $this->render('view', array('model' => $model,));
+
+        $groups = array_merge(MetaData::projectGroups(), MetaData::topicGroups(), MetaData::skillGroups());
+        $groupRoles = MetaData::groupRoles();
+
+        $rawData = array();
+
+        $id = 1;
+        foreach ($groups as $groupName => $groupLabel) {
+            // TODO fix this, must use stdClass because of the stupid TbToggleColumn
+            $row = new stdClass();
+
+            $row->id = $id++;
+            $row->accountId = $model->id;
+            $row->groupName = $groupName;
+            $row->groupLabel = $groupLabel;
+
+            foreach ($groupRoles as $roleName => $roleLabel) {
+                $row->$roleName = $model->groupRoleIsActive($groupName, $roleName);
+            }
+
+            $rawData[] = $row;
+        }
+
+        $dataProvider = new CArrayDataProvider(
+            $rawData,
+            array(
+                'id' => 'permissions',
+                'pagination' => false,
+            )
+        );
+
+        $columns = array();
+
+        $columns[] = array(
+            'class' => 'CDataColumn',
+            'header' => Yii::t('admin', 'Group name'),
+            'name' => 'groupLabel',
+        );
+
+        $groupModeratorRoles = MetaData::groupModeratorRoles();
+        foreach ($groupRoles as $roleName => $roleLabel) {
+            if (Yii::app()->user->checkAccess('GrantGroupAdminPermissions')
+                || (isset($groupModeratorRoles[$roleName]) && Yii::app()->user->checkAccess('GrantGroupModeratorPermissions'))
+            ) {
+                $columns[] = array(
+                    'class' => 'GroupRoleToggleColumn',
+                    'displayText' => false,
+                    'header' => $roleLabel,
+                    'name' => $roleName,
+                    'toggleAction' => 'account/toggleRole',
+                    'value' => function($data) use ($roleName) {
+                        return $data->$roleName;
+                    },
+                );
+            }
+        }
+
+        $this->render(
+            'view',
+            array(
+                'columns' => $columns,
+                'dataProvider' => $dataProvider,
+                'model' => $model,
+            )
+        );
     }
 
+    /**
+     * Displays the account creation page.
+     */
     public function actionCreate()
     {
         $model = new Account;
@@ -254,6 +299,10 @@ class AccountController extends Controller
         $this->render('create', array('model' => $model));
     }
 
+    /**
+     * Displays the account update page.
+     * @param integer $id account ID.
+     */
     public function actionUpdate($id)
     {
         $model = $this->loadModel($id);
@@ -283,7 +332,7 @@ class AccountController extends Controller
 
     public function actionEditableSaver()
     {
-        $es = new TbEditableSaver('Account'); // classname of model to be updated
+        $es = new TbEditableSaver('Account'); // class name of model to be updated
         $es->update();
     }
 
@@ -310,7 +359,7 @@ class AccountController extends Controller
 
     /**
      * Deletes an account.
-     * @param integer $id the account ID.
+     * @param integer $id account ID
      * @throws CHttpException if unable to delete.
      */
     public function actionDelete($id)
@@ -342,31 +391,47 @@ class AccountController extends Controller
 
     /**
      * Deletes account-related records to satisfy the foreign key constraints.
-     * @param integer $id the account ID.
+     * @param integer $id account ID
      */
     public function deleteRelations($id)
     {
         // TODO: Delete account-related records.
     }
 
-    public function actionIndex()
-    {
-        $dataProvider = new CActiveDataProvider('Account');
-        $this->render('index', array('dataProvider' => $dataProvider,));
-    }
-
+    /**
+     * Displays the page for managing accounts.
+     */
     public function actionAdmin()
     {
-        $model = new Account('search');
-        $model->unsetAttributes();
+        $dataProvider = new CActiveDataProvider('Account');
 
-        if (isset($_GET['Account'])) {
-            $model->attributes = $_GET['Account'];
-        }
+        $columns = array(
+            array(
+                'class' => 'AccountLinkColumn',
+                'header' => '',
+                'labelExpression' => '$data->itemLabel',
+                'urlExpression' => 'Yii::app()->createUrl("account/view", array("id" => $data["id"]))',
+            ),
+            array(
+                'class' => 'ActivateLinkColumn',
+                'labelExpression' => '(int)$data->status === 0 ? Yii::t("account", "Activate") : ""',
+                'urlExpression' => '(int)$data->status === 0 ? Yii::app()->createUrl("account/activate", array("id" => $data["id"])) : ""',
+            ),
+            array(
+                'class' => '\TbButtonColumn',
+                'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
+                'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
+                'deleteButtonUrl' => 'Yii::app()->controller->createUrl("delete", array("id" => $data->id))',
+            ),
+        );
 
-        $this->render('admin', array(
-            'model' => $model,
-        ));
+        $this->render(
+            'admin',
+            array(
+                'dataProvider' => $dataProvider,
+                'columns' => $columns,
+            )
+        );
     }
 
     /**
@@ -376,20 +441,37 @@ class AccountController extends Controller
      */
     public function actionToggleRole($id, $attribute)
     {
-        // todo: make dynamic
-        $group = 'GapminderInternal';
+        list ($group, $role) = explode('_', $attribute);
 
         $attributes = array(
             'account_id' => $id,
             'group_id' => PermissionHelper::groupNameToId($group),
-            'role_id' => PermissionHelper::roleNameToId($attribute),
+            'role_id' => PermissionHelper::roleNameToId($role),
         );
 
         if (!PermissionHelper::groupHasAccount($attributes)) {
-            PermissionHelper::addAccountToGroup($id, $group, $attribute);
+            PermissionHelper::addAccountToGroup($id, $group, $role);
         } else {
-            PermissionHelper::removeAccountFromGroup($id, $group, $attribute);
+            PermissionHelper::removeAccountFromGroup($id, $group, $role);
         }
+    }
+
+    /**
+     * Activates a given user (if not already activated).
+     * @param string $id the user ID.
+     */
+    public function actionActivate($id)
+    {
+        $account = $this->loadModel($id);
+
+        if ($account->status > 0) {
+            return;
+        }
+
+        $account->status = 1;
+        $account->save(true, array('status'));
+
+        $this->redirect(array('admin'));
     }
 
     /**
@@ -399,6 +481,7 @@ class AccountController extends Controller
      */
     public function actionAddToGroup($id, $group, $role, $returnUrl)
     {
+        // TODO Check that the user actually has sufficient privileges to do this.
         PermissionHelper::addAccountToGroup($id, $group, $role);
         $this->redirect(TbHtml::decode($returnUrl));
     }
@@ -410,10 +493,16 @@ class AccountController extends Controller
      */
     public function actionRemoveFromGroup($id, $group, $role, $returnUrl)
     {
+        // TODO Check that the user actually has sufficient privileges to do this.
         PermissionHelper::removeAccountFromGroup($id, $group, $role);
         $this->redirect(TbHtml::decode($returnUrl));
     }
 
+    /**
+     * @param string $id
+     * @return Account
+     * @throws CHttpException
+     */
     public function loadModel($id)
     {
         if (is_null($id)) {

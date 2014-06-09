@@ -5,8 +5,8 @@
 // Include envbootstrap - see app/config/envbootstrap/README.md for more information
 $envbootstrap_strategy = getenv('ENVBOOTSTRAP_STRATEGY');
 if (empty($envbootstrap_strategy)) {
-    Yii::log("ENVBOOTSTRAP_STRATEGY empty, defaulting to self-detect", CLogger::LEVEL_INFO);
-    $envbootstrap_strategy = "self-detect";
+    Yii::log("ENVBOOTSTRAP_STRATEGY empty, defaulting to local", CLogger::LEVEL_INFO);
+    $envbootstrap_strategy = "local";
 }
 $envbootstrap = dirname(__FILE__) . '/envbootstrap/' . $envbootstrap_strategy . '/envbootstrap.php';
 if (!is_readable($envbootstrap)) {
@@ -35,8 +35,8 @@ $gcmsConfig = array(
         'env' => 'development',
     ),
     'preload' => array( //'ezc', // trying out if we can lazy-load this instead of preloading it...
-                        // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login
-                        'loginReturnUrlTracker'
+        // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login
+        'loginReturnUrlTracker'
     ),
     'aliases' => array(
         // bower components
@@ -72,8 +72,11 @@ $gcmsConfig = array(
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
         'vendor.weavora.wrest.behaviors.*',
+        'application.components.dashboard.*',
         'application.components.user.*',
+        'application.components.validators.*',
         'application.behaviors.EzcWorkflowBehavior',
+        'application.behaviors.*',
         'application.workflows.custom.*',
         'application.workflows.*',
         'application.controllers.traits.*',
@@ -105,11 +108,34 @@ $gcmsConfig = array(
                         ),
                         'type' => 'jpg',
                     ),
+                    'dashboard-item-task-thumbnail' => array(
+                        'name' => 'Dashboard Item Task Thumbnail',
+                        'commands' => array(
+                            'resize' => array(210, 120, 7), // Image::AUTO
+                            'quality' => '85',
+                        ),
+                        'type' => 'jpg',
+                    ),
+                    'item-workflow-preview' => array(
+                        'name' => 'Item Workflow Preview',
+                        'commands' => array(
+                            'resize' => array(442, 253, 7),
+                            'quality' => 85,
+                        ),
+                    ),
                     'related-thumb' => array(
                         'name' => 'Related Panel Thumbnail',
                         'commands' => array(
                             'resize' => array(200, 200, 2),
                             'quality' => '100',
+                        ),
+                        'type' => 'jpg',
+                    ),
+                    'user-profile-picture' => array(
+                        'name' => 'User Profile Picture',
+                        'commands' => array(
+                            'resize' => array(195, 195, 7), // Image::AUTO
+                            'quality' => '85',
                         ),
                         'type' => 'jpg',
                     ),
@@ -220,8 +246,8 @@ $gcmsConfig = array(
             'tablePrefix' => 'ezc_',
         ),
         'sentry' => array(
-            'dns' => 'https://f04403a913c647c88aa97bb1a3261f48:1096055a3e5840e59f84409db2d8e159@app.getsentry.com/20208',
-            'enabledEnvironments' => array('stage.cms.gapminder.org', 'cms.gapminder.org'),
+            'dns' => SENTRY_DSN,
+            'enabledEnvironments' => array(ENV),
             'environment' => ENV,
         ),
         'user' => array(

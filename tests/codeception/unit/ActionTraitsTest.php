@@ -21,9 +21,10 @@ class Foo
     }
 }
 
-require('vendor/yiisoft/yii/framework/base/CComponent.php');
-require('vendor/yiisoft/yii/framework/web/CBaseController.php');
-require('vendor/yiisoft/yii/framework/web/CController.php');
+require(dirname(__FILE__) . '/../../../vendor/yiisoft/yii/framework/base/CComponent.php');
+require(dirname(__FILE__) . '/../../../vendor/yiisoft/yii/framework/web/CBaseController.php');
+require(dirname(__FILE__) . '/../../../vendor/yiisoft/yii/framework/web/CController.php');
+
 class FooController extends CController
 {
     use IndexActionTrait {
@@ -52,11 +53,11 @@ class ActionTraitsTest extends \Codeception\TestCase\Test
     }
 
     /**
-     * @test
+     * @group data:clean-db
+     * @group data:user-generated
      */
-    public function demonstrateTraitInheritance()
+    public function testDemonstrateTraitInheritance()
     {
-
         $controller = new Foo();
         $this->assertEquals(true, method_exists($controller, 'actionIndex'));
         $this->assertEquals(true, method_exists($controller, 'actionIndexFromTrait'));
@@ -68,7 +69,5 @@ class ActionTraitsTest extends \Codeception\TestCase\Test
         $this->assertEquals(true, method_exists($controller, 'actionIndexFromTrait'));
         $this->assertEquals("bar", $controller->actionIndex());
         $this->assertEquals("foo", $controller->actionIndexFromTrait());
-
     }
-
 }

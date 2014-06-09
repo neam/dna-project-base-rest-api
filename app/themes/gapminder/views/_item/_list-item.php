@@ -2,7 +2,7 @@
 /* @var Controller|ItemController $this */
 /* @var ActiveRecord|ItemTrait|QaStateBehavior $data */
 ?>
-<div class="list-item">
+<div class="list-item" id="<?php echo Html::generateModelId($data); ?>">
     <div class="item-header">
         <div class="header-text">
             <h2 class="header-title">
@@ -19,29 +19,28 @@
             </h2>
         </div>
         <div class="header-actions">
-            <div class="btn-group">
-                <?php $this->widget(
-                    '\TbButton',
-                    array(
-                        'label' => Yii::t('model', 'View'),
-                        'icon' => TbHtml::ICON_EYE_OPEN,
-                        'url' => array('view', 'id' => $data->{$data->tableSchema->primaryKey}),
-                    )
-                ); ?>
-                <?php $this->widget(
-                    '\TbButton',
-                    array(
-                        'label' => Yii::t('model', 'Edit'),
-                        'icon' => TbHtml::ICON_EDIT,
-                        'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                        'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array(
-                            'continueAuthoring',
-                            'id' => $data->{$data->tableSchema->primaryKey}
-                        ),
-                        'visible' => $data->checkAccess('Edit'),
-                    )
-                ); ?>
-            </div>
+            <?php $this->widget(
+                '\TbButton',
+                array(
+                    'label' => Yii::t('model', 'View'),
+                    'htmlOptions' => array(
+                        'class' => 'btn-link',
+                    ),
+                    'url' => array('view', 'id' => $data->{$data->tableSchema->primaryKey}),
+                )
+            ); ?>
+            <?php $this->widget(
+                '\TbButton',
+                array(
+                    'label' => Yii::t('model', 'Edit'),
+                    'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                    'url' => !empty($_GET['editingUrl']) ? $_GET['editingUrl'] : array(
+                        'continueAuthoring',
+                        'id' => $data->{$data->tableSchema->primaryKey}
+                    ),
+                    'visible' => Yii::app()->user->checkModelOperationAccess($data, 'Edit'),
+                )
+            ); ?>
         </div>
     </div>
     <div class="item-content">

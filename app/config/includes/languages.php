@@ -1,4 +1,5 @@
 <?php
+// This list is used directory by vendor libraries, and cannot therefore be changed.
 $languages = array(
     // Default language
     'en' => 'English',

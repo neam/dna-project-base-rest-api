@@ -2,67 +2,17 @@
 
 class Html extends TbHtml
 {
-    // App constants.
-    const THEME_FRONTEND = 'frontend';
-    const THEME_BACKEND2 = 'backend2';
-
     // HTML class constants.
     const ITEM_FORM_FIELD_CLASS = 'span9';
 
     /**
      * Registers the head tags.
      */
-    public static function registerHeadTags()
+    static public function registerHeadTags()
     {
         $clientScript = Yii::app()->getClientScript();
         $clientScript->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
         $clientScript->registerLinkTag('shortcut icon', null, '/favicon.ico', null, null);
-    }
-
-    /**
-     * Registers the CSS files for the current theme.
-     */
-    public static function registerCss()
-    {
-        $theme = Yii::app()->theme->name;
-
-        // todo: refactor this.
-        switch ($theme) {
-            case self::THEME_FRONTEND:
-                $path = 'assets';
-                $files = array(
-                    'main.css',
-                );
-                break;
-
-            case self::THEME_BACKEND2:
-                $path = 'css';
-                $files = array(
-                    'backend.css',
-                );
-                break;
-
-            default:
-                $path = 'assets';
-                $files = array('main.css');
-                break;
-        }
-
-        if (!empty($files)) {
-            // Set the CSS path
-            $forceCopy = (defined('DEV') && DEV) || !empty($_GET['refresh_assets']) ? true : false;
-            $css = Yii::app()->assetManager->publish(
-                Yii::app()->theme->basePath . '/' . $path,
-                true, // hash by name
-                -1, // level
-                $forceCopy
-            );
-
-            $clientScript = Yii::app()->getClientScript();
-            foreach ($files as $file) {
-                $clientScript->registerCssFile($css . '/' . $file);
-            }
-        }
     }
 
     /**
@@ -107,7 +57,7 @@ class Html extends TbHtml
      * @param array $htmlOptions
      * @return string
      */
-    public static function activeSelect2($model, $attribute, $data = array(), $htmlOptions = array())
+    static public function activeSelect2($model, $attribute, $data = array(), $htmlOptions = array())
     {
         $options = TbArray::merge(
             TbArray::popValue('pluginOptions', $htmlOptions, array()),
@@ -136,7 +86,7 @@ class Html extends TbHtml
      * @param array $htmlOptions
      * @return string
      */
-    public static function activeSelect2ControlGroup($model, $attribute, $data = array(), $htmlOptions = array())
+    static public function activeSelect2ControlGroup($model, $attribute, $data = array(), $htmlOptions = array())
     {
         $input = self::activeSelect2($model, $attribute, $data, $htmlOptions);
         return TbHtml::customActiveControlGroup($input, $model, $attribute, $htmlOptions);
@@ -145,7 +95,7 @@ class Html extends TbHtml
     /**
      * Renders the backend navbar.
      */
-    public static function renderBackendNavbar()
+    static public function renderBackendNavbar()
     {
         $role = 'Editor'; // required role for rendering backend navbar
         if (Yii::app()->user->checkAccess($role)) {
@@ -156,7 +106,7 @@ class Html extends TbHtml
     /**
      * Registers the Dirty Forms jQuery plugin and binds it to a form element.
      */
-    public static function jsDirtyForms()
+    static public function jsDirtyForms()
     {
         self::jsFacebox(); // required by Dirty Forms
         publishJs('/themes/frontend/js/vendor/jquery.dirtyforms.js', CClientScript::POS_HEAD);
@@ -168,7 +118,7 @@ class Html extends TbHtml
     /**
      * Registers the Facebox jQuery plugin.
      */
-    public static function jsFacebox()
+    static public function jsFacebox()
     {
         publishJs('/themes/frontend/js/vendor/facebox/facebox.js', CClientScript::POS_HEAD);
         publishCss('/themes/frontend/js/vendor/facebox/assets/facebox.css');
@@ -182,12 +132,12 @@ class Html extends TbHtml
      * @param array $fields the from and to IDs (e.g. array('#from' => '#to').
      * @param string $separator the separator. Defaults to '-'.
      */
-    public static function jsSlugIt($fields = array(), $separator = '-')
+    static public function jsSlugIt($fields = array(), $separator = '-')
     {
         publishJs('/themes/frontend/js/slugit.js', CClientScript::POS_HEAD);
         foreach ($fields as $from => $to) {
-            app()->clientScript->registerScript('slugIt_' . $from, "$('$from').slugIt({output: '$to', separator: '$separator'});", CClientScript::POS_END);
-            app()->clientScript->registerScript('slugItOnLoad_' . $to, "if ($('$to').length > 0 && $('$to').val().length === 0) $('$from').trigger(jQuery.Event('keypress', {which: $.ui.keyCode.ESCAPE}));", CClientScript::POS_READY);
+            app()->clientScript->registerScript('slugIt_' . $from, "jQuery('$from').slugIt({output: '$to', separator: '$separator'});", CClientScript::POS_END);
+            app()->clientScript->registerScript('slugItOnLoad_' . $to, "if (jQuery('$to').length > 0 && jQuery('$to').val().length === 0) jQuery('$from').trigger(jQuery.Event('keypress', {which: 27 /* ESC key */}));", CClientScript::POS_READY);
         }
     }
 
@@ -199,7 +149,7 @@ class Html extends TbHtml
    	 * @param array $htmlOptions additional HTML attributes.
    	 * @return string the generated tooltip.
    	 */
-    public static function tooltip($label, $url, $content, $htmlOptions = array())
+    static public function tooltip($label, $url, $content, $htmlOptions = array())
     {
         $htmlOptions['data-toggle'] = 'tooltip'; // this option is missing from TbHtml::tooltip()
         return parent::tooltip($label, $url, $content, $htmlOptions);
@@ -212,7 +162,7 @@ class Html extends TbHtml
      * @param string $hintAttribute the attribute hint (if different). Defaults to $attribute.
      * @return string the label HTMl.
      */
-    public static function attributeLabelWithTooltip(ActiveRecord $model, $attribute, $hintAttribute = '', $htmlOptions = array())
+    static public function attributeLabelWithTooltip(ActiveRecord $model, $attribute, $hintAttribute = '', $htmlOptions = array())
     {
         $hintAttribute = !empty($hintAttribute) ? $hintAttribute : $attribute;
         $label = $model->getAttributeLabel($attribute);
@@ -227,7 +177,7 @@ class Html extends TbHtml
      * @param string $content the tooltip content.
      * @return string the tooltip HTML.
      */
-    public static function hintTooltip($content, $htmlOptions = array())
+    static public function hintTooltip($content, $htmlOptions = array())
     {
         $htmlOptions['class'] = 'hint-tooltip';
         return isset($content)
@@ -236,9 +186,97 @@ class Html extends TbHtml
     }
 
     /**
+     * Creates a link button with an icon.
+     * @param string $icon the icon class.
+     * @param string $label the button label.
+     * @param array $htmlOptions
+     * @return string
+     */
+    static public function linkButtonWithIcon($icon, $label, $htmlOptions = array())
+    {
+        TbHtml::addCssClass('btn-icon-link', $htmlOptions);
+        $htmlOptions['icon'] = $icon;
+        $label = '<span class="btn-label">' . $label . '</span>';
+        return self::linkButton($label, $htmlOptions);
+    }
+
+    /**
+     * Creates a static text element that adopts the dimensions of a text field.
+     * @param string $value the field value.
+     * @return string
+     */
+    static public function staticTextField($value)
+    {
+        $tag = 'span';
+        $html = self::openTag($tag, array(
+            'class' => 'static-text-field',
+        ));
+        $html .= $value;
+        $html .= self::closeTag($tag);
+        return $html;
+    }
+
+    /**
+     * Creates a static text element that adopts the dimensions of a text field control group.
+     * @param string $label the field label.
+     * @param string $value the field value.
+     * @return string
+     */
+    static public function staticTextFieldControlGroup($label, $value)
+    {
+        $html = self::openTag('span', array(
+            'class' => 'static-text-field-label',
+        ));
+        $html .= $label;
+        $html .= self::closeTag('span');
+        $html .= self::staticTextField($value);
+        return $html;
+    }
+
+    /**
+     * Creates a static text element that adopts the dimensions of an active text field.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @return string
+     */
+    static public function activeStaticTextField($model, $attribute)
+    {
+        $tag = 'span';
+        $html = self::openTag($tag, array(
+            'class' => 'static-text-field',
+        ));
+        $html .= $model->{$attribute};
+        $html .= self::closeTag($tag);
+        return $html;
+    }
+
+    /**
+     * Creates a static text element that adopts the dimensions of an active text field control group.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     * @return string
+     */
+    static public function activeStaticTextFieldControlGroup($model, $attribute, $htmlOptions = array())
+    {
+        if (isset($htmlOptions['label'])) {
+            $label = $htmlOptions['label'];
+        } else {
+            $label = $model->getAttributeLabel($attribute);
+        }
+
+        $html = self::openTag('span', array(
+            'class' => 'static-text-field-label',
+        ));
+        $html .= $label;
+        $html .= self::closeTag('span');
+        $html .= self::activeStaticTextField($model, $attribute);
+        return $html;
+    }
+
+    /**
      * Registers the assets for jquery comments
      */
-    public static function assetsJqueryComments()
+    static public function assetsJqueryComments()
     {
 
         $cs = Yii::app()->clientScript;
@@ -253,7 +291,7 @@ class Html extends TbHtml
 
     }
 
-    public static function initJqueryComments($selector = "#commentSection", $context = array())
+    static public function initJqueryComments($selector = "#commentSection", $context = array())
     {
 
         $localization = array(
@@ -278,7 +316,7 @@ class Html extends TbHtml
      * Returns a list of available languages (language codes, e.g. 'en_us').
      * @return array
      */
-    public static function getLanguages()
+    static public function getLanguages()
     {
         $languages = array(
             'en'    => Yii::t('language', 'English'),
@@ -330,4 +368,49 @@ class Html extends TbHtml
 
         return $languages;
     }
+
+    /**
+     * Renders the Gapminder logo.
+     * @param string $alt the image alt text.
+     * @param array $htmlOptions
+     * @return string
+     */
+    static public function renderLogo($alt = '', $htmlOptions = array())
+    {
+        return TbHtml::image(
+            Yii::app()->baseUrl . '/images/logo.png',
+            $alt,
+            $htmlOptions
+        );
+    }
+
+    /**
+     * Renders the Gapminder logo with a link to the home page.
+     * @param string $alt the image alt text.
+     * @param array $imageHtmlOptions
+     * @param array $linkHtmlOptions
+     * @return string
+     */
+    static public function renderLogoWithLink($alt = '', $imageHtmlOptions = array(), $linkHtmlOptions = array())
+    {
+        return TbHtml::link(
+            self::renderLogo($alt, $imageHtmlOptions),
+            Yii::app()->homeUrl,
+            $linkHtmlOptions
+        );
+    }
+
+    /**
+     * eg Snapshot_2, editVideoFile_14, removeFromGroupTranslatorsVideoFile_25
+     * Not unique if called with same arguments twice or more!
+     * @param $model
+     * @param string $action (optional)
+     * @param string $group (optional)
+     * @return string
+     */
+    static public function generateModelId($model, $action = '', $group = '')
+    {
+        return $action . $group . get_class($model) . '_' . $model->{$model->tableSchema->primaryKey};
+    }
+
 }

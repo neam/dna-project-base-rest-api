@@ -17,6 +17,5 @@
     array(
         'model' => $model,
         'workflowCaption' => $workflowCaption,
-        'evaluate' => true,
     )
 ); ?>

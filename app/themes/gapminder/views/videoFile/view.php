@@ -63,7 +63,12 @@
         </div>
     <?php endif; ?>
     <div class="after-flowbar">
-        <?php $this->renderPartial('_view', array('data' => $model)); ?>
+        <?php $this->renderPartial(
+            '_view',
+            array(
+                'data' => $model,
+            )
+        ); ?>
         <?php /*
     <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>

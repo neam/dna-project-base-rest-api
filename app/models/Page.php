@@ -22,7 +22,27 @@ class Page extends BasePage
 
     public function getItemLabel()
     {
-        return parent::getItemLabel();
+        return isset($this->title) ? $this->title : 'Page #' . $this->id;
+    }
+
+    public function relations()
+    {
+        $relations = parent::relations();
+
+        // Sort sections by edge weight
+        $relations['sections'] = array(
+            self::HAS_MANY,
+            'Section',
+            array('id' => 'node_id'),
+            'condition' => 'relation = :relation',
+            'through' => 'outNodes',
+            'order' => 'outEdges.weight ASC',
+            'params' => array(
+                ':relation' => 'sections',
+            )
+        );
+
+        return $relations;
     }
 
     public function behaviors()
@@ -86,7 +106,15 @@ class Page extends BasePage
             'info' => array(
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
+                'about_' . $this->source_language,
             ),
+        );
+    }
+
+    public function flowStepCaptions()
+    {
+        return array(
+            'info' => Yii::t('app', 'Info'),
         );
     }
 

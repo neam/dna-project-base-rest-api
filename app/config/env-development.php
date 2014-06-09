@@ -65,9 +65,6 @@ return array(
                 ),
             ),
         ),
-        'sentry' => array(
-            'environment' => 'development',
-        ),
     ),
 );
 ?>

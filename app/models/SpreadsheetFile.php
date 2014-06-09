@@ -51,7 +51,6 @@ class SpreadsheetFile extends BaseSpreadsheetFile
 
                 // Ordinary validation rules
                 array('title_' . $this->source_language, 'length', 'min' => 3, 'max' => 120),
-                array('about_' . $this->source_language, 'length', 'min' => 3, 'max' => 250),
 
             )
         );
@@ -162,7 +161,7 @@ class SpreadsheetFile extends BaseSpreadsheetFile
     {
         return array(
             'draft' => array(
-                'slug_' . $this->source_language,
+                'title_' . $this->source_language,
             ),
             'reviewable' => array(
                 'title_' . $this->source_language,
@@ -182,18 +181,16 @@ class SpreadsheetFile extends BaseSpreadsheetFile
         return array(
             'info' => array(
                 'title_' . $this->source_language,
-                'slug_' . $this->source_language,
-                'about_' . $this->source_language,
             ),
             'file' => array(
                 'original_media_id',
                 'processed_media_id_' . $this->source_language,
             ),
             'data' => array(
-                'dataarticles',
+                'dataarticles', // TODO: Fix this.
             ),
             'related' => array(
-                'related',
+                'related', // TODO: Fix this.
             ),
         );
     }

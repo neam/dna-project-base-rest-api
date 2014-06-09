@@ -3,40 +3,19 @@
 /* @var Chapter|ItemTrait $model */
 /* @var AppActiveForm $form */
 ?>
-<div class="control-group">
-    <div class="controls">
-        <?php echo $this->widget(
-            '\TbButton',
-            array(
-                'label' => Yii::t('app', 'Add exercise'),
-                'icon' => 'glyphicon-plus',
-                'htmlOptions' => array(
-                    'data-toggle' => 'modal',
-                    'data-target' => '#addrelation-chapter-exercise-modal',
-                ),
-            ),
-            true
-        ); ?>
-        <?php echo Html::hintTooltip($model->getAttributeHint('exercise')); ?>
-        <?php $this->renderPartial(
-            '//gridRelation/_relation_list',
-            array(
-                'relation' => 'exercises',
-                'model' => $model,
-                'label' => 'exercises',
-            )
-        ); ?>
-    </div>
-</div>
 
-<?php // TODO: Fix modal. ?>
-<?php $this->renderPartial(
-    '//gridRelation/_modal_form',
+<?php echo $form->select2ControlGroup(
+    $model,
+    'exercises',
+    CHtml::listData(
+        Exercise::model()->findAll(),
+        'node_id',
+        'itemLabel'
+    ),
     array(
-        'model' => $model,
-        'relation' => 'exercises',
-        'toType' => 'Exercise',
-        'toLabel' => 'exercise',
-        'type' => 'edge',
+        'multiple' => true,
+        'unselectValue' => '', // Anything that empty() evaluates as true
+        'options' => $form->selectRelated($model, 'exercises', 'node_id'),
     )
 ); ?>
+

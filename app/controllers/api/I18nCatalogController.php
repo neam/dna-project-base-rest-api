@@ -2,10 +2,15 @@
 
 class I18nCatalogController extends AppRestController
 {
+    /**
+     * @var string the class name of the model resource.
+     */
+    protected $_modelName = "I18nCatalog";
 
-    protected $_modelName = "I18nCatalog"; //model to be used as resource
-
-    public function actions() //determine which of the standard actions will support the controller
+    /**
+     * @return array the standard actions that the controller supports.
+     */
+    public function actions()
     {
         return array(
             'list' => array( //use for get list of objects
@@ -28,16 +33,19 @@ class I18nCatalogController extends AppRestController
     }
 
     /**
+     * @param string $lang the language in which to fetch the translation strings.
      * @param string $format 'raw' or 'jed'
+     * @throws CException
      */
     public function actionPoJson($lang, $format = 'raw')
     {
+        /** @var I18nCatalog $model */
         $model = $this->getModel();
 
         // Parse po contents
-        $poparser = new \Sepia\PoParser();
-        $translations = $poparser->readVariable($model->po_contents);
-        $_headers = \neam\po2json\Po2Json::parseHeaders($poparser->headers());
+        $poParser = new \Sepia\PoParser();
+        $translations = $poParser->readVariable($model->po_contents);
+        $_headers = \neam\po2json\Po2Json::parseHeaders($poParser->headers());
 
         // Update plural forms header to reflect plural forms used in translation process
         $locale = CLocale::getInstance($lang);
@@ -56,9 +64,8 @@ class I18nCatalogController extends AppRestController
             case 4:
                 $forms = "plural=({$locale->pluralRules[0]} ? 0 : ({$locale->pluralRules[1]} ? 1 : ({$locale->pluralRules[2]} ? 2 : 3)));";
                 break;
-            case 5:
-                throw new CException("Too many plural forms. Support needs to be added to app.");
-                break;
+            default:
+                throw new CException("Invalid amount of plural forms. Support needs to be added to app.");
         }
 
         $_headers['Plural-Forms'] .= "; $forms";
@@ -80,5 +87,4 @@ class I18nCatalogController extends AppRestController
 
         $this->sendResponse(200, $result);
     }
-
 }

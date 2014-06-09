@@ -4,6 +4,12 @@
 Yii::setPathOfAlias('Waffle', dirname(__FILE__));
 Yii::import('Waffle.*');
 
+/**
+ * i18n properties for this model fetched through the I18nColumnsBehavior class.
+ * @property string $title
+ * @property string $short_title
+ * @property string $description
+ */
 class Waffle extends BaseWaffle
 {
     use ItemTrait;
@@ -39,7 +45,7 @@ class Waffle extends BaseWaffle
         // Add i18n validation rules manually for the related item translations
         $attribute = "po_contents";
         $manualI18nRules = array();
-        foreach (Yii::app()->params["languages"] as $language => $label) {
+        foreach (LanguageHelper::getCodes() as $language) {
             $manualI18nRules[] = array($attribute, 'validateWaffleTranslation', 'on' => 'translate_into_' . $language);
 
             foreach ($this->flowSteps() as $step => $fields) {
@@ -54,10 +60,8 @@ class Waffle extends BaseWaffle
             $this->i18nRules(),
             $manualI18nRules,
             array(
-
                 array('title', 'length', 'min' => 3, 'max' => 200),
-                array('json_import_media_id', 'validateFile', 'on' => 'publishable'),
-
+                array('json_import_media_id', 'validateFile', 'on' => 'publishable, publishable-step_import'),
             )
         );
         //Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);

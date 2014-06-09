@@ -170,6 +170,27 @@ class VectorGraphic extends BaseVectorGraphic
     }
 
     /**
+     * TODO: Remove this temporary method override once support for the 'image/svg+xml' MIME type has been implemented.
+     */
+    public function getP3Media($mimeType, $type = 'file', $getOwnedOnly = false)
+    {
+        $mimeType = array('text/plain');
+        $fileExtension = '.svg';
+
+        $criteria = new CDbCriteria();
+        if (!is_array($mimeType)) {
+            $mimeType = array($mimeType);
+        }
+        $criteria->addInCondition('mime_type', $mimeType);
+        $criteria->addCondition('t.type = :type');
+        $criteria->addCondition("t.original_name REGEXP '$fileExtension$'");
+        $criteria->limit = 100;
+        $criteria->order = 't.created_at DESC';
+        $criteria->params[':type'] = $type;
+        return P3Media::model()->findAll($criteria);
+    }
+
+    /**
      * Returns vector graphic options.
      * @return array
      */

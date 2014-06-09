@@ -5,7 +5,7 @@ Yii::import('vendor.mishamx.yii-user.models.RegistrationForm');
 /**
  * Class AppRegistrationForm
  */
-class AppRegistrationForm extends RegistrationForm
+class AppRegistrationForm extends Account
 {
     public $verifyPassword;
     public $verifyCode;

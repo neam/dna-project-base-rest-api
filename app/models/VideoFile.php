@@ -33,7 +33,6 @@ class VideoFile extends BaseVideoFile
         return array_merge(
             parent::behaviors(),
             array(
-                'goBehavior' => 'app.behaviors.GoActiveRecordBehavior',
             )
         );
     }
@@ -54,7 +53,7 @@ class VideoFile extends BaseVideoFile
         // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
         $attribute = "subtitles";
         $manualI18nRules = array();
-        foreach (Yii::app()->params["languages"] as $language => $label) {
+        foreach (LanguageHelper::getCodes() as $language) {
             $manualI18nRules[] = array($attribute, 'validateSubtitlesTranslation', 'on' => 'translate_into_' . $language);
 
             foreach ($this->flowSteps() as $step => $fields) {
@@ -71,10 +70,10 @@ class VideoFile extends BaseVideoFile
             array(
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'step_info,publishable,publishable-step_info'),
-                array('clip_webm_media_id', 'validateVideoWebm', 'on' => 'step_info,publishable,publishable-step_info'),
-                array('clip_mp4_media_id', 'validateVideoMp4', 'on' => 'step_info,publishable,publishable-step_info'),
+                array('clip_webm_media_id', 'validateVideoWebm', 'on' => 'step_files,publishable,publishable-step_files'),
+                array('clip_mp4_media_id', 'validateVideoMp4', 'on' => 'step_files,publishable,publishable-step_files'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
-                array('subtitles_' . $this->source_language, 'validateSubtitles', 'on' => 'step_info,publishable,publishable-step_info'),
+                array('subtitles_' . $this->source_language, 'validateSubtitles', 'on' => 'step_subtitles,publishable,publishable-step_subtitles'),
             )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
@@ -311,7 +310,7 @@ class VideoFile extends BaseVideoFile
     /**
      * The attributes that is returned by the REST api
      */
-    public function getAllAttributes()
+    public function getAllAttributes($includeRelated = true)
     {
 
         $response = new stdClass();
@@ -330,7 +329,15 @@ class VideoFile extends BaseVideoFile
         }
         $response->clipWebm = !is_null($this->clip_webm_media_id) ? $this->clipWebmMedia->createUrl('original-public-webm', true) : null;
         $response->clipMp4 = !is_null($this->clip_mp4_media_id) ? $this->clipMp4Media->createUrl('original-public-mp4', true) : null;
-        //$response->related = $this->related;
+
+
+        if ($includeRelated) {
+            $response->related = array();
+            foreach ($this->related as $related) {
+                $response->related[] = $related->item()->getAllAttributes(false);
+            }
+        }
+
         //$response->overlays = $this->overlays;
         //$response->dubbing = $this->dubbing;
 
@@ -516,6 +523,54 @@ class VideoFile extends BaseVideoFile
     public function getTranslationCategory($attribute)
     {
         return 'video-' . $this->id . '-' . $attribute;
+    }
+
+    /**
+     * Returns a source message model for the given source message and language.
+     * @param string $sourceMessage
+     * @param string $language
+     * @return SourceMessage
+     */
+    public function getSourceMessage($sourceMessage, $language)
+    {
+        return SourceMessage::ensureSourceMessage(
+            $this->getTranslationCategory('subtitles'),
+            $sourceMessage,
+            $language
+        );
+    }
+
+    /**
+     * Returns the current translation for the given source message and language.
+     * @param string $sourceMessage
+     * @param string $language
+     * @return string
+     */
+    public function getCurrentTranslation($sourceMessage, $language)
+    {
+        return Yii::t(
+            $this->getTranslationCategory('subtitles'),
+            $sourceMessage,
+            array(),
+            'editedMessages',
+            $language
+        );
+    }
+
+    /**
+     * Returns the fallback translation for the given source message and language.
+     * @param string $sourceMessage the original subtitle text.
+     * @param string $language the target language.
+     * @return string
+     */
+    public function getSubtitleFallbackTranslation($sourceMessage, $language)
+    {
+        return Yii::t(
+            $this->getTranslationCategory('subtitles'),
+            $sourceMessage,
+            array(),
+            'displayedMessages',
+            $language);
     }
 
     /**

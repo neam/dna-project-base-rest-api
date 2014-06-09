@@ -1,13 +1,16 @@
 <?php
 $actions = array();
-$id = 1;
 
-foreach (MetaData::groups() as $title) {
-    $actions['Group_' . $id] = array(
-        'id' => $id,
-        'title' => $title,
-    );
-    $id++;
+foreach (MetaData::projectGroups() as $title => $label) {
+    $actions[] = array('title' => $title);
+}
+
+foreach (MetaData::topicGroups() as $title => $label) {
+    $actions[] = array('title' => $title);
+}
+
+foreach (MetaData::skillGroups() as $title => $label) {
+    $actions[] = array('title' => $title);
 }
 
 return $actions;

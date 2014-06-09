@@ -19,7 +19,7 @@
 <?php
 endif; ?>
 
-<?php if (isset($evaluate) && $evaluate): ?>
+<?php if ($this->actionIsEvaluate()): ?>
     <?php $this->widget(
         'ModalCommentsWidget',
         array(

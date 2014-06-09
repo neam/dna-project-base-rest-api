@@ -3,38 +3,18 @@
 /* @var SlideshowFile|ItemTrait $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<div class="control-group">
-    <div class="controls">
-        <?php echo $this->widget(
-            '\TbButton',
-            array(
-                'label' => Yii::t('app', 'Add related item'),
-                'icon' => 'glyphicon-plus',
-                'htmlOptions' => array(
-                    'data-toggle' => 'modal',
-                    'data-target' => '#addrelation-slideshowfile--modal',
-                ),
-            ), true
-        ); ?>
-        <?php echo Html::hintTooltip($model->getAttributeHint('related')); ?>
-        <?php $this->renderPartial(
-            '//gridRelation/_relation_list',
-            array(
-                'relation' => 'related',
-                'model' => $model,
-                'label' => 'related items',
-            )
-        ); ?>
-    </div>
-</div>
-<?php // TODO: Fix modal. ?>
-<?php /*$this->renderPartial(
-    '//gridRelation/_modal_form',
+
+<?php echo $form->select2ControlGroup(
+    $model,
+    'related',
+    CHtml::listData(
+        Item::model()->findAll('node_id != :self_node_id', array(':self_node_id' => $model->node_id)),
+        'node_id',
+        'itemLabel'
+    ),
     array(
-        'model' => $model,
-        'relation' => 'related',
-        'toType' => '',
-        'toLabel' => 'related item',
-        'type' => 'edge',
+        'multiple' => true,
+        'unselectValue' => '', // Anything that empty() evaluates as true
+        'options' => $form->selectRelated($model, 'related'),
     )
-);*/ ?>
+); ?>

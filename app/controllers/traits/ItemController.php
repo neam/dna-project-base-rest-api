@@ -3,15 +3,15 @@
 trait ItemController
 {
     public $workflowData = array();
+    public $step;
     public $modelId;
+    protected $_actionIsEvaluate = false;
 
     /**
      * Initializes the controller.
      */
     public function init()
     {
-        parent::init();
-
         // Set the model ID if it has been passed as a GET param.
         if (isset($_GET['id'])) {
             $this->modelId = $_GET['id'];
@@ -34,13 +34,13 @@ trait ItemController
      * @param string $operation the operation.
      * @return boolean
      */
-    public function checkAccessById($id, $operation)
+    public function checkModelOperationAccessById($id, $operation)
     {
         /** @var ActiveRecord|ItemTrait $model */
         $model = ActiveRecord::model($this->modelClass)->findByPk($id);
 
         if ($model instanceof ActiveRecord) {
-            return $model->checkAccess($operation);
+            return Yii::app()->user->checkModelOperationAccess($model, $operation);
         } else {
             throw new CHttpException(404, Yii::t('error', "Failed to check access: the $this->modelClass model with ID $id does not exist."));
         }
@@ -61,7 +61,7 @@ trait ItemController
                 ),
                 'users' => array('*'),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'View');
+                    return $this->checkModelOperationAccessById($this->modelId, 'View');
                 },
             ),
             array('allow',
@@ -94,7 +94,7 @@ trait ItemController
                     'saveDraft',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Edit');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Edit');
                 },
             ),
             array('allow',
@@ -120,7 +120,7 @@ trait ItemController
                     'evaluate',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Evaluate');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Evaluate');
                 },
             ),
             array('allow',
@@ -129,7 +129,7 @@ trait ItemController
                     'submitForPublishing',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'PrepareForPublishing');
+                    return $this->checkModelOperationAccessById($this->modelId, 'PrepareForPublishing');
                 },
             ),
             array('allow',
@@ -137,7 +137,7 @@ trait ItemController
                     'proofread',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Proofread');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Proofread');
                 },
             ),
             array('allow',
@@ -145,7 +145,7 @@ trait ItemController
                     'preview',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Preview');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Preview');
                 },
             ),
             array('allow',
@@ -154,7 +154,7 @@ trait ItemController
                     'translationOverview',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Translate');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Translate');
                 },
             ),
             array('allow',
@@ -163,7 +163,7 @@ trait ItemController
                     'unpublish',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Publish');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Publish');
                 },
             ),
             array('allow',
@@ -171,7 +171,7 @@ trait ItemController
                     'edit',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Edit');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Edit');
                 },
             ),
             array('allow',
@@ -180,7 +180,7 @@ trait ItemController
                     'removeFromGroup',
                 ),
                 'expression' => function() {
-                    return $this->checkAccess('Edit');
+                    return $this->checkModelOperationAccessById($_GET['modelId'], 'ChangeGroup');
                 },
             ),
             array('allow',
@@ -188,7 +188,7 @@ trait ItemController
                     'clone',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Clone');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Clone');
                 },
             ),
             array('allow',
@@ -196,7 +196,7 @@ trait ItemController
                     'remove',
                 ),
                 'expression' => function() {
-                    return $this->checkAccessById($this->modelId, 'Remove');
+                    return $this->checkModelOperationAccessById($this->modelId, 'Remove');
                 },
             ),
         );
@@ -214,7 +214,7 @@ trait ItemController
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
 
-        if ($model->checkAccess('Edit')) {
+        if (Yii::app()->user->checkModelOperationAccess($model, 'Edit')) {
             $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
         } else {
             $this->redirect('/' . lcfirst(get_class($model)) . '/browse'); // TODO: Clean up route.
@@ -230,6 +230,21 @@ trait ItemController
             $item->clearErrors();
         }
         return null;
+    }
+
+    /**
+     * Checks if the current action uses the edit workflow (but not the translation workflow).
+     * @return boolean
+     */
+    public function actionUsesEditWorkflow()
+    {
+        $editActions = array(
+            'edit',
+            'prepareForPublishing',
+            'prepareForReview',
+        );
+
+        return in_array($this->action->id, $editActions);
     }
 
     /**
@@ -253,6 +268,71 @@ trait ItemController
     }
 
     /**
+     * Returns the first step in the translation workflow. Falls back to ItemController::firstFlowStep().
+     * @param ActiveRecord|ItemTrait $item
+     * @return string
+     */
+    protected function firstTranslationFlowStep($item)
+    {
+        return (isset($item->firstTranslationFlowStep))
+            ? $item->firstTranslationFlowStep
+            : $this->firstFlowStep($item);
+    }
+
+    /**
+     * Runs operations before all ItemController actions.
+     * @param CAction $action
+     * @return boolean
+     */
+    public function beforeItemControllerAction($action)
+    {
+        $translateInto = Yii::app()->request->getParam('translateInto');
+
+        // Redirect to next required step
+        if ($action->id === 'prepareForPublishing' && isset($_POST['next-required-url'])) {
+            $this->redirect($_POST['next-required-url']);
+        }
+
+        // Set translation and edit workflow returnUrls
+        if (in_array($action->id, array('translate', 'edit'))) {
+            $this->setWorkflowReturnUrl();
+        }
+
+        // Disallow user to translate items into languages other than those listed in his profile
+        if ($action->id === 'translate' && !Yii::app()->user->canTranslateInto($translateInto)) {
+            throw new CHttpException(
+                403,
+                Yii::t('app', "You are not permitted to translate into: $translateInto")
+            );
+        }
+
+        return true;
+    }
+
+    /**
+     * Sets the returnUrl when navigating between workflow steps.
+     */
+    public function setWorkflowReturnUrl()
+    {
+        $returnUrl = Yii::app()->request->getParam('returnUrl');
+
+        if (isset($returnUrl)) {
+            Yii::app()->user->setReturnUrl($returnUrl);
+        }
+    }
+
+    /**
+     * Returns the target translation language. Defaults to null if undefined.
+     * @return string|null
+     */
+    public function getTranslationLanguage()
+    {
+        return isset($this->workflowData['translateInto'])
+            ? $this->workflowData['translateInto']
+            : null;
+    }
+
+    /**
      * TODO: Move away from controller to model or helper
      *
      * Returns a CDbCriteria which shows the models in testable-state or higher for translators.
@@ -261,6 +341,7 @@ trait ItemController
      * @param array $defaultCriteria the criteria to return if user has Administrator-role or is not a translator
      * @return array|\CDbCriteria
      */
+    /*
     public function getTranslatorCriteria($modelTbl, $defaultCriteria = array())
     {
         // Administrators should see everything so return early
@@ -287,6 +368,7 @@ trait ItemController
 
         return $criteria;
     }
+    */
 
     public function actionBrowse()
     {
@@ -298,8 +380,6 @@ trait ItemController
         }
 
         $dataProvider = $model->search();
-        $criteria = $this->getTranslatorCriteria($model->tableName());
-        $dataProvider->setCriteria($criteria);
 
         $this->populateWorkflowData($model, "browse", Yii::t('app', 'Browse'));
 
@@ -490,7 +570,16 @@ trait ItemController
         $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, "evaluate", Yii::t('app', 'Evaluate'));
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/evaluate', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+        $this->_actionIsEvaluate = true;
+
+        $this->render(
+            '/_item/evaluate',
+            array(
+                'model' => $model,
+                'step' => $step,
+                'stepCaption' => $stepCaptions[$step],
+            )
+        );
     }
 
     /**
@@ -552,26 +641,16 @@ trait ItemController
      */
     public function actionPublish($id)
     {
-        $permissionAttributes = array(
-            'account_id' => Yii::app()->user->id,
-            'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
-            'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
-        );
+        // TODO: Save changeset.
 
-        if (PermissionHelper::groupHasAccount($permissionAttributes)) {
-            // TODO: Save changeset.
+        $model = $this->loadModel($id);
 
-            $model = $this->loadModel($id);
-
-            if (!$model->qaStateBehavior()->validStatus('publishable')) {
-                throw new CException('This item does not validate for the publishable status.');
-            }
-
-            $model->changeStatus('public');
-            $model->makeNodeHasGroupVisible();
-        } else {
-            throw new CHttpException(403, Yii::t('error', 'You do not have permission to publish items.'));
+        if (!$model->qaStateBehavior()->validStatus('publishable')) {
+            throw new CException('This item does not validate for the publishable status.');
         }
+
+        $model->changeStatus('public');
+        $model->makeNodeHasGroupVisible();
 
         // Redirect
         if (isset($_GET['returnUrl'])) {
@@ -614,7 +693,7 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
-        if ($model->checkAccess('Edit')) {
+        if (Yii::app()->user->checkModelOperationAccess($model, 'Edit')) {
             $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
         } else {
             $this->redirect(array('view', 'id' => $model->id));
@@ -626,13 +705,18 @@ trait ItemController
      * @param $step
      * @param $id
      */
-    public function actionEdit($step, $id)
+    public function actionEdit($step, $id, $returnUrl = null)
     {
+        $this->step = $step;
         $this->scenario = "temporary-step_$step";
 
         $model = $this->loadModel($id);
 
         $model->scenario = $this->scenario;
+
+        if (Yii::app()->request->getPost($this->modelClass, false)) {
+            $this->handleEdges($model);
+        }
 
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
@@ -662,26 +746,133 @@ trait ItemController
     }
 
     /**
+     * @param $model ActiveRecord
+     */
+    protected function handleEdges($model)
+    {
+        $post = Yii::app()->request->getPost($this->modelClass, array());
+
+        $node = $model->node();
+
+        // array of models relation-names
+        $relationNames = array_keys($model->relations());
+
+        // Relations considered safe. Note: set the relation as safe in the model-rules!
+        $allowedRelations = array_filter(
+            array_keys($post),
+            function ($attribute) use ($model, $relationNames) {
+                return in_array($attribute, $relationNames) && $model->isAttributeSafe($attribute);
+            }
+        );
+
+        foreach ($allowedRelations as $relationName) {
+
+            // Delete all outEdges for the relation if none is
+            // present in form and the model has some (user removed edges)
+            if (empty($post[$relationName]) && count($model->{$relationName}) > 0) {
+
+                Edge::model()->deleteAllByAttributes(array(
+                    'from_node_id' => $node->id,
+                    'relation' => $relationName,
+                ));
+            }
+
+            $futureOutEdges = $post[$relationName];
+
+            if (empty($futureOutEdges)) {
+                $futureOutEdges = array();
+            }
+
+            $this->deleteEdgeDiff($model, $futureOutEdges, $relationName);
+
+            // TODO: fetch weights properly when they are implemented in form
+
+            $weight = 0;
+            foreach ($futureOutEdges as $toNodeId) {
+                $this->addEdge($node->id, $toNodeId, $relationName, $weight++);
+            }
+
+        }
+    }
+
+    /**
+     * Deletes the edges which are present but not in future-edges
+     *
+     * @param $model ActiveRecord
+     * @param $futureEdges array
+     * @param $relationName string
+     * @return int number of edges deleted
+     */
+    protected function deleteEdgeDiff($model, $futureEdges, $relationName)
+    {
+        $currentOutEdges = $model->getRelatedModelColumnValues($relationName, 'id');
+        $allEdges = array_merge($currentOutEdges, $futureEdges);
+        $edgesToDelete = array_diff($allEdges, $futureEdges);
+
+        $criteria = new CDbCriteria();
+        $criteria->addCondition('from_node_id = :from');
+        $criteria->addCondition('relation = :relation');
+        $criteria->addInCondition('to_node_id', $edgesToDelete);
+        $criteria->params[':from'] = $model->node()->id;
+        $criteria->params[':relation'] = $relationName;
+
+        return Edge::model()->deleteAll($criteria);
+    }
+
+    private function addEdge($fromNodeId, $toNodeId, $relation, $weight = null)
+    {
+        $edge = Edge::model()->findByAttributes(array(
+            'from_node_id' => $fromNodeId,
+            'to_node_id' => $toNodeId,
+            'relation' => $relation,
+        ));
+
+        // Nothing has changed
+        if ($edge !== null && $weight === null) {
+            return;
+        }
+
+        if ($edge === null) {
+            $edge = new Edge();
+        }
+
+        $edge->from_node_id = $fromNodeId;
+        $edge->to_node_id = $toNodeId;
+        $edge->relation = $relation;
+
+        if ($weight !== null) {
+            $edge->weight = $weight;
+        }
+
+        if (!$edge->save()) {
+            throw new SaveException($edge);
+        }
+        return true;
+    }
+
+    /**
      * Adds an item to a group.
-     * @param integer $node_id
+     * @param integer $nodeId
+     * @param integer $modelId
      * @param string $group
      * @param string $returnUrl
      */
-    public function actionAddToGroup($node_id, $group, $returnUrl)
+    public function actionAddToGroup($nodeId, $modelId, $group, $returnUrl)
     {
-        PermissionHelper::addNodeToGroup($node_id, $group);
+        PermissionHelper::addNodeToGroup($nodeId, $group);
         $this->redirect($returnUrl);
     }
 
     /**
      * Removes an item from a group.
-     * @param integer $node_id
-     * @param $group
+     * @param integer $nodeId
+     * @param integer $modelId
+     * @param string $group
      * @param string $returnUrl
      */
-    public function actionRemoveFromGroup($node_id, $group, $returnUrl)
+    public function actionRemoveFromGroup($nodeId, $modelId, $group, $returnUrl)
     {
-        PermissionHelper::removeNodeFromGroup($node_id, $group);
+        PermissionHelper::removeNodeFromGroup($nodeId, $group);
         $this->redirect($returnUrl);
     }
 
@@ -692,6 +883,7 @@ trait ItemController
      */
     public function getCssClasses($model)
     {
+        // todo: use TbHtml::addCssClass instead
         $classes = array();
         $classes[] = 'item-controller';
         if ($model instanceof ActiveRecord) {
@@ -757,7 +949,7 @@ trait ItemController
         $qaStateAttribute = $model->getQaStateAttribute();
 
         if (isset($behaviors['i18n-columns']['translationAttributes']) && in_array($qaStateAttribute, $behaviors['i18n-columns']['translationAttributes'])) {
-            foreach (Yii::app()->params["languages"] as $lang => $label) {
+            foreach (LanguageHelper::getCodes() as $lang) {
                 $translatedAttribute = $qaStateAttribute . "_" . $lang;
                 $clone->$translatedAttribute = null;
             }
@@ -849,14 +1041,22 @@ trait ItemController
     {
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
-        $this->populateWorkflowData($model, 'translate', Yii::t('app', 'Translation overview'));
 
-        $this->render(
-            '/_item/translation-overview',
-            array(
-                'model' => $model,
-            )
-        );
+        $profileLanguages = Yii::app()->user->getTranslatableLanguages();
+
+        if (count($profileLanguages) > 0) {
+            $this->populateWorkflowData($model, 'translate', Yii::t('app', ''));
+
+            $this->render(
+                '/_item/translation-overview',
+                array(
+                    'model' => $model,
+                )
+            );
+        } else {
+            Yii::app()->user->setFlash('warning', Yii::t('app', 'Please set your languages before translating.'));
+            $this->redirect('/account/profile');
+        }
     }
 
     /**
@@ -864,16 +1064,19 @@ trait ItemController
      * @param integer $id the item ID.
      * @param string $step the step identifier.
      * @param string $translateInto the target language code.
+     * @throws CHttpException
      */
-    public function actionTranslate($id, $step, $translateInto)
+    public function actionTranslate($id, $step, $translateInto, $returnUrl = null)
     {
+        $this->step = $step;
+
         $this->scenario = "into_$translateInto-step_$step";
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, 'translate', Yii::t('app', 'Translate into {translateIntoLanguage}', array(
-            '{translateIntoLanguage}' => Yii::app()->params['languages'][$translateInto],
+            '{translateIntoLanguage}' => LanguageHelper::getName($translateInto),
         )), $translateInto);
         $stepCaptions = $model->flowStepCaptions();
 
@@ -890,11 +1093,14 @@ trait ItemController
     /**
      * Returns actions based on the current qa state TODO: and access rules
      * together with progress calculations and whether or not the action is available yet or not
+     * @param ActiveRecord|ItemTrait|QaStateBehavior $item
+     * @param string $validationScenario
+     * @param string $caption
+     * @param string|null $translateInto
      * @return array
      */
     public function populateWorkflowData($item, $validationScenario, $caption, $translateInto = null)
     {
-
         $this->workflowData["action"] = $this->action->id;
         $this->workflowData["caption"] = $caption;
         $this->workflowData["validationScenario"] = $validationScenario;
@@ -952,8 +1158,9 @@ trait ItemController
 
         $stepCaptions = $item->flowStepCaptions();
         foreach ($item->flowSteps() as $step => $fields) {
-
             // todo: do this some other way
+
+            /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
             $model = $item->asa('i18n-attribute-messages') !== null ? $item->edited() : $item;
 
             if ($this->action->id == "translate" && $translateInto !== null) {
@@ -1014,19 +1221,6 @@ trait ItemController
         }
     }
 
-    private function addEdge($from_node_id, $to_node_id, $relation)
-    {
-        $edge = new Edge();
-        $edge->from_node_id = $from_node_id;
-        $edge->to_node_id = $to_node_id;
-        $edge->relation = $relation;
-
-        if (!$edge->save()) {
-            throw new SaveException($edge);
-        }
-        return true;
-    }
-
     // Asks $_POST if a value isn't part of "Model"
     // If it ends with _c0, we suppose it's from a grid input, and put it into $_POST[$this->modelClass]
     // Returns $_POST with fixed values
@@ -1072,11 +1266,13 @@ trait ItemController
         } else {
 
             // redirect
-            if (isset($_REQUEST['returnUrl'])) {
+            if (isset(Yii::app()->user->returnUrl)) {
+                $this->redirect(Yii::app()->user->returnUrl);
+            } else if (isset($_REQUEST['returnUrl'])) {
                 $this->redirect($_REQUEST['returnUrl']);
-            } elseif (isset($_POST['save-changes'])) {
+            } else if (isset($_POST['save-changes'])) {
                 $this->redirect($_REQUEST['form-url']);
-            } elseif (isset($_POST['next-required'])) {
+            } else if (isset($_POST['next-required'])) {
                 $this->redirect($_REQUEST['next-required-url']);
             } else {
                 $this->actionCancel($model->id);
@@ -1122,7 +1318,7 @@ trait ItemController
     public function canEditSourceLanguage()
     {
         if ($this->action->id === 'translate') {
-            if (Yii::app()->user->isAdmin) {
+            if (Yii::app()->user->isAdmin()) {
                 return true;
             }
 
@@ -1137,12 +1333,40 @@ trait ItemController
             $isTranslator = PermissionHelper::groupHasAccount(array(
                 'account_id' => $this->id,
                 'group_id' => PermissionHelper::groupNameToId($group),
-                'role_id' => PermissionHelper::roleNameToId('Group Translator'),
+                'role_id' => PermissionHelper::roleNameToId('GroupTranslator'),
             ));
 
             return $isEditor && !$isTranslator;
         } else {
             return true;
         }
+    }
+
+    /**
+     * Checks if the given step matches the current step.
+     * @param string $step
+     * @return boolean
+     */
+    public function isStep($step)
+    {
+        if (isset($_GET['step'])) {
+            return $_GET['step'] === $step;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Checks if the action is 'evaluate'.
+     *
+     * This is used to check if the context is related to the 'evaluate' action
+     * since some view files are shared across controller actions.
+     *
+     * @return boolean
+     */
+    public function actionIsEvaluate()
+    {
+        // TODO: Could we simply use $this->action->id === 'evaluate' instead?
+        return $this->_actionIsEvaluate;
     }
 }

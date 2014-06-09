@@ -110,7 +110,7 @@ class I18nCatalogController extends Controller
                 Yii::t(
                     'app',
                     'Translate into {translateIntoLanguage}',
-                    array('{translateIntoLanguage}' => Yii::app()->params["languages"][$translateInto])
+                    array('{translateIntoLanguage}' => LanguageHelper::getName($translateInto))
                 ),
                 $translateInto
             );
