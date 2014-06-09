@@ -11,7 +11,7 @@ $I->wantTo('translate a video');
 
 $I->addGroupRoleToAccount('martha', 'Translators', 'GroupTranslator');
 
-$I->login('martha', 'test');
+$I->login('martha', 'test123');
 $I->amOnPage(ProfilePage::$URL);
 
 $I->selectSelect2Option('#Profile_language1', 'Portuguese');
@@ -30,7 +30,7 @@ $I->dontSee('Max video');
 $I->logout();
 
 
-$I->login('max', 'test');
+$I->login('max', 'test123');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
 
@@ -40,7 +40,7 @@ $I->click('Translators', $videoContext);
 $I->logout();
 
 
-$I->login('martha', 'test');
+$I->login('martha', 'test123');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
 

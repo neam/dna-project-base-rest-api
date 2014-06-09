@@ -20,7 +20,7 @@ class MemberSteps extends AppSteps
     public $staff = array(
         array(
             'name' => 'ola',
-            'password' => 'test',
+            'password' => 'test123',
             'email' => 'dev+ola@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupAdministrator'),
@@ -28,7 +28,7 @@ class MemberSteps extends AppSteps
         ),
         array(
             'name' => 'max',
-            'password' => 'test',
+            'password' => 'test123',
             'email' => 'dev+max@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupModerator'),
@@ -36,7 +36,7 @@ class MemberSteps extends AppSteps
         ),
         array(
             'name' => 'ferdanda',
-            'password' => 'test',
+            'password' => 'test123',
             'email' => 'dev+ferdanda@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupEditor'),
@@ -44,7 +44,7 @@ class MemberSteps extends AppSteps
         ),
         array(
             'name' => 'julia',
-            'password' => 'test',
+            'password' => 'test123',
             'email' => 'dev+julia@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupContributor'),
@@ -52,7 +52,7 @@ class MemberSteps extends AppSteps
         ),
         array(
             'name' => 'mattias',
-            'password' => 'test',
+            'password' => 'test123',
             'email' => 'dev+mattias@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupMember'),
@@ -63,7 +63,7 @@ class MemberSteps extends AppSteps
     public $externalUsers = array(
         array(
             'name' => 'jack',
-            'password' => 'test',
+            'password' => 'test123',
             'email' => 'jack@example.com',
             'groupRoles' => array(
                 'Proofreaders' => array('GroupReviewer'),
@@ -71,7 +71,7 @@ class MemberSteps extends AppSteps
         ),
         array(
             'name' => 'martha',
-            'password' => 'test',
+            'password' => 'test123',
             'email' => 'martha@example.com',
             'groupRoles' => array(
                 'Translators' => array('GroupTranslator'),
@@ -111,18 +111,18 @@ class MemberSteps extends AppSteps
         $I->amGoingTo("Register user $username");
         $I->amOnPage(RegistrationPage::$URL);
         $I->fillField(RegistrationPage::$usernameField, $username);
+        $I->fillField(RegistrationPage::$emailField, $email);
         $I->fillField(RegistrationPage::$passwordField, $password);
         $I->fillField(RegistrationPage::$verifyPasswordField, $verifyPassword);
-        $I->fillField(RegistrationPage::$emailField, $email);
+        $I->wait(2);
         $acceptTerms
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
-
         $I->wait(1); // TODO: set a success/error class on the form to watch on instead
         $I->click(RegistrationPage::$submitButton);
 
         if ($this->scenario->running()) {
-            $I->waitForText('Thank you for your registration.', 30); // secs
+            $I->waitForText('Thank you for signing up!', 30); // secs
         }
 
         // TODO activate account using mailcatcher

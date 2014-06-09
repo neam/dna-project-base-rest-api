@@ -1,8 +1,7 @@
 <?php
-/* @var AppRegistrationController $this */
-/* @var AppRegistrationForm $model */
+/* @var \nordsoftware\yii_account\controllers\SignupController $this */
+/* @var \nordsoftware\yii_account\models\form\SignupForm $model */
 /* @var AppProfile $profile */
-/* @var ProfileField[] $profileFields */
 /* @var TbActiveForm $form */
 ?>
 <?php $this->pageTitle = Yii::app()->name . ' - ' . Yii::t('user', 'Registration'); ?>
@@ -35,6 +34,7 @@
                             <?php echo $form->emailFieldControlGroup($model, 'email'); ?>
                             <?php echo $form->passwordFieldControlGroup($model, 'password'); ?>
                             <?php echo $form->passwordFieldControlGroup($model, 'verifyPassword'); ?>
+                            <?php echo $form->checkBoxControlGroup($model, 'acceptTerms'); ?>
                             <?php if (!empty($profileFields)): ?>
                                 <?php foreach ($profileFields as $field): ?>
                                     <?php if ($widgetEdit = $field->widgetEdit($profile)): ?>
@@ -74,6 +74,7 @@
                                 <?php echo TbHtml::submitButton(
                                     Yii::t('app', 'Next'),
                                     array(
+                                        'id' => 'signup-submit',
                                         'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                                         'size' => TbHtml::BUTTON_SIZE_LARGE,
                                     )

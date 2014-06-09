@@ -5,7 +5,7 @@ $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('create a video and make sure that only I see it.');
 
 // Max logs in.
-$I->login('max', 'test');
+$I->login('max', 'test123');
 
 $subtitles = <<<EOD
 1
@@ -51,5 +51,5 @@ $I->seeElement(VideoFileViewPage::$videoContainer);
 $I->dontSee(VideoFileViewPage::$noVideoMessage);
 $I->logout();
 
-$I->login('ola', 'test');
+$I->login('ola', 'test123');
 $I->dontSeeVideoFile('Max video');

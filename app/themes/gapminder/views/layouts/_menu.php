@@ -82,14 +82,14 @@
                                 array(
                                     'label' => Yii::t('app', 'Manage'),
                                     'icon' => 'lock',
-                                    'url' => array('/account/admin'),
+                                    'url' => array('/admin/manageAccounts'),
                                     'visible' => Yii::app()->user->isAdmin(),
                                 ),
                                 '---',
                                 array(
                                     'label' => Yii::t('app', 'Logout'),
                                     'icon' => 'logt-out',
-                                    'url' => array('/site/logout'),
+                                    'url' => array('/account/authenticate/logout'),
                                     'visible' => !Yii::app()->user->isGuest,
                                     'id' => 'logoutLink',
                                 ),

@@ -149,6 +149,7 @@ $gcmsConfig = array(
             'class' => '\nordsoftware\yii_account\Module',
             'classMap' => array(
                 'account' => 'Account',
+                'signupForm' => 'SignupForm',
             ),
             'controllerMap' => array(
                 'signup' => array(
