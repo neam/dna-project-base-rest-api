@@ -64,7 +64,7 @@ class MemberSteps extends AppSteps
         array(
             'name' => 'jack',
             'password' => 'test123',
-            'email' => 'jack@example.com',
+            'email' => 'dev+jackexternal@gapminder.org',
             'groupRoles' => array(
                 'Proofreaders' => array('GroupReviewer'),
             ),
@@ -72,21 +72,12 @@ class MemberSteps extends AppSteps
         array(
             'name' => 'martha',
             'password' => 'test123',
-            'email' => 'martha@example.com',
+            'email' => 'dev+marthaexternal@gapminder.org',
             'groupRoles' => array(
                 'Translators' => array('GroupTranslator'),
             ),
         ),
     );
-
-    function findAccountByUsername($username)
-    {
-        $account = Account::model()->findByAttributes(array('username' => $username));
-        if ($account === null) {
-            throw new Exception('Failed to find account with username "$username".');
-        }
-        return $account;
-    }
 
     function login($username, $password)
     {
@@ -114,7 +105,8 @@ class MemberSteps extends AppSteps
         $I->fillField(RegistrationPage::$emailField, $email);
         $I->fillField(RegistrationPage::$passwordField, $password);
         $I->fillField(RegistrationPage::$verifyPasswordField, $verifyPassword);
-        $I->wait(2);
+        $I->fillField(RegistrationPage::$emailField, $email);
+	$I->wait(2);
         $acceptTerms
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
@@ -348,7 +340,7 @@ class MemberSteps extends AppSteps
      */
     function dontSeeSelect2OptionIsSelected($selectId, $option)
     {
-        return $this->seeSelect2OptionIsSelected($selectId, $option, true);
+        $this->seeSelect2OptionIsSelected($selectId, $option, true);
     }
 
     /**
@@ -466,6 +458,20 @@ class MemberSteps extends AppSteps
         $I = $this;
         $I->amGoingTo('remove related items');
         $I->unselectSelect2Option($field, $items);
+    }
+
+    function seeFieldIsEmpty($field)
+    {
+        $I = $this;
+        $I->amGoingTo("check that $field is empty");
+        $I->seeInField($field, '');
+    }
+
+    function switchLanguage($language)
+    {
+        $I = $this;
+        $I->click('.navbar .language-menu');
+        $I->click($language, '.navbar .language-menu');
     }
 
 }

@@ -18,13 +18,17 @@
         "source": "https://github.com/gapminder/gapminder-school-cms"
     },
     "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/motin/Codeception"
+        }
     ],
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0"
     },
     "require-dev": {
-        "codeception/codeception": "~1.8.5",
+        "codeception/codeception": "dev-non-numeric-branch-1.8",
         "psychomieze/sauceextension": "@dev"
     },
     "scripts": {
