@@ -19,16 +19,8 @@
     },
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "codeception/codeception",
-                "version": "dev-1.8",
-                "source": {
-                    "url": "https://github.com/Codeception/Codeception.git",
-                    "type": "git",
-                    "reference": "fb353e60e0f9c156e33af63eac541ab0505e3250"
-                }
-            }
+            "type": "vcs",
+            "url": "https://github.com/motin/Codeception"
         }
     ],
     "minimum-stability": "stable",
@@ -36,7 +28,7 @@
         "php": ">=5.4.0"
     },
     "require-dev": {
-        "codeception/codeception": "dev-1.8",
+        "codeception/codeception": "dev-non-numeric-branch-1.8",
         "psychomieze/sauceextension": "@dev"
     },
     "scripts": {
