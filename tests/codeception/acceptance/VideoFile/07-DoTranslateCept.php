@@ -18,10 +18,6 @@ $I->selectSelect2Option('#Profile_language1', 'Portuguese');
 $I->selectSelect2Option('#Profile_language2', 'Swedish');
 $I->selectSelect2Option('#Profile_language3', 'English');
 
-$I->waitForElementNotVisible('#item-form-modal', 30);
-$I->waitForElementVisible(VideoFileEditPage::$submitButton);
-
-
 $I->click('Save');
 
 $I->waitForText('Your account information has been updated.');
@@ -39,6 +35,7 @@ $I->login('max', 'test');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
 
+// The last blank line in subtitles is significant
 $subtitles = <<<EOD
 1
 00:00:03,399 --> 00:00:10,800
@@ -116,7 +113,7 @@ $I->switchLanguage('English');
 
 $I->click('View', $videoContext);
 $I->click(VideoFileViewPage::$videoContainer);
-// starts at 4 seconds but video.loading might take longer
+
 $I->waitForText("A common misunderstanding is that if we save all the poor children: the world will become overpopulated.", 10);
 
 $I->switchLanguage('Português');
