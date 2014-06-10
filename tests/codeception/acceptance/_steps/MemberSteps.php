@@ -19,7 +19,7 @@ class MemberSteps extends AppSteps
 
     public $staff = array(
         array(
-            'name' => 'ola',
+            'name' => 'olar',
             'password' => 'test123',
             'email' => 'dev+ola@gapminder.org',
             'groupRoles' => array(
@@ -27,7 +27,7 @@ class MemberSteps extends AppSteps
             ),
         ),
         array(
-            'name' => 'max',
+            'name' => 'maxo',
             'password' => 'test123',
             'email' => 'dev+max@gapminder.org',
             'groupRoles' => array(
@@ -114,7 +114,7 @@ class MemberSteps extends AppSteps
         $I->click(RegistrationPage::$submitButton);
 
         if ($this->scenario->running()) {
-            $I->waitForText('Thank you for signing up!', 30); // secs
+            $I->waitForText('PLEASE LOGIN WITH YOUR ACCOUNT CREDENTIALS', 30); // secs
         }
 
         // TODO activate account using mailcatcher
@@ -132,7 +132,7 @@ class MemberSteps extends AppSteps
         $I->login('admin', 'admin');
 
         foreach ($users as $person) {
-            $I->activateMember($person['name']);
+            //$I->activateMember($person['name']);
             foreach ($person['groupRoles'] as $groupName => $rolesNames) {
                 foreach ($rolesNames as $roleName) {
                     $I->toggleGroupRole($person['name'], $groupName, $roleName);

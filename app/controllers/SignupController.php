@@ -23,37 +23,61 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
     }
 
     /**
-     * @inheritDoc
+     * Displays the 'sign up' page.
      */
-    public function actionActivate($token)
+    public function actionIndex()
     {
-        $tokenModel = $this->loadToken(Module::TOKEN_ACTIVATE, $token);
+        $modelClass = $this->module->getClassName(Module::CLASS_SIGNUP_FORM);
 
-        $modelClass = $this->module->getClassName(Module::CLASS_MODEL);
+        /** @var \nordsoftware\yii_account\models\form\SignupForm $model */
+        $model = new $modelClass();
 
-        /** @var \nordsoftware\yii_account\models\ar\Account $model */
-        $model = \CActiveRecord::model($modelClass)->findByPk($tokenModel->accountId);
+        $request = \Yii::app()->request;
 
-        if ($model === null) {
-            $this->pageNotFound();
+        $this->runAjaxValidation($model, $this->formId);
+
+        if ($request->isPostRequest) {
+            $model->attributes = $request->getPost(Helper::classNameToPostKey($modelClass));
+
+            if ($model->validate()) {
+                $accountClass = $this->module->getClassName(Module::CLASS_MODEL);
+
+                /** @var \nordsoftware\yii_account\models\ar\Account $account */
+                $account = new $accountClass();
+                $account->attributes = $model->attributes;
+
+                if ($account->validate()) {
+                    if (!$account->save(false/* already validated */)) {
+                        $this->fatalError();
+                    }
+
+                    // Create a profile model
+                    if (!$this->createProfile($account->id)) {
+                        $this->fatalError(Yii::t('error', 'Failed to create a profile.'));
+                    }
+
+                    $model->createHistoryEntry($account->id, $account->salt, $account->password);
+
+                    if (!$this->module->enableActivation) {
+                        $account->saveAttributes(array('status' => Account::STATUS_ACTIVATED));
+                        $this->redirect(array('/account/authenticate/login'));
+                    }
+
+                    $this->sendActivationMail($account);
+                    $this->redirect(array('done'));
+                }
+
+                // todo: figure out how to avoid this, the problem is that password validation is done on the account
+
+                foreach ($account->getErrors() as $attribute => $errors) {
+                    foreach ($errors as $error) {
+                        $model->addError($attribute, $error);
+                    }
+                }
+            }
         }
 
-        $model->status = Account::STATUS_ACTIVATED;
-
-        if (!$model->save(true, array('status'))) {
-            $this->fatalError();
-        }
-
-        if (!$tokenModel->saveAttributes(array('status' => AccountToken::STATUS_USED))) {
-            $this->fatalError();
-        }
-
-        // Create a profile model
-        if (!$this->createProfile($model->id)) {
-            $this->fatalError(Yii::t('error', 'Failed to create a profile.'));
-        }
-
-        $this->redirect(array('/account/authenticate/login'));
+        $this->render('index', array('model' => $model));
     }
 
     /**

@@ -15,7 +15,7 @@ $videoContext = VideoFileBrowsePage::modelContext('Max video');
 
 
 // Put video to group GapminderInternal
-$I->login('max', 'test123');
+$I->login('maxo', 'test123');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
 $I->click('GapminderInternal', $videoContext);

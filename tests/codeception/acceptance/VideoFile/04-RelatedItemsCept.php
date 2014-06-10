@@ -4,7 +4,7 @@ $scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('add related items to a video.');
 
-$I->login('max', 'test123');
+$I->login('maxo', 'test123');
 
 // Create some videos to add as related items
 for ($count = 1; $count <= 3; $count++) {

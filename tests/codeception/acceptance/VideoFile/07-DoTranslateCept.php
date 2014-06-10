@@ -31,7 +31,7 @@ $I->dontSee('Max video');
 $I->logout();
 
 
-$I->login('max', 'test123');
+$I->login('maxo', 'test123');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
 
