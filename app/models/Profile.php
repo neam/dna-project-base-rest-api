@@ -143,6 +143,6 @@ class Profile extends BaseProfile
     {
         return isset($this->picture_media_id)
             ? $this->pictureMedia->image($p3preset)
-            : TbHtml::image('http://placehold.it/195x195');
+            : TbHtml::image('http://placehold.it/160x160');
     }
 }

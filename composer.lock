@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "75c5f2aeca366cb13d70f590de6ae040",
+    "hash": "33310904ff6df4038fa98429154c5caa",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1040,16 +1040,16 @@
         },
         {
             "name": "nordsoftware/yii-account",
-            "version": "1.0.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-account.git",
-                "reference": "48ed2387ceeee24e100e98ace8a46296aee6b922"
+                "reference": "61a5528cb9227f6990256b476c3c5ed19f20a158"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/48ed2387ceeee24e100e98ace8a46296aee6b922",
-                "reference": "48ed2387ceeee24e100e98ace8a46296aee6b922",
+                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/b935f5ded82ee1f7b33fa9028258235133b69cb7",
+                "reference": "61a5528cb9227f6990256b476c3c5ed19f20a158",
                 "shasum": ""
             },
             "require": {
@@ -1077,14 +1077,19 @@
                     "name": "Christoffer Niska",
                     "email": "ChristofferNiska@gmail.com",
                     "homepage": "http://crisu83.me"
+                },
+                {
+                    "name": "Eric Nishio",
+                    "email": "eric@self-learner.com",
+                    "homepage": "http://ericnish.io"
                 }
             ],
             "description": "Extension that provides basic account functionality for the Yii PHP framework.",
             "support": {
-                "source": "https://github.com/nordsoftware/yii-account/tree/1.0.2",
+                "source": "https://github.com/nordsoftware/yii-account/tree/1.2.0",
                 "issues": "https://github.com/nordsoftware/yii-account/issues"
             },
-            "time": "2014-06-05 10:44:03"
+            "time": "2014-06-10 08:01:50"
         },
         {
             "name": "nordsoftware/yii-emailer",
@@ -2660,6 +2665,7 @@
         "neam/php-po2json": 20,
         "weavora/wrest": 20,
         "codemix/hybridauthmanager": 20,
+        "nordsoftware/yii-account": 20,
         "nordsoftware/yii-utils": 20,
         "crisu83/yii-formatter": 20,
         "jalle19/yii-ga": 20,

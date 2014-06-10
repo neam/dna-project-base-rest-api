@@ -4,7 +4,7 @@ $scenario->group('data:clean-db');
 
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('upload a profile picture');
-$I->login('max', 'test');
+$I->login('max', 'test123');
 
 $I->amOnPage(ProfilePage::$URL);
 $I->click('Upload new');

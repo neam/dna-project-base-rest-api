@@ -10,6 +10,21 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
     /**
      * @inheritDoc
      */
+    public function behaviors()
+    {
+        return CMap::mergeArray(
+            parent::behaviors(),
+            array(
+                'emailer' => array(
+                    'class' => 'vendor.nordsoftware.yii-emailer.behaviors.EmailBehavior',
+                ),
+            )
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function actionActivate($token)
     {
         $tokenModel = $this->loadToken(Module::TOKEN_ACTIVATE, $token);
@@ -23,7 +38,7 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
             $this->pageNotFound();
         }
 
-        $model->status = Account::STATUS_ACTIVATE;
+        $model->status = Account::STATUS_ACTIVATED;
 
         if (!$model->save(true, array('status'))) {
             $this->fatalError();
@@ -51,5 +66,35 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
         $model->user_id = $accountId;
 
         return $model->save();
+    }
+
+    /**
+     * Sends the activation email to the given account.
+     * @param Account $account account model.
+     * @throws \nordsoftware\yii_account\exceptions\Exception
+     */
+    protected function sendActivationMail(Account $account)
+    {
+        if (!$account->save(false)) {
+            $this->fatalError();
+        }
+
+        $token = $this->module->generateToken(Module::TOKEN_ACTIVATE, $account->id);
+        $activationUrl = $this->createAbsoluteUrl('/account/signup/activate', array('token' => $token));
+
+        $message = Yii::t(
+            'app', 'Welcome to Gapminder! Activate your account by visiting the following URL: {activationUrl}',
+            array(
+                '{activationUrl}' => $activationUrl,
+            )
+        );
+
+        $config = array(
+            'body' => $message,
+        );
+
+        /** @var EmailBehavior $this */
+        $mail = $this->createEmail(app()->params['adminEmail'], $account->email, $this->emailSubject, $config);
+        $this->sendEmail($mail);
     }
 }
