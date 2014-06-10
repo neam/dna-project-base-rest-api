@@ -13,11 +13,13 @@ $I->createVideoFile(
         'info' => array(
             VideoFileEditPage::$titleField => 'Max video',
         ),
+        /*
         'files' => array(
             VideoFileEditPage::$webmField => function () use ($I) {
                 $I->uploadWebmFile();
             },
         ),
+        */
     )
 );
 
