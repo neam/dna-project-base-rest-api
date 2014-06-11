@@ -55,6 +55,7 @@ class Account extends BaseAccount
                         ),
                         'legacy' => array(
                             'class' => '\YiiPassword\Strategies\LegacyMd5',
+                            'minLength' => self::PASSWORD_MIN_LENGTH,
                         )
                     ),
                 ),
