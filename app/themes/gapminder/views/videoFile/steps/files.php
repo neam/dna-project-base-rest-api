@@ -75,3 +75,9 @@
         </div>
     </div>
 </div>
+
+
+<?php echo $form->textFieldControlGroup(
+    $model,
+    'youtube_url'
+); ?>

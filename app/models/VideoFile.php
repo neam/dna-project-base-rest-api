@@ -74,6 +74,7 @@ class VideoFile extends BaseVideoFile
                 array('clip_mp4_media_id', 'validateVideoMp4', 'on' => 'step_files,publishable,publishable-step_files'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
                 array('subtitles_' . $this->source_language, 'validateSubtitles', 'on' => 'step_subtitles,publishable,publishable-step_subtitles'),
+                array('youtube_url', 'url'),
             )
         );
         Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
@@ -168,6 +169,7 @@ class VideoFile extends BaseVideoFile
             'files' => array(
                 'clip_webm_media_id',
                 'clip_mp4_media_id',
+                'youtube_url',
             ),
             'subtitles' => array(
                 'subtitles_' . $this->source_language,
@@ -202,6 +204,7 @@ class VideoFile extends BaseVideoFile
                 'clip_webm_media_id' => Yii::t('model', 'Video File (.webm)'),
                 'clip_mp4_media_id' => Yii::t('model', 'Video File (.mp4)'),
                 'subtitles' => Yii::t('model', 'Subtitles'),
+                'youtube_url' => Yii::t('model', 'YouTube URL'),
             )
         );
     }
@@ -219,6 +222,7 @@ class VideoFile extends BaseVideoFile
                 'subtitles' => Yii::t('model', 'The subtitles srt file contents'),
                 'subtitles_import_media_id' => Yii::t('model', 'Here you can upload and import an existing subtitles file in srt file format. Warning: Clicking import will replace the current subtitles with the contents of the srt file.'),
                 'related' => Yii::t('model', 'After watching this video you may also be interested in these Items. If the video is on a chapter page, the chapter is assumed to related to these items as well.'),
+                'youtube_url' => Yii::t('model', 'The URL to a video on YouTube'),
             )
         );
     }
@@ -329,6 +333,7 @@ class VideoFile extends BaseVideoFile
         }
         $response->clipWebm = !is_null($this->clip_webm_media_id) ? $this->clipWebmMedia->createUrl('original-public-webm', true) : null;
         $response->clipMp4 = !is_null($this->clip_mp4_media_id) ? $this->clipMp4Media->createUrl('original-public-mp4', true) : null;
+        $response->youtube_url = $this->youtube_url;
 
 
         if ($includeRelated) {
