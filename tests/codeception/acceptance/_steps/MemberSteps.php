@@ -105,7 +105,6 @@ class MemberSteps extends AppSteps
         $I->fillField(RegistrationPage::$emailField, $email);
         $I->fillField(RegistrationPage::$passwordField, $password);
         $I->fillField(RegistrationPage::$verifyPasswordField, $verifyPassword);
-        $I->fillField(RegistrationPage::$emailField, $email);
 	$I->wait(2);
         $acceptTerms
             ? $I->checkOption(RegistrationPage::$acceptTermsField)

@@ -55,6 +55,8 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
                         $this->fatalError(Yii::t('error', 'Failed to create a profile.'));
                     }
 
+                    $account->assignDefaultGroupRoles();
+
                     $model->createHistoryEntry($account->id, $account->salt, $account->password);
 
                     if (!$this->module->enableActivation) {
