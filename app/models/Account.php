@@ -6,6 +6,9 @@ Yii::import('Account.*');
 
 class Account extends BaseAccount
 {
+    const PASSWORD_MIN_LENGTH = 4;
+    const USERNAME_MIN_LENGTH = 3;
+
     // Auth item types
     const AUTH_ITEM_TYPE_OPERATION = 0;
     const AUTH_ITEM_TYPE_TASK = 1;
@@ -17,16 +20,25 @@ class Account extends BaseAccount
         return parent::model($className);
     }
 
+    /**
+     * @inheritDoc
+     */
     public function init()
     {
-        return parent::init();
+        parent::init();
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getItemLabel()
     {
         return parent::getItemLabel();
     }
 
+    /**
+     * @inheritDoc
+     */
     public function behaviors()
     {
         return array_merge(
@@ -38,6 +50,7 @@ class Account extends BaseAccount
                     'strategies' => array(
                         'bcrypt' => array(
                             'class' => '\YiiPassword\Strategies\Bcrypt',
+                            'minLength' => self::PASSWORD_MIN_LENGTH,
                             'workFactor' => 12,
                         ),
                         'legacy' => array(
@@ -49,6 +62,9 @@ class Account extends BaseAccount
         );
     }
 
+    /**
+     * @inheritDoc
+     */
     public function relations()
     {
         return array_merge(
@@ -57,16 +73,23 @@ class Account extends BaseAccount
         );
     }
 
-
+    /**
+     * @inheritDoc
+     */
     public function rules()
     {
-        return array_merge(parent::rules(), array(
-            array('username, email', 'required'),
-            array('username', 'unique', 'allowEmpty' => false, 'message' => Yii::t('app', 'Username already exists.')),
-            array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => Yii::t('app', 'Incorrect symbols (A-z0-9).')),
-            array('email', 'unique', 'message' => Yii::t('app', 'Email address already exists.')),
-            array('email', 'email'),
-        ));
+        return array_merge(
+            parent::rules(),
+            array(
+                array('username', 'length', 'min' => self::USERNAME_MIN_LENGTH),
+                array('password', 'length', 'min' => self::PASSWORD_MIN_LENGTH),
+                array('username, email', 'required'),
+                array('username', 'unique', 'allowEmpty' => false, 'message' => Yii::t('app', 'Username already exists.')),
+                array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => Yii::t('app', 'Incorrect symbols (A-z0-9).')),
+                array('email', 'unique', 'message' => Yii::t('app', 'Email address already exists.')),
+                array('email', 'email'),
+            )
+        );
     }
 
     public function search($criteria = null)

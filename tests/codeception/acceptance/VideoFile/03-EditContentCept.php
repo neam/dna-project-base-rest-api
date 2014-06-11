@@ -4,7 +4,7 @@ $scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('edit a video I have previously created.');
 
-$I->login('maxo', 'test123');
+$I->login('max', 'test');
 
 
 // Create video

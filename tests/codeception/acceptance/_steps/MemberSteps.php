@@ -19,16 +19,16 @@ class MemberSteps extends AppSteps
 
     public $staff = array(
         array(
-            'name' => 'olar',
-            'password' => 'test123',
+            'name' => 'ola',
+            'password' => 'test',
             'email' => 'dev+ola@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupAdministrator'),
             ),
         ),
         array(
-            'name' => 'maxo',
-            'password' => 'test123',
+            'name' => 'max',
+            'password' => 'test',
             'email' => 'dev+max@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupModerator'),
@@ -36,7 +36,7 @@ class MemberSteps extends AppSteps
         ),
         array(
             'name' => 'ferdanda',
-            'password' => 'test123',
+            'password' => 'test',
             'email' => 'dev+ferdanda@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupEditor'),
@@ -44,7 +44,7 @@ class MemberSteps extends AppSteps
         ),
         array(
             'name' => 'julia',
-            'password' => 'test123',
+            'password' => 'test',
             'email' => 'dev+julia@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupContributor'),
@@ -52,7 +52,7 @@ class MemberSteps extends AppSteps
         ),
         array(
             'name' => 'mattias',
-            'password' => 'test123',
+            'password' => 'test',
             'email' => 'dev+mattias@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupMember'),
@@ -63,7 +63,7 @@ class MemberSteps extends AppSteps
     public $externalUsers = array(
         array(
             'name' => 'jack',
-            'password' => 'test123',
+            'password' => 'test',
             'email' => 'dev+jackexternal@gapminder.org',
             'groupRoles' => array(
                 'Proofreaders' => array('GroupReviewer'),
@@ -71,7 +71,7 @@ class MemberSteps extends AppSteps
         ),
         array(
             'name' => 'martha',
-            'password' => 'test123',
+            'password' => 'test',
             'email' => 'dev+marthaexternal@gapminder.org',
             'groupRoles' => array(
                 'Translators' => array('GroupTranslator'),

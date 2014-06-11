@@ -1,6 +1,5 @@
 <?php
 
-use nordsoftware\yii_account\models\ar\Account;
 use nordsoftware\yii_account\models\ar\AccountToken;
 use nordsoftware\yii_account\Module;
 use nordsoftware\yii_account\helpers\Helper;
@@ -59,11 +58,11 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
                     $model->createHistoryEntry($account->id, $account->salt, $account->password);
 
                     if (!$this->module->enableActivation) {
-                        $account->saveAttributes(array('status' => Account::STATUS_ACTIVATED));
+                        $account->saveAttributes(array('status' => \nordsoftware\yii_account\models\ar\Account::STATUS_ACTIVATED));
                         $this->redirect(array('/account/authenticate/login'));
                     }
 
-                    $this->sendActivationMail($account);
+                    $this->sendActivationEmail($account);
                     $this->redirect(array('done'));
                 }
 
@@ -97,7 +96,7 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
      * @param Account $account account model.
      * @throws \nordsoftware\yii_account\exceptions\Exception
      */
-    protected function sendActivationMail(Account $account)
+    protected function sendActivationEmail($account)
     {
         if (!$account->save(false)) {
             $this->fatalError();

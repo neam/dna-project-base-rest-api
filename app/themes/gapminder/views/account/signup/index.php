@@ -35,41 +35,9 @@
                             <?php echo $form->passwordFieldControlGroup($model, 'password'); ?>
                             <?php echo $form->passwordFieldControlGroup($model, 'verifyPassword'); ?>
                             <?php echo $form->checkBoxControlGroup($model, 'acceptTerms'); ?>
-                            <?php if (!empty($profileFields)): ?>
-                                <?php foreach ($profileFields as $field): ?>
-                                    <?php if ($widgetEdit = $field->widgetEdit($profile)): ?>
-                                        <?php echo $widgetEdit; ?>
-                                    <?php elseif (!empty($field->range)): ?>
-                                        <?php echo $form->dropDownListControlGroup(
-                                            $profile,
-                                            $field->varname,
-                                            UserProfile::range($field->range)
-                                        ); ?>
-                                    <?php elseif ($field->field_type === 'TEXT'): ?>
-                                        <?php echo $form->textAreaControlGroup(
-                                            $profile,
-                                            $field->varname,
-                                            array(
-                                                'rows' => 6,
-                                                'cols' => 50,
-                                            )
-                                        ); ?>
-                                    <?php else: ?>
-                                        <?php echo $form->textFieldControlGroup(
-                                            $profile,
-                                            $field->varname,
-                                            array(
-                                                'size' => 60,
-                                                'maxlength' => !empty($field->field_size) ? $field->field_size : 255,
-                                            )
-                                        ); ?>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
                             <div class="captcha">
                                 <?php // TODO: Implement Captcha. ?>
                             </div>
-                            <?php //echo $form->checkBoxControlGroup($model, 'acceptTerms'); // TODO: Implement this. ?>
                             <div class="form-actions">
                                 <?php echo TbHtml::submitButton(
                                     Yii::t('app', 'Next'),

@@ -65,7 +65,6 @@ abstract class BaseAccount extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('create_at', 'required'),
                 array('username, password, email, activkey, superuser, status, lastvisit_at', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('superuser, status', 'numerical', 'integerOnly' => true),
                 array('username', 'length', 'max' => 20),

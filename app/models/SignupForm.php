@@ -12,11 +12,15 @@ class SignupForm extends \nordsoftware\yii_account\models\form\SignupForm
      */
     public function rules()
     {
-        return CMap::mergeArray(
-            parent::rules(),
-            array(
-                array('acceptTerms', 'validateAcceptTerms'),
-            )
+        return array(
+            array('password, verifyPassword', 'required'),
+            array('verifyPassword', 'compare', 'compareAttribute' => 'password'),
+            array('username', 'length', 'min' => Account::USERNAME_MIN_LENGTH),
+            array('password', 'length', 'min' => Account::PASSWORD_MIN_LENGTH),
+            array('email, username', 'required'),
+            array('email', 'email'),
+            array('username, email', 'unique', 'className' => '\nordsoftware\yii_account\models\ar\Account'),
+            array('acceptTerms', 'validateAcceptTerms'),
         );
     }
 
