@@ -127,10 +127,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Login page handled via vendor module mishamx.yii-user
-     */
-
-    /**
      * Logs out the current user and redirect to homepage.
      */
     public function actionLogout()

@@ -3,7 +3,7 @@
 class AccountAdminPage
 {
     // include url of current page
-    static $URL = '?r=account/admin';
+    static $URL = '?r=admin/manageAccounts';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
