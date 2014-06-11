@@ -4,9 +4,8 @@ defined('YII_DEBUG') or define('YII_DEBUG', true);
 
 return array(
     'modules' => array(
-        'user' => array(
-            'captcha' => array('registration' => false),
-            'sendActivationMail' => false, // TODO: use mailcatcher instead
+        'account' => array(
+            'enableActivation' => false,
         ),
     ),
     'components' => array(

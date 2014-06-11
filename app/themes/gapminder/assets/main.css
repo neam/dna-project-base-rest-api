@@ -9743,6 +9743,10 @@ Styleguide 5
 .layout-minimal .brand-logo {
   margin-bottom: 50px;
 }
+.layout-narrow {
+  width: inherit;
+  margin: 40px 0;
+}
 .layout-regular {
   padding-top: 95px;
 }
@@ -11476,6 +11480,78 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
     float: left;
     width: 50%;
   }
+}
+.authenticate-controller.login-action .radio {
+  padding-left: 0;
+}
+.authenticate-controller.login-action .form-container {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .authenticate-controller.login-action .form-container {
+    float: left;
+    width: 100%;
+  }
+}
+.authenticate-controller.login-action .form-container .brand-logo {
+  text-align: center;
+}
+.authenticate-controller.login-action .form-container .login-heading {
+  color: #000;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 22px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.authenticate-controller.login-action .form-container .container-lead {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.authenticate-controller.login-action .form-actions {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.authenticate-controller.login-action .form-actions:before,
+.authenticate-controller.login-action .form-actions:after {
+  content: " ";
+  display: table;
+}
+.authenticate-controller.login-action .form-actions:after {
+  clear: both;
+}
+.authenticate-controller.login-action .form-actions:before,
+.authenticate-controller.login-action .form-actions:after {
+  content: " ";
+  display: table;
+}
+.authenticate-controller.login-action .form-actions:after {
+  clear: both;
+}
+.authenticate-controller.login-action .form-actions .login-action {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.authenticate-controller.login-action .form-actions .stay-logged-in-action {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.authenticate-controller.login-action .form-actions .stay-logged-in-action .checkbox {
+  margin: 20px 0;
+}
+.authenticate-controller.login-action .login-links {
+  margin: 20px auto;
 }
 .chapter-controller.view-action .chapter-content {
   margin-left: -15px;
@@ -13952,41 +14028,6 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
-.login-controller.login-action .radio {
-  padding-left: 0;
-}
-.login-controller.login-action .form-container {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .login-controller.login-action .form-container {
-    float: left;
-    width: 50%;
-  }
-}
-@media (min-width: 992px) {
-  .login-controller.login-action .form-container {
-    margin-left: 25%;
-  }
-}
-.login-controller.login-action .form-container .brand-logo {
-  text-align: center;
-}
-.login-controller.login-action .form-container .login-heading {
-  color: #000;
-  font-size: 12px;
-  font-weight: 100;
-  line-height: 22px;
-  text-transform: uppercase;
-  text-align: center;
-}
-.login-controller.login-action .form-container .container-lead {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
 .registration-controller {
   font-weight: 100;
 }
@@ -15875,4 +15916,13 @@ Styleguide 9
   margin-top: 20px;
   margin-bottom: 10px;
   vertical-align: middle;
+}
+@media (min-width: 768px) {
+  .layout-narrow {
+    width: 440px;
+    margin: 40px auto;
+  }
+  .layout-narrow .container {
+    width: inherit;
+  }
 }

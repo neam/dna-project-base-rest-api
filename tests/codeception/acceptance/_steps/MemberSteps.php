@@ -102,18 +102,19 @@ class MemberSteps extends AppSteps
         $I->amGoingTo("Register user $username");
         $I->amOnPage(RegistrationPage::$URL);
         $I->fillField(RegistrationPage::$usernameField, $username);
+        $I->fillField(RegistrationPage::$emailField, $email);
         $I->fillField(RegistrationPage::$passwordField, $password);
         $I->fillField(RegistrationPage::$verifyPasswordField, $verifyPassword);
         $I->fillField(RegistrationPage::$emailField, $email);
+	$I->wait(2);
         $acceptTerms
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
-
         $I->wait(1); // TODO: set a success/error class on the form to watch on instead
         $I->click(RegistrationPage::$submitButton);
 
         if ($this->scenario->running()) {
-            $I->waitForText('Thank you for your registration.', 30); // secs
+            $I->waitForText('PLEASE LOGIN WITH YOUR ACCOUNT CREDENTIALS', 30); // secs
         }
 
         // TODO activate account using mailcatcher
@@ -131,7 +132,7 @@ class MemberSteps extends AppSteps
         $I->login('admin', 'admin');
 
         foreach ($users as $person) {
-            $I->activateMember($person['name']);
+            //$I->activateMember($person['name']);
             foreach ($person['groupRoles'] as $groupName => $rolesNames) {
                 foreach ($rolesNames as $roleName) {
                     $I->toggleGroupRole($person['name'], $groupName, $roleName);

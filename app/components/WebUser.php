@@ -1,6 +1,6 @@
 <?php
 
-class WebUser extends CWebUser
+class WebUser extends \nordsoftware\yii_account\components\WebUser
 {
     /**
      * @var Account
@@ -110,9 +110,25 @@ class WebUser extends CWebUser
     }
 
     /**
+     * Checks if the user is an admin.
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        if ($this->isGuest) {
+            return false;
+        }
+
+        $account = Account::model()->findByPk($this->id);
+
+        return (int) $account->superuser === 1;
+    }
+
+    /**
      * Loads an Account model.
      * @return CActiveRecord|null
      */
+    /*
     public function loadAccount()
     {
         if ($this->isGuest) {
@@ -121,6 +137,7 @@ class WebUser extends CWebUser
 
         return Account::model()->findByPk($this->id);
     }
+    */
 
     /**
      * Returns the group based roles for the logged in user.

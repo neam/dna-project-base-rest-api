@@ -3,17 +3,16 @@
 class LoginPage
 {
     // include url of current page
-    static $URL = '?r=user/login';
+    static $URL = '?r=account/authenticate/login';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
-    public static $usernameField = '#UserLogin_username';
-    public static $passwordField = '#UserLogin_password';
-
-    public static $submitButton = '#login-form button[type=submit]';
+    public static $usernameField = '#nordsoftware_yii_account_models_form_LoginForm_username';
+    public static $passwordField = '#nordsoftware_yii_account_models_form_LoginForm_password';
+    public static $submitButton = '#loginForm button[type=submit]';
 
     /**
      * Basic route example for your current URL

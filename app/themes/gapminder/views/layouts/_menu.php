@@ -29,7 +29,7 @@
                         array(
                             'label' => Yii::t('app', 'Dashboard'),
                             'icon' => TbHtml::ICON_TH,
-                            'url' => array('/account/dashboard'),
+                            'url' => array('/dashboard/index'),
                             'visible' => !Yii::app()->user->isGuest,
                         ),
                     ),
@@ -47,7 +47,7 @@
                             'items' => Controller::getLanguageMenuItems(),
                         ),
                         array(
-                            'label' => ucfirst(Yii::app()->user->name),
+                            'label' => Yii::app()->user->name,
                             'visible' => !Yii::app()->user->isGuest,
                             'icon' => Yii::app()->user->isAdmin() ? 'warning-sign' : 'user',
                             'id' => 'accountMenuLink',
@@ -58,7 +58,7 @@
                                 array(
                                     'label' => Yii::t('app', 'Dashboard'),
                                     'icon' => 'th-large',
-                                    'url' => array('/account/dashboard'),
+                                    'url' => array('/dashboard/index'),
                                     'visible' => !Yii::app()->user->isGuest
                                 ),
                                 array(
@@ -70,7 +70,7 @@
                                 array(
                                     'label' => Yii::t('app', 'Profile'),
                                     'icon' => 'user',
-                                    'url' => array('/account/profile'),
+                                    'url' => array('/profile/edit'),
                                     'visible' => !Yii::app()->user->isGuest
                                 ),
                                 array(
@@ -82,14 +82,14 @@
                                 array(
                                     'label' => Yii::t('app', 'Manage'),
                                     'icon' => 'lock',
-                                    'url' => array('/account/admin'),
+                                    'url' => array('/admin/manageAccounts'),
                                     'visible' => Yii::app()->user->isAdmin(),
                                 ),
                                 '---',
                                 array(
                                     'label' => Yii::t('app', 'Logout'),
                                     'icon' => 'logt-out',
-                                    'url' => array('/site/logout'),
+                                    'url' => array('/account/authenticate/logout'),
                                     'visible' => !Yii::app()->user->isGuest,
                                     'id' => 'logoutLink',
                                 ),
@@ -97,7 +97,7 @@
                         ),
                         array(
                             'label' => Yii::t('app', 'Login'),
-                            'url' => Yii::app()->user->loginUrl,
+                            'url' => array('/account/authenticate/login'),
                             'visible' => Yii::app()->user->isGuest,
                             'icon' => 'log-in',
                             'id' => 'loginLink',

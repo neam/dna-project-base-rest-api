@@ -3,20 +3,19 @@
 class RegistrationPage
 {
     // include url of current page
-    static $URL = '?r=user/registration';
+    static $URL = '?r=account/signup/index';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
-    public static $usernameField = '#AppRegistrationForm_username';
-    public static $passwordField = '#AppRegistrationForm_password';
-    public static $verifyPasswordField = '#AppRegistrationForm_verifyPassword';
-    public static $emailField = '#AppRegistrationForm_email';
-    public static $acceptTermsField = '#AppRegistrationForm_acceptTerms';
-
-    public static $submitButton = '#registration-form button[type=submit]';
+    public static $usernameField = '#SignupForm_username';
+    public static $emailField = '#SignupForm_email';
+    public static $passwordField = '#SignupForm_password';
+    public static $verifyPasswordField = '#SignupForm_verifyPassword';
+    public static $acceptTermsField = '#SignupForm_acceptTerms';
+    public static $submitButton = '#signup-submit';
 
     /**
      * Basic route example for your current URL

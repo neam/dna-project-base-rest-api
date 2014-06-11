@@ -69,6 +69,10 @@
         },
         {
             "type": "vcs",
+            "url": "https://github.com/nordsoftware/yii-account"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/PHPOffice/PHPExcel"
         },
         {
@@ -109,10 +113,6 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/Gapminder/yii-user"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/Gapminder/PHP-po-parser"
         },
         {
@@ -133,7 +133,6 @@
         "php": ">=5.4.0",
         "crisu83/yii-consoletools": "dev-awaiting-prs",
         "crisu83/yiistrap-widgets": "1.7.*",
-        "mishamx/yii-user": "dev-develop#78f939f",
         "phundament/jquery-file-upload": "@dev",
         "phundament/p3admin": "0.16.0",
         "phundament/p3extensions": "0.17.0",
@@ -164,6 +163,7 @@
         "twitter/bootstrap": "3.0.*",
         "crisu83/yii-sentry": "1.3.*",
         "alchemy/zippy": "*",
+        "nordsoftware/yii-account": "dev-master#61a5528cb9227f6990256b476c3c5ed19f20a158",
         "nordsoftware/yii-emailer": "1.2.*",
         "nordsoftware/yii-utils": "@dev",
         "crisu83/yii-formatter": "@dev",
@@ -212,7 +212,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Phundament": "./src"
+            "Phundament": "./src",
+            "YiiPassword\\": "./vendor/phpnode/yiipassword/src"
         }
     },
     "scripts": {

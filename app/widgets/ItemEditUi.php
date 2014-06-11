@@ -184,7 +184,7 @@ class ItemEditUi extends CWidget
             $nextStepAction = $stepActions[$nextStepIndex];
             $url = $this->createFormActionUrlForStep($nextStepAction['step']);
         } else {
-            $url = Yii::app()->createUrl('/account/dashboard');
+            $url = Yii::app()->createUrl('/dashboard/index');
         }
 
         return $url;
@@ -204,7 +204,7 @@ class ItemEditUi extends CWidget
             $previousStepAction = $stepActions[$previousStepIndex];
             $url = $this->createFormActionUrlForStep($previousStepAction['step']);
         } else {
-            $url = Yii::app()->createUrl('/account/dashboard');
+            $url = Yii::app()->createUrl('/dashboard/index');
         }
 
         return $url;

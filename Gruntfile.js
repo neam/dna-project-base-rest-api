@@ -125,7 +125,8 @@ module.exports = function(grunt) {
                     'app/themes/gapminder/less/layouts/**/*.less',
                     'app/themes/gapminder/less/partials/**/*.less',
                     'app/themes/gapminder/less/controllers/**/*.less',
-                    'app/themes/gapminder/less/widgets/**/*.less'
+                    'app/themes/gapminder/less/widgets/**/*.less',
+                    'app/themes/gapminder/less/responsive/**/*.less'
                 ]
             }
         },

@@ -50,7 +50,8 @@ $gcmsConfig = array(
         'ext.wrest.WHttpRequest' => 'vendor.weavora.wrest.WHttpRequest',
         'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
         'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
-        'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode'
+        'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode',
+        'theme' => 'application.themes.gapminder',
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
@@ -144,16 +145,21 @@ $gcmsConfig = array(
                 ),
             ),
         ),
-        'user' => array(
-            'tableUsers' => 'account',
-            'tableProfiles' => 'profile',
-            'controllerMap' => array(
-                'activation' => 'AppActivationController',
-                'registration' => 'AppRegistrationController',
+        'account' => array(
+            'class' => '\nordsoftware\yii_account\Module',
+            'classMap' => array(
+                'model' => 'Account',
+                'signupForm' => 'SignupForm',
             ),
-            'returnUrl' => array('/'), // This is the default return url used if login is done from the front-page
-            'profileUrl' => array('/account/dashboard'),
-        )
+            'controllerMap' => array(
+                'signup' => array(
+                    'class' => 'application.controllers.SignupController',
+                    'layout' => 'theme.views.layouts.minimal',
+                ),
+            ),
+            'defaultLayout' => 'theme.views.layouts.narrow',
+            'fromEmailAddress' => 'noreply@gapminder.org',
+        ),
     ),
     'components' => array(
         'loginReturnUrlTracker' => array(
