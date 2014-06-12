@@ -109,6 +109,19 @@ class Controller extends CController
     }
 
     /**
+     * Forces the user to set a profile language, and sets Yii::app()->user->profileReturnUrl.
+     * @param string|null $returnUrl the return URL used after saving the profile. Defaults to the current request URL.
+     */
+    public function requireProfileLanguages($returnUrl = null)
+    {
+        if (Yii::app()->user->isTranslator && count(Yii::app()->user->translatableLanguages) < 1) {
+            Yii::app()->user->profileReturnUrl = isset($returnUrl) ? $returnUrl : request()->url;
+            Yii::app()->user->setFlash('warning', Yii::t('app', 'Please set at least one language before translating.'));
+            $this->redirect(array('/profile/edit'));
+        }
+    }
+
+    /**
      * Sets the page title.
      * @param string|array $title the full title or an array of title fragments.
      * @param boolean $includeAppName whether to include the app name in the page title. Defaults to false.

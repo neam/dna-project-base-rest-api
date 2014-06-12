@@ -90,19 +90,19 @@ class Profile extends BaseProfile
         $languagesAvailable = Html::getLanguages();
         $languages = array();
 
-        if (isset($this->language1)) {
+        if (!empty($this->language1)) {
             $languages[$this->language1] = $languagesAvailable[$this->language1];
         }
-        if (isset($this->language2)) {
+        if (!empty($this->language2)) {
             $languages[$this->language2] = $languagesAvailable[$this->language2];
         }
-        if (isset($this->language3)) {
+        if (!empty($this->language3)) {
             $languages[$this->language3] = $languagesAvailable[$this->language3];
         }
-        if (isset($this->language4)) {
+        if (!empty($this->language4)) {
             $languages[$this->language4] = $languagesAvailable[$this->language4];
         }
-        if (isset($this->language5)) {
+        if (!empty($this->language5)) {
             $languages[$this->language5] = $languagesAvailable[$this->language5];
         }
 

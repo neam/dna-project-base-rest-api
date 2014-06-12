@@ -2,6 +2,8 @@
 
 class WebUser extends \nordsoftware\yii_account\components\WebUser
 {
+    const PROFILE_RETURN_URL = 'profileReturnUrl';
+
     /**
      * @var Account
      */
@@ -208,6 +210,62 @@ class WebUser extends \nordsoftware\yii_account\components\WebUser
     public function canTranslateInto($language)
     {
         return array_key_exists($language, $this->getTranslatableLanguages());
+    }
+
+    /**
+     * Checks if the user is a translator.
+     * @return bool
+     */
+    public function getIsTranslator()
+    {
+        return $this->hasRole(Role::GROUP_TRANSLATOR);
+    }
+
+    /**
+     * Checks if the user has the given role.
+     * @param string $roleName (use role name constants, e.g. Role::GROUP_TRANSLATOR).
+     * @return bool
+     */
+    public function hasRole($roleName)
+    {
+        if (!$this->isGuest) {
+            $attributes = array(
+                'account_id' => $this->id,
+                'role_id' => PermissionHelper::roleNameToId($roleName),
+            );
+
+            return PermissionHelper::groupHasAccount($attributes);
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Returns the profile return URL.
+     * @return string
+     */
+    public function getProfileReturnUrl()
+    {
+        return Yii::app()->session[self::PROFILE_RETURN_URL];
+    }
+
+    /**
+     * Sets the profile return URL.
+     * @param string $url
+     */
+    public function setProfileReturnUrl($url)
+    {
+        Yii::app()->session[self::PROFILE_RETURN_URL] = $url;
+    }
+
+    /**
+     * Redirects to the profile return URL and resets it.
+     */
+    public function gotoProfileReturnUrl()
+    {
+        $returnUrl = !empty($this->profileReturnUrl) ? $this->profileReturnUrl : request()->url;
+        $this->setProfileReturnUrl(null); // reset return URL
+        Yii::app()->controller->redirect($returnUrl);
     }
 
     /**
