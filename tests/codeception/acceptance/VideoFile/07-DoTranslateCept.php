@@ -22,6 +22,8 @@ $I->click('Save');
 
 $I->waitForText('Your account information has been updated.');
 
+$I->amOnPage(ProfilePage::$URL);
+
 $I->seeSelect2OptionIsSelected('#Profile_language1', 'Portuguese');
 $I->seeSelect2OptionIsSelected('#Profile_language2', 'Swedish');
 $I->seeSelect2OptionIsSelected('#Profile_language3', 'English');

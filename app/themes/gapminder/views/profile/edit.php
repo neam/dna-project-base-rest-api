@@ -125,13 +125,34 @@
                 <h2 class="profile-section-heading"><?php echo Yii::t('app', 'Languages'); ?></h2>
             </div>
             <div class="profile-col-4">
-                <?php echo $form->select2ControlGroup($model->profile, 'language1', Html::getLanguages()); ?>
+                <?php echo $form->select2ControlGroup(
+                    $model->profile,
+                    'language1',
+                    Html::getLanguages(),
+                    array(
+                        'empty' => Yii::t('app', 'None'),
+                    )
+                ); ?>
             </div>
             <div class="profile-col-4">
-                <?php echo $form->select2ControlGroup($model->profile, 'language2', Html::getLanguages()); ?>
+                <?php echo $form->select2ControlGroup(
+                    $model->profile,
+                    'language2',
+                    Html::getLanguages(),
+                    array(
+                        'empty' => Yii::t('app', 'None'),
+                    )
+                ); ?>
             </div>
             <div class="profile-col-4">
-                <?php echo $form->select2ControlGroup($model->profile, 'language3', Html::getLanguages()); ?>
+                <?php echo $form->select2ControlGroup(
+                    $model->profile,
+                    'language3',
+                    Html::getLanguages(),
+                    array(
+                        'empty' => Yii::t('app', 'None'),
+                    )
+                ); ?>
             </div>
         </div>
     </section>

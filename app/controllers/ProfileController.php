@@ -109,7 +109,7 @@ class ProfileController extends Controller
 
             if ($model->save() && $model->profile->save()) {
                 setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('app', 'Your account information has been updated.'));
-                $this->refresh();
+                Yii::app()->user->gotoProfileReturnUrl();
             }
         }
 

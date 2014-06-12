@@ -1048,21 +1048,17 @@ trait ItemController
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
 
-        $profileLanguages = Yii::app()->user->getTranslatableLanguages();
+        /** @var ItemController|Controller $this */
+        $this->requireProfileLanguages();
 
-        if (count($profileLanguages) > 0) {
-            $this->populateWorkflowData($model, 'translate', Yii::t('app', ''));
+        $this->populateWorkflowData($model, 'translate', Yii::t('app', ''));
 
-            $this->render(
-                '/_item/translation-overview',
-                array(
-                    'model' => $model,
-                )
-            );
-        } else {
-            Yii::app()->user->setFlash('warning', Yii::t('app', 'Please set your languages before translating.'));
-            $this->redirect('/account/profile');
-        }
+        $this->render(
+            '/_item/translation-overview',
+            array(
+                'model' => $model,
+            )
+        );
     }
 
     /**

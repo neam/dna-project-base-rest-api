@@ -4097,6 +4097,7 @@ CREATE TABLE `video_file` (
   `slug_zh_cn` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `slug_zh_tw` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `slug_fa` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `youtube_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_video_file_p3_media3_idx` (`thumbnail_media_id`),
   KEY `fk_video_file_video_file1_idx` (`cloned_from_id`),
@@ -4196,6 +4197,8 @@ CREATE TABLE `video_file_qa_state` (
   `title_proofed` tinyint(1) DEFAULT NULL,
   `subtitles_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
+  `youtube_url_approved` tinyint(1) DEFAULT NULL,
+  `youtube_url_proofed` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -5155,4 +5158,4 @@ CREATE TABLE `waffle_unit_qa_state` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-11 12:30:50
+-- Dump completed on 2014-06-12  8:36:59
