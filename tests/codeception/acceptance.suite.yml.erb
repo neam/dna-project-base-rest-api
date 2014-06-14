@@ -57,6 +57,19 @@ env:
                         platform: 'Windows XP'
                         version: '34'
 
+    cms-saucelabs-iphone-7_1-portrait:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'chrome'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'OS X 10.9'
+                        version: '7.1'
+                        deviceName: 'iPhone'
+                        device-orientation: 'portrait'
+
     go-saucelabs-chrome-win8:
         modules:
             config:
