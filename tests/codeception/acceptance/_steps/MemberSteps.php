@@ -113,7 +113,7 @@ class MemberSteps extends AppSteps
         $I->click(RegistrationPage::$submitButton);
 
         if ($this->scenario->running()) {
-            $I->waitForText('Thank you for your registration', 30); // secs
+            $I->waitForText('Thank you for your registration.', 30); // secs
         }
 
         // TODO activate account using mailcatcher
