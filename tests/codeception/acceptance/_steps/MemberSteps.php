@@ -185,6 +185,8 @@ class MemberSteps extends AppSteps
             $attributes = isset($stepAttributes[$step]) ? $stepAttributes[$step] : array();
             $I->fillFieldsOnPageAndSubmit($attributes);
         }
+
+        $I->seeInCurrentUrl('dashboard');
     }
 
     /**
