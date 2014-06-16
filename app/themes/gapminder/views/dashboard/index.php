@@ -4,8 +4,8 @@
 /** @var string $modelClass */
 ?>
 <?php
-$this->breadcrumbs[] = Yii::t('account', 'Gapminder Community'); // TODO: Replace with an appropriate breadcrumb item/link.
-$this->breadcrumbs[] = Yii::t('account', 'Dashboard');
+$this->breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl;
+$this->breadcrumbs[] = Yii::t('app', 'Dashboard');
 ?>
 <div class="account-controller dashboard-action">
     <div class="dashboard-profile">
@@ -13,7 +13,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
             <div class="profile-info">
                 <div class="row">
                     <div class="profile-picture">
-                        <?php echo $model->profile->renderPicture(); ?>
+                        <?php echo TbHtml::link($model->profile->renderPicture(), array('/profile/edit')); ?>
                     </div>
                     <div class="profile-facts">
                         <div class="profile-top-bar">
@@ -34,6 +34,7 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                     </div>
                 </div>
             </div>
+            <?php /*
             <div class="recent-updates">
                 <div class="updates-top-bar">
                     <div class="updates-title">
@@ -54,7 +55,6 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                 <div class="updates">
                     <div class="updates-content">
                         <ul class="updates-list">
-                            <?php /*
                             <?php // TODO: Render the two most recent updates. ?>
                             <li>
                                 <div class="update-image">
@@ -74,11 +74,11 @@ $this->breadcrumbs[] = Yii::t('account', 'Dashboard');
                                     <span class="update-description"><?php echo 'This achievement is awarded to users that have translated 30 videos.'; ?></span>
                                 </div>
                             </li>
-                            */ ?>
                         </ul>
                     </div>
                 </div>
             </div>
+            */ ?>
         </div>
     </div>
     <div class="dashboard-tasks-container">

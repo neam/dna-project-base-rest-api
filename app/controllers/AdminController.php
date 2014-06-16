@@ -49,12 +49,14 @@ class AdminController extends Controller
                 'labelExpression' => '(int)$data->status === 0 ? Yii::t("account", "Activate") : ""',
                 'urlExpression' => '(int)$data->status === 0 ? Yii::app()->createUrl("admin/activateAccount", array("id" => $data["id"])) : ""',
             ),
+            /*
             array(
                 'class' => '\TbButtonColumn',
                 'viewButtonUrl' => 'Yii::app()->controller->createUrl("view", array("id" => $data->id))',
                 'updateButtonUrl' => 'Yii::app()->controller->createUrl("update", array("id" => $data->id))',
                 'deleteButtonUrl' => 'Yii::app()->controller->createUrl("delete", array("id" => $data->id))',
             ),
+            */
         );
 
         $this->render(
