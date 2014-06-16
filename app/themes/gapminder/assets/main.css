@@ -13716,37 +13716,23 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
 .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title {
   position: relative;
+  float: left;
+  width: 50%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
-  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
-  .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
-  .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title {
-    float: left;
-    width: 66.66666666666666%;
-  }
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
 .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
 .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop {
   position: relative;
+  float: left;
+  width: 50%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
   text-align: right;
-}
-@media (min-width: 992px) {
-  .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
-  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
-  .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
-  .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop {
-    float: left;
-    width: 33.33333333333333%;
-  }
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary,
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary,
@@ -13811,6 +13797,8 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container,
 .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container,
 .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container {
+  float: left;
+  width: 50%;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -13836,6 +13824,8 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container,
 .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container,
 .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container {
+  float: left;
+  width: 50%;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -15942,6 +15932,25 @@ Styleguide 9
   margin-top: 20px;
   margin-bottom: 10px;
   vertical-align: middle;
+}
+@media (max-width: 767px) {
+  .item-controller.edit-action .item-top-actions .preview-button,
+  .item-controller.translate-action .item-top-actions .preview-button {
+    display: none;
+  }
+}
+@media (max-width: 991px) {
+  .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary,
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 1199px) {
+  .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .item-preview img,
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .item-preview img {
+    width: 100%;
+    height: auto;
+  }
 }
 @media (min-width: 768px) {
   .layout-narrow {

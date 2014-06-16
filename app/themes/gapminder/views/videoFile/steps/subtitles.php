@@ -25,6 +25,8 @@
     <?php echo TbHtml::linkButton(
         Yii::t('app', 'Download SRT files'),
         array(
+            'block' => true,
+            'color' => TbHtml::BUTTON_COLOR_LINK,
             'url' => array('/videoFile/downloadSubtitles', 'id' => $model->id),
         )
     ); ?>
