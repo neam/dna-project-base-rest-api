@@ -13,6 +13,8 @@ use Symfony\Component\CssSelector\CssSelector;
 use UploadPopupPage;
 use VideoFileBrowsePage;
 use VideoFileEditPage;
+use SnapshotBrowsePage;
+use SnapshotEditPage;
 
 class MemberSteps extends AppSteps
 {
@@ -24,6 +26,7 @@ class MemberSteps extends AppSteps
             'email' => 'dev+ola@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupAdministrator'),
+                'GapminderOrg' => array('GroupAdministrator'), // For Snapshot publishing. Remove when publishing works for other groups too
             ),
         ),
         array(
@@ -32,6 +35,7 @@ class MemberSteps extends AppSteps
             'email' => 'dev+max@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupModerator'),
+                'GapminderOrg' => array('GroupModerator'), // For Snapshot publishing. Remove when publishing works for other groups too
             ),
         ),
         array(
@@ -105,11 +109,12 @@ class MemberSteps extends AppSteps
         $I->fillField(RegistrationPage::$emailField, $email);
         $I->fillField(RegistrationPage::$passwordField, $password);
         $I->fillField(RegistrationPage::$verifyPasswordField, $verifyPassword);
-	$I->wait(2);
         $acceptTerms
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
-        $I->wait(1); // TODO: set a success/error class on the form to watch on instead
+
+        $I->waitForElementNotVisible('#signupForm .has-error');
+
         $I->click(RegistrationPage::$submitButton);
 
         if ($this->scenario->running()) {
@@ -127,11 +132,10 @@ class MemberSteps extends AppSteps
             $I->register($person['name'], $person['password'], $person['password'], $person['email']);
         }
 
-
         $I->login('admin', 'admin');
 
         foreach ($users as $person) {
-            //$I->activateMember($person['name']);
+            $I->activateMember($person['name']);
             foreach ($person['groupRoles'] as $groupName => $rolesNames) {
                 foreach ($rolesNames as $roleName) {
                     $I->toggleGroupRole($person['name'], $groupName, $roleName);
@@ -161,7 +165,15 @@ class MemberSteps extends AppSteps
         $I = $this;
         $I->amOnPage(VideoFileBrowsePage::$URL);
         $I->click(VideoFileBrowsePage::$addButton);
-        $this->fillVideoFileStepPages($stepAttributes);
+        $I->fillItemStepPages(VideoFileEditPage::$steps, $stepAttributes);
+    }
+
+    function createSnapshot($stepAttributes)
+    {
+        $I = $this;
+        $I->amOnPage(SnapshotBrowsePage::$URL);
+        $I->click(SnapshotBrowsePage::$addButton);
+        $I->fillItemStepPages(SnapshotEditPage::$steps, $stepAttributes);
     }
 
     function editVideoFile($title, $stepAttributes)
@@ -170,18 +182,19 @@ class MemberSteps extends AppSteps
         $I->amGoingTo('edit the video-file ' . $title);
         $I->amOnPage(VideoFileBrowsePage::$URL);
         $I->click('Edit', VideoFileBrowsePage::modelContext($title));
-        $I->fillVideoFileStepPages($stepAttributes);
+        $I->fillItemStepPages(VideoFileEditPage::$steps, $stepAttributes);
     }
 
     /**
-     * Fills attributes on the videoFile editing pages.
-     * I must be on the first page of editing/creating video before calling this method!
+     * Fills attributes on the item editing pages.
+     * I must be on the first page of editing/creating item before calling this method!
+     * @param $steps
      * @param $stepAttributes
      */
-    function fillVideoFileStepPages($stepAttributes)
+    function fillItemStepPages($steps, $stepAttributes)
     {
         $I = $this;
-        foreach (VideoFileEditPage::$steps as $step) {
+        foreach ($steps as $step) {
             $attributes = isset($stepAttributes[$step]) ? $stepAttributes[$step] : array();
             $I->fillFieldsOnPageAndSubmit($attributes);
         }
@@ -191,7 +204,6 @@ class MemberSteps extends AppSteps
 
     /**
      * Fills fields on the current page and submits
-     *
      *
      * @param $attributes array associative array with structure: field-selector => value.
      * Value can be a anonymous function, or a scalar. If not a callable then fillField will be used
