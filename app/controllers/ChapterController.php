@@ -156,8 +156,7 @@ class ChapterController extends Controller
 
         $preview = isset($preview) ? $preview : false;
 
-        $this->breadcrumbs[Yii::t('breadcrumbs', 'Chapters')] = array('index');
-        $this->breadcrumbs[] = $model->title;
+        $this->breadcrumbs = $this->itemBreadcrumbs($model);
 
         $this->render('view', array(
             'model' => $model,

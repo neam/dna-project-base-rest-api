@@ -2,86 +2,67 @@
 /* @var VideoFile|ItemTrait $model */
 /* @var VideoFileController|ItemController $this */
 ?>
-<?php
-$this->breadcrumbs = array(); // TODO: Find and unset previously defined breadcrumbs.
-$this->breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl;
-$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
-$this->breadcrumbs[$model->title] = array('view', 'id' => $model->id);
-$actionLabel = $this->getViewActionLabel();
-$this->breadcrumbs[] = $actionLabel;
-?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
     <h1>
         <?php echo $model->title; ?>
         <?php if ($this->actionIsEvaluate()): ?>
-            <small><?php echo $actionLabel; ?></small>
+            <small><?php echo $this->getViewActionLabel(); ?></small>
         <?php endif; ?>
     </h1>
-    <?php /*
-    <h1>
-        <?php echo Yii::t('model', 'Video File'); ?>
-        <small>
-            <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
-        </small>
-    </h1>
-    */ ?>
-    <?php if (Yii::app()->user->checkAccess('VideoFile.*')): ?>
-        <div class="admin-container hide">
-            <div class="btn-toolbar">
-                <div class="btn-group">
-                    <?php $this->widget(
-                        '\TbButton',
-                        array(
-                            'label' => Yii::t('model', 'Manage'),
-                            'icon' => 'glyphicon-edit',
-                            'url' => array('admin')
-                        )
-                    ); ?>
-                    <?php $this->widget(
-                        '\TbButton',
-                        array(
-                            'label' => Yii::t('model', 'Edit'),
-                            'icon' => 'glyphicon-edit',
-                            'url' => array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey})
-                        )
-                    ); ?>
-                    <?php $this->widget(
-                        '\TbButton',
-                        array(
-                            'label' => Yii::t('model', 'Update'),
-                            'icon' => 'glyphicon-edit',
-                            'url' => array('update', 'id' => $model->{$model->tableSchema->primaryKey})
-                        )
-                    ); ?>
-                    <?php $this->widget(
-                        '\TbButton',
-                        array(
-                            'label' => Yii::t('model', 'Delete'),
-                            'color' => TbHtml::BUTTON_COLOR_DANGER,
-                            'icon' => 'glyphicon-remove icon-white',
-                            'htmlOptions' => array(
-                                'submit' => array(
-                                    'delete',
-                                    'id' => $model->{$model->tableSchema->primaryKey},
-                                    'returnUrl' => Yii::app()->request->getParam('returnUrl')
-                                            ? Yii::app()->request->getParam('returnUrl')
-                                            : $this->createUrl('admin')),
-                                'confirm' => Yii::t('model', 'Do you want to delete this item?')
-                            ),
-                        )
-                    ); ?>
-                </div>
+    <div class="admin-container hide">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <?php $this->widget(
+                    '\TbButton',
+                    array(
+                        'label' => Yii::t('model', 'Manage'),
+                        'icon' => 'glyphicon-edit',
+                        'url' => array('admin')
+                    )
+                ); ?>
+                <?php $this->widget(
+                    '\TbButton',
+                    array(
+                        'label' => Yii::t('model', 'Edit'),
+                        'icon' => 'glyphicon-edit',
+                        'url' => array('continueAuthoring', 'id' => $model->{$model->tableSchema->primaryKey})
+                    )
+                ); ?>
+                <?php $this->widget(
+                    '\TbButton',
+                    array(
+                        'label' => Yii::t('model', 'Update'),
+                        'icon' => 'glyphicon-edit',
+                        'url' => array('update', 'id' => $model->{$model->tableSchema->primaryKey})
+                    )
+                ); ?>
+                <?php $this->widget(
+                    '\TbButton',
+                    array(
+                        'label' => Yii::t('model', 'Delete'),
+                        'color' => TbHtml::BUTTON_COLOR_DANGER,
+                        'icon' => 'glyphicon-remove icon-white',
+                        'htmlOptions' => array(
+                            'submit' => array(
+                                'delete',
+                                'id' => $model->{$model->tableSchema->primaryKey},
+                                'returnUrl' => Yii::app()->request->getParam('returnUrl')
+                                        ? Yii::app()->request->getParam('returnUrl')
+                                        : $this->createUrl('admin')),
+                            'confirm' => Yii::t('model', 'Do you want to delete this item?')
+                        ),
+                    )
+                ); ?>
             </div>
         </div>
-    <?php endif; ?>
-    <div class="after-flowbar">
-        <?php $this->renderPartial(
-            '_view',
-            array(
-                'data' => $model,
-            )
-        ); ?>
-        <?php /*
+    </div>
+    <?php $this->renderPartial(
+        '_view',
+        array(
+            'data' => $model,
+        )
+    ); ?>
+    <?php /*
     <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
         <br />
@@ -491,5 +472,4 @@ $this->breadcrumbs[] = $actionLabel;
     <?php echo CHtml::encode($model->processed_media_id_zh_tw); ?>
     <br />
     */ ?>
-    </div>
 </div>

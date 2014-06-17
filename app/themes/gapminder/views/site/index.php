@@ -18,9 +18,11 @@
     </div>
     <div class="content-section section-educational">
         <h2><?php print Yii::t('app', 'Educational material'); ?></h2>
-        <?php foreach (DataModel::educationalItemModels() as $modelClass => $table):
-            $this->renderPartial('_item-type-introduction', compact('modelClass'));
-        endforeach; ?>
+        <?php foreach (DataModel::educationalItemModels() as $modelClass => $table): ?>
+            <?php if ($modelClass !== 'SpreadsheetFile'): // TODO: Fix spreadsheet files (i.e. the dataarticle relation). ?>
+                <?php $this->renderPartial('_item-type-introduction', compact('modelClass')); ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
     <div class="content-section section-website">
         <h2><?php print Yii::t('app', 'Internally managed content'); ?></h2>
