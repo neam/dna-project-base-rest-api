@@ -57,12 +57,18 @@ trait ItemController
                 'actions' => array(
                     'continueAuthoring',
                     'nextRequired',
-                    'cancel',
                 ),
                 'users' => array('*'),
                 'expression' => function() {
                     return $this->checkModelOperationAccessById($this->modelId, 'View');
                 },
+            ),
+            array(
+                'allow',
+                'actions' => array(
+                    'cancel',
+                ),
+                'users' => array('*'),
             ),
             array('allow',
                 'actions' => array(
@@ -689,14 +695,26 @@ trait ItemController
         }
     }
 
+    /**
+     * Aborts a workflow.
+     * @param int $id model ID.
+     */
     public function actionCancel($id)
     {
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
+
         if (Yii::app()->user->checkModelOperationAccess($model, 'Edit')) {
-            $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+            $this->redirect(array(
+                'edit',
+                'id' => $model->id,
+                'step' => $step,
+            ));
         } else {
-            $this->redirect(array('view', 'id' => $model->id));
+            $this->redirect(array(
+                'view',
+                'id' => $model->id,
+            ));
         }
     }
 
@@ -1370,5 +1388,14 @@ trait ItemController
     {
         // TODO: Could we simply use $this->action->id === 'evaluate' instead?
         return $this->_actionIsEvaluate;
+    }
+
+    /**
+     * Returns a label for the current view action.
+     * @return string
+     */
+    public function getViewActionLabel()
+    {
+        return $this->actionIsEvaluate() ? Yii::t('app', 'Evaluate') : Yii::t('app', 'View');
     }
 }

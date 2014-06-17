@@ -2,9 +2,21 @@
 /* @var VideoFile|ItemTrait $model */
 /* @var VideoFileController|ItemController $this */
 ?>
-<?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
+<?php
+$this->breadcrumbs = array(); // TODO: Find and unset previously defined breadcrumbs.
+$this->breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl;
+$this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
+$this->breadcrumbs[$model->title] = array('view', 'id' => $model->id);
+$actionLabel = $this->getViewActionLabel();
+$this->breadcrumbs[] = $actionLabel;
+?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
-    <?php $this->renderPartial('/_item/evaluate/_flowbar', compact('model')); ?>
+    <h1>
+        <?php echo $model->title; ?>
+        <?php if ($this->actionIsEvaluate()): ?>
+            <small><?php echo $actionLabel; ?></small>
+        <?php endif; ?>
+    </h1>
     <?php /*
     <h1>
         <?php echo Yii::t('model', 'Video File'); ?>

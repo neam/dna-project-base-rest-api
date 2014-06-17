@@ -186,10 +186,20 @@ class VideoFileController extends Controller
 
     }
 
+    /**
+     * Renders the view page.
+     * @param int $id the model ID.
+     */
     public function actionView($id)
     {
         $model = $this->loadModel($id);
-        $this->render('view', array('model' => $model,));
+
+        $this->render(
+            'view',
+            array(
+                'model' => $model,
+            )
+        );
     }
 
     public function actionCreate()
