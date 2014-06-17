@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.34, for osx10.6 (i386)
 --
--- Host: 127.0.0.1    Database: gscms
+-- Host: 127.0.0.1    Database: gscms_test
 -- ------------------------------------------------------
 -- Server version	5.5.34
 
@@ -4097,7 +4097,6 @@ CREATE TABLE `video_file` (
   `slug_zh_cn` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `slug_zh_tw` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `slug_fa` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `youtube_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_video_file_p3_media3_idx` (`thumbnail_media_id`),
   KEY `fk_video_file_video_file1_idx` (`cloned_from_id`),
@@ -4197,8 +4196,6 @@ CREATE TABLE `video_file_qa_state` (
   `title_proofed` tinyint(1) DEFAULT NULL,
   `subtitles_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
-  `youtube_url_approved` tinyint(1) DEFAULT NULL,
-  `youtube_url_proofed` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -5158,4 +5155,4 @@ CREATE TABLE `waffle_unit_qa_state` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-12  8:36:59
+-- Dump completed on 2014-06-17  9:09:52
