@@ -42,27 +42,27 @@ EOF;
     </div>
     <div class="field-column">
         <div class="form-group">
-            <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
-            <?php echo TbHtml::button(
-                Yii::t('app', 'Upload new'),
+            <label class="control-label"><?php echo Yii::t('app', '&nbsp;'); ?></label>
+            <?php echo TbHtml::submitButton(
+                Yii::t('model', 'Import'),
                 array(
+                    'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                     'block' => true,
-                    'class' => 'upload-btn',
-                    'data-toggle' => 'modal',
-                    'data-target' => '#' . $form->id . '-modal',
+                    'name' => 'import',
                 )
             ); ?>
         </div>
     </div>
     <div class="field-column">
         <div class="form-group">
-            <label class="control-label"><?php echo Yii::t('app', '&nbsp;'); ?></label>
-            <?php echo TbHtml::submitButton(
-                Yii::t('model', 'Import'),
+            <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+            <?php echo TbHtml::button(
+                Yii::t('app', 'Upload'),
                 array(
                     'block' => true,
-                    'class' => 'btn btn-primary',
-                    'name' => 'import',
+                    'class' => 'upload-btn',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#' . $form->id . '-modal',
                 )
             ); ?>
         </div>

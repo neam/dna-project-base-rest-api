@@ -3,9 +3,10 @@
 /* @var Account $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php $this->breadcrumbs[] = Yii::t('model', 'Users'); ?>
-<?php $this->breadcrumbs[$model->username] = array('account/profile', 'id' => $model->id); ?>
-<?php $this->breadcrumbs[] = Yii::t('account', 'Profile'); ?>
+<?php
+$this->breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl;
+$this->breadcrumbs[] = Yii::t('app', 'Profile');
+?>
 <div class="account-controller profile-action">
     <?php $form = $this->beginWidget('\AppActiveForm', array(
         'id' => 'profile-form',
@@ -80,7 +81,7 @@
                 <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
                 <div>
                     <?php echo TbHtml::button(
-                        Yii::t('app', 'Upload new'),
+                        Yii::t('app', 'Upload'),
                         array(
                             'block' => true,
                             'class' => 'upload-btn',
@@ -156,6 +157,7 @@
             </div>
         </div>
     </section>
+    <?php /*
     <section class="account-history">
         <h2 class="profile-section-heading"><?php echo Yii::t('app', 'History'); ?></h2>
         <?php echo TbHtml::linkButton(
@@ -165,6 +167,7 @@
             )
         ); ?>
     </section>
+    */ ?>
     <section class="profile-actions">
         <?php echo TbHtml::linkButton(
             Yii::t('app', 'Cancel'),

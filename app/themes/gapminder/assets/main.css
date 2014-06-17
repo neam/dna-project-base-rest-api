@@ -6780,6 +6780,9 @@ td.visible-print {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
 }
+.navbar-default .navbar-nav .language-menu .dropdown-menu > li > a {
+  font-weight: 400;
+}
 .navbar-default .navbar-toggle {
   background-color: #ffffff;
   border: 2px solid #e4e4e4;
@@ -6794,6 +6797,9 @@ td.visible-print {
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #eb4498;
+}
+.dropdown-menu > li > a {
+  font-weight: 100;
 }
 /*
 Buttons
@@ -8798,12 +8804,22 @@ fieldset[disabled] .action-buttons .action-button.btn-link-dark:focus {
 
 Styleguide 7
 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 100;
+}
 h1 small,
 h2 small,
-h3 h4 small,
+h3 small,
+h4 small,
 h5 small,
 h6 small {
   color: #c9c9c9;
+  font-weight: 100;
 }
 .font-color-primary {
   color: #eb4498 !important;
@@ -8926,6 +8942,9 @@ Styleguide 7.5
 }
 .link.link-xs {
   font-size: 11px;
+}
+.content {
+  font-weight: 200;
 }
 /*
 Forms
@@ -9702,6 +9721,7 @@ Styleguide 5
   border-radius: 4px;
   border: none;
   border-radius: 0;
+  margin-bottom: 30px;
   border-radius: 3px;
 }
 .styleguide-color h4 {
@@ -10876,6 +10896,7 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
   border-radius: 4px;
   border: none;
   border-radius: 0;
+  margin-bottom: 30px;
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #468847;
@@ -11604,6 +11625,7 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
   border-radius: 4px;
   border: none;
   border-radius: 0;
+  margin-bottom: 30px;
   background-color: #b7c1d8;
   border-color: #a0b4cb;
   color: #ffffff;
@@ -12396,6 +12418,7 @@ fieldset[disabled] .item-controller .item-progress .progress-item .item-action .
   border-radius: 4px;
   border: none;
   border-radius: 0;
+  margin-bottom: 30px;
   background-color: #b7c1d8;
   border-color: #a0b4cb;
   color: #ffffff;
@@ -13693,37 +13716,23 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
 .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title {
   position: relative;
+  float: left;
+  width: 50%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
-  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
-  .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title,
-  .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-title {
-    float: left;
-    width: 66.66666666666666%;
-  }
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
 .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
 .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop {
   position: relative;
+  float: left;
+  width: 50%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
   text-align: right;
-}
-@media (min-width: 992px) {
-  .item-controller.edit-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
-  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
-  .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop,
-  .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-header .action-title-row .action-stop {
-    float: left;
-    width: 33.33333333333333%;
-  }
 }
 .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary,
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary,
@@ -13788,6 +13797,8 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container,
 .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container,
 .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-bar-container {
+  float: left;
+  width: 50%;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -13813,6 +13824,8 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container,
 .item-controller.prepareforpublishing-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container,
 .item-controller.prepareforreview-action .item-row .row-column .item-well .item-content .content-primary .action-progress .progress-percentage-container {
+  float: left;
+  width: 50%;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -14695,6 +14708,9 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
     float: left;
     width: 100%;
   }
+}
+.alert {
+  margin-bottom: 30px;
 }
 .alert.alert-error {
   background-color: #f2dede;
@@ -15916,6 +15932,25 @@ Styleguide 9
   margin-top: 20px;
   margin-bottom: 10px;
   vertical-align: middle;
+}
+@media (max-width: 767px) {
+  .item-controller.edit-action .item-top-actions .preview-button,
+  .item-controller.translate-action .item-top-actions .preview-button {
+    display: none;
+  }
+}
+@media (max-width: 991px) {
+  .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary,
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 1199px) {
+  .item-controller.edit-action .item-row .row-column .item-well .item-content .content-primary .item-preview img,
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .item-preview img {
+    width: 100%;
+    height: auto;
+  }
 }
 @media (min-width: 768px) {
   .layout-narrow {

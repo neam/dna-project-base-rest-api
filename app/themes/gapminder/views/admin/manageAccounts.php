@@ -3,13 +3,16 @@
 /* @var Account $model */
 /* @var CActiveDataProvider $dataProvider */
 /* @var array $columns */
-
+?>
+<?php
 $this->setPageTitle(
     Yii::t('model', 'Accounts')
     . ' - '
     . Yii::t('model', 'Manage')
 );
-
+?>
+<?php
+$this->breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl;
 $this->breadcrumbs[] = Yii::t('model', 'Accounts');
 ?>
 <div class="account-controller admin-action">

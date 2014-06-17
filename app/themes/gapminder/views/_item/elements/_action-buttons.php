@@ -73,7 +73,7 @@
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Evaluate'),
             )
         ); ?>
-        <?php $this->widget(
+        <?php /* $this->widget(
             '\TbButton',
             array(
                 'label' => Yii::t('model', 'Proofread'),
@@ -85,7 +85,7 @@
                 ),
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Proofread'),
             )
-        ); ?>
+        ); */ ?>
         <?php $this->widget(
             '\TbButton',
             array(

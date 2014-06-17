@@ -8,7 +8,7 @@ $I->wantTo('upload a profile picture (inactivated)');
 $I->login('max', 'test');
 
 $I->amOnPage(ProfilePage::$URL);
-$I->click('Upload new');
+$I->click('Upload');
 $I->switchToIFrame(UploadPopupPage::iframeName('profile-form'));
 $I->attachFile(UploadPopupPage::$filesField, 'phundament.png');
 $I->see('phundament.png');

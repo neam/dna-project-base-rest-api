@@ -65,6 +65,7 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
                     }
 
                     $this->sendActivationEmail($account);
+
                     $this->redirect(array('done'));
                 }
 

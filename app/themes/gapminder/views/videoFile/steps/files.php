@@ -18,7 +18,7 @@
         <div class="form-group">
             <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
             <?php echo TbHtml::button(
-                Yii::t('app', 'Upload new'),
+                Yii::t('app', 'Upload'),
                 array(
                     'block' => true,
                     'class' => 'upload-btn',
@@ -54,7 +54,7 @@
         <div class="form-group">
             <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
             <?php echo TbHtml::button(
-                Yii::t('app', 'Upload new'),
+                Yii::t('app', 'Upload'),
                 array(
                     'block' => true,
                     'class' => 'upload-btn',

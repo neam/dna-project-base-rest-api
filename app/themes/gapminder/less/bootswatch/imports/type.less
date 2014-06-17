@@ -5,12 +5,15 @@ Styleguide 7
 
 h1,
 h2,
-h3
+h3,
 h4,
 h5,
 h6 {
+  font-weight: @base-font-weight;
+
   small {
     color: @gray;
+    font-weight: @base-font-weight;
   }
 }
 
@@ -149,4 +152,8 @@ Styleguide 7.5
   &.link-xs {
     font-size: @font-size-tiny;
   }
+}
+
+.content {
+  font-weight: 200;
 }

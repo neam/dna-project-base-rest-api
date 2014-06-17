@@ -48,7 +48,7 @@
                                     TbHtml::ICON_REMOVE,
                                     Yii::t('app', 'Stop Translating'),
                                     array(
-                                        'url' => array('browse'),
+                                        'url' => array('/dashboard/index'),
                                         'color' => TbHtml::BUTTON_COLOR_LINK,
                                         'size' => TbHtml::BUTTON_SIZE_XS,
                                     )

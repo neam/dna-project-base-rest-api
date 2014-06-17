@@ -185,6 +185,8 @@ class MemberSteps extends AppSteps
             $attributes = isset($stepAttributes[$step]) ? $stepAttributes[$step] : array();
             $I->fillFieldsOnPageAndSubmit($attributes);
         }
+
+        $I->seeInCurrentUrl('dashboard');
     }
 
     /**
@@ -396,7 +398,7 @@ class MemberSteps extends AppSteps
 
         $I->amGoingTo('upload a webm-file');
 
-        $I->click('Upload new', VideoFileEditPage::$webmUploadNewContext);
+        $I->click('Upload', VideoFileEditPage::$webmUploadNewContext);
 
         $I->waitForElementVisible(VideoFileEditPage::$webmModalId, 30);
 
