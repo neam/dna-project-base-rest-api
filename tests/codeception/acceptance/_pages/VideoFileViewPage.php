@@ -21,7 +21,7 @@ class VideoFileViewPage
      */
      public static function route($param)
      {
-        return static::$URL.$param;
+         return static::$URL.$param;
      }
 
 
