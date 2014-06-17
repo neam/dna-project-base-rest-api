@@ -20,9 +20,13 @@ class HtmlChunk extends BaseHtmlChunk
         return parent::init();
     }
 
+    /**
+     * Returns the model label.
+     * @return string
+     */
     public function getItemLabel()
     {
-        return 'HTML chunk #' . $this->id;
+        return Yii::t('app', 'HTML Chunk #{id}', array('{id}' => $this->id));
     }
 
     public function behaviors()
