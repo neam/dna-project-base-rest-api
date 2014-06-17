@@ -331,4 +331,13 @@ class WebUser extends \nordsoftware\yii_account\components\WebUser
 
         return PermissionHelper::groupHasAccount($attributes);
     }
+
+    /**
+     * Returns a shortened username that fits in the navbar (maxlength 7 characters).
+     * @return string
+     */
+    public function getUsernameShortened()
+    {
+        return $this->isGuest ? $this->name : substr($this->model->username, 0, 7);
+    }
 }

@@ -153,7 +153,7 @@
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Clone'),
             )
         ); ?>
-        <?php $this->widget(
+        <?php /* $this->widget(
             '\TbButton', array(
                 'label' => Yii::t('model', 'Remove'),
                 'color' => $this->action->id === 'remove' ? 'inverse' : null,
@@ -164,7 +164,7 @@
                 ),
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Remove'),
             )
-        ); ?>
+        ); */ ?>
     </div>
     <div class="btn-group">
         <?php foreach (Yii::app()->user->getGroups() as $groupId => $groupName): ?>
