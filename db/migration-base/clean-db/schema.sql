@@ -637,11 +637,6 @@ CREATE TABLE IF NOT EXISTS `account` (
   `status` int(1) NOT NULL DEFAULT '0',
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastvisit_at` timestamp NULL DEFAULT NULL,
-  `salt` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `passwordStrategy` varchar(255) NOT NULL COLLATE utf8_bin DEFAULT 'legacy',
-  `requireNewPassword` int(1) NOT NULL DEFAULT '0',
-  `lastLoginAt` timestamp NULL DEFAULT NULL,
-  `lastActiveAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `user_username` (`username` ASC),
   UNIQUE INDEX `user_email` (`email` ASC))
