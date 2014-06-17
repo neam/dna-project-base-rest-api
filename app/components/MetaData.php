@@ -172,6 +172,7 @@ class Metadata
                 ),
                 'View' => array(
                     Role::GUEST,
+                    Role::AUTHENTICATED,
                 ),
                 'Add' => array(
                     Role::AUTHENTICATED,
