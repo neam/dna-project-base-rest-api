@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.34, for osx10.6 (i386)
 --
--- Host: 127.0.0.1    Database: gscms
+-- Host: 127.0.0.1    Database: gscms_test
 -- ------------------------------------------------------
 -- Server version	5.5.34
 
@@ -5158,4 +5158,4 @@ CREATE TABLE `waffle_unit_qa_state` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-12  8:36:59
+-- Dump completed on 2014-06-17 14:36:15

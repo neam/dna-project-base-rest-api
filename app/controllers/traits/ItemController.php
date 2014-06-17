@@ -57,12 +57,18 @@ trait ItemController
                 'actions' => array(
                     'continueAuthoring',
                     'nextRequired',
-                    'cancel',
                 ),
                 'users' => array('*'),
                 'expression' => function() {
                     return $this->checkModelOperationAccessById($this->modelId, 'View');
                 },
+            ),
+            array(
+                'allow',
+                'actions' => array(
+                    'cancel',
+                ),
+                'users' => array('*'),
             ),
             array('allow',
                 'actions' => array(
@@ -520,6 +526,8 @@ trait ItemController
         $this->populateWorkflowData($model, "reviewable", Yii::t('app', 'Prepare for review'));
         $stepCaptions = $model->flowStepCaptions();
 
+        $this->breadcrumbs = $this->itemBreadcrumbs($model);
+
         $this->render(
             '/_item/edit',
             array(
@@ -572,6 +580,8 @@ trait ItemController
         $stepCaptions = $model->flowStepCaptions();
         $this->_actionIsEvaluate = true;
 
+        $this->breadcrumbs = $this->itemBreadcrumbs($model);
+
         $this->render(
             '/_item/evaluate',
             array(
@@ -596,7 +606,17 @@ trait ItemController
         $this->saveAndContinueOnSuccess($model);
         $this->populateWorkflowData($model, "publishable", Yii::t('app', 'Prepare for publishing'));
         $stepCaptions = $model->flowStepCaptions();
-        $this->render('/_item/edit', array('model' => $model, 'step' => $step, 'stepCaption' => $stepCaptions[$step]));
+
+        $this->breadcrumbs = $this->itemBreadcrumbs($model);
+
+        $this->render(
+            '/_item/edit',
+            array(
+                'model' => $model,
+                'step' => $step,
+                'stepCaption' => $stepCaptions[$step],
+            )
+        );
     }
 
     public function actionSubmitForPublishing($id)
@@ -620,9 +640,14 @@ trait ItemController
 
     }
 
+    /**
+     * Renders the preview page.
+     * @param int $id model ID.
+     */
     public function actionPreview($id)
     {
         $model = $this->loadModel($id);
+        $this->breadcrumbs = $this->itemBreadcrumbs($model);
         $this->render('/_item/preview', array('model' => $model, 'workflowCaption' => Yii::t('app', 'Preview')));
     }
 
@@ -689,14 +714,26 @@ trait ItemController
         }
     }
 
+    /**
+     * Aborts a workflow.
+     * @param int $id model ID.
+     */
     public function actionCancel($id)
     {
         $model = $this->loadModel($id);
         $step = $this->firstFlowStep($model);
+
         if (Yii::app()->user->checkModelOperationAccess($model, 'Edit')) {
-            $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
+            $this->redirect(array(
+                'edit',
+                'id' => $model->id,
+                'step' => $step,
+            ));
         } else {
-            $this->redirect(array('view', 'id' => $model->id));
+            $this->redirect(array(
+                'view',
+                'id' => $model->id,
+            ));
         }
     }
 
@@ -731,11 +768,7 @@ trait ItemController
 
         $requiredCounts = $this->getRequiredCounts($id);
 
-        // Breadcrumbs
-        $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse');
-        $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey});
-        $this->breadcrumbs[] = $this->workflowData['caption'];
-        $this->breadcrumbs[] = $stepCaptions[$step];
+        $this->breadcrumbs = $this->itemBreadcrumbs($model);
 
         $this->render('/_item/edit', array(
             'model' => $model,
@@ -1053,6 +1086,8 @@ trait ItemController
 
         $this->populateWorkflowData($model, 'translate', Yii::t('app', ''));
 
+        $this->breadcrumbs = $this->itemBreadcrumbs($model);
+
         $this->render(
             '/_item/translation-overview',
             array(
@@ -1081,6 +1116,8 @@ trait ItemController
             '{translateIntoLanguage}' => LanguageHelper::getName($translateInto),
         )), $translateInto);
         $stepCaptions = $model->flowStepCaptions();
+
+        $this->breadcrumbs = $this->itemBreadcrumbs($model);
 
         $this->render(
             '/_item/edit',
@@ -1370,5 +1407,64 @@ trait ItemController
     {
         // TODO: Could we simply use $this->action->id === 'evaluate' instead?
         return $this->_actionIsEvaluate;
+    }
+
+    /**
+     * Returns a label for the current view action.
+     * @return string
+     */
+    public function getViewActionLabel()
+    {
+        return $this->actionIsEvaluate() ? Yii::t('app', 'Evaluate') : Yii::t('app', 'View');
+    }
+
+    /**
+     * Returns the breadcrumbs based on the given model.
+     * @param ActiveRecord|ItemTrait $model
+     * @return array
+     */
+    public function itemBreadcrumbs($model)
+    {
+        $itemName = isset($model->title) ? $model->title : $model->id;
+
+        $breadcrumbs = array();
+        $breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl;
+        $breadcrumbs[Yii::t('app', $model->modelLabel, 2)] = array('browse');
+        $breadcrumbs[$itemName] = array('view', 'id' => $model->id);
+
+        switch ($this->action->id) {
+            case 'edit':
+                $breadcrumbs[] = Yii::t('app', 'Edit');
+                break;
+
+            case 'translationOverview':
+                $breadcrumbs[] = Yii::t('app', 'Translate');
+                break;
+
+            case 'translate':
+                $breadcrumbs[] = Yii::t('app', 'Translate');
+                break;
+
+            case 'evaluate':
+                $breadcrumbs[] = Yii::t('app', 'Evaluate');
+                break;
+
+            case 'prepareForReview':
+                $breadcrumbs[] = Yii::t('app', 'Prepare for Review');
+                break;
+
+            case 'prepareForPublishing':
+                $breadcrumbs[] = Yii::t('app', 'Prepare for Publishing');
+                break;
+
+            case 'preview':
+                $breadcrumbs[] = Yii::t('app', 'Preview');
+                break;
+
+            default:
+                $breadcrumbs[] = Yii::t('app', 'View');
+        }
+
+        return $breadcrumbs;
     }
 }

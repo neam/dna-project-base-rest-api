@@ -66,9 +66,14 @@ class DataSourceController extends Controller
         return true;
     }
 
+    /**
+     * Renders teh view page.
+     * @param int $id model ID.
+     */
     public function actionView($id)
     {
         $model = $this->loadModel($id);
+        $this->breadcrumbs = $this->itemBreadcrumbs($model);
         $this->render('view', array('model' => $model,));
     }
 

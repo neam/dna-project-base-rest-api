@@ -1,69 +1,43 @@
 <?php
-/* @var ExamQuestionController|ItemController $this */
-/* @var ExamQuestion|ItemTrait $model */
+/** @var ToolController|ItemController $this */
+/** @var Tool|ItemTrait $model */
 ?>
-<?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
     <h1>
-        <?php echo $model->question; ?>
+        <?php echo $model->title; ?>
         <?php if ($this->actionIsEvaluate()): ?>
             <small><?php echo $this->getViewActionLabel(); ?></small>
         <?php endif; ?>
     </h1>
-    <div class="admin-container hide">
-        <div class="btn-toolbar">
-            <div class="btn-group">
-                <?php $this->widget(
-                    '\TbButton',
-                    array(
-                        'label' => Yii::t('model', 'Manage'),
-                        'icon' => TbHtml::ICON_EDIT,
-                        'url' => array('admin')
-                    )
-                ); ?>
-                <?php $this->widget(
-                    '\TbButton',
-                    array(
-                        'label' => Yii::t('model', 'Edit'),
-                        'icon' => TbHtml::ICON_EDIT,
-                        'url' => array(
-                            'continueAuthoring',
-                            'id' => $model->{$model->tableSchema->primaryKey},
-                        ),
-                    )
-                ); ?>
-                <?php $this->widget(
-                    '\TbButton',
-                    array(
-                        'label' => Yii::t('model', 'Update'),
-                        'icon' => TbHtml::ICON_EDIT,
-                        'url' => array(
-                            'update',
-                            'id' => $model->{$model->tableSchema->primaryKey},
-                        ),
-                    )
-                ); ?>
-                <?php $this->widget(
-                    '\TbButton',
-                    array(
-                        'label' => Yii::t('model', 'Delete'),
-                        'color' => 'danger',
-                        'icon' => 'glyphicon-remove icon-white',
-                        'htmlOptions' => array(
-                            'submit' => array(
-                                'delete',
-                                'id' => $model->{$model->tableSchema->primaryKey},
-                                'returnUrl' => request()->getParam('returnUrl')
-                                        ? request()->getParam('returnUrl')
-                                        : $this->createUrl('admin')),
-                            'confirm' => Yii::t('model', 'Do you want to delete this item?'),
-                        ),
-                    )
-                ); ?>
-            </div>
-        </div>
-    </div>
-    <?php $this->renderPartial('_view', array('data' => $model)); ?>
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
+    <?php echo CHtml::link(CHtml::encode($model->id), array('tool/view', 'id' => $model->id)); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('version')); ?>:</b>
+    <?php echo CHtml::encode($model->version); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('cloned_from_id')); ?>:</b>
+    <?php echo CHtml::encode($model->cloned_from_id); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('_title')); ?>:</b>
+    <?php echo CHtml::encode($model->_title); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en')); ?>:</b>
+    <?php echo CHtml::encode($model->slug_en); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('_about')); ?>:</b>
+    <?php echo CHtml::encode($model->_about); ?>
+    <br/>
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('embed_template')); ?>:</b>
+    <?php echo CHtml::encode($model->embed_template); ?>
+    <br/>
+
     <?php /*
     <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>
@@ -77,16 +51,24 @@
     <?php echo CHtml::encode($model->cloned_from_id); ?>
     <br />
 
+    <b><?php echo CHtml::encode($model->getAttributeLabel('_title')); ?>:</b>
+    <?php echo CHtml::encode($model->_title); ?>
+    <br />
+
     <b><?php echo CHtml::encode($model->getAttributeLabel('slug_en')); ?>:</b>
     <?php echo CHtml::encode($model->slug_en); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('_question')); ?>:</b>
-    <?php echo CHtml::encode($model->_question); ?>
+    <b><?php echo CHtml::encode($model->getAttributeLabel('_about')); ?>:</b>
+    <?php echo CHtml::encode($model->_about); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('source_node_id')); ?>:</b>
-    <?php echo CHtml::encode($model->source_node_id); ?>
+    <b><?php echo CHtml::encode($model->getAttributeLabel('embed_template')); ?>:</b>
+    <?php echo CHtml::encode($model->embed_template); ?>
+    <br />
+
+    <b><?php echo CHtml::encode($model->getAttributeLabel('i18n_catalog_id')); ?>:</b>
+    <?php echo CHtml::encode($model->i18n_catalog_id); ?>
     <br />
 
     <b><?php echo CHtml::encode($model->getAttributeLabel('created')); ?>:</b>
@@ -125,8 +107,8 @@
     <?php echo CHtml::encode($model->slug_de); ?>
     <br />
 
-    <b><?php echo CHtml::encode($model->getAttributeLabel('exam_question_qa_state_id')); ?>:</b>
-    <?php echo CHtml::encode($model->exam_question_qa_state_id); ?>
+    <b><?php echo CHtml::encode($model->getAttributeLabel('tool_qa_state_id')); ?>:</b>
+    <?php echo CHtml::encode($model->tool_qa_state_id); ?>
     <br />
 
     <b><?php echo CHtml::encode($model->getAttributeLabel('slug_zh')); ?>:</b>

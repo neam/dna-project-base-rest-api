@@ -100,6 +100,8 @@ class VideoFileController extends Controller
         $model->scenario = $this->scenario;
         $subtitles = $model->getParsedSubtitles();
 
+        $this->breadcrumbs = $this->itemBreadcrumbs($model);
+
         if (isset($_POST['SourceMessage']) && !empty($_POST['SourceMessage'])) {
             foreach ($_POST['SourceMessage'] as $id => $translation) {
                 $message = Message::model()->findByAttributes(array(
@@ -186,10 +188,22 @@ class VideoFileController extends Controller
 
     }
 
+    /**
+     * Renders the view page.
+     * @param int $id the model ID.
+     */
     public function actionView($id)
     {
         $model = $this->loadModel($id);
-        $this->render('view', array('model' => $model,));
+
+        $this->breadcrumbs = $this->itemBreadcrumbs($model);
+
+        $this->render(
+            'view',
+            array(
+                'model' => $model,
+            )
+        );
     }
 
     public function actionCreate()
