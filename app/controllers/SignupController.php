@@ -118,10 +118,9 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
             'body' => $message,
         );
 
-        /** @var EmailBehavior $this */
-        $mail = $this->createEmail(app()->params['adminEmail'], $account->email, $this->emailSubject, $config);
-
         if (defined('CONFIG_ENVIRONMENT') && CONFIG_ENVIRONMENT !== 'test') {
+            /** @var EmailBehavior $this */
+            $mail = $this->createEmail(app()->params['adminEmail'], $account->email, $this->emailSubject, $config);
             $this->sendEmail($mail);
         }
     }
