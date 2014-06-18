@@ -62,10 +62,15 @@ class WaffleCategoryController extends Controller
         return true;
     }
 
+    /**
+     * Renders the view page.
+     * @param int $id model ID.
+     */
     public function actionView($id)
     {
         $model = $this->loadModel($id);
-        $this->render('view', array('model' => $model,));
+        $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
+        $this->render('view', array('model' => $model));
     }
 
     public function actionCreate()

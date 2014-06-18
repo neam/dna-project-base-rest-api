@@ -532,7 +532,7 @@ trait ItemController
         $model->scenario = $this->scenario;
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
-        $this->populateWorkflowData($model, "reviewable", Yii::t('app', 'Prepare for review'));
+        $this->populateWorkflowData($model, 'reviewable', Yii::t('app', 'Prepare for Review'));
         $stepCaptions = $model->flowStepCaptions();
 
         /** @var Controller|ItemController $this */
@@ -615,7 +615,7 @@ trait ItemController
         $model->scenario = $this->scenario;
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
-        $this->populateWorkflowData($model, "publishable", Yii::t('app', 'Prepare for publishing'));
+        $this->populateWorkflowData($model, 'publishable', Yii::t('app', 'Prepare for Publishing'));
         $stepCaptions = $model->flowStepCaptions();
 
         /** @var Controller|ItemController $this */
