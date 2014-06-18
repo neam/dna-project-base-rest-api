@@ -1443,11 +1443,18 @@ trait ItemController
      */
     public function itemBreadcrumbs($model)
     {
-        $itemName = isset($model->title) ? $model->title : $model->id;
+        // Set item title
+        if (isset($model->title)) {
+            $itemTitle = $model->title;
+        } else if (isset($model->name)) {
+            $itemTitle = $model->name;
+        } else {
+            $itemTitle = $model->id;
+        }
 
         $breadcrumbs = array();
         $breadcrumbs[Yii::t('app', $model->modelLabel, 2)] = array('browse');
-        $breadcrumbs[$itemName] = array('view', 'id' => $model->id);
+        $breadcrumbs[$itemTitle] = array('view', 'id' => $model->id);
 
         switch ($this->action->id) {
             case Controller::ACTION_EDIT:

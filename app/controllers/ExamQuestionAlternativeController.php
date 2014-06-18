@@ -60,9 +60,14 @@ class ExamQuestionAlternativeController extends Controller
         return true;
     }
 
+    /**
+     * Renders the view page.
+     * @param int $id model ID.
+     */
     public function actionView($id)
     {
         $model = $this->loadModel($id);
+        $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
         $this->render('view', array('model' => $model,));
     }
 
