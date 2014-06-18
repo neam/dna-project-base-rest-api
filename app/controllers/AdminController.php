@@ -35,7 +35,14 @@ class AdminController extends Controller
      */
     public function actionManageAccounts()
     {
-        $dataProvider = new CActiveDataProvider('Account');
+        $dataProvider = new CActiveDataProvider(
+            'Account',
+            array(
+                'pagination' => array(
+                    'pageSize' => 20
+                ),
+            )
+        );
 
         $columns = array(
             array(
