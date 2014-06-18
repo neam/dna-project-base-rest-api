@@ -6,6 +6,7 @@ class ItemBrowsePage
     static $URL = '';
 
     public static $addButton = '#addButton';
+    public static $editButtonText = 'Edit';
 
     /**
      * Basic route example for your current URL

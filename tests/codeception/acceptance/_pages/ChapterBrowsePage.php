@@ -5,6 +5,11 @@ class ChapterBrowsePage extends ItemBrowsePage
     // include url of current page
     static $URL = '?r=chapter/browse';
 
+    public static function modelContext($title)
+    {
+        return '#Chapter_' . str_replace(' ', '_', $title);
+    }
+
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';

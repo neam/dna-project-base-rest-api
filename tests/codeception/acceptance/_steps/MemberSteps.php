@@ -170,6 +170,7 @@ class MemberSteps extends AppSteps
     function createVideoFile($stepAttributes)
     {
         $I = $this;
+        $I->amGoingTo('create a new video');
         $I->amOnPage(VideoFileBrowsePage::$URL);
         $I->click(VideoFileBrowsePage::$addButton);
         $I->fillItemStepPages(VideoFileEditPage::$steps, $stepAttributes);
@@ -178,6 +179,7 @@ class MemberSteps extends AppSteps
     function createSnapshot($stepAttributes)
     {
         $I = $this;
+        $I->amGoingTo('create a new snapshot');
         $I->amOnPage(SnapshotBrowsePage::$URL);
         $I->click(SnapshotBrowsePage::$addButton);
         $I->fillItemStepPages(SnapshotEditPage::$steps, $stepAttributes);
@@ -186,6 +188,7 @@ class MemberSteps extends AppSteps
     function createChapter($stepAttributes)
     {
         $I = $this;
+        $I->amGoingTo('create a new chapter');
         $I->amOnPage(ChapterBrowsePage::$URL);
         $I->click(ChapterBrowsePage::$addButton);
         $I->fillItemStepPages(ChapterEditPage::$steps, $stepAttributes);
@@ -194,10 +197,19 @@ class MemberSteps extends AppSteps
     function editVideoFile($title, $stepAttributes)
     {
         $I = $this;
-        $I->amGoingTo('edit the video-file ' . $title);
+        $I->amGoingTo('edit a existing video');
         $I->amOnPage(VideoFileBrowsePage::$URL);
-        $I->click('Edit', VideoFileBrowsePage::modelContext($title));
+        $I->click(VideoFileBrowsePage::$editButtonText, VideoFileBrowsePage::modelContext($title));
         $I->fillItemStepPages(VideoFileEditPage::$steps, $stepAttributes);
+    }
+
+    function editChapter($title, $stepAttributes)
+    {
+        $I = $this;
+        $I->amGoingTo('edit a existing chapter');
+        $I->amOnPage(ChapterBrowsePage::$URL);
+        $I->click(ChapterBrowsePage::$editButtonText, ChapterBrowsePage::modelContext($title));
+        $I->fillItemStepPages(ChapterEditPage::$steps, $stepAttributes);
     }
 
     /**
