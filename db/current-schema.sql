@@ -130,9 +130,9 @@ CREATE TABLE `account` (
   `status` int(1) NOT NULL DEFAULT '0',
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastvisit_at` timestamp NULL DEFAULT NULL,
-  `salt` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `salt` varchar(255) COLLATE utf8_bin NOT NULL,
   `passwordStrategy` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT 'legacy',
-  `requireNewPassword` int(1) NOT NULL DEFAULT '0',
+  `requireNewPassword` tinyint(1) NOT NULL DEFAULT '0',
   `lastLoginAt` timestamp NULL DEFAULT NULL,
   `lastActiveAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -5158,4 +5158,4 @@ CREATE TABLE `waffle_unit_qa_state` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-17 14:36:15
+-- Dump completed on 2014-06-17 17:03:22
