@@ -373,6 +373,7 @@ class MemberSteps extends AppSteps
 
             // Click the result
             $I->click($xpath);
+            $I->waitForElementNotVisible($xpath);
         }
     }
 
