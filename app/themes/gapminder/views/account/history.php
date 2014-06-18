@@ -1,9 +1,3 @@
-<?php
-$this->breadcrumbs[] = Yii::t('model', 'Users');
-$this->breadcrumbs[$model->username] = array('account/profile', 'id' => $model->id);
-$this->breadcrumbs[] = Yii::t('account', 'History');
-?>
-
 <h1>
 
     <?php echo $model->profile->first_name . " " . $model->profile->last_name; ?>

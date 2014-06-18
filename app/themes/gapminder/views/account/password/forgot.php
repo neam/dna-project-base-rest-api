@@ -3,10 +3,6 @@
 /* @var nordsoftware\yii_account\models\form\ForgotPasswordForm $model */
 ?>
 <?php $this->pageTitle = Yii::app()->name . ' - ' . Yii::t('user', 'Recover Password'); ?>
-<?php /* $this->breadcrumbs = array(
-    Yii::t('user', 'Login') => array('/user/login'),
-    Yii::t('user', 'Recover'),
-); */ ?>
 <div class="recovery-controller recovery-action">
     <h1><?php echo Yii::t('app', 'Recover Password'); ?></h1>
     <?php if (Yii::app()->user->hasFlash('recoveryMessage')): ?>

@@ -3,10 +3,6 @@
 /* @var Account $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<?php
-$this->breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl;
-$this->breadcrumbs[] = Yii::t('app', 'Profile');
-?>
 <div class="account-controller profile-action">
     <?php $form = $this->beginWidget('\AppActiveForm', array(
         'id' => 'profile-form',

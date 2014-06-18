@@ -17,21 +17,23 @@
         </div>
         <div class="task-facts">
             <ul class="facts-list">
+                <?php /*
                 <li class="facts-list-item">
                     <?php echo Yii::t('app', '{viewCount} views', array(
-                            '{viewCount}' => 0, // TODO: Get view count dynamically.
-                        )); ?>
+                        '{viewCount}' => 0, // TODO: Get view count dynamically.
+                    )); ?>
                 </li>
                 <li class="facts-list-item">
                     <?php echo Yii::t('app', 'In {languageCount} languages', array(
-                            '{languageCount}' => 0, // TODO: Get language count dynamically.
-                        )); ?>
+                        '{languageCount}' => 0, // TODO: Get language count dynamically.
+                    )); ?>
                 </li>
                 <li class="facts-list-item">
                     <?php echo Yii::t('app', '+{pointCount} pts', array(
-                            '{pointCount}' => 0, // TODO: Get point count dynamically.
-                        )); ?>
+                        '{pointCount}' => 0, // TODO: Get point count dynamically.
+                    )); ?>
                 </li>
+                */ ?>
             </ul>
         </div>
     </div>

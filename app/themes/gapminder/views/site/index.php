@@ -33,7 +33,9 @@
     <div class="content-section section-website">
         <h2><?php print Yii::t('app', 'Website content'); ?></h2>
         <?php foreach (DataModel::websiteContentItemModels() as $modelClass => $table): ?>
-            <?php $this->renderPartial('_item-type-introduction', compact('modelClass')); ?>
+            <?php if ($modelClass !== 'Menu'): ?>
+                <?php $this->renderPartial('_item-type-introduction', compact('modelClass')); ?>
+            <?php endif; ?>
         <?php endforeach; ?>
     </div>
     <div class="content-section section-website">

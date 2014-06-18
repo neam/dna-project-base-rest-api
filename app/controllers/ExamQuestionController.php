@@ -60,16 +60,13 @@ class ExamQuestionController extends Controller
                 throw new CHttpException(400);
             }
         }
-        if ($this->module !== null) {
-            $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
-        }
         return true;
     }
 
     public function actionView($id)
     {
         $model = $this->loadModel($id);
-        $this->breadcrumbs = $this->itemBreadcrumbs($model);
+        $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
         $this->render('view', array('model' => $model,));
     }
 

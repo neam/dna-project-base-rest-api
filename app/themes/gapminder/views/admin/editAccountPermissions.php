@@ -4,11 +4,6 @@
 /* @var CArrayDataProvider $dataProvider */
 /* @var Account $model */
 ?>
-<?php
-$this->breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl;
-$this->breadcrumbs[Yii::t('model', 'Accounts')] = array('/admin/manageAccounts');
-$this->breadcrumbs[] = Yii::t('app', 'Permissions');
-?>
 <div class="account-controller view-action">
     <h1>
         <?php echo $model->username; ?>

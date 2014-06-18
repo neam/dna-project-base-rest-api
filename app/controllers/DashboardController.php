@@ -39,6 +39,10 @@ class DashboardController extends Controller
     {
         $model = Account::model()->findByPk(user()->id);
 
+        $this->buildBreadcrumbs(array(
+            Yii::t('app', 'Dashboard'),
+        ));
+
         $this->render(
             'index',
             array(
