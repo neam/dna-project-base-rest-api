@@ -148,6 +148,11 @@ class MemberSteps extends AppSteps
         $I->logout();
     }
 
+    function registerUser($userInfo)
+    {
+        $this->registerUsers(array($userInfo));
+    }
+
     function registerGapminderStaff()
     {
         $I = $this;
