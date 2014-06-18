@@ -6,12 +6,6 @@
  */
 class WebApplication extends CWebApplication
 {
-    /**
-     * @var string application version
-     * TODO: Update this automatically.
-     */
-    public $version = '0.4.0';
-
     // Theme constants
     const THEME_FRONTEND = 'frontend';
     const THEME_BACKEND2 = 'backend2';
@@ -21,6 +15,12 @@ class WebApplication extends CWebApplication
     const LAYOUT_REGULAR = '//layouts/regular';
     const LAYOUT_MINIMAL = '//layouts/minimal';
     const LAYOUT_NARROW = '//layouts/narrow';
+
+    /**
+     * @var string application version
+     * TODO: Update this automatically.
+     */
+    public $version = '0.4.0';
 
     /**
      * Registers CSS files.
@@ -119,5 +119,14 @@ class WebApplication extends CWebApplication
     public function resolveCacheBuster()
     {
         return md5(YII_DEBUG ? time() : $this->version);
+    }
+
+    /**
+     * Returns the root breadcrumb label.
+     * @return string
+     */
+    public function getBreadcrumbRootLabel()
+    {
+        return Yii::t('app', 'Gapminder Community');
     }
 }

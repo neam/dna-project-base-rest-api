@@ -79,9 +79,6 @@ class VideoFileController extends Controller
                 throw new CHttpException(400);
             }
         }
-        if ($this->module !== null) {
-            $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
-        }
         return true;
     }
 
@@ -100,7 +97,8 @@ class VideoFileController extends Controller
         $model->scenario = $this->scenario;
         $subtitles = $model->getParsedSubtitles();
 
-        $this->breadcrumbs = $this->itemBreadcrumbs($model);
+        /** @var Controller|ItemController $this */
+        $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
 
         if (isset($_POST['SourceMessage']) && !empty($_POST['SourceMessage'])) {
             foreach ($_POST['SourceMessage'] as $id => $translation) {
@@ -196,7 +194,8 @@ class VideoFileController extends Controller
     {
         $model = $this->loadModel($id);
 
-        $this->breadcrumbs = $this->itemBreadcrumbs($model);
+        /** @var Controller|ItemController $this */
+        $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
 
         $this->render(
             'view',

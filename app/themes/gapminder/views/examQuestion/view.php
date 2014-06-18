@@ -2,7 +2,6 @@
 /* @var ExamQuestionController|ItemController $this */
 /* @var ExamQuestion|ItemTrait $model */
 ?>
-<?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
     <h1>
         <?php echo $model->question; ?>

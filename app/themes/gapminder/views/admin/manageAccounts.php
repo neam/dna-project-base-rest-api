@@ -11,10 +11,6 @@ $this->setPageTitle(
     . Yii::t('model', 'Manage')
 );
 ?>
-<?php
-$this->breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl;
-$this->breadcrumbs[] = Yii::t('model', 'Accounts');
-?>
 <div class="account-controller admin-action">
     <h1>
         <?php echo Yii::t('model', 'Accounts'); ?>

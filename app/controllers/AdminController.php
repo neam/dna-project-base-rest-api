@@ -59,6 +59,10 @@ class AdminController extends Controller
             */
         );
 
+        $this->buildBreadcrumbs(array(
+            Yii::t('app', 'Accounts'),
+        ));
+
         $this->render(
             'manageAccounts',
             array(
@@ -131,6 +135,11 @@ class AdminController extends Controller
                 );
             }
         }
+
+        $this->buildBreadcrumbs(array(
+            Yii::t('app', 'Accounts') => array('/admin/manageAccounts'),
+            Yii::t('app', 'Permissions'),
+        ));
 
         $this->render(
             'editAccountPermissions',
