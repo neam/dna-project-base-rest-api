@@ -15,6 +15,8 @@ use VideoFileBrowsePage;
 use VideoFileEditPage;
 use SnapshotBrowsePage;
 use SnapshotEditPage;
+use ChapterBrowsePage;
+use ChapterEditPage;
 
 class MemberSteps extends AppSteps
 {
@@ -174,6 +176,14 @@ class MemberSteps extends AppSteps
         $I->amOnPage(SnapshotBrowsePage::$URL);
         $I->click(SnapshotBrowsePage::$addButton);
         $I->fillItemStepPages(SnapshotEditPage::$steps, $stepAttributes);
+    }
+
+    function createChapter($stepAttributes)
+    {
+        $I = $this;
+        $I->amOnPage(ChapterBrowsePage::$URL);
+        $I->click(ChapterBrowsePage::$addButton);
+        $I->fillItemStepPages(ChapterEditPage::$steps, $stepAttributes);
     }
 
     function editVideoFile($title, $stepAttributes)

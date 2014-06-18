@@ -1,6 +1,6 @@
 <?php
 
-class ChapterEditPage
+class ChapterEditPage extends ItemEditPage
 {
     // include url of current page
     static $URL = '?r=chapter/edit';

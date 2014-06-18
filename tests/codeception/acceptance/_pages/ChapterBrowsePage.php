@@ -1,6 +1,6 @@
 <?php
 
-class ChapterBrowsePage
+class ChapterBrowsePage extends ItemBrowsePage
 {
     // include url of current page
     static $URL = '?r=chapter/browse';
