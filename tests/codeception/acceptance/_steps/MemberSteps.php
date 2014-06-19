@@ -77,9 +77,7 @@ class MemberSteps extends AppSteps
             'name' => 'martha',
             'password' => 'test',
             'email' => 'dev+marthaexternal@gapminder.org',
-            'groupRoles' => array(
-                'Translators' => array('GroupTranslator'),
-            ),
+            'groupRoles' => array(),
         ),
     );
 
@@ -109,6 +107,7 @@ class MemberSteps extends AppSteps
         $I->fillField(RegistrationPage::$emailField, $email);
         $I->fillField(RegistrationPage::$passwordField, $password);
         $I->fillField(RegistrationPage::$verifyPasswordField, $verifyPassword);
+	$I->wait(2);
         $acceptTerms
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
@@ -486,6 +485,31 @@ class MemberSteps extends AppSteps
         $I = $this;
         $I->click('.navbar .language-menu');
         $I->click($language, '.navbar .language-menu');
+    }
+
+    /**
+     * Selects languages for the currently logged in user
+     * @param $languages array of languages (max 3 languages)
+     */
+    function selectLanguages($languages)
+    {
+        $I = $this;
+
+        $I->amOnPage(\ProfilePage::$URL);
+
+        for ($i = 0, $num = 1; $i < count($languages); $i++, $num++) {
+            $I->selectSelect2Option("#Profile_language{$num}", $languages[$i]);
+        }
+
+        $I->click('Save');
+
+        $I->waitForText('Your account information has been updated.', 20);
+
+        $I->amOnPage(\ProfilePage::$URL);
+
+        for ($i = 0, $num = 1; $i < count($languages); $i++, $num++) {
+            $I->seeSelect2OptionIsSelected("#Profile_language{$num}", $languages[$i]);
+        }
     }
 
 }
