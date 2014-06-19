@@ -1,3 +1,4 @@
 <?php
 $I = new WebGuy\MemberSteps($scenario);
-$I->wantTo('snoop around as a guest');
+$I->am('a guest');
+$I->wantTo('snoop around');

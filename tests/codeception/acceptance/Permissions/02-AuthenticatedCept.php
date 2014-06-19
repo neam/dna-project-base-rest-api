@@ -1,6 +1,7 @@
 <?php
 $scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
+$I->am('a authenticated user');
 $I->wantTo('perform actions and see result');
 
 $I->registerUser(
