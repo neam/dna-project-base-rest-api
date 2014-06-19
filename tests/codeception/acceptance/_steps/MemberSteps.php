@@ -113,7 +113,7 @@ class MemberSteps extends AppSteps
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
 
-        $I->waitForElementNotVisible('#signupForm .has-error');
+        $I->wait(1);
 
         $I->click(RegistrationPage::$submitButton);
 

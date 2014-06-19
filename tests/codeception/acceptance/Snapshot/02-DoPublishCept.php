@@ -39,7 +39,7 @@ $modelContext = SnapshotBrowsePage::modelContext('Test snapshot');
 
 // Prepare for publishing
 $I->amOnPage(SnapshotBrowsePage::$URL);
-$I->click('Prepare for publishing', $modelContext);
+$I->click('Prepare for Publishing', $modelContext);
 // Vizabi state is missing
 $I->waitForText('1 required field missing', 10);
 $I->click(SnapshotEditPage::$goToNextFieldButton);
