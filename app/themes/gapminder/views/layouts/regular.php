@@ -18,6 +18,7 @@
                 </div>
                 <div class="row">
                     <div class="footer-column">
+                        <?php /*
                         <div class="row">
                             <div class="link-column">
                                 <ul class="footer-links">
@@ -44,6 +45,7 @@
                                 </ul>
                             </div>
                         </div>
+                        */ ?>
                         <div class="row">
                             <div class="copyright-column">
                                 <p class="lead"><?php echo Yii::t('app', 'Copyright {year}', array('{year}' => date('Y'))); ?></p>

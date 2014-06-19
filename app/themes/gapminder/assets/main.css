@@ -9851,7 +9851,6 @@ Styleguide 5
   padding-left: 15px;
   padding-right: 15px;
   font-size: 11px;
-  margin-top: 25px;
 }
 @media (min-width: 992px) {
   .layout-regular .footer .copyright-column {
