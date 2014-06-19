@@ -146,12 +146,15 @@ $gcmsConfig = array(
             ),
         ),
         'account' => array(
-            'class' => '\nordsoftware\yii_account\Module',
+            'class' => 'application.components.AccountModule',
             'classMap' => array(
-                'model' => 'Account',
+                'account' => 'Account',
                 'signupForm' => 'SignupForm',
             ),
             'controllerMap' => array(
+                'password' => array(
+                    'class' => 'application.controllers.PasswordController',
+                ),
                 'signup' => array(
                     'class' => 'application.controllers.SignupController',
                     'layout' => 'theme.views.layouts.minimal',

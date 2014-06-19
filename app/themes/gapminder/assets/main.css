@@ -9784,6 +9784,12 @@ Styleguide 5
   width: inherit;
   margin: 40px 0;
 }
+.layout-narrow .body {
+  text-align: center;
+}
+.layout-narrow .body .brand-logo {
+  margin-bottom: 50px;
+}
 .layout-regular {
   padding-top: 95px;
 }

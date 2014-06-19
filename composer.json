@@ -163,7 +163,7 @@
         "twitter/bootstrap": "3.0.*",
         "crisu83/yii-sentry": "1.3.*",
         "alchemy/zippy": "*",
-        "nordsoftware/yii-account": "dev-master#61a5528cb9227f6990256b476c3c5ed19f20a158",
+        "nordsoftware/yii-account": "1.2.1",
         "nordsoftware/yii-emailer": "1.2.*",
         "nordsoftware/yii-utils": "@dev",
         "crisu83/yii-formatter": "@dev",
