@@ -3,6 +3,32 @@ Gapminder School CMS
 
 This web application is used by the community as well as Gapminder staff to author, translate and publish the educational material.
 
+## Local set-up
+
+* Use MAMP 2.1.2 for local development (Note: Make sure to disable any PHP accelerators since it they are known to cause segfaults on OSX when using traits)
+* Setup MySQL with an empty database called "gscms", with a db user that has access
+* Copy `cms/app/config/envbootstrap/local/envbootstrap.dist.php` to `cms/app/config/envbootstrap/local/envbootstrap.php` and add your db configuration.
+* Change `define("DATA", 'user-generated');` to `define("DATA", 'clean-db');` since you are starting with an empty database locally.
+* Run from the cms directory:
+
+    php composer.phar --prefer-source install
+    npm install
+    bower install
+    app/yiic databaseschema --connectionID=db loadSql --path=db/migration-base/clean-db/schema.sql --verbose=0
+    shell-scripts/yiic-migrate.sh
+
+* Make the following directories writable by the server (adjust paths and users accordingly):
+
+        chown -R www-data:www-data cms/app/data/
+        chown -R www-data:www-data cms/app/runtime/
+        chown -R www-data:www-data cms/www/assets/
+        chmod -R g+rw cms/app/data/
+        chmod -R g+rw cms/app/runtime/
+        chmod -R g+rw cms/www/assets/
+
+* Now your cms installation should work and you should be able to login with admin/admin
+* You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
+
 ## Config
 
 This section describes the CMS [config](http://12factor.net/config).
