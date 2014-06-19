@@ -222,6 +222,15 @@ class WebUser extends \nordsoftware\yii_account\components\WebUser
     }
 
     /**
+     * Checks if the user is a reviewer.
+     * @return bool
+     */
+    public function getIsReviewer()
+    {
+        return $this->hasRole(Role::GROUP_REVIEWER);
+    }
+
+    /**
      * Checks if the user has the given role.
      * @param string $roleName (use role name constants, e.g. Role::GROUP_TRANSLATOR).
      * @return bool

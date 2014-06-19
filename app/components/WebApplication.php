@@ -122,6 +122,17 @@ class WebApplication extends CWebApplication
     }
 
     /**
+     * Returns the user role specific home URL (overrides CApplication::getHomeUrl)
+     * @return string
+     */
+    public function getHomeUrl()
+    {
+        return !user()->isAdmin() && (user()->isTranslator || user()->isReviewer)
+            ? app()->createUrl('/dashboard/index')
+            : app()->createUrl('/site/index');
+    }
+
+    /**
      * Returns the root breadcrumb label.
      * @return string
      */
