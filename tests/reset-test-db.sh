@@ -28,7 +28,7 @@ if [ "$DATA" == "user-generated" ]; then
     mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/migration-base/user-generated/data.sql
 
     # copy the downloaded data to the persistant p3media folder
-    cp -r db/migration-base/user-generated-media/* app/data/p3media/
+    cp -r db/migration-base/user-generated/media/* app/data/p3media/
 
 fi
 
