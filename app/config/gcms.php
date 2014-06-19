@@ -251,6 +251,7 @@ $gcmsConfig = array(
         ),
         'user' => array(
             'class' => 'application.components.WebUser',
+            'loginUrl' => array('/account/authenticate/login'),
         ),
         'widgetFactory' => array(
             'widgets' => array(

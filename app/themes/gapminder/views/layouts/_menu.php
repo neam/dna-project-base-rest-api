@@ -90,7 +90,7 @@ if ($page !== null) {
                     ),
                     array(
                         'label' => Yii::t('app', 'Login'),
-                        'url' => array('/account/authenticate/login'),
+                        'url' => user()->loginUrl,
                         'visible' => Yii::app()->user->isGuest,
                         'id' => 'loginLink',
                     ),

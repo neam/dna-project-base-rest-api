@@ -461,10 +461,6 @@ $mainConfig = array(
                 // backend
                 'phundament' => 'p3admin/default/index',
 
-                // standard login page URL
-                //'<lang:[a-z]{2}(_[a-z]{2})? >/site/login' => 'user/login',
-                //'site/login'                             => 'user/login',
-
                 // p3pages - SEO
                 '<lang:[a-z]{2}(_[a-z]{2})?>/<pageName:[a-zA-Z0-9-._]*>-<pageId:\d+>.html'
                              => 'p3pages/default/page',
