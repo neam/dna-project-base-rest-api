@@ -2,7 +2,7 @@
 
 namespace gapminder\envbootstrap;
 
-require(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'function.setenv.php');
+require(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'functions.inc.php');
 
 // ==== Initial environment bootstrap ====
 

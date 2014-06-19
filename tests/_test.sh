@@ -13,7 +13,11 @@ cd $script_path
 
 vendor/bin/codecept run unit -g data:clean-db --debug
 #vendor/bin/codecept run functional -g data:clean-db --debug
+touch testing
 vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:clean-db --debug
 vendor/bin/codecept run api -g data:clean-db --debug
+rm testing
 
+touch testing
 vendor/bin/codecept run api -g data:user-generated --debug
+rm testing

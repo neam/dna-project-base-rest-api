@@ -113,11 +113,15 @@ For the remaining tests, you need to have Java installed and [the selenium serve
 
 To run the acceptance suite:
 
+    touch testing
     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug
+    rm testing
 
 To run the the API suite:
 
+    touch testing
     vendor/bin/codecept run api -g data:$DATA --debug
+    rm testing
 
 ### Hints for test developers
 
