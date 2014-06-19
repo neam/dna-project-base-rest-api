@@ -1,8 +1,13 @@
 #!/bin/bash -v -x
 
+set -x;
+
 script_path=`dirname $0`
 
 connectionID=dbTest
+
+# fail on any error
+set -o errexit
 
 cd $script_path/..
 
@@ -19,16 +24,18 @@ if [ "$DATA" == "user-generated" ]; then
     #app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/user-generated-data.sql
 
     # TODO Remove this once the todo above has been fixed
-    DB_HOST=localhost
-    DB_PORT=3306
-    DB_USER=gcms_test
-    DB_PASSWORD=gcms_test
-    DB_NAME=gscms_test
     mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/migration-base/user-generated/schema.sql
     mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/migration-base/user-generated/data.sql
 
-    # copy the downloaded data to the persistant p3media folder
+    # copy the downloaded data to the p3media folder
+    rm -rf app/data/p3media/*
+    # todo: find a way to ensure that previously uploaded media can be restored from, possible similar to below but that works more than once
+    #mkdir .trashed-p3media-data
+    #mv app/data/p3media/* .trashed-p3media-data/
     cp -r db/migration-base/user-generated/media/* app/data/p3media/
+
+    # make downloaded media directories owned and writable by the web server
+    chown -R nobody: app/data/p3media/
 
 fi
 
