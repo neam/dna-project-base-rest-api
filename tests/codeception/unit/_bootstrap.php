@@ -8,7 +8,7 @@ $_SERVER['REQUEST_URI'] = 'index-test.php';
 $yiit=dirname(__FILE__).'/../../../vendor/yiisoft/yii/framework/yiit.php';
 require_once($yiit);
 $main=require(dirname(__FILE__).'/../../../app/config/main.php');
-$env=require(dirname(__FILE__).'/../../../app/config/env-test.php');
+$env=require(dirname(__FILE__)."/../../../app/config/environments/" . CONFIG_ENVIRONMENT . ".php");
 
 //require_once(dirname(__FILE__).'/WebTestCase.php');
 
