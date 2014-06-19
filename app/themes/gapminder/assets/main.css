@@ -6743,6 +6743,23 @@ td.visible-print {
     display: none !important;
   }
 }
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+
+  margin-bottom: 460px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+
+  height: 400px;
+}
 .navbar {
   font-weight: 100;
 }
@@ -11574,26 +11591,34 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
 .authenticate-controller.login-action .login-links {
   margin: 20px auto;
 }
+.chapter-controller.evaluate-action .chapter-content,
 .chapter-controller.view-action .chapter-content {
   margin-left: -15px;
   margin-right: -15px;
 }
+.chapter-controller.evaluate-action .chapter-content:before,
 .chapter-controller.view-action .chapter-content:before,
+.chapter-controller.evaluate-action .chapter-content:after,
 .chapter-controller.view-action .chapter-content:after {
   content: " ";
   display: table;
 }
+.chapter-controller.evaluate-action .chapter-content:after,
 .chapter-controller.view-action .chapter-content:after {
   clear: both;
 }
+.chapter-controller.evaluate-action .chapter-content:before,
 .chapter-controller.view-action .chapter-content:before,
+.chapter-controller.evaluate-action .chapter-content:after,
 .chapter-controller.view-action .chapter-content:after {
   content: " ";
   display: table;
 }
+.chapter-controller.evaluate-action .chapter-content:after,
 .chapter-controller.view-action .chapter-content:after {
   clear: both;
 }
+.chapter-controller.evaluate-action .chapter-content .content-sidebar,
 .chapter-controller.view-action .chapter-content .content-sidebar {
   position: relative;
   min-height: 1px;
@@ -11601,11 +11626,13 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
   padding-right: 15px;
 }
 @media (min-width: 992px) {
+  .chapter-controller.evaluate-action .chapter-content .content-sidebar,
   .chapter-controller.view-action .chapter-content .content-sidebar {
     float: left;
     width: 25%;
   }
 }
+.chapter-controller.evaluate-action .chapter-content .content-details,
 .chapter-controller.view-action .chapter-content .content-details {
   position: relative;
   min-height: 1px;
@@ -11613,6 +11640,7 @@ fieldset[disabled] .account-controller.dashboard-action .dashboard-profile .rece
   padding-right: 15px;
 }
 @media (min-width: 992px) {
+  .chapter-controller.evaluate-action .chapter-content .content-details,
   .chapter-controller.view-action .chapter-content .content-details {
     float: left;
     width: 75%;

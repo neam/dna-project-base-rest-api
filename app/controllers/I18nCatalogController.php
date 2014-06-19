@@ -61,9 +61,6 @@ class I18nCatalogController extends Controller
                 throw new CHttpException(400);
             }
         }
-        if ($this->module !== null) {
-            $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
-        }
         return true;
     }
 
@@ -152,9 +149,14 @@ class I18nCatalogController extends Controller
 
     }
 
+    /**
+     * Renders the view page.
+     * @param int $id model ID.
+     */
     public function actionView($id)
     {
         $model = $this->loadModel($id);
+        $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
         $this->render('view', array('model' => $model,));
     }
 

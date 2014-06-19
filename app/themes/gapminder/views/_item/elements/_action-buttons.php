@@ -25,7 +25,7 @@
             <?php $this->widget(
                 '\TbButton',
                 array(
-                    'label' => Yii::t('crud', 'Prepare for review'),
+                    'label' => Yii::t('app', 'Prepare for Review'),
                     'color' => $this->action->id === 'prepareForReview' ? 'inverse' : null, // TODO: no inverse buttons in BS3 http://getbootstrap.com/css/#buttons
                     'size' => TbHtml::BUTTON_SIZE_MINI,
                     'url' => array(
@@ -43,7 +43,7 @@
             <?php $this->widget(
                 '\TbButton',
                 array(
-                    'label' => Yii::t('crud', 'Prepare for publishing'),
+                    'label' => Yii::t('app', 'Prepare for Publishing'),
                     'color' => $this->action->id === 'prepareForPublishing' ? 'inverse' : null,
                     'size' => TbHtml::BUTTON_SIZE_MINI,
                     'url' => array(
@@ -153,7 +153,7 @@
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Clone'),
             )
         ); ?>
-        <?php $this->widget(
+        <?php /* $this->widget(
             '\TbButton', array(
                 'label' => Yii::t('model', 'Remove'),
                 'color' => $this->action->id === 'remove' ? 'inverse' : null,
@@ -164,7 +164,7 @@
                 ),
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Remove'),
             )
-        ); ?>
+        ); */ ?>
     </div>
     <div class="btn-group">
         <?php foreach (Yii::app()->user->getGroups() as $groupId => $groupName): ?>

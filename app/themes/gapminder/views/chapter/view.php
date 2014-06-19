@@ -77,71 +77,74 @@ $sections = $this->chapterSections($model);
             <?php endif; ?>
         </div>
         <div class="content-details">
-            <?php $this->renderPartial('/_item/elements/flowbar', compact('model', 'workflowCaption')); ?>
-            <div class="after-flowbar">
-                <?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>
-                    <div class="admin-container hide">
-                        <div class="btn-toolbar">
-                            <div class="btn-group">
-                                <?php $this->widget(
-                                    '\TbButton',
-                                    array(
-                                        'label' => Yii::t('model', 'Manage'),
-                                        'icon' => 'glyphicon-edit',
-                                        'url' => array('admin'),
-                                    )
-                                ); ?>
-                                <?php $this->widget(
-                                    '\TbButton',
-                                    array(
-                                        'label' => Yii::t('model', 'Edit'),
-                                        'icon' => 'glyphicon-edit',
-                                        'url' => array(
-                                            'continueAuthoring',
+            <h1>
+                <?php echo $model->title; ?>
+                <?php if ($this->actionIsEvaluate()): ?>
+                    <small><?php echo $this->getViewActionLabel(); ?></small>
+                <?php endif; ?>
+            </h1>
+            <?php if (Yii::app()->user->checkAccess('Chapter.*')): ?>
+                <div class="admin-container hide">
+                    <div class="btn-toolbar">
+                        <div class="btn-group">
+                            <?php $this->widget(
+                                '\TbButton',
+                                array(
+                                    'label' => Yii::t('model', 'Manage'),
+                                    'icon' => 'glyphicon-edit',
+                                    'url' => array('admin'),
+                                )
+                            ); ?>
+                            <?php $this->widget(
+                                '\TbButton',
+                                array(
+                                    'label' => Yii::t('model', 'Edit'),
+                                    'icon' => 'glyphicon-edit',
+                                    'url' => array(
+                                        'continueAuthoring',
+                                        'id' => $model->{$model->tableSchema->primaryKey},
+                                    ),
+                                )
+                            ); ?>
+                            <?php $this->widget(
+                                '\TbButton',
+                                array(
+                                    'label' => Yii::t('model', 'Update'),
+                                    'icon' => 'glyphicon-edit',
+                                    'url' => array(
+                                        'update',
+                                        'id' => $model->{$model->tableSchema->primaryKey},
+                                    ),
+                                )
+                            ); ?>
+                            <?php $this->widget(
+                                '\TbButton',
+                                array(
+                                    'label' => Yii::t('model', 'Delete'),
+                                    'color' => 'danger',
+                                    'icon' => 'glyphicon-remove icon-white',
+                                    'htmlOptions' => array(
+                                        'submit' => array(
+                                            'delete',
                                             'id' => $model->{$model->tableSchema->primaryKey},
-                                        ),
-                                    )
-                                ); ?>
-                                <?php $this->widget(
-                                    '\TbButton',
-                                    array(
-                                        'label' => Yii::t('model', 'Update'),
-                                        'icon' => 'glyphicon-edit',
-                                        'url' => array(
-                                            'update',
-                                            'id' => $model->{$model->tableSchema->primaryKey},
-                                        ),
-                                    )
-                                ); ?>
-                                <?php $this->widget(
-                                    '\TbButton',
-                                    array(
-                                        'label' => Yii::t('model', 'Delete'),
-                                        'color' => 'danger',
-                                        'icon' => 'glyphicon-remove icon-white',
-                                        'htmlOptions' => array(
-                                            'submit' => array(
-                                                'delete',
-                                                'id' => $model->{$model->tableSchema->primaryKey},
-                                                'returnUrl' => request()->getParam('returnUrl')
-                                                        ? request()->getParam('returnUrl')
-                                                        : $this->createUrl('admin')),
-                                            'confirm' => Yii::t('model', 'Do you want to delete this item?'),
-                                        ),
-                                    )
-                                ); ?>
-                            </div>
+                                            'returnUrl' => request()->getParam('returnUrl')
+                                                    ? request()->getParam('returnUrl')
+                                                    : $this->createUrl('admin')),
+                                        'confirm' => Yii::t('model', 'Do you want to delete this item?'),
+                                    ),
+                                )
+                            ); ?>
                         </div>
                     </div>
-                <?php endif; ?>
-                <?php $this->renderPartial(
-                    '_sections',
-                    array(
-                        'model' => $model,
-                        'sections' => $sections,
-                    )
-                ); ?>
-            </div>
+                </div>
+            <?php endif; ?>
+            <?php $this->renderPartial(
+                '_sections',
+                array(
+                    'model' => $model,
+                    'sections' => $sections,
+                )
+            ); ?>
         </div>
     </div>
 </div>

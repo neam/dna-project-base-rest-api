@@ -39,6 +39,13 @@ if [ "$DATA" == "clean-db" ]; then
 
 fi
 
+if [ "$DATA" == "" ]; then
+
+    echo "The environment variable DATA needs to be set"
+    exit 1
+
+fi
+
 app/yiic fixture --connectionID=$connectionID load
 app/yiic migrate --connectionID=$connectionID --interactive=0 # > /dev/null
 app/yiic databaseviewgenerator --connectionID=$connectionID item

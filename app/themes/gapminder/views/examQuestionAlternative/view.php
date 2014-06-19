@@ -1,14 +1,9 @@
 <?php
-/**
- * @var ExamQuestionAlternativeController $this
- * @var ExamQuestionAlternative $model
- */
+/** @var ExamQuestionAlternativeController|ItemController $this */
+/** @var ExamQuestionAlternative|ItemTrait $model */
 ?>
-<?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
-<?php $this->renderPartial('/_item/elements/flowbar', compact('model')); ?>
 <div class="<?php $this->getCssClasses($model); ?>">
     <div class="after-flowbar">
-
         <?php $this->widget(
             'ItemDetails',
             array(
@@ -21,7 +16,5 @@
                 ),
             )
         ); ?>
-
     </div>
-
 </div>

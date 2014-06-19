@@ -48,9 +48,6 @@ class ProfileController extends Controller
                 throw new CHttpException(400);
             }
         }
-        if ($this->module !== null) {
-            $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
-        }
         return true;
     }
 
@@ -112,6 +109,10 @@ class ProfileController extends Controller
                 Yii::app()->user->gotoProfileReturnUrl();
             }
         }
+
+        $this->buildBreadcrumbs(array(
+            Yii::t('app', 'Profile'),
+        ));
 
         $this->render('edit', array(
             'model' => $model,
