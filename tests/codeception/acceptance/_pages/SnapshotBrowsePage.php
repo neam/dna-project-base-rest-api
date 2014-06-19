@@ -1,19 +1,20 @@
 <?php
 
-class ItemEditPage
+class SnapshotBrowsePage extends ItemBrowsePage
 {
     // include url of current page
-    static $URL = '';
+    static $URL = '?r=snapshot/browse';
+
+    static function modelContext($title)
+    {
+        return '#Snapshot_' . str_replace(' ', '_', $title);
+    }
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
-
-    public static $submitButton = '#item-form button[name=save-changes]';
-    public static $formId = '#item-form';
-    public static $goToNextFieldButton = 'button[name=next-required]';
 
     /**
      * Basic route example for your current URL
@@ -36,7 +37,7 @@ class ItemEditPage
     }
 
     /**
-     * @return ItemEditPage
+     * @return SnapshotBrowsePage
      */
     public static function of(WebGuy $I)
     {
