@@ -72,9 +72,10 @@ define("GA_TRACKING_ID", "UA-XXXXXXX-X");
 
 // ==== Define test-related constants ====
 
-define("TEST_DB_NAME", 'gscms_test');
-define("TEST_DB_USER", 'gcms_test');
-define("TEST_DB_PASSWORD", 'gcms_test');
+define("TEST_DB_NAME", YII_DB_NAME . '_test');
+define("TEST_DB_USER", YII_DB_USER);
+define("TEST_DB_PASSWORD", YII_DB_PASSWORD);
+define("TEST_DB_PORT", YII_DB_PORT);
 define("TEST_DB_HOST", YII_DB_HOST);
 
 // ==== Misc ====

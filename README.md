@@ -43,7 +43,7 @@ Then, run:
 
     export DATA=user-generated
 
-Use the corresponding values from `app/config/envbootstrap/local/envbootstrap.php` below
+Use the corresponding YII_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
 
     export DB_HOST=127.0.0.1
     export DB_PORT=13306
@@ -60,6 +60,14 @@ First, decide whether or not to run tests against a clean database or with user 
     OR
     export DATA=user-generated # be sure to have s3cmd configured properly as per above
 
+Use the corresponding TEST_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
+
+    export DB_HOST=127.0.0.1
+    export DB_PORT=13306
+    export DB_USER=root
+    export DB_PASSWORD=changeme
+    export DB_NAME=db_test
+
 Then, do the following before attempting to run any tests:
 
     cd tests
@@ -71,6 +79,7 @@ Then, do the following before attempting to run any tests:
 To reset the test database (necessary in order to re-run tests):
 
     export CONFIG_ENVIRONMENT=test
+    echo "DROP DATABASE $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
     ./reset-test-db.sh
 
 To run the unit tests:
