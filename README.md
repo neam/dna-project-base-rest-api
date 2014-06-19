@@ -98,9 +98,9 @@ To run the unit tests:
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
     vendor/bin/codecept run unit -g data:$DATA --debug
 
-To run the functional tests:
+To run the functional tests (Note: Not currently used):
 
-    vendor/bin/codecept run functional -g data:$DATA --debug
+    #vendor/bin/codecept run functional -g data:$DATA --debug
 
 For the remaining tests, you need to have Java installed and [the selenium server](http://docs.seleniumhq.org/download/) running locally:
 
