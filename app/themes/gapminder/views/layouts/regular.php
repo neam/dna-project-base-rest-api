@@ -49,7 +49,9 @@
                         <div class="row">
                             <div class="copyright-column">
                                 <p class="lead"><?php echo Yii::t('app', 'Copyright {year}', array('{year}' => date('Y'))); ?></p>
+                                <?php /*
                                 <p><?php echo Yii::t('app', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dui est, gravida ac nisi et, porta tristique orci. In mollis nunc in nulla vehicula, in feugiat tellus lobortis. Curabitur sed leo imperdiet, mollis mauris in, consequat massa. Aenean arcu odio, molestie nec sem imperdiet, vehicula dignissim massa.'); ?></p>
+                                */ ?>
                             </div>
                         </div>
                     </div>
