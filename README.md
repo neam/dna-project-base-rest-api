@@ -16,6 +16,17 @@ This web application is used by the community as well as Gapminder staff to auth
 * Now your CMS installation should be accessible on [http://localhost:11111]() and you should be able to login with admin/admin
 * Note: You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
 
+## A note about running the commands below
+
+To run these commands locally, the following binaries must be installed locally and available in your PATH:
+
+    * php
+    * npm
+    * bower
+    * mysql
+    * mysqldump
+    * git
+
 ## Update to the latest changes
 
 After pulling the latest changes, run the following to update your local environment:
