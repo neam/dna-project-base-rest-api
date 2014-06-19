@@ -25,7 +25,12 @@ define("DATABASE_URL", null);
 
 if (DATABASE_URL === null) {
     define("YII_DB_SCHEME", "mysql");
-    define("YII_DB_HOST", "172.17.42.1");
+    // Different db hosts based on running from inside docker container or locally
+    if (substr(getcwd(), 0, 5) == "/code") {
+        define("YII_DB_HOST", "172.17.42.1");
+    } else {
+        define("YII_DB_HOST", "127.0.0.1");
+    }
     define("YII_DB_PORT", "13306");
     define("YII_DB_USER", "root");
     define("YII_DB_PASSWORD", "changeme");

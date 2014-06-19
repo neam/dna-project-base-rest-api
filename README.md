@@ -5,29 +5,16 @@ This web application is used by the community as well as Gapminder staff to auth
 
 ## Local set-up
 
-* Use MAMP 2.1.2 for local development (Note: Make sure to disable any PHP accelerators since it they are known to cause segfaults on OSX when using traits)
-* Setup MySQL with an empty database called "gscms", with a db user that has access
-* Copy `cms/app/config/envbootstrap/local/envbootstrap.dist.php` to `cms/app/config/envbootstrap/local/envbootstrap.php` and add your db configuration.
-* Change `define("DATA", 'user-generated');` to `define("DATA", 'clean-db');` since you are starting with an empty database locally.
-* Run from the cms directory:
+* Create your local configuration file:
 
-    php composer.phar --prefer-source install
-    npm install
-    bower install
-    app/yiic databaseschema --connectionID=db loadSql --path=db/migration-base/clean-db/schema.sql --verbose=0
-    shell-scripts/yiic-migrate.sh
 
-* Make the following directories writable by the server (adjust paths and users accordingly):
+    cp app/config/envbootstrap/local/envbootstrap.dist.php app/config/envbootstrap/local/envbootstrap.php
 
-        chown -R www-data:www-data cms/app/data/
-        chown -R www-data:www-data cms/app/runtime/
-        chown -R www-data:www-data cms/www/assets/
-        chmod -R g+rw cms/app/data/
-        chmod -R g+rw cms/app/runtime/
-        chmod -R g+rw cms/www/assets/
-
-* Now your cms installation should work and you should be able to login with admin/admin
-* You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
+* Set-up a local docker containers running CMS web and db as per the instructions in `../virtual-machines/vagrant/cms/README.md`
+* Follow "Update to the latest changes" below
+* Follow "Reset the database" below
+* Now your CMS installation should be accessible on [http://localhost:11111]() and you should be able to login with admin/admin
+* Note: You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
 
 ## Update to the latest changes
 
@@ -38,13 +25,40 @@ After pulling the latest changes, run the following to update your local environ
     bower install
     shell-scripts/yiic-migrate.sh
 
-## Tests
+## Reset the database
+
+### To reset to a clean database
+
+    export DATA=clean-db
+    deploy/reset-db.sh
+
+### To reset to a database with user generated data:
+
+First, install s3cmd (https://github.com/s3tools/s3cmd) and configure it:
+
+    # Note: The S3 credentials needs to be such that they can read from s3://user-data-backups
+    s3cmd --configure --config=/tmp/.gapminder-user-generated-data.s3cfg
+
+Then, run:
+
+    export DATA=user-generated
+
+Use the corresponding values from `app/config/envbootstrap/local/envbootstrap.php` below
+
+    export DB_HOST=127.0.0.1
+    export DB_PORT=13306
+    export DB_USER=root
+    export DB_PASSWORD=changeme
+    export DB_NAME=db
+    deploy/reset-db.sh
+
+## Running tests locally
 
 First, decide whether or not to run tests against a clean database or with user generated data:
 
     export DATA=clean-db
     OR
-    export DATA=user-generated
+    export DATA=user-generated # be sure to have s3cmd configured properly as per above
 
 Then, do the following before attempting to run any tests:
 
