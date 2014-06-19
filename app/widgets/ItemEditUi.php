@@ -234,15 +234,9 @@ class ItemEditUi extends CWidget
      */
     public function getSubmitButtonLabel()
     {
-        if ($this->actionId === self::ACTION_TRANSLATE) {
-            return $this->isFinalStep()
-                ? Yii::t('app', 'Translation is done!')
-                : Yii::t('app', 'Next');
-        } else {
-            return $this->isFinalStep()
-                ? Yii::t('app', 'Finish editing!')
-                : Yii::t('app', 'Next');
-        }
+        return $this->isFinalStep()
+            ? Yii::t('app', 'Save')
+            : Yii::t('app', 'Next');
     }
 
     /**
