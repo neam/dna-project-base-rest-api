@@ -25,10 +25,11 @@ define("DATABASE_URL", null);
 
 if (DATABASE_URL === null) {
     define("YII_DB_SCHEME", "mysql");
-    define("YII_DB_HOST", "127.0.0.1");
+    define("YII_DB_HOST", "172.17.42.1");
+    define("YII_DB_PORT", "13306");
     define("YII_DB_USER", "root");
-    define("YII_DB_PASSWORD", "root");
-    define("YII_DB_NAME", "gcms");
+    define("YII_DB_PASSWORD", "changeme");
+    define("YII_DB_NAME", "db");
 } else {
     // get the environment variable and parse it:
     $url = parse_url(DATABASE_URL);
