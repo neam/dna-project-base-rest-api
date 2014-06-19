@@ -3,9 +3,9 @@
 function setenv($ref, $default = null, $required = false)
 {
     $value = getenv($ref);
-    if ($value === false) {
+    if (empty($value)) {
         if ($required) {
-            throw new \Exception("Environment variable $ref needs to be set. Adjust app configuration and re-build.");
+            throw new \Exception("Environment variable $ref needs to be non-empty. Adjust app configuration and re-build.");
         }
         $value = $default;
     }
