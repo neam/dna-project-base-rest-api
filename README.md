@@ -104,12 +104,14 @@ To run the functional tests (Note: Not currently used):
 
 For the remaining tests, you need to have Java installed and [the selenium server](http://docs.seleniumhq.org/download/) running locally:
 
+    # if you haven't downloaded the server already
+    wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
 
     # in another terminal window/tab
-    java -jar selenium-server-standalone-2.41.0.jar
+    java -jar selenium-server-standalone-2.42.2.jar
 
     # if above doesn't work, try specifying chromedriver explicitly
-    java -jar selenium-server-standalone-2.41.0.jar -Dwebdriver.chrome.driver=./chromedriver
+    java -jar selenium-server-standalone-2.42.2.jar -Dwebdriver.chrome.driver=./chromedriver
 
 To run the acceptance suite:
 
