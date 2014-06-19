@@ -6,7 +6,7 @@ script_path=`dirname $0`
 
 $script_path/reset-test-db.sh
 
-export CMS_HOST=localhost:31415
+export CMS_HOST=localhost:11111
 $script_path/generate-local-codeception-config.sh
 
 cd $script_path

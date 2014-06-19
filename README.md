@@ -73,7 +73,7 @@ Then, do the following before attempting to run any tests:
     cd tests
     php ../composer.phar install
 
-    export CMS_HOST=localhost:31415
+    export CMS_HOST=localhost:11111 # change if you have used another WEB_PORT when setting up the local dev environment
     ./generate-local-codeception-config.sh
 
 To reset the test database (necessary in order to re-run tests):
@@ -91,11 +91,8 @@ To run the functional tests:
 
     vendor/bin/codecept run functional -g data:$DATA --debug
 
-For the remaining tests, you need to A. start the built in php server on port 31415 beforehand:
+For the remaining tests, you need to have Java installed and [the selenium server](http://docs.seleniumhq.org/download/) running locally:
 
-    ./_start-local-server.sh
-
-B. have a selenium server running locally:
 
     # in another terminal window/tab
     java -jar selenium-server-standalone-2.41.0.jar
