@@ -63,7 +63,7 @@ Use the corresponding YII_DB_*-values from `app/config/envbootstrap/local/envboo
     export DB_USER=root
     export DB_PASSWORD=changeme
     export DB_NAME=db
-    deploy/reset-db.sh
+    connectionID=db deploy/reset-db.sh
 
 ## Running tests locally
 
@@ -93,7 +93,7 @@ Then, do the following before attempting to run any tests:
 To reset the test database (necessary in order to re-run tests):
 
     export CONFIG_ENVIRONMENT=test
-    ./reset-test-db.sh
+    connectionID=dbTest deploy/reset-db.sh
 
 To run the unit tests:
 

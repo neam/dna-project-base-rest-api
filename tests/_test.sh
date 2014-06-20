@@ -13,7 +13,7 @@ $script_path/generate-local-codeception-config.sh
 cd $script_path
 
 export DATA=clean-db
-$script_path/reset-test-db.sh
+connectionID=dbTest $script_path/../shell-scripts/reset-db.sh
 
 vendor/bin/codecept run unit -g data:clean-db --debug
 #vendor/bin/codecept run functional -g data:clean-db --debug
@@ -23,7 +23,7 @@ vendor/bin/codecept run api -g data:clean-db --debug
 rm testing
 
 export DATA=user-generated
-$script_path/reset-test-db.sh
+connectionID=dbTest $script_path/../shell-scripts/reset-db.sh
 
 touch testing
 vendor/bin/codecept run api -g data:user-generated --debug
