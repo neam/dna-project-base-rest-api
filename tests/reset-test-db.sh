@@ -21,7 +21,8 @@ if [ "$DATA" == "user-generated" ]; then
 
     # load mysql dump
     # TODO fix what is causing the following command to crash (it is most likely the file size of > 1 MB)
-    #app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/user-generated-data.sql
+    #app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/migration-base/user-generated/schema.sql
+    #app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/migration-base/user-generated/data.sql
 
     # TODO Remove this once the todo above has been fixed
     mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/migration-base/user-generated/schema.sql
@@ -41,8 +42,8 @@ fi
 
 if [ "$DATA" == "clean-db" ]; then
 
-    app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/migration-base/clean-db/schema.sql
-    app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/migration-base/clean-db/data.sql
+    app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/migration-base/clean-db/schema.sql --verbose=0
+    app/yiic databaseschema --connectionID=$connectionID loadSql --path=db/migration-base/clean-db/data.sql --verbose=0
 
 fi
 
