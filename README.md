@@ -45,10 +45,12 @@ After pulling the latest changes, run the following to update your local environ
 
 ### To reset to a database with user generated data:
 
-First, install s3cmd (https://github.com/s3tools/s3cmd) and configure it:
+First, install s3cmd (https://github.com/s3tools/s3cmd). Then, configure it:
 
-    # Note: The S3 credentials needs to be such that they can read from s3://user-data-backups
-    s3cmd --configure --config=/tmp/.gapminder-user-generated-data.s3cfg
+    # S3 credentials that can read from s3://user-data-backups
+    export USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY="replaceme"
+    export USER_DATA_BACKUP_UPLOADERS_SECRET="replaceme"
+    deploy/configure-s3cmd.sh
 
 Then, run:
 
