@@ -83,6 +83,7 @@ Then, do the following before attempting to run any tests:
 
     cd tests
     php ../composer.phar install
+    echo "DROP DATABASE $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
     export CMS_HOST=localhost:11111 # change if you have used another WEB_PORT when setting up the local dev environment
     ./generate-local-codeception-config.sh
@@ -90,7 +91,6 @@ Then, do the following before attempting to run any tests:
 To reset the test database (necessary in order to re-run tests):
 
     export CONFIG_ENVIRONMENT=test
-    echo "DROP DATABASE $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
     ./reset-test-db.sh
 
 To run the unit tests:
@@ -124,6 +124,12 @@ To run the the API suite:
     touch testing
     vendor/bin/codecept run api -g data:$DATA --debug
     rm testing
+
+All tests can be run in sequence (for both clean-db and user-generated) by running the _test.sh script:
+
+    ./_test.sh
+
+Note: The `touch testing` makes the app default to "test" CONFIG_ENVIRONMENT, which means it will use the TEST_DB_* parameters for database access and have captcha disabled in the registration form.
 
 ### Hints for test developers
 
