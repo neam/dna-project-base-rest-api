@@ -172,6 +172,7 @@ class Metadata
                 ),
                 'View' => array(
                     Role::GUEST,
+                    Role::AUTHENTICATED,
                 ),
                 'Add' => array(
                     Role::AUTHENTICATED,
@@ -202,55 +203,69 @@ class Metadata
         return array(
             'Edit' => array(
                 Role::GROUP_EDITOR,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'Translate' => array(
                 Role::GROUP_TRANSLATOR,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'Preview' => array(
                 Role::GROUP_REVIEWER,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'PrepareForReview' => array(
                 Role::GROUP_CONTRIBUTOR,
                 Role::GROUP_EDITOR,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'PrepareForPublishing' => array(
                 Role::GROUP_CONTRIBUTOR,
                 Role::GROUP_EDITOR,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'Evaluate' => array(
                 Role::GROUP_REVIEWER,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'Review' => array(
                 Role::GROUP_REVIEWER,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'Proofread' => array(
                 Role::GROUP_REVIEWER,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'Publish' => array(
                 Role::GROUP_PUBLISHER,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'Clone' => array(
                 Role::GROUP_EDITOR,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'Approve' => array(
                 Role::GROUP_APPROVER,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'Remove' => array(
                 Role::GROUP_CONTRIBUTOR,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'Replace' => array(
                 Role::GROUP_MODERATOR,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'ChangeGroup' => array_keys(self::groupRoles()),
             'GrantPermission' => array(
-                Role::GROUP_ADMINISTRATOR,
                 Role::GROUP_MODERATOR,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'GrantGroupAdminPermissions' => array(
                 Role::GROUP_ADMINISTRATOR,
             ),
             'GrantGroupModeratorPermissions' => array(
                 Role::GROUP_MODERATOR,
+                Role::GROUP_ADMINISTRATOR,
             ),
         );
     }

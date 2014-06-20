@@ -11,6 +11,8 @@ class DashboardPage
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
 
+    static $startTaskButton = 'Start!';
+
     /**
      * Basic route example for your current URL
      * You can append any additional parameter to URL

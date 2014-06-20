@@ -7,7 +7,7 @@ Yii::import('NodeHasGroup.*');
 class NodeHasGroup extends BaseNodeHasGroup
 {
     const VISIBILITY_VISIBLE = 'visible';
-    const VISIBILITY_HIDDEN = 'hidden';
+    const VISIBILITY_HIDDEN = null;
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
