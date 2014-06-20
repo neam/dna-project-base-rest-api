@@ -2,6 +2,9 @@
 
 set -x;
 
+# fail on any error
+set -o errexit
+
 script_path=`dirname $0`
 
 export CMS_HOST=localhost:11111
