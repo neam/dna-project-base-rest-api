@@ -127,7 +127,7 @@ To run the the API suite:
     vendor/bin/codecept run api -g data:$DATA --debug
     rm testing
 
-All tests can be run in sequence (for both clean-db and user-generated) by running the _test.sh script:
+All tests can be run in sequence (for both clean-db and user-generated) by running the `_test.sh` script:
 
     ./_test.sh
 
