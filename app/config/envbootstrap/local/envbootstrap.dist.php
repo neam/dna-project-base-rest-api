@@ -2,7 +2,7 @@
 
 namespace gapminder\envbootstrap;
 
-require(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'function.setenv.php');
+require(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'functions.inc.php');
 
 // ==== Initial environment bootstrap ====
 
@@ -10,7 +10,7 @@ define("ENV", 'local-foo');
 define("DEV", true);
 define("DEBUG_REDIRECTS", false);
 define("DEBUG_LOGS", false);
-setenv("CONFIG_ENVIRONMENT", $default = 'development', $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
+setenv("CONFIG_ENVIRONMENT", $default = default_config_environment(), $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
 setenv("DATA", $default = 'user-generated', $required = false);
 
 // ==== Identity-related constants ====
@@ -72,9 +72,10 @@ define("GA_TRACKING_ID", "UA-XXXXXXX-X");
 
 // ==== Define test-related constants ====
 
-define("TEST_DB_NAME", 'gscms_test');
-define("TEST_DB_USER", 'gcms_test');
-define("TEST_DB_PASSWORD", 'gcms_test');
+define("TEST_DB_NAME", YII_DB_NAME . '_test');
+define("TEST_DB_USER", YII_DB_USER);
+define("TEST_DB_PASSWORD", YII_DB_PASSWORD);
+define("TEST_DB_PORT", YII_DB_PORT);
 define("TEST_DB_HOST", YII_DB_HOST);
 
 // ==== Misc ====

@@ -16,6 +16,17 @@ This web application is used by the community as well as Gapminder staff to auth
 * Now your CMS installation should be accessible on [http://localhost:11111]() and you should be able to login with admin/admin
 * Note: You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
 
+## A note about running the commands below
+
+To run these commands locally, the following binaries must be installed locally and available in your PATH:
+
+    * php
+    * npm
+    * bower
+    * mysql
+    * mysqldump
+    * git
+
 ## Update to the latest changes
 
 After pulling the latest changes, run the following to update your local environment:
@@ -30,27 +41,29 @@ After pulling the latest changes, run the following to update your local environ
 ### To reset to a clean database
 
     export DATA=clean-db
-    deploy/reset-db.sh
+    connectionID=db shell-scripts/reset-db.sh
 
 ### To reset to a database with user generated data:
 
-First, install s3cmd (https://github.com/s3tools/s3cmd) and configure it:
+First, install s3cmd (https://github.com/s3tools/s3cmd). Then, configure it:
 
-    # Note: The S3 credentials needs to be such that they can read from s3://user-data-backups
-    s3cmd --configure --config=/tmp/.gapminder-user-generated-data.s3cfg
+    # S3 credentials that can read from s3://user-data-backups
+    export USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY="replaceme"
+    export USER_DATA_BACKUP_UPLOADERS_SECRET="replaceme"
+    deploy/configure-s3cmd.sh
 
 Then, run:
 
     export DATA=user-generated
 
-Use the corresponding values from `app/config/envbootstrap/local/envbootstrap.php` below
+Use the corresponding YII_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
 
     export DB_HOST=127.0.0.1
     export DB_PORT=13306
     export DB_USER=root
     export DB_PASSWORD=changeme
     export DB_NAME=db
-    deploy/reset-db.sh
+    connectionID=db shell-scripts/reset-db.sh
 
 ## Running tests locally
 
@@ -60,47 +73,65 @@ First, decide whether or not to run tests against a clean database or with user 
     OR
     export DATA=user-generated # be sure to have s3cmd configured properly as per above
 
+Use the corresponding TEST_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
+
+    export DB_HOST=127.0.0.1
+    export DB_PORT=13306
+    export DB_USER=root
+    export DB_PASSWORD=changeme
+    export DB_NAME=db_test
+
 Then, do the following before attempting to run any tests:
 
     cd tests
     php ../composer.phar install
+    echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
-    export CMS_HOST=localhost:31415
+    export CMS_HOST=localhost:11111 # change if you have used another WEB_PORT when setting up the local dev environment
     ./generate-local-codeception-config.sh
 
 To reset the test database (necessary in order to re-run tests):
 
     export CONFIG_ENVIRONMENT=test
-    ./reset-test-db.sh
+    connectionID=dbTest ../shell-scripts/reset-db.sh
 
 To run the unit tests:
 
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
     vendor/bin/codecept run unit -g data:$DATA --debug
 
-To run the functional tests:
+To run the functional tests (Note: Not currently used):
 
-    vendor/bin/codecept run functional -g data:$DATA --debug
+    #vendor/bin/codecept run functional -g data:$DATA --debug
 
-For the remaining tests, you need to A. start the built in php server on port 31415 beforehand:
+For the remaining tests, you need to have Java installed and [the selenium server](http://docs.seleniumhq.org/download/) running locally:
 
-    ./_start-local-server.sh
-
-B. have a selenium server running locally:
+    # if you haven't downloaded the server already
+    wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
 
     # in another terminal window/tab
-    java -jar selenium-server-standalone-2.41.0.jar
+    java -jar selenium-server-standalone-2.42.2.jar
 
     # if above doesn't work, try specifying chromedriver explicitly
-    java -jar selenium-server-standalone-2.41.0.jar -Dwebdriver.chrome.driver=./chromedriver
+    java -jar selenium-server-standalone-2.42.2.jar -Dwebdriver.chrome.driver=./chromedriver
 
 To run the acceptance suite:
 
+    touch testing
     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug
+    rm testing
 
 To run the the API suite:
 
+    touch testing
     vendor/bin/codecept run api -g data:$DATA --debug
+    rm testing
+
+All tests can be run in sequence (for both clean-db and user-generated) by running the `_test.sh` script:
+
+    ./_test.sh
+
+Note: The `touch testing` makes the app default to "test" CONFIG_ENVIRONMENT, which means it will use the TEST_DB_* parameters for database access and have captcha disabled in the registration form.
 
 ### Hints for test developers
 
@@ -198,13 +229,13 @@ To reset the db to a clean state:
 
     export DATA=clean-db
     ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
-    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/reset-db.sh
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-reset-db.sh
 
 To reset the db and load user data:
 
     export DATA=user-generated
     ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
-    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/reset-db.sh
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-reset-db.sh
 
 To upload the current user-generated data to S3, run:
 
