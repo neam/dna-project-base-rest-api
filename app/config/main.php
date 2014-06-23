@@ -570,6 +570,7 @@ $mainConfig = array(
             'terms' => array('page/view', 'id' => TERMS_PAGE_ID),
             'about' => array('page/view', 'id' => ABOUT_PAGE_ID),
             'cc' => array('page/view', 'id' => CC_PAGE_ID),
+            'privacyPolicy' => array('page/view', 'id' => PRIVACY_POLICY_PAGE_ID),
         ),
     ),
 );
