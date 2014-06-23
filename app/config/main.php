@@ -566,6 +566,10 @@ $mainConfig = array(
                 'i'    => 0
             ),
         ),
+        'pages' => array(
+            'terms' => array('page/view', TERMS_PAGE_ID),
+            'about' => array('page/view', ABOUT_PAGE_ID),
+        ),
     ),
 );
 

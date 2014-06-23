@@ -13,6 +13,10 @@ setenv("DEBUG_LOGS", $default = false);
 setenv("CONFIG_ENVIRONMENT", $default = 'development', $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
 setenv("DATA", $default = 'user-generated', $required = true);
 
+// ==== CMS page ids ====
+setenv("TERMS_PAGE_ID", $default = 1, $required = false);
+setenv("ABOUT_PAGE_ID", $default = 2, $required = false);
+
 // ==== Identity-related constants ====
 
 setenv("BRAND_SITENAME", $default = null, $required = true);
