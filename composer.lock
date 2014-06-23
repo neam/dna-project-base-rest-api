@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "33310904ff6df4038fa98429154c5caa",
+    "hash": "53202f857811d17caeeabe94d6e64ce9",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1040,16 +1040,16 @@
         },
         {
             "name": "nordsoftware/yii-account",
-            "version": "dev-master",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-account.git",
-                "reference": "61a5528cb9227f6990256b476c3c5ed19f20a158"
+                "reference": "ad6cf21abe1e4e4b6eab960ab966a3265d240fb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/b935f5ded82ee1f7b33fa9028258235133b69cb7",
-                "reference": "61a5528cb9227f6990256b476c3c5ed19f20a158",
+                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/ad6cf21abe1e4e4b6eab960ab966a3265d240fb7",
+                "reference": "ad6cf21abe1e4e4b6eab960ab966a3265d240fb7",
                 "shasum": ""
             },
             "require": {
@@ -1086,10 +1086,10 @@
             ],
             "description": "Extension that provides basic account functionality for the Yii PHP framework.",
             "support": {
-                "source": "https://github.com/nordsoftware/yii-account/tree/1.2.0",
+                "source": "https://github.com/nordsoftware/yii-account/tree/1.2.1",
                 "issues": "https://github.com/nordsoftware/yii-account/issues"
             },
-            "time": "2014-06-10 08:01:50"
+            "time": "2014-06-11 13:13:27"
         },
         {
             "name": "nordsoftware/yii-emailer",
@@ -2665,7 +2665,6 @@
         "neam/php-po2json": 20,
         "weavora/wrest": 20,
         "codemix/hybridauthmanager": 20,
-        "nordsoftware/yii-account": 20,
         "nordsoftware/yii-utils": 20,
         "crisu83/yii-formatter": 20,
         "jalle19/yii-ga": 20,

@@ -39,9 +39,9 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
             $model->attributes = $request->getPost(Helper::classNameToPostKey($modelClass));
 
             if ($model->validate()) {
-                $accountClass = $this->module->getClassName(Module::CLASS_MODEL);
+                $accountClass = $this->module->getClassName(Module::CLASS_ACCOUNT);
 
-                /** @var \nordsoftware\yii_account\models\ar\Account $account */
+                /** @var \nordsoftware\yii_account\models\ar\Account|\Account $account */
                 $account = new $accountClass();
                 $account->attributes = $model->attributes;
 
@@ -64,7 +64,11 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
                         $this->redirect(array('/account/authenticate/login'));
                     }
 
-                    $this->sendActivationEmail($account);
+                    if (defined('CONFIG_ENVIRONMENT') && CONFIG_ENVIRONMENT !== 'test') {
+                        $this->sendActivationMail($account);
+                    } else {
+                        $account->save();
+                    }
 
                     $this->redirect(array('done'));
                 }
@@ -92,37 +96,5 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
         $model->user_id = $accountId;
 
         return $model->save();
-    }
-
-    /**
-     * Sends the activation email to the given account.
-     * @param Account $account account model.
-     * @throws \nordsoftware\yii_account\exceptions\Exception
-     */
-    protected function sendActivationEmail($account)
-    {
-        if (!$account->save(false)) {
-            $this->fatalError();
-        }
-
-        $token = $this->module->generateToken(Module::TOKEN_ACTIVATE, $account->id);
-        $activationUrl = $this->createAbsoluteUrl('/account/signup/activate', array('token' => $token));
-
-        $message = Yii::t(
-            'app', 'Welcome to Gapminder! Activate your account by visiting the following URL: {activationUrl}',
-            array(
-                '{activationUrl}' => $activationUrl,
-            )
-        );
-
-        $config = array(
-            'body' => $message,
-        );
-
-        if (defined('CONFIG_ENVIRONMENT') && CONFIG_ENVIRONMENT !== 'test') {
-            /** @var EmailBehavior $this */
-            $mail = $this->createEmail(app()->params['adminEmail'], $account->email, $this->emailSubject, $config);
-            $this->sendEmail($mail);
-        }
     }
 }

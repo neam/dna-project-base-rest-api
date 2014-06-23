@@ -13,6 +13,12 @@ define("DEBUG_LOGS", false);
 setenv("CONFIG_ENVIRONMENT", $default = 'development', $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
 setenv("DATA", $default = 'user-generated', $required = false);
 
+// ==== CMS page ids ====
+setenv("TERMS_PAGE_ID", $default = 1, $required = false);
+setenv("ABOUT_PAGE_ID", $default = 2, $required = false);
+setenv("CC_PAGE_ID", $default = 3, $required = false);
+setenv("PRIVACY_POLICY_PAGE_ID", $default = 4, $required = false);
+
 // ==== Identity-related constants ====
 
 define("BRAND_SITENAME", 'Gapminder CMS Foo DEV');
