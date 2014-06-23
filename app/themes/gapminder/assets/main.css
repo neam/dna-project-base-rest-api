@@ -15618,6 +15618,799 @@ fieldset[disabled] .commentsBlock .sendComment.btn-link-dark:focus {
   background: none;
   padding: 0;
 }
+#facebox .popup .content h1 {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+}
+#facebox .popup .content .continue {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.428571429;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  background-color: #c9c9c9;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 100;
+  padding: 17px 30px 18px;
+  color: #ffffff;
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+#facebox .popup .content .continue:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+#facebox .popup .content .continue:hover,
+#facebox .popup .content .continue:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+#facebox .popup .content .continue:active,
+#facebox .popup .content .continue.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+#facebox .popup .content .continue.disabled,
+#facebox .popup .content .continue[disabled],
+fieldset[disabled] #facebox .popup .content .continue {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#facebox .popup .content .continue:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+#facebox .popup .content .continue.btn-default {
+  background-color: #c9c9c9;
+}
+#facebox .popup .content .continue.btn-default:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+#facebox .popup .content .continue.btn-primary {
+  color: #ffffff;
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+#facebox .popup .content .continue.btn-primary:hover,
+#facebox .popup .content .continue.btn-primary:focus,
+#facebox .popup .content .continue.btn-primary:active,
+#facebox .popup .content .continue.btn-primary.active,
+.open .dropdown-toggle#facebox .popup .content .continue.btn-primary {
+  color: #ffffff;
+  background-color: #e71f84;
+  border-color: #c3156d;
+}
+#facebox .popup .content .continue.btn-primary:active,
+#facebox .popup .content .continue.btn-primary.active,
+.open .dropdown-toggle#facebox .popup .content .continue.btn-primary {
+  background-image: none;
+}
+#facebox .popup .content .continue.btn-primary.disabled,
+#facebox .popup .content .continue.btn-primary[disabled],
+fieldset[disabled] #facebox .popup .content .continue.btn-primary,
+#facebox .popup .content .continue.btn-primary.disabled:hover,
+#facebox .popup .content .continue.btn-primary[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .continue.btn-primary:hover,
+#facebox .popup .content .continue.btn-primary.disabled:focus,
+#facebox .popup .content .continue.btn-primary[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .continue.btn-primary:focus,
+#facebox .popup .content .continue.btn-primary.disabled:active,
+#facebox .popup .content .continue.btn-primary[disabled]:active,
+fieldset[disabled] #facebox .popup .content .continue.btn-primary:active,
+#facebox .popup .content .continue.btn-primary.disabled.active,
+#facebox .popup .content .continue.btn-primary[disabled].active,
+fieldset[disabled] #facebox .popup .content .continue.btn-primary.active {
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+#facebox .popup .content .continue.btn-primary .badge {
+  color: #eb4498;
+  background-color: #fff;
+}
+#facebox .popup .content .continue.btn-success {
+  color: #ffffff;
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+#facebox .popup .content .continue.btn-success:hover,
+#facebox .popup .content .continue.btn-success:focus,
+#facebox .popup .content .continue.btn-success:active,
+#facebox .popup .content .continue.btn-success.active,
+.open .dropdown-toggle#facebox .popup .content .continue.btn-success {
+  color: #ffffff;
+  background-color: #1caf34;
+  border-color: #168728;
+}
+#facebox .popup .content .continue.btn-success:active,
+#facebox .popup .content .continue.btn-success.active,
+.open .dropdown-toggle#facebox .popup .content .continue.btn-success {
+  background-image: none;
+}
+#facebox .popup .content .continue.btn-success.disabled,
+#facebox .popup .content .continue.btn-success[disabled],
+fieldset[disabled] #facebox .popup .content .continue.btn-success,
+#facebox .popup .content .continue.btn-success.disabled:hover,
+#facebox .popup .content .continue.btn-success[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .continue.btn-success:hover,
+#facebox .popup .content .continue.btn-success.disabled:focus,
+#facebox .popup .content .continue.btn-success[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .continue.btn-success:focus,
+#facebox .popup .content .continue.btn-success.disabled:active,
+#facebox .popup .content .continue.btn-success[disabled]:active,
+fieldset[disabled] #facebox .popup .content .continue.btn-success:active,
+#facebox .popup .content .continue.btn-success.disabled.active,
+#facebox .popup .content .continue.btn-success[disabled].active,
+fieldset[disabled] #facebox .popup .content .continue.btn-success.active {
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+#facebox .popup .content .continue.btn-success .badge {
+  color: #22d23e;
+  background-color: #fff;
+}
+#facebox .popup .content .continue.btn-warning {
+  color: #3d3d3d;
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+#facebox .popup .content .continue.btn-warning:hover,
+#facebox .popup .content .continue.btn-warning:focus,
+#facebox .popup .content .continue.btn-warning:active,
+#facebox .popup .content .continue.btn-warning.active,
+.open .dropdown-toggle#facebox .popup .content .continue.btn-warning {
+  color: #3d3d3d;
+  background-color: #fee94b;
+  border-color: #fde31e;
+}
+#facebox .popup .content .continue.btn-warning:active,
+#facebox .popup .content .continue.btn-warning.active,
+.open .dropdown-toggle#facebox .popup .content .continue.btn-warning {
+  background-image: none;
+}
+#facebox .popup .content .continue.btn-warning.disabled,
+#facebox .popup .content .continue.btn-warning[disabled],
+fieldset[disabled] #facebox .popup .content .continue.btn-warning,
+#facebox .popup .content .continue.btn-warning.disabled:hover,
+#facebox .popup .content .continue.btn-warning[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .continue.btn-warning:hover,
+#facebox .popup .content .continue.btn-warning.disabled:focus,
+#facebox .popup .content .continue.btn-warning[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .continue.btn-warning:focus,
+#facebox .popup .content .continue.btn-warning.disabled:active,
+#facebox .popup .content .continue.btn-warning[disabled]:active,
+fieldset[disabled] #facebox .popup .content .continue.btn-warning:active,
+#facebox .popup .content .continue.btn-warning.disabled.active,
+#facebox .popup .content .continue.btn-warning[disabled].active,
+fieldset[disabled] #facebox .popup .content .continue.btn-warning.active {
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+#facebox .popup .content .continue.btn-warning .badge {
+  color: #feee74;
+  background-color: #fff;
+}
+#facebox .popup .content .continue.btn-danger {
+  color: #ffffff;
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+#facebox .popup .content .continue.btn-danger:hover,
+#facebox .popup .content .continue.btn-danger:focus,
+#facebox .popup .content .continue.btn-danger:active,
+#facebox .popup .content .continue.btn-danger.active,
+.open .dropdown-toggle#facebox .popup .content .continue.btn-danger {
+  color: #ffffff;
+  background-color: #da353b;
+  border-color: #bd2329;
+}
+#facebox .popup .content .continue.btn-danger:active,
+#facebox .popup .content .continue.btn-danger.active,
+.open .dropdown-toggle#facebox .popup .content .continue.btn-danger {
+  background-image: none;
+}
+#facebox .popup .content .continue.btn-danger.disabled,
+#facebox .popup .content .continue.btn-danger[disabled],
+fieldset[disabled] #facebox .popup .content .continue.btn-danger,
+#facebox .popup .content .continue.btn-danger.disabled:hover,
+#facebox .popup .content .continue.btn-danger[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .continue.btn-danger:hover,
+#facebox .popup .content .continue.btn-danger.disabled:focus,
+#facebox .popup .content .continue.btn-danger[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .continue.btn-danger:focus,
+#facebox .popup .content .continue.btn-danger.disabled:active,
+#facebox .popup .content .continue.btn-danger[disabled]:active,
+fieldset[disabled] #facebox .popup .content .continue.btn-danger:active,
+#facebox .popup .content .continue.btn-danger.disabled.active,
+#facebox .popup .content .continue.btn-danger[disabled].active,
+fieldset[disabled] #facebox .popup .content .continue.btn-danger.active {
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+#facebox .popup .content .continue.btn-danger .badge {
+  color: #e0575c;
+  background-color: #fff;
+}
+#facebox .popup .content .continue.btn-info {
+  color: #ffffff;
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+#facebox .popup .content .continue.btn-info:hover,
+#facebox .popup .content .continue.btn-info:focus,
+#facebox .popup .content .continue.btn-info:active,
+#facebox .popup .content .continue.btn-info.active,
+.open .dropdown-toggle#facebox .popup .content .continue.btn-info {
+  color: #ffffff;
+  background-color: #9daaca;
+  border-color: #7f91ba;
+}
+#facebox .popup .content .continue.btn-info:active,
+#facebox .popup .content .continue.btn-info.active,
+.open .dropdown-toggle#facebox .popup .content .continue.btn-info {
+  background-image: none;
+}
+#facebox .popup .content .continue.btn-info.disabled,
+#facebox .popup .content .continue.btn-info[disabled],
+fieldset[disabled] #facebox .popup .content .continue.btn-info,
+#facebox .popup .content .continue.btn-info.disabled:hover,
+#facebox .popup .content .continue.btn-info[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .continue.btn-info:hover,
+#facebox .popup .content .continue.btn-info.disabled:focus,
+#facebox .popup .content .continue.btn-info[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .continue.btn-info:focus,
+#facebox .popup .content .continue.btn-info.disabled:active,
+#facebox .popup .content .continue.btn-info[disabled]:active,
+fieldset[disabled] #facebox .popup .content .continue.btn-info:active,
+#facebox .popup .content .continue.btn-info.disabled.active,
+#facebox .popup .content .continue.btn-info[disabled].active,
+fieldset[disabled] #facebox .popup .content .continue.btn-info.active {
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+#facebox .popup .content .continue.btn-info .badge {
+  color: #b7c1d8;
+  background-color: #fff;
+}
+#facebox .popup .content .continue.btn-link {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+}
+#facebox .popup .content .continue.btn-link,
+#facebox .popup .content .continue.btn-link:active,
+#facebox .popup .content .continue.btn-link[disabled],
+fieldset[disabled] #facebox .popup .content .continue.btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#facebox .popup .content .continue.btn-link,
+#facebox .popup .content .continue.btn-link:hover,
+#facebox .popup .content .continue.btn-link:focus,
+#facebox .popup .content .continue.btn-link:active {
+  border-color: transparent;
+}
+#facebox .popup .content .continue.btn-link:hover,
+#facebox .popup .content .continue.btn-link:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+#facebox .popup .content .continue.btn-link[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .continue.btn-link:hover,
+#facebox .popup .content .continue.btn-link[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .continue.btn-link:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+#facebox .popup .content .continue.btn-link:hover {
+  text-decoration: none;
+}
+#facebox .popup .content .continue.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+#facebox .popup .content .continue.btn-link-dark,
+#facebox .popup .content .continue.btn-link-dark:active,
+#facebox .popup .content .continue.btn-link-dark[disabled],
+fieldset[disabled] #facebox .popup .content .continue.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#facebox .popup .content .continue.btn-link-dark,
+#facebox .popup .content .continue.btn-link-dark:hover,
+#facebox .popup .content .continue.btn-link-dark:focus,
+#facebox .popup .content .continue.btn-link-dark:active {
+  border-color: transparent;
+}
+#facebox .popup .content .continue.btn-link-dark:hover,
+#facebox .popup .content .continue.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+#facebox .popup .content .continue.btn-link-dark[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .continue.btn-link-dark:hover,
+#facebox .popup .content .continue.btn-link-dark[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .continue.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+#facebox .popup .content .continue.btn-link-dark:hover {
+  text-decoration: none;
+}
+#facebox .popup .content .continue.btn-link-dark:hover {
+  color: #353535;
+}
+#facebox .popup .content .continue.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+#facebox .popup .content .continue.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
+}
+#facebox .popup .content .continue:hover,
+#facebox .popup .content .continue:focus,
+#facebox .popup .content .continue:active,
+#facebox .popup .content .continue.active,
+.open .dropdown-toggle#facebox .popup .content .continue {
+  color: #ffffff;
+  background-color: #e71f84;
+  border-color: #c3156d;
+}
+#facebox .popup .content .continue:active,
+#facebox .popup .content .continue.active,
+.open .dropdown-toggle#facebox .popup .content .continue {
+  background-image: none;
+}
+#facebox .popup .content .continue.disabled,
+#facebox .popup .content .continue[disabled],
+fieldset[disabled] #facebox .popup .content .continue,
+#facebox .popup .content .continue.disabled:hover,
+#facebox .popup .content .continue[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .continue:hover,
+#facebox .popup .content .continue.disabled:focus,
+#facebox .popup .content .continue[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .continue:focus,
+#facebox .popup .content .continue.disabled:active,
+#facebox .popup .content .continue[disabled]:active,
+fieldset[disabled] #facebox .popup .content .continue:active,
+#facebox .popup .content .continue.disabled.active,
+#facebox .popup .content .continue[disabled].active,
+fieldset[disabled] #facebox .popup .content .continue.active {
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+#facebox .popup .content .continue .badge {
+  color: #eb4498;
+  background-color: #fff;
+}
+#facebox .popup .content .cancel {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.428571429;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  background-color: #c9c9c9;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  padding: 17px 30px 18px;
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+}
+#facebox .popup .content .cancel:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+#facebox .popup .content .cancel:hover,
+#facebox .popup .content .cancel:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+#facebox .popup .content .cancel:active,
+#facebox .popup .content .cancel.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+#facebox .popup .content .cancel.disabled,
+#facebox .popup .content .cancel[disabled],
+fieldset[disabled] #facebox .popup .content .cancel {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#facebox .popup .content .cancel:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+#facebox .popup .content .cancel.btn-default {
+  background-color: #c9c9c9;
+}
+#facebox .popup .content .cancel.btn-default:hover {
+  background-color: #bcbcbc;
+  color: #fff;
+}
+#facebox .popup .content .cancel.btn-primary {
+  color: #ffffff;
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+#facebox .popup .content .cancel.btn-primary:hover,
+#facebox .popup .content .cancel.btn-primary:focus,
+#facebox .popup .content .cancel.btn-primary:active,
+#facebox .popup .content .cancel.btn-primary.active,
+.open .dropdown-toggle#facebox .popup .content .cancel.btn-primary {
+  color: #ffffff;
+  background-color: #e71f84;
+  border-color: #c3156d;
+}
+#facebox .popup .content .cancel.btn-primary:active,
+#facebox .popup .content .cancel.btn-primary.active,
+.open .dropdown-toggle#facebox .popup .content .cancel.btn-primary {
+  background-image: none;
+}
+#facebox .popup .content .cancel.btn-primary.disabled,
+#facebox .popup .content .cancel.btn-primary[disabled],
+fieldset[disabled] #facebox .popup .content .cancel.btn-primary,
+#facebox .popup .content .cancel.btn-primary.disabled:hover,
+#facebox .popup .content .cancel.btn-primary[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .cancel.btn-primary:hover,
+#facebox .popup .content .cancel.btn-primary.disabled:focus,
+#facebox .popup .content .cancel.btn-primary[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .cancel.btn-primary:focus,
+#facebox .popup .content .cancel.btn-primary.disabled:active,
+#facebox .popup .content .cancel.btn-primary[disabled]:active,
+fieldset[disabled] #facebox .popup .content .cancel.btn-primary:active,
+#facebox .popup .content .cancel.btn-primary.disabled.active,
+#facebox .popup .content .cancel.btn-primary[disabled].active,
+fieldset[disabled] #facebox .popup .content .cancel.btn-primary.active {
+  background-color: #eb4498;
+  border-color: #e92d8b;
+}
+#facebox .popup .content .cancel.btn-primary .badge {
+  color: #eb4498;
+  background-color: #fff;
+}
+#facebox .popup .content .cancel.btn-success {
+  color: #ffffff;
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+#facebox .popup .content .cancel.btn-success:hover,
+#facebox .popup .content .cancel.btn-success:focus,
+#facebox .popup .content .cancel.btn-success:active,
+#facebox .popup .content .cancel.btn-success.active,
+.open .dropdown-toggle#facebox .popup .content .cancel.btn-success {
+  color: #ffffff;
+  background-color: #1caf34;
+  border-color: #168728;
+}
+#facebox .popup .content .cancel.btn-success:active,
+#facebox .popup .content .cancel.btn-success.active,
+.open .dropdown-toggle#facebox .popup .content .cancel.btn-success {
+  background-image: none;
+}
+#facebox .popup .content .cancel.btn-success.disabled,
+#facebox .popup .content .cancel.btn-success[disabled],
+fieldset[disabled] #facebox .popup .content .cancel.btn-success,
+#facebox .popup .content .cancel.btn-success.disabled:hover,
+#facebox .popup .content .cancel.btn-success[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .cancel.btn-success:hover,
+#facebox .popup .content .cancel.btn-success.disabled:focus,
+#facebox .popup .content .cancel.btn-success[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .cancel.btn-success:focus,
+#facebox .popup .content .cancel.btn-success.disabled:active,
+#facebox .popup .content .cancel.btn-success[disabled]:active,
+fieldset[disabled] #facebox .popup .content .cancel.btn-success:active,
+#facebox .popup .content .cancel.btn-success.disabled.active,
+#facebox .popup .content .cancel.btn-success[disabled].active,
+fieldset[disabled] #facebox .popup .content .cancel.btn-success.active {
+  background-color: #22d23e;
+  border-color: #1ebc38;
+}
+#facebox .popup .content .cancel.btn-success .badge {
+  color: #22d23e;
+  background-color: #fff;
+}
+#facebox .popup .content .cancel.btn-warning {
+  color: #3d3d3d;
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+#facebox .popup .content .cancel.btn-warning:hover,
+#facebox .popup .content .cancel.btn-warning:focus,
+#facebox .popup .content .cancel.btn-warning:active,
+#facebox .popup .content .cancel.btn-warning.active,
+.open .dropdown-toggle#facebox .popup .content .cancel.btn-warning {
+  color: #3d3d3d;
+  background-color: #fee94b;
+  border-color: #fde31e;
+}
+#facebox .popup .content .cancel.btn-warning:active,
+#facebox .popup .content .cancel.btn-warning.active,
+.open .dropdown-toggle#facebox .popup .content .cancel.btn-warning {
+  background-image: none;
+}
+#facebox .popup .content .cancel.btn-warning.disabled,
+#facebox .popup .content .cancel.btn-warning[disabled],
+fieldset[disabled] #facebox .popup .content .cancel.btn-warning,
+#facebox .popup .content .cancel.btn-warning.disabled:hover,
+#facebox .popup .content .cancel.btn-warning[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .cancel.btn-warning:hover,
+#facebox .popup .content .cancel.btn-warning.disabled:focus,
+#facebox .popup .content .cancel.btn-warning[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .cancel.btn-warning:focus,
+#facebox .popup .content .cancel.btn-warning.disabled:active,
+#facebox .popup .content .cancel.btn-warning[disabled]:active,
+fieldset[disabled] #facebox .popup .content .cancel.btn-warning:active,
+#facebox .popup .content .cancel.btn-warning.disabled.active,
+#facebox .popup .content .cancel.btn-warning[disabled].active,
+fieldset[disabled] #facebox .popup .content .cancel.btn-warning.active {
+  background-color: #feee74;
+  border-color: #feeb5b;
+}
+#facebox .popup .content .cancel.btn-warning .badge {
+  color: #feee74;
+  background-color: #fff;
+}
+#facebox .popup .content .cancel.btn-danger {
+  color: #ffffff;
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+#facebox .popup .content .cancel.btn-danger:hover,
+#facebox .popup .content .cancel.btn-danger:focus,
+#facebox .popup .content .cancel.btn-danger:active,
+#facebox .popup .content .cancel.btn-danger.active,
+.open .dropdown-toggle#facebox .popup .content .cancel.btn-danger {
+  color: #ffffff;
+  background-color: #da353b;
+  border-color: #bd2329;
+}
+#facebox .popup .content .cancel.btn-danger:active,
+#facebox .popup .content .cancel.btn-danger.active,
+.open .dropdown-toggle#facebox .popup .content .cancel.btn-danger {
+  background-image: none;
+}
+#facebox .popup .content .cancel.btn-danger.disabled,
+#facebox .popup .content .cancel.btn-danger[disabled],
+fieldset[disabled] #facebox .popup .content .cancel.btn-danger,
+#facebox .popup .content .cancel.btn-danger.disabled:hover,
+#facebox .popup .content .cancel.btn-danger[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .cancel.btn-danger:hover,
+#facebox .popup .content .cancel.btn-danger.disabled:focus,
+#facebox .popup .content .cancel.btn-danger[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .cancel.btn-danger:focus,
+#facebox .popup .content .cancel.btn-danger.disabled:active,
+#facebox .popup .content .cancel.btn-danger[disabled]:active,
+fieldset[disabled] #facebox .popup .content .cancel.btn-danger:active,
+#facebox .popup .content .cancel.btn-danger.disabled.active,
+#facebox .popup .content .cancel.btn-danger[disabled].active,
+fieldset[disabled] #facebox .popup .content .cancel.btn-danger.active {
+  background-color: #e0575c;
+  border-color: #dc4147;
+}
+#facebox .popup .content .cancel.btn-danger .badge {
+  color: #e0575c;
+  background-color: #fff;
+}
+#facebox .popup .content .cancel.btn-info {
+  color: #ffffff;
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+#facebox .popup .content .cancel.btn-info:hover,
+#facebox .popup .content .cancel.btn-info:focus,
+#facebox .popup .content .cancel.btn-info:active,
+#facebox .popup .content .cancel.btn-info.active,
+.open .dropdown-toggle#facebox .popup .content .cancel.btn-info {
+  color: #ffffff;
+  background-color: #9daaca;
+  border-color: #7f91ba;
+}
+#facebox .popup .content .cancel.btn-info:active,
+#facebox .popup .content .cancel.btn-info.active,
+.open .dropdown-toggle#facebox .popup .content .cancel.btn-info {
+  background-image: none;
+}
+#facebox .popup .content .cancel.btn-info.disabled,
+#facebox .popup .content .cancel.btn-info[disabled],
+fieldset[disabled] #facebox .popup .content .cancel.btn-info,
+#facebox .popup .content .cancel.btn-info.disabled:hover,
+#facebox .popup .content .cancel.btn-info[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .cancel.btn-info:hover,
+#facebox .popup .content .cancel.btn-info.disabled:focus,
+#facebox .popup .content .cancel.btn-info[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .cancel.btn-info:focus,
+#facebox .popup .content .cancel.btn-info.disabled:active,
+#facebox .popup .content .cancel.btn-info[disabled]:active,
+fieldset[disabled] #facebox .popup .content .cancel.btn-info:active,
+#facebox .popup .content .cancel.btn-info.disabled.active,
+#facebox .popup .content .cancel.btn-info[disabled].active,
+fieldset[disabled] #facebox .popup .content .cancel.btn-info.active {
+  background-color: #b7c1d8;
+  border-color: #a6b3cf;
+}
+#facebox .popup .content .cancel.btn-info .badge {
+  color: #b7c1d8;
+  background-color: #fff;
+}
+#facebox .popup .content .cancel.btn-link {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+}
+#facebox .popup .content .cancel.btn-link,
+#facebox .popup .content .cancel.btn-link:active,
+#facebox .popup .content .cancel.btn-link[disabled],
+fieldset[disabled] #facebox .popup .content .cancel.btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#facebox .popup .content .cancel.btn-link,
+#facebox .popup .content .cancel.btn-link:hover,
+#facebox .popup .content .cancel.btn-link:focus,
+#facebox .popup .content .cancel.btn-link:active {
+  border-color: transparent;
+}
+#facebox .popup .content .cancel.btn-link:hover,
+#facebox .popup .content .cancel.btn-link:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+#facebox .popup .content .cancel.btn-link[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .cancel.btn-link:hover,
+#facebox .popup .content .cancel.btn-link[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .cancel.btn-link:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+#facebox .popup .content .cancel.btn-link:hover {
+  text-decoration: none;
+}
+#facebox .popup .content .cancel.btn-link-dark {
+  color: #eb4498;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: 100;
+  text-decoration: underline;
+  color: #353535;
+}
+#facebox .popup .content .cancel.btn-link-dark,
+#facebox .popup .content .cancel.btn-link-dark:active,
+#facebox .popup .content .cancel.btn-link-dark[disabled],
+fieldset[disabled] #facebox .popup .content .cancel.btn-link-dark {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#facebox .popup .content .cancel.btn-link-dark,
+#facebox .popup .content .cancel.btn-link-dark:hover,
+#facebox .popup .content .cancel.btn-link-dark:focus,
+#facebox .popup .content .cancel.btn-link-dark:active {
+  border-color: transparent;
+}
+#facebox .popup .content .cancel.btn-link-dark:hover,
+#facebox .popup .content .cancel.btn-link-dark:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+#facebox .popup .content .cancel.btn-link-dark[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .cancel.btn-link-dark:hover,
+#facebox .popup .content .cancel.btn-link-dark[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .cancel.btn-link-dark:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+#facebox .popup .content .cancel.btn-link-dark:hover {
+  text-decoration: none;
+}
+#facebox .popup .content .cancel.btn-link-dark:hover {
+  color: #353535;
+}
+#facebox .popup .content .cancel.btn-link.btn-icon-link {
+  text-decoration: none;
+}
+#facebox .popup .content .cancel.btn-link.btn-icon-link .btn-label {
+  text-decoration: underline;
+}
+#facebox .popup .content .cancel,
+#facebox .popup .content .cancel:active,
+#facebox .popup .content .cancel[disabled],
+fieldset[disabled] #facebox .popup .content .cancel {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#facebox .popup .content .cancel,
+#facebox .popup .content .cancel:hover,
+#facebox .popup .content .cancel:focus,
+#facebox .popup .content .cancel:active {
+  border-color: transparent;
+}
+#facebox .popup .content .cancel:hover,
+#facebox .popup .content .cancel:focus {
+  color: #cd1672;
+  text-decoration: underline;
+  background-color: transparent;
+}
+#facebox .popup .content .cancel[disabled]:hover,
+fieldset[disabled] #facebox .popup .content .cancel:hover,
+#facebox .popup .content .cancel[disabled]:focus,
+fieldset[disabled] #facebox .popup .content .cancel:focus {
+  color: #f1f2f2;
+  text-decoration: none;
+}
+#facebox .popup .content .cancel:hover {
+  text-decoration: none;
+}
+#facebox .popup .content .cancel.btn-icon-link {
+  text-decoration: none;
+}
+#facebox .popup .content .cancel.btn-icon-link .btn-label {
+  text-decoration: underline;
+}
 .flowbar {
   background-image: -webkit-linear-gradient(top, #ffffff 90%, rgba(255, 255, 255, 0) 100%);
   background-image: linear-gradient(to bottom, #ffffff 90%, rgba(255, 255, 255, 0) 100%);

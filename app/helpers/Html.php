@@ -111,7 +111,17 @@ class Html extends TbHtml
         self::jsFacebox(); // required by Dirty Forms
         publishJs('/themes/frontend/js/vendor/jquery.dirtyforms.js', CClientScript::POS_HEAD);
         publishJs('/themes/frontend/js/dirty-forms-ckeditor.js', CClientScript::POS_HEAD);
-        app()->clientScript->registerScript('registerDirtyForms', "$('form.dirtyforms').dirtyForms();", CClientScript::POS_END);
+
+        $title = Yii::t('app', 'You have unsaved changes');
+        $message = Yii::t('app', 'Would you like to continue without saving?');
+
+        $js = "
+        $.DirtyForms.title = '{$title}';
+        $.DirtyForms.message = '{$message}';
+        $('form.dirtyforms').dirtyForms();
+        ";
+
+        app()->clientScript->registerScript('registerDirtyForms', $js, CClientScript::POS_END);
         publishJs('/themes/frontend/js/toggle-dirty-buttons.js', CClientScript::POS_READY); // show action buttons when form is dirty
     }
 
