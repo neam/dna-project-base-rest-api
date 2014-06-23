@@ -18,16 +18,16 @@
                 </div>
                 <div class="row">
                     <div class="footer-column">
-                        <?php /*
                         <div class="row">
                             <div class="link-column">
                                 <ul class="footer-links">
-                                    <li><a href="#">Footer Link</a></li>
-                                    <li><a href="#">Lorem</a></li>
-                                    <li><a href="#">Ipsum Dolor</a></li>
-                                    <li><a href="#">Sit Amet</a></li>
+                                    <li><?php echo Yii::app()->renderFooterLink('Terms', 'terms'); ?></li>
+                                    <li><?php echo Yii::app()->renderFooterLink('About', 'about'); ?></li>
+                                    <li><?php echo Yii::app()->renderFooterLink('CC', 'cc'); ?></li>
+                                    <li><?php echo Yii::app()->renderFooterLink('Privacy Policy', 'privacyPolicy'); ?></li>
                                 </ul>
                             </div>
+                            <?php /*
                             <div class="link-column">
                                 <ul class="footer-links">
                                     <li><a href="#">Footer Link</a></li>
@@ -44,8 +44,8 @@
                                     <li><a href="#">Sit Amet</a></li>
                                 </ul>
                             </div>
+                            */ ?>
                         </div>
-                        */ ?>
                         <div class="row">
                             <div class="copyright-column">
                                 <p class="lead"><?php echo Yii::t('app', 'Copyright {year}', array('{year}' => date('Y'))); ?></p>

@@ -140,4 +140,25 @@ class WebApplication extends CWebApplication
     {
         return Yii::t('app', 'Gapminder Community');
     }
+
+    /**
+     * Renders a footer link.
+     * @param string $label
+     * @param string $paramKey the Yii::app()->params key mapped to the corresponding page ID.
+     * @param array $htmlOptions
+     * @return string
+     */
+    public function renderFooterLink($label, $paramKey, array $htmlOptions = array())
+    {
+        $url = '#';
+        $label = Yii::t('app', $label);
+
+        $params = Yii::app()->params;
+
+        if (isset($params['pages']) && isset($params['pages'][$paramKey])) {
+            $url = TbHtml::normalizeUrl($params['pages'][$paramKey]);
+        }
+
+        return TbHtml::link($label, $url, $htmlOptions);
+    }
 }
