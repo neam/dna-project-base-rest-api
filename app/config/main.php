@@ -567,8 +567,9 @@ $mainConfig = array(
             ),
         ),
         'pages' => array(
-            'terms' => array('page/view', TERMS_PAGE_ID),
-            'about' => array('page/view', ABOUT_PAGE_ID),
+            'terms' => array('page/view', 'id' => TERMS_PAGE_ID),
+            'about' => array('page/view', 'id' => ABOUT_PAGE_ID),
+            'cc' => array('page/view', 'id' => CC_PAGE_ID),
         ),
     ),
 );

@@ -16,6 +16,7 @@ setenv("DATA", $default = 'user-generated', $required = false);
 // ==== CMS page ids ====
 setenv("TERMS_PAGE_ID", $default = 1, $required = false);
 setenv("ABOUT_PAGE_ID", $default = 2, $required = false);
+setenv("CC_PAGE_ID", $default = 3, $required = false);
 
 // ==== Identity-related constants ====
 
