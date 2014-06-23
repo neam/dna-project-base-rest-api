@@ -4,7 +4,12 @@ set -x;
 
 script_path=`dirname $0`
 
-connectionID=db
+if [ "$connectionID" == "" ]; then
+
+    echo "The environment variable connectionID needs to be set"
+    exit 1
+
+fi
 
 # fail on any error
 set -o errexit

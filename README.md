@@ -41,7 +41,7 @@ After pulling the latest changes, run the following to update your local environ
 ### To reset to a clean database
 
     export DATA=clean-db
-    deploy/reset-db.sh
+    connectionID=db shell-scripts/reset-db.sh
 
 ### To reset to a database with user generated data:
 
@@ -63,7 +63,7 @@ Use the corresponding YII_DB_*-values from `app/config/envbootstrap/local/envboo
     export DB_USER=root
     export DB_PASSWORD=changeme
     export DB_NAME=db
-    connectionID=db deploy/reset-db.sh
+    connectionID=db shell-scripts/reset-db.sh
 
 ## Running tests locally
 
@@ -85,7 +85,7 @@ Then, do the following before attempting to run any tests:
 
     cd tests
     php ../composer.phar install
-    echo "DROP DATABASE $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
+    echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
     export CMS_HOST=localhost:11111 # change if you have used another WEB_PORT when setting up the local dev environment
     ./generate-local-codeception-config.sh
@@ -93,7 +93,7 @@ Then, do the following before attempting to run any tests:
 To reset the test database (necessary in order to re-run tests):
 
     export CONFIG_ENVIRONMENT=test
-    connectionID=dbTest deploy/reset-db.sh
+    connectionID=dbTest ../shell-scripts/reset-db.sh
 
 To run the unit tests:
 
@@ -229,13 +229,13 @@ To reset the db to a clean state:
 
     export DATA=clean-db
     ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
-    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/reset-db.sh
+    ssh dokku@$DOKKU_HOST run $APPNAME connectionID=db /app/shell-scripts/reset-db.sh
 
 To reset the db and load user data:
 
     export DATA=user-generated
     ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
-    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/reset-db.sh
+    ssh dokku@$DOKKU_HOST run $APPNAME connectionID=db /app/shell-scripts/reset-db.sh
 
 To upload the current user-generated data to S3, run:
 
