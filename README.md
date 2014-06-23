@@ -229,13 +229,13 @@ To reset the db to a clean state:
 
     export DATA=clean-db
     ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
-    ssh dokku@$DOKKU_HOST run $APPNAME connectionID=db /app/shell-scripts/reset-db.sh
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-reset-db.sh
 
 To reset the db and load user data:
 
     export DATA=user-generated
     ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
-    ssh dokku@$DOKKU_HOST run $APPNAME connectionID=db /app/shell-scripts/reset-db.sh
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-reset-db.sh
 
 To upload the current user-generated data to S3, run:
 
