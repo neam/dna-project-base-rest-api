@@ -56,8 +56,9 @@ setenv("GA_TRACKING_ID", $default = null, $required = true);
 // ==== Define test-related constants ====
 
 setenv("TEST_DB_NAME", $default = YII_DB_NAME . '_test', $required = false);
-setenv("TEST_DB_USER", $default = YII_DB_USER . '_test', $required = false);
-setenv("TEST_DB_PASSWORD", $default = YII_DB_USER . '_test', $required = false);
+setenv("TEST_DB_USER", $default = YII_DB_USER, $required = false);
+setenv("TEST_DB_PORT", $default = YII_DB_PORT, $required = false);
+setenv("TEST_DB_PASSWORD", $default = YII_DB_PASSWORD, $required = false);
 setenv("TEST_DB_HOST", $default = YII_DB_HOST, $required = false);
 
 // ==== Misc ====
