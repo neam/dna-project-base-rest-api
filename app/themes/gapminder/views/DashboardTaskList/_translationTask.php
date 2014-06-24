@@ -66,7 +66,7 @@
                     :  Yii::t('app', 'Continue!'),
                 array(
                     'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                    'url' => $this->createTaskUrl('translationOverview', $data),
+                    'url' => $this->createTaskUrl('translate', $data),
                 )
             ); ?>
         </div>
