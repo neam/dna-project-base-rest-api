@@ -15,7 +15,7 @@
                     'url' => array(
                         'draft',
                         'id' => $model->{$model->tableSchema->primaryKey},
-                        'step' => $this->firstFlowStep($model),
+                        'step' => $model->firstFlowStep(),
                     )
                 )
             ); ?>
@@ -31,7 +31,7 @@
                     'url' => array(
                         'prepareForReview',
                         'id' => $model->{$model->tableSchema->primaryKey},
-                        'step' => $this->firstFlowStep($model),
+                        'step' => $model->firstFlowStep(),
                     ),
                     'visible' => Yii::app()->user->checkModelOperationAccess($model, 'PrepareForReview'),
                 )
@@ -49,7 +49,7 @@
                     'url' => array(
                         'prepareForPublishing',
                         'id' => $model->{$model->tableSchema->primaryKey},
-                        'step' => $this->firstFlowStep($model),
+                        'step' => $model->firstFlowStep(),
                     ),
                     'visible' => Yii::app()->user->checkModelOperationAccess($model, 'PrepareForPublishing'),
                 )
@@ -68,7 +68,7 @@
                 'url' => array(
                     'evaluate',
                     'id' => $model->{$model->tableSchema->primaryKey},
-                    'step' => $this->firstFlowStep($model),
+                    'step' => $model->firstFlowStep(),
                 ),
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Evaluate'),
             )

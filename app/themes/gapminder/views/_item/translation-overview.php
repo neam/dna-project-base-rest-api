@@ -32,7 +32,7 @@
                             'url' => array(
                                 'translate',
                                 'id' => $model->{$model->tableSchema->primaryKey},
-                                'step' => $this->firstTranslationFlowStep($model),
+                                'step' => $model->firstTranslationFlowStep(),
                                 'translateInto' => $languageCode,
                             ),
                         )

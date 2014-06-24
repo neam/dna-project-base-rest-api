@@ -386,4 +386,32 @@ class Html extends TbHtml
         return CHtml::activeId($model, $model->{$attribute});
     }
 
+    /**
+     * Renders an array of errors as an unordered list.
+     * @param array $errors list of errors (as attribute => message)
+     * @param string $intro the introductory error message. Defaults to 'Please correct the following errors:'.
+     * @return string
+     */
+    static public function renderValidationErrors(array $errors, $intro = null)
+    {
+        $html = '';
+        $errorCount = count($errors);
+
+        if ($errorCount > 0) {
+            if (!isset($intro)) {
+                $intro = Yii::t('app', 'Please correct the following error:|Please correct the following errors:', array($errorCount));
+            }
+
+            $html .= "<p>$intro</p>";
+            $html .= '<ul>';
+            foreach ($errors as $error) {
+                $html .= "<li>$error</li>";
+
+            }
+            $html .= '</ul>';
+        }
+
+        return $html;
+    }
+
 }

@@ -449,4 +449,35 @@ trait ItemTrait
     {
         return Yii::app()->user->checkAccess(get_class($this) . '.' . $operation, array('id' => $this->{$this->tableSchema->primaryKey}));
     }
+
+    /**
+     * Returns the first workflow step of this item.
+     * @return string|null
+     */
+    public function firstFlowStep()
+    {
+        // Return the step defined in the model class (if it has been set).
+        if (isset($this->firstFlowStep)) {
+            return $this->firstFlowStep;
+        }
+
+        // Return the first index in the steps array.
+        foreach ($this->flowSteps() as $step => $fields) {
+            return $step;
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the first step in the translation workflow. Falls back to ItemTrait::firstFlowStep().
+     * @return string
+     */
+    public function firstTranslationFlowStep()
+    {
+        return (isset($this->firstTranslationFlowStep))
+            ? $this->firstTranslationFlowStep
+            : $this->firstFlowStep();
+    }
+
 }
