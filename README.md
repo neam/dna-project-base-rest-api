@@ -11,8 +11,8 @@ This web application is used by the community as well as Gapminder staff to auth
     cp app/config/envbootstrap/local/envbootstrap.dist.php app/config/envbootstrap/local/envbootstrap.php
 
 * Set-up a local docker containers running CMS web and db as per the instructions in `../virtual-machines/vagrant/cms/README.md`
-* Follow "Update to the latest changes" below
 * Follow "Reset the database" below
+* Follow "Update to the latest changes" below
 * Now your CMS installation should be accessible on [http://localhost:11111]() and you should be able to login with admin/admin
 * Note: You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
 
