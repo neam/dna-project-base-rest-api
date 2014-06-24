@@ -114,16 +114,7 @@ To run the functional tests (Note: Not currently used):
 
     #vendor/bin/codecept run functional -g data:$DATA --debug
 
-For the remaining tests, you need to have Java installed and [the selenium server](http://docs.seleniumhq.org/download/) running locally:
-
-    # if you haven't downloaded the server already
-    wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
-
-    # in another terminal window/tab
-    java -jar selenium-server-standalone-2.42.2.jar
-
-    # if above doesn't work, try specifying chromedriver explicitly
-    java -jar selenium-server-standalone-2.42.2.jar -Dwebdriver.chrome.driver=./chromedriver
+Note: For the remaining tests, you need to have a selenium server running locally (see below in readme).
 
 To run the acceptance suite:
 
@@ -142,6 +133,21 @@ All tests can be run in sequence (for both clean-db and user-generated) by runni
     ./_test.sh
 
 Note: The `touch testing` makes the app default to "test" CONFIG_ENVIRONMENT, which means it will use the TEST_DB_* parameters for database access and have captcha disabled in the registration form.
+
+## Running a Selenium server locally
+
+For the acceptance tests above, you need to have a selenium server running locally. The selenium server controls your locally installed browsers and thus can't be run within the web container. Thus, open run these commands locally in a different terminal window/tab som the above.
+
+Ensure that you have Java installed and then start [the selenium server](http://docs.seleniumhq.org/download/) locally:
+
+    # if you haven't downloaded the server already
+    wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
+
+    # start the selenium server
+    java -jar selenium-server-standalone-2.42.2.jar
+
+    # if above doesn't work, try specifying chromedriver explicitly
+    java -jar selenium-server-standalone-2.42.2.jar -Dwebdriver.chrome.driver=./chromedriver
 
 ### Hints for test developers
 
