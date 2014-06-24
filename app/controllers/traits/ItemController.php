@@ -218,7 +218,7 @@ trait ItemController
     {
         /** @var ActiveRecord|ItemTrait $model */
         $model = $this->loadModel($id);
-        $step = $this->firstFlowStep($model);
+        $step = $model->firstFlowStep();
 
         if (Yii::app()->user->checkModelOperationAccess($model, 'Edit')) {
             $this->redirect(array('edit', 'id' => $model->id, 'step' => $step));
@@ -251,38 +251,6 @@ trait ItemController
         );
 
         return in_array($this->action->id, $editActions);
-    }
-
-    /**
-     * Returns the first workflow step of the given item.
-     * @param ItemTrait|ActiveRecord $item
-     * @return string|null
-     */
-    protected function firstFlowStep($item)
-    {
-        // Return the step defined in the model class (if it has been set).
-        if (isset($item->firstFlowStep)) {
-            return $item->firstFlowStep;
-        }
-
-        // Return the first index in the steps array.
-        foreach ($item->flowSteps() as $step => $fields) {
-            return $step;
-        }
-
-        return null;
-    }
-
-    /**
-     * Returns the first step in the translation workflow. Falls back to ItemController::firstFlowStep().
-     * @param ActiveRecord|ItemTrait $item
-     * @return string
-     */
-    protected function firstTranslationFlowStep($item)
-    {
-        return (isset($item->firstTranslationFlowStep))
-            ? $item->firstTranslationFlowStep
-            : $this->firstFlowStep($item);
     }
 
     /**
@@ -725,8 +693,9 @@ trait ItemController
      */
     public function actionCancel($id)
     {
+        /** @var ActiveRecord|ItemTrait $model */
         $model = $this->loadModel($id);
-        $step = $this->firstFlowStep($model);
+        $step = $model->firstFlowStep();
 
         if (Yii::app()->user->checkModelOperationAccess($model, 'Edit')) {
             $this->redirect(array(
