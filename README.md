@@ -27,6 +27,16 @@ To run these commands locally, the following binaries must be installed locally 
     * mysqldump
     * git
 
+Alternatively, you can run these commands inside the web container (where all of the above are already installed). Enter by running:
+
+    cd ../virtual-machines/vagrant/cms/build/cms-develop-virtualbox/
+    vagrant ssh web
+
+Before running any commands below, step in to the root of the cms codebase `/code/` and make all environment variables avaiable:
+
+    cd /code/
+    for file in /app/.profile.d/*; do source $file; done
+
 ## Update to the latest changes
 
 After pulling the latest changes, run the following to update your local environment:
