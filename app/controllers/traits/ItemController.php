@@ -642,13 +642,16 @@ trait ItemController
 
     /**
      * Publishes an item.
-     * @param integer $id
+     * @param int $id
      * @throws CException
      * @throws CHttpException
      * @throws SaveException
      */
     public function actionPublish($id)
     {
+        /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
+        /** @var Controller $this */
+
         // TODO: Save changeset.
 
         $model = $this->loadModel($id);
@@ -660,31 +663,24 @@ trait ItemController
         $model->changeStatus('public');
         $model->makeNodeHasGroupVisible();
 
-        // Redirect
-        if (isset($_GET['returnUrl'])) {
-            $this->redirect($_GET['returnUrl']);
-        } else {
-            $this->redirect(array('continueAuthoring', 'id' => $model->id));
-        }
+        $this->redirect(array('browse'));
     }
 
     /**
      * Unpublishes an item.
-     * @param integer $id
+     * @param int $id
      * @throws CHttpException
      */
     public function actionUnpublish($id)
     {
+        /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
+        /** @var Controller $this */
+
         $model = $this->loadModel($id);
         $model->refreshQaState();
         $model->makeNodeHasGroupHidden();
 
-        // Redirect
-        if (isset($_GET['returnUrl'])) {
-            $this->redirect($_GET['returnUrl']);
-        } else {
-            $this->redirect(array('continueAuthoring', 'id' => $model->id));
-        }
+        $this->redirect(array('browse'));
     }
 
     /**
@@ -693,7 +689,9 @@ trait ItemController
      */
     public function actionCancel($id)
     {
-        /** @var ActiveRecord|ItemTrait $model */
+        /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
+        /** @var Controller $this */
+
         $model = $this->loadModel($id);
         $step = $model->firstFlowStep();
 
@@ -1297,6 +1295,7 @@ trait ItemController
             return $model;
 
         } else {
+            $this->setBackToTranslationUrl();
 
             // redirect
             if (isset(Yii::app()->user->returnUrl)) {
@@ -1310,8 +1309,35 @@ trait ItemController
             } else {
                 $this->actionCancel($model->id);
             }
-
         }
+    }
+
+    /**
+     * Checks if the back to translation button should be displayed.
+     * @return bool
+     */
+    public function showBackToTranslationButton()
+    {
+        return Yii::app()->user->isTranslator && $this->getBackToTranslationUrl() !== '#';
+    }
+
+    /**
+     * Returns the URL to the previous translation workflow step.
+     * @return string
+     */
+    public function getBackToTranslationUrl()
+    {
+        return isset(Yii::app()->session['backToTranslationUrl'])
+            ? Yii::app()->session['backToTranslationUrl']
+            : '#';
+    }
+
+    /**
+     * Sets the URL to the current translation workflow step.
+     */
+    public function setBackToTranslationUrl()
+    {
+        Yii::app()->session['backToTranslationUrl'] = Yii::app()->request->url;
     }
 
     /**

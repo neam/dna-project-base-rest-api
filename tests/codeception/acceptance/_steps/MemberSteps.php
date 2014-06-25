@@ -198,7 +198,7 @@ class MemberSteps extends AppSteps
             $I->fillFieldsOnPageAndSubmit($attributes);
         }
 
-        $I->seeInCurrentUrl('dashboard');
+        $I->seeInCurrentUrl('preview');
     }
 
     /**
