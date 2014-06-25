@@ -15,7 +15,7 @@
                         <div class="profile-top-bar">
                             <div class="profile-points">
                                 <?php echo TbHtml::icon(TbHtml::ICON_RECORD); ?>
-                                <?php echo Yii::t('app', '{pointCount} pts', array(
+                                <?php echo Yii::t('app', '{pointCount} points', array(
                                     '{pointCount}' => 0 // TODO: Get points dynamically.
                                 )); ?>
                             </div>
@@ -23,7 +23,7 @@
                                 <?php echo TbHtml::link(TbHtml::icon(TbHtml::ICON_COG), array('/profile/edit')); ?>
                             </div>
                         </div>
-                        <h1 class="profile-name"><?php echo $model->profile->getFullName(); ?></h1>
+                        <h1 class="profile-name"><?php echo $model->profile->fullName; ?></h1>
                         <?php /*
                         <span class="profile-title"><?php echo 'Project Manager at Nord Software'; // TODO: Get title dynamically. ?></span>
                         */ ?>

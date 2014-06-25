@@ -642,13 +642,16 @@ trait ItemController
 
     /**
      * Publishes an item.
-     * @param integer $id
+     * @param int $id
      * @throws CException
      * @throws CHttpException
      * @throws SaveException
      */
     public function actionPublish($id)
     {
+        /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
+        /** @var Controller $this */
+
         // TODO: Save changeset.
 
         $model = $this->loadModel($id);
@@ -660,41 +663,24 @@ trait ItemController
         $model->changeStatus('public');
         $model->makeNodeHasGroupVisible();
 
-        // Redirect
-        if (isset($_GET['returnUrl'])) {
-            $this->redirect($_GET['returnUrl']);
-        } else {
-            $this->redirect(array('continueAuthoring', 'id' => $model->id));
-        }
+        $this->redirect(array('browse'));
     }
 
     /**
      * Unpublishes an item.
-     * @param integer $id
+     * @param int $id
      * @throws CHttpException
      */
     public function actionUnpublish($id)
     {
-        $permissionAttributes = array(
-            'account_id' => Yii::app()->user->id,
-            'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
-            'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
-        );
+        /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
+        /** @var Controller $this */
 
-        if (PermissionHelper::groupHasAccount($permissionAttributes)) {
-            $model = $this->loadModel($id);
-            $model->refreshQaState();
-            $model->makeNodeHasGroupHidden();
-        } else {
-            throw new CHttpException(403, Yii::t('error', 'You do not have permission to unpublish items.'));
-        }
+        $model = $this->loadModel($id);
+        $model->refreshQaState();
+        $model->makeNodeHasGroupHidden();
 
-        // Redirect
-        if (isset($_GET['returnUrl'])) {
-            $this->redirect($_GET['returnUrl']);
-        } else {
-            $this->redirect(array('continueAuthoring', 'id' => $model->id));
-        }
+        $this->redirect(array('browse'));
     }
 
     /**
@@ -703,7 +689,9 @@ trait ItemController
      */
     public function actionCancel($id)
     {
-        /** @var ActiveRecord|ItemTrait $model */
+        /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
+        /** @var Controller $this */
+
         $model = $this->loadModel($id);
         $step = $model->firstFlowStep();
 

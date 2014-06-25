@@ -9891,12 +9891,8 @@ Styleguide 5
 @media (min-width: 992px) {
   .account-controller.dashboard-action .dashboard-profile .profile-info .profile-picture {
     float: left;
-    width: 33.33333333333333%;
+    width: 25%;
   }
-}
-.account-controller.dashboard-action .dashboard-profile .profile-info .profile-picture img {
-  width: 195px;
-  height: auto;
 }
 .account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts {
   position: relative;
@@ -9907,7 +9903,7 @@ Styleguide 5
 @media (min-width: 992px) {
   .account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts {
     float: left;
-    width: 66.66666666666666%;
+    width: 75%;
   }
 }
 .account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar {

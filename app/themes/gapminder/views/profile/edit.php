@@ -22,7 +22,7 @@
             <?php echo $model->profile->renderPicture(); ?>
         </div>
         <div class="summary-info">
-            <h1 class="summary-heading"><?php echo $model->username; ?></h1>
+            <h1 class="summary-heading"><?php echo $model->profile->fullName; ?></h1>
             <span class="summary-lead">Title</span>
             <span class="summary-badges">* * *</span>
         </div>
