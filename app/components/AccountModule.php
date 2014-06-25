@@ -20,12 +20,11 @@ class AccountModule extends \nordsoftware\yii_account\Module
      */
     public function sendMail($to, $subject, $body, array $config = array())
     {
-        $config = array(
-            'body' => $body,
-        );
+        $config['body'] = $body;
+        $from = isset($config['from']) ? $config['from'] : Yii::app()->params['adminEmail'];
 
         /** @var EmailBehavior $this */
-        $mail = $this->createEmail(app()->params['adminEmail'], $to, $subject, $config);
+        $mail = $this->createEmail($from, $to, $subject, $config);
         $this->sendEmail($mail);
     }
 }
