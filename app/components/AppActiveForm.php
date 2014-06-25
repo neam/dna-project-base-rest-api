@@ -120,6 +120,8 @@ class AppActiveForm extends TbActiveForm
             // Get hint
             if (isset($fieldOptions['hint']) && $fieldOptions['hint']) {
                 $htmlOptions['label'] = Html::attributeLabelWithTooltip($model, $attributeTranslateInto, 'title');
+            } else {
+                $htmlOptions['label'] = $model->getAttributeLabel($attributeTranslateInto);
             }
 
             // Bind slug field
@@ -130,11 +132,9 @@ class AppActiveForm extends TbActiveForm
             $html = Html::activeStaticTextFieldControlGroup(
                 $model,
                 $attributeSourceLanguage,
-                array(
-                    'label' => $model->getAttributeLabel($attributeTranslateInto),
-                )
+                $htmlOptions
             );
-            
+
             $html .= $this->createInput($inputType, $model->edited(), $attributeTranslateInto, $htmlOptions);
 
             $errorOptions = TbArray::popValue('errorOptions', $htmlOptions, array());
