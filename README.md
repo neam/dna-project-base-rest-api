@@ -27,6 +27,10 @@ To run these commands locally, the following binaries must be installed locally 
     * mysqldump
     * git
 
+The following environment variable also needs to be set:
+
+    export LOCAL_SERVICES_IP=127.0.0.1
+
 Alternatively, you can run these commands inside the web container (where all of the above are already installed). Enter by running:
 
     cd ../virtual-machines/vagrant/cms/build/cms-develop-virtualbox/
@@ -36,6 +40,7 @@ Before running any commands below, step in to the root of the cms codebase `/cod
 
     cd /code/
     for file in /app/.profile.d/*; do source $file; done
+    export LOCAL_SERVICES_IP=172.17.42.1
 
 ## Update to the latest changes
 
@@ -68,7 +73,7 @@ Then, run:
 
 Use the corresponding YII_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
 
-    export DB_HOST=127.0.0.1
+    export DB_HOST=$LOCAL_SERVICES_IP
     export DB_PORT=13306
     export DB_USER=root
     export DB_PASSWORD=changeme
@@ -85,11 +90,21 @@ First, decide whether or not to run tests against a clean database or with user 
 
 Use the corresponding TEST_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
 
-    export DB_HOST=127.0.0.1
+    export DB_HOST=$LOCAL_SERVICES_IP
     export DB_PORT=13306
     export DB_USER=root
     export DB_PASSWORD=changeme
     export DB_NAME=db_test
+
+If you are running these commands locally, set the following environment variables:
+
+    export SELENIUM_HOST=$LOCAL_SERVICES_IP
+    export SELENIUM_PORT=4444
+
+Or, if you are running these commands from within the web container:
+
+    export SELENIUM_HOST=$LOCAL_SERVICES_IP
+    export SELENIUM_PORT=14444
 
 Then, do the following before attempting to run any tests:
 
