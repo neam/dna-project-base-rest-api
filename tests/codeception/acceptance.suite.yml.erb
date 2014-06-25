@@ -20,6 +20,9 @@ modules:
             <% if ENV.has_key? "CI" and ENV['CI'].to_s != "" %>
             host: '<%= ENV['SAUCE_USERNAME'] %>:<%= ENV['SAUCE_ACCESS_KEY'] %>@ondemand.saucelabs.com'
             port: 80
+            <% else %>
+            host: '<%= ENV['SELENIUM_HOST'] %>'
+            port: <%= ENV['SELENIUM_PORT'] %>
             <% end %>
             wait: 0
             restart: true

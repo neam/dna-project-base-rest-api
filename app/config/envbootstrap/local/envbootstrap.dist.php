@@ -57,6 +57,7 @@ define("SMTP_URL", null);
 
 if (SMTP_URL === null) {
     // Local devs are encouraged to use Google's SMTP server with their own accounts: https://www.digitalocean.com/community/articles/how-to-use-google-s-smtp-server
+    // todo: configure this to use mailcatcher
     define("SMTP_HOST", "smtp.gmail.com");
     define("SMTP_USERNAME", "foo");
     define("SMTP_PASSWORD", "bar");

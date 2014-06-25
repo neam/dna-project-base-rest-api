@@ -11,8 +11,13 @@ This web application is used by the community as well as Gapminder staff to auth
     cp app/config/envbootstrap/local/envbootstrap.dist.php app/config/envbootstrap/local/envbootstrap.php
 
 * Set-up a local docker containers running CMS web and db as per the instructions in `../virtual-machines/vagrant/cms/README.md`
-* Follow "Update to the latest changes" below
+* If you already did the above, just make sure you have the web and db containers up and running:
+
+
+    ../virtual-machines/vagrant/cms/scripts/start-cms-containers.sh
+
 * Follow "Reset the database" below
+* Follow "Update to the latest changes" below
 * Now your CMS installation should be accessible on [http://localhost:11111]() and you should be able to login with admin/admin
 * Note: You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
 
@@ -27,6 +32,10 @@ To run these commands locally, the following binaries must be installed locally 
     * mysqldump
     * git
 
+The following environment variable also needs to be set:
+
+    export LOCAL_SERVICES_IP=127.0.0.1
+
 Alternatively, you can run these commands inside the web container (where all of the above are already installed). Enter by running:
 
     cd ../virtual-machines/vagrant/cms/build/cms-develop-virtualbox/
@@ -36,6 +45,7 @@ Before running any commands below, step in to the root of the cms codebase `/cod
 
     cd /code/
     for file in /app/.profile.d/*; do source $file; done
+    export LOCAL_SERVICES_IP=172.17.42.1
 
 ## Update to the latest changes
 
@@ -68,7 +78,7 @@ Then, run:
 
 Use the corresponding YII_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
 
-    export DB_HOST=127.0.0.1
+    export DB_HOST=$LOCAL_SERVICES_IP
     export DB_PORT=13306
     export DB_USER=root
     export DB_PASSWORD=changeme
@@ -85,11 +95,21 @@ First, decide whether or not to run tests against a clean database or with user 
 
 Use the corresponding TEST_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
 
-    export DB_HOST=127.0.0.1
+    export DB_HOST=$LOCAL_SERVICES_IP
     export DB_PORT=13306
     export DB_USER=root
     export DB_PASSWORD=changeme
     export DB_NAME=db_test
+
+If you are running these commands locally, set the following environment variables:
+
+    export SELENIUM_HOST=$LOCAL_SERVICES_IP
+    export SELENIUM_PORT=4444
+
+Or, if you are running these commands from within the web container:
+
+    export SELENIUM_HOST=$LOCAL_SERVICES_IP
+    export SELENIUM_PORT=14444
 
 Then, do the following before attempting to run any tests:
 
@@ -114,16 +134,7 @@ To run the functional tests (Note: Not currently used):
 
     #vendor/bin/codecept run functional -g data:$DATA --debug
 
-For the remaining tests, you need to have Java installed and [the selenium server](http://docs.seleniumhq.org/download/) running locally:
-
-    # if you haven't downloaded the server already
-    wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
-
-    # in another terminal window/tab
-    java -jar selenium-server-standalone-2.42.2.jar
-
-    # if above doesn't work, try specifying chromedriver explicitly
-    java -jar selenium-server-standalone-2.42.2.jar -Dwebdriver.chrome.driver=./chromedriver
+Note: For the remaining tests, you need to have a selenium server running locally (see below in readme).
 
 To run the acceptance suite:
 
@@ -142,6 +153,21 @@ All tests can be run in sequence (for both clean-db and user-generated) by runni
     ./_test.sh
 
 Note: The `touch testing` makes the app default to "test" CONFIG_ENVIRONMENT, which means it will use the TEST_DB_* parameters for database access and have captcha disabled in the registration form.
+
+## Running a Selenium server locally
+
+For the acceptance tests above, you need to have a selenium server running locally. The selenium server controls your locally installed browsers and thus can't be run within the web container. Thus, open run these commands locally in a different terminal window/tab som the above.
+
+Ensure that you have Java installed and then start [the selenium server](http://docs.seleniumhq.org/download/) locally:
+
+    # if you haven't downloaded the server already
+    wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
+
+    # start the selenium server
+    java -jar selenium-server-standalone-2.42.2.jar
+
+    # if above doesn't work, try specifying chromedriver explicitly
+    java -jar selenium-server-standalone-2.42.2.jar -Dwebdriver.chrome.driver=./chromedriver
 
 ### Hints for test developers
 
