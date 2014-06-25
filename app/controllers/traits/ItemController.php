@@ -1307,6 +1307,7 @@ trait ItemController
             return $model;
 
         } else {
+            $this->setBackToTranslationUrl();
 
             // redirect
             if (isset(Yii::app()->user->returnUrl)) {
@@ -1320,8 +1321,35 @@ trait ItemController
             } else {
                 $this->actionCancel($model->id);
             }
-
         }
+    }
+
+    /**
+     * Checks if the back to translation button should be displayed.
+     * @return bool
+     */
+    public function showBackToTranslationButton()
+    {
+        return Yii::app()->user->isTranslator && $this->getBackToTranslationUrl() !== '#';
+    }
+
+    /**
+     * Returns the URL to the previous translation workflow step.
+     * @return string
+     */
+    public function getBackToTranslationUrl()
+    {
+        return isset(Yii::app()->session['backToTranslationUrl'])
+            ? Yii::app()->session['backToTranslationUrl']
+            : '#';
+    }
+
+    /**
+     * Sets the URL to the current translation workflow step.
+     */
+    public function setBackToTranslationUrl()
+    {
+        Yii::app()->session['backToTranslationUrl'] = Yii::app()->request->url;
     }
 
     /**

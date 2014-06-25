@@ -184,7 +184,7 @@ class ItemEditUi extends CWidget
             $nextStepAction = $stepActions[$nextStepIndex];
             $url = $this->createFormActionUrlForStep($nextStepAction['step']);
         } else {
-            $url = Yii::app()->createUrl('/dashboard/index');
+            $url = Html::normalizeUrl(array('preview', 'id' => $this->model->id));
         }
 
         return $url;
