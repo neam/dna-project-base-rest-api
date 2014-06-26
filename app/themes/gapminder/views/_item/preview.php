@@ -13,7 +13,7 @@
 ); ?>
 <?php if ($this->showBackToTranslationButton()): ?>
     <?php echo TbHtml::linkButton(
-        Yii::t('app', 'Back to Translation'),
+        Yii::t('app', 'Go Back'),
         array(
             'size' => TbHtml::BUTTON_SIZE_SM,
             'url' => $this->getBackToTranslationUrl(),
