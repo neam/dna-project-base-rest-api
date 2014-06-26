@@ -44,6 +44,7 @@ Alternatively, you can run these commands inside the web container (where all of
 Before running any commands below, step in to the root of the cms codebase `/code/` and make all environment variables avaiable:
 
     cd /code/
+    export HOME=/app
     for file in /app/.profile.d/*; do source $file; done
     export LOCAL_SERVICES_IP=172.17.42.1
 
