@@ -181,6 +181,42 @@ After pulling the latest changes, run the following to update your local environ
     bower install
     shell-scripts/yiic-migrate.sh
 
+## Database migrations
+
+The migrations directory should, at all times, contain the database migrations necessary to (separately) migrate the
+*clean-db* and *user-generated* schemas to reflect the database schema required by the current revision.
+
+This ensures that release upgrades are continuously tested throughout the development cycle.
+
+Deployment routines use s3cmd to download and upload files to S3. Developers may use s3cmd, or an S3-compliant FTP
+client such as Cyberduck.
+
+### Run the migrations and reset the database
+
+To determine whether to use *clean-db* or *user-generated*, set (export) the `DATA` variable accordingly. The example
+below uses *clean-db*.
+
+```
+export DB_HOST=127.0.0.1
+export DB_USER=root
+export DB_PASSWORD=root
+export DB_NAME=gscms
+export DB_PORT=3306
+export DATA=clean-db # use 'clean-db' or 'user-generated'
+cd YOUR_CMS_PROJECT_DIR
+deploy/reset-db.sh
+```
+
+### How to fetch user-generated data
+
+1. Install s3cmd (https://github.com/s3tools/s3cmd).
+
+2. Run `s3cmd --configure --config=/tmp/.gapminder-user-generated-data.s3cfg`.
+
+The S3 credentials are set in Drone at http://drone.gapminder.org/github.com/Gapminder/gapminder-school/params
+
+3. Run `shell-scripts/fetch-user-generated-data.sh`.
+
 ## Tests
 
 First, decide whether or not to run tests against a clean database or with user generated data:
