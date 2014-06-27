@@ -10,15 +10,29 @@ class VideoFileEditPage extends ItemEditPage
      * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
+
+    /*
+     * Translatable fields
+     */
     public static $titleField = '#VideoFile_title_en';
     public static $slugField = '#VideoFile_slug_en';
     public static $captionField = '#VideoFile_caption_en';
     public static $aboutField = '#VideoFile_about_en';
-    public static $thumbnailField = '#VideoFile_thumbnail_media_id';
+    public static $subtitlesField = '#VideoFile_subtitles_en';
+
+    public static $titleFieldPt = '#VideoFile_title_pt';
+    public static $slugFieldPt = '#VideoFile_slug_pt';
+    public static $captionFieldPt = '#VideoFile_caption_pt';
+    public static $aboutFieldPt = '#VideoFile_about_pt';
+    public static $subtitlesFieldPt = '#VideoFile_subtitles_pt';
+
+    /*
+     * Non-translatable fields
+     */
     public static $webmField = '#VideoFile_clip_webm_media_id';
     public static $mp4Field = '#VideoFile_clip_mp4_media_id';
-    public static $subtitlesField = '#VideoFile_subtitles_en';
     public static $subtitlesImportMediaField = '#VideoFile_subtitles_import_media_id';
+    public static $thumbnailField = '#VideoFile_thumbnail_media_id';
     public static $relatedField = '#VideoFile_related';
 
     public static $webmUploadNewContext = '.webm';

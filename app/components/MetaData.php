@@ -172,6 +172,7 @@ class Metadata
                 ),
                 'View' => array(
                     Role::GUEST,
+                    Role::AUTHENTICATED,
                 ),
                 'Add' => array(
                     Role::AUTHENTICATED,
@@ -256,8 +257,8 @@ class Metadata
             ),
             'ChangeGroup' => array_keys(self::groupRoles()),
             'GrantPermission' => array(
-                Role::GROUP_ADMINISTRATOR,
                 Role::GROUP_MODERATOR,
+                Role::GROUP_ADMINISTRATOR,
             ),
             'GrantGroupAdminPermissions' => array(
                 Role::GROUP_ADMINISTRATOR,

@@ -3,6 +3,316 @@ Gapminder School CMS
 
 This web application is used by the community as well as Gapminder staff to author, translate and publish the educational material.
 
+## Local set-up
+
+* Create your local configuration file:
+
+
+    cp app/config/envbootstrap/local/envbootstrap.dist.php app/config/envbootstrap/local/envbootstrap.php
+
+* Set-up a local docker containers running CMS web and db as per the instructions in `../virtual-machines/vagrant/cms/README.md`
+* If you already did the above, just make sure you have the web and db containers up and running:
+
+
+    ../virtual-machines/vagrant/cms/scripts/start-cms-containers.sh
+
+* Follow "Reset the database" below
+* Follow "Update to the latest changes" below
+* Now your CMS installation should be accessible on [http://localhost:11111]() and you should be able to login with admin/admin
+* Note: You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
+
+## A note about running the commands below
+
+To run these commands locally, the following binaries must be installed locally and available in your PATH:
+
+    * php
+    * npm
+    * bower
+    * mysql
+    * mysqldump
+    * git
+
+The following environment variable also needs to be set:
+
+    export LOCAL_SERVICES_IP=127.0.0.1
+
+Alternatively, you can run these commands inside the web container (where all of the above are already installed). Enter by running:
+
+    cd ../virtual-machines/vagrant/cms/build/cms-develop-virtualbox/
+    vagrant ssh web
+
+Before running any commands below, step in to the root of the cms codebase `/code/` and make all environment variables avaiable:
+
+    cd /code/
+    export HOME=/app
+    for file in /app/.profile.d/*; do source $file; done
+    export LOCAL_SERVICES_IP=172.17.42.1
+
+## Update to the latest changes
+
+After pulling the latest changes, run the following to update your local environment:
+
+    php composer.phar --prefer-source install
+    npm install
+    bower install
+    shell-scripts/yiic-migrate.sh
+
+## Reset the database
+
+### To reset to a clean database
+
+    export DATA=clean-db
+    connectionID=db shell-scripts/reset-db.sh
+
+### To reset to a database with user generated data:
+
+First, install s3cmd (https://github.com/s3tools/s3cmd). Then, configure it:
+
+    # S3 credentials that can read from s3://user-data-backups
+    export USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY="replaceme"
+    export USER_DATA_BACKUP_UPLOADERS_SECRET="replaceme"
+    deploy/configure-s3cmd.sh
+
+Then, run:
+
+    export DATA=user-generated
+
+Use the corresponding YII_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
+
+    export DB_HOST=$LOCAL_SERVICES_IP
+    export DB_PORT=13306
+    export DB_USER=root
+    export DB_PASSWORD=changeme
+    export DB_NAME=db
+    connectionID=db shell-scripts/reset-db.sh
+
+## Running tests locally
+
+First, decide whether or not to run tests against a clean database or with user generated data:
+
+    export DATA=clean-db
+    OR
+    export DATA=user-generated # be sure to have s3cmd configured properly as per above
+
+Use the corresponding TEST_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
+
+    export DB_HOST=$LOCAL_SERVICES_IP
+    export DB_PORT=13306
+    export DB_USER=root
+    export DB_PASSWORD=changeme
+    export DB_NAME=db_test
+
+If you are running these commands locally, set the following environment variables:
+
+    export SELENIUM_HOST=$LOCAL_SERVICES_IP
+    export SELENIUM_PORT=4444
+
+Or, if you are running these commands from within the web container:
+
+    export SELENIUM_HOST=$LOCAL_SERVICES_IP
+    export SELENIUM_PORT=14444
+
+Then, do the following before attempting to run any tests:
+
+    cd tests
+    php ../composer.phar install
+    echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
+
+    export CMS_HOST=localhost:11111 # change if you have used another WEB_PORT when setting up the local dev environment
+    ./generate-local-codeception-config.sh
+
+To reset the test database (necessary in order to re-run tests):
+
+    export CONFIG_ENVIRONMENT=test
+    connectionID=dbTest ../shell-scripts/reset-db.sh
+
+To run the unit tests:
+
+    ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
+    vendor/bin/codecept run unit -g data:$DATA --debug
+
+To run the functional tests (Note: Not currently used):
+
+    #vendor/bin/codecept run functional -g data:$DATA --debug
+
+Note: For the remaining tests, you need to have a selenium server running locally (see below in readme).
+
+To run the acceptance suite:
+
+    touch testing
+    vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug
+    rm testing
+
+To run the the API suite:
+
+    touch testing
+    vendor/bin/codecept run api -g data:$DATA --debug
+    rm testing
+
+All tests can be run in sequence (for both clean-db and user-generated) by running the `_test.sh` script:
+
+    ./_test.sh
+
+Note: The `touch testing` makes the app default to "test" CONFIG_ENVIRONMENT, which means it will use the TEST_DB_* parameters for database access and have captcha disabled in the registration form.
+
+## Running a Selenium server locally
+
+For the acceptance tests above, you need to have a selenium server running locally. The selenium server controls your locally installed browsers and thus can't be run within the web container. Thus, open run these commands locally in a different terminal window/tab som the above.
+
+Ensure that you have Java installed and then start [the selenium server](http://docs.seleniumhq.org/download/) locally:
+
+    # if you haven't downloaded the server already
+    wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
+
+    # start the selenium server
+    java -jar selenium-server-standalone-2.42.2.jar
+
+    # if above doesn't work, try specifying chromedriver explicitly
+    java -jar selenium-server-standalone-2.42.2.jar -Dwebdriver.chrome.driver=./chromedriver
+
+### Hints for test developers
+
+To run an individual test, in this example an acceptance test:
+
+     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug 04-VerifyCleanDbCept.php
+
+In general, consult the documentation at http://codeception.com/docs/modules/WebDriver and related Codeception docs.
+
+A useful method while developing tests locally is pauseExecution(). It only has effect if tests are run with the `--debug` flag (as per above). It pauses the execution and let's you use developer tools or similar to inspect the current state of things. For instance, if you can't a selector to work, add it just before the problematic selector:
+
+    <?php
+    $scenario->group('data:clean-db');
+    $I = new WebGuy\MemberSteps($scenario);
+    $I->wantTo('login and see result');
+    $I->login('admin', 'admin');
+    $I->pauseExecution(); // <-- here
+    $I->see('Welcome to Gapminder', 'h4');
+
+Happy test development!
+
+## Deploy
+
+Builds and runs with PHP 5.4.26, Nginx 1.4.3. However note that php cli runs version 5.4.6 (default Ubuntu Quantal).
+
+Requires Dokku master branch and the following plugins:
+
+ - For post-buildstep.sh to run properly - https://github.com/musicglue/dokku-user-env-compile
+ - For MySQL-compatible database access - https://github.com/Kloadut/dokku-md-plugin
+ - For mounting persistent cache directory at runtime - https://github.com/dyson/dokku-docker-options
+
+To build and deploy (regardless of target), first set some fundamental config vars:
+
+    export APPNAME=foo1-cms
+    export CURRENT_BRANCH=develop
+
+### Deploy using Dokku
+
+To build and deploy on dokku, first set dokku host config var:
+
+    export DOKKU_HOST=dokku.gapminderdev.org
+    export CMS_HOST=$APPNAME.gapminderdev.org
+    OR, for production use:
+    export DOKKU_HOST=dokku.gapminder.org
+    export CMS_HOST=$APPNAME.gapminder.org
+
+Then, push to a dokku repository:
+
+    git push dokku@$DOKKU_HOST:$APPNAME $CURRENT_BRANCH:master
+
+You will also need to run the following once after the initial push:
+
+    # replace `replaceme` with valid S3 credentials to be able to import/export user-generated data (DATA=user-generated)
+
+    export USER_GENERATED_DATA_S3_BUCKET="s3://user-data-backups"
+    export USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY="replaceme"
+    export USER_DATA_BACKUP_UPLOADERS_SECRET="replaceme"
+
+    # connect a db instance
+
+    ssh dokku@$DOKKU_HOST mariadb:create $APPNAME
+
+    # set environment variables
+
+    export CMS_CONFIG_ENVIRONMENT=development
+    export COMPOSER_GITHUB_OAUTH_TOKEN="replaceme"
+    export NEW_RELIC_LICENSE_KEY="replaceme"
+    export NEW_RELIC_APP_NAME="replaceme"
+    export SMTP_URL="replaceme"
+    export GA_TRACKING_ID="replaceme"
+    export SENTRY_DSN="replaceme"
+
+    ssh dokku@$DOKKU_HOST config:set $APPNAME \
+    ENVBOOTSTRAP_STRATEGY=environment-variables \
+    ENV=dokku/$APPNAME \
+    BRAND_SITENAME=Gapminder-CMS-$APPNAME \
+    BRAND_DOMAIN=$CMS_HOST \
+    USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY=$USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY \
+    USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET \
+    USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET \
+    CONFIG_ENVIRONMENT=$CMS_CONFIG_ENVIRONMENT \
+    COMPOSER_GITHUB_OAUTH_TOKEN=$COMPOSER_GITHUB_OAUTH_TOKEN \
+    NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY \
+    NEW_RELIC_APP_NAME=dokku/$APPNAME \
+    SMTP_URL=$SMTP_URL \
+    GA_TRACKING_ID=$GA_TRACKING_ID \
+    SENTRY_DSN=$SENTRY_DSN
+
+    # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
+
+    export DOKKU_ROOT=/home/dokku
+    ssh dokku@$DOKKU_HOST docker-options:add $APPNAME "-v $DOKKU_ROOT/$APPNAME/cache:/cache"
+
+To reset the db to a clean state:
+
+    export DATA=clean-db
+    ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-reset-db.sh
+
+To reset the db and load user data:
+
+    export DATA=user-generated
+    ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-reset-db.sh
+
+To upload the current user-generated data to S3, run:
+
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/shell-scripts/upload-user-data-backup.sh
+
+## Deploy using Heroku
+
+To build and deploy on dokku, push to a heroku repository:
+
+    git push git@heroku.com:$APPNAME.git $CURRENT_BRANCH:master
+
+You will also need to run the following once after the initial push:
+
+    # set the cms host
+
+    export CMS_HOST=$APPNAME.heroku.com
+
+    # set the proper buildpack url
+
+    heroku config:add BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git --app=$APPNAME
+
+    # activate papertrail logging
+
+    heroku addons:add papertrail --app=$APPNAME
+
+    # connect a db instance
+
+    heroku addons:add cleardb --app=$APPNAME
+    heroku config:set --app=$APPNAME DATABASE_URL="`heroku config:get --app=$APPNAME CLEARDB_DATABASE_URL`"
+
+    # set environment variables
+
+    heroku config:set --app=$APPNAME ENVBOOTSTRAP_STRATEGY=environment-variables ENV=dokku/$APPNAME BRAND_SITENAME=Gapminder-CMS-$APPNAME BRAND_DOMAIN=$CMS_HOST DATA=$DATA GRANULARITY=$GRANULARITY USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY=$USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET PAPERTRAIL_PORT=$PAPERTRAIL_PORT
+
+    # reset db and load user data if DATA=user-generated
+
+    # todo
+
+Note: Deploying using Heroku is currently not feasable. The app needs to be made read-only before it will work. For instance, p3media needs to be replaced with a fully network-based-solution.
+
 ## Config
 
 This section describes the CMS [config](http://12factor.net/config).
@@ -171,206 +481,3 @@ Google Analytics tracking id (UA-XXXXXXX-X)
 Type: Environment variable
 
 As per https://app.getsentry.com/gapminder-developers/gapminder-cms/keys/
-
-## Update to the latest changes
-
-After pulling the latest changes, run the following to update your local environment:
-
-    php composer.phar --prefer-source install
-    npm install
-    bower install
-    shell-scripts/yiic-migrate.sh
-
-## Tests
-
-First, decide whether or not to run tests against a clean database or with user generated data:
-
-    export DATA=clean-db
-    OR
-    export DATA=user-generated
-
-Then, do the following before attempting to run any tests:
-
-    cd tests
-    php ../composer.phar install
-
-    export CMS_HOST=localhost:31415
-    ./generate-local-codeception-config.sh
-
-To reset the test database (necessary in order to re-run tests):
-
-    export CONFIG_ENVIRONMENT=test
-    ./reset-test-db.sh
-
-To run the unit tests:
-
-    ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
-    vendor/bin/codecept run unit -g data:$DATA --debug
-
-To run the functional tests:
-
-    vendor/bin/codecept run functional -g data:$DATA --debug
-
-For the remaining tests, you need to A. start the built in php server on port 31415 beforehand:
-
-    ./_start-local-server.sh
-
-B. have a selenium server running locally:
-
-    # in another terminal window/tab
-    java -jar selenium-server-standalone-2.41.0.jar
-
-    # if above doesn't work, try specifying chromedriver explicitly
-    java -jar selenium-server-standalone-2.41.0.jar -Dwebdriver.chrome.driver=./chromedriver
-
-To run the acceptance suite:
-
-    vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug
-
-To run the the API suite:
-
-    vendor/bin/codecept run api -g data:$DATA --debug
-
-### Hints for test developers
-
-To run an individual test, in this example an acceptance test:
-
-     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug 04-VerifyCleanDbCept.php
-
-In general, consult the documentation at http://codeception.com/docs/modules/WebDriver and related Codeception docs.
-
-A useful method while developing tests locally is pauseExecution(). It only has effect if tests are run with the `--debug` flag (as per above). It pauses the execution and let's you use developer tools or similar to inspect the current state of things. For instance, if you can't a selector to work, add it just before the problematic selector:
-
-    <?php
-    $scenario->group('data:clean-db');
-    $I = new WebGuy\MemberSteps($scenario);
-    $I->wantTo('login and see result');
-    $I->login('admin', 'admin');
-    $I->pauseExecution(); // <-- here
-    $I->see('Welcome to Gapminder', 'h4');
-
-Happy test development!
-
-## Deploy
-
-Builds and runs with PHP 5.4.26, Nginx 1.4.3. However note that php cli runs version 5.4.6 (default Ubuntu Quantal).
-
-Requires Dokku master branch and the following plugins:
-
- - For post-buildstep.sh to run properly - https://github.com/musicglue/dokku-user-env-compile
- - For MySQL-compatible database access - https://github.com/Kloadut/dokku-md-plugin
- - For mounting persistent cache directory at runtime - https://github.com/dyson/dokku-docker-options
-
-To build and deploy (regardless of target), first set some fundamental config vars:
-
-    export APPNAME=foo1-cms
-    export CURRENT_BRANCH=develop
-
-### Deploy using Dokku
-
-To build and deploy on dokku, first set dokku host config var:
-
-    export DOKKU_HOST=dokku.gapminderdev.org
-    export CMS_HOST=$APPNAME.gapminderdev.org
-    OR, for production use:
-    export DOKKU_HOST=dokku.gapminder.org
-    export CMS_HOST=$APPNAME.gapminder.org
-
-Then, push to a dokku repository:
-
-    git push dokku@$DOKKU_HOST:$APPNAME $CURRENT_BRANCH:master
-
-You will also need to run the following once after the initial push:
-
-    # replace `replaceme` with valid S3 credentials to be able to import/export user-generated data (DATA=user-generated)
-
-    export USER_GENERATED_DATA_S3_BUCKET="s3://user-data-backups"
-    export USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY="replaceme"
-    export USER_DATA_BACKUP_UPLOADERS_SECRET="replaceme"
-
-    # connect a db instance
-
-    ssh dokku@$DOKKU_HOST mariadb:create $APPNAME
-
-    # set environment variables
-
-    export CMS_CONFIG_ENVIRONMENT=development
-    export COMPOSER_GITHUB_OAUTH_TOKEN="replaceme"
-    export NEW_RELIC_LICENSE_KEY="replaceme"
-    export NEW_RELIC_APP_NAME="replaceme"
-    export SMTP_URL="replaceme"
-    export GA_TRACKING_ID="replaceme"
-    export SENTRY_DSN="replaceme"
-
-    ssh dokku@$DOKKU_HOST config:set $APPNAME \
-    ENVBOOTSTRAP_STRATEGY=environment-variables \
-    ENV=dokku/$APPNAME \
-    BRAND_SITENAME=Gapminder-CMS-$APPNAME \
-    BRAND_DOMAIN=$CMS_HOST \
-    USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY=$USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY \
-    USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET \
-    USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET \
-    CONFIG_ENVIRONMENT=$CMS_CONFIG_ENVIRONMENT \
-    COMPOSER_GITHUB_OAUTH_TOKEN=$COMPOSER_GITHUB_OAUTH_TOKEN \
-    NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY \
-    NEW_RELIC_APP_NAME=dokku/$APPNAME \
-    SMTP_URL=$SMTP_URL \
-    GA_TRACKING_ID=$GA_TRACKING_ID \
-    SENTRY_DSN=$SENTRY_DSN
-
-    # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
-
-    export DOKKU_ROOT=/home/dokku
-    ssh dokku@$DOKKU_HOST docker-options:add $APPNAME "-v $DOKKU_ROOT/$APPNAME/cache:/cache"
-
-To reset the db to a clean state:
-
-    export DATA=clean-db
-    ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
-    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/reset-db.sh
-
-To reset the db and load user data:
-
-    export DATA=user-generated
-    ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
-    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/reset-db.sh
-
-To upload the current user-generated data to S3, run:
-
-    ssh dokku@$DOKKU_HOST run $APPNAME /app/shell-scripts/upload-user-data-backup.sh
-
-## Deploy using Heroku
-
-To build and deploy on dokku, push to a heroku repository:
-
-    git push git@heroku.com:$APPNAME.git $CURRENT_BRANCH:master
-
-You will also need to run the following once after the initial push:
-
-    # set the cms host
-
-    export CMS_HOST=$APPNAME.heroku.com
-
-    # set the proper buildpack url
-
-    heroku config:add BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git --app=$APPNAME
-
-    # activate papertrail logging
-
-    heroku addons:add papertrail --app=$APPNAME
-
-    # connect a db instance
-
-    heroku addons:add cleardb --app=$APPNAME
-    heroku config:set --app=$APPNAME DATABASE_URL="`heroku config:get --app=$APPNAME CLEARDB_DATABASE_URL`"
-
-    # set environment variables
-
-    heroku config:set --app=$APPNAME ENVBOOTSTRAP_STRATEGY=environment-variables ENV=dokku/$APPNAME BRAND_SITENAME=Gapminder-CMS-$APPNAME BRAND_DOMAIN=$CMS_HOST DATA=$DATA GRANULARITY=$GRANULARITY USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY=$USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET PAPERTRAIL_PORT=$PAPERTRAIL_PORT
-
-    # reset db and load user data if DATA=user-generated
-
-    # todo
-
-Note: Deploying using Heroku is currently not feasable. The app needs to be made read-only before it will work. For instance, p3media needs to be replaced with a fully network-based-solution.
-

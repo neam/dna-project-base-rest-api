@@ -66,9 +66,6 @@ class PoFileController extends Controller
                 throw new CHttpException(400);
             }
         }
-        if ($this->module !== null) {
-            $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
-        }
         return true;
     }
 

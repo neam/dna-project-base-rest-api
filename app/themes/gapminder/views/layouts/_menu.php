@@ -46,7 +46,7 @@
                             'items' => Controller::getLanguageMenuItems(),
                         ),
                         array(
-                            'label' => Yii::app()->user->usernameShortened,
+                            'label' => Yii::app()->user->name,
                             'visible' => !Yii::app()->user->isGuest,
                             'id' => 'accountMenuLink',
                             'items' => array(

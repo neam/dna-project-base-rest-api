@@ -3,10 +3,6 @@
 /** @var Account $model */
 /** @var string $modelClass */
 ?>
-<?php
-$this->breadcrumbs[Yii::t('app', 'Gapminder Community')] = Yii::app()->homeUrl;
-$this->breadcrumbs[] = Yii::t('app', 'Dashboard');
-?>
 <div class="account-controller dashboard-action">
     <div class="dashboard-profile">
         <div class="row">

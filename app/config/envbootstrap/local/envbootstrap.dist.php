@@ -2,7 +2,7 @@
 
 namespace gapminder\envbootstrap;
 
-require(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'function.setenv.php');
+require(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'functions.inc.php');
 
 // ==== Initial environment bootstrap ====
 
@@ -10,7 +10,7 @@ define("ENV", 'local-foo');
 define("DEV", true);
 define("DEBUG_REDIRECTS", false);
 define("DEBUG_LOGS", false);
-setenv("CONFIG_ENVIRONMENT", $default = 'development', $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
+setenv("CONFIG_ENVIRONMENT", $default = default_config_environment(), $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
 setenv("DATA", $default = 'user-generated', $required = false);
 
 // ==== Identity-related constants ====
@@ -25,10 +25,16 @@ define("DATABASE_URL", null);
 
 if (DATABASE_URL === null) {
     define("YII_DB_SCHEME", "mysql");
-    define("YII_DB_HOST", "127.0.0.1");
+    // Different db hosts based on running from inside docker container or locally
+    if (substr(getcwd(), 0, 5) == "/code") {
+        define("YII_DB_HOST", "172.17.42.1");
+    } else {
+        define("YII_DB_HOST", "127.0.0.1");
+    }
+    define("YII_DB_PORT", "13306");
     define("YII_DB_USER", "root");
-    define("YII_DB_PASSWORD", "root");
-    define("YII_DB_NAME", "gcms");
+    define("YII_DB_PASSWORD", "changeme");
+    define("YII_DB_NAME", "db");
 } else {
     // get the environment variable and parse it:
     $url = parse_url(DATABASE_URL);
@@ -45,6 +51,7 @@ define("SMTP_URL", null);
 
 if (SMTP_URL === null) {
     // Local devs are encouraged to use Google's SMTP server with their own accounts: https://www.digitalocean.com/community/articles/how-to-use-google-s-smtp-server
+    // todo: configure this to use mailcatcher
     define("SMTP_HOST", "smtp.gmail.com");
     define("SMTP_USERNAME", "foo");
     define("SMTP_PASSWORD", "bar");
@@ -66,9 +73,10 @@ define("GA_TRACKING_ID", "UA-XXXXXXX-X");
 
 // ==== Define test-related constants ====
 
-define("TEST_DB_NAME", 'gscms_test');
-define("TEST_DB_USER", 'gcms_test');
-define("TEST_DB_PASSWORD", 'gcms_test');
+define("TEST_DB_NAME", YII_DB_NAME . '_test');
+define("TEST_DB_USER", YII_DB_USER);
+define("TEST_DB_PASSWORD", YII_DB_PASSWORD);
+define("TEST_DB_PORT", YII_DB_PORT);
 define("TEST_DB_HOST", YII_DB_HOST);
 
 // ==== Misc ====
