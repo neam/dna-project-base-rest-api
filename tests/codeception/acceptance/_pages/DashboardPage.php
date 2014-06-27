@@ -12,6 +12,12 @@ class DashboardPage
      */
 
     static $startTaskButton = 'Start!';
+    static $continueTaskButton = 'Continue!';
+
+    public static function translateModelContext($title, $type, $language)
+    {
+        return "#translation_{$language}_{$type}_" . str_replace(' ', '_', $title);
+    }
 
     /**
      * Basic route example for your current URL

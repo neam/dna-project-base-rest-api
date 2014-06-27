@@ -47,3 +47,27 @@ $I->login('martha', 'test');
 $I->amOnPage(DashboardPage::$URL);
 $I->see('Started Tasks (0)');
 $I->see('New Tasks (3)'); // one per language
+$I->see(DashboardPage::$startTaskButton);
+$I->dontSee(DashboardPage::$continueTaskButton);
+
+$I->click(
+    DashboardPage::$startTaskButton,
+    DashboardPage::translateModelContext('Dashboard test video', 'VideoFile', 'pt')
+);
+
+$I->click('Cancel');
+$I->amOnPage(DashboardPage::$URL);
+$I->see('Started Tasks (0)');
+$I->see('New Tasks (3)');
+
+$I->click(
+    DashboardPage::$startTaskButton,
+    DashboardPage::translateModelContext('Dashboard test video', 'VideoFile', 'pt')
+);
+
+$I->fillField(VideoFileEditPage::$titleFieldPt, 'Vídeo de teste do Dashboard');
+$I->click(VideoFileEditPage::$submitButton);
+$I->amOnPage(DashboardPage::$URL);
+// This is how it currently works, task in JIRA: https://gapminder.atlassian.net/browse/CMS-923
+$I->see('Started Tasks (3)');
+$I->see('New Tasks (0)');
