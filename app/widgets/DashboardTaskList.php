@@ -183,4 +183,18 @@ class DashboardTaskList extends CWidget
         }
         return null;
     }
+
+    public function createTaskId($data)
+    {
+        if ($data['task'] === 'translation') {
+            return $this->createTranslationId($data);
+        }
+        return '';
+    }
+
+    private function createTranslationId($data)
+    {
+        $activeId = Html::generateActiveId($this->getTaskModel($data), 'title');
+        return "{$data['task']}_{$data['language']}_{$activeId}";
+    }
 } 
