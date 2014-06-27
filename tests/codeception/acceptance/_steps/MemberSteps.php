@@ -39,9 +39,9 @@ class MemberSteps extends AppSteps
             ),
         ),
         array(
-            'name' => 'ferdanda',
+            'name' => 'fernanda',
             'password' => 'test',
-            'email' => 'dev+ferdanda@gapminder.org',
+            'email' => 'dev+fernanda@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupEditor'),
             ),
