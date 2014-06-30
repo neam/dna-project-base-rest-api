@@ -1,9 +1,14 @@
 <?php
+
 $scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
 $I->am('a authenticated user');
-$I->wantTo('perform actions and see result');
+$I->wantTo('create a item and edit it');
 
+
+/*
+ * Default role when logged in, can edit own items
+ */
 $I->login('authenticated', 'test');
 
 $I->createChapter(

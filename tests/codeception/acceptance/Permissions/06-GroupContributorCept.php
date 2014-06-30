@@ -3,6 +3,9 @@ $scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('perform actions and see result');
 
+/*
+ * Can create items in the group
+ */
 $I->login('contributor', 'test');
 
 $I->createSnapshot(
