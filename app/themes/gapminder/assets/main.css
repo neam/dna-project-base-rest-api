@@ -9869,592 +9869,6 @@ Styleguide 5
 .account-controller.admin-action .grid-view {
   margin-top: 20px;
 }
-.account-controller.profile-action .profile-section {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 2px solid #e4e4e4;
-}
-.account-controller.profile-action .profile-section:last-child {
-  border-bottom: none;
-}
-.account-controller.profile-action .profile-section-heading {
-  color: #000;
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0;
-  margin-bottom: 30px;
-}
-.account-controller.profile-action .profile-row {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.account-controller.profile-action .profile-row:before,
-.account-controller.profile-action .profile-row:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile-row:after {
-  clear: both;
-}
-.account-controller.profile-action .profile-row:before,
-.account-controller.profile-action .profile-row:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile-row:after {
-  clear: both;
-}
-.account-controller.profile-action .profile-row .profile-col-4 {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile-row .profile-col-4 {
-    float: left;
-    width: 33.33333333333333%;
-  }
-}
-.account-controller.profile-action .profile-row .profile-col-4 .profile-about-field {
-  height: 250px;
-}
-.account-controller.profile-action .profile-row .profile-col-12 {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile-row .profile-col-12 {
-    float: left;
-    width: 100%;
-  }
-}
-.account-controller.profile-action .profile-row .radio {
-  padding-left: 0;
-}
-.account-controller.profile-action label {
-  font-weight: 400;
-}
-.account-controller.profile-action .profile-summary {
-  margin-left: -15px;
-  margin-right: -15px;
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 2px solid #e4e4e4;
-  border-bottom: none;
-  padding-bottom: 50px;
-}
-.account-controller.profile-action .profile-summary:before,
-.account-controller.profile-action .profile-summary:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile-summary:after {
-  clear: both;
-}
-.account-controller.profile-action .profile-summary:before,
-.account-controller.profile-action .profile-summary:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile-summary:after {
-  clear: both;
-}
-.account-controller.profile-action .profile-summary:last-child {
-  border-bottom: none;
-}
-.account-controller.profile-action .profile-summary .summary-picture {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile-summary .summary-picture {
-    float: left;
-    width: 16.666666666666664%;
-  }
-}
-.account-controller.profile-action .profile-summary .summary-info {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile-summary .summary-info {
-    float: left;
-    width: 41.66666666666667%;
-  }
-}
-.account-controller.profile-action .profile-summary .summary-info .summary-heading {
-  font-size: 44.5px;
-  font-weight: 100;
-  margin: 0;
-  margin-bottom: 15px;
-}
-.account-controller.profile-action .profile-summary .summary-info .summary-lead {
-  font-weight: 100;
-  display: block;
-  margin-bottom: 10px;
-}
-.account-controller.profile-action .profile-summary .summary-info .summary-badges {
-  color: #c9c9c9;
-  display: block;
-  font-size: 50px;
-}
-.account-controller.profile-action .profile-summary .summary-roles {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile-summary .summary-roles {
-    float: left;
-    width: 33.33333333333333%;
-  }
-}
-.account-controller.profile-action .personal-information {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 2px solid #e4e4e4;
-  padding-bottom: 60px;
-}
-.account-controller.profile-action .personal-information:last-child {
-  border-bottom: none;
-}
-.account-controller.profile-action .profile-languages {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 2px solid #e4e4e4;
-}
-.account-controller.profile-action .profile-languages:last-child {
-  border-bottom: none;
-}
-.account-controller.profile-action .account-history {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 2px solid #e4e4e4;
-}
-.account-controller.profile-action .account-history:last-child {
-  border-bottom: none;
-}
-.account-controller.profile-action .profile-actions {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 2px solid #e4e4e4;
-  text-align: right;
-}
-.account-controller.profile-action .profile-actions:last-child {
-  border-bottom: none;
-}
-.account-controller.profile-action .flowbar .flowbar-head {
-  margin-left: -15px;
-  margin-right: -15px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.account-controller.profile-action .flowbar .flowbar-head:before,
-.account-controller.profile-action .flowbar .flowbar-head:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .flowbar .flowbar-head:after {
-  clear: both;
-}
-.account-controller.profile-action .flowbar .flowbar-head:before,
-.account-controller.profile-action .flowbar .flowbar-head:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .flowbar .flowbar-head:after {
-  clear: both;
-}
-.account-controller.profile-action .flowbar .flowbar-head .head-title {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  float: left !important;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .flowbar .flowbar-head .head-title {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.profile-action .flowbar .flowbar-head .head-title .profile-heading {
-  margin: 0;
-}
-.account-controller.profile-action .flowbar .flowbar-head .head-actions {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  float: right !important;
-  text-align: right;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .flowbar .flowbar-head .head-actions {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.profile-action .flowbar .flowbar-content {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.account-controller.profile-action .flowbar .flowbar-content:before,
-.account-controller.profile-action .flowbar .flowbar-content:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .flowbar .flowbar-content:after {
-  clear: both;
-}
-.account-controller.profile-action .flowbar .flowbar-content:before,
-.account-controller.profile-action .flowbar .flowbar-content:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .flowbar .flowbar-content:after {
-  clear: both;
-}
-.account-controller.profile-action .flowbar .flowbar-content .content-toolbar {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  float: left !important;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .flowbar .flowbar-content .content-toolbar {
-    float: left;
-    width: 66.66666666666666%;
-  }
-}
-.account-controller.profile-action .flowbar .flowbar-content .content-actions {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  text-align: right;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .flowbar .flowbar-content .content-actions {
-    float: left;
-    width: 33.33333333333333%;
-  }
-}
-.account-controller.profile-action .alerts {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.account-controller.profile-action .alerts:before,
-.account-controller.profile-action .alerts:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .alerts:after {
-  clear: both;
-}
-.account-controller.profile-action .alerts:before,
-.account-controller.profile-action .alerts:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .alerts:after {
-  clear: both;
-}
-.account-controller.profile-action .alerts .alerts-content {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .alerts .alerts-content {
-    float: left;
-    width: 100%;
-  }
-}
-.account-controller.profile-action .profile {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.account-controller.profile-action .profile:before,
-.account-controller.profile-action .profile:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile:after {
-  clear: both;
-}
-.account-controller.profile-action .profile:before,
-.account-controller.profile-action .profile:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile:after {
-  clear: both;
-}
-.account-controller.profile-action .profile .profile-content {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile .profile-content {
-    float: left;
-    width: 75%;
-  }
-}
-.account-controller.profile-action .profile .profile-content .content-messages {
-  padding: 15px;
-  margin-bottom: 22px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  border: none;
-  border-radius: 0;
-  margin-bottom: 30px;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #468847;
-}
-.account-controller.profile-action .profile .profile-content .content-messages h4 {
-  margin-top: 0;
-  color: inherit;
-}
-.account-controller.profile-action .profile .profile-content .content-messages .alert-link {
-  font-weight: bold;
-}
-.account-controller.profile-action .profile .profile-content .content-messages > p,
-.account-controller.profile-action .profile .profile-content .content-messages > ul {
-  margin-bottom: 0;
-}
-.account-controller.profile-action .profile .profile-content .content-messages > p + p {
-  margin-top: 5px;
-}
-.account-controller.profile-action .profile .profile-content .content-messages.alert-error {
-  background-color: #f2dede;
-  border-color: #ebccd1;
-  color: #b94a48;
-}
-.account-controller.profile-action .profile .profile-content .content-messages.alert-error hr {
-  border-top-color: #e4b9c0;
-}
-.account-controller.profile-action .profile .profile-content .content-messages.alert-error .alert-link {
-  color: #953b39;
-}
-.account-controller.profile-action .profile .profile-content .content-messages hr {
-  border-top-color: #c9e2b3;
-}
-.account-controller.profile-action .profile .profile-content .content-messages .alert-link {
-  color: #356635;
-}
-.account-controller.profile-action .profile .profile-content .content-form .radio {
-  padding-left: 0;
-}
-.account-controller.profile-action .profile .profile-content .content-form .profile-picture {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.account-controller.profile-action .profile .profile-content .content-form .profile-picture:before,
-.account-controller.profile-action .profile .profile-content .content-form .profile-picture:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile .profile-content .content-form .profile-picture:after {
-  clear: both;
-}
-.account-controller.profile-action .profile .profile-content .content-form .profile-picture:before,
-.account-controller.profile-action .profile .profile-content .content-form .profile-picture:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile .profile-content .content-form .profile-picture:after {
-  clear: both;
-}
-.account-controller.profile-action .profile .profile-content .content-form .profile-picture .picture-select {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile .profile-content .content-form .profile-picture .picture-select {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.profile-action .profile .profile-content .content-form .profile-picture .picture-upload {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile .profile-content .content-form .profile-picture .picture-upload {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.profile-action .profile .profile-content .content-form .username-and-password {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.account-controller.profile-action .profile .profile-content .content-form .username-and-password:before,
-.account-controller.profile-action .profile .profile-content .content-form .username-and-password:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile .profile-content .content-form .username-and-password:after {
-  clear: both;
-}
-.account-controller.profile-action .profile .profile-content .content-form .username-and-password:before,
-.account-controller.profile-action .profile .profile-content .content-form .username-and-password:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile .profile-content .content-form .username-and-password:after {
-  clear: both;
-}
-.account-controller.profile-action .profile .profile-content .content-form .username-and-password .username {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile .profile-content .content-form .username-and-password .username {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.profile-action .profile .profile-content .content-form .username-and-password .password {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile .profile-content .content-form .username-and-password .password {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-head {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-head:before,
-.account-controller.profile-action .profile .profile-content .content-form .form-head:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-head:after {
-  clear: both;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-head:before,
-.account-controller.profile-action .profile .profile-content .content-form .form-head:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-head:after {
-  clear: both;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-head .form-head-content {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile .profile-content .content-form .form-head .form-head-content {
-    float: left;
-    width: 100%;
-  }
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-errors {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-errors:before,
-.account-controller.profile-action .profile .profile-content .content-form .form-errors:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-errors:after {
-  clear: both;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-errors:before,
-.account-controller.profile-action .profile .profile-content .content-form .form-errors:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-errors:after {
-  clear: both;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-fields {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-fields:before,
-.account-controller.profile-action .profile .profile-content .content-form .form-fields:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-fields:after {
-  clear: both;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-fields:before,
-.account-controller.profile-action .profile .profile-content .content-form .form-fields:after {
-  content: " ";
-  display: table;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-fields:after {
-  clear: both;
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-fields .fields-left {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile .profile-content .content-form .form-fields .fields-left {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.profile-action .profile .profile-content .content-form .form-fields .fields-right {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile .profile-content .content-form .form-fields .fields-right {
-    float: left;
-    width: 50%;
-  }
-}
-.account-controller.profile-action .profile .profile-sidebar {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .account-controller.profile-action .profile .profile-sidebar {
-    float: left;
-    width: 25%;
-  }
-}
 .authenticate-controller.login-action .radio {
   padding-left: 0;
 }
@@ -14103,6 +13517,628 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
+.profile-controller.edit-action .profile-section {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+}
+.profile-controller.edit-action .profile-section:last-child {
+  border-bottom: none;
+}
+.profile-controller.edit-action .profile-section-heading {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 30px;
+}
+.profile-controller.edit-action .profile-row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.profile-controller.edit-action .profile-row:before,
+.profile-controller.edit-action .profile-row:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile-row:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile-row:before,
+.profile-controller.edit-action .profile-row:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile-row:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile-row .profile-col-4 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile-row .profile-col-4 {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.profile-controller.edit-action .profile-row .profile-col-4 .profile-about-field {
+  height: 250px;
+}
+.profile-controller.edit-action .profile-row .profile-col-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile-row .profile-col-12 {
+    float: left;
+    width: 100%;
+  }
+}
+.profile-controller.edit-action .profile-row .radio {
+  padding-left: 0;
+}
+.profile-controller.edit-action label {
+  font-weight: 400;
+}
+.profile-controller.edit-action .profile-summary {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+  border-bottom: none;
+  padding-bottom: 50px;
+}
+.profile-controller.edit-action .profile-summary:before,
+.profile-controller.edit-action .profile-summary:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile-summary:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile-summary:before,
+.profile-controller.edit-action .profile-summary:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile-summary:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile-summary:last-child {
+  border-bottom: none;
+}
+.profile-controller.edit-action .profile-summary .summary-picture {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .profile-controller.edit-action .profile-summary .summary-picture {
+    float: left;
+    width: 25%;
+  }
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile-summary .summary-picture {
+    float: left;
+    width: 25%;
+  }
+}
+@media (min-width: 1200px) {
+  .profile-controller.edit-action .profile-summary .summary-picture {
+    float: left;
+    width: 16.666666666666664%;
+  }
+}
+.profile-controller.edit-action .profile-summary .summary-info {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .profile-controller.edit-action .profile-summary .summary-info {
+    float: left;
+    width: 41.66666666666667%;
+  }
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile-summary .summary-info {
+    float: left;
+    width: 41.66666666666667%;
+  }
+}
+@media (min-width: 1200px) {
+  .profile-controller.edit-action .profile-summary .summary-info {
+    float: left;
+    width: 50%;
+  }
+}
+.profile-controller.edit-action .profile-summary .summary-info .summary-heading {
+  font-size: 44.5px;
+  font-weight: 100;
+  margin: 0;
+  margin-bottom: 15px;
+}
+.profile-controller.edit-action .profile-summary .summary-info .summary-lead {
+  font-weight: 100;
+  display: block;
+  margin-bottom: 10px;
+}
+.profile-controller.edit-action .profile-summary .summary-info .summary-badges {
+  color: #c9c9c9;
+  display: block;
+  font-size: 50px;
+}
+.profile-controller.edit-action .profile-summary .summary-roles {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .profile-controller.edit-action .profile-summary .summary-roles {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile-summary .summary-roles {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+@media (min-width: 1200px) {
+  .profile-controller.edit-action .profile-summary .summary-roles {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.profile-controller.edit-action .personal-information {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+  padding-bottom: 60px;
+}
+.profile-controller.edit-action .personal-information:last-child {
+  border-bottom: none;
+}
+.profile-controller.edit-action .profile-languages {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+}
+.profile-controller.edit-action .profile-languages:last-child {
+  border-bottom: none;
+}
+.profile-controller.edit-action .account-history {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+}
+.profile-controller.edit-action .account-history:last-child {
+  border-bottom: none;
+}
+.profile-controller.edit-action .profile-actions {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e4e4e4;
+  text-align: right;
+}
+.profile-controller.edit-action .profile-actions:last-child {
+  border-bottom: none;
+}
+.profile-controller.edit-action .flowbar .flowbar-head {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.profile-controller.edit-action .flowbar .flowbar-head:before,
+.profile-controller.edit-action .flowbar .flowbar-head:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .flowbar .flowbar-head:after {
+  clear: both;
+}
+.profile-controller.edit-action .flowbar .flowbar-head:before,
+.profile-controller.edit-action .flowbar .flowbar-head:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .flowbar .flowbar-head:after {
+  clear: both;
+}
+.profile-controller.edit-action .flowbar .flowbar-head .head-title {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: left !important;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .flowbar .flowbar-head .head-title {
+    float: left;
+    width: 50%;
+  }
+}
+.profile-controller.edit-action .flowbar .flowbar-head .head-title .profile-heading {
+  margin: 0;
+}
+.profile-controller.edit-action .flowbar .flowbar-head .head-actions {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: right !important;
+  text-align: right;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .flowbar .flowbar-head .head-actions {
+    float: left;
+    width: 50%;
+  }
+}
+.profile-controller.edit-action .flowbar .flowbar-content {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.profile-controller.edit-action .flowbar .flowbar-content:before,
+.profile-controller.edit-action .flowbar .flowbar-content:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .flowbar .flowbar-content:after {
+  clear: both;
+}
+.profile-controller.edit-action .flowbar .flowbar-content:before,
+.profile-controller.edit-action .flowbar .flowbar-content:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .flowbar .flowbar-content:after {
+  clear: both;
+}
+.profile-controller.edit-action .flowbar .flowbar-content .content-toolbar {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: left !important;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .flowbar .flowbar-content .content-toolbar {
+    float: left;
+    width: 66.66666666666666%;
+  }
+}
+.profile-controller.edit-action .flowbar .flowbar-content .content-actions {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: right;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .flowbar .flowbar-content .content-actions {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.profile-controller.edit-action .alerts {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.profile-controller.edit-action .alerts:before,
+.profile-controller.edit-action .alerts:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .alerts:after {
+  clear: both;
+}
+.profile-controller.edit-action .alerts:before,
+.profile-controller.edit-action .alerts:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .alerts:after {
+  clear: both;
+}
+.profile-controller.edit-action .alerts .alerts-content {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .alerts .alerts-content {
+    float: left;
+    width: 100%;
+  }
+}
+.profile-controller.edit-action .profile {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.profile-controller.edit-action .profile:before,
+.profile-controller.edit-action .profile:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile:before,
+.profile-controller.edit-action .profile:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile .profile-content {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile .profile-content {
+    float: left;
+    width: 75%;
+  }
+}
+.profile-controller.edit-action .profile .profile-content .content-messages {
+  padding: 15px;
+  margin-bottom: 22px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 30px;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+.profile-controller.edit-action .profile .profile-content .content-messages h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.profile-controller.edit-action .profile .profile-content .content-messages .alert-link {
+  font-weight: bold;
+}
+.profile-controller.edit-action .profile .profile-content .content-messages > p,
+.profile-controller.edit-action .profile .profile-content .content-messages > ul {
+  margin-bottom: 0;
+}
+.profile-controller.edit-action .profile .profile-content .content-messages > p + p {
+  margin-top: 5px;
+}
+.profile-controller.edit-action .profile .profile-content .content-messages.alert-error {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #b94a48;
+}
+.profile-controller.edit-action .profile .profile-content .content-messages.alert-error hr {
+  border-top-color: #e4b9c0;
+}
+.profile-controller.edit-action .profile .profile-content .content-messages.alert-error .alert-link {
+  color: #953b39;
+}
+.profile-controller.edit-action .profile .profile-content .content-messages hr {
+  border-top-color: #c9e2b3;
+}
+.profile-controller.edit-action .profile .profile-content .content-messages .alert-link {
+  color: #356635;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .radio {
+  padding-left: 0;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .profile-picture {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .profile-picture:before,
+.profile-controller.edit-action .profile .profile-content .content-form .profile-picture:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .profile-picture:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .profile-picture:before,
+.profile-controller.edit-action .profile .profile-content .content-form .profile-picture:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .profile-picture:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .profile-picture .picture-select {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile .profile-content .content-form .profile-picture .picture-select {
+    float: left;
+    width: 50%;
+  }
+}
+.profile-controller.edit-action .profile .profile-content .content-form .profile-picture .picture-upload {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile .profile-content .content-form .profile-picture .picture-upload {
+    float: left;
+    width: 50%;
+  }
+}
+.profile-controller.edit-action .profile .profile-content .content-form .username-and-password {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .username-and-password:before,
+.profile-controller.edit-action .profile .profile-content .content-form .username-and-password:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .username-and-password:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .username-and-password:before,
+.profile-controller.edit-action .profile .profile-content .content-form .username-and-password:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .username-and-password:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .username-and-password .username {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile .profile-content .content-form .username-and-password .username {
+    float: left;
+    width: 50%;
+  }
+}
+.profile-controller.edit-action .profile .profile-content .content-form .username-and-password .password {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile .profile-content .content-form .username-and-password .password {
+    float: left;
+    width: 50%;
+  }
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-head {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-head:before,
+.profile-controller.edit-action .profile .profile-content .content-form .form-head:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-head:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-head:before,
+.profile-controller.edit-action .profile .profile-content .content-form .form-head:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-head:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-head .form-head-content {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile .profile-content .content-form .form-head .form-head-content {
+    float: left;
+    width: 100%;
+  }
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-errors {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-errors:before,
+.profile-controller.edit-action .profile .profile-content .content-form .form-errors:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-errors:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-errors:before,
+.profile-controller.edit-action .profile .profile-content .content-form .form-errors:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-errors:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-fields {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-fields:before,
+.profile-controller.edit-action .profile .profile-content .content-form .form-fields:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-fields:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-fields:before,
+.profile-controller.edit-action .profile .profile-content .content-form .form-fields:after {
+  content: " ";
+  display: table;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-fields:after {
+  clear: both;
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-fields .fields-left {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile .profile-content .content-form .form-fields .fields-left {
+    float: left;
+    width: 50%;
+  }
+}
+.profile-controller.edit-action .profile .profile-content .content-form .form-fields .fields-right {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile .profile-content .content-form .form-fields .fields-right {
+    float: left;
+    width: 50%;
+  }
+}
+.profile-controller.edit-action .profile .profile-sidebar {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .profile-controller.edit-action .profile .profile-sidebar {
+    float: left;
+    width: 25%;
+  }
+}
 .registration-controller {
   font-weight: 100;
 }
@@ -16866,6 +16902,19 @@ Styleguide 9
   .item-controller.translate-action .item-row .row-column .item-well .item-content .content-primary .item-preview img {
     width: 100%;
     height: auto;
+  }
+}
+@media (max-width: 767px) {
+  .profile-controller.edit-action .profile-summary {
+    padding-bottom: 0;
+  }
+  .profile-controller.edit-action .profile-summary .summary-picture {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .profile-controller.edit-action .profile-summary .summary-info .summary-heading {
+    margin-top: 50px;
   }
 }
 @media (min-width: 768px) {

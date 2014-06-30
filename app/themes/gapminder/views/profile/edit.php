@@ -1,9 +1,9 @@
 <?php
-/* @var AccountController $this */
+/* @var ProfileController $this */
 /* @var Account $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<div class="account-controller profile-action">
+<div class="profile-controller edit-action">
     <?php $form = $this->beginWidget('\AppActiveForm', array(
         'id' => 'profile-form',
         'enableAjaxValidation' => true,
@@ -23,8 +23,10 @@
         </div>
         <div class="summary-info">
             <h1 class="summary-heading"><?php echo $model->profile->fullName; ?></h1>
+            <?php /*
             <span class="summary-lead">Title</span>
             <span class="summary-badges">* * *</span>
+            */ ?>
         </div>
         <div class="summary-role">
             <?php // TODO: Roles. ?>
