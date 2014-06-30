@@ -8,6 +8,10 @@ class ItemBrowsePage
     public static $addButton = '#addButton';
     public static $editButtonText = 'Edit';
 
+    // When item is in group, a minus is displayed before the group name (the group-toggle link), else a plus
+    public static $isNotInGroupIdentifier = '.glyphicon.glyphicon-plus';
+    public static $isInGroupIdentifier = '.glyphicon.glyphicon-minus';
+
     /**
      * Basic route example for your current URL
      * You can append any additional parameter to URL

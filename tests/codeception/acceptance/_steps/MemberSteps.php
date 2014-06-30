@@ -607,4 +607,37 @@ class MemberSteps extends AppSteps
         }
     }
 
+    function addItemToGroup($group, $itemContext)
+    {
+        $I = $this;
+        $I->seeItemIsNotInGroup($group, $itemContext);
+        $I->toggleItemGroup($group, $itemContext);
+        $I->seeItemIsInGroup($group, $itemContext);
+    }
+
+    function removeItemFromGroup($group, $itemContext)
+    {
+        $I = $this;
+        $I->seeItemIsInGroup($group, $itemContext);
+        $I->toggleItemGroup($group, $itemContext);
+        $I->seeItemIsNotInGroup($group, $itemContext);
+    }
+
+    function toggleItemGroup($group, $context)
+    {
+        $this->click($group, $context);
+    }
+
+    function seeItemIsInGroup($group, $itemContext)
+    {
+        $xpath = "//a[contains(text(), '$group')]/../" . CssSelector::toXPath(\ItemBrowsePage::$isInGroupIdentifier);
+        $this->seeElement(CssSelector::toXPath($itemContext) . $xpath);
+    }
+
+    function seeItemIsNotInGroup($group, $itemContext)
+    {
+        $xpath = "//a[contains(text(), '$group')]/../" . CssSelector::toXPath(\ItemBrowsePage::$isNotInGroupIdentifier);
+        $this->seeElement(CssSelector::toXPath($itemContext) . $xpath);
+    }
+
 }
