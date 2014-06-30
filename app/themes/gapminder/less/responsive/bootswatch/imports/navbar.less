@@ -12,18 +12,37 @@
     }
 
     .navbar-nav {
+      margin: 0 -15px;
+
       & > li {
         & > a {
           border: none;
-          padding: 20px 10px;
+          padding: 20px 15px;
         }
       }
+    }
+
+    .glyphicon {
+      display: none;
     }
   }
 
   .navbar-default {
     .navbar-toggle {
       margin: 5px 10px;
+    }
+
+    .navbar-nav {
+      .open {
+        .dropdown-menu {
+          & > li {
+            & > a {
+              padding: 20px 15px;
+              padding-left: 30px;
+            }
+          }
+        }
+      }
     }
   }
 }

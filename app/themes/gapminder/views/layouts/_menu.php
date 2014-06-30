@@ -23,7 +23,9 @@ if ($page !== null) {
             ),
             array(
                 'class' => '\TbNav',
-                'htmlOptions' => array(),
+                'htmlOptions' => array(
+                    'class' => 'navbar-left',
+                ),
                 'items' => array(
                     array(
                         'label' => Yii::t('app', 'Dashboard'),
@@ -35,7 +37,9 @@ if ($page !== null) {
             ),
             array(
                 'class' => '\TbNav',
-                'htmlOptions' => array('class' => 'pull-right'),
+                'htmlOptions' => array(
+                    'class' => 'navbar-right',
+                ),
                 'items' => array(
                     array(
                         'class' => 'language-menu',
