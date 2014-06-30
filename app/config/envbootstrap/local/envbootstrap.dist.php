@@ -102,7 +102,7 @@ class Identity
         $return->siteName = BRAND_SITENAME;
         $return->domain = BRAND_DOMAIN;
         $return->supportEmail = "info@" . $return->domain;
-        $return->signupEmail = "community@" . $return->domain;
+        $return->signupEmail = 'community@gapminder.org';
         $return->mailSentByMail = "noreply@" . $return->domain;
         $return->mailSentByName = $return->siteName;
         return $return;
