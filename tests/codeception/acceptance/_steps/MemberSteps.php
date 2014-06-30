@@ -21,6 +21,70 @@ use ChapterEditPage;
 class MemberSteps extends AppSteps
 {
 
+    public $groupUsers = array(
+        array(
+            'name' => 'authenticated',
+            'password' => 'test',
+            'email' => 'dev+authenticated@gapminder.org',
+            'groupRoles' => array(),
+        ),
+        array(
+            'name' => 'member',
+            'password' => 'test',
+            'email' => 'dev+member@gapminder.org',
+            'groupRoles' => array('GapminderOrg' => array('GroupMember')),
+        ),
+        array(
+            'name' => 'translator',
+            'password' => 'test',
+            'email' => 'dev+translator@gapminder.org',
+            'groupRoles' => array('GapminderOrg' => array('GroupTranslator')),
+        ),
+        array(
+            'name' => 'reviewer',
+            'password' => 'test',
+            'email' => 'dev+reviewer@gapminder.org',
+            'groupRoles' => array('GapminderOrg' => array('GroupReviewer')),
+        ),
+        array(
+            'name' => 'contributor',
+            'password' => 'test',
+            'email' => 'dev+contributor@gapminder.org',
+            'groupRoles' => array('GapminderOrg' => array('GroupContributor')),
+        ),
+        array(
+            'name' => 'moderator',
+            'password' => 'test',
+            'email' => 'dev+moderator@gapminder.org',
+            'groupRoles' => array('GapminderOrg' => array('GroupModerator')),
+        ),
+        array(
+            'name' => 'approver',
+            'password' => 'test',
+            'email' => 'dev+approver@gapminder.org',
+            'groupRoles' => array('GapminderOrg' => array('GroupApprover')),
+        ),
+        array(
+            'name' => 'editor',
+            'password' => 'test',
+            'email' => 'dev+editor@gapminder.org',
+            'groupRoles' => array('GapminderOrg' => array('GroupEditor')),
+        ),
+        array(
+            'name' => 'publisher',
+            'password' => 'test',
+            'email' => 'dev+publisher@gapminder.org',
+            'groupRoles' => array('GapminderOrg' => array('GroupPublisher')),
+        ),
+        array(
+            'name' => 'administrator',
+            'password' => 'test',
+            'email' => 'dev+administrator@gapminder.org',
+            'groupRoles' => array('GapminderOrg' => array('GroupAdministrator')),
+        ),
+
+    );
+
     public $staff = array(
         array(
             'name' => 'ola',
@@ -147,6 +211,13 @@ class MemberSteps extends AppSteps
     function registerUser($userInfo)
     {
         $this->registerUsers(array($userInfo));
+    }
+
+    function registerGroupUsers()
+    {
+        $I = $this;
+        $I->amGoingTo('Register group users');
+        $I->registerUsers($this->groupUsers);
     }
 
     function registerGapminderStaff()
