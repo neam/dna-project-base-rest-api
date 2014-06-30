@@ -16785,6 +16785,17 @@ Styleguide 9
   }
 }
 @media (max-width: 767px) {
+  .account-controller.dashboard-action .dashboard-profile .profile-info .profile-facts .profile-top-bar {
+    margin-bottom: 10px;
+  }
+  .account-controller.dashboard-action .profile-picture {
+    display: none;
+  }
+  .account-controller.dashboard-action .profile-name {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
   .item-controller.edit-action .item-top-actions .preview-button,
   .item-controller.translate-action .item-top-actions .preview-button {
     display: none;
