@@ -7,6 +7,9 @@ class ItemBrowsePage
 
     public static $addButton = '#addButton';
     public static $editButtonText = 'Edit';
+    public static $publishButtonText = 'Publish';
+    public static $unPublishButtonText = 'Unpublish';
+    public static $viewButtonText = 'View';
 
     // When item is in group, a minus is displayed before the group name (the group-toggle link), else a plus
     public static $isNotInGroupIdentifier = '.glyphicon.glyphicon-plus';
