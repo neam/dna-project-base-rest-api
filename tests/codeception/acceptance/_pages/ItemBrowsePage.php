@@ -9,6 +9,7 @@ class ItemBrowsePage
     public static $editButtonText = 'Edit';
     public static $publishButtonText = 'Publish';
     public static $unPublishButtonText = 'Unpublish';
+    public static $prepareForPublishingButtonText = 'Prepare for Publishing';
     public static $viewButtonText = 'View';
 
     // When item is in group, a minus is displayed before the group name (the group-toggle link), else a plus
