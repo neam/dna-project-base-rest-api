@@ -3,8 +3,7 @@ namespace WebGuy;
 
 class MemberSteps extends AppSteps
 {
-    use \ChapterTrait, \SnapshotTrait, \UsersTrait, \VideoTrait;
 
-
+    use \ItemEditTrait, \ChapterTrait, \SnapshotTrait, \UsersTrait, \VideoTrait;
 
 }

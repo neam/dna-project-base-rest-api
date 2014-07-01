@@ -3,8 +3,6 @@
 trait ChapterTrait
 {
 
-    use ItemEditTrait;
-
     function createChapter($stepAttributes)
     {
         $I = $this;
