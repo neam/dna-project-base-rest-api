@@ -13423,7 +13423,7 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 @media (min-width: 992px) {
   .item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-primary {
     float: left;
-    width: 58.333333333333336%;
+    width: 41.66666666666667%;
   }
 }
 .item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary {
@@ -13435,12 +13435,8 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 @media (min-width: 992px) {
   .item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary {
     float: left;
-    width: 41.66666666666667%;
+    width: 58.333333333333336%;
   }
-}
-.item-controller.translate-action .item-row.step-subtitles .row-column .item-well .item-content .content-secondary .item-fields {
-  height: 340px;
-  overflow-y: scroll;
 }
 .item-controller.translate-action .translate-subtitles .column-subtitle {
   width: 45%;
@@ -14795,18 +14791,6 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
 .snapshot-controller .view-action .map {
   overflow: hidden;
 }
-.videofile-controller.translate-action .translate-subtitles-list-view {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .videofile-controller.translate-action .translate-subtitles-list-view {
-    float: left;
-    width: 100%;
-  }
-}
 .alert {
   margin-bottom: 30px;
 }
@@ -14827,7 +14811,7 @@ fieldset[disabled] .site-controller .item-type-introduction .intro-head .intro-a
   padding-left: 15px;
   padding-right: 15px;
   font-size: 12px;
-  line-height: 1;
+  line-height: 1.8;
   list-style-type: none;
   margin: 0;
   margin-bottom: 25px;
@@ -16868,12 +16852,6 @@ Styleguide 9
   .dashboard-controller.index-action .dashboard-profile .profile-info .profile-facts .profile-top-bar {
     margin-bottom: 10px;
   }
-  .dashboard-controller.index-action .profile-picture {
-    display: none;
-  }
-  .dashboard-controller.index-action .profile-name {
-    display: none;
-  }
   .dashboard-controller.index-action .dashboard-tasks-container .tasks .tasks-list .tasks-list-item .task .task-info .task-bottom-bar .btn-primary {
     display: block;
     width: 100%;
@@ -16889,6 +16867,10 @@ Styleguide 9
   .item-controller.edit-action .item-top-actions .preview-button,
   .item-controller.translate-action .item-top-actions .preview-button {
     display: none;
+  }
+  .item-controller.edit-action .item-header .header-text .item-heading,
+  .item-controller.translate-action .item-header .header-text .item-heading {
+    margin-top: 0;
   }
 }
 @media (max-width: 991px) {
@@ -16908,8 +16890,13 @@ Styleguide 9
   .profile-controller.edit-action .profile-summary {
     padding-bottom: 0;
   }
-  .profile-controller.edit-action .profile-summary .summary-picture {
-    display: none;
+  .profile-controller.edit-action .profile-actions .btn {
+    position: relative;
+    float: left;
+    width: 50%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 @media (min-width: 768px) {
@@ -16933,4 +16920,8 @@ Styleguide 9
 .mejs-container.mejs-container-fullscreen .mejs-captions-layer {
   font-size: 35px;
   line-height: 40px;
+}
+.mejs-container.stretch video {
+  width: 100% !important;
+  height: 100% !important;
 }

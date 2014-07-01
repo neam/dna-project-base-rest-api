@@ -8,7 +8,7 @@
         <div class="row">
             <div class="profile-info">
                 <div class="row">
-                    <div class="profile-picture">
+                    <div class="profile-picture hidden-xs">
                         <?php echo TbHtml::link($model->profile->renderPicture(), array('/profile/edit')); ?>
                     </div>
                     <div class="profile-facts">
@@ -23,7 +23,7 @@
                                 <?php echo TbHtml::link(TbHtml::icon(TbHtml::ICON_COG), array('/profile/edit')); ?>
                             </div>
                         </div>
-                        <h1 class="profile-name"><?php echo $model->profile->fullName; ?></h1>
+                        <h1 class="profile-name hidden-xs"><?php echo $model->profile->fullName; ?></h1>
                         <?php /*
                         <span class="profile-title"><?php echo 'Project Manager at Nord Software'; // TODO: Get title dynamically. ?></span>
                         */ ?>

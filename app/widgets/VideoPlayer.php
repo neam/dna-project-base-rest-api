@@ -25,6 +25,12 @@ class VideoPlayer extends CWidget
      */
     public $srcLang;
 
+    /**
+     * Stretches the video horizontally if set to true.
+     * @var string
+     */
+    public $stretch;
+
     public function init()
     {
         parent::init();
@@ -100,6 +106,15 @@ class VideoPlayer extends CWidget
     public function videoExists()
     {
         return !empty($this->p3MediaFiles);
+    }
+
+    /**
+     * Returns the inline styles.
+     * @return string
+     */
+    public function getStyles()
+    {
+        return $this->stretch ? 'width: 100%; height: 100%;' : '';
     }
 
     /**

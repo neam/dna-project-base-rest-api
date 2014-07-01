@@ -5,7 +5,7 @@
 /** @var P3Media[] $p3MediaFiles */
 ?>
 <?php if ($this->videoExists()): ?>
-    <video width="604" height="340" controls="controls"><!-- Not used preload="none" -->
+    <video width="604" height="340" controls="controls" style="<?php echo $this->getStyles(); ?>"><!-- Not used preload="none" -->
         <?php foreach ($p3MediaFiles as $p3Media): ?>
             <source type="<?php echo $p3Media->mime_type; ?>" src="<?php echo $this->getVideoUrl($p3Media->id); ?>">
         <?php endforeach; ?>

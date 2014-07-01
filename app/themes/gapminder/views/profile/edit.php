@@ -18,7 +18,7 @@
         ),
     )); ?>
     <section class="profile-summary">
-        <div class="summary-picture">
+        <div class="summary-picture hidden-xs">
             <?php echo $model->profile->renderPicture(); ?>
         </div>
         <div class="summary-info">
@@ -179,7 +179,7 @@
         <?php echo TbHtml::submitButton(
             Yii::t('model', 'Save'),
             array(
-                'class' => 'btn btn-primary',
+                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
             )
         ); ?>
     </section>
