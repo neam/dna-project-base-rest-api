@@ -21,6 +21,20 @@ This web application is used by the community as well as Gapminder staff to auth
 * Now your CMS installation should be accessible on [http://localhost:11111]() and you should be able to login with admin/admin
 * Note: You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
 
+## Useful commands
+
+To verify that the database can be accessed from the local work station:
+
+    ../virtual-machines/vagrant/cms/scripts/scripts/verify-db-access.sh
+
+To ssh into the web container (Note: the db container does not support ssh):
+
+    ../virtual-machines/vagrant/cms/scripts/scripts/ssh.sh
+
+To follow the logs in the containers, run:
+
+    ../virtual-machines/vagrant/cms/scripts/scripts/logs.sh
+
 ## A note about running the commands below
 
 To run these commands locally, the following binaries must be installed locally and available in your PATH:
@@ -38,8 +52,7 @@ The following environment variable also needs to be set:
 
 Alternatively, you can run these commands inside the web container (where all of the above are already installed). Enter by running:
 
-    cd ../virtual-machines/vagrant/cms/build/cms-develop-virtualbox/
-    vagrant ssh web
+    ../virtual-machines/vagrant/cms/scripts/scripts/ssh.sh
 
 Before running any commands below, step in to the root of the cms codebase `/code/` and make all environment variables available:
 
