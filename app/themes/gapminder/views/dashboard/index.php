@@ -1,5 +1,5 @@
 <?php
-/** @var AccountController $this */
+/** @var DashboardController $this */
 /** @var Account $model */
 /** @var string $modelClass */
 ?>
@@ -77,6 +77,17 @@
             */ ?>
         </div>
     </div>
+    <?php if (Yii::app()->user->isGroupAdmin() || Yii::app()->user->isAdmin()): ?>
+        <div class="dashboard-tasks-container">
+            <div class="tasks-top-bar">
+                <div class="top-bar-title">
+                    <h2 class="tasks-heading"><?php echo Yii::t('app', 'Quick Start'); ?></h2>
+                </div>
+            </div>
+            <?php echo $this->renderItemActionDropdown(Yii::t('app', 'Browse...'), 'browse', true); ?>
+            <?php echo $this->renderItemActionDropdown(Yii::t('app', 'Create New...'), 'add'); ?>
+        </div>
+    <?php endif; ?>
     <div class="dashboard-tasks-container">
         <?php $this->widget(
             'app.widgets.DashboardTaskList',

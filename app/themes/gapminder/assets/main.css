@@ -6815,6 +6815,10 @@ body {
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #eb4498;
 }
+.dropdown-menu {
+  border: none;
+  border-radius: 0;
+}
 .dropdown-menu > li > a {
   font-weight: 100;
 }
