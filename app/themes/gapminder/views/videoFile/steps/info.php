@@ -39,6 +39,7 @@
                 'thumbnail_media_id',
                 $model->getThumbnailOptions(),
                 array(
+                    'thumbnails' => true,
                     'empty' => Yii::t('app', 'None'),
                 )
             ); ?>

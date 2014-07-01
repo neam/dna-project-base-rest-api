@@ -72,6 +72,7 @@
                     $model->profile->getPictureOptions(),
                     array(
                         'empty' => Yii::t('app', 'None'),
+                        'thumbnails' => true,
                     )
                 ); ?>
             </div>

@@ -6,7 +6,7 @@
         <div class="row">
             <div class="span3">
                 <?php if (isset($data->thumbnailMedia) && $data->thumbnailMedia instanceof P3Media): ?>
-                    <?php echo CHtml::link($data->thumbnailMedia->image('select2-thumb'), Yii::app()->controller->createUrl('view', array('id' => $data->id))); ?>
+                    <?php echo CHtml::link($data->thumbnailMedia->image('item-thumbnail'), Yii::app()->controller->createUrl('view', array('id' => $data->id))); ?>
                 <?php else: ?>
                     <div class="alert">
                         <?php echo Yii::t('app', 'No thumbnail available'); ?>

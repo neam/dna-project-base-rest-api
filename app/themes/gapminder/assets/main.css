@@ -16802,6 +16802,15 @@ Styleguide 9
   overflow: hidden;
   line-height: 55px;
 }
+.select2-text {
+  line-height: 49px;
+}
+.select2-chosen .select2-text {
+  line-height: 53px;
+}
+.select2-results .select2-result-label {
+  line-height: 48px;
+}
 .hint-tooltip {
   font-size: 14px;
   line-height: 32px;

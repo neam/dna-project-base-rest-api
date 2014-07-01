@@ -47,7 +47,7 @@
         <div class="item-thumb">
             <?php if (isset($data->thumbnailMedia) && $data->thumbnailMedia instanceof P3Media): ?>
                 <?php echo CHtml::link(
-                    $data->thumbnailMedia->image('select2-thumb'),
+                    $data->thumbnailMedia->image('item-thumbnail'),
                     $this->createUrl('view', array('id' => $data->id))
                 ); ?>
             <?php else: ?>

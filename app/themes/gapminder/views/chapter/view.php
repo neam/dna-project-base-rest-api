@@ -63,19 +63,21 @@ $sections = $this->chapterSections($model);
     </script>
 
     <div class="chapter-content">
-        <div class="content-sidebar bs-docs-sidebar">
-            <?php if (!empty($sections)): ?>
-                <ul class="nav nav-list bs-docs-sidenav affix">
-                    <?php foreach ($sections as $i => $section): ?>
-                        <?php echo CHtml::openTag('li', array('class' => $i == 0 ? 'active' : null)); ?>
-                        <?php echo CHtml::link('<i class="glyphicon-chevron-right"></i> ' . $section['menu_label'], '#' . $section['slug']); ?>
-                        <?php echo CHtml::closeTag('li'); ?>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else: ?>
-                <?php echo Yii::t('app', 'Chapter contains no sections'); ?>
-            <?php endif; ?>
-        </div>
+        <?php if ($this->action->id === 'view'): ?>
+            <div class="content-sidebar bs-docs-sidebar">
+                <?php if (!empty($sections)): ?>
+                    <ul class="nav nav-list bs-docs-sidenav affix">
+                        <?php foreach ($sections as $i => $section): ?>
+                            <?php echo CHtml::openTag('li', array('class' => $i == 0 ? 'active' : null)); ?>
+                            <?php echo CHtml::link('<i class="glyphicon-chevron-right"></i> ' . $section['menu_label'], '#' . $section['slug']); ?>
+                            <?php echo CHtml::closeTag('li'); ?>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <?php echo Yii::t('app', 'Chapter contains no sections'); ?>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
         <div class="content-details">
             <h1>
                 <?php echo $model->title; ?>
