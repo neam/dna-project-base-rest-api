@@ -22,9 +22,6 @@ class AdminController extends Controller
         return array(
             array(
                 'allow',
-                'actions' => array(
-                    'manageAccounts',
-                ),
                 'roles' => array(Role::SUPER_ADMINISTRATOR),
             ),
             array(
