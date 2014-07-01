@@ -175,6 +175,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'edit',
+                    'continueAuthoring',
                 ),
                 'expression' => function() {
                     return $this->checkModelOperationAccessById($this->modelId, 'Edit');
