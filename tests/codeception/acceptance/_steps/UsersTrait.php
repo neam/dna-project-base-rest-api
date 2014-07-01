@@ -159,7 +159,20 @@ trait UsersTrait
         $acceptTerms
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
-        $I->wait(1); // TODO: set a success/error class on the form to watch on instead
+
+        // Wait until errors are cleared (ajax validation)
+        $I->waitForElementChange(
+            RegistrationPage::$formId,
+            function (\WebDriverElement $element) {
+                try {
+                    $element->findElement(WebDriverBy::cssSelector(RegistrationPage::$errorClass));
+                } catch (NoSuchElementException $e) {
+                    return true;
+                }
+            },
+            30
+        );
+
         $I->click(RegistrationPage::$submitButton);
 
         if ($this->scenario->running()) {

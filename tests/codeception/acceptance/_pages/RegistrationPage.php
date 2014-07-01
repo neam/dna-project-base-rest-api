@@ -17,6 +17,9 @@ class RegistrationPage
     public static $acceptTermsField = '#SignupForm_acceptTerms';
     public static $submitButton = '#signup-submit';
 
+    public static $formId = '#signupForm';
+    public static $errorClass = '.has-error';
+
     /**
      * Basic route example for your current URL
      * You can append any additional parameter to URL
