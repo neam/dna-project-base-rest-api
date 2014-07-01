@@ -37,6 +37,8 @@ class DashboardController extends Controller
      */
     public function actionIndex()
     {
+        $this->requireProfileLanguages();
+
         $model = Account::model()->findByPk(user()->id);
 
         $this->buildBreadcrumbs(array(
