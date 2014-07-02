@@ -1,19 +1,20 @@
 <?php
 
-abstract class ItemEditPage
+class TranslationOverviewPage
 {
     // include url of current page
     static $URL = '';
+
+    static function translateIntoButtonText($language)
+    {
+        return 'Translate into ' . $language;
+    }
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
-
-    public static $submitButton = '#item-form button[name=save-changes]';
-    public static $formId = '#item-form';
-    public static $goToNextFieldButton = 'button[name=next-required]';
 
     /**
      * Basic route example for your current URL
@@ -36,7 +37,7 @@ abstract class ItemEditPage
     }
 
     /**
-     * @return ItemEditPage
+     * @return TranslationOverviewPage
      */
     public static function of(WebGuy $I)
     {

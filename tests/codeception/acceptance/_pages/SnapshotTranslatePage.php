@@ -1,19 +1,35 @@
 <?php
 
-abstract class ItemEditPage
+class SnapshotTranslatePage
 {
     // include url of current page
-    static $URL = '';
+    static $URL = '?r=snapshot/translate';
+
+    /**
+     * @var array the flowSteps of the translation workflow
+     */
+    static $steps = array('info');
+
+    static function titleField($langCode)
+    {
+        return '#Snapshot_title_' . $langCode;
+    }
+
+    static function slugField($langCode)
+    {
+        return '#Snapshot_slug_' . $langCode;
+    }
+
+    static function aboutField($langCode)
+    {
+        return '#Snapshot_about_' . $langCode;
+    }
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
-
-    public static $submitButton = '#item-form button[name=save-changes]';
-    public static $formId = '#item-form';
-    public static $goToNextFieldButton = 'button[name=next-required]';
 
     /**
      * Basic route example for your current URL
@@ -36,7 +52,7 @@ abstract class ItemEditPage
     }
 
     /**
-     * @return ItemEditPage
+     * @return SnapshotTranslatePage
      */
     public static function of(WebGuy $I)
     {

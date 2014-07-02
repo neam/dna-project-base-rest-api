@@ -1,6 +1,6 @@
 <?php
 
-class ItemBrowsePage
+abstract class ItemBrowsePage
 {
     // include url of current page
     static $URL = '';
@@ -11,6 +11,7 @@ class ItemBrowsePage
     public static $unPublishButtonText = 'Unpublish';
     public static $prepareForPublishingButtonText = 'Prepare for Publishing';
     public static $viewButtonText = 'View';
+    public static $translateButtonText = 'Translate';
 
     // When item is in group, a minus is displayed before the group name (the group-toggle link), else a plus
     public static $isNotInGroupIdentifier = '.glyphicon.glyphicon-plus';
