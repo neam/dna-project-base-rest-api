@@ -13597,6 +13597,8 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   border-bottom: none;
 }
 .profile-controller.edit-action .profile-summary .summary-picture {
+  float: left;
+  width: 33.33333333333333%;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -13605,7 +13607,7 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 @media (min-width: 768px) {
   .profile-controller.edit-action .profile-summary .summary-picture {
     float: left;
-    width: 25%;
+    width: 33.33333333333333%;
   }
 }
 @media (min-width: 992px) {
@@ -13621,6 +13623,8 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   }
 }
 .profile-controller.edit-action .profile-summary .summary-info {
+  float: left;
+  width: 66.66666666666666%;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -13629,7 +13633,7 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 @media (min-width: 768px) {
   .profile-controller.edit-action .profile-summary .summary-info {
     float: left;
-    width: 41.66666666666667%;
+    width: 66.66666666666666%;
   }
 }
 @media (min-width: 992px) {
@@ -13665,12 +13669,6 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-}
-@media (min-width: 768px) {
-  .profile-controller.edit-action .profile-summary .summary-roles {
-    float: left;
-    width: 33.33333333333333%;
-  }
 }
 @media (min-width: 992px) {
   .profile-controller.edit-action .profile-summary .summary-roles {
@@ -16908,6 +16906,22 @@ Styleguide 9
   .profile-controller.edit-action .profile-summary {
     padding-bottom: 0;
   }
+  .profile-controller.edit-action .profile-summary .summary-picture img {
+    width: 100%;
+    height: auto;
+  }
+  .profile-controller.edit-action .profile-summary .summary-info .summary-heading {
+    font-size: 26px;
+    margin-bottom: 3px;
+  }
+  .profile-controller.edit-action .profile-summary .summary-info .summary-lead {
+    margin-bottom: 1px;
+  }
+  .profile-controller.edit-action .profile-summary .summary-info .summary-badges {
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 400;
+  }
   .profile-controller.edit-action .profile-actions .btn {
     position: relative;
     float: left;
@@ -16919,7 +16933,7 @@ Styleguide 9
 }
 @media (min-width: 768px) {
   .profile-controller.edit-action .profile-summary .summary-info .summary-heading {
-    margin-top: 50px;
+    margin-top: 10px;
   }
 }
 @media (max-width: 767px) {
