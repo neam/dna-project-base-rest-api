@@ -1,24 +1,20 @@
 <?php
 
-class RegistrationPage
+class ChapterBrowsePage extends ItemBrowsePage
 {
     // include url of current page
-    static $URL = '?r=account/signup/index';
+    static $URL = '?r=chapter/browse';
+
+    public static function modelContext($title)
+    {
+        return '#Chapter_' . str_replace(' ', '_', $title);
+    }
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
-    public static $usernameField = '#SignupForm_username';
-    public static $emailField = '#SignupForm_email';
-    public static $passwordField = '#SignupForm_password';
-    public static $verifyPasswordField = '#SignupForm_verifyPassword';
-    public static $acceptTermsField = '#SignupForm_acceptTerms';
-    public static $submitButton = '#signup-submit';
-
-    public static $formId = '#signupForm';
-    public static $errorClass = '.has-error';
 
     /**
      * Basic route example for your current URL
@@ -41,7 +37,7 @@ class RegistrationPage
     }
 
     /**
-     * @return RegistrationPage
+     * @return ChapterBrowsePage
      */
     public static function of(WebGuy $I)
     {
