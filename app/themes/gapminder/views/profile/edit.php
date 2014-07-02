@@ -17,7 +17,7 @@
             'class' => 'dirtyforms',
         ),
     )); ?>
-    <section class="profile-summary">
+    <section class="profile-summary hidden-xs">
         <div class="summary-picture hidden-xs">
             <?php echo $model->profile->renderPicture(); ?>
         </div>

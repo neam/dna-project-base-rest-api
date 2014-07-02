@@ -193,7 +193,7 @@ class Controller extends CController
 
         ob_start();
 
-        echo CHtml::openTag('ul', array('class' => 'breadcrumbs'));
+        echo CHtml::openTag('ul', array('class' => 'breadcrumbs hidden-xs'));
 
 		end($breadcrumbs);
 		$lastLink = key($breadcrumbs);
