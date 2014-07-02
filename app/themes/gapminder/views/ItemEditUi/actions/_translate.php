@@ -26,7 +26,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="item-preview">
+                    <div class="item-preview hidden-xs">
                         <?php if (get_class($this->model) === 'VideoFile' && $this->step === $this::STEP_SUBTITLES): ?>
                             <?php $currentLang = Yii::app()->language; ?>
                             <?php Yii::app()->language = $this->controller->workflowData['translateInto']; ?>

@@ -16860,6 +16860,15 @@ Styleguide 9
   }
 }
 @media (max-width: 767px) {
+  .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .item-actions .step-action-buttons .btn,
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-actions .step-action-buttons .btn {
+    position: relative;
+    float: left;
+    width: 50%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
   .item-controller.edit-action .item-top-actions .preview-button,
   .item-controller.translate-action .item-top-actions .preview-button {
     display: none;
