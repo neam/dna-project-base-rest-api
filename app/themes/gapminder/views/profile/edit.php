@@ -18,17 +18,15 @@
         ),
     )); ?>
     <section class="profile-summary">
-        <div class="summary-picture hidden-xs">
+        <div class="summary-picture">
             <?php echo $model->profile->renderPicture(); ?>
         </div>
         <div class="summary-info">
             <h1 class="summary-heading"><?php echo $model->profile->fullName; ?></h1>
-            <?php /*
-            <span class="summary-lead">Title</span>
+            <span class="summary-lead"><?php echo Yii::t('app', 'Gapminder Member'); // TODO: Get appropriate title. ?></span>
             <span class="summary-badges">* * *</span>
-            */ ?>
         </div>
-        <div class="summary-role">
+        <div class="summary-role hidden-xs hidden-sm">
             <?php // TODO: Roles. ?>
         </div>
     </section>

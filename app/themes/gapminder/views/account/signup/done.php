@@ -1,7 +1,7 @@
 <?php
 /** @var SignupController $this */
 ?>
-<div class="registration-controller registrationsuccess-action">
+<div class="signup-controller done-action">
     <div class="row">
         <div class="message-container">
             <div class="brand-logo">

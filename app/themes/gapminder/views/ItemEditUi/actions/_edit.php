@@ -26,7 +26,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="item-preview">
+                    <div class="item-preview hidden-xs">
                         <?php echo $this->model->renderImage('item-workflow-preview'); ?>
                     </div>
                 </div>
