@@ -16806,6 +16806,11 @@ Styleguide 9
   vertical-align: middle;
 }
 @media (max-width: 767px) {
+  .btn {
+    font-size: 13px;
+  }
+}
+@media (max-width: 767px) {
   .navbar .navbar-brand {
     border-right: none;
     padding: 20.5px 15px;
