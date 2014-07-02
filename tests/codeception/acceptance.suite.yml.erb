@@ -62,12 +62,11 @@ env:
             config:
                 WebDriver:
                     url: http://<%= ENV['CMS_HOST'] %>
-                    browser: 'chrome'
+                    browser: 'iphone'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
                         platform: 'OS X 10.9'
                         version: '7.1'
-                        deviceName: 'iPhone'
                         device-orientation: 'portrait'
 
     go-saucelabs-chrome-win8:
