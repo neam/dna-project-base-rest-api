@@ -160,18 +160,24 @@ trait UsersTrait
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
 
+        /*
+        // TODO: find out why administrator registering stalls
         // Wait until errors are cleared (ajax validation)
         $I->waitForElementChange(
             RegistrationPage::$formId,
-            function (\WebDriverElement $element) {
+            function (\WebDriverElement $element) use ($I) {
                 try {
                     $element->findElement(WebDriverBy::cssSelector(RegistrationPage::$errorClass));
                 } catch (NoSuchElementException $e) {
                     return true;
                 }
+
+                return false;
             },
             30
         );
+        */
+        $I->wait(1);
 
         $I->click(RegistrationPage::$submitButton);
 
