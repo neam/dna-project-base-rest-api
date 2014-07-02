@@ -26,8 +26,6 @@ define([
                 dependencies[i] = this.basePath + dependencies[i];
             }
 
-            console.debug('Loading dependencies:', dependencies);
-            
             require(dependencies, function() {
                 defer.resolve.apply(defer, arguments);
             });
