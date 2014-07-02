@@ -22,10 +22,11 @@ class AdminController extends Controller
         return array(
             array(
                 'allow',
-                'actions' => array(
-                    'manage',
-                ),
                 'roles' => array(Role::SUPER_ADMINISTRATOR),
+            ),
+            array(
+                'deny',
+                'users' => array('*'),
             ),
         );
     }

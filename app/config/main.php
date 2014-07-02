@@ -461,10 +461,6 @@ $mainConfig = array(
                 // backend
                 'phundament' => 'p3admin/default/index',
 
-                // standard login page URL
-                //'<lang:[a-z]{2}(_[a-z]{2})? >/site/login' => 'user/login',
-                //'site/login'                             => 'user/login',
-
                 // p3pages - SEO
                 '<lang:[a-z]{2}(_[a-z]{2})?>/<pageName:[a-zA-Z0-9-._]*>-<pageId:\d+>.html'
                              => 'p3pages/default/page',
@@ -496,7 +492,7 @@ $mainConfig = array(
     'params'     => array(
         // this is used in contact page
         'adminEmail'           => \gapminder\envbootstrap\Identity::brand()->supportEmail,
-        'signupSender'         => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
+        'signupEmail'          => \gapminder\envbootstrap\Identity::brand()->signupEmail,
         'languages'            => $languages,
         'languageDirections'   => $languageDirections,
         'ext.ckeditor.options' => array(
@@ -569,6 +565,12 @@ $mainConfig = array(
                 'span' => 0,
                 'i'    => 0
             ),
+        ),
+        'pages' => array(
+            'terms' => array('page/view', 'id' => TERMS_PAGE_ID),
+            'about' => array('page/view', 'id' => ABOUT_PAGE_ID),
+            'cc' => array('page/view', 'id' => CC_PAGE_ID),
+            'privacyPolicy' => array('page/view', 'id' => PRIVACY_POLICY_PAGE_ID),
         ),
     ),
 );

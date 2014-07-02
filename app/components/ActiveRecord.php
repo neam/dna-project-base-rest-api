@@ -204,6 +204,27 @@ class ActiveRecord extends CActiveRecord
         );
     }
 
+    /**
+     * Returns related thumbnail P3Media.
+     * @return P3Media[]
+     */
+    public function getThumbnails()
+    {
+        return $this->getP3Media(array(
+            'image/jpeg',
+            'image/png',
+        ));
+    }
+
+    /**
+     * Returns related thumbnail options.
+     * @return array
+     */
+    public function getThumbnailOptions()
+    {
+        return $this->getOptions($this->getThumbnails());
+    }
+
     public function beforeRead()
     {
         // todo: use corr accessRestricted from behavior -> tests

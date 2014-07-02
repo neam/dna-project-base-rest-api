@@ -55,7 +55,7 @@ $I->click(
     DashboardPage::translateModelContext('Dashboard test video', 'VideoFile', 'pt')
 );
 
-$I->click('Cancel');
+$I->click('Stop Translating');
 $I->amOnPage(DashboardPage::$URL);
 $I->see('Started Tasks (0)');
 $I->see('New Tasks (3)');

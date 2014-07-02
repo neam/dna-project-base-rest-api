@@ -35,13 +35,41 @@
     array('hint' => true)
 ); ?>
 <?php if ($this->actionUsesEditWorkflow()): ?>
-    <?php
-    // TODO: Refactor this.
-    $relation = 'thumbnailMedia';
-    $attribute = 'thumbnail_media_id';
-    $step = 'info';
-    $mimeTypes = array('image/jpeg', 'image/png');
-
-    $this->renderPartial('//p3Media/_select', compact('model', 'form', 'relation', 'attribute', 'step', 'mimeTypes'));
-    ?>
+    <div class="file-field-2cols">
+        <div class="field-column">
+            <?php echo $form->select2ControlGroup(
+                $model,
+                'thumbnail_media_id',
+                $model->getThumbnailOptions(),
+                array(
+                    'thumbnails' => true,
+                    'empty' => Yii::t('app', 'None'),
+                )
+            ); ?>
+        </div>
+        <div class="field-column">
+            <div class="form-group">
+                <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+                <?php echo TbHtml::button(
+                    Yii::t('app', 'Upload'),
+                    array(
+                        'block' => true,
+                        'class' => 'upload-btn',
+                        'data-toggle' => 'modal',
+                        'data-target' => '#' . $form->id . '-modal',
+                    )
+                ); ?>
+                <?php $this->renderPartial(
+                    '//p3Media/_modal_form',
+                    array(
+                        'formId' => $form->id,
+                        'inputSelector' => '#Exercise_thumbnail_media_id',
+                        'model' => new P3Media(),
+                        'pk' => 'id',
+                        'field' => 'itemLabel',
+                    )
+                ); ?>
+            </div>
+        </div>
+    </div>
 <?php endif; ?>

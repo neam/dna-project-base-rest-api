@@ -34,7 +34,13 @@
                             <?php echo $form->emailFieldControlGroup($model, 'email'); ?>
                             <?php echo $form->passwordFieldControlGroup($model, 'password'); ?>
                             <?php echo $form->passwordFieldControlGroup($model, 'verifyPassword'); ?>
-                            <?php echo $form->checkBoxControlGroup($model, 'acceptTerms'); ?>
+                            <?php echo $form->checkBoxControlGroup(
+                                $model,
+                                'acceptTerms',
+                                array(
+                                    'help' => Yii::app()->renderFooterLink('View the terms and conditions', 'terms'),
+                                )
+                            ); ?>
                             <div class="captcha">
                                 <?php // TODO: Implement Captcha. ?>
                             </div>

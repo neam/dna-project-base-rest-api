@@ -112,21 +112,6 @@ class WebUser extends \nordsoftware\yii_account\components\WebUser
     }
 
     /**
-     * Checks if the user is an admin.
-     * @return bool
-     */
-    public function isAdmin()
-    {
-        if ($this->isGuest) {
-            return false;
-        }
-
-        $account = Account::model()->findByPk($this->id);
-
-        return (int) $account->superuser === 1;
-    }
-
-    /**
      * Loads an Account model.
      * @return CActiveRecord|null
      */
@@ -213,12 +198,45 @@ class WebUser extends \nordsoftware\yii_account\components\WebUser
     }
 
     /**
+     * Checks if the user is an admin.
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        if ($this->isGuest) {
+            return false;
+        }
+
+        $account = Account::model()->findByPk($this->id);
+
+        return (int) $account->superuser === 1;
+    }
+
+    /**
+     * Checks if the user is a group administrator.
+     * @return bool
+     */
+    public function isGroupAdmin()
+    {
+        return $this->hasRole(Role::GROUP_ADMINISTRATOR);
+    }
+
+    /**
      * Checks if the user is a translator.
      * @return bool
      */
     public function getIsTranslator()
     {
         return $this->hasRole(Role::GROUP_TRANSLATOR);
+    }
+
+    /**
+     * Checks if the user is a reviewer.
+     * @return bool
+     */
+    public function getIsReviewer()
+    {
+        return $this->hasRole(Role::GROUP_REVIEWER);
     }
 
     /**

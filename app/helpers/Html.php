@@ -76,7 +76,14 @@ class Html extends TbHtml
                 'htmlOptions' => $widgetOptions,
             )
         );
-        return self::renderWidget('vendor.crisu83.yiistrap-widgets.widgets.TbSelect2', $properties);
+
+        $html = self::renderWidget('vendor.crisu83.yiistrap-widgets.widgets.TbSelect2', $properties);
+
+        if (isset($htmlOptions['thumbnails']) && $htmlOptions['thumbnails']) {
+            self::renderSelect2Thumbnails($model, $attribute);
+        }
+
+        return $html;
     }
 
     /**
@@ -90,6 +97,51 @@ class Html extends TbHtml
     {
         $input = self::activeSelect2($model, $attribute, $data, $htmlOptions);
         return TbHtml::customActiveControlGroup($input, $model, $attribute, $htmlOptions);
+    }
+
+    /**
+     * Renders thumbnails for Select2 options.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     */
+    static public function renderSelect2Thumbnails($model, $attribute)
+    {
+        // TODO: Get rid of this atrocious jQuery hack.
+
+        $baseUrl = Yii::app()->baseUrl;
+        $modelClass = get_class($model);
+
+        $js = <<<EOF
+(function() {
+    function format(state) {
+        if (!state.id) return state.text;
+
+        var html = '';
+
+        html += '<div class="row">';
+        html += '  <div class="col-xs-6">';
+        html += "    <div class='select2-text'>" + state.text + "</div>";
+        html += '  </div>';
+        html += '  <div class="col-xs-6" style="text-align: right;">';
+        html += "    <img class='select2-thumb' src='{$baseUrl}/p3media/file/image?preset=select2-thumb&id=" + state.id.toLowerCase() + "'>";
+        html += '  </div>';
+        html += '</div>';
+
+        return html;
+    }
+
+    var select2opts = {
+        formatResult: format,
+        formatSelection: format,
+        //escapeMarkup: function(m) { return m; }
+    };
+
+    $("#{$modelClass}_{$attribute}").data('select2opts', select2opts);
+    $("#{$modelClass}_{$attribute}").select2($("#{$modelClass}_{$attribute}").data('select2opts'));
+})();
+EOF;
+
+        Yii::app()->clientScript->registerScript('select2-with-thumbnails-' . $modelClass . '-' . $attribute, $js);
     }
 
     /**
@@ -111,7 +163,17 @@ class Html extends TbHtml
         self::jsFacebox(); // required by Dirty Forms
         publishJs('/themes/frontend/js/vendor/jquery.dirtyforms.js', CClientScript::POS_HEAD);
         publishJs('/themes/frontend/js/dirty-forms-ckeditor.js', CClientScript::POS_HEAD);
-        app()->clientScript->registerScript('registerDirtyForms', "$('form.dirtyforms').dirtyForms();", CClientScript::POS_END);
+
+        $title = Yii::t('app', 'You have unsaved changes');
+        $message = Yii::t('app', 'Would you like to continue without saving?');
+
+        $js = "
+        $.DirtyForms.title = '{$title}';
+        $.DirtyForms.message = '{$message}';
+        $('form.dirtyforms').dirtyForms();
+        ";
+
+        app()->clientScript->registerScript('registerDirtyForms', $js, CClientScript::POS_END);
         publishJs('/themes/frontend/js/toggle-dirty-buttons.js', CClientScript::POS_READY); // show action buttons when form is dirty
     }
 
@@ -374,6 +436,34 @@ class Html extends TbHtml
             $attribute = $fallbackAttribute;
         }
         return CHtml::activeId($model, $model->{$attribute});
+    }
+
+    /**
+     * Renders an array of errors as an unordered list.
+     * @param array $errors list of errors (as attribute => message)
+     * @param string $intro the introductory error message. Defaults to 'Please correct the following errors:'.
+     * @return string
+     */
+    static public function renderValidationErrors(array $errors, $intro = null)
+    {
+        $html = '';
+        $errorCount = count($errors);
+
+        if ($errorCount > 0) {
+            if (!isset($intro)) {
+                $intro = Yii::t('app', 'Please correct the following error:|Please correct the following errors:', array($errorCount));
+            }
+
+            $html .= "<p>$intro</p>";
+            $html .= '<ul>';
+            foreach ($errors as $error) {
+                $html .= "<li>$error</li>";
+
+            }
+            $html .= '</ul>';
+        }
+
+        return $html;
     }
 
 }

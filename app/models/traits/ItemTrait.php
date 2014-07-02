@@ -10,6 +10,24 @@ trait ItemTrait
      */
     public $validationProgress = array();
 
+    /**
+     * Returns the item label.
+     * @return string
+     */
+    public function getItemLabel()
+    {
+        /** @var ActiveRecord $this */
+
+        $class = get_class($this);
+        $labels = DataModel::modelLabels();
+
+        $label = isset($labels[$class])
+            ? Yii::t('app', $labels[$class], 1) . ' #' . $this->id
+            : '';
+
+        return $label;
+    }
+
     public function saveWithChangeSet()
     {
         /** @var ActiveRecord|QaStateBehavior $model */
@@ -133,7 +151,10 @@ trait ItemTrait
      */
     public function isPublishable()
     {
-        return $this->qaStateBehavior()->validStatus('publishable')
+        /** @var QaStateBehavior $qaStateBehavior */
+        $qaStateBehavior = $this->qaStateBehavior();
+
+        return $qaStateBehavior->validStatus('publishable')
             && $this->belongsToAtLeastOneGroup()
             && !$this->isPublished();
     }
