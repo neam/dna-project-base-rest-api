@@ -51,8 +51,6 @@ define([
          */
         initialize: function () {
             this.initializeViews();
-
-            console.info('Application initialized');
         },
         
         /**
