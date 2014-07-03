@@ -181,6 +181,31 @@ Ensure that you have Java installed and then start [the selenium server](http://
     # if above doesn't work, try specifying chromedriver explicitly
     java -jar selenium-server-standalone-2.42.2.jar -Dwebdriver.chrome.driver=./chromedriver
 
+## Running tests against SauceLabs
+
+First, deploy to dokku according to instructions below. From that deployment process, you'll have `APPNAME` and `CMS_HOST` set according to that deployment.
+
+    export SAUCE_USERNAME=replaceme
+    export SAUCE_ACCESS_KEY=replaceme
+    export DATA=clean-db
+    export CI=1
+    cd tests
+    export COMPOSER_NO_INTERACTION=1
+    php ../composer.phar install --dev --prefer-dist
+    ./generate-local-codeception-config.sh
+
+    # use ci-configuration for deployment while running tests
+    ssh dokku@$DOKKU_HOST config:set $CMS_APPNAME CONFIG_ENVIRONMENT=ci
+
+    # example of running a single test using the iphone 7.1 environment:
+    vendor/bin/codecept run acceptance --env=cms-saucelabs-iphone-7_1-portrait -g data:$DATA --debug 01-HomePageWelcomeCept.php
+
+    # run all DATA-specific acceptance tests
+    vendor/bin/codecept run acceptance --env=cms-saucelabs-chrome-win8 --env=cms-saucelabs-iphone-7_1-portrait -g data:$DATA --debug
+
+    # run all DATA-specific api tests
+    vendor/bin/codecept run api -g data:$DATA --debug
+
 ### Hints for test developers
 
 To run an individual test, in this example an acceptance test:
