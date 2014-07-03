@@ -25,15 +25,15 @@ This web application is used by the community as well as Gapminder staff to auth
 
 To verify that the database can be accessed from the local work station:
 
-    ../virtual-machines/vagrant/cms/scripts/scripts/verify-db-access.sh
+    ../virtual-machines/vagrant/cms/scripts/verify-db-access.sh
 
 To ssh into the web container (Note: the db container does not support ssh):
 
-    ../virtual-machines/vagrant/cms/scripts/scripts/ssh.sh
+    ../virtual-machines/vagrant/cms/scripts/ssh.sh
 
 To follow the logs in the containers, run:
 
-    ../virtual-machines/vagrant/cms/scripts/scripts/logs.sh
+    ../virtual-machines/vagrant/cms/scripts/logs.sh
 
 ## A note about running the commands below
 
@@ -52,7 +52,7 @@ The following environment variable also needs to be set:
 
 Alternatively, you can run these commands inside the web container (where all of the above are already installed). Enter by running:
 
-    ../virtual-machines/vagrant/cms/scripts/scripts/ssh.sh
+    ../virtual-machines/vagrant/cms/scripts/ssh.sh
 
 Before running any commands below, step in to the root of the cms codebase `/code/` and make all environment variables available:
 
