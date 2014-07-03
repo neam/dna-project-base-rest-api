@@ -195,7 +195,7 @@ First, deploy to dokku according to instructions below. From that deployment pro
     ./generate-local-codeception-config.sh
 
     # use ci-configuration for deployment while running tests
-    ssh dokku@$DOKKU_HOST config:set $CMS_APPNAME CONFIG_ENVIRONMENT=ci
+    ssh dokku@$DOKKU_HOST config:set $APPNAME CONFIG_ENVIRONMENT=ci
 
     # example of running a single test using the iphone 7.1 environment:
     vendor/bin/codecept run acceptance --env=cms-saucelabs-iphone-7_1-portrait -g data:$DATA --debug 01-HomePageWelcomeCept.php
