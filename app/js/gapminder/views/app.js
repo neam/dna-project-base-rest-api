@@ -15,7 +15,6 @@ define([
         events: {
         },
         initialize: function () {
-            console.info('App view initialized');
         }
     });
 

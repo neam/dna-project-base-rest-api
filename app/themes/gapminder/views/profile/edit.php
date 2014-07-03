@@ -1,9 +1,9 @@
 <?php
-/* @var AccountController $this */
+/* @var ProfileController $this */
 /* @var Account $model */
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
-<div class="account-controller profile-action">
+<div class="profile-controller edit-action">
     <?php $form = $this->beginWidget('\AppActiveForm', array(
         'id' => 'profile-form',
         'enableAjaxValidation' => true,
@@ -18,13 +18,15 @@
         ),
     )); ?>
     <section class="profile-summary">
-        <div class="summary-picture">
+        <div class="summary-picture hidden-xs">
             <?php echo $model->profile->renderPicture(); ?>
         </div>
         <div class="summary-info">
-            <h1 class="summary-heading"><?php echo $model->username; ?></h1>
+            <h1 class="summary-heading"><?php echo $model->profile->fullName; ?></h1>
+            <?php /*
             <span class="summary-lead">Title</span>
             <span class="summary-badges">* * *</span>
+            */ ?>
         </div>
         <div class="summary-role">
             <?php // TODO: Roles. ?>
@@ -70,6 +72,7 @@
                     $model->profile->getPictureOptions(),
                     array(
                         'empty' => Yii::t('app', 'None'),
+                        'thumbnails' => true,
                     )
                 ); ?>
             </div>
@@ -177,7 +180,7 @@
         <?php echo TbHtml::submitButton(
             Yii::t('model', 'Save'),
             array(
-                'class' => 'btn btn-primary',
+                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
             )
         ); ?>
     </section>

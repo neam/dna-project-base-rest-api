@@ -130,6 +130,8 @@ class Account extends BaseAccount
     {
         PermissionHelper::addAccountToGroup($this->id, Group::TRANSLATORS, Role::GROUP_TRANSLATOR);
         PermissionHelper::addAccountToGroup($this->id, Group::REVIEWERS, Role::GROUP_REVIEWER);
+        PermissionHelper::addAccountToGroup($this->id, Group::GAPMINDER_ORG, Role::GROUP_TRANSLATOR);
+        PermissionHelper::addAccountToGroup($this->id, Group::GAPMINDER_ORG, Role::GROUP_REVIEWER);
     }
 
     /**

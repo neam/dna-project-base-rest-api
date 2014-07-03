@@ -9,6 +9,15 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
     /**
      * @inheritDoc
      */
+    public function init()
+    {
+        parent::init();
+        $this->emailSubject = Yii::t('app', 'Activate your Gapminder account');
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function behaviors()
     {
         return CMap::mergeArray(
@@ -39,9 +48,9 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
             $model->attributes = $request->getPost(Helper::classNameToPostKey($modelClass));
 
             if ($model->validate()) {
-                $accountClass = $this->module->getClassName(Module::CLASS_MODEL);
+                $accountClass = $this->module->getClassName(Module::CLASS_ACCOUNT);
 
-                /** @var \nordsoftware\yii_account\models\ar\Account $account */
+                /** @var \nordsoftware\yii_account\models\ar\Account|\Account $account */
                 $account = new $accountClass();
                 $account->attributes = $model->attributes;
 
@@ -64,7 +73,11 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
                         $this->redirect(array('/account/authenticate/login'));
                     }
 
-                    $this->sendActivationEmail($account);
+                    if (defined('CONFIG_ENVIRONMENT') && CONFIG_ENVIRONMENT !== 'test') {
+                        $this->sendActivationMail($account);
+                    } else {
+                        $account->save();
+                    }
 
                     $this->redirect(array('done'));
                 }
@@ -95,34 +108,26 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
     }
 
     /**
-     * Sends the activation email to the given account.
-     * @param Account $account account model.
-     * @throws \nordsoftware\yii_account\exceptions\Exception
+     * @inheritDoc
      */
-    protected function sendActivationEmail($account)
+    protected function sendActivationMail(\CActiveRecord $account)
     {
         if (!$account->save(false)) {
             $this->fatalError();
         }
 
         $token = $this->module->generateToken(Module::TOKEN_ACTIVATE, $account->id);
-        $activationUrl = $this->createAbsoluteUrl('/account/signup/activate', array('token' => $token));
 
-        $message = Yii::t(
-            'app', 'Welcome to Gapminder! Activate your account by visiting the following URL: {activationUrl}',
-            array(
-                '{activationUrl}' => $activationUrl,
-            )
+        $activateUrl = $this->createAbsoluteUrl('/account/signup/activate', array('token' => $token));
+
+        $config = array();
+        $config['from'] = Yii::app()->params['signupEmail'];
+
+        $this->module->sendMail(
+            $account->email,
+            $this->emailSubject,
+            $this->renderPartial('/email/activate', array('activateUrl' => $activateUrl), true),
+            $config
         );
-
-        $config = array(
-            'body' => $message,
-        );
-
-        if (defined('CONFIG_ENVIRONMENT') && CONFIG_ENVIRONMENT !== 'test') {
-            /** @var EmailBehavior $this */
-            $mail = $this->createEmail(app()->params['adminEmail'], $account->email, $this->emailSubject, $config);
-            $this->sendEmail($mail);
-        }
     }
 }

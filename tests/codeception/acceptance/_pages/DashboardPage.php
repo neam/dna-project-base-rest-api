@@ -11,8 +11,8 @@ class DashboardPage
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
 
-    static $startTaskButton = 'Start!';
-    static $continueTaskButton = 'Continue!';
+    static $startTaskButton = 'Start Translating';
+    static $continueTaskButton = 'Continue Translating';
 
     public static function translateModelContext($title, $type, $language)
     {

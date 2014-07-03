@@ -21,6 +21,20 @@ This web application is used by the community as well as Gapminder staff to auth
 * Now your CMS installation should be accessible on [http://localhost:11111]() and you should be able to login with admin/admin
 * Note: You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
 
+## Useful commands
+
+To verify that the database can be accessed from the local work station:
+
+    ../virtual-machines/vagrant/cms/scripts/scripts/verify-db-access.sh
+
+To ssh into the web container (Note: the db container does not support ssh):
+
+    ../virtual-machines/vagrant/cms/scripts/scripts/ssh.sh
+
+To follow the logs in the containers, run:
+
+    ../virtual-machines/vagrant/cms/scripts/scripts/logs.sh
+
 ## A note about running the commands below
 
 To run these commands locally, the following binaries must be installed locally and available in your PATH:
@@ -38,15 +52,12 @@ The following environment variable also needs to be set:
 
 Alternatively, you can run these commands inside the web container (where all of the above are already installed). Enter by running:
 
-    cd ../virtual-machines/vagrant/cms/build/cms-develop-virtualbox/
-    vagrant ssh web
+    ../virtual-machines/vagrant/cms/scripts/scripts/ssh.sh
 
-Before running any commands below, step in to the root of the cms codebase `/code/` and make all environment variables avaiable:
+Before running any commands below, step in to the root of the cms codebase `/code/` and make all environment variables available:
 
     cd /code/
-    export HOME=/app
     for file in /app/.profile.d/*; do source $file; done
-    export LOCAL_SERVICES_IP=172.17.42.1
 
 ## Update to the latest changes
 
@@ -109,8 +120,90 @@ If you are running these commands locally, set the following environment variabl
 
 Or, if you are running these commands from within the web container:
 
-    export SELENIUM_HOST=$LOCAL_SERVICES_IP
-    export SELENIUM_PORT=14444
+Type: PHP Constant(s)
+
+Determines what backing service to use for mail sending.
+
+The relevant constants are:
+
+ * SMTP_HOST
+ * SMTP_USERNAME
+ * SMTP_PASSWORD
+ * SMTP_PORT
+ * SMTP_ENCRYPTION
+
+Alternatively, SMTP details can be supplied by setting the SMTP_URL configuration directive in the format `smtp://username:urlencodedpassword@host:587?encryption=tls`
+
+Note: Developers are encouraged to use Google's SMTP server with their own accounts: https://www.digitalocean.com/community/articles/how-to-use-google-s-smtp-server
+
+#### YII_GII_PASSWORD
+
+Type: PHP Constant
+
+Used in Yii configuration to specify the password for Gii.
+
+#### TEST_DB_*-constants
+
+Type: PHP Constants
+
+Determines what backing service to use for MySQL-compatible database access when developers run tests locally.
+
+#### USER_GENERATED_DATA_S3_BUCKET
+
+The S3 bucket where user generated data is stored.
+
+#### USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY & USER_DATA_BACKUP_UPLOADERS_SECRET
+
+S3 credentials for an IAM user that has read+write access to the USER_GENERATED_DATA_S3_BUCKET.
+
+### Deployment configurations
+
+#### COMPOSER_GITHUB_OAUTH_TOKEN
+
+Type: Environment variable
+
+As per https://devcenter.heroku.com/articles/php-support#custom-github-oauth-tokens
+
+#### NEW_RELIC_LICENSE_KEY
+
+Type: Environment variable
+
+As per https://github.com/CHH/heroku-buildpack-php#newrelic
+
+#### NEW_RELIC_APP_NAME
+
+Type: Environment variable
+
+As per http://docs.newrelic.com/docs/site/naming-your-application
+
+#### GA_TRACKING_ID
+
+Type: Environment variable
+
+Google Analytics tracking id (UA-XXXXXXX-X)
+
+#### SENTRY_DSN
+
+Type: Environment variable
+
+As per https://app.getsentry.com/gapminder-developers/gapminder-cms/keys/
+
+## Update to the latest changes
+
+After pulling the latest changes, run the following to update your local environment:
+
+    php composer.phar --prefer-source install
+    npm install
+    bower install
+    shell-scripts/yiic-migrate.sh
+
+## Tests
+
+First, decide whether or not to run tests against a clean database or with user generated data:
+
+    export DATA=clean-db
+    OR
+    export DATA=user-generated
 
 Then, do the following before attempting to run any tests:
 

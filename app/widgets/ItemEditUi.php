@@ -184,7 +184,7 @@ class ItemEditUi extends CWidget
             $nextStepAction = $stepActions[$nextStepIndex];
             $url = $this->createFormActionUrlForStep($nextStepAction['step']);
         } else {
-            $url = Yii::app()->createUrl('/dashboard/index');
+            $url = Html::normalizeUrl(array('preview', 'id' => $this->model->id));
         }
 
         return $url;
@@ -234,15 +234,13 @@ class ItemEditUi extends CWidget
      */
     public function getSubmitButtonLabel()
     {
-        if ($this->actionId === self::ACTION_TRANSLATE) {
-            return $this->isFinalStep()
-                ? Yii::t('app', 'Translation is done!')
-                : Yii::t('app', 'Next');
-        } else {
-            return $this->isFinalStep()
-                ? Yii::t('app', 'Finish editing!')
-                : Yii::t('app', 'Next');
-        }
+        $subject = $this->controller->action->id === 'translate'
+            ? Yii::t('app', 'Translation')
+            : Yii::t('app', $this->model->modelLabel, 1);
+
+        return $this->isFinalStep()
+            ? Yii::t('app', 'Save {subject}', array('{subject}' => $subject))
+            : Yii::t('app', 'Next Step');
     }
 
     /**

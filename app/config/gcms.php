@@ -91,10 +91,18 @@ $gcmsConfig = array(
         'p3media' => array(
             'params' => array(
                 'presets' => array(
+                    'item-thumbnail' => array(
+                        'name' => 'Item Thumbnail',
+                        'commands' => array(
+                            'resize' => array(150, 80, 7), // Image::AUTO
+                            'quality' => '85',
+                        ),
+                        'type' => 'jpg',
+                    ),
                     'select2-thumb' => array(
                         'name' => 'Select2 Thumbnail',
                         'commands' => array(
-                            'resize' => array(150, 80, 7), // Image::AUTO
+                            'resize' => array(35, 35, 7), // Image::AUTO
                             'quality' => '85',
                         ),
                         'type' => 'jpg',
@@ -146,12 +154,15 @@ $gcmsConfig = array(
             ),
         ),
         'account' => array(
-            'class' => '\nordsoftware\yii_account\Module',
+            'class' => 'application.components.AccountModule',
             'classMap' => array(
-                'model' => 'Account',
+                'account' => 'Account',
                 'signupForm' => 'SignupForm',
             ),
             'controllerMap' => array(
+                'password' => array(
+                    'class' => 'application.controllers.PasswordController',
+                ),
                 'signup' => array(
                     'class' => 'application.controllers.SignupController',
                     'layout' => 'theme.views.layouts.minimal',
@@ -248,6 +259,7 @@ $gcmsConfig = array(
         ),
         'user' => array(
             'class' => 'application.components.WebUser',
+            'loginUrl' => array('/account/authenticate/login'),
         ),
         'widgetFactory' => array(
             'widgets' => array(

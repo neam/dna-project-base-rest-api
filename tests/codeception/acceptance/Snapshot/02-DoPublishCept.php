@@ -59,7 +59,7 @@ $I->login('ola', 'test');
 $I->amOnPage(SnapshotBrowsePage::$URL);
 $I->see('Test snapshot');
 $I->click('Publish');
-$I->seeInCurrentUrl('snapshot/edit');
+$I->seeInCurrentUrl('snapshot/browse');
 
 // Ensure item is visible
 $I->amOnPage(SnapshotBrowsePage::$URL);

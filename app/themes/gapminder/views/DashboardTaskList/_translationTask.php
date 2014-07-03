@@ -62,8 +62,8 @@
         <div class="task-actions">
             <?php echo TbHtml::linkButton(
                 ($this->type === DashboardTaskList::TYPE_NEW)
-                    ?  Yii::t('app', 'Start!')
-                    :  Yii::t('app', 'Continue!'),
+                    ?  Yii::t('app', 'Start Translating')
+                    :  Yii::t('app', 'Continue Translating'),
                 array(
                     'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                     'url' => $this->createTaskUrl('translate', $data),

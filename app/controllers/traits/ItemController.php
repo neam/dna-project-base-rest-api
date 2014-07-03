@@ -175,6 +175,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'edit',
+                    'continueAuthoring',
                 ),
                 'expression' => function() {
                     return $this->checkModelOperationAccessById($this->modelId, 'Edit');
@@ -642,13 +643,16 @@ trait ItemController
 
     /**
      * Publishes an item.
-     * @param integer $id
+     * @param int $id
      * @throws CException
      * @throws CHttpException
      * @throws SaveException
      */
     public function actionPublish($id)
     {
+        /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
+        /** @var Controller $this */
+
         // TODO: Save changeset.
 
         $model = $this->loadModel($id);
@@ -660,31 +664,31 @@ trait ItemController
         $model->changeStatus('public');
         $model->makeNodeHasGroupVisible();
 
-        // Redirect
-        if (isset($_GET['returnUrl'])) {
-            $this->redirect($_GET['returnUrl']);
-        } else {
-            $this->redirect(array('continueAuthoring', 'id' => $model->id));
-        }
+        $this->redirect(array('browse'));
     }
 
     /**
      * Unpublishes an item.
-     * @param integer $id
+     * @param int $id
      * @throws CHttpException
      */
     public function actionUnpublish($id)
     {
-        $model = $this->loadModel($id);
-        $model->refreshQaState();
-        $model->makeNodeHasGroupHidden();
+        $permissionAttributes = array(
+            'account_id' => Yii::app()->user->id,
+            'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
+            'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
+        );
 
-        // Redirect
-        if (isset($_GET['returnUrl'])) {
-            $this->redirect($_GET['returnUrl']);
+        if (PermissionHelper::groupHasAccount($permissionAttributes)) {
+            $model = $this->loadModel($id);
+            $model->refreshQaState();
+            $model->makeNodeHasGroupHidden();
         } else {
-            $this->redirect(array('continueAuthoring', 'id' => $model->id));
+            throw new CHttpException(403, Yii::t('error', 'You do not have permission to unpublish items.'));
         }
+
+        $this->redirect(array('browse'));
     }
 
     /**
@@ -693,7 +697,9 @@ trait ItemController
      */
     public function actionCancel($id)
     {
-        /** @var ActiveRecord|ItemTrait $model */
+        /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
+        /** @var Controller $this */
+
         $model = $this->loadModel($id);
         $step = $model->firstFlowStep();
 
@@ -1275,11 +1281,29 @@ trait ItemController
             $model->attributes = $_GET[$this->modelClass];
         }
 
+        if ($model->hasErrors()) {
+            // TODO: Figure out why error data needs to be restructured like this.
+            $errors = array_map(
+                function ($v) {
+                    return join(', ', $v);
+                },
+                $model->getErrors()
+            );
+
+            // TODO: Figure out why the id attribute contains array data as a string.
+            if (isset($errors['id'])) {
+                unset($errors['id']);
+            }
+
+            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_DANGER, Html::renderValidationErrors($errors));
+        }
+
         if ($model->hasErrors() || empty($_POST)) {
 
             return $model;
 
         } else {
+            $this->setBackToTranslationUrl();
 
             // redirect
             if (isset(Yii::app()->user->returnUrl)) {
@@ -1293,8 +1317,35 @@ trait ItemController
             } else {
                 $this->actionCancel($model->id);
             }
-
         }
+    }
+
+    /**
+     * Checks if the back to translation button should be displayed.
+     * @return bool
+     */
+    public function showBackToTranslationButton()
+    {
+        return Yii::app()->user->isTranslator && $this->getBackToTranslationUrl() !== '#';
+    }
+
+    /**
+     * Returns the URL to the previous translation workflow step.
+     * @return string
+     */
+    public function getBackToTranslationUrl()
+    {
+        return isset(Yii::app()->session['backToTranslationUrl'])
+            ? Yii::app()->session['backToTranslationUrl']
+            : '#';
+    }
+
+    /**
+     * Sets the URL to the current translation workflow step.
+     */
+    public function setBackToTranslationUrl()
+    {
+        Yii::app()->session['backToTranslationUrl'] = Yii::app()->request->url;
     }
 
     /**
