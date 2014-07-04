@@ -61,7 +61,9 @@ Before running any commands below, step in to the root of the cms codebase `/cod
 
 ## Update to the latest changes
 
-After pulling the latest changes, run the following to update your local environment:
+After pulling the latest changes, compare your `local/envbootstrap.php` against `local/envbootstrap.dist.php` and merge in relevant new configuration options/changes from the latter.
+
+Then, run the following to update your local environment:
 
     php composer.phar --prefer-source install
     npm install
