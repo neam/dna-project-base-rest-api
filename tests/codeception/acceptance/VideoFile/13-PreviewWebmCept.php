@@ -3,7 +3,7 @@
 $scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('create a video, attach a .webm video, and make sure it is rendered on the preview page. (Inactive)');
-/*
+
 $I->login('max', 'test');
 $videoTitle = '.webm Video';
 $I->createVideoFile(
@@ -25,4 +25,3 @@ $I->see($videoTitle, 'h1');
 $I->click('Preview');
 $I->seeInTitle('Preview');
 $I->seeElement('.mejs-video');
-*/
