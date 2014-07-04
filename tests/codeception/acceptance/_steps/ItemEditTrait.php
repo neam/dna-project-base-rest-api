@@ -13,8 +13,9 @@ trait ItemEditTrait
      * I must be on the first page of editing/creating item before calling this method!
      * @param $steps
      * @param $stepAttributes
+     * @param string $completionPage (optional) defaults to /preview
      */
-    function fillItemStepPages($steps, $stepAttributes)
+    function fillItemStepPages($steps, $stepAttributes, $completionPage = '/preview')
     {
         $I = $this;
         foreach ($steps as $step) {
@@ -22,7 +23,7 @@ trait ItemEditTrait
             $I->fillFieldsOnPageAndSubmit($attributes);
         }
 
-        $I->seeInCurrentUrl('dashboard');
+        $I->seeInCurrentUrl($completionPage);
     }
 
     /**
