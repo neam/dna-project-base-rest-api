@@ -61,11 +61,13 @@ Before running any commands below, step in to the root of the cms codebase `/cod
 
 ## Update to the latest changes
 
-After pulling the latest changes, run the following to update your local environment:
+After pulling the latest changes, compare your `local/envbootstrap.php` against `local/envbootstrap.dist.php` and merge in relevant new configuration options/changes from the latter.
+
+Then, run the following to update your local environment:
 
     php composer.phar --prefer-source install
     npm install
-    bower install
+    bower install --allow-root
     shell-scripts/yiic-migrate.sh
 
 ## Reset the database
@@ -110,7 +112,7 @@ Use the corresponding TEST_DB_*-values from `app/config/envbootstrap/local/envbo
     export DB_HOST=$LOCAL_SERVICES_IP
     export DB_PORT=13306
     export DB_USER=root
-    export DB_PASSWORD=changeme
+    export DB_PASSWORD=changeme # Hint: Use `cat app/config/envbootstrap/local/envbootstrap.php | grep DB_PASSWORD` to quickly see the password
     export DB_NAME=db_test
 
 If you are running these commands locally, set the following environment variables:
