@@ -4,6 +4,7 @@
 /* @var Profile $profile */
 /* @var TbActiveForm $form */
 ?>
+<div style="display: none">Testing 123</div>
 <?php $this->pageTitle = Yii::app()->name . ' - ' . Yii::t('user', 'Registration'); ?>
 <div class="signup-controller index-action">
     <div class="row">
