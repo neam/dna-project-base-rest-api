@@ -3,8 +3,7 @@
 $scenario->group('data:clean-db');
 
 $I = new WebGuy\MemberSteps($scenario);
-$I->wantTo('upload a profile picture (inactivated)');
-/*
+$I->wantTo('upload a profile picture');
 $I->login('max', 'test');
 
 $I->amOnPage(ProfilePage::$URL);
@@ -22,4 +21,3 @@ $I->waitForText('Save');
 $I->click('Save');
 $I->waitForText('Your account information has been updated.');
 $I->seeSelect2OptionIsSelected('#Profile_picture_media_id', 'phundament.png');
-*/
