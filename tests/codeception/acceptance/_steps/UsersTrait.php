@@ -151,7 +151,10 @@ trait UsersTrait
     {
         $I = $this;
         $I->amGoingTo("Register user $username");
-        $I->amOnPage(RegistrationPage::$URL);
+        $I->amOnPage(HomePage::$URL);
+        $I->click(HomePage::$loginLink);
+        $I->click(LoginPage::$signUpButtonText);
+        $I->waitForText(RegistrationPage::$introText);
         $I->fillField(RegistrationPage::$usernameField, $username);
         $I->fillField(RegistrationPage::$emailField, $email);
         $I->fillField(RegistrationPage::$passwordField, $password);

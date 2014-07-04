@@ -14,11 +14,13 @@ class RegistrationPage
     public static $emailField = '#SignupForm_email';
     public static $passwordField = '#SignupForm_password';
     public static $verifyPasswordField = '#SignupForm_verifyPassword';
-    public static $acceptTermsField = '#SignupForm_acceptTerms';
+    public static $acceptTermsField = '#ytSignupForm_acceptTerms';
     public static $submitButton = '#signup-submit';
 
     public static $formId = '#signupForm';
     public static $errorClass = '.has-error';
+
+    public static $introText = 'Thank you for deciding to join the Gapminder community!';
 
     /**
      * Basic route example for your current URL

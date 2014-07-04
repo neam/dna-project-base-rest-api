@@ -23,10 +23,6 @@
                                 '\TbActiveForm',
                                 array(
                                     'id' => $this->formId,
-                                    'enableAjaxValidation' => true,
-                                    'clientOptions' => array(
-                                        'validateOnSubmit' => true,
-                                    ),
                                 )
                             ); ?>
                             <?php echo $form->errorSummary($model); ?>
