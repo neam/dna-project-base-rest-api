@@ -7,6 +7,7 @@ $I->wantTo('upload a profile picture');
 $I->login('max', 'test');
 
 $I->amOnPage(ProfilePage::$URL);
+$I->selectLanguages(array('Swedish', 'English'));
 $I->click('Upload');
 $I->switchToIFrame(UploadPopupPage::iframeName('profile-form'));
 $I->attachFile(UploadPopupPage::$filesField, 'phundament.png');
