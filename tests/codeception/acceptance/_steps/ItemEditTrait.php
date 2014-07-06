@@ -22,7 +22,7 @@ trait ItemEditTrait
             $I->fillFieldsOnPageAndSubmit($attributes);
         }
 
-        $I->seeInCurrentUrl('dashboard');
+        $I->seeInCurrentUrl('/preview');
     }
 
     /**

@@ -6,6 +6,8 @@ $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('upload a profile picture');
 $I->login('max', 'test');
 
+$I->selectLanguages(array('Swedish', 'English', 'Bulgarian'));
+
 $I->amOnPage(ProfilePage::$URL);
 $I->click('Upload');
 $I->switchToIFrame(UploadPopupPage::iframeName('profile-form'));
