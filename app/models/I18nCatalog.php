@@ -37,23 +37,13 @@ class I18nCatalog extends BaseI18nCatalog
     public function rules()
     {
 
-        // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
-        $attribute = "po_contents";
-        $manualI18nRules = array();
-        foreach (LanguageHelper::getCodes() as $language) {
-            $manualI18nRules[] = array($attribute, 'validatePoContentsTranslation', 'on' => 'translate_into_' . $language);
-
-            foreach ($this->flowSteps() as $step => $fields) {
-                $manualI18nRules[] = array($attribute, 'validatePoContentsTranslation', 'on' => "into_$language-step_$step");
-            }
-        }
-
         $return = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
-            $manualI18nRules,
+            // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
+            $this->generateInlineValidatorI18nRules("po_contents", "validatePoContentsTranslation"),
             array(
 
                 array('title', 'length', 'min' => 10, 'max' => 200),

@@ -380,6 +380,25 @@ trait ItemTrait
         return $i18nRules;
     }
 
+    public function generateInlineValidatorI18nRules($attribute, $inlineValidator)
+    {
+
+        $inlineValidatorI18nRules = array();
+        foreach (LanguageHelper::getCodes() as $language) {
+            $inlineValidatorI18nRules[] = array($attribute, $inlineValidator, 'on' => 'translate_into_' . $language);
+
+            foreach ($this->flowSteps() as $step => $fields) {
+                foreach ($fields as $field) {
+                    if ($field == $attribute . '_' . $this->source_language) {
+                        $inlineValidatorI18nRules[] = array($attribute, $inlineValidator, 'on' => "into_$language-step_$step");
+                    }
+                }
+            }
+        }
+        return $inlineValidatorI18nRules;
+
+    }
+
     /**
      * Returns invalid fields.
      * @param string $scenario
