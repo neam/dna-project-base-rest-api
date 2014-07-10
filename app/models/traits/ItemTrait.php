@@ -455,7 +455,7 @@ trait ItemTrait
             }
         }
 
-        //codecept_debug(compact("i18nRules"));
+        //inspect(compact("i18nRules"));
 
         return $i18nRules;
     }
