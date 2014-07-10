@@ -27,12 +27,22 @@ class ProgressCalculationsTest extends \Codeception\TestCase\Test
     public function testZeroProgressOnNewItem()
     {
 
-        $scenarios = $this->_snapshot->qaStateBehavior()->scenarios;
+        //$item = new GuiSection();
+        //codecept_debug($item->validatorList);
+        //return;
 
         codecept_debug("");
-        foreach ($scenarios as $scenario) {
-            codecept_debug("Running against scenario '$scenario'");
-            $this->assertEquals(0, $this->_snapshot->calculateValidationProgress($scenario));
+        foreach (DataModel::qaModels() as $model => $table) {
+            codecept_debug("== $model == ");
+
+            $item = new $model;
+            $scenarios = $item->qaStateBehavior()->scenarios;
+
+            foreach ($scenarios as $scenario) {
+                codecept_debug("    Running against scenario '$scenario'");
+                $this->assertEquals(0, $item->calculateValidationProgress($scenario));
+            }
+
         }
 
     }

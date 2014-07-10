@@ -42,23 +42,18 @@ class Waffle extends BaseWaffle
     public function rules()
     {
 
-        // Add i18n validation rules manually for the related item translations
-        $attribute = "po_contents";
-        $manualI18nRules = array();
-        foreach (LanguageHelper::getCodes() as $language) {
-            $manualI18nRules[] = array($attribute, 'validateWaffleTranslation', 'on' => 'translate_into_' . $language);
-
-            foreach ($this->flowSteps() as $step => $fields) {
-                $manualI18nRules[] = array($attribute, 'validateWaffleTranslation', 'on' => "into_$language-step_$step");
-            }
-        }
-
         $return = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
-            $manualI18nRules,
+            // The relations are not themselves translated, but contains translated contents, so need to add i18n validation rules manually for the field
+            $this->generateInlineValidatorI18nRules("wafflePublisher", "validateRelatedTranslation"),
+            $this->generateInlineValidatorI18nRules("waffleCategories", "validateRelatedTranslation"),
+            $this->generateInlineValidatorI18nRules("waffleDataSources", "validateRelatedTranslation"),
+            $this->generateInlineValidatorI18nRules("waffleIndicators", "validateRelatedTranslation"),
+            $this->generateInlineValidatorI18nRules("waffleTags", "validateRelatedTranslation"),
+            $this->generateInlineValidatorI18nRules("waffleUnits", "validateRelatedTranslation"),
             array(
                 array('title', 'length', 'min' => 3, 'max' => 200),
                 array('json_import_media_id', 'validateFile', 'on' => 'publishable, publishable-step_import'),
@@ -75,10 +70,10 @@ class Waffle extends BaseWaffle
         }
     }
 
-    public function validateWaffleTranslation($attribute)
+    public function validateRelatedTranslation($attribute)
     {
-        if (false) {
-            $this->addError($attribute, Yii::t('app', 'TODO: Waffle translation validation'));
+        if (true) {
+            $this->addError($attribute, Yii::t('app', 'TODO: Related translation validation'));
         }
     }
 
