@@ -50,23 +50,13 @@ class VideoFile extends BaseVideoFile
     public function rules()
     {
 
-        // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
-        $attribute = "subtitles";
-        $manualI18nRules = array();
-        foreach (LanguageHelper::getCodes() as $language) {
-            $manualI18nRules[] = array($attribute, 'validateSubtitlesTranslation', 'on' => 'translate_into_' . $language);
-
-            foreach ($this->flowSteps() as $step => $fields) {
-                $manualI18nRules[] = array($attribute, 'validateSubtitlesTranslation', 'on' => "into_$language-step_$step");
-            }
-        }
-
         $return = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
-            $manualI18nRules,
+            // The field subtitles is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
+            $this->generateInlineValidatorI18nRules("subtitles", "validateSubtitlesTranslation"),
             array(
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'step_info,publishable,publishable-step_info'),
