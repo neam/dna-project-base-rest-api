@@ -107,17 +107,14 @@ class VideoFile extends BaseVideoFile
     public function validateSubtitlesTranslation($attribute)
     {
 
-        // Should not throw an exception or cause an error
-        if (!isset($this->subtitles)) {
-            $this->getParsedSubtitles();
-        }
-
+        // Throw exception when there are no subtitles to translate
         if (is_null($this->subtitles)) {
-            $this->addError($attribute, Yii::t('app', 'not valid translation since there are no subtitles to translate'));
-        } else {
-            $this->addError($attribute, Yii::t('app', 'not valid translation since validation logic is not written'));
-
+            throw new CException('There are currently no subtitles to translate, nevertheless validation was attempted');
         }
+
+        // TODO: Implement and remove
+        $this->addError($attribute, Yii::t('app', 'not valid translation since validation logic is not written'));
+
     }
 
     /**

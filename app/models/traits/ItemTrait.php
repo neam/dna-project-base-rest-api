@@ -286,40 +286,60 @@ trait ItemTrait
     }
 
     /**
+     * Enumerates all translatable and recursively translatable attributes
+     * @return array
+     */
+    public function getTranslatableAttributes()
+    {
+
+        $translatableAttributes = array();
+
+        $behaviors = $this->behaviors();
+
+        if (isset($behaviors['i18n-attribute-messages'])) {
+            foreach ($behaviors['i18n-attribute-messages']['translationAttributes'] as $translationAttribute) {
+                $sourceLanguageContentAttribute = "_" . $translationAttribute;
+                $translatableAttributes[$translationAttribute] = $sourceLanguageContentAttribute;
+            }
+        }
+
+        if (isset($behaviors['i18n-columns'])) {
+            foreach ($behaviors['i18n-columns']['translationAttributes'] as $translationAttribute) {
+                $sourceLanguageContentAttribute = $translationAttribute . "_" . $this->source_language;
+                $translatableAttributes[$translationAttribute] = $sourceLanguageContentAttribute;
+            }
+        }
+
+        $i18nRecursivelyValidatedMap = DataModel::i18nRecursivelyValidated();
+        if (isset($i18nRecursivelyValidatedMap['attributes'][get_class($this)])) {
+            $i18nRecursivelyValidated = $i18nRecursivelyValidatedMap['attributes'][get_class($this)];
+            foreach ($i18nRecursivelyValidated as $translationAttribute => $validatorMethod) {
+                $sourceLanguageContentAttribute = $translationAttribute;
+                $translatableAttributes[$translationAttribute] = $sourceLanguageContentAttribute;
+            }
+        }
+
+        return $translatableAttributes;
+
+    }
+
+    /**
      * A currently translatable attribute is an attribute that is to be translated AND has some source contents to translate.
      * @return array
      */
     public function getCurrentlyTranslatableAttributes()
     {
         $currentlyTranslatableAttributes = array();
+        $translatableAttributes = $this->getTranslatableAttributes();
 
-        $behaviors = $this->behaviors();
+        foreach ($translatableAttributes as $translationAttribute => $sourceLanguageContentAttribute) {
 
-        // i18n-attribute-messages
-        if (isset($behaviors['i18n-attribute-messages'])) {
-            foreach ($behaviors['i18n-attribute-messages']['translationAttributes'] as $translationAttribute) {
-
-                $sourceLanguageContentAttribute = "_" . $translationAttribute;
-                Yii::log(get_class($this) . "->getCurrentlyTranslatableAttributes() \$this->$sourceLanguageContentAttribute: " . json_encode($this->$sourceLanguageContentAttribute), "qa-state", __METHOD__);
-                $valid = !is_null($this->$sourceLanguageContentAttribute);
-                if ($valid) {
-                    $currentlyTranslatableAttributes[] = $translationAttribute;
-                }
-
+            Yii::log(get_class($this) . "->getCurrentlyTranslatableAttributes() \$this->$sourceLanguageContentAttribute: " . json_encode($this->$sourceLanguageContentAttribute), "qa-state", __METHOD__);
+            $valid = !is_null($this->$sourceLanguageContentAttribute);
+            if ($valid) {
+                $currentlyTranslatableAttributes[] = $translationAttribute;
             }
-        }
 
-        // i18n-columns
-        if (isset($behaviors['i18n-columns'])) {
-            foreach ($behaviors['i18n-columns']['translationAttributes'] as $translationAttribute) {
-
-                $sourceLanguageContentAttribute = $translationAttribute . "_" . $this->source_language;
-                $valid = isset($this->$sourceLanguageContentAttribute) && !is_null($this->$sourceLanguageContentAttribute);
-                if ($valid) {
-                    $currentlyTranslatableAttributes[] = $translationAttribute;
-                }
-
-            }
         }
 
         return $currentlyTranslatableAttributes;
@@ -334,19 +354,18 @@ trait ItemTrait
 
         Yii::log(get_class($this) . "->i18nRules()", 'flow', __METHOD__);
 
-        // Pick the first translatable attribute, if any
-        $behaviors = $this->behaviors();
-        $attribute = (isset($behaviors['i18n-attribute-messages']) ? $behaviors['i18n-attribute-messages']['translationAttributes'][0] :
-            (isset($behaviors['i18n-columns']) ? $behaviors['i18n-columns']['translationAttributes'][0] : false)
-        );
-
         // Do nothing if there are no attributes to translate at any time for this model
-        if (!$attribute) {
+        $translatableAttributes = $this->getTranslatableAttributes();
+        if (empty($translatableAttributes)) {
             return array();
         }
 
-        $currentlyTranslatableAttributes = $this->getCurrentlyTranslatableAttributes();
+        // Pick the first translatable attribute, if any
+        $a = $translatableAttributes;
+        $attribute = array_shift($a);
 
+        // Get the currently translatable attributes
+        $currentlyTranslatableAttributes = $this->getCurrentlyTranslatableAttributes();
         //codecept_debug(compact("currentlyTranslatableAttributes"));
         Yii::log("\$currentlyTranslatableAttributes: " . print_r($currentlyTranslatableAttributes, true), 'qa-state', __METHOD__);
 
@@ -393,6 +412,12 @@ trait ItemTrait
 
     public function generateInlineValidatorI18nRules($attribute, $inlineValidator)
     {
+
+        // Do not create i18n validation rules for this attribute if it is not currently translatable
+        $currentlyTranslatableAttributes = $this->getCurrentlyTranslatableAttributes();
+        if (!in_array($attribute, $currentlyTranslatableAttributes)) {
+            return array();
+        }
 
         $inlineValidatorI18nRules = array();
         foreach (LanguageHelper::getCodes() as $language) {

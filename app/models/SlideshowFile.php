@@ -62,9 +62,11 @@ class SlideshowFile extends BaseSlideshowFile
         return $return;
     }
 
-    public function validateDataArticles()
+    public function validateDataArticles($attribute)
     {
-        return count($this->dataarticles) <= 100;
+        if (!(count($this->dataarticles) <= 100)) {
+            $this->addError($attribute, Yii::t('app', '!validateDataArticles'));
+        }
     }
 
 
