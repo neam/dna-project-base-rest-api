@@ -359,7 +359,7 @@ trait ItemController
 
         $dataProvider = $model->search();
 
-        $this->populateWorkflowData($model, "browse", Yii::t('app', 'Browse'));
+        $this->populateWorkflowData($model, null, Yii::t('app', 'Browse'));
 
         /** @var Controller $this */
         $this->buildBreadcrumbs(array(
