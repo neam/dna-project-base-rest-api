@@ -42,8 +42,6 @@ class I18nCatalog extends BaseI18nCatalog
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
-            // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
-            $this->generateInlineValidatorI18nRules("po_contents", "validatePoContentsTranslation"),
             array(
 
                 array('title', 'length', 'min' => 10, 'max' => 200),

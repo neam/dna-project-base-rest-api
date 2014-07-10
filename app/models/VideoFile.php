@@ -54,8 +54,6 @@ class VideoFile extends BaseVideoFile
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
-            // The field subtitles is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
-            $this->generateInlineValidatorI18nRules("subtitles", "validateSubtitlesTranslation"),
             array(
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'step_info,publishable,publishable-step_info'),

@@ -49,8 +49,6 @@ class GuiSection extends BaseGuiSection
             $this->flowStepRules(),
             $this->i18nRules(),
             $translationRules,
-            // The field i18n_catalog_id is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
-            $this->generateInlineValidatorI18nRules("i18n_catalog_id", "validateI18nCatalogTranslation"),
             array(
                 array('title', 'length', 'min' => 3, 'max' => 200),
             )
