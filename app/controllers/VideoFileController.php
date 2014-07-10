@@ -176,7 +176,7 @@ class VideoFileController extends Controller
             $contents = file_get_contents($fullPath);
 
             // save to post
-            $_POST['VideoFile']['_subtitles'] = $contents;
+            $_POST['VideoFile']['subtitles'] = $contents;
 
             // emulate us hitting the save button
             $_POST['save-changes'] = true;
@@ -423,7 +423,7 @@ class VideoFileController extends Controller
 
         $fileName = "subtitles.srt";
         $path = "$basePath/{$fileName}";
-        file_put_contents($path, $model->_subtitles);
+        file_put_contents($path, $model->subtitles);
         $paths[$fileName] = $path;
 
         foreach (LanguageHelper::getCodes() as $locale) {

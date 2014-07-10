@@ -154,7 +154,7 @@
             $this->endClip();
             ?>
 
-            <?php echo $form->textAreaRow($model, '_subtitles', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+            <?php echo $form->textAreaRow($model, 'subtitles', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
             <?php
             $input = $this->widget(
