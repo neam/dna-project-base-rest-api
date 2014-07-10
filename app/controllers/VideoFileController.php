@@ -123,7 +123,7 @@ class VideoFileController extends Controller
             $this->saveAndContinueOnSuccess($model);
             $this->populateWorkflowData(
                 $model,
-                'translate',
+                'translate_into_' . $translateInto,
                 Yii::t(
                     'app',
                     'Translate into {translateIntoLanguage}',
