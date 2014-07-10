@@ -731,7 +731,7 @@ trait ItemController
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
 
-        $this->populateWorkflowData($model, "temporary", Yii::t('app', 'Edit'));
+        $this->populateWorkflowData($model, null, Yii::t('app', 'Edit'));
         $stepCaptions = $model->flowStepCaptions();
 
         $this->setPageTitle(array(
@@ -1058,7 +1058,7 @@ trait ItemController
         /** @var ItemController|Controller $this */
         $this->requireProfileLanguages();
 
-        $this->populateWorkflowData($model, 'translate', Yii::t('app', ''));
+        $this->populateWorkflowData($model, null, Yii::t('app', ''));
 
         /** @var Controller|ItemController $this */
         $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
@@ -1087,7 +1087,7 @@ trait ItemController
         $model->scenario = $this->scenario;
         $this->performAjaxValidation($model);
         $this->saveAndContinueOnSuccess($model);
-        $this->populateWorkflowData($model, 'translate', Yii::t('app', 'Translate into {translateIntoLanguage}', array(
+        $this->populateWorkflowData($model, 'translate_into_' . $translateInto, Yii::t('app', 'Translate into {translateIntoLanguage}', array(
             '{translateIntoLanguage}' => LanguageHelper::getName($translateInto),
         )), $translateInto);
         $stepCaptions = $model->flowStepCaptions();
@@ -1126,6 +1126,8 @@ trait ItemController
 
         //var_dump($model->qaState()->attributes);
 
+        // The overarching workflow progress
+        $workflowProgress = !is_null($validationScenario) ? $item->calculateValidationProgress($validationScenario) : null;
         /*
         if ($this->action->id == "draft") {
             $flagTriggerActions[] = array(
@@ -1197,6 +1199,7 @@ trait ItemController
                 "caption" => $stepCaptions[$step],
                 "progress" => $stepProgress,
                 "translateInto" => $translateInto,
+                "workflowProgress" => $workflowProgress,
             );
         }
 
