@@ -11,9 +11,6 @@ class ProgressCalculationsTest extends \Codeception\TestCase\Test
 
     protected function _before()
     {
-        // Create an empty Snapshot
-        $this->_snapshot = new Snapshot();
-
     }
 
     protected function _after()
@@ -26,10 +23,6 @@ class ProgressCalculationsTest extends \Codeception\TestCase\Test
      */
     public function testZeroProgressOnNewItem()
     {
-
-        //$item = new GuiSection();
-        //codecept_debug($item->validatorList);
-        //return;
 
         codecept_debug("");
         foreach (DataModel::qaModels() as $model => $table) {
