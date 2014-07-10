@@ -73,7 +73,7 @@ class VideoFile extends BaseVideoFile
                 array('clip_webm_media_id', 'validateVideoWebm', 'on' => 'step_files,publishable,publishable-step_files'),
                 array('clip_mp4_media_id', 'validateVideoMp4', 'on' => 'step_files,publishable,publishable-step_files'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
-                array('subtitles_' . $this->source_language, 'validateSubtitles', 'on' => 'step_subtitles,publishable,publishable-step_subtitles'),
+                array('subtitles', 'validateSubtitles', 'on' => 'step_subtitles,publishable,publishable-step_subtitles'),
                 array('youtube_url', 'url'),
             )
         );
@@ -105,11 +105,11 @@ class VideoFile extends BaseVideoFile
     public function validateSubtitles($attribute)
     {
         // Should not throw an exception or cause an error
-        if (!isset($this->_subtitles)) {
+        if (!isset($this->subtitles)) {
             $this->getParsedSubtitles();
         }
 
-        if (is_null($this->_subtitles)) {
+        if (is_null($this->subtitles)) {
             $this->addError($attribute, Yii::t('app', '!validateSubtitles'));
         }
 
@@ -172,7 +172,7 @@ class VideoFile extends BaseVideoFile
                 'youtube_url',
             ),
             'subtitles' => array(
-                'subtitles_' . $this->source_language,
+                'subtitles',
             ),
             'related' => array(
                 'related',
@@ -258,7 +258,7 @@ class VideoFile extends BaseVideoFile
 
     public function getParsedSubtitles()
     {
-        $subtitle_lines = explode("\n", $this->_subtitles);
+        $subtitle_lines = explode("\n", $this->subtitles);
 
         $parsed = array();
         $p = new stdClass();
