@@ -1131,10 +1131,11 @@ trait ItemController
         $stepActions = array();
         $flagTriggerActions = array();
 
-        //var_dump($model->qaState()->attributes);
+        //var_dump($item->qaState()->attributes);
 
         // The overarching workflow progress
         $workflowProgress = !is_null($validationScenario) ? $item->calculateValidationProgress($validationScenario) : null;
+
         /*
         if ($this->action->id == "draft") {
             $flagTriggerActions[] = array(
@@ -1182,20 +1183,19 @@ trait ItemController
 
         $stepCaptions = $item->flowStepCaptions();
         foreach ($item->flowSteps() as $step => $fields) {
-            // todo: do this some other way
-
-            /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
-            $model = $item->asa('i18n-attribute-messages') !== null ? $item->edited() : $item;
 
             if ($this->action->id == "translate" && $translateInto !== null) {
                 if (!$this->isStepTranslatable($item, $fields)) {
                     continue;
                 }
-                $stepProgress = $model->calculateValidationProgress('into_' . $translateInto . "-step_" . $step);
+                //$stepProgress = $item->calculateValidationProgress('into_' . $translateInto . "-step_" . $step);
+                $stepProgress = null; // Inactivated since we are not using step progress
             } elseif ($this->action->id == "edit") {
-                $stepProgress = $model->calculateValidationProgress("step_$step-total_progress");
+                //$stepProgress = $item->calculateValidationProgress("step_$step-total_progress");
+                $stepProgress = null; // Inactivated since we are not using step progress
             } else {
-                $stepProgress = $model->calculateValidationProgress("step_" . $step);
+                //$stepProgress = $item->calculateValidationProgress("step_" . $step);
+                $stepProgress = null; // Inactivated since we are not using step progress
             }
 
             $stepActions[] = array(
