@@ -142,24 +142,24 @@ To reset the test database (necessary in order to re-run tests):
 To run the unit tests:
 
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
-    vendor/bin/codecept run unit -g data:$DATA --debug
+    vendor/bin/codecept run unit -g data:$DATA --debug --fail-fast
 
 To run the functional tests (Note: Not currently used):
 
-    #vendor/bin/codecept run functional -g data:$DATA --debug
+    #vendor/bin/codecept run functional -g data:$DATA --debug --fail-fast
 
 Note: For the remaining tests, you need to have a selenium server running locally (see below in readme).
 
 To run the acceptance suite:
 
     touch testing
-    vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug
+    vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug --fail-fast
     rm testing
 
 To run the the API suite:
 
     touch testing
-    vendor/bin/codecept run api -g data:$DATA --debug
+    vendor/bin/codecept run api -g data:$DATA --debug --fail-fast
     rm testing
 
 All tests can be run in sequence (for both clean-db and user-generated) by running the `_test.sh` script:
@@ -187,7 +187,7 @@ Ensure that you have Java installed and then start [the selenium server](http://
 
 To run an individual test, in this example an acceptance test:
 
-     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug 04-VerifyCleanDbCept.php
+     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug --fail-fast 04-VerifyCleanDbCept.php
 
 In general, consult the documentation at http://codeception.com/docs/modules/WebDriver and related Codeception docs.
 
