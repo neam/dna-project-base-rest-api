@@ -312,10 +312,18 @@ trait ItemTrait
 
         $i18nRecursivelyValidatedMap = DataModel::i18nRecursivelyValidated();
         if (isset($i18nRecursivelyValidatedMap['attributes'][get_class($this)])) {
-            $i18nRecursivelyValidated = $i18nRecursivelyValidatedMap['attributes'][get_class($this)];
-            foreach ($i18nRecursivelyValidated as $translationAttribute => $validatorMethod) {
+            $attributes = $i18nRecursivelyValidatedMap['attributes'][get_class($this)];
+            foreach ($attributes as $translationAttribute => $validatorMethod) {
                 $sourceLanguageContentAttribute = $translationAttribute;
                 $translatableAttributes[$translationAttribute] = $sourceLanguageContentAttribute;
+            }
+        }
+
+        if (isset($i18nRecursivelyValidatedMap['relations'][get_class($this)])) {
+            $relations = $i18nRecursivelyValidatedMap['relations'][get_class($this)];
+            foreach ($relations as $translationRelation => $validatorMethod) {
+                $sourceLanguageContentAttribute = $translationRelation;
+                $translatableAttributes[$translationRelation] = $sourceLanguageContentAttribute;
             }
         }
 
@@ -356,6 +364,7 @@ trait ItemTrait
 
         // Do nothing if there are no attributes to translate at any time for this model
         $translatableAttributes = $this->getTranslatableAttributes();
+        //codecept_debug(compact("translatableAttributes"));
         if (empty($translatableAttributes)) {
             return array();
         }

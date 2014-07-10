@@ -349,8 +349,6 @@ class DataModel
                 'I18nCatalog' => array('po_contents' => 'validatePoContentsTranslation'),
                 'VideoFile' => array('subtitles' => 'validateSubtitlesTranslation'),
             ),
-            /*
-             * Currently unused but will be
             'relations' => array(
                 'GuiSection' => array(
                     'i18nCatalog' => 'validateRelatedTranslation',
@@ -364,7 +362,6 @@ class DataModel
                     'waffleUnits' => 'validateRelatedTranslation'
                 ),
             ),
-            */
         );
     }
 
