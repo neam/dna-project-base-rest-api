@@ -59,9 +59,9 @@ trait ItemController
                     'nextRequired',
                 ),
                 'users' => array('*'),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($this->modelId, 'View');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($this->modelId, 'View');
+                    },
             ),
             array(
                 'allow',
@@ -74,137 +74,137 @@ trait ItemController
                 'actions' => array(
                     'view',
                 ),
-                'expression' => function() {
-                    return Yii::app()->user->checkAccess('View');
-                },
+                'expression' => function () {
+                        return Yii::app()->user->checkAccess('View');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'browse',
                 ),
-                'expression' => function() {
-                    return Yii::app()->user->checkAccess('Browse');
-                },
+                'expression' => function () {
+                        return Yii::app()->user->checkAccess('Browse');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'add',
                 ),
-                'expression' => function() {
-                    return $this->checkAccess('Add');
-                },
+                'expression' => function () {
+                        return $this->checkAccess('Add');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'draft',
                     'saveDraft',
                 ),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($this->modelId, 'Edit');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($this->modelId, 'Edit');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'addEdges',
                     'deleteEdge',
                 ),
-                'expression' => function() {
-                    return $this->checkAccess('Edit');
-                },
+                'expression' => function () {
+                        return $this->checkAccess('Edit');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'prepareForReview',
                     'submitForReview',
                 ),
-                'expression' => function() {
-                    return $this->checkAccess('PrepareForReview');
-                },
+                'expression' => function () {
+                        return $this->checkAccess('PrepareForReview');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'evaluate',
                 ),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($this->modelId, 'Evaluate');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($this->modelId, 'Evaluate');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'prepareForPublishing',
                     'submitForPublishing',
                 ),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($this->modelId, 'PrepareForPublishing');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($this->modelId, 'PrepareForPublishing');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'proofread',
                 ),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($this->modelId, 'Proofread');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($this->modelId, 'Proofread');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'preview',
                 ),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($this->modelId, 'Preview');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($this->modelId, 'Preview');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'translate',
                     'translationOverview',
                 ),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($this->modelId, 'Translate');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($this->modelId, 'Translate');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'publish',
                     'unpublish',
                 ),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($this->modelId, 'Publish');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($this->modelId, 'Publish');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'edit',
                     'continueAuthoring',
                 ),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($this->modelId, 'Edit');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($this->modelId, 'Edit');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'addToGroup',
                     'removeFromGroup',
                 ),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($_GET['modelId'], 'ChangeGroup');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($_GET['modelId'], 'ChangeGroup');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'clone',
                 ),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($this->modelId, 'Clone');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($this->modelId, 'Clone');
+                    },
             ),
             array('allow',
                 'actions' => array(
                     'remove',
                 ),
-                'expression' => function() {
-                    return $this->checkModelOperationAccessById($this->modelId, 'Remove');
-                },
+                'expression' => function () {
+                        return $this->checkModelOperationAccessById($this->modelId, 'Remove');
+                    },
             ),
         );
 
@@ -766,7 +766,7 @@ trait ItemController
 
         // Relations considered safe. Note: set the relation as safe in the model-rules (if it is not already)!
         $allowedRelations = array_filter(
-            // attribute-names posted from form
+        // attribute-names posted from form
             array_keys($post),
             // add to list if the attribute is a safe relation
             function ($attribute) use ($model, $relationNames) {
@@ -1505,22 +1505,22 @@ trait ItemController
         $defaultLabel = Yii::t('app', 'Action');
 
         $labels = array(
-            Controller::ACTION_BROWSE                   => Yii::t('app', 'Browse'),
-            Controller::ACTION_VIEW                     => Yii::t('app', 'View'),
-            Controller::ACTION_ADD                      => Yii::t('app', 'Add'),
-            Controller::ACTION_EDIT                     => Yii::t('app', 'Edit'),
-            Controller::ACTION_CLONE                    => Yii::t('app', 'Clone'),
-            Controller::ACTION_REMOVE                   => Yii::t('app', 'Remove'),
-            Controller::ACTION_PREVIEW                  => Yii::t('app', 'Preview'),
-            Controller::ACTION_TRANSLATE                => Yii::t('app', 'Translate'),
-            Controller::ACTION_TRANSLATION_OVERVIEW     => Yii::t('app', 'Translate'),
-            Controller::ACTION_EVALUATE                 => Yii::t('app', 'Evaluate'),
-            Controller::ACTION_PROOFREAD                => Yii::t('app', 'Proofread'),
-            Controller::ACTION_APPROVE                  => Yii::t('app', 'Approve'),
-            Controller::ACTION_PUBLISH                  => Yii::t('app', 'Publish'),
-            Controller::ACTION_PREPARE_FOR_REVIEW       => Yii::t('app', 'Prepare for Review'),
-            Controller::ACTION_PREPARE_FOR_PUBLISHING   => Yii::t('app', 'Prepare for Publishing'),
-            Controller::ACTION_CANCEL                   => Yii::t('app', 'Cancel'),
+            Controller::ACTION_BROWSE => Yii::t('app', 'Browse'),
+            Controller::ACTION_VIEW => Yii::t('app', 'View'),
+            Controller::ACTION_ADD => Yii::t('app', 'Add'),
+            Controller::ACTION_EDIT => Yii::t('app', 'Edit'),
+            Controller::ACTION_CLONE => Yii::t('app', 'Clone'),
+            Controller::ACTION_REMOVE => Yii::t('app', 'Remove'),
+            Controller::ACTION_PREVIEW => Yii::t('app', 'Preview'),
+            Controller::ACTION_TRANSLATE => Yii::t('app', 'Translate'),
+            Controller::ACTION_TRANSLATION_OVERVIEW => Yii::t('app', 'Translate'),
+            Controller::ACTION_EVALUATE => Yii::t('app', 'Evaluate'),
+            Controller::ACTION_PROOFREAD => Yii::t('app', 'Proofread'),
+            Controller::ACTION_APPROVE => Yii::t('app', 'Approve'),
+            Controller::ACTION_PUBLISH => Yii::t('app', 'Publish'),
+            Controller::ACTION_PREPARE_FOR_REVIEW => Yii::t('app', 'Prepare for Review'),
+            Controller::ACTION_PREPARE_FOR_PUBLISHING => Yii::t('app', 'Prepare for Publishing'),
+            Controller::ACTION_CANCEL => Yii::t('app', 'Cancel'),
         );
 
         return array_key_exists($actionId, $labels) ? $labels[$actionId] : $defaultLabel;
