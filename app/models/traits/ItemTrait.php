@@ -310,24 +310,42 @@ trait ItemTrait
             }
         }
 
+        $recursivelyTranslatableAttributes = $this->getRecursivelyTranslatableAttributes();
+        foreach ($recursivelyTranslatableAttributes as $translationAttribute => $validatorMethod) {
+            $sourceLanguageContentAttribute = $translationAttribute;
+            $translatableAttributes[$translationAttribute] = $sourceLanguageContentAttribute;
+        }
+
+        return $translatableAttributes;
+
+    }
+
+    /**
+     * Enumerates all recursively translatable attributes
+     * @return array
+     */
+    public function getRecursivelyTranslatableAttributes()
+    {
+
+        $recursivelyTranslatableAttributes = array();
+
+        // The following fields are not itself translated, but contains translated contents, they need some special attention
         $i18nRecursivelyValidatedMap = DataModel::i18nRecursivelyValidated();
         if (isset($i18nRecursivelyValidatedMap['attributes'][get_class($this)])) {
             $attributes = $i18nRecursivelyValidatedMap['attributes'][get_class($this)];
             foreach ($attributes as $translationAttribute => $validatorMethod) {
-                $sourceLanguageContentAttribute = $translationAttribute;
-                $translatableAttributes[$translationAttribute] = $sourceLanguageContentAttribute;
+                $recursivelyTranslatableAttributes[$translationAttribute] = $validatorMethod;
             }
         }
 
         if (isset($i18nRecursivelyValidatedMap['relations'][get_class($this)])) {
             $relations = $i18nRecursivelyValidatedMap['relations'][get_class($this)];
             foreach ($relations as $translationRelation => $validatorMethod) {
-                $sourceLanguageContentAttribute = $translationRelation;
-                $translatableAttributes[$translationRelation] = $sourceLanguageContentAttribute;
+                $recursivelyTranslatableAttributes[$translationRelation] = $validatorMethod;
             }
         }
 
-        return $translatableAttributes;
+        return $recursivelyTranslatableAttributes;
 
     }
 
@@ -412,14 +430,27 @@ trait ItemTrait
                     continue;
                 }
                 foreach (LanguageHelper::getCodes() as $lang) {
-                    /*
-                    $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "into_$lang-step_$step");
-                    $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "into_$lang-step_$step");
-                    $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "into_$lang-step_$step");
-                    */
-                    //$i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "translate_into_$lang");
-                    //$i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "translate_into_$lang");
-                    $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "translate_into_$lang");
+
+                    // The following fields are not itself translated, but contains translated contents, they need some special attention
+                    $recursivelyTranslatableAttributes = $this->getRecursivelyTranslatableAttributes();
+
+                    if (in_array($sourceLanguageContentAttribute, array_keys($recursivelyTranslatableAttributes))) {
+
+                        $validatorMethod = $recursivelyTranslatableAttributes[$sourceLanguageContentAttribute];
+                        $i18nRules = array_merge($i18nRules, $this->generateInlineValidatorI18nRules($sourceLanguageContentAttribute, $validatorMethod));
+
+                    } else {
+
+                        /*
+                        $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "into_$lang-step_$step");
+                        $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "into_$lang-step_$step");
+                        $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "into_$lang-step_$step");
+                        */
+                        //$i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "translate_into_$lang");
+                        //$i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "translate_into_$lang");
+                        $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "translate_into_$lang");
+
+                    }
                 }
             }
         }

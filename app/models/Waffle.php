@@ -47,13 +47,6 @@ class Waffle extends BaseWaffle
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
-            // The relations are not themselves translated, but contains translated contents, so need to add i18n validation rules manually for the field
-            $this->generateInlineValidatorI18nRules("wafflePublisher", "validateRelatedTranslation"),
-            $this->generateInlineValidatorI18nRules("waffleCategories", "validateRelatedTranslation"),
-            $this->generateInlineValidatorI18nRules("waffleDataSources", "validateRelatedTranslation"),
-            $this->generateInlineValidatorI18nRules("waffleIndicators", "validateRelatedTranslation"),
-            $this->generateInlineValidatorI18nRules("waffleTags", "validateRelatedTranslation"),
-            $this->generateInlineValidatorI18nRules("waffleUnits", "validateRelatedTranslation"),
             array(
                 array('title', 'length', 'min' => 3, 'max' => 200),
                 array('json_import_media_id', 'validateFile', 'on' => 'publishable, publishable-step_import'),
