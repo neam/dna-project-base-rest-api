@@ -285,4 +285,15 @@ class ItemEditUi extends CWidget
             ? count($this->controller->workflowData['stepActions'])
             : null;
     }
+
+    /**
+     * Returns the total number of steps.
+     * @return integer
+     */
+    public function getCurrentWorkflowProgress()
+    {
+        return isset($this->controller->workflowData['stepActions'])
+            ? $this->controller->workflowData['stepActions'][$this->getCurrentStepIndex()]["workflowProgress"]
+            : null;
+    }
 }
