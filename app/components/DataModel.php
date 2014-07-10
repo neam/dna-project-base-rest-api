@@ -340,6 +340,35 @@ class DataModel
     }
 
     /**
+     * @return array List of model attributes and relations to track translation progress for using recursive validator logic
+     */
+    static public function i18nRecursivelyValidated()
+    {
+        return array(
+            'attributes' => array(
+                'I18nCatalog' => array('po_contents' => 'validatePoContentsTranslation'),
+                'VideoFile' => array('subtitles' => 'validateSubtitlesTranslation'),
+            ),
+            /*
+             * Currently unused but will be
+            'relations' => array(
+                'GuiSection' => array(
+                    'i18nCatalog' => 'validateRelatedTranslation',
+                ),
+                'Waffle' => array(
+                    'wafflePublisher' => 'validateRelatedTranslation',
+                    'waffleCategories' => 'validateRelatedTranslation',
+                    'waffleDataSources' => 'validateRelatedTranslation',
+                    'waffleIndicators' => 'validateRelatedTranslation',
+                    'waffleTags' => 'validateRelatedTranslation',
+                    'waffleUnits' => 'validateRelatedTranslation'
+                ),
+            ),
+            */
+        );
+    }
+
+    /**
      * @param $modelOrModelClass
      * @return bool
      */

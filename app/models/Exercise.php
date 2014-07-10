@@ -74,7 +74,9 @@ class Exercise extends BaseExercise
 
                 // Ordinary validation rules
                 array('question_' . $this->source_language, 'length', 'min' => 25, 'max' => 200),
+                array('question', 'length', 'min' => 25, 'max' => 200),
                 array('description_' . $this->source_language, 'length', 'min' => 100, 'max' => 400),
+                array('description', 'length', 'min' => 100, 'max' => 400),
                 array('thumbnail', 'validateThumbnail', 'on' => 'publishable'),
                 array('materials', 'validateMaterials', 'on' => 'publishable'),
 

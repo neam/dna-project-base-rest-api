@@ -11,7 +11,7 @@
 
             <?php echo $form->textFieldRow($model, 'i18n_category', array('maxlength' => 255)); ?>
 
-            <?php echo $form->textAreaRow($model, '_po_contents', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
+            <?php echo $form->textAreaRow($model, 'po_contents', array('rows' => 6, 'cols' => 50, 'class' => 'span8')); ?>
 
             <?php
             $input = $this->widget(

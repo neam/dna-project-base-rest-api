@@ -52,6 +52,7 @@ class Menu extends BaseMenu
     }
 
     public $pages;
+
     public function validatePages($attribute)
     {
         if (true) {

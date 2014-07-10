@@ -78,9 +78,15 @@ class I18nCatalog extends BaseI18nCatalog
 
     public function validatePoContentsTranslation($attribute)
     {
-        if (true) {
-            $this->addError($attribute, Yii::t('app', 'TODO: Po Contents translation validation'));
+
+        // Throw exception when there are no po_contents to translate
+        if (is_null($this->po_contents)) {
+            throw new CException('There are currently no po_contents to translate, nevertheless validation was attempted');
         }
+
+        // TODO: Implement and remove
+        $this->addError($attribute, Yii::t('app', 'not valid translation since validation logic is not written'));
+
     }
 
     /**
