@@ -32,8 +32,7 @@ class VideoFile extends BaseVideoFile
     {
         return array_merge(
             parent::behaviors(),
-            array(
-            )
+            array()
         );
     }
 
@@ -67,7 +66,7 @@ class VideoFile extends BaseVideoFile
                 array('youtube_url', 'url'),
             )
         );
-        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        Yii::log("model->rules(): " . print_r($return, true), "videofile-validation-rules", __METHOD__);
         return $return;
     }
 

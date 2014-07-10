@@ -8,6 +8,7 @@ $stepCaptions = $model->flowStepCaptions();
 
 <?php
 
+die("NOT USED");
 foreach ($this->workflowData["stepActions"] as $action) {
     $this->renderPartial("/_item/elements/_progress-item", $action);
 }

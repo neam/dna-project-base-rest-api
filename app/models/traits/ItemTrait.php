@@ -155,8 +155,8 @@ trait ItemTrait
         $qaStateBehavior = $this->qaStateBehavior();
 
         return $qaStateBehavior->validStatus('publishable')
-            && $this->belongsToAtLeastOneGroup()
-            && !$this->isPublished();
+        && $this->belongsToAtLeastOneGroup()
+        && !$this->isPublished();
     }
 
     /**
@@ -166,8 +166,8 @@ trait ItemTrait
     public function isUnpublishable()
     {
         return in_array($this->qaState()->status, array('public'))
-            && $this->belongsToAtLeastOneGroup()
-            && $this->isPublished();
+        && $this->belongsToAtLeastOneGroup()
+        && $this->isPublished();
     }
 
     /**
@@ -300,6 +300,7 @@ trait ItemTrait
             foreach ($behaviors['i18n-attribute-messages']['translationAttributes'] as $translationAttribute) {
 
                 $sourceLanguageContentAttribute = "_" . $translationAttribute;
+                Yii::log(get_class($this) . "->getCurrentlyTranslatableAttributes() \$this->$sourceLanguageContentAttribute: " . json_encode($this->$sourceLanguageContentAttribute), "qa-state", __METHOD__);
                 $valid = !is_null($this->$sourceLanguageContentAttribute);
                 if ($valid) {
                     $currentlyTranslatableAttributes[] = $translationAttribute;
@@ -330,6 +331,9 @@ trait ItemTrait
      */
     public function i18nRules()
     {
+
+        Yii::log(get_class($this) . "->i18nRules()", 'flow', __METHOD__);
+
         // Pick the first translatable attribute, if any
         $behaviors = $this->behaviors();
         $attribute = (isset($behaviors['i18n-attribute-messages']) ? $behaviors['i18n-attribute-messages']['translationAttributes'][0] :
@@ -342,6 +346,9 @@ trait ItemTrait
         }
 
         $currentlyTranslatableAttributes = $this->getCurrentlyTranslatableAttributes();
+
+        //codecept_debug(compact("currentlyTranslatableAttributes"));
+        Yii::log("\$currentlyTranslatableAttributes: " . print_r($currentlyTranslatableAttributes, true), 'qa-state', __METHOD__);
 
         // If there currently is nothing to translate, then the translation progress should equal 0%
         if (empty($currentlyTranslatableAttributes)) {
@@ -372,10 +379,14 @@ trait ItemTrait
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "into_$lang-step_$step");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "into_$lang-step_$step");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "into_$lang-step_$step");
+                    //$i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "translate_into_$lang");
+                    //$i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "translate_into_$lang");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "translate_into_$lang");
                 }
             }
         }
+
+        //codecept_debug(compact("i18nRules"));
 
         return $i18nRules;
     }
