@@ -377,9 +377,11 @@ trait ItemTrait
             foreach (LanguageHelper::getCodes() as $language) {
                 $i18nRules[] = array($attribute, 'compare', 'compareValue' => -1, 'on' => 'translate_into_' . $language);
 
+                /*
                 foreach ($this->flowSteps() as $step => $fields) {
                     $i18nRules[] = array($attribute, 'compare', 'compareValue' => -1, 'on' => "into_$language-step_$step");
                 }
+                */
             }
 
             // The result of the above is that there is at least one attribute in each language scenario, and that attribute does not validate, thus translation progress equals 0% as wanted
@@ -395,9 +397,11 @@ trait ItemTrait
                     continue;
                 }
                 foreach (LanguageHelper::getCodes() as $lang) {
+                    /*
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "into_$lang-step_$step");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "into_$lang-step_$step");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "into_$lang-step_$step");
+                    */
                     //$i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'safe', 'on' => "translate_into_$lang");
                     //$i18nRules[] = array($sourceLanguageContentAttribute . '_' . $this->source_language, 'safe', 'on' => "translate_into_$lang");
                     $i18nRules[] = array($sourceLanguageContentAttribute . '_' . $lang, 'required', 'on' => "translate_into_$lang");
