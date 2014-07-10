@@ -342,8 +342,14 @@ trait ItemTrait
 
         foreach ($translatableAttributes as $translationAttribute => $sourceLanguageContentAttribute) {
 
-            Yii::log(get_class($this) . "->getCurrentlyTranslatableAttributes() \$this->$sourceLanguageContentAttribute: " . json_encode($this->$sourceLanguageContentAttribute), "qa-state", __METHOD__);
-            $valid = !is_null($this->$sourceLanguageContentAttribute);
+            // For debugging only TODO: Remove
+            $debug = get_class($this) . "->getCurrentlyTranslatableAttributes() \$this->$sourceLanguageContentAttribute: " . json_encode($this->$sourceLanguageContentAttribute);
+            //codecept_debug($debug);
+            Yii::log($debug, "qa-state", __METHOD__);
+
+            // Ideally we'd like to be able to use validate against the source language content attribute
+            // but that causes recursion as long as we use this method as part of the validation logic
+            $valid = !is_null($this->$sourceLanguageContentAttribute) && !(is_array($this->$sourceLanguageContentAttribute) && empty($this->$sourceLanguageContentAttribute));
             if ($valid) {
                 $currentlyTranslatableAttributes[] = $translationAttribute;
             }
