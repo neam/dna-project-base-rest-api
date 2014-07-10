@@ -84,16 +84,18 @@ class Exercise extends BaseExercise
         return $return;
     }
 
-    public function validateThumbnail()
+    public function validateThumbnail($attribute)
     {
-        return !is_null($this->thumbnail_media_id);
+        if (is_null($this->thumbnail_media_id)) {
+            $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
+        }
     }
 
-    public function validateMaterials()
+    public function validateMaterials($attribute)
     {
-        //TODO: How do we sort mixed?
-        return true;
-        return count($this->materials) > 0;
+        if (count($this->materials) == 0) {
+            $this->addError($attribute, Yii::t('app', '!validateMaterials'));
+        }
     }
 
     /**
