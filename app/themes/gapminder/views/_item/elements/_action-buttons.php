@@ -86,19 +86,30 @@
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Proofread'),
             )
         ); */ ?>
-        <?php $this->widget(
-            '\TbButton',
-            array(
-                'label' => Yii::t('model', 'Translate'),
-                'color' => $this->action->id === 'translationOverview' ? 'inverse' : null,
-                'size' => TbHtml::BUTTON_SIZE_MINI,
-                'url' => array(
-                    'translationOverview',
-                    'id' => $model->{$model->tableSchema->primaryKey},
-                ),
-                'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Translate'),
-            )
-        ); ?>
+        <?php $a = $model->getCurrentlyTranslatableAttributes(); ?>
+        <?php if (!empty($a)): ?>
+            <?php $this->widget(
+                '\TbButton',
+                array(
+                    'label' => Yii::t('model', 'Translate'),
+                    'color' => $this->action->id === 'translationOverview' ? 'inverse' : null,
+                    'size' => TbHtml::BUTTON_SIZE_MINI,
+                    'url' => array(
+                        'translationOverview',
+                        'id' => $model->{$model->tableSchema->primaryKey},
+                    ),
+                    'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Translate'),
+                )
+            ); ?>
+        <?php else: ?>
+            <?php echo TbHtml::linkButton(
+                    Yii::t('model', 'Translate'),
+                    array(
+                        'disabled' => true,
+                        'size' => TbHtml::BUTTON_SIZE_MINI,
+                    )
+                ); ?>
+        <?php endif; ?>
     </div>
     <div class="btn-group">
         <?php if (Yii::app()->user->checkAccess('Publish')): ?>
