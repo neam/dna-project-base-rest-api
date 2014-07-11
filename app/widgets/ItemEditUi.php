@@ -251,7 +251,7 @@ class ItemEditUi extends CWidget
     {
         $currentStep = $this->step;
 
-        if (isset($this->controller->workflowData['stepActions'])) {
+        if (isset($this->controller->workflowData['stepActions']) && !empty($this->controller->workflowData['stepActions'])) {
             $steps = $this->controller->workflowData['stepActions'];
 
             foreach ($steps as $index => $step) {
@@ -260,9 +260,9 @@ class ItemEditUi extends CWidget
                 }
             }
 
-            return null;
+            throw new CException('Current step ' . $currentStep . ' is not available in the current workflow.');
         } else {
-            throw new CException('Step actions are not defined in workflow data.');
+            throw new CException('There are no steps available in the current workflow.');
         }
     }
 
