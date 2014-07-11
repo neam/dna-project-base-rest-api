@@ -267,7 +267,7 @@ class VideoFile extends BaseVideoFile
         foreach ($subtitle_lines as $lineno => $subtitle_line) {
 
             // Check for a single number = the id
-            if (!isset($p->id) && intval($subtitle_line) === $subtitle_line) {
+            if (!isset($p->id) && strval(intval($subtitle_line)) === $subtitle_line) {
                 $p->id = $subtitle_line;
             } else {
 
