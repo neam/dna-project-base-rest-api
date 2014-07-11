@@ -17,23 +17,13 @@
                         $invalidFieldCount
                     ); ?>
                 </span>
-                <?php echo TbHtml::linkButton(
-                    Yii::t('button', 'Go to next field'),
-                    array(
-                        'url' => '#',
-                        'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                        'size' => TbHtml::BUTTON_SIZE_SM,
-                        'id' => 'next-required',
-                        'class' => 'required-button',
-                    )
-                ); ?>
                 <?php $nextStep = $this->controller->nextFlowStep("$validationScenario-", $model); ?>
                 <?php if ($invalidFieldCount > 0 && empty($nextStep)): ?>
                     <?php throw new CException("The item's validation rules for $validationScenario are out of sync. Make sure that the step-based validation rules match those of the overall $validationScenario validation scenarios"); ?>
                 <?php endif; ?>
                 <?php if ($_GET['step'] != $nextStep): ?>
                     <?php echo TbHtml::submitButton(
-                        Yii::t('button', 'Go to next field'),
+                        Yii::t('button', 'Go to next step'),
                         array(
                             'id' => 'next-required',
                             'class' => 'required-button',
@@ -42,13 +32,24 @@
                             'size' => TbHtml::BUTTON_SIZE_SM,
                         )
                     ); ?>
-                    <input type="hidden" name="next-required-url" value="<?php echo CHtml::encode(
-                       Yii::app()->createUrl(
-                           lcfirst($this->controller->modelClass) . '/' . $this->actionId,
-                           array('id' => $model->id, 'step' => $nextStep)
-                       )
-                   ); ?>">
+                <?php else: ?>
+                    <?php echo TbHtml::submitButton(
+                        Yii::t('button', 'Go to next field'),
+                        array(
+                            'url' => '#',
+                            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                            'size' => TbHtml::BUTTON_SIZE_SM,
+                            'id' => 'next-required',
+                            'class' => 'required-button',
+                        )
+                    ); ?>
                 <?php endif; ?>
+                <input type="hidden" name="next-required-url" value="<?php echo CHtml::encode(
+                   Yii::app()->createUrl(
+                       lcfirst($this->controller->modelClass) . '/' . $this->actionId,
+                       array('id' => $model->id, 'step' => $nextStep)
+                   )
+               ); ?>">
             <?php endif; ?>
             <?php foreach ($this->controller->workflowData['flagTriggerActions'] as $action): ?>
                 <?php if ($action['requiredProgress'] < 100): ?>
