@@ -253,16 +253,22 @@ class VideoFile extends BaseVideoFile
 
     public function getParsedSubtitles()
     {
+
+        // Return null if subtitles is empty
+        if (empty($this->subtitles)) {
+            return null;
+        }
+
         $subtitle_lines = explode("\n", $this->subtitles);
 
         $parsed = array();
         $p = new stdClass();
-        foreach ($subtitle_lines as $subtitle_line) {
+        foreach ($subtitle_lines as $lineno => $subtitle_line) {
 
             $subtitle_line = trim($subtitle_line, "\r");
 
             // Check for a single number = the id
-            if (!isset($p->id) && intval($subtitle_line) == $subtitle_line) {
+            if (!isset($p->id) && intval($subtitle_line) === $subtitle_line) {
                 $p->id = $subtitle_line;
             } else {
 
@@ -280,6 +286,12 @@ class VideoFile extends BaseVideoFile
                         }
                         $p->sourceMessage .= $subtitle_line;
                     } else {
+
+                        // Verify that the parsed subtitle line has an id, timestamp and a sourceMessage
+                        if (empty($p->id) || empty($p->timestamp) || empty($p->sourceMessage)) {
+                            throw new VideoFileSubtitleParseException("Subtitle parse error at line $lineno. Verify that the subtitles field contains valid srt");
+                        }
+
                         $parsed[] = $p;
                         $p = new stdClass();
                         continue;
@@ -560,4 +572,9 @@ class VideoFile extends BaseVideoFile
     {
         return app()->controller->createUrl('videoFile/subtitles', array('id' => $this->id));
     }
+}
+
+class VideoFileSubtitleParseException extends CException
+{
+
 }
