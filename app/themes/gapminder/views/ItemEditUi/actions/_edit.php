@@ -8,23 +8,25 @@
                         <h2 class="action-heading">
                             <?php echo $this->getActionHeading(); ?>
                         </h2>
+                        <?php if ($this->getCurrentWorkflowProgress() !== null): ?>
                         <div class="action-progress">
                             <div class="progress-bar-container">
                                 <?php $this->widget(
                                     '\TbProgress',
                                     array(
                                         'color' => TbHtml::PROGRESS_COLOR_SUCCESS,
-                                        'percent' => $this->model->getValidationProgress($this->model->scenario),
+                                        'percent' => $this->getCurrentWorkflowProgress(),
                                     )
                                 ); ?>
                             </div>
                             <div class="progress-percentage-container">
                                 <?php echo Yii::t(
                                     'app', '{percentage}% done',
-                                    array('{percentage}' => $this->model->getValidationProgress($this->model->scenario))
+                                    array('{percentage}' => $this->getCurrentWorkflowProgress())
                                 ); ?>
                             </div>
                         </div>
+                        <?php endif; ?>
                     </div>
                     <div class="item-preview">
                         <?php echo $this->model->renderImage('item-workflow-preview'); ?>

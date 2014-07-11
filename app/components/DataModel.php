@@ -274,7 +274,7 @@ class DataModel
                 'ExamQuestionAlternative' => array('markup'),
                 'Exercise' => array('title', 'question', 'description'),
                 'HtmlChunk' => array('markup'),
-                'I18nCatalog' => array('po_contents'),
+                //'I18nCatalog' => array(),
                 'Menu' => array('title'),
                 'Page' => array('title', 'about'),
                 'Section' => array('title', 'menu_label'),
@@ -284,7 +284,7 @@ class DataModel
                 'TextDoc' => array('title', 'about'),
                 'Tool' => array('title', 'about'),
                 'VectorGraphic' => array('title', 'about'),
-                'VideoFile' => array('title', 'caption', 'about', 'subtitles'),
+                'VideoFile' => array('title', 'caption', 'about'),
                 'Waffle' => array('title', 'short_title', 'description'),
                 'WaffleCategory' => array('list_name', 'property_name', 'possessive', 'choice_format', 'description'),
                 'WaffleCategoryThing' => array('name', 'short_name'),
@@ -335,6 +335,32 @@ class DataModel
                 'TextDoc' => array('processedMedia' => 'processed_media_id'),
                 'VectorGraphic' => array('processedMedia' => 'processed_media_id'),
                 'VideoFile' => array('processedMedia' => 'processed_media_id'),
+            ),
+        );
+    }
+
+    /**
+     * @return array List of model attributes and relations to track translation progress for using recursive validator logic
+     */
+    static public function i18nRecursivelyValidated()
+    {
+        return array(
+            'attributes' => array(
+                'I18nCatalog' => array('po_contents' => 'validatePoContentsTranslation'),
+                'VideoFile' => array('subtitles' => 'validateSubtitlesTranslation'),
+            ),
+            'relations' => array(
+                'GuiSection' => array(
+                    'i18nCatalog' => 'validateRelatedTranslation',
+                ),
+                'Waffle' => array(
+                    'wafflePublisher' => 'validateRelatedTranslation',
+                    'waffleCategories' => 'validateRelatedTranslation',
+                    'waffleDataSources' => 'validateRelatedTranslation',
+                    'waffleIndicators' => 'validateRelatedTranslation',
+                    'waffleTags' => 'validateRelatedTranslation',
+                    'waffleUnits' => 'validateRelatedTranslation'
+                ),
             ),
         );
     }

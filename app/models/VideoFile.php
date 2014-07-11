@@ -32,8 +32,7 @@ class VideoFile extends BaseVideoFile
     {
         return array_merge(
             parent::behaviors(),
-            array(
-            )
+            array()
         );
     }
 
@@ -50,34 +49,22 @@ class VideoFile extends BaseVideoFile
     public function rules()
     {
 
-        // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
-        $attribute = "subtitles";
-        $manualI18nRules = array();
-        foreach (LanguageHelper::getCodes() as $language) {
-            $manualI18nRules[] = array($attribute, 'validateSubtitlesTranslation', 'on' => 'translate_into_' . $language);
-
-            foreach ($this->flowSteps() as $step => $fields) {
-                $manualI18nRules[] = array($attribute, 'validateSubtitlesTranslation', 'on' => "into_$language-step_$step");
-            }
-        }
-
         $return = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
-            $manualI18nRules,
             array(
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'step_info,publishable,publishable-step_info'),
                 array('clip_webm_media_id', 'validateVideoWebm', 'on' => 'step_files,publishable,publishable-step_files'),
                 array('clip_mp4_media_id', 'validateVideoMp4', 'on' => 'step_files,publishable,publishable-step_files'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
-                array('subtitles_' . $this->source_language, 'validateSubtitles', 'on' => 'step_subtitles,publishable,publishable-step_subtitles'),
+                array('subtitles', 'validateSubtitles', 'on' => 'step_subtitles,publishable,publishable-step_subtitles'),
                 array('youtube_url', 'url'),
             )
         );
-        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        Yii::log("model->rules(): " . print_r($return, true), "videofile-validation-rules", __METHOD__);
         return $return;
     }
 
@@ -105,11 +92,11 @@ class VideoFile extends BaseVideoFile
     public function validateSubtitles($attribute)
     {
         // Should not throw an exception or cause an error
-        if (!isset($this->_subtitles)) {
+        if (!isset($this->subtitles)) {
             $this->getParsedSubtitles();
         }
 
-        if (is_null($this->_subtitles)) {
+        if (is_null($this->subtitles)) {
             $this->addError($attribute, Yii::t('app', '!validateSubtitles'));
         }
 
@@ -117,7 +104,15 @@ class VideoFile extends BaseVideoFile
 
     public function validateSubtitlesTranslation($attribute)
     {
-        // TODO
+
+        // Throw exception when there are no subtitles to translate
+        if (is_null($this->subtitles)) {
+            throw new CException('There are currently no subtitles to translate, nevertheless validation was attempted');
+        }
+
+        // TODO: Implement and remove
+        $this->addError($attribute, Yii::t('app', 'not valid translation since validation logic is not written'));
+
     }
 
     /**
@@ -172,7 +167,7 @@ class VideoFile extends BaseVideoFile
                 'youtube_url',
             ),
             'subtitles' => array(
-                'subtitles_' . $this->source_language,
+                'subtitles',
             ),
             'related' => array(
                 'related',
@@ -258,7 +253,7 @@ class VideoFile extends BaseVideoFile
 
     public function getParsedSubtitles()
     {
-        $subtitle_lines = explode("\n", $this->_subtitles);
+        $subtitle_lines = explode("\n", $this->subtitles);
 
         $parsed = array();
         $p = new stdClass();

@@ -43,6 +43,7 @@ class Menu extends BaseMenu
             array(
 
                 array('title', 'length', 'min' => 3, 'max' => 200),
+                array('pages', 'validatePages', 'on' => 'publishable'),
 
             )
         );
@@ -50,9 +51,13 @@ class Menu extends BaseMenu
         return $return;
     }
 
-    public function validateFile()
+    public $pages;
+
+    public function validatePages($attribute)
     {
-        return !is_null($this->original_media_id);
+        if (true) {
+            $this->addError($attribute, Yii::t('app', 'TODO: pages validation'));
+        }
     }
 
     /**
