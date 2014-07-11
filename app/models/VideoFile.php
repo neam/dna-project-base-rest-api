@@ -288,7 +288,7 @@ class VideoFile extends BaseVideoFile
 
                         // Verify that the parsed subtitle line has an id, timestamp and a sourceMessage
                         if (empty($p->id) || empty($p->timestamp) || empty($p->sourceMessage)) {
-                            throw new VideoFileSubtitleParseException("Subtitle parse error at line $lineno. Verify that the subtitles field contains valid srt");
+                            throw new VideoFileSubtitleParseException("Subtitle parse error at line $lineno. [" . print_r($p, true) . "].  Verify that the subtitles field contains valid srt");
                         }
 
                         $parsed[] = $p;
