@@ -259,13 +259,12 @@ class VideoFile extends BaseVideoFile
             return null;
         }
 
-        $subtitle_lines = explode("\n", $this->subtitles);
+        $subtitle_lines = preg_split('/\n|\r\n?/', $this->subtitles); // Split by all three kinds of line endings - http://stackoverflow.com/questions/5053373/explode-a-string-by-r-n-n-r-at-once
+        //var_dump(json_encode($this->subtitles), $subtitle_lines);die();
 
         $parsed = array();
         $p = new stdClass();
         foreach ($subtitle_lines as $lineno => $subtitle_line) {
-
-            $subtitle_line = trim($subtitle_line, "\r");
 
             // Check for a single number = the id
             if (!isset($p->id) && intval($subtitle_line) === $subtitle_line) {
