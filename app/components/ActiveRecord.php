@@ -41,12 +41,9 @@ class ActiveRecord extends CActiveRecord
             $behaviors['owner-behavior'] = array(
                 'class' => 'OwnerBehavior',
             );
-            // Do not run RestrictedAccessBehavior in session-less environments
-            if (is_callable(array(Yii::app()), 'getSession')) {
-                $behaviors['RestrictedAccessBehavior'] = array(
-                    'class' => 'RestrictedAccessBehavior',
-                );
-            }
+            $behaviors['RestrictedAccessBehavior'] = array(
+                'class' => 'RestrictedAccessBehavior',
+            );
         }
 
         $graphModels = DataModel::graphModels();
