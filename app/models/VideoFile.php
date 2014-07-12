@@ -259,8 +259,14 @@ class VideoFile extends BaseVideoFile
             return null;
         }
 
-        $subtitle_lines = preg_split('/\n|\r\n?/', $this->subtitles); // Split by all three kinds of line endings - http://stackoverflow.com/questions/5053373/explode-a-string-by-r-n-n-r-at-once
-        //var_dump(json_encode($this->subtitles), $subtitle_lines);die();
+        // Remove extra line-endings from start or end of subtitles contents
+        $subtitles = trim($this->subtitles, "\r\n");
+
+        // Split by all three kinds of line endings - http://stackoverflow.com/questions/5053373/explode-a-string-by-r-n-n-r-at-once
+        $subtitle_lines = preg_split('/\n|\r\n?/', $subtitles);
+
+        // Debug (uncomment temporarily)
+        //print_r(json_encode($subtitles));print_r($subtitle_lines);die();
 
         $parsed = array();
         $p = new stdClass();
