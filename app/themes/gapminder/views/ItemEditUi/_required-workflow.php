@@ -23,7 +23,7 @@
                 <?php endif; ?>
                 <?php if ($_GET['step'] != $nextStep): ?>
                     <?php echo TbHtml::submitButton(
-                        Yii::t('button', 'Go to next step'),
+                        Yii::t('button', 'Go to next field'),
                         array(
                             'id' => 'next-required',
                             'class' => 'required-button',
@@ -32,6 +32,12 @@
                             'size' => TbHtml::BUTTON_SIZE_SM,
                         )
                     ); ?>
+                    <input type="hidden" name="next-required-url" value="<?php echo CHtml::encode(
+                       Yii::app()->createUrl(
+                           lcfirst($this->controller->modelClass) . '/' . $this->actionId,
+                           array('id' => $model->id, 'step' => $nextStep)
+                       )
+                   ); ?>">
                 <?php else: ?>
                     <?php echo TbHtml::submitButton(
                         Yii::t('button', 'Go to next field'),
@@ -44,12 +50,6 @@
                         )
                     ); ?>
                 <?php endif; ?>
-                <input type="hidden" name="next-required-url" value="<?php echo CHtml::encode(
-                   Yii::app()->createUrl(
-                       lcfirst($this->controller->modelClass) . '/' . $this->actionId,
-                       array('id' => $model->id, 'step' => $nextStep)
-                   )
-               ); ?>">
             <?php endif; ?>
             <?php foreach ($this->controller->workflowData['flagTriggerActions'] as $action): ?>
                 <?php if ($action['requiredProgress'] < 100): ?>
