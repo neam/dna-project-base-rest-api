@@ -22,6 +22,12 @@ class LoginReturnUrlTracker extends CApplicationComponent
         if ($action == "user/login") {
             return;
         }
+        if ($action == "account/authenticate/logout") {
+            return;
+        }
+        if ($action == "account/authenticate/login") {
+            return;
+        }
         if (strpos($action, "p3media") !== false) {
             return;
         }
