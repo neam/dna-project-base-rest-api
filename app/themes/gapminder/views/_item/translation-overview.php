@@ -41,13 +41,13 @@
                 <div class="language-progress">
                     <?php
                     try {
-                        // todo: fix this some other way
-                        $model = $model->asa('i18n-attribute-messages') !== null ? $model->edited() : $model;
+                        // Use db-stored qa state for efficiency since we are listing many languages
+                        $progress = (float) $model->qaState()->{'translate_into_' . $languageCode . '_validation_progress'};
                         $this->widget(
                             '\TbProgress',
                             array(
                                 'color' => 'success', // 'info', 'success' or 'danger'
-                                'percent' => $model->calculateValidationProgress('translate_into_' . $languageCode),
+                                'percent' => $progress,
                             )
                         );
                     } catch (QaStateBehaviorNoAssociatedRulesException $e) {
