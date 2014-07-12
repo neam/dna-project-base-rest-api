@@ -101,9 +101,9 @@ class Identity
         $return = new \stdClass();
         $return->siteName = BRAND_SITENAME;
         $return->domain = BRAND_DOMAIN;
-        $return->supportEmail = "info@" . $return->domain;
+        $return->supportEmail = 'community@gapminder.org';
         $return->signupEmail = 'community@gapminder.org';
-        $return->mailSentByMail = "noreply@" . $return->domain;
+        $return->mailSentByMail = "community@gapminder.org";
         $return->mailSentByName = $return->siteName;
         return $return;
     }
