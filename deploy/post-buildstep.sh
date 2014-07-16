@@ -31,11 +31,6 @@ bower install --allow-root
 cp app/js/config.dist.js app/js/config.js
 node_modules/.bin/grunt build
 
-# remove assets folder in case it was committed by mistake or we are updating an existing instance for some reason
-if [ -d www/assets ] ; then
-    rm -r www/assets
-fi
-
 # necessary for user data backup uploads
 deploy/install-s3cmd.sh
 
