@@ -234,9 +234,13 @@ class ItemEditUi extends CWidget
      */
     public function getSubmitButtonLabel()
     {
+        $subject = $this->controller->action->id === 'translate'
+            ? Yii::t('app', 'Translation')
+            : Yii::t('app', $this->model->modelLabel, 1);
+
         return $this->isFinalStep()
-            ? Yii::t('app', 'Save')
-            : Yii::t('app', 'Next');
+            ? Yii::t('app', 'Save {subject}', array('{subject}' => $subject))
+            : Yii::t('app', 'Next Step');
     }
 
     /**

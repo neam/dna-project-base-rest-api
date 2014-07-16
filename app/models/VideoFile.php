@@ -408,18 +408,6 @@ class VideoFile extends BaseVideoFile
     }
 
     /**
-     * Returns related thumbnail P3Media.
-     * @return P3Media[]
-     */
-    public function getThumbnails()
-    {
-        return $this->getP3Media(array(
-            'image/jpeg',
-            'image/png',
-        ));
-    }
-
-    /**
      * Returns related video options.
      * @param string|array $mimeType mime type or an array of mime types.
      * @return array
@@ -431,15 +419,6 @@ class VideoFile extends BaseVideoFile
         }
 
         return $this->getOptions($this->getVideosByMimeType($mimeType));
-    }
-
-    /**
-     * Returns related thumbnail options.
-     * @return array
-     */
-    public function getThumbnailOptions()
-    {
-        return $this->getOptions($this->getThumbnails());
     }
 
     /**

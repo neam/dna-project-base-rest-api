@@ -10,6 +10,7 @@
         )
     ); ?>
     */ ?>
+    <?php /*
     <?php echo TbHtml::linkButton(
         Yii::t('app', 'Cancel'),
         array(
@@ -18,9 +19,10 @@
             //'class' => 'ignoredirty',
         )
     ); ?>
+    */ ?>
     <?php if (!$this->isFirstStep()): ?>
         <?php echo TbHtml::linkButton(
-            Yii::t('app', 'Previous'),
+            Yii::t('app', 'Previous Step'),
             array(
                 'color' => TbHtml::BUTTON_COLOR_LINK,
                 'url' => $this->createPreviousStepUrl(),

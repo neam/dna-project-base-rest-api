@@ -11,7 +11,13 @@ class DashboardPage
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
 
-    static $startTaskButton = 'Start!';
+    static $startTaskButton = 'Start Translating';
+    static $continueTaskButton = 'Continue Translating';
+
+    public static function translateModelContext($title, $type, $language)
+    {
+        return "#translation_{$language}_{$type}_" . str_replace(' ', '_', $title);
+    }
 
     /**
      * Basic route example for your current URL

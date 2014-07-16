@@ -4,7 +4,7 @@
 ?>
 <div class="admin-container hide">
     <?php echo CHtml::link(
-        '<i class="glyphicon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Data Chunk'))),
+        '<i class="glyphicon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Data Article'))),
         array('dataArticle/view', 'id' => $data->id), array('class' => 'btn')
     ); ?>
 </div>
@@ -219,7 +219,7 @@
 <?php if (Yii::app()->user->checkAccess('DataArticle.*')): ?>
     <div class="admin-container hide">
         <?php echo CHtml::link(
-            '<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Data Chunk'))),
+            '<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Data Article'))),
             array('dataArticle/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')
         ); ?>
     </div>
@@ -228,7 +228,7 @@
     <div class="admin-container hide">
         <h3><?php Yii::t('app', 'Developer access'); ?></h3>
         <?php echo CHtml::link(
-            '<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Data Chunk'))),
+            '<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Data Article'))),
             array('dataArticle/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')
         ); ?>
     </div>

@@ -492,7 +492,7 @@ $mainConfig = array(
     'params'     => array(
         // this is used in contact page
         'adminEmail'           => \gapminder\envbootstrap\Identity::brand()->supportEmail,
-        'signupSender'         => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
+        'signupEmail'          => \gapminder\envbootstrap\Identity::brand()->signupEmail,
         'languages'            => $languages,
         'languageDirections'   => $languageDirections,
         'ext.ckeditor.options' => array(

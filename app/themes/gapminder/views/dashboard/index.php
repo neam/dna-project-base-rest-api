@@ -1,14 +1,14 @@
 <?php
-/** @var AccountController $this */
+/** @var DashboardController $this */
 /** @var Account $model */
 /** @var string $modelClass */
 ?>
-<div class="account-controller dashboard-action">
+<div class="dashboard-controller index-action">
     <div class="dashboard-profile">
         <div class="row">
             <div class="profile-info">
                 <div class="row">
-                    <div class="profile-picture">
+                    <div class="profile-picture hidden-xs">
                         <?php echo TbHtml::link($model->profile->renderPicture(), array('/profile/edit')); ?>
                     </div>
                     <div class="profile-facts">
@@ -23,7 +23,7 @@
                                 <?php echo TbHtml::link(TbHtml::icon(TbHtml::ICON_COG), array('/profile/edit')); ?>
                             </div>
                         </div>
-                        <h1 class="profile-name"><?php echo $model->profile->fullName; ?></h1>
+                        <h1 class="profile-name hidden-xs"><?php echo $model->profile->fullName; ?></h1>
                         <?php /*
                         <span class="profile-title"><?php echo 'Project Manager at Nord Software'; // TODO: Get title dynamically. ?></span>
                         */ ?>
@@ -77,6 +77,17 @@
             */ ?>
         </div>
     </div>
+    <?php if (Yii::app()->user->isGroupAdmin() || Yii::app()->user->isAdmin()): ?>
+        <div class="dashboard-tasks-container">
+            <div class="tasks-top-bar">
+                <div class="top-bar-title">
+                    <h2 class="tasks-heading"><?php echo Yii::t('app', 'Quick Start'); ?></h2>
+                </div>
+            </div>
+            <?php echo $this->renderItemActionDropdown(Yii::t('app', 'Browse...'), 'browse', true); ?>
+            <?php echo $this->renderItemActionDropdown(Yii::t('app', 'Create New...'), 'add'); ?>
+        </div>
+    <?php endif; ?>
     <div class="dashboard-tasks-container">
         <?php $this->widget(
             'app.widgets.DashboardTaskList',

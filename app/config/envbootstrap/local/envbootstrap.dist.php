@@ -11,7 +11,7 @@ define("DEV", true);
 define("DEBUG_REDIRECTS", false);
 define("DEBUG_LOGS", false);
 setenv("CONFIG_ENVIRONMENT", $default = default_config_environment(), $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
-setenv("DATA", $default = 'user-generated', $required = false);
+setenv("DATA", $default = 'clean-db', $required = false);
 
 // ==== CMS page ids ====
 setenv("TERMS_PAGE_ID", $default = 1, $required = false);
@@ -66,7 +66,7 @@ if (SMTP_URL === null) {
 } else {
     // get the environment variable and parse it:
     $url = parse_url(SMTP_URL);
-    parse_str($url['query'], $args);
+    isset($url['query']) && parse_str($url['query'], $args);
     define("SMTP_HOST", $url['host']);
     define("SMTP_PORT", $url['port']);
     define("SMTP_USERNAME", $url['user']);
@@ -110,6 +110,7 @@ class Identity
         $return->siteName = BRAND_SITENAME;
         $return->domain = BRAND_DOMAIN;
         $return->supportEmail = "info@" . $return->domain;
+        $return->signupEmail = 'community@gapminder.org';
         $return->mailSentByMail = "noreply@" . $return->domain;
         $return->mailSentByName = $return->siteName;
         return $return;

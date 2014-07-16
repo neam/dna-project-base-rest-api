@@ -175,6 +175,7 @@ trait ItemController
             array('allow',
                 'actions' => array(
                     'edit',
+                    'continueAuthoring',
                 ),
                 'expression' => function() {
                     return $this->checkModelOperationAccessById($this->modelId, 'Edit');
@@ -673,12 +674,19 @@ trait ItemController
      */
     public function actionUnpublish($id)
     {
-        /** @var ActiveRecord|ItemTrait|QaStateBehavior $model */
-        /** @var Controller $this */
+        $permissionAttributes = array(
+            'account_id' => Yii::app()->user->id,
+            'group_id' => PermissionHelper::groupNameToId('GapminderInternal'),
+            'role_id' => PermissionHelper::roleNameToId('Group Publisher'),
+        );
 
-        $model = $this->loadModel($id);
-        $model->refreshQaState();
-        $model->makeNodeHasGroupHidden();
+        if (PermissionHelper::groupHasAccount($permissionAttributes)) {
+            $model = $this->loadModel($id);
+            $model->refreshQaState();
+            $model->makeNodeHasGroupHidden();
+        } else {
+            throw new CHttpException(403, Yii::t('error', 'You do not have permission to unpublish items.'));
+        }
 
         $this->redirect(array('browse'));
     }

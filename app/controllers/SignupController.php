@@ -9,6 +9,15 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
     /**
      * @inheritDoc
      */
+    public function init()
+    {
+        parent::init();
+        $this->emailSubject = Yii::t('app', 'Activate your Gapminder account');
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function behaviors()
     {
         return CMap::mergeArray(
@@ -96,5 +105,29 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
         $model->user_id = $accountId;
 
         return $model->save();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function sendActivationMail(\CActiveRecord $account)
+    {
+        if (!$account->save(false)) {
+            $this->fatalError();
+        }
+
+        $token = $this->module->generateToken(Module::TOKEN_ACTIVATE, $account->id);
+
+        $activateUrl = $this->createAbsoluteUrl('/account/signup/activate', array('token' => $token));
+
+        $config = array();
+        $config['from'] = Yii::app()->params['signupEmail'];
+
+        $this->module->sendMail(
+            $account->email,
+            $this->emailSubject,
+            $this->renderPartial('/email/activate', array('activateUrl' => $activateUrl), true),
+            $config
+        );
     }
 }

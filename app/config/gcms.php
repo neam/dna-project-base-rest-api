@@ -91,10 +91,18 @@ $gcmsConfig = array(
         'p3media' => array(
             'params' => array(
                 'presets' => array(
+                    'item-thumbnail' => array(
+                        'name' => 'Item Thumbnail',
+                        'commands' => array(
+                            'resize' => array(150, 80, 7), // Image::AUTO
+                            'quality' => '85',
+                        ),
+                        'type' => 'jpg',
+                    ),
                     'select2-thumb' => array(
                         'name' => 'Select2 Thumbnail',
                         'commands' => array(
-                            'resize' => array(150, 80, 7), // Image::AUTO
+                            'resize' => array(35, 35, 7), // Image::AUTO
                             'quality' => '85',
                         ),
                         'type' => 'jpg',

@@ -121,8 +121,18 @@ class I18nCatalogController extends Controller
                 )
             );
         } else {
-            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_ERROR, Yii::t('app', 'Subtitles are missing.'));
-            $this->redirect(array('/videoFile/edit/info/' . $id, 'translateInto' => $translateInto)); // TODO: Fix URL generation.
+            Yii::app()->user->setFlash(
+                TbHtml::ALERT_COLOR_DANGER,
+                Yii::t(
+                    'app',
+                    'Unable to translate {item}: PO contents are missing.',
+                    array(
+                        '{item}' => $model->itemLabel,
+                    )
+                )
+            );
+
+            $this->redirect(array('/dashboard/index'));
         }
     }
 
