@@ -35,10 +35,13 @@ class GuiSection extends BaseGuiSection
 
     public function rules()
     {
+
         $translationRules = array();
+        /*
         foreach (LanguageHelper::getCodes() as $language) {
             $translationRules[] = array('title', 'length', 'min' => 3, 'on' => 'translate_into_' . $language); // dummy rule
         }
+        */
 
         $rules = array_merge(
             parent::rules(),
@@ -54,9 +57,18 @@ class GuiSection extends BaseGuiSection
         return $rules;
     }
 
-    public function validateFile()
+    public function validateFile($attribute)
     {
-        return !is_null($this->original_media_id);
+        if (is_null($this->original_media_id)) {
+            $this->addError($attribute, Yii::t('app', '!validateFile'));
+        }
+    }
+
+    public function validateI18nCatalogTranslation($attribute)
+    {
+        if (true) {
+            $this->addError($attribute, Yii::t('app', 'TODO: Related translation validation'));
+        }
     }
 
     /**

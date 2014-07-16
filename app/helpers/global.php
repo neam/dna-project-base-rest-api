@@ -394,3 +394,19 @@ function endApp()
 {
     Yii::app()->end();
 }
+
+/**
+ * Sends a message to an appropriate debug output/log
+ */
+function inspect($data)
+{
+
+    if (function_exists('codecept_debug')) {
+        codecept_debug($data);
+    } elseif (DEBUG_LOGS === true) {
+        Yii::log("Debug: " . print_r($data, true), 'inspection', __METHOD__);
+    } else {
+        var_dump($data);
+    }
+
+}

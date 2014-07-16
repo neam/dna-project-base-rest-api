@@ -54,8 +54,8 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->clip_mp4_media_id); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('_subtitles')); ?>:</b>
-<?php echo CHtml::encode($model->_subtitles); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles')); ?>:</b>
+<?php echo CHtml::encode($model->_subtitles; ?>
 <br />
 
 <b><?php echo CHtml::encode($model->getAttributeLabel('subtitles_import_media_id')); ?>:</b>
@@ -390,7 +390,7 @@ $this->breadcrumbs[] = $model->id;
                         'type' => 'html',
                     ),
                     array(
-                        'name' => '_subtitles',
+                        'name' => '_ssubtitles
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
