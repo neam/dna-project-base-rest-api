@@ -47,12 +47,4 @@ if [ ! -L app/data/p3media ] ; then
     ln -s /cache/p3media app/data/p3media
 fi
 
-if [ ! "$ENV" == "" ]; then
-
-    app/yiic fixture --connectionID=$connectionID load
-    shell-scripts/yiic-migrate.sh --connectionID=$connectionID --interactive=0
-    app/yiic databaseviewgenerator --connectionID=$connectionID item
-
-fi
-
 exit 0
