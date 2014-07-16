@@ -20,6 +20,7 @@ chmod -R 777 app/runtime/
 chmod -R 777 www/assets/
 chmod -R 777 www/runtime/
 
+# fail on any error
 set -o errexit
 
 # install bower dependencies
@@ -30,10 +31,10 @@ bower install --allow-root
 cp app/js/config.dist.js app/js/config.js
 node_modules/.bin/grunt build
 
-set +o errexit
-
 # remove assets folder in case it was committed by mistake or we are updating an existing instance for some reason
-rm -r www/assets/*
+if [ -d www/assets ] ; then
+    rm -r www/assets
+fi
 
 # necessary for user data backup uploads
 deploy/install-s3cmd.sh
