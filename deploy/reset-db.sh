@@ -25,7 +25,7 @@ if [ "$DATA" == "user-generated" ]; then
     echo "===== Load the user-generated data associated with this commit ===="
 
     # load mysql dump
-    # app/yiic databaseschema --connectionID=db loadSql --path=db/migration-base/user-generated/data.sql --verbose=1
+    mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/migration-base/user-generated/schema.sql
     mysql -A --host=$DB_HOST --port=$DB_PORT --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < db/migration-base/user-generated/data.sql
 
     # copy the downloaded data to the persistant p3media folder
