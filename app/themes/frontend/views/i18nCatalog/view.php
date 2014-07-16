@@ -44,8 +44,8 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->i18n_category); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('_po_contents')); ?>:</b>
-<?php echo CHtml::encode($model->_po_contents); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents')); ?>:</b>
+<?php echo CHtml::encode($model->po_contents); ?>
 <br />
 
 <?php /*

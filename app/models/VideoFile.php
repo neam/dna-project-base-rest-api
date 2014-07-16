@@ -32,8 +32,7 @@ class VideoFile extends BaseVideoFile
     {
         return array_merge(
             parent::behaviors(),
-            array(
-            )
+            array()
         );
     }
 
@@ -50,34 +49,22 @@ class VideoFile extends BaseVideoFile
     public function rules()
     {
 
-        // The field po_contents is not itself translated, but contains translated contents, so need to add i18n validation rules manually for the field
-        $attribute = "subtitles";
-        $manualI18nRules = array();
-        foreach (LanguageHelper::getCodes() as $language) {
-            $manualI18nRules[] = array($attribute, 'validateSubtitlesTranslation', 'on' => 'translate_into_' . $language);
-
-            foreach ($this->flowSteps() as $step => $fields) {
-                $manualI18nRules[] = array($attribute, 'validateSubtitlesTranslation', 'on' => "into_$language-step_$step");
-            }
-        }
-
         $return = array_merge(
             parent::rules(),
             $this->statusRequirementsRules(),
             $this->flowStepRules(),
             $this->i18nRules(),
-            $manualI18nRules,
             array(
                 // Ordinary validation rules
                 array('thumbnail_media_id', 'validateThumbnail', 'on' => 'step_info,publishable,publishable-step_info'),
                 array('clip_webm_media_id', 'validateVideoWebm', 'on' => 'step_files,publishable,publishable-step_files'),
                 array('clip_mp4_media_id', 'validateVideoMp4', 'on' => 'step_files,publishable,publishable-step_files'),
                 array('about_' . $this->source_language, 'length', 'min' => 10, 'max' => 200),
-                array('subtitles_' . $this->source_language, 'validateSubtitles', 'on' => 'step_subtitles,publishable,publishable-step_subtitles'),
+                array('subtitles', 'validateSubtitles', 'on' => 'step_subtitles,publishable,publishable-step_subtitles'),
                 array('youtube_url', 'url'),
             )
         );
-        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        Yii::log("model->rules(): " . print_r($return, true), "videofile-validation-rules", __METHOD__);
         return $return;
     }
 
@@ -105,11 +92,11 @@ class VideoFile extends BaseVideoFile
     public function validateSubtitles($attribute)
     {
         // Should not throw an exception or cause an error
-        if (!isset($this->_subtitles)) {
+        if (!isset($this->subtitles)) {
             $this->getParsedSubtitles();
         }
 
-        if (is_null($this->_subtitles)) {
+        if (is_null($this->subtitles)) {
             $this->addError($attribute, Yii::t('app', '!validateSubtitles'));
         }
 
@@ -117,7 +104,15 @@ class VideoFile extends BaseVideoFile
 
     public function validateSubtitlesTranslation($attribute)
     {
-        // TODO
+
+        // Throw exception when there are no subtitles to translate
+        if (is_null($this->subtitles)) {
+            throw new CException('There are currently no subtitles to translate, nevertheless validation was attempted');
+        }
+
+        // TODO: Implement and remove
+        $this->addError($attribute, Yii::t('app', 'not valid translation since validation logic is not written'));
+
     }
 
     /**
@@ -172,7 +167,7 @@ class VideoFile extends BaseVideoFile
                 'youtube_url',
             ),
             'subtitles' => array(
-                'subtitles_' . $this->source_language,
+                'subtitles',
             ),
             'related' => array(
                 'related',
@@ -258,16 +253,27 @@ class VideoFile extends BaseVideoFile
 
     public function getParsedSubtitles()
     {
-        $subtitle_lines = explode("\n", $this->_subtitles);
+
+        // Return null if subtitles is empty
+        if (empty($this->subtitles)) {
+            return null;
+        }
+
+        // Remove extra line-endings from start or end of subtitles contents
+        $subtitles = trim($this->subtitles, "\r\n");
+
+        // Split by all three kinds of line endings - http://stackoverflow.com/questions/5053373/explode-a-string-by-r-n-n-r-at-once
+        $subtitle_lines = preg_split('/\n|\r\n?/', $subtitles);
+
+        // Debug (uncomment temporarily)
+        //print_r(json_encode($subtitles));print_r($subtitle_lines);die();
 
         $parsed = array();
         $p = new stdClass();
-        foreach ($subtitle_lines as $subtitle_line) {
-
-            $subtitle_line = trim($subtitle_line, "\r");
+        foreach ($subtitle_lines as $lineno => $subtitle_line) {
 
             // Check for a single number = the id
-            if (!isset($p->id) && intval($subtitle_line) == $subtitle_line) {
+            if (!isset($p->id) && strval(intval($subtitle_line)) === $subtitle_line) {
                 $p->id = $subtitle_line;
             } else {
 
@@ -285,6 +291,12 @@ class VideoFile extends BaseVideoFile
                         }
                         $p->sourceMessage .= $subtitle_line;
                     } else {
+
+                        // Verify that the parsed subtitle line has an id, timestamp and a sourceMessage
+                        if (empty($p->id) || empty($p->timestamp) || empty($p->sourceMessage)) {
+                            throw new VideoFileSubtitleParseException("Subtitle parse error at line $lineno. [" . print_r($p, true) . "].  Verify that the subtitles field contains valid srt");
+                        }
+
                         $parsed[] = $p;
                         $p = new stdClass();
                         continue;
@@ -565,4 +577,9 @@ class VideoFile extends BaseVideoFile
     {
         return app()->controller->createUrl('videoFile/subtitles', array('id' => $this->id));
     }
+}
+
+class VideoFileSubtitleParseException extends CException
+{
+
 }

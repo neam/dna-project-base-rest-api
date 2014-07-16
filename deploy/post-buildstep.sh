@@ -20,6 +20,7 @@ chmod -R 777 app/runtime/
 chmod -R 777 www/assets/
 chmod -R 777 www/runtime/
 
+# fail on any error
 set -o errexit
 
 # install bower dependencies
@@ -30,11 +31,6 @@ bower install --allow-root
 cp app/js/config.dist.js app/js/config.js
 node_modules/.bin/grunt build
 
-set +o errexit
-
-# remove assets folder in case it was committed by mistake or we are updating an existing instance for some reason
-rm -r www/assets/*
-
 # necessary for user data backup uploads
 deploy/install-s3cmd.sh
 
@@ -44,14 +40,6 @@ if [ -d app/data/p3media ] ; then
 fi
 if [ ! -L app/data/p3media ] ; then
     ln -s /cache/p3media app/data/p3media
-fi
-
-if [ ! "$ENV" == "" ]; then
-
-    app/yiic fixture --connectionID=$connectionID load
-    shell-scripts/yiic-migrate.sh --connectionID=$connectionID --interactive=0
-    app/yiic databaseviewgenerator --connectionID=$connectionID item
-
 fi
 
 exit 0

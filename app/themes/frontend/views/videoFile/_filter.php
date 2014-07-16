@@ -36,7 +36,7 @@
     </div>
 
     <div class="row pull-left">
-        <?php echo $form->label($model, '_subtitles'); ?>
+        <?php echo $form->label($model, 'subtitles'); ?>
         <?php echo $form->textArea($model, '_subtitles', array('ControlGroups' => 6, 'cols' => 50)); ?>
     </div>
 

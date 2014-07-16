@@ -27,8 +27,8 @@
     <?php echo CHtml::encode($data->i18n_category); ?>
     <br/>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('_po_contents')); ?>:</b>
-    <?php echo CHtml::encode($data->_po_contents); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('po_contents')); ?>:</b>
+    <?php echo CHtml::encode($data->po_contents); ?>
     <br/>
 
     <?php /*

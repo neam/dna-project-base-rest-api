@@ -19,27 +19,21 @@ $I->sendGET('i18nCatalog/poJson', array('id' => 4, 'lang' => 'fa'));
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 
-// TODO there is no poJson action in the VideoFileController so I'm removing this for now
-/*
-$I->sendGET('videoFile/poJson', array('id' => 2, 'lang' => 'en'));
+$I->sendGET('videoFile/get', array('id' => 2, 'lang' => 'en'));
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 
-$I->sendGET('videoFile/poJson', array('id' => 2, 'lang' => 'fa'));
-$I->seeResponseCodeIs(200);
-$I->seeResponseIsJson();
-*/
-
-// TODO there is no poJson action in the SnapshotController so I'm removing this for now
-/*
-$I->sendGET('snapshot/poJson', array('id' => 5, 'lang' => 'en'));
+$I->sendGET('videoFile/get', array('id' => 2, 'lang' => 'fa'));
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 
-$I->sendGET('snapshot/poJson', array('id' => 5, 'lang' => 'fa'));
+$I->sendGET('snapshot/get', array('id' => 5, 'lang' => 'en'));
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
-*/
+
+$I->sendGET('snapshot/get', array('id' => 5, 'lang' => 'fa'));
+$I->seeResponseCodeIs(200);
+$I->seeResponseIsJson();
 
 $I->sendGET('videoFile/subtitles', array('id' => 2, 'lang' => 'fa'));
 $I->seeResponseCodeIs(200);

@@ -19,7 +19,7 @@
     <div class="content-section section-educational">
         <h2><?php print Yii::t('app', 'Educational material'); ?></h2>
         <?php foreach (DataModel::educationalItemModels() as $modelClass => $table): ?>
-            <?php if (!in_array($modelClass, array('SpreadsheetFile', 'ExamQuestionAlternative'))): // TODO: Fix spreadsheet files (i.e. the dataarticle relation). ?>
+            <?php if (!in_array($modelClass, array('SpreadsheetFile'))): // TODO: Fix spreadsheet files (i.e. the dataarticle relation). ?>
                 <?php $this->renderPartial('_item-type-introduction', compact('modelClass')); ?>
             <?php endif; ?>
         <?php endforeach; ?>

@@ -169,7 +169,7 @@ $gcmsConfig = array(
                 ),
             ),
             'defaultLayout' => 'theme.views.layouts.narrow',
-            'fromEmailAddress' => 'noreply@gapminder.org',
+            'fromEmailAddress' => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
         ),
     ),
     'components' => array(

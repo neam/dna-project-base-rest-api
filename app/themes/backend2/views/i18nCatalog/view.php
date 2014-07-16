@@ -37,8 +37,8 @@ $this->breadcrumbs[] = $model->id;
 <?php echo CHtml::encode($model->i18n_category); ?>
 <br/>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('_po_contents')); ?>:</b>
-<?php echo CHtml::encode($model->_po_contents); ?>
+<b><?php echo CHtml::encode($model->getAttributeLabel('po_contents')); ?>:</b>
+<?php echo CHtml::encode($model->po_contents); ?>
 <br/>
 
 <?php /*
@@ -160,13 +160,13 @@ $this->breadcrumbs[] = $model->id;
                             )
                     ),
                     array(
-                        'name' => '_po_contents',
+                        'name' => 'po_contents',
                         'type' => 'raw',
                         'value' => $this->widget(
                                 'TbEditableField',
                                 array(
                                     'model' => $model,
-                                    'attribute' => '_po_contents',
+                                    'attribute' => 'po_contents',
                                     'url' => $this->createUrl('/i18nCatalog/editableSaver'),
                                 ),
                                 true
