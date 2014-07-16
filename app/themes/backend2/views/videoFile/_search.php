@@ -56,7 +56,7 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, '_subtitles'); ?>
+        <?php echo $form->label($model, 'subtitles'); ?>
         <?php echo $form->textArea($model, '_subtitles', array('rows' => 6, 'cols' => 50)); ?>
     </div>
 

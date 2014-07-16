@@ -16,13 +16,15 @@
     <?php app()->registerScripts(); ?>
     <?php app()->yiistrap->fixPanningAndZooming(); ?>
     <?php app()->clientScript->registerCoreScript('jquery', CClientScript::POS_END); ?>
-    <?php js('js/lib/requirejs/require.js', CClientScript::POS_HEAD); ?>
+    <?php /* TODO: Move this into the js-app feature branch and remove from develop ?>
+    <?php js('js/lib/requirejs/require.js', CClientScript::POS_HEAD);
     <script type="text/javascript">
         // Set up the application through RequireJS.
         require(['require', '<?php echo baseUrl('js/config.js?_=' . app()->resolveCacheBuster()); ?>'], function(require) {
             require(['main']);
         });
     </script>
+    */ ?>
 </head>
 <body>
 <?php echo $content; ?>

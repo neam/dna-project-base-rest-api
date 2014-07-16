@@ -17,16 +17,6 @@
                         $invalidFieldCount
                     ); ?>
                 </span>
-                <?php echo TbHtml::linkButton(
-                    Yii::t('button', 'Go to next field'),
-                    array(
-                        'url' => '#',
-                        'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                        'size' => TbHtml::BUTTON_SIZE_SM,
-                        'id' => 'next-required',
-                        'class' => 'required-button',
-                    )
-                ); ?>
                 <?php $nextStep = $this->controller->nextFlowStep("$validationScenario-", $model); ?>
                 <?php if ($invalidFieldCount > 0 && empty($nextStep)): ?>
                     <?php throw new CException("The item's validation rules for $validationScenario are out of sync. Make sure that the step-based validation rules match those of the overall $validationScenario validation scenarios"); ?>
@@ -48,6 +38,17 @@
                            array('id' => $model->id, 'step' => $nextStep)
                        )
                    ); ?>">
+                <?php else: ?>
+                    <?php echo TbHtml::submitButton(
+                        Yii::t('button', 'Go to next field'),
+                        array(
+                            'url' => '#',
+                            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                            'size' => TbHtml::BUTTON_SIZE_SM,
+                            'id' => 'next-required',
+                            'class' => 'required-button',
+                        )
+                    ); ?>
                 <?php endif; ?>
             <?php endif; ?>
             <?php foreach ($this->controller->workflowData['flagTriggerActions'] as $action): ?>

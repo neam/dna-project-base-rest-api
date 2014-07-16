@@ -61,7 +61,7 @@ $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('index');
 <?php echo CHtml::encode($model->clip_mp4_media_id); ?>
 <br />
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('_subtitles')); ?>:</b>
+<b><?php echo CHtml::encode($model->getAttributeLabel('subtitles')); ?>:</b>
 <?php echo CHtml::encode($model->_subtitles); ?>
 <br />
 
