@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "73331c657119079cf6774074b1b117c4",
+    "hash": "da3e542ee385fbe473c05e59cc44df8e",
     "packages": [
 
     ],
@@ -112,16 +112,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "dev-non-numeric-branch-2.0",
+            "version": "dev-awaiting-prs",
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/Codeception.git",
-                "reference": "a5049b1282c8333b19a1f5eb2d7e68a32ee24b9e"
+                "reference": "10a8632c27aeef4bb867de4c3f968d068e5dbd43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/Codeception/zipball/a5049b1282c8333b19a1f5eb2d7e68a32ee24b9e",
-                "reference": "a5049b1282c8333b19a1f5eb2d7e68a32ee24b9e",
+                "url": "https://api.github.com/repos/motin/Codeception/zipball/10a8632c27aeef4bb867de4c3f968d068e5dbd43",
+                "reference": "10a8632c27aeef4bb867de4c3f968d068e5dbd43",
                 "shasum": ""
             },
             "require": {
@@ -181,9 +181,9 @@
                 "unit testing"
             ],
             "support": {
-                "source": "https://github.com/motin/Codeception/tree/2.0"
+                "source": "https://github.com/motin/Codeception/tree/awaiting-prs"
             },
-            "time": "2014-07-01 19:58:57"
+            "time": "2014-07-04 08:36:36"
         },
         {
             "name": "facebook/webdriver",
