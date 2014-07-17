@@ -46,15 +46,9 @@ class ItemDetails extends CWidget
      */
     public function getAttributeValue($attribute)
     {
-        if ($this->model->hasAttribute($attribute)) {
-            return e($this->model->{$attribute});
-        } else {
-            throw new CException(
-                Yii::t('error', 'Invalid model attribute: {attribute}', array(
-                    '{attribute}' => $attribute,
-                ))
-            );
-        }
+        return $this->model->hasAttribute($attribute)
+            ? e($this->model->{$attribute})
+            : '';
     }
 
     /**
@@ -65,14 +59,8 @@ class ItemDetails extends CWidget
      */
     public function getAttributeLabel($attribute)
     {
-        if ($this->model->hasAttribute($attribute)) {
-            return e($this->model->getAttributeLabel($attribute));
-        } else {
-            throw new CException(
-                Yii::t('error', 'Invalid model attribute: {attribute}', array(
-                    '{attribute}' => $attribute,
-                ))
-            );
-        }
+        return $this->model->hasAttribute($attribute)
+            ? e($this->model->getAttributeLabel($attribute))
+            : '';
     }
 }

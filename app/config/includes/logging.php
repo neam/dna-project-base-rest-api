@@ -17,6 +17,7 @@ if (DEBUG_LOGS) {
         'info',
         'inspection',
         'logdump',
+        'qa-state',
         //'casperjs',
     );
     $levels = implode(', ', $_levels);

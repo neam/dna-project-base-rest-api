@@ -53,7 +53,7 @@ When true, Yii application and profile logs show up at the end of the pages. (Cu
 
 Type: Environment variable
 
-This sets which of the app/config/env-*.php configuration includes are used and can be one of the following:
+This sets which of the app/config/environments/*.php configuration includes are used and can be one of the following:
 
 * `ci` - Used while running acceptance tests (for instance, it disables captcha on the registration form)
 * `development` - Used for development and production deployments
@@ -181,6 +181,42 @@ After pulling the latest changes, run the following to update your local environ
     bower install
     shell-scripts/yiic-migrate.sh
 
+## Database migrations
+
+The migrations directory should, at all times, contain the database migrations necessary to (separately) migrate the
+*clean-db* and *user-generated* schemas to reflect the database schema required by the current revision.
+
+This ensures that release upgrades are continuously tested throughout the development cycle.
+
+Deployment routines use s3cmd to download and upload files to S3. Developers may use s3cmd, or an S3-compliant FTP
+client such as Cyberduck.
+
+### Run the migrations and reset the database
+
+To determine whether to use *clean-db* or *user-generated*, set (export) the `DATA` variable accordingly. The example
+below uses *clean-db*.
+
+```
+export DB_HOST=127.0.0.1
+export DB_USER=root
+export DB_PASSWORD=root
+export DB_NAME=gscms
+export DB_PORT=3306
+export DATA=clean-db # use 'clean-db' or 'user-generated'
+cd YOUR_CMS_PROJECT_DIR
+deploy/reset-db.sh
+```
+
+### How to fetch user-generated data
+
+1. Install s3cmd (https://github.com/s3tools/s3cmd).
+
+2. Run `s3cmd --configure --config=/tmp/.gapminder-user-generated-data.s3cfg`.
+
+The S3 credentials are set in Drone at http://drone.gapminder.org/github.com/Gapminder/gapminder-school/params
+
+3. Run `shell-scripts/fetch-user-generated-data.sh`.
+
 ## Tests
 
 First, decide whether or not to run tests against a clean database or with user generated data:
@@ -204,7 +240,7 @@ To reset the test database (necessary in order to re-run tests):
 
 To run the unit tests:
 
-    app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
+    ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
     vendor/bin/codecept run unit -g data:$DATA --debug
 
 To run the functional tests:
@@ -237,7 +273,7 @@ To run an individual test, in this example an acceptance test:
 
      vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug 04-VerifyCleanDbCept.php
 
-In general, consult the documentation at [http://codeception.com/docs/modules/WebDriver]() and related Codeception docs.
+In general, consult the documentation at http://codeception.com/docs/modules/WebDriver and related Codeception docs.
 
 A useful method while developing tests locally is pauseExecution(). It only has effect if tests are run with the `--debug` flag (as per above). It pauses the execution and let's you use developer tools or similar to inspect the current state of things. For instance, if you can't a selector to work, add it just before the problematic selector:
 
@@ -251,15 +287,25 @@ A useful method while developing tests locally is pauseExecution(). It only has 
 
 Happy test development!
 
+## Managing project dependencies
+
+Composer, npm and bower are used to manage dependencies. Check their respective documentation for how they are used. For npm, we use shrinkwrap (built-in) and clingwrap (`npm install -g clingwrap`) in order to lock down dependencies. After ordinary modifications to package.json and `npm install`, run the following:
+
+    npm prune
+    npm shrinkwrap
+    clingwrap npmbegone
+
+Then, commit the changes to `npm-shrinkwrap.json` (npm's equivalent to `composer.lock`) using git.
+
 ## Deploy
 
 Builds and runs with PHP 5.4.26, Nginx 1.4.3. However note that php cli runs version 5.4.6 (default Ubuntu Quantal).
 
 Requires Dokku master branch and the following plugins:
 
- - For post-buildstep.sh to run properly - [https://github.com/musicglue/dokku-user-env-compile]()
- - For MySQL-compatible database access - [https://github.com/Kloadut/dokku-md-plugin]()
- - For mounting persistent cache directory at runtime - [https://github.com/dyson/dokku-docker-options]()
+ - For post-buildstep.sh to run properly - https://github.com/musicglue/dokku-user-env-compile
+ - For MySQL-compatible database access - https://github.com/Kloadut/dokku-md-plugin
+ - For mounting persistent cache directory at runtime - https://github.com/dyson/dokku-docker-options
 
 To build and deploy (regardless of target), first set some fundamental config vars:
 

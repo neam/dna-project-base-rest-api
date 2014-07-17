@@ -17,6 +17,9 @@
             initMissingFields();
             initNextBtn();
             $currentMissingField = $(getFieldElementId(missingFieldsOnPage[0]));
+            if (missingFieldsOnPage.length > 0) {
+                goToNext();
+            }
         }
 
         /**
@@ -37,9 +40,6 @@
          * Initializes the next button.
          */
         function initNextBtn() {
-            if (missingFieldsOnPage.length < 1) {
-                $nextBtn.hide();
-            }
         }
 
         /**
@@ -110,8 +110,12 @@
          * Register button event handler.
          */
         $nextBtn.on('click', function(e) {
-            e.preventDefault();
-            goToNext();
+            if (missingFieldsOnPage.length < 1) {
+                // Pass-through - let the form submit and redirect to the next step
+            } else {
+                e.preventDefault();
+                goToNext();
+            }
         });
     });
 })();

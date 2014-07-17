@@ -5,6 +5,24 @@
  */
 class Controller extends CController
 {
+    // Item actions
+    const ACTION_BROWSE = 'browse';
+    const ACTION_VIEW = 'view';
+    const ACTION_ADD = 'add';
+    const ACTION_EDIT = 'edit';
+    const ACTION_CLONE = 'clone';
+    const ACTION_REMOVE = 'remove';
+    const ACTION_PREVIEW = 'preview';
+    const ACTION_TRANSLATE = 'translate';
+    const ACTION_TRANSLATION_OVERVIEW = 'translationOverview';
+    const ACTION_EVALUATE = 'evaluate';
+    const ACTION_PROOFREAD = 'proofread';
+    const ACTION_APPROVE = 'approve';
+    const ACTION_PUBLISH = 'publish';
+    const ACTION_PREPARE_FOR_REVIEW = 'prepareForReview';
+    const ACTION_PREPARE_FOR_PUBLISHING = 'prepareForPublishing';
+    const ACTION_CANCEL = 'cancel';
+
     /**
      * @var string the default layout for the controller view. Defaults to '//layouts/column1',
      * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
@@ -109,6 +127,19 @@ class Controller extends CController
     }
 
     /**
+     * Forces the user to set a profile language, and sets Yii::app()->user->profileReturnUrl.
+     * @param string|null $returnUrl the return URL used after saving the profile. Defaults to the current request URL.
+     */
+    public function requireProfileLanguages($returnUrl = null)
+    {
+        if (Yii::app()->user->isTranslator && count(Yii::app()->user->translatableLanguages) < 1) {
+            Yii::app()->user->profileReturnUrl = isset($returnUrl) ? $returnUrl : request()->url;
+            Yii::app()->user->setFlash('warning', Yii::t('app', 'Please set at least one language before translating.'));
+            $this->redirect(array('/profile/edit'));
+        }
+    }
+
+    /**
      * Sets the page title.
      * @param string|array $title the full title or an array of title fragments.
      * @param boolean $includeAppName whether to include the app name in the page title. Defaults to false.
@@ -128,6 +159,28 @@ class Controller extends CController
         }
 
         parent::setPageTitle($value);
+    }
+
+    /**
+     * Builds and sets the breadcrumbs.
+     * @param array $items the list of breadcrumb items as label => URL
+     * @param array $rootItem override the root breadcrumb item.
+     */
+    public function buildBreadcrumbs(array $items, array $rootItem = array())
+    {
+        $breadcrumbs = array();
+
+        !empty($rootItem)
+            ? $breadcrumbs[$rootItem[0]] = $rootItem[1] // override breadcrumb root
+            : $breadcrumbs[Yii::app()->breadcrumbRootLabel] = Yii::app()->homeUrl;
+
+        foreach ($items as $label => $url) {
+            if (!isset($breadcrumbs[$label])) {
+                $breadcrumbs[$label] = $url;
+            }
+        }
+
+        $this->breadcrumbs = $breadcrumbs;
     }
 
     /**

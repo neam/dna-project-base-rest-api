@@ -12,6 +12,7 @@ nbproject
 www/graphs
 .idea/workspace.xml
 test-php.pid
+tests/codeception/acceptance.suite.yml
 codeception.yml
 tests/vendor
 tests/codeception/*.yml
@@ -21,6 +22,10 @@ db/user-generated-media
 
 app/config/envbootstrap/local/envbootstrap.php
 tests/selenium-*
+www/js
 db/migration-base/user-generated/schema.sql
 db/migration-base/user-generated/data.sql
 db/migration-base/user-generated/media
+
+app/js/config.js
+/build

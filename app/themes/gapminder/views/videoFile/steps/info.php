@@ -39,6 +39,7 @@
                 'thumbnail_media_id',
                 $model->getThumbnailOptions(),
                 array(
+                    'thumbnails' => true,
                     'empty' => Yii::t('app', 'None'),
                 )
             ); ?>
@@ -50,7 +51,6 @@
                     Yii::t('app', 'Upload'),
                     array(
                         'block' => true,
-                        'icon' => TbHtml::ICON_PLUS,
                         'class' => 'upload-btn',
                         'data-toggle' => 'modal',
                         'data-target' => '#' . $form->id . '-modal',

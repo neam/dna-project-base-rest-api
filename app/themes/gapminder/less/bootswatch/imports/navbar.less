@@ -52,6 +52,12 @@
           background-color: rgba(0,0,0,.5);
           border-radius: 4px;
         }
+
+        & > li {
+          & > a {
+            font-weight: 400;
+          }
+        }
       }
     }
   }
@@ -74,6 +80,17 @@
 
     .icon-bar {
       background-color: @brand-primary;
+    }
+  }
+}
+
+.dropdown-menu {
+  border: none;
+  border-radius: 0;
+
+  & > li {
+    & > a {
+      font-weight: @base-font-weight;
     }
   }
 }

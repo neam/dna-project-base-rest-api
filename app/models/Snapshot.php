@@ -17,8 +17,6 @@ class Snapshot extends BaseSnapshot
 {
     use ItemTrait;
 
-    public $firstFlowStep = 'info';
-
     // Add your model-specific methods here. This file will not be overridden by gtc except you force it.
 
     /**
@@ -45,8 +43,7 @@ class Snapshot extends BaseSnapshot
     {
         return array_merge(
             parent::behaviors(),
-            array(
-            )
+            array()
         );
     }
 
@@ -85,9 +82,11 @@ class Snapshot extends BaseSnapshot
         return $return;
     }
 
-    public function validateThumbnail()
+    public function validateThumbnail($attribute)
     {
-        return !is_null($this->thumbnail_media_id);
+        if (is_null($this->thumbnail_media_id)) {
+            $this->addError($attribute, Yii::t('app', '!validateThumbnail'));
+        }
     }
 
     public function validateVizabiState($attribute)
@@ -136,15 +135,15 @@ class Snapshot extends BaseSnapshot
     public function flowSteps()
     {
         return array(
-            'state' => array(
-                'vizabi_state',
-                'tool_id',
-                'embed_override',
-            ),
             'info' => array(
                 'title_' . $this->source_language,
                 'slug_' . $this->source_language,
                 'about_' . $this->source_language,
+            ),
+            'state' => array(
+                'vizabi_state',
+                'tool_id',
+                'embed_override',
             ),
             'related' => array(
                 'related',

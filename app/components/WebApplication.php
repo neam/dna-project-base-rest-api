@@ -14,6 +14,13 @@ class WebApplication extends CWebApplication
     const LAYOUT_MAIN = '//layouts/main';
     const LAYOUT_REGULAR = '//layouts/regular';
     const LAYOUT_MINIMAL = '//layouts/minimal';
+    const LAYOUT_NARROW = '//layouts/narrow';
+
+    /**
+     * @var string application version
+     * TODO: Update this automatically.
+     */
+    public $version = '0.4.0';
 
     /**
      * Registers CSS files.
@@ -78,5 +85,80 @@ class WebApplication extends CWebApplication
     public function getLanguages()
     {
         return LanguageHelper::getLanguageList();
+    }
+
+    /**
+     * Returns a language name by the given language code.
+     * @param string $languageCode
+     * @return string
+     */
+    public function getLanguageNameByCode($languageCode)
+    {
+        $languages = $this->getLanguages();
+
+        return (isset($languages[$languageCode]))
+            ? $languages[$languageCode]
+            : $languageCode;
+    }
+
+    public function clientConfigJson()
+    {
+        return
+            CJSON::encode(
+            array(
+                'baseUrl' => baseUrl(),
+                'cacheBuster' => $this->resolveCacheBuster(),
+            )
+        );
+    }
+
+    /**
+     * Returns the cache buster for this application.
+     * @return string cache buster.
+     */
+    public function resolveCacheBuster()
+    {
+        return md5(YII_DEBUG ? time() : $this->version);
+    }
+
+    /**
+     * Returns the user role specific home URL (overrides CApplication::getHomeUrl)
+     * @return string
+     */
+    public function getHomeUrl()
+    {
+        return !user()->isAdmin() && (user()->isTranslator || user()->isReviewer)
+            ? app()->createUrl('/dashboard/index')
+            : app()->createUrl('/site/index');
+    }
+
+    /**
+     * Returns the root breadcrumb label.
+     * @return string
+     */
+    public function getBreadcrumbRootLabel()
+    {
+        return Yii::t('app', 'Gapminder Community');
+    }
+
+    /**
+     * Renders a footer link.
+     * @param string $label
+     * @param string $paramKey the Yii::app()->params key mapped to the corresponding page ID.
+     * @param array $htmlOptions
+     * @return string
+     */
+    public function renderFooterLink($label, $paramKey, array $htmlOptions = array())
+    {
+        $url = '#';
+        $label = Yii::t('app', $label);
+
+        $params = Yii::app()->params;
+
+        if (isset($params['pages']) && isset($params['pages'][$paramKey])) {
+            $url = TbHtml::normalizeUrl($params['pages'][$paramKey]);
+        }
+
+        return TbHtml::link($label, $url, $htmlOptions);
     }
 }

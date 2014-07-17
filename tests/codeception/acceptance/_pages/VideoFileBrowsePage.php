@@ -5,12 +5,10 @@ class VideoFileBrowsePage extends ItemBrowsePage
     // include url of current page
     static $URL = '?r=videoFile/browse';
 
-    /**
-     * Declare UI map for this page here. CSS or XPath allowed.
-     * public static $usernameField = '#username';
-     * public static $formSubmitButton = "#mainForm input[type=submit]";
-     */
-    public static $addButton = '#addButton';
+    public static function modelContext($title)
+    {
+        return '#VideoFile_' . str_replace(' ', '_', $title);
+    }
 
     /**
      * Basic route example for your current URL

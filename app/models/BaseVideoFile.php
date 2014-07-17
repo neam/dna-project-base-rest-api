@@ -14,7 +14,7 @@
  * @property integer $thumbnail_media_id
  * @property integer $clip_webm_media_id
  * @property integer $clip_mp4_media_id
- * @property string $_subtitles
+ * @property string $subtitles
  * @property integer $subtitles_import_media_id
  * @property string $created
  * @property string $modified
@@ -93,12 +93,12 @@ abstract class BaseVideoFile extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, _title, _caption, slug_en, _about, thumbnail_media_id, clip_webm_media_id, clip_mp4_media_id, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, _title, _caption, slug_en, _about, thumbnail_media_id, clip_webm_media_id, clip_mp4_media_id, subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, thumbnail_media_id, clip_webm_media_id, clip_mp4_media_id, subtitles_import_media_id, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, node_id, video_file_qa_state_id', 'length', 'max' => 20),
                 array('_title, _caption, slug_en, slug_es, slug_hi, slug_pt, slug_sv, slug_de, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'length', 'max' => 255),
-                array('_about, _subtitles, created, modified', 'safe'),
-                array('id, version, cloned_from_id, _title, _caption, slug_en, _about, thumbnail_media_id, clip_webm_media_id, clip_mp4_media_id, _subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'safe', 'on' => 'search'),
+                array('_about, subtitles, created, modified', 'safe'),
+                array('id, version, cloned_from_id, _title, _caption, slug_en, _about, thumbnail_media_id, clip_webm_media_id, clip_mp4_media_id, subtitles, subtitles_import_media_id, created, modified, owner_id, node_id, slug_es, slug_hi, slug_pt, slug_sv, slug_de, video_file_qa_state_id, slug_zh, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_en_gb, slug_en_us, slug_el, slug_fi, slug_fil, slug_fr, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_th, slug_tr, slug_uk, slug_vi, slug_zh_cn, slug_zh_tw, slug_fa', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -149,7 +149,7 @@ abstract class BaseVideoFile extends ActiveRecord
             'thumbnail_media_id' => Yii::t('model', 'Thumbnail Media'),
             'clip_webm_media_id' => Yii::t('model', 'Clip Webm Media'),
             'clip_mp4_media_id' => Yii::t('model', 'Clip Mp4 Media'),
-            '_subtitles' => Yii::t('model', 'Subtitles'),
+            'subtitles' => Yii::t('model', 'Subtitles'),
             'subtitles_import_media_id' => Yii::t('model', 'Subtitles Import Media'),
             'created' => Yii::t('model', 'Created'),
             'modified' => Yii::t('model', 'Modified'),
@@ -218,7 +218,7 @@ abstract class BaseVideoFile extends ActiveRecord
         $criteria->compare('t.thumbnail_media_id', $this->thumbnail_media_id);
         $criteria->compare('t.clip_webm_media_id', $this->clip_webm_media_id);
         $criteria->compare('t.clip_mp4_media_id', $this->clip_mp4_media_id);
-        $criteria->compare('t._subtitles', $this->_subtitles, true);
+        $criteria->compare('t.subtitles', $this->subtitles, true);
         $criteria->compare('t.subtitles_import_media_id', $this->subtitles_import_media_id);
         $criteria->compare('t.created', $this->created, true);
         $criteria->compare('t.modified', $this->modified, true);

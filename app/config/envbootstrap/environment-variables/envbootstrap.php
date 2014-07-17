@@ -13,6 +13,12 @@ setenv("DEBUG_LOGS", $default = false);
 setenv("CONFIG_ENVIRONMENT", $default = 'development', $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
 setenv("DATA", $default = 'user-generated', $required = true);
 
+// ==== CMS page ids ====
+setenv("TERMS_PAGE_ID", $default = 1, $required = false);
+setenv("ABOUT_PAGE_ID", $default = 2, $required = false);
+setenv("CC_PAGE_ID", $default = 3, $required = false);
+setenv("PRIVACY_POLICY_PAGE_ID", $default = 4, $required = false);
+
 // ==== Identity-related constants ====
 
 setenv("BRAND_SITENAME", $default = null, $required = true);
@@ -84,10 +90,9 @@ class Identity
         $return = new \stdClass();
         $return->siteName = BRAND_SITENAME;
         $return->domain = BRAND_DOMAIN;
-        $return->supportEmail = "info@" . $return->domain;
-        // Temporarily hard-coding to dev@gapminder.org since we don't have production status for Amazon Simple Email Services yet and the sender email needs to be verified in the sandbox
-        $return->mailSentByMail = "dev@gapminder.org";
-        //$return->mailSentByMail = "noreply@" . $return->domain;
+        $return->supportEmail = 'community@gapminder.org';
+        $return->signupEmail = 'community@gapminder.org';
+        $return->mailSentByMail = "community@gapminder.org";
         $return->mailSentByName = $return->siteName;
         return $return;
     }

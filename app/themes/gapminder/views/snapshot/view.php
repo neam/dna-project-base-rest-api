@@ -1,16 +1,14 @@
+<?php
+/** @var SnapshotController|ItemController $this */
+/** @var Snapshot|ItemTrait $model */
+?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
-    <?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
-    <?php $this->renderPartial("/_item/elements/flowbar", array("model" => $model)); ?>
-
-    <!--
     <h1>
-        <?php echo Yii::t('model', 'Snapshot'); ?>
-        <small>
-            <?php echo Yii::t('model', 'View') ?> #<?php echo $model->id ?>
-        </small>
+        <?php echo $model->title; ?>
+        <?php if ($this->actionIsEvaluate()): ?>
+            <small><?php echo $this->getViewActionLabel(); ?></small>
+        <?php endif; ?>
     </h1>
-    -->
-
     <?php if (Yii::app()->user->checkAccess('Snapshot.*')): ?>
         <div class="admin-container hide">
             <?php $this->renderPartial("_toolbar", array("model" => $model)); ?>

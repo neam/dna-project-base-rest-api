@@ -12,19 +12,21 @@
         )
     ); ?>
 <?php else: ?>
-    <?php echo $form->textAreaControlGroup($model, "subtitles_$model->source_language", array(
+    <?php echo $form->textAreaControlGroup($model, "subtitles", array(
         'class' => Html::ITEM_FORM_FIELD_CLASS,
         'disabled' => !$this->canEditSourceLanguage(),
         'rows' => 12,
         'cols' => 50,
         'labelOptions' => array(
-            'label' => Html::attributeLabelWithTooltip($model, "subtitles_$model->source_language", 'subtitles'),
+            'label' => Html::attributeLabelWithTooltip($model, "subtitles", 'subtitles'),
         ),
     )); ?>
     <?php $this->renderPartial('steps/fields/subtitles_import', compact('form', 'model')); ?>
     <?php echo TbHtml::linkButton(
         Yii::t('app', 'Download SRT files'),
         array(
+            'block' => true,
+            'color' => TbHtml::BUTTON_COLOR_LINK,
             'url' => array('/videoFile/downloadSubtitles', 'id' => $model->id),
         )
     ); ?>

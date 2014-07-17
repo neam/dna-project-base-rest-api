@@ -184,7 +184,7 @@ class ItemEditUi extends CWidget
             $nextStepAction = $stepActions[$nextStepIndex];
             $url = $this->createFormActionUrlForStep($nextStepAction['step']);
         } else {
-            $url = Yii::app()->createUrl('/account/dashboard');
+            $url = Html::normalizeUrl(array('preview', 'id' => $this->model->id));
         }
 
         return $url;
@@ -204,7 +204,7 @@ class ItemEditUi extends CWidget
             $previousStepAction = $stepActions[$previousStepIndex];
             $url = $this->createFormActionUrlForStep($previousStepAction['step']);
         } else {
-            $url = Yii::app()->createUrl('/account/dashboard');
+            $url = Yii::app()->createUrl('/dashboard/index');
         }
 
         return $url;
@@ -234,15 +234,13 @@ class ItemEditUi extends CWidget
      */
     public function getSubmitButtonLabel()
     {
-        if ($this->actionId === self::ACTION_TRANSLATE) {
-            return $this->isFinalStep()
-                ? Yii::t('app', 'Translation is done!')
-                : Yii::t('app', 'Next');
-        } else {
-            return $this->isFinalStep()
-                ? Yii::t('app', 'Finish editing!')
-                : Yii::t('app', 'Next');
-        }
+        $subject = $this->controller->action->id === 'translate'
+            ? Yii::t('app', 'Translation')
+            : Yii::t('app', $this->model->modelLabel, 1);
+
+        return $this->isFinalStep()
+            ? Yii::t('app', 'Save {subject}', array('{subject}' => $subject))
+            : Yii::t('app', 'Next Step');
     }
 
     /**
@@ -253,7 +251,7 @@ class ItemEditUi extends CWidget
     {
         $currentStep = $this->step;
 
-        if (isset($this->controller->workflowData['stepActions'])) {
+        if (isset($this->controller->workflowData['stepActions']) && !empty($this->controller->workflowData['stepActions'])) {
             $steps = $this->controller->workflowData['stepActions'];
 
             foreach ($steps as $index => $step) {
@@ -262,9 +260,9 @@ class ItemEditUi extends CWidget
                 }
             }
 
-            return null;
+            throw new CException('Current step ' . $currentStep . ' is not available in the current workflow.');
         } else {
-            throw new CException('Step actions are not defined in workflow data.');
+            throw new CException('There are no steps available in the current workflow.');
         }
     }
 
@@ -285,6 +283,17 @@ class ItemEditUi extends CWidget
     {
         return isset($this->controller->workflowData['stepActions'])
             ? count($this->controller->workflowData['stepActions'])
+            : null;
+    }
+
+    /**
+     * Returns the total number of steps.
+     * @return integer
+     */
+    public function getCurrentWorkflowProgress()
+    {
+        return isset($this->controller->workflowData['stepActions'])
+            ? $this->controller->workflowData['stepActions'][$this->getCurrentStepIndex()]["workflowProgress"]
             : null;
     }
 }

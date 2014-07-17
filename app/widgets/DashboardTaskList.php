@@ -95,10 +95,33 @@ class DashboardTaskList extends CWidget
     public function createTaskUrl($action, $data)
     {
         $modelClass = lcfirst($data['model_class']);
+
+        $params = array();
+
+        if (isset($data['id'])) {
+            $params['id'] = (int)$data['id'];
+        }
+
+        if ($action === 'translate') {
+            $params = $this->translationParams($data);
+        }
+
         $route = "/$modelClass/$action";
-        return isset($data['id'])
-            ? Yii::app()->createUrl($route, array('id' => (int)$data['id']))
-            : Yii::app()->createUrl($route);
+
+        return Yii::app()->createUrl($route, $params);
+    }
+
+    /**
+     * @param array $data
+     * @return string
+     */
+    protected function translationParams($data)
+    {
+        return array(
+            'id' => $data['id'],
+            'step' => $this->getTaskModel($data)->firstTranslationFlowStep(),
+            'translateInto' => $data['language'],
+        );
     }
 
     /**

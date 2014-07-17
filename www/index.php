@@ -1,5 +1,7 @@
 <?php
 
+defined('YII_DEBUG') or define('YII_DEBUG', true);
+
 $root = dirname(__DIR__);
 
 require_once("$root/vendor/autoload.php");
@@ -8,7 +10,7 @@ require_once("$root/app/components/WebApplication.php");
 
 // config files
 $main = require("$root/app/config/main.php");
-$env = require("$root/app/config/env-" . CONFIG_ENVIRONMENT . ".php");
+$env = require("$root/app/config/environments/" . CONFIG_ENVIRONMENT . ".php");
 
 // define YII_DEBUG in config files
 if (defined('YII_DEBUG') && YII_DEBUG) {

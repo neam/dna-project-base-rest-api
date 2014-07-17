@@ -47,39 +47,32 @@ class WaffleController extends Controller
     public function saveAndContinueOnSuccess($model)
     {
         if (isset($_POST['import'])) {
-            // TODO: Refactor and improve error handling.
-            if (isset($_POST['Waffle'], $_POST['Waffle']['json_import_media_id'])) {
-                $p3media = P3Media::model()->findByPk($_POST['Waffle']['json_import_media_id']);
-                $fullPath = $p3media->fullPath;
-                $json = file_get_contents($fullPath);
-
-                if (!isset(json_decode($json)->body)) {
-                    throw new CException('The imported JSON file contains invalid waffle data.');
-                }
-            }
-
             try {
-                // get file path
+                if (!isset($_POST['Waffle'], $_POST['Waffle']['json_import_media_id'])) {
+                    throw new CException('Invalid post data.');
+                }
+                /** @var P3Media $p3media */
                 $p3media = P3Media::model()->findByPk($_POST['Waffle']['json_import_media_id']);
-                $fullPath = $p3media->fullPath;
-
-                // read contents of file
-                $json = file_get_contents($fullPath);
-
-                // import
+                if ($p3media === null) {
+                    throw new CException('No valid json file specified.');
+                }
+                $json = file_get_contents($p3media->fullPath);
+                if ($json === false) {
+                    throw new CException('Failed to read the json file.');
+                }
+                /** @var Waffle $model */
                 $model->importFromWaffleJson($json);
             } catch (Exception $e) {
-
                 $model->addError('json_import_media_id', $e->getMessage());
-                // Throwing the exception may be useful while developing
-                //throw $e;
+                /*
+                 * the model needs to be returned here because $this->parentSaveAndContinueOnSuccess() will override
+                 * the errors in the model when saving it as this is not a validation rule error.
+                 */
+                return $model;
             }
-
             // emulate us hitting the save button (so that json_import_media_id is saved and changeset is created etc)
             $_POST['save-changes'] = true;
-
         }
-
         return $this->parentSaveAndContinueOnSuccess($model);
     }
 
@@ -100,16 +93,18 @@ class WaffleController extends Controller
                 throw new CHttpException(400);
             }
         }
-        if ($this->module !== null) {
-            $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
-        }
         return true;
     }
 
+    /**
+     * Renders the view page.
+     * @param int $id model ID.
+     */
     public function actionView($id)
     {
         $model = $this->loadModel($id);
-        $this->render('view', array('model' => $model,));
+        $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
+        $this->render('view', array('model' => $model));
     }
 
     public function actionCreate()

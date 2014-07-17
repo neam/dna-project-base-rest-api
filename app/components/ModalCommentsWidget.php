@@ -1,62 +1,91 @@
 <?php
 
+/**
+ * ModalCommentsWidget class.
+ */
 class ModalCommentsWidget extends CWidget
 {
+    /**
+     * @var ActiveRecord the model.
+     */
     public $model;
+
+    /**
+     * @var string the model attribute.
+     */
     public $attribute;
 
-    function run()
+    /**
+     * @var int the modal element ID.
+     */
+    public $modalId;
+
+    /**
+     * Initializes the widget.
+     */
+    function init()
     {
-
-        $modalId = get_class($this->model) . "-" . $this->attribute . "-" . uniqid();
-
-        echo $this->widget(
-            'bootstrap.widgets.TbButton',
-            array(
-                'label' => Yii::t('app', 'Comments'),
-                'icon' => 'icon-comment',
-                'htmlOptions' => array(
-                    'data-toggle' => 'modal',
-                    'data-target' => '#' . $modalId,
-                ),
-            ),
-            true
-        );
-
-        $this->beginWidget('yiistrap.widgets.TbModal', array('id' => $modalId));
-        ?>
-
-        <div class="modal-header">
-            <button type="button" class="close" data-toggle="modal"
-                    data-target="#<?php echo $modalId; ?>">×
-            </button>
-            <h3><?php echo Yii::t('app', 'Comments on field') . ": " . $this->model->getAttributeLabel($this->attribute) . " (" . Yii::t('app', $this->model->getModelLabel(), 1) . ")"; ?></h3>
-        </div>
-        <div class="modal-body">
-
-            <div id="<?php echo $modalId; ?>-commentSection"></div>
-            <?php Html::initJqueryComments("#$modalId-commentSection", array("context_model" => get_class($this->model), "context_id" => $this->model->id, "context_attribute" => $this->attribute)); ?>
-
-            <?php
-            ?>
-
-        </div>
-        <div class="modal-footer">
-
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#<?php echo $modalId; ?>">Close</a>
-            <?php
-            ?>
-
-        </div>
-
-        <?php
-        $this->endWidget(); // modal
-
+        parent::init();
+        $this->modalId = get_class($this->model) . '-' . $this->attribute . '-' . uniqid();
     }
 
-    private function getMediaModel()
+    /**
+     * Runs the widget.
+     */
+    function run()
     {
-        $model = P3Media::model()->findByPk($this->model->{$this->attribute});
-        return $model;
+        $this->render('view');
+        $this->registerAssets();
+        $this->initScripts();
+    }
+
+    /**
+     * Registers the jQuery Comment plugin asset.
+     */
+    public function registerAssets()
+    {
+        $css = YII_DEBUG ? array('css/jquery.comment.css') : array('css/jquery.comment.min.css');
+        $js = YII_DEBUG ? array('js/jquery.comment.js') : array('js/jquery.comment.min.js');
+        $depends = array('jquery');
+        registerPackage('jquery.comment', 'application.themes.gapminder.assets.jquery-comment', $css, $js, $depends);
+    }
+
+    /**
+     * Initializes the jQuery Comment plugin.
+     */
+    public function initScripts()
+    {
+        $selector = "#$this->modalId-commentSection";
+
+        $urlQueryData = array(
+            'context_model' => get_class($this->model),
+            'context_id' => $this->model->id,
+            'context_attribute' => $this->attribute,
+        );
+
+        $localization = array(
+            'headerText'                => Yii::t('evaluate', 'Comments'),
+            'commentPlaceHolderText'    => Yii::t('evaluate', 'Add a comment...'),
+            'sendButtonText'            => Yii::t('evaluate', 'Send'),
+            'replyButtonText'           => Yii::t('evaluate', 'Reply'),
+            'deleteButtonText'          => Yii::t('evaluate', 'Delete'),
+        );
+
+        $baseUrl = request()->baseUrl;
+        $urlQuery = http_build_query($urlQueryData);
+        $localizationJson = json_encode($localization);
+
+        $script = <<<EOD
+$(document).ready(function () {
+    $('$selector').comments({
+        getCommentsUrl: '$baseUrl/api/comment/jqcList?limit=1000&$urlQuery',
+        postCommentUrl: '$baseUrl/api/comment/jqcCreate?$urlQuery',
+        deleteCommentUrl: '$baseUrl/api/comment/jqcDelete?$urlQuery',
+        localization: $localizationJson
+    });
+});
+EOD;
+
+        app()->clientScript->registerScript("initJqueryComments-$selector", $script, CClientScript::POS_END);
     }
 }

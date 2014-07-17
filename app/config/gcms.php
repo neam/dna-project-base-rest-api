@@ -2,18 +2,8 @@
 
 // Configuration specific to Gapminder School CMS
 
-// Include envbootstrap - see app/config/envbootstrap/README.md for more information
-$envbootstrap_strategy = getenv('ENVBOOTSTRAP_STRATEGY');
-if (empty($envbootstrap_strategy)) {
-    Yii::log("ENVBOOTSTRAP_STRATEGY empty, defaulting to local", CLogger::LEVEL_INFO);
-    $envbootstrap_strategy = "local";
-}
-$envbootstrap = dirname(__FILE__) . '/envbootstrap/' . $envbootstrap_strategy . '/envbootstrap.php';
-if (!is_readable($envbootstrap)) {
-    echo "Main envbootstrap file not available ($envbootstrap).";
-    die(2);
-}
-require_once($envbootstrap);
+// include envbootstrap
+require(dirname(__FILE__) . '/envbootstrap/include.php');
 
 // load global helper functions
 require_once(dirname(__FILE__) . '/../helpers/global.php');
@@ -60,7 +50,8 @@ $gcmsConfig = array(
         'ext.wrest.WHttpRequest' => 'vendor.weavora.wrest.WHttpRequest',
         'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
         'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
-        'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode'
+        'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode',
+        'theme' => 'application.themes.gapminder',
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
@@ -100,10 +91,18 @@ $gcmsConfig = array(
         'p3media' => array(
             'params' => array(
                 'presets' => array(
+                    'item-thumbnail' => array(
+                        'name' => 'Item Thumbnail',
+                        'commands' => array(
+                            'resize' => array(150, 80, 7), // Image::AUTO
+                            'quality' => '85',
+                        ),
+                        'type' => 'jpg',
+                    ),
                     'select2-thumb' => array(
                         'name' => 'Select2 Thumbnail',
                         'commands' => array(
-                            'resize' => array(150, 80, 7), // Image::AUTO
+                            'resize' => array(35, 35, 7), // Image::AUTO
                             'quality' => '85',
                         ),
                         'type' => 'jpg',
@@ -134,7 +133,7 @@ $gcmsConfig = array(
                     'user-profile-picture' => array(
                         'name' => 'User Profile Picture',
                         'commands' => array(
-                            'resize' => array(195, 195, 7), // Image::AUTO
+                            'resize' => array(160, 160, 7), // Image::AUTO
                             'quality' => '85',
                         ),
                         'type' => 'jpg',
@@ -154,16 +153,24 @@ $gcmsConfig = array(
                 ),
             ),
         ),
-        'user' => array(
-            'tableUsers' => 'account',
-            'tableProfiles' => 'profile',
-            'controllerMap' => array(
-                'activation' => 'AppActivationController',
-                'registration' => 'AppRegistrationController',
+        'account' => array(
+            'class' => 'application.components.AccountModule',
+            'classMap' => array(
+                'account' => 'Account',
+                'signupForm' => 'SignupForm',
             ),
-            'returnUrl' => array('/'), // This is the default return url used if login is done from the front-page
-            'profileUrl' => array('/account/dashboard'),
-        )
+            'controllerMap' => array(
+                'password' => array(
+                    'class' => 'application.controllers.PasswordController',
+                ),
+                'signup' => array(
+                    'class' => 'application.controllers.SignupController',
+                    'layout' => 'theme.views.layouts.minimal',
+                ),
+            ),
+            'defaultLayout' => 'theme.views.layouts.narrow',
+            'fromEmailAddress' => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
+        ),
     ),
     'components' => array(
         'loginReturnUrlTracker' => array(
@@ -180,10 +187,10 @@ $gcmsConfig = array(
                 array('api/<model>/list', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),
                 array('api/<model>/get', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'GET'),
                 array('api/<model>/create', 'pattern' => 'api/<model:\w+>', 'verb' => 'POST'),
-				// REST CORS pattern
-				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
-				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
-				array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
+                // REST CORS pattern
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
             ),
         ),
         'db' => array(
@@ -252,6 +259,7 @@ $gcmsConfig = array(
         ),
         'user' => array(
             'class' => 'application.components.WebUser',
+            'loginUrl' => array('/account/authenticate/login'),
         ),
         'widgetFactory' => array(
             'widgets' => array(

@@ -21,7 +21,7 @@
 ); ?>
 
 <?php echo TbHtml::button(
-    Yii::t('app', 'Upload new'),
+    Yii::t('app', 'Upload'),
     array(
         'block' => true,
         'class' => 'upload-btn',

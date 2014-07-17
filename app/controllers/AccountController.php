@@ -113,19 +113,7 @@ class AccountController extends Controller
             }
         }
 
-        if ($this->module !== null) {
-            $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
-        }
-
         return true;
-    }
-
-    /**
-     * Displays the account dashboard page.
-     */
-    public function actionDashboard()
-    {
-        $this->render('dashboard', array('model' => $this->loadModel(Yii::app()->user->id)));
     }
 
     /**
@@ -136,36 +124,6 @@ class AccountController extends Controller
         $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
         $this->render('translations', array('model' => $model,));
-    }
-
-    /**
-     * Displays the profile page.
-     */
-    public function actionProfile()
-    {
-        $id = user()->id;
-
-        /** @var Account $model */
-        $model = $this->loadModel($id);
-
-        $this->performAjaxValidation(array(
-            $model,
-            $model->profile,
-        ));
-
-        if (!request()->isAjaxRequest && isset($_POST['Profile'], $_POST['Account'])) {
-            $model->attributes = $_POST['Account'];
-            $model->profile->attributes = $_POST['Profile'];
-
-            if ($model->save() && $model->profile->save()) {
-                setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('app', 'Your account information has been updated.'));
-                $this->refresh();
-            }
-        }
-
-        $this->render('profile', array(
-            'model' => $model,
-        ));
     }
 
     /**

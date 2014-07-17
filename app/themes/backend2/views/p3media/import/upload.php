@@ -1,3 +1,5 @@
+<?php // TODO: Move this view to the Gapminder theme. ?>
+
 <?php
 if (!isset($_GET['parent_form'])) {
     $this->renderPartial('vendor.phundament.p3media.views.import.upload');
@@ -40,6 +42,11 @@ if (!isset($_GET['parent_form'])) {
         margin: 0;
         padding-top: 0;
         padding-bottom: 60px;
+    }
+
+    .files .name {
+        max-width: 85px;
+        overflow-x: hidden;
     }
 </style>
 

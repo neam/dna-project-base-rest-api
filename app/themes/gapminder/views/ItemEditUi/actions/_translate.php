@@ -14,14 +14,14 @@
                                     '\TbProgress',
                                     array(
                                         'color' => TbHtml::PROGRESS_COLOR_SUCCESS,
-                                        'percent' => $this->model->getValidationProgress('translate_into_' . $this->controller->workflowData['translateInto']),
+                                        'percent' => $this->getCurrentWorkflowProgress(),
                                     )
                                 ); ?>
                             </div>
                             <div class="progress-percentage-container">
                                 <?php echo Yii::t(
                                     'app', '{percentage}% done',
-                                    array('{percentage}' => $this->model->getValidationProgress('translate_into_' . $this->controller->workflowData['translateInto']))
+                                    array('{percentage}' => $this->getCurrentWorkflowProgress())
                                 ); ?>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                         <?php if (get_class($this->model) === 'VideoFile' && $this->step === $this::STEP_SUBTITLES): ?>
                             <?php $currentLang = Yii::app()->language; ?>
                             <?php Yii::app()->language = $this->controller->workflowData['translateInto']; ?>
-                            <?php $this->widget('VideoPlayer', array('videoFile' => $this->model)); ?>
+                            <?php $this->widget('VideoPlayer', array('videoFile' => $this->model, 'stretch' => true)); ?>
                             <?php Yii::app()->language = $currentLang; ?>
                         <?php else: ?>
                             <?php echo $this->model->renderImage('item-workflow-preview'); ?>
@@ -48,7 +48,7 @@
                                     TbHtml::ICON_REMOVE,
                                     Yii::t('app', 'Stop Translating'),
                                     array(
-                                        'url' => array('browse'),
+                                        'url' => array('/dashboard/index'),
                                         'color' => TbHtml::BUTTON_COLOR_LINK,
                                         'size' => TbHtml::BUTTON_SIZE_XS,
                                     )

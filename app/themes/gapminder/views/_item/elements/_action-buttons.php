@@ -15,7 +15,7 @@
                     'url' => array(
                         'draft',
                         'id' => $model->{$model->tableSchema->primaryKey},
-                        'step' => $this->firstFlowStep($model),
+                        'step' => $model->firstFlowStep(),
                     )
                 )
             ); ?>
@@ -25,13 +25,13 @@
             <?php $this->widget(
                 '\TbButton',
                 array(
-                    'label' => Yii::t('crud', 'Prepare for review'),
+                    'label' => Yii::t('app', 'Prepare for Review'),
                     'color' => $this->action->id === 'prepareForReview' ? 'inverse' : null, // TODO: no inverse buttons in BS3 http://getbootstrap.com/css/#buttons
                     'size' => TbHtml::BUTTON_SIZE_MINI,
                     'url' => array(
                         'prepareForReview',
                         'id' => $model->{$model->tableSchema->primaryKey},
-                        'step' => $this->firstFlowStep($model),
+                        'step' => $model->firstFlowStep(),
                     ),
                     'visible' => Yii::app()->user->checkModelOperationAccess($model, 'PrepareForReview'),
                 )
@@ -43,13 +43,13 @@
             <?php $this->widget(
                 '\TbButton',
                 array(
-                    'label' => Yii::t('crud', 'Prepare for publishing'),
+                    'label' => Yii::t('app', 'Prepare for Publishing'),
                     'color' => $this->action->id === 'prepareForPublishing' ? 'inverse' : null,
                     'size' => TbHtml::BUTTON_SIZE_MINI,
                     'url' => array(
                         'prepareForPublishing',
                         'id' => $model->{$model->tableSchema->primaryKey},
-                        'step' => $this->firstFlowStep($model),
+                        'step' => $model->firstFlowStep(),
                     ),
                     'visible' => Yii::app()->user->checkModelOperationAccess($model, 'PrepareForPublishing'),
                 )
@@ -68,12 +68,12 @@
                 'url' => array(
                     'evaluate',
                     'id' => $model->{$model->tableSchema->primaryKey},
-                    'step' => $this->firstFlowStep($model),
+                    'step' => $model->firstFlowStep(),
                 ),
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Evaluate'),
             )
         ); ?>
-        <?php $this->widget(
+        <?php /* $this->widget(
             '\TbButton',
             array(
                 'label' => Yii::t('model', 'Proofread'),
@@ -85,20 +85,31 @@
                 ),
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Proofread'),
             )
-        ); ?>
-        <?php $this->widget(
-            '\TbButton',
-            array(
-                'label' => Yii::t('model', 'Translate'),
-                'color' => $this->action->id === 'translationOverview' ? 'inverse' : null,
-                'size' => TbHtml::BUTTON_SIZE_MINI,
-                'url' => array(
-                    'translationOverview',
-                    'id' => $model->{$model->tableSchema->primaryKey},
-                ),
-                'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Translate'),
-            )
-        ); ?>
+        ); */ ?>
+        <?php $a = $model->getCurrentlyTranslatableAttributes(); ?>
+        <?php if (!empty($a)): ?>
+            <?php $this->widget(
+                '\TbButton',
+                array(
+                    'label' => Yii::t('model', 'Translate'),
+                    'color' => $this->action->id === 'translationOverview' ? 'inverse' : null,
+                    'size' => TbHtml::BUTTON_SIZE_MINI,
+                    'url' => array(
+                        'translationOverview',
+                        'id' => $model->{$model->tableSchema->primaryKey},
+                    ),
+                    'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Translate'),
+                )
+            ); ?>
+        <?php else: ?>
+            <?php echo TbHtml::linkButton(
+                    Yii::t('model', 'Translate'),
+                    array(
+                        'disabled' => true,
+                        'size' => TbHtml::BUTTON_SIZE_MINI,
+                    )
+                ); ?>
+        <?php endif; ?>
     </div>
     <div class="btn-group">
         <?php if (Yii::app()->user->checkAccess('Publish')): ?>
@@ -153,7 +164,7 @@
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Clone'),
             )
         ); ?>
-        <?php $this->widget(
+        <?php /* $this->widget(
             '\TbButton', array(
                 'label' => Yii::t('model', 'Remove'),
                 'color' => $this->action->id === 'remove' ? 'inverse' : null,
@@ -164,7 +175,7 @@
                 ),
                 'visible' => Yii::app()->user->checkModelOperationAccess($model, 'Remove'),
             )
-        ); ?>
+        ); */ ?>
     </div>
     <div class="btn-group">
         <?php foreach (Yii::app()->user->getGroups() as $groupId => $groupName): ?>
@@ -181,7 +192,6 @@
                             'group' => $groupName,
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
-                        'id' => Html::generateModelId($model, 'removeFromGroup', $groupName),
                     )
                 ); ?>
             <?php else: ?>
@@ -197,7 +207,6 @@
                             'group' => $groupName,
                             'returnUrl' => TbHtml::encode(Yii::app()->request->url),
                         ),
-                        'id' => Html::generateModelId($model, 'addToGroup', $groupName),
                     )
                 ); ?>
             <?php endif; ?>

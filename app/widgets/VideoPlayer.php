@@ -9,14 +9,27 @@ class VideoPlayer extends CWidget
      * @var VideoFile
      */
     public $videoFile;
+
     /**
      * @var P3Media[]
      */
     public $p3MediaFiles = array();
+
+    /**
+     * @var string the path to the mediaelement asset directory
+     */
+    public $assetBaseUrl;
+
     /**
      * @var string
      */
     public $srcLang;
+
+    /**
+     * Stretches the video horizontally if set to true.
+     * @var string
+     */
+    public $stretch;
 
     public function init()
     {
@@ -26,15 +39,15 @@ class VideoPlayer extends CWidget
         }
         $this->p3MediaFiles = $this->getP3MediaFiles();
         $this->_initSrcLang();
-        $this->_registerAssets();
     }
 
     public function run()
     {
         parent::run();
+        $this->_registerAssets();
         $this->_registerJs();
         $this->render('view', array(
-            'playerUrl' => $this->getPlayerUrl(),
+            'flashPlayerUrl' => $this->getFlashPlayerUrl(),
             'srcLang' => $this->srcLang,
             'p3MediaFiles' => $this->p3MediaFiles,
         ));
@@ -50,12 +63,12 @@ class VideoPlayer extends CWidget
     }
 
     /**
-     * Returns the video player URL.
+     * Returns the Flash video player URL.
      * @return string
      */
-    public function getPlayerUrl()
+    public function getFlashPlayerUrl()
     {
-        return request()->baseUrl . '/../components/mediaelement/build/flashmediaelement.swf';
+        return $this->assetBaseUrl . '/flashmediaelement.swf';
     }
 
     /**
@@ -96,6 +109,15 @@ class VideoPlayer extends CWidget
     }
 
     /**
+     * Returns the inline styles.
+     * @return string
+     */
+    public function getStyles()
+    {
+        return $this->stretch ? 'width: 100%; height: 100%;' : '';
+    }
+
+    /**
      * Initializes the source language.
      */
     protected function _initSrcLang()
@@ -110,15 +132,15 @@ class VideoPlayer extends CWidget
      */
     protected function _registerAssets()
     {
-        app()->params['bowerAssets'] = app()->assetManager->publish(
-            Yii::getPathOfAlias('bower-components'),
-            true // hash by name
-        );
+        $assetName = 'medialemenet';
+        $assetPath = 'bower-components.mediaelement.build';
 
-        $assetsPath = app()->params['bowerAssets'];
+        $cssFiles = YII_DEBUG ? array('mediaelementplayer.css') : array('mediaelementplayer.min.css');
+        $jsFiles = YII_DEBUG ? array('mediaelement-and-player.js') : array('mediaelement-and-player.min.js');
+        $depends = array('jquery');
 
-        app()->clientScript->registerScriptFile($assetsPath . '/mediaelement/build/mediaelement-and-player.min.js');
-        app()->clientScript->registerCssFile($assetsPath . '/mediaelement/build/mediaelementplayer.min.css');
+        registerPackage($assetName, $assetPath, $cssFiles, $jsFiles, $depends);
+        $this->assetBaseUrl = clientScript()->getPackageBaseUrl($assetName);
     }
 
     /**

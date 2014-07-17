@@ -58,6 +58,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->requireProfileLanguages();
         $this->render('index');
     }
 
@@ -125,10 +126,6 @@ class SiteController extends Controller
         }
         $this->render('contact', array('model' => $model));
     }
-
-    /**
-     * Login page handled via vendor module mishamx.yii-user
-     */
 
     /**
      * Logs out the current user and redirect to homepage.

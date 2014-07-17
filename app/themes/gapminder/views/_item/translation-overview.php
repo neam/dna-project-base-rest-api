@@ -8,9 +8,6 @@
     . ' - '
     . Yii::t('app', 'Choose language')
 ); ?>
-<?php $this->breadcrumbs[Yii::t('model', $model->modelLabel, 2)] = array('browse'); ?>
-<?php $this->breadcrumbs[$model->{$model->tableSchema->primaryKey}] = array('view', 'id' => $model->{$model->tableSchema->primaryKey}); ?>
-<?php $this->breadcrumbs[] = Yii::t('app', 'Choose language'); ?>
 <div class="<?php echo $this->getCssClasses($model); ?>">
     <?php $this->renderPartial(
         '/_item/elements/_flowbar',
@@ -35,7 +32,7 @@
                             'url' => array(
                                 'translate',
                                 'id' => $model->{$model->tableSchema->primaryKey},
-                                'step' => $this->firstTranslationFlowStep($model),
+                                'step' => $model->firstTranslationFlowStep(),
                                 'translateInto' => $languageCode,
                             ),
                         )
@@ -44,13 +41,13 @@
                 <div class="language-progress">
                     <?php
                     try {
-                        // todo: fix this some other way
-                        $model = $model->asa('i18n-attribute-messages') !== null ? $model->edited() : $model;
+                        // Use db-stored qa state for efficiency since we are listing many languages
+                        $progress = (float) $model->qaState()->{'translate_into_' . $languageCode . '_validation_progress'};
                         $this->widget(
                             '\TbProgress',
                             array(
                                 'color' => 'success', // 'info', 'success' or 'danger'
-                                'percent' => $model->calculateValidationProgress('translate_into_' . $languageCode),
+                                'percent' => $progress,
                             )
                         );
                     } catch (QaStateBehaviorNoAssociatedRulesException $e) {

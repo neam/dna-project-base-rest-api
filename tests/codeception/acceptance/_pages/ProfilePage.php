@@ -3,7 +3,8 @@
 class ProfilePage
 {
     // include url of current page
-    static $URL = '?r=account/profile';
+    static $URL = '?r=profile/edit';
+
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.

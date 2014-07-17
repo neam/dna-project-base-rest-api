@@ -21,7 +21,7 @@
         ),
     )
 ); ?>
-    <?php $form = $this->beginWidget(
+    <?php /* $form = $this->beginWidget(
         'yiistrap.widgets.TbActiveForm',
         array(
             'id' => $formId,
@@ -29,19 +29,19 @@
             'enableClientValidation' => true,
             'layout' => TbHtml::FORM_LAYOUT_HORIZONTAL,
         )
-    ); ?>
+    ); */ ?>
         <script>
             // TODO: Refactor JavaScript.
             $(function() {
                 $('#<?php echo $formId; ?>-upload-iframe').on('done', function(event, p3_media_id) {
-                    $('#<?php echo $formId; ?>-modal').modal('hide');
+                    //$('#<?php echo $formId; ?>-modal').modal('hide');
                     $('<?php echo $inputSelector; ?>').append($('<option>', {value: p3_media_id, selected: 'selected'}).text('<?php echo Yii::t('crud', 'Uploaded file'); ?>'));
                     $("<?php echo $inputSelector; ?>").select2();
                 });
             });
         </script>
         <div class="modal-body">
-            <iframe id="<?php echo $formId; ?>-upload-iframe" src="<?php echo Yii::app()->request->baseUrl; ?>/p3media/import/uploadPopup?parent_form=<?php echo $formId; ?>" width="100%" height="300" style="border: 0;"></iframe>
+            <iframe id="<?php echo $formId; ?>-upload-iframe" name="<?php echo $formId; ?>-upload-iframe" src="<?php echo Yii::app()->request->baseUrl; ?>/p3media/import/uploadPopup?parent_form=<?php echo $formId; ?>" width="100%" height="300" style="border: 0;"></iframe>
         </div>
-    <?php $this->endWidget(); ?>
+    <?php // $this->endWidget(); ?>
 <?php $this->endWidget(); ?>

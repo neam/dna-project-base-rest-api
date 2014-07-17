@@ -111,7 +111,7 @@ $this->widget('\TbGridView',
                     'value' => 'CHtml::value($data, \'clipMp4Media.itemLabel\')',
                     'filter' => '',//CHtml::listData(P3Media::model()->findAll(array('limit' => 1000)), 'id', 'itemLabel'),
                 ),
-            #'_subtitles',
+            #'subtitles',
             array(
                     'name' => 'subtitles_import_media_id',
                     'value' => 'CHtml::value($data, \'subtitlesImportMedia.itemLabel\')',

@@ -44,8 +44,6 @@ $mainConfig = array(
         'jquery-file-upload'                    => 'vendor.phundament.jquery-file-upload',
         'jquery-file-upload-widget'             => 'vendor.phundament.p3extensions.widgets.jquery-file-upload',
         // fixing 'hardcoded aliases' from extension (note: you have to use the full path)
-        'application.modules.user.views.asset'  => 'vendor.mishamx.yii-user.views.asset',
-        'application.modules.user.components'   => 'vendor.mishamx.yii-user.components',
         'gii-template-collection'               => 'vendor.phundament.gii-template-collection',
         'application.extensions.introjs.assets' => 'vendor.moein7tl.yii-introjs.introjs.assets',
         'GtcRelation'                           => 'vendor.schmunk42.relation.widgets.GtcRelation',
@@ -71,7 +69,6 @@ $mainConfig = array(
         'vendor.phundament.p3extensions.widgets.ckeditor.*', // shared classes
         'vendor.schmunk42.relation.widgets.*', //Include For p3media for media meta update.
         // imports for components from packages, which do not support composer autoloading
-        //'vendor.mishamx.yii-user.models.*', // User Model
         'vendor.crisu83.yii-rights.components.*', // RWebUser
         //'vendor.clevertech.yiibooster.src.helpers.*', //
         //'vendor.clevertech.yiibooster.src.widgets.*', //
@@ -229,10 +226,6 @@ $mainConfig = array(
             #'superuserName' => 'admin'
         ),
         */
-        'user'                 => array(
-            'class'                => 'vendor.mishamx.yii-user.UserModule',
-            'activeAfterRegister'  => false,
-        ),
         /*
         'translate'            => array(
             'class' => 'vendor.gusnips.yii-translate.TranslateModule',
@@ -261,7 +254,6 @@ $mainConfig = array(
         */
         'yiistrap' => array(
             'class' => '\TbApi',
-            'assetsPath' => 'vendor.twitter.bootstrap.dist',
         ),
         'cache'         => array(
             'class' => 'CDummyCache',
@@ -370,7 +362,7 @@ $mainConfig = array(
         'ga' => array(
             'class' => 'yiiga\components\GoogleAnalytics',
             'accountId' => GA_TRACKING_ID,
-            'cookieDomain' => $_SERVER['HTTP_HOST'],
+            'cookieDomain' => php_sapi_name() == 'cli' ? 'extension-not-used-in-cli.example.com' : $_SERVER['HTTP_HOST'], // Avoids error notice. TODO: Refactor
         ),
         'image'         => array(
             'class'  => 'vendor.phundament.p3extensions.components.image.CImageComponent',
@@ -469,10 +461,6 @@ $mainConfig = array(
                 // backend
                 'phundament' => 'p3admin/default/index',
 
-                // standard login page URL
-                //'<lang:[a-z]{2}(_[a-z]{2})? >/site/login' => 'user/login',
-                //'site/login'                             => 'user/login',
-
                 // p3pages - SEO
                 '<lang:[a-z]{2}(_[a-z]{2})?>/<pageName:[a-zA-Z0-9-._]*>-<pageId:\d+>.html'
                              => 'p3pages/default/page',
@@ -498,26 +486,13 @@ $mainConfig = array(
                 '<lang:[a-z]{2}(_[a-z]{2})?>/<_m>/<_c>/<_a>'   => '<_m>/<_c>/<_a>',
             ),
         ),
-        'user'          => array(
-            // enable cookie-based authentication
-            //'class'          => 'RWebUser',
-            // crisu83/yii-rights: Allows super users access implicitly.
-            'behaviors'      => array('vendor.schmunk42.web-user-behavior.WebUserBehavior'),
-            // compatibility behavior for yii-user and yii-rights
-            'allowAutoLogin' => true,
-            'loginUrl'       => array('/user/login'),
-        ),
-        'widgetFactory' => array(
-            'class'      => 'CWidgetFactory',
-            'enableSkin' => true,
-        ),
     ),
     // application-level parameters that can be accessed
     // using Yii::app()->params['paramName']
     'params'     => array(
-        // this is used in contact page (and by yii-user module)
+        // this is used in contact page
         'adminEmail'           => \gapminder\envbootstrap\Identity::brand()->supportEmail,
-        'signupSender'         => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
+        'signupEmail'          => \gapminder\envbootstrap\Identity::brand()->signupEmail,
         'languages'            => $languages,
         'languageDirections'   => $languageDirections,
         'ext.ckeditor.options' => array(
@@ -590,6 +565,12 @@ $mainConfig = array(
                 'span' => 0,
                 'i'    => 0
             ),
+        ),
+        'pages' => array(
+            'terms' => array('page/view', 'id' => TERMS_PAGE_ID),
+            'about' => array('page/view', 'id' => ABOUT_PAGE_ID),
+            'cc' => array('page/view', 'id' => CC_PAGE_ID),
+            'privacyPolicy' => array('page/view', 'id' => PRIVACY_POLICY_PAGE_ID),
         ),
     ),
 );

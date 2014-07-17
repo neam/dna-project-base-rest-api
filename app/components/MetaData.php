@@ -241,9 +241,7 @@ class Metadata
             'Replace' => array(
                 Role::GROUP_MODERATOR,
             ),
-            'ChangeGroup' => array(
-                Role::GROUP_MODERATOR,
-            ),
+            'ChangeGroup' => array_keys(self::groupRoles()),
             'GrantPermission' => array(
                 Role::GROUP_ADMINISTRATOR,
                 Role::GROUP_MODERATOR,
@@ -253,10 +251,6 @@ class Metadata
             ),
             'GrantGroupModeratorPermissions' => array(
                 Role::GROUP_MODERATOR,
-            ),
-            'P3media.Import.*' => array(
-                Role::GROUP_CONTRIBUTOR,
-                Role::GROUP_EDITOR,
             ),
         );
     }

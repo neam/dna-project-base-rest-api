@@ -2,7 +2,7 @@
 /* @var Controller|ItemController $this */
 /* @var ActiveRecord|ItemTrait|QaStateBehavior $data */
 ?>
-<div class="list-item" id="<?php echo Html::generateModelId($data); ?>">
+<div class="list-item" id="<?php echo Html::generateActiveId($data, 'title'); ?>">
     <div class="item-header">
         <div class="header-text">
             <h2 class="header-title">
@@ -47,7 +47,7 @@
         <div class="item-thumb">
             <?php if (isset($data->thumbnailMedia) && $data->thumbnailMedia instanceof P3Media): ?>
                 <?php echo CHtml::link(
-                    $data->thumbnailMedia->image('select2-thumb'),
+                    $data->thumbnailMedia->image('item-thumbnail'),
                     $this->createUrl('view', array('id' => $data->id))
                 ); ?>
             <?php else: ?>

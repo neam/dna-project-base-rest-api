@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
                 <?php echo TbHtml::button(
-                    Yii::t('app', 'Upload new'),
+                    Yii::t('app', 'Upload'),
                     array(
                         'block' => true,
                         'class' => 'upload-btn',
@@ -48,6 +48,7 @@
                 $model->getVectorGraphicOptions(),
                 array(
                     'disabled' => !$this->canEditSourceLanguage(),
+                    'empty' => Yii::t('app', 'None'),
                 )
             ); ?>
         </div>
@@ -55,7 +56,7 @@
             <div class="form-group">
                 <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
                 <?php echo TbHtml::button(
-                    Yii::t('app', 'Upload new'),
+                    Yii::t('app', 'Upload'),
                     array(
                         'block' => true,
                         'class' => 'upload-btn',
@@ -80,13 +81,20 @@
 <?php if ($this->workflowData['translateInto']): ?>
     <div class="file-field-2cols">
         <div class="field-column">
-            <?php echo $form->select2ControlGroup($model, 'processed_media_id_' . $this->workflowData['translateInto'], $model->getVectorGraphicOptions()); ?>
+            <?php echo $form->select2ControlGroup(
+                $model,
+                'processed_media_id_' . $this->workflowData['translateInto'],
+                $model->getVectorGraphicOptions(),
+                array(
+                    'empty' => Yii::t('app', 'None'),
+                )
+            ); ?>
         </div>
         <div class="field-column">
             <div class="form-group">
                 <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
                 <?php echo TbHtml::button(
-                    Yii::t('app', 'Upload new'),
+                    Yii::t('app', 'Upload'),
                     array(
                         'block' => true,
                         'class' => 'upload-btn',

@@ -76,7 +76,14 @@ class Html extends TbHtml
                 'htmlOptions' => $widgetOptions,
             )
         );
-        return self::renderWidget('vendor.crisu83.yiistrap-widgets.widgets.TbSelect2', $properties);
+
+        $html = self::renderWidget('vendor.crisu83.yiistrap-widgets.widgets.TbSelect2', $properties);
+
+        if (isset($htmlOptions['thumbnails']) && $htmlOptions['thumbnails']) {
+            self::renderSelect2Thumbnails($model, $attribute);
+        }
+
+        return $html;
     }
 
     /**
@@ -90,6 +97,51 @@ class Html extends TbHtml
     {
         $input = self::activeSelect2($model, $attribute, $data, $htmlOptions);
         return TbHtml::customActiveControlGroup($input, $model, $attribute, $htmlOptions);
+    }
+
+    /**
+     * Renders thumbnails for Select2 options.
+     * @param ActiveRecord $model
+     * @param string $attribute
+     */
+    static public function renderSelect2Thumbnails($model, $attribute)
+    {
+        // TODO: Get rid of this atrocious jQuery hack.
+
+        $baseUrl = Yii::app()->baseUrl;
+        $modelClass = get_class($model);
+
+        $js = <<<EOF
+(function() {
+    function format(state) {
+        if (!state.id) return state.text;
+
+        var html = '';
+
+        html += '<div class="row">';
+        html += '  <div class="col-xs-6">';
+        html += "    <div class='select2-text'>" + state.text + "</div>";
+        html += '  </div>';
+        html += '  <div class="col-xs-6" style="text-align: right;">';
+        html += "    <img class='select2-thumb' src='{$baseUrl}/p3media/file/image?preset=select2-thumb&id=" + state.id.toLowerCase() + "'>";
+        html += '  </div>';
+        html += '</div>';
+
+        return html;
+    }
+
+    var select2opts = {
+        formatResult: format,
+        formatSelection: format,
+        //escapeMarkup: function(m) { return m; }
+    };
+
+    $("#{$modelClass}_{$attribute}").data('select2opts', select2opts);
+    $("#{$modelClass}_{$attribute}").select2($("#{$modelClass}_{$attribute}").data('select2opts'));
+})();
+EOF;
+
+        Yii::app()->clientScript->registerScript('select2-with-thumbnails-' . $modelClass . '-' . $attribute, $js);
     }
 
     /**
@@ -111,8 +163,18 @@ class Html extends TbHtml
         self::jsFacebox(); // required by Dirty Forms
         publishJs('/themes/frontend/js/vendor/jquery.dirtyforms.js', CClientScript::POS_HEAD);
         publishJs('/themes/frontend/js/dirty-forms-ckeditor.js', CClientScript::POS_HEAD);
-        app()->clientScript->registerScript('registerDirtyForms', "$('form.dirtyforms').dirtyForms();", CClientScript::POS_END);
-        publishJs('/themes/frontend/js/toggle-dirty-buttons.js', CClientScript::POS_END); // show action buttons when form is dirty
+
+        $title = Yii::t('app', 'You have unsaved changes');
+        $message = Yii::t('app', 'Would you like to continue without saving?');
+
+        $js = "
+        $.DirtyForms.title = '{$title}';
+        $.DirtyForms.message = '{$message}';
+        $('form.dirtyforms').dirtyForms();
+        ";
+
+        app()->clientScript->registerScript('registerDirtyForms', $js, CClientScript::POS_END);
+        publishJs('/themes/frontend/js/toggle-dirty-buttons.js', CClientScript::POS_READY); // show action buttons when form is dirty
     }
 
     /**
@@ -274,45 +336,6 @@ class Html extends TbHtml
     }
 
     /**
-     * Registers the assets for jquery comments
-     */
-    static public function assetsJqueryComments()
-    {
-
-        $cs = Yii::app()->clientScript;
-        $forceCopy = defined('DEV') && DEV && !empty($_GET['refresh_assets']) ? true : false;
-        $assets = Yii::app()->assetManager->publish(
-            Yii::app()->theme->basePath . '/assets/jquery.comments/',
-            true, // hash by name
-            -1, // level
-            $forceCopy); // forceCopy
-        //$cs->registerCssFile($assets . '/css/jquery.comment.css', CClientScript::POS_HEAD); // TODO: Find out why these styles only work in Safari.
-        $cs->registerScriptFile($assets . '/js/jquery.comment.js', CClientScript::POS_END);
-
-    }
-
-    static public function initJqueryComments($selector = "#commentSection", $context = array())
-    {
-
-        $localization = array(
-            "headerText" => Yii::t('evaluate', 'Comments'),
-            "commentPlaceHolderText" => Yii::t('evaluate', 'Add a comment...'),
-            "sendButtonText" => Yii::t('evaluate', 'Send'),
-            "replyButtonText" => Yii::t('evaluate', 'Reply'),
-            "deleteButtonText" => Yii::t('evaluate', 'Delete'),
-        );
-
-        app()->clientScript->registerScript('initJqueryComments-' . $selector, '$(document).ready(function () {
-    $("' . $selector . '").comments({
-        getCommentsUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcList?limit=1000&' . http_build_query($context) . '",
-        postCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcCreate?' . http_build_query($context) . '",
-        deleteCommentUrl: "' . Yii::app()->request->baseUrl . '/api/comment/jqcDelete?' . http_build_query($context) . '",
-        localization: ' . json_encode($localization) . '
-    });
-});', CClientScript::POS_END);
-    }
-
-    /**
      * Returns a list of available languages (language codes, e.g. 'en_us').
      * @return array
      */
@@ -401,16 +424,46 @@ class Html extends TbHtml
     }
 
     /**
-     * eg Snapshot_2, editVideoFile_14, removeFromGroupTranslatorsVideoFile_25
-     * Not unique if called with same arguments twice or more!
-     * @param $model
-     * @param string $action (optional)
-     * @param string $group (optional)
+     * Wrapper of CHtml::activeId with support for fallback attribute
+     * @param CModel $model the data model
+     * @param string $attribute the attribute
+     * @param string $fallbackAttribute (optional) the attribute to fall back on if $attribute is not set. Defaults to id
+     * @return string result of CHtml::activeId()
+     */
+    static public function generateActiveId($model, $attribute, $fallbackAttribute = 'id')
+    {
+        if (!isset($model->{$attribute})) {
+            $attribute = $fallbackAttribute;
+        }
+        return CHtml::activeId($model, $model->{$attribute});
+    }
+
+    /**
+     * Renders an array of errors as an unordered list.
+     * @param array $errors list of errors (as attribute => message)
+     * @param string $intro the introductory error message. Defaults to 'Please correct the following errors:'.
      * @return string
      */
-    static public function generateModelId($model, $action = '', $group = '')
+    static public function renderValidationErrors(array $errors, $intro = null)
     {
-        return $action . $group . get_class($model) . '_' . $model->{$model->tableSchema->primaryKey};
+        $html = '';
+        $errorCount = count($errors);
+
+        if ($errorCount > 0) {
+            if (!isset($intro)) {
+                $intro = Yii::t('app', 'Please correct the following error:|Please correct the following errors:', array($errorCount));
+            }
+
+            $html .= "<p>$intro</p>";
+            $html .= '<ul>';
+            foreach ($errors as $error) {
+                $html .= "<li>$error</li>";
+
+            }
+            $html .= '</ul>';
+        }
+
+        return $html;
     }
 
 }

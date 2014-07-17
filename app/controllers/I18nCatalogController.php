@@ -61,9 +61,6 @@ class I18nCatalogController extends Controller
                 throw new CHttpException(400);
             }
         }
-        if ($this->module !== null) {
-            $this->breadcrumbs[$this->module->Id] = array('/' . $this->module->Id);
-        }
         return true;
     }
 
@@ -124,8 +121,18 @@ class I18nCatalogController extends Controller
                 )
             );
         } else {
-            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_ERROR, Yii::t('app', 'Subtitles are missing.'));
-            $this->redirect(array('/videoFile/edit/info/' . $id, 'translateInto' => $translateInto)); // TODO: Fix URL generation.
+            Yii::app()->user->setFlash(
+                TbHtml::ALERT_COLOR_DANGER,
+                Yii::t(
+                    'app',
+                    'Unable to translate {item}: PO contents are missing.',
+                    array(
+                        '{item}' => $model->itemLabel,
+                    )
+                )
+            );
+
+            $this->redirect(array('/dashboard/index'));
         }
     }
 
@@ -152,9 +159,14 @@ class I18nCatalogController extends Controller
 
     }
 
+    /**
+     * Renders the view page.
+     * @param int $id model ID.
+     */
     public function actionView($id)
     {
         $model = $this->loadModel($id);
+        $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
         $this->render('view', array('model' => $model,));
     }
 

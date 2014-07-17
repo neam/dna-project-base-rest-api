@@ -10,7 +10,7 @@
                 <?php echo TbHtml::linkButton(
                     Yii::t('app', 'Log In'),
                     array(
-                        'url' => array('/account/dashboard'),
+                        'url' => array('/dashboard/index'),
                     )
                 ); ?>
             </div>

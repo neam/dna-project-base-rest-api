@@ -11,6 +11,26 @@ class VideoFileEditPage extends ItemEditPage
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
     public static $titleField = '#VideoFile_title_en';
+    public static $slugField = '#VideoFile_slug_en';
+    public static $captionField = '#VideoFile_caption_en';
+    public static $aboutField = '#VideoFile_about_en';
+    public static $thumbnailField = '#VideoFile_thumbnail_media_id';
+    public static $webmField = '#VideoFile_clip_webm_media_id';
+    public static $mp4Field = '#VideoFile_clip_mp4_media_id';
+    public static $subtitlesField = '#VideoFile_subtitles_en';
+    public static $subtitlesImportMediaField = '#VideoFile_subtitles_import_media_id';
+    public static $relatedField = '#VideoFile_related';
+
+    public static $webmUploadNewContext = '.webm';
+    public static $mp4mUploadNewContext = '.mp4';
+
+    public static $webmModalFormId = '#item-form-webm';
+    public static $mp4ModalFormId = '#item-form-mp4';
+    public static $webmModalId = '#item-form-webm-modal';
+    public static $mp4ModalId = '#item-form-mp4-modal';
+
+
+    public static $steps = array('info', 'files', 'subtitles', 'related');
 
     /**
      * Basic route example for your current URL

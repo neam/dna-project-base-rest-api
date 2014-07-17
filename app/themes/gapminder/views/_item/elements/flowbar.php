@@ -10,13 +10,13 @@
         <?php $this->renderPartial('/_item/elements/_action-buttons', compact('model')); ?>
     <?php elseif ($this->action->id != "preview" && $this->action->id != "view" && $this->action->id != "browse"): ?>
         <div class="well well-small">
-            <div class="row-fluid">
-                <div class="span4">
+            <div class="row">
+                <div class="col-md-4">
                     <h3>
                         <?php echo $this->workflowData["caption"]; ?>
                     </h3>
                 </div>
-                <div class="span5">
+                <div class="col-md-5">
                     <?php
                     $validationScenario = $this->workflowData["validationScenario"];
                     $invalidFields = $model->calculateInvalidFields($validationScenario);
@@ -53,7 +53,7 @@
                     endif;
                     ?>
                 </div>
-                <div class="span3">
+                <div class="col-md-3">
                     <div class="pull-right">
                         <div class="btn-group">
                             <?php
@@ -75,12 +75,10 @@
                             ?>
                         </div>
                         <div class="btn-group">
-                            <?php
-                            $this->widget("\TbButton", array(
-                                "label" => Yii::t("model", "Cancel"),
-                                "url" => array("cancel", "id" => $model->{$model->tableSchema->primaryKey})
-                            ));
-                            ?>
+                            <?php $this->widget('\TbButton', array(
+                                'label' => Yii::t('model', 'Cancel'),
+                                'url' => array('cancel', 'id' => $model->{$model->tableSchema->primaryKey})
+                            )); ?>
                         </div>
                     </div>
                 </div>
@@ -89,8 +87,8 @@
     <?php endif; ?>
     <?php if (!empty($requiredCounts) && $requiredCounts['remaining'] > 0): ?>
         <div class="required-counts">
-            <div class="row-fluid">
-                <div class="span5 offset3">
+            <div class="row">
+                <div class="col-md-5 col-md-offset-3">
                     <span class="missing">
                         <?php echo Yii::t('app', '* <em id="remaining-count">{remaining}</em> required fields missing.', array(
                             '{remaining}' => $requiredCounts['remaining'],
