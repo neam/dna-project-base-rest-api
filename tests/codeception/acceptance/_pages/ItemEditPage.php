@@ -13,7 +13,7 @@ abstract class ItemEditPage
 
     public static $submitButton = '#item-form button[name=save-changes]';
     public static $formId = '#item-form';
-    public static $goToNextFieldButton = 'button[name=next-required]';
+    public static $goToNextFieldButton = '#next-required';
 
     /**
      * Basic route example for your current URL

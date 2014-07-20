@@ -69,7 +69,7 @@ class Snapshot extends BaseSnapshot
             array(
 
                 // Ordinary validation rules
-                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable'),
+                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable,publishable-step_info'),
                 array('about_' . $this->source_language . '', 'length', 'min' => 10, 'max' => 200),
                 array('vizabi_state', 'validateVizabiState'),
 
@@ -124,7 +124,9 @@ class Snapshot extends BaseSnapshot
             'reviewable' => array(
                 'vizabi_state',
             ),
-            'publishable' => array(),
+            'publishable' => array(
+                'thumbnail_media_id'
+            ),
         );
     }
 

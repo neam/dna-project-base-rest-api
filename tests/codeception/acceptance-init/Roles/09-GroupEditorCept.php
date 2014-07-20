@@ -16,8 +16,17 @@ $I->click(
 );
 
 
+// Thumbnail and vizabi state is missing
+$I->waitForText('2 required fields missing', 10);
+$I->executeJS('window.scrollTo(0,0);'); // Workaround for WebDriver issue where the element is not fully scrolled into view because of an overlaying top/bottom navigation - see https://stackoverflow.com/questions/23458359/codeception-acceptance-test-fails-because-of-bottom-navigation/24852007#24852007
+$I->pauseExecution();
+$I->click(SnapshotEditPage::$goToNextFieldButton);
+$I->fillField(SnapshotEditPage::$thumbnailField, 'phundament.png');
+$I->seeSelect2OptionIsSelected('#Profile_picture_media_id', 'phundament.png');
+
 // Vizabi state is missing
 $I->waitForText('1 required field missing', 10);
+$I->executeJS('window.scrollTo(0,0);'); // Workaround for WebDriver issue where the element is not fully scrolled into view because of an overlaying top/bottom navigation - see https://stackoverflow.com/questions/23458359/codeception-acceptance-test-fails-because-of-bottom-navigation/24852007#24852007
 $I->click(SnapshotEditPage::$goToNextFieldButton);
 
 $vizabiState = <<<EOD
