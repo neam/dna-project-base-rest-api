@@ -99,21 +99,22 @@ Use the corresponding YII_DB_*-values from `app/config/envbootstrap/local/envboo
     export DB_NAME=db
     connectionID=db shell-scripts/reset-db.sh
 
-## Running tests locally
+## Tests
+
+### Test suites
+
+* `unit` - Contains unit tests that verify low-level functionality.
+* `acceptance-init` - Contains the initial set of acceptance tests that should be run from an empty (reset) database and verifies basic functionality and registers a set of test users.
+* `acceptance` - Contains the full set of acceptance tests that uses a database dump taken at the end of running `acceptance-init` (and thus contains a set of test users).
+* `api` - Contains acceptance tests that verify various aspects of the REST API.
+
+### Running tests locally
 
 First, decide whether or not to run tests against a clean database or with user generated data:
 
     export DATA=clean-db
     OR
     export DATA=user-generated # be sure to have s3cmd configured properly as per above
-
-Use the corresponding TEST_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
-
-    export DB_HOST=$LOCAL_SERVICES_IP
-    export DB_PORT=13306
-    export DB_USER=root
-    export DB_PASSWORD=changeme # Hint: Use `cat app/config/envbootstrap/local/envbootstrap.php | grep DB_PASSWORD` to quickly see the password
-    export DB_NAME=db_test
 
 If you are running these commands locally, set the following environment variables:
 
@@ -129,6 +130,9 @@ Then, do the following before attempting to run any tests:
 
     cd tests
     php ../composer.phar install
+
+    ../app/yiic config exportDbConfig --connectionID=dbTest > /tmp/db-config.sh
+    source /tmp/db-config.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
     export CMS_HOST=localhost:11111 # change if you have used another WEB_PORT when setting up the local dev environment
@@ -150,9 +154,11 @@ To run the functional tests (Note: Not currently used):
 
 Note: For the remaining tests, you need to have a selenium server running locally (see below in readme).
 
-To run the acceptance suite:
+To run the acceptance suites:
 
     touch testing
+    vendor/bin/codecept run acceptance-init --env=cms-local-chrome -g data:$DATA --debug --fail-fast
+    ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug --fail-fast
     rm testing
 

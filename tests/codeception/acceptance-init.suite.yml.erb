@@ -13,7 +13,6 @@ modules:
     enabled:
         - WebDriver
         - WebHelper
-        - Db
     config:
         WebDriver:
             url: http://foo.com/the-url-property-of-WebDriver-needs-to-be-set-for-codecept-build-to-work-but-should-be-overwritten-by-env-config-during-actual-testing.php
@@ -52,28 +51,6 @@ env:
             config:
                 WebDriver:
                     url: http://<%= ENV['CMS_HOST'] %>
-                    browser: 'chrome'
-                    capabilities:
-                        unexpectedAlertBehaviour: 'accept'
-                        platform: 'Windows XP'
-                        version: '34'
-
-    go-saucelabs-chrome-win8:
-        modules:
-            config:
-                WebDriver:
-                    url: http://<%= ENV['CANONICAL_HOST'] %>/go
-                    browser: 'chrome'
-                    capabilities:
-                        unexpectedAlertBehaviour: 'accept'
-                        platform: 'Windows 8.1'
-                        version: '34'
-
-    go-saucelabs-chrome-winxp:
-        modules:
-            config:
-                WebDriver:
-                    url: http://<%= ENV['CANONICAL_HOST'] %>/go
                     browser: 'chrome'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
