@@ -19,10 +19,23 @@ $I->click(
 // Thumbnail and vizabi state is missing
 $I->waitForText('2 required fields missing', 10);
 $I->executeJS('window.scrollTo(0,0);'); // Workaround for WebDriver issue where the element is not fully scrolled into view because of an overlaying top/bottom navigation - see https://stackoverflow.com/questions/23458359/codeception-acceptance-test-fails-because-of-bottom-navigation/24852007#24852007
-$I->pauseExecution();
 $I->click(SnapshotEditPage::$goToNextFieldButton);
-$I->fillField(SnapshotEditPage::$thumbnailField, 'phundament.png');
-$I->seeSelect2OptionIsSelected('#Profile_picture_media_id', 'phundament.png');
+
+// Temp: Upload instead of selecting existing uploaded file
+$I->click('Upload');
+$I->switchToIFrame(UploadPopupPage::iframeName('item-form'));
+$I->attachFile(UploadPopupPage::$filesField, 'phundament.png');
+$I->see('phundament.png');
+$I->click(UploadPopupPage::$uploadButton);
+$I->waitForElementNotVisible('.fileupload-progressbar', 10);
+$I->switchToIFrame();
+$I->click('Close');
+$I->waitForText('Uploaded file');
+$I->waitForElementNotVisible('#item-form-modal', 30);
+
+// TODO: Select existing uploaded file instead of uploading anew above
+//$I->fillField(SnapshotEditPage::$thumbnailField, 'phundament.png');
+//$I->seeSelect2OptionIsSelected('#Profile_picture_media_id', 'phundament.png');
 
 // Vizabi state is missing
 $I->waitForText('1 required field missing', 10);
