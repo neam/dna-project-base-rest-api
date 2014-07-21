@@ -26,10 +26,12 @@ if (DEBUG_LOGS) {
         $levels .= ", " . $_GET['debug_extra_log_levels'];
     }
 
+    $ajaxRequest = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']==='XMLHttpRequest';
+
     $config["components"]["log"]["routes"][] = array(
         'class' => 'CWebLogRoute',
         'levels' => $levels, //trace,
-        'enabled' => false,
+        'enabled' => !$ajaxRequest,
     );
 
     /* Persistent logs */
