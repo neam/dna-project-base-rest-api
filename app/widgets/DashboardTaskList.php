@@ -152,6 +152,9 @@ class DashboardTaskList extends CWidget
 
         $mainCommand->params = $countCommand->params = array(':account_id' => $this->account->id);
 
+        // Update _item table
+        Yii::app()->db->createCommand("TRUNCATE `_item`; INSERT INTO `_item` SELECT * FROM `item`")->execute();
+
         return new CSqlDataProvider($mainCommand, array(
             'totalItemCount' => $countCommand->queryScalar(),
             'sort' => array(
