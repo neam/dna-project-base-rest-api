@@ -155,7 +155,7 @@ class DashboardTaskList extends CWidget
         // For debugging dashboard queries
         $user_id = Yii::app()->user->id;
         $main_command_sql = $mainCommand->text;
-        Yii::log('Dashboard query debug info: ' . print_r(compact("user_id", "queries", "sql", "main_command_sql")), 'dashboard', __METHOD__);
+        Yii::log('Dashboard query debug info: ' . print_r(compact("user_id", "queries", "sql", "main_command_sql"), true), 'dashboard', __METHOD__);
         //Yii::app()->end();
 
         // Update _item table
