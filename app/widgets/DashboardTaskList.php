@@ -152,6 +152,12 @@ class DashboardTaskList extends CWidget
 
         $mainCommand->params = $countCommand->params = array(':account_id' => $this->account->id);
 
+        // For debugging dashboard queries
+        $user_id = Yii::app()->user->id;
+        $main_command_sql = $mainCommand->text;
+        Yii::log('Dashboard query debug info: ' . print_r(compact("user_id", "queries", "sql", "main_command_sql")), 'dashboard', __METHOD__);
+        //Yii::app()->end();
+
         // Update _item table
         Yii::app()->db->createCommand("TRUNCATE `_item`; INSERT INTO `_item` SELECT * FROM `item`")->execute();
 
