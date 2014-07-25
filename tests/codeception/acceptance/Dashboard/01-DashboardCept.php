@@ -7,7 +7,7 @@ $I->login('martha', 'test');
 $I->selectLanguages(array('Portuguese', 'Swedish', 'English'));
 $I->amOnPage(DashboardPage::$URL);
 $I->see('Started Tasks (0)');
-$I->see('New Tasks (0)');
+$I->see('New Tasks (3)'); // one per language
 $I->logout();
 
 $I->login('max', 'test');
@@ -46,7 +46,7 @@ $I->logout();
 $I->login('martha', 'test');
 $I->amOnPage(DashboardPage::$URL);
 $I->see('Started Tasks (0)');
-$I->see('New Tasks (3)'); // one per language
+$I->see('New Tasks (6)'); // one per language
 $I->see(DashboardPage::$startTaskButton);
 $I->dontSee(DashboardPage::$continueTaskButton);
 
@@ -58,7 +58,7 @@ $I->click(
 $I->click('Stop Translating');
 $I->amOnPage(DashboardPage::$URL);
 $I->see('Started Tasks (0)');
-$I->see('New Tasks (3)');
+$I->see('New Tasks (6)');
 
 $I->click(
     DashboardPage::$startTaskButton,
@@ -70,4 +70,4 @@ $I->click(VideoFileEditPage::$submitButton);
 $I->amOnPage(DashboardPage::$URL);
 // This is how it currently works, task in JIRA: https://gapminder.atlassian.net/browse/CMS-923
 $I->see('Started Tasks (3)');
-$I->see('New Tasks (0)');
+$I->see('New Tasks (3)');
