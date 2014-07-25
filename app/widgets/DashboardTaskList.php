@@ -81,7 +81,7 @@ class DashboardTaskList extends CWidget
      */
     public function getTaskModel($data)
     {
-        return ActiveRecord::model($data['model_class'])->findByPk((int)$data['id']);
+        return ActiveRecord::model($data['model_class'])->findByPk((int) $data['id']);
     }
 
     /**
@@ -99,7 +99,7 @@ class DashboardTaskList extends CWidget
         $params = array();
 
         if (isset($data['id'])) {
-            $params['id'] = (int)$data['id'];
+            $params['id'] = (int) $data['id'];
         }
 
         if ($action === 'translate') {
