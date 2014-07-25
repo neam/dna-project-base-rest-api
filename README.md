@@ -129,7 +129,7 @@ Then, do the following before attempting to run any tests:
     source /tmp/db-config.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
-    export CMS_HOST=localhost:11111 # change if you have used another WEB_PORT when setting up the local dev environment
+    export CMS_HOST=127.0.0.1:11111 # change if you have used another WEB_PORT when setting up the local dev environment
     ./generate-local-codeception-config.sh
 
 To reset the test database (necessary in order to re-run tests):
