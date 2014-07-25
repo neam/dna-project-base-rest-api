@@ -34,8 +34,8 @@ $I->waitForText('Uploaded file');
 $I->waitForElementNotVisible('#item-form-modal', 30);
 
 // TODO: Select existing uploaded file instead of uploading anew above
-//$I->fillField(SnapshotEditPage::$thumbnailField, 'phundament.png');
-//$I->seeSelect2OptionIsSelected('#Profile_picture_media_id', 'phundament.png');
+//$I->selectSelect2Option("#Snapshot_thumbnail_media_id", 'phundament.png');
+//$I->seeSelect2OptionIsSelected('#Snapshot_thumbnail_media_id', 'phundament.png');
 
 // Vizabi state is missing
 // TODO: Make the required field count update dynamically
