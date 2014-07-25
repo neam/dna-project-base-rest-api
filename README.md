@@ -89,14 +89,8 @@ First, install s3cmd (https://github.com/s3tools/s3cmd). Then, configure it:
 Then, run:
 
     export DATA=user-generated
-
-Use the corresponding YII_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
-
-    export DB_HOST=$LOCAL_SERVICES_IP
-    export DB_PORT=13306
-    export DB_USER=root
-    export DB_PASSWORD=changeme
-    export DB_NAME=db
+    app/yiic config exportDbConfig --connectionID=db > /tmp/db-config.sh
+    source /tmp/db-config.sh
     connectionID=db shell-scripts/reset-db.sh
 
 ## Tests
