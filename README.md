@@ -132,7 +132,7 @@ Then, do the following before attempting to run any tests:
     export CMS_HOST=127.0.0.1:11111 # change if you have used another WEB_PORT when setting up the local dev environment
     ./generate-local-codeception-config.sh
 
-To reset the test database (necessary in order to re-run tests):
+To reset the test database (necessary in order to run tests from scratch or to re-run the `acceptance-init` suite since it does not reset the database itself by design):
 
     export CONFIG_ENVIRONMENT=test
     connectionID=dbTest ../shell-scripts/reset-db.sh
@@ -182,6 +182,32 @@ Ensure that you have Java installed and then start [the selenium server](http://
 
     # if above doesn't work, try specifying chromedriver explicitly
     java -jar selenium-server-standalone-2.42.2.jar -Dwebdriver.chrome.driver=./chromedriver
+
+## Running tests locally against Saucelabs
+
+First deploy the code to dokku (see "Deploy using Dokku" below).
+
+Then, generate configuration as if running in ci:
+
+    cd tests
+    export CI=1
+    export SAUCE_ACCESS_KEY=replaceme
+    export SAUCE_USERNAME=gapminder
+    export CMS_HOST=$APPNAME.$DOKKU_HOST
+    export CMS_APPNAME=$APPNAME
+    ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/app/yiic config exportDbConfig --connectionID=db | tee /tmp/db-config.sh
+    source /tmp/db-config.sh
+    ./generate-local-codeception-config.sh
+
+Then, run the tests:
+
+    # use ci-configuration for deployment while running tests
+    ssh dokku@$DOKKU_HOST config:set $CMS_APPNAME CONFIG_ENVIRONMENT=ci
+
+    # run acceptance tests
+    vendor/bin/codecept run acceptance-init --env=cms-saucelabs-chrome-win8 -g data:$DATA --debug --fail-fast
+    mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db_test > codeception/_data/dump.sql
+    vendor/bin/codecept run acceptance --env=cms-saucelabs-chrome-win8 -g data:$DATA --debug --fail-fast
 
 ### Hints for test developers
 

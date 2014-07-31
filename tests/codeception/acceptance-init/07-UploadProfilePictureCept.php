@@ -9,11 +9,15 @@ $I->login('max', 'test');
 $I->amOnPage(ProfilePage::$URL);
 $I->selectLanguages(array('Swedish', 'English'));
 $I->click('Upload');
+$I->waitForText('Create File');
+# switch to iframe
 $I->switchToIFrame(UploadPopupPage::iframeName('profile-form'));
+$I->waitForText('Drag & drop the file you wish to upload or use the select button below');
 $I->attachFile(UploadPopupPage::$filesField, 'phundament.png');
 $I->see('phundament.png');
 $I->click(UploadPopupPage::$uploadButton);
 $I->waitForElementNotVisible('.fileupload-progressbar', 10);
+# switch to parent page
 $I->switchToIFrame();
 $I->click('Close');
 $I->waitForText('Uploaded file');
