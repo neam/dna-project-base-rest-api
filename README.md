@@ -196,7 +196,8 @@ Then, generate configuration as if running in ci:
     export CMS_HOST=$APPNAME.$DOKKU_HOST
     export CMS_APPNAME=$APPNAME
     ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/app/yiic config exportDbConfig --connectionID=db | tee /tmp/db-config.sh
-    source /tmp/db-config.sh
+    tr -d $'\r' < /tmp/db-config.sh > /tmp/db-config.clean.sh
+    source /tmp/db-config.clean.sh
     ./generate-local-codeception-config.sh
 
 Then, run the tests:
