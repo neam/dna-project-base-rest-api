@@ -185,7 +185,7 @@ Ensure that you have Java installed and then start [the selenium server](http://
 
 ## Running tests locally against Saucelabs
 
-First deploy the code to dokku (see "Deploy using Dokku" below).
+First deploy the code to dokku (see "Deploy using Dokku" below), so that the env vars `DOKKU_HOST` and `CMS_HOST` are available.
 
 Make sure that your dokku ssh key has port forwarding enabled (A user with root access to the dokku hosts needs to log in and run the `dokku-user-allow-port-forwarding.sh` bash script once after your ssh key has been granted access to dokku).
 
@@ -195,7 +195,6 @@ Then, generate configuration as if running in ci:
     export CI=1
     export SAUCE_ACCESS_KEY=replaceme
     export SAUCE_USERNAME=gapminder
-    export CMS_HOST=$APPNAME.$DOKKU_HOST
     export CMS_APPNAME=$APPNAME
     ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/app/yiic config exportDbConfig --connectionID=db | tee /tmp/db-config.sh
     tr -d $'\r' < /tmp/db-config.sh > /tmp/db-config.clean.sh
