@@ -187,6 +187,8 @@ Ensure that you have Java installed and then start [the selenium server](http://
 
 First deploy the code to dokku (see "Deploy using Dokku" below).
 
+Make sure that your dokku ssh key has port forwarding enabled (A user with root access to the dokku hosts needs to log in and run the `dokku-user-allow-port-forwarding.sh` bash script once after your ssh key has been granted access to dokku).
+
 Then, generate configuration as if running in ci:
 
     cd tests
@@ -198,6 +200,13 @@ Then, generate configuration as if running in ci:
     ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/app/yiic config exportDbConfig --connectionID=db | tee /tmp/db-config.sh
     tr -d $'\r' < /tmp/db-config.sh > /tmp/db-config.clean.sh
     source /tmp/db-config.clean.sh
+    # set-up ssh tunnel against dokku host to be able to access db instance
+    ssh dokku@$DOKKU_HOST -v -N -L 43306:$DB_HOST:$DB_PORT &
+    export DB_HOST=127.0.0.1
+    export DB_PORT=43306
+    # verify local db access
+    echo "SELECT 1;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
+    # generate codeception config
     ./generate-local-codeception-config.sh
 
 Then, run the tests:
