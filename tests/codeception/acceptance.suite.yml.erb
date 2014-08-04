@@ -58,6 +58,17 @@ env:
                         platform: 'Windows XP'
                         version: '34'
 
+    cms-saucelabs-firefox-win7:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'firefox'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows 7'
+                        version: '30'
+
     go-saucelabs-chrome-win8:
         modules:
             config:
@@ -79,3 +90,14 @@ env:
                         unexpectedAlertBehaviour: 'accept'
                         platform: 'Windows XP'
                         version: '34'
+
+    go-saucelabs-firefox-win7:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CANONICAL_HOST'] %>/go
+                    browser: 'firefox'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows 7'
+                        version: '30'

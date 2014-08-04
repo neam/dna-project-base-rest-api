@@ -56,3 +56,14 @@ env:
                         unexpectedAlertBehaviour: 'accept'
                         platform: 'Windows XP'
                         version: '34'
+
+    cms-saucelabs-firefox-win7:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'firefox'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows 7'
+                        version: '30'
