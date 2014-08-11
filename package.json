@@ -15,11 +15,13 @@
     "grunt-less-imports": "^0.9.1",
     "load-grunt-tasks": "^0.3.0",
     "grunt-cli": "^0.1.13",
-    "yo": "^1.1.2",
-    "generator-nord-backbone": "^0.1.8",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-kss": "^0.2.6"
+  },
+  "inactivatedDependencies": {
+    "yo": "^1.1.2",
+    "generator-nord-backbone": "^0.1.8"
   },
   "devDependencies": {
   }
