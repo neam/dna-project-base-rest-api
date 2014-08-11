@@ -62,4 +62,5 @@ fi
 app/yiic fixture --connectionID=$connectionID load
 app/yiic migrate --connectionID=$connectionID --interactive=0 # > /dev/null
 app/yiic databaseviewgenerator --connectionID=$connectionID item
+app/yiic databaseviewgenerator --connectionID=$connectionID itemTable
 

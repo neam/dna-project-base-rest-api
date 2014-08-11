@@ -4,8 +4,6 @@
 // member in group Translators) into Portuguese = one of her 3 user.languages
 // (She can not edit source-language)
 
-/*
-// TODO: Uncomment when language selection tests work.
 
 $scenario->group('data:clean-db');
 
@@ -114,9 +112,7 @@ $I->dontSee('Vídeo Max');
 $I->switchLanguage('Português');
 $I->dontSee('Max video');
 $I->see('Vídeo Max');
-*/
 
-/*
 $I->switchLanguage('English');
 
 $I->click('View', $videoContext);
@@ -127,4 +123,3 @@ $I->waitForText("A common misunderstanding is that if we save all the poor child
 $I->switchLanguage('Português');
 $I->click(VideoFileViewPage::$videoContainer);
 $I->waitForText("Um equívoco comum é que, se salvar todas as crianças pobres: o mundo vai se tornar superpovoado.", 10);
-*/

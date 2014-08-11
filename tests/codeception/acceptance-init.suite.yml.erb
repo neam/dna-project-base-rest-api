@@ -1,0 +1,69 @@
+# Codeception Test Suite Configuration
+
+# suite for acceptance tests.
+# perform tests in browser using the Selenium-like tools.
+# powered by Mink (http://mink.behat.org).
+# (tip: that's what your customer will see).
+# (tip: test your ajax and javascript by one of Mink drivers).
+
+# RUN `build` COMMAND AFTER ADDING/REMOVING MODULES.
+
+class_name: WebGuy
+modules:
+    enabled:
+        - WebDriver
+        - WebHelper
+    config:
+        WebDriver:
+            url: http://foo.com/the-url-property-of-WebDriver-needs-to-be-set-for-codecept-build-to-work-but-should-be-overwritten-by-env-config-during-actual-testing.php
+            browser: 'chrome'
+            <% if ENV.has_key? "CI" and ENV['CI'].to_s != "" %>
+            host: '<%= ENV['SAUCE_USERNAME'] %>:<%= ENV['SAUCE_ACCESS_KEY'] %>@ondemand.saucelabs.com'
+            port: 80
+            <% else %>
+            host: '<%= ENV['SELENIUM_HOST'] %>'
+            port: <%= ENV['SELENIUM_PORT'] %>
+            <% end %>
+            wait: 0
+            restart: true
+
+env:
+    cms-local-chrome:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'chrome'
+
+    cms-saucelabs-chrome-win8:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'chrome'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows 8.1'
+                        version: '34'
+
+    cms-saucelabs-chrome-winxp:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'chrome'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows XP'
+                        version: '34'
+
+    cms-saucelabs-firefox-win7:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'firefox'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows 7'
+                        version: '30'

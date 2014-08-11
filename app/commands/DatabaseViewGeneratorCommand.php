@@ -267,6 +267,87 @@ class DatabaseViewGeneratorCommand extends CConsoleCommand
 
     }
 
+    public function actionItemTable($verbose = false)
+    {
+
+        if (!empty($verbose)) {
+            $this->_verbose = true;
+        }
+
+        $this->_db =& Yii::app()->{$this->connectionID};
+
+        $this->d("Connecting to '" . $this->_db->connectionString . "'\n");
+
+        // TODO: Generate this sql
+        $sql = "CREATE TABLE `_item` (
+  `node_id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL,
+#  `version` int(11) NOT NULL DEFAULT '1',
+#  `cloned_from_id` bigint(20) DEFAULT NULL,
+  `_title` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+#  `slug_en` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+#  `thumbnail_media_id` int(11) DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `draft_validation_progress` int(11) DEFAULT NULL,
+  `reviewable_validation_progress` int(11) DEFAULT NULL,
+  `publishable_validation_progress` int(11) DEFAULT NULL,
+  `approval_progress` int(11) DEFAULT NULL,
+  `proofing_progress` int(11) DEFAULT NULL,
+  `translate_into_en_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_ar_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_bg_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_ca_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_cs_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_da_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_de_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_en_gb_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_en_us_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_el_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_es_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_fi_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_fil_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_fr_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_hi_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_hr_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_hu_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_id_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_iw_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_it_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_ja_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_ko_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_lt_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_lv_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_nl_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_no_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_pl_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_pt_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_pt_br_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_pt_pt_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_ro_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_ru_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_sk_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_sl_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_sr_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_sv_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_th_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_tr_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_uk_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_vi_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_zh_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_zh_cn_validation_progress` int(11) DEFAULT NULL,
+  `translate_into_zh_tw_validation_progress` int(11) DEFAULT NULL,
+  `model_class` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `item_type` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`node_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;";
+
+        $this->_db->createCommand($sql)->execute();
+
+    }
+
     /**
      * @param $model
      * @param $column

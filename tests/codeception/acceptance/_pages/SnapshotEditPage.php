@@ -22,7 +22,7 @@ class SnapshotEditPage extends ItemEditPage
     static $titleField = '#Snapshot_title_en';
     static $slugField = '#Snapshot_slug_en';
     static $aboutField = '#Snapshot_about_en';
-    static $thumbnailField = '#Snapshot_thumbnail_media_id_en';
+    static $thumbnailField = '#Snapshot_thumbnail_media_id';
     static $vizabiStateField = '#Snapshot_vizabi_state';
     static $toolField = '#Snapshot_tool_id';
     static $embedOverrideField = '#Snapshot_embed_override';

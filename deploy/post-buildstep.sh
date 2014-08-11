@@ -28,8 +28,8 @@ npm install -g bower
 bower install --allow-root
 
 # generate the js app
-cp app/js/config.dist.js app/js/config.js
-node_modules/.bin/grunt build
+#cp app/js/config.dist.js app/js/config.js
+#node_modules/.bin/grunt build
 
 # necessary for user data backup uploads
 deploy/install-s3cmd.sh
