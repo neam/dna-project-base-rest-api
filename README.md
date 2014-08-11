@@ -218,7 +218,7 @@ Then, run the tests:
     export env=cms-saucelabs-firefox-win7
     export env=cms-saucelabs-chrome-osx-108
     vendor/bin/codecept run acceptance-init --env=$env -g data:$DATA --debug --fail-fast
-    mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db_test > codeception/_data/dump.sql
+    mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
     vendor/bin/codecept run acceptance --env=$env -g data:$DATA --debug --fail-fast
 
 ### Hints for test developers
