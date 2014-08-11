@@ -35,6 +35,17 @@ env:
                     url: http://<%= ENV['CMS_HOST'] %>
                     browser: 'chrome'
 
+    cms-saucelabs-chrome-osx-108:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'chrome'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'OS X 10.8'
+                        version: '34'
+
     cms-saucelabs-chrome-win8:
         modules:
             config:
