@@ -47,12 +47,11 @@ class LandingPageGroups extends CWidget
         }
 
         $db = Yii::app()->getDb();
-        $groupsCmd = null;
         $groupsCmdParams = array();
+        $queries = array();
         foreach ($groupIds as $i => $groupId) {
             $groupIdParam = ":groupId{$i}";
-            /** @var CDbCommand $cmd */
-            $cmd = $db->createCommand()
+            $queries[] = $db->createCommand()
                 ->select('CONCAT_WS(" ", profile.first_name, profile.last_name) AS name, profile.picture_media_id, group.title AS group_title, role.title AS title')
                 ->from('account')
                 ->join('profile', '`profile`.`user_id` = `account`.`id`')
@@ -60,16 +59,13 @@ class LandingPageGroups extends CWidget
                 ->join('group', '`group`.`id` = `group_has_account`.`group_id`')
                 ->join('role', '`role`.`id` = `group_has_account`.`role_id`')
                 ->where("`group`.`id`={$groupIdParam}")
+                ->group('account.id')
                 ->limit(2)
-                ->group('account.id');
+                ->getText();
             $groupsCmdParams[$groupIdParam] = $groupId;
-            if ($groupsCmd === null) {
-                $groupsCmd = $cmd;
-            } else {
-                /** @var CDbCommand $groupsCmd */
-                $groupsCmd->union($cmd->getText());
-            }
         }
+        /** @var CDbCommand $groupsCmd */
+        $groupsCmd = $db->createCommand('(' . implode(') UNION (', $queries) . ')');
         $groupsCmd->bindValues($groupsCmdParams);
 
         $p3Media = new P3Media();
