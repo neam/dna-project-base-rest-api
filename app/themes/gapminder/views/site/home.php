@@ -31,6 +31,25 @@
     </section>
     <section class="section-wide section-wide-gray">
         <div class="container">
+            <?php $this->widget('app.widgets.LandingPageGroups', array(
+                    'groups' => array(
+                        'Translators' => array(
+                            'title' => Yii::t('app', 'Translators'),
+                            'link' => array(
+                                'text' => Yii::t('app', 'Help translate...'),
+                                'url' => '#',
+                            )
+                        ),
+                        'Developers' => array(
+                            'title' => Yii::t('app', 'Developers'),
+                            'link' => array(
+                                'text' => Yii::t('app', 'Develop free software...'),
+                                'url' => '#',
+                            )
+                        ),
+                    )
+                )); ?>
+            <?php /*
             <div class="row">
                 <div class="groups-column col-xs-offset-4">
                     <h3><?php echo t('app', 'Translators'); ?></h3>
@@ -59,6 +78,7 @@
                     </div>
                 </div>
             </div>
+            */ ?>
         </div>
     </section>
     <section class="section-wide">

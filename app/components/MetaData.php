@@ -155,6 +155,7 @@ class Metadata
             Group::TRANSLATORS => 'Translators',
             Group::REVIEWERS => 'Reviewers',
             Group::PROOFREADERS => 'Proofreaders',
+            Group::DEVELOPERS => 'Developers',
         );
     }
 

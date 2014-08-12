@@ -31,6 +31,7 @@ class Group extends BaseGroup
     const TRANSLATORS = 'Translators';
     const REVIEWERS = 'Reviewers';
     const PROOFREADERS = 'Proofreaders';
+    const DEVELOPERS = 'Developers';
 
     // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
     public static function model($className = __CLASS__)
