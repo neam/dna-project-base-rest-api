@@ -281,6 +281,12 @@ To build and deploy (regardless of target), first set some fundamental config va
     export APPNAME=foo1-cms
     export CURRENT_BRANCH=develop
 
+__NOTE__: CURRENT_BRANCH is the branchname of the CMS-repository that you want to deploy.
+It could be e.g.
+
+    export CURRENT_BRANCH=feature/CMS-42-foo-bar
+
+
 ### Deploy using Dokku
 
 To build and deploy on dokku, first set dokku host config var:
