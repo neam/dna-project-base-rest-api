@@ -38,11 +38,27 @@ class AppSteps extends \WebGuy
         return in_array('cms-saucelabs-iphone-7_1-portrait', $scenario->getEnv());
     }
 
+    /**
+     * Toggles the navigation used by mobile layouts
+     */
     function toggleMobileNavigation()
     {
         $I = $this;
         $I->amGoingTo("toggle the navigation");
         $I->click(\MobilePage::$navbarToggle);
+    }
+
+    /**
+     * If env is mobile then the navigation will be toggled before executing the callback.
+     * @param $callable
+     */
+    function executeInNavigation($callable)
+    {
+        $I = $this;
+        if ($this->isMobileEnv()) {
+            $I->toggleMobileNavigation();
+        }
+        $callable();
     }
 
 }

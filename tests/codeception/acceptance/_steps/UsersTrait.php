@@ -144,19 +144,15 @@ trait UsersTrait
         $I = $this;
         $I->amOnPage(HomePage::$URL);
 
-        if ($this->isMobileEnv()) {
-            $I->toggleMobileNavigation();
-        }
+        $I->executeInNavigation(function () use ($I) {
+            $I->waitForElementVisible(HomePage::$accountMenuLink, 10);
+            $I->click(HomePage::$accountMenuLink);
+        });
 
-        $I->waitForElementVisible(HomePage::$accountMenuLink, 10);
-        $I->click(HomePage::$accountMenuLink);
-
-        if ($this->isMobileEnv()) {
-            $I->toggleMobileNavigation();
-        }
-
-        $I->waitForElementVisible(HomePage::$logoutLink, 10);
-        $I->click(HomePage::$logoutLink);
+        $I->executeInNavigation(function () use ($I) {
+            $I->waitForElementVisible(HomePage::$logoutLink, 10);
+            $I->click(HomePage::$logoutLink);
+        });
     }
 
     function register($username, $password, $verifyPassword, $email, $acceptTerms = true)
