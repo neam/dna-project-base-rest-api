@@ -69,16 +69,16 @@ class Snapshot extends BaseSnapshot
             array(
 
                 // Ordinary validation rules
-                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable'),
+                array('thumbnail_media_id', 'validateThumbnail', 'on' => 'publishable,publishable-step_info'),
                 array('about_' . $this->source_language . '', 'length', 'min' => 10, 'max' => 200),
                 array('vizabi_state', 'validateVizabiState'),
 
             )
         );
-        Yii::log("model->statusRequirementsRules(): " . print_r($this->statusRequirementsRules(), true), "trace", __METHOD__);
-        Yii::log("model->flowStepRules(): " . print_r($this->flowStepRules(), true), "trace", __METHOD__);
-        Yii::log("model->i18nRules(): " . print_r($this->i18nRules(), true), "trace", __METHOD__);
-        Yii::log("model->rules(): " . print_r($return, true), "trace", __METHOD__);
+        Yii::log("model->statusRequirementsRules(): " . print_r($this->statusRequirementsRules(), true), "validation", __METHOD__);
+        Yii::log("model->flowStepRules(): " . print_r($this->flowStepRules(), true), "validation", __METHOD__);
+        Yii::log("model->i18nRules(): " . print_r($this->i18nRules(), true), "validation", __METHOD__);
+        Yii::log("model->rules(): " . print_r($return, true), "validation", __METHOD__);
         return $return;
     }
 
@@ -124,7 +124,9 @@ class Snapshot extends BaseSnapshot
             'reviewable' => array(
                 'vizabi_state',
             ),
-            'publishable' => array(),
+            'publishable' => array(
+                'thumbnail_media_id'
+            ),
         );
     }
 

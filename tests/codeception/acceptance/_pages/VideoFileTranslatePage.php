@@ -6,6 +6,11 @@ class VideoFileTranslatePage extends \ItemEditPage
     static $URL = '?r=videoFile/translate';
 
     /**
+     * @var array flowSteps used in translations
+     */
+    static $steps = array('info', 'subtitles');
+
+    /**
      * Declare UI map for this page here. CSS or XPath allowed.
      * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";

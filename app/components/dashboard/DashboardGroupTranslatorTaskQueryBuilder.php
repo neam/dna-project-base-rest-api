@@ -21,7 +21,7 @@ class DashboardGroupTranslatorTaskQueryBuilder extends DashboardTaskQueryBuilder
                             '{$language}' AS language,
                             'translation' AS task,
                             0 AS relevance
-                          FROM item i
+                          FROM _item i
                           INNER JOIN changeset AS c ON c.node_id = i.node_id
                           INNER JOIN node_has_group AS nhg ON nhg.node_id = i.node_id
                           INNER JOIN group_has_account AS gha ON gha.group_id = nhg.group_id
@@ -51,7 +51,7 @@ class DashboardGroupTranslatorTaskQueryBuilder extends DashboardTaskQueryBuilder
                             '{$language}' AS language,
                             'translation' AS task,
                             0 AS relevance
-                          FROM item AS i
+                          FROM _item AS i
                           LEFT OUTER JOIN changeset AS c ON c.node_id = i.node_id AND c.user_id = :account_id
                           INNER JOIN node_has_group AS nhg ON nhg.node_id = i.node_id
                           INNER JOIN group_has_account AS gha ON gha.group_id = nhg.group_id
