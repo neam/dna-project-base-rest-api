@@ -112,7 +112,7 @@
         "phundament/p3media": "dev-awaiting-prs as 0.17.3",
         "phundament/p3widgets": "0.16.0",
         "schmunk42/ckeditor-configurator": "@dev",
-        "schmunk42/multi-theme": "0.1.*",
+        "schmunk42/multi-theme": "0.2.*",
         "schmunk42/web-user-behavior": "0.1.*",
         "yiiext/migrate-command": "dev-master#35f315b as 0.7.2.1",
         "kswedberg/jquery-smooth-scroll": "1.4.10",

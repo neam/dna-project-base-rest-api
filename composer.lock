@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d824a3db4379c7d46050d282285d04a9",
+    "hash": "5143e5adeef1c795658389f0efc5fe3f",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2165,16 +2165,16 @@
         },
         {
             "name": "schmunk42/multi-theme",
-            "version": "0.1.1",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/multi-theme.git",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a"
+                "reference": "0ca49fbc9902d1b8427dd652b7cbe2bf88e405bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/f9fcd89e8620be03340cd1d6125ae2522b71719a",
-                "reference": "f9fcd89e8620be03340cd1d6125ae2522b71719a",
+                "url": "https://api.github.com/repos/schmunk42/multi-theme/zipball/0ca49fbc9902d1b8427dd652b7cbe2bf88e405bb",
+                "reference": "0ca49fbc9902d1b8427dd652b7cbe2bf88e405bb",
                 "shasum": ""
             },
             "require": {
@@ -2189,8 +2189,7 @@
             "authors": [
                 {
                     "name": "Tobias Munk",
-                    "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "email": "schmunk@usrbin.de"
                 }
             ],
             "description": "Yii Framework Theme-Manager class, switch themes by regular expressions on controller routes.",
@@ -2201,7 +2200,7 @@
                 "theme",
                 "yii"
             ],
-            "time": "2013-04-05 10:36:47"
+            "time": "2014-07-23 13:39:37"
         },
         {
             "name": "schmunk42/relation",
