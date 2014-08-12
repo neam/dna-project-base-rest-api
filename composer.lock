@@ -953,12 +953,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-i18n-tools.git",
-                "reference": "694c14ce3d754b99bb34e28249af200d2c56e6b4"
+                "reference": "00d2ca52688748677f40246e559f8019374a1e38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-i18n-tools/zipball/694c14ce3d754b99bb34e28249af200d2c56e6b4",
-                "reference": "694c14ce3d754b99bb34e28249af200d2c56e6b4",
+                "url": "https://api.github.com/repos/neam/yii-i18n-tools/zipball/00d2ca52688748677f40246e559f8019374a1e38",
+                "reference": "00d2ca52688748677f40246e559f8019374a1e38",
                 "shasum": ""
             },
             "require": {
@@ -970,7 +970,8 @@
             "type": "yii-extension",
             "autoload": {
                 "classmap": [
-                    "traits/"
+                    "components/",
+                    "helpers/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -988,7 +989,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-07-20 11:56:37"
+            "time": "2014-08-12 11:06:25"
         },
         {
             "name": "neam/yii-qa-state",
