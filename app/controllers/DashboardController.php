@@ -2,6 +2,9 @@
 
 class DashboardController extends Controller
 {
+
+    use SimplicityControllerTrait;
+
     /**
      * @return array
      */

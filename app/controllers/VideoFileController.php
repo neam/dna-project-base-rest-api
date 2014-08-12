@@ -5,9 +5,10 @@ use Alchemy\Zippy\Zippy;
 class VideoFileController extends Controller
 {
 
-    use ItemController {
-        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    use WorkflowUiControllerTrait {
+        WorkflowUiControllerTrait::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
     }
+    use SimplicityControllerTrait;
 
     public $modelClass = 'VideoFile';
 
@@ -119,7 +120,7 @@ class VideoFileController extends Controller
             }
         }
 
-        /** @var Controller|ItemController $this */
+        /** @var Controller|WorkflowUiControllerTrait $this */
         $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
 
         if (isset($_POST['SourceMessage']) && !empty($_POST['SourceMessage'])) {
@@ -211,7 +212,7 @@ class VideoFileController extends Controller
     {
         $model = $this->loadModel($id);
 
-        /** @var Controller|ItemController $this */
+        /** @var Controller|WorkflowUiControllerTrait $this */
         $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
 
         $this->render(

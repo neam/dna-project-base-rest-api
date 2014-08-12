@@ -27,9 +27,9 @@ class Controller extends CController
     {
         $traits = class_uses(get_class($this));
 
-        if (in_array('ItemController', $traits)) {
-            /** @var self|ItemController $this */
-            $this->beforeItemControllerAction($action);
+        if (in_array('WorkflowUiControllerTrait', $traits)) {
+            /** @var self|WorkflowUiControllerTrait $this */
+            $this->beforeWorkflowUiControllerTraitAction($action);
         }
 
         return parent::beforeAction($action);

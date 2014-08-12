@@ -2,9 +2,10 @@
 
 class GuiSectionController extends Controller
 {
-    use ItemController {
-        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    use WorkflowUiControllerTrait {
+        WorkflowUiControllerTrait::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
     }
+    use SimplicityControllerTrait;
 
     public $modelClass = 'GuiSection';
 

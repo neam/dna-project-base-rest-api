@@ -1,6 +1,6 @@
 <?php
 /** @var ActiveRecord|ItemTrait $model */
-/** @var Controller|ItemController $this */
+/** @var Controller|WorkflowUiControllerTrait $this */
 ?>
 <div class="row flowbar">
     <div class="span12">

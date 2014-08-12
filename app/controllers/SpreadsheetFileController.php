@@ -2,9 +2,10 @@
 
 class SpreadsheetFileController extends Controller
 {
-    use ItemController {
-        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    use WorkflowUiControllerTrait {
+        WorkflowUiControllerTrait::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
     }
+    use SimplicityControllerTrait;
 
     #public $layout='//layouts/column2';
 
