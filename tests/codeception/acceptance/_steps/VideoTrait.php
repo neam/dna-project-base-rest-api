@@ -77,7 +77,6 @@ trait VideoTrait
             $I->seeSelect2OptionIsSelected(VideoFileEditPage::$webmField, 'Uploaded file');
         } else {
             $I->reloadPage();
-            $I->amOnPage(ProfilePage::$URL);
             $I->selectSelect2Option(VideoFileEditPage::$webmField, $file);
         }
 
