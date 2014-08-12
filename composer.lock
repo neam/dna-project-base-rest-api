@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b70f14033bef55e47c46275f233f2566",
+    "hash": "198b0e5af48614ca28048a99a1a18e39",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -948,6 +948,49 @@
             "time": "2014-03-04 16:25:48"
         },
         {
+            "name": "neam/yii-i18n-tools",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-i18n-tools.git",
+                "reference": "694c14ce3d754b99bb34e28249af200d2c56e6b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-i18n-tools/zipball/694c14ce3d754b99bb34e28249af200d2c56e6b4",
+                "reference": "694c14ce3d754b99bb34e28249af200d2c56e6b4",
+                "shasum": ""
+            },
+            "require": {
+                "neam/yii-i18n-attribute-messages": "dev-develop",
+                "neam/yii-i18n-columns": "dev-develop",
+                "php": ">=5.4.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "traits/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "todo",
+            "homepage": "https://github.com/neam/yii-i18n-tools",
+            "keywords": [
+                "yii"
+            ],
+            "time": "2014-07-20 11:56:37"
+        },
+        {
             "name": "neam/yii-qa-state",
             "version": "dev-develop",
             "source": {
@@ -1037,6 +1080,246 @@
                 "issues": "https://github.com/neam/yii-relational-graph-db/issues"
             },
             "time": "2013-10-28 16:48:19"
+        },
+        {
+            "name": "neam/yii-restricted-access",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-restricted-access.git",
+                "reference": "928fb1cb3dc9f3017a5d0977d57e9bc2557e43a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/928fb1cb3dc9f3017a5d0977d57e9bc2557e43a7",
+                "reference": "928fb1cb3dc9f3017a5d0977d57e9bc2557e43a7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "helpers/",
+                    "behaviors/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "todo",
+            "homepage": "https://github.com/neam/yii-item",
+            "keywords": [
+                "yii"
+            ],
+            "time": "2014-07-20 10:55:08"
+        },
+        {
+            "name": "neam/yii-simplicity-theme",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-simplicity-theme.git",
+                "reference": "7cdefe88e9f980e6ff69be083e65852e83fc9fd8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/7cdefe88e9f980e6ff69be083e65852e83fc9fd8",
+                "reference": "7cdefe88e9f980e6ff69be083e65852e83fc9fd8",
+                "shasum": ""
+            },
+            "require": {
+                "neam/yii-workflow-ui": "dev-develop",
+                "php": ">=5.4.0",
+                "twbs/bootstrap": "3.0.*",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "todo",
+            "homepage": "https://github.com/neam/yii-simplicity-theme",
+            "keywords": [
+                "yii"
+            ],
+            "time": "2014-07-21 12:21:40"
+        },
+        {
+            "name": "neam/yii-workflow-core",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-workflow-core.git",
+                "reference": "95bd91d32aa32f5462d4bcfc886ce886d276bd5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-workflow-core/zipball/95bd91d32aa32f5462d4bcfc886ce886d276bd5d",
+                "reference": "95bd91d32aa32f5462d4bcfc886ce886d276bd5d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "traits/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "todo",
+            "homepage": "https://github.com/neam/yii-workflow-core",
+            "keywords": [
+                "yii"
+            ],
+            "time": "2014-07-21 15:26:50"
+        },
+        {
+            "name": "neam/yii-workflow-progress-tracking",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-workflow-progress-tracking.git",
+                "reference": "4cee18540c3d3edb8725cf6466eda47c00e1238e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-workflow-progress-tracking/zipball/4cee18540c3d3edb8725cf6466eda47c00e1238e",
+                "reference": "4cee18540c3d3edb8725cf6466eda47c00e1238e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "todo",
+            "homepage": "https://github.com/neam/yii-workflow-progress-tracking",
+            "keywords": [
+                "yii"
+            ],
+            "time": "2014-08-11 09:48:55"
+        },
+        {
+            "name": "neam/yii-workflow-task-list",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-workflow-task-list.git",
+                "reference": "7e92a30d73bf2beeedd2dcba8c0dabb2db01299b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-workflow-task-list/zipball/7e92a30d73bf2beeedd2dcba8c0dabb2db01299b",
+                "reference": "7e92a30d73bf2beeedd2dcba8c0dabb2db01299b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "todo",
+            "homepage": "https://github.com/neam/yii-workflow-task-list",
+            "keywords": [
+                "yii"
+            ],
+            "time": "2014-08-11 09:42:34"
+        },
+        {
+            "name": "neam/yii-workflow-ui",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-workflow-ui.git",
+                "reference": "04269f9c632b48653f39970cb4088ce745dfffb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/04269f9c632b48653f39970cb4088ce745dfffb1",
+                "reference": "04269f9c632b48653f39970cb4088ce745dfffb1",
+                "shasum": ""
+            },
+            "require": {
+                "crisu83/yiistrap": "dev-bs3",
+                "crisu83/yiistrap-widgets": "1.7.*",
+                "neam/yii-simplicity-theme": "dev-develop",
+                "neam/yii-workflow-core": "dev-develop",
+                "php": ">=5.4.0",
+                "phundament/jquery-file-upload": "@dev",
+                "phundament/p3media": "0.17.3",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "classmap": [
+                    "traits/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se"
+                }
+            ],
+            "description": "todo",
+            "homepage": "https://github.com/neam/yii-item",
+            "keywords": [
+                "yii"
+            ],
+            "time": "2014-07-23 10:44:48"
         },
         {
             "name": "nordsoftware/yii-account",
@@ -2661,6 +2944,13 @@
         "yiiext/migrate-command": 20,
         "neam/yii-i18n-columns": 20,
         "neam/yii-i18n-attribute-messages": 20,
+        "neam/yii-i18n-tools": 20,
+        "neam/yii-restricted-access": 20,
+        "neam/yii-simplicity-theme": 20,
+        "neam/yii-workflow-core": 20,
+        "neam/yii-workflow-ui": 20,
+        "neam/yii-workflow-task-list": 20,
+        "neam/yii-workflow-progress-tracking": 20,
         "neam/yii-qa-state": 20,
         "neam/yii-relational-graph-db": 20,
         "motin/yii-owner-behavior": 20,
