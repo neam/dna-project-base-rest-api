@@ -32,53 +32,23 @@
     <section class="section-wide section-wide-gray">
         <div class="container">
             <?php $this->widget('app.widgets.LandingPageGroups', array(
-                    'groups' => array(
-                        'Translators' => array(
-                            'title' => Yii::t('app', 'Translators'),
-                            'link' => array(
-                                'text' => Yii::t('app', 'Help translate...'),
-                                'url' => '#',
-                            )
-                        ),
-                        'Developers' => array(
-                            'title' => Yii::t('app', 'Developers'),
-                            'link' => array(
-                                'text' => Yii::t('app', 'Develop free software...'),
-                                'url' => '#',
-                            )
-                        ),
-                    )
-                )); ?>
-            <?php /*
-            <div class="row">
-                <div class="groups-column col-xs-offset-4">
-                    <h3><?php echo t('app', 'Translators'); ?></h3>
-                    <div class="row">
-                        <div class="group-member">
-                            <div class="member-picture">
-                                <img src="http://placehold.it/70x70">
-                            </div>
-                            <div class="member-info">
-                                <span class="member-name"><?php echo 'Bodil Edvardsson'; ?></span>
-                                <span class="member-title"><?php echo 'Moderator'; ?></span>
-                            </div>
-                        </div>
-                        <div class="group-member">
-                            <div class="member-picture">
-                                <img src="http://placehold.it/70x70">
-                            </div>
-                            <div class="member-info">
-                                <span class="member-name"><?php echo 'Ann Jerzi'; ?></span>
-                                <span class="member-title"><?php echo 'Superstar'; ?></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="group-column-footer">
-                        <?php echo TbHtml::link(Yii::t('app', 'Help translate...'), '#'); ?>
-                    </div>
-                </div>
-            </div>
-            */ ?>
+                'groups' => array(
+                    'Translators' => array(
+                        'title' => Yii::t('app', 'Translators'),
+                        'link' => array(
+                            'text' => Yii::t('app', 'Help translate...'),
+                            'url' => '#',
+                        )
+                    ),
+                    'Developers' => array(
+                        'title' => Yii::t('app', 'Developers'),
+                        'link' => array(
+                            'text' => Yii::t('app', 'Develop free software...'),
+                            'url' => '#',
+                        )
+                    ),
+                )
+            )); ?>
         </div>
     </section>
     <section class="section-wide">

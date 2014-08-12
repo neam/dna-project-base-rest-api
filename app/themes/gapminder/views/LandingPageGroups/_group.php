@@ -17,7 +17,7 @@
  *
  */
 ?>
-<div class="groups-column col-xs-offset-4">
+<div class="groups-column">
     <h3><?php echo $groupData['title']; ?></h3>
     <div class="row">
         <?php foreach ($groupData['members'] as $member): ?>
