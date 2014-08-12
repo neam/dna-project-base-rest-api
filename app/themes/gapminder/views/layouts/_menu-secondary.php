@@ -40,10 +40,16 @@
                 ),
                 'items' => array(
                     array(
+                        'label' => '',
+                        'url' => array('#'),
+                        'class' => 'search-link',
+                    ),
+                    array(
                         'label' => Yii::t('app', 'Sign In'),
                         'url' => user()->loginUrl,
                         'visible' => Yii::app()->user->isGuest,
                         'id' => 'loginLink',
+                        'class' => 'login-link',
                     ),
                 ),
             ),

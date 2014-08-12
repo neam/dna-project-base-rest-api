@@ -6813,24 +6813,58 @@ td.visible-print {
 .navbar.navbar-secondary .navbar-brand,
 .navbar.navbar-secondary .nav > li > a {
   border: none;
-  font-size: 11px;
+  font-size: 14px;
   text-transform: uppercase;
-  padding: 3px 7px;
+  padding: 7px;
 }
 .navbar.navbar-secondary .navbar-brand {
   border: none;
-  font-weight: 600;
+  font-weight: 500;
   vertical-align: top;
+  padding-left: 22px;
 }
 .navbar.navbar-secondary .navbar-brand:before {
-  content: "\e079";
+  content: "\e072";
 }
 .navbar.navbar-secondary .navbar-brand:before {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
+  font-size: 7px;
   font-family: 'Glyphicons Halflings';
-  margin-right: 2px;
+  position: absolute;
+  left: 12px;
+}
+.navbar.navbar-secondary .navbar-nav {
+  color: #707070;
+}
+.navbar.navbar-secondary .navbar-nav > li.search-link {
+  margin-right: 20px;
+}
+.navbar.navbar-secondary .navbar-nav > li.search-link:before {
+  content: "\e003";
+}
+.navbar.navbar-secondary .navbar-nav > li.search-link:before {
+  font-family: 'Glyphicons Halflings';
+  font-size: 20px;
+  position: absolute;
+  top: 4px;
+}
+.navbar.navbar-secondary .navbar-nav > li.login-link {
+  padding-right: 30px;
+}
+.navbar.navbar-secondary .navbar-nav > li.login-link:before {
+  content: "\e072";
+}
+.navbar.navbar-secondary .navbar-nav > li.login-link:before {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  font-family: 'Glyphicons Halflings';
+  font-size: 7px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
 }
 .navbar.navbar-secondary .container-fluid {
   width: 100% !important;
@@ -9893,6 +9927,22 @@ Styleguide 5
 .gapminder-friends p {
   line-height: 1.7;
 }
+.gapminder-friends a {
+  font-weight: 600;
+  letter-spacing: -1px;
+  text-decoration: underline;
+}
+.gapminder-friends a:hover {
+  text-decoration: none;
+}
+.gapminder-friends a.btn {
+  text-decoration: none;
+}
+.gapminder-friends em {
+  font-style: italic;
+  font-weight: 400;
+  color: #eb4498;
+}
 .gapminder-friends .gapminder-friends-logo {
   text-align: center;
 }
@@ -9912,6 +9962,7 @@ Styleguide 5
 }
 .gapminder-friends .groups-column h3 {
   color: #939393;
+  margin-top: 0;
   margin-bottom: 15px;
 }
 .gapminder-friends .groups-column .group-member {
@@ -9961,7 +10012,7 @@ Styleguide 5
   text-align: center;
 }
 .section-wide .splash h2 {
-  font-size: 45px;
+  font-size: 39px;
   font-weight: 300;
   margin-top: 0;
   margin-bottom: 40px;

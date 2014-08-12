@@ -6,9 +6,9 @@
     </section>
     <section class="section-wide section-wide-gray">
         <div class="splash">
-            <h2><?php echo t('app', 'building a fact-based world view together.'); ?></h2>
+            <h2><?php echo t('app', 'building a fact-based world view together'); ?></h2>
             <?php echo TbHtml::linkButton(
-                Yii::t('app', 'Join Now'),
+                Yii::t('app', 'Join now'),
                 array(
                     'url' => array('/account/signup'),
                     'color' => TbHtml::BUTTON_COLOR_PRIMARY,
@@ -20,7 +20,7 @@
     <section class="section-wide">
         <div class="container">
             <h2><?php echo t('app', 'Sneak Peeks'); ?></h2>
-            <p><?php echo t('app', 'Access new content under development, which is not yet publicly available. Help evaluate new videos and tools, before we publish them to the world.'); ?></p>
+            <p><?php echo t('app', 'Access new content under development, which is not yet publicly available. Help evaluate new videos and tools before we publish them to the world.'); ?></p>
         </div>
     </section>
     <section class="section-wide">
@@ -64,7 +64,7 @@
     <section class="section-wide">
         <div class="container">
             <h2><?php echo t('app', 'About Gapminder Friends'); ?></h2>
-            <p><?php echo t('app', 'If you like Gapminder’s mission...to fight devastating ignorance with a fact-based worldview eve- ryone can understand...then you are allready a Gapminder Friend. You just have to sign up (you can use Facebook or similar). Solve a task, (translate some text, evaluate upcoming material or simply spread the word). Voila you have become an Ignorance Fighter. Gapminder is a non for profit foundaiton, and we are thankfull for every contribution and keep track who does what to make sure your effort is recognized.'); ?>
+            <p><?php echo t('app', 'If you like Gapminder’s mission&mdash;<em>to fight devastating ignorance with a fact-based worldview that everyone can understand</em>&mdash;you are already a Gapminder Friend. You will just have to sign up (you can use Facebook or similar); solve a task (translate some text, evaluate upcoming material, or simply spread the word); and voilà, you have become an Ignorance Fighter. Gapminder is a non-profit foundation, and we are thankful for every contribution, and keep track who does what to make sure your effort is recognized.'); ?>
             <p><?php echo TbHtml::link(t('app', 'Read more about Gapminder...'), '#'); ?></p>
         </div>
     </section>

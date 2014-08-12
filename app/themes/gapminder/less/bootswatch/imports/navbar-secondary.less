@@ -6,21 +6,56 @@
   .navbar-brand,
   .nav > li > a {
     border: none;
-    font-size: 11px;
+    font-size: 14px;
     text-transform: uppercase;
-    padding: 3px 7px;
+    padding: 7px;
   }
 
   .navbar-brand {
-    .glyphicon-chevron-left;
+    .glyphicon-play;
     border: none;
-    font-weight: 600;
+    font-weight: 500;
     vertical-align: top;
+    padding-left: 22px;
 
     &:before {
       .rotate(180deg);
+      font-size: 7px;
       font-family: 'Glyphicons Halflings';
-      margin-right: 2px;
+      position: absolute;
+      left: 12px;
+    }
+  }
+
+  .navbar-nav {
+    color: @gray-medium-2;
+
+    > li {
+      &.search-link {
+        .glyphicon-search;
+        margin-right: 20px;
+
+        &:before {
+          font-family: 'Glyphicons Halflings';
+          font-size: 20px;
+          position: absolute;
+          top: 4px;
+        }
+      }
+
+      &.login-link {
+        .glyphicon-play;
+        padding-right: 30px;
+
+        &:before {
+          .rotate(90deg);
+          font-family: 'Glyphicons Halflings';
+          font-size: 7px;
+          position: absolute;
+          right: 12px;
+          top: 12px;
+        }
+      }
     }
   }
 
