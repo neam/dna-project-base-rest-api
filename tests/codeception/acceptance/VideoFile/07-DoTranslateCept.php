@@ -10,7 +10,8 @@ $scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('translate a video');
 
-$I->addGroupRoleToAccount('martha', 'Translators', 'GroupTranslator');
+// This is already done by default, so "adding" it again would toggle it off using the current implementation
+//$I->addGroupRoleToAccount('martha', Group::TRANSLATORS, Role::GROUP_TRANSLATOR);
 
 $I->login('martha', 'test');
 $I->amOnPage(ProfilePage::$URL);
