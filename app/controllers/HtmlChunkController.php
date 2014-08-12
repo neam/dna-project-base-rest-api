@@ -3,7 +3,7 @@
 class HtmlChunkController extends Controller
 {
 
-    use ItemController;
+    use WorkflowUiControllerTrait, SimplicityControllerTrait;
 
     public $modelClass = "HtmlChunk";
 

@@ -3,7 +3,7 @@
 class DownloadLinkController extends Controller
 {
 
-    use ItemController;
+    use WorkflowUiControllerTrait, SimplicityControllerTrait;
 
     public $modelClass = "DownloadLink";
 

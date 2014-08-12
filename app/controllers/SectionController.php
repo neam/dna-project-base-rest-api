@@ -3,7 +3,7 @@
 class SectionController extends Controller
 {
 
-    use ItemController;
+    use WorkflowUiControllerTrait, SimplicityControllerTrait;
 
     public $modelClass = 'Section';
 

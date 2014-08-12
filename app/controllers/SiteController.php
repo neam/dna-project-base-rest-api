@@ -2,6 +2,9 @@
 
 class SiteController extends Controller
 {
+
+    use SimplicityControllerTrait;
+
     public $defaultAction = 'index';
 
     public function accessRules()

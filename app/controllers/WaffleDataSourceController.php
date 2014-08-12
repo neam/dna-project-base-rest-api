@@ -2,7 +2,7 @@
 
 class WaffleDataSourceController extends Controller
 {
-    use ItemController;
+    use WorkflowUiControllerTrait, SimplicityControllerTrait;
 
     public $modelClass = "WaffleDataSource";
 

@@ -3,7 +3,7 @@
 class ToolController extends Controller
 {
 
-    use ItemController;
+    use WorkflowUiControllerTrait, SimplicityControllerTrait;
 
     public $modelClass = "Tool";
 

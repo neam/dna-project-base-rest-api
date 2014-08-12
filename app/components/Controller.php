@@ -5,6 +5,12 @@
  */
 class Controller extends CController
 {
+
+    /**
+     * The default layout
+     */
+    public $layout = WorkflowUi::LAYOUT_REGULAR;
+
     /**
      * Initializes the controller.
      */

@@ -2,7 +2,7 @@
 
 class WaffleTagController extends Controller
 {
-    use ItemController;
+    use WorkflowUiControllerTrait, SimplicityControllerTrait;
 
     public $modelClass = "WaffleTag";
 

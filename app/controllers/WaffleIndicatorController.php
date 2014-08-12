@@ -2,7 +2,7 @@
 
 class WaffleIndicatorController extends Controller
 {
-    use ItemController;
+    use WorkflowUiControllerTrait, SimplicityControllerTrait;
 
     public $modelClass = "WaffleIndicator";
 

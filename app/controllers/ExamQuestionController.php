@@ -3,7 +3,7 @@
 class ExamQuestionController extends Controller
 {
 
-    use ItemController;
+    use WorkflowUiControllerTrait, SimplicityControllerTrait;
 
     public $modelClass = "ExamQuestion";
 

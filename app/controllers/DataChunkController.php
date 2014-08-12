@@ -2,7 +2,7 @@
 
 class DataArticleController extends Controller
 {
-    use ItemController;
+    use WorkflowUiControllerTrait, SimplicityControllerTrait;
 
     public $modelClass = "DataArticle";
 
