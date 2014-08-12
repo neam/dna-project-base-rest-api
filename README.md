@@ -218,10 +218,11 @@ Then, run the tests:
     # use ci-configuration for deployment while running tests
     ssh dokku@$DOKKU_HOST config:set $CMS_APPNAME CONFIG_ENVIRONMENT=ci
 
-    # run acceptance tests (choose an appropriate env value)
+    # run acceptance tests (choose an appropriate env value from acceptance-init.suite.yml/acceptance.suite.yml)
     export env=cms-saucelabs-chrome-win8
     export env=cms-saucelabs-firefox-win7
     export env=cms-saucelabs-chrome-osx-108
+    export env=cms-saucelabs-iphone-7_1-portrait
     vendor/bin/codecept run acceptance-init --env=$env -g data:$DATA --debug --fail-fast
     #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
     vendor/bin/codecept run acceptance --env=$env -g data:$DATA --debug --fail-fast

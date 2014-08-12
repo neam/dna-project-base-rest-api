@@ -78,3 +78,17 @@ env:
                         unexpectedAlertBehaviour: 'accept'
                         platform: 'Windows 7'
                         version: '30'
+
+
+    cms-saucelabs-iphone-7_1-portrait:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'iphone'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'OS X 10.9'
+                        version: '7.1'
+                        device-orientation: 'portrait'
+
