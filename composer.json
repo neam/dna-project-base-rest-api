@@ -53,22 +53,6 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/neam/yii-i18n-columns"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/neam/yii-i18n-attribute-messages"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/neam/yii-qa-state"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/neam/yii-relational-graph-db"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/nordsoftware/yii-account"
         },
         {
@@ -93,19 +77,7 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/motin/yii-owner-behavior"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/motin/yii-fixture-helper"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/neam/wrest"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/neam/php-po2json.git"
         },
         {
             "type": "vcs",
