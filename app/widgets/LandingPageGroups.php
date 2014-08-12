@@ -52,7 +52,7 @@ class LandingPageGroups extends CWidget
         foreach ($groupIds as $i => $groupId) {
             $groupIdParam = ":groupId{$i}";
             $queries[] = $db->createCommand()
-                ->select('CONCAT_WS(" ", profile.first_name, profile.last_name) AS name, profile.picture_media_id, group.title AS group_title, role.title AS title')
+                ->select('CONCAT_WS(" ", profile.first_name, profile.last_name) AS name, profile.picture_media_id, group.title AS group_title, role.title AS role_title')
                 ->from('account')
                 ->join('profile', '`profile`.`user_id` = `account`.`id`')
                 ->join('group_has_account', '`group_has_account`.`account_id` = `account`.`id`')
@@ -74,13 +74,13 @@ class LandingPageGroups extends CWidget
             if (!isset($this->groups[$groupName])) {
                 continue;
             }
-            unset($row['group_title']);
             if (isset($row['picture_media_id'])) {
                 $p3Media->id = (int)$row['picture_media_id'];
                 $row['picture_url'] = $p3Media->createUrl('user-profile-picture-small');
             } else {
                 $row['picture_url'] = 'http://placehold.it/70x70';
             }
+            $row['title'] = MetaData::groupRoleTitleToLabel($row['role_title']);
             $this->groups[$groupName]['members'][] = $row;
         }
     }

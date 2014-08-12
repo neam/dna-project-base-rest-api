@@ -112,6 +112,31 @@ class Metadata
     }
 
     /**
+     * Get a label for a group role by it's title.
+     * @param string $title the role title from the database.
+     * @return string the role label that can be shown in the UI.
+     * @throws CException if a label cannot be found based on title.
+     */
+    static public function groupRoleTitleToLabel($title)
+    {
+        $titleToLabelMap = array(
+            Role::GROUP_ADMINISTRATOR => 'Administrator',
+            Role::GROUP_PUBLISHER => 'Publisher',
+            Role::GROUP_EDITOR => 'Editor',
+            Role::GROUP_APPROVER => 'Approver',
+            Role::GROUP_MODERATOR => 'Moderator',
+            Role::GROUP_CONTRIBUTOR => 'Contributor',
+            Role::GROUP_REVIEWER => 'Reviewer',
+            Role::GROUP_TRANSLATOR => 'Translator',
+            Role::GROUP_MEMBER => 'Member',
+        );
+        if (!isset($titleToLabelMap[$title])) {
+            throw new CException(sprintf('No role "%s" can be found.', $title));
+        }
+        return $titleToLabelMap[$title];
+    }
+
+    /**
      * Returns the project groups as name => label.
      * @return array
      */
