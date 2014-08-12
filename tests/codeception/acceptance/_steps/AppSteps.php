@@ -33,9 +33,9 @@ class AppSteps extends \WebGuy
      */
     function isMobileEnv()
     {
-        /** @var \Codeception\Scenario $scenario */
-        $scenario = $this->scenario;
-        return in_array('cms-saucelabs-iphone-7_1-portrait', $scenario->getEnv());
+        // This global is set in _bootstrap.php by us
+        global $running_env;
+        return $running_env === 'cms-saucelabs-iphone-7_1-portrait';
     }
 
     /**
