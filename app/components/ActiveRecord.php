@@ -42,7 +42,7 @@ class ActiveRecord extends CActiveRecord
                 'class' => 'OwnerBehavior',
             );
             $behaviors['RestrictedAccessBehavior'] = array(
-                'class' => 'RestrictedAccessBehavior',
+                'class' => '\RestrictedAccessBehavior',
             );
         }
 

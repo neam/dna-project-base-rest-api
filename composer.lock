@@ -1286,12 +1286,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-ui.git",
-                "reference": "1289545813a6aaf4efe682ef5aa0143a9213b6d6"
+                "reference": "32ae71b0b77e3384a56163fb7dfcab5a6b39b272"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/1289545813a6aaf4efe682ef5aa0143a9213b6d6",
-                "reference": "1289545813a6aaf4efe682ef5aa0143a9213b6d6",
+                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/32ae71b0b77e3384a56163fb7dfcab5a6b39b272",
+                "reference": "32ae71b0b77e3384a56163fb7dfcab5a6b39b272",
                 "shasum": ""
             },
             "require": {
@@ -1307,7 +1307,10 @@
             "type": "yii-extension",
             "autoload": {
                 "classmap": [
-                    "traits/"
+                    "components/",
+                    "helpers/",
+                    "traits/",
+                    "widgets/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1321,11 +1324,11 @@
                 }
             ],
             "description": "todo",
-            "homepage": "https://github.com/neam/yii-item",
+            "homepage": "https://github.com/neam/yii-workflow-ui",
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-12 11:49:32"
+            "time": "2014-08-12 12:07:48"
         },
         {
             "name": "nordsoftware/yii-account",

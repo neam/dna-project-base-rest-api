@@ -5,9 +5,6 @@
 // include envbootstrap
 require(dirname(__FILE__) . '/envbootstrap/include.php');
 
-// load global helper functions
-require_once(dirname(__FILE__) . '/../helpers/global.php');
-
 // Always use UTC
 date_default_timezone_set('UTC');
 
@@ -273,5 +270,12 @@ $gcmsConfig = array(
 
 require('includes/logging.php');
 require('includes/mail.php');
+
+$config =& $gcmsConfig;
+$applicationDirectory =& $basePath;
+
+require($applicationDirectory . '/../vendor/neam/yii-workflow-core/config/yii-workflow-core.php');
+require($applicationDirectory . '/../vendor/neam/yii-workflow-ui/config/yii-workflow-ui.php');
+require($applicationDirectory . '/../vendor/neam/yii-simplicity-theme/config/yii-simplicity-theme.php');
 
 return $gcmsConfig;
