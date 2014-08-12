@@ -81,7 +81,7 @@ class DashboardTaskList extends CWidget
      */
     public function getTaskModel($data)
     {
-        return ActiveRecord::model($data['model_class'])->findByPk((int)$data['id']);
+        return ActiveRecord::model($data['model_class'])->findByPk((int) $data['id']);
     }
 
     /**
@@ -99,7 +99,7 @@ class DashboardTaskList extends CWidget
         $params = array();
 
         if (isset($data['id'])) {
-            $params['id'] = (int)$data['id'];
+            $params['id'] = (int) $data['id'];
         }
 
         if ($action === 'translate') {
@@ -151,6 +151,15 @@ class DashboardTaskList extends CWidget
         }
 
         $mainCommand->params = $countCommand->params = array(':account_id' => $this->account->id);
+
+        // For debugging dashboard queries
+        $user_id = Yii::app()->user->id;
+        $main_command_sql = $mainCommand->text;
+        Yii::log('Dashboard query debug info: ' . print_r(compact("user_id", "queries", "sql", "main_command_sql"), true), 'dashboard', __METHOD__);
+        //Yii::app()->end();
+
+        // Update _item table
+        Yii::app()->db->createCommand("TRUNCATE `_item`; INSERT INTO `_item` SELECT * FROM `item`")->execute();
 
         return new CSqlDataProvider($mainCommand, array(
             'totalItemCount' => $countCommand->queryScalar(),

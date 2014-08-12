@@ -16,9 +16,22 @@ $I->click(
 );
 
 
-// Vizabi state is missing
-$I->waitForText('1 required field missing', 10);
+// Thumbnail and vizabi state is missing
+$I->waitForText('2 required fields missing', 10);
+$I->executeJS('window.scrollTo(0,0);'); // Workaround for WebDriver issue where the element is not fully scrolled into view because of an overlaying top/bottom navigation - see https://stackoverflow.com/questions/23458359/codeception-acceptance-test-fails-because-of-bottom-navigation/24852007#24852007
 $I->click(SnapshotEditPage::$goToNextFieldButton);
+
+// Thumbnail - Select existing uploaded file
+$I->selectSelect2Option("#Snapshot_thumbnail_media_id", 'phundament.png');
+$I->seeSelect2OptionIsSelected('#Snapshot_thumbnail_media_id', 'phundament.png');
+
+// Vizabi state is missing
+// TODO: Make the required field count update dynamically
+//$I->waitForText('1 required field missing', 10);
+//$I->executeJS('window.scrollTo(0,0);'); // Workaround for WebDriver issue where the element is not fully scrolled into view because of an overlaying top/bottom navigation - see https://stackoverflow.com/questions/23458359/codeception-acceptance-test-fails-because-of-bottom-navigation/24852007#24852007
+//$I->click(SnapshotEditPage::$goToNextFieldButton);
+$submit = ItemEditPage::$submitButton;
+$I->click($submit);
 
 $vizabiState = <<<EOD
 {

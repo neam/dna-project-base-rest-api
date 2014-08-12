@@ -30,6 +30,6 @@ connectionID=dbTest ../shell-scripts/reset-db.sh
 
 # run unit tests
 ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
-vendor/bin/codecept run unit -g data:$DATA --debug
+vendor/bin/codecept run unit -g data:$DATA --fail-fast
 
 exit 0

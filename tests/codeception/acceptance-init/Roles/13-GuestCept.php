@@ -1,4 +1,5 @@
 <?php
+$scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
 /*
  * Default role when not logged in

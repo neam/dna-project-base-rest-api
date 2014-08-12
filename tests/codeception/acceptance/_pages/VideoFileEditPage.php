@@ -18,7 +18,7 @@ class VideoFileEditPage extends ItemEditPage
     public static $slugField = '#VideoFile_slug_en';
     public static $captionField = '#VideoFile_caption_en';
     public static $aboutField = '#VideoFile_about_en';
-    public static $subtitlesField = '#VideoFile_subtitles_en';
+    public static $subtitlesField = '#VideoFile_subtitles';
 
     public static $titleFieldPt = '#VideoFile_title_pt';
     public static $slugFieldPt = '#VideoFile_slug_pt';

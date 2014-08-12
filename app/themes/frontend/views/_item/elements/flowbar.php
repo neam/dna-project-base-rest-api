@@ -85,7 +85,7 @@
                                     <?php
                                     echo CHtml::submitButton(Yii::t('model', 'Next'), array(
                                             'class' => 'btn btn-primary',
-                                            'name' => 'next-required',
+                                            'id' => 'next-required',
                                         )
                                     );
                                     ?>

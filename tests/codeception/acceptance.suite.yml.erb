@@ -13,6 +13,9 @@ modules:
     enabled:
         - WebDriver
         - WebHelper
+<% if false %>
+        - Db
+<% end %>
     config:
         WebDriver:
             url: http://foo.com/the-url-property-of-WebDriver-needs-to-be-set-for-codecept-build-to-work-but-should-be-overwritten-by-env-config-during-actual-testing.php
@@ -57,6 +60,17 @@ env:
                         platform: 'Windows XP'
                         version: '34'
 
+    cms-saucelabs-firefox-win7:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'firefox'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows 7'
+                        version: '30'
+
     cms-saucelabs-iphone-7_1-portrait:
         modules:
             config:
@@ -90,3 +104,14 @@ env:
                         unexpectedAlertBehaviour: 'accept'
                         platform: 'Windows XP'
                         version: '34'
+
+    go-saucelabs-firefox-win7:
+        modules:
+            config:
+                WebDriver:
+                    url: http://<%= ENV['CANONICAL_HOST'] %>/go
+                    browser: 'firefox'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows 7'
+                        version: '30'

@@ -61,11 +61,13 @@ Before running any commands below, step in to the root of the cms codebase `/cod
 
 ## Update to the latest changes
 
-After pulling the latest changes, run the following to update your local environment:
+After pulling the latest changes, compare your `local/envbootstrap.php` against `local/envbootstrap.dist.php` and merge in relevant new configuration options/changes from the latter.
+
+Then, run the following to update your local environment:
 
     php composer.phar --prefer-source install
     npm install
-    bower install
+    bower install --allow-root
     shell-scripts/yiic-migrate.sh
 
 ## Reset the database
@@ -87,31 +89,26 @@ First, install s3cmd (https://github.com/s3tools/s3cmd). Then, configure it:
 Then, run:
 
     export DATA=user-generated
-
-Use the corresponding YII_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
-
-    export DB_HOST=$LOCAL_SERVICES_IP
-    export DB_PORT=13306
-    export DB_USER=root
-    export DB_PASSWORD=changeme
-    export DB_NAME=db
+    app/yiic config exportDbConfig --connectionID=db > /tmp/db-config.sh
+    source /tmp/db-config.sh
     connectionID=db shell-scripts/reset-db.sh
 
-## Running tests locally
+## Tests
+
+### Test suites
+
+* `unit` - Contains unit tests that verify low-level functionality.
+* `acceptance-init` - Contains the initial set of acceptance tests that should be run from an empty (reset) database and verifies basic functionality and registers a set of test users.
+* `acceptance` - Contains the full set of acceptance tests that uses a database dump taken at the end of running `acceptance-init` (and thus contains a set of test users).
+* `api` - Contains acceptance tests that verify various aspects of the REST API.
+
+### Running tests locally
 
 First, decide whether or not to run tests against a clean database or with user generated data:
 
     export DATA=clean-db
     OR
     export DATA=user-generated # be sure to have s3cmd configured properly as per above
-
-Use the corresponding TEST_DB_*-values from `app/config/envbootstrap/local/envbootstrap.php` below
-
-    export DB_HOST=$LOCAL_SERVICES_IP
-    export DB_PORT=13306
-    export DB_USER=root
-    export DB_PASSWORD=changeme
-    export DB_NAME=db_test
 
 If you are running these commands locally, set the following environment variables:
 
@@ -127,12 +124,15 @@ Then, do the following before attempting to run any tests:
 
     cd tests
     php ../composer.phar install
+
+    ../app/yiic config exportDbConfig --connectionID=dbTest > /tmp/db-config.sh
+    source /tmp/db-config.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
-    export CMS_HOST=localhost:11111 # change if you have used another WEB_PORT when setting up the local dev environment
+    export CMS_HOST=127.0.0.1:11111 # change if you have used another WEB_PORT when setting up the local dev environment
     ./generate-local-codeception-config.sh
 
-To reset the test database (necessary in order to re-run tests):
+To reset the test database (necessary in order to run tests from scratch or to re-run the `acceptance-init` suite since it does not reset the database itself by design):
 
     export CONFIG_ENVIRONMENT=test
     connectionID=dbTest ../shell-scripts/reset-db.sh
@@ -140,24 +140,26 @@ To reset the test database (necessary in order to re-run tests):
 To run the unit tests:
 
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
-    vendor/bin/codecept run unit -g data:$DATA --debug
+    vendor/bin/codecept run unit -g data:$DATA --debug --fail-fast
 
 To run the functional tests (Note: Not currently used):
 
-    #vendor/bin/codecept run functional -g data:$DATA --debug
+    #vendor/bin/codecept run functional -g data:$DATA --debug --fail-fast
 
 Note: For the remaining tests, you need to have a selenium server running locally (see below in readme).
 
-To run the acceptance suite:
+To run the acceptance suites:
 
     touch testing
-    vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug
+    vendor/bin/codecept run acceptance-init --env=cms-local-chrome -g data:$DATA --debug --fail-fast
+    ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
+    vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug --fail-fast
     rm testing
 
 To run the the API suite:
 
     touch testing
-    vendor/bin/codecept run api -g data:$DATA --debug
+    vendor/bin/codecept run api -g data:$DATA --debug --fail-fast
     rm testing
 
 All tests can be run in sequence (for both clean-db and user-generated) by running the `_test.sh` script:
@@ -181,26 +183,54 @@ Ensure that you have Java installed and then start [the selenium server](http://
     # if above doesn't work, try specifying chromedriver explicitly
     java -jar selenium-server-standalone-2.42.2.jar -Dwebdriver.chrome.driver=./chromedriver
 
-## Running tests against SauceLabs
+## Running tests locally against Saucelabs
 
-First, deploy to dokku according to instructions below. From that deployment process, you'll have `APPNAME` and `CMS_HOST` set according to that deployment.
+First deploy the code to dokku (see "Deploy using Dokku" below), so that the env vars `APPNAME`, `DOKKU_HOST` and `CMS_HOST` are set according to that deployment.
+
+(Not relevant at the moment: Make sure that your dokku ssh key has port forwarding enabled (A user with root access to the dokku hosts needs to log in and run the `dokku-user-allow-port-forwarding.sh` bash script once after your ssh key has been granted access to dokku).)
+
+Then, generate configuration as if running in ci:
+
+    cd tests
+    export COMPOSER_NO_INTERACTION=1
+    php ../composer.phar install --dev --prefer-dist
 
     export SAUCE_USERNAME=replaceme
     export SAUCE_ACCESS_KEY=replaceme
     export DATA=clean-db
     export CI=1
-    cd tests
-    export COMPOSER_NO_INTERACTION=1
-    php ../composer.phar install --dev --prefer-dist
+
+    export CMS_APPNAME=$APPNAME
+    ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/app/yiic config exportDbConfig --connectionID=db | tee /tmp/db-config.sh
+    tr -d $'\r' < /tmp/db-config.sh > /tmp/db-config.clean.sh
+    source /tmp/db-config.clean.sh
+    # set-up ssh tunnel against dokku host to be able to access db instance
+    ssh dokku@$DOKKU_HOST -v -N -L 43306:$DB_HOST:$DB_PORT &
+    export DB_HOST=127.0.0.1
+    export DB_PORT=43306
+    # verify local db access
+    echo "SELECT 1;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
+    # generate codeception config
     ./generate-local-codeception-config.sh
 
+Then, run the tests:
+
     # use ci-configuration for deployment while running tests
-    ssh dokku@$DOKKU_HOST config:set $APPNAME CONFIG_ENVIRONMENT=ci
+    ssh dokku@$DOKKU_HOST config:set $CMS_APPNAME CONFIG_ENVIRONMENT=ci
+
+    # run acceptance tests (choose an appropriate env value)
+    export env=cms-saucelabs-chrome-win8
+    export env=cms-saucelabs-firefox-win7
+    export env=cms-saucelabs-chrome-osx-108
+    vendor/bin/codecept run acceptance-init --env=$env -g data:$DATA --debug --fail-fast
+    #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
+    vendor/bin/codecept run acceptance --env=$env -g data:$DATA --debug --fail-fast
 
     # example of running a single test using the iphone 7.1 environment:
-    vendor/bin/codecept run acceptance --env=cms-saucelabs-iphone-7_1-portrait -g data:$DATA --debug 01-HomePageWelcomeCept.php
+    export env=cms-saucelabs-iphone-7_1-portrait
+    vendor/bin/codecept run acceptance-init --env=$env -g data:$DATA --debug 01-HomePageWelcomeCept.php
 
-    # run all DATA-specific acceptance tests
+    # run all DATA-specific acceptance tests in two different environments at once
     vendor/bin/codecept run acceptance --env=cms-saucelabs-chrome-win8 --env=cms-saucelabs-iphone-7_1-portrait -g data:$DATA --debug
 
     # run all DATA-specific api tests
@@ -210,7 +240,7 @@ First, deploy to dokku according to instructions below. From that deployment pro
 
 To run an individual test, in this example an acceptance test:
 
-     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug 04-VerifyCleanDbCept.php
+     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug --fail-fast 04-VerifyCleanDbCept.php
 
 In general, consult the documentation at http://codeception.com/docs/modules/WebDriver and related Codeception docs.
 
@@ -225,6 +255,16 @@ A useful method while developing tests locally is pauseExecution(). It only has 
     $I->see('Welcome to Gapminder', 'h4');
 
 Happy test development!
+
+## Managing project dependencies
+
+Composer, npm and bower are used to manage dependencies. Check their respective documentation for how they are used. For npm, we use shrinkwrap (built-in) and clingwrap (`npm install -g clingwrap`) in order to lock down dependencies. After ordinary modifications to package.json and `npm install`, run the following:
+
+    npm prune
+    npm shrinkwrap
+    clingwrap npmbegone
+
+Then, commit the changes to `npm-shrinkwrap.json` (npm's equivalent to `composer.lock`) using git.
 
 ## Deploy
 

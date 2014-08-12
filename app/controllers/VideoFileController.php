@@ -95,7 +95,29 @@ class VideoFileController extends Controller
         $this->scenario = "into_$translateInto-step_$step";
         $model = $this->loadModel($id);
         $model->scenario = $this->scenario;
-        $subtitles = $model->getParsedSubtitles();
+
+        // Verify the validity of the source contents subtitles
+        if ($step == "subtitles") {
+            try {
+
+                $subtitles = $model->getParsedSubtitles();
+
+                if (empty($subtitles)) {
+                    Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_DANGER, Yii::t('app', 'Unable to translate subtitles: subtitles are missing.'));
+                    throw new VideoFileSubtitleParseException();
+                }
+
+            } catch (VideoFileSubtitleParseException $e) {
+                Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_DANGER, Yii::t('app', 'Unable to translate video: subtitles are missing or could not be parsed.'));
+                // TODO: Redirect to edit subtitles if have permission
+                $this->redirect(array(
+                    '/videoFile/view',
+                    'id' => $model->{$model->tableSchema->primaryKey},
+                    //'step' => 'subtitles',
+                ));
+                return;
+            }
+        }
 
         /** @var Controller|ItemController $this */
         $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
@@ -118,34 +140,29 @@ class VideoFileController extends Controller
             }
         }
 
-        if (!empty($subtitles)) {
-            $this->performAjaxValidation($model);
-            $this->saveAndContinueOnSuccess($model);
-            $this->populateWorkflowData(
-                $model,
-                'translate',
-                Yii::t(
-                    'app',
-                    'Translate into {translateIntoLanguage}',
-                    array('{translateIntoLanguage}' => LanguageHelper::getName($translateInto))
-                ),
-                $translateInto
-            );
+        $this->performAjaxValidation($model);
+        $this->saveAndContinueOnSuccess($model);
+        $this->populateWorkflowData(
+            $model,
+            'translate_into_' . $translateInto,
+            Yii::t(
+                'app',
+                'Translate into {translateIntoLanguage}',
+                array('{translateIntoLanguage}' => LanguageHelper::getName($translateInto))
+            ),
+            $translateInto
+        );
 
-            $stepCaptions = $model->flowStepCaptions();
+        $stepCaptions = $model->flowStepCaptions();
 
-            $this->render(
-                '/_item/edit',
-                array(
-                    'model' => $model,
-                    'step' => $step,
-                    'stepCaption' => $stepCaptions[$step],
-                )
-            );
-        } else {
-            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_DANGER, Yii::t('app', 'Unable to translate video: subtitles are missing or cannot be parsed.'));
-            $this->redirect(array('/videoFile/browse'));
-        }
+        $this->render(
+            '/_item/edit',
+            array(
+                'model' => $model,
+                'step' => $step,
+                'stepCaption' => $stepCaptions[$step],
+            )
+        );
     }
 
     public function actionSubtitles($id)
@@ -176,7 +193,7 @@ class VideoFileController extends Controller
             $contents = file_get_contents($fullPath);
 
             // save to post
-            $_POST['VideoFile']['_subtitles'] = $contents;
+            $_POST['VideoFile']['subtitles'] = $contents;
 
             // emulate us hitting the save button
             $_POST['save-changes'] = true;
@@ -423,7 +440,7 @@ class VideoFileController extends Controller
 
         $fileName = "subtitles.srt";
         $path = "$basePath/{$fileName}";
-        file_put_contents($path, $model->_subtitles);
+        file_put_contents($path, $model->subtitles);
         $paths[$fileName] = $path;
 
         foreach (LanguageHelper::getCodes() as $locale) {

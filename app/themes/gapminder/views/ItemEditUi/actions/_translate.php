@@ -14,14 +14,14 @@
                                     '\TbProgress',
                                     array(
                                         'color' => TbHtml::PROGRESS_COLOR_SUCCESS,
-                                        'percent' => $this->model->getValidationProgress('translate_into_' . $this->controller->workflowData['translateInto']),
+                                        'percent' => $this->getCurrentWorkflowProgress(),
                                     )
                                 ); ?>
                             </div>
                             <div class="progress-percentage-container">
                                 <?php echo Yii::t(
                                     'app', '{percentage}% done',
-                                    array('{percentage}' => $this->model->getValidationProgress('translate_into_' . $this->controller->workflowData['translateInto']))
+                                    array('{percentage}' => $this->getCurrentWorkflowProgress())
                                 ); ?>
                             </div>
                         </div>
