@@ -48,7 +48,11 @@ $gcmsConfig = array(
         'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
         'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
         'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode',
-        'theme' => 'application.themes.gapminder',
+        //'bootstrap.widgets.TbButton' => 'vendor.neam.yii-workflow-ui.widgets.TbButton',
+        'bootstrap.widgets.TbButton' => 'vendor.clevertech.yiibooster.src.widgets.TbButton',
+        // Aliases to help reference the current default theme
+        'theme' => 'vendor.neam.yii-simplicity-theme.themes.simplicity',
+        'simplicity-theme' => 'vendor.neam.yii-simplicity-theme.themes.simplicity',
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',

@@ -421,6 +421,8 @@ $mainConfig = array(
                 '^user/recovery/(.*)'        => $defaultTheme,
                 '^user/activation/(.*)'      => $defaultTheme,
                 '^account/admin'             => $defaultTheme,
+                // tmp in backend
+                '^p3media/import/uploadPopup'=> $defaultTheme,
                 // backend
                 '^user/(.*)'                 => 'backend2',
                 '^rights/(.*)'               => 'backend2',
