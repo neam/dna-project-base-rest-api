@@ -145,7 +145,7 @@ trait Select2Trait
 
             $css = ".select2-drop-active .select2-results .select2-result";
             $xpath = CssSelector::toXPath($css);
-            $xpath .= "/div[contains(text(), '$opt')]";
+            $xpath .= "/descendant-or-self::*[contains(text(), '$opt')]";
 
             // Click the result
             $I->click($xpath);

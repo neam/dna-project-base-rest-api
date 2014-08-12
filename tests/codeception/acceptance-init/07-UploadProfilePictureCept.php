@@ -19,6 +19,7 @@ $I->click(UploadPopupPage::$uploadButton);
 $I->waitForElementNotVisible('.fileupload-progressbar', 10);
 $I->waitForText('phundament');
 
+// Workaround due to switchToIFrame() not working in Chrome Saucelabs (and we have yet to make the other tests pass in other browsers)
 if (false) {
     # switch to parent page
     $I->switchToIFrame();
@@ -26,7 +27,6 @@ if (false) {
     $I->waitForText('Uploaded file');
     $I->waitForElementNotVisible('#profile-form-modal', 30);
 } else {
-    // Workaround due to switchToIFrame() not working in Saucelabs
     $I->reloadPage();
     $I->amOnPage(ProfilePage::$URL);
     $I->selectSelect2Option('#Profile_picture_media_id', 'phundament.png');

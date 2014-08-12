@@ -143,7 +143,9 @@ trait UsersTrait
     {
         $I = $this;
         $I->amOnPage(HomePage::$URL);
+        $I->waitForElementVisible(HomePage::$accountMenuLink, 10);
         $I->click(HomePage::$accountMenuLink);
+        $I->waitForElementVisible(HomePage::$logoutLink, 10);
         $I->click(HomePage::$logoutLink);
     }
 
