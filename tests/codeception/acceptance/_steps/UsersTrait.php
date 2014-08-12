@@ -143,8 +143,18 @@ trait UsersTrait
     {
         $I = $this;
         $I->amOnPage(HomePage::$URL);
+
+        if ($this->isMobileEnv()) {
+            $I->toggleMobileNavigation();
+        }
+
         $I->waitForElementVisible(HomePage::$accountMenuLink, 10);
         $I->click(HomePage::$accountMenuLink);
+
+        if ($this->isMobileEnv()) {
+            $I->toggleMobileNavigation();
+        }
+
         $I->waitForElementVisible(HomePage::$logoutLink, 10);
         $I->click(HomePage::$logoutLink);
     }

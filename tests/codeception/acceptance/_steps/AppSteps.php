@@ -27,4 +27,22 @@ class AppSteps extends \WebGuy
         $I->seeInField($field, '');
     }
 
+    /**
+     * Returns true if the current environment is a mobile one
+     * @return bool
+     */
+    function isMobileEnv()
+    {
+        /** @var \Codeception\Scenario $scenario */
+        $scenario = $this->scenario;
+        return in_array('cms-saucelabs-iphone-7_1-portrait', $scenario->getEnv());
+    }
+
+    function toggleMobileNavigation()
+    {
+        $I = $this;
+        $I->amGoingTo("toggle the navigation");
+        $I->click(\MobilePage::$navbarToggle);
+    }
+
 }
