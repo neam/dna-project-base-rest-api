@@ -137,7 +137,7 @@
         "weavora/wrest": "dev-awaiting-prs",
         "codemix/hybridauthmanager": "dev-master",
         "schmunk42/relation": "1.*",
-        "yiisoft/yii": "1.1.14 as dev-master",
+        "yiisoft/yii": "1.1.15 as dev-master",
         "mikehaertl/translatable": "~1.1.0",
         "twitter/bootstrap": "3.0.*",
         "crisu83/yii-sentry": "1.3.*",

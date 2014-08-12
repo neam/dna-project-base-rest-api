@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "198b0e5af48614ca28048a99a1a18e39",
+    "hash": "bef470fe6365919a4a2663dfb28ef72b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2705,15 +2705,15 @@
         },
         {
             "name": "yiisoft/yii",
-            "version": "1.1.14",
+            "version": "1.1.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii.git",
-                "reference": "f0fee98ee84f70f1f3652f65562c9670e919cb4e"
+                "reference": "022a51d34ad2c95db2b77b2075e98f5dd78b08e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/yiisoft/yii/archive/f0fee98ee84f70f1f3652f65562c9670e919cb4e.zip",
+                "url": "https://github.com/yiisoft/yii/archive/022a51d34ad2c95db2b77b2075e98f5dd78b08e0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -2925,7 +2925,7 @@
         {
             "alias": "dev-master",
             "alias_normalized": "9999999-dev",
-            "version": "1.1.14.0",
+            "version": "1.1.15.0",
             "package": "yiisoft/yii"
         },
         {
