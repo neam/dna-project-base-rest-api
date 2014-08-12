@@ -65,7 +65,7 @@ trait VideoTrait
         $I->attachFile(UploadPopupPage::$filesField, $file);
         $I->see($file);
         $I->click(UploadPopupPage::$uploadButton);
-        $I->waitForElementNotVisible('.fileupload-progressbar', 10);
+        $I->waitForElementNotVisible('.fileupload-progressbar', 60);
 
         // Workaround due to switchToIFrame() not working in Chrome Saucelabs (and we have yet to make the other tests pass in other browsers)
         if (false) {
