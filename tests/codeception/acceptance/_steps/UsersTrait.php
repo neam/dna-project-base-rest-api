@@ -147,9 +147,6 @@ trait UsersTrait
         $I->executeInNavigation(function () use ($I) {
             $I->waitForElementVisible(HomePage::$accountMenuLink, 10);
             $I->click(HomePage::$accountMenuLink);
-        });
-
-        $I->executeInNavigation(function () use ($I) {
             $I->waitForElementVisible(HomePage::$logoutLink, 10);
             $I->click(HomePage::$logoutLink);
         });
