@@ -1762,12 +1762,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motin/p3media.git",
-                "reference": "18c4d57bdb50ca3e15fd3014300616d8d01eb932"
+                "reference": "96ad245e3d1f30d582c9de47e43c0964a5ff3ca6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/p3media/zipball/18c4d57bdb50ca3e15fd3014300616d8d01eb932",
-                "reference": "18c4d57bdb50ca3e15fd3014300616d8d01eb932",
+                "url": "https://api.github.com/repos/motin/p3media/zipball/96ad245e3d1f30d582c9de47e43c0964a5ff3ca6",
+                "reference": "96ad245e3d1f30d582c9de47e43c0964a5ff3ca6",
                 "shasum": ""
             },
             "require": {
@@ -1779,6 +1779,7 @@
                 "sammaye/auditrail2": "1.*",
                 "schmunk42/access": "@stable",
                 "schmunk42/adjacency-list-behavior": "@stable",
+                "schmunk42/php-inflector": ">=0.1.0",
                 "schmunk42/relation": "1.*",
                 "yiiext/status-behavior": "0.7.*",
                 "yiisoft/yii": "1.1.*"
@@ -1786,7 +1787,8 @@
             "type": "yii-extension",
             "autoload": {
                 "classmap": [
-                    "models/"
+                    "models/",
+                    "components/"
                 ]
             },
             "license": [
@@ -1811,7 +1813,7 @@
             "support": {
                 "source": "https://github.com/motin/p3media/tree/awaiting-prs"
             },
-            "time": "2014-03-27 16:47:36"
+            "time": "2014-08-12 12:29:42"
         },
         {
             "name": "phundament/p3pages",
@@ -2201,6 +2203,48 @@
                 "yii"
             ],
             "time": "2014-07-23 13:39:37"
+        },
+        {
+            "name": "schmunk42/php-inflector",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/php-inflector.git",
+                "reference": "43f5383ee754e6fb2509f32611e9340ecf179eb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/php-inflector/zipball/43f5383ee754e6fb2509f32611e9340ecf179eb6",
+                "reference": "43f5383ee754e6fb2509f32611e9340ecf179eb6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "PhInflector.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "description": "Standalone PHP 5.2 Inflector backport from Yii 2.0",
+            "homepage": "https://github.com/schmunk42/php-inflector",
+            "keywords": [
+                "inflector",
+                "yii"
+            ],
+            "time": "2014-04-28 18:43:49"
         },
         {
             "name": "schmunk42/relation",
