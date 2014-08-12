@@ -63,6 +63,26 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays the public landing page.
+     */
+    public function actionHome()
+    {
+        $this->layout = WebApplication::LAYOUT_FLUID;
+        $this->render('home');
+    }
+
+    /**
+     * Returns a brand URL.
+     * @return string
+     */
+    public function getBrandUrl()
+    {
+        return $this->id === 'site' && $this->action->id === 'home'
+            ? app()->getGapminderOrgUrl()
+            : app()->createUrl('/site/home');
+    }
+
+    /**
      * Gii script console
      */
     public function actionGiiscript()

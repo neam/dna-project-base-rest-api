@@ -6805,6 +6805,36 @@ td.visible-print {
 .dropdown-menu > li > a {
   font-weight: 100;
 }
+.navbar.navbar-secondary {
+  border: none;
+  margin-bottom: 0;
+  min-height: 1px;
+}
+.navbar.navbar-secondary .navbar-brand,
+.navbar.navbar-secondary .nav > li > a {
+  border: none;
+  font-size: 11px;
+  text-transform: uppercase;
+  padding: 3px 7px;
+}
+.navbar.navbar-secondary .navbar-brand {
+  border: none;
+  font-weight: 600;
+  vertical-align: top;
+}
+.navbar.navbar-secondary .navbar-brand:before {
+  content: "\e079";
+}
+.navbar.navbar-secondary .navbar-brand:before {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  font-family: 'Glyphicons Halflings';
+  margin-right: 2px;
+}
+.navbar.navbar-secondary .container-fluid {
+  width: 100% !important;
+}
 /*
 Buttons
 
@@ -9753,6 +9783,9 @@ Styleguide 5
 .styleguide-color.alert-error .alert-link {
   color: #953b39;
 }
+.layout-fluid .content {
+  margin-top: 29px;
+}
 .layout-minimal {
   margin-top: 60px;
 }
@@ -9852,6 +9885,94 @@ Styleguide 5
 }
 .layout-regular .footer .copyright-column p:last-child {
   margin-bottom: 0;
+}
+.gapminder-friends h2 {
+  font-size: 45px;
+  margin-bottom: 30px;
+}
+.gapminder-friends p {
+  line-height: 1.7;
+}
+.gapminder-friends .gapminder-friends-logo {
+  text-align: center;
+}
+.gapminder-friends .gapminder-friends-logo img {
+  width: 500px;
+  height: auto;
+}
+.gapminder-friends .groups-column {
+  position: relative;
+  float: left;
+  width: 33.33333333333333%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.gapminder-friends .groups-column h3 {
+  color: #939393;
+  margin-bottom: 15px;
+}
+.gapminder-friends .groups-column .group-member {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.gapminder-friends .groups-column .group-member:last-child {
+  margin-bottom: 0;
+}
+.gapminder-friends .groups-column .group-member .member-picture {
+  flex-shrink: 0;
+  display: block;
+  width: 70px;
+}
+.gapminder-friends .groups-column .group-member .member-info {
+  display: block;
+  margin-left: 10px;
+  width: 100%;
+}
+.gapminder-friends .groups-column .group-member .member-info .member-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+}
+.gapminder-friends .groups-column .group-member .member-info .member-title {
+  color: #c9c9c9;
+  display: block;
+  font-size: 11px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.gapminder-friends .groups-column .group-column-footer {
+  margin-top: 10px;
+  font-weight: 400;
+}
+.section-wide {
+  padding: 40px;
+}
+.section-wide .splash {
+  text-align: center;
+}
+.section-wide .splash h2 {
+  font-size: 45px;
+  font-weight: 300;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+.section-wide .splash .cta {
+  border-radius: 10px;
+  font-size: 27px;
+  padding: 7px 80px;
+}
+.section-wide-gray {
+  background-color: #f1f2f2;
 }
 .account-controller.admin-action .grid-view {
   margin-top: 20px;

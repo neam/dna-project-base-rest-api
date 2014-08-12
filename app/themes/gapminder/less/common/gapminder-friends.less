@@ -1,0 +1,72 @@
+.gapminder-friends {
+  h2 {
+    font-size: 45px;
+    margin-bottom: 30px;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  .gapminder-friends-logo {
+    text-align: center;
+
+    img {
+      width: 500px;
+      height: auto;
+    }
+  }
+
+  .groups-column {
+    h3 {
+      color: @gray-medium-1;
+      margin-bottom: 15px;
+    }
+
+    .make-xs-column(4);
+    display: flex;
+    flex-direction: column;
+
+    .group-member {
+      .make-xs-column(12);
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .member-picture {
+        flex-shrink: 0;
+        display: block;
+        width: 70px;
+      }
+
+      .member-info {
+        display: block;
+        margin-left: 10px;
+        width: 100%;
+
+        .member-name {
+          display: block;
+          font-size: 13px;
+          font-weight: 400;
+        }
+
+        .member-title {
+          color: @gray;
+          display: block;
+          font-size: 11px;
+          font-weight: 300;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .group-column-footer {
+      margin-top: 10px;
+      font-weight: 400;
+    }
+  }
+}

@@ -15,6 +15,7 @@ class WebApplication extends CWebApplication
     const LAYOUT_REGULAR = '//layouts/regular';
     const LAYOUT_MINIMAL = '//layouts/minimal';
     const LAYOUT_NARROW = '//layouts/narrow';
+    const LAYOUT_FLUID = '//layouts/fluid';
 
     /**
      * @var string application version
@@ -127,9 +128,20 @@ class WebApplication extends CWebApplication
      */
     public function getHomeUrl()
     {
-        return !user()->isAdmin() && (user()->isTranslator || user()->isReviewer)
-            ? app()->createUrl('/dashboard/index')
-            : app()->createUrl('/site/index');
+        $webUser = user();
+
+        if ($webUser->isGuest) {
+            // Guests
+            $route = '/site/home';
+        } else if (!$webUser->isAdmin() && ($webUser->isTranslator || $webUser->isReviewer)) {
+            // Translators/reviewers (but not admins)
+            $route = '/dashboard/index';
+        } else {
+            // Everyone else
+            $route = '/site/index';
+        }
+
+        return app()->createUrl($route);
     }
 
     /**
@@ -160,5 +172,14 @@ class WebApplication extends CWebApplication
         }
 
         return TbHtml::link($label, $url, $htmlOptions);
+    }
+
+    /**
+     * Returns the Gapminder.org URL.
+     * @return string
+     */
+    public function getGapminderOrgUrl()
+    {
+        return 'http://www.gapminder.org'; // TODO: Resolve URL dynamically.
     }
 }
