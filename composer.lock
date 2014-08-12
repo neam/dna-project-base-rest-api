@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "53202f857811d17caeeabe94d6e64ce9",
+    "hash": "b70f14033bef55e47c46275f233f2566",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2625,6 +2625,12 @@
             "alias_normalized": "0.17.0.0",
             "version": "9999999-dev",
             "package": "phundament/p3pages"
+        },
+        {
+            "alias": "0.17.3",
+            "alias_normalized": "0.17.3.0",
+            "version": "dev-awaiting-prs",
+            "package": "phundament/p3media"
         },
         {
             "alias": "0.7.2.1",

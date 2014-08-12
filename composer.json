@@ -137,7 +137,7 @@
         "phundament/p3admin": "0.16.0",
         "phundament/p3extensions": "0.17.0",
         "phundament/p3pages": "dev-master as 0.17.0",
-        "phundament/p3media": "dev-awaiting-prs",
+        "phundament/p3media": "dev-awaiting-prs as 0.17.3",
         "phundament/p3widgets": "0.16.0",
         "schmunk42/ckeditor-configurator": "@dev",
         "schmunk42/multi-theme": "0.1.*",
