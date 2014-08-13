@@ -108,14 +108,6 @@ $gcmsConfig = array(
                         ),
                         'type' => 'jpg',
                     ),
-                    'dashboard-item-task-thumbnail' => array(
-                        'name' => 'Dashboard Item Task Thumbnail',
-                        'commands' => array(
-                            'resize' => array(210, 120, 7), // Image::AUTO
-                            'quality' => '85',
-                        ),
-                        'type' => 'jpg',
-                    ),
                     'item-workflow-preview' => array(
                         'name' => 'Item Workflow Preview',
                         'commands' => array(
@@ -282,5 +274,6 @@ require($applicationDirectory . '/../vendor/neam/yii-workflow-core/config/yii-wo
 require($applicationDirectory . '/../vendor/neam/yii-workflow-ui/config/yii-workflow-ui.php');
 require($applicationDirectory . '/../vendor/neam/yii-simplicity-theme/config/yii-simplicity-theme.php');
 require($applicationDirectory . '/../vendor/neam/yii-restricted-access/config/yii-restricted-access.php');
+require($applicationDirectory . '/../vendor/neam/yii-workflow-task-list/config/yii-workflow-task-list.php');
 
 return $gcmsConfig;

@@ -90,7 +90,7 @@
     <?php endif; ?>
     <div class="dashboard-tasks-container">
         <?php $this->widget(
-            'app.widgets.DashboardTaskList',
+            '\DashboardTaskList',
             array(
                 'type' => DashboardTaskList::TYPE_STARTED,
                 'account' => $model,
@@ -98,7 +98,7 @@
         ); ?>
         <hr>
         <?php $this->widget(
-            'app.widgets.DashboardTaskList',
+            '\DashboardTaskList',
             array(
                 'type' => DashboardTaskList::TYPE_NEW,
                 'account' => $model,
