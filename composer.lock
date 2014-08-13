@@ -1088,12 +1088,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-restricted-access.git",
-                "reference": "1a060f8ab0af269c43e3fe81e6fe3c6361455720"
+                "reference": "48548c7cc54dec9b381e9a5915766793fc16cdce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/1a060f8ab0af269c43e3fe81e6fe3c6361455720",
-                "reference": "1a060f8ab0af269c43e3fe81e6fe3c6361455720",
+                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/48548c7cc54dec9b381e9a5915766793fc16cdce",
+                "reference": "48548c7cc54dec9b381e9a5915766793fc16cdce",
                 "shasum": ""
             },
             "require": {
@@ -1119,11 +1119,11 @@
                 }
             ],
             "description": "todo",
-            "homepage": "https://github.com/neam/yii-item",
+            "homepage": "https://github.com/neam/yii-restricted-access",
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-13 07:42:37"
+            "time": "2014-08-13 07:49:21"
         },
         {
             "name": "neam/yii-simplicity-theme",
@@ -1131,12 +1131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-simplicity-theme.git",
-                "reference": "5466f212d9b4fa294592d9048d748ac90d85c0a6"
+                "reference": "27ebcb8d393095a4727b4f36d71fcf18a6af99d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/5466f212d9b4fa294592d9048d748ac90d85c0a6",
-                "reference": "5466f212d9b4fa294592d9048d748ac90d85c0a6",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/27ebcb8d393095a4727b4f36d71fcf18a6af99d4",
+                "reference": "27ebcb8d393095a4727b4f36d71fcf18a6af99d4",
                 "shasum": ""
             },
             "require": {
@@ -1166,7 +1166,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-13 07:19:09"
+            "time": "2014-08-13 07:51:27"
         },
         {
             "name": "neam/yii-workflow-core",
