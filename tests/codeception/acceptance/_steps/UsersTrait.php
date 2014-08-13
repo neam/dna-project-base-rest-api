@@ -149,12 +149,17 @@ trait UsersTrait
         if (!$isMobileEnv) {
             $I->waitForElementVisible(HomePage::$accountMenuLink, 10);
             $I->click(HomePage::$accountMenuLink);
+            $logoutLink = HomePage::$logoutLink;
+        } else {
+            $I->toggleMobileNavigation();
+           $logoutLink = HomePage::$logoutLinkMobile;
         }
 
-        $I->waitForElementVisible(HomePage::$logoutLink, 10);
-        $I->click(HomePage::$logoutLink);
+        $I->waitForElementVisible($logoutLink, 10);
+        $I->click($logoutLink);
 
         $I->waitForText('Welcome to Gapminder');
+
 
         if ($isMobileEnv) {
             $I->toggleMobileNavigation();
