@@ -166,10 +166,10 @@ $gcmsConfig = array(
                 ),
                 'signup' => array(
                     'class' => 'application.controllers.SignupController',
-                    'layout' => 'theme.views.layouts.minimal',
+                    'layout' => WorkflowUi::LAYOUT_MINIMAL,
                 ),
             ),
-            'defaultLayout' => 'theme.views.layouts.narrow',
+            'defaultLayout' => WorkflowUi::LAYOUT_NARROW,
             'fromEmailAddress' => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
         ),
     ),
