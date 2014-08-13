@@ -153,8 +153,15 @@ trait UsersTrait
 
         $I->waitForElementVisible(HomePage::$logoutLink, 10);
         $I->click(HomePage::$logoutLink);
-        $I->waitForText('login or sign-up here');
-        $I->see('login or sign-up here');
+
+        $I->waitForText('Welcome to Gapminder');
+
+        if ($isMobileEnv) {
+            $I->toggleMobileNavigation();
+        }
+
+        $I->waitForElementVisible(HomePage::$loginLink);
+        $I->see('Login', HomePage::$loginLink);
     }
 
     function register($username, $password, $verifyPassword, $email, $acceptTerms = true)
