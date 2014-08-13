@@ -57,15 +57,7 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/PHPOffice/PHPExcel"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/motin/PHPWord"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/PHPOffice/PHPPowerPoint"
         },
         {
             "type": "vcs",
