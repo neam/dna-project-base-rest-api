@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5143e5adeef1c795658389f0efc5fe3f",
+    "hash": "64093ea67f6e3664bec767991722c0b7",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1088,12 +1088,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-restricted-access.git",
-                "reference": "47347aab55a73f93f4937392d48d15b81cbe75d3"
+                "reference": "1a060f8ab0af269c43e3fe81e6fe3c6361455720"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/47347aab55a73f93f4937392d48d15b81cbe75d3",
-                "reference": "47347aab55a73f93f4937392d48d15b81cbe75d3",
+                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/1a060f8ab0af269c43e3fe81e6fe3c6361455720",
+                "reference": "1a060f8ab0af269c43e3fe81e6fe3c6361455720",
                 "shasum": ""
             },
             "require": {
@@ -1104,7 +1104,8 @@
             "autoload": {
                 "classmap": [
                     "helpers/",
-                    "behaviors/"
+                    "behaviors/",
+                    "modules/restrictedAccess/widgets/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1122,7 +1123,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-12 11:48:44"
+            "time": "2014-08-13 07:42:37"
         },
         {
             "name": "neam/yii-simplicity-theme",
@@ -1130,12 +1131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-simplicity-theme.git",
-                "reference": "291388c1cc82acfe95f06dee0c4f3b7eb28b1405"
+                "reference": "5466f212d9b4fa294592d9048d748ac90d85c0a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/291388c1cc82acfe95f06dee0c4f3b7eb28b1405",
-                "reference": "291388c1cc82acfe95f06dee0c4f3b7eb28b1405",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/5466f212d9b4fa294592d9048d748ac90d85c0a6",
+                "reference": "5466f212d9b4fa294592d9048d748ac90d85c0a6",
                 "shasum": ""
             },
             "require": {
@@ -1165,7 +1166,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-12 14:59:23"
+            "time": "2014-08-13 07:19:09"
         },
         {
             "name": "neam/yii-workflow-core",
@@ -1291,12 +1292,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-ui.git",
-                "reference": "9bb96314eddf1b5eca0fb80a4c481331310b71ca"
+                "reference": "71666ad23d668292af4b1cb71194889255b0adab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/9bb96314eddf1b5eca0fb80a4c481331310b71ca",
-                "reference": "9bb96314eddf1b5eca0fb80a4c481331310b71ca",
+                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/71666ad23d668292af4b1cb71194889255b0adab",
+                "reference": "71666ad23d668292af4b1cb71194889255b0adab",
                 "shasum": ""
             },
             "require": {
@@ -1333,7 +1334,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-12 15:02:09"
+            "time": "2014-08-13 07:22:03"
         },
         {
             "name": "nordsoftware/yii-account",

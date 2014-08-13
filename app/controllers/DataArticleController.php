@@ -5,7 +5,6 @@ class DataArticleController extends Controller
     use WorkflowUiControllerTrait {
         WorkflowUiControllerTrait::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
     }
-    use SimplicityControllerTrait;
 
     public $modelClass = 'DataArticle';
 

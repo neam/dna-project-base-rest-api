@@ -3,7 +3,7 @@
 class ExerciseController extends Controller
 {
 
-    use WorkflowUiControllerTrait, SimplicityControllerTrait;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = "Exercise";
 

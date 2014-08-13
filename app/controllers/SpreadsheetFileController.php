@@ -5,7 +5,6 @@ class SpreadsheetFileController extends Controller
     use WorkflowUiControllerTrait {
         WorkflowUiControllerTrait::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
     }
-    use SimplicityControllerTrait;
 
     #public $layout='//layouts/column2';
 

@@ -3,7 +3,7 @@
 class ChapterController extends Controller
 {
 
-    use WorkflowUiControllerTrait, SimplicityControllerTrait;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = "Chapter";
 

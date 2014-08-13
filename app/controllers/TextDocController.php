@@ -3,7 +3,7 @@
 class TextDocController extends Controller
 {
 
-    use WorkflowUiControllerTrait, SimplicityControllerTrait;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = "TextDoc";
 

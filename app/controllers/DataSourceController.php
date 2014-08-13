@@ -3,7 +3,7 @@
 class DataSourceController extends Controller
 {
 
-    use WorkflowUiControllerTrait, SimplicityControllerTrait;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = "DataSource";
 

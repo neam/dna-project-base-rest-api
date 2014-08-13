@@ -3,7 +3,7 @@
 class SnapshotController extends Controller
 {
 
-    use WorkflowUiControllerTrait, SimplicityControllerTrait;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = "Snapshot";
 

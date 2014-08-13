@@ -3,7 +3,7 @@
 class SlideshowFileController extends Controller
 {
 
-    use WorkflowUiControllerTrait, SimplicityControllerTrait;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = "SlideshowFile";
 

@@ -2,7 +2,7 @@
 
 class WaffleCategoryThingController extends Controller
 {
-    use WorkflowUiControllerTrait, SimplicityControllerTrait;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = "WaffleCategoryThing";
 

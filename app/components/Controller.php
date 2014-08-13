@@ -11,6 +11,8 @@ class Controller extends CController
      */
     public $layout = WorkflowUi::LAYOUT_REGULAR;
 
+    use SimplicityControllerTrait;
+
     /**
      * Initializes the controller.
      */

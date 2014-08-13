@@ -8,7 +8,6 @@ class VideoFileController extends Controller
     use WorkflowUiControllerTrait {
         WorkflowUiControllerTrait::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
     }
-    use SimplicityControllerTrait;
 
     public $modelClass = 'VideoFile';
 

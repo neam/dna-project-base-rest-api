@@ -281,5 +281,6 @@ $applicationDirectory =& $basePath;
 require($applicationDirectory . '/../vendor/neam/yii-workflow-core/config/yii-workflow-core.php');
 require($applicationDirectory . '/../vendor/neam/yii-workflow-ui/config/yii-workflow-ui.php');
 require($applicationDirectory . '/../vendor/neam/yii-simplicity-theme/config/yii-simplicity-theme.php');
+require($applicationDirectory . '/../vendor/neam/yii-restricted-access/config/yii-restricted-access.php');
 
 return $gcmsConfig;
