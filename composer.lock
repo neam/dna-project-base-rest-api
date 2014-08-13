@@ -1292,12 +1292,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-ui.git",
-                "reference": "5e47bd3b18c0363852971954c6e045e9fb27a19f"
+                "reference": "31ca5892650d2f97543b4f022b236a50cf223d65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/5e47bd3b18c0363852971954c6e045e9fb27a19f",
-                "reference": "5e47bd3b18c0363852971954c6e045e9fb27a19f",
+                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/31ca5892650d2f97543b4f022b236a50cf223d65",
+                "reference": "31ca5892650d2f97543b4f022b236a50cf223d65",
                 "shasum": ""
             },
             "require": {
