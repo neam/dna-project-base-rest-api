@@ -176,6 +176,11 @@ trait UsersTrait
         $I = $this;
         $I->amGoingTo("Register user $username");
         $I->amOnPage(HomePage::$URL);
+
+        if ($this->isMobileEnv()) {
+            $I->toggleMobileNavigation();
+        }
+
         $I->click(HomePage::$loginLink);
         $I->click(LoginPage::$signUpButtonText);
         $I->waitForText(RegistrationPage::$introText);
