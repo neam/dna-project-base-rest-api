@@ -9769,7 +9769,12 @@ Styleguide 5
 }
 .layout-narrow {
   width: inherit;
-  margin: 40px 0;
+  margin: 10px 0;
+}
+@media only screen and (min-width: 768px) {
+  .layout-narrow {
+    margin: 40px 0;
+  }
 }
 .layout-narrow .body {
   text-align: center;
@@ -9882,9 +9887,11 @@ Styleguide 5
   text-transform: uppercase;
   text-align: center;
 }
-.authenticate-controller.login-action .form-container .container-lead {
-  margin-top: 50px;
-  margin-bottom: 50px;
+@media only screen and (min-width: 768px) {
+  .authenticate-controller.login-action .form-container .container-lead {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
 }
 .authenticate-controller.login-action .form-actions {
   margin-left: -15px;
