@@ -137,6 +137,8 @@ trait UsersTrait
         $I->fillField(LoginPage::$usernameField, $username);
         $I->fillField(LoginPage::$passwordField, $password);
         $I->click(LoginPage::$submitButton);
+        $I->waitForText('Welcome to Gapminder');
+        $I->dontSee('login or sign-up here');
     }
 
     function logout()
@@ -152,7 +154,7 @@ trait UsersTrait
             $logoutLink = HomePage::$logoutLink;
         } else {
             $I->toggleMobileNavigation();
-           $logoutLink = HomePage::$logoutLinkMobile;
+            $logoutLink = HomePage::$logoutLinkMobile;
         }
 
         $I->waitForElementVisible($logoutLink, 10);
