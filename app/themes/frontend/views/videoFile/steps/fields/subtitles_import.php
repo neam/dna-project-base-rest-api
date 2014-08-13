@@ -115,4 +115,4 @@ $input = $this->widget('\GtcRelation', array(
 )); ?>
 <?php $this->endClip(); ?>
 
-<?php publishJs('/themes/frontend/js/toggle-subtitle-translation-buttons.js', CClientScript::POS_END); ?>
+<?php publishJs(Yii::getPathOfAlias('vendor.neam.yii-workflow-ui.themes.simplicity') . '/js/toggle-subtitle-translation-buttons.js', CClientScript::POS_END); ?>

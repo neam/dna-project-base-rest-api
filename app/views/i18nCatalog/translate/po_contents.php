@@ -101,5 +101,5 @@
 </ul>
 */
 ?>
-<?php publishJs('/themes/frontend/js/popover-focus-caret.js', CClientScript::POS_END); ?>
-<?php //publishJs('/themes/frontend/js/force-clean-dirty-forms.js', CClientScript::POS_END); ?>
+<?php publishJs(Yii::getPathOfAlias('vendor.neam.yii-workflow-ui.themes.simplicity') . '/js/popover-focus-caret.js', CClientScript::POS_END); ?>
+<?php //publishJs(Yii::getPathOfAlias('vendor.neam.yii-workflow-ui.themes.simplicity') . '/js/force-clean-dirty-forms.js', CClientScript::POS_END); ?>

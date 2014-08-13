@@ -185,7 +185,7 @@
                 </div>
             </div>
 
-            <?php publishJs('/themes/frontend/js/flowbar-form-controls.js', CClientScript::POS_END); ?>
+            <?php publishJs(Yii::getPathOfAlias('vendor.neam.yii-workflow-ui.themes.simplicity') . '/themes/frontend/js/flowbar-form-controls.js', CClientScript::POS_END); ?>
         <?php endif; ?>
     </div>
 </div>
