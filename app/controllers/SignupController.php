@@ -92,7 +92,7 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
             }
         }
 
-        $this->render('index', array('model' => $model));
+        $this->render('//account/signup/index', array('model' => $model));
     }
 
     /**
@@ -130,4 +130,13 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
             $config
         );
     }
+
+    /**
+     * Displays the 'done' page.
+     */
+    public function actionDone()
+    {
+        $this->render('//account/signup/done');
+    }
+
 }
