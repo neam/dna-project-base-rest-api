@@ -89,8 +89,15 @@ if ($page !== null) {
                                 'url' => array('/account/authenticate/logout'),
                                 'visible' => !Yii::app()->user->isGuest,
                                 'id' => 'logoutLink',
+                                'class' => 'hidden-xs logout-link',
                             ),
                         )
+                    ),
+                    array(
+                        'label' => Yii::t('app', 'Logout'),
+                        'url' => array('/account/authenticate/logout'),
+                        'visible' => !Yii::app()->user->isGuest,
+                        'class' => 'visible-xs-block visible-xs logout-link',
                     ),
                     array(
                         'label' => Yii::t('app', 'Login'),

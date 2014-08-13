@@ -11,7 +11,7 @@ class HomePage
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
     public static $loginLink = '#loginLink';
-    public static $logoutLink = '#logoutLink';
+    public static $logoutLink = '.logout-link';
     public static $accountMenuLink = '#accountMenuLink';
 
     /**

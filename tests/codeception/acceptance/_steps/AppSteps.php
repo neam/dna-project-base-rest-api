@@ -48,17 +48,4 @@ class AppSteps extends \WebGuy
         $I->click(\MobilePage::$navbarToggle);
     }
 
-    /**
-     * If env is mobile then the navigation will be toggled before executing the callback.
-     * @param $callable
-     */
-    function executeInNavigation($callable)
-    {
-        $I = $this;
-        if ($this->isMobileEnv()) {
-            $I->toggleMobileNavigation();
-        }
-        $callable();
-    }
-
 }
