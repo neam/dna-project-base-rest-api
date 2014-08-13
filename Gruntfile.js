@@ -122,6 +122,7 @@ module.exports = function(grunt) {
             dist: {
                 dest: 'app/themes/gapminder/less/app.less',
                 src: [
+                    'app/themes/gapminder/less/mixins/**/*.less',
                     'app/themes/gapminder/less/layouts/**/*.less',
                     'app/themes/gapminder/less/partials/**/*.less',
                     'app/themes/gapminder/less/common/**/*.less',

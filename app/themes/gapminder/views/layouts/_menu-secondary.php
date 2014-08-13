@@ -40,7 +40,7 @@
                 ),
                 'items' => array(
                     array(
-                        'label' => '',
+                        'label' => t('app', 'Search'),
                         'url' => array('#'),
                         'class' => 'search-link',
                     ),

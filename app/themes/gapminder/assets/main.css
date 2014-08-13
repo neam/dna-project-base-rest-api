@@ -6805,69 +6805,71 @@ td.visible-print {
 .dropdown-menu > li > a {
   font-weight: 100;
 }
-.navbar.navbar-secondary {
-  border: none;
-  margin-bottom: 0;
-  min-height: 1px;
-}
-.navbar.navbar-secondary .navbar-brand,
-.navbar.navbar-secondary .nav > li > a {
-  border: none;
-  font-size: 14px;
-  text-transform: uppercase;
-  padding: 7px;
-}
-.navbar.navbar-secondary .navbar-brand {
-  border: none;
-  font-weight: 500;
-  vertical-align: top;
-  padding-left: 22px;
-}
-.navbar.navbar-secondary .navbar-brand:before {
-  content: "\e072";
-}
-.navbar.navbar-secondary .navbar-brand:before {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
-  font-size: 7px;
-  font-family: 'Glyphicons Halflings';
-  position: absolute;
-  left: 12px;
-}
-.navbar.navbar-secondary .navbar-nav {
-  color: #707070;
-}
-.navbar.navbar-secondary .navbar-nav > li.search-link {
-  margin-right: 20px;
-}
-.navbar.navbar-secondary .navbar-nav > li.search-link:before {
-  content: "\e003";
-}
-.navbar.navbar-secondary .navbar-nav > li.search-link:before {
-  font-family: 'Glyphicons Halflings';
-  font-size: 20px;
-  position: absolute;
-  top: 4px;
-}
-.navbar.navbar-secondary .navbar-nav > li.login-link {
-  padding-right: 30px;
-}
-.navbar.navbar-secondary .navbar-nav > li.login-link:before {
-  content: "\e072";
-}
-.navbar.navbar-secondary .navbar-nav > li.login-link:before {
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  font-family: 'Glyphicons Halflings';
-  font-size: 7px;
-  position: absolute;
-  right: 12px;
-  top: 12px;
-}
-.navbar.navbar-secondary .container-fluid {
-  width: 100% !important;
+@media (min-width: 768px) {
+  .navbar.navbar-secondary {
+    border: none;
+    margin-bottom: 0;
+    min-height: 1px;
+  }
+  .navbar.navbar-secondary .navbar-brand,
+  .navbar.navbar-secondary .nav > li > a {
+    border: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 7px;
+  }
+  .navbar.navbar-secondary .navbar-brand {
+    border: none;
+    font-weight: 500;
+    vertical-align: top;
+    padding-left: 22px;
+  }
+  .navbar.navbar-secondary .navbar-brand:before {
+    content: "\e072";
+  }
+  .navbar.navbar-secondary .navbar-brand:before {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    font-size: 7px;
+    font-family: 'Glyphicons Halflings';
+    position: absolute;
+    left: 12px;
+  }
+  .navbar.navbar-secondary .navbar-nav {
+    color: #707070;
+  }
+  .navbar.navbar-secondary .navbar-nav > li.search-link {
+    margin-right: 20px;
+  }
+  .navbar.navbar-secondary .navbar-nav > li.search-link:before {
+    content: "\e003";
+  }
+  .navbar.navbar-secondary .navbar-nav > li.search-link:before {
+    font-family: 'Glyphicons Halflings';
+    font-size: 20px;
+    position: absolute;
+    top: 4px;
+  }
+  .navbar.navbar-secondary .navbar-nav > li.login-link {
+    padding-right: 30px;
+  }
+  .navbar.navbar-secondary .navbar-nav > li.login-link:before {
+    content: "\e072";
+  }
+  .navbar.navbar-secondary .navbar-nav > li.login-link:before {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    font-family: 'Glyphicons Halflings';
+    font-size: 7px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+  }
+  .navbar.navbar-secondary .container-fluid {
+    width: 100% !important;
+  }
 }
 /*
 Buttons
@@ -9952,13 +9954,17 @@ Styleguide 5
 }
 .gapminder-friends .groups-column {
   position: relative;
-  float: left;
-  width: 33.33333333333333%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
   display: flex;
   flex-direction: column;
+}
+@media (min-width: 768px) {
+  .gapminder-friends .groups-column {
+    float: left;
+    width: 33.33333333333333%;
+  }
 }
 .gapminder-friends .groups-column h3 {
   color: #939393;
@@ -10022,8 +10028,14 @@ Styleguide 5
   font-size: 27px;
   padding: 7px 80px;
 }
+.section-wide + .section-wide:not(.section-wide-gray) {
+  padding-top: 0;
+}
 .section-wide-gray {
   background-color: #f1f2f2;
+}
+.section-wide-gray + .section-wide-gray {
+  padding-top: 0;
 }
 .account-controller.admin-action .grid-view {
   margin-top: 20px;
@@ -16978,6 +16990,17 @@ Styleguide 9
   vertical-align: middle;
 }
 @media (max-width: 767px) {
+  .navbar.navbar-secondary .navbar-brand {
+    font-size: 15px;
+  }
+}
+@media (min-width: 992px) {
+  .navbar.navbar-secondary .navbar-nav > li.search-link a {
+    opacity: 0;
+    width: 0;
+  }
+}
+@media (max-width: 767px) {
   .navbar .navbar-brand {
     border-right: none;
     padding: 20.5px 15px;
@@ -17003,6 +17026,23 @@ Styleguide 9
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     padding: 20px 15px;
     padding-left: 30px;
+  }
+}
+@media (max-width: 991px) {
+  .gapminder-friends .gapminder-friends-logo img {
+    width: 90%;
+    height: auto;
+  }
+}
+@media (max-width: 767px) {
+  .gapminder-friends .groups-column {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 991px) {
+  .section-wide {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 @media (max-width: 767px) {
@@ -17071,6 +17111,9 @@ Styleguide 9
   .profile-controller.edit-action .profile-summary .summary-info .summary-heading {
     margin-top: 50px;
   }
+}
+.layout-fluid .content {
+  margin-top: 67px;
 }
 @media (min-width: 768px) {
   .layout-narrow {

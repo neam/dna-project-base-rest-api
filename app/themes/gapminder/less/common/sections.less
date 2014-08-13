@@ -17,8 +17,16 @@
       padding: 7px 80px;
     }
   }
+
+  & + &:not(.section-wide-gray) {
+    padding-top: 0;
+  }
 }
 
 .section-wide-gray {
   background-color: @gray-light;
+
+  & + & {
+    padding-top: 0;
+  }
 }
