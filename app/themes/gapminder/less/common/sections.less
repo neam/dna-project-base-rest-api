@@ -1,13 +1,16 @@
 .section-wide {
   padding: 40px;
 
+  h2 {
+    margin-top: 0;
+  }
+
   .splash {
     text-align: center;
 
     h2 {
       font-size: 39px;
       font-weight: 300;
-      margin-top: 0;
       margin-bottom: 40px;
     }
 
@@ -17,13 +20,19 @@
       padding: 7px 80px;
     }
   }
+}
 
-  & + &:not(.section-wide-gray) {
+.section-wide-primary {
+  .section-wide;
+  background-color: #fff;
+
+  & + & {
     padding-top: 0;
   }
 }
 
-.section-wide-gray {
+.section-wide-secondary {
+  .section-wide;
   background-color: @gray-light;
 
   & + & {

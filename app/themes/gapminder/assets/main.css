@@ -10014,13 +10014,15 @@ Styleguide 5
 .section-wide {
   padding: 40px;
 }
+.section-wide h2 {
+  margin-top: 0;
+}
 .section-wide .splash {
   text-align: center;
 }
 .section-wide .splash h2 {
   font-size: 39px;
   font-weight: 300;
-  margin-top: 0;
   margin-bottom: 40px;
 }
 .section-wide .splash .cta {
@@ -10028,13 +10030,50 @@ Styleguide 5
   font-size: 27px;
   padding: 7px 80px;
 }
-.section-wide + .section-wide:not(.section-wide-gray) {
+.section-wide-primary {
+  padding: 40px;
+  background-color: #fff;
+}
+.section-wide-primary h2 {
+  margin-top: 0;
+}
+.section-wide-primary .splash {
+  text-align: center;
+}
+.section-wide-primary .splash h2 {
+  font-size: 39px;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+.section-wide-primary .splash .cta {
+  border-radius: 10px;
+  font-size: 27px;
+  padding: 7px 80px;
+}
+.section-wide-primary + .section-wide-primary {
   padding-top: 0;
 }
-.section-wide-gray {
+.section-wide-secondary {
+  padding: 40px;
   background-color: #f1f2f2;
 }
-.section-wide-gray + .section-wide-gray {
+.section-wide-secondary h2 {
+  margin-top: 0;
+}
+.section-wide-secondary .splash {
+  text-align: center;
+}
+.section-wide-secondary .splash h2 {
+  font-size: 39px;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+.section-wide-secondary .splash .cta {
+  border-radius: 10px;
+  font-size: 27px;
+  padding: 7px 80px;
+}
+.section-wide-secondary + .section-wide-secondary {
   padding-top: 0;
 }
 .account-controller.admin-action .grid-view {
