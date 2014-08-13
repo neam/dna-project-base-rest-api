@@ -182,6 +182,7 @@ trait UsersTrait
         }
 
         $I->click(HomePage::$loginLink);
+        $I->waitForText(LoginPage::$signUpButtonText);
         $I->click(LoginPage::$signUpButtonText);
         $I->waitForText(RegistrationPage::$introText);
         $I->fillField(RegistrationPage::$usernameField, $username);
