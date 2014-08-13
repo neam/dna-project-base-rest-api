@@ -1131,12 +1131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-simplicity-theme.git",
-                "reference": "f313195c5ce559d36a7227c709fe4d866ca6476c"
+                "reference": "e1e9d16230c57f1d30d877c46a7324084077e03a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/63c143694ca5dafd308d6b5fda980b5ee118c08a",
-                "reference": "f313195c5ce559d36a7227c709fe4d866ca6476c",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/e1e9d16230c57f1d30d877c46a7324084077e03a",
+                "reference": "e1e9d16230c57f1d30d877c46a7324084077e03a",
                 "shasum": ""
             },
             "require": {
@@ -1166,7 +1166,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-13 08:06:14"
+            "time": "2014-08-13 12:36:47"
         },
         {
             "name": "neam/yii-workflow-core",
@@ -1251,12 +1251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-task-list.git",
-                "reference": "8367c1baa052d31334e4ce6331b524d6f5237bf2"
+                "reference": "d8122870bcc25bae4c2e849f1e9030c75e83d9d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-task-list/zipball/8367c1baa052d31334e4ce6331b524d6f5237bf2",
-                "reference": "8367c1baa052d31334e4ce6331b524d6f5237bf2",
+                "url": "https://api.github.com/repos/neam/yii-workflow-task-list/zipball/d8122870bcc25bae4c2e849f1e9030c75e83d9d2",
+                "reference": "d8122870bcc25bae4c2e849f1e9030c75e83d9d2",
                 "shasum": ""
             },
             "require": {
@@ -1266,7 +1266,8 @@
             "type": "yii-extension",
             "autoload": {
                 "classmap": [
-                    "components/"
+                    "components/",
+                    "widgets/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1284,7 +1285,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-12 15:01:08"
+            "time": "2014-08-13 12:42:24"
         },
         {
             "name": "neam/yii-workflow-ui",
