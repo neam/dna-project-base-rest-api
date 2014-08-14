@@ -1174,12 +1174,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-core.git",
-                "reference": "b3995e44e2f42df9d8c8dde87ae3496d0d64b7be"
+                "reference": "7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-core/zipball/b3995e44e2f42df9d8c8dde87ae3496d0d64b7be",
-                "reference": "b3995e44e2f42df9d8c8dde87ae3496d0d64b7be",
+                "url": "https://api.github.com/repos/neam/yii-workflow-core/zipball/7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33",
+                "reference": "7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33",
                 "shasum": ""
             },
             "require": {
@@ -1207,7 +1207,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-12 14:59:53"
+            "time": "2014-08-14 05:34:32"
         },
         {
             "name": "neam/yii-workflow-progress-tracking",
@@ -1293,12 +1293,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-ui.git",
-                "reference": "aedda51c94003f89c31023560031a4962886660f"
+                "reference": "f28b7d259cf498309950e39ab42d3fa42aaf739c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/aedda51c94003f89c31023560031a4962886660f",
-                "reference": "aedda51c94003f89c31023560031a4962886660f",
+                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/f28b7d259cf498309950e39ab42d3fa42aaf739c",
+                "reference": "f28b7d259cf498309950e39ab42d3fa42aaf739c",
                 "shasum": ""
             },
             "require": {
@@ -1335,7 +1335,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-13 15:03:43"
+            "time": "2014-08-14 06:14:27"
         },
         {
             "name": "nordsoftware/yii-account",
