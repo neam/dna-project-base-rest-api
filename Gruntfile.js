@@ -195,7 +195,7 @@ module.exports = function(grunt) {
     });
 
     // Define tasks
-    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('default', ['less', 'less_imports', 'watch']);
     grunt.registerTask('createRjsConfig', ['bower']);
     grunt.registerTask('copyScripts', ['clean:scripts', 'copy:scripts']);
     grunt.registerTask('build', ['copy:build', 'clean:scripts', 'requirejs', 'clean:build']);
