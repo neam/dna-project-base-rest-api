@@ -5,8 +5,8 @@ use Alchemy\Zippy\Zippy;
 class VideoFileController extends Controller
 {
 
-    use ItemController {
-        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    use WorkflowUiControllerTrait {
+        WorkflowUiControllerTrait::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
     }
 
     public $modelClass = 'VideoFile';
@@ -119,7 +119,7 @@ class VideoFileController extends Controller
             }
         }
 
-        /** @var Controller|ItemController $this */
+        /** @var Controller|WorkflowUiControllerTrait $this */
         $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
 
         if (isset($_POST['SourceMessage']) && !empty($_POST['SourceMessage'])) {
@@ -156,7 +156,7 @@ class VideoFileController extends Controller
         $stepCaptions = $model->flowStepCaptions();
 
         $this->render(
-            '/_item/edit',
+            'vendor.neam.yii-workflow-ui.themes.simplicity.views._item.edit',
             array(
                 'model' => $model,
                 'step' => $step,
@@ -211,7 +211,7 @@ class VideoFileController extends Controller
     {
         $model = $this->loadModel($id);
 
-        /** @var Controller|ItemController $this */
+        /** @var Controller|WorkflowUiControllerTrait $this */
         $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
 
         $this->render(

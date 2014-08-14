@@ -28,10 +28,12 @@ if (DEBUG_LOGS) {
 
     $ajaxRequest = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']==='XMLHttpRequest';
 
+    $apiRequest = strpos($_SERVER['REQUEST_URI'], '/api/') !== false;
+
     $config["components"]["log"]["routes"][] = array(
         'class' => 'CWebLogRoute',
         'levels' => $levels, //trace,
-        'enabled' => !$ajaxRequest,
+        'enabled' => !$ajaxRequest && !$apiRequest,
     );
 
     /* Persistent logs */

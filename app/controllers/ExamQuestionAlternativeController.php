@@ -3,7 +3,7 @@
 class ExamQuestionAlternativeController extends Controller
 {
 
-    use ItemController;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = "ExamQuestionAlternative";
     public $defaultAction = "admin";

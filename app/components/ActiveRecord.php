@@ -42,7 +42,7 @@ class ActiveRecord extends CActiveRecord
                 'class' => 'OwnerBehavior',
             );
             $behaviors['RestrictedAccessBehavior'] = array(
-                'class' => 'RestrictedAccessBehavior',
+                'class' => '\RestrictedAccessBehavior',
             );
         }
 
@@ -145,14 +145,6 @@ class ActiveRecord extends CActiveRecord
     public function attributeHints()
     {
         return array();
-    }
-
-    public function getAttributeHint($key)
-    {
-        $a = $this->attributeHints();
-        if (isset($a[$key])) {
-            return $a[$key];
-        }
     }
 
     public function getModelLabel()
