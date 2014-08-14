@@ -20,6 +20,25 @@
       padding: 7px 80px;
     }
   }
+
+  .friends-menu {
+    display: flex;
+    font-size: 34px;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      flex-grow: 1;
+      flex-basis: 100px;
+      text-align: center;
+    }
+  }
+}
+
+.section-wide-condensed {
+  padding: 20px 40px !important; // TODO: Try to get rid of !important
 }
 
 .section-wide-primary {
@@ -37,5 +56,50 @@
 
   & + & {
     padding-top: 0;
+  }
+}
+
+.section-wide-border-bottom {
+  border-bottom: 2px solid @grid-border-color;
+
+  & + .section-wide-primary {
+    padding-top: 40px;
+  }
+}
+
+.column-narrow {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.wide-profile {
+  display: flex;
+  flex-direction: row;
+
+  .profile-picture {
+    flex-shrink: 0;
+    margin-right: 20px;
+  }
+
+  .profile-info {
+    width: 100%;
+    position: relative;
+
+    .info-heading {
+      display: block;
+      font-size: 40px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .btn {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
   }
 }

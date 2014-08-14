@@ -1,5 +1,35 @@
 .dashboard-controller {
   &.index-action {
+    .news-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        margin-bottom: 8px;
+
+        a {
+          color: currentcolor;
+          font-weight: 400;
+        }
+
+        .news-item {
+          display: flex;
+          flex-direction: row;
+
+          .item-title {
+          }
+
+          .item-date {
+            flex-grow: 0;
+            margin-left: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  &.tasks-action {
     .dashboard-profile {
       padding-bottom: 35px;
       border-bottom: @grid-border-size solid @grid-border-color;

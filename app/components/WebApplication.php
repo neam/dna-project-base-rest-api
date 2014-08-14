@@ -130,12 +130,15 @@ class WebApplication extends CWebApplication
     {
         $webUser = user();
 
-        if ($webUser->isGuest) {
+        if ($webUser->isGuest && app()->controller->action->id === 'home') {
+            // After logging in (used as a return URL)
+            $route = '/dashboard/index';
+        } else if ($webUser->isGuest) {
             // Guests
             $route = '/site/home';
         } else if (!$webUser->isAdmin() && ($webUser->isTranslator || $webUser->isReviewer)) {
             // Translators/reviewers (but not admins)
-            $route = '/dashboard/index';
+            $route = '/dashboard/tasks';
         } else {
             // Everyone else
             $route = '/site/index';

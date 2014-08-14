@@ -24,14 +24,6 @@
                 'htmlOptions' => array(
                     'class' => 'navbar-left',
                 ),
-                'items' => array(
-                    array(
-                        'label' => Yii::t('app', 'Dashboard'),
-                        'icon' => TbHtml::ICON_TH,
-                        'url' => array('/dashboard/index'),
-                        'visible' => !Yii::app()->user->isGuest,
-                    ),
-                ),
             ),
             array(
                 'class' => '\TbNav',

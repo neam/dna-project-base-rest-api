@@ -68,18 +68,8 @@ class SiteController extends Controller
     public function actionHome()
     {
         $this->layout = WebApplication::LAYOUT_FLUID;
+        user()->setReturnUrl(app()->homeUrl);
         $this->render('home');
-    }
-
-    /**
-     * Returns a brand URL.
-     * @return string
-     */
-    public function getBrandUrl()
-    {
-        return $this->id === 'site' && $this->action->id === 'home'
-            ? app()->getGapminderOrgUrl()
-            : app()->createUrl('/site/home');
     }
 
     /**
