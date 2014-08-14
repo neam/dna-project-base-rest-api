@@ -150,7 +150,7 @@ Note: For the remaining tests, you need to have a selenium server running locall
 
 To run the acceptance suites:
 
-    touch testing
+    touch testing # this activates a special flag in envbootstrap.php that makes the test db the default db
     vendor/bin/codecept run acceptance-init --env=cms-local-chrome -g data:$DATA --debug --fail-fast
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug --fail-fast
