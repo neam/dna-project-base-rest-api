@@ -225,7 +225,7 @@ Then, run the tests:
 
 To run an individual test, in this example an acceptance test:
 
-     vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug --fail-fast 04-VerifyCleanDbCept.php
+     vendor/bin/codecept run acceptance-init --env=cms-local-chrome -g data:$DATA --debug --fail-fast 04-VerifyCleanDbCept.php
 
 In general, consult the documentation at http://codeception.com/docs/modules/WebDriver and related Codeception docs.
 
