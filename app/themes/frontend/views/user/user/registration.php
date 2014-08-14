@@ -132,4 +132,4 @@ $this->breadcrumbs = array(
     </div><!-- form -->
 <?php endif; ?>
 
-<?php publishJs('/themes/frontend/js/suggest-username.js', CClientScript::POS_END); ?>
+<?php publishJs(Yii::getPathOfAlias('vendor.neam.yii-workflow-ui.themes.simplicity') . '/js/suggest-username.js', CClientScript::POS_END); ?>

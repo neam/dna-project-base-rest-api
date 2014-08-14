@@ -18,6 +18,11 @@ $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SE
 require('includes/languages.php');
 require('includes/languageDirections.php');
 
+$defaultTheme = array(
+    'name' => 'yii-simplicity-theme',
+    'basePath' => 'vendor.neam',
+);
+
 // main application configuration
 $mainConfig = array(
     'basePath'   => $applicationDirectory,
@@ -408,14 +413,16 @@ $mainConfig = array(
             'baseUrl'  => $baseUrl . '/themes',
             'rules'    => array(
                 // gapminder
-                '^p3pages/default/page'      => 'gapminder',
-                '^user/default/index'        => 'gapminder',
-                '^user/login/(.*)'           => 'gapminder',
-                '^user/profile/(.*)'         => 'gapminder',
-                '^user/registration/(.*)'    => 'gapminder',
-                '^user/recovery/(.*)'        => 'gapminder',
-                '^user/activation/(.*)'      => 'gapminder',
-                '^account/admin'             => 'gapminder',
+                '^p3pages/default/page'      => $defaultTheme,
+                '^user/default/index'        => $defaultTheme,
+                '^user/login/(.*)'           => $defaultTheme,
+                '^user/profile/(.*)'         => $defaultTheme,
+                '^user/registration/(.*)'    => $defaultTheme,
+                '^user/recovery/(.*)'        => $defaultTheme,
+                '^user/activation/(.*)'      => $defaultTheme,
+                '^account/admin'             => $defaultTheme,
+                // tmp in backend
+                '^p3media/import/uploadPopup'=> $defaultTheme,
                 // backend
                 '^user/(.*)'                 => 'backend2',
                 '^rights/(.*)'               => 'backend2',
@@ -423,29 +430,29 @@ $mainConfig = array(
                 '^p3(.*)'                    => 'backend2',
                 '^ckeditorConfigurator/(.*)' => 'backend2',
                 '^([^/]*)/update' => 'backend2',
-                '^([^/]*)/admin' => 'backend2',
+                //'^([^/]*)/admin' => 'backend2',
                 '^([^/]*)/create' => 'backend2',
-                '^([^/]*)/continueAuthoring' => 'gapminder',
-                '^([^/]*)/draft' => 'gapminder',
-                '^([^/]*)/prepPreshow' => 'gapminder',
-                '^([^/]*)/preshow' => 'gapminder',
-                '^([^/]*)/evaluate' => 'gapminder',
-                '^([^/]*)/prepPublish' => 'gapminder',
-                '^([^/]*)/preview' => 'gapminder',
-                '^([^/]*)/review' => 'gapminder',
-                '^([^/]*)/proofRead' => 'gapminder',
-                '^([^/]*)/translate' => 'gapminder',
-                '^([^/]*)/publish' => 'gapminder',
-                '^([^/]*)/edit' => 'gapminder',
-                '^([^/]*)/clone' => 'gapminder',
-                '^([^/]*)/remove' => 'gapminder',
-                '^([^/]*)/replace' => 'gapminder',
-                '^([^/]*)/translate(.*)' => 'gapminder',
-                '^([^/]*)/author(.*)' => 'gapminder',
+                '^([^/]*)/continueAuthoring' => $defaultTheme,
+                '^([^/]*)/draft' => $defaultTheme,
+                '^([^/]*)/prepPreshow' => $defaultTheme,
+                '^([^/]*)/preshow' => $defaultTheme,
+                '^([^/]*)/evaluate' => $defaultTheme,
+                '^([^/]*)/prepPublish' => $defaultTheme,
+                '^([^/]*)/preview' => $defaultTheme,
+                '^([^/]*)/review' => $defaultTheme,
+                '^([^/]*)/proofRead' => $defaultTheme,
+                '^([^/]*)/translate' => $defaultTheme,
+                '^([^/]*)/publish' => $defaultTheme,
+                '^([^/]*)/edit' => $defaultTheme,
+                '^([^/]*)/clone' => $defaultTheme,
+                '^([^/]*)/remove' => $defaultTheme,
+                '^([^/]*)/replace' => $defaultTheme,
+                '^([^/]*)/translate(.*)' => $defaultTheme,
+                '^([^/]*)/author(.*)' => $defaultTheme,
                 '^node/view' => 'backend2',
                 '^site/giiscript' => 'backend2',
                 '^translate/(.*)'            => 'backend2',
-                '^(.*)' => 'gapminder',
+                '^(.*)' => $defaultTheme,
             )
         ),
         'urlManager'    => array(
