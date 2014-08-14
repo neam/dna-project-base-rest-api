@@ -156,7 +156,7 @@ class VideoFileController extends Controller
         $stepCaptions = $model->flowStepCaptions();
 
         $this->render(
-            '/_item/edit',
+            'vendor.neam.yii-workflow-ui.themes.simplicity.views._item.edit',
             array(
                 'model' => $model,
                 'step' => $step,
