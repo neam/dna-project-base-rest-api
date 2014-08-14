@@ -77,12 +77,12 @@ $gcmsConfig = array(
         'application.exceptions.*',
     ),
     'modules' => array(
-        // uncomment the following to enable the Gii tool
+        // code generator
         'gii' => array(
             'class' => 'system.gii.GiiModule',
             'password' => YII_GII_PASSWORD,
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
-            'ipFilters' => array('127.0.0.1', '::1'),
+            'ipFilters' => array('127.0.0.1', '::1', '10.0.2.2'),
             'generatorPaths' => array(
                 'vendor.phundament.gii-template-collection', // giix generators
                 'vendor.mihanentalpo.yii-sql-migration-generator',
