@@ -34,9 +34,18 @@ class DashboardController extends Controller
     }
 
     /**
-     * Renders the dashboard.
+     * Renders the main dashboard.
      */
     public function actionIndex()
+    {
+        $this->layout = WebApplication::LAYOUT_FLUID;
+        $this->render('index');
+    }
+
+    /**
+     * Renders the tasks page.
+     */
+    public function actionTasks()
     {
         $this->requireProfileLanguages();
 

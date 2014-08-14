@@ -64,6 +64,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays the public landing page.
+     */
+    public function actionHome()
+    {
+        $this->layout = WebApplication::LAYOUT_FLUID;
+        user()->setReturnUrl(app()->homeUrl);
+        $this->render('home');
+    }
+
+    /**
      * Gii script console
      */
     public function actionGiiscript()

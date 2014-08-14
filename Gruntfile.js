@@ -100,18 +100,18 @@ module.exports = function(grunt) {
         kss: {
             options: {
                 includeType: 'less',
-                includePath: 'app/themes/gapminder/less/main.less'
+                includePath: 'vendor/neam/yii-simplicity-theme/less/main.less'
             },
             dist: {
                 files: {
-                    'www/styleguide': ['app/themes/gapminder/less']
+                    'www/styleguide': ['vendor/neam/yii-simplicity-theme/less']
                 }
             }
         },
         less: {
             theme: {
                 files: {
-                    'app/themes/gapminder/assets/main.css': 'app/themes/gapminder/less/main.less'
+                    'vendor/neam/yii-simplicity-theme/assets/main.css': 'vendor/neam/yii-simplicity-theme/less/main.less'
                 }
             }
         },
@@ -120,13 +120,15 @@ module.exports = function(grunt) {
                 inlineCSS: false
             },
             dist: {
-                dest: 'app/themes/gapminder/less/app.less',
+                dest: 'vendor/neam/yii-simplicity-theme/less/app.less',
                 src: [
-                    'app/themes/gapminder/less/layouts/**/*.less',
-                    'app/themes/gapminder/less/partials/**/*.less',
-                    'app/themes/gapminder/less/controllers/**/*.less',
-                    'app/themes/gapminder/less/widgets/**/*.less',
-                    'app/themes/gapminder/less/responsive/**/*.less'
+                    'vendor/neam/yii-simplicity-theme/less/mixins/**/*.less',
+                    'vendor/neam/yii-simplicity-theme/less/layouts/**/*.less',
+                    'vendor/neam/yii-simplicity-theme/less/partials/**/*.less',
+                    'vendor/neam/yii-simplicity-theme/less/common/**/*.less',
+                    'vendor/neam/yii-simplicity-theme/less/controllers/**/*.less',
+                    'vendor/neam/yii-simplicity-theme/less/widgets/**/*.less',
+                    'vendor/neam/yii-simplicity-theme/less/responsive/**/*.less'
                 ]
             }
         },
@@ -172,7 +174,7 @@ module.exports = function(grunt) {
         },
         watch: {
             styles: {
-                files: ['app/themes/gapminder/less/**/*.less'],
+                files: ['vendor/neam/yii-simplicity-theme/less/**/*.less'],
                 tasks: ['less', 'less_imports'],
                 options: {
                     spawn: false
@@ -193,7 +195,7 @@ module.exports = function(grunt) {
     });
 
     // Define tasks
-    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('default', ['less', 'less_imports', 'watch']);
     grunt.registerTask('createRjsConfig', ['bower']);
     grunt.registerTask('copyScripts', ['clean:scripts', 'copy:scripts']);
     grunt.registerTask('build', ['copy:build', 'clean:scripts', 'requirejs', 'clean:build']);

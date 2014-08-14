@@ -19,7 +19,6 @@ class Controller extends CController
     function init()
     {
         parent::init();
-        Yii::app()->homeUrl = $this->createUrl('/');
     }
 
     /**
@@ -111,6 +110,17 @@ class Controller extends CController
             Yii::app()->user->setFlash('warning', Yii::t('app', 'Please set at least one language before translating.'));
             $this->redirect(array('/profile/edit'));
         }
+    }
+
+    /**
+     * Returns a brand URL.
+     * @return string
+     */
+    public function getBrandUrl()
+    {
+        return $this->id === 'site' && $this->action->id === 'home'
+            ? app()->getGapminderOrgUrl()
+            : app()->createUrl('/site/home');
     }
 
 }

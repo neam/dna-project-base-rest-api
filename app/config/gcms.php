@@ -52,7 +52,7 @@ $gcmsConfig = array(
         'bootstrap.widgets.TbButton' => 'vendor.clevertech.yiibooster.src.widgets.TbButton',
         // Aliases to help reference the current default theme
         'theme' => 'vendor.neam.yii-simplicity-theme.themes.simplicity',
-        'simplicity-theme' => 'vendor.neam.yii-simplicity-theme.themes.simplicity',
+        'simplicity-theme' => 'vendor.neam.yii-simplicity-theme',
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
@@ -100,10 +100,25 @@ $gcmsConfig = array(
                         ),
                         'type' => 'jpg',
                     ),
+                    'wide-profile-info-picture' => array(
+                        'name' => 'Wide Profile Info Picture',
+                        'commands' => array(
+                            'resize' => array(110, 110, 7),
+                            'quality' => 85,
+                        ),
+                    ),
                     'user-profile-picture' => array(
                         'name' => 'User Profile Picture',
                         'commands' => array(
                             'resize' => array(160, 160, 7), // Image::AUTO
+                            'quality' => '85',
+                        ),
+                        'type' => 'jpg',
+                    ),
+                    'user-profile-picture-small' => array(
+                        'name' => 'User Profile Picture Small',
+                        'commands' => array(
+                            'resize' => array(70, 70, 7), // Image::AUTO
                             'quality' => '85',
                         ),
                         'type' => 'jpg',
@@ -150,7 +165,7 @@ $gcmsConfig = array(
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
-                '/' => 'site/index',
+                '/' => 'site/home', // TODO: Find out why removing this line still directs the user to '/site/index' even though app()->homeUrl should return '/site/home' for guest users.
                 //rest url patterns
                 array('api/<model>/delete', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'DELETE'),
                 array('api/<model>/update', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'PUT'),
