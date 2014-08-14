@@ -2,8 +2,8 @@
 
 class I18nCatalogController extends Controller
 {
-    use ItemController {
-        ItemController::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
+    use WorkflowUiControllerTrait {
+        WorkflowUiControllerTrait::saveAndContinueOnSuccess as parentSaveAndContinueOnSuccess;
     }
 
     public $modelClass = "I18nCatalog";

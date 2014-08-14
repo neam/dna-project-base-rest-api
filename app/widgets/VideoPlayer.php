@@ -46,7 +46,7 @@ class VideoPlayer extends CWidget
         parent::run();
         $this->_registerAssets();
         $this->_registerJs();
-        $this->render('view', array(
+        $this->render('application.views.VideoPlayer.view', array(
             'flashPlayerUrl' => $this->getFlashPlayerUrl(),
             'srcLang' => $this->srcLang,
             'p3MediaFiles' => $this->p3MediaFiles,

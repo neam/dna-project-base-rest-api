@@ -27,6 +27,12 @@ db/migration-base/user-generated/schema.sql
 db/migration-base/user-generated/data.sql
 db/migration-base/user-generated/media
 
+tests/codeception/acceptance-init/WebGuy.php
+tests/codeception/acceptance/WebGuy.php
+tests/codeception/api/ApiGuy.php
+tests/codeception/functional/TestGuy.php
+tests/codeception/unit/CodeGuy.php
+
 app/js/config.js
 /build
 testing

@@ -3,7 +3,7 @@
 class PoFileController extends Controller
 {
 
-    use ItemController;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = "PoFile";
 
