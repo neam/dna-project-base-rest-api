@@ -3,7 +3,7 @@
 class VectorGraphicController extends Controller
 {
 
-    use ItemController;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = "VectorGraphic";
 

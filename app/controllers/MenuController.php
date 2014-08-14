@@ -2,7 +2,7 @@
 
 class MenuController extends Controller
 {
-    use ItemController;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = 'menu';
 

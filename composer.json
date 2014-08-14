@@ -53,35 +53,11 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/neam/yii-i18n-columns"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/neam/yii-i18n-attribute-messages"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/neam/yii-qa-state"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/neam/yii-relational-graph-db"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/nordsoftware/yii-account"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/PHPOffice/PHPExcel"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/motin/PHPWord"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/PHPOffice/PHPPowerPoint"
         },
         {
             "type": "vcs",
@@ -93,19 +69,7 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/motin/yii-owner-behavior"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/motin/yii-fixture-helper"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/neam/wrest"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/neam/php-po2json.git"
         },
         {
             "type": "vcs",
@@ -137,15 +101,22 @@
         "phundament/p3admin": "0.16.0",
         "phundament/p3extensions": "0.17.0",
         "phundament/p3pages": "dev-master as 0.17.0",
-        "phundament/p3media": "dev-awaiting-prs",
+        "phundament/p3media": "dev-awaiting-prs as 0.17.3",
         "phundament/p3widgets": "0.16.0",
         "schmunk42/ckeditor-configurator": "@dev",
-        "schmunk42/multi-theme": "0.1.*",
+        "schmunk42/multi-theme": "0.2.*",
         "schmunk42/web-user-behavior": "0.1.*",
         "yiiext/migrate-command": "dev-master#35f315b as 0.7.2.1",
         "kswedberg/jquery-smooth-scroll": "1.4.10",
         "neam/yii-i18n-columns": "dev-develop",
         "neam/yii-i18n-attribute-messages": "dev-develop",
+        "neam/yii-i18n-tools": "dev-develop",
+        "neam/yii-restricted-access": "dev-develop",
+        "neam/yii-simplicity-theme": "dev-develop",
+        "neam/yii-workflow-core": "dev-develop",
+        "neam/yii-workflow-ui": "dev-develop",
+        "neam/yii-workflow-task-list": "dev-develop",
+        "neam/yii-workflow-progress-tracking": "dev-develop",
         "neam/yii-qa-state": "dev-develop",
         "neam/yii-relational-graph-db": "@dev",
         "motin/yii-owner-behavior": "*@dev",
@@ -158,9 +129,8 @@
         "weavora/wrest": "dev-awaiting-prs",
         "codemix/hybridauthmanager": "dev-master",
         "schmunk42/relation": "1.*",
-        "yiisoft/yii": "1.1.14 as dev-master",
+        "yiisoft/yii": "1.1.15 as dev-master",
         "mikehaertl/translatable": "~1.1.0",
-        "twitter/bootstrap": "3.0.*",
         "crisu83/yii-sentry": "1.3.*",
         "alchemy/zippy": "*",
         "nordsoftware/yii-account": "1.2.1",

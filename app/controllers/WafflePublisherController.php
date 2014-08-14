@@ -2,7 +2,7 @@
 
 class WafflePublisherController extends Controller
 {
-    use ItemController;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = "WafflePublisher";
 

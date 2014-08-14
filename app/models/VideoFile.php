@@ -266,7 +266,14 @@ class VideoFile extends BaseVideoFile
         $subtitle_lines = preg_split('/\n|\r\n?/', $subtitles);
 
         // Debug (uncomment temporarily)
-        //print_r(json_encode($subtitles));print_r($subtitle_lines);die();
+        //print_r(json_encode($subtitles));print_r($subtitle_lines); //die();
+
+        // Verifies that the parsed subtitle line has an id, timestamp and a sourceMessage
+        $validate = function ($p, $lineno) {
+            if (empty($p->id) || empty($p->timestamp) || empty($p->sourceMessage)) {
+                throw new VideoFileSubtitleParseException("Subtitle parse error at line $lineno. [" . print_r($p, true) . "].  Verify that the subtitles field contains valid srt");
+            }
+        };
 
         $parsed = array();
         $p = new stdClass();
@@ -292,12 +299,10 @@ class VideoFile extends BaseVideoFile
                         $p->sourceMessage .= $subtitle_line;
                     } else {
 
-                        // Verify that the parsed subtitle line has an id, timestamp and a sourceMessage
-                        if (empty($p->id) || empty($p->timestamp) || empty($p->sourceMessage)) {
-                            throw new VideoFileSubtitleParseException("Subtitle parse error at line $lineno. [" . print_r($p, true) . "].  Verify that the subtitles field contains valid srt");
-                        }
-
+                        // We end up here in case the line was neither an id nor a timestamp and considered empty - we assume the end of the subtitle chunk
+                        $validate($p, $lineno);
                         $parsed[] = $p;
+
                         $p = new stdClass();
                         continue;
                     }
@@ -306,6 +311,11 @@ class VideoFile extends BaseVideoFile
             }
 
         }
+
+        // At the end of the parsing, we must not forget to add the last subtitle chunk (held in $p) to the $parsed array
+        $validate($p, $lineno);
+        $parsed[] = $p;
+
         return $parsed;
     }
 

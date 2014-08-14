@@ -5,9 +5,6 @@
 // include envbootstrap
 require(dirname(__FILE__) . '/envbootstrap/include.php');
 
-// load global helper functions
-require_once(dirname(__FILE__) . '/../helpers/global.php');
-
 // Always use UTC
 date_default_timezone_set('UTC');
 
@@ -51,7 +48,11 @@ $gcmsConfig = array(
         'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
         'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
         'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode',
-        'theme' => 'application.themes.gapminder',
+        //'bootstrap.widgets.TbButton' => 'vendor.neam.yii-workflow-ui.widgets.TbButton',
+        'bootstrap.widgets.TbButton' => 'vendor.clevertech.yiibooster.src.widgets.TbButton',
+        // Aliases to help reference the current default theme
+        'theme' => 'vendor.neam.yii-simplicity-theme.themes.simplicity',
+        'simplicity-theme' => 'vendor.neam.yii-simplicity-theme.themes.simplicity',
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
@@ -76,12 +77,12 @@ $gcmsConfig = array(
         'application.exceptions.*',
     ),
     'modules' => array(
-        // uncomment the following to enable the Gii tool
+        // code generator
         'gii' => array(
             'class' => 'system.gii.GiiModule',
             'password' => YII_GII_PASSWORD,
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
-            'ipFilters' => array('127.0.0.1', '::1'),
+            'ipFilters' => array('127.0.0.1', '::1', '10.0.2.2'),
             'generatorPaths' => array(
                 'vendor.phundament.gii-template-collection', // giix generators
                 'vendor.mihanentalpo.yii-sql-migration-generator',
@@ -91,37 +92,6 @@ $gcmsConfig = array(
         'p3media' => array(
             'params' => array(
                 'presets' => array(
-                    'item-thumbnail' => array(
-                        'name' => 'Item Thumbnail',
-                        'commands' => array(
-                            'resize' => array(150, 80, 7), // Image::AUTO
-                            'quality' => '85',
-                        ),
-                        'type' => 'jpg',
-                    ),
-                    'select2-thumb' => array(
-                        'name' => 'Select2 Thumbnail',
-                        'commands' => array(
-                            'resize' => array(35, 35, 7), // Image::AUTO
-                            'quality' => '85',
-                        ),
-                        'type' => 'jpg',
-                    ),
-                    'dashboard-item-task-thumbnail' => array(
-                        'name' => 'Dashboard Item Task Thumbnail',
-                        'commands' => array(
-                            'resize' => array(210, 120, 7), // Image::AUTO
-                            'quality' => '85',
-                        ),
-                        'type' => 'jpg',
-                    ),
-                    'item-workflow-preview' => array(
-                        'name' => 'Item Workflow Preview',
-                        'commands' => array(
-                            'resize' => array(442, 253, 7),
-                            'quality' => 85,
-                        ),
-                    ),
                     'related-thumb' => array(
                         'name' => 'Related Panel Thumbnail',
                         'commands' => array(
@@ -180,10 +150,10 @@ $gcmsConfig = array(
                 ),
                 'signup' => array(
                     'class' => 'application.controllers.SignupController',
-                    'layout' => 'theme.views.layouts.minimal',
+                    'layout' => WorkflowUi::LAYOUT_MINIMAL,
                 ),
             ),
-            'defaultLayout' => 'theme.views.layouts.narrow',
+            'defaultLayout' => WorkflowUi::LAYOUT_NARROW,
             'fromEmailAddress' => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
         ),
     ),
@@ -288,5 +258,14 @@ $gcmsConfig = array(
 
 require('includes/logging.php');
 require('includes/mail.php');
+
+$config =& $gcmsConfig;
+$applicationDirectory =& $basePath;
+
+require($applicationDirectory . '/../vendor/neam/yii-workflow-core/config/yii-workflow-core.php');
+require($applicationDirectory . '/../vendor/neam/yii-workflow-ui/config/yii-workflow-ui.php');
+require($applicationDirectory . '/../vendor/neam/yii-simplicity-theme/config/yii-simplicity-theme.php');
+require($applicationDirectory . '/../vendor/neam/yii-restricted-access/config/yii-restricted-access.php');
+require($applicationDirectory . '/../vendor/neam/yii-workflow-task-list/config/yii-workflow-task-list.php');
 
 return $gcmsConfig;

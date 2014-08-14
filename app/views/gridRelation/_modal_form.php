@@ -237,4 +237,4 @@ $this->beginWidget('\TbModal', array('id' => $modalId));
     </div>
 
 <?php $this->endWidget(); ?>
-<?php publishJs('/themes/frontend/js/toggle-modal-form-button.js', CClientScript::POS_END); ?>
+<?php publishJs(Yii::getPathOfAlias('vendor.neam.yii-workflow-ui.themes.simplicity') . '/js/toggle-modal-form-button.js', CClientScript::POS_END); ?>

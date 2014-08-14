@@ -3,7 +3,7 @@
 class PageController extends Controller
 {
 
-    use ItemController;
+    use WorkflowUiControllerTrait;
 
     public $modelClass = 'Page';
 
