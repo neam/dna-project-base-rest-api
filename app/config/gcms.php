@@ -52,7 +52,7 @@ $gcmsConfig = array(
         'bootstrap.widgets.TbButton' => 'vendor.clevertech.yiibooster.src.widgets.TbButton',
         // Aliases to help reference the current default theme
         'theme' => 'vendor.neam.yii-simplicity-theme.themes.simplicity',
-        'simplicity-theme' => 'vendor.neam.yii-simplicity-theme.themes.simplicity',
+        'simplicity-theme' => 'vendor.neam.yii-simplicity-theme',
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',

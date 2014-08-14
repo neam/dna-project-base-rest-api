@@ -29,7 +29,7 @@ class LandingPageGroups extends CWidget
             } elseif ($groupCounter === 3) {
                 echo '</div><div class="row">';
             }
-            $this->render('_group', array('groupData' => $groupData));
+            $this->render('application.widgets.views.LandingPageGroups._group', array('groupData' => $groupData));
             $groupCounter++;
         }
 
