@@ -145,6 +145,10 @@ $gcmsConfig = array(
                 'signupForm' => 'SignupForm',
             ),
             'controllerMap' => array(
+                'authenticate' => array(
+                    'class' => 'application.controllers.AuthenticateController',
+                    'layout' => WorkflowUi::LAYOUT_NARROW,
+                ),
                 'password' => array(
                     'class' => 'application.controllers.PasswordController',
                 ),
