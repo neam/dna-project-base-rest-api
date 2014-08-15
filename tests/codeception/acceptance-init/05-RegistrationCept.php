@@ -1,8 +1,10 @@
 <?php
 $scenario->group('data:clean-db');
+$scenario->group('data:user-generated');
 
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('verify that registering a user works');
 
-$I->register('test', 'test', 'test', 'dev+test@gapminder.org', true);
+$datetime = date("YmdHis");
 
+$I->register('test-' . $datetime, 'test', 'test', 'dev+test-' . $datetime . '@gapminder.org', true);
