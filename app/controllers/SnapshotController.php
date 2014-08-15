@@ -202,9 +202,20 @@ class SnapshotController extends Controller
         $this->render('admin', array('model' => $model,));
     }
 
+    /**
+     * Returns a Snapshot model by it's id or slug in requested language.
+     * @param int|string $id the model id or slug.
+     * @return Snapshot
+     * @throws CHttpException
+     */
     public function loadModel($id)
     {
-        $model = Snapshot::model()->findByPk($id);
+        if (is_int($id) || ctype_digit($id)) {
+            $model = Snapshot::model()->findByPk($id);
+        } else {
+            $language = Yii::app()->getRequest()->getParam('lang', Yii::app()->getLanguage());
+            $model = Snapshot::model()->findByattributes(array("slug_{$language}" => $id));
+        }
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }

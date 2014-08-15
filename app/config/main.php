@@ -461,36 +461,67 @@ $mainConfig = array(
             'appendParams'   => false, // in general more error resistant
             'urlFormat'      => 'get', // use 'path', otherwise rules below won't work
             'rules'          => array(
+                // rest api rules
+                // slugs are required to be prefixed by an ":" character, due to rule collisions
+                array('api/<controller>/delete', 'pattern' => 'api/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
+                array('api/<controller>/update', 'pattern' => 'api/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
+                array('api/<controller>/list', 'pattern' => 'api/<controller:\w+>', 'verb' => 'GET'),
+                array('api/<controller>/get', 'pattern' => 'api/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                array('api/<controller>/create', 'pattern' => 'api/<controller:\w+>', 'verb' => 'POST'),
+                array('api/<controller>/<action>', 'pattern' => 'api/<controller:\w+>/<action:\w+>', 'verb' => 'GET'),
+                array('api/<controller>/<action>', 'pattern' => 'api/<controller:\w+>/<action:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                // rest api cors rules
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
+                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
+
                 // special short urls
-                'go/<id:\d+>'                  => 'node/go',
-                '<lang:[a-z]{2}(_[a-z]{2})?>/go/<id:\d+>'                  => 'node/go',
+                'go/<id:\d+>' => 'node/go',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/go/<id:\d+>' => 'node/go',
 
                 // backend
                 'phundament' => 'p3admin/default/index',
 
-                // p3pages - SEO
-                '<lang:[a-z]{2}(_[a-z]{2})?>/<pageName:[a-zA-Z0-9-._]*>-<pageId:\d+>.html'
-                             => 'p3pages/default/page',
-                // p3media - SEO
-                '<lang:[a-z]{2}(_[a-z]{2})?>/img/<preset:[a-zA-Z0-9-._]+>/<title:.+>_<id:\d+><extension:.[a-zA-Z0-9]{1,}+>'
-                                                               => 'p3media/file/image',
-
-                // item steps
-                '<lang:[a-z]{2}(_[a-z]{2})?>/<controller:\w+>/<action:\w+>/<step:\w+>/<id:\d+>' => '<controller>/<action>',
-                '<controller:\w+>/<action:\w+>/<step:\w+>/<id:\d+>' => '<controller>/<action>',
-
-                // Yii
+                // pages
                 'pages/<view:\w+>' => 'site/page',
-                '<controller:\w+>/<id:\d+>' => '<controller>/view',
-                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<lang:[a-z]{2}(_[a-z]{2})?>/pages/<view:\w+>' => 'site/page',
-                '<lang:[a-z]{2}(_[a-z]{2})?>/<controller:\w+>/<id:\d+>' => '<controller>/view',
-                '<lang:[a-z]{2}(_[a-z]{2})?>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                // general language and route handling
-                '<lang:[a-z]{2}(_[a-z]{2})?>'                  => '',
-                '<lang:[a-z]{2}(_[a-z]{2})?>/<_c>'             => '<_c>',
-                '<lang:[a-z]{2}(_[a-z]{2})?>/<_c>/<_a>'        => '<_c>/<_a>',
-                '<lang:[a-z]{2}(_[a-z]{2})?>/<_m>/<_c>/<_a>'   => '<_m>/<_c>/<_a>',
+
+                // some module rules need to be hardcoded due to colliding slug rules.
+                // e.g. "en_us/videoFile/view/slug" = "en_us/moduleName/moduleController/moduleAction"
+
+                // "neam/yii-restricted-access" module
+                'restrictedAccess/<controller>/<action>' => 'restrictedAccess/<controller>/<action>',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/restrictedAccess/<controller>/<action>' => 'restrictedAccess/<controller>/<action>',
+
+                // "nordsoftware/yii-account" module
+                'account/<controller>/<action>' => 'account/<controller>/<action>',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/account/<controller>/<action>' => 'account/<controller>/<action>',
+
+                // "phundament/p3media" module
+                'p3media/<controller>/<action>' => 'p3media/<controller>/<action>',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/p3media/<controller>/<action>' => 'p3media/<controller>/<action>',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/img/<preset:[a-zA-Z0-9-._]+>/<title:.+>_<id:\d+><extension:.[a-zA-Z0-9]{1,}+>' => 'p3media/file/image',
+
+                // "phundament/p3pages" module
+                'p3pages/<controller>/<action>' => 'p3pages/<controller>/<action>',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/p3pages/<controller>/<action>' => 'p3pages/<controller>/<action>',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/<pageName:[a-zA-Z0-9-._]*>-<pageId:\d+>.html' => 'p3pages/default/page',
+
+                // common
+                '<lang:[a-z]{2}(_[a-z]{2})?>' => '',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/<controller>' => '<controller>',
+                '<lang:[a-z]{2}(_[a-z]{2})?>/<controller>/<action>' => '<controller>/<action>',
+                // disabled due to url rule collision, e.g. "en_us/videoFile/slug" = "en_us/videoFile/browse"
+                /*'<lang:[a-z]{2}(_[a-z]{2})?>/<controller:\w+>/<id:[\w-]+>' => '<controller>/view',*/
+                '<lang:[a-z]{2}(_[a-z]{2})?>/<controller:\w+>/<action:\w+>/<id:[\w-]+>' => '<controller>/<action>',
+
+                // workflow item steps
+                '<lang:[a-z]{2}(_[a-z]{2})?>/<controller:\w+>/<action:\w+>/<id:[\w-]+>/<step:\w+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>/<id:[\w-]+>/<step:\w+>' => '<controller>/<action>',
+
+                // disabled due to url rule collision, e.g. "videoFile/slug" = "videoFile/browse"
+                /*'<controller:\w+>/<id:[\w-]+>' => '<controller>/view',*/
+                '<controller:\w+>/<action:\w+>/<id:[\w-]+>' => '<controller>/<action>',
             ),
         ),
     ),

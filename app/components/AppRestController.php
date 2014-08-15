@@ -12,13 +12,43 @@ class AppRestController extends WRestController
 
     public function loadModel($id)
     {
-        if (is_null($id)) {
-            $id = Yii::app()->user->id;
+        if (is_int($id) || ctype_digit($id)) {
+            $model = CActiveRecord::model($this->_modelName)->findByPk($id);
+        } else {
+            $language = $this->request->getParam('lang', Yii::app()->getLanguage());
+            $attribute = "slug_{$language}";
+            $finder = CActiveRecord::model($this->_modelName);
+            if ($finder->hasAttribute($attribute)) {
+                // the slugs are prefixed by a ":" character, due to url rule collisions
+                $slug = ltrim($id, ':');
+                $model = $finder->findByattributes(array($attribute => $slug));
+            } else {
+                $model = null;
+            }
         }
-        $modelName = $this->_modelName;
-        $model = $modelName::model()->findByPk($id);
         if ($model === null) {
             $this->sendResponse(404);
+        }
+        return $model;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getModel($scenario = '')
+    {
+        $id = $this->request->getParam('id');
+        $modelName = ucfirst($this->_modelName);
+        if (empty($this->_modelName) && class_exists($modelName)) {
+            $this->sendResponse(400);
+        }
+        if ($id) {
+            $model = $this->loadModel($id);
+        } else {
+            $model = new $modelName();
+        }
+        if ($scenario && $model) {
+            $model->setScenario($scenario);
         }
         return $model;
     }
