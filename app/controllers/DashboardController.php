@@ -23,6 +23,7 @@ class DashboardController extends Controller
                 'allow',
                 'actions' => array(
                     'index',
+                    'tasks',
                 ),
                 'users' => array('@'),
             ),
@@ -56,7 +57,7 @@ class DashboardController extends Controller
         ));
 
         $this->render(
-            'index',
+            'tasks',
             array(
                 'model' => $model,
             )
