@@ -3,7 +3,7 @@
 class SiteController extends Controller
 {
 
-    public $defaultAction = 'index';
+    public $defaultAction = 'home';
 
     public function accessRules()
     {
@@ -69,7 +69,7 @@ class SiteController extends Controller
     public function actionHome()
     {
         $this->layout = WebApplication::LAYOUT_FLUID;
-        user()->setReturnUrl(app()->homeUrl);
+        user()->setReturnUrl(app()->createUrl('/dashboard/index')); // after login
         $this->render('home');
     }
 
