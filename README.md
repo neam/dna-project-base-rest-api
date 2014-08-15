@@ -99,7 +99,7 @@ Then, run:
 
 * `unit` - Contains unit tests that verify low-level functionality.
 * `acceptance-init` - Contains the initial set of acceptance tests that should be run from an empty (reset) database and verifies basic functionality and registers a set of test users.
-* `acceptance` - Contains the full set of acceptance tests that uses a database dump taken at the end of running `acceptance-init` (and thus contains a set of test users).
+* `acceptance` - Contains the full set of acceptance tests [TODO: that uses a database dump taken at the end of running `acceptance-init` (and thus contains a set of test users)]
 * `api` - Contains acceptance tests that verify various aspects of the REST API.
 
 ### Running tests locally
@@ -125,7 +125,7 @@ Then, do the following before attempting to run any tests:
     cd tests
     php ../composer.phar install
 
-    ../app/yiic config exportDbConfig --connectionID=dbTest > /tmp/db-config.sh
+    ../app/yiic config exportDbConfig --connectionID=dbTest | tee /tmp/db-config.sh
     source /tmp/db-config.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
