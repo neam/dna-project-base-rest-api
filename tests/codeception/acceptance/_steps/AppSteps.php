@@ -35,7 +35,14 @@ class AppSteps extends \WebGuy
     {
         // This global is set in _bootstrap.php by us
         global $running_env;
-        return $running_env === 'cms-saucelabs-iphone-7_1-portrait';
+
+        return in_array(
+            $running_env,
+            array(
+                'cms-saucelabs-iphone-7_1-portrait',
+                'cms-saucelabs-iphone-7_1-portrait-appium-1_2',
+            )
+        );
     }
 
     /**

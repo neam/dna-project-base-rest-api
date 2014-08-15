@@ -133,12 +133,15 @@ trait UsersTrait
     function login($username, $password)
     {
         $I = $this;
+        $I->amOnPage(HomePage::$URL);
+
         $I->amOnPage(LoginPage::$URL);
+        $I->waitForText(LoginPage::$submitButtonText, 20);
         $I->fillField(LoginPage::$usernameField, $username);
         $I->fillField(LoginPage::$passwordField, $password);
         $I->click(LoginPage::$submitButton);
-        // TODO: uncomment following line when redirects work after registration
-        //$I->waitForText(HomePage::$homePageMessage);
+        $I->waitForElementNotVisible(LoginPage::$submitButton, 30);
+        $I->dontSeeInCurrentUrl('authenticate/login');
     }
 
     function logout()
@@ -146,10 +149,21 @@ trait UsersTrait
         $I = $this;
         $I->amOnPage(HomePage::$URL);
 
+        $isMobileEnv = $this->isMobileEnv();
+
+        if ($isMobileEnv) {
+            $I->toggleMobileNavigation();
+        }
+
         $I->waitForElementVisible(HomePage::$logoutLink, 20);
         $I->click(HomePage::$logoutLink);
 
         $I->waitForText(HomePage::$homePageMessage, 20);
+
+        if ($isMobileEnv) {
+            $I->toggleMobileNavigation();
+        }
+        $I->waitForElementVisible(HomePage::$loginLink, 20);
         $I->seeElement(HomePage::$loginLink);
     }
 
@@ -159,8 +173,11 @@ trait UsersTrait
         $I->amGoingTo("Register user $username");
         $I->amOnPage(HomePage::$URL);
 
+        $I->waitForText(HomePage::$joinButtonText, 20);
         $I->click(HomePage::$joinButtonText);
+
         $I->waitForElementVisible(RegistrationPage::$formId);
+
         $I->fillField(RegistrationPage::$usernameField, $username);
         $I->fillField(RegistrationPage::$emailField, $email);
         $I->fillField(RegistrationPage::$passwordField, $password);
@@ -254,7 +271,9 @@ trait UsersTrait
         $I = $this;
         $I->amOnPage(AccountAdminPage::$URL);
         $I->click(AccountAdminPage::generateViewLinkSelector($username));
-        $I->click(AccountViewPage::generateToggleGroupRoleLinkSelector($group, $role));
+        $selector = AccountViewPage::generateToggleGroupRoleLinkSelector($group, $role);
+        $I->waitForElementVisible($selector, 20);
+        $I->click($selector);
     }
 
     function addGroupRoleToAccount($username, $group, $role)
