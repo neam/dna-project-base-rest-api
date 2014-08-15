@@ -14,10 +14,14 @@
 # - CMS_CONFIG_ENVIRONMENT
 # - DOKKU_HOST
 # - TOPLEVEL_DOMAIN
+# - COVERAGE
+
+# set the codeception test group arguments depending on DATA and COVERAGE
+source ../../_set-codeception-group-args.sh
 
 # unit tests - runs within a dokku app container
 
-$DRONE_BUILD_DIR/ci-scripts/dokku-run-workaround.sh ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/deploy/dokku-run-unit-tests.sh
+$DRONE_BUILD_DIR/ci-scripts/dokku-run-workaround.sh ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/deploy/dokku-run-unit-tests.sh $CCODECEPTION_GROUP_ARGS
 
 # acceptance tests - runs within the current drone container using saucelabs for selenium server
 
@@ -77,9 +81,9 @@ ssh dokku@$DOKKU_HOST config:set $CMS_APPNAME CONFIG_ENVIRONMENT=ci
 export env=cms-saucelabs-chrome-win8
 #export env=cms-saucelabs-firefox-win7
 #export env=cms-saucelabs-chrome-osx-108
-vendor/bin/codecept run acceptance-init --env=$env -g data:$DATA --debug --fail-fast
+vendor/bin/codecept run acceptance-init --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
 #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
-vendor/bin/codecept run acceptance --env=$env -g data:$DATA --debug --fail-fast
+vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
 
 # run api tests
 vendor/bin/codecept run api -g data:$DATA --debug --fail-fast

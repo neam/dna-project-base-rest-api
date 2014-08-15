@@ -1,6 +1,6 @@
 <?php
-$scenario->group('data:clean-db');
-$scenario->group('data:user-generated');
+$scenario->group('data:clean-db,coverage:basic');
+$scenario->group('data:user-generated,coverage:basic');
 
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('check that no 504 gateway timeout occurs when a request takes quite a long time');

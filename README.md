@@ -102,6 +102,24 @@ Then, run:
 * `acceptance` - Contains the full set of acceptance tests [TODO: that uses a database dump taken at the end of running `acceptance-init` (and thus contains a set of test users)]
 * `api` - Contains acceptance tests that verify various aspects of the REST API.
 
+### Test groups
+
+#### data
+
+We want to be able to develop/test the code both starting from an empty database, and with data imported from a production deployment. These two testing-data-scenarios are referred to as "clean-db" vs "user-generated", and all acceptance tests are grouped into one or both of these.
+
+* `clean-db`
+* `user-generate`
+
+#### coverage
+
+We group all tests based on how much testing coverage is required, so that builds and tests can run faster in cases when full test coverage is not essential:
+
+* `minimal` - The minimal set of tests (default setting for automatic tests in feature branches and on develop)
+* `basic` - A little more refined set of tests (default setting for automatic tests in release branches and for production)
+* `full` - Includes registering of test users and the life cycle scenario tests (default setting for developers running local tests)
+* `paranoid` - Includes long-running tests that were created to protect against various regressions (it is recommended for developers to run these tests locally before finishing a feature branch)
+
 ### Running tests locally
 
 First, decide whether or not to run tests against a clean database or with user generated data:
@@ -132,6 +150,17 @@ Then, do the following before attempting to run any tests:
     export CMS_HOST=127.0.0.1:11111 # change if you have used another WEB_PORT when setting up the local dev environment
     ./generate-local-codeception-config.sh
 
+Now, set the level of test coverage to run and set the appropriate codeception arguments:
+
+    export COVERAGE=full
+    OR any of:
+    export COVERAGE=minimal
+    export COVERAGE=basic
+    export COVERAGE=paranoid
+
+    # set the codeception test group arguments depending on DATA and COVERAGE
+    source _set-codeception-group-args.sh
+
 To reset the test database (necessary in order to run tests from scratch or to re-run the `acceptance-init` suite since it does not reset the database itself by design):
 
     export CONFIG_ENVIRONMENT=test
@@ -140,20 +169,20 @@ To reset the test database (necessary in order to run tests from scratch or to r
 To run the unit tests:
 
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
-    vendor/bin/codecept run unit -g data:$DATA --debug --fail-fast
+    vendor/bin/codecept run unit $CODECEPTION_GROUP_ARGS --debug --fail-fast
 
 To run the functional tests (Note: Not currently used):
 
-    #vendor/bin/codecept run functional -g data:$DATA --debug --fail-fast
+    #vendor/bin/codecept run functional $CODECEPTION_GROUP_ARGS --debug --fail-fast
 
 Note: For the remaining tests, you need to have a selenium server running locally (see below in readme).
 
 To run the acceptance suites:
 
     touch testing # this activates a special flag in envbootstrap.php that makes the test db the default db
-    vendor/bin/codecept run acceptance-init --env=cms-local-chrome -g data:$DATA --debug --fail-fast
+    vendor/bin/codecept run acceptance-init --env=cms-local-chrome $CODECEPTION_GROUP_ARGS --debug --fail-fast
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
-    vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug --fail-fast
+    vendor/bin/codecept run acceptance --env=cms-local-chrome $CODECEPTION_GROUP_ARGS --debug --fail-fast
     rm testing
 
 To run the the API suite:

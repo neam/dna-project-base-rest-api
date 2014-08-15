@@ -22,11 +22,6 @@
 
 export CI=1
 
-#    # test if this build should be tested (warning: this causes deployments to be updated without being tested - use with caution!)
-#    if [[ $COMMIT_MESSAGE == *"[skip tests]"* ]]; then
-#        export SKIP_TESTS=1
-#    fi
-
 APPNAME=$CMS_APPNAME
 echo APPNAME=$APPNAME
 
