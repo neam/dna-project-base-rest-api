@@ -4,7 +4,7 @@
 ?>
 <?php $this->pageTitle = Yii::app()->name . ' - ' . Yii::t('user', 'Recover Password'); ?>
 <div class="recovery-controller recovery-action">
-    <h1><?php echo Yii::t('app', 'Recover Password'); ?></h1>
+    <h1 class="registration-heading text-center"><?php echo Html::renderLogoWithLink(Yii::app()->name); ?></h1>
     <?php if (Yii::app()->user->hasFlash('recoveryMessage')): ?>
         <div class="success">
             <?php echo Yii::app()->user->getFlash('recoveryMessage'); ?>
@@ -16,7 +16,7 @@
             $model,
             'email',
             array(
-                'help' => Yii::t('app', 'Please enter your username or email address.'),
+                'help' => Yii::t('app', 'To recover your password, please enter your username or email address.'),
             )
         ); ?>
         <?php echo TbHtml::formActions(array(
