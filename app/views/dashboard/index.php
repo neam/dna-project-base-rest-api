@@ -225,4 +225,40 @@
             <p><?php echo Yii::t('app', 'Join a group and we will assign you with tasks that better suit your skills.'); ?></p>
         </div>
     </section>
+    <section class="section-wide-secondary">
+        <div class="container">
+            <?php $this->widget('app.widgets.LandingPageGroups', array(
+                'groups' => array(
+                    'Translators' => array(
+                        'title' => Yii::t('app', 'Translators'),
+                        'link' => array(
+                            'text' => Yii::t('app', 'Help translate...'),
+                            'url' => '#',
+                        )
+                    ),
+                    'Developers' => array(
+                        'title' => Yii::t('app', 'Developers'),
+                        'link' => array(
+                            'text' => Yii::t('app', 'Develop free software...'),
+                            'url' => '#',
+                        )
+                    ),
+                )
+            )); ?>
+        </div>
+    </section>
+    <section class="section-wide-primary section-wide-condensed">
+        <div class="container">
+            <div class="view-all">
+                <?php echo TbHtml::link(
+                    Yii::t('app', 'Groups'),
+                    array(
+                        'color' => TbHtml::BUTTON_COLOR_LINK,
+                        'size' => TbHtml::BUTTON_SIZE_SM,
+                        'url' => '#',
+                    )
+                ); ?>
+            </div>
+        </div>
+    </section>
 </div>
