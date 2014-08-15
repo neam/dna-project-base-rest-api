@@ -1,6 +1,7 @@
 <?php
 
 use nordsoftware\yii_account\Module;
+use nordsoftware\yii_account\helpers\Helper;
 
 class AuthenticateController extends \nordsoftware\yii_account\controllers\AuthenticateController
 {
