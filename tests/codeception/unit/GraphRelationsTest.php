@@ -32,8 +32,8 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
     }
 
     /**
-     * @group data:clean-db
-     * @group data:user-generated
+     * @group data:clean-db,coverage:minimal
+     * @group data:user-generated,coverage:minimal
      */
     public function testChapterExercisesAndSnapshots()
     {
@@ -120,6 +120,7 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
 
     /**
      * @group data:user-generated
+     * @group coverage:minimal
      */
     public function testQueryNodesWithItemAttributes()
     {
@@ -157,7 +158,7 @@ LIMIT 3
     }
 
     /**
-     * @group data:user-generated
+     * @group data:user-generated,coverage:minimal
      */
     public function testFindItemsThroughDatabaseView()
     {

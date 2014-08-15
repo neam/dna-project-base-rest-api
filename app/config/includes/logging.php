@@ -28,7 +28,7 @@ if (DEBUG_LOGS) {
 
     $ajaxRequest = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']==='XMLHttpRequest';
 
-    $apiRequest = strpos($_SERVER['REQUEST_URI'], '/api/') !== false;
+    $apiRequest = isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '/api/') !== false;
 
     $config["components"]["log"]["routes"][] = array(
         'class' => 'CWebLogRoute',
