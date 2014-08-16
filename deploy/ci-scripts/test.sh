@@ -16,8 +16,11 @@
 # - TOPLEVEL_DOMAIN
 # - COVERAGE
 
+# cd into tests
+cd tests
+
 # set the codeception test group arguments depending on DATA and COVERAGE
-source ../../tests/_set-codeception-group-args.sh
+source _set-codeception-group-args.sh
 
 # unit tests - runs within a dokku app container
 
@@ -29,7 +32,6 @@ $DRONE_BUILD_DIR/ci-scripts/dokku-run-workaround.sh ssh dokku@$DOKKU_HOST run $C
 echo SAUCE_USERNAME=$SAUCE_USERNAME
 
 # test deps
-cd tests
 export COMPOSER_NO_INTERACTION=1
 apt-get update
 apt-get install -y -q php5-cli php5-curl mysql-client
