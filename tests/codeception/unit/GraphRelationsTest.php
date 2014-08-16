@@ -119,8 +119,7 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
     }
 
     /**
-     * @group data:user-generated
-     * @group coverage:minimal
+     * @group data:user-generated,coverage:minimal
      */
     public function testQueryNodesWithItemAttributes()
     {
