@@ -145,6 +145,10 @@ $gcmsConfig = array(
                 'signupForm' => 'SignupForm',
             ),
             'controllerMap' => array(
+                'authenticate' => array(
+                    'class' => 'application.controllers.AuthenticateController',
+                    'layout' => WorkflowUi::LAYOUT_NARROW,
+                ),
                 'password' => array(
                     'class' => 'application.controllers.PasswordController',
                 ),
@@ -165,7 +169,6 @@ $gcmsConfig = array(
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
-                '/' => 'site/home', // TODO: Find out why removing this line still directs the user to '/site/index' even though app()->homeUrl should return '/site/home' for guest users.
                 //rest url patterns
                 array('api/<model>/delete', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'DELETE'),
                 array('api/<model>/update', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'PUT'),

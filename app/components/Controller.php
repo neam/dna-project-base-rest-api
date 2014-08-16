@@ -118,9 +118,7 @@ class Controller extends CController
      */
     public function getBrandUrl()
     {
-        return $this->id === 'site' && $this->action->id === 'home'
-            ? app()->getGapminderOrgUrl()
-            : app()->createUrl('/site/home');
+        $app = app();
+        return user()->isGuest ? $app->getGapminderOrgUrl() : $app->homeUrl;
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
-$scenario->group('data:clean-db');
-$scenario->group('data:user-generated');
+$scenario->group('data:clean-db,coverage:minimal');
+$scenario->group('data:user-generated,coverage:minimal');
 
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('check that the homepage shows a message');

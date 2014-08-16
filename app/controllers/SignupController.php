@@ -98,6 +98,7 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
     /**
      * Creates an account profile.
      * @param $accountId
+     * @return bool
      */
     public function createProfile($accountId)
     {
@@ -112,21 +113,36 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
      */
     protected function sendActivationMail(\CActiveRecord $account)
     {
+        /** @var Account $account */
+
         if (!$account->save(false)) {
             $this->fatalError();
         }
 
         $token = $this->module->generateToken(Module::TOKEN_ACTIVATE, $account->id);
-
         $activateUrl = $this->createAbsoluteUrl('/account/signup/activate', array('token' => $token));
 
+        $fromEmail = Yii::app()->params['signupEmail'];
+        $fromName = Yii::t('app', 'Gapminder Community');
+
         $config = array();
-        $config['from'] = Yii::app()->params['signupEmail'];
+        $config['from'] = $fromEmail;
+
+        $config['headers'] = array();
+        $config['headers'][] = 'From: ' . "$fromName <$fromEmail>";
+        $config['headers'][] = 'Reply-To: ' . "$fromName <$fromEmail>";
 
         $this->module->sendMail(
             $account->email,
             $this->emailSubject,
-            $this->renderPartial('/email/activate', array('activateUrl' => $activateUrl), true),
+            $this->renderPartial(
+                'application.views.account.email.activate',
+                array(
+                    'activateUrl' => $activateUrl,
+                    'username' => $account->username,
+                ),
+                true
+            ),
             $config
         );
     }

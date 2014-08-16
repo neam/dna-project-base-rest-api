@@ -1,13 +1,15 @@
 <?php
 /* @var SignupController $this */
 /* @var string $activateUrl */
+/* @var string $username */
 ?>
 <?php $signupUrl = $this->createAbsoluteUrl('/account/signup'); ?>
 <?php echo Yii::t(
     'app',
-    'Please confirm your email address and activate your new Gapminder account by clicking on the following link: {activationLink}',
+    'Please confirm your email address and activate your new Gapminder account <strong>{username}</strong> by clicking on the following link: {activationLink}',
     array(
         '{activationLink}' => TbHtml::link($activateUrl, $activateUrl),
+        '{username}' => $username,
     )
 ); ?><br>
 <br>

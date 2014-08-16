@@ -123,27 +123,11 @@ class WebApplication extends CWebApplication
     }
 
     /**
-     * Returns the user role specific home URL (overrides CApplication::getHomeUrl)
-     * @return string
+     * @inheritDoc
      */
     public function getHomeUrl()
     {
-        $webUser = user();
-
-        if ($webUser->isGuest && app()->controller->action->id === 'home') {
-            // After logging in (used as a return URL)
-            $route = '/dashboard/index';
-        } else if ($webUser->isGuest) {
-            // Guests
-            $route = '/site/home';
-        } else if (!$webUser->isAdmin() && ($webUser->isTranslator || $webUser->isReviewer)) {
-            // Translators/reviewers (but not admins)
-            $route = '/dashboard/tasks';
-        } else {
-            // Everyone else
-            $route = '/site/index';
-        }
-
+        $route = user()->isGuest ? '/' : '/dashboard/index';
         return app()->createUrl($route);
     }
 

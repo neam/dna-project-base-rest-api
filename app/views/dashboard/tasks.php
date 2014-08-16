@@ -3,7 +3,7 @@
 /** @var Account $model */
 /** @var string $modelClass */
 ?>
-<div class="dashboard-controller index-action">
+<div class="dashboard-controller tasks-action">
     <div class="dashboard-profile">
         <div class="row">
             <div class="profile-info">
