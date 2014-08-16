@@ -7,7 +7,7 @@ set -x
 set -o errexit
 
 # get arguments
-CODECEPTION_GROUP_ARGS=$1
+CODECEPTION_ARGS=$@
 
 # initialize env vars so that we have app config and PATH properly set
 export HOME=/app
@@ -33,6 +33,6 @@ connectionID=dbTest ../shell-scripts/reset-db.sh
 
 # run unit tests
 ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
-vendor/bin/codecept run unit $CODECEPTION_GROUP_ARGS --fail-fast
+vendor/bin/codecept run unit $CODECEPTION_ARGS --fail-fast
 
 exit 0
