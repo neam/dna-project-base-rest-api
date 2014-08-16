@@ -17,7 +17,7 @@
 # - COVERAGE
 
 # set the codeception test group arguments depending on DATA and COVERAGE
-source ../../_set-codeception-group-args.sh
+source ../../tests/_set-codeception-group-args.sh
 
 # unit tests - runs within a dokku app container
 
