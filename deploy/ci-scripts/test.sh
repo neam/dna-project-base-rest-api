@@ -24,7 +24,7 @@ source _set-codeception-group-args.sh
 
 # unit tests - runs within a dokku app container
 
-$DRONE_BUILD_DIR/ci-scripts/dokku-run-workaround.sh ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/deploy/dokku-run-unit-tests.sh $CCODECEPTION_GROUP_ARGS
+$DRONE_BUILD_DIR/ci-scripts/dokku-run-workaround.sh ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/deploy/dokku-run-unit-tests.sh $CODECEPTION_GROUP_ARGS
 
 # acceptance tests - runs within the current drone container using saucelabs for selenium server
 
