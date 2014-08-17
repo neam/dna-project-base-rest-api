@@ -24,6 +24,12 @@ COVERAGE=$1
 export HOME=/app
 for file in /app/.profile.d/*; do source $file; done
 
+# make sure $COMPOSER_GITHUB_OAUTH_TOKEN is used by composer
+mkdir ~/.composer/
+echo '{ "config": {"github-oauth":{"github.com": ' > ~/.composer/config.json
+echo "\"$COMPOSER_GITHUB_OAUTH_TOKEN\"" >> ~/.composer/config.json
+echo '}}}' >> ~/.composer/config.json
+
 # info
 echo "Running tests with coverage '$COVERAGE' in config environment '$CONFIG_ENVIRONMENT'"
 
