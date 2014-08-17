@@ -23,6 +23,8 @@ COVERAGE=$1
 # initialize env vars so that we have app config and PATH properly set
 export HOME=/app
 for file in /app/.profile.d/*; do source $file; done
+cd $HOME
+cd tests
 
 # make sure $COMPOSER_GITHUB_TOKEN is used by composer
 if [ -n "$COMPOSER_GITHUB_TOKEN" ]; then
@@ -34,8 +36,6 @@ fi
 echo "Running tests with coverage '$COVERAGE' in config environment '$CONFIG_ENVIRONMENT'"
 
 # install test deps
-cd $HOME
-cd tests
 export COMPOSER_NO_INTERACTION=1
 php ../composer.phar install --dev --prefer-dist
 
