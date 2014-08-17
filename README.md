@@ -325,7 +325,7 @@ You will also need to run the following once after the initial push:
     # set environment variables
 
     export CMS_CONFIG_ENVIRONMENT=development
-    export COMPOSER_GITHUB_OAUTH_TOKEN="replaceme"
+    export COMPOSER_GITHUB_TOKEN="replaceme"
     export NEW_RELIC_LICENSE_KEY="replaceme"
     export NEW_RELIC_APP_NAME="replaceme"
     export SMTP_URL="replaceme"
@@ -343,7 +343,7 @@ You will also need to run the following once after the initial push:
     USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET \
     USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET \
     CONFIG_ENVIRONMENT=$CMS_CONFIG_ENVIRONMENT \
-    COMPOSER_GITHUB_OAUTH_TOKEN=$COMPOSER_GITHUB_OAUTH_TOKEN \
+    COMPOSER_GITHUB_TOKEN=$COMPOSER_GITHUB_TOKEN \
     NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY \
     NEW_RELIC_APP_NAME=dokku/$APPNAME \
     SMTP_URL=$SMTP_URL \
