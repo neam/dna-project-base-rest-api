@@ -39,7 +39,8 @@ echo "Running tests with coverage '$COVERAGE' in config environment '$CONFIG_ENV
 export COMPOSER_NO_INTERACTION=1
 php ../composer.phar install --dev --prefer-dist
 
-# generate local test config
+# generate codeception config
+export CI=1
 ./generate-local-codeception-config.sh
 vendor/bin/codecept build
 
@@ -64,7 +65,7 @@ source _set-codeception-group-args.sh
 
     # run the actual unit tests
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
-    vendor/bin/codecept run unit $CODECEPTION_ARGS --fail-fast
+    vendor/bin/codecept run unit $CODECEPTION_GROUP_ARGS --fail-fast
 
 # run acceptance tests
 
