@@ -149,6 +149,7 @@ Then, do the following before attempting to run any tests:
 
     export CMS_HOST=127.0.0.1:11111 # change if you have used another WEB_PORT when setting up the local dev environment
     ./generate-local-codeception-config.sh
+    vendor/bin/codecept build
 
 Now, set the level of test coverage to run and set the appropriate codeception arguments:
 

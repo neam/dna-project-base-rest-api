@@ -25,6 +25,7 @@ echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB
 # generate local test config
 export CMS_HOST=localhost:5000
 ./generate-local-codeception-config.sh
+vendor/bin/codecept build
 
 # reset the test database to a clean db satet
 export CONFIG_ENVIRONMENT=test

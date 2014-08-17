@@ -75,6 +75,7 @@ set -o errexit
 
 # generate codeception config
 ./generate-local-codeception-config.sh
+vendor/bin/codecept build
 
 # use ci-configuration for deployment while running tests
 ssh dokku@$DOKKU_HOST config:set $CMS_APPNAME CONFIG_ENVIRONMENT=ci
