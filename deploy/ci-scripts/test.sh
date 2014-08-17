@@ -16,7 +16,7 @@ cd tests
 ssh dokku@$DOKKU_HOST config:set $CMS_APPNAME CONFIG_ENVIRONMENT=ci
 
 # tests runs within a dokku app container
-$DRONE_BUILD_DIR/ci-scripts/dokku-run-workaround.sh ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/deploy/dokku-run-unit-tests.sh $COVERAGE $CODECEPTION_GROUP_ARGS
+$DRONE_BUILD_DIR/ci-scripts/dokku-run-workaround.sh ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/deploy/dokku-run-tests.sh $COVERAGE $CODECEPTION_GROUP_ARGS
 
 # restore config-environment
 ssh dokku@$DOKKU_HOST config:set $CMS_APPNAME CONFIG_ENVIRONMENT=$CMS_CONFIG_ENVIRONMENT
