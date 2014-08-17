@@ -331,6 +331,8 @@ You will also need to run the following once after the initial push:
     export SMTP_URL="replaceme"
     export GA_TRACKING_ID="replaceme"
     export SENTRY_DSN="replaceme"
+    export SAUCE_USERNAME="replaceme"
+    export SAUCE_ACCESS_KEY="replaceme"
 
     ssh dokku@$DOKKU_HOST config:set $APPNAME \
     ENVBOOTSTRAP_STRATEGY=environment-variables \
@@ -346,7 +348,9 @@ You will also need to run the following once after the initial push:
     NEW_RELIC_APP_NAME=dokku/$APPNAME \
     SMTP_URL=$SMTP_URL \
     GA_TRACKING_ID=$GA_TRACKING_ID \
-    SENTRY_DSN=$SENTRY_DSN
+    SENTRY_DSN=$SENTRY_DSN \
+    SAUCE_USERNAME=$SAUCE_USERNAME \
+    SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY
 
     # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
 

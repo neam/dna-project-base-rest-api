@@ -58,7 +58,6 @@ GA_TRACKING_ID=$GA_TRACKING_ID \
 SENTRY_DSN=$SENTRY_DSN \
 SAUCE_USERNAME=$SAUCE_USERNAME \
 SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY \
-
 NGINX_VHOSTS_CUSTOM_CONFIGURATION=deploy/nginx.inc.conf
 
 # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)

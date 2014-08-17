@@ -19,7 +19,6 @@ set -o errexit
 
 # get arguments
 COVERAGE=$1
-CODECEPTION_ARGS=${@:2}
 
 # initialize env vars so that we have app config and PATH properly set
 export HOME=/app
@@ -42,7 +41,7 @@ vendor/bin/codecept build
 source _set-codeception-group-args.sh
 
 # run unit tests
-../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
+../app/yiic mysqldump --connectionID=db --dumpPath=tests/codeception/_data/
 vendor/bin/codecept run unit $CODECEPTION_ARGS --fail-fast
 
 # run acceptance tests
