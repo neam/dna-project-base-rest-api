@@ -25,10 +25,10 @@ export HOME=/app
 for file in /app/.profile.d/*; do source $file; done
 
 # make sure $COMPOSER_GITHUB_TOKEN is used by composer
-mkdir ~/.composer/
-echo '{ "config": {"github-oauth":{"github.com": ' > ~/.composer/config.json
-echo "\"$COMPOSER_GITHUB_TOKEN\"" >> ~/.composer/config.json
-echo '}}}' >> ~/.composer/config.json
+if [ -n "$COMPOSER_GITHUB_TOKEN" ]; then
+    status "Configuring the github authentication for Composer"
+    php ../composer.phar config -g github-oauth.github.com "$COMPOSER_GITHUB_TOKEN" --no-interaction
+fi
 
 # info
 echo "Running tests with coverage '$COVERAGE' in config environment '$CONFIG_ENVIRONMENT'"
