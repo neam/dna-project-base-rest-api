@@ -1,8 +1,6 @@
 <?php
 
 // merge this file in main-local.php on your development system
-defined('YII_DEBUG') or define('YII_DEBUG', true);
-defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);
 
 return array(
     'preload'    => array( #'less', // LESS compiler, only preload on dev systems, config see below

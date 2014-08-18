@@ -1,7 +1,5 @@
 <?php
 
-defined('YII_DEBUG') or define('YII_DEBUG', true);
-
 $root = dirname(__DIR__);
 
 require_once("$root/vendor/autoload.php");

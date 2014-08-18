@@ -333,7 +333,7 @@ $mainConfig = array(
             'connectionString' => 'sqlite:' . $applicationDirectory . '/data/test.db',
         ),
         'errorHandler'  => array(
-            'class' => 'vendor.crisu83.yii-sentry.components.SentryErrorHandler',
+            'class' => 'AppErrorHandler',
             // use 'site/error' action to display errors
             'errorAction' => 'site/error',
         ),
