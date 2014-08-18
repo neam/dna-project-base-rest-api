@@ -28,24 +28,6 @@ class AppSteps extends \WebGuy
     }
 
     /**
-     * Returns true if the current environment is a mobile one
-     * @return bool
-     */
-    function isMobileEnv()
-    {
-        // This global is set in _bootstrap.php by us
-        global $running_env;
-
-        return in_array(
-            $running_env,
-            array(
-                'cms-saucelabs-iphone-7_1-portrait',
-                'cms-saucelabs-iphone-7_1-portrait-appium-1_2',
-            )
-        );
-    }
-
-    /**
      * Toggles the navigation used by mobile layouts
      */
     function toggleMobileNavigation()

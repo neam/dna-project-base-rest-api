@@ -149,9 +149,7 @@ trait UsersTrait
         $I = $this;
         $I->amOnPage(HomePage::$URL);
 
-        $isMobileEnv = $this->isMobileEnv();
-
-        if ($isMobileEnv) {
+        if ($I->haveASmallScreen()) {
             $I->toggleMobileNavigation();
         }
 
@@ -160,7 +158,7 @@ trait UsersTrait
 
         $I->waitForText(HomePage::$homePageMessage, 20);
 
-        if ($isMobileEnv) {
+        if ($I->haveASmallScreen()) {
             $I->toggleMobileNavigation();
         }
         $I->waitForElementVisible(HomePage::$loginLink, 20);
@@ -182,6 +180,7 @@ trait UsersTrait
         $I->fillField(RegistrationPage::$emailField, $email);
         $I->fillField(RegistrationPage::$passwordField, $password);
         $I->fillField(RegistrationPage::$verifyPasswordField, $verifyPassword);
+        $I->pauseExecution();
         $acceptTerms
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);
