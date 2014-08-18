@@ -28,12 +28,11 @@ export CI=1
 APPNAME=$CMS_APPNAME
 echo APPNAME=$APPNAME
 
-set +o errexit; git checkout a-detached-head-wont-work || git checkout -b a-detached-head-wont-work; set -o errexit
-git push dokku@$DOKKU_HOST:$APPNAME a-detached-head-wont-work:master -f
+# create the dokku app (allow a failed command since it fails if the app already exists - ie if we are rebuilding)
 
-# at this stage the docker instance is prepared and runs the cms yii application.
-# new applications however needs a database container created and some basic configuration set
-# before the application actually works
+set +o errexit
+ssh dokku@$DOKKU_HOST create $APPNAME
+set -o errexit
 
 # connect a db instance
 
@@ -66,6 +65,13 @@ NGINX_VHOSTS_CUSTOM_CONFIGURATION=deploy/nginx.inc.conf
 
 export DOKKU_ROOT=/home/dokku
 ssh dokku@$DOKKU_HOST docker-options:add $APPNAME "-v $DOKKU_ROOT/$APPNAME/cache:/cache"
+
+# push the code to deploy
+
+set +o errexit; git checkout a-detached-head-wont-work || git checkout -b a-detached-head-wont-work; set -o errexit
+git push dokku@$DOKKU_HOST:$APPNAME a-detached-head-wont-work:master -f
+
+# at this stage the docker instance is prepared and runs the cms yii application, but the database is completely empty
 
 # reset db and load user data if DATA=user-generated
 $DRONE_BUILD_DIR/ci-scripts/dokku-run-workaround.sh ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-reset-db.sh
