@@ -1,11 +1,10 @@
 <?php
+$scenario->group('data:clean-db,coverage:full');
 
 // Martha sees and edits the translation fields (as a role GROUP-TRANSLATOR and
 // member in group Translators) into Portuguese = one of her 3 user.languages
 // (She can not edit source-language)
 
-
-$scenario->group('data:clean-db');
 
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('translate a video');

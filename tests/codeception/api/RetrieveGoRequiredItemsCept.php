@@ -1,5 +1,5 @@
 <?php
-$scenario->group('data:user-generated');
+$scenario->group('data:user-generated,coverage:basic');
 $I = new ApiGuy($scenario);
 $I->wantTo('retrieve go-required items via the REST API');
 
