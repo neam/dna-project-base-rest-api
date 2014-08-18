@@ -38,6 +38,10 @@ deploy/install-s3cmd.sh
 if [ -d app/data/p3media ] ; then
     mv app/data/p3media app/data/.p3media-directory-before-symlinking
 fi
+if [ ! -d /cache/p3media ] ; then
+    mkdir /cache/p3media
+    chown -R nobody: /cache/p3media
+fi
 if [ ! -L app/data/p3media ] ; then
     ln -s /cache/p3media app/data/p3media
 fi

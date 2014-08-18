@@ -1,6 +1,6 @@
 <?php
+$scenario->group('data:clean-db,coverage:full');
 
-$scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('create a video, attach a .webm video, and make sure it is rendered on the preview page. (Inactive)');
 

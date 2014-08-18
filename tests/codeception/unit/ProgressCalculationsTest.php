@@ -19,7 +19,7 @@ class ProgressCalculationsTest extends \Codeception\TestCase\Test
 
     // tests
     /**
-     * @group data:clean-db
+     * @group data:clean-db,coverage:paranoid
      */
     public function testZeroProgressOnNewItem()
     {
@@ -41,7 +41,7 @@ class ProgressCalculationsTest extends \Codeception\TestCase\Test
     }
 
     /**
-     * @group data:clean-db
+     * @group data:clean-db,coverage:paranoid
      */
     public function testProgressAfterSingleAttributeEditAndTranslation()
     {

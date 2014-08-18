@@ -1,6 +1,6 @@
 <?php
+$scenario->group('data:clean-db,coverage:full');
 
-$scenario->group('data:clean-db');
 $I = new WebGuy\MemberSteps($scenario);
 $I->am('a authenticated user');
 $I->wantTo('create a item and edit it');

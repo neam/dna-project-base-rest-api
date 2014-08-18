@@ -99,8 +99,26 @@ Then, run:
 
 * `unit` - Contains unit tests that verify low-level functionality.
 * `acceptance-init` - Contains the initial set of acceptance tests that should be run from an empty (reset) database and verifies basic functionality and registers a set of test users.
-* `acceptance` - Contains the full set of acceptance tests that uses a database dump taken at the end of running `acceptance-init` (and thus contains a set of test users).
+* `acceptance` - Contains the full set of acceptance tests [TODO: that uses a database dump taken at the end of running `acceptance-init` (and thus contains a set of test users)]
 * `api` - Contains acceptance tests that verify various aspects of the REST API.
+
+### Test groups
+
+#### data
+
+We want to be able to develop/test the code both starting from an empty database, and with data imported from a production deployment. These two testing-data-scenarios are referred to as "clean-db" vs "user-generated", and all acceptance tests are grouped into one or both of these.
+
+* `clean-db`
+* `user-generate`
+
+#### coverage
+
+We group all tests based on how much testing coverage is required, so that builds and tests can run faster in cases when full test coverage is not essential:
+
+* `minimal` - The minimal set of tests (default setting for automatic tests in feature branches and on develop)
+* `basic` - A little more refined set of tests (default setting for automatic tests in release branches and for production)
+* `full` - Includes registering of test users and the life cycle scenario tests (default setting for developers running local tests)
+* `paranoid` - Includes long-running tests that were created to protect against various regressions (it is recommended for developers to run these tests locally before finishing a feature branch)
 
 ### Running tests locally
 
@@ -125,12 +143,24 @@ Then, do the following before attempting to run any tests:
     cd tests
     php ../composer.phar install
 
-    ../app/yiic config exportDbConfig --connectionID=dbTest > /tmp/db-config.sh
+    ../app/yiic config exportDbConfig --connectionID=dbTest | tee /tmp/db-config.sh
     source /tmp/db-config.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
     export CMS_HOST=127.0.0.1:11111 # change if you have used another WEB_PORT when setting up the local dev environment
     ./generate-local-codeception-config.sh
+    vendor/bin/codecept build
+
+Now, set the level of test coverage to run and set the appropriate codeception arguments:
+
+    export COVERAGE=full
+    OR any of:
+    export COVERAGE=minimal
+    export COVERAGE=basic
+    export COVERAGE=paranoid
+
+    # set the codeception test group arguments depending on DATA and COVERAGE
+    source _set-codeception-group-args.sh
 
 To reset the test database (necessary in order to run tests from scratch or to re-run the `acceptance-init` suite since it does not reset the database itself by design):
 
@@ -140,20 +170,20 @@ To reset the test database (necessary in order to run tests from scratch or to r
 To run the unit tests:
 
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
-    vendor/bin/codecept run unit -g data:$DATA --debug --fail-fast
+    vendor/bin/codecept run unit $CODECEPTION_GROUP_ARGS --debug --fail-fast
 
 To run the functional tests (Note: Not currently used):
 
-    #vendor/bin/codecept run functional -g data:$DATA --debug --fail-fast
+    #vendor/bin/codecept run functional $CODECEPTION_GROUP_ARGS --debug --fail-fast
 
 Note: For the remaining tests, you need to have a selenium server running locally (see below in readme).
 
 To run the acceptance suites:
 
     touch testing # this activates a special flag in envbootstrap.php that makes the test db the default db
-    vendor/bin/codecept run acceptance-init --env=cms-local-chrome -g data:$DATA --debug --fail-fast
+    vendor/bin/codecept run acceptance-init --env=cms-local-chrome $CODECEPTION_GROUP_ARGS --debug --fail-fast
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
-    vendor/bin/codecept run acceptance --env=cms-local-chrome -g data:$DATA --debug --fail-fast
+    vendor/bin/codecept run acceptance --env=cms-local-chrome $CODECEPTION_GROUP_ARGS --debug --fail-fast
     rm testing
 
 To run the the API suite:
@@ -187,24 +217,14 @@ Ensure that you have Java installed and then start [the selenium server](http://
 
 First deploy the code to dokku (see "Deploy using Dokku" below), so that the env vars `DOKKU_HOST` and `CMS_HOST` are available.
 
-Make sure that your dokku ssh key has port forwarding enabled (A user with root access to the dokku hosts needs to log in and run the `dokku-user-allow-port-forwarding.sh` bash script once after your ssh key has been granted access to dokku).
+Follow the instructions under "Set up an SSH tunnel to be able to access the deployed database locally"
 
-Then, generate configuration as if running in ci:
+Generate configuration as if running in ci:
 
     cd tests
     export CI=1
     export SAUCE_ACCESS_KEY=replaceme
     export SAUCE_USERNAME=gapminder
-    export CMS_APPNAME=$APPNAME
-    ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/app/yiic config exportDbConfig --connectionID=db | tee /tmp/db-config.sh
-    tr -d $'\r' < /tmp/db-config.sh > /tmp/db-config.clean.sh
-    source /tmp/db-config.clean.sh
-    # set-up ssh tunnel against dokku host to be able to access db instance
-    ssh dokku@$DOKKU_HOST -v -N -L 43306:$DB_HOST:$DB_PORT &
-    export DB_HOST=127.0.0.1
-    export DB_PORT=43306
-    # verify local db access
-    echo "SELECT 1;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
     # generate codeception config
     ./generate-local-codeception-config.sh
 
@@ -295,12 +315,15 @@ You will also need to run the following once after the initial push:
     # set environment variables
 
     export CMS_CONFIG_ENVIRONMENT=development
-    export COMPOSER_GITHUB_OAUTH_TOKEN="replaceme"
+    export COMPOSER_GITHUB_TOKEN="replaceme"
     export NEW_RELIC_LICENSE_KEY="replaceme"
     export NEW_RELIC_APP_NAME="replaceme"
     export SMTP_URL="replaceme"
     export GA_TRACKING_ID="replaceme"
     export SENTRY_DSN="replaceme"
+    export SAUCE_USERNAME="replaceme"
+    export SAUCE_ACCESS_KEY="replaceme"
+    export CMS_BASE_URL=$CMS_HOST
 
     ssh dokku@$DOKKU_HOST config:set $APPNAME \
     ENVBOOTSTRAP_STRATEGY=environment-variables \
@@ -311,12 +334,15 @@ You will also need to run the following once after the initial push:
     USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET \
     USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET \
     CONFIG_ENVIRONMENT=$CMS_CONFIG_ENVIRONMENT \
-    COMPOSER_GITHUB_OAUTH_TOKEN=$COMPOSER_GITHUB_OAUTH_TOKEN \
+    COMPOSER_GITHUB_TOKEN=$COMPOSER_GITHUB_TOKEN \
     NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY \
     NEW_RELIC_APP_NAME=dokku/$APPNAME \
     SMTP_URL=$SMTP_URL \
     GA_TRACKING_ID=$GA_TRACKING_ID \
-    SENTRY_DSN=$SENTRY_DSN
+    SENTRY_DSN=$SENTRY_DSN \
+    SAUCE_USERNAME=$SAUCE_USERNAME \
+    SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY \
+    CMS_BASE_URL=$CMS_BASE_URL
 
     # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
 
@@ -326,18 +352,52 @@ You will also need to run the following once after the initial push:
 To reset the db to a clean state:
 
     export DATA=clean-db
+    # run these commands one by one (they will not all run if pasted into the console together)
     ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
+    # run these commands one by one (they will not all run if pasted into the console together)
     ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-reset-db.sh
 
 To reset the db and load user data:
 
     export DATA=user-generated
+    # run these commands one by one (they will not all run if pasted into the console together)
     ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
+    # run these commands one by one (they will not all run if pasted into the console together)
     ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-reset-db.sh
+
+To run the tests:
+
+    # needs to be set appropriately (see above in readme)
+    export COVERAGE=basic
+
+    # use ci-configuration for deployment while running tests
+    ssh dokku@$DOKKU_HOST config:set $APPNAME CONFIG_ENVIRONMENT=ci
+
+    # run tests within a dokku app container
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-run-tests.sh $COVERAGE
+
+    # restore config-environment
+    ssh dokku@$DOKKU_HOST config:set $APPNAME CONFIG_ENVIRONMENT=$CMS_CONFIG_ENVIRONMENT
 
 To upload the current user-generated data to S3, run:
 
     ssh dokku@$DOKKU_HOST run $APPNAME /app/shell-scripts/upload-user-data-backup.sh
+
+### Set up an SSH tunnel to be able to access the deployed database locally
+
+Make sure that your dokku ssh key has port forwarding enabled (A user with root access to the dokku hosts needs to log in and run the `dokku-user-allow-port-forwarding.sh` bash script once after your ssh key has been granted access to dokku).
+
+Then, set up a ssh tunnel:
+
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/app/yiic config exportDbConfig --connectionID=db | tee /tmp/db-config.sh
+    tr -d $'\r' < /tmp/db-config.sh > /tmp/db-config.clean.sh
+    source /tmp/db-config.clean.sh
+    # set-up ssh tunnel against dokku host to be able to access db instance
+    ssh dokku@$DOKKU_HOST -v -N -L 43306:$DB_HOST:$DB_PORT &
+    export DB_HOST=127.0.0.1
+    export DB_PORT=43306
+    # verify local db access
+    echo "SELECT 1;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD $DB_NAME
 
 ## Deploy using Heroku
 

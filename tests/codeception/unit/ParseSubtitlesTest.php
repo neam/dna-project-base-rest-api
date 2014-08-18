@@ -19,9 +19,8 @@ class ParseSubtitlesTest extends \Codeception\TestCase\Test
 
     // tests
     /**
-     * @group data:clean-db
-     * @group data:user-generated
-     * @group now
+     * @group data:clean-db,coverage:basic
+     * @group data:user-generated,coverage:basic
      */
     public function testSimpleSubtitles()
     {

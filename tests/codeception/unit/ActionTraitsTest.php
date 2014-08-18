@@ -53,8 +53,8 @@ class ActionTraitsTest extends \Codeception\TestCase\Test
     }
 
     /**
-     * @group data:clean-db
-     * @group data:user-generated
+     * @group data:clean-db,coverage:minimal
+     * @group data:user-generated,coverage:minimal
      */
     public function testDemonstrateTraitInheritance()
     {

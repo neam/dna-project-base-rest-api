@@ -1,5 +1,6 @@
 <?php
 $scenario->group('data:clean-db');
+$scenario->group('coverage:full');
 
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('add a video to a group');
