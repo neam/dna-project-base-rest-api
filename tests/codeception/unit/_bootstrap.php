@@ -7,6 +7,9 @@ $_SERVER['REQUEST_URI'] = 'index-test.php';
 // require composer autoloader
 require_once(dirname(__FILE__).'/../../../vendor/autoload.php');
 
+// include envbootstrap
+require(dirname(__FILE__).'/../../../app/config/envbootstrap/include.php');
+
 // change the following paths if necessary
 $yiit=dirname(__FILE__).'/../../../vendor/yiisoft/yii/framework/yiit.php';
 require_once($yiit);
