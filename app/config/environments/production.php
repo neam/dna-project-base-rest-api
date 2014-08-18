@@ -1,7 +1,6 @@
 <?php
 
 // merge this file in local.php on your production system
-define('YII_DEBUG', false);
 
 return array(
     // application components

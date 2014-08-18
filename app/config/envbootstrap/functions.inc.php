@@ -22,6 +22,6 @@ function setenv($ref, $default = null, $required = false)
 function default_config_environment()
 {
     $root = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..';
-    $default = is_file("$root/tests/testing") ? 'test' : 'development';
+    $default = is_file("$root/tests/testing") ? 'test' : 'production';
     return $default;
 }
