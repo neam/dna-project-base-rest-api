@@ -18,6 +18,9 @@ location /friends {
         # example proxy_pass directive if installing on a remote nginx host
         #proxy_pass        http://<%= ENV['CMS_HOST'] %>/;
 
+        # a slightly more performative way is to proxy directly against the docker container - the PORT however changes on each dokku re-release so use with appropriate release-hooks
+        #proxy_pass        http://<%= ENV['CMS_HOST'] %>:<%= ENV['PORT'] %>/;
+
         # Default dokku-vhosts configuration (make sure to update this manually when dokku changes the default configuration)
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
