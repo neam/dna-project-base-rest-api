@@ -62,7 +62,7 @@ class Changeset extends BaseChangeset
                 ->group('account.id, group.id')
                 ->bindValue(':nodeId', $this->node_id)
                 ->queryAll();
-            if (!empty($accounts)) {
+            if (!empty($rows)) {
                 $decodedContents = json_decode($this->contents, true);
                 if (is_array($decodedContents)) {
                     $emailData = array();
