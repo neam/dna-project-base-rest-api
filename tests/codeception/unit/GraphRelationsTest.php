@@ -32,8 +32,7 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
     }
 
     /**
-     * @group data:clean-db
-     * @group data:user-generated
+     * @group data:clean-db,coverage:minimal
      */
     public function testChapterExercisesAndSnapshots()
     {
@@ -118,50 +117,4 @@ class GraphRelationsTest extends \Codeception\TestCase\Test
         $this->assertEquals($chapter->id, $snapshot->parentChapters[0]->id);
     }
 
-    /**
-     * @group data:user-generated
-     */
-    public function testQueryNodesWithItemAttributes()
-    {
-        $sql = "
-SELECT
-    node.id,
-    exercise.id AS exercise_id,
-    exercise._title AS exercise_title,
-    snapshot.id AS snapshot_id,
-    snapshot._title AS snapshot_title,
-    CASE
-        WHEN snapshot.id IS NOT NULL THEN snapshot._title
-        WHEN exercise.id IS NOT NULL THEN exercise._title
-        ELSE NULL
-    END AS _title
-FROM
-    node
-        LEFT JOIN
-    exercise ON exercise.node_id = node.id
-        LEFT JOIN
-    snapshot ON snapshot.node_id = node.id
-WHERE
-    1
-        AND (exercise.id IS NOT NULL OR snapshot.id IS NOT NULL)
-        AND (
-                (exercise.id IS NOT NULL AND exercise._title IS NOT NULL)
-                OR
-                (snapshot.id IS NOT NULL AND snapshot._title IS NOT NULL)
-            )
-LIMIT 3
-        ";
-
-        $result = Yii::app()->db->createCommand($sql)->queryAll();
-        $this->assertNotEmpty($result);
-    }
-
-    /**
-     * @group data:user-generated
-     */
-    public function testFindItemsThroughDatabaseView()
-    {
-        $items = Item::model()->findAll();
-        $this->assertNotEmpty(count($items));
-    }
 }
