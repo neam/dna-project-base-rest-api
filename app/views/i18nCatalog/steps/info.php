@@ -14,6 +14,13 @@
         ),
     )
 ); ?>
+<?php echo $form->translateTextFieldControlGroup(
+    $model,
+    'slug',
+    $this->getTranslationLanguage(),
+    $this->action->id,
+    array('hint' => true)
+); ?>
 <?php echo $form->textAreaControlGroup(
     $model,
     'about',
