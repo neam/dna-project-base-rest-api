@@ -3,7 +3,7 @@
 class AccountAdminPage
 {
     // include url of current page
-    static $URL = '?r=restrictedAccess/admin/manageAccounts';
+    static $URL = 'restrictedAccess/admin/manageAccounts';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
@@ -12,6 +12,8 @@ class AccountAdminPage
      */
     public static $viewLinkPrefix = '#viewLink_';
     public static $activateLinkPrefix = '#activateLink_';
+
+    public static $headingText = 'Accounts Manage';
 
     /**
      * Basic route example for your current URL

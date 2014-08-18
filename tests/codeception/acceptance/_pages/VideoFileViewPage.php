@@ -3,7 +3,7 @@
 class VideoFileViewPage
 {
     // include url of current page
-    static $URL = '?r=videoFile';
+    static $URL = 'videoFile';
 
     static $videoContainer = '.mejs-video';
     static $noVideoMessage = 'No media file available.';

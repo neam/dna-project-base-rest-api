@@ -3,7 +3,7 @@
 class SnapshotViewPage
 {
     // include url of current page
-    static $URL = '?r=snapshot/view';
+    static $URL = 'snapshot/view';
 
     static $noMarkupText = 'No markup to render';
 

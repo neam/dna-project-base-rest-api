@@ -3,7 +3,7 @@
 class HomePage
 {
     // Default home-page
-    static $URL = '?r=site/home';
+    static $URL = 'site/home';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.

@@ -3,7 +3,7 @@
 class VideoFileEditPage extends ItemEditPage
 {
     // include url of current page
-    static $URL = '?r=videoFile/edit';
+    static $URL = 'videoFile/edit';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.

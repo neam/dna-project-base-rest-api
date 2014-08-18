@@ -8,7 +8,7 @@
 class UploadPopupPage
 {
     // include url of current page
-    static $URL = '?r=p3media/import/uploadPopup';
+    static $URL = 'p3media/import/uploadPopup';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.

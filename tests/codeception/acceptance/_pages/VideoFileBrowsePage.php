@@ -3,7 +3,7 @@
 class VideoFileBrowsePage extends ItemBrowsePage
 {
     // include url of current page
-    static $URL = '?r=videoFile/browse';
+    static $URL = 'videoFile/browse';
 
     public static function modelContext($title)
     {

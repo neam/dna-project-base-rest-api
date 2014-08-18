@@ -3,7 +3,7 @@
 class DashboardPage
 {
     // include url of current page
-    static $URL = '?r=dashboard/index';
+    static $URL = 'dashboard/index';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.

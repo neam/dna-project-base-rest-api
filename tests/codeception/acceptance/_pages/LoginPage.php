@@ -3,7 +3,7 @@
 class LoginPage
 {
     // include url of current page
-    static $URL = '?r=account/authenticate/login';
+    static $URL = 'account/authenticate/login';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
@@ -14,7 +14,7 @@ class LoginPage
     public static $passwordField = '#nordsoftware_yii_account_models_form_LoginForm_password';
     public static $submitButton = '#loginForm button[type=submit]';
 
-    public static $submitButtonText = 'Log In';
+    public static $submitButtonText = 'Login';
     public static $signUpButtonText = 'Create an account';
 
     /**
