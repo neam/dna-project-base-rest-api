@@ -14,10 +14,10 @@ class WebHelper extends \Codeception\Module
         return $this->config['small-screen'];
     }
 
-    public function toggleNavigationOnSmallScreen()
+    public function executeInSmallScreen($callable)
     {
         if ($this->haveASmallScreen()) {
-            $this->click(\MobilePage::$navbarToggle);
+            $callable();
         }
     }
 }

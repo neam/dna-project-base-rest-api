@@ -135,7 +135,10 @@ trait UsersTrait
         $I = $this;
         $I->amOnPage(HomePage::$URL);
 
-        $I->toggleNavigationOnSmallScreen();
+        $I->executeInSmallScreen(function () use ($I) {
+            $I->toggleMobileNavigation();
+        });
+
         $I->waitForElementVisible(HomePage::$loginLink, 20);
         $I->click(HomePage::$loginLink);
 
@@ -156,7 +159,7 @@ trait UsersTrait
 
         if ($iHaveASmallScreen) {
 
-            $I->toggleNavigationOnSmallScreen();
+            $I->toggleMobileNavigation();
             $I->waitForElementVisible(HomePage::$logoutLinkMobile, 20);
             $I->click(HomePage::$logoutLinkMobile);
 
@@ -172,7 +175,7 @@ trait UsersTrait
         $I->waitForText(HomePage::$homePageMessage, 20);
 
         if ($iHaveASmallScreen) {
-            $I->toggleNavigationOnSmallScreen();
+            $I->toggleMobileNavigation();
         }
         $I->waitForElementVisible(HomePage::$loginLink, 20);
         $I->seeElement(HomePage::$loginLink);
