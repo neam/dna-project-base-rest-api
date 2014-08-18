@@ -2,9 +2,6 @@
 
 // Configuration specific to Gapminder School CMS
 
-// include envbootstrap
-require(dirname(__FILE__) . '/envbootstrap/include.php');
-
 // Always use UTC
 date_default_timezone_set('UTC');
 

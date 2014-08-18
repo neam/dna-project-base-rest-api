@@ -2,7 +2,13 @@
 
 $root = dirname(__DIR__);
 
+// include composer autoloader
 require_once("$root/vendor/autoload.php");
+
+// include envbootstrap
+require("$root/app/config/envbootstrap/include.php");
+
+// include yii
 require_once("$root/vendor/yiisoft/yii/framework/yii.php");
 
 // web config files

@@ -2,9 +2,14 @@
 
 $root = dirname(__DIR__);
 
+// include composer autoloader
 require_once("$root/vendor/autoload.php");
+
+// include envbootstrap
+require("$root/app/config/envbootstrap/include.php");
+
+// include yii
 require_once("$root/vendor/yiisoft/yii/framework/yii.php");
-require_once("$root/app/components/WebApplication.php");
 
 // config files
 $main = require("$root/app/config/main.php");
@@ -19,4 +24,5 @@ if (defined('YII_DEBUG') && YII_DEBUG) {
 $config = CMap::mergeArray($main, $env);
 
 // start web application
+require_once("$root/app/components/WebApplication.php");
 Yii::createApplication('WebApplication', $config)->run();
