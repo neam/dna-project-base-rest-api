@@ -7,7 +7,7 @@
 # - SAUCE_USERNAME
 # - SAUCE_ACCESS_KEY
 # - COMPOSER_GITHUB_OAUTH_TOKEN
-# - CMS_HOST
+# - CMS_BASE_URL
 # - CONFIG_ENVIRONMENT
 # - COVERAGE
 
@@ -54,6 +54,7 @@ source _set-codeception-group-args.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
     # generate local test config
+    export CMS_HOST=$CMS_BASE_URL # todo - use CMS_BASE_URL in codeception config instead
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
 

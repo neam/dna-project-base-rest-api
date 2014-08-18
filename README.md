@@ -323,6 +323,7 @@ You will also need to run the following once after the initial push:
     export SENTRY_DSN="replaceme"
     export SAUCE_USERNAME="replaceme"
     export SAUCE_ACCESS_KEY="replaceme"
+    export CMS_BASE_URL=$CMS_HOST
 
     ssh dokku@$DOKKU_HOST config:set $APPNAME \
     ENVBOOTSTRAP_STRATEGY=environment-variables \
@@ -340,7 +341,8 @@ You will also need to run the following once after the initial push:
     GA_TRACKING_ID=$GA_TRACKING_ID \
     SENTRY_DSN=$SENTRY_DSN \
     SAUCE_USERNAME=$SAUCE_USERNAME \
-    SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY
+    SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY \
+    CMS_BASE_URL=$CMS_BASE_URL
 
     # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
 
