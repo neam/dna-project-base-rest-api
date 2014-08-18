@@ -135,13 +135,16 @@ trait UsersTrait
         $I = $this;
         $I->amOnPage(HomePage::$URL);
 
-        $I->amOnPage(LoginPage::$URL);
+        $I->toggleNavigationOnSmallScreen();
+        $I->waitForElementVisible(HomePage::$loginLink, 20);
+        $I->click(HomePage::$loginLink);
+
         $I->waitForText(LoginPage::$submitButtonText, 20);
         $I->fillField(LoginPage::$usernameField, $username);
         $I->fillField(LoginPage::$passwordField, $password);
         $I->click(LoginPage::$submitButton);
         $I->waitForElementNotVisible(LoginPage::$submitButton, 30);
-        $I->dontSeeInCurrentUrl('authenticate/login');
+        $I->dontSeeInCurrentUrl(LoginPage::$URL);
     }
 
     function logout()
@@ -149,17 +152,27 @@ trait UsersTrait
         $I = $this;
         $I->amOnPage(HomePage::$URL);
 
-        if ($I->haveASmallScreen()) {
-            $I->toggleMobileNavigation();
-        }
+        $iHaveASmallScreen = $I->haveASmallScreen();
 
-        $I->waitForElementVisible(HomePage::$logoutLink, 20);
-        $I->click(HomePage::$logoutLink);
+        if ($iHaveASmallScreen) {
+
+            $I->toggleNavigationOnSmallScreen();
+            $I->waitForElementVisible(HomePage::$logoutLinkMobile, 20);
+            $I->click(HomePage::$logoutLinkMobile);
+
+        } else {
+
+            $I->waitForElementVisible(HomePage::$accountMenuLink, 20);
+            $I->click(HomePage::$accountMenuLink);
+            $I->waitForElementVisible(HomePage::$logoutLink, 20);
+            $I->click(HomePage::$logoutLink);
+
+        }
 
         $I->waitForText(HomePage::$homePageMessage, 20);
 
-        if ($I->haveASmallScreen()) {
-            $I->toggleMobileNavigation();
+        if ($iHaveASmallScreen) {
+            $I->toggleNavigationOnSmallScreen();
         }
         $I->waitForElementVisible(HomePage::$loginLink, 20);
         $I->seeElement(HomePage::$loginLink);
@@ -180,7 +193,6 @@ trait UsersTrait
         $I->fillField(RegistrationPage::$emailField, $email);
         $I->fillField(RegistrationPage::$passwordField, $password);
         $I->fillField(RegistrationPage::$verifyPasswordField, $verifyPassword);
-        $I->pauseExecution();
         $acceptTerms
             ? $I->checkOption(RegistrationPage::$acceptTermsField)
             : $I->uncheckOption(RegistrationPage::$acceptTermsField);

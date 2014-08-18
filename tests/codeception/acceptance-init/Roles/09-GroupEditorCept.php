@@ -68,6 +68,6 @@ $I->fillField(SnapshotEditPage::$vizabiStateField, $vizabiState);
 $I->click(SnapshotEditPage::$submitButton);
 $I->waitForText('Submit for publishing', 10);
 $I->click('Submit for publishing');
-$I->seeInCurrentUrl('snapshot/edit');
+$I->seeInCurrentUrl(SnapshotEditPage::$URL);
 $I->amOnPage(SnapshotBrowsePage::$URL);
 $I->dontSee('Prepare for Publishing', SnapshotBrowsePage::modelContext('Sample Snapshot'));

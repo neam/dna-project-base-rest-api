@@ -66,7 +66,7 @@ $I->fillField(SnapshotEditPage::$vizabiStateField, $vizabiState);
 $I->click(SnapshotEditPage::$submitButton);
 $I->waitForText('Submit for publishing', 10);
 $I->click('Submit for publishing');
-$I->seeInCurrentUrl('snapshot/edit');
+$I->seeInCurrentUrl(SnapshotEditPage::$URL);
 
 // Add to group
 $I->amOnPage(SnapshotBrowsePage::$URL);
@@ -78,7 +78,7 @@ $I->login('ola', 'test');
 $I->amOnPage(SnapshotBrowsePage::$URL);
 $I->see('Test snapshot');
 $I->click('Publish');
-$I->seeInCurrentUrl('snapshot/browse');
+$I->seeInCurrentUrl(SnapshotBrowsePage::$URL);
 
 // Ensure item is visible
 $I->amOnPage(SnapshotBrowsePage::$URL);
