@@ -18,7 +18,7 @@ This web application is used by the community as well as Gapminder staff to auth
 
 * Follow "Reset the database" below
 * Follow "Update to the latest changes" below
-* Now your CMS installation should be accessible on [http://localhost:11111]() and you should be able to login with admin/admin
+* Now your CMS installation should be accessible on [http://127.0.0.1:12121/friends/]() (Non-proxied version at [http://localhost:11111]()) and you should be able to login with admin/admin
 * Note: You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
 
 ## Useful commands
@@ -56,7 +56,7 @@ Alternatively, you can run these commands inside the web container (where all of
 
 Before running any commands below, step in to the root of the cms codebase `/code/` and make all environment variables available:
 
-    cd /code/
+    cd /code/cms/
     for file in /app/.profile.d/*; do source $file; done
 
 ## Update to the latest changes
