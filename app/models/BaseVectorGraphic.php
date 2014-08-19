@@ -105,7 +105,6 @@
  * @property integer $processed_media_id_fa
  *
  * Relations of table "vector_graphic" available as properties of the model:
- * @property P3Media $processedMediaIdFa
  * @property Node $node
  * @property P3Media $originalMedia
  * @property P3Media $processedMediaIdEn
@@ -119,6 +118,7 @@
  * @property P3Media $processedMediaIdEnGb
  * @property P3Media $processedMediaIdEnUs
  * @property P3Media $processedMediaIdEs
+ * @property P3Media $processedMediaIdFa
  * @property P3Media $processedMediaIdFi
  * @property P3Media $processedMediaIdFil
  * @property P3Media $processedMediaIdFr
@@ -203,7 +203,6 @@ abstract class BaseVectorGraphic extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
                 'processedMediaIdEn' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en'),
@@ -217,6 +216,7 @@ abstract class BaseVectorGraphic extends ActiveRecord
                 'processedMediaIdEnGb' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en_gb'),
                 'processedMediaIdEnUs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en_us'),
                 'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
+                'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
                 'processedMediaIdFi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fi'),
                 'processedMediaIdFil' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fil'),
                 'processedMediaIdFr' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fr'),

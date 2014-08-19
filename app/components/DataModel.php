@@ -321,6 +321,7 @@ class DataModel
                 'VectorGraphic' => array('slug', 'processed_media_id'),
                 'VideoFile' => array('slug'),
                 'Waffle' => array('slug'),
+                'I18nCatalog' => array('slug'),
             ),
             'relations' => array(
                 'Chapter' => array(),

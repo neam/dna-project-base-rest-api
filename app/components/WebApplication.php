@@ -18,10 +18,20 @@ class WebApplication extends CWebApplication
     const LAYOUT_FLUID = '//layouts/fluid';
 
     /**
+	 * Initializes the application.
+	 * This method overrides the parent implementation by properly registering the errorHandler shutdown function to catch fatal errors
+     */
+    public function init() {
+		parent::init();
+        // Needs to be registered here to be able to catch fatal errors
+        register_shutdown_function(array(Yii::app()->errorHandler, 'onShutdown'));
+    }
+
+    /**
      * @var string application version
      * TODO: Update this automatically.
      */
-    public $version = '0.4.0';
+    public $version = '0.6.0';
 
     /**
      * Registers CSS files.

@@ -11,7 +11,12 @@ class VideoFile extends BaseVideoFile
     const MIME_TYPE_VIDEO_WEBM = 'video/webm';
     const MIME_TYPE_VIDEO_MP4 = 'video/mp4';
 
-    // Add your model-specific methods here. This file will not be overriden by gtc except you force it.
+    // Add your model-specific methods here. This file will not be overridden by gtc except you force it.
+
+    /**
+     * @param string $className
+     * @return VideoFile
+     */
     public static function model($className = __CLASS__)
     {
         return parent::model($className);

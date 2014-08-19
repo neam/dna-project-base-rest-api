@@ -66,7 +66,7 @@ class I18nCatalogController extends Controller
 
     /**
      * Translate workflow
-     * @param $id
+     * @param int|string $id the model id or slug.
      * @param $step
      * @param $translateInto
      */
@@ -161,7 +161,7 @@ class I18nCatalogController extends Controller
 
     /**
      * Renders the view page.
-     * @param int $id model ID.
+     * @param int|string $id the model id or slug.
      */
     public function actionView($id)
     {
@@ -291,9 +291,19 @@ class I18nCatalogController extends Controller
         $this->render('admin', array('model' => $model,));
     }
 
+    /**
+     * @param int|string $id the model id or slug.
+     * @return I18nCatalog
+     * @throws CHttpException
+     */
     public function loadModel($id)
     {
-        $model = I18nCatalog::model()->findByPk($id);
+        if (is_int($id) || ctype_digit($id)) {
+            $model = I18nCatalog::model()->findByPk($id);
+        } else {
+            $language = Yii::app()->getRequest()->getParam('lang', Yii::app()->getLanguage());
+            $model = I18nCatalog::model()->findByattributes(array("slug_{$language}" => $id));
+        }
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }

@@ -7,7 +7,7 @@ require(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '
 // ==== Initial environment bootstrap ====
 
 define("ENV", 'local-foo');
-define("DEV", true);
+define("DEV", false);
 define("DEBUG_REDIRECTS", false);
 define("DEBUG_LOGS", false);
 setenv("CONFIG_ENVIRONMENT", $default = default_config_environment(), $required = false); // Used in main-local.php and then in index.php to decide which env-*.php configuration file to include
