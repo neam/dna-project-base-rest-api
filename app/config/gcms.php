@@ -177,6 +177,8 @@ $gcmsConfig = array(
             'charset' => 'utf8',
             'enableParamLogging' => true, // Log SQL parameters
             //'schemaCachingDuration'=>3600*24,
+            // This allows the exportDbConfig to work without a working test database available - so that the scripts then can set it up
+            'autoConnect' => false,
         ),
         // Supplied in main config
         'langHandler' => array(),
