@@ -3,7 +3,7 @@
 class SnapshotEditPage extends ItemEditPage
 {
     // include url of current page
-    static $URL = '?r=snapshot/edit';
+    static $URL = 'snapshot/edit';
 
     /**
      * @var array the flowSteps

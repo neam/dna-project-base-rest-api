@@ -3,7 +3,7 @@
 class PermissionPage
 {
     // include url of current page
-    static $URL = '?r=account/permissions';
+    static $URL = 'account/permissions';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.

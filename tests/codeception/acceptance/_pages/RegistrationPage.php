@@ -3,7 +3,7 @@
 class RegistrationPage
 {
     // include url of current page
-    static $URL = '?r=account/signup/index';
+    static $URL = 'account/signup/index';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.

@@ -3,7 +3,7 @@
 class VideoFileTranslatePage extends \ItemEditPage
 {
     // include url of current page
-    static $URL = '?r=videoFile/translate';
+    static $URL = 'videoFile/translate';
 
     /**
      * @var array flowSteps used in translations

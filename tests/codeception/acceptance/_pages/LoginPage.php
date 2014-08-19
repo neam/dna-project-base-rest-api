@@ -3,7 +3,7 @@
 class LoginPage
 {
     // include url of current page
-    static $URL = '?r=account/authenticate/login';
+    static $URL = 'account/authenticate/login';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
