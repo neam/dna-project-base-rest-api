@@ -8,37 +8,3 @@ proxy_connect_timeout 300s;
 client_header_timeout 300s;
 client_body_timeout 300s;
 send_timeout 300s;
-
-# proxy location directives that can be installed on any nginx host (merely by adapting proxy_pass directive appropriately)
-location /friends {
-
-    <% if ENV.has_key? "REMOTE" and ENV['REMOTE'].to_s != "" %>
-
-        # example proxy_pass directive if installing on a remote nginx host
-        proxy_pass        http://<%= ENV['CMS_HOST'] %>/;
-
-        # a slightly more performative way is to proxy directly against the docker container - the PORT however changes on each dokku re-release so use with appropriate release-hooks
-        # TODO (if we keep with dokku instead of heroku): reverse proxy directly against the docker container in order to prevent duplicate proxies
-        #proxy_pass        http://<%= ENV['CMS_HOST'] %>:<%= ENV['PORT'] %>/;
-
-    <% else %>
-
-        # dokku sets an upstream that points to the exposed docker container port - it has the same name as the app
-        proxy_pass        http://<%= ENV['APP'] %>/;
-
-    <% end %>
-
-        # for project-deployment vhost to work, we need to forward the project host instead of the canonical host
-        proxy_set_header Host "<%= ENV['CMS_HOST'] %>";
-        #proxy_set_header Host $http_host;
-
-        # Default dokku-vhosts configuration (make sure to update this manually when dokku changes the default configuration)
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header X-Forwarded-For $remote_addr;
-        proxy_set_header X-Forwarded-Port $server_port;
-        proxy_set_header X-Request-Start $msec;
-
-}
