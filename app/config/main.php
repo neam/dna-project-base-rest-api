@@ -15,6 +15,11 @@ $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' 
 $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SERVER['SCRIPT_NAME']) == '\\') ? '' :
     dirname($_SERVER['SCRIPT_NAME']);
 
+// support remote proxies
+if (isset($_SERVER["HTTP_X_GCMS_FACADE"]) && $_SERVER["HTTP_X_GCMS_FACADE"] == "friends") {
+    $baseUrl = "/friends" . $baseUrl;
+}
+
 require('includes/languages.php');
 require('includes/languageDirections.php');
 
@@ -239,6 +244,9 @@ $mainConfig = array(
     ),
     // application components
     'components' => array(
+        'request' => array(
+            'baseUrl'    => $baseUrl,
+        ),
         'authManager' => array(
             'class' => 'RDbAuthManager',
             // Provides support authorization item sorting.
