@@ -14,6 +14,8 @@ class HomePage
     public static $logoutLink = '#logoutLink';
     public static $logoutLinkMobile = '#logoutLinkMobile';
     public static $accountMenuLink = '#accountMenuLink';
+    public static $languageMenu = '.navbar .language-menu';
+
     public static $homePageMessage = 'building a fact-based world view together';
     public static $joinButtonText = 'Join now';
 
