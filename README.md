@@ -149,6 +149,7 @@ Then, do the following before attempting to run any tests:
 
     export CMS_HOST=127.0.0.1:11111 # change if you have used another WEB_PORT when setting up the local dev environment
     ./generate-local-codeception-config.sh
+    vendor/bin/codecept build
 
 Now, set the level of test coverage to run and set the appropriate codeception arguments:
 
@@ -214,31 +215,16 @@ Ensure that you have Java installed and then start [the selenium server](http://
 
 ## Running tests locally against Saucelabs
 
-First deploy the code to dokku (see "Deploy using Dokku" below), so that the env vars `APPNAME`, `DOKKU_HOST` and `CMS_HOST` are set according to that deployment.
+First deploy the code to dokku (see "Deploy using Dokku" below), so that the env vars `DOKKU_HOST` and `CMS_HOST` are available.
 
-(Not relevant at the moment: Make sure that your dokku ssh key has port forwarding enabled (A user with root access to the dokku hosts needs to log in and run the `dokku-user-allow-port-forwarding.sh` bash script once after your ssh key has been granted access to dokku).)
+Follow the instructions under "Set up an SSH tunnel to be able to access the deployed database locally"
 
-Then, generate configuration as if running in ci:
+Generate configuration as if running in ci:
 
     cd tests
-    export COMPOSER_NO_INTERACTION=1
-    php ../composer.phar install --dev --prefer-dist
-
-    export SAUCE_USERNAME=replaceme
-    export SAUCE_ACCESS_KEY=replaceme
-    export DATA=clean-db
     export CI=1
-
-    export CMS_APPNAME=$APPNAME
-    ssh dokku@$DOKKU_HOST run $CMS_APPNAME /app/app/yiic config exportDbConfig --connectionID=db | tee /tmp/db-config.sh
-    tr -d $'\r' < /tmp/db-config.sh > /tmp/db-config.clean.sh
-    source /tmp/db-config.clean.sh
-    # set-up ssh tunnel against dokku host to be able to access db instance
-    ssh dokku@$DOKKU_HOST -v -N -L 43306:$DB_HOST:$DB_PORT &
-    export DB_HOST=127.0.0.1
-    export DB_PORT=43306
-    # verify local db access
-    echo "SELECT 1;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
+    export SAUCE_ACCESS_KEY=replaceme
+    export SAUCE_USERNAME=gapminder
     # generate codeception config
     ./generate-local-codeception-config.sh
 
@@ -247,24 +233,13 @@ Then, run the tests:
     # use ci-configuration for deployment while running tests
     ssh dokku@$DOKKU_HOST config:set $CMS_APPNAME CONFIG_ENVIRONMENT=ci
 
-    # run acceptance tests (choose an appropriate env value from acceptance-init.suite.yml/acceptance.suite.yml)
+    # run acceptance tests (choose an appropriate env value)
     export env=cms-saucelabs-chrome-win8
     export env=cms-saucelabs-firefox-win7
     export env=cms-saucelabs-chrome-osx-108
-    export env=cms-saucelabs-iphone-7_1-portrait
     vendor/bin/codecept run acceptance-init --env=$env -g data:$DATA --debug --fail-fast
     #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
     vendor/bin/codecept run acceptance --env=$env -g data:$DATA --debug --fail-fast
-
-    # example of running a single test using the iphone 7.1 environment:
-    export env=cms-saucelabs-iphone-7_1-portrait
-    vendor/bin/codecept run acceptance-init --env=$env -g data:$DATA --debug 01-HomePageWelcomeCept.php
-
-    # run all DATA-specific acceptance tests in two different environments at once
-    vendor/bin/codecept run acceptance --env=cms-saucelabs-chrome-win8 --env=cms-saucelabs-iphone-7_1-portrait -g data:$DATA --debug
-
-    # run all DATA-specific api tests
-    vendor/bin/codecept run api -g data:$DATA --debug
 
 ### Hints for test developers
 
@@ -311,12 +286,6 @@ To build and deploy (regardless of target), first set some fundamental config va
     export APPNAME=foo1-cms
     export CURRENT_BRANCH=develop
 
-__NOTE__: CURRENT_BRANCH is the branchname of the CMS-repository that you want to deploy.
-It could be e.g.
-
-    export CURRENT_BRANCH=feature/CMS-42-foo-bar
-
-
 ### Deploy using Dokku
 
 To build and deploy on dokku, first set dokku host config var:
@@ -346,12 +315,15 @@ You will also need to run the following once after the initial push:
     # set environment variables
 
     export CMS_CONFIG_ENVIRONMENT=development
-    export COMPOSER_GITHUB_OAUTH_TOKEN="replaceme"
+    export COMPOSER_GITHUB_TOKEN="replaceme"
     export NEW_RELIC_LICENSE_KEY="replaceme"
     export NEW_RELIC_APP_NAME="replaceme"
     export SMTP_URL="replaceme"
     export GA_TRACKING_ID="replaceme"
     export SENTRY_DSN="replaceme"
+    export SAUCE_USERNAME="replaceme"
+    export SAUCE_ACCESS_KEY="replaceme"
+    export CMS_BASE_URL=$CMS_HOST
 
     ssh dokku@$DOKKU_HOST config:set $APPNAME \
     ENVBOOTSTRAP_STRATEGY=environment-variables \
@@ -362,12 +334,15 @@ You will also need to run the following once after the initial push:
     USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET \
     USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET \
     CONFIG_ENVIRONMENT=$CMS_CONFIG_ENVIRONMENT \
-    COMPOSER_GITHUB_OAUTH_TOKEN=$COMPOSER_GITHUB_OAUTH_TOKEN \
+    COMPOSER_GITHUB_TOKEN=$COMPOSER_GITHUB_TOKEN \
     NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY \
     NEW_RELIC_APP_NAME=dokku/$APPNAME \
     SMTP_URL=$SMTP_URL \
     GA_TRACKING_ID=$GA_TRACKING_ID \
-    SENTRY_DSN=$SENTRY_DSN
+    SENTRY_DSN=$SENTRY_DSN \
+    SAUCE_USERNAME=$SAUCE_USERNAME \
+    SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY \
+    CMS_BASE_URL=$CMS_BASE_URL
 
     # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
 
@@ -377,18 +352,52 @@ You will also need to run the following once after the initial push:
 To reset the db to a clean state:
 
     export DATA=clean-db
+    # run these commands one by one (they will not all run if pasted into the console together)
     ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
+    # run these commands one by one (they will not all run if pasted into the console together)
     ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-reset-db.sh
 
 To reset the db and load user data:
 
     export DATA=user-generated
+    # run these commands one by one (they will not all run if pasted into the console together)
     ssh dokku@$DOKKU_HOST config:set $APPNAME DATA=$DATA
+    # run these commands one by one (they will not all run if pasted into the console together)
     ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-reset-db.sh
+
+To run the tests:
+
+    # needs to be set appropriately (see above in readme)
+    export COVERAGE=basic
+
+    # use ci-configuration for deployment while running tests
+    ssh dokku@$DOKKU_HOST config:set $APPNAME CONFIG_ENVIRONMENT=ci
+
+    # run tests within a dokku app container
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/deploy/dokku-run-tests.sh $COVERAGE
+
+    # restore config-environment
+    ssh dokku@$DOKKU_HOST config:set $APPNAME CONFIG_ENVIRONMENT=$CMS_CONFIG_ENVIRONMENT
 
 To upload the current user-generated data to S3, run:
 
     ssh dokku@$DOKKU_HOST run $APPNAME /app/shell-scripts/upload-user-data-backup.sh
+
+### Set up an SSH tunnel to be able to access the deployed database locally
+
+Make sure that your dokku ssh key has port forwarding enabled (A user with root access to the dokku hosts needs to log in and run the `dokku-user-allow-port-forwarding.sh` bash script once after your ssh key has been granted access to dokku).
+
+Then, set up a ssh tunnel:
+
+    ssh dokku@$DOKKU_HOST run $APPNAME /app/app/yiic config exportDbConfig --connectionID=db | tee /tmp/db-config.sh
+    tr -d $'\r' < /tmp/db-config.sh > /tmp/db-config.clean.sh
+    source /tmp/db-config.clean.sh
+    # set-up ssh tunnel against dokku host to be able to access db instance
+    ssh dokku@$DOKKU_HOST -v -N -L 43306:$DB_HOST:$DB_PORT &
+    export DB_HOST=127.0.0.1
+    export DB_PORT=43306
+    # verify local db access
+    echo "SELECT 1;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD $DB_NAME
 
 ## Deploy using Heroku
 
