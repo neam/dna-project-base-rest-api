@@ -29,7 +29,7 @@ location /friends {
     <% end %>
 
         # for project-deployment vhost to work, we need to forward the project host instead of the canonical host
-        proxy_set_header Host <%= ENV['CMS_HOST'] %>;
+        proxy_set_header Host "<%= ENV['CMS_HOST'] %>";
         #proxy_set_header Host $http_host;
 
         # Default dokku-vhosts configuration (make sure to update this manually when dokku changes the default configuration)
