@@ -17,7 +17,10 @@ $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SE
 
 // support remote proxies
 if (isset($_SERVER["HTTP_X_GCMS_FACADE"]) && $_SERVER["HTTP_X_GCMS_FACADE"] == "friends") {
-    $baseUrl = "/friends" . $baseUrl;
+    $urlPrefix = "/friends";
+    $_SERVER["REQUEST_URI"] = $_SERVER["HTTP_X_GCMS_ORIGINAL_REQUEST_URI"];
+    $_SERVER["HTTP_HOST"] = $_SERVER["HTTP_X_GCMS_ORIGINAL_HOST"];
+    $baseUrl = $urlPrefix . $baseUrl;
 }
 
 require('includes/languages.php');
