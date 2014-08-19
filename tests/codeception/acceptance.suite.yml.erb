@@ -38,12 +38,37 @@ env:
                     url: http://<%= ENV['CMS_HOST'] %>
                     browser: 'chrome'
 
+    cms-local-chrome-small:
+        modules:
+            config:
+                WebHelper:
+                    small-screen: true
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'chrome'
+                    window_size: 400x800
+
     cms-saucelabs-chrome-win8:
         modules:
             config:
                 WebDriver:
                     url: http://<%= ENV['CMS_HOST'] %>
                     browser: 'chrome'
+                    capabilities:
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows 8.1'
+                        version: '34'
+
+
+    cms-saucelabs-chrome-win8-small:
+        modules:
+            config:
+                WebHelper:
+                    small-screen: true
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'chrome'
+                    window_size: 400x800
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
                         platform: 'Windows 8.1'
