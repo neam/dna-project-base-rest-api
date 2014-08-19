@@ -468,7 +468,7 @@ This should be a unique identifier of the current deployment. It is used in dist
 
 Type: PHP Constant
 
-When true, this enables `YII_DEBUG` (currently broken though) and sets display_errors to true.
+When true, this enables `YII_DEBUG` and sets display_errors to true.
 
 #### DEBUG_REDIRECTS (default: `false`)
 
